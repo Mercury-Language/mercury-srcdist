@@ -1,0 +1,11166 @@
+/*
+** Automatically generated from `bytecode.m'
+** by the Mercury compiler,
+** version rotd-2017-07-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module bytecode_backend.bytecode. */
+/* :- implementation. */
+
+/*
+INIT mercury__bytecode_backend__bytecode__init
+ENDINIT
+*/
+
+#include "bytecode_backend.bytecode.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "bytecode_backend.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.bytecode_data.mih"
+#include "backend_libs.c_util.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 bytecode_backend__bytecode__list__pti_list_1__plain_bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_0[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_1[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_1;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_2[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_2;
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_0[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_1[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_2[1];
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_arg_0[3];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_arg_0[3];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_arg_0[3];
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_0[4];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_0;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_1;
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_var_info_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_2[6];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_2;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_3;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_4[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_4;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_5[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_5;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_6;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_7[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_7;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_8[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_8;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_9[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_9;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_10;
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_11[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_11;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_12[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_12;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_13[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_13;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_14[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_14;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_15[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_15;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_16[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_16;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_17;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_18[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_18;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_19[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_19;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_20;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_21[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_21;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_22[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_22;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_23[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_23;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_24[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_24;
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_25[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_25;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_26[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_26;
+
+static const MR_FA_TypeInfo_Struct2 bytecode_backend__bytecode__pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0;
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_27[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_27;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_28[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_28;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_29[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_29;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_30[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_30;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_31[5];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_31;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_32[4];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_32;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_33[4];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_33;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_34[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_34;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_35[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_35;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_36[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_36;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_37;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_38;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_39;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_40[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_40;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_41;
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_0[10];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_1[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_2[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_3[30];
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_code_0[4];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_code_0[42];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_code_0[42];
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_0[4];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_1[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_1;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_2[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_2;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_3[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_3;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_4[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_4;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_5[5];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_5;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_6[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_6;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_7[3];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_7;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_8;
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_9;
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_0[2];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_1[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_2[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_3[6];
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_id_0[4];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_id_0[10];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_id_0[10];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_1[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_1;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_2[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_2;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_3[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_3;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_4[1];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_4;
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_0[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_1[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_2[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_3[2];
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_tag_0[4];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_tag_0[5];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_tag_0[5];
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_0;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_1;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_2;
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_dir_0[3];
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_dir_0[3];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_dir_0[3];
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_reg_type_0_0;
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_reg_type_0[1];
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_reg_type_0[1];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_reg_type_0[1];
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_0;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_1;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_2;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_3;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_4;
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_5;
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_test_id_0[6];
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_test_id_0[6];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_test_id_0[6];
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__cord__ti_cord_1bytecode_backend__bytecode__type_ctor_info_byte_code_0;
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_var_info_0_0[2];
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_var_info_0_0;
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_var_info_0_0[1];
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_var_info_0[1];
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_var_info_0[1];
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_var_info_0[1];
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_arg_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_arg_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_code_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_code_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_tag_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_tag_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_dir_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_dir_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_is_func_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_is_func_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_label_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_label_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_module_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_module_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_pred_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_pred_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_proc_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_proc_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_reg_type_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_reg_type_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_temp_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_temp_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_test_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_test_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_tree_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_tree_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_info_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2);
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_info_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode__IntroducedFrom__pred__output_args__266__1_2_p_0(
+  MR_Word bytecode_backend__bytecode__OtherConsIds_72,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_82);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_bytecode_list_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_args_3_p_0_1(
+  MR_Box bytecode_backend__bytecode__closure_arg,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_3);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_args_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_98_117_103_95_114_101_103_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer bytecode_backend__bytecode__N_5);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_unop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Unop_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_binop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Binop_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_cons_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_float_3_p_0(
+  MR_Float bytecode_backend__bytecode__Val_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_cstring_3_p_0(
+  MR_String bytecode_backend__bytecode__Str_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_tag_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_int_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Val_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_string_3_p_0(
+  MR_String bytecode_backend__bytecode__Val_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_label_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__LabelId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_proc_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__ProcId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_pred_id_3_p_0(
+  MR_String bytecode_backend__bytecode__PredId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_module_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__ModuleId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_sym_name_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_test_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_dirs_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_temp_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_vars_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_arg_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_length_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Length_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_is_func_3_p_0(
+  MR_Integer bytecode_backend__bytecode__IsFunc_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_determinism_3_p_0(
+  MR_Word bytecode_backend__bytecode__Detism_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_infos_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_bytecode_list_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode__output_args_3_p_0_1(
+  MR_Box bytecode_backend__bytecode__closure_arg);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_args_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_114_101_103_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer bytecode_backend__bytecode__N_5);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_unop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Unop_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_binop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Binop_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_cons_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_tag_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_label_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__LabelId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_proc_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__ProcId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_pred_id_3_p_0(
+  MR_String bytecode_backend__bytecode__PredId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_module_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__ModuleId_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_test_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_dirs_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_temp_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_vars_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_arg_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_length_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Length_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_is_func_3_p_0(
+  MR_Integer bytecode_backend__bytecode__IsFunc_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_determinism_3_p_0(
+  MR_Word bytecode_backend__bytecode__Detism_4);
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_infos_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1);
+
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_1[5][2];
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_2[2][3];
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_4[1][5];
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_6[1][6];
+
+
+/* sealed */ struct bytecode_backend__bytecode__vector_common_type_3_0_s {
+  const MR_Integer bytecode_backend__bytecode__vector_common_type_3_0__vct_3_f_0;
+};
+
+static /* final */ const struct bytecode_backend__bytecode__vector_common_type_3_0_s bytecode_backend__bytecode_vector_common_3[23];
+
+/* sealed */ struct bytecode_backend__bytecode__vector_common_type_5_0_s {
+  const MR_String bytecode_backend__bytecode__vector_common_type_5_0__vct_5_f_0;
+};
+
+static /* final */ const struct bytecode_backend__bytecode__vector_common_type_5_0_s bytecode_backend__bytecode_vector_common_5[23];
+
+
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_1[5][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&bytecode_backend__bytecode_scalar_common_2[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_code_0))
+  },
+};
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_2[2][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_dir_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&bytecode_backend__bytecode_scalar_common_6[0])),
+    ((MR_Box) (bytecode_backend__bytecode__debug_args_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_4[1][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&bytecode_backend__bytecode__list__pti_list_1__plain_bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0)),
+    ((MR_Box) (&bytecode_backend__bytecode__list__pti_list_1__plain_bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0))
+  },
+};
+
+static /* final */ const MR_Box bytecode_backend__bytecode_scalar_common_6[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+static /* final */ const struct bytecode_backend__bytecode__vector_common_type_3_0_s bytecode_backend__bytecode_vector_common_3[23] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 1 },
+  /* row 2 */   {     (MR_Integer) 2 },
+  /* row 3 */   {     (MR_Integer) 3 },
+  /* row 4 */   {     (MR_Integer) 4 },
+  /* row 5 */   {     (MR_Integer) 5 },
+  /* row 6 */   {     (MR_Integer) 6 },
+  /* row 7 */   {     (MR_Integer) 7 },
+  /* row 8 */   {     (MR_Integer) 0 },
+  /* row 9 */   {     (MR_Integer) 1 },
+  /* row 10 */   {     (MR_Integer) 2 },
+  /* row 11 */   {     (MR_Integer) 5 },
+  /* row 12 */   {     (MR_Integer) 3 },
+  /* row 13 */   {     (MR_Integer) 4 },
+  /* row 14 */   {     (MR_Integer) 6 },
+  /* row 15 */   {     (MR_Integer) 7 },
+  /* row 16 */   {     (MR_Integer) 14 },
+  /* row 17 */   {     (MR_Integer) 8 },
+  /* row 18 */   {     (MR_Integer) 9 },
+  /* row 19 */   {     (MR_Integer) 10 },
+  /* row 20 */   {     (MR_Integer) 11 },
+  /* row 21 */   {     (MR_Integer) 12 },
+  /* row 22 */   {     (MR_Integer) 13 },
+};
+
+static /* final */ const struct bytecode_backend__bytecode__vector_common_type_5_0_s bytecode_backend__bytecode_vector_common_5[23] = {
+  /* row 0 */   {     (MR_String) "det" },
+  /* row 1 */   {     (MR_String) "semidet" },
+  /* row 2 */   {     (MR_String) "multidet" },
+  /* row 3 */   {     (MR_String) "nondet" },
+  /* row 4 */   {     (MR_String) "cc_multidet" },
+  /* row 5 */   {     (MR_String) "cc_nondet" },
+  /* row 6 */   {     (MR_String) "erroneous" },
+  /* row 7 */   {     (MR_String) "failure" },
+  /* row 8 */   {     (MR_String) "mktag" },
+  /* row 9 */   {     (MR_String) "tag" },
+  /* row 10 */   {     (MR_String) "unmktag" },
+  /* row 11 */   {     (MR_String) "strip_tag" },
+  /* row 12 */   {     (MR_String) "mkbody" },
+  /* row 13 */   {     (MR_String) "unmkbody" },
+  /* row 14 */   {     (MR_String) "bitwise_complement" },
+  /* row 15 */   {     (MR_String) "not" },
+  /* row 16 */   {     (MR_String) "uint_bitwise_complement" },
+  /* row 17 */   {     (MR_String) "hash_string" },
+  /* row 18 */   {     (MR_String) "hash_string2" },
+  /* row 19 */   {     (MR_String) "hash_string3" },
+  /* row 20 */   {     (MR_String) "hash_string4" },
+  /* row 21 */   {     (MR_String) "hash_string5" },
+  /* row 22 */   {     (MR_String) "hash_string6" },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 bytecode_backend__bytecode__list__pti_list_1__plain_bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_0 = {
+  (MR_String) "byte_arg_var",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_1 = {
+  (MR_String) "byte_arg_int_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_2[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_2 = {
+  (MR_String) "byte_arg_float_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_arg_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_0
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_1[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_1
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_2[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_2
+};
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_arg_0[3] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_arg_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_arg_0[3] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_arg_0_0
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_arg_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_arg_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_arg_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_arg",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_arg_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_arg_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_arg_0
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_0 = {
+  (MR_String) "byte_enter_pred",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_1 = {
+  (MR_String) "byte_endof_pred",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_var_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_2[6] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_var_info_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_2 = {
+  (MR_String) "byte_enter_proc",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_3 = {
+  (MR_String) "byte_endof_proc",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_4[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_4 = {
+  (MR_String) "byte_label",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_4,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_5[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_5 = {
+  (MR_String) "byte_enter_disjunction",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 5,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_5,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_6 = {
+  (MR_String) "byte_endof_disjunction",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_7[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_7 = {
+  (MR_String) "byte_enter_disjunct",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 7,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_7,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_8[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_8 = {
+  (MR_String) "byte_endof_disjunct",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 8,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_8,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_9[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_9 = {
+  (MR_String) "byte_enter_switch",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 9,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_9,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_10 = {
+  (MR_String) "byte_endof_switch",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_11[3] = {
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_11 = {
+  (MR_String) "byte_enter_switch_arm",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 11,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_11,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_12[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_12 = {
+  (MR_String) "byte_endof_switch_arm",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  (MR_Integer) 12,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_12,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_13[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_13 = {
+  (MR_String) "byte_enter_if",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 13,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_13,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_14[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_14 = {
+  (MR_String) "byte_enter_then",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 8,
+  (MR_Integer) 14,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_14,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_15[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_15 = {
+  (MR_String) "byte_endof_then",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 9,
+  (MR_Integer) 15,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_15,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_16[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_16 = {
+  (MR_String) "byte_enter_else",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  (MR_Integer) 16,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_16,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_17 = {
+  (MR_String) "byte_endof_if",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 17,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_18[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_18 = {
+  (MR_String) "byte_enter_negation",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 11,
+  (MR_Integer) 18,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_18,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_19[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_19 = {
+  (MR_String) "byte_endof_negation_goal",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 12,
+  (MR_Integer) 19,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_19,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_20 = {
+  (MR_String) "byte_endof_negation",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 20,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_21[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_21 = {
+  (MR_String) "byte_enter_commit",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 13,
+  (MR_Integer) 21,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_21,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_22[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_22 = {
+  (MR_String) "byte_endof_commit",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 14,
+  (MR_Integer) 22,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_22,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_23[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_23 = {
+  (MR_String) "byte_assign",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 15,
+  (MR_Integer) 23,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_23,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_24[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_test_id_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_24 = {
+  (MR_String) "byte_test",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 16,
+  (MR_Integer) 24,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_24,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_25[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_25 = {
+  (MR_String) "byte_construct",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 17,
+  (MR_Integer) 25,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_25,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_26[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_26 = {
+  (MR_String) "byte_deconstruct",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 18,
+  (MR_Integer) 26,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_26,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 bytecode_backend__bytecode__pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_dir_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &bytecode_backend__bytecode__pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0
+  }
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_27[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_27 = {
+  (MR_String) "byte_complex_construct",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 19,
+  (MR_Integer) 27,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_27,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_28[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0bytecode_backend__bytecode__type_ctor_info_byte_dir_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_28 = {
+  (MR_String) "byte_complex_deconstruct",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 20,
+  (MR_Integer) 28,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_28,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_29[3] = {
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_reg_type_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_29 = {
+  (MR_String) "byte_place_arg",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 21,
+  (MR_Integer) 29,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_29,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_30[3] = {
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_reg_type_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_30 = {
+  (MR_String) "byte_pickup_arg",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 22,
+  (MR_Integer) 30,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_30,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_31[5] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_31 = {
+  (MR_String) "byte_call",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 23,
+  (MR_Integer) 31,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_31,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_32[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_32 = {
+  (MR_String) "byte_higher_order_call",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 24,
+  (MR_Integer) 32,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_32,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_33[4] = {
+  (MR_PseudoTypeInfo) &backend_libs__builtin_ops__backend_libs__builtin_ops__type_ctor_info_binary_op_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_33 = {
+  (MR_String) "byte_builtin_binop",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 25,
+  (MR_Integer) 33,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_33,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_34[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__builtin_ops__backend_libs__builtin_ops__type_ctor_info_unary_op_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_34 = {
+  (MR_String) "byte_builtin_unop",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 26,
+  (MR_Integer) 34,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_34,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_35[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__builtin_ops__backend_libs__builtin_ops__type_ctor_info_binary_op_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_35 = {
+  (MR_String) "byte_builtin_bintest",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 27,
+  (MR_Integer) 35,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_35,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_36[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__builtin_ops__backend_libs__builtin_ops__type_ctor_info_unary_op_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_36 = {
+  (MR_String) "byte_builtin_untest",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 28,
+  (MR_Integer) 36,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_36,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_37 = {
+  (MR_String) "byte_semidet_succeed",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 37,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_38 = {
+  (MR_String) "byte_semidet_success_check",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 7,
+  (MR_Integer) 38,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_39 = {
+  (MR_String) "byte_fail",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  (MR_Integer) 39,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_40[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_40 = {
+  (MR_String) "byte_context",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 29,
+  (MR_Integer) 40,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_code_0_40,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_41 = {
+  (MR_String) "byte_not_supported",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 41,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_0[10] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_6,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_10,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_17,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_20,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_37,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_38,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_39,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_41
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_1[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_0
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_2[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_2
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_3[30] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_5,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_7,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_8,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_9,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_11,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_12,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_13,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_14,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_15,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_16,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_18,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_19,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_21,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_22,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_23,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_24,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_25,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_26,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_27,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_28,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_29,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_30,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_31,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_32,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_33,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_34,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_35,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_36,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_40
+};
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_code_0[4] = {
+  {
+    (MR_Integer) 10,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_2
+  },
+  {
+    (MR_Integer) 30,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_code_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_code_0[42] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_23,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_33,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_35,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_34,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_36,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_31,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_27,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_28,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_25,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_40,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_26,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_22,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_8,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_6,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_17,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_20,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_19,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_10,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_12,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_15,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_21,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_7,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_5,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_16,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_13,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_18,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_9,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_11,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_14,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_39,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_32,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_41,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_30,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_29,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_37,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_38,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_code_0_24
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_code_0[42] = {
+  (MR_Integer) 28,
+  (MR_Integer) 17,
+  (MR_Integer) 29,
+  (MR_Integer) 18,
+  (MR_Integer) 35,
+  (MR_Integer) 24,
+  (MR_Integer) 13,
+  (MR_Integer) 23,
+  (MR_Integer) 12,
+  (MR_Integer) 30,
+  (MR_Integer) 19,
+  (MR_Integer) 31,
+  (MR_Integer) 20,
+  (MR_Integer) 26,
+  (MR_Integer) 32,
+  (MR_Integer) 21,
+  (MR_Integer) 25,
+  (MR_Integer) 14,
+  (MR_Integer) 27,
+  (MR_Integer) 16,
+  (MR_Integer) 15,
+  (MR_Integer) 22,
+  (MR_Integer) 11,
+  (MR_Integer) 0,
+  (MR_Integer) 41,
+  (MR_Integer) 8,
+  (MR_Integer) 10,
+  (MR_Integer) 6,
+  (MR_Integer) 7,
+  (MR_Integer) 38,
+  (MR_Integer) 37,
+  (MR_Integer) 5,
+  (MR_Integer) 34,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  (MR_Integer) 39,
+  (MR_Integer) 40,
+  (MR_Integer) 33,
+  (MR_Integer) 9,
+  (MR_Integer) 36
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_code_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_code_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_code_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_code",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_code_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_code_0 },
+  (MR_Integer) 42,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_code_0
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_0[4] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_tag_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_0 = {
+  (MR_String) "byte_cons",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_1 = {
+  (MR_String) "byte_int_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_2[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_2 = {
+  (MR_String) "byte_string_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_3 = {
+  (MR_String) "byte_float_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_3,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_4[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_character_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_4 = {
+  (MR_String) "byte_char_const",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_4,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_5[5] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_5 = {
+  (MR_String) "byte_pred_const",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_5,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_6[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_6 = {
+  (MR_String) "byte_type_ctor_info_const",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_6,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_7[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_7 = {
+  (MR_String) "byte_base_typeclass_info_const",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 7,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_id_0_7,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_8 = {
+  (MR_String) "byte_type_info_cell_constructor",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_9 = {
+  (MR_String) "byte_typeclass_info_cell_constructor",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 9,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_0[2] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_8,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_9
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_1[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_0
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_2[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_1
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_3[6] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_5,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_6,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_7
+};
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_id_0[4] = {
+  {
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_2
+  },
+  {
+    (MR_Integer) 6,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_id_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_id_0[10] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_7,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_5,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_6,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_8,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_id_0_9
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_id_0[10] = {
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 5,
+  (MR_Integer) 7,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  (MR_Integer) 9
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_cons_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_cons_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_cons_id",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_id_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_id_0 },
+  (MR_Integer) 10,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_id_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_0 = {
+  (MR_String) "byte_no_tag",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_1 = {
+  (MR_String) "byte_unshared_tag",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_2[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_2 = {
+  (MR_String) "byte_shared_remote_tag",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_3[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_3 = {
+  (MR_String) "byte_shared_local_tag",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_3,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_4[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_4 = {
+  (MR_String) "byte_enum_tag",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_cons_tag_0_4,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_0
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_1[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_1
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_2[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_2
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_3[2] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_4
+};
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_tag_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_2
+  },
+  {
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_cons_tag_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_tag_0[5] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_cons_tag_0_1
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_tag_0[5] = {
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_tag_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_cons_tag_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_cons_tag_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_cons_tag",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_cons_tag_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_cons_tag_0 },
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_cons_tag_0
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_0 = {
+  (MR_String) "to_arg",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_1 = {
+  (MR_String) "to_var",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_2 = {
+  (MR_String) "to_none",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_dir_0[3] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_2
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_dir_0[3] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_dir_0_1
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_dir_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_dir_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_dir_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_dir_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_dir",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_dir_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_dir_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_dir_0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_is_func_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_is_func_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_is_func_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_is_func",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_label_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_label_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_label_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_label_id",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_module_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_module_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_module_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_module_id",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_pred_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_pred_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_pred_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_pred_id",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_proc_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_proc_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_proc_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_proc_id",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_reg_type_0_0 = {
+  (MR_String) "byte_reg_r",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_reg_type_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_reg_type_0_0
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_reg_type_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_reg_type_0_0
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_reg_type_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_reg_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_reg_type_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_reg_type_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_reg_type",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_reg_type_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_reg_type_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_reg_type_0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_temp_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_temp_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_temp_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_temp",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_0 = {
+  (MR_String) "int_test",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_1 = {
+  (MR_String) "char_test",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_2 = {
+  (MR_String) "string_test",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_3 = {
+  (MR_String) "float_test",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_4 = {
+  (MR_String) "enum_test",
+  (MR_Integer) 4
+};
+
+static const MR_EnumFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_5 = {
+  (MR_String) "dummy_test",
+  (MR_Integer) 5
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_test_id_0[6] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_2,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_5
+};
+
+static const MR_EnumFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_test_id_0[6] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_1,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_5,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_4,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_3,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_0,
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__enum_functor_desc_byte_test_id_0_2
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_test_id_0[6] = {
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_test_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_test_id_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_test_id_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_test_id",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_name_ordered_byte_test_id_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__enum_value_ordered_byte_test_id_0 },
+  (MR_Integer) 6,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_test_id_0
+};
+
+static const MR_FA_TypeInfo_Struct1 bytecode_backend__bytecode__cord__ti_cord_1bytecode_backend__bytecode__type_ctor_info_byte_code_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_code_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_tree_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_tree_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_tree_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_tree",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &bytecode_backend__bytecode__cord__ti_cord_1bytecode_backend__bytecode__type_ctor_info_byte_code_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_var_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_var_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_var",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_var_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+};
+
+static const MR_DuFunctorDesc bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_var_info_0_0 = {
+  (MR_String) "var_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__field_types_byte_var_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_var_info_0_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_var_info_0_0
+};
+
+static const MR_DuPtagLayout bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_var_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    bytecode_backend__bytecode__bytecode_backend__bytecode__du_stag_ordered_byte_var_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_var_info_0[1] = {
+  &bytecode_backend__bytecode__bytecode_backend__bytecode__du_functor_desc_byte_var_info_0_0
+};
+
+static const MR_Integer bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_var_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (bytecode_backend__bytecode____Unify____byte_var_info_0_0_10001)),
+  ((MR_Box) (bytecode_backend__bytecode____Compare____byte_var_info_0_0_10001)),
+  (MR_String) "bytecode_backend.bytecode",
+  (MR_String) "byte_var_info",
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_name_ordered_byte_var_info_0 },
+  {     bytecode_backend__bytecode__bytecode_backend__bytecode__du_ptag_ordered_byte_var_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  bytecode_backend__bytecode__bytecode_backend__bytecode__functor_number_map_byte_var_info_0
+};
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_arg_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_arg_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_code_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_code_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_code_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_code_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_tag_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_tag_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_tag_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_cons_tag_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_dir_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_dir_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_dir_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_dir_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_is_func_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_is_func_0_0(((MR_Integer) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_is_func_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_is_func_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_label_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_label_id_0_0(((MR_Integer) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_label_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_label_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_module_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_module_id_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_module_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_module_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_pred_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_pred_id_0_0(((MR_String) bytecode_backend__bytecode__wrapper_arg_1), ((MR_String) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_pred_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_pred_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_String) bytecode_backend__bytecode__wrapper_arg_2), ((MR_String) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_proc_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_proc_id_0_0(((MR_Integer) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_proc_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_proc_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_reg_type_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_reg_type_0_0();
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_reg_type_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_reg_type_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1);
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_temp_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_temp_0_0(((MR_Integer) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_temp_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_temp_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_test_id_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_test_id_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_test_id_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_test_id_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_tree_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_tree_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_tree_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_tree_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_var_0_0(((MR_Integer) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_var_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Integer) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_info_0_0_10001(
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_var_info_0_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_info_0_0_10001(
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Word bytecode_backend__bytecode__conv0_HeadVar__1_1;
+
+    {
+      bytecode_backend__bytecode____Compare____byte_var_info_0_0(&bytecode_backend__bytecode__conv0_HeadVar__1_1, ((MR_Word) bytecode_backend__bytecode__wrapper_arg_2), ((MR_Word) bytecode_backend__bytecode__wrapper_arg_3));
+    }
+    *bytecode_backend__bytecode__wrapper_arg_1 = ((MR_Box) (bytecode_backend__bytecode__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode__IntroducedFrom__pred__output_args__266__1_2_p_0(
+  MR_Word bytecode_backend__bytecode__OtherConsIds_72,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_82)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[0], ((MR_Box) (bytecode_backend__bytecode__OtherConsIds_72)), ((MR_Box) (bytecode_backend__bytecode__HeadVar__2_82)));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_info_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_9 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__CastY_10 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_9 == bytecode_backend__bytecode__CastY_10);
+    if (bytecode_backend__bytecode__succeeded)
+      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String bytecode_backend__bytecode__ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String bytecode_backend__bytecode__ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word bytecode_backend__bytecode__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word bytecode_backend__bytecode__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word bytecode_backend__bytecode__Var_8;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_8, bytecode_backend__bytecode__ArgX1_4, bytecode_backend__bytecode__ArgY1_5);
+        }
+        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_8 == (MR_Integer) 0);
+        bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+        if (bytecode_backend__bytecode__succeeded)
+          *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_8;
+        else
+          {
+            parse_tree__prog_data____Compare____mer_type_0_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__ArgX2_6, bytecode_backend__bytecode__ArgY2_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_info_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_7 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__CastY_8 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_7 == bytecode_backend__bytecode__CastY_8);
+    if (bytecode_backend__bytecode__succeeded)
+      bytecode_backend__bytecode__succeeded = MR_TRUE;
+    else
+      {
+        MR_String bytecode_backend__bytecode__ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String bytecode_backend__bytecode__ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word bytecode_backend__bytecode__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word bytecode_backend__bytecode__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+        bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX1_3, bytecode_backend__bytecode__ArgY1_4) == 0);
+        if (bytecode_backend__bytecode__succeeded)
+          {
+            bytecode_backend__bytecode__succeeded = parse_tree__prog_data____Unify____mer_type_0_0(bytecode_backend__bytecode__ArgX2_5, bytecode_backend__bytecode__ArgY2_6);
+          }
+      }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Integer bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_0_0(
+  MR_Integer bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Cast_HeadVar1_3 == bytecode_backend__bytecode__Cast_HeadVar2_4);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_tree_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[4], bytecode_backend__bytecode__HeadVar__1_1, ((MR_Box) (bytecode_backend__bytecode__Cast_HeadVar1_4)), ((MR_Box) (bytecode_backend__bytecode__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_tree_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    {
+      bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[4], ((MR_Box) (bytecode_backend__bytecode__Cast_HeadVar1_3)), ((MR_Box) (bytecode_backend__bytecode__Cast_HeadVar2_4)));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_test_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_test_id_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__2_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__HeadVar__2_1 == bytecode_backend__bytecode__HeadVar__2_2);
+
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_temp_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Integer bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_temp_0_0(
+  MR_Integer bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Cast_HeadVar1_3 == bytecode_backend__bytecode__Cast_HeadVar2_4);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_reg_type_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_98_121_116_101_99_111_100_101_95_98_97_99_107_101_110_100_95_95_98_121_116_101_99_111_100_101_95_95_98_121_116_101_95_114_101_103_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(bytecode_backend__bytecode__HeadVar__1_1);
+    }
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_98_121_116_101_99_111_100_101_95_98_97_99_107_101_110_100_95_95_98_121_116_101_99_111_100_101_95_95_98_121_116_101_95_114_101_103_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_reg_type_0_0(void)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_98_121_116_101_99_111_100_101_95_98_97_99_107_101_110_100_95_95_98_121_116_101_99_111_100_101_95_95_98_121_116_101_95_114_101_103_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_98_121_116_101_99_111_100_101_95_98_97_99_107_101_110_100_95_95_98_121_116_101_99_111_100_101_95_95_98_121_116_101_95_114_101_103_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+{
+  {
+    return MR_TRUE;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_proc_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Integer bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_proc_id_0_0(
+  MR_Integer bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Cast_HeadVar1_3 == bytecode_backend__bytecode__Cast_HeadVar2_4);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_pred_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_String bytecode_backend__bytecode__HeadVar__2_2,
+  MR_String bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_String bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_string_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_pred_id_0_0(
+  MR_String bytecode_backend__bytecode__HeadVar__1_1,
+  MR_String bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_String bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__Cast_HeadVar1_3, bytecode_backend__bytecode__Cast_HeadVar2_4) == 0);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_module_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mdbcomp__sym_name____Compare____sym_name_0_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_module_id_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Word bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    {
+      bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__Cast_HeadVar1_3, bytecode_backend__bytecode__Cast_HeadVar2_4);
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_label_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Integer bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_label_id_0_0(
+  MR_Integer bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Cast_HeadVar1_3 == bytecode_backend__bytecode__Cast_HeadVar2_4);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_is_func_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Integer bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_is_func_0_0(
+  MR_Integer bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_3 = bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_4 = bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Cast_HeadVar1_3 == bytecode_backend__bytecode__Cast_HeadVar2_4);
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_dir_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar1_4 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__Cast_HeadVar2_5 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Cast_HeadVar1_4, bytecode_backend__bytecode__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_dir_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__2_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__HeadVar__2_1 == bytecode_backend__bytecode__HeadVar__2_2);
+
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_code_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_201 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__CastY_202 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_201 == bytecode_backend__bytecode__CastY_202);
+    if (bytecode_backend__bytecode__succeeded)
+      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer bytecode_backend__bytecode__Var_4;
+        MR_Integer bytecode_backend__bytecode__Var_5;
+
+        {
+          bytecode_backend__bytecode____Index____byte_code_0_0(bytecode_backend__bytecode__HeadVar__2_2, &bytecode_backend__bytecode__Var_4);
+        }
+        {
+          bytecode_backend__bytecode____Index____byte_code_0_0(bytecode_backend__bytecode__HeadVar__3_3, &bytecode_backend__bytecode__Var_5);
+        }
+        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_4 < bytecode_backend__bytecode__Var_5);
+        if (bytecode_backend__bytecode__succeeded)
+          *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_4 > bytecode_backend__bytecode__Var_5);
+            if (bytecode_backend__bytecode__succeeded)
+              *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+            else
+              {
+                MR_Word bytecode_backend__bytecode__Var_6;
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__2_2)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 8:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 9:
+                        {
+                          bytecode_backend__bytecode__Var_6 = (MR_Integer) 0;
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_String bytecode_backend__bytecode__ArgX1_7 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_String bytecode_backend__bytecode__ArgY1_8;
+                      MR_Integer bytecode_backend__bytecode__ArgX2_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                      MR_Integer bytecode_backend__bytecode__ArgY2_10;
+                      MR_Integer bytecode_backend__bytecode__ArgX3_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                      MR_Integer bytecode_backend__bytecode__ArgY3_12;
+                      MR_Integer bytecode_backend__bytecode__ArgX4_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                      MR_Integer bytecode_backend__bytecode__ArgY4_14;
+                      MR_Word bytecode_backend__bytecode__Var_15;
+
+                      bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                      if (bytecode_backend__bytecode__succeeded)
+                        {
+                          bytecode_backend__bytecode__ArgY1_8 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+                          bytecode_backend__bytecode__ArgY2_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          bytecode_backend__bytecode__ArgY3_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          bytecode_backend__bytecode__ArgY4_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                          {
+                            mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_15, bytecode_backend__bytecode__ArgX1_7, bytecode_backend__bytecode__ArgY1_8);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_15 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_15;
+                          else
+                            {
+                              MR_Word bytecode_backend__bytecode__Var_16;
+
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_16, bytecode_backend__bytecode__ArgX2_9, bytecode_backend__bytecode__ArgY2_10);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_16 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_16;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_17;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_17, bytecode_backend__bytecode__ArgX3_11, bytecode_backend__bytecode__ArgY3_12);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_17 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_17;
+                                  else
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX4_13, bytecode_backend__bytecode__ArgY4_14);
+                                    }
+                                }
+                            }
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_Integer bytecode_backend__bytecode__ArgX1_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Integer bytecode_backend__bytecode__ArgY1_19;
+                      MR_Word bytecode_backend__bytecode__ArgX2_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                      MR_Word bytecode_backend__bytecode__ArgY2_21;
+                      MR_Integer bytecode_backend__bytecode__ArgX3_22 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                      MR_Integer bytecode_backend__bytecode__ArgY3_23;
+                      MR_Integer bytecode_backend__bytecode__ArgX4_24 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                      MR_Integer bytecode_backend__bytecode__ArgY4_25;
+                      MR_Integer bytecode_backend__bytecode__ArgX5_26 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                      MR_Integer bytecode_backend__bytecode__ArgY5_27;
+                      MR_Word bytecode_backend__bytecode__ArgX6_28 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                      MR_Word bytecode_backend__bytecode__ArgY6_29;
+                      MR_Word bytecode_backend__bytecode__Var_30;
+
+                      bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 2)));
+                      if (bytecode_backend__bytecode__succeeded)
+                        {
+                          bytecode_backend__bytecode__ArgY1_19 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+                          bytecode_backend__bytecode__ArgY2_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          bytecode_backend__bytecode__ArgY3_23 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          bytecode_backend__bytecode__ArgY4_25 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                          bytecode_backend__bytecode__ArgY5_27 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 4)));
+                          bytecode_backend__bytecode__ArgY6_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 5)));
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_30, bytecode_backend__bytecode__ArgX1_18, bytecode_backend__bytecode__ArgY1_19);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_30 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_30;
+                          else
+                            {
+                              MR_Word bytecode_backend__bytecode__Var_31;
+                              MR_Integer bytecode_backend__bytecode__Var_281 = (MR_Integer) bytecode_backend__bytecode__ArgX2_20;
+                              MR_Integer bytecode_backend__bytecode__Var_282 = (MR_Integer) bytecode_backend__bytecode__ArgY2_21;
+
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_31, bytecode_backend__bytecode__Var_281, bytecode_backend__bytecode__Var_282);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_31 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_31;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_32;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_32, bytecode_backend__bytecode__ArgX3_22, bytecode_backend__bytecode__ArgY3_23);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_32 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_32;
+                                  else
+                                    {
+                                      MR_Word bytecode_backend__bytecode__Var_33;
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_33, bytecode_backend__bytecode__ArgX4_24, bytecode_backend__bytecode__ArgY4_25);
+                                      }
+                                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_33 == (MR_Integer) 0);
+                                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                      if (bytecode_backend__bytecode__succeeded)
+                                        bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_33;
+                                      else
+                                        {
+                                          MR_Word bytecode_backend__bytecode__Var_34;
+
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_34, bytecode_backend__bytecode__ArgX5_26, bytecode_backend__bytecode__ArgY5_27);
+                                          }
+                                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_34 == (MR_Integer) 0);
+                                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                          if (bytecode_backend__bytecode__succeeded)
+                                            bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_34;
+                                          else
+                                            {
+                                              {
+                                                mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[1], &bytecode_backend__bytecode__Var_6, ((MR_Box) (bytecode_backend__bytecode__ArgX6_28)), ((MR_Box) (bytecode_backend__bytecode__ArgY6_29)));
+                                              }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                          bytecode_backend__bytecode__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_36;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_36 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_35, bytecode_backend__bytecode__ArgY1_36);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_37 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_38;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_38 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_37, bytecode_backend__bytecode__ArgY1_38);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_39 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_40;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_39, bytecode_backend__bytecode__ArgY1_40);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_41 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_42;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_42 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_41, bytecode_backend__bytecode__ArgY1_42);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_43 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_44;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_45 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_46;
+                          MR_Word bytecode_backend__bytecode__Var_47;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_44 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_46 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_47, bytecode_backend__bytecode__ArgX1_43, bytecode_backend__bytecode__ArgY1_44);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_47 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_47;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX2_45, bytecode_backend__bytecode__ArgY2_46);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_49;
+                          MR_Word bytecode_backend__bytecode__ArgX2_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_51;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_52 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_53;
+                          MR_Word bytecode_backend__bytecode__Var_54;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_53 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__Var_54, bytecode_backend__bytecode__ArgX1_48, bytecode_backend__bytecode__ArgY1_49);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_54 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_54;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_55;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[0], &bytecode_backend__bytecode__Var_55, ((MR_Box) (bytecode_backend__bytecode__ArgX2_50)), ((MR_Box) (bytecode_backend__bytecode__ArgY2_51)));
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_55 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_55;
+                                  else
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_52, bytecode_backend__bytecode__ArgY3_53);
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_56 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_57;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_57 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_56, bytecode_backend__bytecode__ArgY1_57);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_58 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_59;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_60 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_61;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_62 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_63;
+                          MR_Word bytecode_backend__bytecode__Var_64;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_59 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_61 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_63 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_64, bytecode_backend__bytecode__ArgX1_58, bytecode_backend__bytecode__ArgY1_59);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_64 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_64;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_65;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_65, bytecode_backend__bytecode__ArgX2_60, bytecode_backend__bytecode__ArgY2_61);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_65 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_65;
+                                  else
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_62, bytecode_backend__bytecode__ArgY3_63);
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 8:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_66 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_67;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_67 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_66, bytecode_backend__bytecode__ArgY1_67);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 9:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_68 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_69;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_69 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_68, bytecode_backend__bytecode__ArgY1_69);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 10:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_70 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_71;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_71 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_70, bytecode_backend__bytecode__ArgY1_71);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 11:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_72 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_73;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_74 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_75;
+                          MR_Word bytecode_backend__bytecode__Var_76;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_75 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_76, bytecode_backend__bytecode__ArgX1_72, bytecode_backend__bytecode__ArgY1_73);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_76 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_76;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX2_74, bytecode_backend__bytecode__ArgY2_75);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 12:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_77 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_78;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_78 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_77, bytecode_backend__bytecode__ArgY1_78);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 13:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_79 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_80;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_80 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_79, bytecode_backend__bytecode__ArgY1_80);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 14:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_81 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_82;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_82 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_81, bytecode_backend__bytecode__ArgY1_82);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 15:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_83 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_84;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_85 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_86;
+                          MR_Word bytecode_backend__bytecode__Var_87;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_84 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_86 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_87, bytecode_backend__bytecode__ArgX1_83, bytecode_backend__bytecode__ArgY1_84);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_87 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_87;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX2_85, bytecode_backend__bytecode__ArgY2_86);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 16:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_88 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_89;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_90 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_91;
+                          MR_Word bytecode_backend__bytecode__ArgX3_92 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_93;
+                          MR_Word bytecode_backend__bytecode__Var_94;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 16)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_89 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_91 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_94, bytecode_backend__bytecode__ArgX1_88, bytecode_backend__bytecode__ArgY1_89);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_94 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_94;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_95;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_95, bytecode_backend__bytecode__ArgX2_90, bytecode_backend__bytecode__ArgY2_91);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_95 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_95;
+                                  else
+                                    {
+                                      MR_Integer bytecode_backend__bytecode__Var_285 = (MR_Integer) bytecode_backend__bytecode__ArgX3_92;
+                                      MR_Integer bytecode_backend__bytecode__Var_286 = (MR_Integer) bytecode_backend__bytecode__ArgY3_93;
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__Var_285, bytecode_backend__bytecode__Var_286);
+                                      }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 17:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_96 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_97;
+                          MR_Word bytecode_backend__bytecode__ArgX2_98 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_99;
+                          MR_Word bytecode_backend__bytecode__ArgX3_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_101;
+                          MR_Word bytecode_backend__bytecode__Var_102;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 17)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_97 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_99 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_102, bytecode_backend__bytecode__ArgX1_96, bytecode_backend__bytecode__ArgY1_97);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_102 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_102;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_103;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__Var_103, bytecode_backend__bytecode__ArgX2_98, bytecode_backend__bytecode__ArgY2_99);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_103 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_103;
+                                  else
+                                    {
+                                      {
+                                        mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[2], &bytecode_backend__bytecode__Var_6, ((MR_Box) (bytecode_backend__bytecode__ArgX3_100)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_101)));
+                                      }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 18:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_104 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_105;
+                          MR_Word bytecode_backend__bytecode__ArgX2_106 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_107;
+                          MR_Word bytecode_backend__bytecode__ArgX3_108 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_109;
+                          MR_Word bytecode_backend__bytecode__Var_110;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 18)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_105 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_107 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_110, bytecode_backend__bytecode__ArgX1_104, bytecode_backend__bytecode__ArgY1_105);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_110 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_110;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_111;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__Var_111, bytecode_backend__bytecode__ArgX2_106, bytecode_backend__bytecode__ArgY2_107);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_111 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_111;
+                                  else
+                                    {
+                                      {
+                                        mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[2], &bytecode_backend__bytecode__Var_6, ((MR_Box) (bytecode_backend__bytecode__ArgX3_108)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_109)));
+                                      }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 19:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_112 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_113;
+                          MR_Word bytecode_backend__bytecode__ArgX2_114 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_115;
+                          MR_Word bytecode_backend__bytecode__ArgX3_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_117;
+                          MR_Word bytecode_backend__bytecode__Var_118;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 19)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_113 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_115 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_118, bytecode_backend__bytecode__ArgX1_112, bytecode_backend__bytecode__ArgY1_113);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_118 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_118;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_119;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__Var_119, bytecode_backend__bytecode__ArgX2_114, bytecode_backend__bytecode__ArgY2_115);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_119 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_119;
+                                  else
+                                    {
+                                      {
+                                        mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[3], &bytecode_backend__bytecode__Var_6, ((MR_Box) (bytecode_backend__bytecode__ArgX3_116)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_117)));
+                                      }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 20:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_120 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_121;
+                          MR_Word bytecode_backend__bytecode__ArgX2_122 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_123;
+                          MR_Word bytecode_backend__bytecode__ArgX3_124 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_125;
+                          MR_Word bytecode_backend__bytecode__Var_126;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 20)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_121 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_123 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_125 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_126, bytecode_backend__bytecode__ArgX1_120, bytecode_backend__bytecode__ArgY1_121);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_126 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_126;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_127;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_cons_id_0_0(&bytecode_backend__bytecode__Var_127, bytecode_backend__bytecode__ArgX2_122, bytecode_backend__bytecode__ArgY2_123);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_127 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_127;
+                                  else
+                                    {
+                                      {
+                                        mercury__builtin__compare_3_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_1[3], &bytecode_backend__bytecode__Var_6, ((MR_Box) (bytecode_backend__bytecode__ArgX3_124)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_125)));
+                                      }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 21:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX2_130 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_131;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_132 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_133;
+                          MR_Word bytecode_backend__bytecode__Var_134;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 21)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY2_131 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_133 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_134, bytecode_backend__bytecode__ArgX2_130, bytecode_backend__bytecode__ArgY2_131);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_134 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_134;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_132, bytecode_backend__bytecode__ArgY3_133);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 22:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX2_137 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_138;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_139 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_140;
+                          MR_Word bytecode_backend__bytecode__Var_141;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 22)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY2_138 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_140 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_141, bytecode_backend__bytecode__ArgX2_137, bytecode_backend__bytecode__ArgY2_138);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_141 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_141;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_139, bytecode_backend__bytecode__ArgY3_140);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 23:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_142 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_143;
+                          MR_String bytecode_backend__bytecode__ArgX2_144 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_String bytecode_backend__bytecode__ArgY2_145;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_146 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_147;
+                          MR_Integer bytecode_backend__bytecode__ArgX4_148 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Integer bytecode_backend__bytecode__ArgY4_149;
+                          MR_Integer bytecode_backend__bytecode__ArgX5_150 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                          MR_Integer bytecode_backend__bytecode__ArgY5_151;
+                          MR_Word bytecode_backend__bytecode__Var_152;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 23)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_143 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_145 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_147 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              bytecode_backend__bytecode__ArgY4_149 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 4)));
+                              bytecode_backend__bytecode__ArgY5_151 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 5)));
+                              {
+                                mdbcomp__sym_name____Compare____sym_name_0_0(&bytecode_backend__bytecode__Var_152, bytecode_backend__bytecode__ArgX1_142, bytecode_backend__bytecode__ArgY1_143);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_152 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_152;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_153;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_153, bytecode_backend__bytecode__ArgX2_144, bytecode_backend__bytecode__ArgY2_145);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_153 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_153;
+                                  else
+                                    {
+                                      MR_Word bytecode_backend__bytecode__Var_154;
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_154, bytecode_backend__bytecode__ArgX3_146, bytecode_backend__bytecode__ArgY3_147);
+                                      }
+                                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_154 == (MR_Integer) 0);
+                                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                      if (bytecode_backend__bytecode__succeeded)
+                                        bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_154;
+                                      else
+                                        {
+                                          MR_Word bytecode_backend__bytecode__Var_155;
+
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_155, bytecode_backend__bytecode__ArgX4_148, bytecode_backend__bytecode__ArgY4_149);
+                                          }
+                                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_155 == (MR_Integer) 0);
+                                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                          if (bytecode_backend__bytecode__succeeded)
+                                            bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_155;
+                                          else
+                                            {
+                                              mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX5_150, bytecode_backend__bytecode__ArgY5_151);
+                                            }
+                                        }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 24:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_156 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_157;
+                          MR_Integer bytecode_backend__bytecode__ArgX2_158 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_159;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_160 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_161;
+                          MR_Word bytecode_backend__bytecode__ArgX4_162 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word bytecode_backend__bytecode__ArgY4_163;
+                          MR_Word bytecode_backend__bytecode__Var_164;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 24)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_157 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_159 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_161 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              bytecode_backend__bytecode__ArgY4_163 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 4)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_164, bytecode_backend__bytecode__ArgX1_156, bytecode_backend__bytecode__ArgY1_157);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_164 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_164;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_165;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_165, bytecode_backend__bytecode__ArgX2_158, bytecode_backend__bytecode__ArgY2_159);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_165 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_165;
+                                  else
+                                    {
+                                      MR_Word bytecode_backend__bytecode__Var_166;
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_166, bytecode_backend__bytecode__ArgX3_160, bytecode_backend__bytecode__ArgY3_161);
+                                      }
+                                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_166 == (MR_Integer) 0);
+                                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                      if (bytecode_backend__bytecode__succeeded)
+                                        bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_166;
+                                      else
+                                        {
+                                          MR_Integer bytecode_backend__bytecode__Var_283 = (MR_Integer) bytecode_backend__bytecode__ArgX4_162;
+                                          MR_Integer bytecode_backend__bytecode__Var_284 = (MR_Integer) bytecode_backend__bytecode__ArgY4_163;
+
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__Var_283, bytecode_backend__bytecode__Var_284);
+                                          }
+                                        }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 25:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_167 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_168;
+                          MR_Word bytecode_backend__bytecode__ArgX2_169 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_170;
+                          MR_Word bytecode_backend__bytecode__ArgX3_171 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_172;
+                          MR_Integer bytecode_backend__bytecode__ArgX4_173 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Integer bytecode_backend__bytecode__ArgY4_174;
+                          MR_Word bytecode_backend__bytecode__Var_175;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 25)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_168 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_170 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_172 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              bytecode_backend__bytecode__ArgY4_174 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 4)));
+                              {
+                                backend_libs__builtin_ops____Compare____binary_op_0_0(&bytecode_backend__bytecode__Var_175, bytecode_backend__bytecode__ArgX1_167, bytecode_backend__bytecode__ArgY1_168);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_175 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_175;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_176;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_176, bytecode_backend__bytecode__ArgX2_169, bytecode_backend__bytecode__ArgY2_170);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_176 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_176;
+                                  else
+                                    {
+                                      MR_Word bytecode_backend__bytecode__Var_177;
+
+                                      {
+                                        bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_177, bytecode_backend__bytecode__ArgX3_171, bytecode_backend__bytecode__ArgY3_172);
+                                      }
+                                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_177 == (MR_Integer) 0);
+                                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                      if (bytecode_backend__bytecode__succeeded)
+                                        bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_177;
+                                      else
+                                        {
+                                          mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX4_173, bytecode_backend__bytecode__ArgY4_174);
+                                        }
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 26:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_178 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_179;
+                          MR_Word bytecode_backend__bytecode__ArgX2_180 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_181;
+                          MR_Integer bytecode_backend__bytecode__ArgX3_182 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_183;
+                          MR_Word bytecode_backend__bytecode__Var_184;
+                          MR_Integer bytecode_backend__bytecode__Var_277;
+                          MR_Integer bytecode_backend__bytecode__Var_278;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 26)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_179 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_181 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_183 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              bytecode_backend__bytecode__Var_277 = (MR_Integer) bytecode_backend__bytecode__ArgX1_178;
+                              bytecode_backend__bytecode__Var_278 = (MR_Integer) bytecode_backend__bytecode__ArgY1_179;
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_184, bytecode_backend__bytecode__Var_277, bytecode_backend__bytecode__Var_278);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_184 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_184;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_185;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_185, bytecode_backend__bytecode__ArgX2_180, bytecode_backend__bytecode__ArgY2_181);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_185 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_185;
+                                  else
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_182, bytecode_backend__bytecode__ArgY3_183);
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 27:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_186 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_187;
+                          MR_Word bytecode_backend__bytecode__ArgX2_188 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_189;
+                          MR_Word bytecode_backend__bytecode__ArgX3_190 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__ArgY3_191;
+                          MR_Word bytecode_backend__bytecode__Var_192;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 27)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_187 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_189 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__ArgY3_191 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                              {
+                                backend_libs__builtin_ops____Compare____binary_op_0_0(&bytecode_backend__bytecode__Var_192, bytecode_backend__bytecode__ArgX1_186, bytecode_backend__bytecode__ArgY1_187);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_192 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_192;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_193;
+
+                                  {
+                                    bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_193, bytecode_backend__bytecode__ArgX2_188, bytecode_backend__bytecode__ArgY2_189);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_193 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_193;
+                                  else
+                                    {
+                                      bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX3_190, bytecode_backend__bytecode__ArgY3_191);
+                                    }
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 28:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgX1_194 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY1_195;
+                          MR_Word bytecode_backend__bytecode__ArgX2_196 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_197;
+                          MR_Word bytecode_backend__bytecode__Var_198;
+                          MR_Integer bytecode_backend__bytecode__Var_279;
+                          MR_Integer bytecode_backend__bytecode__Var_280;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 28)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_195 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              bytecode_backend__bytecode__ArgY2_197 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                              bytecode_backend__bytecode__Var_279 = (MR_Integer) bytecode_backend__bytecode__ArgX1_194;
+                              bytecode_backend__bytecode__Var_280 = (MR_Integer) bytecode_backend__bytecode__ArgY1_195;
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_198, bytecode_backend__bytecode__Var_279, bytecode_backend__bytecode__Var_280);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_198 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                bytecode_backend__bytecode__Var_6 = bytecode_backend__bytecode__Var_198;
+                              else
+                                {
+                                  bytecode_backend__bytecode____Compare____byte_arg_0_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX2_196, bytecode_backend__bytecode__ArgY2_197);
+                                }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 29:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgX1_199 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY1_200;
+
+                          bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 29)));
+                          if (bytecode_backend__bytecode__succeeded)
+                            {
+                              bytecode_backend__bytecode__ArgY1_200 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_6, bytecode_backend__bytecode__ArgX1_199, bytecode_backend__bytecode__ArgY1_200);
+                              }
+                              bytecode_backend__bytecode__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+                if (bytecode_backend__bytecode__succeeded)
+                  *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_6;
+                else
+                  {
+                    mercury__private_builtin__compare_error_0_p_0();
+                    return;
+                  }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_id_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_395 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__CastY_396 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_395 == bytecode_backend__bytecode__CastY_396);
+    if (bytecode_backend__bytecode__succeeded)
+      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 5:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 5:
+                      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                  }
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word bytecode_backend__bytecode__Var_420 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+            MR_Integer bytecode_backend__bytecode__Var_421 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+            MR_String bytecode_backend__bytecode__Var_422 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word bytecode_backend__bytecode__Var_423 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word bytecode_backend__bytecode__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_String bytecode_backend__bytecode__ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Integer bytecode_backend__bytecode__ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word bytecode_backend__bytecode__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word bytecode_backend__bytecode__Var_12;
+
+                  {
+                    mdbcomp__sym_name____Compare____sym_name_0_0(&bytecode_backend__bytecode__Var_12, bytecode_backend__bytecode__Var_423, bytecode_backend__bytecode__ArgY1_5);
+                  }
+                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_12 == (MR_Integer) 0);
+                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                  if (bytecode_backend__bytecode__succeeded)
+                    *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_12;
+                  else
+                    {
+                      MR_Word bytecode_backend__bytecode__Var_13;
+
+                      {
+                        mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_13, bytecode_backend__bytecode__Var_422, bytecode_backend__bytecode__ArgY2_7);
+                      }
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_13 == (MR_Integer) 0);
+                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                      if (bytecode_backend__bytecode__succeeded)
+                        *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_13;
+                      else
+                        {
+                          MR_Word bytecode_backend__bytecode__Var_14;
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_14, bytecode_backend__bytecode__Var_421, bytecode_backend__bytecode__ArgY3_9);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_14 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_14;
+                          else
+                            {
+                              bytecode_backend__bytecode____Compare____byte_cons_tag_0_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_420, bytecode_backend__bytecode__ArgY4_11);
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 5:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer bytecode_backend__bytecode__Var_425 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer bytecode_backend__bytecode__ArgY1_72 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_425, bytecode_backend__bytecode__ArgY1_72);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 5:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_String bytecode_backend__bytecode__Var_431 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_String bytecode_backend__bytecode__ArgY1_103 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_string_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_431, bytecode_backend__bytecode__ArgY1_103);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 5:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Float bytecode_backend__bytecode__Var_424 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Float bytecode_backend__bytecode__ArgY1_134 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_float_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_424, bytecode_backend__bytecode__ArgY1_134);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 5:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Char bytecode_backend__bytecode__Var_419 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Char bytecode_backend__bytecode__ArgY1_165 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_character_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_419, bytecode_backend__bytecode__ArgY1_165);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 5:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer bytecode_backend__bytecode__Var_426 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                MR_Integer bytecode_backend__bytecode__Var_427 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                MR_Integer bytecode_backend__bytecode__Var_428 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                MR_String bytecode_backend__bytecode__Var_429 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__Var_430 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgY1_216 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_String bytecode_backend__bytecode__ArgY2_218 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_220 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Integer bytecode_backend__bytecode__ArgY4_222 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 4)));
+                          MR_Integer bytecode_backend__bytecode__ArgY5_224 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 5)));
+                          MR_Word bytecode_backend__bytecode__Var_225;
+
+                          {
+                            mdbcomp__sym_name____Compare____sym_name_0_0(&bytecode_backend__bytecode__Var_225, bytecode_backend__bytecode__Var_430, bytecode_backend__bytecode__ArgY1_216);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_225 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_225;
+                          else
+                            {
+                              MR_Word bytecode_backend__bytecode__Var_226;
+
+                              {
+                                mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_226, bytecode_backend__bytecode__Var_429, bytecode_backend__bytecode__ArgY2_218);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_226 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_226;
+                              else
+                                {
+                                  MR_Word bytecode_backend__bytecode__Var_227;
+
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_227, bytecode_backend__bytecode__Var_428, bytecode_backend__bytecode__ArgY3_220);
+                                  }
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_227 == (MR_Integer) 0);
+                                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                  if (bytecode_backend__bytecode__succeeded)
+                                    *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_227;
+                                  else
+                                    {
+                                      MR_Word bytecode_backend__bytecode__Var_228;
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_228, bytecode_backend__bytecode__Var_427, bytecode_backend__bytecode__ArgY4_222);
+                                      }
+                                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_228 == (MR_Integer) 0);
+                                      bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                                      if (bytecode_backend__bytecode__succeeded)
+                                        *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_228;
+                                      else
+                                        {
+                                          mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_426, bytecode_backend__bytecode__ArgY5_224);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 5:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer bytecode_backend__bytecode__Var_432 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                MR_String bytecode_backend__bytecode__Var_433 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__Var_434 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgY1_287 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_String bytecode_backend__bytecode__ArgY2_289 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Integer bytecode_backend__bytecode__ArgY3_291 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__Var_292;
+
+                          {
+                            mdbcomp__sym_name____Compare____sym_name_0_0(&bytecode_backend__bytecode__Var_292, bytecode_backend__bytecode__Var_434, bytecode_backend__bytecode__ArgY1_287);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_292 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_292;
+                          else
+                            {
+                              MR_Word bytecode_backend__bytecode__Var_293;
+
+                              {
+                                mercury__private_builtin__builtin_compare_string_3_p_0(&bytecode_backend__bytecode__Var_293, bytecode_backend__bytecode__Var_433, bytecode_backend__bytecode__ArgY2_289);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_293 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_293;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_432, bytecode_backend__bytecode__ArgY3_291);
+                                }
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_String bytecode_backend__bytecode__Var_416 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__Var_417 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__Var_418 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_Word bytecode_backend__bytecode__ArgY1_344 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Word bytecode_backend__bytecode__ArgY2_346 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_String bytecode_backend__bytecode__ArgY3_348 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Word bytecode_backend__bytecode__Var_349;
+
+                          {
+                            mdbcomp__sym_name____Compare____sym_name_0_0(&bytecode_backend__bytecode__Var_349, bytecode_backend__bytecode__Var_418, bytecode_backend__bytecode__ArgY1_344);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_349 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_349;
+                          else
+                            {
+                              MR_Word bytecode_backend__bytecode__Var_350;
+
+                              {
+                                parse_tree__prog_data____Compare____class_id_0_0(&bytecode_backend__bytecode__Var_350, bytecode_backend__bytecode__Var_417, bytecode_backend__bytecode__ArgY2_346);
+                              }
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_350 == (MR_Integer) 0);
+                              bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                              if (bytecode_backend__bytecode__succeeded)
+                                *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_350;
+                              else
+                                {
+                                  mercury__private_builtin__builtin_compare_string_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_416, bytecode_backend__bytecode__ArgY3_348);
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_tag_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_66 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__CastY_67 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_66 == bytecode_backend__bytecode__CastY_67);
+    if (bytecode_backend__bytecode__succeeded)
+      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+              break;
+            case (MR_Integer) 1:
+              *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 2:
+              *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer bytecode_backend__bytecode__Var_79 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer bytecode_backend__bytecode__ArgY1_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_79, bytecode_backend__bytecode__ArgY1_12);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer bytecode_backend__bytecode__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer bytecode_backend__bytecode__Var_78 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer bytecode_backend__bytecode__ArgY1_27 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer bytecode_backend__bytecode__ArgY2_29 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word bytecode_backend__bytecode__Var_30;
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_30, bytecode_backend__bytecode__Var_78, bytecode_backend__bytecode__ArgY1_27);
+                  }
+                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_30 == (MR_Integer) 0);
+                  bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                  if (bytecode_backend__bytecode__succeeded)
+                    *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_30;
+                  else
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_77, bytecode_backend__bytecode__ArgY2_29);
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer bytecode_backend__bytecode__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgY1_48 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Integer bytecode_backend__bytecode__ArgY2_50 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Word bytecode_backend__bytecode__Var_51;
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&bytecode_backend__bytecode__Var_51, bytecode_backend__bytecode__Var_76, bytecode_backend__bytecode__ArgY1_48);
+                          }
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__Var_51 == (MR_Integer) 0);
+                          bytecode_backend__bytecode__succeeded = !(bytecode_backend__bytecode__succeeded);
+                          if (bytecode_backend__bytecode__succeeded)
+                            *bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__Var_51;
+                          else
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_75, bytecode_backend__bytecode__ArgY2_50);
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer bytecode_backend__bytecode__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Integer bytecode_backend__bytecode__ArgY1_65 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_74, bytecode_backend__bytecode__ArgY1_65);
+                          }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Index____byte_code_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Integer * bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 3;
+            break;
+          case (MR_Integer) 2:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 6;
+            break;
+          case (MR_Integer) 3:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 10;
+            break;
+          case (MR_Integer) 4:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 17;
+            break;
+          case (MR_Integer) 5:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 20;
+            break;
+          case (MR_Integer) 6:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 37;
+            break;
+          case (MR_Integer) 7:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 38;
+            break;
+          case (MR_Integer) 8:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 39;
+            break;
+          case (MR_Integer) 9:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 41;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 2;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 1:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 5;
+            break;
+          case (MR_Integer) 2:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 7;
+            break;
+          case (MR_Integer) 3:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 8;
+            break;
+          case (MR_Integer) 4:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 9;
+            break;
+          case (MR_Integer) 5:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 11;
+            break;
+          case (MR_Integer) 6:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 12;
+            break;
+          case (MR_Integer) 7:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 13;
+            break;
+          case (MR_Integer) 8:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 14;
+            break;
+          case (MR_Integer) 9:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 15;
+            break;
+          case (MR_Integer) 10:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 16;
+            break;
+          case (MR_Integer) 11:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 18;
+            break;
+          case (MR_Integer) 12:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 19;
+            break;
+          case (MR_Integer) 13:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 21;
+            break;
+          case (MR_Integer) 14:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 22;
+            break;
+          case (MR_Integer) 15:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 23;
+            break;
+          case (MR_Integer) 16:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 24;
+            break;
+          case (MR_Integer) 17:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 25;
+            break;
+          case (MR_Integer) 18:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 26;
+            break;
+          case (MR_Integer) 19:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 27;
+            break;
+          case (MR_Integer) 20:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 28;
+            break;
+          case (MR_Integer) 21:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 29;
+            break;
+          case (MR_Integer) 22:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 30;
+            break;
+          case (MR_Integer) 23:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 31;
+            break;
+          case (MR_Integer) 24:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 32;
+            break;
+          case (MR_Integer) 25:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 33;
+            break;
+          case (MR_Integer) 26:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 34;
+            break;
+          case (MR_Integer) 27:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 35;
+            break;
+          case (MR_Integer) 28:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 36;
+            break;
+          case (MR_Integer) 29:
+            *bytecode_backend__bytecode__HeadVar__2_2 = (MR_Integer) 40;
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_code_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_175 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__CastY_176 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_175 == bytecode_backend__bytecode__CastY_176);
+    if (bytecode_backend__bytecode__succeeded)
+      bytecode_backend__bytecode__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_11 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_12 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_12 == bytecode_backend__bytecode__CastX_11);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_25 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_26 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_26 == bytecode_backend__bytecode__CastX_25);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_31 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_32 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_32 == bytecode_backend__bytecode__CastX_31);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_41 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_42 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_42 == bytecode_backend__bytecode__CastX_41);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_63 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_64 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_64 == bytecode_backend__bytecode__CastX_63);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_71 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_72 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_72 == bytecode_backend__bytecode__CastX_71);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_165 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_166 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_166 == bytecode_backend__bytecode__CastX_165);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_167 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_168 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_168 == bytecode_backend__bytecode__CastX_167);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_169 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_170 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_170 == bytecode_backend__bytecode__CastX_169);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_173 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_174 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_174 == bytecode_backend__bytecode__CastX_173);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String bytecode_backend__bytecode__ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String bytecode_backend__bytecode__ArgY1_4;
+            MR_Integer bytecode_backend__bytecode__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer bytecode_backend__bytecode__ArgY2_6;
+            MR_Integer bytecode_backend__bytecode__ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Integer bytecode_backend__bytecode__ArgY3_8;
+            MR_Integer bytecode_backend__bytecode__ArgX4_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+            MR_Integer bytecode_backend__bytecode__ArgY4_10;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                bytecode_backend__bytecode__ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                bytecode_backend__bytecode__ArgY4_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX1_3, bytecode_backend__bytecode__ArgY1_4) == 0);
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_5 == bytecode_backend__bytecode__ArgY2_6);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_7 == bytecode_backend__bytecode__ArgY3_8);
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_9 == bytecode_backend__bytecode__ArgY4_10);
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word bytecode_backend__bytecode__TypeInfo_184_184;
+            MR_Integer bytecode_backend__bytecode__ArgX1_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_14;
+            MR_Word bytecode_backend__bytecode__ArgX2_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word bytecode_backend__bytecode__ArgY2_16;
+            MR_Integer bytecode_backend__bytecode__ArgX3_17 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Integer bytecode_backend__bytecode__ArgY3_18;
+            MR_Integer bytecode_backend__bytecode__ArgX4_19 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+            MR_Integer bytecode_backend__bytecode__ArgY4_20;
+            MR_Integer bytecode_backend__bytecode__ArgX5_21 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+            MR_Integer bytecode_backend__bytecode__ArgY5_22;
+            MR_Word bytecode_backend__bytecode__ArgX6_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+            MR_Word bytecode_backend__bytecode__ArgY6_24;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_14 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__ArgY2_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                bytecode_backend__bytecode__ArgY3_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                bytecode_backend__bytecode__ArgY4_20 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                bytecode_backend__bytecode__ArgY5_22 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                bytecode_backend__bytecode__ArgY6_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_13 == bytecode_backend__bytecode__ArgY1_14);
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_15 == bytecode_backend__bytecode__ArgY2_16);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_17 == bytecode_backend__bytecode__ArgY3_18);
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_19 == bytecode_backend__bytecode__ArgY4_20);
+                            if (bytecode_backend__bytecode__succeeded)
+                              {
+                                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX5_21 == bytecode_backend__bytecode__ArgY5_22);
+                                if (bytecode_backend__bytecode__succeeded)
+                                  {
+                                    bytecode_backend__bytecode__TypeInfo_184_184 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[1];
+                                    {
+                                      bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_184_184, ((MR_Box) (bytecode_backend__bytecode__ArgX6_23)), ((MR_Box) (bytecode_backend__bytecode__ArgY6_24)));
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_28;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_28 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_27 == bytecode_backend__bytecode__ArgY1_28);
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_30;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_30 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_29 == bytecode_backend__bytecode__ArgY1_30);
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_34;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_34 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_33 == bytecode_backend__bytecode__ArgY1_34);
+                  }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_36;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_36 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_35 == bytecode_backend__bytecode__ArgY1_36);
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_37 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_38;
+                MR_Integer bytecode_backend__bytecode__ArgX2_39 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_40;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_38 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_37 == bytecode_backend__bytecode__ArgY1_38);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_39 == bytecode_backend__bytecode__ArgY2_40);
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word bytecode_backend__bytecode__TypeInfo_185_185;
+                MR_Word bytecode_backend__bytecode__ArgX1_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_44;
+                MR_Word bytecode_backend__bytecode__ArgX2_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_46;
+                MR_Integer bytecode_backend__bytecode__ArgX3_47 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_48;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_48 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    {
+                      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(bytecode_backend__bytecode__ArgX1_43, bytecode_backend__bytecode__ArgY1_44);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__TypeInfo_185_185 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[0];
+                        {
+                          bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_185_185, ((MR_Box) (bytecode_backend__bytecode__ArgX2_45)), ((MR_Box) (bytecode_backend__bytecode__ArgY2_46)));
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_47 == bytecode_backend__bytecode__ArgY3_48);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_49 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_50;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_50 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_49 == bytecode_backend__bytecode__ArgY1_50);
+                  }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_51 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_52;
+                MR_Integer bytecode_backend__bytecode__ArgX2_53 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_54;
+                MR_Integer bytecode_backend__bytecode__ArgX3_55 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_56;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_52 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_54 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_56 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_51 == bytecode_backend__bytecode__ArgY1_52);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_53 == bytecode_backend__bytecode__ArgY2_54);
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_55 == bytecode_backend__bytecode__ArgY3_56);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_57 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_58;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_58 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_57 == bytecode_backend__bytecode__ArgY1_58);
+                  }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_59 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_60;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_60 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_59 == bytecode_backend__bytecode__ArgY1_60);
+                  }
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_61 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_62;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_62 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_61 == bytecode_backend__bytecode__ArgY1_62);
+                  }
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_65 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_66;
+                MR_Integer bytecode_backend__bytecode__ArgX2_67 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_68;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_66 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_68 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_65 == bytecode_backend__bytecode__ArgY1_66);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_67 == bytecode_backend__bytecode__ArgY2_68);
+                  }
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_69 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_70;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_70 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_69 == bytecode_backend__bytecode__ArgY1_70);
+                  }
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_74;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_74 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_73 == bytecode_backend__bytecode__ArgY1_74);
+                  }
+              }
+              break;
+            case (MR_Integer) 14:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_75 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_76;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_76 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_75 == bytecode_backend__bytecode__ArgY1_76);
+                  }
+              }
+              break;
+            case (MR_Integer) 15:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_77 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_78;
+                MR_Integer bytecode_backend__bytecode__ArgX2_79 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_80;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_78 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_80 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_77 == bytecode_backend__bytecode__ArgY1_78);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_79 == bytecode_backend__bytecode__ArgY2_80);
+                  }
+              }
+              break;
+            case (MR_Integer) 16:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_81 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_82;
+                MR_Integer bytecode_backend__bytecode__ArgX2_83 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_84;
+                MR_Word bytecode_backend__bytecode__ArgX3_85 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_86;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 16)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_82 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_84 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_81 == bytecode_backend__bytecode__ArgY1_82);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_83 == bytecode_backend__bytecode__ArgY2_84);
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_85 == bytecode_backend__bytecode__ArgY3_86);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 17:
+              {
+                MR_Word bytecode_backend__bytecode__TypeInfo_182_182;
+                MR_Integer bytecode_backend__bytecode__ArgX1_87 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_88;
+                MR_Word bytecode_backend__bytecode__ArgX2_89 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_90;
+                MR_Word bytecode_backend__bytecode__ArgX3_91 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_92;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 17)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_88 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_90 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_92 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_87 == bytecode_backend__bytecode__ArgY1_88);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(bytecode_backend__bytecode__ArgX2_89, bytecode_backend__bytecode__ArgY2_90);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__TypeInfo_182_182 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[2];
+                            {
+                              bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_182_182, ((MR_Box) (bytecode_backend__bytecode__ArgX3_91)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_92)));
+                            }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 18:
+              {
+                MR_Word bytecode_backend__bytecode__TypeInfo_183_183;
+                MR_Integer bytecode_backend__bytecode__ArgX1_93 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_94;
+                MR_Word bytecode_backend__bytecode__ArgX2_95 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_96;
+                MR_Word bytecode_backend__bytecode__ArgX3_97 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_98;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 18)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_94 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_96 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_98 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_93 == bytecode_backend__bytecode__ArgY1_94);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(bytecode_backend__bytecode__ArgX2_95, bytecode_backend__bytecode__ArgY2_96);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__TypeInfo_183_183 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[2];
+                            {
+                              bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_183_183, ((MR_Box) (bytecode_backend__bytecode__ArgX3_97)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_98)));
+                            }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 19:
+              {
+                MR_Word bytecode_backend__bytecode__TypeInfo_180_180;
+                MR_Integer bytecode_backend__bytecode__ArgX1_99 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_100;
+                MR_Word bytecode_backend__bytecode__ArgX2_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_102;
+                MR_Word bytecode_backend__bytecode__ArgX3_103 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_104;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 19)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_100 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_104 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_99 == bytecode_backend__bytecode__ArgY1_100);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(bytecode_backend__bytecode__ArgX2_101, bytecode_backend__bytecode__ArgY2_102);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__TypeInfo_180_180 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[3];
+                            {
+                              bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_180_180, ((MR_Box) (bytecode_backend__bytecode__ArgX3_103)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_104)));
+                            }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 20:
+              {
+                MR_Word bytecode_backend__bytecode__TypeInfo_181_181;
+                MR_Integer bytecode_backend__bytecode__ArgX1_105 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_106;
+                MR_Word bytecode_backend__bytecode__ArgX2_107 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_108;
+                MR_Word bytecode_backend__bytecode__ArgX3_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_110;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 20)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_106 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_108 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_110 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_105 == bytecode_backend__bytecode__ArgY1_106);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_id_0_0(bytecode_backend__bytecode__ArgX2_107, bytecode_backend__bytecode__ArgY2_108);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__TypeInfo_181_181 = (MR_Word) &bytecode_backend__bytecode_scalar_common_1[3];
+                            {
+                              bytecode_backend__bytecode__succeeded = mercury__builtin__unify_2_p_0(bytecode_backend__bytecode__TypeInfo_181_181, ((MR_Box) (bytecode_backend__bytecode__ArgX3_109)), ((MR_Box) (bytecode_backend__bytecode__ArgY3_110)));
+                            }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 21:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX2_113 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_114;
+                MR_Integer bytecode_backend__bytecode__ArgX3_115 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_116;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 21)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY2_114 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_116 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_113 == bytecode_backend__bytecode__ArgY2_114);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_115 == bytecode_backend__bytecode__ArgY3_116);
+                  }
+              }
+              break;
+            case (MR_Integer) 22:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX2_119 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_120;
+                MR_Integer bytecode_backend__bytecode__ArgX3_121 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_122;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 22)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY2_120 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_122 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_119 == bytecode_backend__bytecode__ArgY2_120);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_121 == bytecode_backend__bytecode__ArgY3_122);
+                  }
+              }
+              break;
+            case (MR_Integer) 23:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_123 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_124;
+                MR_String bytecode_backend__bytecode__ArgX2_125 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_String bytecode_backend__bytecode__ArgY2_126;
+                MR_Integer bytecode_backend__bytecode__ArgX3_127 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_128;
+                MR_Integer bytecode_backend__bytecode__ArgX4_129 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Integer bytecode_backend__bytecode__ArgY4_130;
+                MR_Integer bytecode_backend__bytecode__ArgX5_131 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+                MR_Integer bytecode_backend__bytecode__ArgY5_132;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 23)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_124 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_126 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_128 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__ArgY4_130 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                    bytecode_backend__bytecode__ArgY5_132 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                    {
+                      bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__ArgX1_123, bytecode_backend__bytecode__ArgY1_124);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX2_125, bytecode_backend__bytecode__ArgY2_126) == 0);
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_127 == bytecode_backend__bytecode__ArgY3_128);
+                            if (bytecode_backend__bytecode__succeeded)
+                              {
+                                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_129 == bytecode_backend__bytecode__ArgY4_130);
+                                if (bytecode_backend__bytecode__succeeded)
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX5_131 == bytecode_backend__bytecode__ArgY5_132);
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 24:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_133 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_134;
+                MR_Integer bytecode_backend__bytecode__ArgX2_135 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_136;
+                MR_Integer bytecode_backend__bytecode__ArgX3_137 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_138;
+                MR_Word bytecode_backend__bytecode__ArgX4_139 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word bytecode_backend__bytecode__ArgY4_140;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 24)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_134 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_136 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_138 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__ArgY4_140 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_133 == bytecode_backend__bytecode__ArgY1_134);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_135 == bytecode_backend__bytecode__ArgY2_136);
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_137 == bytecode_backend__bytecode__ArgY3_138);
+                            if (bytecode_backend__bytecode__succeeded)
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_139 == bytecode_backend__bytecode__ArgY4_140);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 25:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_141 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_142;
+                MR_Word bytecode_backend__bytecode__ArgX2_143 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_144;
+                MR_Word bytecode_backend__bytecode__ArgX3_145 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_146;
+                MR_Integer bytecode_backend__bytecode__ArgX4_147 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Integer bytecode_backend__bytecode__ArgY4_148;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 25)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_142 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_144 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_146 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__ArgY4_148 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                    {
+                      bytecode_backend__bytecode__succeeded = backend_libs__builtin_ops____Unify____binary_op_0_0(bytecode_backend__bytecode__ArgX1_141, bytecode_backend__bytecode__ArgY1_142);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX2_143, bytecode_backend__bytecode__ArgY2_144);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            {
+                              bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX3_145, bytecode_backend__bytecode__ArgY3_146);
+                            }
+                            if (bytecode_backend__bytecode__succeeded)
+                              bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_147 == bytecode_backend__bytecode__ArgY4_148);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 26:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_149 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_150;
+                MR_Word bytecode_backend__bytecode__ArgX2_151 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_152;
+                MR_Integer bytecode_backend__bytecode__ArgX3_153 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_154;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 26)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_150 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_152 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_154 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_149 == bytecode_backend__bytecode__ArgY1_150);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX2_151, bytecode_backend__bytecode__ArgY2_152);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_153 == bytecode_backend__bytecode__ArgY3_154);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 27:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_155 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_156;
+                MR_Word bytecode_backend__bytecode__ArgX2_157 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_158;
+                MR_Word bytecode_backend__bytecode__ArgX3_159 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word bytecode_backend__bytecode__ArgY3_160;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 27)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_156 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_158 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_160 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    {
+                      bytecode_backend__bytecode__succeeded = backend_libs__builtin_ops____Unify____binary_op_0_0(bytecode_backend__bytecode__ArgX1_155, bytecode_backend__bytecode__ArgY1_156);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX2_157, bytecode_backend__bytecode__ArgY2_158);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX3_159, bytecode_backend__bytecode__ArgY3_160);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 28:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_161 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_162;
+                MR_Word bytecode_backend__bytecode__ArgX2_163 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_164;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 28)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_162 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_164 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_161 == bytecode_backend__bytecode__ArgY1_162);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_arg_0_0(bytecode_backend__bytecode__ArgX2_163, bytecode_backend__bytecode__ArgY2_164);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 29:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_171 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_172;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 29)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_172 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_171 == bytecode_backend__bytecode__ArgY1_172);
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_id_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_45 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__CastY_46 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_45 == bytecode_backend__bytecode__CastY_46);
+    if (bytecode_backend__bytecode__succeeded)
+      bytecode_backend__bytecode__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_41 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_42 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_42 == bytecode_backend__bytecode__CastX_41);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer bytecode_backend__bytecode__CastX_43 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+                MR_Integer bytecode_backend__bytecode__CastY_44 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_44 == bytecode_backend__bytecode__CastX_43);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word bytecode_backend__bytecode__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__ArgY1_4;
+            MR_String bytecode_backend__bytecode__ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String bytecode_backend__bytecode__ArgY2_6;
+            MR_Integer bytecode_backend__bytecode__ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Integer bytecode_backend__bytecode__ArgY3_8;
+            MR_Word bytecode_backend__bytecode__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word bytecode_backend__bytecode__ArgY4_10;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                bytecode_backend__bytecode__ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                bytecode_backend__bytecode__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                {
+                  bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__ArgX1_3, bytecode_backend__bytecode__ArgY1_4);
+                }
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX2_5, bytecode_backend__bytecode__ArgY2_6) == 0);
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_7 == bytecode_backend__bytecode__ArgY3_8);
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode____Unify____byte_cons_tag_0_0(bytecode_backend__bytecode__ArgX4_9, bytecode_backend__bytecode__ArgY4_10);
+                          }
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer bytecode_backend__bytecode__ArgX1_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_12;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_11 == bytecode_backend__bytecode__ArgY1_12);
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_String bytecode_backend__bytecode__ArgX1_13 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_String bytecode_backend__bytecode__ArgY1_14;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_14 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX1_13, bytecode_backend__bytecode__ArgY1_14) == 0);
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Float bytecode_backend__bytecode__ArgX1_15 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Float bytecode_backend__bytecode__ArgY1_16;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_16 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_15 == bytecode_backend__bytecode__ArgY1_16);
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Char bytecode_backend__bytecode__ArgX1_17 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Char bytecode_backend__bytecode__ArgY1_18;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_18 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_17 == bytecode_backend__bytecode__ArgY1_18);
+                  }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_20;
+                MR_String bytecode_backend__bytecode__ArgX2_21 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_String bytecode_backend__bytecode__ArgY2_22;
+                MR_Integer bytecode_backend__bytecode__ArgX3_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_24;
+                MR_Integer bytecode_backend__bytecode__ArgX4_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Integer bytecode_backend__bytecode__ArgY4_26;
+                MR_Integer bytecode_backend__bytecode__ArgX5_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+                MR_Integer bytecode_backend__bytecode__ArgY5_28;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_22 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    bytecode_backend__bytecode__ArgY4_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 4)));
+                    bytecode_backend__bytecode__ArgY5_28 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 5)));
+                    {
+                      bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__ArgX1_19, bytecode_backend__bytecode__ArgY1_20);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX2_21, bytecode_backend__bytecode__ArgY2_22) == 0);
+                        if (bytecode_backend__bytecode__succeeded)
+                          {
+                            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_23 == bytecode_backend__bytecode__ArgY3_24);
+                            if (bytecode_backend__bytecode__succeeded)
+                              {
+                                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX4_25 == bytecode_backend__bytecode__ArgY4_26);
+                                if (bytecode_backend__bytecode__succeeded)
+                                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX5_27 == bytecode_backend__bytecode__ArgY5_28);
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_30;
+                MR_String bytecode_backend__bytecode__ArgX2_31 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_String bytecode_backend__bytecode__ArgY2_32;
+                MR_Integer bytecode_backend__bytecode__ArgX3_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer bytecode_backend__bytecode__ArgY3_34;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_32 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_34 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    {
+                      bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__ArgX1_29, bytecode_backend__bytecode__ArgY1_30);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX2_31, bytecode_backend__bytecode__ArgY2_32) == 0);
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX3_33 == bytecode_backend__bytecode__ArgY3_34);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word bytecode_backend__bytecode__ArgX1_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word bytecode_backend__bytecode__ArgY1_36;
+                MR_Word bytecode_backend__bytecode__ArgX2_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word bytecode_backend__bytecode__ArgY2_38;
+                MR_String bytecode_backend__bytecode__ArgX3_39 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+                MR_String bytecode_backend__bytecode__ArgY3_40;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__ArgY3_40 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 3)));
+                    {
+                      bytecode_backend__bytecode__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(bytecode_backend__bytecode__ArgX1_35, bytecode_backend__bytecode__ArgY1_36);
+                    }
+                    if (bytecode_backend__bytecode__succeeded)
+                      {
+                        {
+                          bytecode_backend__bytecode__succeeded = parse_tree__prog_data____Unify____class_id_0_0(bytecode_backend__bytecode__ArgX2_37, bytecode_backend__bytecode__ArgY2_38);
+                        }
+                        if (bytecode_backend__bytecode__succeeded)
+                          bytecode_backend__bytecode__succeeded = (strcmp(bytecode_backend__bytecode__ArgX3_39, bytecode_backend__bytecode__ArgY3_40) == 0);
+                      }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_tag_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_17 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__CastY_18 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_17 == bytecode_backend__bytecode__CastY_18);
+    if (bytecode_backend__bytecode__succeeded)
+      bytecode_backend__bytecode__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer bytecode_backend__bytecode__CastX_3 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+            MR_Integer bytecode_backend__bytecode__CastY_4 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+            bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastY_4 == bytecode_backend__bytecode__CastX_3);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer bytecode_backend__bytecode__ArgX1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_6;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_5 == bytecode_backend__bytecode__ArgY1_6);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer bytecode_backend__bytecode__ArgX1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_8;
+            MR_Integer bytecode_backend__bytecode__ArgX2_9 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer bytecode_backend__bytecode__ArgY2_10;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_8 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__ArgY2_10 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_7 == bytecode_backend__bytecode__ArgY1_8);
+                if (bytecode_backend__bytecode__succeeded)
+                  bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_9 == bytecode_backend__bytecode__ArgY2_10);
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_11 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_12;
+                MR_Integer bytecode_backend__bytecode__ArgX2_13 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer bytecode_backend__bytecode__ArgY2_14;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__ArgY2_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 2)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_11 == bytecode_backend__bytecode__ArgY1_12);
+                    if (bytecode_backend__bytecode__succeeded)
+                      bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX2_13 == bytecode_backend__bytecode__ArgY2_14);
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer bytecode_backend__bytecode__ArgX1_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer bytecode_backend__bytecode__ArgY1_16;
+
+                bytecode_backend__bytecode__succeeded = ((((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (bytecode_backend__bytecode__succeeded)
+                  {
+                    bytecode_backend__bytecode__ArgY1_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 1)));
+                    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_15 == bytecode_backend__bytecode__ArgY1_16);
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_arg_0_0(
+  MR_Word * bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2,
+  MR_Word bytecode_backend__bytecode__HeadVar__3_3)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_22 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+    MR_Integer bytecode_backend__bytecode__CastY_23 = (MR_Integer) bytecode_backend__bytecode__HeadVar__3_3;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_22 == bytecode_backend__bytecode__CastY_23);
+    if (bytecode_backend__bytecode__succeeded)
+      *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer bytecode_backend__bytecode__Var_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Integer bytecode_backend__bytecode__ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_29, bytecode_backend__bytecode__ArgY1_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer bytecode_backend__bytecode__Var_28 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer bytecode_backend__bytecode__ArgY1_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_28, bytecode_backend__bytecode__ArgY1_13);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Float bytecode_backend__bytecode__Var_27 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *bytecode_backend__bytecode__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Float bytecode_backend__bytecode__ArgY1_21 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_float_3_p_0(bytecode_backend__bytecode__HeadVar__1_1, bytecode_backend__bytecode__Var_27, bytecode_backend__bytecode__ArgY1_21);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_arg_0_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1,
+  MR_Word bytecode_backend__bytecode__HeadVar__2_2)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__CastX_9 = (MR_Integer) bytecode_backend__bytecode__HeadVar__1_1;
+    MR_Integer bytecode_backend__bytecode__CastY_10 = (MR_Integer) bytecode_backend__bytecode__HeadVar__2_2;
+
+    bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__CastX_9 == bytecode_backend__bytecode__CastY_10);
+    if (bytecode_backend__bytecode__succeeded)
+      bytecode_backend__bytecode__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer bytecode_backend__bytecode__ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_4;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_3 == bytecode_backend__bytecode__ArgY1_4);
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer bytecode_backend__bytecode__ArgX1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer bytecode_backend__bytecode__ArgY1_6;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_5 == bytecode_backend__bytecode__ArgY1_6);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Float bytecode_backend__bytecode__ArgX1_7 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Float bytecode_backend__bytecode__ArgY1_8;
+
+            bytecode_backend__bytecode__succeeded = ((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (bytecode_backend__bytecode__succeeded)
+              {
+                bytecode_backend__bytecode__ArgY1_8 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__2_2, (MR_Integer) 0)));
+                bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__ArgX1_7 == bytecode_backend__bytecode__ArgY1_8);
+              }
+          }
+          break;
+      }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode__debug_bytecode_file_4_p_0(
+  MR_String bytecode_backend__bytecode__FileName_5,
+  MR_Word bytecode_backend__bytecode__ByteCodes_6)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Result_8;
+
+    {
+      mercury__io__open_output_4_p_0(bytecode_backend__bytecode__FileName_5, &bytecode_backend__bytecode__Result_8);
+    }
+    if (((MR_tag((MR_Word) bytecode_backend__bytecode__Result_8)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_String bytecode_backend__bytecode__ProgName_14;
+
+        {
+          mercury__io__progname_base_4_p_0((MR_String) "byte.m", &bytecode_backend__bytecode__ProgName_14);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\n");
+        }
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__ProgName_14);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) ": can\'t open \140");
+        }
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__FileName_5);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\' for output\n");
+        }
+        {
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+        }
+      }
+    else
+      {
+        MR_Word bytecode_backend__bytecode__FileStream_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Result_8, (MR_Integer) 0)));
+        MR_Word bytecode_backend__bytecode__OutputStream_10;
+        MR_Word bytecode_backend__bytecode__Var_12;
+
+        {
+          mercury__io__set_output_stream_4_p_0(bytecode_backend__bytecode__FileStream_9, &bytecode_backend__bytecode__OutputStream_10);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "bytecode_version ");
+        }
+        {
+          mercury__io__write_int_3_p_0((MR_Integer) 9);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\n");
+        }
+        {
+          bytecode_backend__bytecode__debug_bytecode_list_3_p_0(bytecode_backend__bytecode__ByteCodes_6);
+        }
+        {
+          mercury__io__set_output_stream_4_p_0(bytecode_backend__bytecode__OutputStream_10, &bytecode_backend__bytecode__Var_12);
+        }
+        {
+          mercury__io__close_output_3_p_0(bytecode_backend__bytecode__FileStream_9);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_bytecode_list_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word bytecode_backend__bytecode__ByteCode_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__ByteCodes_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String bytecode_backend__bytecode__Debug_10;
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__ByteCode_7)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(bytecode_backend__bytecode__ByteCode_7)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_pred";
+                    break;
+                  case (MR_Integer) 1:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_proc";
+                    break;
+                  case (MR_Integer) 2:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_disjunction";
+                    break;
+                  case (MR_Integer) 3:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_switch";
+                    break;
+                  case (MR_Integer) 4:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_if";
+                    break;
+                  case (MR_Integer) 5:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_negation";
+                    break;
+                  case (MR_Integer) 6:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "semidet_succeed";
+                    break;
+                  case (MR_Integer) 7:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "semidet_success_check";
+                    break;
+                  case (MR_Integer) 8:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "fail";
+                    break;
+                  case (MR_Integer) 9:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "not_supported";
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_pred";
+                break;
+              case (MR_Integer) 2:
+                bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_proc";
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__ByteCode_7, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "label";
+                    break;
+                  case (MR_Integer) 1:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_disjunction";
+                    break;
+                  case (MR_Integer) 2:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_disjunct";
+                    break;
+                  case (MR_Integer) 3:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_disjunct";
+                    break;
+                  case (MR_Integer) 4:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_switch";
+                    break;
+                  case (MR_Integer) 5:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_switch_arm";
+                    break;
+                  case (MR_Integer) 6:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_switch_arm";
+                    break;
+                  case (MR_Integer) 7:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_if";
+                    break;
+                  case (MR_Integer) 8:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_then";
+                    break;
+                  case (MR_Integer) 9:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_then";
+                    break;
+                  case (MR_Integer) 10:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_else";
+                    break;
+                  case (MR_Integer) 11:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_negation";
+                    break;
+                  case (MR_Integer) 12:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_negation_goal";
+                    break;
+                  case (MR_Integer) 13:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "enter_commit";
+                    break;
+                  case (MR_Integer) 14:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "endof_commit";
+                    break;
+                  case (MR_Integer) 15:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "assign";
+                    break;
+                  case (MR_Integer) 16:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "test";
+                    break;
+                  case (MR_Integer) 17:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "construct";
+                    break;
+                  case (MR_Integer) 18:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "deconstruct";
+                    break;
+                  case (MR_Integer) 19:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "complex_construct";
+                    break;
+                  case (MR_Integer) 20:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "complex_deconstruct";
+                    break;
+                  case (MR_Integer) 21:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "place_arg";
+                    break;
+                  case (MR_Integer) 22:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "pickup_arg";
+                    break;
+                  case (MR_Integer) 23:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "call";
+                    break;
+                  case (MR_Integer) 24:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "higher_order_call";
+                    break;
+                  case (MR_Integer) 25:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "builtin_binop";
+                    break;
+                  case (MR_Integer) 26:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "builtin_unop";
+                    break;
+                  case (MR_Integer) 27:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "builtin_bintest";
+                    break;
+                  case (MR_Integer) 28:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "builtin_untest";
+                    break;
+                  case (MR_Integer) 29:
+                    bytecode_backend__bytecode__Debug_10 = (MR_String) "context";
+                    break;
+                }
+                break;
+            }
+            {
+              bytecode_backend__bytecode__debug_string_3_p_0(bytecode_backend__bytecode__Debug_10);
+            }
+            {
+              bytecode_backend__bytecode__debug_args_3_p_0(bytecode_backend__bytecode__ByteCode_7);
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 10);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__ByteCodes_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_args_3_p_0_1(
+  MR_Box bytecode_backend__bytecode__closure_arg,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_1,
+  MR_Box bytecode_backend__bytecode__wrapper_arg_2,
+  MR_Box * bytecode_backend__bytecode__wrapper_arg_3)
+{
+  {
+    MR_Box bytecode_backend__bytecode__closure = bytecode_backend__bytecode__closure_arg;
+
+    {
+      bytecode_backend__bytecode__debug_cons_id_3_p_0(((MR_Word) bytecode_backend__bytecode__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_args_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String bytecode_backend__bytecode__PredId_4 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Integer bytecode_backend__bytecode__PredArity_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__IsFunc_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Integer bytecode_backend__bytecode__ProcsCount_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+          {
+            bytecode_backend__bytecode__debug_pred_id_3_p_0(bytecode_backend__bytecode__PredId_4);
+          }
+          {
+            bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__PredArity_5);
+          }
+          {
+            bytecode_backend__bytecode__debug_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_6);
+          }
+          {
+            bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__ProcsCount_7);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__ProcId_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Word bytecode_backend__bytecode__Detism_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__LabelCount_20 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Integer bytecode_backend__bytecode__LabelId_21 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+          MR_Integer bytecode_backend__bytecode__TempCount_22 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+          MR_Word bytecode_backend__bytecode__Vars_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+          MR_Integer bytecode_backend__bytecode__VarCount_25;
+
+          {
+            bytecode_backend__bytecode__debug_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_18);
+          }
+          {
+            bytecode_backend__bytecode__debug_determinism_3_p_0(bytecode_backend__bytecode__Detism_19);
+          }
+          {
+            bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__LabelCount_20);
+          }
+          {
+            bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_21);
+          }
+          {
+            bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__TempCount_22);
+          }
+          {
+            mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0, bytecode_backend__bytecode__Vars_23, &bytecode_backend__bytecode__VarCount_25);
+          }
+          {
+            bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__VarCount_25);
+          }
+          {
+            bytecode_backend__bytecode__debug_var_infos_3_p_0(bytecode_backend__bytecode__Vars_23);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_38 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_38);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_43 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_43);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_51 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_51);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_56 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_56);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__LabelId_62 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_61);
+              }
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_62);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word bytecode_backend__bytecode__MainConsId_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__OtherConsIds_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__NextLabelId_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Box bytecode_backend__bytecode__conv0_STATE_VARIABLE_IO_79_79;
+
+              {
+                bytecode_backend__bytecode__debug_cons_id_3_p_0(bytecode_backend__bytecode__MainConsId_71);
+              }
+              {
+                mercury__list__foldl_4_p_2((MR_Word) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, (MR_Word) &bytecode_backend__bytecode_scalar_common_2[1], bytecode_backend__bytecode__OtherConsIds_72, ((MR_Box) ((MR_Integer) 0)), &bytecode_backend__bytecode__conv0_STATE_VARIABLE_IO_79_79);
+              }
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__NextLabelId_73);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_81 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_81);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Integer bytecode_backend__bytecode__ElseLabelId_86 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__FollowLabelId_87 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_88 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__ElseLabelId_86);
+              }
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__FollowLabelId_87);
+              }
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_88);
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_95 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_95);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Integer bytecode_backend__bytecode__FollowLabelId_100 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__FollowLabelId_100);
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_105 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_105);
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_113 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__LabelId_114 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_113);
+              }
+              {
+                bytecode_backend__bytecode__debug_label_id_3_p_0(bytecode_backend__bytecode__LabelId_114);
+              }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_120 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_120);
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Integer bytecode_backend__bytecode__Temp_128 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__Temp_128);
+              }
+            }
+            break;
+          case (MR_Integer) 14:
+            {
+              MR_Integer bytecode_backend__bytecode__Temp_133 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_temp_3_p_0(bytecode_backend__bytecode__Temp_133);
+              }
+            }
+            break;
+          case (MR_Integer) 15:
+            {
+              MR_Integer bytecode_backend__bytecode__Var1_138 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Var2_139 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var1_138);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var2_139);
+              }
+            }
+            break;
+          case (MR_Integer) 16:
+            {
+              MR_Integer bytecode_backend__bytecode__Var1_145 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Var2_146 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__TestId_147 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var1_145);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var2_146);
+              }
+              {
+                bytecode_backend__bytecode__debug_test_id_3_p_0(bytecode_backend__bytecode__TestId_147);
+              }
+            }
+            break;
+          case (MR_Integer) 17:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_154 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_155 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Vars_156 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_158;
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_154);
+              }
+              {
+                bytecode_backend__bytecode__debug_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_155);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, bytecode_backend__bytecode__Vars_156, &bytecode_backend__bytecode__Length_158);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Length_158);
+              }
+              {
+                bytecode_backend__bytecode__debug_vars_3_p_0(bytecode_backend__bytecode__Vars_156);
+              }
+            }
+            break;
+          case (MR_Integer) 18:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_165 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_166 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Vars_167 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_169;
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_165);
+              }
+              {
+                bytecode_backend__bytecode__debug_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_166);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, bytecode_backend__bytecode__Vars_167, &bytecode_backend__bytecode__Length_169);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Length_169);
+              }
+              {
+                bytecode_backend__bytecode__debug_vars_3_p_0(bytecode_backend__bytecode__Vars_167);
+              }
+            }
+            break;
+          case (MR_Integer) 19:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_176 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_177 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__VarDirs_178 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_180;
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_176);
+              }
+              {
+                bytecode_backend__bytecode__debug_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_177);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_2[0], bytecode_backend__bytecode__VarDirs_178, &bytecode_backend__bytecode__Length_180);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Length_180);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_dirs_3_p_0(bytecode_backend__bytecode__VarDirs_178);
+              }
+            }
+            break;
+          case (MR_Integer) 20:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_187 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_188 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__VarDirs_189 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_191;
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_187);
+              }
+              {
+                bytecode_backend__bytecode__debug_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_188);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_2[0], bytecode_backend__bytecode__VarDirs_189, &bytecode_backend__bytecode__Length_191);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Length_191);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_dirs_3_p_0(bytecode_backend__bytecode__VarDirs_189);
+              }
+            }
+            break;
+          case (MR_Integer) 21:
+            {
+              MR_Integer bytecode_backend__bytecode__RegNum_199 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var_200 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_98_117_103_95_114_101_103_95_95_91_49_93_95_48_4_p_0(bytecode_backend__bytecode__RegNum_199);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_200);
+              }
+            }
+            break;
+          case (MR_Integer) 22:
+            {
+              MR_Integer bytecode_backend__bytecode__RegNum_207 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var_208 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_98_117_103_95_114_101_103_95_95_91_49_93_95_48_4_p_0(bytecode_backend__bytecode__RegNum_207);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var_208);
+              }
+            }
+            break;
+          case (MR_Integer) 23:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_214 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__PredId_215 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Arity_216 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__IsFunc_217 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+              MR_Integer bytecode_backend__bytecode__ProcId_218 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+
+              {
+                bytecode_backend__bytecode__debug_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_214);
+              }
+              {
+                bytecode_backend__bytecode__debug_pred_id_3_p_0(bytecode_backend__bytecode__PredId_215);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Arity_216);
+              }
+              {
+                bytecode_backend__bytecode__debug_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_217);
+              }
+              {
+                bytecode_backend__bytecode__debug_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_218);
+              }
+            }
+            break;
+          case (MR_Integer) 24:
+            {
+              MR_Integer bytecode_backend__bytecode__PredVar_227 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__InVarCount_228 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__OutVarCount_229 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Word bytecode_backend__bytecode__Detism_230 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__PredVar_227);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__InVarCount_228);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__OutVarCount_229);
+              }
+              {
+                bytecode_backend__bytecode__debug_determinism_3_p_0(bytecode_backend__bytecode__Detism_230);
+              }
+            }
+            break;
+          case (MR_Integer) 25:
+            {
+              MR_Word bytecode_backend__bytecode__Binop_238 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_239 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Var2_240 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Var3_241 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+
+              {
+                bytecode_backend__bytecode__debug_binop_3_p_0(bytecode_backend__bytecode__Binop_238);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var1_239);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var2_240);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var3_241);
+              }
+            }
+            break;
+          case (MR_Integer) 26:
+            {
+              MR_Word bytecode_backend__bytecode__Unop_249 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_250 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var2_251 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__debug_unop_3_p_0(bytecode_backend__bytecode__Unop_249);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var1_250);
+              }
+              {
+                bytecode_backend__bytecode__debug_var_3_p_0(bytecode_backend__bytecode__Var2_251);
+              }
+            }
+            break;
+          case (MR_Integer) 27:
+            {
+              MR_Word bytecode_backend__bytecode__Binop_258 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_259 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Var2_260 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__debug_binop_3_p_0(bytecode_backend__bytecode__Binop_258);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var1_259);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var2_260);
+              }
+            }
+            break;
+          case (MR_Integer) 28:
+            {
+              MR_Word bytecode_backend__bytecode__Unop_267 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_268 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__debug_unop_3_p_0(bytecode_backend__bytecode__Unop_267);
+              }
+              {
+                bytecode_backend__bytecode__debug_arg_3_p_0(bytecode_backend__bytecode__Var1_268);
+              }
+            }
+            break;
+          case (MR_Integer) 29:
+            {
+              MR_Integer bytecode_backend__bytecode__Line_283 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__Line_283);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_98_117_103_95_114_101_103_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer bytecode_backend__bytecode__N_5)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__N_5);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_unop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Unop_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Debug_6 = ((&bytecode_backend__bytecode_vector_common_5[8 + bytecode_backend__bytecode__Unop_4]))->bytecode_backend__bytecode__vector_common_type_5_0__vct_5_f_0;
+
+    {
+      mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Debug_6);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_binop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Binop_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Debug_6;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__Binop_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__Binop_4)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "+";
+            break;
+          case (MR_Integer) 1:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "-";
+            break;
+          case (MR_Integer) 2:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "*";
+            break;
+          case (MR_Integer) 3:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "/";
+            break;
+          case (MR_Integer) 4:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "mod";
+            break;
+          case (MR_Integer) 5:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "<<";
+            break;
+          case (MR_Integer) 6:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) ">>";
+            break;
+          case (MR_Integer) 7:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "&";
+            break;
+          case (MR_Integer) 8:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "|";
+            break;
+          case (MR_Integer) 9:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "^";
+            break;
+          case (MR_Integer) 10:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "and";
+            break;
+          case (MR_Integer) 11:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "or";
+            break;
+          case (MR_Integer) 12:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "eq";
+            break;
+          case (MR_Integer) 13:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "ne";
+            break;
+          case (MR_Integer) 14:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "body";
+            break;
+          case (MR_Integer) 15:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "string_unsafe_index_code_unit";
+            break;
+          case (MR_Integer) 16:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_eq";
+            break;
+          case (MR_Integer) 17:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_ne";
+            break;
+          case (MR_Integer) 18:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_lt";
+            break;
+          case (MR_Integer) 19:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_gt";
+            break;
+          case (MR_Integer) 20:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_le";
+            break;
+          case (MR_Integer) 21:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "str_ge";
+            break;
+          case (MR_Integer) 22:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "strcmp";
+            break;
+          case (MR_Integer) 23:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "<";
+            break;
+          case (MR_Integer) 24:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) ">";
+            break;
+          case (MR_Integer) 25:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "<=";
+            break;
+          case (MR_Integer) 26:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) ">=";
+            break;
+          case (MR_Integer) 27:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "unsigned_le";
+            break;
+          case (MR_Integer) 28:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_eq";
+            break;
+          case (MR_Integer) 29:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_ne";
+            break;
+          case (MR_Integer) 30:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_lt";
+            break;
+          case (MR_Integer) 31:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_gt";
+            break;
+          case (MR_Integer) 32:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_le";
+            break;
+          case (MR_Integer) 33:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_ge";
+            break;
+          case (MR_Integer) 34:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_add";
+            break;
+          case (MR_Integer) 35:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_sub";
+            break;
+          case (MR_Integer) 36:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_mul";
+            break;
+          case (MR_Integer) 37:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_div";
+            break;
+          case (MR_Integer) 38:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_mod";
+            break;
+          case (MR_Integer) 39:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_bitwise_and";
+            break;
+          case (MR_Integer) 40:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_bitwise_or";
+            break;
+          case (MR_Integer) 41:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_bitwise_xor";
+            break;
+          case (MR_Integer) 42:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_unchecked_left_shift";
+            break;
+          case (MR_Integer) 43:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "uint_unchecked_right_shift";
+            break;
+          case (MR_Integer) 44:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_plus";
+            break;
+          case (MR_Integer) 45:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_minus";
+            break;
+          case (MR_Integer) 46:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_times";
+            break;
+          case (MR_Integer) 47:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_divide";
+            break;
+          case (MR_Integer) 48:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_eq";
+            break;
+          case (MR_Integer) 49:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_ne";
+            break;
+          case (MR_Integer) 50:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_lt";
+            break;
+          case (MR_Integer) 51:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_gt";
+            break;
+          case (MR_Integer) 52:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_le";
+            break;
+          case (MR_Integer) 53:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_ge";
+            break;
+          case (MR_Integer) 54:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_word_bits";
+            break;
+          case (MR_Integer) 55:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "float_from_dword";
+            break;
+          case (MR_Integer) 56:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "pointer_equal_conservative";
+            break;
+          case (MR_Integer) 57:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "compound_eq";
+            break;
+          case (MR_Integer) 58:
+            bytecode_backend__bytecode__Debug_6 = (MR_String) "compound_lt";
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        bytecode_backend__bytecode__Debug_6 = (MR_String) "array_index";
+        break;
+      case (MR_Integer) 2:
+        bytecode_backend__bytecode__Debug_6 = (MR_String) "offset_str_eq";
+        break;
+    }
+    {
+      mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Debug_6);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_cons_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "type_info_cell_constructor");
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "typeclass_info_cell_constructor");
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word bytecode_backend__bytecode__ModuleId_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_String bytecode_backend__bytecode__Functor_5 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__Arity_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Word bytecode_backend__bytecode__Tag_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+          {
+            bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "functor");
+          }
+          {
+            bytecode_backend__bytecode__debug_sym_name_3_p_0(bytecode_backend__bytecode__ModuleId_4);
+          }
+          {
+            bytecode_backend__bytecode__debug_string_3_p_0(bytecode_backend__bytecode__Functor_5);
+          }
+          {
+            bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__Arity_6);
+          }
+          {
+            bytecode_backend__bytecode__debug_tag_3_p_0(bytecode_backend__bytecode__Tag_7);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__IntVal_17 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "int_const");
+          }
+          {
+            bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__IntVal_17);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_String bytecode_backend__bytecode__StringVal_24 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "string_const");
+              }
+              {
+                bytecode_backend__bytecode__debug_cstring_3_p_0(bytecode_backend__bytecode__StringVal_24);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Float bytecode_backend__bytecode__FloatVal_31 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "float_const");
+              }
+              {
+                bytecode_backend__bytecode__debug_float_3_p_0(bytecode_backend__bytecode__FloatVal_31);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Char bytecode_backend__bytecode__Char_82 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__String_84;
+              MR_Word bytecode_backend__bytecode__Var_89;
+
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "char_const");
+              }
+              {
+                bytecode_backend__bytecode__Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__Var_89, 0) = ((MR_Box) (MR_Word) (bytecode_backend__bytecode__Char_82));
+                MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__Var_89, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                mercury__string__from_char_list_2_p_0(bytecode_backend__bytecode__Var_89, &bytecode_backend__bytecode__String_84);
+              }
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0(bytecode_backend__bytecode__String_84);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__PredId_39 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Arity_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__IsFunc_41 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+              MR_Integer bytecode_backend__bytecode__ProcId_42 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "pred_const");
+              }
+              {
+                bytecode_backend__bytecode__debug_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_38);
+              }
+              {
+                bytecode_backend__bytecode__debug_pred_id_3_p_0(bytecode_backend__bytecode__PredId_39);
+              }
+              {
+                bytecode_backend__bytecode__debug_length_3_p_0(bytecode_backend__bytecode__Arity_40);
+              }
+              {
+                bytecode_backend__bytecode__debug_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_41);
+              }
+              {
+                bytecode_backend__bytecode__debug_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_42);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__TypeName_54 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__TypeArity_55 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "type_ctor_info_const");
+              }
+              {
+                bytecode_backend__bytecode__debug_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_53);
+              }
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0(bytecode_backend__bytecode__TypeName_54);
+              }
+              {
+                bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__TypeArity_55);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ClassName_65;
+              MR_Integer bytecode_backend__bytecode__ClassArity_66;
+              MR_String bytecode_backend__bytecode__Instance_67 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Word bytecode_backend__bytecode__Var_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              bytecode_backend__bytecode__ClassName_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_71, (MR_Integer) 0)));
+              bytecode_backend__bytecode__ClassArity_66 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_71, (MR_Integer) 1)));
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "base_typeclass_info_const");
+              }
+              {
+                bytecode_backend__bytecode__debug_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_64);
+              }
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "class_id");
+              }
+              {
+                bytecode_backend__bytecode__debug_sym_name_3_p_0(bytecode_backend__bytecode__ClassName_65);
+              }
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "/");
+              }
+              {
+                bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__ClassArity_66);
+              }
+              {
+                bytecode_backend__bytecode__debug_string_3_p_0(bytecode_backend__bytecode__Instance_67);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_float_3_p_0(
+  MR_Float bytecode_backend__bytecode__Val_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_float_3_p_0(bytecode_backend__bytecode__Val_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_cstring_3_p_0(
+  MR_String bytecode_backend__bytecode__Str_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Stream_6;
+
+    {
+      mercury__io__output_stream_3_p_0(&bytecode_backend__bytecode__Stream_6);
+    }
+    {
+      mercury__io__write_char_4_p_0(bytecode_backend__bytecode__Stream_6, (MR_Char) 34);
+    }
+    {
+      backend_libs__c_util__output_quoted_string_4_p_0(bytecode_backend__bytecode__Stream_6, bytecode_backend__bytecode__Str_4);
+    }
+    {
+      mercury__io__write_char_4_p_0(bytecode_backend__bytecode__Stream_6, (MR_Char) 34);
+    }
+    {
+      mercury__io__write_char_4_p_0(bytecode_backend__bytecode__Stream_6, (MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_tag_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "no_tag");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer bytecode_backend__bytecode__Primary_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            bytecode_backend__bytecode__debug_string_3_p_0((MR_String) "unshared_tag");
+          }
+          {
+            bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__Primary_4);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__Primary_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Integer bytecode_backend__bytecode__Secondary_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+          {
+            mercury__io__write_string_3_p_0((MR_String) "shared_remote_tag");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+          {
+            mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Primary_11);
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+          {
+            bytecode_backend__bytecode__debug_int_3_p_0(bytecode_backend__bytecode__Secondary_12);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer bytecode_backend__bytecode__Primary_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Secondary_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                mercury__io__write_string_3_p_0((MR_String) "shared_local_tag");
+              }
+              {
+                mercury__io__write_char_3_p_0((MR_Char) 32);
+              }
+              {
+                mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Primary_20);
+              }
+              {
+                mercury__io__write_char_3_p_0((MR_Char) 32);
+              }
+              {
+                mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Secondary_21);
+              }
+              {
+                mercury__io__write_char_3_p_0((MR_Char) 32);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer bytecode_backend__bytecode__Enum_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                mercury__io__write_string_3_p_0((MR_String) "enum_tag");
+              }
+              {
+                mercury__io__write_char_3_p_0((MR_Char) 32);
+              }
+              {
+                mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Enum_29);
+              }
+              {
+                mercury__io__write_char_3_p_0((MR_Char) 32);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_int_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Val_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Val_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_string_3_p_0(
+  MR_String bytecode_backend__bytecode__Val_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Val_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_label_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__LabelId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__LabelId_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_proc_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__ProcId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__ProcId_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_pred_id_3_p_0(
+  MR_String bytecode_backend__bytecode__PredId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_string_3_p_0(bytecode_backend__bytecode__PredId_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_module_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__ModuleId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      bytecode_backend__bytecode__debug_sym_name_3_p_0(bytecode_backend__bytecode__ModuleId_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_sym_name_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    if (((MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word bytecode_backend__bytecode__Module_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String bytecode_backend__bytecode__Val_12 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+        {
+          bytecode_backend__bytecode__debug_sym_name_3_p_0(bytecode_backend__bytecode__Module_11);
+        }
+        {
+          mercury__io__write_char_3_p_0((MR_Char) 58);
+        }
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Val_12);
+        }
+        {
+          mercury__io__write_char_3_p_0((MR_Char) 32);
+        }
+      }
+    else
+      {
+        MR_String bytecode_backend__bytecode__Val_4 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Val_4);
+        }
+        {
+          mercury__io__write_char_3_p_0((MR_Char) 32);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_test_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (bytecode_backend__bytecode__HeadVar__1_1) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "char");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 5:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "dummy");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 4:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "enum");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "float");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "int");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "string");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_dirs_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Integer bytecode_backend__bytecode__Var_7;
+            MR_Word bytecode_backend__bytecode__Dir_8;
+            MR_Word bytecode_backend__bytecode__VarDirs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word bytecode_backend__bytecode__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+            bytecode_backend__bytecode__Var_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_13, (MR_Integer) 0)));
+            bytecode_backend__bytecode__Dir_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_13, (MR_Integer) 1)));
+            {
+              mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Var_7);
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+            switch (bytecode_backend__bytecode__Dir_8) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__io__write_string_3_p_0((MR_String) "to_arg");
+                  }
+                  {
+                    mercury__io__write_char_3_p_0((MR_Char) 32);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  {
+                    mercury__io__write_string_3_p_0((MR_String) "to_none");
+                  }
+                  {
+                    mercury__io__write_char_3_p_0((MR_Char) 32);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  {
+                    mercury__io__write_string_3_p_0((MR_String) "to_var");
+                  }
+                  {
+                    mercury__io__write_char_3_p_0((MR_Char) 32);
+                  }
+                }
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__VarDirs_9;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_temp_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Var_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_vars_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Integer bytecode_backend__bytecode__Var_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Vars_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+            {
+              mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Var_7);
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__Vars_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Var_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_arg_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer bytecode_backend__bytecode__Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            mercury__io__write_string_3_p_0((MR_String) "var");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+          {
+            mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Var_4);
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer bytecode_backend__bytecode__IntVal_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            mercury__io__write_string_3_p_0((MR_String) "int");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+          {
+            mercury__io__write_int_3_p_0(bytecode_backend__bytecode__IntVal_11);
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Float bytecode_backend__bytecode__FloatVal_18 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            mercury__io__write_string_3_p_0((MR_String) "float");
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+          {
+            mercury__io__write_float_3_p_0(bytecode_backend__bytecode__FloatVal_18);
+          }
+          {
+            mercury__io__write_char_3_p_0((MR_Char) 32);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_length_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Length_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      mercury__io__write_int_3_p_0(bytecode_backend__bytecode__Length_4);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_is_func_3_p_0(
+  MR_Integer bytecode_backend__bytecode__IsFunc_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__IsFunc_4 == (MR_Integer) 1);
+
+    if (bytecode_backend__bytecode__succeeded)
+      {
+        {
+          mercury__io__write_string_3_p_0((MR_String) "func");
+        }
+        {
+          mercury__io__write_char_3_p_0((MR_Char) 32);
+        }
+      }
+    else
+      {
+        bytecode_backend__bytecode__succeeded = (bytecode_backend__bytecode__IsFunc_4 == (MR_Integer) 0);
+        if (bytecode_backend__bytecode__succeeded)
+          {
+            {
+              mercury__io__write_string_3_p_0((MR_String) "pred");
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.debug_is_func\'/3", (MR_String) "invalid predicate or function specifier in bytecode.");
+              return;
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_determinism_3_p_0(
+  MR_Word bytecode_backend__bytecode__Detism_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Debug_6 = ((&bytecode_backend__bytecode_vector_common_5[0 + bytecode_backend__bytecode__Detism_4]))->bytecode_backend__bytecode__vector_common_type_5_0__vct_5_f_0;
+
+    {
+      mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Debug_6);
+    }
+    {
+      mercury__io__write_char_3_p_0((MR_Char) 32);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__debug_var_infos_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word bytecode_backend__bytecode__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Vars_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String bytecode_backend__bytecode__Name_16 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_7, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_7, (MR_Integer) 1)));
+
+            {
+              mercury__io__write_string_3_p_0(bytecode_backend__bytecode__Name_16);
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__Vars_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+bytecode_backend__bytecode__output_bytecode_file_4_p_0(
+  MR_String bytecode_backend__bytecode__FileName_5,
+  MR_Word bytecode_backend__bytecode__ByteCodes_6)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Word bytecode_backend__bytecode__Result_8;
+
+    {
+      mercury__io__open_binary_output_4_p_0(bytecode_backend__bytecode__FileName_5, &bytecode_backend__bytecode__Result_8);
+    }
+    if (((MR_tag((MR_Word) bytecode_backend__bytecode__Result_8)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_String bytecode_backend__bytecode__ProgName_14;
+
+        {
+          mercury__io__progname_base_4_p_0((MR_String) "byte.m", &bytecode_backend__bytecode__ProgName_14);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\n");
+        }
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__ProgName_14);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) ": can\'t open \140");
+        }
+        {
+          mercury__io__write_string_3_p_0(bytecode_backend__bytecode__FileName_5);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\' for output\n");
+        }
+        {
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+        }
+      }
+    else
+      {
+        MR_Word bytecode_backend__bytecode__FileStream_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Result_8, (MR_Integer) 0)));
+        MR_Word bytecode_backend__bytecode__OutputStream_10;
+        MR_Word bytecode_backend__bytecode__Var_12;
+
+        {
+          mercury__io__set_binary_output_stream_4_p_0(bytecode_backend__bytecode__FileStream_9, &bytecode_backend__bytecode__OutputStream_10);
+        }
+        {
+          backend_libs__bytecode_data__output_short_3_p_0((MR_Integer) 9);
+        }
+        {
+          bytecode_backend__bytecode__output_bytecode_list_3_p_0(bytecode_backend__bytecode__ByteCodes_6);
+        }
+        {
+          mercury__io__set_binary_output_stream_4_p_0(bytecode_backend__bytecode__OutputStream_10, &bytecode_backend__bytecode__Var_12);
+        }
+        {
+          mercury__io__close_binary_output_3_p_0(bytecode_backend__bytecode__FileStream_9);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_bytecode_list_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word bytecode_backend__bytecode__ByteCode_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__ByteCodes_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer bytecode_backend__bytecode__Byte_10;
+
+            switch (MR_tag((MR_Word) bytecode_backend__bytecode__ByteCode_7)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(bytecode_backend__bytecode__ByteCode_7)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 3;
+                    break;
+                  case (MR_Integer) 2:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 6;
+                    break;
+                  case (MR_Integer) 3:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 10;
+                    break;
+                  case (MR_Integer) 4:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 16;
+                    break;
+                  case (MR_Integer) 5:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 18;
+                    break;
+                  case (MR_Integer) 6:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 35;
+                    break;
+                  case (MR_Integer) 7:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 36;
+                    break;
+                  case (MR_Integer) 8:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 37;
+                    break;
+                  case (MR_Integer) 9:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 39;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                bytecode_backend__bytecode__Byte_10 = (MR_Integer) 0;
+                break;
+              case (MR_Integer) 2:
+                bytecode_backend__bytecode__Byte_10 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__ByteCode_7, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 4;
+                    break;
+                  case (MR_Integer) 1:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 5;
+                    break;
+                  case (MR_Integer) 2:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 7;
+                    break;
+                  case (MR_Integer) 3:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 8;
+                    break;
+                  case (MR_Integer) 4:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 9;
+                    break;
+                  case (MR_Integer) 5:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 11;
+                    break;
+                  case (MR_Integer) 6:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 12;
+                    break;
+                  case (MR_Integer) 7:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 13;
+                    break;
+                  case (MR_Integer) 8:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 14;
+                    break;
+                  case (MR_Integer) 9:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 15;
+                    break;
+                  case (MR_Integer) 10:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 40;
+                    break;
+                  case (MR_Integer) 11:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 17;
+                    break;
+                  case (MR_Integer) 12:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 41;
+                    break;
+                  case (MR_Integer) 13:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 19;
+                    break;
+                  case (MR_Integer) 14:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 20;
+                    break;
+                  case (MR_Integer) 15:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 21;
+                    break;
+                  case (MR_Integer) 16:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 22;
+                    break;
+                  case (MR_Integer) 17:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 23;
+                    break;
+                  case (MR_Integer) 18:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 24;
+                    break;
+                  case (MR_Integer) 19:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 25;
+                    break;
+                  case (MR_Integer) 20:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 26;
+                    break;
+                  case (MR_Integer) 21:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 27;
+                    break;
+                  case (MR_Integer) 22:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 28;
+                    break;
+                  case (MR_Integer) 23:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 29;
+                    break;
+                  case (MR_Integer) 24:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 30;
+                    break;
+                  case (MR_Integer) 25:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 31;
+                    break;
+                  case (MR_Integer) 26:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 32;
+                    break;
+                  case (MR_Integer) 27:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 33;
+                    break;
+                  case (MR_Integer) 28:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 34;
+                    break;
+                  case (MR_Integer) 29:
+                    bytecode_backend__bytecode__Byte_10 = (MR_Integer) 38;
+                    break;
+                }
+                break;
+            }
+            {
+              mercury__io__write_byte_3_p_0(bytecode_backend__bytecode__Byte_10);
+            }
+            {
+              bytecode_backend__bytecode__output_args_3_p_0(bytecode_backend__bytecode__ByteCode_7);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__ByteCodes_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+bytecode_backend__bytecode__output_args_3_p_0_1(
+  MR_Box bytecode_backend__bytecode__closure_arg)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Box bytecode_backend__bytecode__closure = bytecode_backend__bytecode__closure_arg;
+
+    {
+      bytecode_backend__bytecode__succeeded = bytecode_backend__bytecode__IntroducedFrom__pred__output_args__266__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__closure, (MR_Integer) 4))));
+    }
+    return bytecode_backend__bytecode__succeeded;
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_args_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String bytecode_backend__bytecode__PredId_4 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Integer bytecode_backend__bytecode__PredArity_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__IsFunc_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Integer bytecode_backend__bytecode__ProcCount_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+          {
+            bytecode_backend__bytecode__output_pred_id_3_p_0(bytecode_backend__bytecode__PredId_4);
+          }
+          {
+            bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__PredArity_5);
+          }
+          {
+            bytecode_backend__bytecode__output_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_6);
+          }
+          {
+            bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__ProcCount_7);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__ProcId_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Word bytecode_backend__bytecode__Detism_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__LabelCount_20 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Integer bytecode_backend__bytecode__LabelId_21 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+          MR_Integer bytecode_backend__bytecode__TempCount_22 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+          MR_Word bytecode_backend__bytecode__Vars_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+          MR_Integer bytecode_backend__bytecode__VarCount_25;
+
+          {
+            bytecode_backend__bytecode__output_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_18);
+          }
+          {
+            bytecode_backend__bytecode__output_determinism_3_p_0(bytecode_backend__bytecode__Detism_19);
+          }
+          {
+            bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__LabelCount_20);
+          }
+          {
+            bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_21);
+          }
+          {
+            bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__TempCount_22);
+          }
+          {
+            mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0, bytecode_backend__bytecode__Vars_23, &bytecode_backend__bytecode__VarCount_25);
+          }
+          {
+            bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__VarCount_25);
+          }
+          {
+            bytecode_backend__bytecode__output_var_infos_3_p_0(bytecode_backend__bytecode__Vars_23);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_38 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_38);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_43 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_43);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_51 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_51);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_56 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_56);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__LabelId_62 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_61);
+              }
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_62);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word bytecode_backend__bytecode__MainConsId_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__OtherConsIds_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__NextLabelId_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Word bytecode_backend__bytecode__Var_78;
+
+              {
+                bytecode_backend__bytecode__output_cons_id_3_p_0(bytecode_backend__bytecode__MainConsId_71);
+              }
+              {
+                bytecode_backend__bytecode__Var_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_78, 0) = ((MR_Box) (&bytecode_backend__bytecode_scalar_common_4[0]));
+                MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_78, 1) = ((MR_Box) (bytecode_backend__bytecode__output_args_3_p_0_1));
+                MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_78, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_78, 3) = ((MR_Box) (bytecode_backend__bytecode__OtherConsIds_72));
+                MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_78, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                mercury__require__expect_4_p_0(bytecode_backend__bytecode__Var_78, (MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.output_args\'/3", (MR_String) "OtherConsIds");
+              }
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__NextLabelId_73);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Integer bytecode_backend__bytecode__LabelId_84 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_84);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Integer bytecode_backend__bytecode__ElseLabelId_89 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__FollowLabelId_90 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_91 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__ElseLabelId_89);
+              }
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__FollowLabelId_90);
+              }
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_91);
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_98 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_98);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Integer bytecode_backend__bytecode__FollowLabelId_103 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__FollowLabelId_103);
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_108 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_108);
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_116 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__LabelId_117 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_116);
+              }
+              {
+                bytecode_backend__bytecode__output_label_id_3_p_0(bytecode_backend__bytecode__LabelId_117);
+              }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Integer bytecode_backend__bytecode__FramePtrTemp_123 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__FramePtrTemp_123);
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Integer bytecode_backend__bytecode__Temp_131 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__Temp_131);
+              }
+            }
+            break;
+          case (MR_Integer) 14:
+            {
+              MR_Integer bytecode_backend__bytecode__Temp_136 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                bytecode_backend__bytecode__output_temp_3_p_0(bytecode_backend__bytecode__Temp_136);
+              }
+            }
+            break;
+          case (MR_Integer) 15:
+            {
+              MR_Integer bytecode_backend__bytecode__Var1_141 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Var2_142 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var1_141);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var2_142);
+              }
+            }
+            break;
+          case (MR_Integer) 16:
+            {
+              MR_Integer bytecode_backend__bytecode__Var1_148 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Var2_149 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__TestId_150 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var1_148);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var2_149);
+              }
+              {
+                bytecode_backend__bytecode__output_test_id_3_p_0(bytecode_backend__bytecode__TestId_150);
+              }
+            }
+            break;
+          case (MR_Integer) 17:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_157 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_158 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Vars_159 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_161;
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_157);
+              }
+              {
+                bytecode_backend__bytecode__output_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_158);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, bytecode_backend__bytecode__Vars_159, &bytecode_backend__bytecode__Length_161);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Length_161);
+              }
+              {
+                bytecode_backend__bytecode__output_vars_3_p_0(bytecode_backend__bytecode__Vars_159);
+              }
+            }
+            break;
+          case (MR_Integer) 18:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_168 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_169 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Vars_170 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_172;
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_168);
+              }
+              {
+                bytecode_backend__bytecode__output_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_169);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, bytecode_backend__bytecode__Vars_170, &bytecode_backend__bytecode__Length_172);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Length_172);
+              }
+              {
+                bytecode_backend__bytecode__output_vars_3_p_0(bytecode_backend__bytecode__Vars_170);
+              }
+            }
+            break;
+          case (MR_Integer) 19:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_179 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_180 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__VarDirs_181 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_183;
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_179);
+              }
+              {
+                bytecode_backend__bytecode__output_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_180);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_2[0], bytecode_backend__bytecode__VarDirs_181, &bytecode_backend__bytecode__Length_183);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Length_183);
+              }
+              {
+                bytecode_backend__bytecode__output_var_dirs_3_p_0(bytecode_backend__bytecode__VarDirs_181);
+              }
+            }
+            break;
+          case (MR_Integer) 20:
+            {
+              MR_Integer bytecode_backend__bytecode__Var_190 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__ConsId_191 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__VarDirs_192 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Length_194;
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_190);
+              }
+              {
+                bytecode_backend__bytecode__output_cons_id_3_p_0(bytecode_backend__bytecode__ConsId_191);
+              }
+              {
+                mercury__list__length_2_p_0((MR_Word) &bytecode_backend__bytecode_scalar_common_2[0], bytecode_backend__bytecode__VarDirs_192, &bytecode_backend__bytecode__Length_194);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Length_194);
+              }
+              {
+                bytecode_backend__bytecode__output_var_dirs_3_p_0(bytecode_backend__bytecode__VarDirs_192);
+              }
+            }
+            break;
+          case (MR_Integer) 21:
+            {
+              MR_Integer bytecode_backend__bytecode__RegNum_202 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var_203 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_114_101_103_95_95_91_49_93_95_48_4_p_0(bytecode_backend__bytecode__RegNum_202);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_203);
+              }
+            }
+            break;
+          case (MR_Integer) 22:
+            {
+              MR_Integer bytecode_backend__bytecode__RegNum_210 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var_211 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_114_101_103_95_95_91_49_93_95_48_4_p_0(bytecode_backend__bytecode__RegNum_210);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var_211);
+              }
+            }
+            break;
+          case (MR_Integer) 23:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_217 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__PredId_218 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Arity_219 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__IsFunc_220 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+              MR_Integer bytecode_backend__bytecode__ProcId_221 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+
+              {
+                bytecode_backend__bytecode__output_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_217);
+              }
+              {
+                bytecode_backend__bytecode__output_pred_id_3_p_0(bytecode_backend__bytecode__PredId_218);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Arity_219);
+              }
+              {
+                bytecode_backend__bytecode__output_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_220);
+              }
+              {
+                bytecode_backend__bytecode__output_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_221);
+              }
+            }
+            break;
+          case (MR_Integer) 24:
+            {
+              MR_Integer bytecode_backend__bytecode__PredVar_230 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__InVarCount_231 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__OutVarCount_232 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Word bytecode_backend__bytecode__Detism_233 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__PredVar_230);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__InVarCount_231);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__OutVarCount_232);
+              }
+              {
+                bytecode_backend__bytecode__output_determinism_3_p_0(bytecode_backend__bytecode__Detism_233);
+              }
+            }
+            break;
+          case (MR_Integer) 25:
+            {
+              MR_Word bytecode_backend__bytecode__Binop_241 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_242 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Var2_243 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__Var3_244 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+
+              {
+                bytecode_backend__bytecode__output_binop_3_p_0(bytecode_backend__bytecode__Binop_241);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var1_242);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var2_243);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var3_244);
+              }
+            }
+            break;
+          case (MR_Integer) 26:
+            {
+              MR_Word bytecode_backend__bytecode__Unop_252 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_253 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Var2_254 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__output_unop_3_p_0(bytecode_backend__bytecode__Unop_252);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var1_253);
+              }
+              {
+                bytecode_backend__bytecode__output_var_3_p_0(bytecode_backend__bytecode__Var2_254);
+              }
+            }
+            break;
+          case (MR_Integer) 27:
+            {
+              MR_Word bytecode_backend__bytecode__Binop_261 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_262 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Word bytecode_backend__bytecode__Var2_263 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                bytecode_backend__bytecode__output_binop_3_p_0(bytecode_backend__bytecode__Binop_261);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var1_262);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var2_263);
+              }
+            }
+            break;
+          case (MR_Integer) 28:
+            {
+              MR_Word bytecode_backend__bytecode__Unop_270 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word bytecode_backend__bytecode__Var1_271 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                bytecode_backend__bytecode__output_unop_3_p_0(bytecode_backend__bytecode__Unop_270);
+              }
+              {
+                bytecode_backend__bytecode__output_arg_3_p_0(bytecode_backend__bytecode__Var1_271);
+              }
+            }
+            break;
+          case (MR_Integer) 29:
+            {
+              MR_Integer bytecode_backend__bytecode__Line_286 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Line_286);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_114_101_103_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer bytecode_backend__bytecode__N_5)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__N_5);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_unop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Unop_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Code_6 = ((&bytecode_backend__bytecode_vector_common_3[8 + bytecode_backend__bytecode__Unop_4]))->bytecode_backend__bytecode__vector_common_type_3_0__vct_3_f_0;
+
+    {
+      backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Code_6);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_binop_3_p_0(
+  MR_Word bytecode_backend__bytecode__Binop_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Code_6;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__Binop_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__Binop_4)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 1:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 2:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 3:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 3;
+            break;
+          case (MR_Integer) 4:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 5:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 5;
+            break;
+          case (MR_Integer) 6:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 6;
+            break;
+          case (MR_Integer) 7:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 7;
+            break;
+          case (MR_Integer) 8:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 8;
+            break;
+          case (MR_Integer) 9:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 9;
+            break;
+          case (MR_Integer) 10:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 10;
+            break;
+          case (MR_Integer) 11:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 11;
+            break;
+          case (MR_Integer) 12:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 12;
+            break;
+          case (MR_Integer) 13:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 13;
+            break;
+          case (MR_Integer) 14:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 35;
+            break;
+          case (MR_Integer) 15:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 44;
+            break;
+          case (MR_Integer) 16:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 15;
+            break;
+          case (MR_Integer) 17:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 16;
+            break;
+          case (MR_Integer) 18:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 17;
+            break;
+          case (MR_Integer) 19:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 18;
+            break;
+          case (MR_Integer) 20:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 19;
+            break;
+          case (MR_Integer) 21:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 20;
+            break;
+          case (MR_Integer) 22:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 39;
+            break;
+          case (MR_Integer) 23:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 21;
+            break;
+          case (MR_Integer) 24:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 22;
+            break;
+          case (MR_Integer) 25:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 23;
+            break;
+          case (MR_Integer) 26:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 24;
+            break;
+          case (MR_Integer) 27:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 36;
+            break;
+          case (MR_Integer) 28:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 45;
+            break;
+          case (MR_Integer) 29:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 46;
+            break;
+          case (MR_Integer) 30:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 47;
+            break;
+          case (MR_Integer) 31:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 48;
+            break;
+          case (MR_Integer) 32:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 49;
+            break;
+          case (MR_Integer) 33:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 50;
+            break;
+          case (MR_Integer) 34:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 51;
+            break;
+          case (MR_Integer) 35:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 52;
+            break;
+          case (MR_Integer) 36:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 53;
+            break;
+          case (MR_Integer) 37:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 54;
+            break;
+          case (MR_Integer) 38:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 55;
+            break;
+          case (MR_Integer) 39:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 56;
+            break;
+          case (MR_Integer) 40:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 57;
+            break;
+          case (MR_Integer) 41:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 58;
+            break;
+          case (MR_Integer) 42:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 59;
+            break;
+          case (MR_Integer) 43:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 60;
+            break;
+          case (MR_Integer) 44:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 25;
+            break;
+          case (MR_Integer) 45:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 26;
+            break;
+          case (MR_Integer) 46:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 27;
+            break;
+          case (MR_Integer) 47:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 28;
+            break;
+          case (MR_Integer) 48:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 29;
+            break;
+          case (MR_Integer) 49:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 30;
+            break;
+          case (MR_Integer) 50:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 31;
+            break;
+          case (MR_Integer) 51:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 32;
+            break;
+          case (MR_Integer) 52:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 33;
+            break;
+          case (MR_Integer) 53:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 34;
+            break;
+          case (MR_Integer) 54:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 40;
+            break;
+          case (MR_Integer) 55:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 41;
+            break;
+          case (MR_Integer) 56:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 42;
+            break;
+          case (MR_Integer) 57:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 37;
+            break;
+          case (MR_Integer) 58:
+            bytecode_backend__bytecode__Code_6 = (MR_Integer) 38;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        bytecode_backend__bytecode__Code_6 = (MR_Integer) 14;
+        break;
+      case (MR_Integer) 2:
+        bytecode_backend__bytecode__Code_6 = (MR_Integer) 43;
+        break;
+    }
+    {
+      backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Code_6);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_cons_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(bytecode_backend__bytecode__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__require__sorry_3_p_0((MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.output_cons_id\'/3", (MR_String) "bytecode for type_info_cell_constructor not yet implemented.");
+                return;
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__require__sorry_3_p_0((MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.output_cons_id\'/3", (MR_String) "bytecode for typeclass_info_cell_constructor not yet implemented.");
+                return;
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word bytecode_backend__bytecode__ModuleId_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_String bytecode_backend__bytecode__Functor_5 = ((MR_String) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Integer bytecode_backend__bytecode__Arity_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+          MR_Word bytecode_backend__bytecode__Tag_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 0);
+          }
+          {
+            bytecode_backend__bytecode__output_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_4);
+          }
+          {
+            backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__Functor_5);
+          }
+          {
+            backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Arity_6);
+          }
+          {
+            bytecode_backend__bytecode__output_tag_3_p_0(bytecode_backend__bytecode__Tag_7);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__IntVal_17 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 1);
+          }
+          {
+            backend_libs__bytecode_data__output_int_3_p_0(bytecode_backend__bytecode__IntVal_17);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_String bytecode_backend__bytecode__StringVal_24 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 2);
+              }
+              {
+                backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__StringVal_24);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Float bytecode_backend__bytecode__FloatVal_31 = MR_unbox_float((MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 3);
+              }
+              {
+                backend_libs__bytecode_data__output_float_3_p_0(bytecode_backend__bytecode__FloatVal_31);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Char bytecode_backend__bytecode__Char_64 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Byte_66;
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 7);
+              }
+              {
+                mercury__char__to_int_2_p_0(bytecode_backend__bytecode__Char_64, &bytecode_backend__bytecode__Byte_66);
+              }
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Byte_66);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__PredId_39 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__Arity_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+              MR_Integer bytecode_backend__bytecode__IsFunc_41 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 4)));
+              MR_Integer bytecode_backend__bytecode__ProcId_42 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 5)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 4);
+              }
+              {
+                bytecode_backend__bytecode__output_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_38);
+              }
+              {
+                bytecode_backend__bytecode__output_pred_id_3_p_0(bytecode_backend__bytecode__PredId_39);
+              }
+              {
+                bytecode_backend__bytecode__output_length_3_p_0(bytecode_backend__bytecode__Arity_40);
+              }
+              {
+                bytecode_backend__bytecode__output_is_func_3_p_0(bytecode_backend__bytecode__IsFunc_41);
+              }
+              {
+                bytecode_backend__bytecode__output_proc_id_3_p_0(bytecode_backend__bytecode__ProcId_42);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word bytecode_backend__bytecode__ModuleId_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_String bytecode_backend__bytecode__TypeName_54 = ((MR_String) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+              MR_Integer bytecode_backend__bytecode__TypeArity_55 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 3)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 6);
+              }
+              {
+                bytecode_backend__bytecode__output_module_id_3_p_0(bytecode_backend__bytecode__ModuleId_53);
+              }
+              {
+                backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__TypeName_54);
+              }
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__TypeArity_55);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              {
+                mercury__require__sorry_3_p_0((MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.output_cons_id\'/3", (MR_String) "bytecode for typeclass not yet implemented.");
+                return;
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_tag_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 4);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer bytecode_backend__bytecode__Primary_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 0);
+          }
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Primary_4);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Integer bytecode_backend__bytecode__Primary_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Integer bytecode_backend__bytecode__Secondary_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 1);
+          }
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Primary_11);
+          }
+          {
+            backend_libs__bytecode_data__output_int_3_p_0(bytecode_backend__bytecode__Secondary_12);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer bytecode_backend__bytecode__Primary_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Integer bytecode_backend__bytecode__Secondary_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 2)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 2);
+              }
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Primary_20);
+              }
+              {
+                backend_libs__bytecode_data__output_int_3_p_0(bytecode_backend__bytecode__Secondary_21);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer bytecode_backend__bytecode__Enum_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 3);
+              }
+              {
+                backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Enum_29);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_label_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__LabelId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__LabelId_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_proc_id_3_p_0(
+  MR_Integer bytecode_backend__bytecode__ProcId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__ProcId_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_pred_id_3_p_0(
+  MR_String bytecode_backend__bytecode__PredId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__PredId_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_module_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__ModuleId_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_String bytecode_backend__bytecode__Var_8;
+
+    {
+      bytecode_backend__bytecode__Var_8 = mdbcomp__sym_name__sym_name_to_string_1_f_0(bytecode_backend__bytecode__ModuleId_4);
+    }
+    {
+      backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__Var_8);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_test_id_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (bytecode_backend__bytecode__HeadVar__1_1) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 1);
+          }
+        }
+        break;
+      case (MR_Integer) 5:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 5);
+          }
+        }
+        break;
+      case (MR_Integer) 4:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 4);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 3);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 0);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 2);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_dirs_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Integer bytecode_backend__bytecode__Var_7;
+            MR_Word bytecode_backend__bytecode__Dir_8;
+            MR_Word bytecode_backend__bytecode__VarDirs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word bytecode_backend__bytecode__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+            bytecode_backend__bytecode__Var_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_13, (MR_Integer) 0)));
+            bytecode_backend__bytecode__Dir_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_13, (MR_Integer) 1)));
+            {
+              backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Var_7);
+            }
+            switch (bytecode_backend__bytecode__Dir_8) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 0);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  {
+                    backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 2);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  {
+                    backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 1);
+                  }
+                }
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__VarDirs_9;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_temp_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Var_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_vars_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Integer bytecode_backend__bytecode__Var_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Vars_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+
+            {
+              backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Var_7);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__Vars_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Var_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Var_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_arg_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (MR_tag((MR_Word) bytecode_backend__bytecode__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer bytecode_backend__bytecode__Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 0);
+          }
+          {
+            backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Var_4);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer bytecode_backend__bytecode__IntVal_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 1);
+          }
+          {
+            backend_libs__bytecode_data__output_int_3_p_0(bytecode_backend__bytecode__IntVal_11);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Float bytecode_backend__bytecode__FloatVal_18 = MR_unbox_float((MR_hl_field(MR_mktag(2), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            backend_libs__bytecode_data__output_byte_3_p_0((MR_Integer) 2);
+          }
+          {
+            backend_libs__bytecode_data__output_float_3_p_0(bytecode_backend__bytecode__FloatVal_18);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_length_3_p_0(
+  MR_Integer bytecode_backend__bytecode__Length_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    {
+      backend_libs__bytecode_data__output_short_3_p_0(bytecode_backend__bytecode__Length_4);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_is_func_3_p_0(
+  MR_Integer bytecode_backend__bytecode__IsFunc_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+
+    switch (bytecode_backend__bytecode__IsFunc_4) {
+      default:
+        bytecode_backend__bytecode__succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 0:
+        bytecode_backend__bytecode__succeeded = MR_TRUE;
+        break;
+      case (MR_Integer) 1:
+        bytecode_backend__bytecode__succeeded = MR_TRUE;
+        break;
+    }
+    if (bytecode_backend__bytecode__succeeded)
+      {
+        backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__IsFunc_4);
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "bytecode_backend.bytecode", (MR_String) "predicate \140bytecode_backend.bytecode.output_is_func\'/3", (MR_String) "invalid predicate or function specified in bytecode");
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_determinism_3_p_0(
+  MR_Word bytecode_backend__bytecode__Detism_4)
+{
+  {
+    MR_bool bytecode_backend__bytecode__succeeded;
+    MR_Integer bytecode_backend__bytecode__Code_6 = ((&bytecode_backend__bytecode_vector_common_3[0 + bytecode_backend__bytecode__Detism_4]))->bytecode_backend__bytecode__vector_common_type_3_0__vct_3_f_0;
+
+    {
+      backend_libs__bytecode_data__output_byte_3_p_0(bytecode_backend__bytecode__Code_6);
+    }
+  }
+}
+
+static void MR_CALL 
+bytecode_backend__bytecode__output_var_infos_3_p_0(
+  MR_Word bytecode_backend__bytecode__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool bytecode_backend__bytecode__succeeded;
+
+        if ((bytecode_backend__bytecode__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word bytecode_backend__bytecode__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Vars_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), bytecode_backend__bytecode__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String bytecode_backend__bytecode__Name_16 = ((MR_String) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_7, (MR_Integer) 0)));
+            MR_Word bytecode_backend__bytecode__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), bytecode_backend__bytecode__Var_7, (MR_Integer) 1)));
+
+            {
+              backend_libs__bytecode_data__output_string_3_p_0(bytecode_backend__bytecode__Name_16);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word bytecode_backend__bytecode__next_value_of_HeadVar__1_1 = bytecode_backend__bytecode__Vars_8;
+
+              bytecode_backend__bytecode__HeadVar__1_1 = bytecode_backend__bytecode__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void mercury__bytecode_backend__bytecode__init(void)
+{
+}
+
+void mercury__bytecode_backend__bytecode__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_code_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_tag_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_dir_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_is_func_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_label_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_module_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_pred_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_proc_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_reg_type_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_temp_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_test_id_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_tree_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_0);
+	MR_register_type_ctor_info(&bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0);
+}
+
+void mercury__bytecode_backend__bytecode__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__bytecode_backend__bytecode__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module bytecode_backend.bytecode. */

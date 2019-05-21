@@ -1,0 +1,11061 @@
+/*
+** Automatically generated from `ml_string_switch.m'
+** by the Mercury compiler,
+** version rotd-2017-07-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_string_switch. */
+/* :- implementation. */
+
+/*
+INIT mercury__ml_backend__ml_string_switch__init
+ENDINIT
+*/
+
+#include "ml_backend.ml_string_switch.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "ml_backend.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.foreign.mih"
+#include "backend_libs.rtti.mih"
+#include "backend_libs.string_encoding.mih"
+#include "backend_libs.switch_util.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "ml_backend.ml_code_gen.mih"
+#include "ml_backend.ml_code_util.mih"
+#include "ml_backend.ml_gen_info.mih"
+#include "ml_backend.ml_global_data.mih"
+#include "ml_backend.ml_lookup_switch.mih"
+#include "ml_backend.ml_simplify_switch.mih"
+#include "ml_backend.ml_target_util.mih"
+#include "ml_backend.ml_util.mih"
+#include "ml_backend.mlds.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.builtin_lib_types.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_builtin__type_ctor_info_int_0;
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_rval_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ml_backend__ml_string_switch__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0ml_backend__ml_string_switch__type_ctor_info_hash_slots_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_hash_slots_0_0[2];
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_hash_slots_0_0;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_hash_slots_0_0[1];
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_hash_slots_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_hash_slots_0[1];
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_hash_slots_0[1];
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_lval_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_data_defn_0;
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_binary_search_info_0_0[9];
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_binary_search_info_0_0[9];
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_binary_search_info_0_0;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_binary_search_info_0_0[1];
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_binary_search_info_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_binary_search_info_0[1];
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_binary_search_info_0[1];
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_hash_search_info_0_0[9];
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_hash_search_info_0_0[9];
+
+static const MR_DuArgLocn ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_locns_ml_hash_search_info_0_0[9];
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_hash_search_info_0_0;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_hash_search_info_0_0[1];
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_hash_search_info_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_hash_search_info_0[1];
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_hash_search_info_0[1];
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_0[3];
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_0[3];
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_0;
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__tree234__ti_tree234_2builtin__type_ctor_info_int_0ml_backend__ml_string_switch__type_ctor_info_trie_node_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__maybe__ti_maybe_1hlds__hlds_goal__type_ctor_info_case_id_0;
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_1[3];
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_1[3];
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_1;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_1[1];
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_trie_node_0[2];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_trie_node_0[2];
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_trie_node_0[2];
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slots_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slots_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____trie_node_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____trie_node_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2179__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_49);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2159__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_53);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__chase_one_cond_trie_nodes__705__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_14,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_34);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__603__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__653__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__509__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__LeafMatched_11);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__523__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__ChoiceMatched_19);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_several_soln_lookup_slots__394__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4,
+  MR_Integer ml_backend__ml_string_switch__CaseIdNum_33);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_several_soln_lookup_switch__342__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_47,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_75);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_simple_lookup_slots__292__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3,
+  MR_Integer ml_backend__ml_string_switch__CaseIdNum_21);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_simple_lookup_switch__227__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_39,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_66);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_binary_lookup_switch__1664__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_35);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_hash_lookup_switch__1014__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_35);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_lookup_switch__191__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_13,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_37);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____trie_node_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____trie_node_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slots_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slots_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+ml_backend__ml_string_switch__make_hash_match_1_f_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_3);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_10,
+  MR_Word ml_backend__ml_string_switch__TaggedCase_11,
+  MR_Word * ml_backend__ml_string_switch__CaseId_12,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_19,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_21,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_22);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_several_soln_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseSolns0_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_70);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_4,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_5,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_7,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_0_8,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_9,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__10_10);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_simple_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseValues0_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_56);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_jump_switch_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_4,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_5,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_6,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_7,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_8);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_12_p_0(
+  MR_Word ml_backend__ml_string_switch__Context_13,
+  MR_String ml_backend__ml_string_switch__InitialComment_14,
+  MR_Word ml_backend__ml_string_switch__BinarySearchInfo_15,
+  MR_Word ml_backend__ml_string_switch__VectorCommon_16,
+  MR_Integer ml_backend__ml_string_switch__TableSize_17,
+  MR_Word ml_backend__ml_string_switch__StructType_18,
+  MR_Word ml_backend__ml_string_switch__StringFieldId_19,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_20,
+  MR_Word ml_backend__ml_string_switch__MatchStmt_21,
+  MR_Word * ml_backend__ml_string_switch__Stmts_22,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_56);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_vars_7_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_8,
+  MR_Word ml_backend__ml_string_switch__CanFail_9,
+  MR_Word ml_backend__ml_string_switch__Context_10,
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word * ml_backend__ml_string_switch__BinarySearchInfo_12,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_35,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_36);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_jump_switch_arms_3_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_0_2,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_3);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_jump_initializers_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseSolns_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_76,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_77);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slots_12_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_13,
+  MR_Integer ml_backend__ml_string_switch__TableSize_14,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_15,
+  MR_Word ml_backend__ml_string_switch__FirstSolnStructType_16,
+  MR_Word ml_backend__ml_string_switch__LaterSolnStructType_17,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_18,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_19,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_24,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_25,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_26,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_27,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_28);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_12,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_13,
+  MR_Word ml_backend__ml_string_switch__FirstSolnStructType_14,
+  MR_Word ml_backend__ml_string_switch__LaterSolnStructType_15,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_16,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_17,
+  MR_Word * ml_backend__ml_string_switch__FirstSolnsRowInitializer_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_35,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_36,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_38);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseValues_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_67,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_68);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_9,
+  MR_Integer ml_backend__ml_string_switch__TableSize_10,
+  MR_Word ml_backend__ml_string_switch__StructType_11,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_12,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_13,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_17,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_18);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_13_p_0(
+  MR_String ml_backend__ml_string_switch__InitialComment_14,
+  MR_Word ml_backend__ml_string_switch__HashSearchInfo_15,
+  MR_Word ml_backend__ml_string_switch__HashOp_16,
+  MR_Word ml_backend__ml_string_switch__VectorCommon_17,
+  MR_Word ml_backend__ml_string_switch__StructType_18,
+  MR_Word ml_backend__ml_string_switch__StringFieldId_19,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotFieldId_20,
+  MR_Integer ml_backend__ml_string_switch__HashMask_21,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_22,
+  MR_Word ml_backend__ml_string_switch__MatchStmts_23,
+  MR_Word * ml_backend__ml_string_switch__Stmts_24,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_61,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_62);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_7(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_6(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_5(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_4(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_13,
+  MR_Word ml_backend__ml_string_switch__LoopPresent_14,
+  MR_Word ml_backend__ml_string_switch__Context_15,
+  MR_Word ml_backend__ml_string_switch__MaybeStopLoopVarLval_16,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_17,
+  MR_Word ml_backend__ml_string_switch__MatchStmts_18,
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word * ml_backend__ml_string_switch__SetupForFailStmts_20,
+  MR_Word * ml_backend__ml_string_switch__BodyStmt_21,
+  MR_Word * ml_backend__ml_string_switch__AfterStmts_22,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_45);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_vars_8_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_9,
+  MR_Word ml_backend__ml_string_switch__CanFail_10,
+  MR_Word ml_backend__ml_string_switch__LoopPresent_11,
+  MR_Word ml_backend__ml_string_switch__Context_12,
+  MR_Word ml_backend__ml_string_switch__VarRval_13,
+  MR_Word * ml_backend__ml_string_switch__HashSearchInfo_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_29,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_30);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeMap_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Cases_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Cases_4);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_jump_slots_9_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_10,
+  MR_Integer ml_backend__ml_string_switch__TableSize_11,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_12,
+  MR_Word ml_backend__ml_string_switch__StructType_13,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_18,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_21);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_lookup_switch_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0(
+  MR_Integer ml_backend__ml_string_switch__MaxCaseNum_14,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_15,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_16,
+  MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_17,
+  MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18,
+  MR_Word ml_backend__ml_string_switch__CaseIdSolns_19,
+  MR_Word ml_backend__ml_string_switch__OutVars_20,
+  MR_Word ml_backend__ml_string_switch__OutTypes_21,
+  MR_Word ml_backend__ml_string_switch__CanFail_22,
+  MR_Word ml_backend__ml_string_switch__Context_23,
+  MR_Word * ml_backend__ml_string_switch__Stmts_24,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_63);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_5,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__6_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_7,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_8,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_10);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0(
+  MR_Integer ml_backend__ml_string_switch__MaxCaseNum_15,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_16,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_17,
+  MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_18,
+  MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_19,
+  MR_Word ml_backend__ml_string_switch__CaseIdValues_20,
+  MR_Word ml_backend__ml_string_switch__OutVars_21,
+  MR_Word ml_backend__ml_string_switch__OutTypes_22,
+  MR_Word ml_backend__ml_string_switch__CodeModel_23,
+  MR_Word ml_backend__ml_string_switch__CanFail_24,
+  MR_Word ml_backend__ml_string_switch__Context_25,
+  MR_Word * ml_backend__ml_string_switch__Stmts_26,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_60);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_maybe_switch_failure_6_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_7,
+  MR_Word ml_backend__ml_string_switch__CanFail_8,
+  MR_Word ml_backend__ml_string_switch__Context_9,
+  MR_Word * ml_backend__ml_string_switch__FailStmts_10,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_12,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_13);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_4,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_5,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_6);
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_4,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_5,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_6);
+
+static MR_String MR_CALL 
+ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(
+  MR_Word ml_backend__ml_string_switch__TaggedConsId_3);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__generate_trie_arms_3_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_0_2,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_3);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__create_nested_switch_trie_10_p_0(
+  MR_Word ml_backend__ml_string_switch__TaggedCases_11,
+  MR_Word ml_backend__ml_string_switch__Context_12,
+  MR_Word ml_backend__ml_string_switch__VarRval_13,
+  MR_Integer * ml_backend__ml_string_switch__MaxCaseNum_14,
+  MR_Word * ml_backend__ml_string_switch__CaseNumVarLval_15,
+  MR_Word * ml_backend__ml_string_switch__CaseNumVarDefn_16,
+  MR_Word * ml_backend__ml_string_switch__InitCaseNumVarStmt_17,
+  MR_Word * ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_23,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_3);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_0_2,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_3,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_4,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_5);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__add_to_strs_case_ids_4_p_0(
+  MR_Word ml_backend__ml_string_switch__CaseId_5,
+  MR_Word ml_backend__ml_string_switch__TaggedConsId_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_11,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_12);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_10,
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_12,
+  MR_Word ml_backend__ml_string_switch__Context_13,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_14,
+  MR_Word ml_backend__ml_string_switch__TrieNode_15,
+  MR_Word ml_backend__ml_string_switch__RevCond0_16,
+  MR_Word * ml_backend__ml_string_switch__RevCond_17,
+  MR_Word * ml_backend__ml_string_switch__ThenStmt_18);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__convert_trie_choices_to_nested_switches_8_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_1,
+  MR_Word ml_backend__ml_string_switch__VarRval_2,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_3,
+  MR_Word ml_backend__ml_string_switch__Context_4,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_5,
+  MR_Word ml_backend__ml_string_switch__HeadVar__6_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_0_7,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_8);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_8,
+  MR_Word ml_backend__ml_string_switch__VarRval_9,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_10,
+  MR_Word ml_backend__ml_string_switch__Context_11,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Word ml_backend__ml_string_switch__TrieNode_13,
+  MR_Word * ml_backend__ml_string_switch__Stmt_14);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_4);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__InsertNotYetMatched_7,
+  MR_Word ml_backend__ml_string_switch__InsertCaseId_8,
+  MR_Word ml_backend__ml_string_switch__TrieNode0_9,
+  MR_Word * ml_backend__ml_string_switch__TrieNode_10);
+
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_1[19][2];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_2[31][3];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_3[10][5];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_4[16][1];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_5[1][7];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_6[1][6];
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_7[1][12];
+
+
+
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_1[19][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_2[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1)),
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_1[0]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1)),
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_1[1]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[0])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[2])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[4])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[7])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[15])))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_2[31][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_1[0]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_1[1]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[2])),
+    ((MR_Box) (ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[6])),
+    ((MR_Box) (ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_6)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[4])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_7)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[8])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[8])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[9])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[9])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[3])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[9])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[9])),
+    ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[2])),
+    ((MR_Box) (ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_3[10][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__code_model__hlds__code_model__type_ctor_info_code_model_0)),
+    ((MR_Box) (&hlds__code_model__hlds__code_model__type_ctor_info_code_model_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0))
+  },
+  /* row 8 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0))
+  },
+  /* row 9 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_4[16][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) "we found a match; look up the results"))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) -2))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_String) "break out of search loop"))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) ((MR_String) "jump out of search loop"))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_String) "compute the hash value of the input string"))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) ((MR_String) "lookup the string for this hash slot"))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) ((MR_String) "did we find a match\?"))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) ((MR_String) "no collisions; no hash chain loop"))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_String) "no match yet, so get next slot in hash chain"))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_String) "hash chain loop"))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) ((MR_String) "we found a match; dispatch to the corresponding code"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) ((MR_Integer) 2))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_5[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_6[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_rval_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_string_switch_scalar_common_7[1][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&hlds__code_model__hlds__code_model__type_ctor_info_code_model_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_tagged_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&ml_backend__ml_string_switch__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&ml_backend__ml_gen_info__ml_backend__ml_gen_info__type_ctor_info_ml_gen_info_0)),
+    ((MR_Box) (&ml_backend__ml_gen_info__ml_backend__ml_gen_info__type_ctor_info_ml_gen_info_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__pair__ti_pair_2builtin__type_ctor_info_string_0hlds__hlds_goal__type_ctor_info_case_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_rval_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_string_switch__list__pti_list_1__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ml_backend__ml_string_switch__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_ml_backend__mlds__type_ctor_info_mlds_stmt_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0ml_backend__ml_string_switch__type_ctor_info_hash_slots_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_TypeInfo) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slot_rev_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0_10001)),
+  (MR_String) "ml_backend.ml_string_switch",
+  (MR_String) "hash_slot_rev_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0ml_backend__ml_string_switch__type_ctor_info_hash_slots_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_hash_slots_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_hash_slots_0_0 = {
+  (MR_String) "hash_slots",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_hash_slots_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_hash_slots_0_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_hash_slots_0_0
+};
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_hash_slots_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_hash_slots_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_hash_slots_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_hash_slots_0_0
+};
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_hash_slots_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_string_switch____Unify____hash_slots_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_string_switch____Compare____hash_slots_0_0_10001)),
+  (MR_String) "ml_backend.ml_string_switch",
+  (MR_String) "hash_slots",
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_hash_slots_0 },
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_hash_slots_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_hash_slots_0
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_lval_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_stmt_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_data_defn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0
+  }
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_binary_search_info_0_0[9] = {
+  (MR_PseudoTypeInfo) &hlds__code_model__hlds__code_model__type_ctor_info_code_model_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_stmt_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_data_defn_0
+};
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_binary_search_info_0_0[9] = {
+  (MR_String) "mbsi_code_model",
+  (MR_String) "mbsi_switch_var",
+  (MR_String) "mbsi_lo_var",
+  (MR_String) "mbsi_hi_var",
+  (MR_String) "mbsi_mid_var",
+  (MR_String) "mbsi_result_var",
+  (MR_String) "mbsi_stop_loop_var",
+  (MR_String) "mbsi_fail_statements",
+  (MR_String) "mbsi_defns"
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_binary_search_info_0_0 = {
+  (MR_String) "ml_binary_search_info",
+  (MR_Integer) 9,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_binary_search_info_0_0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_binary_search_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_binary_search_info_0_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_binary_search_info_0_0
+};
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_binary_search_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_binary_search_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_binary_search_info_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_binary_search_info_0_0
+};
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_binary_search_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_binary_search_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0_10001)),
+  (MR_String) "ml_backend.ml_string_switch",
+  (MR_String) "ml_binary_search_info",
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_binary_search_info_0 },
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_binary_search_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_binary_search_info_0
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_hash_search_info_0_0[9] = {
+  (MR_PseudoTypeInfo) &hlds__code_model__hlds__code_model__type_ctor_info_code_model_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_lval_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_stmt_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_data_defn_0
+};
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_hash_search_info_0_0[9] = {
+  (MR_String) "mhsi_code_model",
+  (MR_String) "mhsi_loop_present",
+  (MR_String) "mhsi_context",
+  (MR_String) "mhsi_switch_var",
+  (MR_String) "mhsi_slot_var",
+  (MR_String) "mhsi_string_var",
+  (MR_String) "mhsi_stop_loop_var",
+  (MR_String) "mhsi_fail_statements",
+  (MR_String) "mhsi_defns"
+};
+
+static const MR_DuArgLocn ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_locns_ml_hash_search_info_0_0[9] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 4,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 5,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 6,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 7,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_hash_search_info_0_0 = {
+  (MR_String) "ml_hash_search_info",
+  (MR_Integer) 9,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_ml_hash_search_info_0_0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_ml_hash_search_info_0_0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_locns_ml_hash_search_info_0_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_hash_search_info_0_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_hash_search_info_0_0
+};
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_hash_search_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_ml_hash_search_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_hash_search_info_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_ml_hash_search_info_0_0
+};
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_hash_search_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_hash_search_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0_10001)),
+  (MR_String) "ml_backend.ml_string_switch",
+  (MR_String) "ml_hash_search_info",
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_ml_hash_search_info_0 },
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_ml_hash_search_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_ml_hash_search_info_0
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_0[3] = {
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0
+};
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_0[3] = {
+  (MR_String) "leaf_matched",
+  (MR_String) "leaf_unmatched",
+  NULL
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_0 = {
+  (MR_String) "trie_leaf",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_0,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 ml_backend__ml_string_switch__tree234__ti_tree234_2builtin__type_ctor_info_int_0ml_backend__ml_string_switch__type_ctor_info_trie_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_string_switch__maybe__ti_maybe_1hlds__hlds_goal__type_ctor_info_case_id_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_1[3] = {
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__tree234__ti_tree234_2builtin__type_ctor_info_int_0ml_backend__ml_string_switch__type_ctor_info_trie_node_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_string_switch__maybe__ti_maybe_1hlds__hlds_goal__type_ctor_info_case_id_0
+};
+
+static const MR_ConstString ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_1[3] = {
+  (MR_String) "choice_matched",
+  (MR_String) "choice_next_level",
+  (MR_String) "choice_end"
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_1 = {
+  (MR_String) "trie_choice",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_types_trie_node_0_1,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__field_names_trie_node_0_1,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_0[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_0
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_1[1] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_1
+};
+
+static const MR_DuPtagLayout ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_trie_node_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_stag_ordered_trie_node_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_trie_node_0[2] = {
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_1,
+  &ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_functor_desc_trie_node_0_0
+};
+
+static const MR_Integer ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_trie_node_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_string_switch____Unify____trie_node_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_string_switch____Compare____trie_node_0_0_10001)),
+  (MR_String) "ml_backend.ml_string_switch",
+  (MR_String) "trie_node",
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_name_ordered_trie_node_0 },
+  {     ml_backend__ml_string_switch__ml_backend__ml_string_switch__du_ptag_ordered_trie_node_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  ml_backend__ml_string_switch__ml_backend__ml_string_switch__functor_number_map_trie_node_0
+};
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__1_1;
+
+    {
+      ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0(&ml_backend__ml_string_switch__conv0_HeadVar__1_1, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3));
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_1 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slots_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch____Unify____hash_slots_0_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slots_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__1_1;
+
+    {
+      ml_backend__ml_string_switch____Compare____hash_slots_0_0(&ml_backend__ml_string_switch__conv0_HeadVar__1_1, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3));
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_1 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__1_1;
+
+    {
+      ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0(&ml_backend__ml_string_switch__conv0_HeadVar__1_1, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3));
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_1 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__1_1;
+
+    {
+      ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0(&ml_backend__ml_string_switch__conv0_HeadVar__1_1, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3));
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_1 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____trie_node_0_0_10001(
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch____Unify____trie_node_0_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____trie_node_0_0_10001(
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__1_1;
+
+    {
+      ml_backend__ml_string_switch____Compare____trie_node_0_0(&ml_backend__ml_string_switch__conv0_HeadVar__1_1, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3));
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_1 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2179__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_49)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7], ((MR_Box) (ml_backend__ml_string_switch__FailStmts_19)), ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_49)));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2159__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_53)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7], ((MR_Box) (ml_backend__ml_string_switch__FailStmts_19)), ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_53)));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__chase_one_cond_trie_nodes__705__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_14,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_34)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__HeadVar__2_34 == ml_backend__ml_string_switch__NumMatched_14);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__603__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23 == ml_backend__ml_string_switch__NumMatched_12);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__653__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82 == ml_backend__ml_string_switch__NumMatched_12);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__509__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__LeafMatched_11)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], ((MR_Box) (ml_backend__ml_string_switch__LeafMatched_11)), ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6)));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__523__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__ChoiceMatched_19)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], ((MR_Box) (ml_backend__ml_string_switch__ChoiceMatched_19)), ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6)));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_several_soln_lookup_slots__394__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4,
+  MR_Integer ml_backend__ml_string_switch__CaseIdNum_33)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CaseIdNum_33 == ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_several_soln_lookup_switch__342__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_47,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_75)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__HeadVar__2_75 == ml_backend__ml_string_switch__AfterLastCaseNum_47);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_simple_lookup_slots__292__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3,
+  MR_Integer ml_backend__ml_string_switch__CaseIdNum_21)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CaseIdNum_21 == ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_simple_lookup_switch__227__1_2_p_0(
+  MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_39,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__2_66)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__HeadVar__2_66 == ml_backend__ml_string_switch__AfterLastCaseNum_39);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_binary_lookup_switch__1664__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_35)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CodeModel_14 == ml_backend__ml_string_switch__HeadVar__2_35);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_hash_lookup_switch__1014__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_35)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CodeModel_14 == ml_backend__ml_string_switch__HeadVar__2_35);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_lookup_switch__191__1_2_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_13,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_37)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CodeModel_13 == ml_backend__ml_string_switch__HeadVar__2_37);
+
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____trie_node_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_32 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Integer ml_backend__ml_string_switch__CastY_33 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__3_3;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_32 == ml_backend__ml_string_switch__CastY_33);
+    if (ml_backend__ml_string_switch__succeeded)
+      *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ml_backend__ml_string_switch__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          {
+            MR_Word ml_backend__ml_string_switch__ArgY1_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__ArgY2_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__ArgY3_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word ml_backend__ml_string_switch__Var_30;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], &ml_backend__ml_string_switch__Var_30, ((MR_Box) (ml_backend__ml_string_switch__Var_42)), ((MR_Box) (ml_backend__ml_string_switch__ArgY1_25)));
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_30 == (MR_Integer) 0);
+            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+            if (ml_backend__ml_string_switch__succeeded)
+              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_30;
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_31;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[5], &ml_backend__ml_string_switch__Var_31, ((MR_Box) (ml_backend__ml_string_switch__Var_41)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_27)));
+                }
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_31 == (MR_Integer) 0);
+                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                if (ml_backend__ml_string_switch__succeeded)
+                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_31;
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[10], ml_backend__ml_string_switch__HeadVar__1_1, ((MR_Box) (ml_backend__ml_string_switch__Var_40)), ((MR_Box) (ml_backend__ml_string_switch__ArgY3_29)));
+                    }
+                  }
+              }
+          }
+        else
+          *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 2;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word ml_backend__ml_string_switch__Var_10;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], &ml_backend__ml_string_switch__Var_10, ((MR_Box) (ml_backend__ml_string_switch__Var_45)), ((MR_Box) (ml_backend__ml_string_switch__ArgY1_5)));
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_10 == (MR_Integer) 0);
+            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+            if (ml_backend__ml_string_switch__succeeded)
+              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_10;
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_11;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], &ml_backend__ml_string_switch__Var_11, ((MR_Box) (ml_backend__ml_string_switch__Var_44)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_7)));
+                }
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_11 == (MR_Integer) 0);
+                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                if (ml_backend__ml_string_switch__succeeded)
+                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_11;
+                else
+                  {
+                    MR_Integer ml_backend__ml_string_switch__Var_46 = (MR_Integer) ml_backend__ml_string_switch__Var_43;
+                    MR_Integer ml_backend__ml_string_switch__Var_47 = (MR_Integer) ml_backend__ml_string_switch__ArgY3_9;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(ml_backend__ml_string_switch__HeadVar__1_1, ml_backend__ml_string_switch__Var_46, ml_backend__ml_string_switch__Var_47);
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____trie_node_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_15 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__1_1;
+    MR_Integer ml_backend__ml_string_switch__CastY_16 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_15 == ml_backend__ml_string_switch__CastY_16);
+    if (ml_backend__ml_string_switch__succeeded)
+      ml_backend__ml_string_switch__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ml_backend__ml_string_switch__TypeInfo_17_17;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_18_18;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_19_19;
+        MR_Word ml_backend__ml_string_switch__ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgY1_10;
+        MR_Word ml_backend__ml_string_switch__ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_12;
+        MR_Word ml_backend__ml_string_switch__ArgX3_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_14;
+
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__ArgY3_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+            ml_backend__ml_string_switch__TypeInfo_17_17 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2];
+            {
+              ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_17_17, ((MR_Box) (ml_backend__ml_string_switch__ArgX1_9)), ((MR_Box) (ml_backend__ml_string_switch__ArgY1_10)));
+            }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__TypeInfo_18_18 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[5];
+                {
+                  ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_18_18, ((MR_Box) (ml_backend__ml_string_switch__ArgX2_11)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_12)));
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__TypeInfo_19_19 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[10];
+                    {
+                      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_19_19, ((MR_Box) (ml_backend__ml_string_switch__ArgX3_13)), ((MR_Box) (ml_backend__ml_string_switch__ArgY3_14)));
+                    }
+                  }
+              }
+          }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeInfo_20_20;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_21_21;
+        MR_Word ml_backend__ml_string_switch__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgY1_4;
+        MR_Word ml_backend__ml_string_switch__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_6;
+        MR_Word ml_backend__ml_string_switch__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_8;
+        MR_Integer ml_backend__ml_string_switch__Var_23;
+        MR_Integer ml_backend__ml_string_switch__Var_24;
+
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+            ml_backend__ml_string_switch__TypeInfo_20_20 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2];
+            {
+              ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_20_20, ((MR_Box) (ml_backend__ml_string_switch__ArgX1_3)), ((MR_Box) (ml_backend__ml_string_switch__ArgY1_4)));
+            }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__TypeInfo_21_21 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2];
+                {
+                  ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_21_21, ((MR_Box) (ml_backend__ml_string_switch__ArgX2_5)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_6)));
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__Var_23 = (MR_Integer) ml_backend__ml_string_switch__ArgX3_7;
+                    ml_backend__ml_string_switch__Var_24 = (MR_Integer) ml_backend__ml_string_switch__ArgY3_8;
+                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_23 == ml_backend__ml_string_switch__Var_24);
+                  }
+              }
+          }
+      }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_hash_search_info_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_30 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Integer ml_backend__ml_string_switch__CastY_31 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__3_3;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_30 == ml_backend__ml_string_switch__CastY_31);
+    if (ml_backend__ml_string_switch__succeeded)
+      *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__ArgX1_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word ml_backend__ml_string_switch__ArgY1_5 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word ml_backend__ml_string_switch__ArgX2_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word ml_backend__ml_string_switch__ArgY2_7 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word ml_backend__ml_string_switch__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgX7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgY7_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgX8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgY8_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgX9_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgY9_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__Var_22;
+        MR_Integer ml_backend__ml_string_switch__Var_41 = (MR_Integer) ml_backend__ml_string_switch__ArgX1_4;
+        MR_Integer ml_backend__ml_string_switch__Var_42 = (MR_Integer) ml_backend__ml_string_switch__ArgY1_5;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&ml_backend__ml_string_switch__Var_22, ml_backend__ml_string_switch__Var_41, ml_backend__ml_string_switch__Var_42);
+        }
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_22 == (MR_Integer) 0);
+        ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+        if (ml_backend__ml_string_switch__succeeded)
+          *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_22;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Var_23;
+            MR_Integer ml_backend__ml_string_switch__Var_43 = (MR_Integer) ml_backend__ml_string_switch__ArgX2_6;
+            MR_Integer ml_backend__ml_string_switch__Var_44 = (MR_Integer) ml_backend__ml_string_switch__ArgY2_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&ml_backend__ml_string_switch__Var_23, ml_backend__ml_string_switch__Var_43, ml_backend__ml_string_switch__Var_44);
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_23 == (MR_Integer) 0);
+            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+            if (ml_backend__ml_string_switch__succeeded)
+              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_23;
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_24;
+
+                {
+                  mercury__term____Compare____context_0_0(&ml_backend__ml_string_switch__Var_24, ml_backend__ml_string_switch__ArgX3_8, ml_backend__ml_string_switch__ArgY3_9);
+                }
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_24 == (MR_Integer) 0);
+                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                if (ml_backend__ml_string_switch__succeeded)
+                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_24;
+                else
+                  {
+                    MR_Word ml_backend__ml_string_switch__Var_25;
+
+                    {
+                      ml_backend__mlds____Compare____mlds_rval_0_0(&ml_backend__ml_string_switch__Var_25, ml_backend__ml_string_switch__ArgX4_10, ml_backend__ml_string_switch__ArgY4_11);
+                    }
+                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_25 == (MR_Integer) 0);
+                    ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                    if (ml_backend__ml_string_switch__succeeded)
+                      *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_25;
+                    else
+                      {
+                        MR_Word ml_backend__ml_string_switch__Var_26;
+
+                        {
+                          ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_26, ml_backend__ml_string_switch__ArgX5_12, ml_backend__ml_string_switch__ArgY5_13);
+                        }
+                        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_26 == (MR_Integer) 0);
+                        ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                        if (ml_backend__ml_string_switch__succeeded)
+                          *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_26;
+                        else
+                          {
+                            MR_Word ml_backend__ml_string_switch__Var_27;
+
+                            {
+                              ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_27, ml_backend__ml_string_switch__ArgX6_14, ml_backend__ml_string_switch__ArgY6_15);
+                            }
+                            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_27 == (MR_Integer) 0);
+                            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                            if (ml_backend__ml_string_switch__succeeded)
+                              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_27;
+                            else
+                              {
+                                MR_Word ml_backend__ml_string_switch__Var_28;
+
+                                {
+                                  mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[8], &ml_backend__ml_string_switch__Var_28, ((MR_Box) (ml_backend__ml_string_switch__ArgX7_16)), ((MR_Box) (ml_backend__ml_string_switch__ArgY7_17)));
+                                }
+                                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_28 == (MR_Integer) 0);
+                                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                                if (ml_backend__ml_string_switch__succeeded)
+                                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_28;
+                                else
+                                  {
+                                    MR_Word ml_backend__ml_string_switch__Var_29;
+
+                                    {
+                                      mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7], &ml_backend__ml_string_switch__Var_29, ((MR_Box) (ml_backend__ml_string_switch__ArgX8_18)), ((MR_Box) (ml_backend__ml_string_switch__ArgY8_19)));
+                                    }
+                                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_29 == (MR_Integer) 0);
+                                    ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                                    if (ml_backend__ml_string_switch__succeeded)
+                                      *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_29;
+                                    else
+                                      {
+                                        {
+                                          mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[9], ml_backend__ml_string_switch__HeadVar__1_1, ((MR_Box) (ml_backend__ml_string_switch__ArgX9_20)), ((MR_Box) (ml_backend__ml_string_switch__ArgY9_21)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_hash_search_info_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_21 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__1_1;
+    MR_Integer ml_backend__ml_string_switch__CastY_22 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_21 == ml_backend__ml_string_switch__CastY_22);
+    if (ml_backend__ml_string_switch__succeeded)
+      ml_backend__ml_string_switch__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeInfo_27_27;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_28_28;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_29_29;
+        MR_Word ml_backend__ml_string_switch__ArgX1_3 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word ml_backend__ml_string_switch__ArgY1_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word ml_backend__ml_string_switch__ArgX2_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word ml_backend__ml_string_switch__ArgY2_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word ml_backend__ml_string_switch__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgX7_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgY7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgX8_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgY8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgX9_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgY9_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 7)));
+
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__ArgX1_3 == ml_backend__ml_string_switch__ArgY1_4);
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__ArgX2_5 == ml_backend__ml_string_switch__ArgY2_6);
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                {
+                  ml_backend__ml_string_switch__succeeded = mercury__term____Unify____context_0_0(ml_backend__ml_string_switch__ArgX3_7, ml_backend__ml_string_switch__ArgY3_8);
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    {
+                      ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_rval_0_0(ml_backend__ml_string_switch__ArgX4_9, ml_backend__ml_string_switch__ArgY4_10);
+                    }
+                    if (ml_backend__ml_string_switch__succeeded)
+                      {
+                        {
+                          ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX5_11, ml_backend__ml_string_switch__ArgY5_12);
+                        }
+                        if (ml_backend__ml_string_switch__succeeded)
+                          {
+                            {
+                              ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX6_13, ml_backend__ml_string_switch__ArgY6_14);
+                            }
+                            if (ml_backend__ml_string_switch__succeeded)
+                              {
+                                ml_backend__ml_string_switch__TypeInfo_27_27 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[8];
+                                {
+                                  ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_27_27, ((MR_Box) (ml_backend__ml_string_switch__ArgX7_15)), ((MR_Box) (ml_backend__ml_string_switch__ArgY7_16)));
+                                }
+                                if (ml_backend__ml_string_switch__succeeded)
+                                  {
+                                    ml_backend__ml_string_switch__TypeInfo_28_28 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7];
+                                    {
+                                      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_28_28, ((MR_Box) (ml_backend__ml_string_switch__ArgX8_17)), ((MR_Box) (ml_backend__ml_string_switch__ArgY8_18)));
+                                    }
+                                    if (ml_backend__ml_string_switch__succeeded)
+                                      {
+                                        ml_backend__ml_string_switch__TypeInfo_29_29 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[9];
+                                        {
+                                          ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_29_29, ((MR_Box) (ml_backend__ml_string_switch__ArgX9_19)), ((MR_Box) (ml_backend__ml_string_switch__ArgY9_20)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____ml_binary_search_info_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_30 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Integer ml_backend__ml_string_switch__CastY_31 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__3_3;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_30 == ml_backend__ml_string_switch__CastY_31);
+    if (ml_backend__ml_string_switch__succeeded)
+      *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgX7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgY7_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgX8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgY8_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgX9_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Word ml_backend__ml_string_switch__ArgY9_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 8)));
+        MR_Word ml_backend__ml_string_switch__Var_22;
+        MR_Integer ml_backend__ml_string_switch__Var_41 = (MR_Integer) ml_backend__ml_string_switch__ArgX1_4;
+        MR_Integer ml_backend__ml_string_switch__Var_42 = (MR_Integer) ml_backend__ml_string_switch__ArgY1_5;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&ml_backend__ml_string_switch__Var_22, ml_backend__ml_string_switch__Var_41, ml_backend__ml_string_switch__Var_42);
+        }
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_22 == (MR_Integer) 0);
+        ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+        if (ml_backend__ml_string_switch__succeeded)
+          *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_22;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Var_23;
+
+            {
+              ml_backend__mlds____Compare____mlds_rval_0_0(&ml_backend__ml_string_switch__Var_23, ml_backend__ml_string_switch__ArgX2_6, ml_backend__ml_string_switch__ArgY2_7);
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_23 == (MR_Integer) 0);
+            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+            if (ml_backend__ml_string_switch__succeeded)
+              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_23;
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_24;
+
+                {
+                  ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_24, ml_backend__ml_string_switch__ArgX3_8, ml_backend__ml_string_switch__ArgY3_9);
+                }
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_24 == (MR_Integer) 0);
+                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                if (ml_backend__ml_string_switch__succeeded)
+                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_24;
+                else
+                  {
+                    MR_Word ml_backend__ml_string_switch__Var_25;
+
+                    {
+                      ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_25, ml_backend__ml_string_switch__ArgX4_10, ml_backend__ml_string_switch__ArgY4_11);
+                    }
+                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_25 == (MR_Integer) 0);
+                    ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                    if (ml_backend__ml_string_switch__succeeded)
+                      *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_25;
+                    else
+                      {
+                        MR_Word ml_backend__ml_string_switch__Var_26;
+
+                        {
+                          ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_26, ml_backend__ml_string_switch__ArgX5_12, ml_backend__ml_string_switch__ArgY5_13);
+                        }
+                        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_26 == (MR_Integer) 0);
+                        ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                        if (ml_backend__ml_string_switch__succeeded)
+                          *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_26;
+                        else
+                          {
+                            MR_Word ml_backend__ml_string_switch__Var_27;
+
+                            {
+                              ml_backend__mlds____Compare____mlds_lval_0_0(&ml_backend__ml_string_switch__Var_27, ml_backend__ml_string_switch__ArgX6_14, ml_backend__ml_string_switch__ArgY6_15);
+                            }
+                            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_27 == (MR_Integer) 0);
+                            ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                            if (ml_backend__ml_string_switch__succeeded)
+                              *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_27;
+                            else
+                              {
+                                MR_Word ml_backend__ml_string_switch__Var_28;
+
+                                {
+                                  mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[8], &ml_backend__ml_string_switch__Var_28, ((MR_Box) (ml_backend__ml_string_switch__ArgX7_16)), ((MR_Box) (ml_backend__ml_string_switch__ArgY7_17)));
+                                }
+                                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_28 == (MR_Integer) 0);
+                                ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                                if (ml_backend__ml_string_switch__succeeded)
+                                  *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_28;
+                                else
+                                  {
+                                    MR_Word ml_backend__ml_string_switch__Var_29;
+
+                                    {
+                                      mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7], &ml_backend__ml_string_switch__Var_29, ((MR_Box) (ml_backend__ml_string_switch__ArgX8_18)), ((MR_Box) (ml_backend__ml_string_switch__ArgY8_19)));
+                                    }
+                                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_29 == (MR_Integer) 0);
+                                    ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                                    if (ml_backend__ml_string_switch__succeeded)
+                                      *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_29;
+                                    else
+                                      {
+                                        {
+                                          mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[9], ml_backend__ml_string_switch__HeadVar__1_1, ((MR_Box) (ml_backend__ml_string_switch__ArgX9_20)), ((MR_Box) (ml_backend__ml_string_switch__ArgY9_21)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____ml_binary_search_info_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_21 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__1_1;
+    MR_Integer ml_backend__ml_string_switch__CastY_22 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_21 == ml_backend__ml_string_switch__CastY_22);
+    if (ml_backend__ml_string_switch__succeeded)
+      ml_backend__ml_string_switch__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeInfo_28_28;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_29_29;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_30_30;
+        MR_Word ml_backend__ml_string_switch__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ml_backend__ml_string_switch__ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ml_backend__ml_string_switch__ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word ml_backend__ml_string_switch__ArgX7_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgY7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word ml_backend__ml_string_switch__ArgX8_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgY8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word ml_backend__ml_string_switch__ArgX9_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 8)));
+        MR_Word ml_backend__ml_string_switch__ArgY9_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 8)));
+
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__ArgX1_3 == ml_backend__ml_string_switch__ArgY1_4);
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            {
+              ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_rval_0_0(ml_backend__ml_string_switch__ArgX2_5, ml_backend__ml_string_switch__ArgY2_6);
+            }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                {
+                  ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX3_7, ml_backend__ml_string_switch__ArgY3_8);
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    {
+                      ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX4_9, ml_backend__ml_string_switch__ArgY4_10);
+                    }
+                    if (ml_backend__ml_string_switch__succeeded)
+                      {
+                        {
+                          ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX5_11, ml_backend__ml_string_switch__ArgY5_12);
+                        }
+                        if (ml_backend__ml_string_switch__succeeded)
+                          {
+                            {
+                              ml_backend__ml_string_switch__succeeded = ml_backend__mlds____Unify____mlds_lval_0_0(ml_backend__ml_string_switch__ArgX6_13, ml_backend__ml_string_switch__ArgY6_14);
+                            }
+                            if (ml_backend__ml_string_switch__succeeded)
+                              {
+                                ml_backend__ml_string_switch__TypeInfo_28_28 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[8];
+                                {
+                                  ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_28_28, ((MR_Box) (ml_backend__ml_string_switch__ArgX7_15)), ((MR_Box) (ml_backend__ml_string_switch__ArgY7_16)));
+                                }
+                                if (ml_backend__ml_string_switch__succeeded)
+                                  {
+                                    ml_backend__ml_string_switch__TypeInfo_29_29 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[7];
+                                    {
+                                      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_29_29, ((MR_Box) (ml_backend__ml_string_switch__ArgX8_17)), ((MR_Box) (ml_backend__ml_string_switch__ArgY8_18)));
+                                    }
+                                    if (ml_backend__ml_string_switch__succeeded)
+                                      {
+                                        ml_backend__ml_string_switch__TypeInfo_30_30 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[9];
+                                        {
+                                          ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_30_30, ((MR_Box) (ml_backend__ml_string_switch__ArgX9_19)), ((MR_Box) (ml_backend__ml_string_switch__ArgY9_20)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slots_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_9 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Integer ml_backend__ml_string_switch__CastY_10 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__3_3;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_9 == ml_backend__ml_string_switch__CastY_10);
+    if (ml_backend__ml_string_switch__succeeded)
+      *ml_backend__ml_string_switch__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer ml_backend__ml_string_switch__ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer ml_backend__ml_string_switch__ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&ml_backend__ml_string_switch__Var_8, ml_backend__ml_string_switch__ArgX1_4, ml_backend__ml_string_switch__ArgY1_5);
+        }
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_8 == (MR_Integer) 0);
+        ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+        if (ml_backend__ml_string_switch__succeeded)
+          *ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2], ml_backend__ml_string_switch__HeadVar__1_1, ((MR_Box) (ml_backend__ml_string_switch__ArgX2_6)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slots_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__CastX_7 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__1_1;
+    MR_Integer ml_backend__ml_string_switch__CastY_8 = (MR_Integer) ml_backend__ml_string_switch__HeadVar__2_2;
+
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__CastX_7 == ml_backend__ml_string_switch__CastY_8);
+    if (ml_backend__ml_string_switch__succeeded)
+      ml_backend__ml_string_switch__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeInfo_9_9;
+        MR_Integer ml_backend__ml_string_switch__ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer ml_backend__ml_string_switch__ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__ArgX1_3 == ml_backend__ml_string_switch__ArgY1_4);
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__TypeInfo_9_9 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[2];
+            {
+              ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0(ml_backend__ml_string_switch__TypeInfo_9_9, ((MR_Box) (ml_backend__ml_string_switch__ArgX2_5)), ((MR_Box) (ml_backend__ml_string_switch__ArgY2_6)));
+            }
+          }
+      }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch____Compare____hash_slot_rev_map_0_0(
+  MR_Word * ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__Cast_HeadVar1_4 = ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Word ml_backend__ml_string_switch__Cast_HeadVar2_5 = ml_backend__ml_string_switch__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[4], ml_backend__ml_string_switch__HeadVar__1_1, ((MR_Box) (ml_backend__ml_string_switch__Cast_HeadVar1_4)), ((MR_Box) (ml_backend__ml_string_switch__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch____Unify____hash_slot_rev_map_0_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__Cast_HeadVar1_3 = ml_backend__ml_string_switch__HeadVar__1_1;
+    MR_Word ml_backend__ml_string_switch__Cast_HeadVar2_4 = ml_backend__ml_string_switch__HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[4], ((MR_Box) (ml_backend__ml_string_switch__Cast_HeadVar1_3)), ((MR_Box) (ml_backend__ml_string_switch__Cast_HeadVar2_4)));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+ml_backend__ml_string_switch__make_hash_match_1_f_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__HeadVar__2_2;
+    MR_Word ml_backend__ml_string_switch__Var_4;
+    MR_Word ml_backend__ml_string_switch__Var_5;
+
+    {
+      ml_backend__ml_string_switch__Var_5 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_5, 0) = ((MR_Box) (ml_backend__ml_string_switch__Slot_3));
+    }
+    {
+      ml_backend__ml_string_switch__Var_4 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_4, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_4, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_5));
+    }
+    {
+      ml_backend__ml_string_switch__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadVar__2_2, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_4));
+    }
+    return ml_backend__ml_string_switch__HeadVar__2_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv0_String_4;
+
+    {
+      ml_backend__ml_string_switch__conv0_String_4 = ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_String_4));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_10,
+  MR_Word ml_backend__ml_string_switch__TaggedCase_11,
+  MR_Word * ml_backend__ml_string_switch__CaseId_12,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_19,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_21,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_22)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__MainTaggedConsId_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_11, (MR_Integer) 0)));
+    MR_Word ml_backend__ml_string_switch__OtherTaggedConsIds_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_11, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch__Goal_38;
+    MR_Word ml_backend__ml_string_switch__GoalStmt_39;
+    MR_String ml_backend__ml_string_switch__MainString_40;
+    MR_Word ml_backend__ml_string_switch__OtherStrings_41;
+    MR_String ml_backend__ml_string_switch__Strings_42;
+    MR_String ml_backend__ml_string_switch__CommentString_43;
+    MR_Word ml_backend__ml_string_switch__GoalInfo_45;
+    MR_Word ml_backend__ml_string_switch__Context_46;
+    MR_Word ml_backend__ml_string_switch__Comment_47;
+    MR_Word ml_backend__ml_string_switch__CaseStmt_48;
+    MR_Word ml_backend__ml_string_switch__Var_52;
+    MR_Word ml_backend__ml_string_switch__Var_54;
+    MR_Word ml_backend__ml_string_switch__Var_56;
+    MR_Word ml_backend__ml_string_switch__Var_57;
+    MR_Word ml_backend__ml_string_switch___GoalExpr_44;
+
+    *ml_backend__ml_string_switch__CaseId_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_11, (MR_Integer) 2)));
+    ml_backend__ml_string_switch__Goal_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_11, (MR_Integer) 3)));
+    {
+      ml_backend__ml_code_gen__ml_gen_goal_as_branch_block_5_p_0(ml_backend__ml_string_switch__CodeModel_10, ml_backend__ml_string_switch__Goal_38, &ml_backend__ml_string_switch__GoalStmt_39, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_21, ml_backend__ml_string_switch__STATE_VARIABLE_Info_22);
+    }
+    {
+      ml_backend__ml_string_switch__MainString_40 = ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(ml_backend__ml_string_switch__MainTaggedConsId_35);
+    }
+    {
+      ml_backend__ml_string_switch__OtherStrings_41 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[30], ml_backend__ml_string_switch__OtherTaggedConsIds_36);
+    }
+    {
+      ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__MainString_40));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__OtherStrings_41));
+    }
+    {
+      ml_backend__ml_string_switch__Strings_42 = mercury__string__join_list_2_f_0((MR_String) ", ", ml_backend__ml_string_switch__Var_52);
+    }
+    {
+      ml_backend__ml_string_switch__CommentString_43 = mercury__string__f_43_43_2_f_0((MR_String) "case ", ml_backend__ml_string_switch__Strings_42);
+    }
+    ml_backend__ml_string_switch___GoalExpr_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Goal_38, (MR_Integer) 0)));
+    ml_backend__ml_string_switch__GoalInfo_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Goal_38, (MR_Integer) 1)));
+    {
+      ml_backend__ml_string_switch__Context_46 = hlds__hlds_goal__goal_info_get_context_1_f_0(ml_backend__ml_string_switch__GoalInfo_45);
+    }
+    {
+      ml_backend__ml_string_switch__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_54, 0) = ((MR_Box) (ml_backend__ml_string_switch__CommentString_43));
+    }
+    {
+      ml_backend__ml_string_switch__Comment_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_46));
+    }
+    {
+      ml_backend__ml_string_switch__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 0) = ((MR_Box) (ml_backend__ml_string_switch__GoalStmt_39));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 0) = ((MR_Box) (ml_backend__ml_string_switch__Comment_47));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_57));
+    }
+    {
+      ml_backend__ml_string_switch__CaseStmt_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_56));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_46));
+    }
+    {
+      mercury__map__det_insert_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ((MR_Box) (*ml_backend__ml_string_switch__CaseId_12)), ((MR_Box) (ml_backend__ml_string_switch__CaseStmt_48)), ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_19, ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_20);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__get_string_tag_2_p_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), &ml_backend__ml_string_switch__conv1_HeadVar__2_2);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_binary_lookup_switch__1664__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__get_string_tag_2_p_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), &ml_backend__ml_string_switch__conv0_HeadVar__2_2);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word ml_backend__ml_string_switch__TaggedCases_12,
+  MR_Word ml_backend__ml_string_switch__LookupSwitchInfo_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__Context_16,
+  MR_Word * ml_backend__ml_string_switch__Defns_17,
+  MR_Word * ml_backend__ml_string_switch__Stmts_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_31)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__CaseIdConsts_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 0)));
+    MR_Word ml_backend__ml_string_switch__OutVars_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch__OutTypes_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 2)));
+
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__CaseIdConsts_20)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_42_42 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_43_43 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0];
+        MR_Word ml_backend__ml_string_switch__CaseIdValueMap_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdConsts_20, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__StrValueMap_24;
+        MR_Word ml_backend__ml_string_switch__StrValues_25;
+
+        {
+          ml_backend__ml_lookup_switch__ml_case_id_soln_consts_to_tag_soln_consts_4_p_0(ml_backend__ml_string_switch__TypeCtorInfo_42_42, ml_backend__ml_string_switch__TypeInfo_43_43, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[28], ml_backend__ml_string_switch__TaggedCases_12, ml_backend__ml_string_switch__CaseIdValueMap_23, &ml_backend__ml_string_switch__StrValueMap_24);
+        }
+        {
+          mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_42_42, ml_backend__ml_string_switch__TypeInfo_43_43, ml_backend__ml_string_switch__StrValueMap_24, &ml_backend__ml_string_switch__StrValues_25);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_binary_simple_lookup_switch_11_p_0(ml_backend__ml_string_switch__VarRval_11, ml_backend__ml_string_switch__StrValues_25, ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__OutVars_21, ml_backend__ml_string_switch__OutTypes_22, ml_backend__ml_string_switch__Context_16, ml_backend__ml_string_switch__Defns_17, ml_backend__ml_string_switch__Stmts_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30, ml_backend__ml_string_switch__STATE_VARIABLE_Info_31);
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_47_47;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_48_48;
+        MR_Word ml_backend__ml_string_switch__CaseIdSolnMap_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseIdConsts_20, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__StrSolnMap_28;
+        MR_Word ml_backend__ml_string_switch__StrSolns_29;
+        MR_Word ml_backend__ml_string_switch__Var_32;
+
+        {
+          ml_backend__ml_string_switch__Var_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[5]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_10_p_0_2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 3) = ((MR_Box) (ml_backend__ml_string_switch__CodeModel_14));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 4) = ((MR_Box) ((MR_Integer) 2));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_32, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_lookup_switch\'/10", (MR_String) "CodeModel != model_non");
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_47_47 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+        ml_backend__ml_string_switch__TypeInfo_48_48 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[1];
+        {
+          ml_backend__ml_lookup_switch__ml_case_id_soln_consts_to_tag_soln_consts_4_p_0(ml_backend__ml_string_switch__TypeCtorInfo_47_47, ml_backend__ml_string_switch__TypeInfo_48_48, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[29], ml_backend__ml_string_switch__TaggedCases_12, ml_backend__ml_string_switch__CaseIdSolnMap_26, &ml_backend__ml_string_switch__StrSolnMap_28);
+        }
+        {
+          mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_47_47, ml_backend__ml_string_switch__TypeInfo_48_48, ml_backend__ml_string_switch__StrSolnMap_28, &ml_backend__ml_string_switch__StrSolns_29);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_binary_several_soln_lookup_switch_11_p_0(ml_backend__ml_string_switch__VarRval_11, ml_backend__ml_string_switch__StrSolns_29, ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__OutVars_21, ml_backend__ml_string_switch__OutTypes_22, ml_backend__ml_string_switch__Context_16, ml_backend__ml_string_switch__Defns_17, ml_backend__ml_string_switch__Stmts_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30, ml_backend__ml_string_switch__STATE_VARIABLE_Info_31);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_several_soln_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseSolns0_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_70)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_89_89;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_22;
+    MR_Word ml_backend__ml_string_switch__ModuleName_23;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_24;
+    MR_Word ml_backend__ml_string_switch__Target_25;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_26;
+    MR_Word ml_backend__ml_string_switch__MLDS_IntType_27;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldTypes_28;
+    MR_Word ml_backend__ml_string_switch__CaseSolns_30;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_31;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructTypeNum_32;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructType_33;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldIds_34;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_35;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructTypeNum_36;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructType_37;
+    MR_Word ml_backend__ml_string_switch__LaterSolnOutFieldIds_38;
+    MR_Word ml_backend__ml_string_switch__GlobalData2_39;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_44;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldId_45;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_46;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIds_47;
+    MR_Word ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializersCord_49;
+    MR_Integer ml_backend__ml_string_switch__FirstSolnTableSize_50;
+    MR_Word ml_backend__ml_string_switch__FirstSolnRowInitializers_51;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_52;
+    MR_Word ml_backend__ml_string_switch__FirstSolnVectorCommon_53;
+    MR_Word ml_backend__ml_string_switch__GlobalData3_54;
+    MR_Word ml_backend__ml_string_switch__LaterSolnVectorCommon_55;
+    MR_Word ml_backend__ml_string_switch__GlobalData_56;
+    MR_Word ml_backend__ml_string_switch__BinarySearchInfo_57;
+    MR_Word ml_backend__ml_string_switch__MidVarLval_62;
+    MR_Word ml_backend__ml_string_switch__MatchDefns_66;
+    MR_Word ml_backend__ml_string_switch__SuccessStmts_67;
+    MR_Word ml_backend__ml_string_switch__Var_71;
+    MR_Word ml_backend__ml_string_switch__Var_72;
+    MR_Word ml_backend__ml_string_switch__Var_73;
+    MR_Word ml_backend__ml_string_switch__Var_79;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_82_82;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_83_83;
+    MR_Word ml_backend__ml_string_switch__Var_84;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86;
+    MR_Word ml_backend__ml_string_switch__StringFieldIdPrime_40;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43;
+    MR_Word ml_backend__ml_string_switch__Var_74;
+    MR_Word ml_backend__ml_string_switch__Var_75;
+    MR_Word ml_backend__ml_string_switch___CodeModel_58;
+    MR_Word ml_backend__ml_string_switch___VarRval_59;
+    MR_Word ml_backend__ml_string_switch___LoVarLval_60;
+    MR_Word ml_backend__ml_string_switch___HiVarLval_61;
+    MR_Word ml_backend__ml_string_switch___ResultVarLval_63;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopLval_64;
+    MR_Word ml_backend__ml_string_switch___FailStmts_65;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69, &ml_backend__ml_string_switch__ModuleInfo_22);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_22, &ml_backend__ml_string_switch__ModuleName_23);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_24 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_23);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69, &ml_backend__ml_string_switch__Target_25);
+    }
+    {
+      ml_backend__ml_string_switch__Var_71 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_26 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_22, ml_backend__ml_string_switch__Var_71);
+    }
+    ml_backend__ml_string_switch__MLDS_IntType_27 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    {
+      ml_backend__ml_string_switch__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_73, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_27));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_73, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+    }
+    {
+      ml_backend__ml_string_switch__Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_27));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_73));
+    }
+    {
+      ml_backend__ml_string_switch__FirstSolnFieldTypes_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_28, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_26));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_28, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_72));
+    }
+    {
+      mercury__list__sort_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[3], ml_backend__ml_string_switch__CaseSolns0_13, &ml_backend__ml_string_switch__CaseSolns_30);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69, &ml_backend__ml_string_switch__GlobalData0_31);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_25, ml_backend__ml_string_switch__FirstSolnFieldTypes_28, &ml_backend__ml_string_switch__FirstSolnStructTypeNum_32, &ml_backend__ml_string_switch__FirstSolnStructType_33, &ml_backend__ml_string_switch__FirstSolnFieldIds_34, ml_backend__ml_string_switch__GlobalData0_31, &ml_backend__ml_string_switch__GlobalData1_35);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_25, ml_backend__ml_string_switch__OutTypes_17, &ml_backend__ml_string_switch__LaterSolnStructTypeNum_36, &ml_backend__ml_string_switch__LaterSolnStructType_37, &ml_backend__ml_string_switch__LaterSolnOutFieldIds_38, ml_backend__ml_string_switch__GlobalData1_35, &ml_backend__ml_string_switch__GlobalData2_39);
+    }
+    ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__FirstSolnFieldIds_34)) == (MR_mktag((MR_Integer) 1)));
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__StringFieldIdPrime_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_34, (MR_Integer) 0)));
+        ml_backend__ml_string_switch__Var_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_34, (MR_Integer) 1)));
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_74)) == (MR_mktag((MR_Integer) 1)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_74, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_74, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_75)) == (MR_mktag((MR_Integer) 1)));
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_75, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_75, (MR_Integer) 1)));
+              }
+          }
+      }
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__StringFieldId_44 = ml_backend__ml_string_switch__StringFieldIdPrime_40;
+        ml_backend__ml_string_switch__NumLaterSolnsFieldId_45 = ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41;
+        ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_46 = ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42;
+        ml_backend__ml_string_switch__FirstSolnOutFieldIds_47 = ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_several_soln_lookup_switch\'/11", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_89_89 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+    {
+      ml_backend__ml_string_switch__Var_79 = mercury__cord__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_89_89);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0(ml_backend__ml_string_switch__CaseSolns_30, ml_backend__ml_string_switch__FirstSolnStructType_33, ml_backend__ml_string_switch__LaterSolnStructType_37, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48, ml_backend__ml_string_switch__Var_79, &ml_backend__ml_string_switch__LaterSolnRowInitializersCord_49, (MR_Integer) 0, &ml_backend__ml_string_switch__FirstSolnTableSize_50, (MR_Integer) 0);
+    }
+    {
+      mercury__list__reverse_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_89_89, ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48, &ml_backend__ml_string_switch__FirstSolnRowInitializers_51);
+    }
+    {
+      ml_backend__ml_string_switch__LaterSolnRowInitializers_52 = mercury__cord__list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_89_89, ml_backend__ml_string_switch__LaterSolnRowInitializersCord_49);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__FirstSolnStructTypeNum_32, ml_backend__ml_string_switch__FirstSolnRowInitializers_51, &ml_backend__ml_string_switch__FirstSolnVectorCommon_53, ml_backend__ml_string_switch__GlobalData2_39, &ml_backend__ml_string_switch__GlobalData3_54);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__LaterSolnStructTypeNum_36, ml_backend__ml_string_switch__LaterSolnRowInitializers_52, &ml_backend__ml_string_switch__LaterSolnVectorCommon_55, ml_backend__ml_string_switch__GlobalData3_54, &ml_backend__ml_string_switch__GlobalData_56);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_56, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_69, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_82_82);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_vars_7_p_0(ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__VarRval_12, &ml_backend__ml_string_switch__BinarySearchInfo_57, ml_backend__ml_string_switch__STATE_VARIABLE_Info_82_82, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_83_83);
+    }
+    ml_backend__ml_string_switch___CodeModel_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 0)));
+    ml_backend__ml_string_switch___VarRval_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___LoVarLval_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 2)));
+    ml_backend__ml_string_switch___HiVarLval_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 3)));
+    ml_backend__ml_string_switch__MidVarLval_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___ResultVarLval_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___MaybeStopLoopLval_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 6)));
+    ml_backend__ml_string_switch___FailStmts_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 7)));
+    *ml_backend__ml_string_switch__Defns_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_57, (MR_Integer) 8)));
+    {
+      ml_backend__ml_string_switch__Var_84 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_84, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_62));
+    }
+    {
+      ml_backend__ml_lookup_switch__ml_gen_several_soln_lookup_code_17_p_0(ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Var_84, ml_backend__ml_string_switch__OutVars_16, ml_backend__ml_string_switch__OutTypes_17, ml_backend__ml_string_switch__FirstSolnStructType_33, ml_backend__ml_string_switch__LaterSolnStructType_37, ml_backend__ml_string_switch__NumLaterSolnsFieldId_45, ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_46, ml_backend__ml_string_switch__FirstSolnOutFieldIds_47, ml_backend__ml_string_switch__LaterSolnOutFieldIds_38, ml_backend__ml_string_switch__FirstSolnVectorCommon_53, ml_backend__ml_string_switch__LaterSolnVectorCommon_55, (MR_Integer) 1, &ml_backend__ml_string_switch__MatchDefns_66, &ml_backend__ml_string_switch__SuccessStmts_67, ml_backend__ml_string_switch__STATE_VARIABLE_Info_83_83, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_12_p_0(ml_backend__ml_string_switch__Context_18, (MR_String) "binary string several soln lookup switch", ml_backend__ml_string_switch__BinarySearchInfo_57, ml_backend__ml_string_switch__FirstSolnVectorCommon_53, ml_backend__ml_string_switch__FirstSolnTableSize_50, ml_backend__ml_string_switch__FirstSolnStructType_33, ml_backend__ml_string_switch__StringFieldId_44, ml_backend__ml_string_switch__MatchDefns_66, ml_backend__ml_string_switch__SuccessStmts_67, ml_backend__ml_string_switch__Stmts_20, ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86, ml_backend__ml_string_switch__STATE_VARIABLE_Info_70);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv2_HeadVar__3_3;
+
+    {
+      ml_backend__ml_string_switch__conv2_HeadVar__3_3 = ml_backend__ml_lookup_switch__ml_construct_later_soln_row_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv2_HeadVar__3_3));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_4,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_5,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_7,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_0_8,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_9,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__10_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_9 = ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_0_8;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_7 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_5 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_4;
+          }
+        else
+          {
+            MR_String ml_backend__ml_string_switch__Str_23;
+            MR_Word ml_backend__ml_string_switch__Solns_24;
+            MR_Word ml_backend__ml_string_switch__StrSolns_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__StrRval_32;
+            MR_Word ml_backend__ml_string_switch__FirstSolnRowInitializer_36;
+            MR_Word ml_backend__ml_string_switch__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Var_48;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_56_56;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_58_58;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_67_67;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_68_68;
+
+            ml_backend__ml_string_switch__Str_23 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_47, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__Solns_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_47, (MR_Integer) 1)));
+            {
+              ml_backend__ml_string_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__Str_23));
+            }
+            {
+              ml_backend__ml_string_switch__StrRval_32 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_32, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_48));
+            }
+            if (((MR_tag((MR_Word) ml_backend__ml_string_switch__Solns_24)) == (MR_mktag((MR_Integer) 0))))
+              {
+                MR_Word ml_backend__ml_string_switch__FirstSolnRvals_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 0)));
+                MR_Word ml_backend__ml_string_switch__NumLaterSolnsInitializer_34;
+                MR_Word ml_backend__ml_string_switch__FirstLaterSlotInitializer_35;
+                MR_Word ml_backend__ml_string_switch__Var_61;
+                MR_Word ml_backend__ml_string_switch__Var_62;
+                MR_Word ml_backend__ml_string_switch__Var_63;
+                MR_Word ml_backend__ml_string_switch__Var_64;
+                MR_Word ml_backend__ml_string_switch__Var_65;
+
+                {
+                  ml_backend__ml_string_switch__NumLaterSolnsInitializer_34 = ml_backend__ml_util__gen_init_int_1_f_0((MR_Integer) 0);
+                }
+                {
+                  ml_backend__ml_string_switch__FirstLaterSlotInitializer_35 = ml_backend__ml_util__gen_init_int_1_f_0((MR_Integer) -1);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 0) = ((MR_Box) (ml_backend__ml_string_switch__StrRval_32));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_65 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[26], ml_backend__ml_string_switch__FirstSolnRvals_33);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstLaterSlotInitializer_35));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_65));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolnsInitializer_34));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_64));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_61, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_62));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_61, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+                }
+                {
+                  ml_backend__ml_string_switch__FirstSolnRowInitializer_36 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_2));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_36, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+                }
+                ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_56_56 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6;
+                ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_58_58 = ml_backend__ml_string_switch__HeadVar__10_10;
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__TypeInfo_80_80 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0];
+                MR_Word ml_backend__ml_string_switch__TypeCtorInfo_82_82;
+                MR_Word ml_backend__ml_string_switch__LaterSolns_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 1)));
+                MR_Integer ml_backend__ml_string_switch__NumLaterSolns_38;
+                MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_39;
+                MR_Word ml_backend__ml_string_switch__Var_49;
+                MR_Word ml_backend__ml_string_switch__Var_50;
+                MR_Word ml_backend__ml_string_switch__Var_51;
+                MR_Word ml_backend__ml_string_switch__Var_52;
+                MR_Word ml_backend__ml_string_switch__Var_53;
+                MR_Word ml_backend__ml_string_switch__Var_55;
+                MR_Word ml_backend__ml_string_switch__Var_57;
+                MR_Word ml_backend__ml_string_switch__FirstSolnRvals_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 0)));
+                MR_Word ml_backend__ml_string_switch__NumLaterSolnsInitializer_74;
+                MR_Word ml_backend__ml_string_switch__FirstLaterSlotInitializer_75;
+
+                {
+                  mercury__list__length_2_p_0(ml_backend__ml_string_switch__TypeInfo_80_80, ml_backend__ml_string_switch__LaterSolns_37, &ml_backend__ml_string_switch__NumLaterSolns_38);
+                }
+                {
+                  ml_backend__ml_string_switch__NumLaterSolnsInitializer_74 = ml_backend__ml_util__gen_init_int_1_f_0(ml_backend__ml_string_switch__NumLaterSolns_38);
+                }
+                {
+                  ml_backend__ml_string_switch__FirstLaterSlotInitializer_75 = ml_backend__ml_util__gen_init_int_1_f_0(ml_backend__ml_string_switch__HeadVar__10_10);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__StrRval_32));
+                }
+                ml_backend__ml_string_switch__TypeCtorInfo_82_82 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+                {
+                  ml_backend__ml_string_switch__Var_53 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, ml_backend__ml_string_switch__TypeCtorInfo_82_82, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[27], ml_backend__ml_string_switch__FirstSolnRvals_73);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstLaterSlotInitializer_75));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_53));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolnsInitializer_74));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_52));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_50));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_51));
+                }
+                {
+                  ml_backend__ml_string_switch__FirstSolnRowInitializer_36 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_2));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_36, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_49));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_55 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_55, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_6[0]));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_55, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_binary_several_lookup_initializers_10_p_0_3));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_55, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_55, 3) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__3_3));
+                }
+                {
+                  ml_backend__ml_string_switch__LaterSolnRowInitializers_39 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeInfo_80_80, ml_backend__ml_string_switch__TypeCtorInfo_82_82, ml_backend__ml_string_switch__Var_55, ml_backend__ml_string_switch__LaterSolns_37);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_57 = mercury__cord__from_list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_82_82, ml_backend__ml_string_switch__LaterSolnRowInitializers_39);
+                }
+                {
+                  ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_56_56 = mercury__cord__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_82_82, ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6, ml_backend__ml_string_switch__Var_57);
+                }
+                ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_58_58 = (ml_backend__ml_string_switch__HeadVar__10_10 + ml_backend__ml_string_switch__NumLaterSolns_38);
+              }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_67_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_67_67, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnRowInitializer_36));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_67_67, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_4));
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_68_68 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_0_8 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__StrSolns_25;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_4 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_67_67;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_6 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_56_56;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurFirstSolnIndex_0_8 = ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_68_68;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_HeadVar__10_10 = ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_58_58;
+
+              ml_backend__ml_string_switch__HeadVar__10_10 = ml_backend__ml_string_switch__next_value_of_HeadVar__10_10;
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurFirstSolnIndex_0_8 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurFirstSolnIndex_0_8;
+              ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_6 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_6;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_4 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_4;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_simple_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseValues0_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_56)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_22;
+    MR_Word ml_backend__ml_string_switch__ModuleName_23;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_24;
+    MR_Word ml_backend__ml_string_switch__Target_25;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_26;
+    MR_Word ml_backend__ml_string_switch__MLDS_ArgTypes_27;
+    MR_Word ml_backend__ml_string_switch__CaseValues_28;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_29;
+    MR_Word ml_backend__ml_string_switch__StructTypeNum_30;
+    MR_Word ml_backend__ml_string_switch__StructType_31;
+    MR_Word ml_backend__ml_string_switch__FieldIds_32;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_33;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_34;
+    MR_Word ml_backend__ml_string_switch__OutFieldIds_35;
+    MR_Word ml_backend__ml_string_switch__RevRowInitializers_36;
+    MR_Integer ml_backend__ml_string_switch__TableSize_37;
+    MR_Word ml_backend__ml_string_switch__RowInitializers_38;
+    MR_Word ml_backend__ml_string_switch__VectorCommon_39;
+    MR_Word ml_backend__ml_string_switch__GlobalData_40;
+    MR_Word ml_backend__ml_string_switch__BinarySearchInfo_41;
+    MR_Word ml_backend__ml_string_switch__MidVarLval_46;
+    MR_Word ml_backend__ml_string_switch__MidVarRval_50;
+    MR_Word ml_backend__ml_string_switch__GetArgStmts_51;
+    MR_Word ml_backend__ml_string_switch__MatchStmts_52;
+    MR_Word ml_backend__ml_string_switch__Var_57;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_62_62;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_63_63;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64;
+    MR_Word ml_backend__ml_string_switch___CodeModel_42;
+    MR_Word ml_backend__ml_string_switch___VarRval_43;
+    MR_Word ml_backend__ml_string_switch___LoVarLval_44;
+    MR_Word ml_backend__ml_string_switch___HiVarLval_45;
+    MR_Word ml_backend__ml_string_switch___ResultVarLval_47;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopLval_48;
+    MR_Word ml_backend__ml_string_switch___FailStmts_49;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55, &ml_backend__ml_string_switch__ModuleInfo_22);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_22, &ml_backend__ml_string_switch__ModuleName_23);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_24 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_23);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55, &ml_backend__ml_string_switch__Target_25);
+    }
+    {
+      ml_backend__ml_string_switch__Var_57 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_26 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_22, ml_backend__ml_string_switch__Var_57);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ArgTypes_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_27, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_26));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_27, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+    }
+    {
+      mercury__list__sort_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[2], ml_backend__ml_string_switch__CaseValues0_13, &ml_backend__ml_string_switch__CaseValues_28);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55, &ml_backend__ml_string_switch__GlobalData0_29);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_25, ml_backend__ml_string_switch__MLDS_ArgTypes_27, &ml_backend__ml_string_switch__StructTypeNum_30, &ml_backend__ml_string_switch__StructType_31, &ml_backend__ml_string_switch__FieldIds_32, ml_backend__ml_string_switch__GlobalData0_29, &ml_backend__ml_string_switch__GlobalData1_33);
+    }
+    if ((ml_backend__ml_string_switch__FieldIds_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_simple_lookup_switch\'/11", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    else
+      {
+        ml_backend__ml_string_switch__StringFieldId_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_32, (MR_Integer) 0)));
+        ml_backend__ml_string_switch__OutFieldIds_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_32, (MR_Integer) 1)));
+      }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0(ml_backend__ml_string_switch__CaseValues_28, ml_backend__ml_string_switch__StructType_31, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevRowInitializers_36, (MR_Integer) 0, &ml_backend__ml_string_switch__TableSize_37);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, ml_backend__ml_string_switch__RevRowInitializers_36, &ml_backend__ml_string_switch__RowInitializers_38);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_24, ml_backend__ml_string_switch__StructTypeNum_30, ml_backend__ml_string_switch__RowInitializers_38, &ml_backend__ml_string_switch__VectorCommon_39, ml_backend__ml_string_switch__GlobalData1_33, &ml_backend__ml_string_switch__GlobalData_40);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_40, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_62_62);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_vars_7_p_0(ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__VarRval_12, &ml_backend__ml_string_switch__BinarySearchInfo_41, ml_backend__ml_string_switch__STATE_VARIABLE_Info_62_62, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_63_63);
+    }
+    ml_backend__ml_string_switch___CodeModel_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 0)));
+    ml_backend__ml_string_switch___VarRval_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___LoVarLval_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 2)));
+    ml_backend__ml_string_switch___HiVarLval_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 3)));
+    ml_backend__ml_string_switch__MidVarLval_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___ResultVarLval_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___MaybeStopLoopLval_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 6)));
+    ml_backend__ml_string_switch___FailStmts_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 7)));
+    *ml_backend__ml_string_switch__Defns_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_41, (MR_Integer) 8)));
+    {
+      ml_backend__ml_string_switch__MidVarRval_50 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__MidVarRval_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_46));
+    }
+    {
+      ml_backend__ml_code_util__ml_generate_field_assigns_10_p_0(ml_backend__ml_string_switch__OutVars_16, ml_backend__ml_string_switch__OutTypes_17, ml_backend__ml_string_switch__OutFieldIds_35, ml_backend__ml_string_switch__VectorCommon_39, ml_backend__ml_string_switch__StructType_31, ml_backend__ml_string_switch__MidVarRval_50, ml_backend__ml_string_switch__Context_18, &ml_backend__ml_string_switch__GetArgStmts_51, ml_backend__ml_string_switch__STATE_VARIABLE_Info_63_63, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64);
+    }
+    switch (ml_backend__ml_string_switch__CodeModel_14) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        ml_backend__ml_string_switch__MatchStmts_52 = ml_backend__ml_string_switch__GetArgStmts_51;
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_simple_lookup_switch\'/11", (MR_String) "model_non");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ml_backend__ml_string_switch__SetSuccessTrueStmt_53;
+          MR_Word ml_backend__ml_string_switch__Var_69;
+
+          {
+            ml_backend__ml_code_util__ml_gen_set_success_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[13]), ml_backend__ml_string_switch__Context_18, &ml_backend__ml_string_switch__SetSuccessTrueStmt_53);
+          }
+          {
+            ml_backend__ml_string_switch__Var_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_69, 0) = ((MR_Box) (ml_backend__ml_string_switch__SetSuccessTrueStmt_53));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ml_backend__ml_string_switch__MatchStmts_52 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__GetArgStmts_51, ml_backend__ml_string_switch__Var_69);
+          }
+        }
+        break;
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_12_p_0(ml_backend__ml_string_switch__Context_18, (MR_String) "binary string simple lookup switch", ml_backend__ml_string_switch__BinarySearchInfo_41, ml_backend__ml_string_switch__VectorCommon_39, ml_backend__ml_string_switch__TableSize_37, ml_backend__ml_string_switch__StructType_31, ml_backend__ml_string_switch__StringFieldId_34, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__MatchStmts_52, ml_backend__ml_string_switch__Stmts_20, ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, ml_backend__ml_string_switch__STATE_VARIABLE_Info_56);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_simple_lookup_initializers_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6 = ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3;
+          }
+        else
+          {
+            MR_String ml_backend__ml_string_switch__Str_14;
+            MR_Word ml_backend__ml_string_switch__Rvals_15;
+            MR_Word ml_backend__ml_string_switch__StrRvals_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__StrRval_20;
+            MR_Word ml_backend__ml_string_switch__RowInitializer_21;
+            MR_Word ml_backend__ml_string_switch__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Var_27;
+            MR_Word ml_backend__ml_string_switch__Var_28;
+            MR_Word ml_backend__ml_string_switch__Var_29;
+            MR_Word ml_backend__ml_string_switch__Var_30;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_33_33;
+
+            ml_backend__ml_string_switch__Str_14 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_26, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__Rvals_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_26, (MR_Integer) 1)));
+            {
+              ml_backend__ml_string_switch__Var_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_27, 1) = ((MR_Box) (ml_backend__ml_string_switch__Str_14));
+            }
+            {
+              ml_backend__ml_string_switch__StrRval_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_20, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_20, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_27));
+            }
+            {
+              ml_backend__ml_string_switch__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_29, 0) = ((MR_Box) (ml_backend__ml_string_switch__StrRval_20));
+            }
+            {
+              ml_backend__ml_string_switch__Var_30 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[25], ml_backend__ml_string_switch__Rvals_15);
+            }
+            {
+              ml_backend__ml_string_switch__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_28, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_29));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_28, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_30));
+            }
+            {
+              ml_backend__ml_string_switch__RowInitializer_21 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_21, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_2));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_21, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_28));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__RowInitializer_21));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3));
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_33_33 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__StrRvals_16;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurIndex_0_5 = ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_33_33;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurIndex_0_5;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_3;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_jump_switch_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_3,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_4,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_5,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_6,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_7,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_8)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv2_CaseId_12;
+    MR_Word ml_backend__ml_string_switch__conv1_STATE_VARIABLE_CodeMap_20;
+    MR_Word ml_backend__ml_string_switch__conv0_STATE_VARIABLE_Info_22;
+
+    {
+      ml_backend__ml_string_switch__gen_tagged_case_code_for_string_switch_dummy_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), &ml_backend__ml_string_switch__conv2_CaseId_12, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_3), &ml_backend__ml_string_switch__conv1_STATE_VARIABLE_CodeMap_20, ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_5), &ml_backend__ml_string_switch__conv0_STATE_VARIABLE_Info_22);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv2_CaseId_12));
+    *ml_backend__ml_string_switch__wrapper_arg_4 = ((MR_Box) (ml_backend__ml_string_switch__conv1_STATE_VARIABLE_CodeMap_20));
+    *ml_backend__ml_string_switch__wrapper_arg_6 = ((MR_Box) (ml_backend__ml_string_switch__conv0_STATE_VARIABLE_Info_22));
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_jump_switch_9_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_10,
+  MR_Word ml_backend__ml_string_switch__Cases_11,
+  MR_Word ml_backend__ml_string_switch__CodeModel_12,
+  MR_Word ml_backend__ml_string_switch__CanFail_13,
+  MR_Word ml_backend__ml_string_switch__Context_14,
+  MR_Word * ml_backend__ml_string_switch__Defns_15,
+  MR_Word * ml_backend__ml_string_switch__Stmts_16,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_63)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_100_100;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_101_101;
+    MR_Word ml_backend__ml_string_switch__BinarySearchInfo_18;
+    MR_Word ml_backend__ml_string_switch__MidVarLval_23;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_27;
+    MR_Word ml_backend__ml_string_switch__ModuleName_28;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_29;
+    MR_Word ml_backend__ml_string_switch__Target_30;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_31;
+    MR_Word ml_backend__ml_string_switch__MLDS_ArgTypes_33;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_34;
+    MR_Word ml_backend__ml_string_switch__StructTypeNum_35;
+    MR_Word ml_backend__ml_string_switch__StructType_36;
+    MR_Word ml_backend__ml_string_switch__FieldIds_37;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_38;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_39;
+    MR_Word ml_backend__ml_string_switch__CaseNumFieldId_40;
+    MR_Word ml_backend__ml_string_switch__CaseLabelMap0_46;
+    MR_Word ml_backend__ml_string_switch__CaseLabelMap_47;
+    MR_Word ml_backend__ml_string_switch__SortedTable_49;
+    MR_Word ml_backend__ml_string_switch__RevRowInitializers_50;
+    MR_Integer ml_backend__ml_string_switch__TableSize_51;
+    MR_Word ml_backend__ml_string_switch__RowInitializers_52;
+    MR_Word ml_backend__ml_string_switch__GlobalData2_53;
+    MR_Word ml_backend__ml_string_switch__VectorCommon_54;
+    MR_Word ml_backend__ml_string_switch__GlobalData_55;
+    MR_Word ml_backend__ml_string_switch__CaseLabelList_56;
+    MR_Word ml_backend__ml_string_switch__SwitchCases0_57;
+    MR_Word ml_backend__ml_string_switch__SwitchCases_58;
+    MR_Word ml_backend__ml_string_switch__SwitchStmt0_59;
+    MR_Word ml_backend__ml_string_switch__SwitchStmt_60;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64;
+    MR_Word ml_backend__ml_string_switch__Var_65;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68;
+    MR_Word ml_backend__ml_string_switch__Var_76;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_81_81;
+    MR_Word ml_backend__ml_string_switch__Var_84;
+    MR_Word ml_backend__ml_string_switch__Var_85;
+    MR_Word ml_backend__ml_string_switch__Var_88;
+    MR_Word ml_backend__ml_string_switch__Var_89;
+    MR_Word ml_backend__ml_string_switch__Var_90;
+    MR_Integer ml_backend__ml_string_switch__Var_92;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_95_95;
+    MR_Word ml_backend__ml_string_switch__Var_97;
+    MR_Word ml_backend__ml_string_switch___CodeModel_19;
+    MR_Word ml_backend__ml_string_switch___VarRval_20;
+    MR_Word ml_backend__ml_string_switch___LoVarLval_21;
+    MR_Word ml_backend__ml_string_switch___HiVarLval_22;
+    MR_Word ml_backend__ml_string_switch___ResultVarLval_24;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopVarLval_25;
+    MR_Word ml_backend__ml_string_switch___FailStmts_26;
+    MR_Box ml_backend__ml_string_switch__conv5_CaseLabelMap_47;
+    MR_Box ml_backend__ml_string_switch__conv4_STATE_VARIABLE_Info_77_77;
+    MR_Box ml_backend__ml_string_switch__conv3_Var_48;
+
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_vars_7_p_0(ml_backend__ml_string_switch__CodeModel_12, ml_backend__ml_string_switch__CanFail_13, ml_backend__ml_string_switch__Context_14, ml_backend__ml_string_switch__VarRval_10, &ml_backend__ml_string_switch__BinarySearchInfo_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64);
+    }
+    ml_backend__ml_string_switch___CodeModel_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 0)));
+    ml_backend__ml_string_switch___VarRval_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___LoVarLval_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 2)));
+    ml_backend__ml_string_switch___HiVarLval_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 3)));
+    ml_backend__ml_string_switch__MidVarLval_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___ResultVarLval_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___MaybeStopLoopVarLval_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 6)));
+    ml_backend__ml_string_switch___FailStmts_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 7)));
+    *ml_backend__ml_string_switch__Defns_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_18, (MR_Integer) 8)));
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, &ml_backend__ml_string_switch__ModuleInfo_27);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_27, &ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_29 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, &ml_backend__ml_string_switch__Target_30);
+    }
+    {
+      ml_backend__ml_string_switch__Var_65 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_31 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_27, ml_backend__ml_string_switch__Var_65);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ArgTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_1[17])));
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, &ml_backend__ml_string_switch__GlobalData0_34);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__Context_14, ml_backend__ml_string_switch__Target_30, ml_backend__ml_string_switch__MLDS_ArgTypes_33, &ml_backend__ml_string_switch__StructTypeNum_35, &ml_backend__ml_string_switch__StructType_36, &ml_backend__ml_string_switch__FieldIds_37, ml_backend__ml_string_switch__GlobalData0_34, &ml_backend__ml_string_switch__GlobalData1_38);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData1_38, ml_backend__ml_string_switch__STATE_VARIABLE_Info_64_64, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68);
+    }
+    if ((ml_backend__ml_string_switch__FieldIds_37 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_jump_switch\'/9", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_121 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_37, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_122 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_37, (MR_Integer) 0)));
+
+        if ((ml_backend__ml_string_switch__Var_121 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_jump_switch\'/9", (MR_String) "bad FieldIds");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Var_123 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_121, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__Var_124 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_121, (MR_Integer) 0)));
+
+            if ((ml_backend__ml_string_switch__Var_123 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                ml_backend__ml_string_switch__StringFieldId_39 = ml_backend__ml_string_switch__Var_122;
+                ml_backend__ml_string_switch__CaseNumFieldId_40 = ml_backend__ml_string_switch__Var_124;
+              }
+            else
+              {
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_binary_jump_switch\'/9", (MR_String) "bad FieldIds");
+                  return;
+                }
+              }
+          }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_100_100 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0;
+    ml_backend__ml_string_switch__TypeCtorInfo_101_101 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+    {
+      mercury__map__init_1_p_0(ml_backend__ml_string_switch__TypeCtorInfo_100_100, ml_backend__ml_string_switch__TypeCtorInfo_101_101, &ml_backend__ml_string_switch__CaseLabelMap0_46);
+    }
+    {
+      ml_backend__ml_string_switch__Var_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_76, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_7[0]));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_76, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_binary_jump_switch_9_p_0_1));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_76, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_76, 3) = ((MR_Box) (ml_backend__ml_string_switch__CodeModel_12));
+    }
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+    {
+      backend_libs__switch_util__string_binary_cases_9_p_0(ml_backend__ml_string_switch__TypeCtorInfo_100_100, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[1], (MR_Word) &ml_backend__ml_gen_info__ml_backend__ml_gen_info__type_ctor_info_ml_gen_info_0, (MR_Word) &mercury__unit__unit__type_ctor_info_unit_0, ml_backend__ml_string_switch__Cases_11, ml_backend__ml_string_switch__Var_76, ((MR_Box) (ml_backend__ml_string_switch__CaseLabelMap0_46)), &ml_backend__ml_string_switch__conv5_CaseLabelMap_47, ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68)), &ml_backend__ml_string_switch__conv4_STATE_VARIABLE_Info_77_77, ((MR_Box) ((MR_Integer) 0)), &ml_backend__ml_string_switch__conv3_Var_48, &ml_backend__ml_string_switch__SortedTable_49);
+    }
+    ml_backend__ml_string_switch__CaseLabelMap_47 = ((MR_Word) ml_backend__ml_string_switch__conv5_CaseLabelMap_47);
+    ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77 = ((MR_Word) ml_backend__ml_string_switch__conv4_STATE_VARIABLE_Info_77_77);
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_jump_initializers_6_p_0(ml_backend__ml_string_switch__SortedTable_49, ml_backend__ml_string_switch__StructType_36, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevRowInitializers_50, (MR_Integer) 0, &ml_backend__ml_string_switch__TableSize_51);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, ml_backend__ml_string_switch__RevRowInitializers_50, &ml_backend__ml_string_switch__RowInitializers_52);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, &ml_backend__ml_string_switch__GlobalData2_53);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__StructTypeNum_35, ml_backend__ml_string_switch__RowInitializers_52, &ml_backend__ml_string_switch__VectorCommon_54, ml_backend__ml_string_switch__GlobalData2_53, &ml_backend__ml_string_switch__GlobalData_55);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_55, ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_81_81);
+    }
+    {
+      mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_100_100, ml_backend__ml_string_switch__TypeCtorInfo_101_101, ml_backend__ml_string_switch__CaseLabelMap_47, &ml_backend__ml_string_switch__CaseLabelList_56);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_jump_switch_arms_3_p_0(ml_backend__ml_string_switch__CaseLabelList_56, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__SwitchCases0_57);
+    }
+    {
+      mercury__list__sort_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0, ml_backend__ml_string_switch__SwitchCases0_57, &ml_backend__ml_string_switch__SwitchCases_58);
+    }
+    {
+      ml_backend__ml_string_switch__Var_89 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_89, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_23));
+    }
+    {
+      ml_backend__ml_string_switch__Var_88 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_88, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_88, 1) = ((MR_Box) (ml_backend__ml_string_switch__VectorCommon_54));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_88, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_89));
+    }
+    {
+      ml_backend__ml_string_switch__Var_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_85, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[0])));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_85, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_88));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_85, 2) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumFieldId_40));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_85, 3) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_85, 4) = ((MR_Box) (ml_backend__ml_string_switch__StructType_36));
+    }
+    {
+      ml_backend__ml_string_switch__Var_84 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_84, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_85));
+    }
+    ml_backend__ml_string_switch__Var_92 = (ml_backend__ml_string_switch__TableSize_51 - (MR_Integer) 1);
+    {
+      ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_90, 0) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_90, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_92));
+    }
+    {
+      ml_backend__ml_string_switch__SwitchStmt0_59 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_84));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 4) = ((MR_Box) (ml_backend__ml_string_switch__SwitchCases_58));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_59, 6) = ((MR_Box) (ml_backend__ml_string_switch__Context_14));
+    }
+    {
+      ml_backend__ml_simplify_switch__ml_simplify_switch_4_p_0(ml_backend__ml_string_switch__SwitchStmt0_59, &ml_backend__ml_string_switch__SwitchStmt_60, ml_backend__ml_string_switch__STATE_VARIABLE_Info_81_81, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_95_95);
+    }
+    {
+      ml_backend__ml_string_switch__Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_97, 0) = ((MR_Box) (ml_backend__ml_string_switch__SwitchStmt_60));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_97, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_12_p_0(ml_backend__ml_string_switch__Context_14, (MR_String) "binary string jump switch", ml_backend__ml_string_switch__BinarySearchInfo_18, ml_backend__ml_string_switch__VectorCommon_54, ml_backend__ml_string_switch__TableSize_51, ml_backend__ml_string_switch__StructType_36, ml_backend__ml_string_switch__StringFieldId_39, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Var_97, ml_backend__ml_string_switch__Stmts_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_95_95, ml_backend__ml_string_switch__STATE_VARIABLE_Info_63);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_12_p_0(
+  MR_Word ml_backend__ml_string_switch__Context_13,
+  MR_String ml_backend__ml_string_switch__InitialComment_14,
+  MR_Word ml_backend__ml_string_switch__BinarySearchInfo_15,
+  MR_Word ml_backend__ml_string_switch__VectorCommon_16,
+  MR_Integer ml_backend__ml_string_switch__TableSize_17,
+  MR_Word ml_backend__ml_string_switch__StructType_18,
+  MR_Word ml_backend__ml_string_switch__StringFieldId_19,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_20,
+  MR_Word ml_backend__ml_string_switch__MatchStmt_21,
+  MR_Word * ml_backend__ml_string_switch__Stmts_22,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_56)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_150_150;
+    MR_Word ml_backend__ml_string_switch__CodeModel_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 0)));
+    MR_Word ml_backend__ml_string_switch__VarRval_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch__LoVarLval_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 2)));
+    MR_Word ml_backend__ml_string_switch__HiVarLval_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 3)));
+    MR_Word ml_backend__ml_string_switch__MidVarLval_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 4)));
+    MR_Word ml_backend__ml_string_switch__ResultVarLval_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 5)));
+    MR_Word ml_backend__ml_string_switch__MaybeStopLoopVarLval_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 6)));
+    MR_Word ml_backend__ml_string_switch__FailStmts_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 7)));
+    MR_Word ml_backend__ml_string_switch__LoVarRval_33;
+    MR_Word ml_backend__ml_string_switch__HiVarRval_34;
+    MR_Word ml_backend__ml_string_switch__MidVarRval_35;
+    MR_Word ml_backend__ml_string_switch__ResultVarRval_36;
+    MR_Word ml_backend__ml_string_switch__SetupForFailStmts_37;
+    MR_Word ml_backend__ml_string_switch__SuccessStmt_38;
+    MR_Word ml_backend__ml_string_switch__AfterStmts_39;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_40;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_41;
+    MR_Word ml_backend__ml_string_switch__InitLoVarStmt_42;
+    MR_Word ml_backend__ml_string_switch__InitHiVarStmt_43;
+    MR_Word ml_backend__ml_string_switch__CrossingTest_44;
+    MR_Word ml_backend__ml_string_switch__AssignMidVarStmt_45;
+    MR_Word ml_backend__ml_string_switch__AssignResultVarStmt_46;
+    MR_Word ml_backend__ml_string_switch__ResultTest_47;
+    MR_Word ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48;
+    MR_Word ml_backend__ml_string_switch__SearchStmts_50;
+    MR_Word ml_backend__ml_string_switch__InitialCommentStmt_54;
+    MR_Word ml_backend__ml_string_switch__Var_59;
+    MR_Word ml_backend__ml_string_switch__Var_60;
+    MR_Word ml_backend__ml_string_switch__Var_61;
+    MR_Word ml_backend__ml_string_switch__Var_64;
+    MR_Word ml_backend__ml_string_switch__Var_65;
+    MR_Word ml_backend__ml_string_switch__Var_66;
+    MR_Integer ml_backend__ml_string_switch__Var_67;
+    MR_Word ml_backend__ml_string_switch__Var_70;
+    MR_Word ml_backend__ml_string_switch__Var_71;
+    MR_Word ml_backend__ml_string_switch__Var_73;
+    MR_Word ml_backend__ml_string_switch__Var_78;
+    MR_Word ml_backend__ml_string_switch__Var_79;
+    MR_Word ml_backend__ml_string_switch__Var_81;
+    MR_Word ml_backend__ml_string_switch__Var_82;
+    MR_Word ml_backend__ml_string_switch__Var_85;
+    MR_Word ml_backend__ml_string_switch__Var_90;
+    MR_Word ml_backend__ml_string_switch__Var_95;
+    MR_Word ml_backend__ml_string_switch__Var_96;
+    MR_Word ml_backend__ml_string_switch__Var_97;
+    MR_Word ml_backend__ml_string_switch__Var_99;
+    MR_Word ml_backend__ml_string_switch__Var_102;
+    MR_Word ml_backend__ml_string_switch__Var_103;
+    MR_Word ml_backend__ml_string_switch__Var_104;
+    MR_Word ml_backend__ml_string_switch__Var_105;
+    MR_Word ml_backend__ml_string_switch__Var_146;
+    MR_Word ml_backend__ml_string_switch__Var_147;
+    MR_Word ml_backend__ml_string_switch__Var_148;
+    MR_Word ml_backend__ml_string_switch___Defns_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__BinarySearchInfo_15, (MR_Integer) 8)));
+
+    {
+      ml_backend__ml_string_switch__LoVarRval_33 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LoVarRval_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__LoVarLval_26));
+    }
+    {
+      ml_backend__ml_string_switch__HiVarRval_34 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__HiVarRval_34, 0) = ((MR_Box) (ml_backend__ml_string_switch__HiVarLval_27));
+    }
+    {
+      ml_backend__ml_string_switch__MidVarRval_35 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__MidVarRval_35, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_28));
+    }
+    {
+      ml_backend__ml_string_switch__ResultVarRval_36 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultVarRval_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarLval_29));
+    }
+    {
+      ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0(ml_backend__ml_string_switch__CodeModel_24, (MR_Integer) 1, ml_backend__ml_string_switch__Context_13, ml_backend__ml_string_switch__MaybeStopLoopVarLval_30, ml_backend__ml_string_switch__MatchDefns_20, ml_backend__ml_string_switch__MatchStmt_21, ml_backend__ml_string_switch__FailStmts_31, &ml_backend__ml_string_switch__SetupForFailStmts_37, &ml_backend__ml_string_switch__SuccessStmt_38, &ml_backend__ml_string_switch__AfterStmts_39, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_55, ml_backend__ml_string_switch__STATE_VARIABLE_Info_56);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(*ml_backend__ml_string_switch__STATE_VARIABLE_Info_56, &ml_backend__ml_string_switch__ModuleInfo_40);
+    }
+    {
+      ml_backend__ml_string_switch__Var_59 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_41 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_40, ml_backend__ml_string_switch__Var_59);
+    }
+    ml_backend__ml_string_switch__Var_61 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11]);
+    {
+      ml_backend__ml_string_switch__Var_60 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_60, 0) = ((MR_Box) (ml_backend__ml_string_switch__LoVarLval_26));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_60, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+    }
+    {
+      ml_backend__ml_string_switch__InitLoVarStmt_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitLoVarStmt_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitLoVarStmt_42, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_60));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitLoVarStmt_42, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    ml_backend__ml_string_switch__Var_67 = (ml_backend__ml_string_switch__TableSize_17 - (MR_Integer) 1);
+    {
+      ml_backend__ml_string_switch__Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_66, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_67));
+    }
+    {
+      ml_backend__ml_string_switch__Var_65 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_65, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_65, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_66));
+    }
+    {
+      ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__HiVarLval_27));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_64, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_65));
+    }
+    {
+      ml_backend__ml_string_switch__InitHiVarStmt_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitHiVarStmt_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitHiVarStmt_43, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_64));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitHiVarStmt_43, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      ml_backend__ml_string_switch__CrossingTest_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CrossingTest_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CrossingTest_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 25))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CrossingTest_44, 2) = ((MR_Box) (ml_backend__ml_string_switch__LoVarRval_33));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CrossingTest_44, 3) = ((MR_Box) (ml_backend__ml_string_switch__HiVarRval_34));
+    }
+    {
+      ml_backend__ml_string_switch__Var_73 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 2) = ((MR_Box) (ml_backend__ml_string_switch__LoVarRval_33));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 3) = ((MR_Box) (ml_backend__ml_string_switch__HiVarRval_34));
+    }
+    {
+      ml_backend__ml_string_switch__Var_71 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_73));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[18])));
+    }
+    {
+      ml_backend__ml_string_switch__Var_70 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_70, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_28));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_70, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_71));
+    }
+    {
+      ml_backend__ml_string_switch__AssignMidVarStmt_45 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignMidVarStmt_45, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignMidVarStmt_45, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_70));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignMidVarStmt_45, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      ml_backend__ml_string_switch__Var_85 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 1) = ((MR_Box) (ml_backend__ml_string_switch__VectorCommon_16));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 2) = ((MR_Box) (ml_backend__ml_string_switch__MidVarRval_35));
+    }
+    {
+      ml_backend__ml_string_switch__Var_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_82, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[0])));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_82, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_85));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_82, 2) = ((MR_Box) (ml_backend__ml_string_switch__StringFieldId_19));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_82, 3) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_41));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_82, 4) = ((MR_Box) (ml_backend__ml_string_switch__StructType_18));
+    }
+    {
+      ml_backend__ml_string_switch__Var_81 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_81, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_82));
+    }
+    {
+      ml_backend__ml_string_switch__Var_79 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 22))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_25));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_81));
+    }
+    {
+      ml_backend__ml_string_switch__Var_78 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_78, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarLval_29));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_78, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_79));
+    }
+    {
+      ml_backend__ml_string_switch__AssignResultVarStmt_46 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignResultVarStmt_46, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignResultVarStmt_46, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_78));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__AssignResultVarStmt_46, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      ml_backend__ml_string_switch__ResultTest_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__ResultTest_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__ResultTest_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__ResultTest_47, 2) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarRval_36));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__ResultTest_47, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+    }
+    {
+      ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_90, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_90, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 23))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_90, 2) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarRval_36));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_90, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+    }
+    ml_backend__ml_string_switch__Var_99 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[15]);
+    {
+      ml_backend__ml_string_switch__Var_97 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 2) = ((MR_Box) (ml_backend__ml_string_switch__MidVarRval_35));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_99));
+    }
+    {
+      ml_backend__ml_string_switch__Var_96 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_96, 0) = ((MR_Box) (ml_backend__ml_string_switch__HiVarLval_27));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_96, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_97));
+    }
+    {
+      ml_backend__ml_string_switch__Var_95 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_96));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      ml_backend__ml_string_switch__Var_105 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_105, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_105, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_105, 2) = ((MR_Box) (ml_backend__ml_string_switch__MidVarRval_35));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_105, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_99));
+    }
+    {
+      ml_backend__ml_string_switch__Var_104 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_104, 0) = ((MR_Box) (ml_backend__ml_string_switch__LoVarLval_26));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_104, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_105));
+    }
+    {
+      ml_backend__ml_string_switch__Var_103 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_103, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_103, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_104));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_103, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      ml_backend__ml_string_switch__Var_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_102, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_103));
+    }
+    {
+      ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_95));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_102));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    if ((ml_backend__ml_string_switch__MaybeStopLoopVarLval_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word ml_backend__ml_string_switch__LoopBodyStmts_49;
+        MR_Word ml_backend__ml_string_switch__Var_134;
+        MR_Word ml_backend__ml_string_switch__Var_135;
+        MR_Word ml_backend__ml_string_switch__Var_136;
+        MR_Word ml_backend__ml_string_switch__Var_137;
+        MR_Word ml_backend__ml_string_switch__Var_139;
+        MR_Word ml_backend__ml_string_switch__Var_140;
+        MR_Word ml_backend__ml_string_switch__Var_141;
+        MR_Word ml_backend__ml_string_switch__Var_143;
+
+        {
+          ml_backend__ml_string_switch__Var_137 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_137, 0) = ((MR_Box) (ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48));
+        }
+        {
+          ml_backend__ml_string_switch__Var_136 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_136, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultTest_47));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_136, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessStmt_38));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_136, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_137));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_136, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_135, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_136));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_135, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_134 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_134, 0) = ((MR_Box) (ml_backend__ml_string_switch__AssignResultVarStmt_46));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_134, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_135));
+        }
+        {
+          ml_backend__ml_string_switch__LoopBodyStmts_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopBodyStmts_49, 0) = ((MR_Box) (ml_backend__ml_string_switch__AssignMidVarStmt_45));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopBodyStmts_49, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_134));
+        }
+        {
+          ml_backend__ml_string_switch__Var_143 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_143, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_143, 1) = ((MR_Box) (ml_backend__ml_string_switch__LoopBodyStmts_49));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_143, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_141 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_141, 0) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_141, 1) = ((MR_Box) (ml_backend__ml_string_switch__CrossingTest_44));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_141, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_143));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_141, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_140 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_140, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_141));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_140, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_139 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_139, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitHiVarStmt_43));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_139, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_140));
+        }
+        {
+          ml_backend__ml_string_switch__SearchStmts_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SearchStmts_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitLoVarStmt_42));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SearchStmts_50, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_139));
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__StopLoopVarLval_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopVarLval_30, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__InitStopLoopVarStmt_52;
+        MR_Word ml_backend__ml_string_switch__StopLoopTest_53;
+        MR_Word ml_backend__ml_string_switch__Var_110;
+        MR_Word ml_backend__ml_string_switch__Var_115;
+        MR_Word ml_backend__ml_string_switch__Var_119;
+        MR_Word ml_backend__ml_string_switch__Var_120;
+        MR_Word ml_backend__ml_string_switch__Var_121;
+        MR_Word ml_backend__ml_string_switch__Var_122;
+        MR_Word ml_backend__ml_string_switch__Var_124;
+        MR_Word ml_backend__ml_string_switch__Var_125;
+        MR_Word ml_backend__ml_string_switch__Var_126;
+        MR_Word ml_backend__ml_string_switch__Var_127;
+        MR_Word ml_backend__ml_string_switch__Var_129;
+        MR_Word ml_backend__ml_string_switch__Var_131;
+        MR_Word ml_backend__ml_string_switch__LoopBodyStmts_149;
+
+        {
+          ml_backend__ml_string_switch__Var_110 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_110, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_51));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_110, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+        }
+        {
+          ml_backend__ml_string_switch__InitStopLoopVarStmt_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_110));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_52, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_115 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_115, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_51));
+        }
+        {
+          ml_backend__ml_string_switch__StopLoopTest_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_115));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+        }
+        {
+          ml_backend__ml_string_switch__Var_122 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_122, 0) = ((MR_Box) (ml_backend__ml_string_switch__UpdateLoOrHiVarStmt_48));
+        }
+        {
+          ml_backend__ml_string_switch__Var_121 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_121, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultTest_47));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_121, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessStmt_38));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_121, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_122));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_121, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_120 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_120, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_121));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_120, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_119, 0) = ((MR_Box) (ml_backend__ml_string_switch__AssignResultVarStmt_46));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_119, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_120));
+        }
+        {
+          ml_backend__ml_string_switch__LoopBodyStmts_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopBodyStmts_149, 0) = ((MR_Box) (ml_backend__ml_string_switch__AssignMidVarStmt_45));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopBodyStmts_149, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_119));
+        }
+        {
+          ml_backend__ml_string_switch__Var_129 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_129, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_129, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_129, 2) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopTest_53));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_129, 3) = ((MR_Box) (ml_backend__ml_string_switch__CrossingTest_44));
+        }
+        {
+          ml_backend__ml_string_switch__Var_131 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_131, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_131, 1) = ((MR_Box) (ml_backend__ml_string_switch__LoopBodyStmts_149));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_131, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 0) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_129));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_131));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+        }
+        {
+          ml_backend__ml_string_switch__Var_126 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_126, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_127));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_126, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_125, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitStopLoopVarStmt_52));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_125, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_126));
+        }
+        {
+          ml_backend__ml_string_switch__Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_124, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitHiVarStmt_43));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_124, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_125));
+        }
+        {
+          ml_backend__ml_string_switch__SearchStmts_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SearchStmts_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitLoVarStmt_42));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SearchStmts_50, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_124));
+        }
+      }
+    {
+      ml_backend__ml_string_switch__Var_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_146, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitialComment_14));
+    }
+    {
+      ml_backend__ml_string_switch__InitialCommentStmt_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_54, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_146));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_54, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    ml_backend__ml_string_switch__TypeCtorInfo_150_150 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+    {
+      ml_backend__ml_string_switch__Var_147 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_147, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitialCommentStmt_54));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_147, 1) = ((MR_Box) (ml_backend__ml_string_switch__SetupForFailStmts_37));
+    }
+    {
+      ml_backend__ml_string_switch__Var_148 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_150_150, ml_backend__ml_string_switch__SearchStmts_50, ml_backend__ml_string_switch__AfterStmts_39);
+    }
+    {
+      *ml_backend__ml_string_switch__Stmts_22 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_150_150, ml_backend__ml_string_switch__Var_147, ml_backend__ml_string_switch__Var_148);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_switch_search_vars_7_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_8,
+  MR_Word ml_backend__ml_string_switch__CanFail_9,
+  MR_Word ml_backend__ml_string_switch__Context_10,
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word * ml_backend__ml_string_switch__BinarySearchInfo_12,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_35,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_36)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__IndexType_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    MR_Word ml_backend__ml_string_switch__ResultType_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    MR_Word ml_backend__ml_string_switch__IndexGCStmt_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word ml_backend__ml_string_switch__LoVar_18;
+    MR_Word ml_backend__ml_string_switch__LoVarDefn_19;
+    MR_Word ml_backend__ml_string_switch__LoVarLval_20;
+    MR_Word ml_backend__ml_string_switch__HiVar_21;
+    MR_Word ml_backend__ml_string_switch__HiVarDefn_22;
+    MR_Word ml_backend__ml_string_switch__HiVarLval_23;
+    MR_Word ml_backend__ml_string_switch__MidVar_24;
+    MR_Word ml_backend__ml_string_switch__MidVarDefn_25;
+    MR_Word ml_backend__ml_string_switch__MidVarLval_26;
+    MR_Word ml_backend__ml_string_switch__ResultVar_27;
+    MR_Word ml_backend__ml_string_switch__ResultVarDefn_28;
+    MR_Word ml_backend__ml_string_switch__ResultVarLval_29;
+    MR_Word ml_backend__ml_string_switch__AlwaysDefns_30;
+    MR_Word ml_backend__ml_string_switch__MaybeStopLoopLval_31;
+    MR_Word ml_backend__ml_string_switch__StopLoopVarDefns_32;
+    MR_Word ml_backend__ml_string_switch__Defns_33;
+    MR_Word ml_backend__ml_string_switch__FailStmts_34;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38;
+    MR_Word ml_backend__ml_string_switch__Var_39;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41;
+    MR_Word ml_backend__ml_string_switch__Var_42;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_44_44;
+    MR_Word ml_backend__ml_string_switch__Var_45;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47;
+    MR_Word ml_backend__ml_string_switch__Var_48;
+    MR_Word ml_backend__ml_string_switch__Var_49;
+    MR_Word ml_backend__ml_string_switch__Var_50;
+    MR_Word ml_backend__ml_string_switch__Var_51;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_65;
+    MR_Word ml_backend__ml_string_switch__Globals_66;
+    MR_Word ml_backend__ml_string_switch__SupportsGoto_67;
+    MR_String ml_backend__ml_string_switch__Experiment_68;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 6, &ml_backend__ml_string_switch__LoVar_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_35, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38);
+    }
+    {
+      ml_backend__ml_string_switch__Var_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_39, 0) = ((MR_Box) (ml_backend__ml_string_switch__LoVar_18));
+    }
+    {
+      ml_backend__ml_string_switch__LoVarDefn_19 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_39, ml_backend__ml_string_switch__IndexType_14, ml_backend__ml_string_switch__IndexGCStmt_16, ml_backend__ml_string_switch__Context_10);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38, ml_backend__ml_string_switch__LoVar_18, ml_backend__ml_string_switch__IndexType_14, &ml_backend__ml_string_switch__LoVarLval_20);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 8, &ml_backend__ml_string_switch__HiVar_21, ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41);
+    }
+    {
+      ml_backend__ml_string_switch__Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_42, 0) = ((MR_Box) (ml_backend__ml_string_switch__HiVar_21));
+    }
+    {
+      ml_backend__ml_string_switch__HiVarDefn_22 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_42, ml_backend__ml_string_switch__IndexType_14, ml_backend__ml_string_switch__IndexGCStmt_16, ml_backend__ml_string_switch__Context_10);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41, ml_backend__ml_string_switch__HiVar_21, ml_backend__ml_string_switch__IndexType_14, &ml_backend__ml_string_switch__HiVarLval_23);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 7, &ml_backend__ml_string_switch__MidVar_24, ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_44_44);
+    }
+    {
+      ml_backend__ml_string_switch__Var_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_45, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVar_24));
+    }
+    {
+      ml_backend__ml_string_switch__MidVarDefn_25 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_45, ml_backend__ml_string_switch__IndexType_14, ml_backend__ml_string_switch__IndexGCStmt_16, ml_backend__ml_string_switch__Context_10);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_44_44, ml_backend__ml_string_switch__MidVar_24, ml_backend__ml_string_switch__IndexType_14, &ml_backend__ml_string_switch__MidVarLval_26);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 10, &ml_backend__ml_string_switch__ResultVar_27, ml_backend__ml_string_switch__STATE_VARIABLE_Info_44_44, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47);
+    }
+    {
+      ml_backend__ml_string_switch__Var_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultVar_27));
+    }
+    {
+      ml_backend__ml_string_switch__ResultVarDefn_28 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_48, ml_backend__ml_string_switch__ResultType_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_10);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47, ml_backend__ml_string_switch__ResultVar_27, ml_backend__ml_string_switch__ResultType_15, &ml_backend__ml_string_switch__ResultVarLval_29);
+    }
+    {
+      ml_backend__ml_string_switch__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarDefn_28));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__MidVarDefn_25));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_50, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_51));
+    }
+    {
+      ml_backend__ml_string_switch__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 0) = ((MR_Box) (ml_backend__ml_string_switch__HiVarDefn_22));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_50));
+    }
+    {
+      ml_backend__ml_string_switch__AlwaysDefns_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__AlwaysDefns_30, 0) = ((MR_Box) (ml_backend__ml_string_switch__LoVarDefn_19));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__AlwaysDefns_30, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_49));
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47, &ml_backend__ml_string_switch__ModuleInfo_65);
+    }
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(ml_backend__ml_string_switch__ModuleInfo_65, &ml_backend__ml_string_switch__Globals_66);
+    }
+    {
+      ml_backend__ml_string_switch__SupportsGoto_67 = ml_backend__ml_target_util__globals_target_supports_goto_1_f_0(ml_backend__ml_string_switch__Globals_66);
+    }
+    {
+      libs__globals__lookup_string_option_3_p_0(ml_backend__ml_string_switch__Globals_66, (MR_Integer) 672, &ml_backend__ml_string_switch__Experiment_68);
+    }
+    switch (ml_backend__ml_string_switch__SupportsGoto_67) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ml_backend__ml_string_switch__StopLoopType_69 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+          MR_Word ml_backend__ml_string_switch__StopLoopVar_71;
+          MR_Word ml_backend__ml_string_switch__StopLoopVarDefn_72;
+          MR_Word ml_backend__ml_string_switch__StopLoopVarLval_73;
+          MR_Word ml_backend__ml_string_switch__Var_77;
+
+          {
+            ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 9, &ml_backend__ml_string_switch__StopLoopVar_71, ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54);
+          }
+          {
+            ml_backend__ml_string_switch__Var_77 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_77, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVar_71));
+          }
+          {
+            ml_backend__ml_string_switch__StopLoopVarDefn_72 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_77, ml_backend__ml_string_switch__StopLoopType_69, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_10);
+          }
+          {
+            ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54, ml_backend__ml_string_switch__StopLoopVar_71, ml_backend__ml_string_switch__StopLoopType_69, &ml_backend__ml_string_switch__StopLoopVarLval_73);
+          }
+          {
+            ml_backend__ml_string_switch__MaybeStopLoopLval_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopLval_31, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_73));
+          }
+          {
+            ml_backend__ml_string_switch__StopLoopVarDefns_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarDefn_72));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          ml_backend__ml_string_switch__succeeded = (strcmp(ml_backend__ml_string_switch__Experiment_68, (MR_String) "use_stop_loop") == 0);
+          if (ml_backend__ml_string_switch__succeeded)
+            {
+              MR_Word ml_backend__ml_string_switch__StopLoopType_87 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+              MR_Word ml_backend__ml_string_switch__StopLoopVar_89;
+              MR_Word ml_backend__ml_string_switch__StopLoopVarDefn_90;
+              MR_Word ml_backend__ml_string_switch__StopLoopVarLval_91;
+              MR_Word ml_backend__ml_string_switch__Var_93;
+
+              {
+                ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 9, &ml_backend__ml_string_switch__StopLoopVar_89, ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54);
+              }
+              {
+                ml_backend__ml_string_switch__Var_93 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_93, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVar_89));
+              }
+              {
+                ml_backend__ml_string_switch__StopLoopVarDefn_90 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_93, ml_backend__ml_string_switch__StopLoopType_87, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_10);
+              }
+              {
+                ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54, ml_backend__ml_string_switch__StopLoopVar_89, ml_backend__ml_string_switch__StopLoopType_87, &ml_backend__ml_string_switch__StopLoopVarLval_91);
+              }
+              {
+                ml_backend__ml_string_switch__MaybeStopLoopLval_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopLval_31, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_91));
+              }
+              {
+                ml_backend__ml_string_switch__StopLoopVarDefns_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarDefn_90));
+                MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+          else
+            {
+              ml_backend__ml_string_switch__MaybeStopLoopLval_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              ml_backend__ml_string_switch__StopLoopVarDefns_32 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_47_47;
+            }
+        }
+        break;
+    }
+    {
+      ml_backend__ml_string_switch__Defns_33 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, ml_backend__ml_string_switch__AlwaysDefns_30, ml_backend__ml_string_switch__StopLoopVarDefns_32);
+    }
+    switch (ml_backend__ml_string_switch__CanFail_9) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_code_util__ml_gen_failure_5_p_0(ml_backend__ml_string_switch__CodeModel_8, ml_backend__ml_string_switch__Context_10, &ml_backend__ml_string_switch__FailStmts_34, ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54, ml_backend__ml_string_switch__STATE_VARIABLE_Info_36);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          ml_backend__ml_string_switch__FailStmts_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *ml_backend__ml_string_switch__STATE_VARIABLE_Info_36 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_54_54;
+        }
+        break;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+      *ml_backend__ml_string_switch__BinarySearchInfo_12 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__CodeModel_8));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_11));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__LoVarLval_20));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (ml_backend__ml_string_switch__HiVarLval_23));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (ml_backend__ml_string_switch__MidVarLval_26));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (ml_backend__ml_string_switch__ResultVarLval_29));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (ml_backend__ml_string_switch__MaybeStopLoopLval_31));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_34));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (ml_backend__ml_string_switch__Defns_33));
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_jump_switch_arms_3_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_0_2,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_3 = ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_0_2;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__CaseIdStmt_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CaseIdsStmts_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdStmt_7, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Stmt_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdStmt_7, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CaseNum_12 = (MR_Integer) ml_backend__ml_string_switch__CaseId_10;
+            MR_Word ml_backend__ml_string_switch__MatchCond_13;
+            MR_Word ml_backend__ml_string_switch__SwitchCase_14;
+            MR_Word ml_backend__ml_string_switch__Var_17;
+            MR_Word ml_backend__ml_string_switch__Var_18;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_20_20;
+
+            {
+              ml_backend__ml_string_switch__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_18, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNum_12));
+            }
+            {
+              ml_backend__ml_string_switch__Var_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_17, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+            }
+            {
+              ml_backend__ml_string_switch__MatchCond_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__MatchCond_13, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_17));
+            }
+            {
+              ml_backend__ml_string_switch__SwitchCase_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchCase_14, 0) = ((MR_Box) (ml_backend__ml_string_switch__MatchCond_13));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchCase_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchCase_14, 2) = ((MR_Box) (ml_backend__ml_string_switch__Stmt_11));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_20_20, 0) = ((MR_Box) (ml_backend__ml_string_switch__SwitchCase_14));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_20_20, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_0_2));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__CaseIdsStmts_8;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_SwitchCases_0_2 = ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_20_20;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_SwitchCases_0_2 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_SwitchCases_0_2;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_binary_jump_initializers_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_6 = ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_4 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3;
+          }
+        else
+          {
+            MR_String ml_backend__ml_string_switch__Str_14;
+            MR_Word ml_backend__ml_string_switch__CaseId_15;
+            MR_Word ml_backend__ml_string_switch__StrCaseIds_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CaseNum_20;
+            MR_Word ml_backend__ml_string_switch__StrRval_21;
+            MR_Word ml_backend__ml_string_switch__CaseNumRval_22;
+            MR_Word ml_backend__ml_string_switch__RowInitializer_23;
+            MR_Word ml_backend__ml_string_switch__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Var_29;
+            MR_Word ml_backend__ml_string_switch__Var_30;
+            MR_Word ml_backend__ml_string_switch__Var_31;
+            MR_Word ml_backend__ml_string_switch__Var_32;
+            MR_Word ml_backend__ml_string_switch__Var_33;
+            MR_Word ml_backend__ml_string_switch__Var_34;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_36_36;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_37_37;
+
+            ml_backend__ml_string_switch__Str_14 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__CaseId_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__CaseNum_20 = (MR_Integer) ml_backend__ml_string_switch__CaseId_15;
+            {
+              ml_backend__ml_string_switch__Var_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_29, 1) = ((MR_Box) (ml_backend__ml_string_switch__Str_14));
+            }
+            {
+              ml_backend__ml_string_switch__StrRval_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StrRval_21, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_29));
+            }
+            {
+              ml_backend__ml_string_switch__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_30, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNum_20));
+            }
+            {
+              ml_backend__ml_string_switch__CaseNumRval_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseNumRval_22, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseNumRval_22, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_30));
+            }
+            {
+              ml_backend__ml_string_switch__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__StrRval_21));
+            }
+            {
+              ml_backend__ml_string_switch__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_34, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumRval_22));
+            }
+            {
+              ml_backend__ml_string_switch__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_34));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              ml_backend__ml_string_switch__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_31, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_32));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_31, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_33));
+            }
+            {
+              ml_backend__ml_string_switch__RowInitializer_23 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_23, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_2));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_23, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_31));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_36_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__RowInitializer_23));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_36_36, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3));
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_37_37 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__StrCaseIds_16;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_36_36;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurIndex_0_5 = ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_37_37;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurIndex_0_5 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurIndex_0_5;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_3;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__get_string_tag_2_p_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), &ml_backend__ml_string_switch__conv1_HeadVar__2_2);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_hash_lookup_switch__1014__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_2)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__get_string_tag_2_p_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), &ml_backend__ml_string_switch__conv0_HeadVar__2_2);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word ml_backend__ml_string_switch__TaggedCases_12,
+  MR_Word ml_backend__ml_string_switch__LookupSwitchInfo_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__Context_16,
+  MR_Word * ml_backend__ml_string_switch__Defns_17,
+  MR_Word * ml_backend__ml_string_switch__Stmts_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_31)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__CaseIdConsts_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 0)));
+    MR_Word ml_backend__ml_string_switch__OutVars_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch__OutTypes_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_13, (MR_Integer) 2)));
+
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__CaseIdConsts_20)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_42_42 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_43_43 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0];
+        MR_Word ml_backend__ml_string_switch__CaseIdValueMap_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdConsts_20, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__StrValueMap_24;
+        MR_Word ml_backend__ml_string_switch__StrValues_25;
+
+        {
+          ml_backend__ml_lookup_switch__ml_case_id_soln_consts_to_tag_soln_consts_4_p_0(ml_backend__ml_string_switch__TypeCtorInfo_42_42, ml_backend__ml_string_switch__TypeInfo_43_43, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[23], ml_backend__ml_string_switch__TaggedCases_12, ml_backend__ml_string_switch__CaseIdValueMap_23, &ml_backend__ml_string_switch__StrValueMap_24);
+        }
+        {
+          mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_42_42, ml_backend__ml_string_switch__TypeInfo_43_43, ml_backend__ml_string_switch__StrValueMap_24, &ml_backend__ml_string_switch__StrValues_25);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0(ml_backend__ml_string_switch__VarRval_11, ml_backend__ml_string_switch__StrValues_25, ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__OutVars_21, ml_backend__ml_string_switch__OutTypes_22, ml_backend__ml_string_switch__Context_16, ml_backend__ml_string_switch__Defns_17, ml_backend__ml_string_switch__Stmts_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30, ml_backend__ml_string_switch__STATE_VARIABLE_Info_31);
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_47_47;
+        MR_Word ml_backend__ml_string_switch__TypeInfo_48_48;
+        MR_Word ml_backend__ml_string_switch__CaseIdSolnMap_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseIdConsts_20, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__StrSolnMap_28;
+        MR_Word ml_backend__ml_string_switch__StrSolns_29;
+        MR_Word ml_backend__ml_string_switch__Var_32;
+
+        {
+          ml_backend__ml_string_switch__Var_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[5]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_10_p_0_2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 3) = ((MR_Box) (ml_backend__ml_string_switch__CodeModel_14));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_32, 4) = ((MR_Box) ((MR_Integer) 2));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_32, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_lookup_switch\'/10", (MR_String) "CodeModel != model_non");
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_47_47 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+        ml_backend__ml_string_switch__TypeInfo_48_48 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[1];
+        {
+          ml_backend__ml_lookup_switch__ml_case_id_soln_consts_to_tag_soln_consts_4_p_0(ml_backend__ml_string_switch__TypeCtorInfo_47_47, ml_backend__ml_string_switch__TypeInfo_48_48, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[24], ml_backend__ml_string_switch__TaggedCases_12, ml_backend__ml_string_switch__CaseIdSolnMap_26, &ml_backend__ml_string_switch__StrSolnMap_28);
+        }
+        {
+          mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_47_47, ml_backend__ml_string_switch__TypeInfo_48_48, ml_backend__ml_string_switch__StrSolnMap_28, &ml_backend__ml_string_switch__StrSolns_29);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0(ml_backend__ml_string_switch__VarRval_11, ml_backend__ml_string_switch__StrSolns_29, ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__OutVars_21, ml_backend__ml_string_switch__OutTypes_22, ml_backend__ml_string_switch__Context_16, ml_backend__ml_string_switch__Defns_17, ml_backend__ml_string_switch__Stmts_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_30, ml_backend__ml_string_switch__STATE_VARIABLE_Info_31);
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_lookup_switch__ml_default_value_for_type_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_several_soln_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseSolns_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_76,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_77)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_113_113;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_116_116;
+    MR_Integer ml_backend__ml_string_switch__TableSize_22;
+    MR_Word ml_backend__ml_string_switch__HashSlotMap_23;
+    MR_Word ml_backend__ml_string_switch__HashOp_24;
+    MR_Integer ml_backend__ml_string_switch__NumCollisions_25;
+    MR_Integer ml_backend__ml_string_switch__HashMask_26;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_27;
+    MR_Word ml_backend__ml_string_switch__ModuleName_28;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_29;
+    MR_Word ml_backend__ml_string_switch__Target_30;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_31;
+    MR_Word ml_backend__ml_string_switch__MLDS_IntType_32;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldTypes_33;
+    MR_Word ml_backend__ml_string_switch__LoopPresent_34;
+    MR_Word ml_backend__ml_string_switch__HashSearchInfo_35;
+    MR_Word ml_backend__ml_string_switch__SlotVarLval_40;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_44;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructTypeNum_45;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructType_46;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldIds_47;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_48;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructTypeNum_49;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructType_50;
+    MR_Word ml_backend__ml_string_switch__LaterSolnOutFieldIds_51;
+    MR_Word ml_backend__ml_string_switch__GlobalData2_52;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_57;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldId_58;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_59;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIds_60;
+    MR_Word ml_backend__ml_string_switch__MaybeNextSlotFieldId_61;
+    MR_Word ml_backend__ml_string_switch__DummyOutRvals_63;
+    MR_Word ml_backend__ml_string_switch__DummyOutInitializers_64;
+    MR_Word ml_backend__ml_string_switch__RevFirstSolnRowInitializers_65;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializersCord_66;
+    MR_Word ml_backend__ml_string_switch__FirstSolnRowInitializers_67;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_68;
+    MR_Word ml_backend__ml_string_switch__FirstSolnVectorCommon_69;
+    MR_Word ml_backend__ml_string_switch__GlobalData3_70;
+    MR_Word ml_backend__ml_string_switch__LaterSolnVectorCommon_71;
+    MR_Word ml_backend__ml_string_switch__GlobalData_72;
+    MR_Word ml_backend__ml_string_switch__MatchDefns_73;
+    MR_Word ml_backend__ml_string_switch__SuccessStmts_74;
+    MR_Word ml_backend__ml_string_switch__Var_80;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86;
+    MR_Word ml_backend__ml_string_switch__Var_100;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_102_102;
+    MR_Word ml_backend__ml_string_switch__Var_103;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_105_105;
+    MR_Word ml_backend__ml_string_switch___CodeModel_36;
+    MR_Word ml_backend__ml_string_switch___LoopPresent_37;
+    MR_Word ml_backend__ml_string_switch___Context_38;
+    MR_Word ml_backend__ml_string_switch___VarRval_39;
+    MR_Word ml_backend__ml_string_switch___StringVarLval_41;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopLval_42;
+    MR_Word ml_backend__ml_string_switch___FailStmts_43;
+
+    {
+      backend_libs__switch_util__construct_string_hash_cases_6_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[1], ml_backend__ml_string_switch__CaseSolns_13, (MR_Integer) 1, &ml_backend__ml_string_switch__TableSize_22, &ml_backend__ml_string_switch__HashSlotMap_23, &ml_backend__ml_string_switch__HashOp_24, &ml_backend__ml_string_switch__NumCollisions_25);
+    }
+    ml_backend__ml_string_switch__HashMask_26 = (ml_backend__ml_string_switch__TableSize_22 - (MR_Integer) 1);
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_76, &ml_backend__ml_string_switch__ModuleInfo_27);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_27, &ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_29 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_76, &ml_backend__ml_string_switch__Target_30);
+    }
+    {
+      ml_backend__ml_string_switch__Var_80 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_31 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_27, ml_backend__ml_string_switch__Var_80);
+    }
+    ml_backend__ml_string_switch__MLDS_IntType_32 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        MR_Word ml_backend__ml_string_switch__Var_81;
+        MR_Word ml_backend__ml_string_switch__Var_82;
+
+        {
+          ml_backend__ml_string_switch__Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_82, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_32));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_82, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+        }
+        {
+          ml_backend__ml_string_switch__Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_81, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_32));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_81, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_82));
+        }
+        {
+          ml_backend__ml_string_switch__FirstSolnFieldTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_81));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 0;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_83;
+        MR_Word ml_backend__ml_string_switch__Var_84;
+        MR_Word ml_backend__ml_string_switch__Var_85;
+
+        {
+          ml_backend__ml_string_switch__Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_85, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_32));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_85, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+        }
+        {
+          ml_backend__ml_string_switch__Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_84, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_32));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_84, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_85));
+        }
+        {
+          ml_backend__ml_string_switch__Var_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_83, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_32));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_83, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_84));
+        }
+        {
+          ml_backend__ml_string_switch__FirstSolnFieldTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_83));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 1;
+      }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_vars_8_p_0(ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__LoopPresent_34, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__VarRval_12, &ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_76, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86);
+    }
+    ml_backend__ml_string_switch___CodeModel_36 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) & (MR_Integer) 3);
+    ml_backend__ml_string_switch___LoopPresent_37 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+    ml_backend__ml_string_switch___Context_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___VarRval_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 2)));
+    ml_backend__ml_string_switch__SlotVarLval_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 3)));
+    ml_backend__ml_string_switch___StringVarLval_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___MaybeStopLoopLval_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___FailStmts_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 6)));
+    *ml_backend__ml_string_switch__Defns_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 7)));
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86, &ml_backend__ml_string_switch__GlobalData0_44);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_30, ml_backend__ml_string_switch__FirstSolnFieldTypes_33, &ml_backend__ml_string_switch__FirstSolnStructTypeNum_45, &ml_backend__ml_string_switch__FirstSolnStructType_46, &ml_backend__ml_string_switch__FirstSolnFieldIds_47, ml_backend__ml_string_switch__GlobalData0_44, &ml_backend__ml_string_switch__GlobalData1_48);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_30, ml_backend__ml_string_switch__OutTypes_17, &ml_backend__ml_string_switch__LaterSolnStructTypeNum_49, &ml_backend__ml_string_switch__LaterSolnStructType_50, &ml_backend__ml_string_switch__LaterSolnOutFieldIds_51, ml_backend__ml_string_switch__GlobalData1_48, &ml_backend__ml_string_switch__GlobalData2_52);
+    }
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        MR_Word ml_backend__ml_string_switch__StringFieldIdPrime_53;
+        MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_54;
+        MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_55;
+        MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_56;
+        MR_Word ml_backend__ml_string_switch__Var_87;
+        MR_Word ml_backend__ml_string_switch__Var_88;
+
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__FirstSolnFieldIds_47)) == (MR_mktag((MR_Integer) 1)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__StringFieldIdPrime_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_47, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_47, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_87)) == (MR_mktag((MR_Integer) 1)));
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_87, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__Var_88 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_87, (MR_Integer) 1)));
+                ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_88)) == (MR_mktag((MR_Integer) 1)));
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_88, (MR_Integer) 0)));
+                    ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_88, (MR_Integer) 1)));
+                  }
+              }
+          }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__StringFieldId_57 = ml_backend__ml_string_switch__StringFieldIdPrime_53;
+            ml_backend__ml_string_switch__NumLaterSolnsFieldId_58 = ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_54;
+            ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_59 = ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_55;
+            ml_backend__ml_string_switch__FirstSolnOutFieldIds_60 = ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_56;
+            ml_backend__ml_string_switch__MaybeNextSlotFieldId_61 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_several_soln_lookup_switch\'/11", (MR_String) "bad FieldIds");
+              return;
+            }
+          }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__NextSlotFieldIdPrime_62;
+        MR_Word ml_backend__ml_string_switch__StringFieldIdPrime_107;
+        MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_108;
+        MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_109;
+        MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_110;
+        MR_Word ml_backend__ml_string_switch__Var_91;
+        MR_Word ml_backend__ml_string_switch__Var_92;
+        MR_Word ml_backend__ml_string_switch__Var_93;
+
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__FirstSolnFieldIds_47)) == (MR_mktag((MR_Integer) 1)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__StringFieldIdPrime_107 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_47, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__Var_91 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_47, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_91)) == (MR_mktag((MR_Integer) 1)));
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__NextSlotFieldIdPrime_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_91, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__Var_92 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_91, (MR_Integer) 1)));
+                ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_92)) == (MR_mktag((MR_Integer) 1)));
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_108 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, (MR_Integer) 0)));
+                    ml_backend__ml_string_switch__Var_93 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, (MR_Integer) 1)));
+                    ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_93)) == (MR_mktag((MR_Integer) 1)));
+                    if (ml_backend__ml_string_switch__succeeded)
+                      {
+                        ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_109 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, (MR_Integer) 0)));
+                        ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_110 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, (MR_Integer) 1)));
+                      }
+                  }
+              }
+          }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__StringFieldId_57 = ml_backend__ml_string_switch__StringFieldIdPrime_107;
+            ml_backend__ml_string_switch__NumLaterSolnsFieldId_58 = ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_108;
+            ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_59 = ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_109;
+            ml_backend__ml_string_switch__FirstSolnOutFieldIds_60 = ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_110;
+            {
+              ml_backend__ml_string_switch__MaybeNextSlotFieldId_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeNextSlotFieldId_61, 0) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotFieldIdPrime_62));
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_several_soln_lookup_switch\'/11", (MR_String) "bad FieldIds");
+              return;
+            }
+          }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_113_113 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0;
+    {
+      ml_backend__ml_string_switch__DummyOutRvals_63 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0, ml_backend__ml_string_switch__TypeCtorInfo_113_113, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[21], ml_backend__ml_string_switch__OutTypes_17);
+    }
+    ml_backend__ml_string_switch__TypeCtorInfo_116_116 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+    {
+      ml_backend__ml_string_switch__DummyOutInitializers_64 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_113_113, ml_backend__ml_string_switch__TypeCtorInfo_116_116, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[22], ml_backend__ml_string_switch__DummyOutRvals_63);
+    }
+    {
+      ml_backend__ml_string_switch__Var_100 = mercury__cord__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slots_12_p_0((MR_Integer) 0, ml_backend__ml_string_switch__TableSize_22, ml_backend__ml_string_switch__HashSlotMap_23, ml_backend__ml_string_switch__FirstSolnStructType_46, ml_backend__ml_string_switch__LaterSolnStructType_50, ml_backend__ml_string_switch__MaybeNextSlotFieldId_61, ml_backend__ml_string_switch__DummyOutInitializers_64, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevFirstSolnRowInitializers_65, ml_backend__ml_string_switch__Var_100, &ml_backend__ml_string_switch__LaterSolnRowInitializersCord_66, (MR_Integer) 0);
+    }
+    {
+      mercury__list__reverse_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, ml_backend__ml_string_switch__RevFirstSolnRowInitializers_65, &ml_backend__ml_string_switch__FirstSolnRowInitializers_67);
+    }
+    {
+      ml_backend__ml_string_switch__LaterSolnRowInitializers_68 = mercury__cord__list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, ml_backend__ml_string_switch__LaterSolnRowInitializersCord_66);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__FirstSolnStructTypeNum_45, ml_backend__ml_string_switch__FirstSolnRowInitializers_67, &ml_backend__ml_string_switch__FirstSolnVectorCommon_69, ml_backend__ml_string_switch__GlobalData2_52, &ml_backend__ml_string_switch__GlobalData3_70);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__LaterSolnStructTypeNum_49, ml_backend__ml_string_switch__LaterSolnRowInitializers_68, &ml_backend__ml_string_switch__LaterSolnVectorCommon_71, ml_backend__ml_string_switch__GlobalData3_70, &ml_backend__ml_string_switch__GlobalData_72);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_72, ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_102_102);
+    }
+    {
+      ml_backend__ml_string_switch__Var_103 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_103, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_40));
+    }
+    {
+      ml_backend__ml_lookup_switch__ml_gen_several_soln_lookup_code_17_p_0(ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Var_103, ml_backend__ml_string_switch__OutVars_16, ml_backend__ml_string_switch__OutTypes_17, ml_backend__ml_string_switch__FirstSolnStructType_46, ml_backend__ml_string_switch__LaterSolnStructType_50, ml_backend__ml_string_switch__NumLaterSolnsFieldId_58, ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_59, ml_backend__ml_string_switch__FirstSolnOutFieldIds_60, ml_backend__ml_string_switch__LaterSolnOutFieldIds_51, ml_backend__ml_string_switch__FirstSolnVectorCommon_69, ml_backend__ml_string_switch__LaterSolnVectorCommon_71, (MR_Integer) 1, &ml_backend__ml_string_switch__MatchDefns_73, &ml_backend__ml_string_switch__SuccessStmts_74, ml_backend__ml_string_switch__STATE_VARIABLE_Info_102_102, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_105_105);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_13_p_0((MR_String) "hashed string several_soln lookup switch", ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__HashOp_24, ml_backend__ml_string_switch__FirstSolnVectorCommon_69, ml_backend__ml_string_switch__FirstSolnStructType_46, ml_backend__ml_string_switch__StringFieldId_57, ml_backend__ml_string_switch__MaybeNextSlotFieldId_61, ml_backend__ml_string_switch__HashMask_26, ml_backend__ml_string_switch__MatchDefns_73, ml_backend__ml_string_switch__SuccessStmts_74, ml_backend__ml_string_switch__Stmts_20, ml_backend__ml_string_switch__STATE_VARIABLE_Info_105_105, ml_backend__ml_string_switch__STATE_VARIABLE_Info_77);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slots_12_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_13,
+  MR_Integer ml_backend__ml_string_switch__TableSize_14,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_15,
+  MR_Word ml_backend__ml_string_switch__FirstSolnStructType_16,
+  MR_Word ml_backend__ml_string_switch__LaterSolnStructType_17,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_18,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_19,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_24,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_25,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_26,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_27,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_28)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Slot_13 == ml_backend__ml_string_switch__TableSize_14);
+
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_27 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_26;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_25 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_24;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__FirstSolnsRowInitializer_23;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_29_29;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_31_31;
+            MR_Integer ml_backend__ml_string_switch__Var_32;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_30_36;
+
+            {
+              ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0(ml_backend__ml_string_switch__Slot_13, ml_backend__ml_string_switch__HashSlotMap_15, ml_backend__ml_string_switch__FirstSolnStructType_16, ml_backend__ml_string_switch__LaterSolnStructType_17, ml_backend__ml_string_switch__MaybeNextSlotId_18, ml_backend__ml_string_switch__DummyOutInitializers_19, &ml_backend__ml_string_switch__FirstSolnsRowInitializer_23, ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_26, &ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_29_29, ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_28, &ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_30_36);
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_31_31, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnsRowInitializer_23));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_31_31, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_24));
+            }
+            ml_backend__ml_string_switch__Var_32 = (ml_backend__ml_string_switch__Slot_13 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Integer ml_backend__ml_string_switch__next_value_of_Slot_13 = ml_backend__ml_string_switch__Var_32;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_24 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_31_31;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_26 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_29_29;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurLaterSolnIndex_0_28 = ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_30_36;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_28 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurLaterSolnIndex_0_28;
+              ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_26 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_26;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_24 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_24;
+              ml_backend__ml_string_switch__Slot_13 = ml_backend__ml_string_switch__next_value_of_Slot_13;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv3_HeadVar__3_3;
+
+    {
+      ml_backend__ml_string_switch__conv3_HeadVar__3_3 = ml_backend__ml_lookup_switch__ml_construct_later_soln_row_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv3_HeadVar__3_3));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv2_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv2_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv2_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_12,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_13,
+  MR_Word ml_backend__ml_string_switch__FirstSolnStructType_14,
+  MR_Word ml_backend__ml_string_switch__LaterSolnStructType_15,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_16,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_17,
+  MR_Word * ml_backend__ml_string_switch__FirstSolnsRowInitializer_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_35,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_36,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_38)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__StringRval_25;
+    MR_Word ml_backend__ml_string_switch__NextSlotRval_26;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsRval_28;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSlotRval_29;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutInitializers_30;
+    MR_Word ml_backend__ml_string_switch__HashSlotMapEntry_21;
+    MR_Box ml_backend__ml_string_switch__conv0_HashSlotMapEntry_21;
+
+    {
+      ml_backend__ml_string_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[6], ml_backend__ml_string_switch__HashSlotMap_13, ml_backend__ml_string_switch__Slot_12, &ml_backend__ml_string_switch__conv0_HashSlotMapEntry_21);
+    }
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__HashSlotMapEntry_21 = ((MR_Word) ml_backend__ml_string_switch__conv0_HashSlotMapEntry_21);
+        ml_backend__ml_string_switch__succeeded = MR_TRUE;
+      }
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        MR_String ml_backend__ml_string_switch__String_22 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_21, (MR_Integer) 0)));
+        MR_Integer ml_backend__ml_string_switch__Next_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_21, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Solns_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_21, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__Var_39;
+        MR_Word ml_backend__ml_string_switch__Var_40;
+
+        {
+          ml_backend__ml_string_switch__Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_39, 1) = ((MR_Box) (ml_backend__ml_string_switch__String_22));
+        }
+        {
+          ml_backend__ml_string_switch__StringRval_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_39));
+        }
+        {
+          ml_backend__ml_string_switch__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_40, 0) = ((MR_Box) (ml_backend__ml_string_switch__Next_23));
+        }
+        {
+          ml_backend__ml_string_switch__NextSlotRval_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_26, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_40));
+        }
+        if (((MR_tag((MR_Word) ml_backend__ml_string_switch__Solns_24)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word ml_backend__ml_string_switch__FirstSolnRvals_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 0)));
+
+            ml_backend__ml_string_switch__NumLaterSolnsRval_28 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11]);
+            ml_backend__ml_string_switch__FirstLaterSlotRval_29 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[12]);
+            {
+              ml_backend__ml_string_switch__FirstSolnOutInitializers_30 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[19], ml_backend__ml_string_switch__FirstSolnRvals_27);
+            }
+            *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_36 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_35;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_38 = ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__TypeInfo_82_82 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0];
+            MR_Word ml_backend__ml_string_switch__TypeCtorInfo_84_84;
+            MR_Word ml_backend__ml_string_switch__LaterSolns_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__NumLaterSolns_32;
+            MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_33;
+            MR_Word ml_backend__ml_string_switch__Var_41;
+            MR_Word ml_backend__ml_string_switch__Var_42;
+            MR_Word ml_backend__ml_string_switch__Var_44;
+            MR_Word ml_backend__ml_string_switch__Var_46;
+            MR_Word ml_backend__ml_string_switch__FirstSolnRvals_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_24, (MR_Integer) 0)));
+
+            {
+              mercury__list__length_2_p_0(ml_backend__ml_string_switch__TypeInfo_82_82, ml_backend__ml_string_switch__LaterSolns_31, &ml_backend__ml_string_switch__NumLaterSolns_32);
+            }
+            {
+              ml_backend__ml_string_switch__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_41, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolns_32));
+            }
+            {
+              ml_backend__ml_string_switch__NumLaterSolnsRval_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NumLaterSolnsRval_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NumLaterSolnsRval_28, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_41));
+            }
+            {
+              ml_backend__ml_string_switch__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_42, 0) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37));
+            }
+            {
+              ml_backend__ml_string_switch__FirstLaterSlotRval_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstLaterSlotRval_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstLaterSlotRval_29, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_42));
+            }
+            ml_backend__ml_string_switch__TypeCtorInfo_84_84 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+            {
+              ml_backend__ml_string_switch__FirstSolnOutInitializers_30 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, ml_backend__ml_string_switch__TypeCtorInfo_84_84, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[20], ml_backend__ml_string_switch__FirstSolnRvals_75);
+            }
+            {
+              ml_backend__ml_string_switch__Var_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_44, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_6[0]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_44, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_hash_several_soln_lookup_slot_11_p_0_3));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_44, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_44, 3) = ((MR_Box) (ml_backend__ml_string_switch__LaterSolnStructType_15));
+            }
+            {
+              ml_backend__ml_string_switch__LaterSolnRowInitializers_33 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeInfo_82_82, ml_backend__ml_string_switch__TypeCtorInfo_84_84, ml_backend__ml_string_switch__Var_44, ml_backend__ml_string_switch__LaterSolns_31);
+            }
+            {
+              ml_backend__ml_string_switch__Var_46 = mercury__cord__from_list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_84_84, ml_backend__ml_string_switch__LaterSolnRowInitializers_33);
+            }
+            {
+              *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_36 = mercury__cord__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_84_84, ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_35, ml_backend__ml_string_switch__Var_46);
+            }
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_38 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37 + ml_backend__ml_string_switch__NumLaterSolns_32);
+          }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_53;
+        MR_Word ml_backend__ml_string_switch__Var_54;
+
+        {
+          ml_backend__ml_string_switch__Var_54 = ml_backend__ml_code_util__ml_string_type_0_f_0();
+        }
+        {
+          ml_backend__ml_string_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_53, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+        }
+        {
+          ml_backend__ml_string_switch__StringRval_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_53));
+        }
+        ml_backend__ml_string_switch__NextSlotRval_26 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[14]);
+        ml_backend__ml_string_switch__NumLaterSolnsRval_28 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[12]);
+        ml_backend__ml_string_switch__FirstLaterSlotRval_29 = ml_backend__ml_string_switch__NumLaterSolnsRval_28;
+        ml_backend__ml_string_switch__FirstSolnOutInitializers_30 = ml_backend__ml_string_switch__DummyOutInitializers_17;
+        *ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_38 = ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_0_37;
+        *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_36 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_35;
+      }
+    if ((ml_backend__ml_string_switch__MaybeNextSlotId_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word ml_backend__ml_string_switch__Var_61;
+        MR_Word ml_backend__ml_string_switch__Var_62;
+        MR_Word ml_backend__ml_string_switch__Var_63;
+        MR_Word ml_backend__ml_string_switch__Var_64;
+        MR_Word ml_backend__ml_string_switch__Var_65;
+        MR_Word ml_backend__ml_string_switch__Var_66;
+
+        {
+          ml_backend__ml_string_switch__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_25));
+        }
+        {
+          ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolnsRval_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_66, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstLaterSlotRval_29));
+        }
+        {
+          ml_backend__ml_string_switch__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_65, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_66));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_65, 1) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnOutInitializers_30));
+        }
+        {
+          ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_64));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_65));
+        }
+        {
+          ml_backend__ml_string_switch__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_61, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_62));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_61, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *ml_backend__ml_string_switch__FirstSolnsRowInitializer_18 = base;
+          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnStructType_14));
+          MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_67;
+        MR_Word ml_backend__ml_string_switch__Var_68;
+        MR_Word ml_backend__ml_string_switch__Var_69;
+        MR_Word ml_backend__ml_string_switch__Var_70;
+        MR_Word ml_backend__ml_string_switch__Var_71;
+        MR_Word ml_backend__ml_string_switch__Var_72;
+        MR_Word ml_backend__ml_string_switch__Var_73;
+        MR_Word ml_backend__ml_string_switch__Var_74;
+
+        {
+          ml_backend__ml_string_switch__Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_68, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_25));
+        }
+        {
+          ml_backend__ml_string_switch__Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_70, 0) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotRval_26));
+        }
+        {
+          ml_backend__ml_string_switch__Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolnsRval_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_74, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstLaterSlotRval_29));
+        }
+        {
+          ml_backend__ml_string_switch__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_73, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_74));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_73, 1) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnOutInitializers_30));
+        }
+        {
+          ml_backend__ml_string_switch__Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_71, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_72));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_71, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_73));
+        }
+        {
+          ml_backend__ml_string_switch__Var_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_69, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_70));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_69, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_71));
+        }
+        {
+          ml_backend__ml_string_switch__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_67, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_68));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_67, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_69));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *ml_backend__ml_string_switch__FirstSolnsRowInitializer_18 = base;
+          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnStructType_14));
+          MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_67));
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_lookup_switch__ml_default_value_for_type_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_simple_lookup_switch_11_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_12,
+  MR_Word ml_backend__ml_string_switch__CaseValues_13,
+  MR_Word ml_backend__ml_string_switch__CodeModel_14,
+  MR_Word ml_backend__ml_string_switch__CanFail_15,
+  MR_Word ml_backend__ml_string_switch__OutVars_16,
+  MR_Word ml_backend__ml_string_switch__OutTypes_17,
+  MR_Word ml_backend__ml_string_switch__Context_18,
+  MR_Word * ml_backend__ml_string_switch__Defns_19,
+  MR_Word * ml_backend__ml_string_switch__Stmts_20,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_67,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_68)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_98_98;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_101_101;
+    MR_Integer ml_backend__ml_string_switch__TableSize_22;
+    MR_Word ml_backend__ml_string_switch__HashSlotMap_23;
+    MR_Word ml_backend__ml_string_switch__HashOp_24;
+    MR_Integer ml_backend__ml_string_switch__NumCollisions_25;
+    MR_Integer ml_backend__ml_string_switch__HashMask_26;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_27;
+    MR_Word ml_backend__ml_string_switch__ModuleName_28;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_29;
+    MR_Word ml_backend__ml_string_switch__Target_30;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_31;
+    MR_Word ml_backend__ml_string_switch__MLDS_ArgTypes_33;
+    MR_Word ml_backend__ml_string_switch__LoopPresent_34;
+    MR_Word ml_backend__ml_string_switch__HashSearchInfo_35;
+    MR_Word ml_backend__ml_string_switch__SlotVarLval_40;
+    MR_Word ml_backend__ml_string_switch__SlotVarRval_44;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_45;
+    MR_Word ml_backend__ml_string_switch__StructTypeNum_46;
+    MR_Word ml_backend__ml_string_switch__StructType_47;
+    MR_Word ml_backend__ml_string_switch__FieldIds_48;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_49;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_50;
+    MR_Word ml_backend__ml_string_switch__OutFieldIds_51;
+    MR_Word ml_backend__ml_string_switch__MaybeNextSlotFieldId_52;
+    MR_Word ml_backend__ml_string_switch__DummyOutRvals_55;
+    MR_Word ml_backend__ml_string_switch__DummyOutInitializers_56;
+    MR_Word ml_backend__ml_string_switch__RevRowInitializers_57;
+    MR_Word ml_backend__ml_string_switch__RowInitializers_58;
+    MR_Word ml_backend__ml_string_switch__VectorCommon_59;
+    MR_Word ml_backend__ml_string_switch__GlobalData_60;
+    MR_Word ml_backend__ml_string_switch__LookupStmts_61;
+    MR_Word ml_backend__ml_string_switch__FoundMatchCommentStmt_63;
+    MR_Word ml_backend__ml_string_switch__MatchStmts_64;
+    MR_Word ml_backend__ml_string_switch__Var_71;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_73_73;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_84_84;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_85_85;
+    MR_Word ml_backend__ml_string_switch___CodeModel_36;
+    MR_Word ml_backend__ml_string_switch___LoopPresent_37;
+    MR_Word ml_backend__ml_string_switch___Context_38;
+    MR_Word ml_backend__ml_string_switch___VarRval_39;
+    MR_Word ml_backend__ml_string_switch___StringVarLval_41;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopLval_42;
+    MR_Word ml_backend__ml_string_switch___FailStmts_43;
+
+    {
+      backend_libs__switch_util__construct_string_hash_cases_6_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0], ml_backend__ml_string_switch__CaseValues_13, (MR_Integer) 1, &ml_backend__ml_string_switch__TableSize_22, &ml_backend__ml_string_switch__HashSlotMap_23, &ml_backend__ml_string_switch__HashOp_24, &ml_backend__ml_string_switch__NumCollisions_25);
+    }
+    ml_backend__ml_string_switch__HashMask_26 = (ml_backend__ml_string_switch__TableSize_22 - (MR_Integer) 1);
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_67, &ml_backend__ml_string_switch__ModuleInfo_27);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_27, &ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_29 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_67, &ml_backend__ml_string_switch__Target_30);
+    }
+    {
+      ml_backend__ml_string_switch__Var_71 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_31 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_27, ml_backend__ml_string_switch__Var_71);
+    }
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        {
+          ml_backend__ml_string_switch__MLDS_ArgTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 0;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_72;
+
+        {
+          ml_backend__ml_string_switch__Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_17));
+        }
+        {
+          ml_backend__ml_string_switch__MLDS_ArgTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_72));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 1;
+      }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_vars_8_p_0(ml_backend__ml_string_switch__CodeModel_14, ml_backend__ml_string_switch__CanFail_15, ml_backend__ml_string_switch__LoopPresent_34, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__VarRval_12, &ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_67, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_73_73);
+    }
+    ml_backend__ml_string_switch___CodeModel_36 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) & (MR_Integer) 3);
+    ml_backend__ml_string_switch___LoopPresent_37 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+    ml_backend__ml_string_switch___Context_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___VarRval_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 2)));
+    ml_backend__ml_string_switch__SlotVarLval_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 3)));
+    ml_backend__ml_string_switch___StringVarLval_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___MaybeStopLoopLval_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___FailStmts_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 6)));
+    *ml_backend__ml_string_switch__Defns_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 7)));
+    {
+      ml_backend__ml_string_switch__SlotVarRval_44 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__SlotVarRval_44, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_40));
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_73_73, &ml_backend__ml_string_switch__GlobalData0_45);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__Context_18, ml_backend__ml_string_switch__Target_30, ml_backend__ml_string_switch__MLDS_ArgTypes_33, &ml_backend__ml_string_switch__StructTypeNum_46, &ml_backend__ml_string_switch__StructType_47, &ml_backend__ml_string_switch__FieldIds_48, ml_backend__ml_string_switch__GlobalData0_45, &ml_backend__ml_string_switch__GlobalData1_49);
+    }
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      if ((ml_backend__ml_string_switch__FieldIds_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_simple_lookup_switch\'/11", (MR_String) "bad FieldIds");
+            return;
+          }
+        }
+      else
+        {
+          ml_backend__ml_string_switch__StringFieldId_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_48, (MR_Integer) 0)));
+          ml_backend__ml_string_switch__OutFieldIds_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_48, (MR_Integer) 1)));
+          ml_backend__ml_string_switch__MaybeNextSlotFieldId_52 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+    else
+    if ((ml_backend__ml_string_switch__FieldIds_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_simple_lookup_switch\'/11", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_109 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_48, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_110 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_48, (MR_Integer) 0)));
+
+        if ((ml_backend__ml_string_switch__Var_109 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_simple_lookup_switch\'/11", (MR_String) "bad FieldIds");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__NextSlotFieldId_53;
+
+            ml_backend__ml_string_switch__StringFieldId_50 = ml_backend__ml_string_switch__Var_110;
+            ml_backend__ml_string_switch__NextSlotFieldId_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_109, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__OutFieldIds_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_109, (MR_Integer) 1)));
+            {
+              ml_backend__ml_string_switch__MaybeNextSlotFieldId_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeNextSlotFieldId_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotFieldId_53));
+            }
+          }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_98_98 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0;
+    {
+      ml_backend__ml_string_switch__DummyOutRvals_55 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0, ml_backend__ml_string_switch__TypeCtorInfo_98_98, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[17], ml_backend__ml_string_switch__OutTypes_17);
+    }
+    ml_backend__ml_string_switch__TypeCtorInfo_101_101 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+    {
+      ml_backend__ml_string_switch__DummyOutInitializers_56 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_98_98, ml_backend__ml_string_switch__TypeCtorInfo_101_101, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[18], ml_backend__ml_string_switch__DummyOutRvals_55);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0((MR_Integer) 0, ml_backend__ml_string_switch__TableSize_22, ml_backend__ml_string_switch__StructType_47, ml_backend__ml_string_switch__HashSlotMap_23, ml_backend__ml_string_switch__MaybeNextSlotFieldId_52, ml_backend__ml_string_switch__DummyOutInitializers_56, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevRowInitializers_57);
+    }
+    {
+      mercury__list__reverse_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_101_101, ml_backend__ml_string_switch__RevRowInitializers_57, &ml_backend__ml_string_switch__RowInitializers_58);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__StructTypeNum_46, ml_backend__ml_string_switch__RowInitializers_58, &ml_backend__ml_string_switch__VectorCommon_59, ml_backend__ml_string_switch__GlobalData1_49, &ml_backend__ml_string_switch__GlobalData_60);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_60, ml_backend__ml_string_switch__STATE_VARIABLE_Info_73_73, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_84_84);
+    }
+    {
+      ml_backend__ml_code_util__ml_generate_field_assigns_10_p_0(ml_backend__ml_string_switch__OutVars_16, ml_backend__ml_string_switch__OutTypes_17, ml_backend__ml_string_switch__OutFieldIds_51, ml_backend__ml_string_switch__VectorCommon_59, ml_backend__ml_string_switch__StructType_47, ml_backend__ml_string_switch__SlotVarRval_44, ml_backend__ml_string_switch__Context_18, &ml_backend__ml_string_switch__LookupStmts_61, ml_backend__ml_string_switch__STATE_VARIABLE_Info_84_84, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_85_85);
+    }
+    {
+      ml_backend__ml_string_switch__FoundMatchCommentStmt_63 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_63, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[3])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_63, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_18));
+    }
+    switch (ml_backend__ml_string_switch__CodeModel_14) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_string_switch__MatchStmts_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MatchStmts_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__FoundMatchCommentStmt_63));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MatchStmts_64, 1) = ((MR_Box) (ml_backend__ml_string_switch__LookupStmts_61));
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_simple_lookup_switch\'/11", (MR_String) "model_non");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ml_backend__ml_string_switch__SetSuccessTrueStmt_65;
+          MR_Word ml_backend__ml_string_switch__Var_91;
+          MR_Word ml_backend__ml_string_switch__Var_92;
+
+          {
+            ml_backend__ml_code_util__ml_gen_set_success_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_85_85, (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[13]), ml_backend__ml_string_switch__Context_18, &ml_backend__ml_string_switch__SetSuccessTrueStmt_65);
+          }
+          {
+            ml_backend__ml_string_switch__Var_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_91, 0) = ((MR_Box) (ml_backend__ml_string_switch__FoundMatchCommentStmt_63));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_91, 1) = ((MR_Box) (ml_backend__ml_string_switch__LookupStmts_61));
+          }
+          {
+            ml_backend__ml_string_switch__Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 0) = ((MR_Box) (ml_backend__ml_string_switch__SetSuccessTrueStmt_65));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ml_backend__ml_string_switch__MatchStmts_64 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__Var_91, ml_backend__ml_string_switch__Var_92);
+          }
+        }
+        break;
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_13_p_0((MR_String) "hashed string simple lookup switch", ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__HashOp_24, ml_backend__ml_string_switch__VectorCommon_59, ml_backend__ml_string_switch__StructType_47, ml_backend__ml_string_switch__StringFieldId_50, ml_backend__ml_string_switch__MaybeNextSlotFieldId_52, ml_backend__ml_string_switch__HashMask_26, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__MatchStmts_64, ml_backend__ml_string_switch__Stmts_20, ml_backend__ml_string_switch__STATE_VARIABLE_Info_85_85, ml_backend__ml_string_switch__STATE_VARIABLE_Info_68);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_simple_lookup_slots_8_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_9,
+  MR_Integer ml_backend__ml_string_switch__TableSize_10,
+  MR_Word ml_backend__ml_string_switch__StructType_11,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_12,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_13,
+  MR_Word ml_backend__ml_string_switch__DummyOutInitializers_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_17,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Slot_9 == ml_backend__ml_string_switch__TableSize_10);
+
+        if (ml_backend__ml_string_switch__succeeded)
+          *ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_18 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_17;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__RowInitializer_16;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19_19;
+            MR_Integer ml_backend__ml_string_switch__Var_20;
+            MR_Word ml_backend__ml_string_switch__StringRval_33;
+            MR_Word ml_backend__ml_string_switch__NextSlotRval_34;
+            MR_Word ml_backend__ml_string_switch__OutInitializers_35;
+            MR_Word ml_backend__ml_string_switch__HashSlotMapEntry_29;
+            MR_Box ml_backend__ml_string_switch__conv0_HashSlotMapEntry_29;
+
+            {
+              ml_backend__ml_string_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[5], ml_backend__ml_string_switch__HashSlotMap_12, ml_backend__ml_string_switch__Slot_9, &ml_backend__ml_string_switch__conv0_HashSlotMapEntry_29);
+            }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__HashSlotMapEntry_29 = ((MR_Word) ml_backend__ml_string_switch__conv0_HashSlotMapEntry_29);
+                ml_backend__ml_string_switch__succeeded = MR_TRUE;
+              }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                MR_String ml_backend__ml_string_switch__String_30 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_29, (MR_Integer) 0)));
+                MR_Integer ml_backend__ml_string_switch__Next_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_29, (MR_Integer) 1)));
+                MR_Word ml_backend__ml_string_switch__OutRvals_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_29, (MR_Integer) 2)));
+                MR_Word ml_backend__ml_string_switch__Var_37;
+                MR_Word ml_backend__ml_string_switch__Var_38;
+
+                {
+                  ml_backend__ml_string_switch__Var_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_37, 1) = ((MR_Box) (ml_backend__ml_string_switch__String_30));
+                }
+                {
+                  ml_backend__ml_string_switch__StringRval_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_37));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_38, 0) = ((MR_Box) (ml_backend__ml_string_switch__Next_31));
+                }
+                {
+                  ml_backend__ml_string_switch__NextSlotRval_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_34, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_38));
+                }
+                {
+                  ml_backend__ml_string_switch__OutInitializers_35 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[16], ml_backend__ml_string_switch__OutRvals_32);
+                }
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_40;
+                MR_Word ml_backend__ml_string_switch__Var_41;
+
+                {
+                  ml_backend__ml_string_switch__Var_41 = ml_backend__ml_code_util__ml_string_type_0_f_0();
+                }
+                {
+                  ml_backend__ml_string_switch__Var_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_41));
+                }
+                {
+                  ml_backend__ml_string_switch__StringRval_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_40));
+                }
+                ml_backend__ml_string_switch__NextSlotRval_34 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[14]);
+                ml_backend__ml_string_switch__OutInitializers_35 = ml_backend__ml_string_switch__DummyOutInitializers_14;
+              }
+            if ((ml_backend__ml_string_switch__MaybeNextSlotId_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word ml_backend__ml_string_switch__Var_44;
+                MR_Word ml_backend__ml_string_switch__Var_45;
+
+                {
+                  ml_backend__ml_string_switch__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_45, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_33));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_44, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_45));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_44, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutInitializers_35));
+                }
+                {
+                  ml_backend__ml_string_switch__RowInitializer_16 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_16, 0) = ((MR_Box) (ml_backend__ml_string_switch__StructType_11));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_16, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_44));
+                }
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_46;
+                MR_Word ml_backend__ml_string_switch__Var_47;
+                MR_Word ml_backend__ml_string_switch__Var_48;
+                MR_Word ml_backend__ml_string_switch__Var_49;
+
+                {
+                  ml_backend__ml_string_switch__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_47, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_33));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 0) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotRval_34));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_49));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutInitializers_35));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_46, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_47));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_46, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_48));
+                }
+                {
+                  ml_backend__ml_string_switch__RowInitializer_16 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_16, 0) = ((MR_Box) (ml_backend__ml_string_switch__StructType_11));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_16, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_46));
+                }
+              }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19_19, 0) = ((MR_Box) (ml_backend__ml_string_switch__RowInitializer_16));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19_19, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_17));
+            }
+            ml_backend__ml_string_switch__Var_20 = (ml_backend__ml_string_switch__Slot_9 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Integer ml_backend__ml_string_switch__next_value_of_Slot_9 = ml_backend__ml_string_switch__Var_20;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_17 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19_19;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_17 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_17;
+              ml_backend__ml_string_switch__Slot_9 = ml_backend__ml_string_switch__next_value_of_Slot_9;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_jump_switch_9_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_10,
+  MR_Word ml_backend__ml_string_switch__TaggedCases_11,
+  MR_Word ml_backend__ml_string_switch__CodeModel_12,
+  MR_Word ml_backend__ml_string_switch__CanFail_13,
+  MR_Word ml_backend__ml_string_switch__Context_14,
+  MR_Word * ml_backend__ml_string_switch__Defns_15,
+  MR_Word * ml_backend__ml_string_switch__Stmts_16,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_74,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_75)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_116_116 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_119_119;
+    MR_Word ml_backend__ml_string_switch__CodeMap_18;
+    MR_Word ml_backend__ml_string_switch__RevStrsCaseIds_20;
+    MR_Word ml_backend__ml_string_switch__StrsCaseIds_21;
+    MR_Integer ml_backend__ml_string_switch__TableSize_22;
+    MR_Word ml_backend__ml_string_switch__HashSlotMap_23;
+    MR_Word ml_backend__ml_string_switch__HashOp_24;
+    MR_Integer ml_backend__ml_string_switch__NumCollisions_25;
+    MR_Integer ml_backend__ml_string_switch__HashMask_26;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_27;
+    MR_Word ml_backend__ml_string_switch__ModuleName_28;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_29;
+    MR_Word ml_backend__ml_string_switch__Target_30;
+    MR_Word ml_backend__ml_string_switch__MLDS_StringType_31;
+    MR_Word ml_backend__ml_string_switch__MLDS_ArgTypes_33;
+    MR_Word ml_backend__ml_string_switch__LoopPresent_34;
+    MR_Word ml_backend__ml_string_switch__HashSearchInfo_35;
+    MR_Word ml_backend__ml_string_switch__SlotVarLval_40;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_44;
+    MR_Word ml_backend__ml_string_switch__StructTypeNum_45;
+    MR_Word ml_backend__ml_string_switch__StructType_46;
+    MR_Word ml_backend__ml_string_switch__FieldIds_47;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_48;
+    MR_Word ml_backend__ml_string_switch__StringFieldId_49;
+    MR_Word ml_backend__ml_string_switch__MaybeNextSlotFieldId_50;
+    MR_Word ml_backend__ml_string_switch__RevRowInitializers_60;
+    MR_Word ml_backend__ml_string_switch__RevMap_61;
+    MR_Word ml_backend__ml_string_switch__RowInitializers_62;
+    MR_Word ml_backend__ml_string_switch__VectorCommon_63;
+    MR_Word ml_backend__ml_string_switch__GlobalData_64;
+    MR_Word ml_backend__ml_string_switch__RevList_65;
+    MR_Word ml_backend__ml_string_switch__SlotsCases0_66;
+    MR_Word ml_backend__ml_string_switch__SlotsCases_67;
+    MR_Word ml_backend__ml_string_switch__SwitchStmt0_69;
+    MR_Word ml_backend__ml_string_switch__SwitchStmt_70;
+    MR_Word ml_backend__ml_string_switch__FoundMatchStmts_72;
+    MR_Word ml_backend__ml_string_switch__Var_76;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77;
+    MR_Word ml_backend__ml_string_switch__Var_82;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86;
+    MR_Word ml_backend__ml_string_switch__Var_100;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_101_101;
+    MR_Word ml_backend__ml_string_switch__Var_103;
+    MR_Word ml_backend__ml_string_switch__Var_104;
+    MR_Integer ml_backend__ml_string_switch__Var_106;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_109_109;
+    MR_Word ml_backend__ml_string_switch__Var_110;
+    MR_Word ml_backend__ml_string_switch__Var_112;
+    MR_Integer ml_backend__ml_string_switch___MaxCaseNum_19;
+    MR_Word ml_backend__ml_string_switch___CodeModel_36;
+    MR_Word ml_backend__ml_string_switch___LoopPresent_37;
+    MR_Word ml_backend__ml_string_switch___Context_38;
+    MR_Word ml_backend__ml_string_switch___VarRval_39;
+    MR_Word ml_backend__ml_string_switch___StringVarLval_41;
+    MR_Word ml_backend__ml_string_switch___MaybeStopLoopLval_42;
+    MR_Word ml_backend__ml_string_switch___FailStmts_43;
+
+    {
+      ml_backend__ml_string_switch__Var_76 = mercury__map__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0);
+    }
+    {
+      ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0(ml_backend__ml_string_switch__CodeModel_12, ml_backend__ml_string_switch__TaggedCases_11, ml_backend__ml_string_switch__Var_76, &ml_backend__ml_string_switch__CodeMap_18, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_74, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77);
+    }
+    {
+      ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0(ml_backend__ml_string_switch__TaggedCases_11, (MR_Integer) -1, &ml_backend__ml_string_switch___MaxCaseNum_19, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevStrsCaseIds_20);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_2[0], ml_backend__ml_string_switch__RevStrsCaseIds_20, &ml_backend__ml_string_switch__StrsCaseIds_21);
+    }
+    {
+      backend_libs__switch_util__construct_string_hash_cases_6_p_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, ml_backend__ml_string_switch__StrsCaseIds_21, (MR_Integer) 1, &ml_backend__ml_string_switch__TableSize_22, &ml_backend__ml_string_switch__HashSlotMap_23, &ml_backend__ml_string_switch__HashOp_24, &ml_backend__ml_string_switch__NumCollisions_25);
+    }
+    ml_backend__ml_string_switch__HashMask_26 = (ml_backend__ml_string_switch__TableSize_22 - (MR_Integer) 1);
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, &ml_backend__ml_string_switch__ModuleInfo_27);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_27, &ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_29 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_28);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, &ml_backend__ml_string_switch__Target_30);
+    }
+    {
+      ml_backend__ml_string_switch__Var_82 = parse_tree__builtin_lib_types__string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_StringType_31 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ml_backend__ml_string_switch__ModuleInfo_27, ml_backend__ml_string_switch__Var_82);
+    }
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        {
+          ml_backend__ml_string_switch__MLDS_ArgTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 0;
+      }
+    else
+      {
+        {
+          ml_backend__ml_string_switch__MLDS_ArgTypes_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_StringType_31));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MLDS_ArgTypes_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_1[17])));
+        }
+        ml_backend__ml_string_switch__LoopPresent_34 = (MR_Integer) 1;
+      }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_vars_8_p_0(ml_backend__ml_string_switch__CodeModel_12, ml_backend__ml_string_switch__CanFail_13, ml_backend__ml_string_switch__LoopPresent_34, ml_backend__ml_string_switch__Context_14, ml_backend__ml_string_switch__VarRval_10, &ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86);
+    }
+    ml_backend__ml_string_switch___CodeModel_36 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) & (MR_Integer) 3);
+    ml_backend__ml_string_switch___LoopPresent_37 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+    ml_backend__ml_string_switch___Context_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 1)));
+    ml_backend__ml_string_switch___VarRval_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 2)));
+    ml_backend__ml_string_switch__SlotVarLval_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 3)));
+    ml_backend__ml_string_switch___StringVarLval_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 4)));
+    ml_backend__ml_string_switch___MaybeStopLoopLval_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 5)));
+    ml_backend__ml_string_switch___FailStmts_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 6)));
+    *ml_backend__ml_string_switch__Defns_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_35, (MR_Integer) 7)));
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86, &ml_backend__ml_string_switch__GlobalData0_44);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__Context_14, ml_backend__ml_string_switch__Target_30, ml_backend__ml_string_switch__MLDS_ArgTypes_33, &ml_backend__ml_string_switch__StructTypeNum_45, &ml_backend__ml_string_switch__StructType_46, &ml_backend__ml_string_switch__FieldIds_47, ml_backend__ml_string_switch__GlobalData0_44, &ml_backend__ml_string_switch__GlobalData1_48);
+    }
+    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__NumCollisions_25 == (MR_Integer) 0);
+    if (ml_backend__ml_string_switch__succeeded)
+      if ((ml_backend__ml_string_switch__FieldIds_47 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_jump_switch\'/9", (MR_String) "bad FieldIds");
+            return;
+          }
+        }
+      else
+        {
+          MR_Word ml_backend__ml_string_switch__Var_132 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_47, (MR_Integer) 1)));
+          MR_Word ml_backend__ml_string_switch__Var_133 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_47, (MR_Integer) 0)));
+
+          if ((ml_backend__ml_string_switch__Var_132 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            {
+              ml_backend__ml_string_switch__StringFieldId_49 = ml_backend__ml_string_switch__Var_133;
+              ml_backend__ml_string_switch__MaybeNextSlotFieldId_50 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+          else
+            {
+              {
+                mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_jump_switch\'/9", (MR_String) "bad FieldIds");
+                return;
+              }
+            }
+        }
+    else
+    if ((ml_backend__ml_string_switch__FieldIds_47 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_jump_switch\'/9", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_47, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_135 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FieldIds_47, (MR_Integer) 0)));
+
+        if ((ml_backend__ml_string_switch__Var_134 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_jump_switch\'/9", (MR_String) "bad FieldIds");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Var_136 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_134, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__Var_137 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_134, (MR_Integer) 0)));
+
+            if ((ml_backend__ml_string_switch__Var_136 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                ml_backend__ml_string_switch__StringFieldId_49 = ml_backend__ml_string_switch__Var_135;
+                {
+                  ml_backend__ml_string_switch__MaybeNextSlotFieldId_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeNextSlotFieldId_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_137));
+                }
+              }
+            else
+              {
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_hash_jump_switch\'/9", (MR_String) "bad FieldIds");
+                  return;
+                }
+              }
+          }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_119_119 = (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0;
+    {
+      ml_backend__ml_string_switch__Var_100 = mercury__map__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, ml_backend__ml_string_switch__TypeCtorInfo_119_119);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_jump_slots_9_p_0((MR_Integer) 0, ml_backend__ml_string_switch__TableSize_22, ml_backend__ml_string_switch__HashSlotMap_23, ml_backend__ml_string_switch__StructType_46, ml_backend__ml_string_switch__MaybeNextSlotFieldId_50, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevRowInitializers_60, ml_backend__ml_string_switch__Var_100, &ml_backend__ml_string_switch__RevMap_61);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, ml_backend__ml_string_switch__RevRowInitializers_60, &ml_backend__ml_string_switch__RowInitializers_62);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_29, ml_backend__ml_string_switch__StructTypeNum_45, ml_backend__ml_string_switch__RowInitializers_62, &ml_backend__ml_string_switch__VectorCommon_63, ml_backend__ml_string_switch__GlobalData1_48, &ml_backend__ml_string_switch__GlobalData_64);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_64, ml_backend__ml_string_switch__STATE_VARIABLE_Info_86_86, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_101_101);
+    }
+    {
+      mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_116_116, ml_backend__ml_string_switch__TypeCtorInfo_119_119, ml_backend__ml_string_switch__RevMap_61, &ml_backend__ml_string_switch__RevList_65);
+    }
+    {
+      ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0(ml_backend__ml_string_switch__CodeMap_18, ml_backend__ml_string_switch__RevList_65, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__SlotsCases0_66);
+    }
+    {
+      mercury__list__sort_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0, ml_backend__ml_string_switch__SlotsCases0_66, &ml_backend__ml_string_switch__SlotsCases_67);
+    }
+    {
+      ml_backend__ml_string_switch__Var_103 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_103, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_40));
+    }
+    ml_backend__ml_string_switch__Var_106 = (ml_backend__ml_string_switch__TableSize_22 - (MR_Integer) 1);
+    {
+      ml_backend__ml_string_switch__Var_104 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_104, 0) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_104, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_106));
+    }
+    {
+      ml_backend__ml_string_switch__SwitchStmt0_69 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_103));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_104));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 4) = ((MR_Box) (ml_backend__ml_string_switch__SlotsCases_67));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SwitchStmt0_69, 6) = ((MR_Box) (ml_backend__ml_string_switch__Context_14));
+    }
+    {
+      ml_backend__ml_simplify_switch__ml_simplify_switch_4_p_0(ml_backend__ml_string_switch__SwitchStmt0_69, &ml_backend__ml_string_switch__SwitchStmt_70, ml_backend__ml_string_switch__STATE_VARIABLE_Info_101_101, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_109_109);
+    }
+    {
+      ml_backend__ml_string_switch__Var_110 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_110, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_110, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[14])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_110, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_14));
+    }
+    {
+      ml_backend__ml_string_switch__Var_112 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_112, 0) = ((MR_Box) (ml_backend__ml_string_switch__SwitchStmt_70));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_112, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__FoundMatchStmts_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FoundMatchStmts_72, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_110));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FoundMatchStmts_72, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_112));
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_13_p_0((MR_String) "hashed string jump switch", ml_backend__ml_string_switch__HashSearchInfo_35, ml_backend__ml_string_switch__HashOp_24, ml_backend__ml_string_switch__VectorCommon_63, ml_backend__ml_string_switch__StructType_46, ml_backend__ml_string_switch__StringFieldId_49, ml_backend__ml_string_switch__MaybeNextSlotFieldId_50, ml_backend__ml_string_switch__HashMask_26, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__FoundMatchStmts_72, ml_backend__ml_string_switch__Stmts_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_109_109, ml_backend__ml_string_switch__STATE_VARIABLE_Info_75);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_13_p_0(
+  MR_String ml_backend__ml_string_switch__InitialComment_14,
+  MR_Word ml_backend__ml_string_switch__HashSearchInfo_15,
+  MR_Word ml_backend__ml_string_switch__HashOp_16,
+  MR_Word ml_backend__ml_string_switch__VectorCommon_17,
+  MR_Word ml_backend__ml_string_switch__StructType_18,
+  MR_Word ml_backend__ml_string_switch__StringFieldId_19,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotFieldId_20,
+  MR_Integer ml_backend__ml_string_switch__HashMask_21,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_22,
+  MR_Word ml_backend__ml_string_switch__MatchStmts_23,
+  MR_Word * ml_backend__ml_string_switch__Stmts_24,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_61,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_62)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__CodeModel_26 = ((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 0)))) & (MR_Integer) 3);
+    MR_Word ml_backend__ml_string_switch__LoopPresent_27 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+    MR_Word ml_backend__ml_string_switch__Context_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch__VarRval_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 2)));
+    MR_Word ml_backend__ml_string_switch__SlotVarLval_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 3)));
+    MR_Word ml_backend__ml_string_switch__StringVarLval_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 4)));
+    MR_Word ml_backend__ml_string_switch__MaybeStopLoopVarLval_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 5)));
+    MR_Word ml_backend__ml_string_switch__FailStmts_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 6)));
+    MR_Word ml_backend__ml_string_switch__SlotVarRval_35;
+    MR_Word ml_backend__ml_string_switch__StringVarRval_36;
+    MR_Word ml_backend__ml_string_switch__StringVarType_38;
+    MR_Word ml_backend__ml_string_switch__SetupForFailStmts_39;
+    MR_Word ml_backend__ml_string_switch__SuccessStmt_40;
+    MR_Word ml_backend__ml_string_switch__AfterStmts_41;
+    MR_Word ml_backend__ml_string_switch__InitialCommentStmt_42;
+    MR_Word ml_backend__ml_string_switch__PrepareForMatchStmts_43;
+    MR_Word ml_backend__ml_string_switch__FoundMatchCond_44;
+    MR_Word ml_backend__ml_string_switch__LookForMatchPrepareStmts_45;
+    MR_Word ml_backend__ml_string_switch__SlotTest_46;
+    MR_Word ml_backend__ml_string_switch__InitStopLoopVarStmts_47;
+    MR_Word ml_backend__ml_string_switch__InitSuccessStmts_48;
+    MR_Word ml_backend__ml_string_switch__LoopTest_49;
+    MR_Word ml_backend__ml_string_switch__Var_64;
+    MR_Word ml_backend__ml_string_switch__Var_65;
+    MR_Word ml_backend__ml_string_switch__Var_68;
+    MR_Word ml_backend__ml_string_switch__Var_69;
+    MR_Word ml_backend__ml_string_switch__Var_70;
+    MR_Word ml_backend__ml_string_switch__Var_71;
+    MR_Word ml_backend__ml_string_switch__Var_73;
+    MR_Word ml_backend__ml_string_switch__Var_74;
+    MR_Word ml_backend__ml_string_switch__Var_75;
+    MR_Word ml_backend__ml_string_switch__Var_76;
+    MR_Word ml_backend__ml_string_switch__Var_79;
+    MR_Word ml_backend__ml_string_switch__Var_81;
+    MR_Word ml_backend__ml_string_switch__Var_82;
+    MR_Word ml_backend__ml_string_switch__Var_83;
+    MR_Word ml_backend__ml_string_switch__Var_85;
+    MR_Word ml_backend__ml_string_switch__Var_88;
+    MR_Word ml_backend__ml_string_switch__Var_89;
+    MR_Word ml_backend__ml_string_switch__Var_90;
+    MR_Word ml_backend__ml_string_switch__Var_91;
+    MR_Word ml_backend__ml_string_switch__Var_92;
+    MR_Word ml_backend__ml_string_switch__Var_93;
+    MR_Word ml_backend__ml_string_switch__Var_95;
+    MR_Word ml_backend__ml_string_switch__Var_96;
+    MR_Word ml_backend__ml_string_switch__Var_97;
+    MR_Word ml_backend__ml_string_switch__Var_102;
+    MR_Word ml_backend__ml_string_switch___Defns_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSearchInfo_15, (MR_Integer) 7)));
+
+    {
+      ml_backend__ml_string_switch__SlotVarRval_35 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__SlotVarRval_35, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_30));
+    }
+    {
+      ml_backend__ml_string_switch__StringVarRval_36 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__StringVarRval_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringVarLval_31));
+    }
+    {
+      ml_backend__ml_string_switch__StringVarType_38 = ml_backend__ml_code_util__ml_string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0(ml_backend__ml_string_switch__CodeModel_26, ml_backend__ml_string_switch__LoopPresent_27, ml_backend__ml_string_switch__Context_28, ml_backend__ml_string_switch__MaybeStopLoopVarLval_32, ml_backend__ml_string_switch__MatchDefns_22, ml_backend__ml_string_switch__MatchStmts_23, ml_backend__ml_string_switch__FailStmts_33, &ml_backend__ml_string_switch__SetupForFailStmts_39, &ml_backend__ml_string_switch__SuccessStmt_40, &ml_backend__ml_string_switch__AfterStmts_41, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_61, ml_backend__ml_string_switch__STATE_VARIABLE_Info_62);
+    }
+    {
+      ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitialComment_14));
+    }
+    {
+      ml_backend__ml_string_switch__InitialCommentStmt_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_42, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_64));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitialCommentStmt_42, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    {
+      ml_backend__ml_string_switch__Var_65 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_65, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[8])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_65, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    {
+      ml_backend__ml_string_switch__Var_74 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_74, 0) = ((MR_Box) (ml_backend__ml_string_switch__HashOp_16));
+    }
+    {
+      ml_backend__ml_string_switch__Var_73 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_74));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_73, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_29));
+    }
+    {
+      ml_backend__ml_string_switch__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_76, 0) = ((MR_Box) (ml_backend__ml_string_switch__HashMask_21));
+    }
+    {
+      ml_backend__ml_string_switch__Var_75 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_75, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_75, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_76));
+    }
+    {
+      ml_backend__ml_string_switch__Var_71 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 7))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_73));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_71, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_75));
+    }
+    {
+      ml_backend__ml_string_switch__Var_70 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_70, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_30));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_70, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_71));
+    }
+    {
+      ml_backend__ml_string_switch__Var_69 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_69, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_69, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_70));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_69, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    {
+      ml_backend__ml_string_switch__Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_68, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_69));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__PrepareForMatchStmts_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__PrepareForMatchStmts_43, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_65));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__PrepareForMatchStmts_43, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_68));
+    }
+    {
+      ml_backend__ml_string_switch__Var_82 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_82, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_82, 1) = ((MR_Box) (ml_backend__ml_string_switch__StringVarType_38));
+    }
+    {
+      ml_backend__ml_string_switch__Var_81 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_81, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_81, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_82));
+    }
+    {
+      ml_backend__ml_string_switch__Var_79 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 13))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 2) = ((MR_Box) (ml_backend__ml_string_switch__StringVarRval_36));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_79, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_81));
+    }
+    {
+      ml_backend__ml_string_switch__Var_83 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_83, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_83, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 16))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_83, 2) = ((MR_Box) (ml_backend__ml_string_switch__StringVarRval_36));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_83, 3) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_29));
+    }
+    {
+      ml_backend__ml_string_switch__FoundMatchCond_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCond_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCond_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCond_44, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_79));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCond_44, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_83));
+    }
+    {
+      ml_backend__ml_string_switch__Var_85 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[9])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_85, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    ml_backend__ml_string_switch__Var_93 = (MR_Word) MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[0]);
+    {
+      ml_backend__ml_string_switch__Var_95 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 1) = ((MR_Box) (ml_backend__ml_string_switch__VectorCommon_17));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_95, 2) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarRval_35));
+    }
+    {
+      ml_backend__ml_string_switch__Var_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_92, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_93));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_92, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_95));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_92, 2) = ((MR_Box) (ml_backend__ml_string_switch__StringFieldId_19));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_92, 3) = ((MR_Box) (ml_backend__ml_string_switch__StringVarType_38));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_92, 4) = ((MR_Box) (ml_backend__ml_string_switch__StructType_18));
+    }
+    {
+      ml_backend__ml_string_switch__Var_91 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_91, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_92));
+    }
+    {
+      ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_90, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringVarLval_31));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_90, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_91));
+    }
+    {
+      ml_backend__ml_string_switch__Var_89 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_89, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_89, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_89, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    {
+      ml_backend__ml_string_switch__Var_97 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[10])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_97, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+    }
+    {
+      ml_backend__ml_string_switch__Var_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_96, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_97));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_96, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_88, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_89));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_88, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_96));
+    }
+    {
+      ml_backend__ml_string_switch__LookForMatchPrepareStmts_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LookForMatchPrepareStmts_45, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_85));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LookForMatchPrepareStmts_45, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_88));
+    }
+    ml_backend__ml_string_switch__Var_102 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11]);
+    {
+      ml_backend__ml_string_switch__SlotTest_46 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SlotTest_46, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SlotTest_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 26))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SlotTest_46, 2) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarRval_35));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SlotTest_46, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_102));
+    }
+    if ((ml_backend__ml_string_switch__MaybeStopLoopVarLval_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        ml_backend__ml_string_switch__InitStopLoopVarStmts_47 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ml_backend__ml_string_switch__InitSuccessStmts_48 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ml_backend__ml_string_switch__LoopTest_49 = ml_backend__ml_string_switch__SlotTest_46;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__StopLoopVarLval_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopVarLval_32, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__InitStopLoopVarStmt_51;
+        MR_Word ml_backend__ml_string_switch__StopLoopTest_53;
+        MR_Word ml_backend__ml_string_switch__Var_105;
+        MR_Word ml_backend__ml_string_switch__Var_114;
+
+        {
+          ml_backend__ml_string_switch__Var_105 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_105, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_50));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_105, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_102));
+        }
+        {
+          ml_backend__ml_string_switch__InitStopLoopVarStmt_51 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_51, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_51, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_105));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__InitStopLoopVarStmt_51, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__InitStopLoopVarStmts_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InitStopLoopVarStmts_47, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitStopLoopVarStmt_51));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InitStopLoopVarStmts_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        switch (ml_backend__ml_string_switch__CodeModel_26) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            ml_backend__ml_string_switch__InitSuccessStmts_48 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+          case (MR_Integer) 2:
+            ml_backend__ml_string_switch__InitSuccessStmts_48 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ml_backend__ml_string_switch__InitSuccessStmt_52;
+
+              {
+                ml_backend__ml_code_util__ml_gen_set_success_4_p_0(*ml_backend__ml_string_switch__STATE_VARIABLE_Info_62, (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[16]), ml_backend__ml_string_switch__Context_28, &ml_backend__ml_string_switch__InitSuccessStmt_52);
+              }
+              {
+                ml_backend__ml_string_switch__InitSuccessStmts_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InitSuccessStmts_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitSuccessStmt_52));
+                MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InitSuccessStmts_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+            break;
+        }
+        {
+          ml_backend__ml_string_switch__Var_114 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_114, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_50));
+        }
+        {
+          ml_backend__ml_string_switch__StopLoopTest_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_114));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StopLoopTest_53, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_102));
+        }
+        {
+          ml_backend__ml_string_switch__LoopTest_49 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__LoopTest_49, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__LoopTest_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__LoopTest_49, 2) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopTest_53));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__LoopTest_49, 3) = ((MR_Box) (ml_backend__ml_string_switch__SlotTest_46));
+        }
+      }
+    if ((ml_backend__ml_string_switch__MaybeNextSlotFieldId_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_161_161;
+        MR_Word ml_backend__ml_string_switch__NoLoopCommentStmt_60;
+        MR_Word ml_backend__ml_string_switch__Var_122;
+        MR_Word ml_backend__ml_string_switch__Var_123;
+        MR_Word ml_backend__ml_string_switch__Var_124;
+        MR_Word ml_backend__ml_string_switch__Var_125;
+        MR_Word ml_backend__ml_string_switch__Var_127;
+        MR_Word ml_backend__ml_string_switch__LookForMatchStmt_158;
+        MR_Word ml_backend__ml_string_switch__SearchStmts_159;
+
+        {
+          ml_backend__ml_string_switch__NoLoopCommentStmt_60 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NoLoopCommentStmt_60, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NoLoopCommentStmt_60, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[11])));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NoLoopCommentStmt_60, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__LookForMatchStmt_158 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_158, 0) = ((MR_Box) (ml_backend__ml_string_switch__FoundMatchCond_44));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_158, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessStmt_40));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_158, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_158, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_161_161 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+        {
+          ml_backend__ml_string_switch__Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_124, 0) = ((MR_Box) (ml_backend__ml_string_switch__NoLoopCommentStmt_60));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_124, 1) = ((MR_Box) (ml_backend__ml_string_switch__LookForMatchPrepareStmts_45));
+        }
+        {
+          ml_backend__ml_string_switch__Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_125, 0) = ((MR_Box) (ml_backend__ml_string_switch__LookForMatchStmt_158));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_125, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_123 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_161_161, ml_backend__ml_string_switch__Var_124, ml_backend__ml_string_switch__Var_125);
+        }
+        {
+          ml_backend__ml_string_switch__Var_122 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_161_161, ml_backend__ml_string_switch__InitSuccessStmts_48, ml_backend__ml_string_switch__Var_123);
+        }
+        {
+          ml_backend__ml_string_switch__SearchStmts_159 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_161_161, ml_backend__ml_string_switch__PrepareForMatchStmts_43, ml_backend__ml_string_switch__Var_122);
+        }
+        {
+          ml_backend__ml_string_switch__Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitialCommentStmt_42));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_127, 1) = ((MR_Box) (ml_backend__ml_string_switch__SearchStmts_159));
+        }
+        {
+          *ml_backend__ml_string_switch__Stmts_24 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_161_161, ml_backend__ml_string_switch__Var_127, ml_backend__ml_string_switch__AfterStmts_41);
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_160_160;
+        MR_Word ml_backend__ml_string_switch__NextSlotFieldId_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeNextSlotFieldId_20, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__NoMatchStmt_55;
+        MR_Word ml_backend__ml_string_switch__LookForMatchStmt_56;
+        MR_Word ml_backend__ml_string_switch__LoopBody_57;
+        MR_Word ml_backend__ml_string_switch__LoopStmts_58;
+        MR_Word ml_backend__ml_string_switch__SearchStmts_59;
+        MR_Word ml_backend__ml_string_switch__Var_129;
+        MR_Word ml_backend__ml_string_switch__Var_130;
+        MR_Word ml_backend__ml_string_switch__Var_133;
+        MR_Word ml_backend__ml_string_switch__Var_134;
+        MR_Word ml_backend__ml_string_switch__Var_135;
+        MR_Word ml_backend__ml_string_switch__Var_136;
+        MR_Word ml_backend__ml_string_switch__Var_137;
+        MR_Word ml_backend__ml_string_switch__Var_142;
+        MR_Word ml_backend__ml_string_switch__Var_144;
+        MR_Word ml_backend__ml_string_switch__Var_145;
+        MR_Word ml_backend__ml_string_switch__Var_147;
+        MR_Word ml_backend__ml_string_switch__Var_150;
+        MR_Word ml_backend__ml_string_switch__Var_151;
+        MR_Word ml_backend__ml_string_switch__Var_154;
+        MR_Word ml_backend__ml_string_switch__Var_155;
+        MR_Word ml_backend__ml_string_switch__Var_156;
+        MR_Word ml_backend__ml_string_switch__Var_157;
+
+        {
+          ml_backend__ml_string_switch__Var_130 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_130, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_130, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[12])));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_130, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_137 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_137, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_93));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_137, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_95));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_137, 2) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotFieldId_54));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_137, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_137, 4) = ((MR_Box) (ml_backend__ml_string_switch__StructType_18));
+        }
+        {
+          ml_backend__ml_string_switch__Var_136 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_136, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_137));
+        }
+        {
+          ml_backend__ml_string_switch__Var_135 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_135, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_30));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_135, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_136));
+        }
+        {
+          ml_backend__ml_string_switch__Var_134 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_134, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_134, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_135));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_134, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_133, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_134));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_133, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_129, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_130));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_129, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_133));
+        }
+        {
+          ml_backend__ml_string_switch__NoMatchStmt_55 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NoMatchStmt_55, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NoMatchStmt_55, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_129));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NoMatchStmt_55, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_142 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_142, 0) = ((MR_Box) (ml_backend__ml_string_switch__NoMatchStmt_55));
+        }
+        {
+          ml_backend__ml_string_switch__LookForMatchStmt_56 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_56, 0) = ((MR_Box) (ml_backend__ml_string_switch__FoundMatchCond_44));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_56, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessStmt_40));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_56, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_142));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__LookForMatchStmt_56, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_160_160 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+        {
+          ml_backend__ml_string_switch__Var_145 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_145, 0) = ((MR_Box) (ml_backend__ml_string_switch__LookForMatchStmt_56));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_145, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__Var_144 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__LookForMatchPrepareStmts_45, ml_backend__ml_string_switch__Var_145);
+        }
+        {
+          ml_backend__ml_string_switch__LoopBody_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LoopBody_57, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LoopBody_57, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_144));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LoopBody_57, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_147 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_147, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_147, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[13])));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_147, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_151 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_151, 0) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_151, 1) = ((MR_Box) (ml_backend__ml_string_switch__LoopTest_49));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_151, 2) = ((MR_Box) (ml_backend__ml_string_switch__LoopBody_57));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_151, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_28));
+        }
+        {
+          ml_backend__ml_string_switch__Var_150 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_150, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_151));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_150, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ml_backend__ml_string_switch__LoopStmts_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopStmts_58, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_147));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LoopStmts_58, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_150));
+        }
+        {
+          ml_backend__ml_string_switch__Var_155 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__InitSuccessStmts_48, ml_backend__ml_string_switch__LoopStmts_58);
+        }
+        {
+          ml_backend__ml_string_switch__Var_154 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__InitStopLoopVarStmts_47, ml_backend__ml_string_switch__Var_155);
+        }
+        {
+          ml_backend__ml_string_switch__SearchStmts_59 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__PrepareForMatchStmts_43, ml_backend__ml_string_switch__Var_154);
+        }
+        {
+          ml_backend__ml_string_switch__Var_156 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_156, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitialCommentStmt_42));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_156, 1) = ((MR_Box) (ml_backend__ml_string_switch__SetupForFailStmts_39));
+        }
+        {
+          ml_backend__ml_string_switch__Var_157 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__SearchStmts_59, ml_backend__ml_string_switch__AfterStmts_41);
+        }
+        {
+          *ml_backend__ml_string_switch__Stmts_24 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_160_160, ml_backend__ml_string_switch__Var_156, ml_backend__ml_string_switch__Var_157);
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_7(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv4_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv4_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv4_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_6(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv3_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv3_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv3_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_5(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv2_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv2_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv2_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_4(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2179__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_wrap_loop_break__2159__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_13,
+  MR_Word ml_backend__ml_string_switch__LoopPresent_14,
+  MR_Word ml_backend__ml_string_switch__Context_15,
+  MR_Word ml_backend__ml_string_switch__MaybeStopLoopVarLval_16,
+  MR_Word ml_backend__ml_string_switch__MatchDefns_17,
+  MR_Word ml_backend__ml_string_switch__MatchStmts_18,
+  MR_Word ml_backend__ml_string_switch__FailStmts_19,
+  MR_Word * ml_backend__ml_string_switch__SetupForFailStmts_20,
+  MR_Word * ml_backend__ml_string_switch__BodyStmt_21,
+  MR_Word * ml_backend__ml_string_switch__AfterStmts_22,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_45)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__OnlyFailAfterStmts_24;
+
+    switch (ml_backend__ml_string_switch__CodeModel_13) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ml_backend__ml_string_switch__Var_50;
+
+          *ml_backend__ml_string_switch__SetupForFailStmts_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          {
+            ml_backend__ml_string_switch__Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_50, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[7]));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_50, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_1));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_50, 3) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_19));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_50, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_50, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_wrap_loop_break\'/12", (MR_String) "model_det, but FailStmts is not empty");
+          }
+          ml_backend__ml_string_switch__OnlyFailAfterStmts_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ml_backend__ml_string_switch__Var_46;
+
+          *ml_backend__ml_string_switch__SetupForFailStmts_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          {
+            ml_backend__ml_string_switch__Var_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_46, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[7]));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_46, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_wrap_loop_break_12_p_0_2));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_46, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_46, 3) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_19));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_46, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_46, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_wrap_loop_break\'/12", (MR_String) "model_non, but FailStmts is not empty");
+          }
+          ml_backend__ml_string_switch__OnlyFailAfterStmts_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+        break;
+      case (MR_Integer) 1:
+        if ((ml_backend__ml_string_switch__MaybeStopLoopVarLval_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__SetupForFailStmts_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            ml_backend__ml_string_switch__OnlyFailAfterStmts_24 = ml_backend__ml_string_switch__FailStmts_19;
+          }
+        else
+          {
+            *ml_backend__ml_string_switch__SetupForFailStmts_20 = ml_backend__ml_string_switch__FailStmts_19;
+            ml_backend__ml_string_switch__OnlyFailAfterStmts_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        break;
+    }
+    if ((ml_backend__ml_string_switch__MaybeStopLoopVarLval_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__LoopPresent_14 == (MR_Integer) 0);
+        if (ml_backend__ml_string_switch__succeeded)
+          ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__OnlyFailAfterStmts_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Word ml_backend__ml_string_switch__Var_75;
+
+            {
+              ml_backend__ml_string_switch__Var_75 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[11], ml_backend__ml_string_switch__MatchDefns_17);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              *ml_backend__ml_string_switch__BodyStmt_21 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_75));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__MatchStmts_18));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+            }
+            *ml_backend__ml_string_switch__AfterStmts_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            *ml_backend__ml_string_switch__STATE_VARIABLE_Info_45 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__ModuleInfo_26;
+            MR_Word ml_backend__ml_string_switch__Globals_27;
+            MR_Word ml_backend__ml_string_switch__SupportsBreakContinue_28;
+            MR_String ml_backend__ml_string_switch__Experiment_29;
+
+            {
+              ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44, &ml_backend__ml_string_switch__ModuleInfo_26);
+            }
+            {
+              hlds__hlds_module__module_info_get_globals_2_p_0(ml_backend__ml_string_switch__ModuleInfo_26, &ml_backend__ml_string_switch__Globals_27);
+            }
+            {
+              ml_backend__ml_string_switch__SupportsBreakContinue_28 = ml_backend__ml_target_util__globals_target_supports_break_and_continue_1_f_0(ml_backend__ml_string_switch__Globals_27);
+            }
+            {
+              libs__globals__lookup_string_option_3_p_0(ml_backend__ml_string_switch__Globals_27, (MR_Integer) 672, &ml_backend__ml_string_switch__Experiment_29);
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__SupportsBreakContinue_28 == (MR_Integer) 1);
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__OnlyFailAfterStmts_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__succeeded = (strcmp(ml_backend__ml_string_switch__Experiment_29, (MR_String) "use_end_label") == 0);
+                    ml_backend__ml_string_switch__succeeded = !(ml_backend__ml_string_switch__succeeded);
+                  }
+              }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                MR_Word ml_backend__ml_string_switch__BreakCommentStmt_30;
+                MR_Word ml_backend__ml_string_switch__BreakStmt_31;
+                MR_Word ml_backend__ml_string_switch__Var_81;
+                MR_Word ml_backend__ml_string_switch__Var_83;
+                MR_Word ml_backend__ml_string_switch__Var_84;
+                MR_Word ml_backend__ml_string_switch__Var_85;
+
+                {
+                  ml_backend__ml_string_switch__BreakCommentStmt_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakCommentStmt_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakCommentStmt_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[5])));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakCommentStmt_30, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__BreakStmt_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakStmt_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakStmt_31, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__BreakStmt_31, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_81 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[12], ml_backend__ml_string_switch__MatchDefns_17);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_85, 0) = ((MR_Box) (ml_backend__ml_string_switch__BreakStmt_31));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_85, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_84, 0) = ((MR_Box) (ml_backend__ml_string_switch__BreakCommentStmt_30));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_84, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_85));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_83 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__MatchStmts_18, ml_backend__ml_string_switch__Var_84);
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  *ml_backend__ml_string_switch__BodyStmt_21 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_81));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_83));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                *ml_backend__ml_string_switch__AfterStmts_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                *ml_backend__ml_string_switch__STATE_VARIABLE_Info_45 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44;
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__TypeCtorInfo_114_114;
+                MR_String ml_backend__ml_string_switch__EndLabel_32;
+                MR_Word ml_backend__ml_string_switch__GotoCommentStmt_33;
+                MR_Word ml_backend__ml_string_switch__GotoEndStmt_34;
+                MR_Word ml_backend__ml_string_switch__EndLabelStmt_35;
+                MR_Word ml_backend__ml_string_switch__Var_90;
+                MR_Word ml_backend__ml_string_switch__Var_91;
+                MR_Word ml_backend__ml_string_switch__Var_93;
+                MR_Word ml_backend__ml_string_switch__Var_94;
+                MR_Word ml_backend__ml_string_switch__Var_95;
+                MR_Word ml_backend__ml_string_switch__Var_97;
+
+                {
+                  ml_backend__ml_code_util__ml_gen_new_label_3_p_0(&ml_backend__ml_string_switch__EndLabel_32, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44, ml_backend__ml_string_switch__STATE_VARIABLE_Info_45);
+                }
+                {
+                  ml_backend__ml_string_switch__GotoCommentStmt_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoCommentStmt_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoCommentStmt_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[6])));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoCommentStmt_33, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_90, 0) = ((MR_Box) (ml_backend__ml_string_switch__EndLabel_32));
+                }
+                {
+                  ml_backend__ml_string_switch__GotoEndStmt_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoEndStmt_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoEndStmt_34, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__GotoEndStmt_34, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_91 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[13], ml_backend__ml_string_switch__MatchDefns_17);
+                }
+                ml_backend__ml_string_switch__TypeCtorInfo_114_114 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+                {
+                  ml_backend__ml_string_switch__Var_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_95, 0) = ((MR_Box) (ml_backend__ml_string_switch__GotoEndStmt_34));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 0) = ((MR_Box) (ml_backend__ml_string_switch__GotoCommentStmt_33));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_95));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_93 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_114_114, ml_backend__ml_string_switch__MatchStmts_18, ml_backend__ml_string_switch__Var_94);
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  *ml_backend__ml_string_switch__BodyStmt_21 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_91));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_93));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__EndLabelStmt_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndLabelStmt_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndLabelStmt_35, 1) = ((MR_Box) (ml_backend__ml_string_switch__EndLabel_32));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndLabelStmt_35, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_97, 0) = ((MR_Box) (ml_backend__ml_string_switch__EndLabelStmt_35));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_97, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  *ml_backend__ml_string_switch__AfterStmts_22 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_114_114, ml_backend__ml_string_switch__OnlyFailAfterStmts_24, ml_backend__ml_string_switch__Var_97);
+                }
+              }
+          }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__StopLoopVarLval_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopVarLval_16, (MR_Integer) 0)));
+
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__LoopPresent_14 == (MR_Integer) 0);
+        if (ml_backend__ml_string_switch__succeeded)
+          ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__OnlyFailAfterStmts_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Word ml_backend__ml_string_switch__Var_54;
+
+            {
+              ml_backend__ml_string_switch__Var_54 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[14], ml_backend__ml_string_switch__MatchDefns_17);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              *ml_backend__ml_string_switch__BodyStmt_21 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__MatchStmts_18));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+            }
+            *ml_backend__ml_string_switch__AfterStmts_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__SetStopLoopStmt_37;
+            MR_Word ml_backend__ml_string_switch__Var_56;
+            MR_Word ml_backend__ml_string_switch__Var_60;
+            MR_Word ml_backend__ml_string_switch__Var_62;
+            MR_Word ml_backend__ml_string_switch__Var_63;
+
+            {
+              ml_backend__ml_string_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_56, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_36));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[15])));
+            }
+            {
+              ml_backend__ml_string_switch__SetStopLoopStmt_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetStopLoopStmt_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetStopLoopStmt_37, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_56));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetStopLoopStmt_37, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+            }
+            {
+              ml_backend__ml_string_switch__Var_60 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[15], ml_backend__ml_string_switch__MatchDefns_17);
+            }
+            {
+              ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__SetStopLoopStmt_37));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              ml_backend__ml_string_switch__Var_62 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__MatchStmts_18, ml_backend__ml_string_switch__Var_63);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              *ml_backend__ml_string_switch__BodyStmt_21 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_60));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_62));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+            }
+            if ((ml_backend__ml_string_switch__OnlyFailAfterStmts_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              *ml_backend__ml_string_switch__AfterStmts_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__OnlyFailAfterStmts_24, (MR_Integer) 1)));
+                MR_Word ml_backend__ml_string_switch__Var_135 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__OnlyFailAfterStmts_24, (MR_Integer) 0)));
+
+                if ((ml_backend__ml_string_switch__Var_134 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    MR_Word ml_backend__ml_string_switch__SuccessTest_42;
+                    MR_Word ml_backend__ml_string_switch__AfterStmt_43;
+                    MR_Word ml_backend__ml_string_switch__Var_69;
+
+                    {
+                      ml_backend__ml_string_switch__Var_69 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_69, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_36));
+                    }
+                    {
+                      ml_backend__ml_string_switch__SuccessTest_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_42, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_69));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_42, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])));
+                    }
+                    {
+                      ml_backend__ml_string_switch__AfterStmt_43 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_43, 0) = ((MR_Box) (ml_backend__ml_string_switch__SuccessTest_42));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_43, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_135));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_43, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_43, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *ml_backend__ml_string_switch__AfterStmts_22 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__AfterStmt_43));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                  }
+                else
+                  {
+                    MR_Word ml_backend__ml_string_switch__OnlyFailAfterStmt_124;
+                    MR_Word ml_backend__ml_string_switch__SuccessTest_125;
+                    MR_Word ml_backend__ml_string_switch__AfterStmt_126;
+                    MR_Word ml_backend__ml_string_switch__Var_128;
+
+                    {
+                      ml_backend__ml_string_switch__OnlyFailAfterStmt_124 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OnlyFailAfterStmt_124, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OnlyFailAfterStmt_124, 1) = ((MR_Box) (ml_backend__ml_string_switch__OnlyFailAfterStmts_24));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OnlyFailAfterStmt_124, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                    }
+                    {
+                      ml_backend__ml_string_switch__Var_128 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_128, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_36));
+                    }
+                    {
+                      ml_backend__ml_string_switch__SuccessTest_125 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_125, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_125, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_125, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_128));
+                      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SuccessTest_125, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])));
+                    }
+                    {
+                      ml_backend__ml_string_switch__AfterStmt_126 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_126, 0) = ((MR_Box) (ml_backend__ml_string_switch__SuccessTest_125));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_126, 1) = ((MR_Box) (ml_backend__ml_string_switch__OnlyFailAfterStmt_124));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_126, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__AfterStmt_126, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_15));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *ml_backend__ml_string_switch__AfterStmts_22 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__AfterStmt_126));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                  }
+              }
+          }
+        *ml_backend__ml_string_switch__STATE_VARIABLE_Info_45 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_44;
+      }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_switch_search_vars_8_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_9,
+  MR_Word ml_backend__ml_string_switch__CanFail_10,
+  MR_Word ml_backend__ml_string_switch__LoopPresent_11,
+  MR_Word ml_backend__ml_string_switch__Context_12,
+  MR_Word ml_backend__ml_string_switch__VarRval_13,
+  MR_Word * ml_backend__ml_string_switch__HashSearchInfo_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_29,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_30)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__SlotVar_16;
+    MR_Word ml_backend__ml_string_switch__SlotVarType_17;
+    MR_Word ml_backend__ml_string_switch__SlotVarDefn_18;
+    MR_Word ml_backend__ml_string_switch__SlotVarLval_19;
+    MR_Word ml_backend__ml_string_switch__StringVar_20;
+    MR_Word ml_backend__ml_string_switch__StringVarType_21;
+    MR_Word ml_backend__ml_string_switch__StringVarDefn_22;
+    MR_Word ml_backend__ml_string_switch__StringVarLval_23;
+    MR_Word ml_backend__ml_string_switch__AlwaysDefns_24;
+    MR_Word ml_backend__ml_string_switch__MaybeStopLoopLval_25;
+    MR_Word ml_backend__ml_string_switch__StopLoopVarDefns_26;
+    MR_Word ml_backend__ml_string_switch__Defns_27;
+    MR_Word ml_backend__ml_string_switch__FailStmts_28;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_32_32;
+    MR_Word ml_backend__ml_string_switch__Var_33;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36;
+    MR_Word ml_backend__ml_string_switch__Var_37;
+    MR_Word ml_backend__ml_string_switch__Var_39;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 1, &ml_backend__ml_string_switch__SlotVar_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_29, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_32_32);
+    }
+    ml_backend__ml_string_switch__SlotVarType_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    {
+      ml_backend__ml_string_switch__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVar_16));
+    }
+    {
+      ml_backend__ml_string_switch__SlotVarDefn_18 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_33, ml_backend__ml_string_switch__SlotVarType_17, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_12);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_32_32, ml_backend__ml_string_switch__SlotVar_16, ml_backend__ml_string_switch__SlotVarType_17, &ml_backend__ml_string_switch__SlotVarLval_19);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 5, &ml_backend__ml_string_switch__StringVar_20, ml_backend__ml_string_switch__STATE_VARIABLE_Info_32_32, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36);
+    }
+    {
+      ml_backend__ml_string_switch__StringVarType_21 = ml_backend__ml_code_util__ml_string_type_0_f_0();
+    }
+    {
+      ml_backend__ml_string_switch__Var_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringVar_20));
+    }
+    {
+      ml_backend__ml_string_switch__StringVarDefn_22 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_37, ml_backend__ml_string_switch__StringVarType_21, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_12);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36, ml_backend__ml_string_switch__StringVar_20, ml_backend__ml_string_switch__StringVarType_21, &ml_backend__ml_string_switch__StringVarLval_23);
+    }
+    {
+      ml_backend__ml_string_switch__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_39, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringVarDefn_22));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__AlwaysDefns_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__AlwaysDefns_24, 0) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarDefn_18));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__AlwaysDefns_24, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_39));
+    }
+    switch (ml_backend__ml_string_switch__LoopPresent_11) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_string_switch__MaybeStopLoopLval_25 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          ml_backend__ml_string_switch__StopLoopVarDefns_26 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ml_backend__ml_string_switch__ModuleInfo_52;
+          MR_Word ml_backend__ml_string_switch__Globals_53;
+          MR_Word ml_backend__ml_string_switch__SupportsGoto_54;
+          MR_String ml_backend__ml_string_switch__Experiment_55;
+
+          {
+            ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36, &ml_backend__ml_string_switch__ModuleInfo_52);
+          }
+          {
+            hlds__hlds_module__module_info_get_globals_2_p_0(ml_backend__ml_string_switch__ModuleInfo_52, &ml_backend__ml_string_switch__Globals_53);
+          }
+          {
+            ml_backend__ml_string_switch__SupportsGoto_54 = ml_backend__ml_target_util__globals_target_supports_goto_1_f_0(ml_backend__ml_string_switch__Globals_53);
+          }
+          {
+            libs__globals__lookup_string_option_3_p_0(ml_backend__ml_string_switch__Globals_53, (MR_Integer) 672, &ml_backend__ml_string_switch__Experiment_55);
+          }
+          switch (ml_backend__ml_string_switch__SupportsGoto_54) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word ml_backend__ml_string_switch__StopLoopType_56 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+                MR_Word ml_backend__ml_string_switch__StopLoopVar_58;
+                MR_Word ml_backend__ml_string_switch__StopLoopVarDefn_59;
+                MR_Word ml_backend__ml_string_switch__StopLoopVarLval_60;
+                MR_Word ml_backend__ml_string_switch__Var_64;
+
+                {
+                  ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 9, &ml_backend__ml_string_switch__StopLoopVar_58, ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVar_58));
+                }
+                {
+                  ml_backend__ml_string_switch__StopLoopVarDefn_59 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_64, ml_backend__ml_string_switch__StopLoopType_56, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_12);
+                }
+                {
+                  ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41, ml_backend__ml_string_switch__StopLoopVar_58, ml_backend__ml_string_switch__StopLoopType_56, &ml_backend__ml_string_switch__StopLoopVarLval_60);
+                }
+                {
+                  ml_backend__ml_string_switch__MaybeStopLoopLval_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopLval_25, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_60));
+                }
+                {
+                  ml_backend__ml_string_switch__StopLoopVarDefns_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_26, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarDefn_59));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                ml_backend__ml_string_switch__succeeded = (strcmp(ml_backend__ml_string_switch__Experiment_55, (MR_String) "use_stop_loop") == 0);
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    MR_Word ml_backend__ml_string_switch__StopLoopType_75 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+                    MR_Word ml_backend__ml_string_switch__StopLoopVar_77;
+                    MR_Word ml_backend__ml_string_switch__StopLoopVarDefn_78;
+                    MR_Word ml_backend__ml_string_switch__StopLoopVarLval_79;
+                    MR_Word ml_backend__ml_string_switch__Var_81;
+
+                    {
+                      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 9, &ml_backend__ml_string_switch__StopLoopVar_77, ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41);
+                    }
+                    {
+                      ml_backend__ml_string_switch__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_81, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVar_77));
+                    }
+                    {
+                      ml_backend__ml_string_switch__StopLoopVarDefn_78 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_81, ml_backend__ml_string_switch__StopLoopType_75, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_12);
+                    }
+                    {
+                      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41, ml_backend__ml_string_switch__StopLoopVar_77, ml_backend__ml_string_switch__StopLoopType_75, &ml_backend__ml_string_switch__StopLoopVarLval_79);
+                    }
+                    {
+                      ml_backend__ml_string_switch__MaybeStopLoopLval_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeStopLoopLval_25, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarLval_79));
+                    }
+                    {
+                      ml_backend__ml_string_switch__StopLoopVarDefns_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_26, 0) = ((MR_Box) (ml_backend__ml_string_switch__StopLoopVarDefn_78));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StopLoopVarDefns_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                  }
+                else
+                  {
+                    ml_backend__ml_string_switch__MaybeStopLoopLval_25 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    ml_backend__ml_string_switch__StopLoopVarDefns_26 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_36_36;
+                  }
+              }
+              break;
+          }
+        }
+        break;
+    }
+    {
+      ml_backend__ml_string_switch__Defns_27 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, ml_backend__ml_string_switch__AlwaysDefns_24, ml_backend__ml_string_switch__StopLoopVarDefns_26);
+    }
+    switch (ml_backend__ml_string_switch__CanFail_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_code_util__ml_gen_failure_5_p_0(ml_backend__ml_string_switch__CodeModel_9, ml_backend__ml_string_switch__Context_12, &ml_backend__ml_string_switch__FailStmts_28, ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41, ml_backend__ml_string_switch__STATE_VARIABLE_Info_30);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          ml_backend__ml_string_switch__FailStmts_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *ml_backend__ml_string_switch__STATE_VARIABLE_Info_30 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_41_41;
+        }
+        break;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+      *ml_backend__ml_string_switch__HashSearchInfo_14 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) ((ml_backend__ml_string_switch__CodeModel_9 | ((ml_backend__ml_string_switch__LoopPresent_11 << (MR_Integer) 2)))));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__Context_12));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_13));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (ml_backend__ml_string_switch__SlotVarLval_19));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (ml_backend__ml_string_switch__StringVarLval_23));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (ml_backend__ml_string_switch__MaybeStopLoopLval_25));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_28));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (ml_backend__ml_string_switch__Defns_27));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_string_switch__make_hash_match_1_f_0(((MR_Integer) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__generate_string_jump_switch_arms_4_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeMap_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Cases_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Cases_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ml_backend__ml_string_switch__STATE_VARIABLE_Cases_4 = ml_backend__ml_string_switch__STATE_VARIABLE_Cases_0_3;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__TypeCtorInfo_27_27 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+            MR_Word ml_backend__ml_string_switch__Entry_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Entries_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Entry_10, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__HashSlots_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Entry_10, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__FirstHashSlot_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlots_14, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__RevLaterHashSlots_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlots_14, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__LaterHashSlots_17;
+            MR_Word ml_backend__ml_string_switch__FirstMatchCond_18;
+            MR_Word ml_backend__ml_string_switch__LaterMatchConds_19;
+            MR_Word ml_backend__ml_string_switch__CaseStmt_20;
+            MR_Word ml_backend__ml_string_switch__Case_21;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Cases_25_25;
+            MR_Word ml_backend__ml_string_switch__Var_34;
+            MR_Word ml_backend__ml_string_switch__Var_35;
+            MR_Box ml_backend__ml_string_switch__conv1_CaseStmt_20;
+
+            {
+              mercury__list__reverse_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_27_27, ml_backend__ml_string_switch__RevLaterHashSlots_16, &ml_backend__ml_string_switch__LaterHashSlots_17);
+            }
+            {
+              ml_backend__ml_string_switch__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_35, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstHashSlot_15));
+            }
+            {
+              ml_backend__ml_string_switch__Var_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_34, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_35));
+            }
+            {
+              ml_backend__ml_string_switch__FirstMatchCond_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FirstMatchCond_18, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_34));
+            }
+            {
+              ml_backend__ml_string_switch__LaterMatchConds_19 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_27_27, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[10], ml_backend__ml_string_switch__LaterHashSlots_17);
+            }
+            {
+              mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__CodeMap_1, ((MR_Box) (ml_backend__ml_string_switch__CaseId_13)), &ml_backend__ml_string_switch__conv1_CaseStmt_20);
+            }
+            ml_backend__ml_string_switch__CaseStmt_20 = ((MR_Word) ml_backend__ml_string_switch__conv1_CaseStmt_20);
+            {
+              ml_backend__ml_string_switch__Case_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_21, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstMatchCond_18));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_21, 1) = ((MR_Box) (ml_backend__ml_string_switch__LaterMatchConds_19));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_21, 2) = ((MR_Box) (ml_backend__ml_string_switch__CaseStmt_20));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_Cases_25_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_Cases_25_25, 0) = ((MR_Box) (ml_backend__ml_string_switch__Case_21));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_Cases_25_25, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_Cases_0_3));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__2_2 = ml_backend__ml_string_switch__Entries_11;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_Cases_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_Cases_25_25;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_Cases_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_Cases_0_3;
+              ml_backend__ml_string_switch__HeadVar__2_2 = ml_backend__ml_string_switch__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_hash_jump_slots_9_p_0(
+  MR_Integer ml_backend__ml_string_switch__Slot_10,
+  MR_Integer ml_backend__ml_string_switch__TableSize_11,
+  MR_Word ml_backend__ml_string_switch__HashSlotMap_12,
+  MR_Word ml_backend__ml_string_switch__StructType_13,
+  MR_Word ml_backend__ml_string_switch__MaybeNextSlotId_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_18,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Slot_10 == ml_backend__ml_string_switch__TableSize_11);
+
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_21 = ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_19 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_18;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__RowInitializer_17;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_22_22;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_23_23;
+            MR_Integer ml_backend__ml_string_switch__Var_24;
+            MR_Word ml_backend__ml_string_switch__StringRval_40;
+            MR_Word ml_backend__ml_string_switch__NextSlotRval_41;
+            MR_Word ml_backend__ml_string_switch__HashSlotMapEntry_36;
+            MR_Box ml_backend__ml_string_switch__conv0_HashSlotMapEntry_36;
+
+            {
+              ml_backend__ml_string_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &ml_backend__ml_string_switch_scalar_common_1[4], ml_backend__ml_string_switch__HashSlotMap_12, ml_backend__ml_string_switch__Slot_10, &ml_backend__ml_string_switch__conv0_HashSlotMapEntry_36);
+            }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__HashSlotMapEntry_36 = ((MR_Word) ml_backend__ml_string_switch__conv0_HashSlotMapEntry_36);
+                ml_backend__ml_string_switch__succeeded = MR_TRUE;
+              }
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                MR_String ml_backend__ml_string_switch__String_37 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_36, (MR_Integer) 0)));
+                MR_Integer ml_backend__ml_string_switch__Next_38 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_36, (MR_Integer) 1)));
+                MR_Word ml_backend__ml_string_switch__CaseId_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HashSlotMapEntry_36, (MR_Integer) 2)));
+                MR_Word ml_backend__ml_string_switch__Var_47;
+                MR_Word ml_backend__ml_string_switch__Var_48;
+                MR_Word ml_backend__ml_string_switch__OldEntry_42;
+                MR_Box ml_backend__ml_string_switch__conv1_OldEntry_42;
+
+                {
+                  ml_backend__ml_string_switch__Var_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_47, 1) = ((MR_Box) (ml_backend__ml_string_switch__String_37));
+                }
+                {
+                  ml_backend__ml_string_switch__StringRval_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_47));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__Next_38));
+                }
+                {
+                  ml_backend__ml_string_switch__NextSlotRval_41 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_41, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NextSlotRval_41, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_48));
+                }
+                {
+                  ml_backend__ml_string_switch__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0, ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20, ((MR_Box) (ml_backend__ml_string_switch__CaseId_39)), &ml_backend__ml_string_switch__conv1_OldEntry_42);
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__OldEntry_42 = ((MR_Word) ml_backend__ml_string_switch__conv1_OldEntry_42);
+                    ml_backend__ml_string_switch__succeeded = MR_TRUE;
+                  }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    MR_Integer ml_backend__ml_string_switch__OldFirstSlot_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OldEntry_42, (MR_Integer) 0)));
+                    MR_Word ml_backend__ml_string_switch__OldLaterSlots_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OldEntry_42, (MR_Integer) 1)));
+                    MR_Word ml_backend__ml_string_switch__NewEntry_45;
+                    MR_Word ml_backend__ml_string_switch__Var_49;
+
+                    {
+                      ml_backend__ml_string_switch__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 0) = ((MR_Box) (ml_backend__ml_string_switch__Slot_10));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_49, 1) = ((MR_Box) (ml_backend__ml_string_switch__OldLaterSlots_44));
+                    }
+                    {
+                      ml_backend__ml_string_switch__NewEntry_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewEntry_45, 0) = ((MR_Box) (ml_backend__ml_string_switch__OldFirstSlot_43));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewEntry_45, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_49));
+                    }
+                    {
+                      mercury__map__det_update_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0, ((MR_Box) (ml_backend__ml_string_switch__CaseId_39)), ((MR_Box) (ml_backend__ml_string_switch__NewEntry_45)), ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20, &ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_22_22);
+                    }
+                  }
+                else
+                  {
+                    MR_Word ml_backend__ml_string_switch__NewEntry_65;
+
+                    {
+                      ml_backend__ml_string_switch__NewEntry_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewEntry_65, 0) = ((MR_Box) (ml_backend__ml_string_switch__Slot_10));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewEntry_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      mercury__map__det_insert_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0, ((MR_Box) (ml_backend__ml_string_switch__CaseId_39)), ((MR_Box) (ml_backend__ml_string_switch__NewEntry_65)), ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20, &ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_22_22);
+                    }
+                  }
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_53;
+                MR_Word ml_backend__ml_string_switch__Var_54;
+
+                {
+                  ml_backend__ml_string_switch__Var_54 = ml_backend__ml_code_util__ml_string_type_0_f_0();
+                }
+                {
+                  ml_backend__ml_string_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_53, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+                }
+                {
+                  ml_backend__ml_string_switch__StringRval_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_53));
+                }
+                ml_backend__ml_string_switch__NextSlotRval_41 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[14]);
+                ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_22_22 = ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20;
+              }
+            if ((ml_backend__ml_string_switch__MaybeNextSlotId_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word ml_backend__ml_string_switch__Var_57;
+                MR_Word ml_backend__ml_string_switch__Var_58;
+
+                {
+                  ml_backend__ml_string_switch__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_58, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_40));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_58));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ml_backend__ml_string_switch__RowInitializer_17 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_17, 0) = ((MR_Box) (ml_backend__ml_string_switch__StructType_13));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_17, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_57));
+                }
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__Var_60;
+                MR_Word ml_backend__ml_string_switch__Var_61;
+                MR_Word ml_backend__ml_string_switch__Var_62;
+                MR_Word ml_backend__ml_string_switch__Var_63;
+
+                {
+                  ml_backend__ml_string_switch__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_61, 0) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_40));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__NextSlotRval_41));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_60, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_61));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_60, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_62));
+                }
+                {
+                  ml_backend__ml_string_switch__RowInitializer_17 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_17, 0) = ((MR_Box) (ml_backend__ml_string_switch__StructType_13));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_17, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_60));
+                }
+              }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_23_23, 0) = ((MR_Box) (ml_backend__ml_string_switch__RowInitializer_17));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_23_23, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_18));
+            }
+            ml_backend__ml_string_switch__Var_24 = (ml_backend__ml_string_switch__Slot_10 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Integer ml_backend__ml_string_switch__next_value_of_Slot_10 = ml_backend__ml_string_switch__Var_24;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_18 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_23_23;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevMap_0_20 = ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_22_22;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevMap_0_20 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevMap_0_20;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_18 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_18;
+              ml_backend__ml_string_switch__Slot_10 = ml_backend__ml_string_switch__next_value_of_Slot_10;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_lookup_switch_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_lookup_switch__191__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_lookup_switch_9_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_10,
+  MR_Word ml_backend__ml_string_switch__TaggedCases_11,
+  MR_Word ml_backend__ml_string_switch__LookupSwitchInfo_12,
+  MR_Word ml_backend__ml_string_switch__CodeModel_13,
+  MR_Word ml_backend__ml_string_switch__CanFail_14,
+  MR_Word ml_backend__ml_string_switch__Context_15,
+  MR_Word * ml_backend__ml_string_switch__Stmts_16,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_31,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_32)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Integer ml_backend__ml_string_switch__MaxCaseNum_18;
+    MR_Word ml_backend__ml_string_switch__CaseNumVarLval_19;
+    MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_20;
+    MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_21;
+    MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_22;
+    MR_Word ml_backend__ml_string_switch__CaseIdConsts_23;
+    MR_Word ml_backend__ml_string_switch__OutVars_24;
+    MR_Word ml_backend__ml_string_switch__OutTypes_25;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_33_33;
+
+    {
+      ml_backend__ml_string_switch__create_nested_switch_trie_10_p_0(ml_backend__ml_string_switch__TaggedCases_11, ml_backend__ml_string_switch__Context_15, ml_backend__ml_string_switch__VarRval_10, &ml_backend__ml_string_switch__MaxCaseNum_18, &ml_backend__ml_string_switch__CaseNumVarLval_19, &ml_backend__ml_string_switch__CaseNumVarDefn_20, &ml_backend__ml_string_switch__InitCaseNumVarStmt_21, &ml_backend__ml_string_switch__GetCaseNumSwitchStmt_22, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_31, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_33_33);
+    }
+    ml_backend__ml_string_switch__CaseIdConsts_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_12, (MR_Integer) 0)));
+    ml_backend__ml_string_switch__OutVars_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_12, (MR_Integer) 1)));
+    ml_backend__ml_string_switch__OutTypes_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupSwitchInfo_12, (MR_Integer) 2)));
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__CaseIdConsts_23)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ml_backend__ml_string_switch__CaseIdValueMap_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdConsts_23, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__CaseIdValues_27;
+
+        {
+          mercury__map__to_assoc_list_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0], ml_backend__ml_string_switch__CaseIdValueMap_26, &ml_backend__ml_string_switch__CaseIdValues_27);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0(ml_backend__ml_string_switch__MaxCaseNum_18, ml_backend__ml_string_switch__CaseNumVarLval_19, ml_backend__ml_string_switch__CaseNumVarDefn_20, ml_backend__ml_string_switch__InitCaseNumVarStmt_21, ml_backend__ml_string_switch__GetCaseNumSwitchStmt_22, ml_backend__ml_string_switch__CaseIdValues_27, ml_backend__ml_string_switch__OutVars_24, ml_backend__ml_string_switch__OutTypes_25, ml_backend__ml_string_switch__CodeModel_13, ml_backend__ml_string_switch__CanFail_14, ml_backend__ml_string_switch__Context_15, ml_backend__ml_string_switch__Stmts_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_33_33, ml_backend__ml_string_switch__STATE_VARIABLE_Info_32);
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__CaseIdSolnMap_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseIdConsts_23, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__CaseIdSolns_30;
+        MR_Word ml_backend__ml_string_switch__Var_34;
+
+        {
+          ml_backend__ml_string_switch__Var_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_34, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[5]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_34, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_trie_lookup_switch_9_p_0_1));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_34, 3) = ((MR_Box) (ml_backend__ml_string_switch__CodeModel_13));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_34, 4) = ((MR_Box) ((MR_Integer) 2));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_34, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_lookup_switch\'/9", (MR_String) "CodeModel != model_non");
+        }
+        {
+          mercury__map__to_assoc_list_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[1], ml_backend__ml_string_switch__CaseIdSolnMap_28, &ml_backend__ml_string_switch__CaseIdSolns_30);
+        }
+        {
+          ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0(ml_backend__ml_string_switch__MaxCaseNum_18, ml_backend__ml_string_switch__CaseNumVarLval_19, ml_backend__ml_string_switch__CaseNumVarDefn_20, ml_backend__ml_string_switch__InitCaseNumVarStmt_21, ml_backend__ml_string_switch__GetCaseNumSwitchStmt_22, ml_backend__ml_string_switch__CaseIdSolns_30, ml_backend__ml_string_switch__OutVars_24, ml_backend__ml_string_switch__OutTypes_25, ml_backend__ml_string_switch__CanFail_14, ml_backend__ml_string_switch__Context_15, ml_backend__ml_string_switch__Stmts_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_33_33, ml_backend__ml_string_switch__STATE_VARIABLE_Info_32);
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__mlds__wrap_data_defn_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_several_soln_lookup_switch__342__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0(
+  MR_Integer ml_backend__ml_string_switch__MaxCaseNum_14,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_15,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_16,
+  MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_17,
+  MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18,
+  MR_Word ml_backend__ml_string_switch__CaseIdSolns_19,
+  MR_Word ml_backend__ml_string_switch__OutVars_20,
+  MR_Word ml_backend__ml_string_switch__OutTypes_21,
+  MR_Word ml_backend__ml_string_switch__CanFail_22,
+  MR_Word ml_backend__ml_string_switch__Context_23,
+  MR_Word * ml_backend__ml_string_switch__Stmts_24,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_63)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_97_97;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_26;
+    MR_Word ml_backend__ml_string_switch__ModuleName_27;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_28;
+    MR_Word ml_backend__ml_string_switch__Target_29;
+    MR_Word ml_backend__ml_string_switch__GlobalData0_30;
+    MR_Word ml_backend__ml_string_switch__MLDS_IntType_31;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldTypes_32;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructTypeNum_33;
+    MR_Word ml_backend__ml_string_switch__FirstSolnStructType_34;
+    MR_Word ml_backend__ml_string_switch__FirstSolnFieldIds_35;
+    MR_Word ml_backend__ml_string_switch__GlobalData1_36;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructTypeNum_37;
+    MR_Word ml_backend__ml_string_switch__LaterSolnStructType_38;
+    MR_Word ml_backend__ml_string_switch__LaterSolnOutFieldIds_39;
+    MR_Word ml_backend__ml_string_switch__GlobalData2_40;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldId_44;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_45;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIds_46;
+    MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_47;
+    MR_Word ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializerCord_49;
+    MR_Word ml_backend__ml_string_switch__FirstSolnRowInitializers_50;
+    MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_51;
+    MR_Word ml_backend__ml_string_switch__FirstSolnVectorCommon_52;
+    MR_Word ml_backend__ml_string_switch__GlobalData3_53;
+    MR_Word ml_backend__ml_string_switch__LaterSolnVectorCommon_54;
+    MR_Word ml_backend__ml_string_switch__GlobalData_55;
+    MR_Word ml_backend__ml_string_switch__MatchDefns_56;
+    MR_Word ml_backend__ml_string_switch__SuccessStmts_57;
+    MR_Word ml_backend__ml_string_switch__SuccessBlockStmt_58;
+    MR_Word ml_backend__ml_string_switch__ResultStmt_60;
+    MR_Word ml_backend__ml_string_switch__Stmt_61;
+    MR_Word ml_backend__ml_string_switch__Var_64;
+    MR_Word ml_backend__ml_string_switch__Var_71;
+    MR_Word ml_backend__ml_string_switch__Var_72;
+    MR_Integer ml_backend__ml_string_switch__Var_75;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77;
+    MR_Word ml_backend__ml_string_switch__Var_78;
+    MR_Word ml_backend__ml_string_switch__Var_81;
+    MR_Word ml_backend__ml_string_switch__Var_89;
+    MR_Word ml_backend__ml_string_switch__Var_90;
+    MR_Word ml_backend__ml_string_switch__Var_92;
+    MR_Word ml_backend__ml_string_switch__Var_93;
+    MR_Word ml_backend__ml_string_switch__Var_94;
+    MR_Word ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41;
+    MR_Word ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42;
+    MR_Word ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43;
+    MR_Word ml_backend__ml_string_switch__Var_65;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62, &ml_backend__ml_string_switch__ModuleInfo_26);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_26, &ml_backend__ml_string_switch__ModuleName_27);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_28 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_27);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62, &ml_backend__ml_string_switch__Target_29);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62, &ml_backend__ml_string_switch__GlobalData0_30);
+    }
+    ml_backend__ml_string_switch__MLDS_IntType_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    {
+      ml_backend__ml_string_switch__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_31));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_64, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutTypes_21));
+    }
+    {
+      ml_backend__ml_string_switch__FirstSolnFieldTypes_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__MLDS_IntType_31));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldTypes_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_64));
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_28, ml_backend__ml_string_switch__Context_23, ml_backend__ml_string_switch__Target_29, ml_backend__ml_string_switch__FirstSolnFieldTypes_32, &ml_backend__ml_string_switch__FirstSolnStructTypeNum_33, &ml_backend__ml_string_switch__FirstSolnStructType_34, &ml_backend__ml_string_switch__FirstSolnFieldIds_35, ml_backend__ml_string_switch__GlobalData0_30, &ml_backend__ml_string_switch__GlobalData1_36);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_28, ml_backend__ml_string_switch__Context_23, ml_backend__ml_string_switch__Target_29, ml_backend__ml_string_switch__OutTypes_21, &ml_backend__ml_string_switch__LaterSolnStructTypeNum_37, &ml_backend__ml_string_switch__LaterSolnStructType_38, &ml_backend__ml_string_switch__LaterSolnOutFieldIds_39, ml_backend__ml_string_switch__GlobalData1_36, &ml_backend__ml_string_switch__GlobalData2_40);
+    }
+    ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__FirstSolnFieldIds_35)) == (MR_mktag((MR_Integer) 1)));
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_35, (MR_Integer) 0)));
+        ml_backend__ml_string_switch__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnFieldIds_35, (MR_Integer) 1)));
+        ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__Var_65)) == (MR_mktag((MR_Integer) 1)));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_65, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_65, (MR_Integer) 1)));
+          }
+      }
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__NumLaterSolnsFieldId_44 = ml_backend__ml_string_switch__NumLaterSolnsFieldIdPrime_41;
+        ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_45 = ml_backend__ml_string_switch__FirstLaterSolnRowFieldIdPrime_42;
+        ml_backend__ml_string_switch__FirstSolnOutFieldIds_46 = ml_backend__ml_string_switch__FirstSolnOutFieldIdsPrime_43;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_several_soln_lookup_switch\'/13", (MR_String) "bad FieldIds");
+          return;
+        }
+      }
+    ml_backend__ml_string_switch__TypeCtorInfo_97_97 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+    {
+      ml_backend__ml_string_switch__Var_71 = mercury__cord__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_97_97);
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0(ml_backend__ml_string_switch__FirstSolnStructType_34, ml_backend__ml_string_switch__LaterSolnStructType_38, ml_backend__ml_string_switch__CaseIdSolns_19, (MR_Integer) 0, &ml_backend__ml_string_switch__AfterLastCaseNum_47, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48, ml_backend__ml_string_switch__Var_71, &ml_backend__ml_string_switch__LaterSolnRowInitializerCord_49);
+    }
+    ml_backend__ml_string_switch__Var_75 = (ml_backend__ml_string_switch__MaxCaseNum_14 + (MR_Integer) 1);
+    {
+      ml_backend__ml_string_switch__Var_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_72, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_72, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_trie_several_soln_lookup_switch_13_p_0_1));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_72, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_72, 3) = ((MR_Box) (ml_backend__ml_string_switch__AfterLastCaseNum_47));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_72, 4) = ((MR_Box) (ml_backend__ml_string_switch__Var_75));
+    }
+    {
+      mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_72, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_several_soln_lookup_switch\'/13", (MR_String) "MaxCaseNum + 1 != AfterLastCaseNum");
+    }
+    {
+      mercury__list__reverse_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_97_97, ml_backend__ml_string_switch__RevFirstSolnRowInitializers_48, &ml_backend__ml_string_switch__FirstSolnRowInitializers_50);
+    }
+    {
+      ml_backend__ml_string_switch__LaterSolnRowInitializers_51 = mercury__cord__list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_97_97, ml_backend__ml_string_switch__LaterSolnRowInitializerCord_49);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_28, ml_backend__ml_string_switch__FirstSolnStructTypeNum_33, ml_backend__ml_string_switch__FirstSolnRowInitializers_50, &ml_backend__ml_string_switch__FirstSolnVectorCommon_52, ml_backend__ml_string_switch__GlobalData2_40, &ml_backend__ml_string_switch__GlobalData3_53);
+    }
+    {
+      ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_28, ml_backend__ml_string_switch__LaterSolnStructTypeNum_37, ml_backend__ml_string_switch__LaterSolnRowInitializers_51, &ml_backend__ml_string_switch__LaterSolnVectorCommon_54, ml_backend__ml_string_switch__GlobalData3_53, &ml_backend__ml_string_switch__GlobalData_55);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_55, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_62, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77);
+    }
+    {
+      ml_backend__ml_string_switch__Var_78 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_78, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_15));
+    }
+    {
+      ml_backend__ml_lookup_switch__ml_gen_several_soln_lookup_code_17_p_0(ml_backend__ml_string_switch__Context_23, ml_backend__ml_string_switch__Var_78, ml_backend__ml_string_switch__OutVars_20, ml_backend__ml_string_switch__OutTypes_21, ml_backend__ml_string_switch__FirstSolnStructType_34, ml_backend__ml_string_switch__LaterSolnStructType_38, ml_backend__ml_string_switch__NumLaterSolnsFieldId_44, ml_backend__ml_string_switch__FirstLaterSolnRowFieldId_45, ml_backend__ml_string_switch__FirstSolnOutFieldIds_46, ml_backend__ml_string_switch__LaterSolnOutFieldIds_39, ml_backend__ml_string_switch__FirstSolnVectorCommon_52, ml_backend__ml_string_switch__LaterSolnVectorCommon_54, (MR_Integer) 1, &ml_backend__ml_string_switch__MatchDefns_56, &ml_backend__ml_string_switch__SuccessStmts_57, ml_backend__ml_string_switch__STATE_VARIABLE_Info_77_77, ml_backend__ml_string_switch__STATE_VARIABLE_Info_63);
+    }
+    {
+      ml_backend__ml_string_switch__Var_81 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_defn_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[9], ml_backend__ml_string_switch__MatchDefns_56);
+    }
+    {
+      ml_backend__ml_string_switch__SuccessBlockStmt_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SuccessBlockStmt_58, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_81));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SuccessBlockStmt_58, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessStmts_57));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SuccessBlockStmt_58, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_23));
+    }
+    switch (ml_backend__ml_string_switch__CanFail_22) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ml_backend__ml_string_switch__IsCaseNumNonNegCond_59;
+
+          {
+            ml_backend__ml_string_switch__IsCaseNumNonNegCond_59 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNonNegCond_59, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNonNegCond_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 26))));
+            MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNonNegCond_59, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_78));
+            MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNonNegCond_59, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])));
+          }
+          {
+            ml_backend__ml_string_switch__ResultStmt_60 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_60, 0) = ((MR_Box) (ml_backend__ml_string_switch__IsCaseNumNonNegCond_59));
+            MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_60, 1) = ((MR_Box) (ml_backend__ml_string_switch__SuccessBlockStmt_58));
+            MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_60, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_60, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_23));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        ml_backend__ml_string_switch__ResultStmt_60 = ml_backend__ml_string_switch__SuccessBlockStmt_58;
+        break;
+    }
+    ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) ml_backend__ml_string_switch__CaseNumVarDefn_16);
+    {
+      ml_backend__ml_string_switch__Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_89, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_89, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultStmt_60));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, 0) = ((MR_Box) (ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_94));
+    }
+    {
+      ml_backend__ml_string_switch__Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitCaseNumVarStmt_17));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_93));
+    }
+    {
+      ml_backend__ml_string_switch__Stmt_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_61, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_89));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_61, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_92));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_61, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_23));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *ml_backend__ml_string_switch__Stmts_24 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Stmt_61));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_3(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv1_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv1_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv1_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__3_3;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__3_3 = ml_backend__ml_lookup_switch__ml_construct_later_soln_row_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__3_3));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_several_soln_lookup_slots__394__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__HeadVar__3_3,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_5,
+  MR_Integer ml_backend__ml_string_switch__HeadVar__6_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_7,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_8,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_10 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_8 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_7;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_5 = ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__CaseIdSolns_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CaseIdsSolns_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdSolns_25, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Solns_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdSolns_25, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CaseIdNum_33 = (MR_Integer) ml_backend__ml_string_switch__CaseId_31;
+            MR_Word ml_backend__ml_string_switch__FirstSolnRvals_34;
+            MR_Word ml_backend__ml_string_switch__NumLaterSolnsRval_35;
+            MR_Word ml_backend__ml_string_switch__FirstLaterSlotRval_36;
+            MR_Word ml_backend__ml_string_switch__FirstSolnRowRvals_40;
+            MR_Word ml_backend__ml_string_switch__FirstSolnRowInitializer_41;
+            MR_Word ml_backend__ml_string_switch__Var_49;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_55_55;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_57_57;
+            MR_Word ml_backend__ml_string_switch__Var_62;
+            MR_Word ml_backend__ml_string_switch__Var_63;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_65_65;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_66_66;
+
+            {
+              ml_backend__ml_string_switch__Var_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_49, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_49, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_49, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_49, 3) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_49, 4) = ((MR_Box) (ml_backend__ml_string_switch__CaseIdNum_33));
+            }
+            {
+              mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_49, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_gen_string_trie_several_soln_lookup_slots\'/10", (MR_String) "CaseIdNum != !.CurCaseNum");
+            }
+            if (((MR_tag((MR_Word) ml_backend__ml_string_switch__Solns_32)) == (MR_mktag((MR_Integer) 0))))
+              {
+                ml_backend__ml_string_switch__FirstSolnRvals_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Solns_32, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__NumLaterSolnsRval_35 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11]);
+                ml_backend__ml_string_switch__FirstLaterSlotRval_36 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[12]);
+                ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_57_57 = ml_backend__ml_string_switch__HeadVar__6_6;
+                ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_55_55 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9;
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__TypeInfo_72_72;
+                MR_Word ml_backend__ml_string_switch__TypeCtorInfo_73_73;
+                MR_Word ml_backend__ml_string_switch__LaterSolns_37;
+                MR_Integer ml_backend__ml_string_switch__NumLaterSolns_38;
+                MR_Word ml_backend__ml_string_switch__LaterSolnRowInitializers_39;
+                MR_Word ml_backend__ml_string_switch__Var_52;
+                MR_Word ml_backend__ml_string_switch__Var_53;
+                MR_Word ml_backend__ml_string_switch__Var_54;
+                MR_Word ml_backend__ml_string_switch__Var_56;
+
+                ml_backend__ml_string_switch__FirstSolnRvals_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_32, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__LaterSolns_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Solns_32, (MR_Integer) 1)));
+                ml_backend__ml_string_switch__TypeInfo_72_72 = (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[0];
+                {
+                  mercury__list__length_2_p_0(ml_backend__ml_string_switch__TypeInfo_72_72, ml_backend__ml_string_switch__LaterSolns_37, &ml_backend__ml_string_switch__NumLaterSolns_38);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolns_38));
+                }
+                {
+                  ml_backend__ml_string_switch__NumLaterSolnsRval_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NumLaterSolnsRval_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__NumLaterSolnsRval_35, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_52));
+                }
+                {
+                  ml_backend__ml_string_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_53, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__6_6));
+                }
+                {
+                  ml_backend__ml_string_switch__FirstLaterSlotRval_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstLaterSlotRval_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstLaterSlotRval_36, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_53));
+                }
+                ml_backend__ml_string_switch__TypeCtorInfo_73_73 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+                {
+                  ml_backend__ml_string_switch__Var_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_54, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_6[0]));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_54, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_trie_several_soln_lookup_slots_10_p_0_2));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_54, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_54, 3) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__2_2));
+                }
+                {
+                  ml_backend__ml_string_switch__LaterSolnRowInitializers_39 = mercury__list__map_2_f_0(ml_backend__ml_string_switch__TypeInfo_72_72, ml_backend__ml_string_switch__TypeCtorInfo_73_73, ml_backend__ml_string_switch__Var_54, ml_backend__ml_string_switch__LaterSolns_37);
+                }
+                {
+                  ml_backend__ml_string_switch__Var_56 = mercury__cord__from_list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_73_73, ml_backend__ml_string_switch__LaterSolnRowInitializers_39);
+                }
+                {
+                  ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_55_55 = mercury__cord__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_73_73, ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9, ml_backend__ml_string_switch__Var_56);
+                }
+                ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_57_57 = (ml_backend__ml_string_switch__HeadVar__6_6 + ml_backend__ml_string_switch__NumLaterSolns_38);
+              }
+            {
+              ml_backend__ml_string_switch__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstLaterSlotRval_36));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 1) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnRvals_34));
+            }
+            {
+              ml_backend__ml_string_switch__FirstSolnRowRvals_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnRowRvals_40, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumLaterSolnsRval_35));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FirstSolnRowRvals_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_62));
+            }
+            {
+              ml_backend__ml_string_switch__Var_63 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[8], ml_backend__ml_string_switch__FirstSolnRowRvals_40);
+            }
+            {
+              ml_backend__ml_string_switch__FirstSolnRowInitializer_41 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_41, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__1_1));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__FirstSolnRowInitializer_41, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_65_65, 0) = ((MR_Box) (ml_backend__ml_string_switch__FirstSolnRowInitializer_41));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_65_65, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_7));
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_66_66 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__3_3 = ml_backend__ml_string_switch__CaseIdsSolns_26;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurCaseNum_0_4 = ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_66_66;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_HeadVar__6_6 = ml_backend__ml_string_switch__STATE_VARIABLE_CurLaterSolnIndex_57_57;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_7 = ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_65_65;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_9 = ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_55_55;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_LaterSolnRowInitializersCord_0_9 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_LaterSolnRowInitializersCord_0_9;
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevFirstSolnRowInitializers_0_7 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevFirstSolnRowInitializers_0_7;
+              ml_backend__ml_string_switch__HeadVar__6_6 = ml_backend__ml_string_switch__next_value_of_HeadVar__6_6;
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_4 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurCaseNum_0_4;
+              ml_backend__ml_string_switch__HeadVar__3_3 = ml_backend__ml_string_switch__next_value_of_HeadVar__3_3;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_generate_string_trie_simple_lookup_switch__227__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0(
+  MR_Integer ml_backend__ml_string_switch__MaxCaseNum_15,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_16,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_17,
+  MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_18,
+  MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_19,
+  MR_Word ml_backend__ml_string_switch__CaseIdValues_20,
+  MR_Word ml_backend__ml_string_switch__OutVars_21,
+  MR_Word ml_backend__ml_string_switch__OutTypes_22,
+  MR_Word ml_backend__ml_string_switch__CodeModel_23,
+  MR_Word ml_backend__ml_string_switch__CanFail_24,
+  MR_Word ml_backend__ml_string_switch__Context_25,
+  MR_Word * ml_backend__ml_string_switch__Stmts_26,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_60)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__ModuleInfo_28;
+    MR_Word ml_backend__ml_string_switch__ModuleName_29;
+    MR_Word ml_backend__ml_string_switch__MLDS_ModuleName_30;
+    MR_Word ml_backend__ml_string_switch__Target_31;
+    MR_Word ml_backend__ml_string_switch__FieldAssignStmts_44;
+    MR_Word ml_backend__ml_string_switch__FoundMatchCommentStmt_46;
+    MR_Word ml_backend__ml_string_switch__CommentedFieldAssignStmts_47;
+    MR_Word ml_backend__ml_string_switch__LookupStmts_48;
+    MR_Word ml_backend__ml_string_switch__LookupStmt_50;
+    MR_Word ml_backend__ml_string_switch__FailStmts_51;
+    MR_Word ml_backend__ml_string_switch__ResultStmt_52;
+    MR_Word ml_backend__ml_string_switch__Stmt_58;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_70_70;
+    MR_Word ml_backend__ml_string_switch__Var_89;
+    MR_Word ml_backend__ml_string_switch__Var_90;
+    MR_Word ml_backend__ml_string_switch__Var_92;
+    MR_Word ml_backend__ml_string_switch__Var_93;
+    MR_Word ml_backend__ml_string_switch__Var_94;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59, &ml_backend__ml_string_switch__ModuleInfo_28);
+    }
+    {
+      hlds__hlds_module__module_info_get_name_2_p_0(ml_backend__ml_string_switch__ModuleInfo_28, &ml_backend__ml_string_switch__ModuleName_29);
+    }
+    {
+      ml_backend__ml_string_switch__MLDS_ModuleName_30 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ml_backend__ml_string_switch__ModuleName_29);
+    }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59, &ml_backend__ml_string_switch__Target_31);
+    }
+    if ((ml_backend__ml_string_switch__OutTypes_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        ml_backend__ml_string_switch__FieldAssignStmts_44 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ml_backend__ml_string_switch__STATE_VARIABLE_Info_70_70 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__GlobalData0_34;
+        MR_Word ml_backend__ml_string_switch__StructTypeNum_35;
+        MR_Word ml_backend__ml_string_switch__StructType_36;
+        MR_Word ml_backend__ml_string_switch__OutFieldIds_37;
+        MR_Word ml_backend__ml_string_switch__GlobalData1_38;
+        MR_Integer ml_backend__ml_string_switch__AfterLastCaseNum_39;
+        MR_Word ml_backend__ml_string_switch__RevRowInitializers_40;
+        MR_Word ml_backend__ml_string_switch__RowInitializers_41;
+        MR_Word ml_backend__ml_string_switch__VectorCommon_42;
+        MR_Word ml_backend__ml_string_switch__GlobalData_43;
+        MR_Word ml_backend__ml_string_switch__Var_63;
+        MR_Integer ml_backend__ml_string_switch__Var_66;
+        MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68;
+        MR_Word ml_backend__ml_string_switch__Var_69;
+
+        {
+          ml_backend__ml_gen_info__ml_gen_info_get_global_data_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59, &ml_backend__ml_string_switch__GlobalData0_34);
+        }
+        {
+          ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_30, ml_backend__ml_string_switch__Context_25, ml_backend__ml_string_switch__Target_31, ml_backend__ml_string_switch__OutTypes_22, &ml_backend__ml_string_switch__StructTypeNum_35, &ml_backend__ml_string_switch__StructType_36, &ml_backend__ml_string_switch__OutFieldIds_37, ml_backend__ml_string_switch__GlobalData0_34, &ml_backend__ml_string_switch__GlobalData1_38);
+        }
+        {
+          ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0(ml_backend__ml_string_switch__StructType_36, ml_backend__ml_string_switch__CaseIdValues_20, (MR_Integer) 0, &ml_backend__ml_string_switch__AfterLastCaseNum_39, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevRowInitializers_40);
+        }
+        ml_backend__ml_string_switch__Var_66 = (ml_backend__ml_string_switch__MaxCaseNum_15 + (MR_Integer) 1);
+        {
+          ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_63, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_generate_string_trie_simple_lookup_switch_14_p_0_1));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_63, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_63, 3) = ((MR_Box) (ml_backend__ml_string_switch__AfterLastCaseNum_39));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_63, 4) = ((MR_Box) (ml_backend__ml_string_switch__Var_66));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_63, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_simple_lookup_switch\'/14", (MR_String) "MaxCaseNum + 1 != AfterLastCaseNum");
+        }
+        {
+          mercury__list__reverse_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, ml_backend__ml_string_switch__RevRowInitializers_40, &ml_backend__ml_string_switch__RowInitializers_41);
+        }
+        {
+          ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(ml_backend__ml_string_switch__MLDS_ModuleName_30, ml_backend__ml_string_switch__StructTypeNum_35, ml_backend__ml_string_switch__RowInitializers_41, &ml_backend__ml_string_switch__VectorCommon_42, ml_backend__ml_string_switch__GlobalData1_38, &ml_backend__ml_string_switch__GlobalData_43);
+        }
+        {
+          ml_backend__ml_gen_info__ml_gen_info_set_global_data_3_p_0(ml_backend__ml_string_switch__GlobalData_43, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_59, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68);
+        }
+        {
+          ml_backend__ml_string_switch__Var_69 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_69, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_16));
+        }
+        {
+          ml_backend__ml_code_util__ml_generate_field_assigns_10_p_0(ml_backend__ml_string_switch__OutVars_21, ml_backend__ml_string_switch__OutTypes_22, ml_backend__ml_string_switch__OutFieldIds_37, ml_backend__ml_string_switch__VectorCommon_42, ml_backend__ml_string_switch__StructType_36, ml_backend__ml_string_switch__Var_69, ml_backend__ml_string_switch__Context_25, &ml_backend__ml_string_switch__FieldAssignStmts_44, ml_backend__ml_string_switch__STATE_VARIABLE_Info_68_68, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_70_70);
+        }
+      }
+    {
+      ml_backend__ml_string_switch__FoundMatchCommentStmt_46 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_46, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_string_switch_scalar_common_4[3])));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FoundMatchCommentStmt_46, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+    }
+    {
+      ml_backend__ml_string_switch__CommentedFieldAssignStmts_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CommentedFieldAssignStmts_47, 0) = ((MR_Box) (ml_backend__ml_string_switch__FoundMatchCommentStmt_46));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CommentedFieldAssignStmts_47, 1) = ((MR_Box) (ml_backend__ml_string_switch__FieldAssignStmts_44));
+    }
+    switch (ml_backend__ml_string_switch__CodeModel_23) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        ml_backend__ml_string_switch__LookupStmts_48 = ml_backend__ml_string_switch__CommentedFieldAssignStmts_47;
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_simple_lookup_switch\'/14", (MR_String) "model_non");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ml_backend__ml_string_switch__SetSuccessTrueStmt_49;
+          MR_Word ml_backend__ml_string_switch__Var_76;
+
+          {
+            ml_backend__ml_code_util__ml_gen_set_success_4_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_70_70, (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[13]), ml_backend__ml_string_switch__Context_25, &ml_backend__ml_string_switch__SetSuccessTrueStmt_49);
+          }
+          {
+            ml_backend__ml_string_switch__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_76, 0) = ((MR_Box) (ml_backend__ml_string_switch__SetSuccessTrueStmt_49));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ml_backend__ml_string_switch__LookupStmts_48 = mercury__list__f_43_43_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ml_backend__ml_string_switch__CommentedFieldAssignStmts_47, ml_backend__ml_string_switch__Var_76);
+          }
+        }
+        break;
+    }
+    {
+      ml_backend__ml_string_switch__LookupStmt_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupStmt_50, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupStmt_50, 1) = ((MR_Box) (ml_backend__ml_string_switch__LookupStmts_48));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__LookupStmt_50, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+    }
+    {
+      ml_backend__ml_string_switch__ml_gen_maybe_switch_failure_6_p_0(ml_backend__ml_string_switch__CodeModel_23, ml_backend__ml_string_switch__CanFail_24, ml_backend__ml_string_switch__Context_25, &ml_backend__ml_string_switch__FailStmts_51, ml_backend__ml_string_switch__STATE_VARIABLE_Info_70_70, ml_backend__ml_string_switch__STATE_VARIABLE_Info_60);
+    }
+    if ((ml_backend__ml_string_switch__FailStmts_51 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ml_backend__ml_string_switch__ResultStmt_52 = ml_backend__ml_string_switch__LookupStmt_50;
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_108 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FailStmts_51, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_109 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FailStmts_51, (MR_Integer) 0)));
+
+        if ((ml_backend__ml_string_switch__Var_108 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word ml_backend__ml_string_switch__IsCaseNumNegCond_57;
+            MR_Word ml_backend__ml_string_switch__Var_84;
+            MR_Word ml_backend__ml_string_switch__Var_88;
+
+            {
+              ml_backend__ml_string_switch__Var_84 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_84, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_16));
+            }
+            {
+              ml_backend__ml_string_switch__IsCaseNumNegCond_57 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_57, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 23))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_57, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_84));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_57, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])));
+            }
+            {
+              ml_backend__ml_string_switch__Var_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_88, 0) = ((MR_Box) (ml_backend__ml_string_switch__LookupStmt_50));
+            }
+            {
+              ml_backend__ml_string_switch__ResultStmt_52 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__IsCaseNumNegCond_57));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_109));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_88));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__FailStmt_100;
+            MR_Word ml_backend__ml_string_switch__IsCaseNumNegCond_101;
+            MR_Word ml_backend__ml_string_switch__Var_103;
+            MR_Word ml_backend__ml_string_switch__Var_107;
+
+            {
+              ml_backend__ml_string_switch__FailStmt_100 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_100, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_100, 1) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_51));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_100, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+            }
+            {
+              ml_backend__ml_string_switch__Var_103 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_103, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_16));
+            }
+            {
+              ml_backend__ml_string_switch__IsCaseNumNegCond_101 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_101, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_101, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 23))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_101, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_103));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__IsCaseNumNegCond_101, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[11])));
+            }
+            {
+              ml_backend__ml_string_switch__Var_107 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_107, 0) = ((MR_Box) (ml_backend__ml_string_switch__LookupStmt_50));
+            }
+            {
+              ml_backend__ml_string_switch__ResultStmt_52 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__IsCaseNumNegCond_101));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__FailStmt_100));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_107));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__ResultStmt_52, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+            }
+          }
+      }
+    ml_backend__ml_string_switch__Var_90 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) ml_backend__ml_string_switch__CaseNumVarDefn_17);
+    {
+      ml_backend__ml_string_switch__Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_89, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_90));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_89, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 0) = ((MR_Box) (ml_backend__ml_string_switch__ResultStmt_52));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_94, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, 0) = ((MR_Box) (ml_backend__ml_string_switch__GetCaseNumSwitchStmt_19));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_93, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_94));
+    }
+    {
+      ml_backend__ml_string_switch__Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitCaseNumVarStmt_18));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_92, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_93));
+    }
+    {
+      ml_backend__ml_string_switch__Stmt_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_58, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_89));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_58, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_92));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_58, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_25));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *ml_backend__ml_string_switch__Stmts_26 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Stmt_58));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_maybe_switch_failure_6_p_0(
+  MR_Word ml_backend__ml_string_switch__CodeModel_7,
+  MR_Word ml_backend__ml_string_switch__CanFail_8,
+  MR_Word ml_backend__ml_string_switch__Context_9,
+  MR_Word * ml_backend__ml_string_switch__FailStmts_10,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_12,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_13)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    switch (ml_backend__ml_string_switch__CanFail_8) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_code_util__ml_gen_failure_5_p_0(ml_backend__ml_string_switch__CodeModel_7, ml_backend__ml_string_switch__Context_9, ml_backend__ml_string_switch__FailStmts_10, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_12, ml_backend__ml_string_switch__STATE_VARIABLE_Info_13);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          *ml_backend__ml_string_switch__FailStmts_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *ml_backend__ml_string_switch__STATE_VARIABLE_Info_13 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_12;
+        }
+        break;
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_HeadVar__2_2;
+
+    {
+      ml_backend__ml_string_switch__conv0_HeadVar__2_2 = ml_backend__ml_util__wrap_init_obj_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_HeadVar__2_2));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__ml_gen_string_trie_simple_lookup_slots__292__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_4,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_5,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_6 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_5;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_4 = ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__CaseIdValue_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CaseIdValues_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdValue_15, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__OutRvals_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseIdValue_15, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CaseIdNum_21 = (MR_Integer) ml_backend__ml_string_switch__CaseId_19;
+            MR_Word ml_backend__ml_string_switch__OutInitializers_22;
+            MR_Word ml_backend__ml_string_switch__RowInitializer_23;
+            MR_Word ml_backend__ml_string_switch__Var_28;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_33_33;
+
+            {
+              ml_backend__ml_string_switch__Var_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, 1) = ((MR_Box) (ml_backend__ml_string_switch__ml_gen_string_trie_simple_lookup_slots_6_p_0_1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, 3) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_28, 4) = ((MR_Box) (ml_backend__ml_string_switch__CaseIdNum_21));
+            }
+            {
+              mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_28, (MR_String) "predicate \140ml_backend.ml_string_switch.ml_gen_string_trie_simple_lookup_slots\'/6", (MR_String) "CaseIdNum != !.CurCaseNum");
+            }
+            {
+              ml_backend__ml_string_switch__OutInitializers_22 = mercury__list__map_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[7], ml_backend__ml_string_switch__OutRvals_20);
+            }
+            {
+              ml_backend__ml_string_switch__RowInitializer_23 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_23, 0) = ((MR_Box) (ml_backend__ml_string_switch__HeadVar__1_1));
+              MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__RowInitializer_23, 1) = ((MR_Box) (ml_backend__ml_string_switch__OutInitializers_22));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32, 0) = ((MR_Box) (ml_backend__ml_string_switch__RowInitializer_23));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_5));
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_33_33 = (ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__2_2 = ml_backend__ml_string_switch__CaseIdValues_16;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurCaseNum_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_33_33;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_5 = ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_32_32;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevRowInitializers_0_5 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevRowInitializers_0_5;
+              ml_backend__ml_string_switch__STATE_VARIABLE_CurCaseNum_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CurCaseNum_0_3;
+              ml_backend__ml_string_switch__HeadVar__2_2 = ml_backend__ml_string_switch__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_jump_switch_8_p_0(
+  MR_Word ml_backend__ml_string_switch__VarRval_9,
+  MR_Word ml_backend__ml_string_switch__TaggedCases_10,
+  MR_Word ml_backend__ml_string_switch__CodeModel_11,
+  MR_Word ml_backend__ml_string_switch__CanFail_12,
+  MR_Word ml_backend__ml_string_switch__Context_13,
+  MR_Word * ml_backend__ml_string_switch__Stmts_14,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_34,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_35)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_60_60 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0;
+    MR_Word ml_backend__ml_string_switch__TypeCtorInfo_61_61 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+    MR_Word ml_backend__ml_string_switch__CodeMap_16;
+    MR_Integer ml_backend__ml_string_switch__MaxCaseNum_17;
+    MR_Word ml_backend__ml_string_switch__CaseNumVarLval_18;
+    MR_Word ml_backend__ml_string_switch__CaseNumVarDefn_19;
+    MR_Word ml_backend__ml_string_switch__InitCaseNumVarStmt_20;
+    MR_Word ml_backend__ml_string_switch__GetCaseNumSwitchStmt_21;
+    MR_Word ml_backend__ml_string_switch__CodeCases_22;
+    MR_Word ml_backend__ml_string_switch__RevCaseNumSwitchArms_23;
+    MR_Word ml_backend__ml_string_switch__CaseNumSwitchArms_24;
+    MR_Word ml_backend__ml_string_switch__FailStmts_25;
+    MR_Word ml_backend__ml_string_switch__CaseNumDefault_26;
+    MR_Word ml_backend__ml_string_switch__CaseNumSwitchRange_31;
+    MR_Word ml_backend__ml_string_switch__CaseSwitchStmt_32;
+    MR_Word ml_backend__ml_string_switch__Stmt_33;
+    MR_Word ml_backend__ml_string_switch__Var_36;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_37_37;
+    MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38;
+    MR_Word ml_backend__ml_string_switch__Var_50;
+    MR_Word ml_backend__ml_string_switch__Var_51;
+    MR_Word ml_backend__ml_string_switch__Var_52;
+    MR_Word ml_backend__ml_string_switch__Var_54;
+    MR_Word ml_backend__ml_string_switch__Var_55;
+    MR_Word ml_backend__ml_string_switch__Var_56;
+
+    {
+      ml_backend__ml_string_switch__Var_36 = mercury__map__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_60_60, ml_backend__ml_string_switch__TypeCtorInfo_61_61);
+    }
+    {
+      ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0(ml_backend__ml_string_switch__CodeModel_11, ml_backend__ml_string_switch__TaggedCases_10, ml_backend__ml_string_switch__Var_36, &ml_backend__ml_string_switch__CodeMap_16, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_34, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_37_37);
+    }
+    {
+      ml_backend__ml_string_switch__create_nested_switch_trie_10_p_0(ml_backend__ml_string_switch__TaggedCases_10, ml_backend__ml_string_switch__Context_13, ml_backend__ml_string_switch__VarRval_9, &ml_backend__ml_string_switch__MaxCaseNum_17, &ml_backend__ml_string_switch__CaseNumVarLval_18, &ml_backend__ml_string_switch__CaseNumVarDefn_19, &ml_backend__ml_string_switch__InitCaseNumVarStmt_20, &ml_backend__ml_string_switch__GetCaseNumSwitchStmt_21, ml_backend__ml_string_switch__STATE_VARIABLE_Info_37_37, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38);
+    }
+    {
+      mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_60_60, ml_backend__ml_string_switch__TypeCtorInfo_61_61, ml_backend__ml_string_switch__CodeMap_16, &ml_backend__ml_string_switch__CodeCases_22);
+    }
+    {
+      ml_backend__ml_string_switch__generate_trie_arms_3_p_0(ml_backend__ml_string_switch__CodeCases_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__RevCaseNumSwitchArms_23);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0, ml_backend__ml_string_switch__RevCaseNumSwitchArms_23, &ml_backend__ml_string_switch__CaseNumSwitchArms_24);
+    }
+    switch (ml_backend__ml_string_switch__CanFail_12) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ml_backend__ml_code_util__ml_gen_failure_5_p_0(ml_backend__ml_string_switch__CodeModel_11, ml_backend__ml_string_switch__Context_13, &ml_backend__ml_string_switch__FailStmts_25, ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38, ml_backend__ml_string_switch__STATE_VARIABLE_Info_35);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          ml_backend__ml_string_switch__FailStmts_25 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *ml_backend__ml_string_switch__STATE_VARIABLE_Info_35 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_38_38;
+        }
+        break;
+    }
+    if ((ml_backend__ml_string_switch__FailStmts_25 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      switch (ml_backend__ml_string_switch__CodeModel_11) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          ml_backend__ml_string_switch__CaseNumDefault_26 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ml_backend__ml_string_switch__FailStmt_27;
+
+            {
+              ml_backend__ml_string_switch__FailStmt_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_27, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+            }
+            {
+              ml_backend__ml_string_switch__CaseNumDefault_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseNumDefault_26, 0) = ((MR_Box) (ml_backend__ml_string_switch__FailStmt_27));
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.ml_generate_string_trie_jump_switch\'/8", (MR_String) "failure does not assign to succeeded");
+              return;
+            }
+          }
+          break;
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FailStmts_25, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__FailStmts_25, (MR_Integer) 0)));
+
+        if ((ml_backend__ml_string_switch__Var_64 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            ml_backend__ml_string_switch__CaseNumDefault_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseNumDefault_26, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_65));
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__FailStmt_63;
+
+            {
+              ml_backend__ml_string_switch__FailStmt_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_63, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_63, 1) = ((MR_Box) (ml_backend__ml_string_switch__FailStmts_25));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__FailStmt_63, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+            }
+            {
+              ml_backend__ml_string_switch__CaseNumDefault_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseNumDefault_26, 0) = ((MR_Box) (ml_backend__ml_string_switch__FailStmt_63));
+            }
+          }
+      }
+    {
+      ml_backend__ml_string_switch__CaseNumSwitchRange_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseNumSwitchRange_31, 0) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__CaseNumSwitchRange_31, 1) = ((MR_Box) (ml_backend__ml_string_switch__MaxCaseNum_17));
+    }
+    {
+      ml_backend__ml_string_switch__Var_50 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_50, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_18));
+    }
+    {
+      ml_backend__ml_string_switch__CaseSwitchStmt_32 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 2) = ((MR_Box) (ml_backend__ml_string_switch__Var_50));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 3) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumSwitchRange_31));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 4) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumSwitchArms_24));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 5) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumDefault_26));
+      MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseSwitchStmt_32, 6) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) ml_backend__ml_string_switch__CaseNumVarDefn_19);
+    {
+      ml_backend__ml_string_switch__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_52));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseSwitchStmt_32));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ml_backend__ml_string_switch__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_55, 0) = ((MR_Box) (ml_backend__ml_string_switch__GetCaseNumSwitchStmt_21));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_55, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_56));
+    }
+    {
+      ml_backend__ml_string_switch__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_54, 0) = ((MR_Box) (ml_backend__ml_string_switch__InitCaseNumVarStmt_20));
+      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_54, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_55));
+    }
+    {
+      ml_backend__ml_string_switch__Stmt_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_51));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Stmt_33, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_13));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *ml_backend__ml_string_switch__Stmts_14 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Stmt_33));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__wrapper_arg_2;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_String ml_backend__ml_string_switch__conv0_String_4;
+
+    {
+      ml_backend__ml_string_switch__conv0_String_4 = ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1));
+    }
+    ml_backend__ml_string_switch__wrapper_arg_2 = ((MR_Box) (ml_backend__ml_string_switch__conv0_String_4));
+    return ml_backend__ml_string_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__gen_tagged_case_codes_for_string_switch_6_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_4,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_5,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_Info_6 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_5;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_4 = ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_3;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__TaggedCase_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__TaggedCases_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_23_23;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_24_24;
+            MR_Word ml_backend__ml_string_switch__MainTaggedConsId_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_15, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__OtherTaggedConsIds_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_15, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_15, (MR_Integer) 2)));
+            MR_Word ml_backend__ml_string_switch__Goal_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_15, (MR_Integer) 3)));
+            MR_Word ml_backend__ml_string_switch__GoalStmt_39;
+            MR_String ml_backend__ml_string_switch__MainString_40;
+            MR_Word ml_backend__ml_string_switch__OtherStrings_41;
+            MR_String ml_backend__ml_string_switch__Strings_42;
+            MR_String ml_backend__ml_string_switch__CommentString_43;
+            MR_Word ml_backend__ml_string_switch__GoalInfo_45;
+            MR_Word ml_backend__ml_string_switch__Context_46;
+            MR_Word ml_backend__ml_string_switch__Comment_47;
+            MR_Word ml_backend__ml_string_switch__CaseStmt_48;
+            MR_Word ml_backend__ml_string_switch__Var_52;
+            MR_Word ml_backend__ml_string_switch__Var_54;
+            MR_Word ml_backend__ml_string_switch__Var_56;
+            MR_Word ml_backend__ml_string_switch__Var_57;
+            MR_Word ml_backend__ml_string_switch___GoalExpr_44;
+
+            {
+              ml_backend__ml_code_gen__ml_gen_goal_as_branch_block_5_p_0(ml_backend__ml_string_switch__HeadVar__1_1, ml_backend__ml_string_switch__Goal_38, &ml_backend__ml_string_switch__GoalStmt_39, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_5, &ml_backend__ml_string_switch__STATE_VARIABLE_Info_24_24);
+            }
+            {
+              ml_backend__ml_string_switch__MainString_40 = ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(ml_backend__ml_string_switch__MainTaggedConsId_35);
+            }
+            {
+              ml_backend__ml_string_switch__OtherStrings_41 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_2[6], ml_backend__ml_string_switch__OtherTaggedConsIds_36);
+            }
+            {
+              ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 0) = ((MR_Box) (ml_backend__ml_string_switch__MainString_40));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__OtherStrings_41));
+            }
+            {
+              ml_backend__ml_string_switch__Strings_42 = mercury__string__join_list_2_f_0((MR_String) ", ", ml_backend__ml_string_switch__Var_52);
+            }
+            {
+              ml_backend__ml_string_switch__CommentString_43 = mercury__string__f_43_43_2_f_0((MR_String) "case ", ml_backend__ml_string_switch__Strings_42);
+            }
+            ml_backend__ml_string_switch___GoalExpr_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Goal_38, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__GoalInfo_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Goal_38, (MR_Integer) 1)));
+            {
+              ml_backend__ml_string_switch__Context_46 = hlds__hlds_goal__goal_info_get_context_1_f_0(ml_backend__ml_string_switch__GoalInfo_45);
+            }
+            {
+              ml_backend__ml_string_switch__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_54, 0) = ((MR_Box) (ml_backend__ml_string_switch__CommentString_43));
+            }
+            {
+              ml_backend__ml_string_switch__Comment_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_54));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Comment_47, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_46));
+            }
+            {
+              ml_backend__ml_string_switch__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 0) = ((MR_Box) (ml_backend__ml_string_switch__GoalStmt_39));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              ml_backend__ml_string_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 0) = ((MR_Box) (ml_backend__ml_string_switch__Comment_47));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_56, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_57));
+            }
+            {
+              ml_backend__ml_string_switch__CaseStmt_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_56));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CaseStmt_48, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_46));
+            }
+            {
+              mercury__map__det_insert_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0, ((MR_Box) (ml_backend__ml_string_switch__CaseId_37)), ((MR_Box) (ml_backend__ml_string_switch__CaseStmt_48)), ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_3, &ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_23_23);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__2_2 = ml_backend__ml_string_switch__TaggedCases_16;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CodeMap_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_23_23;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_Info_0_5 = ml_backend__ml_string_switch__STATE_VARIABLE_Info_24_24;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_5 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_Info_0_5;
+              ml_backend__ml_string_switch__STATE_VARIABLE_CodeMap_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_CodeMap_0_3;
+              ml_backend__ml_string_switch__HeadVar__2_2 = ml_backend__ml_string_switch__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_String MR_CALL 
+ml_backend__ml_string_switch__gen_string_switch_case_comment_1_f_0(
+  MR_Word ml_backend__ml_string_switch__TaggedConsId_3)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_String ml_backend__ml_string_switch__String_4;
+    MR_Word ml_backend__ml_string_switch__ConsTag_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedConsId_3, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch___ConsId_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedConsId_3, (MR_Integer) 0)));
+    MR_String ml_backend__ml_string_switch__ConsString_7;
+
+    ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__ConsTag_6)) == (MR_mktag((MR_Integer) 1)));
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__ConsString_7 = ((MR_String) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ConsTag_6, (MR_Integer) 0)));
+        {
+          MR_String ml_backend__ml_string_switch__Var_9;
+
+          {
+            ml_backend__ml_string_switch__Var_9 = mercury__string__f_43_43_2_f_0(ml_backend__ml_string_switch__ConsString_7, (MR_String) "\"");
+          }
+          {
+            ml_backend__ml_string_switch__String_4 = mercury__string__f_43_43_2_f_0((MR_String) "\"", ml_backend__ml_string_switch__Var_9);
+          }
+        }
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "function \140ml_backend.ml_string_switch.gen_string_switch_case_comment\'/1", (MR_String) "non-string tag");
+        }
+      }
+    return ml_backend__ml_string_switch__String_4;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__generate_trie_arms_3_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_0_2,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_3 = ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_0_2;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__CasePair_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CasePairs_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CasePair_7, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CaseStmt_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__CasePair_7, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CaseNum_12 = (MR_Integer) ml_backend__ml_string_switch__CaseId_10;
+            MR_Word ml_backend__ml_string_switch__MatchCond_13;
+            MR_Word ml_backend__ml_string_switch__Case_14;
+            MR_Word ml_backend__ml_string_switch__Var_17;
+            MR_Word ml_backend__ml_string_switch__Var_18;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_20_20;
+
+            {
+              ml_backend__ml_string_switch__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_18, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNum_12));
+            }
+            {
+              ml_backend__ml_string_switch__Var_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_17, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+            }
+            {
+              ml_backend__ml_string_switch__MatchCond_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__MatchCond_13, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_17));
+            }
+            {
+              ml_backend__ml_string_switch__Case_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_14, 0) = ((MR_Box) (ml_backend__ml_string_switch__MatchCond_13));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_14, 2) = ((MR_Box) (ml_backend__ml_string_switch__CaseStmt_11));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_20_20, 0) = ((MR_Box) (ml_backend__ml_string_switch__Case_14));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_20_20, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_0_2));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__CasePairs_8;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevSwitchCases_0_2 = ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_20_20;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevSwitchCases_0_2 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevSwitchCases_0_2;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__create_nested_switch_trie_10_p_0(
+  MR_Word ml_backend__ml_string_switch__TaggedCases_11,
+  MR_Word ml_backend__ml_string_switch__Context_12,
+  MR_Word ml_backend__ml_string_switch__VarRval_13,
+  MR_Integer * ml_backend__ml_string_switch__MaxCaseNum_14,
+  MR_Word * ml_backend__ml_string_switch__CaseNumVarLval_15,
+  MR_Word * ml_backend__ml_string_switch__CaseNumVarDefn_16,
+  MR_Word * ml_backend__ml_string_switch__InitCaseNumVarStmt_17,
+  MR_Word * ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_23,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__Target_20;
+    MR_Word ml_backend__ml_string_switch__Encoding_21;
+    MR_Word ml_backend__ml_string_switch__TopTrieNode_22;
+    MR_Word ml_backend__ml_string_switch__StrsCaseIds_31;
+    MR_Word ml_backend__ml_string_switch__CaseNumVar_53;
+    MR_Word ml_backend__ml_string_switch__CaseNumVarType_54;
+    MR_Word ml_backend__ml_string_switch__InitAssign_55;
+    MR_Word ml_backend__ml_string_switch__Var_58;
+
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_target_2_p_0(ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_23, &ml_backend__ml_string_switch__Target_20);
+    }
+    {
+      ml_backend__ml_string_switch__Encoding_21 = backend_libs__string_encoding__target_string_encoding_1_f_0(ml_backend__ml_string_switch__Target_20);
+    }
+    {
+      ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0(ml_backend__ml_string_switch__TaggedCases_11, (MR_Integer) -1, ml_backend__ml_string_switch__MaxCaseNum_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ml_backend__ml_string_switch__StrsCaseIds_31);
+    }
+    if ((ml_backend__ml_string_switch__StrsCaseIds_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word ml_backend__ml_string_switch__Var_42;
+
+        {
+          ml_backend__ml_string_switch__Var_42 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0);
+        }
+        {
+          ml_backend__ml_string_switch__TopTrieNode_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TopTrieNode_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TopTrieNode_22, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_42));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TopTrieNode_22, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__HeadStrCaseId_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StrsCaseIds_31, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__TailStrCaseIds_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StrsCaseIds_31, (MR_Integer) 1)));
+        MR_String ml_backend__ml_string_switch__HeadStr_34 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadStrCaseId_32, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__HeadCaseId_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__HeadStrCaseId_32, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__HeadStrCodeUnits_36;
+        MR_Word ml_backend__ml_string_switch__TopTrieNode1_37;
+
+        {
+          backend_libs__string_encoding__to_code_unit_list_3_p_0(ml_backend__ml_string_switch__Encoding_21, ml_backend__ml_string_switch__HeadStr_34, &ml_backend__ml_string_switch__HeadStrCodeUnits_36);
+        }
+        {
+          ml_backend__ml_string_switch__TopTrieNode1_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TopTrieNode1_37, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TopTrieNode1_37, 1) = ((MR_Box) (ml_backend__ml_string_switch__HeadStrCodeUnits_36));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TopTrieNode1_37, 2) = ((MR_Box) (ml_backend__ml_string_switch__HeadCaseId_35));
+        }
+        {
+          ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0(ml_backend__ml_string_switch__Encoding_21, ml_backend__ml_string_switch__TailStrCaseIds_33, ml_backend__ml_string_switch__TopTrieNode1_37, &ml_backend__ml_string_switch__TopTrieNode_22);
+        }
+      }
+    {
+      ml_backend__ml_gen_info__ml_gen_info_new_aux_var_name_4_p_0((MR_Integer) 11, &ml_backend__ml_string_switch__CaseNumVar_53, ml_backend__ml_string_switch__STATE_VARIABLE_Info_0_23, ml_backend__ml_string_switch__STATE_VARIABLE_Info_24);
+    }
+    ml_backend__ml_string_switch__CaseNumVarType_54 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+    {
+      ml_backend__ml_string_switch__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_58, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVar_53));
+    }
+    {
+      *ml_backend__ml_string_switch__CaseNumVarDefn_16 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(ml_backend__ml_string_switch__Var_58, ml_backend__ml_string_switch__CaseNumVarType_54, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ml_backend__ml_string_switch__Context_12);
+    }
+    {
+      ml_backend__ml_code_util__ml_gen_var_lval_4_p_0(*ml_backend__ml_string_switch__STATE_VARIABLE_Info_24, ml_backend__ml_string_switch__CaseNumVar_53, ml_backend__ml_string_switch__CaseNumVarType_54, ml_backend__ml_string_switch__CaseNumVarLval_15);
+    }
+    {
+      ml_backend__ml_string_switch__InitAssign_55 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__InitAssign_55, 0) = ((MR_Box) (*ml_backend__ml_string_switch__CaseNumVarLval_15));
+      MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__InitAssign_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_string_switch_scalar_common_1[12])));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      *ml_backend__ml_string_switch__InitCaseNumVarStmt_17 = base;
+      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__InitAssign_55));
+      MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_12));
+    }
+    {
+      ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0(ml_backend__ml_string_switch__Encoding_21, ml_backend__ml_string_switch__VarRval_13, *ml_backend__ml_string_switch__CaseNumVarLval_15, ml_backend__ml_string_switch__Context_12, (MR_Integer) 0, ml_backend__ml_string_switch__TopTrieNode_22, ml_backend__ml_string_switch__GetCaseNumSwitchStmt_18);
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_1,
+  MR_Box ml_backend__ml_string_switch__wrapper_arg_2,
+  MR_Box * ml_backend__ml_string_switch__wrapper_arg_3)
+{
+  {
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+    MR_Word ml_backend__ml_string_switch__conv0_STATE_VARIABLE_RevStrsCaseIds_12;
+
+    {
+      ml_backend__ml_string_switch__add_to_strs_case_ids_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_1), ((MR_Word) ml_backend__ml_string_switch__wrapper_arg_2), &ml_backend__ml_string_switch__conv0_STATE_VARIABLE_RevStrsCaseIds_12);
+    }
+    *ml_backend__ml_string_switch__wrapper_arg_3 = ((MR_Box) (ml_backend__ml_string_switch__conv0_STATE_VARIABLE_RevStrsCaseIds_12));
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_0_2,
+  MR_Integer * ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_3,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_4,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_5 = ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_4;
+            *ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_3 = ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_0_2;
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__TaggedCase_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__TaggedCases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__MainTaggedConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_12, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__OtherTaggedConsIds_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_12, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__CaseId_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_12, (MR_Integer) 2)));
+            MR_Integer ml_backend__ml_string_switch__CaseNum_20 = (MR_Integer) ml_backend__ml_string_switch__CaseId_18;
+            MR_Integer ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_25_25;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_26_26;
+            MR_Word ml_backend__ml_string_switch__Var_27;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_28_28;
+            MR_Word ml_backend__ml_string_switch__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedCase_12, (MR_Integer) 3)));
+            MR_Box ml_backend__ml_string_switch__conv1_STATE_VARIABLE_RevStrsCaseIds_28_28;
+
+            {
+              mercury__int__max_3_p_0(ml_backend__ml_string_switch__CaseNum_20, ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_0_2, &ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_25_25);
+            }
+            {
+              ml_backend__ml_string_switch__add_to_strs_case_ids_4_p_0(ml_backend__ml_string_switch__CaseId_18, ml_backend__ml_string_switch__MainTaggedConsId_16, ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_4, &ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_26_26);
+            }
+            {
+              ml_backend__ml_string_switch__Var_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_27, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_5[0]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_27, 1) = ((MR_Box) (ml_backend__ml_string_switch__build_str_case_id_assoc_list_5_p_0_1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_27, 3) = ((MR_Box) (ml_backend__ml_string_switch__CaseId_18));
+            }
+            {
+              mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, (MR_Word) &ml_backend__ml_string_switch_scalar_common_1[3], ml_backend__ml_string_switch__Var_27, ml_backend__ml_string_switch__OtherTaggedConsIds_17, ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_26_26)), &ml_backend__ml_string_switch__conv1_STATE_VARIABLE_RevStrsCaseIds_28_28);
+            }
+            ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_28_28 = ((MR_Word) ml_backend__ml_string_switch__conv1_STATE_VARIABLE_RevStrsCaseIds_28_28);
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__1_1 = ml_backend__ml_string_switch__TaggedCases_13;
+              MR_Integer ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_MaxCaseNum_0_2 = ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_25_25;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevStrsCaseIds_0_4 = ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_28_28;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_4 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_RevStrsCaseIds_0_4;
+              ml_backend__ml_string_switch__STATE_VARIABLE_MaxCaseNum_0_2 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_MaxCaseNum_0_2;
+              ml_backend__ml_string_switch__HeadVar__1_1 = ml_backend__ml_string_switch__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__add_to_strs_case_ids_4_p_0(
+  MR_Word ml_backend__ml_string_switch__CaseId_5,
+  MR_Word ml_backend__ml_string_switch__TaggedConsId_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_11,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_12)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__ConsTag_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedConsId_6, (MR_Integer) 1)));
+    MR_Word ml_backend__ml_string_switch___ConsId_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TaggedConsId_6, (MR_Integer) 0)));
+    MR_String ml_backend__ml_string_switch__String_10;
+
+    ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__ConsTag_9)) == (MR_mktag((MR_Integer) 1)));
+    if (ml_backend__ml_string_switch__succeeded)
+      {
+        ml_backend__ml_string_switch__String_10 = ((MR_String) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ConsTag_9, (MR_Integer) 0)));
+        {
+          MR_Word ml_backend__ml_string_switch__Var_14;
+
+          {
+            ml_backend__ml_string_switch__Var_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_14, 0) = ((MR_Box) (ml_backend__ml_string_switch__String_10));
+            MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_14, 1) = ((MR_Box) (ml_backend__ml_string_switch__CaseId_5));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_12 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_14));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__STATE_VARIABLE_RevStrsCaseIds_0_11));
+          }
+        }
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.add_to_strs_case_ids\'/4", (MR_String) "non-string tag");
+          return;
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__chase_one_cond_trie_nodes__705__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_10,
+  MR_Word ml_backend__ml_string_switch__VarRval_11,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_12,
+  MR_Word ml_backend__ml_string_switch__Context_13,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_14,
+  MR_Word ml_backend__ml_string_switch__TrieNode_15,
+  MR_Word ml_backend__ml_string_switch__RevCond0_16,
+  MR_Word * ml_backend__ml_string_switch__RevCond_17,
+  MR_Word * ml_backend__ml_string_switch__ThenStmt_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__TrieNode_15)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__RevMatchedCodeUnits_19;
+        MR_Word ml_backend__ml_string_switch__OneChoicePair_23;
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_43_43;
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_44_44;
+        MR_Word ml_backend__ml_string_switch__ChoiceMap_20;
+        MR_Word ml_backend__ml_string_switch__MaybeEnd_21;
+        MR_Word ml_backend__ml_string_switch__ChoicePairs_22;
+        MR_Word ml_backend__ml_string_switch__Var_30;
+
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__RevMatchedCodeUnits_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_15, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__ChoiceMap_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_15, (MR_Integer) 1)));
+            ml_backend__ml_string_switch__MaybeEnd_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_15, (MR_Integer) 2)));
+            ml_backend__ml_string_switch__TypeCtorInfo_43_43 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+            ml_backend__ml_string_switch__TypeCtorInfo_44_44 = (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0;
+            {
+              mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_43_43, ml_backend__ml_string_switch__TypeCtorInfo_44_44, ml_backend__ml_string_switch__ChoiceMap_20, &ml_backend__ml_string_switch__ChoicePairs_22);
+            }
+            ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__MaybeEnd_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__ChoicePairs_22)) == (MR_mktag((MR_Integer) 1)));
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__OneChoicePair_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ChoicePairs_22, (MR_Integer) 0)));
+                    ml_backend__ml_string_switch__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ChoicePairs_22, (MR_Integer) 1)));
+                    ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+              }
+          }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Integer ml_backend__ml_string_switch__OneCodeUnit_24;
+            MR_Word ml_backend__ml_string_switch__OneSubTrieNode_25;
+            MR_Word ml_backend__ml_string_switch__CurCodeUnitRval_26;
+            MR_Word ml_backend__ml_string_switch__OneCodeUnitConst_27;
+            MR_Word ml_backend__ml_string_switch__CurCond_28;
+            MR_Word ml_backend__ml_string_switch__RevCond1_29;
+            MR_Word ml_backend__ml_string_switch__Var_31;
+            MR_Integer ml_backend__ml_string_switch__Var_34;
+            MR_Word ml_backend__ml_string_switch__Var_36;
+            MR_Word ml_backend__ml_string_switch__Var_37;
+            MR_Word ml_backend__ml_string_switch__Var_38;
+            MR_Integer ml_backend__ml_string_switch__Var_41;
+
+            {
+              ml_backend__ml_string_switch__Var_34 = mercury__list__length_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ml_backend__ml_string_switch__RevMatchedCodeUnits_19);
+            }
+            {
+              ml_backend__ml_string_switch__Var_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_31, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_31, 1) = ((MR_Box) (ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0_1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_31, 3) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_14));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_31, 4) = ((MR_Box) (ml_backend__ml_string_switch__Var_34));
+            }
+            {
+              mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_31, (MR_String) "predicate \140ml_backend.ml_string_switch.chase_one_cond_trie_nodes\'/9", (MR_String) "length(RevMatchedCodeUnits) != NumMatched");
+            }
+            ml_backend__ml_string_switch__OneCodeUnit_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OneChoicePair_23, (MR_Integer) 0)));
+            ml_backend__ml_string_switch__OneSubTrieNode_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OneChoicePair_23, (MR_Integer) 1)));
+            {
+              ml_backend__ml_string_switch__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_37, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_14));
+            }
+            {
+              ml_backend__ml_string_switch__Var_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_36, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_37));
+            }
+            {
+              ml_backend__ml_string_switch__CurCodeUnitRval_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 15))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_26, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_11));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_26, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_36));
+            }
+            {
+              ml_backend__ml_string_switch__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_38, 0) = ((MR_Box) (ml_backend__ml_string_switch__OneCodeUnit_24));
+            }
+            {
+              ml_backend__ml_string_switch__OneCodeUnitConst_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__OneCodeUnitConst_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__OneCodeUnitConst_27, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_38));
+            }
+            {
+              ml_backend__ml_string_switch__CurCond_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCond_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCond_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCond_28, 2) = ((MR_Box) (ml_backend__ml_string_switch__CurCodeUnitRval_26));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCond_28, 3) = ((MR_Box) (ml_backend__ml_string_switch__OneCodeUnitConst_27));
+            }
+            {
+              ml_backend__ml_string_switch__RevCond1_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__RevCond1_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__RevCond1_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__RevCond1_29, 2) = ((MR_Box) (ml_backend__ml_string_switch__RevCond0_16));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__RevCond1_29, 3) = ((MR_Box) (ml_backend__ml_string_switch__CurCond_28));
+            }
+            ml_backend__ml_string_switch__Var_41 = (ml_backend__ml_string_switch__NumMatched_14 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Integer ml_backend__ml_string_switch__next_value_of_NumMatched_14 = ml_backend__ml_string_switch__Var_41;
+              MR_Word ml_backend__ml_string_switch__next_value_of_TrieNode_15 = ml_backend__ml_string_switch__OneSubTrieNode_25;
+              MR_Word ml_backend__ml_string_switch__next_value_of_RevCond0_16 = ml_backend__ml_string_switch__RevCond1_29;
+
+              ml_backend__ml_string_switch__RevCond0_16 = ml_backend__ml_string_switch__next_value_of_RevCond0_16;
+              ml_backend__ml_string_switch__TrieNode_15 = ml_backend__ml_string_switch__next_value_of_TrieNode_15;
+              ml_backend__ml_string_switch__NumMatched_14 = ml_backend__ml_string_switch__next_value_of_NumMatched_14;
+            }
+            continue;
+          }
+        else
+          {
+            *ml_backend__ml_string_switch__RevCond_17 = ml_backend__ml_string_switch__RevCond0_16;
+            {
+              ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0(ml_backend__ml_string_switch__Encoding_10, ml_backend__ml_string_switch__VarRval_11, ml_backend__ml_string_switch__CaseNumVarLval_12, ml_backend__ml_string_switch__Context_13, ml_backend__ml_string_switch__NumMatched_14, ml_backend__ml_string_switch__TrieNode_15, ml_backend__ml_string_switch__ThenStmt_18);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__convert_trie_choices_to_nested_switches_8_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_1,
+  MR_Word ml_backend__ml_string_switch__VarRval_2,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_3,
+  MR_Word ml_backend__ml_string_switch__Context_4,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_5,
+  MR_Word ml_backend__ml_string_switch__HeadVar__6_6,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_0_7,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_8 = ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_0_7;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__ChoicePair_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__6_6, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__ChoicePairs_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__6_6, (MR_Integer) 1)));
+            MR_Integer ml_backend__ml_string_switch__CodeUnit_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__ChoicePair_22, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__SubTrieNode_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__ChoicePair_22, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__SwitchArmStmt_27;
+            MR_Word ml_backend__ml_string_switch__MatchCond_28;
+            MR_Word ml_backend__ml_string_switch__SwitchArm_29;
+            MR_Word ml_backend__ml_string_switch__Var_32;
+            MR_Word ml_backend__ml_string_switch__Var_33;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_35_35;
+
+            {
+              ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0(ml_backend__ml_string_switch__Encoding_1, ml_backend__ml_string_switch__VarRval_2, ml_backend__ml_string_switch__CaseNumVarLval_3, ml_backend__ml_string_switch__Context_4, ml_backend__ml_string_switch__NumMatched_5, ml_backend__ml_string_switch__SubTrieNode_26, &ml_backend__ml_string_switch__SwitchArmStmt_27);
+            }
+            {
+              ml_backend__ml_string_switch__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__CodeUnit_25));
+            }
+            {
+              ml_backend__ml_string_switch__Var_32 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_32, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_32, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_33));
+            }
+            {
+              ml_backend__ml_string_switch__MatchCond_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__MatchCond_28, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_32));
+            }
+            {
+              ml_backend__ml_string_switch__SwitchArm_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchArm_29, 0) = ((MR_Box) (ml_backend__ml_string_switch__MatchCond_28));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchArm_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SwitchArm_29, 2) = ((MR_Box) (ml_backend__ml_string_switch__SwitchArmStmt_27));
+            }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_35_35 = mercury__cord__snoc_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0, ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_0_7, ((MR_Box) (ml_backend__ml_string_switch__SwitchArm_29)));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__6_6 = ml_backend__ml_string_switch__ChoicePairs_23;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_SwitchArmsCord_0_7 = ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_35_35;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_SwitchArmsCord_0_7 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_SwitchArmsCord_0_7;
+              ml_backend__ml_string_switch__HeadVar__6_6 = ml_backend__ml_string_switch__next_value_of_HeadVar__6_6;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__603__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__convert_trie_to_nested_switches__653__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0(
+  MR_Word ml_backend__ml_string_switch__Encoding_8,
+  MR_Word ml_backend__ml_string_switch__VarRval_9,
+  MR_Word ml_backend__ml_string_switch__CaseNumVarLval_10,
+  MR_Word ml_backend__ml_string_switch__Context_11,
+  MR_Integer ml_backend__ml_string_switch__NumMatched_12,
+  MR_Word ml_backend__ml_string_switch__TrieNode_13,
+  MR_Word * ml_backend__ml_string_switch__Stmt_14)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__TrieNode_13)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_88_88;
+        MR_Word ml_backend__ml_string_switch__ChoiceMap_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__MaybeEnd_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__CurCodeUnitRval_29;
+        MR_Word ml_backend__ml_string_switch__ChoicePairs_30;
+        MR_Word ml_backend__ml_string_switch__Var_52;
+        MR_Word ml_backend__ml_string_switch__Var_53;
+        MR_Word ml_backend__ml_string_switch__RevMatchedCodeUnits_84 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__OneChoicePair_31;
+        MR_Word ml_backend__ml_string_switch__Var_54;
+
+        {
+          ml_backend__ml_string_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_53, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_12));
+        }
+        {
+          ml_backend__ml_string_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_52, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_53));
+        }
+        {
+          ml_backend__ml_string_switch__CurCodeUnitRval_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 15))));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_29, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_9));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CurCodeUnitRval_29, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_52));
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_88_88 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+        {
+          mercury__map__to_assoc_list_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_88_88, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__ChoiceMap_27, &ml_backend__ml_string_switch__ChoicePairs_30);
+        }
+        ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__MaybeEnd_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__succeeded = ((MR_tag((MR_Word) ml_backend__ml_string_switch__ChoicePairs_30)) == (MR_mktag((MR_Integer) 1)));
+            if (ml_backend__ml_string_switch__succeeded)
+              {
+                ml_backend__ml_string_switch__OneChoicePair_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ChoicePairs_30, (MR_Integer) 0)));
+                ml_backend__ml_string_switch__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__ChoicePairs_30, (MR_Integer) 1)));
+                ml_backend__ml_string_switch__succeeded = (ml_backend__ml_string_switch__Var_54 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+          }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Integer ml_backend__ml_string_switch__OneCodeUnit_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OneChoicePair_31, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__OneSubTrieNode_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__OneChoicePair_31, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__OneCodeUnitConst_34;
+            MR_Word ml_backend__ml_string_switch__FirstCond_35;
+            MR_Word ml_backend__ml_string_switch__AllCond_36;
+            MR_Word ml_backend__ml_string_switch__ThenStmt_37;
+            MR_Word ml_backend__ml_string_switch__Var_55;
+            MR_Integer ml_backend__ml_string_switch__Var_57;
+
+            {
+              ml_backend__ml_string_switch__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_55, 0) = ((MR_Box) (ml_backend__ml_string_switch__OneCodeUnit_32));
+            }
+            {
+              ml_backend__ml_string_switch__OneCodeUnitConst_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__OneCodeUnitConst_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__OneCodeUnitConst_34, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_55));
+            }
+            {
+              ml_backend__ml_string_switch__FirstCond_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstCond_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstCond_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstCond_35, 2) = ((MR_Box) (ml_backend__ml_string_switch__CurCodeUnitRval_29));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__FirstCond_35, 3) = ((MR_Box) (ml_backend__ml_string_switch__OneCodeUnitConst_34));
+            }
+            ml_backend__ml_string_switch__Var_57 = (ml_backend__ml_string_switch__NumMatched_12 + (MR_Integer) 1);
+            {
+              ml_backend__ml_string_switch__chase_one_cond_trie_nodes_9_p_0(ml_backend__ml_string_switch__Encoding_8, ml_backend__ml_string_switch__VarRval_9, ml_backend__ml_string_switch__CaseNumVarLval_10, ml_backend__ml_string_switch__Context_11, ml_backend__ml_string_switch__Var_57, ml_backend__ml_string_switch__OneSubTrieNode_33, ml_backend__ml_string_switch__FirstCond_35, &ml_backend__ml_string_switch__AllCond_36, &ml_backend__ml_string_switch__ThenStmt_37);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              *ml_backend__ml_string_switch__Stmt_14 = base;
+              MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__AllCond_36));
+              MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__ThenStmt_37));
+              MR_hl_field(MR_mktag(2), base, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(2), base, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_11));
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__TypeCtorInfo_90_90 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0;
+            MR_Word ml_backend__ml_string_switch__SwitchArmsCord0_38;
+            MR_Word ml_backend__ml_string_switch__SwitchArms0_39;
+            MR_Word ml_backend__ml_string_switch__SwitchArms_40;
+            MR_Integer ml_backend__ml_string_switch__Var_60 = (ml_backend__ml_string_switch__NumMatched_12 + (MR_Integer) 1);
+            MR_Word ml_backend__ml_string_switch__Var_61;
+            MR_Word ml_backend__ml_string_switch__Var_67;
+            MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82;
+
+            {
+              ml_backend__ml_string_switch__Var_61 = mercury__cord__init_0_f_0(ml_backend__ml_string_switch__TypeCtorInfo_90_90);
+            }
+            {
+              ml_backend__ml_string_switch__convert_trie_choices_to_nested_switches_8_p_0(ml_backend__ml_string_switch__Encoding_8, ml_backend__ml_string_switch__VarRval_9, ml_backend__ml_string_switch__CaseNumVarLval_10, ml_backend__ml_string_switch__Context_11, ml_backend__ml_string_switch__Var_60, ml_backend__ml_string_switch__ChoicePairs_30, ml_backend__ml_string_switch__Var_61, &ml_backend__ml_string_switch__SwitchArmsCord0_38);
+            }
+            {
+              ml_backend__ml_string_switch__SwitchArms0_39 = mercury__cord__list_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_90_90, ml_backend__ml_string_switch__SwitchArmsCord0_38);
+            }
+            if ((ml_backend__ml_string_switch__MaybeEnd_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              ml_backend__ml_string_switch__SwitchArms_40 = ml_backend__ml_string_switch__SwitchArms0_39;
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__EndCaseId_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeEnd_28, (MR_Integer) 0)));
+                MR_Integer ml_backend__ml_string_switch__EndCaseNum_42 = (MR_Integer) ml_backend__ml_string_switch__EndCaseId_41;
+                MR_Word ml_backend__ml_string_switch__EndCaseNumRval_43;
+                MR_Word ml_backend__ml_string_switch__EndSetCaseNumVarAssign_44;
+                MR_Word ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45;
+                MR_Word ml_backend__ml_string_switch__EndSwitchArm_48;
+                MR_Word ml_backend__ml_string_switch__Var_63;
+
+                {
+                  ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__EndCaseNum_42));
+                }
+                {
+                  ml_backend__ml_string_switch__EndCaseNumRval_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndCaseNumRval_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndCaseNumRval_43, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+                }
+                {
+                  ml_backend__ml_string_switch__EndSetCaseNumVarAssign_44 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__EndSetCaseNumVarAssign_44, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_10));
+                  MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__EndSetCaseNumVarAssign_44, 1) = ((MR_Box) (ml_backend__ml_string_switch__EndCaseNumRval_43));
+                }
+                {
+                  ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45, 1) = ((MR_Box) (ml_backend__ml_string_switch__EndSetCaseNumVarAssign_44));
+                  MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_11));
+                }
+                {
+                  ml_backend__ml_string_switch__EndSwitchArm_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__EndSwitchArm_48, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_4[1]));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__EndSwitchArm_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__EndSwitchArm_48, 2) = ((MR_Box) (ml_backend__ml_string_switch__EndSetCaseNumVarStmt_45));
+                }
+                {
+                  ml_backend__ml_string_switch__SwitchArms_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SwitchArms_40, 0) = ((MR_Box) (ml_backend__ml_string_switch__EndSwitchArm_48));
+                  MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__SwitchArms_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__SwitchArms0_39));
+                }
+              }
+            {
+              mercury__list__length_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_88_88, ml_backend__ml_string_switch__RevMatchedCodeUnits_84, &ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82);
+            }
+            {
+              ml_backend__ml_string_switch__Var_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_67, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_67, 1) = ((MR_Box) (ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_1));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_67, 3) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_12));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_67, 4) = ((MR_Box) (ml_backend__ml_string_switch__NumRevMatchedCodeUnits_82));
+            }
+            {
+              mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_67, (MR_String) "predicate \140ml_backend.ml_string_switch.convert_trie_to_nested_switches\'/7", (MR_String) "NumRevMatchedCodeUnits != NumMatched");
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+              *ml_backend__ml_string_switch__Stmt_14 = base;
+              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__CurCodeUnitRval_29));
+              MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (ml_backend__ml_string_switch__SwitchArms_40));
+              MR_hl_field(MR_mktag(3), base, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+              MR_hl_field(MR_mktag(3), base, 6) = ((MR_Box) (ml_backend__ml_string_switch__Context_11));
+            }
+          }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__TypeCtorInfo_86_86;
+        MR_Word ml_backend__ml_string_switch__RevMatchedCodeUnits_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__NotYetMatchedCodeUnits_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__CaseId_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode_13, (MR_Integer) 2)));
+        MR_Integer ml_backend__ml_string_switch__CaseNum_18 = (MR_Integer) ml_backend__ml_string_switch__CaseId_17;
+        MR_Word ml_backend__ml_string_switch__CaseNumRval_19;
+        MR_Word ml_backend__ml_string_switch__SetCaseNumVarAssign_20;
+        MR_Word ml_backend__ml_string_switch__SetCaseNumVarStmt_21;
+        MR_Word ml_backend__ml_string_switch__AllCodeUnits_22;
+        MR_Integer ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23;
+        MR_Word ml_backend__ml_string_switch__StringRval_25;
+        MR_Word ml_backend__ml_string_switch__CondRval_26;
+        MR_Word ml_backend__ml_string_switch__Var_72;
+        MR_Word ml_backend__ml_string_switch__Var_73;
+        MR_Word ml_backend__ml_string_switch__Var_74;
+        MR_Word ml_backend__ml_string_switch__Var_80;
+        MR_String ml_backend__ml_string_switch__String_24;
+
+        {
+          ml_backend__ml_string_switch__Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_72, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNum_18));
+        }
+        {
+          ml_backend__ml_string_switch__CaseNumRval_19 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseNumRval_19, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CaseNumRval_19, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_72));
+        }
+        {
+          ml_backend__ml_string_switch__SetCaseNumVarAssign_20 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__SetCaseNumVarAssign_20, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumVarLval_10));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__SetCaseNumVarAssign_20, 1) = ((MR_Box) (ml_backend__ml_string_switch__CaseNumRval_19));
+        }
+        {
+          ml_backend__ml_string_switch__SetCaseNumVarStmt_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetCaseNumVarStmt_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetCaseNumVarStmt_21, 1) = ((MR_Box) (ml_backend__ml_string_switch__SetCaseNumVarAssign_20));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__SetCaseNumVarStmt_21, 2) = ((MR_Box) (ml_backend__ml_string_switch__Context_11));
+        }
+        ml_backend__ml_string_switch__TypeCtorInfo_86_86 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+        {
+          ml_backend__ml_string_switch__Var_73 = mercury__list__reverse_1_f_0(ml_backend__ml_string_switch__TypeCtorInfo_86_86, ml_backend__ml_string_switch__RevMatchedCodeUnits_15);
+        }
+        {
+          ml_backend__ml_string_switch__AllCodeUnits_22 = mercury__list__f_43_43_2_f_0(ml_backend__ml_string_switch__TypeCtorInfo_86_86, ml_backend__ml_string_switch__Var_73, ml_backend__ml_string_switch__NotYetMatchedCodeUnits_16);
+        }
+        {
+          mercury__list__length_2_p_0(ml_backend__ml_string_switch__TypeCtorInfo_86_86, ml_backend__ml_string_switch__RevMatchedCodeUnits_15, &ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23);
+        }
+        {
+          ml_backend__ml_string_switch__Var_74 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_74, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[1]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_74, 1) = ((MR_Box) (ml_backend__ml_string_switch__convert_trie_to_nested_switches_7_p_0_2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_74, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_74, 3) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_12));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_74, 4) = ((MR_Box) (ml_backend__ml_string_switch__NumRevMatchedCodeUnits_23));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_74, (MR_String) "predicate \140ml_backend.ml_string_switch.convert_trie_to_nested_switches\'/7", (MR_String) "NumRevMatchedCodeUnits != NumMatched");
+        }
+        {
+          ml_backend__ml_string_switch__succeeded = backend_libs__string_encoding__from_code_unit_list_3_p_0(ml_backend__ml_string_switch__Encoding_8, ml_backend__ml_string_switch__AllCodeUnits_22, &ml_backend__ml_string_switch__String_24);
+        }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Word ml_backend__ml_string_switch__Var_77;
+
+            {
+              ml_backend__ml_string_switch__Var_77 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_77, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__Var_77, 1) = ((MR_Box) (ml_backend__ml_string_switch__String_24));
+            }
+            {
+              ml_backend__ml_string_switch__StringRval_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__StringRval_25, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_77));
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.convert_trie_to_nested_switches\'/7", (MR_String) "code units cannot be turned back into string");
+              return;
+            }
+          }
+        {
+          ml_backend__ml_string_switch__Var_80 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), ml_backend__ml_string_switch__Var_80, 0) = ((MR_Box) (ml_backend__ml_string_switch__NumMatched_12));
+        }
+        {
+          ml_backend__ml_string_switch__CondRval_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CondRval_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CondRval_26, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_80));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CondRval_26, 2) = ((MR_Box) (ml_backend__ml_string_switch__VarRval_9));
+          MR_hl_field(MR_mktag(3), ml_backend__ml_string_switch__CondRval_26, 3) = ((MR_Box) (ml_backend__ml_string_switch__StringRval_25));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          *ml_backend__ml_string_switch__Stmt_14 = base;
+          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__CondRval_26));
+          MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__SetCaseNumVarStmt_21));
+          MR_hl_field(MR_mktag(2), base, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(2), base, 3) = ((MR_Box) (ml_backend__ml_string_switch__Context_11));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__509__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__523__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0(
+  MR_Word ml_backend__ml_string_switch__HeadVar__1_1,
+  MR_Word ml_backend__ml_string_switch__HeadVar__2_2,
+  MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3,
+  MR_Word * ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ml_backend__ml_string_switch__succeeded;
+
+        if ((ml_backend__ml_string_switch__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_4 = ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3;
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Case_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__Cases_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__HeadVar__2_2, (MR_Integer) 1)));
+            MR_String ml_backend__ml_string_switch__Str_13 = ((MR_String) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_10, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__CaseId_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Case_10, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__StrCodeUnits_15;
+            MR_Word ml_backend__ml_string_switch__Var_18;
+            MR_Word ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19;
+            MR_Word ml_backend__ml_string_switch__ChoiceMap0_29;
+            MR_Word ml_backend__ml_string_switch__MaybeEnd0_30;
+            MR_Word ml_backend__ml_string_switch__ChoiceMap_35;
+            MR_Word ml_backend__ml_string_switch__MaybeEnd_36;
+
+            {
+              backend_libs__string_encoding__to_code_unit_list_3_p_0(ml_backend__ml_string_switch__HeadVar__1_1, ml_backend__ml_string_switch__Str_13, &ml_backend__ml_string_switch__StrCodeUnits_15);
+            }
+            ml_backend__ml_string_switch__Var_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            if (((MR_tag((MR_Word) ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3)) == (MR_mktag((MR_Integer) 1))))
+              {
+                MR_Word ml_backend__ml_string_switch__ChoiceMatched_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 0)));
+                MR_Word ml_backend__ml_string_switch__Var_37;
+
+                ml_backend__ml_string_switch__ChoiceMap0_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 1)));
+                ml_backend__ml_string_switch__MaybeEnd0_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 2)));
+                {
+                  ml_backend__ml_string_switch__Var_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[0]));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 1) = ((MR_Box) (ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_1));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_37, 4) = ((MR_Box) (ml_backend__ml_string_switch__ChoiceMatched_34));
+                }
+                {
+                  mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_37, (MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_node\'/5", (MR_String) "ChoiceMatched didn\'t");
+                }
+              }
+            else
+              {
+                MR_Word ml_backend__ml_string_switch__LeafMatched_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 0)));
+                MR_Word ml_backend__ml_string_switch__LeafNotYetMatched_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 1)));
+                MR_Word ml_backend__ml_string_switch__LeafCaseId_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3, (MR_Integer) 2)));
+                MR_Word ml_backend__ml_string_switch__Var_40;
+
+                {
+                  ml_backend__ml_string_switch__Var_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_40, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[0]));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_40, 1) = ((MR_Box) (ml_backend__ml_string_switch__insert_cases_into_trie_4_p_0_2));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_40, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_40, 3) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+                  MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_40, 4) = ((MR_Box) (ml_backend__ml_string_switch__LeafMatched_26));
+                }
+                {
+                  mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_40, (MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_node\'/5", (MR_String) "LeafMatched didn\'t");
+                }
+                if ((ml_backend__ml_string_switch__LeafNotYetMatched_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    {
+                      ml_backend__ml_string_switch__ChoiceMap0_29 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0);
+                    }
+                    {
+                      ml_backend__ml_string_switch__MaybeEnd0_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeEnd0_30, 0) = ((MR_Box) (ml_backend__ml_string_switch__LeafCaseId_28));
+                    }
+                  }
+                else
+                  {
+                    MR_Integer ml_backend__ml_string_switch__LeafFirstCodeUnit_31 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LeafNotYetMatched_27, (MR_Integer) 0)));
+                    MR_Word ml_backend__ml_string_switch__LeafLaterCodeUnits_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LeafNotYetMatched_27, (MR_Integer) 1)));
+                    MR_Word ml_backend__ml_string_switch__NewLeaf_33;
+                    MR_Word ml_backend__ml_string_switch__Var_43;
+
+                    {
+                      ml_backend__ml_string_switch__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_43, 0) = ((MR_Box) (ml_backend__ml_string_switch__LeafFirstCodeUnit_31));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_43, 1) = ((MR_Box) (ml_backend__ml_string_switch__LeafMatched_26));
+                    }
+                    {
+                      ml_backend__ml_string_switch__NewLeaf_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_33, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_43));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_33, 1) = ((MR_Box) (ml_backend__ml_string_switch__LeafLaterCodeUnits_32));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_33, 2) = ((MR_Box) (ml_backend__ml_string_switch__LeafCaseId_28));
+                    }
+                    {
+                      ml_backend__ml_string_switch__ChoiceMap0_29 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ((MR_Box) (ml_backend__ml_string_switch__LeafFirstCodeUnit_31)), ((MR_Box) (ml_backend__ml_string_switch__NewLeaf_33)));
+                    }
+                    ml_backend__ml_string_switch__MaybeEnd0_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  }
+              }
+            if ((ml_backend__ml_string_switch__StrCodeUnits_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                ml_backend__ml_string_switch__ChoiceMap_35 = ml_backend__ml_string_switch__ChoiceMap0_29;
+                if ((ml_backend__ml_string_switch__MaybeEnd0_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    ml_backend__ml_string_switch__MaybeEnd_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeEnd_36, 0) = ((MR_Box) (ml_backend__ml_string_switch__CaseId_14));
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_choice\'/7", (MR_String) "two strings end at same trie node");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer ml_backend__ml_string_switch__InsertFirstCodeUnit_58 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StrCodeUnits_15, (MR_Integer) 0)));
+                MR_Word ml_backend__ml_string_switch__InsertLaterCodeUnits_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__StrCodeUnits_15, (MR_Integer) 1)));
+                MR_Word ml_backend__ml_string_switch__SubTrieNode0_60;
+                MR_Box ml_backend__ml_string_switch__conv0_SubTrieNode0_60;
+
+                ml_backend__ml_string_switch__MaybeEnd_36 = ml_backend__ml_string_switch__MaybeEnd0_30;
+                {
+                  ml_backend__ml_string_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__ChoiceMap0_29, ml_backend__ml_string_switch__InsertFirstCodeUnit_58, &ml_backend__ml_string_switch__conv0_SubTrieNode0_60);
+                }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    ml_backend__ml_string_switch__SubTrieNode0_60 = ((MR_Word) ml_backend__ml_string_switch__conv0_SubTrieNode0_60);
+                    ml_backend__ml_string_switch__succeeded = MR_TRUE;
+                  }
+                if (ml_backend__ml_string_switch__succeeded)
+                  {
+                    MR_Word ml_backend__ml_string_switch__SubTrieNode_61;
+                    MR_Word ml_backend__ml_string_switch__Var_62;
+
+                    {
+                      ml_backend__ml_string_switch__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertFirstCodeUnit_58));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_62, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+                    }
+                    {
+                      ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0(ml_backend__ml_string_switch__Var_62, ml_backend__ml_string_switch__InsertLaterCodeUnits_59, ml_backend__ml_string_switch__CaseId_14, ml_backend__ml_string_switch__SubTrieNode0_60, &ml_backend__ml_string_switch__SubTrieNode_61);
+                    }
+                    {
+                      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__InsertFirstCodeUnit_58, ((MR_Box) (ml_backend__ml_string_switch__SubTrieNode_61)), ml_backend__ml_string_switch__ChoiceMap0_29, &ml_backend__ml_string_switch__ChoiceMap_35);
+                    }
+                  }
+                else
+                  {
+                    MR_Word ml_backend__ml_string_switch__Var_63;
+                    MR_Word ml_backend__ml_string_switch__SubTrieNode_66;
+
+                    {
+                      ml_backend__ml_string_switch__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertFirstCodeUnit_58));
+                      MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_63, 1) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+                    }
+                    {
+                      ml_backend__ml_string_switch__SubTrieNode_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_66, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_63));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_66, 1) = ((MR_Box) (ml_backend__ml_string_switch__InsertLaterCodeUnits_59));
+                      MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_66, 2) = ((MR_Box) (ml_backend__ml_string_switch__CaseId_14));
+                    }
+                    {
+                      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__InsertFirstCodeUnit_58, ((MR_Box) (ml_backend__ml_string_switch__SubTrieNode_66)), ml_backend__ml_string_switch__ChoiceMap0_29, &ml_backend__ml_string_switch__ChoiceMap_35);
+                    }
+                  }
+              }
+            {
+              ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_18));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19, 1) = ((MR_Box) (ml_backend__ml_string_switch__ChoiceMap_35));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19, 2) = ((MR_Box) (ml_backend__ml_string_switch__MaybeEnd_36));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ml_backend__ml_string_switch__next_value_of_HeadVar__2_2 = ml_backend__ml_string_switch__Cases_11;
+              MR_Word ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_TrieNode_0_3 = ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_19_19;
+
+              ml_backend__ml_string_switch__STATE_VARIABLE_TrieNode_0_3 = ml_backend__ml_string_switch__next_value_of_STATE_VARIABLE_TrieNode_0_3;
+              ml_backend__ml_string_switch__HeadVar__2_2 = ml_backend__ml_string_switch__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_2(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__509__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_1(
+  MR_Box ml_backend__ml_string_switch__closure_arg)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Box ml_backend__ml_string_switch__closure = ml_backend__ml_string_switch__closure_arg;
+
+    {
+      ml_backend__ml_string_switch__succeeded = ml_backend__ml_string_switch__IntroducedFrom__pred__insert_case_into_trie_node__523__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__closure, (MR_Integer) 4))));
+    }
+    return ml_backend__ml_string_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0(
+  MR_Word ml_backend__ml_string_switch__InsertMatched_6,
+  MR_Word ml_backend__ml_string_switch__InsertNotYetMatched_7,
+  MR_Word ml_backend__ml_string_switch__InsertCaseId_8,
+  MR_Word ml_backend__ml_string_switch__TrieNode0_9,
+  MR_Word * ml_backend__ml_string_switch__TrieNode_10)
+{
+  {
+    MR_bool ml_backend__ml_string_switch__succeeded;
+    MR_Word ml_backend__ml_string_switch__ChoiceMap0_14;
+    MR_Word ml_backend__ml_string_switch__MaybeEnd0_15;
+    MR_Word ml_backend__ml_string_switch__ChoiceMap_20;
+    MR_Word ml_backend__ml_string_switch__MaybeEnd_21;
+
+    if (((MR_tag((MR_Word) ml_backend__ml_string_switch__TrieNode0_9)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ml_backend__ml_string_switch__ChoiceMatched_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__Var_22;
+
+        ml_backend__ml_string_switch__ChoiceMap0_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 1)));
+        ml_backend__ml_string_switch__MaybeEnd0_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 2)));
+        {
+          ml_backend__ml_string_switch__Var_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_22, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[0]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_22, 1) = ((MR_Box) (ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_1));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_22, 3) = ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_22, 4) = ((MR_Box) (ml_backend__ml_string_switch__ChoiceMatched_19));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_22, (MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_node\'/5", (MR_String) "ChoiceMatched didn\'t");
+        }
+      }
+    else
+      {
+        MR_Word ml_backend__ml_string_switch__LeafMatched_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__LeafNotYetMatched_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__LeafCaseId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__TrieNode0_9, (MR_Integer) 2)));
+        MR_Word ml_backend__ml_string_switch__Var_25;
+
+        {
+          ml_backend__ml_string_switch__Var_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_25, 0) = ((MR_Box) (&ml_backend__ml_string_switch_scalar_common_3[0]));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_25, 1) = ((MR_Box) (ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0_2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_25, 3) = ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6));
+          MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__Var_25, 4) = ((MR_Box) (ml_backend__ml_string_switch__LeafMatched_11));
+        }
+        {
+          mercury__require__expect_3_p_0(ml_backend__ml_string_switch__Var_25, (MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_node\'/5", (MR_String) "LeafMatched didn\'t");
+        }
+        if ((ml_backend__ml_string_switch__LeafNotYetMatched_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              ml_backend__ml_string_switch__ChoiceMap0_14 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0);
+            }
+            {
+              ml_backend__ml_string_switch__MaybeEnd0_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeEnd0_15, 0) = ((MR_Box) (ml_backend__ml_string_switch__LeafCaseId_13));
+            }
+          }
+        else
+          {
+            MR_Integer ml_backend__ml_string_switch__LeafFirstCodeUnit_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LeafNotYetMatched_12, (MR_Integer) 0)));
+            MR_Word ml_backend__ml_string_switch__LeafLaterCodeUnits_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__LeafNotYetMatched_12, (MR_Integer) 1)));
+            MR_Word ml_backend__ml_string_switch__NewLeaf_18;
+            MR_Word ml_backend__ml_string_switch__Var_28;
+
+            {
+              ml_backend__ml_string_switch__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_28, 0) = ((MR_Box) (ml_backend__ml_string_switch__LeafFirstCodeUnit_16));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_28, 1) = ((MR_Box) (ml_backend__ml_string_switch__LeafMatched_11));
+            }
+            {
+              ml_backend__ml_string_switch__NewLeaf_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_18, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_28));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_18, 1) = ((MR_Box) (ml_backend__ml_string_switch__LeafLaterCodeUnits_17));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__NewLeaf_18, 2) = ((MR_Box) (ml_backend__ml_string_switch__LeafCaseId_13));
+            }
+            {
+              ml_backend__ml_string_switch__ChoiceMap0_14 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ((MR_Box) (ml_backend__ml_string_switch__LeafFirstCodeUnit_16)), ((MR_Box) (ml_backend__ml_string_switch__NewLeaf_18)));
+            }
+            ml_backend__ml_string_switch__MaybeEnd0_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+      }
+    if ((ml_backend__ml_string_switch__InsertNotYetMatched_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        ml_backend__ml_string_switch__ChoiceMap_20 = ml_backend__ml_string_switch__ChoiceMap0_14;
+        if ((ml_backend__ml_string_switch__MaybeEnd0_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            ml_backend__ml_string_switch__MaybeEnd_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__MaybeEnd_21, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertCaseId_8));
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140ml_backend.ml_string_switch.insert_case_into_trie_choice\'/7", (MR_String) "two strings end at same trie node");
+              return;
+            }
+          }
+      }
+    else
+      {
+        MR_Integer ml_backend__ml_string_switch__InsertFirstCodeUnit_43 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InsertNotYetMatched_7, (MR_Integer) 0)));
+        MR_Word ml_backend__ml_string_switch__InsertLaterCodeUnits_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__InsertNotYetMatched_7, (MR_Integer) 1)));
+        MR_Word ml_backend__ml_string_switch__SubTrieNode0_45;
+        MR_Box ml_backend__ml_string_switch__conv0_SubTrieNode0_45;
+
+        ml_backend__ml_string_switch__MaybeEnd_21 = ml_backend__ml_string_switch__MaybeEnd0_15;
+        {
+          ml_backend__ml_string_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__ChoiceMap0_14, ml_backend__ml_string_switch__InsertFirstCodeUnit_43, &ml_backend__ml_string_switch__conv0_SubTrieNode0_45);
+        }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            ml_backend__ml_string_switch__SubTrieNode0_45 = ((MR_Word) ml_backend__ml_string_switch__conv0_SubTrieNode0_45);
+            ml_backend__ml_string_switch__succeeded = MR_TRUE;
+          }
+        if (ml_backend__ml_string_switch__succeeded)
+          {
+            MR_Word ml_backend__ml_string_switch__SubTrieNode_46;
+            MR_Word ml_backend__ml_string_switch__Var_47;
+
+            {
+              ml_backend__ml_string_switch__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_47, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertFirstCodeUnit_43));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_47, 1) = ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6));
+            }
+            {
+              ml_backend__ml_string_switch__insert_case_into_trie_node_5_p_0(ml_backend__ml_string_switch__Var_47, ml_backend__ml_string_switch__InsertLaterCodeUnits_44, ml_backend__ml_string_switch__InsertCaseId_8, ml_backend__ml_string_switch__SubTrieNode0_45, &ml_backend__ml_string_switch__SubTrieNode_46);
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__InsertFirstCodeUnit_43, ((MR_Box) (ml_backend__ml_string_switch__SubTrieNode_46)), ml_backend__ml_string_switch__ChoiceMap0_14, &ml_backend__ml_string_switch__ChoiceMap_20);
+            }
+          }
+        else
+          {
+            MR_Word ml_backend__ml_string_switch__Var_48;
+            MR_Word ml_backend__ml_string_switch__SubTrieNode_51;
+
+            {
+              ml_backend__ml_string_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_48, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertFirstCodeUnit_43));
+              MR_hl_field(MR_mktag(1), ml_backend__ml_string_switch__Var_48, 1) = ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6));
+            }
+            {
+              ml_backend__ml_string_switch__SubTrieNode_51 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_51, 0) = ((MR_Box) (ml_backend__ml_string_switch__Var_48));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_51, 1) = ((MR_Box) (ml_backend__ml_string_switch__InsertLaterCodeUnits_44));
+              MR_hl_field(MR_mktag(0), ml_backend__ml_string_switch__SubTrieNode_51, 2) = ((MR_Box) (ml_backend__ml_string_switch__InsertCaseId_8));
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0, ml_backend__ml_string_switch__InsertFirstCodeUnit_43, ((MR_Box) (ml_backend__ml_string_switch__SubTrieNode_51)), ml_backend__ml_string_switch__ChoiceMap0_14, &ml_backend__ml_string_switch__ChoiceMap_20);
+            }
+          }
+      }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      *ml_backend__ml_string_switch__TrieNode_10 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ml_backend__ml_string_switch__InsertMatched_6));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ml_backend__ml_string_switch__ChoiceMap_20));
+      MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (ml_backend__ml_string_switch__MaybeEnd_21));
+    }
+  }
+}
+
+void mercury__ml_backend__ml_string_switch__init(void)
+{
+}
+
+void mercury__ml_backend__ml_string_switch__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slot_rev_map_0);
+	MR_register_type_ctor_info(&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0);
+	MR_register_type_ctor_info(&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_binary_search_info_0);
+	MR_register_type_ctor_info(&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_hash_search_info_0);
+	MR_register_type_ctor_info(&ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_trie_node_0);
+}
+
+void mercury__ml_backend__ml_string_switch__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ml_backend__ml_string_switch__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module ml_backend.ml_string_switch. */
