@@ -1,0 +1,4 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- type maybe_modes.
+:- type new_pred_id.
