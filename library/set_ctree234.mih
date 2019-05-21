@@ -1,0 +1,2321 @@
+/*
+** Automatically generated from `set_ctree234.m'
+** by the Mercury compiler,
+** version rotd-2017-10-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module set_ctree234.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_set_ctree234
+#define MR_HEADER_GUARD_set_ctree234
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SET_CTREE234_DECL_GUARD
+#define SET_CTREE234_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__set_ctree234__set_ctree234__type_ctor_info_set_ctree234_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__set_ctree234__set_ctree234__type_ctor_info_set_tree234_1;
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_99_111_110_116_97_105_110_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_108_101_116_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_118_105_100_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_118_105_100_101_95_98_121_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_101_108_101_116_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_105_118_105_100_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_115_95_109_101_109_98_101_114_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_112_111_119_101_114_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_114_101_109_111_118_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_115_117_98_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_116_111_95_115_111_114_116_101_100_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_117_110_105_111_110_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_112_111_119_101_114_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_114_101_109_111_118_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_117_98_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_108_101_116_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_101_108_101_116_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_100_105_118_105_100_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_105_115_95_109_101_109_98_101_114_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_112_111_119_101_114_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_114_101_109_111_118_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_115_117_98_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_116_111_95_115_111_114_116_101_100_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_117_110_105_111_110_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_112_111_119_101_114_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_114_101_109_111_118_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_117_98_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__all_true_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__all_true_tree_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__contains_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__set_ctree234__delete_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__delete_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__difference_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__divide_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__divide_by_set_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_contains_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__set_ctree234__do_delete_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_delete_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_difference_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_divide_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold2_pred_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold3_pred_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold4_pred_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold5_pred_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold6_pred_14_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold_func_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_fold_pred_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_insert_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__do_insert_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_insert_new_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__do_is_member_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__do_list_to_set_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_one_member_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__do_power_union_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_remove_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_remove_least_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_remove_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__do_subset_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__do_to_sorted_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__do_union_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__do_union_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__do_verify_depths_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__filter_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__filter_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__filter_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__filter_map_func_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__filter_map_pred_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__fold_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__fold_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__fold_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__fold2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__fold2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__fold2_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold2_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold2_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold2_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__set_ctree234__fold3_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__fold3_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__fold3_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold3_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold3_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold3_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__set_ctree234__fold4_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__fold4_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__fold4_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold4_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold4_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold4_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__set_ctree234__fold5_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__fold5_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__fold5_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold5_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold5_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold5_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__set_ctree234__fold6_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__fold6_14_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__fold6_14_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold6_14_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold6_14_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__fold6_14_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17,
+  MR_Box param_18,
+  MR_Box * param_19,
+  MR_Box param_20,
+  MR_Box * param_21);
+
+void MR_CALL 
+mercury__set_ctree234__insert_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__insert_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__insert_new_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__intersect_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__intersection_and_differences_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__is_empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__set_ctree234__is_member_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__is_non_empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__is_singleton_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__set_ctree234__map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__map_func_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__set_ctree234__map_pred_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__member_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__member_2_p_1(
+  MR_Word param_1,
+  MR_Box * param_2,
+  MR_Word param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__non_empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__set_ctree234__one_member_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__set_ctree234__power_union_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__remove_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__remove_least_3_p_0(
+  MR_Word param_1,
+  MR_Box * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__remove_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__singleton_set_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__singleton_set_2_p_1(
+  MR_Word param_1,
+  MR_Box * param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__subset_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234__superset_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__set_ctree234__union_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__set_ctree234__union_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__set_ctree234__verify_depths_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Integer MR_CALL 
+mercury__set_ctree234__count_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__delete_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__delete_list_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__difference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__filter_map_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Box MR_CALL 
+mercury__set_ctree234__fold_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__from_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__init_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__insert_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__insert_list_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__intersect_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__intersect_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__is_member_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__list_to_set_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__make_singleton_set_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__map_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__power_intersect_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__power_union_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__rev_sorted_list_to_set_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__sorted_list_to_set_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__to_sorted_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__union_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__set_ctree234__union_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__set_ctree234____Compare____set_ctree234_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__set_ctree234____Compare____set_tree234_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__set_ctree234____Unify____set_ctree234_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__set_ctree234____Unify____set_tree234_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__set_ctree234__init(void);
+void mercury__set_ctree234__init_type_tables(void);
+void mercury__set_ctree234__init_debugger(void);
+const char *mercury__set_ctree234__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_set_ctree234
+
+// :- end_interface set_ctree234.
