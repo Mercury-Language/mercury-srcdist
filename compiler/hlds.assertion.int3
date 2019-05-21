@@ -1,0 +1,4 @@
+:- module (hlds.assertion).
+:- interface.
+:- type associative_vars_output_var.
+:- type state_update_vars.

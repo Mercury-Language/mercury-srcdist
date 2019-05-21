@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `add_foreign_enum.m'
+** by the Mercury compiler,
+** version rotd-2017-08-05
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.add_pragma.add_foreign_enum. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__add_pragma__add_foreign_enum
+#define MR_HEADER_GUARD_hlds__make_hlds__add_pragma__add_foreign_enum
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__ADD_PRAGMA__ADD_FOREIGN_ENUM_DECL_GUARD
+#define HLDS__MAKE_HLDS__ADD_PRAGMA__ADD_FOREIGN_ENUM_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.make_hlds.add_pragma.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__add_pragma__add_foreign_enum__hlds__make_hlds__add_pragma__add_foreign_enum__type_ctor_info_not_enum_info_0;
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_foreign_enum__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_114_97_103_109_97_95_102_111_114_101_105_103_110_95_101_120_112_111_114_116_95_101_110_117_109_95_95_91_50_93_95_48_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_1,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_2,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_4,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_foreign_enum__add_pragma_foreign_enum_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_1,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_2,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_3,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_5,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_foreign_enum__add_pragma_foreign_export_enum_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_1,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_2,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_3,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_5,
+  MR_Word hlds__make_hlds__add_pragma__add_foreign_enum__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__add_foreign_enum__param_7);
+
+void mercury__hlds__make_hlds__add_pragma__add_foreign_enum__init(void);
+void mercury__hlds__make_hlds__add_pragma__add_foreign_enum__init_type_tables(void);
+void mercury__hlds__make_hlds__add_pragma__add_foreign_enum__init_debugger(void);
+const char *mercury__hlds__make_hlds__add_pragma__add_foreign_enum__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.add_pragma.add_foreign_enum */
+
+/* :- end_interface hlds.make_hlds.add_pragma.add_foreign_enum. */
