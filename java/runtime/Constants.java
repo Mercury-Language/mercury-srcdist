@@ -1,0 +1,16 @@
+// java/runtime/Constants.java.  Generated from Constants.java.in by configure.
+//
+// Copyright (C) 2001-2004 The University of Melbourne.
+// This file may only be copied under the terms of the GNU Library General
+// Public License - see the file COPYING.LIB in the Mercury distribution.
+//
+// This class is used to store miscellaneous Mercury-related constants.
+// At the moment it just stores the library version.
+//
+
+package jmercury.runtime;
+
+public class Constants {
+	public static final java.lang.String MR_VERSION = "rotd-2018-01-05";
+	public static final java.lang.String MR_FULLARCH = "x86_64-pc-linux-gnu";
+}
