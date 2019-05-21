@@ -1,0 +1,4 @@
+:- module (mdbcomp.sym_name).
+:- interface.
+:- type module_name.
+:- type sym_name.
