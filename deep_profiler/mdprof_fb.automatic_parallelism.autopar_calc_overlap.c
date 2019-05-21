@@ -1,0 +1,3617 @@
+/*
+** Automatically generated from `autopar_calc_overlap.m'
+** by the Mercury compiler,
+** version rotd-2017-07-25
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_fb.automatic_parallelism.autopar_calc_overlap. */
+/* :- implementation. */
+
+/*
+INIT mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init
+ENDINIT
+*/
+
+#include "mdprof_fb.automatic_parallelism.autopar_calc_overlap.mih"
+
+
+#include "analysis_utils.mih"
+#include "coverage.mih"
+#include "exclude.mih"
+#include "mdbcomp.mih"
+#include "mdprof_fb.mih"
+#include "measurement_units.mih"
+#include "measurements.mih"
+#include "profile.mih"
+#include "program_representation_utils.mih"
+#include "query.mih"
+#include "report.mih"
+#include "var_use_analysis.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lazy.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_costs.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_types.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0;
+
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0;
+
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0;
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_0;
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_1;
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_find_production_or_consumption_0[2];
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_find_production_or_consumption_0[2];
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_find_production_or_consumption_0[2];
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_0;
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_1;
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_is_last_par_conjunct_0[2];
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_is_last_par_conjunct_0[2];
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_is_last_par_conjunct_0[2];
+
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_0[1];
+
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_0;
+
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_1[1];
+
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_1;
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_0[1];
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_1[1];
+
+static const MR_DuPtagLayout mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_ptag_ordered_production_or_consumption_0[2];
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_name_ordered_production_or_consumption_0[2];
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_production_or_consumption_0[2];
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__515__1_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_81,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_82,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_83);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__507__1_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_75,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_76,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_77);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_productions_4_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_consumptions_4_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_4(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_3(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_2(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_0_27,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_28,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_0_29,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_30,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_31,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_32,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_0_33,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_34);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_production_time_to_map_5_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_6,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_11,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_12);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_9,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_20,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_21,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_22);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__adjust_time_for_waits_2_5_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastEnd_6,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_13,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_16);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_2_13_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_25,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_26,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_27,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_28,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_29,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_30,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_31,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_32,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_33,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_34);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_production_12_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_14,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_22,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_23,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_24,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_25,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_26,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_27,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_28,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_29,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_30,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_31);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_consumption_13_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_28,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_29,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_30,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_32,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_33,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_34,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_35,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_36,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_37);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_9_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_10,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_11,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_12,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_25,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_26,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_0_27,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_28,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_30);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_4(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_3(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_10,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_11);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_2(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllSharedVars_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_55,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_56,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_0_57,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_58,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_0_59,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_60,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_0_61,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_62);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_2_6_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastStop_2,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_3,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_4,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_0_5,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_6);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho2_7_p_0(
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18);
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__2_2_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_36);
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__1_1_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho1_7_p_0(
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18);
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__2_2_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_45);
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__1_1_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2);
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3);
+
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[6][2];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[8][3];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_3[2][12];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_4[2][8];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_5[1][16];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_6[1][11];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_7[1][1];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_8[1][7];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_9[1][6];
+
+
+
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[6][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[1]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__lazy__lazy__type_ctor_info_lazy_1)),
+    ((MR_Box) (&var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[8][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_4[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_3[1])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_9[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_9[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_3[2][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_implicit_parallelism_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_parallelisation_cost_data_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_parallelisation_cost_data_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_4[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_5[1][16] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 13)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_implicit_parallelism_info_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_6[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_7[1][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_8[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_9[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_comparison_result_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_int_0mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_calc_overlap__list__pti_list_1__plain_pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__ti_pair_2builtin__type_ctor_info_float_0builtin__type_ctor_info_float_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_calc_overlap__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_float_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+  }
+};
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_0 = {
+  (MR_String) "find_production",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_1 = {
+  (MR_String) "find_consumption",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_find_production_or_consumption_0[2] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_0,
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_1
+};
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_find_production_or_consumption_0[2] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_1,
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_find_production_or_consumption_0_0
+};
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_find_production_or_consumption_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_find_production_or_consumption_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0_10001)),
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0_10001)),
+  (MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap",
+  (MR_String) "find_production_or_consumption",
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_find_production_or_consumption_0 },
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_find_production_or_consumption_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_find_production_or_consumption_0
+};
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_0 = {
+  (MR_String) "is_last_par_conjunct",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_1 = {
+  (MR_String) "not_last_par_conjunct",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_is_last_par_conjunct_0[2] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_0,
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_1
+};
+
+static const MR_EnumFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_is_last_par_conjunct_0[2] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_0,
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_functor_desc_is_last_par_conjunct_0_1
+};
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_is_last_par_conjunct_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_is_last_par_conjunct_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0_10001)),
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0_10001)),
+  (MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap",
+  (MR_String) "is_last_par_conjunct",
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_name_ordered_is_last_par_conjunct_0 },
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__enum_value_ordered_is_last_par_conjunct_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_is_last_par_conjunct_0
+};
+
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_0 = {
+  (MR_String) "consumption",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_1 = {
+  (MR_String) "production",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__field_types_production_or_consumption_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_0[1] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_0
+};
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_1[1] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_1
+};
+
+static const MR_DuPtagLayout mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_ptag_ordered_production_or_consumption_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_stag_ordered_production_or_consumption_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_name_ordered_production_or_consumption_0[2] = {
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_0,
+  &mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_functor_desc_production_or_consumption_0_1
+};
+
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_production_or_consumption_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0_10001)),
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0_10001)),
+  (MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap",
+  (MR_String) "production_or_consumption",
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_name_ordered_production_or_consumption_0 },
+  {     mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__du_ptag_ordered_production_or_consumption_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__functor_number_map_production_or_consumption_0
+};
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__515__1_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_81,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_82,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_83)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeA_88 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_81, (MR_Integer) 1)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeB_90 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_82, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_81, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_82, (MR_Integer) 0)));
+
+    {
+      mercury__private_builtin__builtin_compare_float_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_83, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeB_90, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeA_88);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__507__1_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_75,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_76,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_77)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeA_88 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_75, (MR_Integer) 1)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeB_90 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_76, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_75, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_76, (MR_Integer) 0)));
+
+    {
+      mercury__private_builtin__builtin_compare_float_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_77, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeB_90, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeA_88);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastX_12 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastY_13 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastX_12 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastY_13);
+    if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              mercury__private_builtin__builtin_compare_float_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_5);
+            }
+          }
+        else
+          *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17 = MR_unbox_float((MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_11 = MR_unbox_float((MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              mercury__private_builtin__builtin_compare_float_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_11);
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastX_7 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastY_8 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastX_7 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__CastY_8);
+    if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgX1_3 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_4;
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = ((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgX1_3 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_4);
+          }
+      }
+    else
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgX1_5 = MR_unbox_float((MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_6;
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = ((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_6 = MR_unbox_float((MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgX1_5 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__ArgY1_6);
+          }
+      }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar1_4 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar2_5 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar1_4, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2);
+
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0(
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar1_4 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar2_5 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar1_4, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_1 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2);
+
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_productions_4_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 4)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 0)));
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 7)));
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17 = mercury__lazy__force_1_f_0((MR_Word) &var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0, mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 2)));
+    switch (mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.var_first_use_time\'/5", (MR_String) "Found consumption when looking for production");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_22;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 2)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 2)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 3)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60;
+
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 4)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 5)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 6)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 7)));
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_22);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+        break;
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7));
+      MR_hl_field(MR_mktag(0), base, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_consumptions_4_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_6, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 4)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 0)));
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 7)));
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_15, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_16);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17 = mercury__lazy__force_1_f_0((MR_Word) &var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0, mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_16);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_17);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_17, (MR_Integer) 2)));
+    switch (mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_18) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+        break;
+      case (MR_Integer) 2:
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19 = (MR_Float) 0.0000000000000000;
+        break;
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.var_first_use_time\'/5", (MR_String) "Found production when looking for consumption");
+            return;
+          }
+        }
+        break;
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_5 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_19);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__4_4 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_7));
+      MR_hl_field(MR_mktag(0), base, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_8);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_4(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_HeadVar__3_83;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__515__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_HeadVar__3_83);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_HeadVar__3_83));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_3(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_HeadVar__4_4;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_productions_4_p_0(MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 4))), ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_HeadVar__4_4);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_HeadVar__4_4));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_2(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_77;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__pred__get_consumptions_and_productions_list__507__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_77);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_77));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__4_4;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_consumptions_4_p_0(MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 4))), ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__4_4);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__4_4));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_0_27,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_28,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_0_29,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_30,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_31,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_32,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_0_33,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_34)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllConsumptionVars_16;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionVars_17;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimesSet0_18;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes0_19;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes_20;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllProductionVars_21;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionVars_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimesSet0_23;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes0_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes_25;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionAndProductionTimes_26;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_61;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_62;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllConsumptionVars_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionVars_17 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_0_27, mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllConsumptionVars_16);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_1));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, 3) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_31);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10));
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[3];
+    {
+      mercury__set__map_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionVars_17, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimesSet0_18);
+    }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_28 = mercury__set__difference_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumedVars_0_27, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionVars_17);
+    }
+    {
+      mercury__set__to_sorted_list_2_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimesSet0_18, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes0_19);
+    }
+    {
+      mercury__list__sort_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[6], mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes0_19, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes_20);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllProductionVars_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_15, (MR_Integer) 3)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionVars_22 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_0_29, mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllProductionVars_21);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0_3));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, 3) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_31);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10));
+    }
+    {
+      mercury__set__map_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionVars_22, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimesSet0_23);
+    }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_30 = mercury__set__difference_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_71_71, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProducedVars_0_29, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionVars_22);
+    }
+    {
+      mercury__set__to_sorted_list_2_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimesSet0_23, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes0_24);
+    }
+    {
+      mercury__list__sort_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_74_74, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[7], mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes0_24, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes_25);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionTimes_20, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionTimes_25, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionAndProductionTimes_26);
+    }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_34 = mercury__list__f_43_43_2_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[0], mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionAndProductionTimes_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_List_0_33);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46, (MR_Integer) 7)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_32 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_31 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44);
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      else
+        {
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_4;
+          MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_5;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods0_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods_7;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_9;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10;
+
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8, (MR_Integer) 0)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8, (MR_Integer) 1)));
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_5);
+          }
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_9, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_4));
+            MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_9, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10));
+          }
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods0_6, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods_7);
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_9));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods_7));
+          }
+        }
+    else
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 1)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35, (MR_Integer) 0)));
+
+        if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cons_15;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_18;
+
+            {
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_18, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36);
+            }
+            {
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37));
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_18));
+            }
+            {
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cons_15);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_17));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cons_15));
+            }
+          }
+        else
+          {
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdVar_25;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdTime_26;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods0_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdsAndCons_29;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Integer) 0)));
+
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdVar_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 0)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdTime_26 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 1)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdTime_26 < mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36);
+            if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+              {
+                MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32;
+
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdTime_26);
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdVar_25));
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32));
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Prods0_27, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdsAndCons_29);
+                }
+              }
+            else
+              {
+                MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33;
+
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36);
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37));
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33));
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__merge_consumptions_and_productions_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34, mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdsAndCons_29);
+                }
+              }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdOrCons_28));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProdsAndCons_29));
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_production_time_to_map_5_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_6,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_11,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_12)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_10;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_23;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_25;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_26;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 4)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 0)));
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_23;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_24;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, (MR_Integer) 7)));
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Map_22, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_23);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_23 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_LazyUse_23);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_24 = mercury__lazy__force_1_f_0((MR_Word) &var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0, mdprof_fb__automatic_parallelism__autopar_calc_overlap__LazyUse_23);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_24 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_Use_24);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_24, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_24, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Use_24, (MR_Integer) 2)));
+    switch (mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseType_25) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.var_first_use_time\'/5", (MR_String) "Found consumption when looking for production");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 2)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_7, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 2)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 3)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67;
+
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 4)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 5)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 6)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30, (MR_Integer) 7)));
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_26 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_26 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55;
+        break;
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_10 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__TimeBefore_6 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__UseTime_26);
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_8, MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Time_10), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_11, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_12);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_Map_12;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__var_production_time_to_map_5_p_0(MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 4))), ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_Map_12);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_Map_12));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_9,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_20,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_21,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_22)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_53_53;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars0_15;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars_16;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 2)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_24_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_Map_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_23, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars0_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__InstMapInfo_14, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_53_53 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars_16 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_53_53, mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars0_15, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_9);
+    }
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.adjust_time_for_waits\'/4", (MR_String) "Time occurs after all executions");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19, (MR_Integer) 0)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__NextExecution_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19, (MR_Integer) 1)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_66 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_64, (MR_Integer) 0)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_67 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_64, (MR_Integer) 1)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17 + ((MR_Float) 0.00010000000000000000));
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71 < mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_66);
+        if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.adjust_time_for_waits\'/4", (MR_String) "Time occurs before the current execution");
+              return;
+            }
+          }
+        else
+          {
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_67 + ((MR_Float) 0.00010000000000000000));
+
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17 <= mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76);
+            if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+              {
+                *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_20 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_19;
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_24_24 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17;
+              }
+            else
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__adjust_time_for_waits_2_5_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_67, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_17, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_24_24, mdprof_fb__automatic_parallelism__autopar_calc_overlap__NextExecution_65, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_20);
+              }
+          }
+      }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_4[1]));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0_1));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, 3) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_24_24);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10));
+    }
+    {
+      mercury__set__fold_4_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_53_53, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[2], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__BoundVars_16, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_0_21)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_Map_22);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Map_22 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_Map_22);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goal_10, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_31, (MR_Integer) 7)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_30);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_24_24 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_29);
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__adjust_time_for_waits_2_5_p_0(
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastEnd_6,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_13,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_16)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+        if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__require__error_1_p_0((MR_String) "adjust_time_for_waits: Ran out of executions");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15, (MR_Integer) 0)));
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__NextExecution_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15, (MR_Integer) 1)));
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_9, (MR_Integer) 0)));
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_9, (MR_Integer) 1)));
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_19 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_11 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastEnd_6);
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20;
+
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_13 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_19);
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18 + ((MR_Float) 0.00010000000000000000));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20 < mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_11);
+            if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+              {
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24;
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41;
+                MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_7[0];
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49;
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51;
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+                MR_String mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60;
+
+                {
+                  mercury__string__format__format_float_component_nowidth_noprec_4_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47, (MR_Integer) 2, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_11, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41);
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = mercury__string__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41, (MR_String) ".");
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51 = mercury__string__f_43_43_2_f_0((MR_String) ", Start: ", mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49);
+                }
+                {
+                  mercury__string__format__format_float_component_nowidth_noprec_4_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47, (MR_Integer) 2, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52);
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = mercury__string__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51);
+                }
+                {
+                  mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24 = mercury__string__f_43_43_2_f_0((MR_String) "Adjustment didn\'t work, time occurs before the current execution. Time: ", mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60);
+                }
+                {
+                  mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_calc_overlap", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_calc_overlap.adjust_time_for_waits_2\'/5", mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24);
+                  return;
+                }
+              }
+            else
+              {
+                MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_12 + ((MR_Float) 0.00010000000000000000));
+
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18 <= mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35);
+                if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+                  {
+                    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_16 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15;
+                    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_14 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18;
+                  }
+                else
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_LastEnd_6 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__End_12;
+                      MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Time_0_13 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_18_18;
+                      MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Executions_0_15 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__NextExecution_10;
+
+                      mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Executions_0_15 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Executions_0_15;
+                      mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_13 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Time_0_13;
+                      mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastEnd_6 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_LastEnd_6;
+                    }
+                    continue;
+                  }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_2_13_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_25,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_26,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_27,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_28,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_29,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_30,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_31,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_32,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_33,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_34)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqEventTime_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 1)));
+
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqEventTime_17)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqConsTime_23 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqEventTime_17, (MR_Integer) 0)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40;
+
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16));
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqConsTime_23);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_consumption_13_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_25, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_27, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_28, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_29, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_30, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_31, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_32, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_33, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_34);
+        }
+      }
+    else
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_24 = MR_unbox_float((MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqEventTime_17, (MR_Integer) 0)));
+
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_production_12_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_24, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_25, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_27, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_28, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_29, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_30, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_31, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_32, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_33, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_34);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_production_12_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_14,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_22,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_23,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_24,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_25,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_26,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_27,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_28,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_29,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_30,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_31)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SignalCost_20;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 3)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_33, (MR_Integer) 12)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__SignalCost_20 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_14 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_22);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_24 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_25 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_34 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__SignalCost_20);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_23 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__SeqProdTime_14;
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_31 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_30;
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_29 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_28;
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_27 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_26;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_consumption_13_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_28,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_29,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_30,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_32,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_33,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_34,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_35,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_36,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_37)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_99_99;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 0)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeBlocked_24;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeNotBlocked_25;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTime0_26;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_ParConsTimeBlocked_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_61;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_62;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_74;
+
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_29 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_99_99 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_99_99, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProductionsMap_15, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_ParConsTimeBlocked_24);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeBlocked_24 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_ParConsTimeBlocked_24);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38 = ((*mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_29) - mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevSeqConsumeTime_0_28);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeNotBlocked_25 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_0_30 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_38);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39 = mercury__float__max_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeBlocked_24, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeNotBlocked_25);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_42, (MR_Integer) 12)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_41);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTime0_26 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_39 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_40);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeBlocked_24 > mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeNotBlocked_25);
+    if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43;
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 2)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 0)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 1)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 3)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 4)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 5)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 6)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 7)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 8)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 9)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 10)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_14, (MR_Integer) 11)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 0)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 1)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 2)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 3)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 4)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 5)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 6)));
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93;
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94;
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_97;
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 7)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 8)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 9)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 10)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 11)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_45, (MR_Integer) 12)));
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_44);
+        }
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTime0_26 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_43);
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_32);
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTimeNotBlocked_25);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_35 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_34));
+        }
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_33 = *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31;
+      }
+    else
+      {
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConsTime0_26;
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_35 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_RevExecution_0_34;
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_33 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ResumeTime_0_32;
+      }
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_99_99, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_16, MR_box_float(*mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_PrevParConsumeTime_31), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_0_36, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConsumptionsMap_37);
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_9_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_10,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_11,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_12,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_25,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_26,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_0_27,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_28,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_30)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Overlap0_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics0_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__PM0_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_0_29, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjuncts_20 = (MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_12;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_21;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__PM_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Overlap_23;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics_24;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32 = mercury__list__length_1_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[0], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjuncts_20);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_28 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_0_27 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_32);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = (*mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_NumGoals_28 == mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_11);
+    if (mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded)
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_21 = (MR_Integer) 0;
+    else
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_21 = (MR_Integer) 1;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_10, mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_16, mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_21, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjuncts_20, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_25, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__PM0_19, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__PM_22, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Overlap0_17, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Overlap_23, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics0_18, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics_24);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_CostData_30 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_16));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Overlap_23));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics_24));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__PM_22));
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_4(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv24_STATE_VARIABLE_Time_18;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv23_STATE_VARIABLE_Executions_20;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv22_STATE_VARIABLE_Map_22;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_productions_map_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv24_STATE_VARIABLE_Time_18, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv23_STATE_VARIABLE_Executions_20, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv22_STATE_VARIABLE_Map_22);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv24_STATE_VARIABLE_Time_18);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv23_STATE_VARIABLE_Executions_20));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv22_STATE_VARIABLE_Map_22));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_3(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_10,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_11)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv16_STATE_VARIABLE_PrevSeqConsumeTime_26;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv15_STATE_VARIABLE_PrevParConsumeTime_28;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv14_STATE_VARIABLE_ResumeTime_30;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv13_STATE_VARIABLE_RevExecution_32;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv12_STATE_VARIABLE_ConsumptionsMap_34;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_dependent_parallel_cost_2_13_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 4))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv16_STATE_VARIABLE_PrevSeqConsumeTime_26, MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv15_STATE_VARIABLE_PrevParConsumeTime_28, MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv14_STATE_VARIABLE_ResumeTime_30, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv13_STATE_VARIABLE_RevExecution_32, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_10), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv12_STATE_VARIABLE_ConsumptionsMap_34);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv16_STATE_VARIABLE_PrevSeqConsumeTime_26);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5 = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv15_STATE_VARIABLE_PrevParConsumeTime_28);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7 = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv14_STATE_VARIABLE_ResumeTime_30);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv13_STATE_VARIABLE_RevExecution_32));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_11 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv12_STATE_VARIABLE_ConsumptionsMap_34));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_2(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv7_STATE_VARIABLE_ConsumedVars_28;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv6_STATE_VARIABLE_ProducedVars_30;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_STATE_VARIABLE_Time_32;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_STATE_VARIABLE_List_34;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__get_consumptions_and_productions_list_9_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv7_STATE_VARIABLE_ConsumedVars_28, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv6_STATE_VARIABLE_ProducedVars_30, MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_STATE_VARIABLE_Time_32, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_8), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_STATE_VARIABLE_List_34);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv7_STATE_VARIABLE_ConsumedVars_28));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv6_STATE_VARIABLE_ProducedVars_30));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7 = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_STATE_VARIABLE_Time_32);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_9 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_STATE_VARIABLE_List_34));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_3;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__5_5;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_types__conj_produced_and_consumed_vars_5_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_3, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__5_5);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_HeadVar__3_3));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__5_5));
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllSharedVars_14,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_15,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_55,
+  MR_Integer * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_56,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_0_57,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_58,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_0_59,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_60,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_0_61,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_62)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_224_224;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Algorithm_21;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB0_23;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars0_25;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars0_26;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars_27;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars_28;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProducedVars_29;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_30;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_31;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime0_32;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsMap_44;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostSignals_48;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostWaits_49;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBPar_50;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__DeadTime_51;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_114 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 0)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_116 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_117 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 3)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_118 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_119 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 5)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_120 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 6)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_121 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 7)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_122 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 8)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_123 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 9)));
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_124 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 10)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_125;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_RightProducedVars0_25;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_RightConsumedVars0_26;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_126;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_127;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_128;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_129;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_130;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_131;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_132;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_133;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_134;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_135;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_136;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_137;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_138;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_139;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_140;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_141;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_142;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_143;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_144;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_145;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_146;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_147;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_148;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv27_Var_52;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv26_Var_53;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv25_STATE_VARIABLE_ProductionsMap_58;
+
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Algorithm_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_125 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63, (MR_Integer) 12)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_22 = measurements__parallel_exec_metrics_get_num_calls_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_0_61);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_costs__conj_calc_cost_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_22, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB0_23);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB0_23);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65 = mercury__set__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66 = mercury__set__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_224_224 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[0];
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[2];
+    {
+      mercury__list__foldl2_6_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_224_224, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[4], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_RightProducedVars0_25, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_RightConsumedVars0_26);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars0_25 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_RightProducedVars0_25);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars0_26 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_RightConsumedVars0_26);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars_27 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars0_25, mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllSharedVars_14);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars_28 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars0_26, mdprof_fb__automatic_parallelism__autopar_calc_overlap__AllSharedVars_14);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67 = mercury__map__sorted_keys_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_0_57);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProducedVars_29 = mercury__set__from_sorted_list_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_30 = mercury__set__intersect_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ProducedVars_29, mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightConsumedVars_28);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_127 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_128 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_130 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_131 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_132 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_133 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_135 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_137 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_139 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_140 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_141 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_142 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_143 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_144 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_145 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_146 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_147 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_148 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68, (MR_Integer) 12)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_55 - (MR_Integer) 1);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 * mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_31);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime0_32 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69);
+    }
+    switch (mdprof_fb__automatic_parallelism__autopar_calc_overlap__IsLastConjunct_15) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33 = (MR_Float) 0.0000000000000000;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_149 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_151 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_152 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_153 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_154 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_155 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_157 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_158 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_159 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+          MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_160 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 0)));
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_161 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 1)));
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_162;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_163;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_164;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_165;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_166;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_167;
+          MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_168;
+          MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_169;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_170;
+          MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_171;
+
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 2)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_162 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 3)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_163 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 4)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_164 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 5)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_165 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 6)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_166 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 7)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_167 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 8)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_168 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 9)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_169 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 10)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_170 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 11)));
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_171 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73, (MR_Integer) 12)));
+          {
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72);
+          }
+        }
+        break;
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime0_32 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33);
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__Algorithm_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75;
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76;
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBPar_50 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33);
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24);
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34);
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75));
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsMap_44 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226);
+        }
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostSignals_48 = (MR_Float) 0.0000000000000000;
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostWaits_49 = (MR_Float) 0.0000000000000000;
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__DeadTime_51 = (MR_Float) 0.0000000000000000;
+      }
+    else
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_267 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Algorithm_21, (MR_Integer) 0)));
+
+        switch (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_267) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_237_237;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList0_38;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList_39;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastSeqConsumeTime_40;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastParConsumeTime_41;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastResumeTime_42;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution0_43;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution_45;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBParElapsed_47;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_92;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv11_Var_35;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv10_Var_36;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv9_Var_37;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv8_ConsumptionsAndProductionsList0_38;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv21_LastSeqConsumeTime_40;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv20_LastParConsumeTime_41;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv19_LastResumeTime_42;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv18_RevExecution0_43;
+              MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv17_ConsumptionsMap_44;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_172;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_173;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_174;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_175;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_176;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_177;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_178;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_179;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_180;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_181;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_182;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_183;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_184;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_185;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_186;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_187;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_188;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_189;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_190;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_191;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_192;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_193;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_194;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_195;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_196;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_197;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_198;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_199;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_200;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_201;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_202;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_203;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_204;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_205;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_206;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_207;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_208;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_209;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_210;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_211;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_212;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_213;
+              MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_214;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_215;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_216;
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_217;
+
+              {
+                mercury__list__foldl4_10_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_224_224, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_225_225, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[3], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[5], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_30)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv11_Var_35, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars_27)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv10_Var_36, MR_box_float((MR_Float) 0.0000000000000000), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv9_Var_37, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv8_ConsumptionsAndProductionsList0_38);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_35 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv11_Var_35);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_36 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv10_Var_36);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_37 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv9_Var_37);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList0_38 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv8_ConsumptionsAndProductionsList0_38);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_237_237 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[0];
+              {
+                mercury__list__reverse_2_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_237_237, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList0_38, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList_39);
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_5[0]));
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_3));
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13));
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_0_57));
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226);
+              }
+              {
+                mercury__list__foldl5_12_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_237_237, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[4], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[2], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsAndProductionsList_39, MR_box_float((MR_Float) 0.0000000000000000), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv21_LastSeqConsumeTime_40, MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv20_LastParConsumeTime_41, MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv19_LastResumeTime_42, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv18_RevExecution0_43, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv17_ConsumptionsMap_44);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastSeqConsumeTime_40 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv21_LastSeqConsumeTime_40);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastParConsumeTime_41 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv20_LastParConsumeTime_41);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastResumeTime_42 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv19_LastResumeTime_42);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution0_43 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv18_RevExecution0_43);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsMap_44 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv17_ConsumptionsMap_44);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastSeqConsumeTime_40);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBParElapsed_47 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastParConsumeTime_41 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87);
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastResumeTime_42);
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBParElapsed_47);
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution_45, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88));
+                MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution_45, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution0_43));
+              }
+              {
+                mercury__list__reverse_2_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[1], mdprof_fb__automatic_parallelism__autopar_calc_overlap__RevExecution_45, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_172 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_173 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_174 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_175 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_176 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_177 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_178 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_179 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_180 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_181 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_182 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_183 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 0)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_184 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 1)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_185 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 2)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_186 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 3)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_187 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 4)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 5)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_188 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 6)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_189 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 7)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_190 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 8)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_191 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 9)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_192 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 10)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_193 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 11)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_194 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91, (MR_Integer) 12)));
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_92 = mercury__set__count_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars_27);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90 * mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_92);
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostSignals_48 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_195 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 0)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_196 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 1)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 2)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_197 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 3)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_198 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 4)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_199 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 5)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_200 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 6)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_201 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 7)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_202 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 8)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_203 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 9)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_204 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 10)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_205 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_13, (MR_Integer) 11)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_206 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 0)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_207 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 1)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_208 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 2)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_209 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 3)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_210 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 4)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_211 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 5)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 6)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_212 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 7)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_213 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 8)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_214 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 9)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_215 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 10)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_216 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 11)));
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_217 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95, (MR_Integer) 12)));
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96 = mercury__set__count_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_30);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94 * mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96);
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostWaits_49 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93);
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBPar_50, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__DeadTime_51);
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_261;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_262;
+
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBPar_50 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_33);
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_262 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24);
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_261 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_261, 0) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34);
+                MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_261, 1) = MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_262);
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_261));
+                MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsMap_44 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_223_223, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226);
+              }
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostSignals_48 = (MR_Float) 0.0000000000000000;
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostWaits_49 = (MR_Float) 0.0000000000000000;
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__DeadTime_51 = (MR_Float) 0.0000000000000000;
+            }
+            break;
+        }
+      }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_62 = measurements__init_parallel_exec_metrics_incomplete_6_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Metrics_0_61, mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostSignals_48, mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostWaits_49, mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostB_24, mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBPar_50, mdprof_fb__automatic_parallelism__autopar_calc_overlap__DeadTime_51);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_12_p_0_4));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__RightProducedVars_27));
+    }
+    {
+      mercury__list__foldl3_8_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeInfo_224_224, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_226_226, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[4], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_2[2], mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Conjunct_16, MR_box_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__StartTime_34), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv27_Var_52, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv26_Var_53, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_0_57)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv25_STATE_VARIABLE_ProductionsMap_58);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = MR_unbox_float(mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv27_Var_52);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_53 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv26_Var_53);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_58 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv25_STATE_VARIABLE_ProductionsMap_58);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Execution_46));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54, 1) = ((MR_Box) (*mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ProductionsMap_58));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__ConsumptionsMap_44));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_60 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Overlap_0_59));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__DepConjExec_54));
+      MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Vars_30));
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_56 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_ConjNum_0_55 + (MR_Integer) 1);
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_3_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2 = (MR_Float) 0.0000000000000000;
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3 = (MR_Float) 0.0000000000000000;
+      }
+    else
+      {
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_4;
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_5;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Executions_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_11_11;
+
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10, (MR_Integer) 0)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_10, (MR_Integer) 1)));
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_11_11 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_5 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_4);
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_2_6_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Executions_6, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_5, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_11_11, mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__2_2, (MR_Float) 0.0000000000000000, mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__3_3);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calc_cost_and_dead_time_2_6_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastStop_2,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_3,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_4,
+  MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_0_5,
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+        if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_6 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_0_5;
+            *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_4 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_3;
+          }
+        else
+          {
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_14;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_15;
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Executions_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_25_25;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_27_27;
+            MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_28;
+
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_14 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24, (MR_Integer) 0)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_24, (MR_Integer) 1)));
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_3 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_15);
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_25_25 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_14);
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_28 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_0_5 + mdprof_fb__automatic_parallelism__autopar_calc_overlap__Start_14);
+            mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_27_27 = (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_28 - mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastStop_2);
+            /* direct tailcall eliminated */
+            {
+              MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__Executions_16;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_LastStop_2 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__Stop_15;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Time_0_3 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_25_25;
+              MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_DeadTime_0_5 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_27_27;
+
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_DeadTime_0_5 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_DeadTime_0_5;
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Time_0_3 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_STATE_VARIABLE_Time_0_3;
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__LastStop_2 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_LastStop_2;
+              mdprof_fb__automatic_parallelism__autopar_calc_overlap__HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_p_0_1(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6,
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7)
+{
+  {
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure = mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure_arg;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_STATE_VARIABLE_ConjNum_26;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_NumGoals_28;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_CostData_30;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_step_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__closure, (MR_Integer) 4))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_STATE_VARIABLE_ConjNum_26, ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_NumGoals_28, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_6), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_CostData_30);
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv2_STATE_VARIABLE_ConjNum_26));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_5 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv1_STATE_VARIABLE_NumGoals_28));
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_7 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_STATE_VARIABLE_CostData_30));
+  }
+}
+
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_p_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_28,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData_7)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_184_184;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConj_8;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumCalls_9;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBeforePercall_13;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostAfterPercall_14;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_16;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_17;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__BarrierCost_18;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__ContextWakeupDelay_19;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics0_20;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_22;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_24;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_32_32;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56;
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_110;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_111;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_112;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_113;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_114;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_115;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_116;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_117;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_118;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_119;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_120;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_121;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_122;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_125;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_126;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_128;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_129;
+    MR_Float mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_130;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_131;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_132;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_25;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_Var_25;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_Var_26;
+    MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_CostData_7;
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_169;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_170;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_171;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_172;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_173;
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_174;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_175;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_176;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_177;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_178;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConj_8 = mdprof_fb__automatic_parallelism__autopar_types__ip_get_par_conjs_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_63 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_66 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumCalls_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, (MR_Integer) 9)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho2_7_p_0(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBeforePercall_13, mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumCalls_9, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_0_27, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_32_32);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho1_7_p_0(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostAfterPercall_14, mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumCalls_9, mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_32_32, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_121 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__BarrierCost_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_125 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_126 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__ContextWakeupDelay_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_128 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_129 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 9)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_130 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 10)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_131 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 11)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_132 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Opts_15, (MR_Integer) 12)));
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkCost_16);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__SparkDelay_17);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__BarrierCost_18);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__ContextWakeupDelay_19);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics0_20 = measurements__init_empty_parallel_exec_metrics_7_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostBeforePercall_13, mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostAfterPercall_14, mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumCalls_9, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_47, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_48, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_49, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_50);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_22 = mdprof_fb__automatic_parallelism__autopar_types__ip_calc_sharedvars_set_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_184_184 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_184_184, (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__SharedVars_22));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Metrics0_20));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_51));
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_24 = mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_goals_middle_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41);
+    }
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_3[0]));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_p_0_1));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Info_5));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__NumMiddleGoals_24));
+    }
+    {
+      mercury__list__foldl3_8_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_calc_overlap_scalar_common_1[1], mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_184_184, mdprof_fb__automatic_parallelism__autopar_calc_overlap__TypeCtorInfo_184_184, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_parallelisation_cost_data_0, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_52, mdprof_fb__automatic_parallelism__autopar_calc_overlap__ParConj_8, ((MR_Box) ((MR_Integer) 1)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_Var_25, ((MR_Box) ((MR_Integer) 0)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_Var_26, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData0_23)), &mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_CostData_7);
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_25 = ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv5_Var_25);
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_26 = ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv4_Var_26);
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData_7 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv3_CostData_7);
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56, 0) = ((MR_Box) (*mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostData_7));
+    }
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_169 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 0)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_170 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 1)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_171 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 2)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_172 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 3)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_173 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 4)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_174 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 5)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_175 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 6)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_176 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 7)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_177 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 8)));
+    mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_178 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_41_41, (MR_Integer) 9)));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Parallelisation_28 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_169));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_170));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_171));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_172));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_173));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_174));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_175));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_176));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_177));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_56));
+    }
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho2_7_p_0(
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__1_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17);
+    }
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20;
+
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16 = mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_before_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_costs__conj_calc_cost_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15));
+        }
+        {
+          *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__2_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20);
+        }
+      }
+    else
+      {
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14, (MR_Integer) 0)));
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17;
+      }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15);
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__2_2_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_36)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37;
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_81 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 8)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 9)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_35, (MR_Integer) 7)));
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_81));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_82));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_83));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_84));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_85));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_86));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_87));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 7) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_36));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 8) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_89));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37, 9) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_90));
+    }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_37;
+  }
+}
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__65__1_1_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 7)));
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_72 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 8)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_33, (MR_Integer) 9)));
+
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_34;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__maybe_calc_sequential_cost__ho1_7_p_0(
+  MR_Float * mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11,
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17,
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__1_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17);
+    }
+    if ((mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16;
+        MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20;
+
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16 = mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_after_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_costs__conj_calc_cost_3_p_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Goals_16, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Calls_12, &mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15);
+        }
+        {
+          mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15));
+        }
+        {
+          *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__2_2_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17, mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_20);
+        }
+      }
+    else
+      {
+        mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_calc_overlap__MaybeCost_14, (MR_Integer) 0)));
+        *mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_18 = mdprof_fb__automatic_parallelism__autopar_calc_overlap__STATE_VARIABLE_Acc_0_17;
+      }
+    {
+      *mdprof_fb__automatic_parallelism__autopar_calc_overlap__CostPercall_11 = measurements__goal_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_calc_overlap__Cost_15);
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__2_2_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44,
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_45)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46;
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_100 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_101 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_102 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_103 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_105 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 7)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 9)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_44, (MR_Integer) 8)));
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_100));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_101));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_102));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_103));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_104));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_105));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_106));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 7) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_107));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 8) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_45));
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46, 9) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_109));
+    }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__3_46;
+  }
+}
+
+static MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__IntroducedFrom__func__calculate_parallel_cost__69__1_1_f_0(
+  MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 8)));
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_91 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 0)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 1)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 2)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 3)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 4)));
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_96 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 5)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 6)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 7)));
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__Var_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__1_42, (MR_Integer) 9)));
+
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__LambdaHeadVar__2_43;
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____find_production_or_consumption_0_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2));
+    }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____find_production_or_consumption_0_0(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3));
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____is_last_par_conjunct_0_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2));
+    }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____is_last_par_conjunct_0_0(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3));
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0_10001(
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2)
+{
+  {
+    MR_bool mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded = mdprof_fb__automatic_parallelism__autopar_calc_overlap____Unify____production_or_consumption_0_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2));
+    }
+    return mdprof_fb__automatic_parallelism__autopar_calc_overlap__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0_10001(
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2,
+  MR_Box mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3)
+{
+  {
+    MR_Word mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1;
+
+    {
+      mdprof_fb__automatic_parallelism__autopar_calc_overlap____Compare____production_or_consumption_0_0(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_3));
+    }
+    *mdprof_fb__automatic_parallelism__autopar_calc_overlap__wrapper_arg_1 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_calc_overlap__conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init(void)
+{
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_find_production_or_consumption_0);
+	MR_register_type_ctor_info(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_is_last_par_conjunct_0);
+	MR_register_type_ctor_info(&mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0);
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module mdprof_fb.automatic_parallelism.autopar_calc_overlap. */

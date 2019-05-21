@@ -1,0 +1,4 @@
+:- module int32.
+:- interface.
+:- type placeholder_int32
+    --->    placeholder_int32 .
