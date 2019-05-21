@@ -1,0 +1,14 @@
+:- module hash_table.
+:- interface.
+:- import_module array.
+:- import_module assoc_list.
+:- import_module char.
+:- type hash_pred(K).
+:- type hash_table(K, V).
+:- type hash_table(K, V).
+:- type hash_table_alist(K, V).
+:- inst (hash_pred) == (pred(in, out) is det).
+:- inst (hash_table) == bound(ht(ground, ground, (hash_table.hash_pred), array)).
+:- mode (hash_table_di) == di((hash_table.hash_table)).
+:- mode (hash_table_ui) == in((hash_table.hash_table)).
+:- mode (hash_table_uo) == out((hash_table.hash_table)).

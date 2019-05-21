@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_args_util).
+:- interface.
+:- type what_params
+	where	type_is_abstract_enum(1).

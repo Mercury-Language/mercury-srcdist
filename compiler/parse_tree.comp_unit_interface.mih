@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `comp_unit_interface.m'
+** by the Mercury compiler,
+** version rotd-2017-08-14
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.comp_unit_interface. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__comp_unit_interface
+#define MR_HEADER_GUARD_parse_tree__comp_unit_interface
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__COMP_UNIT_INTERFACE_DECL_GUARD
+#define PARSE_TREE__COMP_UNIT_INTERFACE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__comp_unit_interface__parse_tree__comp_unit_interface__type_ctor_info_maybe_gather_noifile_items_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__comp_unit_interface__parse_tree__comp_unit_interface__type_ctor_info_maybe_include_impl_types_0;
+
+void MR_CALL 
+parse_tree__comp_unit_interface__add_needed_foreign_import_module_items_to_item_blocks_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__comp_unit_interface__get_foreign_self_imports_from_item_blocks_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__comp_unit_interface__get_int_and_impl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__comp_unit_interface__get_interface_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__comp_unit_interface____Compare____maybe_include_impl_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__comp_unit_interface____Unify____maybe_include_impl_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__comp_unit_interface__init(void);
+void mercury__parse_tree__comp_unit_interface__init_type_tables(void);
+void mercury__parse_tree__comp_unit_interface__init_debugger(void);
+const char *mercury__parse_tree__comp_unit_interface__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.comp_unit_interface */
+
+/* :- end_interface parse_tree.comp_unit_interface. */
