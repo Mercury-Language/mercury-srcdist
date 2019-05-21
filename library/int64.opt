@@ -1,0 +1,207 @@
+:- module int64.
+:- use_module builtin.
+:- use_module exception.
+:- use_module math.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module uint.
+
+:- pragma foreign_import_module("C", int64).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", int64).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", int64).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Erlang", io).
+
+:- pragma inline((int64.(/))/2).
+int64.(V_4 / V_5) = V_3 :-
+    V_3 = int64.(V_4 // V_5).
+
+:- pragma inline((int64.(//))/2).
+int64.(V_4 // V_5) = V_6 :-
+    ( if
+      V_5 = int64.from_int(V_7),
+      V_7 = 0 : int
+    then
+      V_8 = math.domain_error(V_9) : math.domain_error,
+      V_9 = "int64.\'//\': division by zero" : string,
+      exception.throw(V_8)
+    else
+      V_6 = int64.unchecked_quotient(V_4, V_5)
+    ).
+
+:- pragma foreign_proc("C", int64.cast_from_uint64(U64 :: (builtin.in)) = (I64 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    I64 = (int64_t) U64;
+").
+
+:- pragma foreign_proc("C", int64.cast_to_int(I64 :: (builtin.in)) = (I :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    I = (MR_Integer) I64;
+").
+
+:- pragma inline((int64.even)/1).
+int64.even(V_2) :-
+    V_3 = int64.(V_2 /\ V_4),
+    V_4 = int64.from_int(V_5),
+    V_5 = 1 : int,
+    V_3 = int64.from_int(V_6),
+    V_6 = 0 : int.
+
+:- pragma foreign_proc("C", int64.from_int(A :: (builtin.in)) = (B :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    B = (int64_t) A;
+").
+
+int64.int64_to_doc(V_3) = pretty_printer.str(V_4) :-
+    V_4 = string.int64_to_string(V_3).
+
+int64.max(V_4, V_5) = V_3 :-
+    ( if
+      int64.(V_4 > V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+:- pragma foreign_proc("C", int64.max_int64 = (I64 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    I64 = INT64_MAX;
+").
+
+int64.min(V_4, V_5) = V_3 :-
+    ( if
+      int64.(V_4 < V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+:- pragma foreign_proc("C", int64.min_int64 = (I64 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    I64 = INT64_MIN;
+").
+
+int64.(V_4 mod V_5) = V_3 :-
+    V_3 = int64.(V_4 - V_6),
+    V_6 = int64.(V_7 * V_5),
+    V_7 = int64.(V_4 div V_5).
+
+:- pragma inline((int64.odd)/1).
+int64.odd(V_2) :-
+    not (
+      V_3 = int64.(V_2 /\ V_4),
+      V_4 = int64.from_int(V_5),
+      V_5 = 1 : int,
+      V_3 = int64.from_int(V_6),
+      V_6 = 0 : int
+    ).
+
+:- pragma inline((int64.(rem))/2).
+int64.(V_4 rem V_5) = V_6 :-
+    ( if
+      V_5 = int64.from_int(V_7),
+      V_7 = 0 : int
+    then
+      V_8 = math.domain_error(V_9) : math.domain_error,
+      V_9 = "int64.rem: division by zero" : string,
+      exception.throw(V_8)
+    else
+      V_6 = int64.unchecked_rem(V_4, V_5)
+    ).
+
+:- pragma exceptions(function, (int64.(*)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(+)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(+)), 3, 1, will_not_throw).
+:- pragma exceptions(function, (int64.(+)), 3, 2, will_not_throw).
+:- pragma exceptions(function, (int64.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(-)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(-)), 3, 1, will_not_throw).
+:- pragma exceptions(function, (int64.(-)), 3, 2, will_not_throw).
+:- pragma exceptions(function, (int64.(/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.(//)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.(/\)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (int64.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(<<)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int64.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int64.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int64.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(>>)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.(\)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(\/)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.abs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.cast_from_uint64), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.cast_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(div)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int64.even), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int64.from_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.int64_to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.max), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.max_int64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int64.min), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.min_int64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int64.minus), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(mod)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.nabs), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int64.odd), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int64.plus), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.(rem)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int64.times), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.unchecked_abs), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int64.unchecked_left_shift), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.unchecked_quotient), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.unchecked_rem), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.unchecked_right_shift), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.xor), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int64.xor), 3, 1, will_not_throw).
+:- pragma exceptions(function, (int64.xor), 3, 2, will_not_throw).
+
+:- pragma termination_info(int64.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'+'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'+'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'+'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'-'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'-'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'-'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.'//'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.'/\\'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'<<'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'>>'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.'\\'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int64.'\\/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), can_loop).
+:- pragma termination_info(int64.cast_from_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int64.cast_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int64.div((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.even((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(int64.from_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int64.int64_to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(int64.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((int64.max_int64) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int64.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((int64.min_int64) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int64.minus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.mod((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.nabs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int64.odd((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(int64.plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int64.times((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.unchecked_abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int64.unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.xor((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.xor((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int64.xor((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).

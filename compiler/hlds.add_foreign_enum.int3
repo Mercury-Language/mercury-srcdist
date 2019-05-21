@@ -1,0 +1,4 @@
+:- module (hlds.add_foreign_enum).
+:- interface.
+:- type type_ctor_foreign_enums.
+:- type type_ctor_to_foreign_enums_map.
