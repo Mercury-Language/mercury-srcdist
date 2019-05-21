@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `uint64.m'
+** by the Mercury compiler,
+** version rotd-2018-01-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module uint64.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_uint64
+#define MR_HEADER_GUARD_uint64
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef UINT64_DECL_GUARD
+#define UINT64_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__uint64__uint64__type_ctor_info_placeholder_uint64_0;
+
+void MR_CALL 
+mercury__uint64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_117_105_110_116_54_52_95_95_112_108_97_99_101_104_111_108_100_101_114_95_117_105_110_116_54_52_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__uint64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_117_105_110_116_54_52_95_95_112_108_97_99_101_104_111_108_100_101_114_95_117_105_110_116_54_52_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+void MR_CALL 
+mercury__uint64____Compare____placeholder_uint64_0_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__uint64____Unify____placeholder_uint64_0_0(void);
+
+void mercury__uint64__init(void);
+void mercury__uint64__init_type_tables(void);
+void mercury__uint64__init_debugger(void);
+const char *mercury__uint64__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_uint64
+
+// :- end_interface uint64.

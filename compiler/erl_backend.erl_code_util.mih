@@ -1,0 +1,246 @@
+/*
+** Automatically generated from `erl_code_util.m'
+** by the Mercury compiler,
+** version rotd-2018-01-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module erl_backend.erl_code_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_erl_backend__erl_code_util
+#define MR_HEADER_GUARD_erl_backend__erl_code_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ERL_BACKEND__ERL_CODE_UTIL_DECL_GUARD
+#define ERL_BACKEND__ERL_CODE_UTIL_DECL_GUARD
+#include "erl_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct erl_backend__erl_code_util__erl_backend__erl_code_util__type_ctor_info_erl_gen_info_0;
+
+extern const MR_TypeCtorInfo_Struct erl_backend__erl_code_util__erl_backend__erl_code_util__type_ctor_info_opt_dummy_args_0;
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_bind_unbound_vars_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_bound_nonlocals_in_goal_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_create_renaming_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_expr_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_fix_success_expr_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_arg_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_arg_list_arg_modes_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_add_env_var_name_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_env_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_input_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_module_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_output_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_var_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_varset_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_anonymous_vars_4_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_named_var_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_vars_4_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_rename_vars_in_expr_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_rename_vars_in_expr_except_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_variable_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+erl_backend__erl_code_util__erl_variable_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+erl_backend__erl_code_util__maybe_simplify_nested_cases_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+erl_backend__erl_code_util__erl_base_typeclass_info_method_offset_0_f_0(void);
+
+MR_Integer MR_CALL 
+erl_backend__erl_code_util__erl_expr_size_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_init_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+erl_backend__erl_code_util__erl_var_or_dummy_replacement_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+erl_backend__erl_code_util____Compare____erl_gen_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+erl_backend__erl_code_util____Compare____opt_dummy_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+erl_backend__erl_code_util____Unify____erl_gen_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+erl_backend__erl_code_util____Unify____opt_dummy_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__erl_backend__erl_code_util__init(void);
+void mercury__erl_backend__erl_code_util__init_type_tables(void);
+void mercury__erl_backend__erl_code_util__init_debugger(void);
+const char *mercury__erl_backend__erl_code_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_erl_backend.erl_code_util
+
+// :- end_interface erl_backend.erl_code_util.
