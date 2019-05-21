@@ -1,0 +1,13 @@
+module(1, "bimap.m",
+	bimap,
+	{},
+	{assoc_list, builtin, list, map, maybe, private_builtin},
+	{assoc_list, builtin, list, map, maybe, pair, private_builtin, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,4 @@
+:- module (parse_tree.mercury_to_mercury).
+:- interface.
+:- type needs_brackets
+	where	type_is_abstract_enum(1).
