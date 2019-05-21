@@ -1,0 +1,11 @@
+:- module type_desc.
+:- interface.
+:- import_module list.
+:- use_module rtti_implementation.
+:- type pseudo_type_desc.
+:- type pseudo_type_rep
+    --->    bound(type_desc.type_ctor_desc, list.list(type_desc.pseudo_type_desc))
+    ;       univ_tvar(int)
+    ;       exist_tvar(int).
+:- type type_ctor_desc.
+:- type type_desc.
