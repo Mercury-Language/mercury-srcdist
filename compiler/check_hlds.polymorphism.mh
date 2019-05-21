@@ -1,0 +1,55 @@
+/*
+** Automatically generated from `polymorphism.m'
+** by the Mercury compiler,
+** version 2018-01-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef CHECK_HLDS__POLYMORPHISM_MH
+#define CHECK_HLDS__POLYMORPHISM_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CHECK_HLDS__POLYMORPHISM_DECL_GUARD
+#define CHECK_HLDS__POLYMORPHISM_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word check_hlds__polymorphism__mutable_variable_selected_pred;
+#else
+    extern MR_Word check_hlds__polymorphism__mutable_variable_selected_pred;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock check_hlds__polymorphism__mutable_variable_selected_pred_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer check_hlds__polymorphism__mutable_variable_level;
+#else
+    extern MR_Word check_hlds__polymorphism__mutable_variable_level;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock check_hlds__polymorphism__mutable_variable_level_lock;
+#endif
+
+
+#endif
+void check_hlds__polymorphism__user_init_pred_0(void);
+void check_hlds__polymorphism__user_init_pred_1(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CHECK_HLDS__POLYMORPHISM_MH */
