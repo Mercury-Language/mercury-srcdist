@@ -1,0 +1,11 @@
+:- module (check_hlds.oisu_check).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred check_oisu_pragmas_for_module(assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode check_oisu_pragmas_for_module((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

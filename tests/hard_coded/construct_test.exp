@@ -1,0 +1,239 @@
+TESTING DISCRIMINATED UNIONS
+3 functors in this type
+2 - two/0 [] ordinal: 1 lex: 2
+1 - three/0 [] ordinal: 2 lex: 1
+0 - one/0 [] ordinal: 0 lex: 0
+
+
+3 functors in this type
+2 - two/0 [] ordinal: 1 lex: 2
+1 - three/0 [] ordinal: 2 lex: 1
+0 - one/0 [] ordinal: 0 lex: 0
+
+
+3 functors in this type
+2 - two/0 [] ordinal: 1 lex: 2
+1 - three/0 [] ordinal: 2 lex: 1
+0 - one/0 [] ordinal: 0 lex: 0
+
+
+2 functors in this type
+1 - banana/1 [banana_list] ordinal: 1 lex: 1
+0 - apple/1 [apple_list] ordinal: 0 lex: 0
+
+
+2 functors in this type
+1 - banana/1 [banana_list] ordinal: 1 lex: 1
+0 - apple/1 [apple_list] ordinal: 0 lex: 0
+
+
+11 functors in this type
+10 - zop/2 [_, _] ordinal: 10 lex: 10
+9 - zoom/1 [_] ordinal: 7 lex: 9
+8 - zip/2 [_, _] ordinal: 9 lex: 8
+7 - zap/2 [_, _] ordinal: 8 lex: 7
+6 - wombat/0 [] ordinal: 6 lex: 6
+5 - qux/1 [_] ordinal: 3 lex: 5
+4 - quux/1 [_] ordinal: 4 lex: 4
+3 - quuux/2 [_, _] ordinal: 5 lex: 3
+2 - foo/0 [] ordinal: 0 lex: 2
+1 - bar/2 [_, _] ordinal: 2 lex: 1
+0 - bar/1 [_] ordinal: 1 lex: 0
+
+
+11 functors in this type
+10 - zop/2 [_, _] ordinal: 10 lex: 10
+9 - zoom/1 [_] ordinal: 7 lex: 9
+8 - zip/2 [_, _] ordinal: 9 lex: 8
+7 - zap/2 [_, _] ordinal: 8 lex: 7
+6 - wombat/0 [] ordinal: 6 lex: 6
+5 - qux/1 [_] ordinal: 3 lex: 5
+4 - quux/1 [_] ordinal: 4 lex: 4
+3 - quuux/2 [_, _] ordinal: 5 lex: 3
+2 - foo/0 [] ordinal: 0 lex: 2
+1 - bar/2 [_, _] ordinal: 2 lex: 1
+0 - bar/1 [_] ordinal: 1 lex: 0
+
+
+11 functors in this type
+10 - zop/2 [_, _] ordinal: 10 lex: 10
+9 - zoom/1 [_] ordinal: 7 lex: 9
+8 - zip/2 [_, _] ordinal: 9 lex: 8
+7 - zap/2 [_, _] ordinal: 8 lex: 7
+6 - wombat/0 [] ordinal: 6 lex: 6
+5 - qux/1 [_] ordinal: 3 lex: 5
+4 - quux/1 [_] ordinal: 4 lex: 4
+3 - quuux/2 [_, _] ordinal: 5 lex: 3
+2 - foo/0 [] ordinal: 0 lex: 2
+1 - bar/2 [_, _] ordinal: 2 lex: 1
+0 - bar/1 [_] ordinal: 1 lex: 0
+
+
+11 functors in this type
+10 - zop/2 [_, _] ordinal: 10 lex: 10
+9 - zoom/1 [_] ordinal: 7 lex: 9
+8 - zip/2 [_, _] ordinal: 9 lex: 8
+7 - zap/2 [_, _] ordinal: 8 lex: 7
+6 - wombat/0 [] ordinal: 6 lex: 6
+5 - qux/1 [_] ordinal: 3 lex: 5
+4 - quux/1 [_] ordinal: 4 lex: 4
+3 - quuux/2 [_, _] ordinal: 5 lex: 3
+2 - foo/0 [] ordinal: 0 lex: 2
+1 - bar/2 [_, _] ordinal: 2 lex: 1
+0 - bar/1 [_] ordinal: 1 lex: 0
+
+
+11 functors in this type
+10 - zop/2 [_, _] ordinal: 10 lex: 10
+9 - zoom/1 [_] ordinal: 7 lex: 9
+8 - zip/2 [_, _] ordinal: 9 lex: 8
+7 - zap/2 [_, _] ordinal: 8 lex: 7
+6 - wombat/0 [] ordinal: 6 lex: 6
+5 - qux/1 [_] ordinal: 3 lex: 5
+4 - quux/1 [_] ordinal: 4 lex: 4
+3 - quuux/2 [_, _] ordinal: 5 lex: 3
+2 - foo/0 [] ordinal: 0 lex: 2
+1 - bar/2 [_, _] ordinal: 2 lex: 1
+0 - bar/1 [_] ordinal: 1 lex: 0
+
+
+
+TESTING POLYMORPHISM
+4 functors in this type
+3 - poly_two/1 [_] ordinal: 1 lex: 3
+2 - poly_three/3 [_, poly3_field2, _] ordinal: 2 lex: 2
+1 - poly_one/1 [_] ordinal: 0 lex: 1
+0 - poly_four/2 [_, _] ordinal: 3 lex: 0
+
+
+4 functors in this type
+3 - poly_two/1 [_] ordinal: 1 lex: 3
+2 - poly_three/3 [_, poly3_field2, _] ordinal: 2 lex: 2
+1 - poly_one/1 [_] ordinal: 0 lex: 1
+0 - poly_four/2 [_, _] ordinal: 3 lex: 0
+
+
+4 functors in this type
+3 - poly_two/1 [_] ordinal: 1 lex: 3
+2 - poly_three/3 [_, poly3_field2, _] ordinal: 2 lex: 2
+1 - poly_one/1 [_] ordinal: 0 lex: 1
+0 - poly_four/2 [_, _] ordinal: 3 lex: 0
+
+
+
+TESTING BUILTINS
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+no functors in this type
+
+1 functors in this type
+0 - {}/4 [_, _, _, _] ordinal: 0 lex: 0
+
+
+2 functors in this type
+1 - [|]/2 [_, _] ordinal: 1 lex: 1
+0 - []/0 [] ordinal: 0 lex: 0
+
+
+
+TESTING OTHER TYPES
+1 functors in this type
+0 - var/1 [_] ordinal: 0 lex: 0
+
+
+1 functors in this type
+0 - var_supply/1 [_] ordinal: 0 lex: 0
+
+
+1 functors in this type
+0 - var_supply/1 [_] ordinal: 0 lex: 0
+
+
+4 functors in this type
+3 - two/4 [_, _, _, _] ordinal: 1 lex: 3
+2 - three/7 [_, _, _, _, _, _, _] ordinal: 2 lex: 2
+1 - four/10 [_, _, _, _, _, _, _, _, _, _] ordinal: 3 lex: 1
+0 - empty/0 [] ordinal: 0 lex: 0
+
+
+1 functors in this type
+0 - qwerty/1 [qwerty_field] ordinal: 0 lex: 0
+
+
+1 functors in this type
+0 - dummy/0 [] ordinal: 0 lex: 0
+
+
+2 functors in this type
+1 - unboxed_arg/1 [_] ordinal: 1 lex: 1
+0 - no/0 [] ordinal: 0 lex: 0
+
+
+1 functors in this type
+0 - xyzzy/1 [f21name] ordinal: 0 lex: 0
+
+
+About to construct three/0
+Constructed: three
+About to construct apple/1
+Constructed: apple([1, 2, 3])
+About to construct banana/1
+Constructed: banana([one, two, three])
+About to construct foo/0
+Constructed: foo
+About to construct bar/1
+Constructed: bar(1)
+About to construct bar/2
+Constructed: bar(1, 1)
+About to construct qux/1
+Constructed: qux(1)
+About to construct quux/1
+Constructed: quux(1)
+About to construct quuux/2
+Constructed: quuux(1, 1)
+About to construct wombat/0
+Constructed: wombat
+About to construct zoom/1
+Constructed: zoom(1)
+About to construct zap/2
+Constructed: zap(1, 2.1)
+About to construct zip/2
+Constructed: zip(1, 1)
+About to construct zop/2
+Constructed: zop(2.1, 2.1)
+About to construct qwerty/1
+Constructed: qwerty(1)
+About to construct unboxed_arg/1
+Constructed: unboxed_arg(unboxed_struct(12, 34))
+About to construct poly_one/1
+Constructed: poly_one(1)
+About to construct poly_two/1
+Constructed: poly_two("goodbye")
+About to construct poly_four/2
+Constructed: poly_four(1, "goodbye")
+About to construct {}/3
+Constructed: {4, "five", '6'}
+About to call construct_tuple
+Constructed tuple: univ_cons({[1, 2, 3], [one, two, three], 1, 2.1})
