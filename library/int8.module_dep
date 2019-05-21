@@ -1,0 +1,13 @@
+module(1, "int8.m",
+	int8,
+	{},
+	{builtin, pretty_printer, private_builtin},
+	{builtin, exception, int, math, pretty_printer, private_builtin, require, string, uint},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - int8, "C#" - int8, "Java" - int8},
+	no_foreign_export,
+	no_main
+).
