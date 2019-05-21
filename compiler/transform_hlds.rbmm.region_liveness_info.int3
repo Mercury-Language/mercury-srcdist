@@ -1,0 +1,11 @@
+:- module ((transform_hlds.rbmm).region_liveness_info).
+:- interface.
+:- type execution_path.
+:- type execution_path_table.
+:- type pp_region_set_table.
+:- type pp_varset_table.
+:- type proc_pp_region_set_table.
+:- type proc_pp_varset_table.
+:- type proc_region_set_table.
+:- type region_set.
+:- type variable_set.
