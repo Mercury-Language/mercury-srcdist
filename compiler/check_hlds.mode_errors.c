@@ -1,0 +1,14679 @@
+/*
+** Automatically generated from `mode_errors.m'
+** by the Mercury compiler,
+** version rotd-2017-07-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.mode_errors. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__mode_errors__init
+ENDINIT
+*/
+
+#include "check_hlds.mode_errors.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.inst_test.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.mode_util.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.error_msg_inst.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_out.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.mercury_to_mercury.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_pred_decl.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_out.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.hlds_out.hlds_out_goal.mih"
+#include "hlds.hlds_out.hlds_out_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__mode_errors__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_msg_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__mode_errors__pair__pti_pair_2__plain_term__type_ctor_info_context_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_delayed_goal_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_delayed_goal_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_delayed_goal_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_delayed_goal_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_delayed_goal_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_delayed_goal_0[1];
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_2;
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_final_inst_error_0[3];
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_final_inst_error_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_final_inst_error_0[3];
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_include_detism_on_modes_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_include_detism_on_modes_0[2];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_include_detism_on_modes_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_maybe_report_is_ground_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_maybe_report_is_ground_0[2];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_maybe_report_is_ground_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_2;
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_merge_context_0[3];
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_merge_context_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_context_0[3];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__mode_errors__pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_merge_error_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_merge_error_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_merge_error_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_merge_error_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_merge_error_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_error_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_merge_error_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_1[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_1;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_2[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_2;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_3[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_3;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_4[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_4;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__maybe__ti_maybe_1check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_5[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_5;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_6[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_6;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_7[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_7;
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_8;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_9[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_9;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_error_info_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_10[5];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_10;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_11[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_11;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_12[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_12;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_13[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_13;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_14[5];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_14;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_15[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_15;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_16[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_16;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_17[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_17;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_18[5];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_18;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_19[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_19;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_20[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_20;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_2[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_3[18];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_0[4];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_0[21];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_0[21];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_info_0_0[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_info_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_info_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_1[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_1;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_from_to_insts_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_2[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_unify_rhs_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_unify_rhs_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_unify_rhs_0[3];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_0[4];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_1[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_1;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_2[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_0[3];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_info_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_info_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_info_0[1];
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_negated_context_desc_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_negated_context_desc_0[2];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_negated_context_desc_0[2];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_pred_var_multimode_pred_error_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_pred_var_multimode_pred_error_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_pred_var_multimode_pred_error_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_pred_var_multimode_pred_error_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_pred_var_multimode_pred_error_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_pred_var_multimode_pred_error_0[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_schedule_culprit_0_1[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_1;
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_schedule_culprit_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_schedule_culprit_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_schedule_culprit_0[3];
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_1[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_1;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_2[1];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_var_multimode_pred_error_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_var_multimode_pred_error_0[3];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_var_multimode_pred_error_0[3];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_write_indented_goal_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_write_indented_goal_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_write_indented_goal_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_write_indented_goal_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_write_indented_goal_0[1];
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_write_indented_goal_0[1];
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__IntroducedFrom__pred__named_and_unnamed_vars_to_pieces__1335__1_3_p_0(
+  MR_Word check_hlds__mode_errors__VarSet_4,
+  MR_Word check_hlds__mode_errors__HeadVar__2_17,
+  MR_String * check_hlds__mode_errors__HeadVar__3_18);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__IntroducedFrom__func__report_mode_inference_message__459__1_1_f_0(
+  MR_Word check_hlds__mode_errors__LambdaHeadVar__1_49);
+
+static void MR_CALL 
+check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____write_indented_goal_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____write_indented_goal_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_in_context_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__VarNamePiece_7,
+  MR_Word check_hlds__mode_errors__ReportIsGround_8,
+  MR_Word check_hlds__mode_errors__HeadVar__4_4);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_in_branch_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__IntroPieces_6,
+  MR_Word check_hlds__mode_errors__Inst_7);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0_2(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__MainContext_7,
+  MR_Word check_hlds__mode_errors__IsDisjunctive_8,
+  MR_Word check_hlds__mode_errors__MergeError_9);
+
+static void MR_CALL 
+check_hlds__mode_errors__count_ground_insts_6_p_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3,
+  MR_Integer * check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_4,
+  MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_0_5,
+  MR_Integer * check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_6);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__is_error_important_1_p_0(
+  MR_Word check_hlds__mode_errors__Error_2);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_cannot_succeed_var_functor_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__InstX_8,
+  MR_Word check_hlds__mode_errors__ConsId_9);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_cannot_succeed_var_var_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__Y_9,
+  MR_Word check_hlds__mode_errors__InstX_10,
+  MR_Word check_hlds__mode_errors__InstY_11);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_in_callee_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50,
+  MR_Word check_hlds__mode_errors__Vars_9,
+  MR_Word check_hlds__mode_errors__Insts_10,
+  MR_Word check_hlds__mode_errors__CalleePredId_11,
+  MR_Integer check_hlds__mode_errors__CalleeProcId_12,
+  MR_Word check_hlds__mode_errors__CalleeModeErrors_13);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(
+  MR_Word check_hlds__mode_errors__Context_5,
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_26,
+  MR_Word check_hlds__mode_errors__DelayedGoal_7);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_2(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Errors_6,
+  MR_Word check_hlds__mode_errors__Culprit_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__ModeError_5);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__purity_error_lambda_should_be_any_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__Vars_5);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__purity_error_should_be_in_promise_purity_scope_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__NegCtxtDesc_5,
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__Var_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_final_inst_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Integer check_hlds__mode_errors__ArgNum_9,
+  MR_Word check_hlds__mode_errors__Var_10,
+  MR_Word check_hlds__mode_errors__VarInst_11,
+  MR_Word check_hlds__mode_errors__ExpInst_12,
+  MR_Word check_hlds__mode_errors__Reason_13);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Word check_hlds__mode_errors__ShortInstQF_9,
+  MR_Word check_hlds__mode_errors__ShortInstSuffix_10,
+  MR_Word check_hlds__mode_errors__LongInstPrefix_11,
+  MR_Word check_hlds__mode_errors__LongInstSuffix_12,
+  MR_Word check_hlds__mode_errors__Inst0_13);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_functor_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Word check_hlds__mode_errors__X_9,
+  MR_Word check_hlds__mode_errors__ConsId_10,
+  MR_Word check_hlds__mode_errors__Args_11,
+  MR_Word check_hlds__mode_errors__InstX_12,
+  MR_Word check_hlds__mode_errors__ArgInsts_13);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_lambda_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__InstX_8,
+  MR_Word check_hlds__mode_errors__InstY_9);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__Y_9,
+  MR_Word check_hlds__mode_errors__InstX_10,
+  MR_Word check_hlds__mode_errors__InstY_11);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__RHS_9,
+  MR_Word check_hlds__mode_errors__Type_10,
+  MR_Word check_hlds__mode_errors__PredOrFunc_11);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_implied_mode_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__Var_7,
+  MR_Word check_hlds__mode_errors__VarInst_8,
+  MR_Word check_hlds__mode_errors__Inst_9);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_var_has_inst_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__Var_8,
+  MR_Word check_hlds__mode_errors__VarInst_9,
+  MR_Word check_hlds__mode_errors__Inst_10,
+  MR_Word check_hlds__mode_errors__MaybeMultiModeError_11);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_multimode_pred_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__PredId_8,
+  MR_Word check_hlds__mode_errors__MultiModeError_9);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box * check_hlds__mode_errors__wrapper_arg_2);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0(
+  MR_Word check_hlds__mode_errors__VarSet_4,
+  MR_Word check_hlds__mode_errors__Vars_5);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_var_is_live_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__Var_5);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_poly_unify_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Var_6,
+  MR_Word check_hlds__mode_errors__VarInst_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_higher_order_pred_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__PredOrFunc_8,
+  MR_Word check_hlds__mode_errors__Var_9,
+  MR_Word check_hlds__mode_errors__VarInst_10,
+  MR_Integer check_hlds__mode_errors__Arity_11);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_no_matching_mode_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Vars_6,
+  MR_Word check_hlds__mode_errors__Insts_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__inst_list_to_sep_lines_2_f_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_non_local_lambda_var_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Var_6,
+  MR_Word check_hlds__mode_errors__VarInst_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_bind_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__Reason_8,
+  MR_Word check_hlds__mode_errors__Var_9,
+  MR_Word check_hlds__mode_errors__VarInst_10,
+  MR_Word check_hlds__mode_errors__Inst_11);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__has_inst_expected_inst_was_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__ActualInst_6,
+  MR_Word check_hlds__mode_errors__ExpectedInst_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__has_instantiatedness_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Inst_6,
+  MR_String check_hlds__mode_errors__Suffix_7);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__MergeErrors_5);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__MergeContext_6,
+  MR_Word check_hlds__mode_errors__MergeErrors_7);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_info_context_preamble_1_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_3);
+
+static void MR_CALL 
+check_hlds__mode_errors__report_mode_inference_messages_for_procs_7_p_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_1,
+  MR_Word check_hlds__mode_errors__OutputDetism_2,
+  MR_Word check_hlds__mode_errors__PredInfo_3,
+  MR_Word check_hlds__mode_errors__Procs_4,
+  MR_Word check_hlds__mode_errors__HeadVar__5_5,
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6,
+  MR_Word * check_hlds__mode_errors__STATE_VARIABLE_Specs_7);
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__report_mode_inference_message_4_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_mode_inference_message_4_f_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_6,
+  MR_Word check_hlds__mode_errors__OutputDetism_7,
+  MR_Word check_hlds__mode_errors__PredInfo_8,
+  MR_Word check_hlds__mode_errors__ProcInfo_9);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____delayed_goal_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____delayed_goal_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____final_inst_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____final_inst_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____include_detism_on_modes_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____include_detism_on_modes_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_context_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_context_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_errors_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_errors_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_info_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_info_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_info_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_info_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____negated_context_desc_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____negated_context_desc_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____pred_var_multimode_pred_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____pred_var_multimode_pred_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____schedule_culprit_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____schedule_culprit_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____write_indented_goal_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____write_indented_goal_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0_10001(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box * check_hlds__mode_errors__wrapper_arg_3);
+
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_1[6][3];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_2[311][2];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_3[9][1];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_4[2][4];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_5[2][5];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_6[2][8];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_7[1][6];
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_8[1][7];
+
+
+
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_1[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_5[0])),
+    ((MR_Box) (check_hlds__mode_errors__report_mode_inference_message_4_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_5[1])),
+    ((MR_Box) (check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_4[1])),
+    ((MR_Box) (check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[55]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[59])))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_2[311][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_parse_tree__error_util__print_anything__arity1__check_hlds__mode_errors__write_indented_goal__arity0__)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_write_indented_goal_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_2[2]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_1[1]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_2[2]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_from_to_insts_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__varset__varset__type_ctor_info_varset_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "to enable mode inference.)"))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[16]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "--infer-modes"))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[18]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[17])))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "(Use"))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[20]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[19])))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "error: duplicate mode declaration."))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[22]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[23])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[25]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[24])))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[0])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_2[27]))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__mode_errors_scalar_common_2[29]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "possible causes of this error."))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[31]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "error messages indicate"))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[33]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[32])))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "because it was impure."))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[35]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The goal could not be reordered,"))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[37]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[36])))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "because it was followed by an impure goal."))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[39]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[37]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[40])))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "}:"))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[42]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "parallel conjunctions to fail.)"))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[44]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "(The current implementation does not permit"))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[46]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[45])))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in parallel conjunction."))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[48]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[47])))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error: mutually exclusive bindings"))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[50]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[49])))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "branches."))
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[52]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "It has the following instantiation states."))
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[54]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 56 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in the following branches."))
+  },
+  /* row 57 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[56]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "It has non-ground instantiation states"))
+  },
+  /* row 59 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[58]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[57])))
+  },
+  /* row 60 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has the following instantiation states."))
+  },
+  /* row 61 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[60]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 62 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "belonging to the outer scope."))
+  },
+  /* row 63 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[62]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "An atomic goal may not use the state variables"))
+  },
+  /* row 65 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[64]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[63])))
+  },
+  /* row 66 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "part."))
+  },
+  /* row 67 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[66]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 68 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "then"))
+  },
+  /* row 69 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[68]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[67])))
+  },
+  /* row 70 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and the"))
+  },
+  /* row 71 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[70]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[69])))
+  },
+  /* row 72 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "condition or which occur only in the condition"))
+  },
+  /* row 73 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[72]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[71])))
+  },
+  /* row 74 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "allowed to bind variables which are local to the"))
+  },
+  /* row 75 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[74]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[73])))
+  },
+  /* row 76 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The condition of an if-then-else is only"))
+  },
+  /* row 77 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[76]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[75])))
+  },
+  /* row 78 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "lambda expression."))
+  },
+  /* row 79 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[78]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 80 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "its arguments and variables local to the "))
+  },
+  /* row 81 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[80]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[79])))
+  },
+  /* row 82 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "A lambda goal is only allowed to bind"))
+  },
+  /* row 83 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[82]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[81])))
+  },
+  /* row 84 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "inside the scope of the negation."))
+  },
+  /* row 85 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[84]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 86 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "implicitly existentially quantified"))
+  },
+  /* row 87 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[86]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[85])))
+  },
+  /* row 88 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "which are local to the negation, i.e. those which are"))
+  },
+  /* row 89 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[88]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[87])))
+  },
+  /* row 90 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "A negation is only allowed to bind variables"))
+  },
+  /* row 91 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[90]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[89])))
+  },
+  /* row 92 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "may be bound in at most one conjunct."))
+  },
+  /* row 93 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[92]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 94 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "A nonlocal variable of a parallel conjunction"))
+  },
+  /* row 95 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[94]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[93])))
+  },
+  /* row 96 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "which are local to the trace goal."))
+  },
+  /* row 97 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[96]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 98 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "A trace goal is only allowed to bind variables"))
+  },
+  /* row 99 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[98]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[97])))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "ground"))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[100]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of lambda goals is"))
+  },
+  /* row 103 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[102]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[101])))
+  },
+  /* row 104 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expected instantiatedness for non-local variables"))
+  },
+  /* row 105 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[104]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[103])))
+  },
+  /* row 106 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 107 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[106]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 108 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has the following inst:"))
+  },
+  /* row 109 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[108]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[107])))
+  },
+  /* row 110 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "have the following insts:"))
+  },
+  /* row 111 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[110]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[107])))
+  },
+  /* row 112 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_String) "("))
+  },
+  /* row 113 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[112]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 114 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "the callee"))
+  },
+  /* row 115 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[114]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[113])))
+  },
+  /* row 116 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "because of the following error."))
+  },
+  /* row 117 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[116]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 118 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[117])))
+  },
+  /* row 119 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ")"))
+  },
+  /* row 120 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[119]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[118])))
+  },
+  /* row 121 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "the callee, because of the following error."))
+  },
+  /* row 122 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[121]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 123 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any"))
+  },
+  /* row 124 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])))
+  },
+  /* row 125 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "or"))
+  },
+  /* row 126 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[125]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[124])))
+  },
+  /* row 127 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[100]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[126])))
+  },
+  /* row 128 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expected instantiatedness was"))
+  },
+  /* row 129 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[128]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[127])))
+  },
+  /* row 130 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "partially instantiated modes are not allowed."))
+  },
+  /* row 131 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[130]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 132 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Unifications of polymorphically-typed variables with"))
+  },
+  /* row 133 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[132]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[131])))
+  },
+  /* row 134 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ")."))
+  },
+  /* row 135 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[134]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[133])))
+  },
+  /* row 136 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[135])))
+  },
+  /* row 137 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "be ground (or have inst"))
+  },
+  /* row 138 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[137]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[136])))
+  },
+  /* row 139 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "will not be known until runtime, the variables must both"))
+  },
+  /* row 140 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[139]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[138])))
+  },
+  /* row 141 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "When unifying two variables whose type"))
+  },
+  /* row 142 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[141]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[140])))
+  },
+  /* row 143 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is still live."))
+  },
+  /* row 144 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[143]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 145 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "the following error."))
+  },
+  /* row 146 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[145]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 147 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "This may have been caused by"))
+  },
+  /* row 148 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[147]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[146])))
+  },
+  /* row 149 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "no mode declaration for called predicate."))
+  },
+  /* row 150 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[149]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 151 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 152 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "P = Q"))
+  },
+  /* row 153 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[152]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[151])))
+  },
+  /* row 154 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "instead of"))
+  },
+  /* row 155 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[154]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[153])))
+  },
+  /* row 156 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 157 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[156]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[155])))
+  },
+  /* row 158 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "all [X] call(P, X) <=> call(Q, X)"))
+  },
+  /* row 159 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[158]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[157])))
+  },
+  /* row 160 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "writing an explicit universal quantification, e.g."))
+  },
+  /* row 161 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[160]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[159])))
+  },
+  /* row 162 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In some cases, you can achieve the same effect by"))
+  },
+  /* row 163 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[162]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[161])))
+  },
+  /* row 164 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and so this is not allowed by the Mercury mode system."))
+  },
+  /* row 165 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[164]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[163])))
+  },
+  /* row 166 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is an undecidable problem,"))
+  },
+  /* row 167 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[166]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[165])))
+  },
+  /* row 168 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "modes."))
+  },
+  /* row 169 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[168]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 170 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "\'s"))
+  },
+  /* row 171 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[170]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[169])))
+  },
+  /* row 172 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "should be ground, but are not."))
+  },
+  /* row 173 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[172]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 174 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "cannot be equal to a term containing itself."))
+  },
+  /* row 175 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[174]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 176 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[25]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 177 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[156]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 178 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 179 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[178]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 180 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[156]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[179])))
+  },
+  /* row 181 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[179])))
+  },
+  /* row 182 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and appears in the condition."))
+  },
+  /* row 183 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[182]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 184 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[183])))
+  },
+  /* row 185 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has inst"))
+  },
+  /* row 186 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[185]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[184])))
+  },
+  /* row 187 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and appears in the body."))
+  },
+  /* row 188 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[187]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 189 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[188])))
+  },
+  /* row 190 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[185]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[189])))
+  },
+  /* row 191 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any_func(Args) = Result is det :- ..."))
+  },
+  /* row 192 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[191]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])))
+  },
+  /* row 193 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can be written"))
+  },
+  /* row 194 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[193]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[192])))
+  },
+  /* row 195 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[194])))
+  },
+  /* row 196 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Function expressions with inst"))
+  },
+  /* row 197 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[196]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[195])))
+  },
+  /* row 198 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[197])))
+  },
+  /* row 199 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any_pred(Args) is det :- ..."))
+  },
+  /* row 200 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[199]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[198])))
+  },
+  /* row 201 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[193]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[200])))
+  },
+  /* row 202 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[201])))
+  },
+  /* row 203 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "with inst"))
+  },
+  /* row 204 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[203]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[202])))
+  },
+  /* row 205 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Predicate expressions"))
+  },
+  /* row 206 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[205]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[204])))
+  },
+  /* row 207 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[206])))
+  },
+  /* row 208 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) -2))
+  },
+  /* row 209 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[208]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 210 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[209])))
+  },
+  /* row 211 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: no mode declaration for"))
+  },
+  /* row 212 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[211]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 213 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[21])))
+  },
+  /* row 214 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__mode_errors_scalar_common_2[213]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 215 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: no mode declaration for exported"))
+  },
+  /* row 216 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[215]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 217 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In mode declarations for "))
+  },
+  /* row 218 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[217]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 219 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Modes"))
+  },
+  /* row 220 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and"))
+  },
+  /* row 221 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "are indistinguishable."))
+  },
+  /* row 222 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[221]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 223 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Here is the conflicting mode declaration."))
+  },
+  /* row 224 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[223]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 225 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[2])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 226 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "type class method implementation for"))
+  },
+  /* row 227 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[226]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 228 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in"))
+  },
+  /* row 229 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In clause for"))
+  },
+  /* row 230 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[229]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 231 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode mismatch in "))
+  },
+  /* row 232 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has instantiatedness"))
+  },
+  /* row 233 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 234 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[233]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 235 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 236 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[235]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 237 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expected instantiatedness was"))
+  },
+  /* row 238 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "scope error:"))
+  },
+  /* row 239 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Variable"))
+  },
+  /* row 240 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error: variable"))
+  },
+  /* row 241 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error: argument"))
+  },
+  /* row 242 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error: arguments"))
+  },
+  /* row 243 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "which does not match any of the modes for"))
+  },
+  /* row 244 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expecting higher-order func inst"))
+  },
+  /* row 245 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expecting higher-order pred inst"))
+  },
+  /* row 246 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in polymorphically-typed unification:"))
+  },
+  /* row 247 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[142])))
+  },
+  /* row 248 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__mode_errors_scalar_common_2[247]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 249 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unique-mode error: the called procedure"))
+  },
+  /* row 250 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "would clobber its argument, but variable"))
+  },
+  /* row 251 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "including"))
+  },
+  /* row 252 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error in unification of"))
+  },
+  /* row 253 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and higher-order term based on multi-moded"))
+  },
+  /* row 254 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "more than one"))
+  },
+  /* row 255 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[254]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 256 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The"))
+  },
+  /* row 257 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of the argument"))
+  },
+  /* row 258 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of the called"))
+  },
+  /* row 259 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "not match any"))
+  },
+  /* row 260 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[259]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 261 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The higher order argument"))
+  },
+  /* row 262 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[3])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 263 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "sorry, implied modes not implemented."))
+  },
+  /* row 264 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In unification of"))
+  },
+  /* row 265 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "with"))
+  },
+  /* row 266 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 267 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error: attempt at higher-order unification."))
+  },
+  /* row 268 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Cannot unify two terms of type"))
+  },
+  /* row 269 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Your code is trying to test whether two "))
+  },
+  /* row 270 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "are equal, by unifying them."))
+  },
+  /* row 271 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In the general case, testing equivalence of"))
+  },
+  /* row 272 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 273 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "variable"))
+  },
+  /* row 274 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and lambda expression."))
+  },
+  /* row 275 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "lambda expression"))
+  },
+  /* row 276 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "term"))
+  },
+  /* row 277 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Final instantiatedness of"))
+  },
+  /* row 278 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "was"))
+  },
+  /* row 279 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "expected final instantiatedness was"))
+  },
+  /* row 280 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "purity error: if-then-else should be inside"))
+  },
+  /* row 281 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "a promise_purity scope because non-local variable"))
+  },
+  /* row 282 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "purity error: negation should be inside"))
+  },
+  /* row 283 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "purity error: lambda is"))
+  },
+  /* row 284 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "ground"))
+  },
+  /* row 285 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "but contains the following non-local variables"))
+  },
+  /* row 286 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "whose insts contain"))
+  },
+  /* row 287 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any"))
+  },
+  /* row 288 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__mode_errors_scalar_common_2[207]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 289 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode error in conjunction. The next"))
+  },
+  /* row 290 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[4])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 291 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "This is the location of the impure goal."))
+  },
+  /* row 292 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[291]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 293 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[5])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 294 */
+  {
+    ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 295 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Floundered goal, waiting on {"))
+  },
+  /* row 296 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "which does not match any of the valid modes for"))
+  },
+  /* row 297 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[296]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 298 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "warning: unification of"))
+  },
+  /* row 299 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "cannot succeed."))
+  },
+  /* row 300 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "cannot succeed, because"))
+  },
+  /* row 301 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The variable"))
+  },
+  /* row 302 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is ground"))
+  },
+  /* row 303 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "out of"))
+  },
+  /* row 304 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_1[5]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 305 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In this branch,"))
+  },
+  /* row 306 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[232]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 307 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has the ground instantiatedness"))
+  },
+  /* row 308 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[307]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 309 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has the non-ground instantiatedness"))
+  },
+  /* row 310 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[309]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_3[9][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "..."))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[224])))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[148])))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[38])))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[41])))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[292])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_4[2][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 55)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_5[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__mode_errors__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_from_to_insts_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_6[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_info_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0)),
+    ((MR_Box) (&check_hlds__mode_errors__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_msg_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_info_0)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_maybe_report_is_ground_0)),
+    ((MR_Box) (&check_hlds__mode_errors__pair__pti_pair_2__plain_term__type_ctor_info_context_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_7[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__mode_errors__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__mode_errors__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__mode_errors_scalar_common_8[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_info_0)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0)),
+    ((MR_Box) (&check_hlds__mode_errors__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_msg_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__mode_errors__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_msg_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__mode_errors__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__mode_errors__pair__pti_pair_2__plain_term__type_ctor_info_context_0__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_delayed_goal_0_0[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_delayed_goal_0_0 = {
+  (MR_String) "delayed_goal",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_delayed_goal_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_delayed_goal_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_delayed_goal_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_delayed_goal_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_delayed_goal_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_delayed_goal_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_delayed_goal_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_delayed_goal_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____delayed_goal_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____delayed_goal_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "delayed_goal",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_delayed_goal_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_delayed_goal_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_delayed_goal_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_0 = {
+  (MR_String) "too_instantiated",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_1 = {
+  (MR_String) "not_instantiated_enough",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_2 = {
+  (MR_String) "wrongly_instantiated",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_final_inst_error_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_final_inst_error_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_final_inst_error_0_2
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_final_inst_error_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_final_inst_error_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__mode_errors____Unify____final_inst_error_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____final_inst_error_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "final_inst_error",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_final_inst_error_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_final_inst_error_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_final_inst_error_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_0 = {
+  (MR_String) "include_detism_on_modes",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_1 = {
+  (MR_String) "do_not_include_detism_on_modes",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_include_detism_on_modes_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_include_detism_on_modes_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_include_detism_on_modes_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_include_detism_on_modes_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_include_detism_on_modes_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__mode_errors____Unify____include_detism_on_modes_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____include_detism_on_modes_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "include_detism_on_modes",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_include_detism_on_modes_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_include_detism_on_modes_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_include_detism_on_modes_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_0 = {
+  (MR_String) "dont_report_is_ground",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_1 = {
+  (MR_String) "report_is_ground_v_and_nonv",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_maybe_report_is_ground_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_maybe_report_is_ground_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_maybe_report_is_ground_0_1
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_maybe_report_is_ground_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_maybe_report_is_ground_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "maybe_report_is_ground",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_maybe_report_is_ground_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_maybe_report_is_ground_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_maybe_report_is_ground_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_0 = {
+  (MR_String) "merge_disj",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_1 = {
+  (MR_String) "merge_if_then_else",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_2 = {
+  (MR_String) "merge_stm_atomic",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_merge_context_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_merge_context_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_merge_context_0_2
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_context_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__mode_errors____Unify____merge_context_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____merge_context_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "merge_context",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_merge_context_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_merge_context_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_context_0
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__mode_errors__pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__term__term__type_ctor_info_context_0,
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_merge_error_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1pair__ti_pair_2term__type_ctor_info_context_0parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_merge_error_0_0 = {
+  (MR_String) "merge_error",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_merge_error_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_merge_error_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_merge_error_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_merge_error_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_merge_error_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_merge_error_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_merge_error_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_error_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____merge_error_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____merge_error_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "merge_error",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_merge_error_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_merge_error_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_merge_error_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_merge_error_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_errors_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__mode_errors____Unify____merge_errors_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____merge_errors_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "merge_errors",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_merge_error_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_context_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_merge_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_0 = {
+  (MR_String) "mode_error_disj",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_1[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_merge_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_1 = {
+  (MR_String) "mode_error_par_conj",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_2[4] = {
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_2 = {
+  (MR_String) "mode_error_higher_order_pred_var",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_3[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_3 = {
+  (MR_String) "mode_error_poly_unify",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_4[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_4 = {
+  (MR_String) "mode_error_var_is_live",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__maybe__ti_maybe_1check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_5[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__maybe__ti_maybe_1check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_5 = {
+  (MR_String) "mode_error_var_has_inst",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_6[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_unify_rhs_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0,
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_6 = {
+  (MR_String) "mode_error_unify_pred",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_6,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_7[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_7 = {
+  (MR_String) "mode_error_implied_mode",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 7,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_7,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_8 = {
+  (MR_String) "mode_error_no_mode_decl",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_9[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_9 = {
+  (MR_String) "mode_error_no_matching_mode",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  (MR_Integer) 9,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_9,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_error_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_10[5] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_error_info_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_10 = {
+  (MR_String) "mode_error_in_callee",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 10,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_10,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_11[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_var_lock_reason_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_11 = {
+  (MR_String) "mode_error_bind_var",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 8,
+  (MR_Integer) 11,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_11,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_12[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_12 = {
+  (MR_String) "mode_error_non_local_lambda_var",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 9,
+  (MR_Integer) 12,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_12,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_13[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_13 = {
+  (MR_String) "mode_error_unify_var_var",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  (MR_Integer) 13,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_13,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_14[5] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_14 = {
+  (MR_String) "mode_error_unify_var_functor",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 11,
+  (MR_Integer) 14,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_14,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_15[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_15 = {
+  (MR_String) "mode_error_unify_var_lambda",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 12,
+  (MR_Integer) 15,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_15,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_16[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_var_multimode_pred_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_16 = {
+  (MR_String) "mode_error_unify_var_multimode_pred",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 13,
+  (MR_Integer) 16,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_16,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_delayed_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_17[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1check_hlds__mode_errors__type_ctor_info_delayed_goal_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_schedule_culprit_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_17 = {
+  (MR_String) "mode_error_conj",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 14,
+  (MR_Integer) 17,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_17,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_18[5] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_final_inst_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_18 = {
+  (MR_String) "mode_error_final_inst",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 15,
+  (MR_Integer) 18,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_18,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_19[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_negated_context_desc_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_19 = {
+  (MR_String) "purity_error_should_be_in_promise_purity_scope",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 16,
+  (MR_Integer) 19,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_19,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_20[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_20 = {
+  (MR_String) "purity_error_lambda_should_be_any",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 17,
+  (MR_Integer) 20,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_0_20,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_8
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_1[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_2[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_3[18] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_2,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_3,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_4,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_5,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_6,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_7,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_9,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_10,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_11,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_12,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_13,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_14,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_15,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_16,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_17,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_18,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_19,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_20
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_0[4] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_LOCAL,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_2
+  },
+  {
+    (MR_Integer) 18,
+    MR_SECTAG_REMOTE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_0[21] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_11,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_17,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_18,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_2,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_7,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_10,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_9,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_8,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_12,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_3,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_6,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_14,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_15,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_16,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_13,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_5,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_4,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_20,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_0_19
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_0[21] = {
+  (MR_Integer) 2,
+  (MR_Integer) 10,
+  (MR_Integer) 4,
+  (MR_Integer) 11,
+  (MR_Integer) 18,
+  (MR_Integer) 17,
+  (MR_Integer) 12,
+  (MR_Integer) 5,
+  (MR_Integer) 8,
+  (MR_Integer) 7,
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 16,
+  (MR_Integer) 13,
+  (MR_Integer) 14,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  (MR_Integer) 20,
+  (MR_Integer) 19
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____mode_error_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____mode_error_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "mode_error",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_0 },
+  (MR_Integer) 21,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_0,
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_context_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_info_0_0 = {
+  (MR_String) "mode_error_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_info_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_info_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_info_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____mode_error_info_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____mode_error_info_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "mode_error_info",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_info_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_info_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_0[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_0 = {
+  (MR_String) "error_at_var",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_1[2] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_1 = {
+  (MR_String) "error_at_functor",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_from_to_insts_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_from_to_insts_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_2[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1parse_tree__prog_data__type_ctor_info_from_to_insts_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_2 = {
+  (MR_String) "error_at_lambda",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_error_unify_rhs_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_1[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_2[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_2
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_unify_rhs_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_error_unify_rhs_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_unify_rhs_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_2,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_error_unify_rhs_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_unify_rhs_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_unify_rhs_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "mode_error_unify_rhs",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_error_unify_rhs_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_error_unify_rhs_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_error_unify_rhs_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_0[4] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_0 = {
+  (MR_String) "cannot_succeed_var_var",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_1[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_1 = {
+  (MR_String) "cannot_succeed_var_functor",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_2[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_2 = {
+  (MR_String) "cannot_succeed_ground_occur_check",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_1[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_2[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_2
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_2,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____mode_warning_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____mode_warning_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "mode_warning",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_0,
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_context_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_info_0_0 = {
+  (MR_String) "mode_warning_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_mode_warning_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_info_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_mode_warning_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_info_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_mode_warning_info_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____mode_warning_info_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____mode_warning_info_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "mode_warning_info",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_mode_warning_info_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_mode_warning_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_mode_warning_info_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_0 = {
+  (MR_String) "if_then_else",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_1 = {
+  (MR_String) "negation",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_negated_context_desc_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_negated_context_desc_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__enum_functor_desc_negated_context_desc_0_1
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_negated_context_desc_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_negated_context_desc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__mode_errors____Unify____negated_context_desc_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____negated_context_desc_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "negated_context_desc",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_name_ordered_negated_context_desc_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__enum_value_ordered_negated_context_desc_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_negated_context_desc_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_pred_var_multimode_pred_error_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_var_multimode_pred_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_pred_var_multimode_pred_error_0_0 = {
+  (MR_String) "pred_var_multimode_pred_error",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_pred_var_multimode_pred_error_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_pred_var_multimode_pred_error_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_pred_var_multimode_pred_error_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_pred_var_multimode_pred_error_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_pred_var_multimode_pred_error_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_pred_var_multimode_pred_error_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_pred_var_multimode_pred_error_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_pred_var_multimode_pred_error_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____pred_var_multimode_pred_error_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____pred_var_multimode_pred_error_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "pred_var_multimode_pred_error",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_pred_var_multimode_pred_error_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_pred_var_multimode_pred_error_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_pred_var_multimode_pred_error_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_0 = {
+  (MR_String) "goal_itself_was_impure",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_schedule_culprit_0_1[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_1 = {
+  (MR_String) "goals_followed_by_impure_goal",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_schedule_culprit_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_2 = {
+  (MR_String) "conj_floundered",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_0[2] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_2
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_1[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_1
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_schedule_culprit_0[2] = {
+  {
+    (MR_Integer) 2,
+    MR_SECTAG_LOCAL,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_schedule_culprit_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_schedule_culprit_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_2,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_schedule_culprit_0_1
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_schedule_culprit_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_schedule_culprit_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____schedule_culprit_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____schedule_culprit_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "schedule_culprit",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_schedule_culprit_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_schedule_culprit_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_schedule_culprit_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_0[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_0 = {
+  (MR_String) "no_matching_mode",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_1[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_1 = {
+  (MR_String) "more_than_one_matching_mode",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_2[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_2 = {
+  (MR_String) "some_ho_args_non_ground",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_var_multimode_pred_error_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_1[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_2[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_2
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_var_multimode_pred_error_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_var_multimode_pred_error_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_var_multimode_pred_error_0[3] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_1,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_0,
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_var_multimode_pred_error_0_2
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_var_multimode_pred_error_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_var_multimode_pred_error_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "var_multimode_pred_error",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_var_multimode_pred_error_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_var_multimode_pred_error_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_var_multimode_pred_error_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__mode_errors__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__mode_errors__check_hlds__mode_errors__field_types_write_indented_goal_0_0[3] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &check_hlds__mode_errors__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_write_indented_goal_0_0 = {
+  (MR_String) "write_indented_goal",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__mode_errors__check_hlds__mode_errors__field_types_write_indented_goal_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_write_indented_goal_0_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_write_indented_goal_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_write_indented_goal_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__mode_errors__check_hlds__mode_errors__du_stag_ordered_write_indented_goal_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_write_indented_goal_0[1] = {
+  &check_hlds__mode_errors__check_hlds__mode_errors__du_functor_desc_write_indented_goal_0_0
+};
+
+static const MR_Integer check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_write_indented_goal_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_write_indented_goal_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__mode_errors____Unify____write_indented_goal_0_0_10001)),
+  ((MR_Box) (check_hlds__mode_errors____Compare____write_indented_goal_0_0_10001)),
+  (MR_String) "check_hlds.mode_errors",
+  (MR_String) "write_indented_goal",
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_name_ordered_write_indented_goal_0 },
+  {     check_hlds__mode_errors__check_hlds__mode_errors__du_ptag_ordered_write_indented_goal_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__mode_errors__check_hlds__mode_errors__functor_number_map_write_indented_goal_0
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_parse_tree__error_util__print_anything__arity1__check_hlds__mode_errors__write_indented_goal__arity0__[6] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0_10001))
+};
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__IntroducedFrom__pred__named_and_unnamed_vars_to_pieces__1335__1_3_p_0(
+  MR_Word check_hlds__mode_errors__VarSet_4,
+  MR_Word check_hlds__mode_errors__HeadVar__2_17,
+  MR_String * check_hlds__mode_errors__HeadVar__3_18)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = mercury__varset__search_name_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_4, check_hlds__mode_errors__HeadVar__2_17, check_hlds__mode_errors__HeadVar__3_18);
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__IntroducedFrom__func__report_mode_inference_message__459__1_1_f_0(
+  MR_Word check_hlds__mode_errors__LambdaHeadVar__1_49)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__LambdaHeadVar__2_50;
+    MR_Word check_hlds__mode_errors__I_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LambdaHeadVar__1_49, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__F_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LambdaHeadVar__1_49, (MR_Integer) 1)));
+
+    {
+      check_hlds__mode_errors__LambdaHeadVar__2_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LambdaHeadVar__2_50, 0) = ((MR_Box) (check_hlds__mode_errors__I_78));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LambdaHeadVar__2_50, 1) = ((MR_Box) (check_hlds__mode_errors__F_79));
+    }
+    return check_hlds__mode_errors__LambdaHeadVar__2_50;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__ModuleInfo_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__VarSet_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__Goal_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+    MR_Word check_hlds__mode_errors__Globals_8;
+    MR_Word check_hlds__mode_errors__OutInfo_9;
+
+    {
+      mercury__io__write_string_3_p_0((MR_String) "\t\t");
+    }
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__mode_errors__ModuleInfo_4, &check_hlds__mode_errors__Globals_8);
+    }
+    {
+      check_hlds__mode_errors__OutInfo_9 = hlds__hlds_out__hlds_out_util__init_hlds_out_info_2_f_0(check_hlds__mode_errors__Globals_8, (MR_Integer) 1);
+    }
+    {
+      hlds__hlds_out__hlds_out_goal__write_goal_9_p_0(check_hlds__mode_errors__OutInfo_9, check_hlds__mode_errors__ModuleInfo_4, check_hlds__mode_errors__VarSet_5, (MR_Integer) 0, (MR_Integer) 2, (MR_String) ".\n", check_hlds__mode_errors__Goal_6);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____write_indented_goal_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_12 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_13 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_12 == check_hlds__mode_errors__CastY_13);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__Var_10;
+
+        {
+          hlds__hlds_module____Compare____module_info_0_0(&check_hlds__mode_errors__Var_10, check_hlds__mode_errors__ArgX1_4, check_hlds__mode_errors__ArgY1_5);
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_10 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_10;
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[12], &check_hlds__mode_errors__Var_11, ((MR_Box) (check_hlds__mode_errors__ArgX2_6)), ((MR_Box) (check_hlds__mode_errors__ArgY2_7)));
+            }
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_11 == (MR_Integer) 0);
+            check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+            if (check_hlds__mode_errors__succeeded)
+              *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_11;
+            else
+              {
+                hlds__hlds_goal____Compare____hlds_goal_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__ArgX3_8, check_hlds__mode_errors__ArgY3_9);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____write_indented_goal_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__TypeInfo_12_12;
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          check_hlds__mode_errors__succeeded = hlds__hlds_module____Unify____module_info_0_0(check_hlds__mode_errors__ArgX1_3, check_hlds__mode_errors__ArgY1_4);
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__TypeInfo_12_12 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[12];
+            {
+              check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_12_12, ((MR_Box) (check_hlds__mode_errors__ArgX2_5)), ((MR_Box) (check_hlds__mode_errors__ArgY2_6)));
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(check_hlds__mode_errors__ArgX3_7, check_hlds__mode_errors__ArgY3_8);
+              }
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____pred_var_multimode_pred_error_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_8;
+
+        {
+          hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__mode_errors__Var_8, check_hlds__mode_errors__ArgX1_4, check_hlds__mode_errors__ArgY1_5);
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_8 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_8;
+        else
+          {
+            check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__ArgX2_6, check_hlds__mode_errors__ArgY2_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____pred_var_multimode_pred_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_7 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_8 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_7 == check_hlds__mode_errors__CastY_8);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__mode_errors__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__mode_errors__ArgX1_3, check_hlds__mode_errors__ArgY1_4);
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0(check_hlds__mode_errors__ArgX2_5, check_hlds__mode_errors__ArgY2_6);
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____negated_context_desc_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar1_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar2_5 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Cast_HeadVar1_4, check_hlds__mode_errors__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____negated_context_desc_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__HeadVar__2_1 == check_hlds__mode_errors__HeadVar__2_2);
+
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_info_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_12 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_13 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_12 == check_hlds__mode_errors__CastY_13);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__Var_10;
+
+        {
+          check_hlds__mode_errors____Compare____mode_warning_0_0(&check_hlds__mode_errors__Var_10, check_hlds__mode_errors__ArgX1_4, check_hlds__mode_errors__ArgY1_5);
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_10 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_10;
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_11;
+
+            {
+              mercury__term____Compare____context_0_0(&check_hlds__mode_errors__Var_11, check_hlds__mode_errors__ArgX2_6, check_hlds__mode_errors__ArgY2_7);
+            }
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_11 == (MR_Integer) 0);
+            check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+            if (check_hlds__mode_errors__succeeded)
+              *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_11;
+            else
+              {
+                check_hlds__mode_info____Compare____mode_context_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__ArgX3_8, check_hlds__mode_errors__ArgY3_9);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_info_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_warning_0_0(check_hlds__mode_errors__ArgX1_3, check_hlds__mode_errors__ArgY1_4);
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            {
+              check_hlds__mode_errors__succeeded = mercury__term____Unify____context_0_0(check_hlds__mode_errors__ArgX2_5, check_hlds__mode_errors__ArgY2_6);
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__succeeded = check_hlds__mode_info____Unify____mode_context_0_0(check_hlds__mode_errors__ArgX3_7, check_hlds__mode_errors__ArgY3_8);
+              }
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_64 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_65 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_64 == check_hlds__mode_errors__CastY_65);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+            MR_Word check_hlds__mode_errors__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word check_hlds__mode_errors__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__mode_errors__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word check_hlds__mode_errors__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word check_hlds__mode_errors__Var_12;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_12, ((MR_Box) (check_hlds__mode_errors__Var_83)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+                  }
+                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_12 == (MR_Integer) 0);
+                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                  if (check_hlds__mode_errors__succeeded)
+                    *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_12;
+                  else
+                    {
+                      MR_Word check_hlds__mode_errors__Var_13;
+
+                      {
+                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_13, ((MR_Box) (check_hlds__mode_errors__Var_82)), ((MR_Box) (check_hlds__mode_errors__ArgY2_7)));
+                      }
+                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_13 == (MR_Integer) 0);
+                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                      if (check_hlds__mode_errors__succeeded)
+                        *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_13;
+                      else
+                        {
+                          MR_Word check_hlds__mode_errors__Var_14;
+
+                          {
+                            parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_14, check_hlds__mode_errors__Var_81, check_hlds__mode_errors__ArgY3_9);
+                          }
+                          check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_14 == (MR_Integer) 0);
+                          check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                          if (check_hlds__mode_errors__succeeded)
+                            *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_14;
+                          else
+                            {
+                              parse_tree__prog_data____Compare____mer_inst_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Var_80, check_hlds__mode_errors__ArgY4_11);
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word check_hlds__mode_errors__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__mode_errors__ArgY2_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__mode_errors__ArgY3_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word check_hlds__mode_errors__Var_41;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_41, ((MR_Box) (check_hlds__mode_errors__Var_79)), ((MR_Box) (check_hlds__mode_errors__ArgY1_36)));
+                  }
+                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_41 == (MR_Integer) 0);
+                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                  if (check_hlds__mode_errors__succeeded)
+                    *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_41;
+                  else
+                    {
+                      MR_Word check_hlds__mode_errors__Var_42;
+
+                      {
+                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_42, check_hlds__mode_errors__Var_78, check_hlds__mode_errors__ArgY2_38);
+                      }
+                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_42 == (MR_Integer) 0);
+                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                      if (check_hlds__mode_errors__succeeded)
+                        *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_42;
+                      else
+                        {
+                          parse_tree__prog_data____Compare____cons_id_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Var_77, check_hlds__mode_errors__ArgY3_40);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_60 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__mode_errors__ArgY2_62 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__mode_errors__Var_63;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_63, ((MR_Box) (check_hlds__mode_errors__Var_76)), ((MR_Box) (check_hlds__mode_errors__ArgY1_60)));
+                  }
+                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_63 == (MR_Integer) 0);
+                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                  if (check_hlds__mode_errors__succeeded)
+                    *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_63;
+                  else
+                    {
+                      parse_tree__prog_data____Compare____cons_id_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Var_75, check_hlds__mode_errors__ArgY2_62);
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_21 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_22 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_21 == check_hlds__mode_errors__CastY_22);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_28_28;
+            MR_Word check_hlds__mode_errors__TypeInfo_29_29;
+            MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_4;
+            MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_6;
+            MR_Word check_hlds__mode_errors__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word check_hlds__mode_errors__ArgY3_8;
+            MR_Word check_hlds__mode_errors__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word check_hlds__mode_errors__ArgY4_10;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__mode_errors__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                check_hlds__mode_errors__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                check_hlds__mode_errors__TypeInfo_28_28 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_28_28, ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__TypeInfo_29_29 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_29_29, ((MR_Box) (check_hlds__mode_errors__ArgX2_5)), ((MR_Box) (check_hlds__mode_errors__ArgY2_6)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_7, check_hlds__mode_errors__ArgY3_8);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX4_9, check_hlds__mode_errors__ArgY4_10);
+                          }
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_25_25;
+            MR_Word check_hlds__mode_errors__ArgX1_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_12;
+            MR_Word check_hlds__mode_errors__ArgX2_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_14;
+            MR_Word check_hlds__mode_errors__ArgX3_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word check_hlds__mode_errors__ArgY3_16;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__mode_errors__ArgY3_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                check_hlds__mode_errors__TypeInfo_25_25 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_25_25, ((MR_Box) (check_hlds__mode_errors__ArgX1_11)), ((MR_Box) (check_hlds__mode_errors__ArgY1_12)));
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    {
+                      check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_13, check_hlds__mode_errors__ArgY2_14);
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__mode_errors__ArgX3_15, check_hlds__mode_errors__ArgY3_16);
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_23_23;
+            MR_Word check_hlds__mode_errors__ArgX1_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_18;
+            MR_Word check_hlds__mode_errors__ArgX2_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_20;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__mode_errors__TypeInfo_23_23 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_23_23, ((MR_Box) (check_hlds__mode_errors__ArgX1_17)), ((MR_Box) (check_hlds__mode_errors__ArgY1_18)));
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__mode_errors__ArgX2_19, check_hlds__mode_errors__ArgY2_20);
+                  }
+              }
+          }
+          break;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_errors_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Cast_HeadVar1_4 = check_hlds__mode_errors__HeadVar__2_2;
+    MR_Word check_hlds__mode_errors__Cast_HeadVar2_5 = check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[5], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__mode_errors__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_errors_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Cast_HeadVar1_3 = check_hlds__mode_errors__HeadVar__1_1;
+    MR_Word check_hlds__mode_errors__Cast_HeadVar2_4 = check_hlds__mode_errors__HeadVar__2_2;
+
+    {
+      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[5], ((MR_Box) (check_hlds__mode_errors__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__mode_errors__Cast_HeadVar2_4)));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_error_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_8, ((MR_Box) (check_hlds__mode_errors__ArgX1_4)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_8 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[4], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__ArgX2_6)), ((MR_Box) (check_hlds__mode_errors__ArgY2_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_7 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_8 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_7 == check_hlds__mode_errors__CastY_8);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__TypeInfo_10_10;
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__TypeInfo_10_10 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[4];
+            {
+              check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_10_10, ((MR_Box) (check_hlds__mode_errors__ArgX2_5)), ((MR_Box) (check_hlds__mode_errors__ArgY2_6)));
+            }
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_context_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar1_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar2_5 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Cast_HeadVar1_4, check_hlds__mode_errors__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_context_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__HeadVar__2_1 == check_hlds__mode_errors__HeadVar__2_2);
+
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar1_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar2_5 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Cast_HeadVar1_4, check_hlds__mode_errors__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__HeadVar__2_1 == check_hlds__mode_errors__HeadVar__2_2);
+
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____include_detism_on_modes_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar1_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar2_5 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Cast_HeadVar1_4, check_hlds__mode_errors__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____include_detism_on_modes_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__HeadVar__2_1 == check_hlds__mode_errors__HeadVar__2_2);
+
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____final_inst_error_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar1_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__Cast_HeadVar2_5 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Cast_HeadVar1_4, check_hlds__mode_errors__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____final_inst_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__2_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__HeadVar__2_1 == check_hlds__mode_errors__HeadVar__2_2);
+
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____delayed_goal_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_12 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_13 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_12 == check_hlds__mode_errors__CastY_13);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__Var_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[3], &check_hlds__mode_errors__Var_10, ((MR_Box) (check_hlds__mode_errors__ArgX1_4)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_10 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_10;
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_11;
+
+            {
+              check_hlds__mode_errors____Compare____mode_error_info_0_0(&check_hlds__mode_errors__Var_11, check_hlds__mode_errors__ArgX2_6, check_hlds__mode_errors__ArgY2_7);
+            }
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_11 == (MR_Integer) 0);
+            check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+            if (check_hlds__mode_errors__succeeded)
+              *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_11;
+            else
+              {
+                hlds__hlds_goal____Compare____hlds_goal_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__ArgX3_8, check_hlds__mode_errors__ArgY3_9);
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_info_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_15 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_16 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_15 == check_hlds__mode_errors__CastY_16);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__mode_errors__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word check_hlds__mode_errors__Var_12;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[3], &check_hlds__mode_errors__Var_12, ((MR_Box) (check_hlds__mode_errors__ArgX1_4)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_12 == (MR_Integer) 0);
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_12;
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_13;
+
+            {
+              check_hlds__mode_errors____Compare____mode_error_0_0(&check_hlds__mode_errors__Var_13, check_hlds__mode_errors__ArgX2_6, check_hlds__mode_errors__ArgY2_7);
+            }
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_13 == (MR_Integer) 0);
+            check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+            if (check_hlds__mode_errors__succeeded)
+              *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_13;
+            else
+              {
+                MR_Word check_hlds__mode_errors__Var_14;
+
+                {
+                  mercury__term____Compare____context_0_0(&check_hlds__mode_errors__Var_14, check_hlds__mode_errors__ArgX3_8, check_hlds__mode_errors__ArgY3_9);
+                }
+                check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_14 == (MR_Integer) 0);
+                check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                if (check_hlds__mode_errors__succeeded)
+                  *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_14;
+                else
+                  {
+                    check_hlds__mode_info____Compare____mode_context_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__ArgX4_10, check_hlds__mode_errors__ArgY4_11);
+                  }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_164 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_165 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_164 == check_hlds__mode_errors__CastY_165);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer check_hlds__mode_errors__Var_4;
+        MR_Integer check_hlds__mode_errors__Var_5;
+
+        {
+          check_hlds__mode_errors____Index____mode_error_0_0(check_hlds__mode_errors__HeadVar__2_2, &check_hlds__mode_errors__Var_4);
+        }
+        {
+          check_hlds__mode_errors____Index____mode_error_0_0(check_hlds__mode_errors__HeadVar__3_3, &check_hlds__mode_errors__Var_5);
+        }
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_4 < check_hlds__mode_errors__Var_5);
+        if (check_hlds__mode_errors__succeeded)
+          *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_4 > check_hlds__mode_errors__Var_5);
+            if (check_hlds__mode_errors__succeeded)
+              *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+            else
+              {
+                MR_Word check_hlds__mode_errors__Var_6;
+
+                switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      check_hlds__mode_errors__Var_6 = (MR_Integer) 0;
+                      check_hlds__mode_errors__succeeded = MR_TRUE;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word check_hlds__mode_errors__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Word check_hlds__mode_errors__ArgY1_8;
+                      MR_Word check_hlds__mode_errors__ArgX2_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                      MR_Word check_hlds__mode_errors__ArgY2_10;
+                      MR_Word check_hlds__mode_errors__Var_11;
+                      MR_Integer check_hlds__mode_errors__Var_225;
+                      MR_Integer check_hlds__mode_errors__Var_226;
+
+                      check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                      if (check_hlds__mode_errors__succeeded)
+                        {
+                          check_hlds__mode_errors__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                          check_hlds__mode_errors__ArgY2_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                          check_hlds__mode_errors__Var_225 = (MR_Integer) check_hlds__mode_errors__ArgX1_7;
+                          check_hlds__mode_errors__Var_226 = (MR_Integer) check_hlds__mode_errors__ArgY1_8;
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_11, check_hlds__mode_errors__Var_225, check_hlds__mode_errors__Var_226);
+                          }
+                          check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_11 == (MR_Integer) 0);
+                          check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                          if (check_hlds__mode_errors__succeeded)
+                            check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_11;
+                          else
+                            {
+                              {
+                                mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[5], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX2_9)), ((MR_Box) (check_hlds__mode_errors__ArgY2_10)));
+                              }
+                            }
+                          check_hlds__mode_errors__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_Word check_hlds__mode_errors__TypeInfo_168_168;
+                      MR_Word check_hlds__mode_errors__ArgX1_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Word check_hlds__mode_errors__ArgY1_13;
+
+                      check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 2)));
+                      if (check_hlds__mode_errors__succeeded)
+                        {
+                          check_hlds__mode_errors__ArgY1_13 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                          check_hlds__mode_errors__TypeInfo_168_168 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[5];
+                          {
+                            mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_168_168, &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX1_12)), ((MR_Box) (check_hlds__mode_errors__ArgY1_13)));
+                          }
+                          check_hlds__mode_errors__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_15;
+                          MR_Word check_hlds__mode_errors__ArgX2_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_17;
+                          MR_Word check_hlds__mode_errors__ArgX3_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_19;
+                          MR_Integer check_hlds__mode_errors__ArgX4_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Integer check_hlds__mode_errors__ArgY4_21;
+                          MR_Word check_hlds__mode_errors__Var_22;
+                          MR_Integer check_hlds__mode_errors__Var_229;
+                          MR_Integer check_hlds__mode_errors__Var_230;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__Var_229 = (MR_Integer) check_hlds__mode_errors__ArgX1_14;
+                              check_hlds__mode_errors__Var_230 = (MR_Integer) check_hlds__mode_errors__ArgY1_15;
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_22, check_hlds__mode_errors__Var_229, check_hlds__mode_errors__Var_230);
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_22 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_22;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_23;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_23, ((MR_Box) (check_hlds__mode_errors__ArgX2_16)), ((MR_Box) (check_hlds__mode_errors__ArgY2_17)));
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_23 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_23;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_24;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_24, check_hlds__mode_errors__ArgX3_18, check_hlds__mode_errors__ArgY3_19);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_24 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_24;
+                                      else
+                                        {
+                                          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX4_20, check_hlds__mode_errors__ArgY4_21);
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_26;
+                          MR_Word check_hlds__mode_errors__ArgX2_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_28;
+                          MR_Word check_hlds__mode_errors__Var_29;
+                          MR_Word check_hlds__mode_errors__TypeInfo_173_173;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__TypeInfo_173_173 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_173_173, &check_hlds__mode_errors__Var_29, ((MR_Box) (check_hlds__mode_errors__ArgX1_25)), ((MR_Box) (check_hlds__mode_errors__ArgY1_26)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_29 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_29;
+                              else
+                                {
+                                  parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX2_27, check_hlds__mode_errors__ArgY2_28);
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word check_hlds__mode_errors__TypeInfo_175_175;
+                          MR_Word check_hlds__mode_errors__ArgX1_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_31;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__TypeInfo_175_175 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_175_175, &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX1_30)), ((MR_Box) (check_hlds__mode_errors__ArgY1_31)));
+                              }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_33;
+                          MR_Word check_hlds__mode_errors__ArgX2_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_35;
+                          MR_Word check_hlds__mode_errors__ArgX3_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_37;
+                          MR_Word check_hlds__mode_errors__ArgX4_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_39;
+                          MR_Word check_hlds__mode_errors__Var_40;
+                          MR_Word check_hlds__mode_errors__TypeInfo_176_176;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__TypeInfo_176_176 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_176_176, &check_hlds__mode_errors__Var_40, ((MR_Box) (check_hlds__mode_errors__ArgX1_32)), ((MR_Box) (check_hlds__mode_errors__ArgY1_33)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_40 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_40;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_41;
+
+                                  {
+                                    parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_41, check_hlds__mode_errors__ArgX2_34, check_hlds__mode_errors__ArgY2_35);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_41 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_41;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_42;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_42, check_hlds__mode_errors__ArgX3_36, check_hlds__mode_errors__ArgY3_37);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_42 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_42;
+                                      else
+                                        {
+                                          {
+                                            mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[6], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX4_38)), ((MR_Box) (check_hlds__mode_errors__ArgY4_39)));
+                                          }
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_44;
+                          MR_Word check_hlds__mode_errors__ArgX2_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_46;
+                          MR_Word check_hlds__mode_errors__ArgX3_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_48;
+                          MR_Word check_hlds__mode_errors__ArgX4_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_50;
+                          MR_Word check_hlds__mode_errors__Var_51;
+                          MR_Word check_hlds__mode_errors__TypeInfo_180_180;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__TypeInfo_180_180 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_180_180, &check_hlds__mode_errors__Var_51, ((MR_Box) (check_hlds__mode_errors__ArgX1_43)), ((MR_Box) (check_hlds__mode_errors__ArgY1_44)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_51 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_51;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_52;
+
+                                  {
+                                    check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0(&check_hlds__mode_errors__Var_52, check_hlds__mode_errors__ArgX2_45, check_hlds__mode_errors__ArgY2_46);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_52 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_52;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_53;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_type_0_0(&check_hlds__mode_errors__Var_53, check_hlds__mode_errors__ArgX3_47, check_hlds__mode_errors__ArgY3_48);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_53 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_53;
+                                      else
+                                        {
+                                          MR_Integer check_hlds__mode_errors__Var_231 = (MR_Integer) check_hlds__mode_errors__ArgX4_49;
+                                          MR_Integer check_hlds__mode_errors__Var_232 = (MR_Integer) check_hlds__mode_errors__ArgY4_50;
+
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__Var_231, check_hlds__mode_errors__Var_232);
+                                          }
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_55;
+                          MR_Word check_hlds__mode_errors__ArgX2_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_57;
+                          MR_Word check_hlds__mode_errors__ArgX3_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_59;
+                          MR_Word check_hlds__mode_errors__Var_60;
+                          MR_Word check_hlds__mode_errors__TypeInfo_184_184;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__TypeInfo_184_184 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_184_184, &check_hlds__mode_errors__Var_60, ((MR_Box) (check_hlds__mode_errors__ArgX1_54)), ((MR_Box) (check_hlds__mode_errors__ArgY1_55)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_60 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_60;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_61;
+
+                                  {
+                                    parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_61, check_hlds__mode_errors__ArgX2_56, check_hlds__mode_errors__ArgY2_57);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_61 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_61;
+                                  else
+                                    {
+                                      parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX3_58, check_hlds__mode_errors__ArgY3_59);
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_63;
+                          MR_Word check_hlds__mode_errors__ArgX2_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_65;
+                          MR_Word check_hlds__mode_errors__Var_66;
+                          MR_Word check_hlds__mode_errors__TypeInfo_187_187;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__TypeInfo_187_187 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_187_187, &check_hlds__mode_errors__Var_66, ((MR_Box) (check_hlds__mode_errors__ArgX1_62)), ((MR_Box) (check_hlds__mode_errors__ArgY1_63)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_66 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_66;
+                              else
+                                {
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[8], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX2_64)), ((MR_Box) (check_hlds__mode_errors__ArgY2_65)));
+                                  }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_68;
+                          MR_Word check_hlds__mode_errors__ArgX2_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_70;
+                          MR_Word check_hlds__mode_errors__ArgX3_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_72;
+                          MR_Integer check_hlds__mode_errors__ArgX4_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Integer check_hlds__mode_errors__ArgY4_74;
+                          MR_Word check_hlds__mode_errors__ArgX5_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                          MR_Word check_hlds__mode_errors__ArgY5_76;
+                          MR_Word check_hlds__mode_errors__Var_77;
+                          MR_Word check_hlds__mode_errors__TypeInfo_189_189;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_70 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_74 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__ArgY5_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 5)));
+                              check_hlds__mode_errors__TypeInfo_189_189 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_189_189, &check_hlds__mode_errors__Var_77, ((MR_Box) (check_hlds__mode_errors__ArgX1_67)), ((MR_Box) (check_hlds__mode_errors__ArgY1_68)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_77 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_77;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_78;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[8], &check_hlds__mode_errors__Var_78, ((MR_Box) (check_hlds__mode_errors__ArgX2_69)), ((MR_Box) (check_hlds__mode_errors__ArgY2_70)));
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_78 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_78;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_79;
+
+                                      {
+                                        hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__mode_errors__Var_79, check_hlds__mode_errors__ArgX3_71, check_hlds__mode_errors__ArgY3_72);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_79 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_79;
+                                      else
+                                        {
+                                          MR_Word check_hlds__mode_errors__Var_80;
+
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_80, check_hlds__mode_errors__ArgX4_73, check_hlds__mode_errors__ArgY4_74);
+                                          }
+                                          check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_80 == (MR_Integer) 0);
+                                          check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                          if (check_hlds__mode_errors__succeeded)
+                                            check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_80;
+                                          else
+                                            {
+                                              {
+                                                mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[9], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX5_75)), ((MR_Box) (check_hlds__mode_errors__ArgY5_76)));
+                                              }
+                                            }
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 8:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_82;
+                          MR_Word check_hlds__mode_errors__ArgX2_83 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_84;
+                          MR_Word check_hlds__mode_errors__ArgX3_85 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_86;
+                          MR_Word check_hlds__mode_errors__ArgX4_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_88;
+                          MR_Word check_hlds__mode_errors__Var_89;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_82 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_84 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_88 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              {
+                                check_hlds__mode_info____Compare____var_lock_reason_0_0(&check_hlds__mode_errors__Var_89, check_hlds__mode_errors__ArgX1_81, check_hlds__mode_errors__ArgY1_82);
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_89 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_89;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_90;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_90, ((MR_Box) (check_hlds__mode_errors__ArgX2_83)), ((MR_Box) (check_hlds__mode_errors__ArgY2_84)));
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_90 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_90;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_91;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_91, check_hlds__mode_errors__ArgX3_85, check_hlds__mode_errors__ArgY3_86);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_91 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_91;
+                                      else
+                                        {
+                                          parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX4_87, check_hlds__mode_errors__ArgY4_88);
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 9:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_92 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_93;
+                          MR_Word check_hlds__mode_errors__ArgX2_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_95;
+                          MR_Word check_hlds__mode_errors__Var_96;
+                          MR_Word check_hlds__mode_errors__TypeInfo_198_198;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_95 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__TypeInfo_198_198 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_198_198, &check_hlds__mode_errors__Var_96, ((MR_Box) (check_hlds__mode_errors__ArgX1_92)), ((MR_Box) (check_hlds__mode_errors__ArgY1_93)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_96 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_96;
+                              else
+                                {
+                                  parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX2_94, check_hlds__mode_errors__ArgY2_95);
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 10:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_97 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_98;
+                          MR_Word check_hlds__mode_errors__ArgX2_99 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_100;
+                          MR_Word check_hlds__mode_errors__ArgX3_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_102;
+                          MR_Word check_hlds__mode_errors__ArgX4_103 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_104;
+                          MR_Word check_hlds__mode_errors__Var_105;
+                          MR_Word check_hlds__mode_errors__TypeInfo_200_200;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_98 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_104 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__TypeInfo_200_200 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_200_200, &check_hlds__mode_errors__Var_105, ((MR_Box) (check_hlds__mode_errors__ArgX1_97)), ((MR_Box) (check_hlds__mode_errors__ArgY1_98)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_105 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_105;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_106;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_106, ((MR_Box) (check_hlds__mode_errors__ArgX2_99)), ((MR_Box) (check_hlds__mode_errors__ArgY2_100)));
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_106 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_106;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_107;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_107, check_hlds__mode_errors__ArgX3_101, check_hlds__mode_errors__ArgY3_102);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_107 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_107;
+                                      else
+                                        {
+                                          parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX4_103, check_hlds__mode_errors__ArgY4_104);
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 11:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_108 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_109;
+                          MR_Word check_hlds__mode_errors__ArgX2_110 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_111;
+                          MR_Word check_hlds__mode_errors__ArgX3_112 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_113;
+                          MR_Word check_hlds__mode_errors__ArgX4_114 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_115;
+                          MR_Word check_hlds__mode_errors__ArgX5_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                          MR_Word check_hlds__mode_errors__ArgY5_117;
+                          MR_Word check_hlds__mode_errors__Var_118;
+                          MR_Word check_hlds__mode_errors__TypeInfo_204_204;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_111 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_113 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_115 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__ArgY5_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 5)));
+                              check_hlds__mode_errors__TypeInfo_204_204 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_204_204, &check_hlds__mode_errors__Var_118, ((MR_Box) (check_hlds__mode_errors__ArgX1_108)), ((MR_Box) (check_hlds__mode_errors__ArgY1_109)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_118 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_118;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_119;
+
+                                  {
+                                    parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__mode_errors__Var_119, check_hlds__mode_errors__ArgX2_110, check_hlds__mode_errors__ArgY2_111);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_119 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_119;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_120;
+
+                                      {
+                                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], &check_hlds__mode_errors__Var_120, ((MR_Box) (check_hlds__mode_errors__ArgX3_112)), ((MR_Box) (check_hlds__mode_errors__ArgY3_113)));
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_120 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_120;
+                                      else
+                                        {
+                                          MR_Word check_hlds__mode_errors__Var_121;
+
+                                          {
+                                            parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_121, check_hlds__mode_errors__ArgX4_114, check_hlds__mode_errors__ArgY4_115);
+                                          }
+                                          check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_121 == (MR_Integer) 0);
+                                          check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                          if (check_hlds__mode_errors__succeeded)
+                                            check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_121;
+                                          else
+                                            {
+                                              {
+                                                mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[8], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX5_116)), ((MR_Box) (check_hlds__mode_errors__ArgY5_117)));
+                                              }
+                                            }
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 12:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_122 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_123;
+                          MR_Word check_hlds__mode_errors__ArgX2_124 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_125;
+                          MR_Word check_hlds__mode_errors__ArgX3_126 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_127;
+                          MR_Word check_hlds__mode_errors__Var_128;
+                          MR_Word check_hlds__mode_errors__TypeInfo_209_209;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_123 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_125 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_127 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__TypeInfo_209_209 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_209_209, &check_hlds__mode_errors__Var_128, ((MR_Box) (check_hlds__mode_errors__ArgX1_122)), ((MR_Box) (check_hlds__mode_errors__ArgY1_123)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_128 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_128;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_129;
+
+                                  {
+                                    parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_129, check_hlds__mode_errors__ArgX2_124, check_hlds__mode_errors__ArgY2_125);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_129 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_129;
+                                  else
+                                    {
+                                      parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX3_126, check_hlds__mode_errors__ArgY3_127);
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 13:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_130 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_131;
+                          MR_Word check_hlds__mode_errors__ArgX2_132 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_133;
+                          MR_Word check_hlds__mode_errors__ArgX3_134 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_135;
+                          MR_Word check_hlds__mode_errors__Var_136;
+                          MR_Word check_hlds__mode_errors__TypeInfo_212_212;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_131 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_133 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_135 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__TypeInfo_212_212 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_212_212, &check_hlds__mode_errors__Var_136, ((MR_Box) (check_hlds__mode_errors__ArgX1_130)), ((MR_Box) (check_hlds__mode_errors__ArgY1_131)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_136 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_136;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_137;
+
+                                  {
+                                    hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__mode_errors__Var_137, check_hlds__mode_errors__ArgX2_132, check_hlds__mode_errors__ArgY2_133);
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_137 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_137;
+                                  else
+                                    {
+                                      check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX3_134, check_hlds__mode_errors__ArgY3_135);
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 14:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_138 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_139;
+                          MR_Word check_hlds__mode_errors__ArgX2_140 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_141;
+                          MR_Word check_hlds__mode_errors__Var_142;
+                          MR_Word check_hlds__mode_errors__TypeInfo_215_215;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_139 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_141 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__TypeInfo_215_215 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[10];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_215_215, &check_hlds__mode_errors__Var_142, ((MR_Box) (check_hlds__mode_errors__ArgX1_138)), ((MR_Box) (check_hlds__mode_errors__ArgY1_139)));
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_142 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_142;
+                              else
+                                {
+                                  check_hlds__mode_errors____Compare____schedule_culprit_0_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__ArgX2_140, check_hlds__mode_errors__ArgY2_141);
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 15:
+                        {
+                          MR_Integer check_hlds__mode_errors__ArgX1_143 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Integer check_hlds__mode_errors__ArgY1_144;
+                          MR_Word check_hlds__mode_errors__ArgX2_145 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_146;
+                          MR_Word check_hlds__mode_errors__ArgX3_147 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word check_hlds__mode_errors__ArgY3_148;
+                          MR_Word check_hlds__mode_errors__ArgX4_149 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word check_hlds__mode_errors__ArgY4_150;
+                          MR_Word check_hlds__mode_errors__ArgX5_151 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                          MR_Word check_hlds__mode_errors__ArgY5_152;
+                          MR_Word check_hlds__mode_errors__Var_153;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_144 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_146 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__ArgY3_148 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 3)));
+                              check_hlds__mode_errors__ArgY4_150 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 4)));
+                              check_hlds__mode_errors__ArgY5_152 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 5)));
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_153, check_hlds__mode_errors__ArgX1_143, check_hlds__mode_errors__ArgY1_144);
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_153 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_153;
+                              else
+                                {
+                                  MR_Word check_hlds__mode_errors__Var_154;
+
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_154, ((MR_Box) (check_hlds__mode_errors__ArgX2_145)), ((MR_Box) (check_hlds__mode_errors__ArgY2_146)));
+                                  }
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_154 == (MR_Integer) 0);
+                                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                  if (check_hlds__mode_errors__succeeded)
+                                    check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_154;
+                                  else
+                                    {
+                                      MR_Word check_hlds__mode_errors__Var_155;
+
+                                      {
+                                        parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_155, check_hlds__mode_errors__ArgX3_147, check_hlds__mode_errors__ArgY3_148);
+                                      }
+                                      check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_155 == (MR_Integer) 0);
+                                      check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                      if (check_hlds__mode_errors__succeeded)
+                                        check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_155;
+                                      else
+                                        {
+                                          MR_Word check_hlds__mode_errors__Var_156;
+
+                                          {
+                                            parse_tree__prog_data____Compare____mer_inst_0_0(&check_hlds__mode_errors__Var_156, check_hlds__mode_errors__ArgX4_149, check_hlds__mode_errors__ArgY4_150);
+                                          }
+                                          check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_156 == (MR_Integer) 0);
+                                          check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                                          if (check_hlds__mode_errors__succeeded)
+                                            check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_156;
+                                          else
+                                            {
+                                              MR_Integer check_hlds__mode_errors__Var_227 = (MR_Integer) check_hlds__mode_errors__ArgX5_151;
+                                              MR_Integer check_hlds__mode_errors__Var_228 = (MR_Integer) check_hlds__mode_errors__ArgY5_152;
+
+                                              {
+                                                mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_6, check_hlds__mode_errors__Var_227, check_hlds__mode_errors__Var_228);
+                                              }
+                                            }
+                                        }
+                                    }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 16:
+                        {
+                          MR_Word check_hlds__mode_errors__ArgX1_157 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_158;
+                          MR_Word check_hlds__mode_errors__ArgX2_159 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word check_hlds__mode_errors__ArgY2_160;
+                          MR_Word check_hlds__mode_errors__Var_161;
+                          MR_Integer check_hlds__mode_errors__Var_233;
+                          MR_Integer check_hlds__mode_errors__Var_234;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 16)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_158 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__ArgY2_160 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 2)));
+                              check_hlds__mode_errors__Var_233 = (MR_Integer) check_hlds__mode_errors__ArgX1_157;
+                              check_hlds__mode_errors__Var_234 = (MR_Integer) check_hlds__mode_errors__ArgY1_158;
+                              {
+                                mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__mode_errors__Var_161, check_hlds__mode_errors__Var_233, check_hlds__mode_errors__Var_234);
+                              }
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_161 == (MR_Integer) 0);
+                              check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                              if (check_hlds__mode_errors__succeeded)
+                                check_hlds__mode_errors__Var_6 = check_hlds__mode_errors__Var_161;
+                              else
+                                {
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX2_159)), ((MR_Box) (check_hlds__mode_errors__ArgY2_160)));
+                                  }
+                                }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 17:
+                        {
+                          MR_Word check_hlds__mode_errors__TypeInfo_224_224;
+                          MR_Word check_hlds__mode_errors__ArgX1_162 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word check_hlds__mode_errors__ArgY1_163;
+
+                          check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 17)));
+                          if (check_hlds__mode_errors__succeeded)
+                            {
+                              check_hlds__mode_errors__ArgY1_163 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                              check_hlds__mode_errors__TypeInfo_224_224 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                              {
+                                mercury__builtin__compare_3_p_0(check_hlds__mode_errors__TypeInfo_224_224, &check_hlds__mode_errors__Var_6, ((MR_Box) (check_hlds__mode_errors__ArgX1_162)), ((MR_Box) (check_hlds__mode_errors__ArgY1_163)));
+                              }
+                              check_hlds__mode_errors__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_6;
+                else
+                  {
+                    mercury__private_builtin__compare_error_0_p_0();
+                    return;
+                  }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_22 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_23 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_22 == check_hlds__mode_errors__CastY_23);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_28)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_27)), ((MR_Box) (check_hlds__mode_errors__ArgY1_13)));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_29)), ((MR_Box) (check_hlds__mode_errors__ArgY1_21)));
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____schedule_culprit_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_11 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_10 == check_hlds__mode_errors__CastY_11);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__mode_errors__HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__mode_errors__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__mode_errors__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(check_hlds__mode_errors__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    hlds__hlds_goal____Compare____hlds_goal_0_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Var_13, check_hlds__mode_errors__ArgY1_7);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_36 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+    MR_Integer check_hlds__mode_errors__CastY_37 = (MR_Integer) check_hlds__mode_errors__HeadVar__3_3;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_36 == check_hlds__mode_errors__CastY_37);
+    if (check_hlds__mode_errors__succeeded)
+      *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_47)), ((MR_Box) (check_hlds__mode_errors__ArgY1_5)));
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__mode_errors__ArgY2_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__mode_errors__Var_19;
+
+                  {
+                    parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__mode_errors__Var_19, check_hlds__mode_errors__Var_44, check_hlds__mode_errors__ArgY1_16);
+                  }
+                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_19 == (MR_Integer) 0);
+                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                  if (check_hlds__mode_errors__succeeded)
+                    *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_19;
+                  else
+                    {
+                      {
+                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_43)), ((MR_Box) (check_hlds__mode_errors__ArgY2_18)));
+                      }
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__mode_errors__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__mode_errors__ArgY1_32 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__mode_errors__ArgY2_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__mode_errors__Var_35;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[7], &check_hlds__mode_errors__Var_35, ((MR_Box) (check_hlds__mode_errors__Var_46)), ((MR_Box) (check_hlds__mode_errors__ArgY1_32)));
+                  }
+                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_35 == (MR_Integer) 0);
+                  check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+                  if (check_hlds__mode_errors__succeeded)
+                    *check_hlds__mode_errors__HeadVar__1_1 = check_hlds__mode_errors__Var_35;
+                  else
+                    {
+                      {
+                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[11], check_hlds__mode_errors__HeadVar__1_1, ((MR_Box) (check_hlds__mode_errors__Var_45)), ((MR_Box) (check_hlds__mode_errors__ArgY2_34)));
+                      }
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors____Index____mode_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Integer * check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 8;
+        break;
+      case (MR_Integer) 1:
+        *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 1:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 3;
+            break;
+          case (MR_Integer) 2:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 3:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 5;
+            break;
+          case (MR_Integer) 4:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 6;
+            break;
+          case (MR_Integer) 5:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 7;
+            break;
+          case (MR_Integer) 6:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 9;
+            break;
+          case (MR_Integer) 7:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 10;
+            break;
+          case (MR_Integer) 8:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 11;
+            break;
+          case (MR_Integer) 9:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 12;
+            break;
+          case (MR_Integer) 10:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 13;
+            break;
+          case (MR_Integer) 11:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 14;
+            break;
+          case (MR_Integer) 12:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 15;
+            break;
+          case (MR_Integer) 13:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 16;
+            break;
+          case (MR_Integer) 14:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 17;
+            break;
+          case (MR_Integer) 15:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 18;
+            break;
+          case (MR_Integer) 16:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 19;
+            break;
+          case (MR_Integer) 17:
+            *check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 20;
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____delayed_goal_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[3], ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            {
+              check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_info_0_0(check_hlds__mode_errors__ArgX2_5, check_hlds__mode_errors__ArgY2_6);
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(check_hlds__mode_errors__ArgX3_7, check_hlds__mode_errors__ArgY3_8);
+              }
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_info_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_11 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_12 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_11 == check_hlds__mode_errors__CastY_12);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word check_hlds__mode_errors__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+
+        {
+          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[3], ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+        }
+        if (check_hlds__mode_errors__succeeded)
+          {
+            {
+              check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_0_0(check_hlds__mode_errors__ArgX2_5, check_hlds__mode_errors__ArgY2_6);
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                {
+                  check_hlds__mode_errors__succeeded = mercury__term____Unify____context_0_0(check_hlds__mode_errors__ArgX3_7, check_hlds__mode_errors__ArgY3_8);
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__succeeded = check_hlds__mode_info____Unify____mode_context_0_0(check_hlds__mode_errors__ArgX4_9, check_hlds__mode_errors__ArgY4_10);
+                  }
+              }
+          }
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_123 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_124 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_123 == check_hlds__mode_errors__CastY_124);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer check_hlds__mode_errors__CastX_45 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+            MR_Integer check_hlds__mode_errors__CastY_46 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastY_46 == check_hlds__mode_errors__CastX_45);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_130_130;
+            MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_4;
+            MR_Word check_hlds__mode_errors__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_6;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX1_3 == check_hlds__mode_errors__ArgY1_4);
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__TypeInfo_130_130 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[5];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_130_130, ((MR_Box) (check_hlds__mode_errors__ArgX2_5)), ((MR_Box) (check_hlds__mode_errors__ArgY2_6)));
+                    }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_147_147;
+            MR_Word check_hlds__mode_errors__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_8;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__TypeInfo_147_147 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[5];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_147_147, ((MR_Box) (check_hlds__mode_errors__ArgX1_7)), ((MR_Box) (check_hlds__mode_errors__ArgY1_8)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_134_134;
+                MR_Word check_hlds__mode_errors__ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_10;
+                MR_Word check_hlds__mode_errors__ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_12;
+                MR_Word check_hlds__mode_errors__ArgX3_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_14;
+                MR_Integer check_hlds__mode_errors__ArgX4_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Integer check_hlds__mode_errors__ArgY4_16;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX1_9 == check_hlds__mode_errors__ArgY1_10);
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_134_134 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_134_134, ((MR_Box) (check_hlds__mode_errors__ArgX2_11)), ((MR_Box) (check_hlds__mode_errors__ArgY2_12)));
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_13, check_hlds__mode_errors__ArgY3_14);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX4_15 == check_hlds__mode_errors__ArgY4_16);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_148_148;
+                MR_Word check_hlds__mode_errors__ArgX1_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_18;
+                MR_Word check_hlds__mode_errors__ArgX2_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_20;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__TypeInfo_148_148 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_148_148, ((MR_Box) (check_hlds__mode_errors__ArgX1_17)), ((MR_Box) (check_hlds__mode_errors__ArgY1_18)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_19, check_hlds__mode_errors__ArgY2_20);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_170_170;
+                MR_Word check_hlds__mode_errors__ArgX1_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_22;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__TypeInfo_170_170 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_170_170, ((MR_Box) (check_hlds__mode_errors__ArgX1_21)), ((MR_Box) (check_hlds__mode_errors__ArgY1_22)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_166_166;
+                MR_Word check_hlds__mode_errors__TypeInfo_169_169;
+                MR_Word check_hlds__mode_errors__ArgX1_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_24;
+                MR_Word check_hlds__mode_errors__ArgX2_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_26;
+                MR_Word check_hlds__mode_errors__ArgX3_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_28;
+                MR_Word check_hlds__mode_errors__ArgX4_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_30;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__TypeInfo_166_166 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_166_166, ((MR_Box) (check_hlds__mode_errors__ArgX1_23)), ((MR_Box) (check_hlds__mode_errors__ArgY1_24)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_25, check_hlds__mode_errors__ArgY2_26);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_27, check_hlds__mode_errors__ArgY3_28);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                check_hlds__mode_errors__TypeInfo_169_169 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[6];
+                                {
+                                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_169_169, ((MR_Box) (check_hlds__mode_errors__ArgX4_29)), ((MR_Box) (check_hlds__mode_errors__ArgY4_30)));
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_150_150;
+                MR_Word check_hlds__mode_errors__ArgX1_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_32;
+                MR_Word check_hlds__mode_errors__ArgX2_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_34;
+                MR_Word check_hlds__mode_errors__ArgX3_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_36;
+                MR_Word check_hlds__mode_errors__ArgX4_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_38;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__TypeInfo_150_150 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_150_150, ((MR_Box) (check_hlds__mode_errors__ArgX1_31)), ((MR_Box) (check_hlds__mode_errors__ArgY1_32)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0(check_hlds__mode_errors__ArgX2_33, check_hlds__mode_errors__ArgY2_34);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_type_0_0(check_hlds__mode_errors__ArgX3_35, check_hlds__mode_errors__ArgY3_36);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX4_37 == check_hlds__mode_errors__ArgY4_38);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_136_136;
+                MR_Word check_hlds__mode_errors__ArgX1_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_40;
+                MR_Word check_hlds__mode_errors__ArgX2_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_42;
+                MR_Word check_hlds__mode_errors__ArgX3_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_44;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__TypeInfo_136_136 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_136_136, ((MR_Box) (check_hlds__mode_errors__ArgX1_39)), ((MR_Box) (check_hlds__mode_errors__ArgY1_40)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_41, check_hlds__mode_errors__ArgY2_42);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_43, check_hlds__mode_errors__ArgY3_44);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_143_143;
+                MR_Word check_hlds__mode_errors__TypeInfo_144_144;
+                MR_Word check_hlds__mode_errors__ArgX1_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_48;
+                MR_Word check_hlds__mode_errors__ArgX2_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_50;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__TypeInfo_143_143 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_143_143, ((MR_Box) (check_hlds__mode_errors__ArgX1_47)), ((MR_Box) (check_hlds__mode_errors__ArgY1_48)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_144_144 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[8];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_144_144, ((MR_Box) (check_hlds__mode_errors__ArgX2_49)), ((MR_Box) (check_hlds__mode_errors__ArgY2_50)));
+                        }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_139_139;
+                MR_Word check_hlds__mode_errors__TypeInfo_140_140;
+                MR_Word check_hlds__mode_errors__TypeInfo_142_142;
+                MR_Word check_hlds__mode_errors__ArgX1_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_52;
+                MR_Word check_hlds__mode_errors__ArgX2_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_54;
+                MR_Word check_hlds__mode_errors__ArgX3_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_56;
+                MR_Integer check_hlds__mode_errors__ArgX4_57 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Integer check_hlds__mode_errors__ArgY4_58;
+                MR_Word check_hlds__mode_errors__ArgX5_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 5)));
+                MR_Word check_hlds__mode_errors__ArgY5_60;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_58 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__ArgY5_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                    check_hlds__mode_errors__TypeInfo_139_139 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_139_139, ((MR_Box) (check_hlds__mode_errors__ArgX1_51)), ((MR_Box) (check_hlds__mode_errors__ArgY1_52)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_140_140 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[8];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_140_140, ((MR_Box) (check_hlds__mode_errors__ArgX2_53)), ((MR_Box) (check_hlds__mode_errors__ArgY2_54)));
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__mode_errors__ArgX3_55, check_hlds__mode_errors__ArgY3_56);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX4_57 == check_hlds__mode_errors__ArgY4_58);
+                                if (check_hlds__mode_errors__succeeded)
+                                  {
+                                    check_hlds__mode_errors__TypeInfo_142_142 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[9];
+                                    {
+                                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_142_142, ((MR_Box) (check_hlds__mode_errors__ArgX5_59)), ((MR_Box) (check_hlds__mode_errors__ArgY5_60)));
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_126_126;
+                MR_Word check_hlds__mode_errors__ArgX1_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_62;
+                MR_Word check_hlds__mode_errors__ArgX2_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_64;
+                MR_Word check_hlds__mode_errors__ArgX3_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_66;
+                MR_Word check_hlds__mode_errors__ArgX4_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_68;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    {
+                      check_hlds__mode_errors__succeeded = check_hlds__mode_info____Unify____var_lock_reason_0_0(check_hlds__mode_errors__ArgX1_61, check_hlds__mode_errors__ArgY1_62);
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_126_126 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_126_126, ((MR_Box) (check_hlds__mode_errors__ArgX2_63)), ((MR_Box) (check_hlds__mode_errors__ArgY2_64)));
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_65, check_hlds__mode_errors__ArgY3_66);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX4_67, check_hlds__mode_errors__ArgY4_68);
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_145_145;
+                MR_Word check_hlds__mode_errors__ArgX1_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_70;
+                MR_Word check_hlds__mode_errors__ArgX2_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_72;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_70 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__TypeInfo_145_145 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_145_145, ((MR_Box) (check_hlds__mode_errors__ArgX1_69)), ((MR_Box) (check_hlds__mode_errors__ArgY1_70)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_71, check_hlds__mode_errors__ArgY2_72);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_162_162;
+                MR_Word check_hlds__mode_errors__TypeInfo_163_163;
+                MR_Word check_hlds__mode_errors__ArgX1_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_74;
+                MR_Word check_hlds__mode_errors__ArgX2_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_76;
+                MR_Word check_hlds__mode_errors__ArgX3_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_78;
+                MR_Word check_hlds__mode_errors__ArgX4_79 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_80;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_78 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_80 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__TypeInfo_162_162 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_162_162, ((MR_Box) (check_hlds__mode_errors__ArgX1_73)), ((MR_Box) (check_hlds__mode_errors__ArgY1_74)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_163_163 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_163_163, ((MR_Box) (check_hlds__mode_errors__ArgX2_75)), ((MR_Box) (check_hlds__mode_errors__ArgY2_76)));
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_77, check_hlds__mode_errors__ArgY3_78);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX4_79, check_hlds__mode_errors__ArgY4_80);
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_152_152;
+                MR_Word check_hlds__mode_errors__TypeInfo_154_154;
+                MR_Word check_hlds__mode_errors__TypeInfo_156_156;
+                MR_Word check_hlds__mode_errors__ArgX1_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_82;
+                MR_Word check_hlds__mode_errors__ArgX2_83 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_84;
+                MR_Word check_hlds__mode_errors__ArgX3_85 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_86;
+                MR_Word check_hlds__mode_errors__ArgX4_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_88;
+                MR_Word check_hlds__mode_errors__ArgX5_89 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 5)));
+                MR_Word check_hlds__mode_errors__ArgY5_90;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_82 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_84 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_88 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__ArgY5_90 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                    check_hlds__mode_errors__TypeInfo_152_152 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_152_152, ((MR_Box) (check_hlds__mode_errors__ArgX1_81)), ((MR_Box) (check_hlds__mode_errors__ArgY1_82)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__mode_errors__ArgX2_83, check_hlds__mode_errors__ArgY2_84);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            check_hlds__mode_errors__TypeInfo_154_154 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                            {
+                              check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_154_154, ((MR_Box) (check_hlds__mode_errors__ArgX3_85)), ((MR_Box) (check_hlds__mode_errors__ArgY3_86)));
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                {
+                                  check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX4_87, check_hlds__mode_errors__ArgY4_88);
+                                }
+                                if (check_hlds__mode_errors__succeeded)
+                                  {
+                                    check_hlds__mode_errors__TypeInfo_156_156 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[8];
+                                    {
+                                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_156_156, ((MR_Box) (check_hlds__mode_errors__ArgX5_89)), ((MR_Box) (check_hlds__mode_errors__ArgY5_90)));
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_157_157;
+                MR_Word check_hlds__mode_errors__ArgX1_91 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_92;
+                MR_Word check_hlds__mode_errors__ArgX2_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_94;
+                MR_Word check_hlds__mode_errors__ArgX3_95 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_96;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_92 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_96 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__TypeInfo_157_157 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_157_157, ((MR_Box) (check_hlds__mode_errors__ArgX1_91)), ((MR_Box) (check_hlds__mode_errors__ArgY1_92)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX2_93, check_hlds__mode_errors__ArgY2_94);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_95, check_hlds__mode_errors__ArgY3_96);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_160_160;
+                MR_Word check_hlds__mode_errors__ArgX1_97 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_98;
+                MR_Word check_hlds__mode_errors__ArgX2_99 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_100;
+                MR_Word check_hlds__mode_errors__ArgX3_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_102;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_98 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__TypeInfo_160_160 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_160_160, ((MR_Box) (check_hlds__mode_errors__ArgX1_97)), ((MR_Box) (check_hlds__mode_errors__ArgY1_98)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        {
+                          check_hlds__mode_errors__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__mode_errors__ArgX2_99, check_hlds__mode_errors__ArgY2_100);
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0(check_hlds__mode_errors__ArgX3_101, check_hlds__mode_errors__ArgY3_102);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 14:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_129_129;
+                MR_Word check_hlds__mode_errors__ArgX1_103 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_104;
+                MR_Word check_hlds__mode_errors__ArgX2_105 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_106;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_104 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_106 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__TypeInfo_129_129 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[10];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_129_129, ((MR_Box) (check_hlds__mode_errors__ArgX1_103)), ((MR_Box) (check_hlds__mode_errors__ArgY1_104)));
+                    }
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____schedule_culprit_0_0(check_hlds__mode_errors__ArgX2_105, check_hlds__mode_errors__ArgY2_106);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 15:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_131_131;
+                MR_Integer check_hlds__mode_errors__ArgX1_107 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer check_hlds__mode_errors__ArgY1_108;
+                MR_Word check_hlds__mode_errors__ArgX2_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_110;
+                MR_Word check_hlds__mode_errors__ArgX3_111 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__ArgY3_112;
+                MR_Word check_hlds__mode_errors__ArgX4_113 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word check_hlds__mode_errors__ArgY4_114;
+                MR_Word check_hlds__mode_errors__ArgX5_115 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 5)));
+                MR_Word check_hlds__mode_errors__ArgY5_116;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_108 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_110 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__ArgY3_112 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 3)));
+                    check_hlds__mode_errors__ArgY4_114 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 4)));
+                    check_hlds__mode_errors__ArgY5_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 5)));
+                    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX1_107 == check_hlds__mode_errors__ArgY1_108);
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_131_131 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_131_131, ((MR_Box) (check_hlds__mode_errors__ArgX2_109)), ((MR_Box) (check_hlds__mode_errors__ArgY2_110)));
+                        }
+                        if (check_hlds__mode_errors__succeeded)
+                          {
+                            {
+                              check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX3_111, check_hlds__mode_errors__ArgY3_112);
+                            }
+                            if (check_hlds__mode_errors__succeeded)
+                              {
+                                {
+                                  check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(check_hlds__mode_errors__ArgX4_113, check_hlds__mode_errors__ArgY4_114);
+                                }
+                                if (check_hlds__mode_errors__succeeded)
+                                  check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX5_115 == check_hlds__mode_errors__ArgY5_116);
+                              }
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 16:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_172_172;
+                MR_Word check_hlds__mode_errors__ArgX1_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_118;
+                MR_Word check_hlds__mode_errors__ArgX2_119 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__ArgY2_120;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 16)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_118 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__ArgY2_120 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__ArgX1_117 == check_hlds__mode_errors__ArgY1_118);
+                    if (check_hlds__mode_errors__succeeded)
+                      {
+                        check_hlds__mode_errors__TypeInfo_172_172 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                        {
+                          check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_172_172, ((MR_Box) (check_hlds__mode_errors__ArgX2_119)), ((MR_Box) (check_hlds__mode_errors__ArgY2_120)));
+                        }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 17:
+              {
+                MR_Word check_hlds__mode_errors__TypeInfo_171_171;
+                MR_Word check_hlds__mode_errors__ArgX1_121 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__ArgY1_122;
+
+                check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 17)));
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__ArgY1_122 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__mode_errors__TypeInfo_171_171 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_171_171, ((MR_Box) (check_hlds__mode_errors__ArgX1_121)), ((MR_Box) (check_hlds__mode_errors__ArgY1_122)));
+                    }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_12_12;
+            MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_4;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__TypeInfo_12_12 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_12_12, ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_11_11;
+            MR_Word check_hlds__mode_errors__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_6;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__TypeInfo_11_11 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_11_11, ((MR_Box) (check_hlds__mode_errors__ArgX1_5)), ((MR_Box) (check_hlds__mode_errors__ArgY1_6)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_13_13;
+            MR_Word check_hlds__mode_errors__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_8;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__TypeInfo_13_13 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_13_13, ((MR_Box) (check_hlds__mode_errors__ArgX1_7)), ((MR_Box) (check_hlds__mode_errors__ArgY1_8)));
+                }
+              }
+          }
+          break;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____schedule_culprit_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_9 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_10 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_9 == check_hlds__mode_errors__CastY_10);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__mode_errors__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer check_hlds__mode_errors__CastX_3 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+                MR_Integer check_hlds__mode_errors__CastY_4 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+                check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastY_4 == check_hlds__mode_errors__CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer check_hlds__mode_errors__CastX_7 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+                MR_Integer check_hlds__mode_errors__CastY_8 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+                check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastY_8 == check_hlds__mode_errors__CastX_7);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_6;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                {
+                  check_hlds__mode_errors__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(check_hlds__mode_errors__ArgX1_5, check_hlds__mode_errors__ArgY1_6);
+                }
+              }
+          }
+          break;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Integer check_hlds__mode_errors__CastX_13 = (MR_Integer) check_hlds__mode_errors__HeadVar__1_1;
+    MR_Integer check_hlds__mode_errors__CastY_14 = (MR_Integer) check_hlds__mode_errors__HeadVar__2_2;
+
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__CastX_13 == check_hlds__mode_errors__CastY_14);
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_19_19;
+            MR_Word check_hlds__mode_errors__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_4;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__TypeInfo_19_19 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_19_19, ((MR_Box) (check_hlds__mode_errors__ArgX1_3)), ((MR_Box) (check_hlds__mode_errors__ArgY1_4)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_16_16;
+            MR_Word check_hlds__mode_errors__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_6;
+            MR_Word check_hlds__mode_errors__ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_8;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                {
+                  check_hlds__mode_errors__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__mode_errors__ArgX1_5, check_hlds__mode_errors__ArgY1_6);
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__TypeInfo_16_16 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_16_16, ((MR_Box) (check_hlds__mode_errors__ArgX2_7)), ((MR_Box) (check_hlds__mode_errors__ArgY2_8)));
+                    }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__mode_errors__TypeInfo_17_17;
+            MR_Word check_hlds__mode_errors__TypeInfo_18_18;
+            MR_Word check_hlds__mode_errors__ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ArgY1_10;
+            MR_Word check_hlds__mode_errors__ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__ArgY2_12;
+
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__mode_errors__ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__mode_errors__TypeInfo_17_17 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[7];
+                {
+                  check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_17_17, ((MR_Box) (check_hlds__mode_errors__ArgX1_9)), ((MR_Box) (check_hlds__mode_errors__ArgY1_10)));
+                }
+                if (check_hlds__mode_errors__succeeded)
+                  {
+                    check_hlds__mode_errors__TypeInfo_18_18 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[11];
+                    {
+                      check_hlds__mode_errors__succeeded = mercury__builtin__unify_2_p_0(check_hlds__mode_errors__TypeInfo_18_18, ((MR_Box) (check_hlds__mode_errors__ArgX2_11)), ((MR_Box) (check_hlds__mode_errors__ArgY2_12)));
+                    }
+                  }
+              }
+          }
+          break;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_in_context_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__VarNamePiece_7,
+  MR_Word check_hlds__mode_errors__ReportIsGround_8,
+  MR_Word check_hlds__mode_errors__HeadVar__4_4)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Msg_11;
+    MR_Word check_hlds__mode_errors__Context_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__4_4, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__Inst_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__HeadVar__4_4, (MR_Integer) 1)));
+
+    switch (check_hlds__mode_errors__ReportIsGround_8) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__IntroPieces_12;
+          MR_Word check_hlds__mode_errors__Pieces_13;
+          MR_Word check_hlds__mode_errors__Var_38;
+          MR_Word check_hlds__mode_errors__Var_43;
+          MR_Word check_hlds__mode_errors__Var_44;
+          MR_Word check_hlds__mode_errors__Var_58;
+          MR_Word check_hlds__mode_errors__Var_59;
+          MR_Word check_hlds__mode_errors__Var_61;
+          MR_Word check_hlds__mode_errors__Var_64;
+          MR_Word check_hlds__mode_errors__ModuleInfo_89;
+          MR_Word check_hlds__mode_errors__InstVarSet_90;
+
+          {
+            check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_7));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[306])));
+          }
+          {
+            check_hlds__mode_errors__IntroPieces_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[305])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_12, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+          }
+          check_hlds__mode_errors__Var_59 = (MR_Word) MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[233]);
+          {
+            check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__IntroPieces_12));
+          }
+          {
+            check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_89);
+          }
+          {
+            check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__InstVarSet_90);
+          }
+          {
+            check_hlds__mode_errors__Var_64 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_89, check_hlds__mode_errors__InstVarSet_90, (MR_Integer) 1, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[210]), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[210]), check_hlds__mode_errors__Inst_10);
+          }
+          {
+            check_hlds__mode_errors__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_61, 0) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_61, 1) = ((MR_Box) (check_hlds__mode_errors__Var_64));
+          }
+          {
+            check_hlds__mode_errors__Pieces_13 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Var_58, check_hlds__mode_errors__Var_61);
+          }
+          {
+            check_hlds__mode_errors__Var_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (check_hlds__mode_errors__Pieces_13));
+          }
+          {
+            check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Msg_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__ModuleInfo_14;
+
+          {
+            check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_14);
+          }
+          {
+            check_hlds__mode_errors__succeeded = check_hlds__inst_test__inst_is_ground_2_p_0(check_hlds__mode_errors__ModuleInfo_14, check_hlds__mode_errors__Inst_10);
+          }
+          if (check_hlds__mode_errors__succeeded)
+            {
+              MR_Word check_hlds__mode_errors__Var_17;
+              MR_Word check_hlds__mode_errors__Var_22;
+              MR_Word check_hlds__mode_errors__Var_23;
+              MR_Word check_hlds__mode_errors__IntroPieces_46;
+              MR_Word check_hlds__mode_errors__Pieces_47;
+
+              {
+                check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_7));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[308])));
+              }
+              {
+                check_hlds__mode_errors__IntroPieces_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_46, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[305])));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_46, 1) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+              }
+              {
+                check_hlds__mode_errors__Pieces_47 = check_hlds__mode_errors__report_inst_in_branch_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__IntroPieces_46, check_hlds__mode_errors__Inst_10);
+              }
+              {
+                check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Pieces_47));
+                MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_23, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                check_hlds__mode_errors__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_22, 0) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                check_hlds__mode_errors__Msg_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 1) = ((MR_Box) (check_hlds__mode_errors__Var_22));
+              }
+            }
+          else
+            {
+              MR_Word check_hlds__mode_errors__Var_28;
+              MR_Word check_hlds__mode_errors__Var_33;
+              MR_Word check_hlds__mode_errors__Var_34;
+              MR_Word check_hlds__mode_errors__IntroPieces_48;
+              MR_Word check_hlds__mode_errors__Pieces_49;
+
+              {
+                check_hlds__mode_errors__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 0) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_7));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[310])));
+              }
+              {
+                check_hlds__mode_errors__IntroPieces_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_48, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[305])));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__IntroPieces_48, 1) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+              }
+              {
+                check_hlds__mode_errors__Pieces_49 = check_hlds__mode_errors__report_inst_in_branch_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__IntroPieces_48, check_hlds__mode_errors__Inst_10);
+              }
+              {
+                check_hlds__mode_errors__Var_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (check_hlds__mode_errors__Pieces_49));
+              }
+              {
+                check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                check_hlds__mode_errors__Msg_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_11, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+              }
+            }
+        }
+        break;
+    }
+    return check_hlds__mode_errors__Msg_11;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_in_branch_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__IntroPieces_6,
+  MR_Word check_hlds__mode_errors__Inst_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Pieces_8;
+    MR_Word check_hlds__mode_errors__Var_9;
+    MR_Word check_hlds__mode_errors__Var_10 = (MR_Word) MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[233]);
+    MR_Word check_hlds__mode_errors__Var_12;
+    MR_Word check_hlds__mode_errors__Var_15;
+    MR_Word check_hlds__mode_errors__ModuleInfo_40;
+    MR_Word check_hlds__mode_errors__InstVarSet_41;
+
+    {
+      check_hlds__mode_errors__Var_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_9, 0) = ((MR_Box) (check_hlds__mode_errors__Var_10));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_9, 1) = ((MR_Box) (check_hlds__mode_errors__IntroPieces_6));
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__ModuleInfo_40);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__InstVarSet_41);
+    }
+    {
+      check_hlds__mode_errors__Var_15 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_40, check_hlds__mode_errors__InstVarSet_41, (MR_Integer) 1, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[210]), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[210]), check_hlds__mode_errors__Inst_7);
+    }
+    {
+      check_hlds__mode_errors__Var_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_12, 0) = ((MR_Box) (check_hlds__mode_errors__Var_10));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_12, 1) = ((MR_Box) (check_hlds__mode_errors__Var_15));
+    }
+    {
+      check_hlds__mode_errors__Pieces_8 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Var_9, check_hlds__mode_errors__Var_12);
+    }
+    return check_hlds__mode_errors__Pieces_8;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0_2(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv1_Msg_11;
+
+    {
+      check_hlds__mode_errors__conv1_Msg_11 = check_hlds__mode_errors__report_inst_in_context_4_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv1_Msg_11));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_Msg_11;
+
+    {
+      check_hlds__mode_errors__conv0_Msg_11 = check_hlds__mode_errors__report_inst_in_context_4_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_Msg_11));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__merge_error_to_msgs_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__MainContext_7,
+  MR_Word check_hlds__mode_errors__IsDisjunctive_8,
+  MR_Word check_hlds__mode_errors__MergeError_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Msgs_10;
+    MR_Word check_hlds__mode_errors__TypeInfo_89_89;
+    MR_Word check_hlds__mode_errors__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MergeError_9, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__ContextsInsts0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MergeError_9, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__ModuleInfo_13;
+    MR_Word check_hlds__mode_errors__VarSet_14;
+    MR_Word check_hlds__mode_errors__VarNamePiece_15;
+    MR_Word check_hlds__mode_errors__ContextsInsts_16;
+    MR_Integer check_hlds__mode_errors__NumGroundInsts_17;
+    MR_Integer check_hlds__mode_errors__NumAllInsts_18;
+    MR_String check_hlds__mode_errors__Var_25;
+    MR_Integer check_hlds__mode_errors__Var_28;
+    MR_Integer check_hlds__mode_errors__Var_29;
+
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_13);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_14);
+    }
+    {
+      check_hlds__mode_errors__Var_25 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_14, check_hlds__mode_errors__Var_11);
+    }
+    {
+      check_hlds__mode_errors__VarNamePiece_15 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__VarNamePiece_15, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__VarNamePiece_15, 1) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+    }
+    check_hlds__mode_errors__TypeInfo_89_89 = (MR_Word) &check_hlds__mode_errors_scalar_common_1[1];
+    {
+      mercury__list__sort_2_p_0(check_hlds__mode_errors__TypeInfo_89_89, check_hlds__mode_errors__ContextsInsts0_12, &check_hlds__mode_errors__ContextsInsts_16);
+    }
+    {
+      check_hlds__mode_errors__count_ground_insts_6_p_0(check_hlds__mode_errors__ModuleInfo_13, check_hlds__mode_errors__ContextsInsts_16, (MR_Integer) 0, &check_hlds__mode_errors__NumGroundInsts_17, (MR_Integer) 0, &check_hlds__mode_errors__NumAllInsts_18);
+    }
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__IsDisjunctive_8 == (MR_Integer) 1);
+    if (check_hlds__mode_errors__succeeded)
+      {
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__NumGroundInsts_17 < check_hlds__mode_errors__NumAllInsts_18);
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__Var_29 = (MR_Integer) 2;
+            check_hlds__mode_errors__Var_28 = (check_hlds__mode_errors__NumGroundInsts_17 * check_hlds__mode_errors__Var_29);
+            check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_28 > check_hlds__mode_errors__NumAllInsts_18);
+          }
+      }
+    if (check_hlds__mode_errors__succeeded)
+      {
+        MR_Word check_hlds__mode_errors__CommonPieces_19;
+        MR_Word check_hlds__mode_errors__VarMsg_22;
+        MR_Word check_hlds__mode_errors__InstMsgs_23;
+        MR_Word check_hlds__mode_errors__Var_32;
+        MR_Word check_hlds__mode_errors__Var_33;
+        MR_Word check_hlds__mode_errors__Var_36;
+        MR_Word check_hlds__mode_errors__Var_39;
+        MR_Word check_hlds__mode_errors__Var_40;
+        MR_Word check_hlds__mode_errors__Var_41;
+        MR_Word check_hlds__mode_errors__Var_44;
+        MR_Word check_hlds__mode_errors__Var_45;
+        MR_Word check_hlds__mode_errors__Var_65;
+        MR_Word check_hlds__mode_errors__Var_66;
+        MR_Word check_hlds__mode_errors__Var_70;
+
+        {
+          check_hlds__mode_errors__Var_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 1) = ((MR_Box) (check_hlds__mode_errors__NumGroundInsts_17));
+        }
+        {
+          check_hlds__mode_errors__Var_45 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_45, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_45, 1) = ((MR_Box) (check_hlds__mode_errors__NumAllInsts_18));
+        }
+        {
+          check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[53])));
+        }
+        {
+          check_hlds__mode_errors__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[303])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+        }
+        {
+          check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+        }
+        {
+          check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[228])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+        }
+        {
+          check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[302])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+        }
+        {
+          check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_15));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+        }
+        {
+          check_hlds__mode_errors__CommonPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__CommonPieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[301])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__CommonPieces_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+        }
+        {
+          check_hlds__mode_errors__Var_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_66, 0) = ((MR_Box) (check_hlds__mode_errors__CommonPieces_19));
+        }
+        {
+          check_hlds__mode_errors__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_65, 0) = ((MR_Box) (check_hlds__mode_errors__Var_66));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[304])));
+        }
+        {
+          check_hlds__mode_errors__VarMsg_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__VarMsg_22, 0) = ((MR_Box) (check_hlds__mode_errors__MainContext_7));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__VarMsg_22, 1) = ((MR_Box) (check_hlds__mode_errors__Var_65));
+        }
+        {
+          check_hlds__mode_errors__Var_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_6[1]));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 1) = ((MR_Box) (check_hlds__mode_errors__merge_error_to_msgs_4_f_0_1));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 3) = ((MR_Box) (check_hlds__mode_errors__ModeInfo_6));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 4) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_15));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 5) = ((MR_Box) ((MR_Integer) 1));
+        }
+        {
+          check_hlds__mode_errors__InstMsgs_23 = mercury__list__map_2_f_0(check_hlds__mode_errors__TypeInfo_89_89, (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__Var_70, check_hlds__mode_errors__ContextsInsts_16);
+        }
+        {
+          check_hlds__mode_errors__Msgs_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_10, 0) = ((MR_Box) (check_hlds__mode_errors__VarMsg_22));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_10, 1) = ((MR_Box) (check_hlds__mode_errors__InstMsgs_23));
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__VarPieces_24;
+        MR_Word check_hlds__mode_errors__Var_74;
+        MR_Word check_hlds__mode_errors__Var_81;
+        MR_Word check_hlds__mode_errors__Var_82;
+        MR_Word check_hlds__mode_errors__Var_84;
+        MR_Word check_hlds__mode_errors__VarMsg_86;
+        MR_Word check_hlds__mode_errors__InstMsgs_87;
+
+        {
+          check_hlds__mode_errors__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 0) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_15));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[61])));
+        }
+        {
+          check_hlds__mode_errors__VarPieces_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VarPieces_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[301])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VarPieces_24, 1) = ((MR_Box) (check_hlds__mode_errors__Var_74));
+        }
+        {
+          check_hlds__mode_errors__Var_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_82, 0) = ((MR_Box) (check_hlds__mode_errors__VarPieces_24));
+        }
+        {
+          check_hlds__mode_errors__Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_81, 0) = ((MR_Box) (check_hlds__mode_errors__Var_82));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_81, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__VarMsg_86 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__VarMsg_86, 0) = ((MR_Box) (check_hlds__mode_errors__MainContext_7));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__VarMsg_86, 1) = ((MR_Box) (check_hlds__mode_errors__Var_81));
+        }
+        {
+          check_hlds__mode_errors__Var_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_6[1]));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 1) = ((MR_Box) (check_hlds__mode_errors__merge_error_to_msgs_4_f_0_2));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 3) = ((MR_Box) (check_hlds__mode_errors__ModeInfo_6));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 4) = ((MR_Box) (check_hlds__mode_errors__VarNamePiece_15));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 5) = ((MR_Box) ((MR_Integer) 0));
+        }
+        {
+          check_hlds__mode_errors__InstMsgs_87 = mercury__list__map_2_f_0(check_hlds__mode_errors__TypeInfo_89_89, (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__Var_84, check_hlds__mode_errors__ContextsInsts_16);
+        }
+        {
+          check_hlds__mode_errors__Msgs_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_10, 0) = ((MR_Box) (check_hlds__mode_errors__VarMsg_86));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_10, 1) = ((MR_Box) (check_hlds__mode_errors__InstMsgs_87));
+        }
+      }
+    return check_hlds__mode_errors__Msgs_10;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors__count_ground_insts_6_p_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2,
+  MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3,
+  MR_Integer * check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_4,
+  MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_0_5,
+  MR_Integer * check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__mode_errors__succeeded;
+
+        if ((check_hlds__mode_errors__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_6 = check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_0_5;
+            *check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_4 = check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3;
+          }
+        else
+          {
+            MR_Word check_hlds__mode_errors__ContextInst_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ContextsInsts_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Inst_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ContextInst_15, (MR_Integer) 1)));
+            MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_25_25;
+            MR_Integer check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_27_27;
+            MR_Word check_hlds__mode_errors___Context_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ContextInst_15, (MR_Integer) 0)));
+
+            {
+              check_hlds__mode_errors__succeeded = check_hlds__inst_test__inst_is_ground_2_p_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Inst_20);
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_25_25 = (check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3 + (MR_Integer) 1);
+              }
+            else
+              check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_25_25 = check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3;
+            check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_27_27 = (check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_0_5 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__mode_errors__next_value_of_HeadVar__2_2 = check_hlds__mode_errors__ContextsInsts_16;
+              MR_Integer check_hlds__mode_errors__next_value_of_STATE_VARIABLE_NumGroundInsts_0_3 = check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_25_25;
+              MR_Integer check_hlds__mode_errors__next_value_of_STATE_VARIABLE_NumAllInsts_0_5 = check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_27_27;
+
+              check_hlds__mode_errors__STATE_VARIABLE_NumAllInsts_0_5 = check_hlds__mode_errors__next_value_of_STATE_VARIABLE_NumAllInsts_0_5;
+              check_hlds__mode_errors__STATE_VARIABLE_NumGroundInsts_0_3 = check_hlds__mode_errors__next_value_of_STATE_VARIABLE_NumGroundInsts_0_3;
+              check_hlds__mode_errors__HeadVar__2_2 = check_hlds__mode_errors__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__is_error_important_1_p_0(
+  MR_Word check_hlds__mode_errors__Error_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__ModeError_5;
+    MR_Word check_hlds__mode_errors__ModeContext_7;
+    MR_Word check_hlds__mode_errors__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_2, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_2, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_2, (MR_Integer) 2)));
+    MR_Word check_hlds__mode_errors__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__Var_6;
+    MR_Word check_hlds__mode_errors__UnifyContext_9;
+    MR_Word check_hlds__mode_errors__Var_15;
+    MR_Word check_hlds__mode_errors__Var_11;
+    MR_Word check_hlds__mode_errors__Var_10;
+    MR_Word check_hlds__mode_errors__Var_12;
+    MR_Word check_hlds__mode_errors__Var_13;
+
+    check_hlds__mode_errors__ModeError_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, (MR_Integer) 1)));
+    check_hlds__mode_errors__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, (MR_Integer) 2)));
+    check_hlds__mode_errors__ModeContext_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, (MR_Integer) 3)));
+    check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__ModeContext_7)) == (MR_mktag((MR_Integer) 2)));
+    if (check_hlds__mode_errors__succeeded)
+      {
+        check_hlds__mode_errors__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeContext_7, (MR_Integer) 0)));
+        check_hlds__mode_errors__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeContext_7, (MR_Integer) 1)));
+        check_hlds__mode_errors__UnifyContext_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_15, (MR_Integer) 0)));
+        check_hlds__mode_errors__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_15, (MR_Integer) 1)));
+        check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__UnifyContext_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__succeeded = ((((MR_tag((MR_Word) check_hlds__mode_errors__ModeError_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 0)))) == (MR_Integer) 9)));
+            if (check_hlds__mode_errors__succeeded)
+              {
+                check_hlds__mode_errors__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+                check_hlds__mode_errors__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              }
+            check_hlds__mode_errors__succeeded = !(check_hlds__mode_errors__succeeded);
+          }
+      }
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__succeeded = MR_FALSE;
+    else
+      check_hlds__mode_errors__succeeded = MR_TRUE;
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__should_report_mode_warning_for_pred_origin_1_f_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__HeadVar__2_2;
+
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 1:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 2:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 3:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 4:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 5:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 6:
+            check_hlds__mode_errors__HeadVar__2_2 = (MR_Integer) 1;
+            break;
+        }
+        break;
+    }
+    return check_hlds__mode_errors__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_info_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_17,
+  MR_Word check_hlds__mode_errors__Warning_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+    MR_Word check_hlds__mode_errors__ModeWarning_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Warning_5, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__Context_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Warning_5, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__ModeContext_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Warning_5, (MR_Integer) 2)));
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_18_18;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19;
+
+    {
+      check_hlds__mode_info__mode_info_set_context_3_p_0(check_hlds__mode_errors__Context_8, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_17, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_18_18);
+    }
+    {
+      check_hlds__mode_info__mode_info_set_mode_context_3_p_0(check_hlds__mode_errors__ModeContext_9, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_18_18, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19);
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__ModeWarning_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__VarA_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__VarB_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__InstA_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 2)));
+          MR_Word check_hlds__mode_errors__InstB_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 3)));
+
+          {
+            check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_warning_cannot_succeed_var_var_5_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19, check_hlds__mode_errors__VarA_10, check_hlds__mode_errors__VarB_11, check_hlds__mode_errors__InstA_12, check_hlds__mode_errors__InstB_13);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__Inst_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__ConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 2)));
+
+          {
+            check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_warning_cannot_succeed_var_functor_4_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19, check_hlds__mode_errors__Var_14, check_hlds__mode_errors__Inst_15, check_hlds__mode_errors__ConsId_16);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_47_64;
+          MR_Word check_hlds__mode_errors__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__ConsId_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeWarning_7, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__Preamble_26;
+          MR_Word check_hlds__mode_errors__Context_27;
+          MR_Word check_hlds__mode_errors__VarSet_28;
+          MR_Word check_hlds__mode_errors__Pieces_29;
+          MR_Word check_hlds__mode_errors__Var_32;
+          MR_Word check_hlds__mode_errors__Var_33;
+          MR_String check_hlds__mode_errors__Var_34;
+          MR_Word check_hlds__mode_errors__Var_35;
+          MR_Word check_hlds__mode_errors__Var_38;
+          MR_Word check_hlds__mode_errors__Var_39;
+          MR_String check_hlds__mode_errors__Var_40;
+          MR_Word check_hlds__mode_errors__Var_42;
+          MR_Word check_hlds__mode_errors__Var_45;
+          MR_Word check_hlds__mode_errors__Var_46;
+          MR_String check_hlds__mode_errors__Var_47;
+          MR_Word check_hlds__mode_errors__Var_57;
+          MR_Word check_hlds__mode_errors__Var_58;
+          MR_Word check_hlds__mode_errors__Var_59;
+          MR_Word check_hlds__mode_errors__Var_60;
+          MR_Word check_hlds__mode_errors__Var_61;
+
+          {
+            check_hlds__mode_errors__Preamble_26 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19);
+          }
+          {
+            check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19, &check_hlds__mode_errors__Context_27);
+          }
+          {
+            check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_19_19, &check_hlds__mode_errors__VarSet_28);
+          }
+          check_hlds__mode_errors__TypeCtorInfo_47_64 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+          {
+            check_hlds__mode_errors__Var_34 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_47_64, check_hlds__mode_errors__VarSet_28, check_hlds__mode_errors__Var_20);
+          }
+          {
+            check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+          }
+          {
+            check_hlds__mode_errors__Var_40 = parse_tree__mercury_to_mercury__mercury_cons_id_to_string_2_f_0((MR_Integer) 1, check_hlds__mode_errors__ConsId_21);
+          }
+          {
+            check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+          }
+          {
+            check_hlds__mode_errors__Var_47 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_47_64, check_hlds__mode_errors__VarSet_28, check_hlds__mode_errors__Var_20);
+          }
+          {
+            check_hlds__mode_errors__Var_46 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_46, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_46, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+          }
+          {
+            check_hlds__mode_errors__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 0) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[175])));
+          }
+          {
+            check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[300])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+          }
+          {
+            check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+          }
+          {
+            check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+          }
+          {
+            check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+          }
+          {
+            check_hlds__mode_errors__Pieces_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[298])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+          }
+          {
+            check_hlds__mode_errors__Var_61 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_26, check_hlds__mode_errors__Pieces_29);
+          }
+          {
+            check_hlds__mode_errors__Var_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 0) = ((MR_Box) (check_hlds__mode_errors__Var_61));
+          }
+          {
+            check_hlds__mode_errors__Var_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_59, 0) = ((MR_Box) (check_hlds__mode_errors__Var_60));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (check_hlds__mode_errors__Context_27));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+          }
+          {
+            check_hlds__mode_errors__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Spec_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 2) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+          }
+        }
+        break;
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_cannot_succeed_var_functor_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__InstX_8,
+  MR_Word check_hlds__mode_errors__ConsId_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_10;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_47_47;
+    MR_Word check_hlds__mode_errors__Preamble_11;
+    MR_Word check_hlds__mode_errors__Context_12;
+    MR_Word check_hlds__mode_errors__VarSet_13;
+    MR_Word check_hlds__mode_errors__Pieces_14;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_Word check_hlds__mode_errors__Var_18;
+    MR_String check_hlds__mode_errors__Var_19;
+    MR_Word check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_Word check_hlds__mode_errors__Var_24;
+    MR_String check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_String check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_40;
+    MR_Word check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_44;
+
+    {
+      check_hlds__mode_errors__Preamble_11 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_6);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__Context_12);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_13);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_47_47 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__mode_errors__Var_19 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_47_47, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__X_7);
+    }
+    {
+      check_hlds__mode_errors__Var_18 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_18, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_18, 1) = ((MR_Box) (check_hlds__mode_errors__Var_19));
+    }
+    {
+      check_hlds__mode_errors__Var_25 = parse_tree__mercury_to_mercury__mercury_cons_id_to_string_2_f_0((MR_Integer) 1, check_hlds__mode_errors__ConsId_9);
+    }
+    {
+      check_hlds__mode_errors__Var_24 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_24, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_24, 1) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+    }
+    {
+      check_hlds__mode_errors__Var_34 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_47_47, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__X_7);
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+    }
+    {
+      check_hlds__mode_errors__Var_35 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__InstX_8, (MR_String) ".");
+    }
+    {
+      check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[299])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    {
+      check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (check_hlds__mode_errors__Var_24));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_27));
+    }
+    {
+      check_hlds__mode_errors__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+    }
+    {
+      check_hlds__mode_errors__Pieces_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[298])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_14, 1) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+    }
+    {
+      check_hlds__mode_errors__Var_44 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_11, check_hlds__mode_errors__Pieces_14);
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (check_hlds__mode_errors__Context_12));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    {
+      check_hlds__mode_errors__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_40, 0) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_40, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[8])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+    }
+    return check_hlds__mode_errors__Spec_10;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_cannot_succeed_var_var_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__Y_9,
+  MR_Word check_hlds__mode_errors__InstX_10,
+  MR_Word check_hlds__mode_errors__InstY_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_54_54;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_55_55;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_Word check_hlds__mode_errors__Pieces_16;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_Word check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_21;
+    MR_String check_hlds__mode_errors__Var_22;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_String check_hlds__mode_errors__Var_28;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_35;
+    MR_String check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_40;
+    MR_String check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_48;
+    MR_Word check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_50;
+    MR_Word check_hlds__mode_errors__Var_51;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_54_54 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    check_hlds__mode_errors__TypeCtorInfo_55_55 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__mode_errors__Var_22 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_55_55, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__X_8);
+    }
+    {
+      check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_21, 1) = ((MR_Box) (check_hlds__mode_errors__Var_22));
+    }
+    {
+      check_hlds__mode_errors__Var_28 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_55_55, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Y_9);
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+    }
+    {
+      check_hlds__mode_errors__Var_36 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_55_55, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__X_8);
+    }
+    {
+      check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__Var_37 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__InstX_10, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[299])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (check_hlds__mode_errors__Var_27));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 1) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+    }
+    {
+      check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_26));
+    }
+    {
+      check_hlds__mode_errors__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 0) = ((MR_Box) (check_hlds__mode_errors__Var_21));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[298])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_55_55, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Y_9);
+    }
+    {
+      check_hlds__mode_errors__Var_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__InstY_11, (MR_String) ".");
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    {
+      check_hlds__mode_errors__Pieces_16 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_54_54, check_hlds__mode_errors__Var_17, check_hlds__mode_errors__Var_39);
+    }
+    {
+      check_hlds__mode_errors__Var_51 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_54_54, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__Pieces_16);
+    }
+    {
+      check_hlds__mode_errors__Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_50, 0) = ((MR_Box) (check_hlds__mode_errors__Var_51));
+    }
+    {
+      check_hlds__mode_errors__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 0) = ((MR_Box) (check_hlds__mode_errors__Var_50));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_48, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_48, 1) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    {
+      check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[8])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_info_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo0_4,
+  MR_Word check_hlds__mode_errors__ModeErrorInfo_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+    MR_Word check_hlds__mode_errors__ModeError_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeErrorInfo_5, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__Context_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeErrorInfo_5, (MR_Integer) 2)));
+    MR_Word check_hlds__mode_errors__ModeContext_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeErrorInfo_5, (MR_Integer) 3)));
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_13_13;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_14_14;
+    MR_Word check_hlds__mode_errors__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ModeErrorInfo_5, (MR_Integer) 0)));
+
+    {
+      check_hlds__mode_info__mode_info_set_context_3_p_0(check_hlds__mode_errors__Context_10, check_hlds__mode_errors__ModeInfo0_4, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_13_13);
+    }
+    {
+      check_hlds__mode_info__mode_info_set_mode_context_3_p_0(check_hlds__mode_errors__ModeContext_11, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_13_13, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_14_14);
+    }
+    {
+      check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_to_spec_2_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_14_14, check_hlds__mode_errors__ModeError_9);
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_in_callee_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50,
+  MR_Word check_hlds__mode_errors__Vars_9,
+  MR_Word check_hlds__mode_errors__Insts_10,
+  MR_Word check_hlds__mode_errors__CalleePredId_11,
+  MR_Integer check_hlds__mode_errors__CalleeProcId_12,
+  MR_Word check_hlds__mode_errors__CalleeModeErrors_13)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_14;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_137_137;
+    MR_Word check_hlds__mode_errors__Preamble_15;
+    MR_Word check_hlds__mode_errors__ModuleInfo_16;
+    MR_Word check_hlds__mode_errors__Context_17;
+    MR_Word check_hlds__mode_errors__VarSet_18;
+    MR_Word check_hlds__mode_errors__MainPieces_20;
+    MR_Word check_hlds__mode_errors__NoMatchPieces_24;
+    MR_Word check_hlds__mode_errors__CalleePredIdPieces_25;
+    MR_Word check_hlds__mode_errors__VerboseCalleePieces_26;
+    MR_Word check_hlds__mode_errors__VerbosePieces_27;
+    MR_Word check_hlds__mode_errors__NonVerbosePieces_29;
+    MR_Word check_hlds__mode_errors__InitMsg_30;
+    MR_Word check_hlds__mode_errors__Var_80;
+    MR_Word check_hlds__mode_errors__Var_93;
+    MR_Word check_hlds__mode_errors__Var_105;
+    MR_Word check_hlds__mode_errors__Var_111;
+    MR_Word check_hlds__mode_errors__Var_112;
+    MR_Word check_hlds__mode_errors__Var_113;
+    MR_Word check_hlds__mode_errors__Var_114;
+    MR_Word check_hlds__mode_errors__Var_115;
+
+    {
+      check_hlds__mode_errors__Preamble_15 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50, &check_hlds__mode_errors__ModuleInfo_16);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50, &check_hlds__mode_errors__Context_17);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50, &check_hlds__mode_errors__VarSet_18);
+    }
+    if ((check_hlds__mode_errors__Vars_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_in_callee_to_spec\'/6", (MR_String) "Vars = []");
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__Var_138 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Vars_9, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_139 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Vars_9, (MR_Integer) 0)));
+
+        if ((check_hlds__mode_errors__Var_138 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word check_hlds__mode_errors__Var_67;
+            MR_Word check_hlds__mode_errors__Var_68;
+            MR_String check_hlds__mode_errors__Var_69;
+
+            {
+              check_hlds__mode_errors__Var_69 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_18, check_hlds__mode_errors__Var_139);
+            }
+            {
+              check_hlds__mode_errors__Var_68 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_68, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_68, 1) = ((MR_Box) (check_hlds__mode_errors__Var_69));
+            }
+            {
+              check_hlds__mode_errors__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_67, 0) = ((MR_Box) (check_hlds__mode_errors__Var_68));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_67, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[109])));
+            }
+            {
+              check_hlds__mode_errors__MainPieces_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_20, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[241])));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_67));
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_54;
+            MR_Word check_hlds__mode_errors__Var_55;
+            MR_String check_hlds__mode_errors__Var_56;
+
+            {
+              check_hlds__mode_errors__Var_56 = parse_tree__parse_tree_out_term__mercury_vars_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_18, check_hlds__mode_errors__Vars_9);
+            }
+            {
+              check_hlds__mode_errors__Var_55 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_55, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_55, 1) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+            }
+            {
+              check_hlds__mode_errors__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 0) = ((MR_Box) (check_hlds__mode_errors__Var_55));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[111])));
+            }
+            {
+              check_hlds__mode_errors__MainPieces_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_20, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[242])));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_54));
+            }
+          }
+      }
+    check_hlds__mode_errors__TypeCtorInfo_137_137 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_80 = check_hlds__mode_errors__inst_list_to_sep_lines_2_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50, check_hlds__mode_errors__Insts_10);
+    }
+    {
+      check_hlds__mode_errors__NoMatchPieces_24 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__Var_80, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[297]));
+    }
+    {
+      check_hlds__mode_errors__CalleePredIdPieces_25 = hlds__hlds_error_util__describe_one_pred_name_3_f_0(check_hlds__mode_errors__ModuleInfo_16, (MR_Integer) 0, check_hlds__mode_errors__CalleePredId_11);
+    }
+    {
+      check_hlds__mode_errors__Var_93 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__CalleePredIdPieces_25, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[120]));
+    }
+    {
+      check_hlds__mode_errors__VerboseCalleePieces_26 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[115]), check_hlds__mode_errors__Var_93);
+    }
+    {
+      check_hlds__mode_errors__Var_105 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__NoMatchPieces_24, check_hlds__mode_errors__VerboseCalleePieces_26);
+    }
+    {
+      check_hlds__mode_errors__VerbosePieces_27 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__MainPieces_20, check_hlds__mode_errors__Var_105);
+    }
+    {
+      check_hlds__mode_errors__Var_111 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__NoMatchPieces_24, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[122]));
+    }
+    {
+      check_hlds__mode_errors__NonVerbosePieces_29 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_137_137, check_hlds__mode_errors__MainPieces_20, check_hlds__mode_errors__Var_111);
+    }
+    {
+      check_hlds__mode_errors__Var_113 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_113, 0) = ((MR_Box) (check_hlds__mode_errors__Preamble_15));
+    }
+    {
+      check_hlds__mode_errors__Var_115 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_115, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_115, 1) = ((MR_Box) (check_hlds__mode_errors__VerbosePieces_27));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_115, 2) = ((MR_Box) (check_hlds__mode_errors__NonVerbosePieces_29));
+    }
+    {
+      check_hlds__mode_errors__Var_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_114, 0) = ((MR_Box) (check_hlds__mode_errors__Var_115));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_114, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_112 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_112, 0) = ((MR_Box) (check_hlds__mode_errors__Var_113));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_112, 1) = ((MR_Box) (check_hlds__mode_errors__Var_114));
+    }
+    {
+      check_hlds__mode_errors__InitMsg_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__InitMsg_30, 0) = ((MR_Box) (check_hlds__mode_errors__Context_17));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__InitMsg_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_112));
+    }
+    if ((check_hlds__mode_errors__CalleeModeErrors_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_in_callee_to_spec\'/6", (MR_String) "no error");
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__First_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__CalleeModeErrors_13, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__CalleeModeError_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__First_31, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__CalleeContext_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__First_31, (MR_Integer) 2)));
+        MR_Word check_hlds__mode_errors__CalleeModeContext_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__First_31, (MR_Integer) 3)));
+        MR_Word check_hlds__mode_errors__CalleeModeErrorSpec_37;
+        MR_Word check_hlds__mode_errors__LaterMsgs0_40;
+        MR_Word check_hlds__mode_errors__LaterMsgs_41;
+        MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_120_120;
+        MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_121_121;
+        MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_122_122;
+        MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_123_123;
+        MR_Word check_hlds__mode_errors__Var_131;
+        MR_Word check_hlds__mode_errors__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__CalleeModeErrors_13, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__First_31, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__Var_38;
+        MR_Word check_hlds__mode_errors__Var_39;
+
+        {
+          check_hlds__mode_info__mode_info_set_pred_id_3_p_0(check_hlds__mode_errors__CalleePredId_11, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_50, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_120_120);
+        }
+        {
+          check_hlds__mode_info__mode_info_set_proc_id_3_p_0(check_hlds__mode_errors__CalleeProcId_12, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_120_120, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_121_121);
+        }
+        {
+          check_hlds__mode_info__mode_info_set_context_3_p_0(check_hlds__mode_errors__CalleeContext_35, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_121_121, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_122_122);
+        }
+        {
+          check_hlds__mode_info__mode_info_set_mode_context_3_p_0(check_hlds__mode_errors__CalleeModeContext_36, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_122_122, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_123_123);
+        }
+        {
+          check_hlds__mode_errors__CalleeModeErrorSpec_37 = check_hlds__mode_errors__mode_error_to_spec_2_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_123_123, check_hlds__mode_errors__CalleeModeError_34);
+        }
+        check_hlds__mode_errors__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__CalleeModeErrorSpec_37, (MR_Integer) 0)));
+        check_hlds__mode_errors__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__CalleeModeErrorSpec_37, (MR_Integer) 1)));
+        check_hlds__mode_errors__LaterMsgs0_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__CalleeModeErrorSpec_37, (MR_Integer) 2)));
+        if ((check_hlds__mode_errors__LaterMsgs0_40 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          check_hlds__mode_errors__LaterMsgs_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word check_hlds__mode_errors__LaterHead0_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterMsgs0_40, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__LaterTail_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterMsgs0_40, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__LaterHead_46;
+
+            if (((MR_tag((MR_Word) check_hlds__mode_errors__LaterHead0_42)) == (MR_mktag((MR_Integer) 1))))
+              {
+                MR_Word check_hlds__mode_errors__MaybeLaterContext_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 0)));
+                MR_Integer check_hlds__mode_errors__Indent_49 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 2)));
+                MR_Word check_hlds__mode_errors__Components_132 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 3)));
+                MR_Word check_hlds__mode_errors__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 1)));
+
+                {
+                  check_hlds__mode_errors__LaterHead_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 0) = ((MR_Box) (check_hlds__mode_errors__MaybeLaterContext_47));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 1) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 2) = ((MR_Box) (check_hlds__mode_errors__Indent_49));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 3) = ((MR_Box) (check_hlds__mode_errors__Components_132));
+                }
+              }
+            else
+              {
+                MR_Word check_hlds__mode_errors__LaterContext_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 0)));
+                MR_Word check_hlds__mode_errors__Components_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__LaterHead0_42, (MR_Integer) 1)));
+                MR_Word check_hlds__mode_errors__Var_125;
+
+                {
+                  check_hlds__mode_errors__Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_125, 0) = ((MR_Box) (check_hlds__mode_errors__LaterContext_44));
+                }
+                {
+                  check_hlds__mode_errors__LaterHead_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 0) = ((MR_Box) (check_hlds__mode_errors__Var_125));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 1) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 2) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterHead_46, 3) = ((MR_Box) (check_hlds__mode_errors__Components_45));
+                }
+              }
+            {
+              check_hlds__mode_errors__LaterMsgs_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterMsgs_41, 0) = ((MR_Box) (check_hlds__mode_errors__LaterHead_46));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__LaterMsgs_41, 1) = ((MR_Box) (check_hlds__mode_errors__LaterTail_43));
+            }
+          }
+        {
+          check_hlds__mode_errors__Var_131 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_131, 0) = ((MR_Box) (check_hlds__mode_errors__InitMsg_30));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_131, 1) = ((MR_Box) (check_hlds__mode_errors__LaterMsgs_41));
+        }
+        {
+          check_hlds__mode_errors__Spec_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 2) = ((MR_Box) (check_hlds__mode_errors__Var_131));
+        }
+      }
+    return check_hlds__mode_errors__Spec_14;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(
+  MR_Word check_hlds__mode_errors__Context_5,
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_26,
+  MR_Word check_hlds__mode_errors__DelayedGoal_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Msgs_8;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_68_68 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    MR_Word check_hlds__mode_errors__Vars_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__DelayedGoal_7, (MR_Integer) 0)));
+    MR_Word check_hlds__mode_errors__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__DelayedGoal_7, (MR_Integer) 1)));
+    MR_Word check_hlds__mode_errors__Goal_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__DelayedGoal_7, (MR_Integer) 2)));
+    MR_Word check_hlds__mode_errors__VarList_12;
+    MR_Word check_hlds__mode_errors__VarSet_13;
+    MR_Word check_hlds__mode_errors__Pieces1_14;
+    MR_Word check_hlds__mode_errors__Msg1_15;
+    MR_Word check_hlds__mode_errors__ModuleInfo_16;
+    MR_Word check_hlds__mode_errors__Msg2_17;
+    MR_Word check_hlds__mode_errors__ModeError_19;
+    MR_Word check_hlds__mode_errors__ErrorContext_20;
+    MR_Word check_hlds__mode_errors__ModeContext_21;
+    MR_Word check_hlds__mode_errors__SubSpec_22;
+    MR_Word check_hlds__mode_errors__SubMsgs_25;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_String check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_38;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_50;
+    MR_Word check_hlds__mode_errors__Var_53;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_Word check_hlds__mode_errors__Var_59;
+    MR_Word check_hlds__mode_errors__Var_60;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_63_63;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_64_64;
+    MR_Word check_hlds__mode_errors__Var_65;
+    MR_Word check_hlds__mode_errors__Var_66;
+    MR_Word check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_Word check_hlds__mode_errors__Var_24;
+
+    {
+      parse_tree__set_of_var__to_sorted_list_2_p_0(check_hlds__mode_errors__TypeCtorInfo_68_68, check_hlds__mode_errors__Vars_9, &check_hlds__mode_errors__VarList_12);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_26, &check_hlds__mode_errors__VarSet_13);
+    }
+    {
+      check_hlds__mode_errors__Var_31 = parse_tree__parse_tree_out_term__mercury_vars_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_68_68, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__VarList_12);
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[43])));
+    }
+    {
+      check_hlds__mode_errors__Pieces1_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces1_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[295])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces1_14, 1) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Pieces1_14));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (((MR_Integer) 71 | (((MR_Integer) 1 << (MR_Integer) 10)))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    {
+      check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Msg1_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg1_15, 0) = ((MR_Box) (check_hlds__mode_errors__Context_5));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg1_15, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_26, &check_hlds__mode_errors__ModuleInfo_16);
+    }
+    {
+      check_hlds__mode_errors__Var_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 0) = ((MR_Box) (check_hlds__mode_errors__ModuleInfo_16));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 1) = ((MR_Box) (check_hlds__mode_errors__VarSet_13));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 2) = ((MR_Box) (check_hlds__mode_errors__Goal_11));
+    }
+    {
+      check_hlds__mode_errors__Var_59 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_59, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_59, 1) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_2[1]));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_59, 2) = ((MR_Box) (check_hlds__mode_errors__Var_60));
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_53, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_3[7]));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_53, 1) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+    }
+    {
+      check_hlds__mode_errors__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_50, 0) = ((MR_Box) (((MR_Integer) 57 | (((MR_Integer) 1 << (MR_Integer) 10)))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_50, 1) = ((MR_Box) (check_hlds__mode_errors__Var_53));
+    }
+    {
+      check_hlds__mode_errors__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 0) = ((MR_Box) (check_hlds__mode_errors__Var_50));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Msg2_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msg2_17, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msg2_17, 1) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msg2_17, 2) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msg2_17, 3) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    check_hlds__mode_errors__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_10, (MR_Integer) 0)));
+    check_hlds__mode_errors__ModeError_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_10, (MR_Integer) 1)));
+    check_hlds__mode_errors__ErrorContext_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_10, (MR_Integer) 2)));
+    check_hlds__mode_errors__ModeContext_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Error_10, (MR_Integer) 3)));
+    {
+      check_hlds__mode_info__mode_info_set_context_3_p_0(check_hlds__mode_errors__ErrorContext_20, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_0_26, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_63_63);
+    }
+    {
+      check_hlds__mode_info__mode_info_set_mode_context_3_p_0(check_hlds__mode_errors__ModeContext_21, check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_63_63, &check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_64_64);
+    }
+    {
+      check_hlds__mode_errors__SubSpec_22 = check_hlds__mode_errors__mode_error_to_spec_2_f_0(check_hlds__mode_errors__STATE_VARIABLE_ModeInfo_64_64, check_hlds__mode_errors__ModeError_19);
+    }
+    check_hlds__mode_errors__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_22, (MR_Integer) 0)));
+    check_hlds__mode_errors__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_22, (MR_Integer) 1)));
+    check_hlds__mode_errors__SubMsgs_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_22, (MR_Integer) 2)));
+    {
+      check_hlds__mode_errors__Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_66, 0) = ((MR_Box) (check_hlds__mode_errors__Msg2_17));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_66, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_65, 0) = ((MR_Box) (check_hlds__mode_errors__Msg1_15));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_65, 1) = ((MR_Box) (check_hlds__mode_errors__Var_66));
+    }
+    {
+      check_hlds__mode_errors__Msgs_8 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__Var_65, check_hlds__mode_errors__SubMsgs_25);
+    }
+    return check_hlds__mode_errors__Msgs_8;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_2(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_Msgs_8;
+
+    {
+      check_hlds__mode_errors__conv0_Msgs_8 = check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_Msgs_8));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors__is_error_important_1_p_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Errors_6,
+  MR_Word check_hlds__mode_errors__Culprit_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__Context_9;
+    MR_Word check_hlds__mode_errors__Msgs1_11;
+    MR_Word check_hlds__mode_errors__Msgs2_30;
+    MR_Word check_hlds__mode_errors__Var_110;
+
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__Context_9);
+    }
+    if ((check_hlds__mode_errors__Errors_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_conj_to_spec\'/3", (MR_String) "no errors");
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__Var_120 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Errors_6, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_121 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Errors_6, (MR_Integer) 0)));
+
+        if ((check_hlds__mode_errors__Var_120 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            check_hlds__mode_errors__Msgs1_11 = check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(check_hlds__mode_errors__Context_9, check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__Var_121);
+          }
+        else
+          {
+            MR_Word check_hlds__mode_errors__TypeCtorInfo_112_112 = (MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+            MR_Word check_hlds__mode_errors__ImportantErrors_15;
+            MR_Word check_hlds__mode_errors__OtherErrors_16;
+            MR_Word check_hlds__mode_errors__ModuleInfo_17;
+            MR_Word check_hlds__mode_errors__Globals_18;
+            MR_Word check_hlds__mode_errors__VerboseErrors_19;
+
+            {
+              mercury__list__filter_4_p_0(check_hlds__mode_errors__TypeCtorInfo_112_112, (MR_Word) &check_hlds__mode_errors_scalar_common_1[4], check_hlds__mode_errors__Errors_6, &check_hlds__mode_errors__ImportantErrors_15, &check_hlds__mode_errors__OtherErrors_16);
+            }
+            {
+              check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__ModuleInfo_17);
+            }
+            {
+              hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__mode_errors__ModuleInfo_17, &check_hlds__mode_errors__Globals_18);
+            }
+            {
+              libs__globals__lookup_bool_option_3_p_0(check_hlds__mode_errors__Globals_18, (MR_Integer) 58, &check_hlds__mode_errors__VerboseErrors_19);
+            }
+            switch (check_hlds__mode_errors__VerboseErrors_19) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word check_hlds__mode_errors__ConjMsgs_22;
+                  MR_Word check_hlds__mode_errors__MoreMsg_25;
+                  MR_Word check_hlds__mode_errors__Var_71;
+
+                  if ((check_hlds__mode_errors__ImportantErrors_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    if ((check_hlds__mode_errors__OtherErrors_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                      {
+                        {
+                          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_conj_to_spec\'/3", (MR_String) "no errors of any kind");
+                        }
+                      }
+                    else
+                      {
+                        MR_Word check_hlds__mode_errors__FirstOtherError_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__OtherErrors_16, (MR_Integer) 0)));
+                        MR_Word check_hlds__mode_errors__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__OtherErrors_16, (MR_Integer) 1)));
+
+                        {
+                          check_hlds__mode_errors__ConjMsgs_22 = check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(check_hlds__mode_errors__Context_9, check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__FirstOtherError_23);
+                        }
+                      }
+                  else
+                    {
+                      MR_Word check_hlds__mode_errors__FirstImportantError_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ImportantErrors_15, (MR_Integer) 0)));
+                      MR_Word check_hlds__mode_errors__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ImportantErrors_15, (MR_Integer) 1)));
+
+                      {
+                        check_hlds__mode_errors__ConjMsgs_22 = check_hlds__mode_errors__mode_error_conjunct_to_msgs_3_f_0(check_hlds__mode_errors__Context_9, check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__FirstImportantError_20);
+                      }
+                    }
+                  {
+                    check_hlds__mode_errors__MoreMsg_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MoreMsg_25, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MoreMsg_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[30])));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 0) = ((MR_Box) (check_hlds__mode_errors__MoreMsg_25));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__mode_errors__Msgs1_11 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__ConjMsgs_22, check_hlds__mode_errors__Var_71);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__mode_errors__TypeCtorInfo_118_118;
+                  MR_Word check_hlds__mode_errors__Preamble_26;
+                  MR_Word check_hlds__mode_errors__ConjPieces_27;
+                  MR_Word check_hlds__mode_errors__Msgs1Start_28;
+                  MR_Word check_hlds__mode_errors__Msgs1Rest_29;
+                  MR_Word check_hlds__mode_errors__Var_43;
+                  MR_Word check_hlds__mode_errors__Var_44;
+                  MR_String check_hlds__mode_errors__Var_45;
+                  MR_Integer check_hlds__mode_errors__Var_46;
+                  MR_Word check_hlds__mode_errors__Var_54;
+                  MR_Word check_hlds__mode_errors__Var_55;
+                  MR_Word check_hlds__mode_errors__Var_56;
+                  MR_Word check_hlds__mode_errors__Var_57;
+                  MR_Word check_hlds__mode_errors__Var_60;
+                  MR_Word check_hlds__mode_errors__Var_61;
+                  MR_Word check_hlds__mode_errors__Var_62;
+
+                  {
+                    check_hlds__mode_errors__Preamble_26 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_5);
+                  }
+                  {
+                    check_hlds__mode_errors__Var_46 = mercury__list__length_1_f_0(check_hlds__mode_errors__TypeCtorInfo_112_112, check_hlds__mode_errors__Errors_6);
+                  }
+                  {
+                    check_hlds__mode_errors__Var_45 = mercury__string__int_to_string_1_f_0(check_hlds__mode_errors__Var_46);
+                  }
+                  {
+                    check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[34])));
+                  }
+                  {
+                    check_hlds__mode_errors__ConjPieces_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ConjPieces_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[289])));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ConjPieces_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_57 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_26, check_hlds__mode_errors__ConjPieces_27);
+                  }
+                  {
+                    check_hlds__mode_errors__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 0) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_54, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_54, 1) = ((MR_Box) (check_hlds__mode_errors__Var_55));
+                  }
+                  {
+                    check_hlds__mode_errors__Msgs1Start_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs1Start_28, 0) = ((MR_Box) (check_hlds__mode_errors__Var_54));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs1Start_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_8[0]));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 1) = ((MR_Box) (check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0_2));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 3) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_60, 4) = ((MR_Box) (check_hlds__mode_errors__ModeInfo_5));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_61 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_112_112, check_hlds__mode_errors__ImportantErrors_15, check_hlds__mode_errors__OtherErrors_16);
+                  }
+                  {
+                    check_hlds__mode_errors__Msgs1Rest_29 = mercury__list__map_2_f_0(check_hlds__mode_errors__TypeCtorInfo_112_112, (MR_Word) &check_hlds__mode_errors_scalar_common_2[0], check_hlds__mode_errors__Var_60, check_hlds__mode_errors__Var_61);
+                  }
+                  check_hlds__mode_errors__TypeCtorInfo_118_118 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0;
+                  {
+                    check_hlds__mode_errors__Var_62 = mercury__list__condense_1_f_0(check_hlds__mode_errors__TypeCtorInfo_118_118, check_hlds__mode_errors__Msgs1Rest_29);
+                  }
+                  {
+                    check_hlds__mode_errors__Msgs1_11 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_118_118, check_hlds__mode_errors__Msgs1Start_28, check_hlds__mode_errors__Var_62);
+                  }
+                }
+                break;
+            }
+          }
+      }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__Culprit_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(check_hlds__mode_errors__Culprit_7)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__mode_errors__Var_102;
+
+              {
+                check_hlds__mode_errors__Var_102 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_102, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_102, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[290])));
+              }
+              {
+                check_hlds__mode_errors__Msgs2_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs2_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_102));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs2_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            check_hlds__mode_errors__Msgs2_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__ImpureGoal_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Culprit_7, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__ImpureGoalInfo_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ImpureGoal_32, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__ImpureGoalContext_35;
+          MR_Word check_hlds__mode_errors__Var_86;
+          MR_Word check_hlds__mode_errors__Var_90;
+          MR_Word check_hlds__mode_errors__Var_91;
+          MR_Word check_hlds__mode_errors__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__ImpureGoal_32, (MR_Integer) 0)));
+
+          {
+            check_hlds__mode_errors__ImpureGoalContext_35 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__mode_errors__ImpureGoalInfo_34);
+          }
+          {
+            check_hlds__mode_errors__Var_86 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_86, 0) = ((MR_Box) (check_hlds__mode_errors__Context_9));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_86, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[293])));
+          }
+          {
+            check_hlds__mode_errors__Var_91 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_91, 0) = ((MR_Box) (check_hlds__mode_errors__ImpureGoalContext_35));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_91, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[294])));
+          }
+          {
+            check_hlds__mode_errors__Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_90, 0) = ((MR_Box) (check_hlds__mode_errors__Var_91));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_90, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Msgs2_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs2_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_86));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs2_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_90));
+          }
+        }
+        break;
+    }
+    {
+      check_hlds__mode_errors__Var_110 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__Msgs1_11, check_hlds__mode_errors__Msgs2_30);
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_110));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__ModeError_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__ModeError_5)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__Preamble_68;
+          MR_Word check_hlds__mode_errors__Context_69;
+          MR_Word check_hlds__mode_errors__Var_79;
+          MR_Word check_hlds__mode_errors__Var_80;
+          MR_Word check_hlds__mode_errors__Var_81;
+          MR_Word check_hlds__mode_errors__Var_82;
+          MR_Word check_hlds__mode_errors__Var_83;
+
+          {
+            check_hlds__mode_errors__Preamble_68 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_4);
+          }
+          {
+            check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__Context_69);
+          }
+          {
+            check_hlds__mode_errors__Var_83 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_68, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[150]));
+          }
+          {
+            check_hlds__mode_errors__Var_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_82, 0) = ((MR_Box) (check_hlds__mode_errors__Var_83));
+          }
+          {
+            check_hlds__mode_errors__Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_81, 0) = ((MR_Box) (check_hlds__mode_errors__Var_82));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_81, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Var_80 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_80, 0) = ((MR_Box) (check_hlds__mode_errors__Context_69));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_80, 1) = ((MR_Box) (check_hlds__mode_errors__Var_81));
+          }
+          {
+            check_hlds__mode_errors__Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_79, 0) = ((MR_Box) (check_hlds__mode_errors__Var_80));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Spec_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+            MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 2) = ((MR_Box) (check_hlds__mode_errors__Var_79));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__MergeContext_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeError_5, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__MergeErrors_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+          {
+            check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__MergeContext_7, check_hlds__mode_errors__MergeErrors_8);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__mode_errors__MergeErrors_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeError_5, (MR_Integer) 0)));
+
+          {
+            check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__MergeErrors_36);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__mode_errors__PredOrFunc_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__Inst_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Integer check_hlds__mode_errors__Arity_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_higher_order_pred_var_to_spec_5_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__PredOrFunc_9, check_hlds__mode_errors__Var_10, check_hlds__mode_errors__Inst_11, check_hlds__mode_errors__Arity_12);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__mode_errors__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Inst_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_poly_unify_to_spec_3_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_37, check_hlds__mode_errors__Inst_38);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__mode_errors__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_var_is_live_to_spec_2_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_39);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word check_hlds__mode_errors__InstA_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__InstB_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__MaybeMultiMode_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+              MR_Word check_hlds__mode_errors__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_var_has_inst_to_spec_5_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_40, check_hlds__mode_errors__InstA_13, check_hlds__mode_errors__InstB_14, check_hlds__mode_errors__MaybeMultiMode_15);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word check_hlds__mode_errors__RHS_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__Type_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__PredOrFunc_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+              MR_Word check_hlds__mode_errors__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_42, check_hlds__mode_errors__RHS_16, check_hlds__mode_errors__Type_17, check_hlds__mode_errors__PredOrFunc_41);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__mode_errors__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__InstA_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__InstB_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_implied_mode_to_spec_4_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_43, check_hlds__mode_errors__InstA_44, check_hlds__mode_errors__InstB_45);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word check_hlds__mode_errors__Vars_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Insts_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_no_matching_mode_to_spec_3_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Vars_28, check_hlds__mode_errors__Insts_29);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word check_hlds__mode_errors__CalleePredId_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Integer check_hlds__mode_errors__CalleeProcId_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+              MR_Word check_hlds__mode_errors__CalleeErrors_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 5)));
+              MR_Word check_hlds__mode_errors__Vars_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Insts_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_in_callee_to_spec_6_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Vars_59, check_hlds__mode_errors__Insts_60, check_hlds__mode_errors__CalleePredId_30, check_hlds__mode_errors__CalleeProcId_31, check_hlds__mode_errors__CalleeErrors_32);
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Word check_hlds__mode_errors__Reason_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__InstA_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__InstB_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_bind_var_to_spec_5_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Reason_18, check_hlds__mode_errors__Var_46, check_hlds__mode_errors__InstA_47, check_hlds__mode_errors__InstB_48);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Word check_hlds__mode_errors__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Inst_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_non_local_lambda_var_to_spec_3_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_49, check_hlds__mode_errors__Inst_50);
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Word check_hlds__mode_errors__VarA_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__VarB_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__InstA_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__InstB_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_unify_var_var_to_spec_5_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__VarA_19, check_hlds__mode_errors__VarB_20, check_hlds__mode_errors__InstA_51, check_hlds__mode_errors__InstB_52);
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word check_hlds__mode_errors__Name_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__Args_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__ArgInsts_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 5)));
+              MR_Word check_hlds__mode_errors__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Inst_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_unify_var_functor_to_spec_6_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_57, check_hlds__mode_errors__Name_23, check_hlds__mode_errors__Args_24, check_hlds__mode_errors__Inst_58, check_hlds__mode_errors__ArgInsts_25);
+              }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Word check_hlds__mode_errors__InstA_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__InstB_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__VarA_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_unify_var_lambda_to_spec_4_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__VarA_55, check_hlds__mode_errors__InstA_53, check_hlds__mode_errors__InstB_54);
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Word check_hlds__mode_errors__PredId_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__MultiModeError_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__VarA_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_unify_var_multimode_pred_to_spec_4_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__VarA_56, check_hlds__mode_errors__PredId_21, check_hlds__mode_errors__MultiModeError_22);
+              }
+            }
+            break;
+          case (MR_Integer) 14:
+            {
+              MR_Word check_hlds__mode_errors__Errors_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Culprit_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_conj_to_spec_3_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Errors_26, check_hlds__mode_errors__Culprit_27);
+              }
+            }
+            break;
+          case (MR_Integer) 15:
+            {
+              MR_Integer check_hlds__mode_errors__ArgNum_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__VarInst_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 3)));
+              MR_Word check_hlds__mode_errors__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+              MR_Word check_hlds__mode_errors__Inst_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 4)));
+              MR_Word check_hlds__mode_errors__Reason_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 5)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__mode_error_final_inst_to_spec_6_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__ArgNum_33, check_hlds__mode_errors__Var_61, check_hlds__mode_errors__VarInst_34, check_hlds__mode_errors__Inst_62, check_hlds__mode_errors__Reason_63);
+              }
+            }
+            break;
+          case (MR_Integer) 16:
+            {
+              MR_Word check_hlds__mode_errors__NegCtxt_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+              MR_Word check_hlds__mode_errors__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 2)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__purity_error_should_be_in_promise_purity_scope_to_spec_3_f_0(check_hlds__mode_errors__NegCtxt_35, check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Var_64);
+              }
+            }
+            break;
+          case (MR_Integer) 17:
+            {
+              MR_Word check_hlds__mode_errors__Vars_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__ModeError_5, (MR_Integer) 1)));
+
+              {
+                check_hlds__mode_errors__Spec_6 = check_hlds__mode_errors__purity_error_lambda_should_be_any_to_spec_2_f_0(check_hlds__mode_errors__ModeInfo_4, check_hlds__mode_errors__Vars_65);
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__purity_error_lambda_should_be_any_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__Vars_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+    MR_Word check_hlds__mode_errors__Preamble_7;
+    MR_Word check_hlds__mode_errors__Context_8;
+    MR_Word check_hlds__mode_errors__VarSet_9;
+    MR_Word check_hlds__mode_errors__Pieces_10;
+    MR_Word check_hlds__mode_errors__Always_11;
+    MR_Word check_hlds__mode_errors__Var_15;
+    MR_Word check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_21;
+    MR_Word check_hlds__mode_errors__Var_24;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_31;
+    MR_String check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_80;
+    MR_Word check_hlds__mode_errors__Var_81;
+    MR_Word check_hlds__mode_errors__Var_82;
+
+    {
+      check_hlds__mode_errors__Preamble_7 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_4);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__Context_8);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__VarSet_9);
+    }
+    {
+      check_hlds__mode_errors__Var_32 = parse_tree__parse_tree_out_term__mercury_vars_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_9, check_hlds__mode_errors__Vars_5);
+    }
+    {
+      check_hlds__mode_errors__Var_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])));
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[266])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    {
+      check_hlds__mode_errors__Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[287])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_24, 1) = ((MR_Box) (check_hlds__mode_errors__Var_27));
+    }
+    {
+      check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[286])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 1) = ((MR_Box) (check_hlds__mode_errors__Var_24));
+    }
+    {
+      check_hlds__mode_errors__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[285])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 1) = ((MR_Box) (check_hlds__mode_errors__Var_21));
+    }
+    {
+      check_hlds__mode_errors__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[284])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+    }
+    {
+      check_hlds__mode_errors__Pieces_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[283])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_10, 1) = ((MR_Box) (check_hlds__mode_errors__Var_15));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_7, check_hlds__mode_errors__Pieces_10);
+    }
+    {
+      check_hlds__mode_errors__Always_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Always_11, 0) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    {
+      check_hlds__mode_errors__Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_82, 0) = ((MR_Box) (check_hlds__mode_errors__Always_11));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_82, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[288])));
+    }
+    {
+      check_hlds__mode_errors__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_81, 0) = ((MR_Box) (check_hlds__mode_errors__Context_8));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_81, 1) = ((MR_Box) (check_hlds__mode_errors__Var_82));
+    }
+    {
+      check_hlds__mode_errors__Var_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_80, 0) = ((MR_Box) (check_hlds__mode_errors__Var_81));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_80, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 2) = ((MR_Box) (check_hlds__mode_errors__Var_80));
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__purity_error_should_be_in_promise_purity_scope_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__NegCtxtDesc_5,
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__Var_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__Preamble_9;
+    MR_Word check_hlds__mode_errors__Context_10;
+    MR_Word check_hlds__mode_errors__VarSet_11;
+    MR_Word check_hlds__mode_errors__Pieces_12;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_57;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_Word check_hlds__mode_errors__Var_59;
+    MR_Word check_hlds__mode_errors__Var_60;
+
+    {
+      check_hlds__mode_errors__Preamble_9 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_6);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__Context_10);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_11);
+    }
+    switch (check_hlds__mode_errors__NegCtxtDesc_5) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__Var_35;
+          MR_Word check_hlds__mode_errors__Var_38;
+          MR_Word check_hlds__mode_errors__Var_39;
+          MR_String check_hlds__mode_errors__Var_40;
+
+          {
+            check_hlds__mode_errors__Var_40 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Var_7);
+          }
+          {
+            check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+          }
+          {
+            check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[186])));
+          }
+          {
+            check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[281])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+          }
+          {
+            check_hlds__mode_errors__Pieces_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[280])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_12, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__Var_15;
+          MR_Word check_hlds__mode_errors__Var_18;
+          MR_Word check_hlds__mode_errors__Var_19;
+          MR_String check_hlds__mode_errors__Var_20;
+
+          {
+            check_hlds__mode_errors__Var_20 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Var_7);
+          }
+          {
+            check_hlds__mode_errors__Var_19 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_19, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+          }
+          {
+            check_hlds__mode_errors__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 0) = ((MR_Box) (check_hlds__mode_errors__Var_19));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[190])));
+          }
+          {
+            check_hlds__mode_errors__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[281])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+          }
+          {
+            check_hlds__mode_errors__Pieces_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[282])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_12, 1) = ((MR_Box) (check_hlds__mode_errors__Var_15));
+          }
+        }
+        break;
+    }
+    {
+      check_hlds__mode_errors__Var_60 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_9, check_hlds__mode_errors__Pieces_12);
+    }
+    {
+      check_hlds__mode_errors__Var_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_59, 0) = ((MR_Box) (check_hlds__mode_errors__Var_60));
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+    }
+    {
+      check_hlds__mode_errors__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_final_inst_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Integer check_hlds__mode_errors__ArgNum_9,
+  MR_Word check_hlds__mode_errors__Var_10,
+  MR_Word check_hlds__mode_errors__VarInst_11,
+  MR_Word check_hlds__mode_errors__ExpInst_12,
+  MR_Word check_hlds__mode_errors__Reason_13)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_14;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_90_90;
+    MR_Word check_hlds__mode_errors__Preamble_15;
+    MR_Word check_hlds__mode_errors__Context_16;
+    MR_Word check_hlds__mode_errors__VarSet_17;
+    MR_String check_hlds__mode_errors__Problem_18;
+    MR_Word check_hlds__mode_errors__Pieces_19;
+    MR_Word check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_Word check_hlds__mode_errors__Var_24;
+    MR_String check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_Word check_hlds__mode_errors__Var_28;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_String check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_Word check_hlds__mode_errors__Var_61;
+    MR_Word check_hlds__mode_errors__Var_83;
+    MR_Word check_hlds__mode_errors__Var_84;
+    MR_Word check_hlds__mode_errors__Var_85;
+    MR_Word check_hlds__mode_errors__Var_86;
+    MR_Word check_hlds__mode_errors__Var_87;
+
+    {
+      check_hlds__mode_errors__Preamble_15 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_8);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__Context_16);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__VarSet_17);
+    }
+    switch (check_hlds__mode_errors__Reason_13) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        check_hlds__mode_errors__Problem_18 = (MR_String) "did not get sufficiently instantiated.";
+        break;
+      case (MR_Integer) 0:
+        check_hlds__mode_errors__Problem_18 = (MR_String) "became too instantiated.";
+        break;
+      case (MR_Integer) 2:
+        check_hlds__mode_errors__Problem_18 = (MR_String) "had the wrong instantiatedness.";
+        break;
+    }
+    check_hlds__mode_errors__TypeCtorInfo_90_90 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_25 = mercury__string__int_to_string_1_f_0(check_hlds__mode_errors__ArgNum_9);
+    }
+    {
+      check_hlds__mode_errors__Var_24 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_24, 0) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Problem_18));
+    }
+    {
+      check_hlds__mode_errors__Var_35 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_17, check_hlds__mode_errors__Var_10);
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+    }
+    check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[234]);
+    {
+      check_hlds__mode_errors__Var_39 = check_hlds__mode_errors__report_inst_6_f_0(check_hlds__mode_errors__ModeInfo_8, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[177]), check_hlds__mode_errors__Var_47, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[180]), check_hlds__mode_errors__VarInst_11);
+    }
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[278])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[277])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+    }
+    {
+      check_hlds__mode_errors__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (check_hlds__mode_errors__Var_27));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 1) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+    }
+    {
+      check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (check_hlds__mode_errors__Var_24));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_26));
+    }
+    {
+      check_hlds__mode_errors__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[241])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+    }
+    {
+      check_hlds__mode_errors__Var_61 = check_hlds__mode_errors__report_inst_6_f_0(check_hlds__mode_errors__ModeInfo_8, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15]), check_hlds__mode_errors__Var_47, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[181]), check_hlds__mode_errors__ExpInst_12);
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[279])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__Var_61));
+    }
+    {
+      check_hlds__mode_errors__Pieces_19 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_90_90, check_hlds__mode_errors__Var_20, check_hlds__mode_errors__Var_58);
+    }
+    {
+      check_hlds__mode_errors__Var_87 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_90_90, check_hlds__mode_errors__Preamble_15, check_hlds__mode_errors__Pieces_19);
+    }
+    {
+      check_hlds__mode_errors__Var_86 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_86, 0) = ((MR_Box) (check_hlds__mode_errors__Var_87));
+    }
+    {
+      check_hlds__mode_errors__Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_85, 0) = ((MR_Box) (check_hlds__mode_errors__Var_86));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_85, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 0) = ((MR_Box) (check_hlds__mode_errors__Context_16));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_84, 1) = ((MR_Box) (check_hlds__mode_errors__Var_85));
+    }
+    {
+      check_hlds__mode_errors__Var_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_83, 0) = ((MR_Box) (check_hlds__mode_errors__Var_84));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_83, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 2) = ((MR_Box) (check_hlds__mode_errors__Var_83));
+    }
+    return check_hlds__mode_errors__Spec_14;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_inst_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Word check_hlds__mode_errors__ShortInstQF_9,
+  MR_Word check_hlds__mode_errors__ShortInstSuffix_10,
+  MR_Word check_hlds__mode_errors__LongInstPrefix_11,
+  MR_Word check_hlds__mode_errors__LongInstSuffix_12,
+  MR_Word check_hlds__mode_errors__Inst0_13)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Pieces_14;
+    MR_Word check_hlds__mode_errors__ModuleInfo_15;
+    MR_Word check_hlds__mode_errors__InstVarSet_16;
+
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__ModuleInfo_15);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__InstVarSet_16);
+    }
+    {
+      check_hlds__mode_errors__Pieces_14 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_15, check_hlds__mode_errors__InstVarSet_16, (MR_Integer) 1, check_hlds__mode_errors__ShortInstQF_9, check_hlds__mode_errors__ShortInstSuffix_10, check_hlds__mode_errors__LongInstPrefix_11, check_hlds__mode_errors__LongInstSuffix_12, check_hlds__mode_errors__Inst0_13);
+    }
+    return check_hlds__mode_errors__Pieces_14;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_functor_to_spec_6_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_8,
+  MR_Word check_hlds__mode_errors__X_9,
+  MR_Word check_hlds__mode_errors__ConsId_10,
+  MR_Word check_hlds__mode_errors__Args_11,
+  MR_Word check_hlds__mode_errors__InstX_12,
+  MR_Word check_hlds__mode_errors__ArgInsts_13)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_14;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_68_68;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_69_69;
+    MR_Word check_hlds__mode_errors__Preamble_15;
+    MR_Word check_hlds__mode_errors__Context_16;
+    MR_Word check_hlds__mode_errors__VarSet_17;
+    MR_Word check_hlds__mode_errors__ModuleInfo_18;
+    MR_String check_hlds__mode_errors__FunctorConsIdStr_19;
+    MR_String check_hlds__mode_errors__ConsIdStr_20;
+    MR_Word check_hlds__mode_errors__FakeTermInst_21;
+    MR_Word check_hlds__mode_errors__Pieces_22;
+    MR_Word check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_31;
+    MR_String check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_Word check_hlds__mode_errors__Var_38;
+    MR_Word check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_46;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_String check_hlds__mode_errors__Var_48;
+    MR_Word check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_51;
+    MR_Word check_hlds__mode_errors__Var_54;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_61;
+    MR_Word check_hlds__mode_errors__Var_62;
+    MR_Word check_hlds__mode_errors__Var_63;
+    MR_Word check_hlds__mode_errors__Var_64;
+    MR_Word check_hlds__mode_errors__Var_65;
+
+    {
+      check_hlds__mode_errors__Preamble_15 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_8);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__Context_16);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__VarSet_17);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_8, &check_hlds__mode_errors__ModuleInfo_18);
+    }
+    {
+      check_hlds__mode_errors__FunctorConsIdStr_19 = hlds__hlds_out__hlds_out_util__functor_cons_id_to_string_5_f_0(check_hlds__mode_errors__ModuleInfo_18, check_hlds__mode_errors__VarSet_17, (MR_Integer) 0, check_hlds__mode_errors__ConsId_10, check_hlds__mode_errors__Args_11);
+    }
+    {
+      check_hlds__mode_errors__ConsIdStr_20 = parse_tree__mercury_to_mercury__mercury_cons_id_to_string_2_f_0((MR_Integer) 1, check_hlds__mode_errors__ConsId_10);
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (check_hlds__mode_errors__ConsIdStr_20));
+    }
+    {
+      check_hlds__mode_errors__Var_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 0) = ((MR_Box) (check_hlds__mode_errors__Var_26));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 1) = ((MR_Box) (check_hlds__mode_errors__ArgInsts_13));
+    }
+    {
+      check_hlds__mode_errors__FakeTermInst_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__FakeTermInst_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__FakeTermInst_21, 1) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+    }
+    check_hlds__mode_errors__TypeCtorInfo_68_68 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    check_hlds__mode_errors__TypeCtorInfo_69_69 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__mode_errors__Var_32 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_69_69, check_hlds__mode_errors__VarSet_17, check_hlds__mode_errors__X_9);
+    }
+    {
+      check_hlds__mode_errors__Var_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_37, 1) = ((MR_Box) (check_hlds__mode_errors__FunctorConsIdStr_19));
+    }
+    {
+      check_hlds__mode_errors__Var_48 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_69_69, check_hlds__mode_errors__VarSet_17, check_hlds__mode_errors__X_9);
+    }
+    {
+      check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+    }
+    {
+      check_hlds__mode_errors__Var_49 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_8, check_hlds__mode_errors__InstX_12, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_46, 0) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_46, 1) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[239])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+    }
+    {
+      check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[272])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+    }
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[252])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    {
+      check_hlds__mode_errors__Var_56 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_8, check_hlds__mode_errors__FakeTermInst_21, (MR_String) ".");
+    }
+    {
+      check_hlds__mode_errors__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 0) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 1) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+    }
+    {
+      check_hlds__mode_errors__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_51, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[276])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_51, 1) = ((MR_Box) (check_hlds__mode_errors__Var_54));
+    }
+    {
+      check_hlds__mode_errors__Pieces_22 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_68_68, check_hlds__mode_errors__Var_27, check_hlds__mode_errors__Var_51);
+    }
+    {
+      check_hlds__mode_errors__Var_65 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_68_68, check_hlds__mode_errors__Preamble_15, check_hlds__mode_errors__Pieces_22);
+    }
+    {
+      check_hlds__mode_errors__Var_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_64, 0) = ((MR_Box) (check_hlds__mode_errors__Var_65));
+    }
+    {
+      check_hlds__mode_errors__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_63, 0) = ((MR_Box) (check_hlds__mode_errors__Var_64));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_62, 0) = ((MR_Box) (check_hlds__mode_errors__Context_16));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_62, 1) = ((MR_Box) (check_hlds__mode_errors__Var_63));
+    }
+    {
+      check_hlds__mode_errors__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_61, 0) = ((MR_Box) (check_hlds__mode_errors__Var_62));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_61, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_14, 2) = ((MR_Box) (check_hlds__mode_errors__Var_61));
+    }
+    return check_hlds__mode_errors__Spec_14;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_lambda_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__InstX_8,
+  MR_Word check_hlds__mode_errors__InstY_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_10;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_49_49;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_50_50;
+    MR_Word check_hlds__mode_errors__Preamble_11;
+    MR_Word check_hlds__mode_errors__Context_12;
+    MR_Word check_hlds__mode_errors__VarSet_13;
+    MR_Word check_hlds__mode_errors__Pieces_14;
+    MR_Word check_hlds__mode_errors__Var_15;
+    MR_Word check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_19;
+    MR_String check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_21;
+    MR_Word check_hlds__mode_errors__Var_24;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_String check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_44;
+    MR_Word check_hlds__mode_errors__Var_45;
+    MR_Word check_hlds__mode_errors__Var_46;
+
+    {
+      check_hlds__mode_errors__Preamble_11 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_6);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__Context_12);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_13);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_49_49 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    check_hlds__mode_errors__TypeCtorInfo_50_50 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__mode_errors__Var_20 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_50_50, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__X_7);
+    }
+    {
+      check_hlds__mode_errors__Var_19 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_19, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+    }
+    {
+      check_hlds__mode_errors__Var_31 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_50_50, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__X_7);
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__InstX_8, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[239])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 1) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+    }
+    {
+      check_hlds__mode_errors__Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_24, 1) = ((MR_Box) (check_hlds__mode_errors__Var_26));
+    }
+    {
+      check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[274])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 1) = ((MR_Box) (check_hlds__mode_errors__Var_24));
+    }
+    {
+      check_hlds__mode_errors__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 0) = ((MR_Box) (check_hlds__mode_errors__Var_19));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_18, 1) = ((MR_Box) (check_hlds__mode_errors__Var_21));
+    }
+    {
+      check_hlds__mode_errors__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[252])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_15, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+    }
+    {
+      check_hlds__mode_errors__Var_37 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__InstY_9, (MR_String) ".");
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[275])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+    }
+    {
+      check_hlds__mode_errors__Pieces_14 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_49_49, check_hlds__mode_errors__Var_15, check_hlds__mode_errors__Var_34);
+    }
+    {
+      check_hlds__mode_errors__Var_46 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_49_49, check_hlds__mode_errors__Preamble_11, check_hlds__mode_errors__Pieces_14);
+    }
+    {
+      check_hlds__mode_errors__Var_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_45, 0) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+    }
+    {
+      check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Context_12));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    return check_hlds__mode_errors__Spec_10;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__Y_9,
+  MR_Word check_hlds__mode_errors__InstX_10,
+  MR_Word check_hlds__mode_errors__InstY_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_60_60;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_61_61;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_Word check_hlds__mode_errors__Pieces_16;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_Word check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_21;
+    MR_String check_hlds__mode_errors__Var_22;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_27;
+    MR_String check_hlds__mode_errors__Var_28;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_Word check_hlds__mode_errors__Var_38;
+    MR_String check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_40;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_45;
+    MR_Word check_hlds__mode_errors__Var_46;
+    MR_String check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_48;
+    MR_Word check_hlds__mode_errors__Var_53;
+    MR_Word check_hlds__mode_errors__Var_54;
+    MR_Word check_hlds__mode_errors__Var_55;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_57;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_60_60 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    check_hlds__mode_errors__TypeCtorInfo_61_61 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__mode_errors__Var_22 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_61_61, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__X_8);
+    }
+    {
+      check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_21, 1) = ((MR_Box) (check_hlds__mode_errors__Var_22));
+    }
+    {
+      check_hlds__mode_errors__Var_28 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_61_61, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Y_9);
+    }
+    {
+      check_hlds__mode_errors__Var_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_27, 1) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_61_61, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__X_8);
+    }
+    {
+      check_hlds__mode_errors__Var_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_38, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    {
+      check_hlds__mode_errors__Var_40 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__InstX_10, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 0) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 1) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[239])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[272])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (check_hlds__mode_errors__Var_27));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_26, 1) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+    }
+    {
+      check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_26));
+    }
+    {
+      check_hlds__mode_errors__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 0) = ((MR_Box) (check_hlds__mode_errors__Var_21));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 1) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[252])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+    }
+    {
+      check_hlds__mode_errors__Var_47 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__mode_errors__TypeCtorInfo_61_61, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Y_9);
+    }
+    {
+      check_hlds__mode_errors__Var_46 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_46, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_46, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+    }
+    {
+      check_hlds__mode_errors__Var_48 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__InstY_11, (MR_String) ".");
+    }
+    {
+      check_hlds__mode_errors__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 0) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 1) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[273])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+    }
+    {
+      check_hlds__mode_errors__Pieces_16 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_60_60, check_hlds__mode_errors__Var_17, check_hlds__mode_errors__Var_42);
+    }
+    {
+      check_hlds__mode_errors__Var_57 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_60_60, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__Pieces_16);
+    }
+    {
+      check_hlds__mode_errors__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+    }
+    {
+      check_hlds__mode_errors__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 0) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_54, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_54, 1) = ((MR_Box) (check_hlds__mode_errors__Var_55));
+    }
+    {
+      check_hlds__mode_errors__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_53, 0) = ((MR_Box) (check_hlds__mode_errors__Var_54));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_53, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_53));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__2_2;
+
+    {
+      check_hlds__mode_errors__conv0_HeadVar__2_2 = check_hlds__mode_util__from_to_insts_to_mode_1_f_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__2_2));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_pred_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__X_8,
+  MR_Word check_hlds__mode_errors__RHS_9,
+  MR_Word check_hlds__mode_errors__Type_10,
+  MR_Word check_hlds__mode_errors__PredOrFunc_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_Word check_hlds__mode_errors__InstVarSet_16;
+    MR_Word check_hlds__mode_errors__ModuleInfo_17;
+    MR_String check_hlds__mode_errors__RHSStr_19;
+    MR_Word check_hlds__mode_errors__TypeVarSet_24;
+    MR_Word check_hlds__mode_errors__MainPieces_25;
+    MR_Word check_hlds__mode_errors__VerbosePieces_26;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_String check_hlds__mode_errors__Var_38;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_44;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_52;
+    MR_Word check_hlds__mode_errors__Var_54;
+    MR_Word check_hlds__mode_errors__Var_57;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_String check_hlds__mode_errors__Var_59;
+    MR_Word check_hlds__mode_errors__Var_69;
+    MR_Word check_hlds__mode_errors__Var_70;
+    MR_String check_hlds__mode_errors__Var_71;
+    MR_String check_hlds__mode_errors__Var_72;
+    MR_Word check_hlds__mode_errors__Var_74;
+    MR_Word check_hlds__mode_errors__Var_77;
+    MR_Word check_hlds__mode_errors__Var_80;
+    MR_Word check_hlds__mode_errors__Var_81;
+    MR_String check_hlds__mode_errors__Var_82;
+    MR_String check_hlds__mode_errors__Var_83;
+    MR_Word check_hlds__mode_errors__Var_116;
+    MR_Word check_hlds__mode_errors__Var_117;
+    MR_Word check_hlds__mode_errors__Var_118;
+    MR_Word check_hlds__mode_errors__Var_119;
+    MR_Word check_hlds__mode_errors__Var_120;
+    MR_Word check_hlds__mode_errors__Var_121;
+    MR_Word check_hlds__mode_errors__Var_122;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__InstVarSet_16);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__ModuleInfo_17);
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__RHS_9)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__Y_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__RHS_9, (MR_Integer) 0)));
+
+          {
+            check_hlds__mode_errors__RHSStr_19 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Y_18);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__ConsId_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__RHS_9, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__ArgVars_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__RHS_9, (MR_Integer) 1)));
+
+          {
+            check_hlds__mode_errors__RHSStr_19 = hlds__hlds_out__hlds_out_util__functor_cons_id_to_string_5_f_0(check_hlds__mode_errors__ModuleInfo_17, check_hlds__mode_errors__VarSet_15, (MR_Integer) 0, check_hlds__mode_errors__ConsId_20, check_hlds__mode_errors__ArgVars_21);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__mode_errors__ArgFromToInsts_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__RHS_9, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__ArgModes_23;
+          MR_String check_hlds__mode_errors__Var_29;
+          MR_String check_hlds__mode_errors__Var_30;
+          MR_Word check_hlds__mode_errors__ArgVars_126 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__RHS_9, (MR_Integer) 0)));
+
+          {
+            check_hlds__mode_errors__ArgModes_23 = mercury__list__map_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_from_to_insts_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0, (MR_Word) &check_hlds__mode_errors_scalar_common_1[3], check_hlds__mode_errors__ArgFromToInsts_22);
+          }
+          {
+            check_hlds__mode_errors__Var_30 = hlds__hlds_out__hlds_out_util__var_modes_to_string_5_f_0(check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__InstVarSet_16, (MR_Integer) 0, check_hlds__mode_errors__ArgVars_126, check_hlds__mode_errors__ArgModes_23);
+          }
+          {
+            check_hlds__mode_errors__Var_29 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__Var_30, (MR_String) "] ... )");
+          }
+          {
+            check_hlds__mode_errors__RHSStr_19 = mercury__string__f_43_43_2_f_0((MR_String) "lambda([", check_hlds__mode_errors__Var_29);
+          }
+        }
+        break;
+    }
+    {
+      mercury__varset__init_1_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, &check_hlds__mode_errors__TypeVarSet_24);
+    }
+    {
+      check_hlds__mode_errors__Var_38 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__X_8);
+    }
+    {
+      check_hlds__mode_errors__Var_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_37, 1) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (check_hlds__mode_errors__RHSStr_19));
+    }
+    {
+      check_hlds__mode_errors__Var_59 = parse_tree__mercury_to_mercury__mercury_type_to_string_3_f_0(check_hlds__mode_errors__TypeVarSet_24, (MR_Integer) 0, check_hlds__mode_errors__Type_10);
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+    }
+    {
+      check_hlds__mode_errors__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])));
+    }
+    {
+      check_hlds__mode_errors__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[268])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_54, 1) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+    }
+    {
+      check_hlds__mode_errors__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_52, 1) = ((MR_Box) (check_hlds__mode_errors__Var_54));
+    }
+    {
+      check_hlds__mode_errors__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[267])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_49, 1) = ((MR_Box) (check_hlds__mode_errors__Var_52));
+    }
+    {
+      check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    {
+      check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[266])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[265])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_25, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[264])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_25, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__Var_72 = parse_tree__prog_out__pred_or_func_to_full_str_1_f_0(check_hlds__mode_errors__PredOrFunc_11);
+    }
+    {
+      check_hlds__mode_errors__Var_71 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__Var_72, (MR_String) "s");
+    }
+    {
+      check_hlds__mode_errors__Var_70 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_70, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_70, 1) = ((MR_Box) (check_hlds__mode_errors__Var_71));
+    }
+    {
+      check_hlds__mode_errors__Var_83 = parse_tree__prog_out__pred_or_func_to_full_str_1_f_0(check_hlds__mode_errors__PredOrFunc_11);
+    }
+    {
+      check_hlds__mode_errors__Var_82 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__Var_83, (MR_String) "s");
+    }
+    {
+      check_hlds__mode_errors__Var_81 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_81, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_81, 1) = ((MR_Box) (check_hlds__mode_errors__Var_82));
+    }
+    {
+      check_hlds__mode_errors__Var_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_80, 0) = ((MR_Box) (check_hlds__mode_errors__Var_81));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_80, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[167])));
+    }
+    {
+      check_hlds__mode_errors__Var_77 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_77, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[271])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_77, 1) = ((MR_Box) (check_hlds__mode_errors__Var_80));
+    }
+    {
+      check_hlds__mode_errors__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[270])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 1) = ((MR_Box) (check_hlds__mode_errors__Var_77));
+    }
+    {
+      check_hlds__mode_errors__Var_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_69, 0) = ((MR_Box) (check_hlds__mode_errors__Var_70));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_69, 1) = ((MR_Box) (check_hlds__mode_errors__Var_74));
+    }
+    {
+      check_hlds__mode_errors__VerbosePieces_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VerbosePieces_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[269])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VerbosePieces_26, 1) = ((MR_Box) (check_hlds__mode_errors__Var_69));
+    }
+    {
+      check_hlds__mode_errors__Var_120 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__MainPieces_25);
+    }
+    {
+      check_hlds__mode_errors__Var_119 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_119, 0) = ((MR_Box) (check_hlds__mode_errors__Var_120));
+    }
+    {
+      check_hlds__mode_errors__Var_122 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_122, 0) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_122, 1) = ((MR_Box) (check_hlds__mode_errors__VerbosePieces_26));
+    }
+    {
+      check_hlds__mode_errors__Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_121, 0) = ((MR_Box) (check_hlds__mode_errors__Var_122));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_121, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_118, 0) = ((MR_Box) (check_hlds__mode_errors__Var_119));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_118, 1) = ((MR_Box) (check_hlds__mode_errors__Var_121));
+    }
+    {
+      check_hlds__mode_errors__Var_117 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_117, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_117, 1) = ((MR_Box) (check_hlds__mode_errors__Var_118));
+    }
+    {
+      check_hlds__mode_errors__Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_116, 0) = ((MR_Box) (check_hlds__mode_errors__Var_117));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_116, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_116));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_implied_mode_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__Var_7,
+  MR_Word check_hlds__mode_errors__VarInst_8,
+  MR_Word check_hlds__mode_errors__Inst_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_10;
+    MR_Word check_hlds__mode_errors__ModuleInfo_11;
+    MR_Word check_hlds__mode_errors__Globals_12;
+    MR_Word check_hlds__mode_errors__OpMode_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__Var_19;
+    MR_Word check_hlds__mode_errors__Var_20;
+    MR_Word check_hlds__mode_errors__Var_15;
+
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_11);
+    }
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__mode_errors__ModuleInfo_11, &check_hlds__mode_errors__Globals_12);
+    }
+    {
+      libs__globals__get_op_mode_2_p_0(check_hlds__mode_errors__Globals_12, &check_hlds__mode_errors__OpMode_13);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__Context_14);
+    }
+    check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__OpMode_13)) == (MR_mktag((MR_Integer) 3)));
+    if (check_hlds__mode_errors__succeeded)
+      {
+        check_hlds__mode_errors__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__mode_errors__OpMode_13, (MR_Integer) 0)));
+        check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__Var_19)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__mode_errors__succeeded)
+          {
+            check_hlds__mode_errors__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_19, (MR_Integer) 0)));
+            check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__Var_20)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__mode_errors__succeeded)
+              check_hlds__mode_errors__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, (MR_Integer) 0)));
+          }
+      }
+    if (check_hlds__mode_errors__succeeded)
+      {
+        MR_Word check_hlds__mode_errors__Preamble_16;
+        MR_Word check_hlds__mode_errors__VarSet_17;
+        MR_Word check_hlds__mode_errors__Pieces_18;
+        MR_Word check_hlds__mode_errors__Var_23;
+        MR_Word check_hlds__mode_errors__Var_25;
+        MR_Word check_hlds__mode_errors__Var_28;
+        MR_Word check_hlds__mode_errors__Var_29;
+        MR_String check_hlds__mode_errors__Var_30;
+        MR_Word check_hlds__mode_errors__Var_31;
+        MR_Word check_hlds__mode_errors__Var_35;
+        MR_Word check_hlds__mode_errors__Var_36;
+        MR_Word check_hlds__mode_errors__Var_37;
+        MR_Word check_hlds__mode_errors__Var_38;
+        MR_Word check_hlds__mode_errors__Var_39;
+        MR_Word check_hlds__mode_errors__Var_54;
+        MR_Word check_hlds__mode_errors__Var_56;
+        MR_Word check_hlds__mode_errors__Var_62;
+        MR_Word check_hlds__mode_errors__ModuleInfo_88;
+        MR_Word check_hlds__mode_errors__InstVarSet_89;
+
+        {
+          check_hlds__mode_errors__Preamble_16 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_6);
+        }
+        {
+          check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_17);
+        }
+        {
+          check_hlds__mode_errors__Var_30 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_17, check_hlds__mode_errors__Var_7);
+        }
+        {
+          check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+        }
+        {
+          check_hlds__mode_errors__Var_54 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_6, check_hlds__mode_errors__VarInst_8, (MR_String) ",");
+        }
+        {
+          check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_88);
+        }
+        {
+          check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__InstVarSet_89);
+        }
+        {
+          check_hlds__mode_errors__Var_62 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_88, check_hlds__mode_errors__InstVarSet_89, (MR_Integer) 1, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15]), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[234]), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[181]), check_hlds__mode_errors__Inst_9);
+        }
+        {
+          check_hlds__mode_errors__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[237])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_56, 1) = ((MR_Box) (check_hlds__mode_errors__Var_62));
+        }
+        {
+          check_hlds__mode_errors__Var_31 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Var_54, check_hlds__mode_errors__Var_56);
+        }
+        {
+          check_hlds__mode_errors__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 0) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 1) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+        }
+        {
+          check_hlds__mode_errors__Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_25, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[239])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_25, 1) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+        }
+        {
+          check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+        }
+        {
+          check_hlds__mode_errors__Pieces_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[263])));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_18, 1) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+        }
+        {
+          check_hlds__mode_errors__Var_39 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_16, check_hlds__mode_errors__Pieces_18);
+        }
+        {
+          check_hlds__mode_errors__Var_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_38, 0) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+        }
+        {
+          check_hlds__mode_errors__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 0) = ((MR_Box) (check_hlds__mode_errors__Var_38));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Var_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+        }
+        {
+          check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__Var_45;
+        MR_Word check_hlds__mode_errors__Var_46;
+
+        {
+          check_hlds__mode_errors__Var_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_46, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 0) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+        }
+      }
+    return check_hlds__mode_errors__Spec_10;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_var_has_inst_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__Var_8,
+  MR_Word check_hlds__mode_errors__VarInst_9,
+  MR_Word check_hlds__mode_errors__Inst_10,
+  MR_Word check_hlds__mode_errors__MaybeMultiModeError_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_Word check_hlds__mode_errors__MainPieces_16;
+    MR_Word check_hlds__mode_errors__MainMsgs_17;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_String check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_36;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    {
+      check_hlds__mode_errors__Var_31 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Var_8);
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = check_hlds__mode_errors__has_inst_expected_inst_was_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__VarInst_9, check_hlds__mode_errors__Inst_10);
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[240])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_16, 1) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+    }
+    {
+      check_hlds__mode_errors__Var_36 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__MainPieces_16);
+    }
+    {
+      check_hlds__mode_errors__Var_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+    }
+    {
+      check_hlds__mode_errors__MainMsgs_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainMsgs_17, 0) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainMsgs_17, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    if ((check_hlds__mode_errors__MaybeMultiModeError_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__MainMsgs_17));
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__TypeCtorInfo_62_62;
+        MR_Word check_hlds__mode_errors__MultiModeError_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MaybeMultiModeError_11, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__ConnectMsgs_20;
+        MR_Word check_hlds__mode_errors__PredId_21;
+        MR_Word check_hlds__mode_errors__MultiMode_22;
+        MR_Word check_hlds__mode_errors__SubSpec_23;
+        MR_Word check_hlds__mode_errors__SubMsgs_26;
+        MR_Word check_hlds__mode_errors__Var_47;
+        MR_Word check_hlds__mode_errors__Var_55;
+        MR_Word check_hlds__mode_errors__Var_56;
+        MR_Word check_hlds__mode_errors___SubSeverity_24;
+        MR_Word check_hlds__mode_errors___SubPhase_25;
+
+        {
+          check_hlds__mode_errors__Var_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[262])));
+        }
+        {
+          check_hlds__mode_errors__ConnectMsgs_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ConnectMsgs_20, 0) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ConnectMsgs_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        check_hlds__mode_errors__PredId_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MultiModeError_18, (MR_Integer) 0)));
+        check_hlds__mode_errors__MultiMode_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MultiModeError_18, (MR_Integer) 1)));
+        {
+          check_hlds__mode_errors__SubSpec_23 = check_hlds__mode_errors__mode_error_unify_var_multimode_pred_to_spec_4_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__Var_8, check_hlds__mode_errors__PredId_21, check_hlds__mode_errors__MultiMode_22);
+        }
+        check_hlds__mode_errors___SubSeverity_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_23, (MR_Integer) 0)));
+        check_hlds__mode_errors___SubPhase_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_23, (MR_Integer) 1)));
+        check_hlds__mode_errors__SubMsgs_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__SubSpec_23, (MR_Integer) 2)));
+        check_hlds__mode_errors__TypeCtorInfo_62_62 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0;
+        {
+          check_hlds__mode_errors__Var_56 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_62_62, check_hlds__mode_errors__ConnectMsgs_20, check_hlds__mode_errors__SubMsgs_26);
+        }
+        {
+          check_hlds__mode_errors__Var_55 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_62_62, check_hlds__mode_errors__MainMsgs_17, check_hlds__mode_errors__Var_56);
+        }
+        {
+          check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_55));
+        }
+      }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_unify_var_multimode_pred_to_spec_4_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_6,
+  MR_Word check_hlds__mode_errors__X_7,
+  MR_Word check_hlds__mode_errors__PredId_8,
+  MR_Word check_hlds__mode_errors__MultiModeError_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_10;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_135_135;
+    MR_Word check_hlds__mode_errors__Preamble_11;
+    MR_Word check_hlds__mode_errors__Context_12;
+    MR_Word check_hlds__mode_errors__VarSet_13;
+    MR_Word check_hlds__mode_errors__ModuleInfo_14;
+    MR_Word check_hlds__mode_errors__PredInfo_15;
+    MR_Word check_hlds__mode_errors__PredOrFunc_16;
+    MR_Word check_hlds__mode_errors__PredModule_17;
+    MR_String check_hlds__mode_errors__PredName_18;
+    MR_Word check_hlds__mode_errors__QualifiedName_19;
+    MR_Integer check_hlds__mode_errors__Arity_20;
+    MR_Integer check_hlds__mode_errors__FuncArity_21;
+    MR_Word check_hlds__mode_errors__StartPieces_22;
+    MR_Word check_hlds__mode_errors__DetailPieces_26;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_String check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_40;
+    MR_Word check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_115;
+    MR_Word check_hlds__mode_errors__Var_116;
+    MR_Word check_hlds__mode_errors__Var_117;
+    MR_Word check_hlds__mode_errors__Var_118;
+    MR_Word check_hlds__mode_errors__Var_119;
+    MR_Word check_hlds__mode_errors__Var_120;
+
+    {
+      check_hlds__mode_errors__Preamble_11 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_6);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__Context_12);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__VarSet_13);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_6, &check_hlds__mode_errors__ModuleInfo_14);
+    }
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__mode_errors__ModuleInfo_14, check_hlds__mode_errors__PredId_8, &check_hlds__mode_errors__PredInfo_15);
+    }
+    {
+      check_hlds__mode_errors__PredOrFunc_16 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(check_hlds__mode_errors__PredInfo_15);
+    }
+    {
+      check_hlds__mode_errors__PredModule_17 = hlds__hlds_pred__pred_info_module_1_f_0(check_hlds__mode_errors__PredInfo_15);
+    }
+    {
+      check_hlds__mode_errors__PredName_18 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__mode_errors__PredInfo_15);
+    }
+    {
+      check_hlds__mode_errors__QualifiedName_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__QualifiedName_19, 0) = ((MR_Box) (check_hlds__mode_errors__PredModule_17));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__QualifiedName_19, 1) = ((MR_Box) (check_hlds__mode_errors__PredName_18));
+    }
+    {
+      check_hlds__mode_errors__Arity_20 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(check_hlds__mode_errors__PredInfo_15);
+    }
+    {
+      parse_tree__prog_util__adjust_func_arity_3_p_1(check_hlds__mode_errors__PredOrFunc_16, &check_hlds__mode_errors__FuncArity_21, check_hlds__mode_errors__Arity_20);
+    }
+    {
+      check_hlds__mode_errors__Var_35 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__X_7);
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+    }
+    {
+      check_hlds__mode_errors__Var_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 14));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_40, 1) = ((MR_Box) (check_hlds__mode_errors__PredOrFunc_16));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__QualifiedName_19));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (check_hlds__mode_errors__FuncArity_21));
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+    }
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[253])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+    }
+    {
+      check_hlds__mode_errors__StartPieces_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__StartPieces_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[252])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__StartPieces_22, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__MultiModeError_9)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__TypeInfo_132_164;
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_133_165;
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_134_166;
+          MR_Word check_hlds__mode_errors__Var_58;
+          MR_String check_hlds__mode_errors__Var_59;
+          MR_Word check_hlds__mode_errors__ArgVars_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__MultiModeError_9, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__MatchPieces_137;
+          MR_String check_hlds__mode_errors__ModeOrModes_138;
+          MR_Word check_hlds__mode_errors__ArgVarPieces_139;
+          MR_Word check_hlds__mode_errors__Var_144;
+          MR_Word check_hlds__mode_errors__Var_147;
+          MR_Word check_hlds__mode_errors__Var_148;
+          MR_Word check_hlds__mode_errors__Var_149;
+          MR_Word check_hlds__mode_errors__Var_152;
+          MR_Word check_hlds__mode_errors__Var_153;
+          MR_Word check_hlds__mode_errors__Var_155;
+          MR_Word check_hlds__mode_errors__Var_156;
+          MR_Word check_hlds__mode_errors__Var_157;
+          MR_Word check_hlds__mode_errors__Var_160;
+          MR_String check_hlds__mode_errors__VarOrVars_163;
+          MR_Box check_hlds__mode_errors__conv3_Var_59;
+          MR_Box check_hlds__mode_errors__conv4_ModeOrModes_138;
+          MR_Box check_hlds__mode_errors__conv5_VarOrVars_163;
+
+          {
+            check_hlds__mode_errors__conv3_Var_59 = parse_tree__error_util__choose_number_3_f_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, check_hlds__mode_errors__ArgVars_136, ((MR_Box) ((MR_String) "does")), ((MR_Box) ((MR_String) "do")));
+          }
+          check_hlds__mode_errors__Var_59 = ((MR_String) check_hlds__mode_errors__conv3_Var_59);
+          {
+            check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+          }
+          {
+            check_hlds__mode_errors__MatchPieces_137 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MatchPieces_137, 0) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MatchPieces_137, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[260])));
+          }
+          check_hlds__mode_errors__TypeInfo_132_164 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+          check_hlds__mode_errors__TypeCtorInfo_133_165 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+          {
+            check_hlds__mode_errors__conv4_ModeOrModes_138 = parse_tree__error_util__choose_number_3_f_0(check_hlds__mode_errors__TypeInfo_132_164, check_hlds__mode_errors__TypeCtorInfo_133_165, check_hlds__mode_errors__ArgVars_136, ((MR_Box) ((MR_String) "mode")), ((MR_Box) ((MR_String) "modes")));
+          }
+          check_hlds__mode_errors__ModeOrModes_138 = ((MR_String) check_hlds__mode_errors__conv4_ModeOrModes_138);
+          {
+            check_hlds__mode_errors__conv5_VarOrVars_163 = parse_tree__error_util__choose_number_3_f_0(check_hlds__mode_errors__TypeInfo_132_164, check_hlds__mode_errors__TypeCtorInfo_133_165, check_hlds__mode_errors__ArgVars_136, ((MR_Box) ((MR_String) "variable")), ((MR_Box) ((MR_String) "variables")));
+          }
+          check_hlds__mode_errors__VarOrVars_163 = ((MR_String) check_hlds__mode_errors__conv5_VarOrVars_163);
+          {
+            check_hlds__mode_errors__ArgVarPieces_139 = check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0(check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__ArgVars_136);
+          }
+          check_hlds__mode_errors__TypeCtorInfo_134_166 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            check_hlds__mode_errors__Var_148 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_148, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_148, 1) = ((MR_Box) (check_hlds__mode_errors__ModeOrModes_138));
+          }
+          {
+            check_hlds__mode_errors__Var_153 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_153, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_153, 1) = ((MR_Box) (check_hlds__mode_errors__VarOrVars_163));
+          }
+          {
+            check_hlds__mode_errors__Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_152, 0) = ((MR_Box) (check_hlds__mode_errors__Var_153));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_152, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Var_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_149, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[257])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_149, 1) = ((MR_Box) (check_hlds__mode_errors__Var_152));
+          }
+          {
+            check_hlds__mode_errors__Var_147 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_147, 0) = ((MR_Box) (check_hlds__mode_errors__Var_148));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_147, 1) = ((MR_Box) (check_hlds__mode_errors__Var_149));
+          }
+          {
+            check_hlds__mode_errors__Var_144 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_144, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[256])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_144, 1) = ((MR_Box) (check_hlds__mode_errors__Var_147));
+          }
+          {
+            check_hlds__mode_errors__Var_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_160, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_160, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[171])));
+          }
+          {
+            check_hlds__mode_errors__Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_157, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[258])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_157, 1) = ((MR_Box) (check_hlds__mode_errors__Var_160));
+          }
+          {
+            check_hlds__mode_errors__Var_156 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_166, check_hlds__mode_errors__MatchPieces_137, check_hlds__mode_errors__Var_157);
+          }
+          {
+            check_hlds__mode_errors__Var_155 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_166, check_hlds__mode_errors__ArgVarPieces_139, check_hlds__mode_errors__Var_156);
+          }
+          {
+            check_hlds__mode_errors__DetailPieces_26 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_166, check_hlds__mode_errors__Var_144, check_hlds__mode_errors__Var_155);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__TypeInfo_132_132;
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_133_133;
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_134_134;
+          MR_Word check_hlds__mode_errors__ArgVars_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MultiModeError_9, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors__MatchPieces_28;
+          MR_String check_hlds__mode_errors__ModeOrModes_29;
+          MR_Word check_hlds__mode_errors__ArgVarPieces_30;
+          MR_Word check_hlds__mode_errors__Var_50;
+          MR_String check_hlds__mode_errors__Var_51;
+          MR_Word check_hlds__mode_errors__Var_70;
+          MR_Word check_hlds__mode_errors__Var_73;
+          MR_Word check_hlds__mode_errors__Var_74;
+          MR_Word check_hlds__mode_errors__Var_75;
+          MR_Word check_hlds__mode_errors__Var_78;
+          MR_Word check_hlds__mode_errors__Var_79;
+          MR_Word check_hlds__mode_errors__Var_81;
+          MR_Word check_hlds__mode_errors__Var_82;
+          MR_Word check_hlds__mode_errors__Var_83;
+          MR_Word check_hlds__mode_errors__Var_86;
+          MR_String check_hlds__mode_errors__VarOrVars_123;
+          MR_Box check_hlds__mode_errors__conv0_Var_51;
+          MR_Box check_hlds__mode_errors__conv1_ModeOrModes_29;
+          MR_Box check_hlds__mode_errors__conv2_VarOrVars_123;
+
+          {
+            check_hlds__mode_errors__conv0_Var_51 = parse_tree__error_util__choose_number_3_f_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, check_hlds__mode_errors__ArgVars_27, ((MR_Box) ((MR_String) "matches")), ((MR_Box) ((MR_String) "match")));
+          }
+          check_hlds__mode_errors__Var_51 = ((MR_String) check_hlds__mode_errors__conv0_Var_51);
+          {
+            check_hlds__mode_errors__Var_50 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_50, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_50, 1) = ((MR_Box) (check_hlds__mode_errors__Var_51));
+          }
+          {
+            check_hlds__mode_errors__MatchPieces_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MatchPieces_28, 0) = ((MR_Box) (check_hlds__mode_errors__Var_50));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MatchPieces_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[255])));
+          }
+          check_hlds__mode_errors__TypeInfo_132_132 = (MR_Word) &check_hlds__mode_errors_scalar_common_2[2];
+          check_hlds__mode_errors__TypeCtorInfo_133_133 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+          {
+            check_hlds__mode_errors__conv1_ModeOrModes_29 = parse_tree__error_util__choose_number_3_f_0(check_hlds__mode_errors__TypeInfo_132_132, check_hlds__mode_errors__TypeCtorInfo_133_133, check_hlds__mode_errors__ArgVars_27, ((MR_Box) ((MR_String) "mode")), ((MR_Box) ((MR_String) "modes")));
+          }
+          check_hlds__mode_errors__ModeOrModes_29 = ((MR_String) check_hlds__mode_errors__conv1_ModeOrModes_29);
+          {
+            check_hlds__mode_errors__conv2_VarOrVars_123 = parse_tree__error_util__choose_number_3_f_0(check_hlds__mode_errors__TypeInfo_132_132, check_hlds__mode_errors__TypeCtorInfo_133_133, check_hlds__mode_errors__ArgVars_27, ((MR_Box) ((MR_String) "variable")), ((MR_Box) ((MR_String) "variables")));
+          }
+          check_hlds__mode_errors__VarOrVars_123 = ((MR_String) check_hlds__mode_errors__conv2_VarOrVars_123);
+          {
+            check_hlds__mode_errors__ArgVarPieces_30 = check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0(check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__ArgVars_27);
+          }
+          check_hlds__mode_errors__TypeCtorInfo_134_134 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            check_hlds__mode_errors__Var_74 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_74, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_74, 1) = ((MR_Box) (check_hlds__mode_errors__ModeOrModes_29));
+          }
+          {
+            check_hlds__mode_errors__Var_79 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_79, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_79, 1) = ((MR_Box) (check_hlds__mode_errors__VarOrVars_123));
+          }
+          {
+            check_hlds__mode_errors__Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_78, 0) = ((MR_Box) (check_hlds__mode_errors__Var_79));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_78, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Var_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_75, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[257])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_75, 1) = ((MR_Box) (check_hlds__mode_errors__Var_78));
+          }
+          {
+            check_hlds__mode_errors__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_73, 0) = ((MR_Box) (check_hlds__mode_errors__Var_74));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_73, 1) = ((MR_Box) (check_hlds__mode_errors__Var_75));
+          }
+          {
+            check_hlds__mode_errors__Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_70, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[256])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_70, 1) = ((MR_Box) (check_hlds__mode_errors__Var_73));
+          }
+          {
+            check_hlds__mode_errors__Var_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_86, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_86, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[171])));
+          }
+          {
+            check_hlds__mode_errors__Var_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_83, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[258])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_83, 1) = ((MR_Box) (check_hlds__mode_errors__Var_86));
+          }
+          {
+            check_hlds__mode_errors__Var_82 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_134, check_hlds__mode_errors__MatchPieces_28, check_hlds__mode_errors__Var_83);
+          }
+          {
+            check_hlds__mode_errors__Var_81 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_134, check_hlds__mode_errors__ArgVarPieces_30, check_hlds__mode_errors__Var_82);
+          }
+          {
+            check_hlds__mode_errors__DetailPieces_26 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_134_134, check_hlds__mode_errors__Var_70, check_hlds__mode_errors__Var_81);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__mode_errors__TypeCtorInfo_127_127;
+          MR_Word check_hlds__mode_errors__NonGroundArgVars_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__MultiModeError_9, (MR_Integer) 0)));
+          MR_String check_hlds__mode_errors__VarOrVars_24;
+          MR_Word check_hlds__mode_errors__NonGroundArgVarPieces_25;
+          MR_Word check_hlds__mode_errors__Var_99;
+          MR_Word check_hlds__mode_errors__Var_102;
+          MR_Word check_hlds__mode_errors__Var_103;
+          MR_Word check_hlds__mode_errors__Var_105;
+          MR_Box check_hlds__mode_errors__conv6_VarOrVars_24;
+
+          {
+            check_hlds__mode_errors__conv6_VarOrVars_24 = parse_tree__error_util__choose_number_3_f_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, check_hlds__mode_errors__NonGroundArgVars_23, ((MR_Box) ((MR_String) "variable")), ((MR_Box) ((MR_String) "variables")));
+          }
+          check_hlds__mode_errors__VarOrVars_24 = ((MR_String) check_hlds__mode_errors__conv6_VarOrVars_24);
+          {
+            check_hlds__mode_errors__NonGroundArgVarPieces_25 = check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0(check_hlds__mode_errors__VarSet_13, check_hlds__mode_errors__NonGroundArgVars_23);
+          }
+          check_hlds__mode_errors__TypeCtorInfo_127_127 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            check_hlds__mode_errors__Var_103 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_103, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_103, 1) = ((MR_Box) (check_hlds__mode_errors__VarOrVars_24));
+          }
+          {
+            check_hlds__mode_errors__Var_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_102, 0) = ((MR_Box) (check_hlds__mode_errors__Var_103));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_102, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__mode_errors__Var_99 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_99, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[261])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_99, 1) = ((MR_Box) (check_hlds__mode_errors__Var_102));
+          }
+          {
+            check_hlds__mode_errors__Var_105 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_127_127, check_hlds__mode_errors__NonGroundArgVarPieces_25, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[173]));
+          }
+          {
+            check_hlds__mode_errors__DetailPieces_26 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_127_127, check_hlds__mode_errors__Var_99, check_hlds__mode_errors__Var_105);
+          }
+        }
+        break;
+    }
+    check_hlds__mode_errors__TypeCtorInfo_135_135 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_120 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_135_135, check_hlds__mode_errors__StartPieces_22, check_hlds__mode_errors__DetailPieces_26);
+    }
+    {
+      check_hlds__mode_errors__Var_119 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_135_135, check_hlds__mode_errors__Preamble_11, check_hlds__mode_errors__Var_120);
+    }
+    {
+      check_hlds__mode_errors__Var_118 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_118, 0) = ((MR_Box) (check_hlds__mode_errors__Var_119));
+    }
+    {
+      check_hlds__mode_errors__Var_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_117, 0) = ((MR_Box) (check_hlds__mode_errors__Var_118));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_117, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_116 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_116, 0) = ((MR_Box) (check_hlds__mode_errors__Context_12));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_116, 1) = ((MR_Box) (check_hlds__mode_errors__Var_117));
+    }
+    {
+      check_hlds__mode_errors__Var_115 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_115, 0) = ((MR_Box) (check_hlds__mode_errors__Var_116));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_115, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_115));
+    }
+    return check_hlds__mode_errors__Spec_10;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box * check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_String check_hlds__mode_errors__conv0_HeadVar__3_18;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors__IntroducedFrom__pred__named_and_unnamed_vars_to_pieces__1335__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1), &check_hlds__mode_errors__conv0_HeadVar__3_18);
+    }
+    if (check_hlds__mode_errors__succeeded)
+      {
+        *check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__3_18));
+        check_hlds__mode_errors__succeeded = MR_TRUE;
+      }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0(
+  MR_Word check_hlds__mode_errors__VarSet_4,
+  MR_Word check_hlds__mode_errors__Vars_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Pieces_6;
+    MR_Word check_hlds__mode_errors__NamedVarNames_7;
+    MR_Word check_hlds__mode_errors__UnnamedVars_8;
+    MR_Word check_hlds__mode_errors__Var_14;
+
+    {
+      check_hlds__mode_errors__Var_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_7[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, 1) = ((MR_Box) (check_hlds__mode_errors__named_and_unnamed_vars_to_pieces_2_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_14, 3) = ((MR_Box) (check_hlds__mode_errors__VarSet_4));
+    }
+    {
+      mercury__list__filter_map_4_p_0((MR_Word) &check_hlds__mode_errors_scalar_common_2[2], (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, check_hlds__mode_errors__Var_14, check_hlds__mode_errors__Vars_5, &check_hlds__mode_errors__NamedVarNames_7, &check_hlds__mode_errors__UnnamedVars_8);
+    }
+    if ((check_hlds__mode_errors__NamedVarNames_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      check_hlds__mode_errors__Pieces_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word check_hlds__mode_errors__NamedVarPieces_11;
+
+        {
+          check_hlds__mode_errors__NamedVarPieces_11 = parse_tree__error_util__list_to_pieces_1_f_0(check_hlds__mode_errors__NamedVarNames_7);
+        }
+        if ((check_hlds__mode_errors__UnnamedVars_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          check_hlds__mode_errors__Pieces_6 = check_hlds__mode_errors__NamedVarPieces_11;
+        else
+          {
+            {
+              check_hlds__mode_errors__Pieces_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[251])));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_6, 1) = ((MR_Box) (check_hlds__mode_errors__NamedVarPieces_11));
+            }
+          }
+      }
+    return check_hlds__mode_errors__Pieces_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_var_is_live_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__Var_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+    MR_Word check_hlds__mode_errors__Preamble_7;
+    MR_Word check_hlds__mode_errors__Context_8;
+    MR_Word check_hlds__mode_errors__VarSet_9;
+    MR_Word check_hlds__mode_errors__Pieces_10;
+    MR_Word check_hlds__mode_errors__Var_13;
+    MR_Word check_hlds__mode_errors__Var_16;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_String check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_28;
+    MR_Word check_hlds__mode_errors__Var_29;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_32;
+
+    {
+      check_hlds__mode_errors__Preamble_7 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_4);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__Context_8);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__VarSet_9);
+    }
+    {
+      check_hlds__mode_errors__Var_18 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_9, check_hlds__mode_errors__Var_5);
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+    }
+    {
+      check_hlds__mode_errors__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 0) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[144])));
+    }
+    {
+      check_hlds__mode_errors__Var_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[250])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_13, 1) = ((MR_Box) (check_hlds__mode_errors__Var_16));
+    }
+    {
+      check_hlds__mode_errors__Pieces_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[249])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_10, 1) = ((MR_Box) (check_hlds__mode_errors__Var_13));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_7, check_hlds__mode_errors__Pieces_10);
+    }
+    {
+      check_hlds__mode_errors__Var_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_29, 0) = ((MR_Box) (check_hlds__mode_errors__Context_8));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_29, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    {
+      check_hlds__mode_errors__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 0) = ((MR_Box) (check_hlds__mode_errors__Var_29));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 2) = ((MR_Box) (check_hlds__mode_errors__Var_28));
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_poly_unify_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Var_6,
+  MR_Word check_hlds__mode_errors__VarInst_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_79_79;
+    MR_Word check_hlds__mode_errors__Preamble_9;
+    MR_Word check_hlds__mode_errors__Context_10;
+    MR_Word check_hlds__mode_errors__VarSet_11;
+    MR_Word check_hlds__mode_errors__MainPieces_12;
+    MR_Word check_hlds__mode_errors__Var_14;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_Word check_hlds__mode_errors__Var_19;
+    MR_Word check_hlds__mode_errors__Var_22;
+    MR_Word check_hlds__mode_errors__Var_23;
+    MR_String check_hlds__mode_errors__Var_24;
+    MR_Word check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_69;
+    MR_Word check_hlds__mode_errors__Var_70;
+    MR_Word check_hlds__mode_errors__Var_71;
+    MR_Word check_hlds__mode_errors__Var_72;
+    MR_Word check_hlds__mode_errors__Var_73;
+
+    {
+      check_hlds__mode_errors__Preamble_9 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_5);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__Context_10);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__VarSet_11);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_79_79 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_24 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Var_6);
+    }
+    {
+      check_hlds__mode_errors__Var_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_23, 1) = ((MR_Box) (check_hlds__mode_errors__Var_24));
+    }
+    {
+      check_hlds__mode_errors__Var_25 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__VarInst_7, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_22, 0) = ((MR_Box) (check_hlds__mode_errors__Var_23));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_22, 1) = ((MR_Box) (check_hlds__mode_errors__Var_25));
+    }
+    {
+      check_hlds__mode_errors__Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[240])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_22));
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_19));
+    }
+    {
+      check_hlds__mode_errors__Var_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[246])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_14, 1) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_12 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_79_79, check_hlds__mode_errors__Var_14, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[129]));
+    }
+    {
+      check_hlds__mode_errors__Var_73 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_79_79, check_hlds__mode_errors__Preamble_9, check_hlds__mode_errors__MainPieces_12);
+    }
+    {
+      check_hlds__mode_errors__Var_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_72, 0) = ((MR_Box) (check_hlds__mode_errors__Var_73));
+    }
+    {
+      check_hlds__mode_errors__Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 0) = ((MR_Box) (check_hlds__mode_errors__Var_72));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[248])));
+    }
+    {
+      check_hlds__mode_errors__Var_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 0) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_70, 1) = ((MR_Box) (check_hlds__mode_errors__Var_71));
+    }
+    {
+      check_hlds__mode_errors__Var_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_69, 0) = ((MR_Box) (check_hlds__mode_errors__Var_70));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_69));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_higher_order_pred_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__PredOrFunc_8,
+  MR_Word check_hlds__mode_errors__Var_9,
+  MR_Word check_hlds__mode_errors__VarInst_10,
+  MR_Integer check_hlds__mode_errors__Arity_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_62_62;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_Word check_hlds__mode_errors__ExpectingPieces_16;
+    MR_Word check_hlds__mode_errors__Pieces_17;
+    MR_Word check_hlds__mode_errors__Var_44;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_48;
+    MR_String check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_50;
+    MR_Word check_hlds__mode_errors__Var_55;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_57;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_Word check_hlds__mode_errors__Var_59;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    switch (check_hlds__mode_errors__PredOrFunc_8) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__Var_20;
+          MR_Word check_hlds__mode_errors__Var_21;
+          MR_String check_hlds__mode_errors__Var_22;
+          MR_String check_hlds__mode_errors__Var_24;
+          MR_String check_hlds__mode_errors__Var_25;
+          MR_Integer check_hlds__mode_errors__Var_26 = (check_hlds__mode_errors__Arity_11 - (MR_Integer) 1);
+
+          {
+            check_hlds__mode_errors__Var_25 = mercury__string__int_to_string_1_f_0(check_hlds__mode_errors__Var_26);
+          }
+          {
+            check_hlds__mode_errors__Var_24 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__Var_25, (MR_String) ".");
+          }
+          {
+            check_hlds__mode_errors__Var_22 = mercury__string__f_43_43_2_f_0((MR_String) "of arity ", check_hlds__mode_errors__Var_24);
+          }
+          {
+            check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (check_hlds__mode_errors__Var_22));
+          }
+          {
+            check_hlds__mode_errors__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 0) = ((MR_Box) (check_hlds__mode_errors__Var_21));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])));
+          }
+          {
+            check_hlds__mode_errors__ExpectingPieces_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ExpectingPieces_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[244])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ExpectingPieces_16, 1) = ((MR_Box) (check_hlds__mode_errors__Var_20));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__Var_34;
+          MR_Word check_hlds__mode_errors__Var_35;
+          MR_String check_hlds__mode_errors__Var_36;
+          MR_String check_hlds__mode_errors__Var_38;
+          MR_String check_hlds__mode_errors__Var_39;
+
+          {
+            check_hlds__mode_errors__Var_39 = mercury__string__int_to_string_1_f_0(check_hlds__mode_errors__Arity_11);
+          }
+          {
+            check_hlds__mode_errors__Var_38 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__Var_39, (MR_String) ".");
+          }
+          {
+            check_hlds__mode_errors__Var_36 = mercury__string__f_43_43_2_f_0((MR_String) "of arity ", check_hlds__mode_errors__Var_38);
+          }
+          {
+            check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+          }
+          {
+            check_hlds__mode_errors__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])));
+          }
+          {
+            check_hlds__mode_errors__ExpectingPieces_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ExpectingPieces_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[245])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ExpectingPieces_16, 1) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+          }
+        }
+        break;
+    }
+    check_hlds__mode_errors__TypeCtorInfo_62_62 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_49 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Var_9);
+    }
+    {
+      check_hlds__mode_errors__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_48, 1) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    {
+      check_hlds__mode_errors__Var_50 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__VarInst_10, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (check_hlds__mode_errors__Var_50));
+    }
+    {
+      check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[240])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+    }
+    {
+      check_hlds__mode_errors__Pieces_17 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_62_62, check_hlds__mode_errors__Var_44, check_hlds__mode_errors__ExpectingPieces_16);
+    }
+    {
+      check_hlds__mode_errors__Var_59 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_62_62, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__Pieces_17);
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (check_hlds__mode_errors__Var_59));
+    }
+    {
+      check_hlds__mode_errors__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_56, 1) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+    }
+    {
+      check_hlds__mode_errors__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 0) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_55));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_no_matching_mode_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Vars_6,
+  MR_Word check_hlds__mode_errors__Insts_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_81_81;
+    MR_Word check_hlds__mode_errors__Preamble_9;
+    MR_Word check_hlds__mode_errors__Context_10;
+    MR_Word check_hlds__mode_errors__VarSet_11;
+    MR_Word check_hlds__mode_errors__ModeContext_12;
+    MR_String check_hlds__mode_errors__CallIdStr_15;
+    MR_Word check_hlds__mode_errors__MainPieces_19;
+    MR_Word check_hlds__mode_errors__NoMatchPieces_23;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_57;
+    MR_Word check_hlds__mode_errors__Var_60;
+    MR_Word check_hlds__mode_errors__Var_61;
+    MR_Word check_hlds__mode_errors__Var_71;
+    MR_Word check_hlds__mode_errors__Var_72;
+    MR_Word check_hlds__mode_errors__Var_73;
+    MR_Word check_hlds__mode_errors__Var_74;
+    MR_Word check_hlds__mode_errors__Var_75;
+    MR_Word check_hlds__mode_errors__Var_76;
+
+    {
+      check_hlds__mode_errors__Preamble_9 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_5);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__Context_10);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__VarSet_11);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_mode_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__ModeContext_12);
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__ModeContext_12)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_no_matching_mode_to_spec\'/3", (MR_String) "invalid context");
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__CallId_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContext_12, (MR_Integer) 0)));
+          MR_Integer check_hlds__mode_errors__Var_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContext_12, (MR_Integer) 1)));
+
+          {
+            check_hlds__mode_errors__CallIdStr_15 = hlds__hlds_out__hlds_out_util__call_id_to_string_1_f_0(check_hlds__mode_errors__CallId_13);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_no_matching_mode_to_spec\'/3", (MR_String) "invalid context");
+          }
+        }
+        break;
+    }
+    if ((check_hlds__mode_errors__Vars_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.mode_error_no_matching_mode_to_spec\'/3", (MR_String) "Vars = []");
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Vars_6, (MR_Integer) 1)));
+        MR_Word check_hlds__mode_errors__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Vars_6, (MR_Integer) 0)));
+
+        if ((check_hlds__mode_errors__Var_82 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word check_hlds__mode_errors__Var_43;
+            MR_Word check_hlds__mode_errors__Var_44;
+            MR_String check_hlds__mode_errors__Var_45;
+
+            {
+              check_hlds__mode_errors__Var_45 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Var_83);
+            }
+            {
+              check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+            }
+            {
+              check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[109])));
+            }
+            {
+              check_hlds__mode_errors__MainPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[241])));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__mode_errors__Var_30;
+            MR_Word check_hlds__mode_errors__Var_31;
+            MR_String check_hlds__mode_errors__Var_32;
+
+            {
+              check_hlds__mode_errors__Var_32 = parse_tree__parse_tree_out_term__mercury_vars_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Vars_6);
+            }
+            {
+              check_hlds__mode_errors__Var_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_31, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+            }
+            {
+              check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[111])));
+            }
+            {
+              check_hlds__mode_errors__MainPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[242])));
+              MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+            }
+          }
+      }
+    check_hlds__mode_errors__TypeCtorInfo_81_81 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_56 = check_hlds__mode_errors__inst_list_to_sep_lines_2_f_0(check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__Insts_7);
+    }
+    {
+      check_hlds__mode_errors__Var_61 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_61, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_61, 1) = ((MR_Box) (check_hlds__mode_errors__CallIdStr_15));
+    }
+    {
+      check_hlds__mode_errors__Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_60, 0) = ((MR_Box) (check_hlds__mode_errors__Var_61));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_60, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])));
+    }
+    {
+      check_hlds__mode_errors__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[243])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (check_hlds__mode_errors__Var_60));
+    }
+    {
+      check_hlds__mode_errors__NoMatchPieces_23 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_81_81, check_hlds__mode_errors__Var_56, check_hlds__mode_errors__Var_57);
+    }
+    {
+      check_hlds__mode_errors__Var_76 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_81_81, check_hlds__mode_errors__MainPieces_19, check_hlds__mode_errors__NoMatchPieces_23);
+    }
+    {
+      check_hlds__mode_errors__Var_75 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_81_81, check_hlds__mode_errors__Preamble_9, check_hlds__mode_errors__Var_76);
+    }
+    {
+      check_hlds__mode_errors__Var_74 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_74, 0) = ((MR_Box) (check_hlds__mode_errors__Var_75));
+    }
+    {
+      check_hlds__mode_errors__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_73, 0) = ((MR_Box) (check_hlds__mode_errors__Var_74));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_73, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_72, 0) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_72, 1) = ((MR_Box) (check_hlds__mode_errors__Var_73));
+    }
+    {
+      check_hlds__mode_errors__Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 0) = ((MR_Box) (check_hlds__mode_errors__Var_72));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_71));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__inst_list_to_sep_lines_2_f_0(
+  MR_Word check_hlds__mode_errors__HeadVar__1_1,
+  MR_Word check_hlds__mode_errors__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__HeadVar__3_3;
+
+    if ((check_hlds__mode_errors__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      check_hlds__mode_errors__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word check_hlds__mode_errors__Inst_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__mode_errors__Insts_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__2_2, (MR_Integer) 1)));
+
+        if ((check_hlds__mode_errors__Insts_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word check_hlds__mode_errors__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[236]);
+            MR_Word check_hlds__mode_errors__ModuleInfo_45;
+            MR_Word check_hlds__mode_errors__InstVarSet_46;
+
+            {
+              check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__HeadVar__1_1, &check_hlds__mode_errors__ModuleInfo_45);
+            }
+            {
+              check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__HeadVar__1_1, &check_hlds__mode_errors__InstVarSet_46);
+            }
+            {
+              check_hlds__mode_errors__HeadVar__3_3 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_45, check_hlds__mode_errors__InstVarSet_46, (MR_Integer) 1, (MR_Integer) 1, check_hlds__mode_errors__Var_28, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__mode_errors__Var_28, check_hlds__mode_errors__Inst_6);
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__mode_errors__HeadPieces_11;
+            MR_Word check_hlds__mode_errors__TailPieces_12;
+            MR_Word check_hlds__mode_errors__ModuleInfo_55;
+            MR_Word check_hlds__mode_errors__InstVarSet_56;
+
+            {
+              check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__HeadVar__1_1, &check_hlds__mode_errors__ModuleInfo_55);
+            }
+            {
+              check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__HeadVar__1_1, &check_hlds__mode_errors__InstVarSet_56);
+            }
+            {
+              check_hlds__mode_errors__HeadPieces_11 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_55, check_hlds__mode_errors__InstVarSet_56, (MR_Integer) 1, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[177]), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[177]), check_hlds__mode_errors__Inst_6);
+            }
+            {
+              check_hlds__mode_errors__TailPieces_12 = check_hlds__mode_errors__inst_list_to_sep_lines_2_f_0(check_hlds__mode_errors__HeadVar__1_1, check_hlds__mode_errors__Insts_7);
+            }
+            {
+              check_hlds__mode_errors__HeadVar__3_3 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__HeadPieces_11, check_hlds__mode_errors__TailPieces_12);
+            }
+          }
+      }
+    return check_hlds__mode_errors__HeadVar__3_3;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_non_local_lambda_var_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Var_6,
+  MR_Word check_hlds__mode_errors__VarInst_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_46_46;
+    MR_Word check_hlds__mode_errors__Preamble_9;
+    MR_Word check_hlds__mode_errors__Context_10;
+    MR_Word check_hlds__mode_errors__VarSet_11;
+    MR_Word check_hlds__mode_errors__Pieces_12;
+    MR_Word check_hlds__mode_errors__Var_13;
+    MR_Word check_hlds__mode_errors__Var_16;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_String check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_19;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_40;
+    MR_Word check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+
+    {
+      check_hlds__mode_errors__Preamble_9 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_5);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__Context_10);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__VarSet_11);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_46_46 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_18 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_11, check_hlds__mode_errors__Var_6);
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+    }
+    {
+      check_hlds__mode_errors__Var_19 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__VarInst_7, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_errors__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 0) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 1) = ((MR_Box) (check_hlds__mode_errors__Var_19));
+    }
+    {
+      check_hlds__mode_errors__Var_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[240])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_13, 1) = ((MR_Box) (check_hlds__mode_errors__Var_16));
+    }
+    {
+      check_hlds__mode_errors__Pieces_12 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_46_46, check_hlds__mode_errors__Var_13, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[105]));
+    }
+    {
+      check_hlds__mode_errors__Var_43 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_46_46, check_hlds__mode_errors__Preamble_9, check_hlds__mode_errors__Pieces_12);
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_40, 0) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_40, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (check_hlds__mode_errors__Var_40));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_bind_var_to_spec_5_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_7,
+  MR_Word check_hlds__mode_errors__Reason_8,
+  MR_Word check_hlds__mode_errors__Var_9,
+  MR_Word check_hlds__mode_errors__VarInst_10,
+  MR_Word check_hlds__mode_errors__Inst_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__Preamble_13;
+    MR_Word check_hlds__mode_errors__Context_14;
+    MR_Word check_hlds__mode_errors__VarSet_15;
+    MR_String check_hlds__mode_errors__ReasonStr_16;
+    MR_Word check_hlds__mode_errors__MainPieces_19;
+    MR_Word check_hlds__mode_errors__VerbosePieces_20;
+    MR_Word check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__Var_37;
+    MR_Word check_hlds__mode_errors__Var_39;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_Word check_hlds__mode_errors__Var_43;
+    MR_String check_hlds__mode_errors__Var_44;
+    MR_Word check_hlds__mode_errors__Var_45;
+    MR_Word check_hlds__mode_errors__Var_118;
+    MR_Word check_hlds__mode_errors__Var_119;
+    MR_Word check_hlds__mode_errors__Var_120;
+    MR_Word check_hlds__mode_errors__Var_121;
+    MR_Word check_hlds__mode_errors__Var_122;
+    MR_Word check_hlds__mode_errors__Var_123;
+    MR_Word check_hlds__mode_errors__Var_124;
+
+    {
+      check_hlds__mode_errors__Preamble_13 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_7);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__Context_14);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_varset_2_p_0(check_hlds__mode_errors__ModeInfo_7, &check_hlds__mode_errors__VarSet_15);
+    }
+    {
+      check_hlds__mode_errors__Var_44 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__mode_errors__VarSet_15, check_hlds__mode_errors__Var_9);
+    }
+    {
+      check_hlds__mode_errors__Var_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_43, 1) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+    }
+    {
+      check_hlds__mode_errors__Var_45 = check_hlds__mode_errors__has_inst_expected_inst_was_3_f_0(check_hlds__mode_errors__ModeInfo_7, check_hlds__mode_errors__VarInst_10, check_hlds__mode_errors__Inst_11);
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_45));
+    }
+    {
+      check_hlds__mode_errors__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[239])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_39, 1) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+    }
+    {
+      check_hlds__mode_errors__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_37, 1) = ((MR_Box) (check_hlds__mode_errors__Var_39));
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__Reason_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(check_hlds__mode_errors__Reason_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              check_hlds__mode_errors__ReasonStr_16 = (MR_String) "attempt to bind a non-local variable inside a negation.";
+              check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[91]);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              check_hlds__mode_errors__ReasonStr_16 = (MR_String) "attempt to bind a non-local variable inside the condition of an if-then-else.";
+              check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[77]);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              check_hlds__mode_errors__ReasonStr_16 = (MR_String) "attempt to bind a non-local variable inside a trace goal.";
+              check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[99]);
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              check_hlds__mode_errors__ReasonStr_16 = (MR_String) "attempt to bind outer state variables inside an atomic goal.";
+              check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[65]);
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              check_hlds__mode_errors__ReasonStr_16 = (MR_String) "attempt to bind a non-local variable inside more than one parallel conjunct.";
+              check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[95]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__PredOrFunc_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Reason_8, (MR_Integer) 0)));
+          MR_String check_hlds__mode_errors__PredOrFuncS_18;
+          MR_String check_hlds__mode_errors__Var_27;
+          MR_String check_hlds__mode_errors__Var_29;
+
+          {
+            check_hlds__mode_errors__PredOrFuncS_18 = parse_tree__prog_out__pred_or_func_to_str_1_f_0(check_hlds__mode_errors__PredOrFunc_17);
+          }
+          {
+            check_hlds__mode_errors__Var_29 = mercury__string__f_43_43_2_f_0(check_hlds__mode_errors__PredOrFuncS_18, (MR_String) " lambda goal.");
+          }
+          {
+            check_hlds__mode_errors__Var_27 = mercury__string__f_43_43_2_f_0((MR_String) " a ", check_hlds__mode_errors__Var_29);
+          }
+          {
+            check_hlds__mode_errors__ReasonStr_16 = mercury__string__f_43_43_2_f_0((MR_String) "attempt to bind a non-local variable inside", check_hlds__mode_errors__Var_27);
+          }
+          check_hlds__mode_errors__VerbosePieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[83]);
+        }
+        break;
+    }
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__ReasonStr_16));
+    }
+    {
+      check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (check_hlds__mode_errors__Var_37));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[238])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+    }
+    {
+      check_hlds__mode_errors__Var_122 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_13, check_hlds__mode_errors__MainPieces_19);
+    }
+    {
+      check_hlds__mode_errors__Var_121 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_121, 0) = ((MR_Box) (check_hlds__mode_errors__Var_122));
+    }
+    {
+      check_hlds__mode_errors__Var_124 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_124, 0) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_124, 1) = ((MR_Box) (check_hlds__mode_errors__VerbosePieces_20));
+    }
+    {
+      check_hlds__mode_errors__Var_123 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_123, 0) = ((MR_Box) (check_hlds__mode_errors__Var_124));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_123, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_120 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_120, 0) = ((MR_Box) (check_hlds__mode_errors__Var_121));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_120, 1) = ((MR_Box) (check_hlds__mode_errors__Var_123));
+    }
+    {
+      check_hlds__mode_errors__Var_119 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_119, 0) = ((MR_Box) (check_hlds__mode_errors__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_119, 1) = ((MR_Box) (check_hlds__mode_errors__Var_120));
+    }
+    {
+      check_hlds__mode_errors__Var_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_118, 0) = ((MR_Box) (check_hlds__mode_errors__Var_119));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_118, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_118));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__has_inst_expected_inst_was_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__ActualInst_6,
+  MR_Word check_hlds__mode_errors__ExpectedInst_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__HeadVar__4_4;
+    MR_Word check_hlds__mode_errors__Var_8;
+    MR_Word check_hlds__mode_errors__Var_10;
+    MR_Word check_hlds__mode_errors__Var_16;
+    MR_Word check_hlds__mode_errors__ModuleInfo_42;
+    MR_Word check_hlds__mode_errors__InstVarSet_43;
+
+    {
+      check_hlds__mode_errors__Var_8 = check_hlds__mode_errors__has_instantiatedness_3_f_0(check_hlds__mode_errors__ModeInfo_5, check_hlds__mode_errors__ActualInst_6, (MR_String) ",");
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__ModuleInfo_42);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__InstVarSet_43);
+    }
+    {
+      check_hlds__mode_errors__Var_16 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_42, check_hlds__mode_errors__InstVarSet_43, (MR_Integer) 1, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15]), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[234]), (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[181]), check_hlds__mode_errors__ExpectedInst_7);
+    }
+    {
+      check_hlds__mode_errors__Var_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[237])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_10, 1) = ((MR_Box) (check_hlds__mode_errors__Var_16));
+    }
+    {
+      check_hlds__mode_errors__HeadVar__4_4 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Var_8, check_hlds__mode_errors__Var_10);
+    }
+    return check_hlds__mode_errors__HeadVar__4_4;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__has_instantiatedness_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__Inst_6,
+  MR_String check_hlds__mode_errors__Suffix_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__HeadVar__4_4;
+    MR_Word check_hlds__mode_errors__Var_10;
+    MR_Word check_hlds__mode_errors__Var_12;
+    MR_Word check_hlds__mode_errors__Var_13;
+    MR_Word check_hlds__mode_errors__Var_21;
+    MR_Word check_hlds__mode_errors__ModuleInfo_34;
+    MR_Word check_hlds__mode_errors__InstVarSet_35;
+
+    {
+      check_hlds__mode_errors__Var_13 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_13, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_13, 1) = ((MR_Box) (check_hlds__mode_errors__Suffix_7));
+    }
+    {
+      check_hlds__mode_errors__Var_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_12, 0) = ((MR_Box) (check_hlds__mode_errors__Var_13));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])));
+    }
+    {
+      check_hlds__mode_errors__Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 0) = ((MR_Box) (check_hlds__mode_errors__Var_13));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[236])));
+    }
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__ModuleInfo_34);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__InstVarSet_35);
+    }
+    {
+      check_hlds__mode_errors__Var_10 = hlds__error_msg_inst__error_msg_inst_8_f_0(check_hlds__mode_errors__ModuleInfo_34, check_hlds__mode_errors__InstVarSet_35, (MR_Integer) 1, (MR_Integer) 0, check_hlds__mode_errors__Var_12, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[234]), check_hlds__mode_errors__Var_21, check_hlds__mode_errors__Inst_6);
+    }
+    {
+      check_hlds__mode_errors__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__4_4, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[232])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__4_4, 1) = ((MR_Box) (check_hlds__mode_errors__Var_10));
+    }
+    return check_hlds__mode_errors__HeadVar__4_4;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_Msgs_10;
+
+    {
+      check_hlds__mode_errors__conv0_Msgs_10 = check_hlds__mode_errors__merge_error_to_msgs_4_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_Msgs_10));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_4,
+  MR_Word check_hlds__mode_errors__MergeErrors_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_6;
+    MR_Word check_hlds__mode_errors__Preamble_7;
+    MR_Word check_hlds__mode_errors__Context_8;
+    MR_Word check_hlds__mode_errors__MergeMsgLists_10;
+    MR_Word check_hlds__mode_errors__MergeMsgs_11;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_35;
+
+    {
+      check_hlds__mode_errors__Preamble_7 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_4);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_4, &check_hlds__mode_errors__Context_8);
+    }
+    {
+      check_hlds__mode_errors__Var_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 1) = ((MR_Box) (check_hlds__mode_errors__mode_error_par_conj_to_spec_2_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 3) = ((MR_Box) (check_hlds__mode_errors__ModeInfo_4));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 4) = ((MR_Box) (check_hlds__mode_errors__Context_8));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_26, 5) = ((MR_Box) ((MR_Integer) 0));
+    }
+    {
+      check_hlds__mode_errors__MergeMsgLists_10 = mercury__list__map_2_f_0((MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0, (MR_Word) &check_hlds__mode_errors_scalar_common_2[0], check_hlds__mode_errors__Var_26, check_hlds__mode_errors__MergeErrors_5);
+    }
+    {
+      mercury__list__condense_2_p_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__MergeMsgLists_10, &check_hlds__mode_errors__MergeMsgs_11);
+    }
+    {
+      check_hlds__mode_errors__Var_35 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_7, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[51]));
+    }
+    {
+      check_hlds__mode_errors__Var_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_34, 0) = ((MR_Box) (check_hlds__mode_errors__Var_35));
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (check_hlds__mode_errors__Context_8));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+    }
+    {
+      check_hlds__mode_errors__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_31, 1) = ((MR_Box) (check_hlds__mode_errors__MergeMsgs_11));
+    }
+    {
+      check_hlds__mode_errors__Spec_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_6, 2) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+    }
+    return check_hlds__mode_errors__Spec_6;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_Msgs_10;
+
+    {
+      check_hlds__mode_errors__conv0_Msgs_10 = check_hlds__mode_errors__merge_error_to_msgs_4_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__mode_errors__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_Msgs_10));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_5,
+  MR_Word check_hlds__mode_errors__MergeContext_6,
+  MR_Word check_hlds__mode_errors__MergeErrors_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_8;
+    MR_Word check_hlds__mode_errors__Preamble_9;
+    MR_Word check_hlds__mode_errors__Context_10;
+    MR_Word check_hlds__mode_errors__MainPieces_11;
+    MR_Word check_hlds__mode_errors__MergeMsgLists_12;
+    MR_Word check_hlds__mode_errors__MergeMsgs_13;
+    MR_Word check_hlds__mode_errors__Var_16;
+    MR_Word check_hlds__mode_errors__Var_17;
+    MR_String check_hlds__mode_errors__Var_18;
+    MR_Word check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_30;
+    MR_Word check_hlds__mode_errors__Var_31;
+    MR_Word check_hlds__mode_errors__Var_32;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+
+    {
+      check_hlds__mode_errors__Preamble_9 = check_hlds__mode_errors__mode_info_context_preamble_1_f_0(check_hlds__mode_errors__ModeInfo_5);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_context_2_p_0(check_hlds__mode_errors__ModeInfo_5, &check_hlds__mode_errors__Context_10);
+    }
+    switch (check_hlds__mode_errors__MergeContext_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__mode_errors__Var_18 = (MR_String) "disjunction";
+        break;
+      case (MR_Integer) 1:
+        check_hlds__mode_errors__Var_18 = (MR_String) "if-then-else";
+        break;
+      case (MR_Integer) 2:
+        check_hlds__mode_errors__Var_18 = (MR_String) "atomic";
+        break;
+    }
+    {
+      check_hlds__mode_errors__Var_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_17, 1) = ((MR_Box) (check_hlds__mode_errors__Var_18));
+    }
+    {
+      check_hlds__mode_errors__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 0) = ((MR_Box) (check_hlds__mode_errors__Var_17));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15])));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[231])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__MainPieces_11, 1) = ((MR_Box) (check_hlds__mode_errors__Var_16));
+    }
+    {
+      check_hlds__mode_errors__Var_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 0) = ((MR_Box) (&check_hlds__mode_errors_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 1) = ((MR_Box) (check_hlds__mode_errors__mode_error_disj_to_spec_3_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 3) = ((MR_Box) (check_hlds__mode_errors__ModeInfo_5));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 4) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_25, 5) = ((MR_Box) ((MR_Integer) 1));
+    }
+    {
+      check_hlds__mode_errors__MergeMsgLists_12 = mercury__list__map_2_f_0((MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0, (MR_Word) &check_hlds__mode_errors_scalar_common_2[0], check_hlds__mode_errors__Var_25, check_hlds__mode_errors__MergeErrors_7);
+    }
+    {
+      mercury__list__condense_2_p_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__mode_errors__MergeMsgLists_12, &check_hlds__mode_errors__MergeMsgs_13);
+    }
+    {
+      check_hlds__mode_errors__Var_34 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__mode_errors__Preamble_9, check_hlds__mode_errors__MainPieces_11);
+    }
+    {
+      check_hlds__mode_errors__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_33, 0) = ((MR_Box) (check_hlds__mode_errors__Var_34));
+    }
+    {
+      check_hlds__mode_errors__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 0) = ((MR_Box) (check_hlds__mode_errors__Var_33));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_31, 0) = ((MR_Box) (check_hlds__mode_errors__Context_10));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_31, 1) = ((MR_Box) (check_hlds__mode_errors__Var_32));
+    }
+    {
+      check_hlds__mode_errors__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 0) = ((MR_Box) (check_hlds__mode_errors__Var_31));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_30, 1) = ((MR_Box) (check_hlds__mode_errors__MergeMsgs_13));
+    }
+    {
+      check_hlds__mode_errors__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_8, 2) = ((MR_Box) (check_hlds__mode_errors__Var_30));
+    }
+    return check_hlds__mode_errors__Spec_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__mode_info_context_preamble_1_f_0(
+  MR_Word check_hlds__mode_errors__ModeInfo_3)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Pieces_4;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_43_43;
+    MR_Word check_hlds__mode_errors__ModuleInfo_5;
+    MR_Word check_hlds__mode_errors__PredId_6;
+    MR_Integer check_hlds__mode_errors__ProcId_7;
+    MR_Word check_hlds__mode_errors__PredInfo_8;
+    MR_Word check_hlds__mode_errors__ProcInfo_9;
+    MR_Word check_hlds__mode_errors__PredOrigin_10;
+    MR_String check_hlds__mode_errors__Name0_13;
+    MR_Word check_hlds__mode_errors__ExtraMethodPieces_14;
+    MR_Word check_hlds__mode_errors__PredOrFunc_15;
+    MR_Word check_hlds__mode_errors__InstVarSet_16;
+    MR_Word check_hlds__mode_errors__Name_17;
+    MR_Word check_hlds__mode_errors__PredMarkers_18;
+    MR_Word check_hlds__mode_errors__Modes0_19;
+    MR_Word check_hlds__mode_errors__Modes_20;
+    MR_String check_hlds__mode_errors__ModeSubDeclStr_22;
+    MR_Word check_hlds__mode_errors__ModeContext_23;
+    MR_Word check_hlds__mode_errors__ModeContextPieces_24;
+    MR_Word check_hlds__mode_errors__Var_33;
+    MR_Word check_hlds__mode_errors__Var_34;
+    MR_Word check_hlds__mode_errors__Var_35;
+    MR_Word check_hlds__mode_errors__Var_36;
+    MR_Word check_hlds__mode_errors__MethodName_11;
+    MR_Word check_hlds__mode_errors__Var_12;
+
+    {
+      check_hlds__mode_info__mode_info_get_module_info_2_p_0(check_hlds__mode_errors__ModeInfo_3, &check_hlds__mode_errors__ModuleInfo_5);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_pred_id_2_p_0(check_hlds__mode_errors__ModeInfo_3, &check_hlds__mode_errors__PredId_6);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_proc_id_2_p_0(check_hlds__mode_errors__ModeInfo_3, &check_hlds__mode_errors__ProcId_7);
+    }
+    {
+      hlds__hlds_module__module_info_pred_proc_info_5_p_0(check_hlds__mode_errors__ModuleInfo_5, check_hlds__mode_errors__PredId_6, check_hlds__mode_errors__ProcId_7, &check_hlds__mode_errors__PredInfo_8, &check_hlds__mode_errors__ProcInfo_9);
+    }
+    {
+      hlds__hlds_pred__pred_info_get_origin_2_p_0(check_hlds__mode_errors__PredInfo_8, &check_hlds__mode_errors__PredOrigin_10);
+    }
+    check_hlds__mode_errors__succeeded = ((MR_tag((MR_Word) check_hlds__mode_errors__PredOrigin_10)) == (MR_mktag((MR_Integer) 1)));
+    if (check_hlds__mode_errors__succeeded)
+      {
+        check_hlds__mode_errors__MethodName_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__PredOrigin_10, (MR_Integer) 0)));
+        check_hlds__mode_errors__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__PredOrigin_10, (MR_Integer) 1)));
+        {
+          check_hlds__mode_errors__Name0_13 = mdbcomp__sym_name__unqualify_name_1_f_0(check_hlds__mode_errors__MethodName_11);
+        }
+        check_hlds__mode_errors__ExtraMethodPieces_14 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[227]);
+      }
+    else
+      {
+        {
+          check_hlds__mode_errors__Name0_13 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__mode_errors__PredInfo_8);
+        }
+        check_hlds__mode_errors__ExtraMethodPieces_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      }
+    {
+      check_hlds__mode_errors__PredOrFunc_15 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(check_hlds__mode_errors__PredInfo_8);
+    }
+    {
+      check_hlds__mode_info__mode_info_get_instvarset_2_p_0(check_hlds__mode_errors__ModeInfo_3, &check_hlds__mode_errors__InstVarSet_16);
+    }
+    {
+      check_hlds__mode_errors__Name_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Name_17, 0) = ((MR_Box) (check_hlds__mode_errors__Name0_13));
+    }
+    {
+      hlds__hlds_pred__pred_info_get_markers_2_p_0(check_hlds__mode_errors__PredInfo_8, &check_hlds__mode_errors__PredMarkers_18);
+    }
+    {
+      hlds__hlds_pred__proc_info_declared_argmodes_2_p_0(check_hlds__mode_errors__ProcInfo_9, &check_hlds__mode_errors__Modes0_19);
+    }
+    {
+      parse_tree__prog_mode__strip_builtin_qualifiers_from_mode_list_2_p_0(check_hlds__mode_errors__Modes0_19, &check_hlds__mode_errors__Modes_20);
+    }
+    {
+      check_hlds__mode_errors__ModeSubDeclStr_22 = parse_tree__parse_tree_out_pred_decl__mercury_mode_subdecl_to_string_6_f_0((MR_Integer) 1, check_hlds__mode_errors__PredOrFunc_15, check_hlds__mode_errors__InstVarSet_16, check_hlds__mode_errors__Name_17, check_hlds__mode_errors__Modes_20, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+    }
+    {
+      check_hlds__mode_info__mode_info_get_mode_context_2_p_0(check_hlds__mode_errors__ModeInfo_3, &check_hlds__mode_errors__ModeContext_23);
+    }
+    switch (MR_tag((MR_Word) check_hlds__mode_errors__ModeContext_23)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__mode_errors__ModeContextPieces_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__CallId_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContext_23, (MR_Integer) 0)));
+          MR_Integer check_hlds__mode_errors__ArgNum_46 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContext_23, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__Var_50;
+          MR_Word check_hlds__mode_errors__Var_51;
+          MR_String check_hlds__mode_errors__Var_52;
+
+          {
+            check_hlds__mode_errors__Var_52 = hlds__hlds_out__hlds_out_util__call_arg_id_to_string_3_f_0(check_hlds__mode_errors__CallId_45, check_hlds__mode_errors__ArgNum_46, check_hlds__mode_errors__PredMarkers_18);
+          }
+          {
+            check_hlds__mode_errors__Var_51 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_51, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_51, 1) = ((MR_Box) (check_hlds__mode_errors__Var_52));
+          }
+          {
+            check_hlds__mode_errors__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_50, 0) = ((MR_Box) (check_hlds__mode_errors__Var_51));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[176])));
+          }
+          {
+            check_hlds__mode_errors__ModeContextPieces_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContextPieces_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[228])));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__ModeContextPieces_24, 1) = ((MR_Box) (check_hlds__mode_errors__Var_50));
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__mode_errors__UnifyContext_59 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeContext_23, (MR_Integer) 0)));
+          MR_Word check_hlds__mode_errors___Side_60 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__mode_errors__ModeContext_23, (MR_Integer) 1)));
+          MR_Word check_hlds__mode_errors__Var_63;
+
+          {
+            hlds__hlds_out__hlds_out_util__unify_context_first_to_pieces_5_p_0((MR_Integer) 1, &check_hlds__mode_errors__Var_63, check_hlds__mode_errors__UnifyContext_59, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__mode_errors__ModeContextPieces_24);
+          }
+        }
+        break;
+    }
+    check_hlds__mode_errors__TypeCtorInfo_43_43 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_36, 1) = ((MR_Box) (check_hlds__mode_errors__ModeSubDeclStr_22));
+    }
+    {
+      check_hlds__mode_errors__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 0) = ((MR_Box) (check_hlds__mode_errors__Var_36));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[176])));
+    }
+    {
+      check_hlds__mode_errors__Var_34 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_43_43, check_hlds__mode_errors__Var_35, check_hlds__mode_errors__ModeContextPieces_24);
+    }
+    {
+      check_hlds__mode_errors__Var_33 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_43_43, check_hlds__mode_errors__ExtraMethodPieces_14, check_hlds__mode_errors__Var_34);
+    }
+    {
+      check_hlds__mode_errors__Pieces_4 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_43_43, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[230]), check_hlds__mode_errors__Var_33);
+    }
+    return check_hlds__mode_errors__Pieces_4;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors__report_mode_inference_messages_for_preds_5_p_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_1,
+  MR_Word check_hlds__mode_errors__OutputDetism_2,
+  MR_Word check_hlds__mode_errors__HeadVar__3_3,
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_Specs_0_4,
+  MR_Word * check_hlds__mode_errors__STATE_VARIABLE_Specs_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__mode_errors__succeeded;
+
+        if ((check_hlds__mode_errors__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__mode_errors__STATE_VARIABLE_Specs_5 = check_hlds__mode_errors__STATE_VARIABLE_Specs_0_4;
+        else
+          {
+            MR_Word check_hlds__mode_errors__PredId_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__PredIds_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__PredInfo_16;
+            MR_Word check_hlds__mode_errors__Markers_17;
+            MR_Word check_hlds__mode_errors__STATE_VARIABLE_Specs_23_23;
+
+            {
+              hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__mode_errors__ModuleInfo_1, check_hlds__mode_errors__PredId_13, &check_hlds__mode_errors__PredInfo_16);
+            }
+            {
+              hlds__hlds_pred__pred_info_get_markers_2_p_0(check_hlds__mode_errors__PredInfo_16, &check_hlds__mode_errors__Markers_17);
+            }
+            {
+              check_hlds__mode_errors__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__mode_errors__Markers_17, (MR_Integer) 3);
+            }
+            if (check_hlds__mode_errors__succeeded)
+              {
+                MR_Word check_hlds__mode_errors__ProcIds_18;
+                MR_Word check_hlds__mode_errors__Procs_19;
+
+                {
+                  check_hlds__mode_errors__ProcIds_18 = hlds__hlds_pred__pred_info_all_procids_1_f_0(check_hlds__mode_errors__PredInfo_16);
+                }
+                {
+                  hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__mode_errors__PredInfo_16, &check_hlds__mode_errors__Procs_19);
+                }
+                {
+                  check_hlds__mode_errors__report_mode_inference_messages_for_procs_7_p_0(check_hlds__mode_errors__ModuleInfo_1, check_hlds__mode_errors__OutputDetism_2, check_hlds__mode_errors__PredInfo_16, check_hlds__mode_errors__Procs_19, check_hlds__mode_errors__ProcIds_18, check_hlds__mode_errors__STATE_VARIABLE_Specs_0_4, &check_hlds__mode_errors__STATE_VARIABLE_Specs_23_23);
+                }
+              }
+            else
+              check_hlds__mode_errors__STATE_VARIABLE_Specs_23_23 = check_hlds__mode_errors__STATE_VARIABLE_Specs_0_4;
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__mode_errors__next_value_of_HeadVar__3_3 = check_hlds__mode_errors__PredIds_14;
+              MR_Word check_hlds__mode_errors__next_value_of_STATE_VARIABLE_Specs_0_4 = check_hlds__mode_errors__STATE_VARIABLE_Specs_23_23;
+
+              check_hlds__mode_errors__STATE_VARIABLE_Specs_0_4 = check_hlds__mode_errors__next_value_of_STATE_VARIABLE_Specs_0_4;
+              check_hlds__mode_errors__HeadVar__3_3 = check_hlds__mode_errors__next_value_of_HeadVar__3_3;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors__report_mode_inference_messages_for_procs_7_p_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_1,
+  MR_Word check_hlds__mode_errors__OutputDetism_2,
+  MR_Word check_hlds__mode_errors__PredInfo_3,
+  MR_Word check_hlds__mode_errors__Procs_4,
+  MR_Word check_hlds__mode_errors__HeadVar__5_5,
+  MR_Word check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6,
+  MR_Word * check_hlds__mode_errors__STATE_VARIABLE_Specs_7)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__mode_errors__succeeded;
+
+        if ((check_hlds__mode_errors__HeadVar__5_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__mode_errors__STATE_VARIABLE_Specs_7 = check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6;
+        else
+          {
+            MR_Integer check_hlds__mode_errors__ProcId_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__5_5, (MR_Integer) 0)));
+            MR_Word check_hlds__mode_errors__ProcIds_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__mode_errors__HeadVar__5_5, (MR_Integer) 1)));
+            MR_Word check_hlds__mode_errors__Globals_22;
+            MR_Word check_hlds__mode_errors__VerboseErrors_23;
+            MR_Word check_hlds__mode_errors__ProcInfo_24;
+            MR_Word check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29;
+            MR_Box check_hlds__mode_errors__conv0_ProcInfo_24;
+
+            {
+              hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__mode_errors__ModuleInfo_1, &check_hlds__mode_errors__Globals_22);
+            }
+            {
+              libs__globals__lookup_bool_option_3_p_0(check_hlds__mode_errors__Globals_22, (MR_Integer) 58, &check_hlds__mode_errors__VerboseErrors_23);
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, check_hlds__mode_errors__Procs_4, check_hlds__mode_errors__ProcId_19, &check_hlds__mode_errors__conv0_ProcInfo_24);
+            }
+            check_hlds__mode_errors__ProcInfo_24 = ((MR_Word) check_hlds__mode_errors__conv0_ProcInfo_24);
+            {
+              check_hlds__mode_errors__succeeded = hlds__hlds_pred__proc_info_is_valid_mode_1_p_0(check_hlds__mode_errors__ProcInfo_24);
+            }
+            if (!(check_hlds__mode_errors__succeeded))
+              check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__VerboseErrors_23 == (MR_Integer) 1);
+            if (check_hlds__mode_errors__succeeded)
+              {
+                MR_Word check_hlds__mode_errors__Spec_25;
+
+                {
+                  check_hlds__mode_errors__Spec_25 = check_hlds__mode_errors__report_mode_inference_message_4_f_0(check_hlds__mode_errors__ModuleInfo_1, check_hlds__mode_errors__OutputDetism_2, check_hlds__mode_errors__PredInfo_3, check_hlds__mode_errors__ProcInfo_24);
+                }
+                {
+                  check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29, 0) = ((MR_Box) (check_hlds__mode_errors__Spec_25));
+                  MR_hl_field(MR_mktag(1), check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29, 1) = ((MR_Box) (check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6));
+                }
+              }
+            else
+              check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29 = check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6;
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__mode_errors__next_value_of_HeadVar__5_5 = check_hlds__mode_errors__ProcIds_20;
+              MR_Word check_hlds__mode_errors__next_value_of_STATE_VARIABLE_Specs_0_6 = check_hlds__mode_errors__STATE_VARIABLE_Specs_29_29;
+
+              check_hlds__mode_errors__STATE_VARIABLE_Specs_0_6 = check_hlds__mode_errors__next_value_of_STATE_VARIABLE_Specs_0_6;
+              check_hlds__mode_errors__HeadVar__5_5 = check_hlds__mode_errors__next_value_of_HeadVar__5_5;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Box MR_CALL 
+check_hlds__mode_errors__report_mode_inference_message_4_f_0_1(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__mode_errors__wrapper_arg_2;
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+    MR_Word check_hlds__mode_errors__conv0_LambdaHeadVar__2_50;
+
+    {
+      check_hlds__mode_errors__conv0_LambdaHeadVar__2_50 = check_hlds__mode_errors__IntroducedFrom__func__report_mode_inference_message__459__1_1_f_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+    check_hlds__mode_errors__wrapper_arg_2 = ((MR_Box) (check_hlds__mode_errors__conv0_LambdaHeadVar__2_50));
+    return check_hlds__mode_errors__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__mode_errors__report_mode_inference_message_4_f_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_6,
+  MR_Word check_hlds__mode_errors__OutputDetism_7,
+  MR_Word check_hlds__mode_errors__PredInfo_8,
+  MR_Word check_hlds__mode_errors__ProcInfo_9)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_10;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_80_80;
+    MR_String check_hlds__mode_errors__PredName_11;
+    MR_Word check_hlds__mode_errors__Name_12;
+    MR_Word check_hlds__mode_errors__Context_13;
+    MR_Integer check_hlds__mode_errors__PredArity_14;
+    MR_Integer check_hlds__mode_errors__NumArgModes_17;
+    MR_Integer check_hlds__mode_errors__NumToDrop_18;
+    MR_Word check_hlds__mode_errors__VarSet_19;
+    MR_Word check_hlds__mode_errors__PredOrFunc_20;
+    MR_String check_hlds__mode_errors__Verb_22;
+    MR_String check_hlds__mode_errors__Detail_29;
+    MR_Word check_hlds__mode_errors__Pieces_32;
+    MR_Word check_hlds__mode_errors__Msg_33;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ArgModes_35_35;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ArgModes_40_40;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_42_42;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ArgModes_47_47;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_52_52;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ArgModes_53_53;
+    MR_Word check_hlds__mode_errors__Var_56;
+    MR_Word check_hlds__mode_errors__Var_57;
+    MR_Word check_hlds__mode_errors__Var_58;
+    MR_Word check_hlds__mode_errors__Var_62;
+    MR_Word check_hlds__mode_errors__Var_63;
+    MR_Word check_hlds__mode_errors__Var_66;
+    MR_Word check_hlds__mode_errors__Var_67;
+    MR_Word check_hlds__mode_errors__Var_76;
+    MR_Word check_hlds__mode_errors__STATE_VARIABLE_ArgModes_36_36;
+
+    {
+      check_hlds__mode_errors__PredName_11 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__mode_errors__PredInfo_8);
+    }
+    {
+      check_hlds__mode_errors__Name_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Name_12, 0) = ((MR_Box) (check_hlds__mode_errors__PredName_11));
+    }
+    {
+      hlds__hlds_pred__pred_info_get_context_2_p_0(check_hlds__mode_errors__PredInfo_8, &check_hlds__mode_errors__Context_13);
+    }
+    {
+      check_hlds__mode_errors__PredArity_14 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(check_hlds__mode_errors__PredInfo_8);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_argmodes_2_p_0(check_hlds__mode_errors__ProcInfo_9, &check_hlds__mode_errors__STATE_VARIABLE_ArgModes_35_35);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_80_80 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0;
+    {
+      mercury__list__length_2_p_0(check_hlds__mode_errors__TypeCtorInfo_80_80, check_hlds__mode_errors__STATE_VARIABLE_ArgModes_35_35, &check_hlds__mode_errors__NumArgModes_17);
+    }
+    check_hlds__mode_errors__NumToDrop_18 = (check_hlds__mode_errors__NumArgModes_17 - check_hlds__mode_errors__PredArity_14);
+    {
+      check_hlds__mode_errors__succeeded = mercury__list__drop_3_p_0(check_hlds__mode_errors__TypeCtorInfo_80_80, check_hlds__mode_errors__NumToDrop_18, check_hlds__mode_errors__STATE_VARIABLE_ArgModes_35_35, &check_hlds__mode_errors__STATE_VARIABLE_ArgModes_36_36);
+    }
+    if (check_hlds__mode_errors__succeeded)
+      check_hlds__mode_errors__STATE_VARIABLE_ArgModes_40_40 = check_hlds__mode_errors__STATE_VARIABLE_ArgModes_36_36;
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.mode_errors", (MR_String) "function \140check_hlds.mode_errors.report_mode_inference_message\'/4", (MR_String) "list.drop failed");
+        }
+      }
+    {
+      mercury__varset__init_1_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0, &check_hlds__mode_errors__VarSet_19);
+    }
+    {
+      check_hlds__mode_errors__PredOrFunc_20 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(check_hlds__mode_errors__PredInfo_8);
+    }
+    switch (check_hlds__mode_errors__OutputDetism_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_42_42 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__mode_errors__Detism_21;
+
+          {
+            hlds__hlds_pred__proc_info_get_inferred_determinism_2_p_0(check_hlds__mode_errors__ProcInfo_9, &check_hlds__mode_errors__Detism_21);
+          }
+          {
+            check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_42_42, 0) = ((MR_Box) (check_hlds__mode_errors__Detism_21));
+          }
+        }
+        break;
+    }
+    {
+      check_hlds__mode_errors__succeeded = hlds__hlds_pred__proc_info_is_valid_mode_1_p_0(check_hlds__mode_errors__ProcInfo_9);
+    }
+    if (check_hlds__mode_errors__succeeded)
+      {
+        check_hlds__mode_errors__Verb_22 = (MR_String) "Inferred";
+        check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_52_52 = check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_42_42;
+        check_hlds__mode_errors__STATE_VARIABLE_ArgModes_47_47 = check_hlds__mode_errors__STATE_VARIABLE_ArgModes_40_40;
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__TypeCtorInfo_82_82;
+        MR_Word check_hlds__mode_errors__InitialInsts_23;
+        MR_Word check_hlds__mode_errors__FinalInsts_25;
+        MR_Word check_hlds__mode_errors__Var_51;
+
+        check_hlds__mode_errors__Verb_22 = (MR_String) "REJECTED";
+        {
+          check_hlds__mode_util__mode_list_get_initial_insts_3_p_0(check_hlds__mode_errors__ModuleInfo_6, check_hlds__mode_errors__STATE_VARIABLE_ArgModes_40_40, &check_hlds__mode_errors__InitialInsts_23);
+        }
+        check_hlds__mode_errors__TypeCtorInfo_82_82 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0;
+        {
+          mercury__list__duplicate_3_p_0(check_hlds__mode_errors__TypeCtorInfo_82_82, check_hlds__mode_errors__PredArity_14, ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[28]))), &check_hlds__mode_errors__FinalInsts_25);
+        }
+        {
+          check_hlds__mode_errors__Var_51 = mercury__assoc_list__from_corresponding_lists_2_f_0(check_hlds__mode_errors__TypeCtorInfo_82_82, check_hlds__mode_errors__TypeCtorInfo_82_82, check_hlds__mode_errors__InitialInsts_23, check_hlds__mode_errors__FinalInsts_25);
+        }
+        {
+          check_hlds__mode_errors__STATE_VARIABLE_ArgModes_47_47 = mercury__list__map_2_f_0((MR_Word) &check_hlds__mode_errors_scalar_common_1[0], check_hlds__mode_errors__TypeCtorInfo_80_80, (MR_Word) &check_hlds__mode_errors_scalar_common_1[2], check_hlds__mode_errors__Var_51);
+        }
+        check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_52_52 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      }
+    {
+      parse_tree__prog_mode__strip_builtin_qualifiers_from_mode_list_2_p_0(check_hlds__mode_errors__STATE_VARIABLE_ArgModes_47_47, &check_hlds__mode_errors__STATE_VARIABLE_ArgModes_53_53);
+    }
+    switch (check_hlds__mode_errors__PredOrFunc_20) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__mode_errors__FuncArgModes_30;
+          MR_Word check_hlds__mode_errors__RetMode_31;
+          MR_Box check_hlds__mode_errors__conv1_RetMode_31;
+
+          {
+            parse_tree__prog_util__pred_args_to_func_args_3_p_0(check_hlds__mode_errors__TypeCtorInfo_80_80, check_hlds__mode_errors__STATE_VARIABLE_ArgModes_53_53, &check_hlds__mode_errors__FuncArgModes_30, &check_hlds__mode_errors__conv1_RetMode_31);
+          }
+          check_hlds__mode_errors__RetMode_31 = ((MR_Word) check_hlds__mode_errors__conv1_RetMode_31);
+          {
+            check_hlds__mode_errors__Detail_29 = parse_tree__parse_tree_out_pred_decl__mercury_func_mode_decl_to_string_6_f_0((MR_Integer) 1, check_hlds__mode_errors__VarSet_19, check_hlds__mode_errors__Name_12, check_hlds__mode_errors__FuncArgModes_30, check_hlds__mode_errors__RetMode_31, check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_52_52);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          {
+            check_hlds__mode_errors__Detail_29 = parse_tree__parse_tree_out_pred_decl__mercury_pred_mode_decl_to_string_6_f_0((MR_Integer) 1, check_hlds__mode_errors__VarSet_19, check_hlds__mode_errors__Name_12, check_hlds__mode_errors__STATE_VARIABLE_ArgModes_53_53, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__mode_errors__STATE_VARIABLE_MaybeDet_52_52);
+          }
+        }
+        break;
+    }
+    {
+      check_hlds__mode_errors__Var_56 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_56, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_56, 1) = ((MR_Box) (check_hlds__mode_errors__Verb_22));
+    }
+    {
+      check_hlds__mode_errors__Var_58 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_58, 1) = ((MR_Box) (check_hlds__mode_errors__Detail_29));
+    }
+    {
+      check_hlds__mode_errors__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 0) = ((MR_Box) (check_hlds__mode_errors__Var_58));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[13])));
+    }
+    {
+      check_hlds__mode_errors__Pieces_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_32, 0) = ((MR_Box) (check_hlds__mode_errors__Var_56));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Pieces_32, 1) = ((MR_Box) (check_hlds__mode_errors__Var_57));
+    }
+    {
+      check_hlds__mode_errors__Var_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_67, 0) = ((MR_Box) (check_hlds__mode_errors__Pieces_32));
+    }
+    {
+      check_hlds__mode_errors__Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_66, 0) = ((MR_Box) (check_hlds__mode_errors__Var_67));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_66, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_63, 0) = ((MR_Box) (((MR_Integer) 55 | (((MR_Integer) 1 << (MR_Integer) 10)))));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_63, 1) = ((MR_Box) (check_hlds__mode_errors__Var_66));
+    }
+    {
+      check_hlds__mode_errors__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_62, 0) = ((MR_Box) (check_hlds__mode_errors__Var_63));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_62, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Msg_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_33, 0) = ((MR_Box) (check_hlds__mode_errors__Context_13));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Msg_33, 1) = ((MR_Box) (check_hlds__mode_errors__Var_62));
+    }
+    {
+      check_hlds__mode_errors__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_76, 0) = ((MR_Box) (check_hlds__mode_errors__Msg_33));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_4[0])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_10, 2) = ((MR_Box) (check_hlds__mode_errors__Var_76));
+    }
+    return check_hlds__mode_errors__Spec_10;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__report_indistinguishable_modes_error_5_f_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_7,
+  MR_Integer check_hlds__mode_errors__OldProcId_8,
+  MR_Integer check_hlds__mode_errors__NewProcId_9,
+  MR_Word check_hlds__mode_errors__PredId_10,
+  MR_Word check_hlds__mode_errors__PredInfo_11)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Spec_12;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_75_75;
+    MR_Word check_hlds__mode_errors__TypeCtorInfo_76_76;
+    MR_Word check_hlds__mode_errors__Procs_13;
+    MR_Word check_hlds__mode_errors__OldProcInfo_14;
+    MR_Word check_hlds__mode_errors__NewProcInfo_15;
+    MR_Word check_hlds__mode_errors__OldContext_16;
+    MR_Word check_hlds__mode_errors__NewContext_17;
+    MR_Word check_hlds__mode_errors__MainPieces_18;
+    MR_Word check_hlds__mode_errors__VerbosePieces_19;
+    MR_Word check_hlds__mode_errors__Var_25;
+    MR_Word check_hlds__mode_errors__Var_26;
+    MR_Word check_hlds__mode_errors__Var_41;
+    MR_Word check_hlds__mode_errors__Var_42;
+    MR_String check_hlds__mode_errors__Var_43;
+    MR_Word check_hlds__mode_errors__Var_44;
+    MR_Word check_hlds__mode_errors__Var_47;
+    MR_Word check_hlds__mode_errors__Var_48;
+    MR_String check_hlds__mode_errors__Var_49;
+    MR_Word check_hlds__mode_errors__Var_60;
+    MR_Word check_hlds__mode_errors__Var_61;
+    MR_Word check_hlds__mode_errors__Var_62;
+    MR_Word check_hlds__mode_errors__Var_63;
+    MR_Word check_hlds__mode_errors__Var_64;
+    MR_Word check_hlds__mode_errors__Var_65;
+    MR_Word check_hlds__mode_errors__Var_68;
+    MR_Word check_hlds__mode_errors__Var_69;
+    MR_Box check_hlds__mode_errors__conv0_OldProcInfo_14;
+    MR_Box check_hlds__mode_errors__conv1_NewProcInfo_15;
+
+    {
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__mode_errors__PredInfo_11, &check_hlds__mode_errors__Procs_13);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_75_75 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(check_hlds__mode_errors__TypeCtorInfo_75_75, check_hlds__mode_errors__Procs_13, check_hlds__mode_errors__OldProcId_8, &check_hlds__mode_errors__conv0_OldProcInfo_14);
+    }
+    check_hlds__mode_errors__OldProcInfo_14 = ((MR_Word) check_hlds__mode_errors__conv0_OldProcInfo_14);
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(check_hlds__mode_errors__TypeCtorInfo_75_75, check_hlds__mode_errors__Procs_13, check_hlds__mode_errors__NewProcId_9, &check_hlds__mode_errors__conv1_NewProcInfo_15);
+    }
+    check_hlds__mode_errors__NewProcInfo_15 = ((MR_Word) check_hlds__mode_errors__conv1_NewProcInfo_15);
+    {
+      hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__mode_errors__OldProcInfo_14, &check_hlds__mode_errors__OldContext_16);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__mode_errors__NewProcInfo_15, &check_hlds__mode_errors__NewContext_17);
+    }
+    check_hlds__mode_errors__TypeCtorInfo_76_76 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__mode_errors__Var_26 = hlds__hlds_error_util__describe_one_pred_name_3_f_0(check_hlds__mode_errors__ModuleInfo_7, (MR_Integer) 0, check_hlds__mode_errors__PredId_10);
+    }
+    {
+      check_hlds__mode_errors__Var_25 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_76_76, check_hlds__mode_errors__Var_26, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[26]));
+    }
+    {
+      check_hlds__mode_errors__MainPieces_18 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_76_76, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[218]), check_hlds__mode_errors__Var_25);
+    }
+    {
+      check_hlds__mode_errors__Var_43 = check_hlds__mode_errors__mode_decl_to_string_2_f_0(check_hlds__mode_errors__OldProcId_8, check_hlds__mode_errors__PredInfo_11);
+    }
+    {
+      check_hlds__mode_errors__Var_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_42, 1) = ((MR_Box) (check_hlds__mode_errors__Var_43));
+    }
+    {
+      check_hlds__mode_errors__Var_49 = check_hlds__mode_errors__mode_decl_to_string_2_f_0(check_hlds__mode_errors__NewProcId_9, check_hlds__mode_errors__PredInfo_11);
+    }
+    {
+      check_hlds__mode_errors__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(3), check_hlds__mode_errors__Var_48, 1) = ((MR_Box) (check_hlds__mode_errors__Var_49));
+    }
+    {
+      check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[222])));
+    }
+    {
+      check_hlds__mode_errors__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[220])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_44, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+    }
+    {
+      check_hlds__mode_errors__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 0) = ((MR_Box) (check_hlds__mode_errors__Var_42));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_41, 1) = ((MR_Box) (check_hlds__mode_errors__Var_44));
+    }
+    {
+      check_hlds__mode_errors__VerbosePieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VerbosePieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__mode_errors_scalar_common_2[219])));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__VerbosePieces_19, 1) = ((MR_Box) (check_hlds__mode_errors__Var_41));
+    }
+    {
+      check_hlds__mode_errors__Var_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_63, 0) = ((MR_Box) (check_hlds__mode_errors__MainPieces_18));
+    }
+    {
+      check_hlds__mode_errors__Var_65 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_65, 0) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(2), check_hlds__mode_errors__Var_65, 1) = ((MR_Box) (check_hlds__mode_errors__VerbosePieces_19));
+    }
+    {
+      check_hlds__mode_errors__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_64, 0) = ((MR_Box) (check_hlds__mode_errors__Var_65));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_62, 0) = ((MR_Box) (check_hlds__mode_errors__Var_63));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_62, 1) = ((MR_Box) (check_hlds__mode_errors__Var_64));
+    }
+    {
+      check_hlds__mode_errors__Var_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_61, 0) = ((MR_Box) (check_hlds__mode_errors__NewContext_17));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_61, 1) = ((MR_Box) (check_hlds__mode_errors__Var_62));
+    }
+    {
+      check_hlds__mode_errors__Var_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_69, 0) = ((MR_Box) (check_hlds__mode_errors__OldContext_16));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[225])));
+    }
+    {
+      check_hlds__mode_errors__Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_68, 0) = ((MR_Box) (check_hlds__mode_errors__Var_69));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__mode_errors__Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_60, 0) = ((MR_Box) (check_hlds__mode_errors__Var_61));
+      MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_60, 1) = ((MR_Box) (check_hlds__mode_errors__Var_68));
+    }
+    {
+      check_hlds__mode_errors__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_12, 2) = ((MR_Box) (check_hlds__mode_errors__Var_60));
+    }
+    return check_hlds__mode_errors__Spec_12;
+  }
+}
+
+MR_String MR_CALL 
+check_hlds__mode_errors__mode_decl_to_string_2_f_0(
+  MR_Integer check_hlds__mode_errors__ProcId_4,
+  MR_Word check_hlds__mode_errors__PredInfo_5)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_String check_hlds__mode_errors__String_6;
+    MR_Word check_hlds__mode_errors__PredOrFunc_7;
+    MR_String check_hlds__mode_errors__Name0_8;
+    MR_Word check_hlds__mode_errors__Name_9;
+    MR_Word check_hlds__mode_errors__Procs_10;
+    MR_Word check_hlds__mode_errors__ProcInfo_11;
+    MR_Word check_hlds__mode_errors__Modes0_12;
+    MR_Word check_hlds__mode_errors__MaybeDet_13;
+    MR_Word check_hlds__mode_errors__InstVarSet_14;
+    MR_Word check_hlds__mode_errors__Modes_15;
+    MR_Box check_hlds__mode_errors__conv0_ProcInfo_11;
+
+    {
+      check_hlds__mode_errors__PredOrFunc_7 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(check_hlds__mode_errors__PredInfo_5);
+    }
+    {
+      check_hlds__mode_errors__Name0_8 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__mode_errors__PredInfo_5);
+    }
+    {
+      check_hlds__mode_errors__Name_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Name_9, 0) = ((MR_Box) (check_hlds__mode_errors__Name0_8));
+    }
+    {
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__mode_errors__PredInfo_5, &check_hlds__mode_errors__Procs_10);
+    }
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, check_hlds__mode_errors__Procs_10, check_hlds__mode_errors__ProcId_4, &check_hlds__mode_errors__conv0_ProcInfo_11);
+    }
+    check_hlds__mode_errors__ProcInfo_11 = ((MR_Word) check_hlds__mode_errors__conv0_ProcInfo_11);
+    {
+      hlds__hlds_pred__proc_info_declared_argmodes_2_p_0(check_hlds__mode_errors__ProcInfo_11, &check_hlds__mode_errors__Modes0_12);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_declared_determinism_2_p_0(check_hlds__mode_errors__ProcInfo_11, &check_hlds__mode_errors__MaybeDet_13);
+    }
+    {
+      mercury__varset__init_1_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0, &check_hlds__mode_errors__InstVarSet_14);
+    }
+    {
+      parse_tree__prog_mode__strip_builtin_qualifiers_from_mode_list_2_p_0(check_hlds__mode_errors__Modes0_12, &check_hlds__mode_errors__Modes_15);
+    }
+    {
+      check_hlds__mode_errors__String_6 = parse_tree__parse_tree_out_pred_decl__mercury_mode_subdecl_to_string_6_f_0((MR_Integer) 1, check_hlds__mode_errors__PredOrFunc_7, check_hlds__mode_errors__InstVarSet_14, check_hlds__mode_errors__Name_9, check_hlds__mode_errors__Modes_15, check_hlds__mode_errors__MaybeDet_13);
+    }
+    return check_hlds__mode_errors__String_6;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__maybe_report_error_no_modes_3_f_0(
+  MR_Word check_hlds__mode_errors__ModuleInfo_5,
+  MR_Word check_hlds__mode_errors__PredId_6,
+  MR_Word check_hlds__mode_errors__PredInfo_7)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+    MR_Word check_hlds__mode_errors__Specs_8;
+    MR_Word check_hlds__mode_errors__PredStatus_9;
+    MR_Word check_hlds__mode_errors__Var_20;
+
+    {
+      hlds__hlds_pred__pred_info_get_status_2_p_0(check_hlds__mode_errors__PredInfo_7, &check_hlds__mode_errors__PredStatus_9);
+    }
+    check_hlds__mode_errors__Var_20 = (MR_Word) check_hlds__mode_errors__PredStatus_9;
+    check_hlds__mode_errors__succeeded = (check_hlds__mode_errors__Var_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8))));
+    if (check_hlds__mode_errors__succeeded)
+      {
+        MR_Word check_hlds__mode_errors__Globals_10;
+        MR_Word check_hlds__mode_errors__InferModesOpt_11;
+
+        {
+          hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__mode_errors__ModuleInfo_5, &check_hlds__mode_errors__Globals_10);
+        }
+        {
+          libs__globals__lookup_bool_option_3_p_0(check_hlds__mode_errors__Globals_10, (MR_Integer) 181, &check_hlds__mode_errors__InferModesOpt_11);
+        }
+        switch (check_hlds__mode_errors__InferModesOpt_11) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__mode_errors__Markers_12;
+              MR_Word check_hlds__mode_errors__Msgs_13;
+              MR_Word check_hlds__mode_errors__Context_17;
+              MR_Word check_hlds__mode_errors__Spec_18;
+
+              {
+                hlds__hlds_pred__pred_info_get_markers_2_p_0(check_hlds__mode_errors__PredInfo_7, &check_hlds__mode_errors__Markers_12);
+              }
+              {
+                hlds__hlds_pred__pred_info_get_context_2_p_0(check_hlds__mode_errors__PredInfo_7, &check_hlds__mode_errors__Context_17);
+              }
+              {
+                check_hlds__mode_errors__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__mode_errors__Markers_12, (MR_Integer) 4);
+              }
+              if (check_hlds__mode_errors__succeeded)
+                check_hlds__mode_errors__Msgs_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              else
+                {
+                  MR_Word check_hlds__mode_errors__TypeCtorInfo_83_83;
+                  MR_Word check_hlds__mode_errors__PredDesc_14;
+                  MR_Word check_hlds__mode_errors__MainPieces_15;
+                  MR_Word check_hlds__mode_errors__Var_28;
+                  MR_Word check_hlds__mode_errors__Var_46;
+                  MR_Word check_hlds__mode_errors__Var_47;
+                  MR_Word check_hlds__mode_errors__Var_48;
+
+                  {
+                    check_hlds__mode_errors__PredDesc_14 = hlds__hlds_error_util__describe_one_pred_name_3_f_0(check_hlds__mode_errors__ModuleInfo_5, (MR_Integer) 1, check_hlds__mode_errors__PredId_6);
+                  }
+                  check_hlds__mode_errors__TypeCtorInfo_83_83 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                  {
+                    check_hlds__mode_errors__Var_28 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_83_83, check_hlds__mode_errors__PredDesc_14, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15]));
+                  }
+                  {
+                    check_hlds__mode_errors__MainPieces_15 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_83_83, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[212]), check_hlds__mode_errors__Var_28);
+                  }
+                  {
+                    check_hlds__mode_errors__Var_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_48, 0) = ((MR_Box) (check_hlds__mode_errors__MainPieces_15));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 0) = ((MR_Box) (check_hlds__mode_errors__Var_48));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[214])));
+                  }
+                  {
+                    check_hlds__mode_errors__Var_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_46, 0) = ((MR_Box) (check_hlds__mode_errors__Context_17));
+                    MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_46, 1) = ((MR_Box) (check_hlds__mode_errors__Var_47));
+                  }
+                  {
+                    check_hlds__mode_errors__Msgs_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_13, 0) = ((MR_Box) (check_hlds__mode_errors__Var_46));
+                    MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Msgs_13, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                }
+              {
+                check_hlds__mode_errors__Spec_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+                MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_18, 2) = ((MR_Box) (check_hlds__mode_errors__Msgs_13));
+              }
+              {
+                check_hlds__mode_errors__Specs_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Specs_8, 0) = ((MR_Box) (check_hlds__mode_errors__Spec_18));
+                MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Specs_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            check_hlds__mode_errors__Specs_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__mode_errors__TypeCtorInfo_84_84;
+        MR_Word check_hlds__mode_errors__Pieces_19;
+        MR_Word check_hlds__mode_errors__Var_62;
+        MR_Word check_hlds__mode_errors__Var_63;
+        MR_Word check_hlds__mode_errors__Var_74;
+        MR_Word check_hlds__mode_errors__Var_75;
+        MR_Word check_hlds__mode_errors__Var_76;
+        MR_Word check_hlds__mode_errors__Var_77;
+        MR_Word check_hlds__mode_errors__Context_81;
+        MR_Word check_hlds__mode_errors__Spec_82;
+
+        {
+          hlds__hlds_pred__pred_info_get_context_2_p_0(check_hlds__mode_errors__PredInfo_7, &check_hlds__mode_errors__Context_81);
+        }
+        check_hlds__mode_errors__TypeCtorInfo_84_84 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+        {
+          check_hlds__mode_errors__Var_63 = hlds__hlds_error_util__describe_one_pred_name_3_f_0(check_hlds__mode_errors__ModuleInfo_5, (MR_Integer) 0, check_hlds__mode_errors__PredId_6);
+        }
+        {
+          check_hlds__mode_errors__Var_62 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_84_84, check_hlds__mode_errors__Var_63, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[15]));
+        }
+        {
+          check_hlds__mode_errors__Pieces_19 = mercury__list__f_43_43_2_f_0(check_hlds__mode_errors__TypeCtorInfo_84_84, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_2[216]), check_hlds__mode_errors__Var_62);
+        }
+        {
+          check_hlds__mode_errors__Var_77 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_77, 0) = ((MR_Box) (check_hlds__mode_errors__Pieces_19));
+        }
+        {
+          check_hlds__mode_errors__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_76, 0) = ((MR_Box) (check_hlds__mode_errors__Var_77));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Var_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_75, 0) = ((MR_Box) (check_hlds__mode_errors__Context_81));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Var_75, 1) = ((MR_Box) (check_hlds__mode_errors__Var_76));
+        }
+        {
+          check_hlds__mode_errors__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 0) = ((MR_Box) (check_hlds__mode_errors__Var_75));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Var_74, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__mode_errors__Spec_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_82, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_82, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__mode_errors_scalar_common_3[1])));
+          MR_hl_field(MR_mktag(0), check_hlds__mode_errors__Spec_82, 2) = ((MR_Box) (check_hlds__mode_errors__Var_74));
+        }
+        {
+          check_hlds__mode_errors__Specs_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Specs_8, 0) = ((MR_Box) (check_hlds__mode_errors__Spec_82));
+          MR_hl_field(MR_mktag(1), check_hlds__mode_errors__Specs_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+      }
+    return check_hlds__mode_errors__Specs_8;
+  }
+}
+
+void MR_CALL 
+check_hlds__mode_errors__mode_context_init_1_p_0(
+  MR_Word * check_hlds__mode_errors__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    *check_hlds__mode_errors__HeadVar__1_1 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____delayed_goal_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____delayed_goal_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____delayed_goal_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____delayed_goal_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____final_inst_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____final_inst_error_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____final_inst_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____final_inst_error_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____include_detism_on_modes_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____include_detism_on_modes_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____include_detism_on_modes_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____include_detism_on_modes_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____maybe_report_is_ground_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____maybe_report_is_ground_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_context_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____merge_context_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_context_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____merge_context_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____merge_error_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____merge_error_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_errors_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____merge_errors_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____merge_errors_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____merge_errors_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____mode_error_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_info_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_info_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_info_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____mode_error_info_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_warning_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____mode_warning_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_info_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____mode_warning_info_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_info_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____mode_warning_info_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____negated_context_desc_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____negated_context_desc_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____negated_context_desc_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____negated_context_desc_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____pred_var_multimode_pred_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____pred_var_multimode_pred_error_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____pred_var_multimode_pred_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____pred_var_multimode_pred_error_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____schedule_culprit_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____schedule_culprit_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____schedule_culprit_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____schedule_culprit_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____var_multimode_pred_error_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____var_multimode_pred_error_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____write_indented_goal_0_0_10001(
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__mode_errors__succeeded;
+
+    {
+      check_hlds__mode_errors__succeeded = check_hlds__mode_errors____Unify____write_indented_goal_0_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1), ((MR_Word) check_hlds__mode_errors__wrapper_arg_2));
+    }
+    return check_hlds__mode_errors__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors____Compare____write_indented_goal_0_0_10001(
+  MR_Box * check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__mode_errors__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__mode_errors____Compare____write_indented_goal_0_0(&check_hlds__mode_errors__conv0_HeadVar__1_1, ((MR_Word) check_hlds__mode_errors__wrapper_arg_2), ((MR_Word) check_hlds__mode_errors__wrapper_arg_3));
+    }
+    *check_hlds__mode_errors__wrapper_arg_1 = ((MR_Box) (check_hlds__mode_errors__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0_10001(
+  MR_Box check_hlds__mode_errors__closure_arg,
+  MR_Box check_hlds__mode_errors__wrapper_arg_1,
+  MR_Box check_hlds__mode_errors__wrapper_arg_2,
+  MR_Box * check_hlds__mode_errors__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__mode_errors__closure = check_hlds__mode_errors__closure_arg;
+
+    {
+      check_hlds__mode_errors__ClassMethod_for_parse_tree__error_util__print_anything____check_hlds__mode_errors__write_indented_goal__arity0______parse_tree__error_util__print_anything_3_3_p_0(((MR_Word) check_hlds__mode_errors__wrapper_arg_1));
+    }
+  }
+}
+
+void mercury__check_hlds__mode_errors__init(void)
+{
+}
+
+void mercury__check_hlds__mode_errors__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_final_inst_error_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_include_detism_on_modes_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_maybe_report_is_ground_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_context_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_errors_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_unify_rhs_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_info_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_negated_context_desc_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_pred_var_multimode_pred_error_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_schedule_culprit_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_var_multimode_pred_error_0);
+	MR_register_type_ctor_info(&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_write_indented_goal_0);
+}
+
+void mercury__check_hlds__mode_errors__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__mode_errors__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module check_hlds.mode_errors. */

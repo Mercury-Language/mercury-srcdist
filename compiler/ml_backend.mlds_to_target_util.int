@@ -1,0 +1,63 @@
+:- module (ml_backend.mlds_to_target_util).
+:- interface.
+:- import_module backend_libs.
+:- import_module bool.
+:- import_module digraph.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.sym_name).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.java_names).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- type exit_method
+    --->    can_break 
+    ;       can_continue 
+    ;       can_return 
+    ;       can_throw 
+    ;       can_fall_through .
+:- type exit_methods == set.set(ml_backend.mlds_to_target_util.exit_method).
+:- type func_info_csj
+    --->    func_info_csj(((ml_backend.mlds_to_target_util).func_info_params) :: ml_backend.mlds.mlds_func_params).
+:- type indent == int.
+:- type output_aux
+    --->    oa_none 
+    ;       oa_cname(ml_backend.mlds.mlds_type_name)
+    ;       oa_alloc_only 
+    ;       oa_force_init .
+:- type output_generics
+    --->    do_output_generics 
+    ;       do_not_output_generics .
+:- pred add_scalar_inits(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_type, ml_backend.mlds.ml_scalar_common_type_num, ml_backend.mlds.mlds_initializer, int, int, digraph.digraph(ml_backend.mlds.mlds_scalar_common), digraph.digraph(ml_backend.mlds.mlds_scalar_common), map.map(ml_backend.mlds.mlds_scalar_common, ml_backend.mlds.mlds_initializer), map.map(ml_backend.mlds.mlds_scalar_common, ml_backend.mlds.mlds_initializer)).
+:- mode add_scalar_inits((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred array_dimension_to_string(int, string).
+:- mode array_dimension_to_string((builtin.in), (builtin.out)) is det.
+:- pred collect_env_var_names(list.list(ml_backend.mlds.mlds_defn), list.list(string)).
+:- mode collect_env_var_names((builtin.in), (builtin.out)) is det.
+:- func convert_qual_kind(ml_backend.mlds.mlds_qual_kind) = parse_tree.java_names.csj_qual_kind.
+:- pred defn_is_enum_const(ml_backend.mlds.mlds_defn, ml_backend.mlds.mlds_field_var_defn).
+:- mode defn_is_enum_const((builtin.in), (builtin.out)) is semidet.
+:- pred generic_tvar_to_string(parse_tree.prog_data.tvar, string).
+:- mode generic_tvar_to_string((builtin.in), (builtin.out)) is det.
+:- pred maybe_output_pred_proc_id_comment(bool.bool, hlds.hlds_pred.pred_proc_id, io.io, io.io).
+:- mode maybe_output_pred_proc_id_comment((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_array_dimensions(list.list(int), io.io, io.io).
+:- mode output_array_dimensions((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_auto_gen_comment(string, io.io, io.io).
+:- mode output_auto_gen_comment((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_generic_tvars(list.list(parse_tree.prog_data.tvar), io.io, io.io).
+:- mode output_generic_tvars((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_n_indents(ml_backend.mlds_to_target_util.indent, io.io, io.io).
+:- mode output_n_indents((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred remove_sym_name_prefix(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode remove_sym_name_prefix((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func type_category_is_array(parse_tree.prog_type.type_ctor_category) = backend_libs.rtti.is_array.
+:- pred write_indented_line(ml_backend.mlds_to_target_util.indent, string, io.io, io.io).
+:- mode write_indented_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

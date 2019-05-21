@@ -1,0 +1,4 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- type eqv_type_body.
+:- type type_eqv_map.

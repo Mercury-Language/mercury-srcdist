@@ -1,0 +1,10841 @@
+/*
+** Automatically generated from `det_report.m'
+** by the Mercury compiler,
+** version rotd-2017-07-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.det_report. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__det_report__init
+ENDINIT
+*/
+
+#include "check_hlds.det_report.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.det_util.mih"
+#include "check_hlds.inst_test.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.mode_util.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_util.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_out.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.mercury_to_mercury.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_detism.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_out.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.hlds_out.hlds_out_goal.mih"
+#include "hlds.hlds_out.hlds_out_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct check_hlds__det_report__get_valid_dets_2_p_0_env_0_s {
+  MR_Word check_hlds__det_report__get_valid_dets_2_p_0_env_0__EvalMethod_3;
+  MR_Word * check_hlds__det_report__get_valid_dets_2_p_0_env_0__Detism_4;
+  MR_Cont check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont;
+  void * check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont_env_ptr;
+  MR_bool check_hlds__det_report__get_valid_dets_2_p_0_env_0__succeeded;
+  MR_Word check_hlds__det_report__get_valid_dets_2_p_0_env_0__Var_5;
+};
+
+struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s {
+  MR_Word check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__ModuleInfo_10;
+  MR_bool check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded;
+  MR_Word check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__TypeCtorInfo_65_65;
+  MR_Word check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgModes_16;
+  jmp_buf check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__commit_0;
+  MR_Word check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgMode_18;
+  MR_Box check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__conv1_FuncArgMode_18;
+};
+
+struct check_hlds__det_report__check_determinism_7_p_0_2_env_0_s {
+  MR_Box * check_hlds__det_report__check_determinism_7_p_0_2_env_0__wrapper_arg_1;
+  MR_Cont check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont;
+  void * check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont_env_ptr;
+  MR_Word check_hlds__det_report__check_determinism_7_p_0_2_env_0__conv0_Detism_4;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__det_report__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__det_report__pair__pti_pair_2__plain_libs__options__type_ctor_info_option_0__plain_getopt_io__type_ctor_info_option_data_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_cc_unify_context_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_0;
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_1;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_cc_unify_context_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_cc_unify_context_0[2];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_cc_unify_context_0[2];
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_1[3];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_1;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_detism_check_kind_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_detism_check_kind_0[2];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_detism_check_kind_0[2];
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_context_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_context_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_context_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_context_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_context_0[1];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_context_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_0;
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_1;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_2[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_2;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_3[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_3;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_4[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_4;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_5[1];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_5;
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_6;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_2[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_3[3];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_goal_0[4];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_goal_0[7];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_goal_0[7];
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_value_ordered_maybe_inform_incomplete_switches_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_name_ordered_maybe_inform_incomplete_switches_0[2];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_maybe_inform_incomplete_switches_0[2];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1parse_tree__error_util__type_ctor_info_format_component_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_missing_cons_id_info_0_0[4];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_missing_cons_id_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_missing_cons_id_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_missing_cons_id_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_missing_cons_id_info_0[1];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_missing_cons_id_info_0[1];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__det_report__pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_reported_switch_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_reported_switch_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_reported_switch_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_reported_switch_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_reported_switch_0[1];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_reported_switch_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_seen_call_id_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_0;
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_1;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_seen_call_id_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_seen_call_id_0[2];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_seen_call_id_0[2];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1check_hlds__det_report__type_ctor_info_switch_match_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_switch_context_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_context_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_context_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_context_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_context_0[1];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_context_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__maybe__ti_maybe_1list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_switch_match_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_match_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_match_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_match_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_match_0[1];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_match_0[1];
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_value_ordered_why_report_incomplete_switch_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_name_ordered_why_report_incomplete_switch_0[2];
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_why_report_incomplete_switch_0[2];
+
+static void MR_CALL 
+check_hlds__det_report____Compare____why_report_incomplete_switch_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____why_report_incomplete_switch_0_0(
+  MR_Word check_hlds__det_report__HeadVar__2_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_match_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_match_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____reported_switch_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____reported_switch_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____missing_cons_id_info_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____missing_cons_id_info_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0(
+  MR_Word check_hlds__det_report__HeadVar__2_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____detism_check_kind_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____detism_check_kind_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report__restore_option_3_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Globals_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Globals_8);
+
+static MR_Word MR_CALL 
+check_hlds__det_report__failing_context_description_3_f_0(
+  MR_Word check_hlds__det_report__ModuleInfo_5,
+  MR_Word check_hlds__det_report__VarSet_6,
+  MR_Word check_hlds__det_report__FailingContext_7);
+
+static MR_String MR_CALL 
+check_hlds__det_report__switch_match_to_string_2_f_0(
+  MR_Word check_hlds__det_report__VarSet_4,
+  MR_Word check_hlds__det_report__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__det_report__make_switch_match_no_args_2_p_0(
+  MR_Word check_hlds__det_report__ConsId_3,
+  MR_Word * check_hlds__det_report__Match_4);
+
+static void MR_CALL 
+check_hlds__det_report__get_valid_dets_2_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__get_valid_dets_2_p_0(
+  MR_Word check_hlds__det_report__EvalMethod_3,
+  MR_Word * check_hlds__det_report__Detism_4,
+  MR_Cont check_hlds__det_report__cont,
+  void * check_hlds__det_report__cont_env_ptr);
+
+static void MR_CALL 
+check_hlds__det_report__restore_det_warnings_3_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box * check_hlds__det_report__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__det_report__failing_contexts_description_3_f_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_3(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_2(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_4(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0(
+  MR_Word check_hlds__det_report__PredProcId_7,
+  MR_Word check_hlds__det_report__PredInfo_8,
+  MR_Word check_hlds__det_report__ProcInfo_9,
+  MR_Word check_hlds__det_report__ModuleInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_27,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_28);
+
+static MR_Box MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_3(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_2(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Cont check_hlds__det_report__cont,
+  void * check_hlds__det_report__cont_env_ptr);
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0(
+  MR_Word check_hlds__det_report__PredProcId_8,
+  MR_Word check_hlds__det_report__PredInfo_9,
+  MR_Word check_hlds__det_report__ProcInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_46,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_47);
+
+static void MR_CALL 
+check_hlds__det_report__report_determinism_problem_6_p_0(
+  MR_Word check_hlds__det_report__PredProcId_7,
+  MR_Word check_hlds__det_report__ModuleInfo_8,
+  MR_Word check_hlds__det_report__MessagePieces_9,
+  MR_Word check_hlds__det_report__DeclaredDetism_10,
+  MR_Word check_hlds__det_report__InferredDetism_11,
+  MR_Word * check_hlds__det_report__Msgs_12);
+
+static MR_String MR_CALL 
+check_hlds__det_report__detism_decl_name_1_f_0(
+  MR_Word check_hlds__det_report__DetismDecl_3);
+
+static void MR_CALL 
+check_hlds__det_report__make_reqscope_checks_if_needed_6_p_0(
+  MR_Word check_hlds__det_report__ModuleInfo_7,
+  MR_Word check_hlds__det_report__PredProcId_8,
+  MR_Word check_hlds__det_report__PredInfo_9,
+  MR_Word check_hlds__det_report__ProcInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_22,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_23);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_cases_8_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__HeadVar__6_6,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_8);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_disj_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_6);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_conj_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_7_p_0(
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__InstMap0_9,
+  MR_Word check_hlds__det_report__IIS_10,
+  MR_Word check_hlds__det_report__MaybeReportedSwitch_11,
+  MR_Word check_hlds__det_report__SwitchContexts_12,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_88);
+
+static void MR_CALL 
+check_hlds__det_report__lambda_update_instmap_4_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_InstMap_0_3,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_InstMap_4);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_scope_8_p_0(
+  MR_Word check_hlds__det_report__SwitchContexts_9,
+  MR_Word check_hlds__det_report__Reason_10,
+  MR_Word check_hlds__det_report__SubGoal_11,
+  MR_Word check_hlds__det_report__ScopeGoalInfo_12,
+  MR_Word check_hlds__det_report__InstMap0_13,
+  MR_Word * check_hlds__det_report__MaybeReportedSwitch_14,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+
+static void MR_CALL 
+check_hlds__det_report__generate_error_not_switch_on_required_var_5_p_0(
+  MR_Word check_hlds__det_report__RequiredVar_6,
+  MR_String check_hlds__det_report__ScopeWord_7,
+  MR_Word check_hlds__det_report__ScopeGoalInfo_8,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_17,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_18);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_for_cases_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7);
+
+static MR_Box MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_6_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_6_p_0(
+  MR_Word check_hlds__det_report__RequiredDetism_7,
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__CheckKind_9,
+  MR_Word check_hlds__det_report__InstMap0_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_36,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_37);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_orelse_goals_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__InstMap0_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_6,
+  MR_Word * check_hlds__det_report__HeadVar__7_7);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_switch_arms_9_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__InstMap0_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__HeadVar__6_6,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_8,
+  MR_Word * check_hlds__det_report__HeadVar__9_9);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_disj_10_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7,
+  MR_Integer check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_0_8,
+  MR_Integer * check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_9,
+  MR_Word * check_hlds__det_report__HeadVar__10_10);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_goal_expr_9_p_0(
+  MR_Word check_hlds__det_report__GoalExpr_10,
+  MR_Word check_hlds__det_report__GoalInfo_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__Desired_13,
+  MR_Word check_hlds__det_report__Actual_14,
+  MR_Word check_hlds__det_report__SwitchContexts_15,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_116,
+  MR_Word * check_hlds__det_report__Msgs_17);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_goal_7_p_0(
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__InstMap0_9,
+  MR_Word check_hlds__det_report__Desired_10,
+  MR_Word check_hlds__det_report__SwitchContexts_11,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_18,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_19,
+  MR_Word * check_hlds__det_report__Msgs_13);
+
+static void MR_CALL 
+check_hlds__det_report__det_report_call_context_7_p_0(
+  MR_Word check_hlds__det_report__Context_8,
+  MR_Word check_hlds__det_report__CallUnifyContext_9,
+  MR_Word check_hlds__det_report__DetInfo_10,
+  MR_Word check_hlds__det_report__PredId_11,
+  MR_Integer check_hlds__det_report__ProcId_12,
+  MR_Word * check_hlds__det_report__InitMsgs_13,
+  MR_Word * check_hlds__det_report__StartingPieces_14);
+
+static void MR_CALL 
+check_hlds__det_report__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_114_101_112_111_114_116_95_117_110_105_102_121_95_99_111_110_116_101_120_116_95_95_91_51_93_95_48_8_p_0(
+  MR_Word check_hlds__det_report__STATE_VARIABLE_First_0_27,
+  MR_Word check_hlds__det_report__Last_10,
+  MR_Word check_hlds__det_report__UnifyContext_12,
+  MR_Word check_hlds__det_report__DetInfo_13,
+  MR_Word check_hlds__det_report__LHS_14,
+  MR_Word check_hlds__det_report__RHS_15,
+  MR_Word * check_hlds__det_report__AllPieces_16);
+
+static void MR_CALL 
+check_hlds__det_report__find_switch_var_matches_6_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box * check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report__find_switch_var_matches_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2,
+  MR_Word check_hlds__det_report__MainConsId_3,
+  MR_Word check_hlds__det_report__OtherConsIds_4,
+  MR_Word * check_hlds__det_report__MainMatch_5,
+  MR_Word * check_hlds__det_report__OtherMatches_6);
+
+static MR_bool MR_CALL 
+check_hlds__det_report__find_switch_var_submatches_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__SwitchVarSynonyms_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word * check_hlds__det_report__HeadVar__5_5,
+  MR_Word * check_hlds__det_report__HeadVar__6_6);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_primitive_goal_5_p_0(
+  MR_Word check_hlds__det_report__Desired_6,
+  MR_Word check_hlds__det_report__Actual_7,
+  MR_Word check_hlds__det_report__Context_8,
+  MR_Word check_hlds__det_report__StartingPieces_9,
+  MR_Word * check_hlds__det_report__Msgs_10);
+
+static void MR_CALL 
+check_hlds__det_report__generate_incomplete_switch_spec_9_p_0(
+  MR_Word check_hlds__det_report__Why_10,
+  MR_Word check_hlds__det_report__MaybeLimit_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__SwitchContexts_13,
+  MR_Word check_hlds__det_report__SwitchVar_14,
+  MR_Word check_hlds__det_report__Cases_15,
+  MR_Word check_hlds__det_report__Context_16,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_38);
+
+static void MR_CALL 
+check_hlds__det_report__find_missing_cons_ids_9_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box * check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report__find_missing_cons_ids_9_p_0(
+  MR_Word check_hlds__det_report__DetInfo_10,
+  MR_Word check_hlds__det_report__MaybeLimit_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__SwitchContexts_13,
+  MR_Word check_hlds__det_report__Var_14,
+  MR_Word check_hlds__det_report__Cases_15,
+  MR_Word * check_hlds__det_report__NestingPieces_16,
+  MR_String * check_hlds__det_report__VarStr_17,
+  MR_Word * check_hlds__det_report__MaybeMissingInfo_18);
+
+static MR_Box MR_CALL 
+check_hlds__det_report__det_diagnose_switch_context_3_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_switch_context_3_p_0(
+  MR_Word check_hlds__det_report__DetInfo_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word * check_hlds__det_report__HeadVar__3_3);
+
+static MR_Word MR_CALL 
+check_hlds__det_report__cons_id_list_to_pieces_3_f_0(
+  MR_Word check_hlds__det_report__ConsId1_5,
+  MR_Word check_hlds__det_report__ConsIds2Plus_6,
+  MR_Word check_hlds__det_report__EndCommaPieces_7);
+
+static void MR_CALL 
+check_hlds__det_report__compute_covered_cons_ids_3_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_0_2,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_3);
+
+static void MR_CALL 
+check_hlds__det_report__append_prefix_and_maybe_verbose_4_p_0(
+  MR_Word check_hlds__det_report__PrefixPieces_5,
+  MR_Word check_hlds__det_report__MainPieces_6,
+  MR_Word check_hlds__det_report__VerbosePieces_7,
+  MR_Word * check_hlds__det_report__Component_8);
+
+static MR_bool MR_CALL 
+check_hlds__det_report__is_scope_subgoal_a_sortof_switch_5_p_0(
+  MR_Word check_hlds__det_report__Goal_6,
+  MR_Word * check_hlds__det_report__SwitchContext_7,
+  MR_Word * check_hlds__det_report__SwitchVar_8,
+  MR_Word * check_hlds__det_report__CanFail_9,
+  MR_Word * check_hlds__det_report__Cases_10);
+
+static MR_bool MR_CALL 
+check_hlds__det_report__cse_lifted_then_sortof_switch_5_p_0(
+  MR_Word check_hlds__det_report__Conjuncts_6,
+  MR_Word * check_hlds__det_report__SwitchContext_7,
+  MR_Word * check_hlds__det_report__SwitchVar_8,
+  MR_Word * check_hlds__det_report__CanFail_9,
+  MR_Word * check_hlds__det_report__Cases_10);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____cc_unify_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____cc_unify_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____detism_check_kind_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____detism_check_kind_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____failing_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_goal_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____failing_goal_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____missing_cons_id_info_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____missing_cons_id_info_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____options_to_restore_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____options_to_restore_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____reported_switch_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____reported_switch_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____seen_call_id_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____seen_call_id_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_match_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_match_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____why_report_incomplete_switch_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__det_report____Compare____why_report_incomplete_switch_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3);
+
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_1[6][3];
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_2[153][2];
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_3[7][1];
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_4[2][6];
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_5[5][5];
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_8[1][7];
+
+
+/* sealed */ struct check_hlds__det_report__vector_common_type_6_0_s {
+  const MR_Word check_hlds__det_report__vector_common_type_6_0__vct_6_f_0;
+};
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_6_0_s check_hlds__det_report_vector_common_6[4];
+
+/* sealed */ struct check_hlds__det_report__vector_common_type_7_0_s {
+  const MR_String check_hlds__det_report__vector_common_type_7_0__vct_7_f_0;
+};
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_7_0_s check_hlds__det_report_vector_common_7[8];
+
+/* sealed */ struct check_hlds__det_report__vector_common_type_9_0_s {
+  const MR_Word check_hlds__det_report__vector_common_type_9_0__vct_9_f_0;
+};
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_9_0_s check_hlds__det_report_vector_common_9[8];
+
+
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_1[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&libs__options__libs__options__type_ctor_info_option_0)),
+    ((MR_Box) (&mercury__getopt_io__getopt_io__type_ctor_info_option_data_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_5[0])),
+    ((MR_Box) (check_hlds__det_report__find_missing_cons_ids_9_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_5[1])),
+    ((MR_Box) (check_hlds__det_report__find_switch_var_matches_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_5[2])),
+    ((MR_Box) (check_hlds__det_report__reqscope_check_goal_detism_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_5[4])),
+    ((MR_Box) (check_hlds__det_report__check_determinism_7_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_4[1])),
+    ((MR_Box) (check_hlds__det_report__restore_det_warnings_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_2[153][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__det_report_scalar_common_1[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__det_report_scalar_common_2[0]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&check_hlds__det_report_scalar_common_2[6]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "\'."))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[9]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "not satisfied."))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[11]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "could be tighter."))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[13]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[15]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "cc_multi"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[17]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "or"))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[19]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[18])))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "det"))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[21]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[20])))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "must be"))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[23]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[22])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_3[0])),
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&check_hlds__det_report_scalar_common_2[25]))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[26]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[24])))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[28]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[27])))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "not a function."))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[30]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Most likely, this procedure should be a predicate,"))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[32]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[31])))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "arguments would break referential transparency.)"))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[34]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[33])))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "(Allowing functions to have more than one result for the same"))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[36]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[35])))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "should be determined only by the values of its arguments."))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[38]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[37])))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of its arguments; that is, the value of the function\'s result"))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[40]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[39])))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "a function is supposed to be a true mathematical function"))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[42]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[41])))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In Mercury,"))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[44]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[43])))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[46]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Disjunction has multiple clauses with solutions."))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[48]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[49])))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Negated goal can succeed."))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[51]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Negated goal can fail."))
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[53]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can fail."))
+  },
+  /* row 56 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[55]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 57 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0))
+  },
+  /* row 58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is required to be complete, but it is not."))
+  },
+  /* row 59 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[58]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 60 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "but it does not cover"))
+  },
+  /* row 61 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[60]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 62 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is required to be complete,"))
+  },
+  /* row 63 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[62]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[61])))
+  },
+  /* row 64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of the arm for"))
+  },
+  /* row 65 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[64]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 66 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "but the actual determinism"))
+  },
+  /* row 67 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[66]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[65])))
+  },
+  /* row 68 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "context,"))
+  },
+  /* row 69 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[68]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[67])))
+  },
+  /* row 70 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__det_report_scalar_common_3[1]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 71 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 72 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[71]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[70])))
+  },
+  /* row 73 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "more."))
+  },
+  /* row 74 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[73]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 75 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[19]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 76 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[71]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8])))
+  },
+  /* row 77 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Inside the case"))
+  },
+  /* row 78 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of the switch on"))
+  },
+  /* row 79 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 80 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 81 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[80]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 82 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 83 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[82]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 84 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 85 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[84]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 86 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and"))
+  },
+  /* row 87 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The switch on"))
+  },
+  /* row 88 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "does not cover"))
+  },
+  /* row 89 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[88]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 90 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the switch on"))
+  },
+  /* row 91 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can fail"))
+  },
+  /* row 92 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[91]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 93 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[86]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 94 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can succeed"))
+  },
+  /* row 95 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[94]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 96 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can succeed more than once"))
+  },
+  /* row 97 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[96]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 98 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "has unknown determinism problem;"))
+  },
+  /* row 99 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "desired determinism is"))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "while actual determinism is"))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "with"))
+  },
+  /* row 103 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of"))
+  },
+  /* row 104 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Some weird unification(or explicit call to a type-specific unify predicate\?)"))
+  },
+  /* row 105 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[104]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 106 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 107 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[106]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 108 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Call to"))
+  },
+  /* row 109 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Determinism declaration not satisfied."))
+  },
+  /* row 110 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Desired determinism is"))
+  },
+  /* row 111 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_3[2])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 112 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_3[3])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 113 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the required determinism of the goal"))
+  },
+  /* row 114 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in this scope is"))
+  },
+  /* row 115 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "but its actual determinism is"))
+  },
+  /* row 116 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the arms of the switch on"))
+  },
+  /* row 117 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "are required have"))
+  },
+  /* row 118 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "a determinism that is acceptable in a"))
+  },
+  /* row 119 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is"))
+  },
+  /* row 120 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the goal inside the"))
+  },
+  /* row 121 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "scope"))
+  },
+  /* row 122 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is not a switch on"))
+  },
+  /* row 123 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In"))
+  },
+  /* row 124 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[123]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 125 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Declared"))
+  },
+  /* row 126 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "inferred"))
+  },
+  /* row 127 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "error:"))
+  },
+  /* row 128 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "warning:"))
+  },
+  /* row 129 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row 130 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "declaration not allowed for procedure"))
+  },
+  /* row 131 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "with determinism"))
+  },
+  /* row 132 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "The pragma requested is only valid"))
+  },
+  /* row 133 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "for the following"))
+  },
+  /* row 134 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: invalid determinism for"))
+  },
+  /* row 135 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[134]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 136 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "the primary mode of a function cannot be"))
+  },
+  /* row 137 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[45])))
+  },
+  /* row 138 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__det_report_scalar_common_2[137]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 139 */
+  {
+    ((MR_Box) (&check_hlds__det_report_scalar_common_3[5])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 140 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Determinism error in lambda expression."))
+  },
+  /* row 141 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "higher-order call"))
+  },
+  /* row 142 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[141]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 143 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "call to"))
+  },
+  /* row 144 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can fail."))
+  },
+  /* row 145 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[144]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 146 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Unification of"))
+  },
+  /* row 147 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Fail goal can fail."))
+  },
+  /* row 148 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[147]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 149 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is incomplete."))
+  },
+  /* row 150 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[149]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 151 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Negated goal can fail."))
+  },
+  /* row 152 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[151]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_3[7][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "main"))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "..."))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[52])))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[54])))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) 10))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[29])))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_4[2][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__det_report__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__det_report__pair__pti_pair_2__plain_libs__options__type_ctor_info_option_0__plain_getopt_io__type_ctor_info_option_data_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_5[5][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data_pragma__parse_tree__prog_data_pragma__type_ctor_info_eval_method_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__det_report_scalar_common_8[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__det_report__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_context_0)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0))
+  },
+};
+
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_6_0_s check_hlds__det_report_vector_common_6[4] = {
+  /* row 0 */   {     (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[95]) },
+  /* row 1 */   {     (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[97]) },
+  /* row 2 */   {     (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[95]) },
+  /* row 3 */   {     (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[95]) },
+};
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_7_0_s check_hlds__det_report_vector_common_7[8] = {
+  /* row 0 */   {     (MR_String) "require_switch_arms_det" },
+  /* row 1 */   {     (MR_String) "require_switch_arms_semidet" },
+  /* row 2 */   {     (MR_String) "require_switch_arms_multi" },
+  /* row 3 */   {     (MR_String) "require_switch_arms_nondet" },
+  /* row 4 */   {     (MR_String) "require_switch_arms_cc_multi" },
+  /* row 5 */   {     (MR_String) "require_switch_arms_cc_nondet" },
+  /* row 6 */   {     (MR_String) "require_switch_arms_erroneous" },
+  /* row 7 */   {     (MR_String) "require_switch_arms_failure" },
+};
+
+static /* final */ const struct check_hlds__det_report__vector_common_type_9_0_s check_hlds__det_report_vector_common_9[8] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 1 },
+  /* row 2 */   {     (MR_Integer) 2 },
+  /* row 3 */   {     (MR_Integer) 3 },
+  /* row 4 */   {     (MR_Integer) 4 },
+  /* row 5 */   {     (MR_Integer) 5 },
+  /* row 6 */   {     (MR_Integer) 6 },
+  /* row 7 */   {     (MR_Integer) 7 },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__det_report__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__det_report__pair__pti_pair_2__plain_libs__options__type_ctor_info_option_0__plain_getopt_io__type_ctor_info_option_data_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &libs__options__libs__options__type_ctor_info_option_0,
+    (MR_PseudoTypeInfo) &mercury__getopt_io__getopt_io__type_ctor_info_option_data_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_cc_unify_context_0_0[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_context_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_0 = {
+  (MR_String) "ccuc_unify",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_cc_unify_context_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_1 = {
+  (MR_String) "ccuc_switch",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_1[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_cc_unify_context_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_LOCAL,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_cc_unify_context_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_cc_unify_context_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_1,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_cc_unify_context_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_cc_unify_context_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_cc_unify_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____cc_unify_context_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____cc_unify_context_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "cc_unify_context",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_cc_unify_context_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_cc_unify_context_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_cc_unify_context_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_0[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_0 = {
+  (MR_String) "require_detism_scope",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_1[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_1 = {
+  (MR_String) "require_detism_switch_arm",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__det_report__check_hlds__det_report__field_types_detism_check_kind_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_1[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_1
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_detism_check_kind_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_detism_check_kind_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_detism_check_kind_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_0,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_detism_check_kind_0_1
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_detism_check_kind_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_detism_check_kind_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____detism_check_kind_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____detism_check_kind_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "detism_check_kind",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_detism_check_kind_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_detism_check_kind_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_detism_check_kind_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_context_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_context_0_0 = {
+  (MR_String) "failing_context",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_context_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_context_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_context_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_context_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_context_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_context_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_context_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_context_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____failing_context_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____failing_context_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "failing_context",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_context_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_context_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_context_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_0[1] = {
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_0 = {
+  (MR_String) "incomplete_switch",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_1 = {
+  (MR_String) "fail_goal",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_2[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_2 = {
+  (MR_String) "test_goal",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_3[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_3 = {
+  (MR_String) "deconstruct_goal",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_4[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_4 = {
+  (MR_String) "call_goal",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_5[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_generic_call_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_5 = {
+  (MR_String) "generic_call_goal",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  check_hlds__det_report__check_hlds__det_report__field_types_failing_goal_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_6 = {
+  (MR_String) "negated_goal",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_1,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_6
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_1[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_2[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_2
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_3[3] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_3,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_4,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_5
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_goal_0[4] = {
+  {
+    (MR_Integer) 2,
+    MR_SECTAG_LOCAL,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_2
+  },
+  {
+    (MR_Integer) 3,
+    MR_SECTAG_REMOTE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_failing_goal_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_goal_0[7] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_4,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_3,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_1,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_5,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_0,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_6,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_failing_goal_0_2
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_goal_0[7] = {
+  (MR_Integer) 4,
+  (MR_Integer) 2,
+  (MR_Integer) 6,
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 5
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_goal_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____failing_goal_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____failing_goal_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "failing_goal",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_failing_goal_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_failing_goal_0 },
+  (MR_Integer) 7,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_failing_goal_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_0 = {
+  (MR_String) "do_not_inform_incomplete_switches",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_1 = {
+  (MR_String) "inform_incomplete_switches",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_value_ordered_maybe_inform_incomplete_switches_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_0,
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_name_ordered_maybe_inform_incomplete_switches_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_0,
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_maybe_inform_incomplete_switches_0_1
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_maybe_inform_incomplete_switches_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_maybe_inform_incomplete_switches_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "maybe_inform_incomplete_switches",
+  {     check_hlds__det_report__check_hlds__det_report__enum_name_ordered_maybe_inform_incomplete_switches_0 },
+  {     check_hlds__det_report__check_hlds__det_report__enum_value_ordered_maybe_inform_incomplete_switches_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_maybe_inform_incomplete_switches_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1parse_tree__error_util__type_ctor_info_format_component_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_missing_cons_id_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1parse_tree__error_util__type_ctor_info_format_component_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1parse_tree__error_util__type_ctor_info_format_component_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_missing_cons_id_info_0_0 = {
+  (MR_String) "missing_cons_id_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_missing_cons_id_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_missing_cons_id_info_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_missing_cons_id_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_missing_cons_id_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_missing_cons_id_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_missing_cons_id_info_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_missing_cons_id_info_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_missing_cons_id_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_missing_cons_id_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____missing_cons_id_info_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____missing_cons_id_info_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "missing_cons_id_info",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_missing_cons_id_info_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_missing_cons_id_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_missing_cons_id_info_0
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__det_report__pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &libs__options__libs__options__type_ctor_info_option_0,
+    (MR_TypeInfo) &mercury__getopt_io__getopt_io__type_ctor_info_option_data_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__det_report__pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_options_to_restore_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__det_report____Unify____options_to_restore_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____options_to_restore_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "options_to_restore",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1pair__ti_pair_2libs__options__type_ctor_info_option_0getopt_io__type_ctor_info_option_data_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_reported_switch_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_reported_switch_0_0 = {
+  (MR_String) "reported_switch",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_reported_switch_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_reported_switch_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_reported_switch_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_reported_switch_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_reported_switch_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_reported_switch_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_reported_switch_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_reported_switch_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_reported_switch_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____reported_switch_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____reported_switch_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "reported_switch",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_reported_switch_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_reported_switch_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_reported_switch_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_seen_call_id_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_0 = {
+  (MR_String) "seen_call",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_seen_call_id_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_1 = {
+  (MR_String) "higher_order_call",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_1
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_1[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_seen_call_id_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_LOCAL,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_seen_call_id_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_seen_call_id_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_1,
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_seen_call_id_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_seen_call_id_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_seen_call_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____seen_call_id_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____seen_call_id_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "seen_call_id",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_seen_call_id_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_seen_call_id_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_seen_call_id_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1check_hlds__det_report__type_ctor_info_switch_match_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_switch_context_0_0[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__list__ti_list_1check_hlds__det_report__type_ctor_info_switch_match_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_context_0_0 = {
+  (MR_String) "switch_context",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_switch_context_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_context_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_context_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_context_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_context_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_context_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_context_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_context_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____switch_context_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____switch_context_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "switch_context",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_context_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_context_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_context_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__det_report__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__det_report__maybe__ti_maybe_1list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &check_hlds__det_report__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__det_report__check_hlds__det_report__field_types_switch_match_0_0[2] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__det_report__maybe__ti_maybe_1list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_match_0_0 = {
+  (MR_String) "switch_match",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__det_report__check_hlds__det_report__field_types_switch_match_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_match_0_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_match_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_match_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__det_report__check_hlds__det_report__du_stag_ordered_switch_match_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_match_0[1] = {
+  &check_hlds__det_report__check_hlds__det_report__du_functor_desc_switch_match_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_match_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__det_report____Unify____switch_match_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____switch_match_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "switch_match",
+  {     check_hlds__det_report__check_hlds__det_report__du_name_ordered_switch_match_0 },
+  {     check_hlds__det_report__check_hlds__det_report__du_ptag_ordered_switch_match_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_switch_match_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_0 = {
+  (MR_String) "switch_required_to_be_complete",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_1 = {
+  (MR_String) "inform_incomplete_switch_option",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_value_ordered_why_report_incomplete_switch_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_0,
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__det_report__check_hlds__det_report__enum_name_ordered_why_report_incomplete_switch_0[2] = {
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_1,
+  &check_hlds__det_report__check_hlds__det_report__enum_functor_desc_why_report_incomplete_switch_0_0
+};
+
+static const MR_Integer check_hlds__det_report__check_hlds__det_report__functor_number_map_why_report_incomplete_switch_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__det_report__check_hlds__det_report__type_ctor_info_why_report_incomplete_switch_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__det_report____Unify____why_report_incomplete_switch_0_0_10001)),
+  ((MR_Box) (check_hlds__det_report____Compare____why_report_incomplete_switch_0_0_10001)),
+  (MR_String) "check_hlds.det_report",
+  (MR_String) "why_report_incomplete_switch",
+  {     check_hlds__det_report__check_hlds__det_report__enum_name_ordered_why_report_incomplete_switch_0 },
+  {     check_hlds__det_report__check_hlds__det_report__enum_value_ordered_why_report_incomplete_switch_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__det_report__check_hlds__det_report__functor_number_map_why_report_incomplete_switch_0
+};
+
+static void MR_CALL 
+check_hlds__det_report____Compare____why_report_incomplete_switch_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__Cast_HeadVar1_4 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__Cast_HeadVar2_5 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Cast_HeadVar1_4, check_hlds__det_report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____why_report_incomplete_switch_0_0(
+  MR_Word check_hlds__det_report__HeadVar__2_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded = (check_hlds__det_report__HeadVar__2_1 == check_hlds__det_report__HeadVar__2_2);
+
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_match_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_9 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_10 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_9 == check_hlds__det_report__CastY_10);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Var_8;
+
+        {
+          parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__det_report__Var_8, check_hlds__det_report__ArgX1_4, check_hlds__det_report__ArgY1_5);
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_8 == (MR_Integer) 0);
+        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+        if (check_hlds__det_report__succeeded)
+          *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[7], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__ArgX2_6)), ((MR_Box) (check_hlds__det_report__ArgY2_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_match_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_7 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_8 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_7 == check_hlds__det_report__CastY_8);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_10_10;
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__TypeInfo_10_10 = (MR_Word) &check_hlds__det_report_scalar_common_2[7];
+            {
+              check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_10_10, ((MR_Box) (check_hlds__det_report__ArgX2_5)), ((MR_Box) (check_hlds__det_report__ArgY2_6)));
+            }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____switch_context_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_12 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_13 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_12 == check_hlds__det_report__CastY_13);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__Var_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], &check_hlds__det_report__Var_10, ((MR_Box) (check_hlds__det_report__ArgX1_4)), ((MR_Box) (check_hlds__det_report__ArgY1_5)));
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_10 == (MR_Integer) 0);
+        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+        if (check_hlds__det_report__succeeded)
+          *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_10;
+        else
+          {
+            MR_Word check_hlds__det_report__Var_11;
+            MR_Integer check_hlds__det_report__CastX_22 = (MR_Integer) check_hlds__det_report__ArgX2_6;
+            MR_Integer check_hlds__det_report__CastY_23 = (MR_Integer) check_hlds__det_report__ArgY2_7;
+
+            check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_22 == check_hlds__det_report__CastY_23);
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__Var_11 = (MR_Integer) 0;
+                    check_hlds__det_report__succeeded = MR_TRUE;
+                  }
+              }
+            else
+              {
+                MR_Word check_hlds__det_report__ArgX1_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgX2_6, (MR_Integer) 0)));
+                MR_Word check_hlds__det_report__ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgY2_7, (MR_Integer) 0)));
+                MR_Word check_hlds__det_report__ArgX2_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgX2_6, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgY2_7, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__Var_21;
+
+                {
+                  parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__det_report__Var_21, check_hlds__det_report__ArgX1_17, check_hlds__det_report__ArgY1_18);
+                }
+                check_hlds__det_report__succeeded = (check_hlds__det_report__Var_21 == (MR_Integer) 0);
+                check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__Var_11 = check_hlds__det_report__Var_21;
+                    check_hlds__det_report__succeeded = (check_hlds__det_report__Var_11 == (MR_Integer) 0);
+                    check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                  }
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[7], &check_hlds__det_report__Var_11, ((MR_Box) (check_hlds__det_report__ArgX2_19)), ((MR_Box) (check_hlds__det_report__ArgY2_20)));
+                    }
+                    check_hlds__det_report__succeeded = (check_hlds__det_report__Var_11 == (MR_Integer) 0);
+                    check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                  }
+              }
+            if (check_hlds__det_report__succeeded)
+              *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[5], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__ArgX3_8)), ((MR_Box) (check_hlds__det_report__ArgY3_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_context_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_9 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_10 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_9 == check_hlds__det_report__CastY_10);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_12_12;
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer check_hlds__det_report__CastX_17;
+        MR_Integer check_hlds__det_report__CastY_18;
+
+        {
+          check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], ((MR_Box) (check_hlds__det_report__ArgX1_3)), ((MR_Box) (check_hlds__det_report__ArgY1_4)));
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__CastX_17 = (MR_Integer) check_hlds__det_report__ArgX2_5;
+            check_hlds__det_report__CastY_18 = (MR_Integer) check_hlds__det_report__ArgY2_6;
+            check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_17 == check_hlds__det_report__CastY_18);
+            if (check_hlds__det_report__succeeded)
+              check_hlds__det_report__succeeded = MR_TRUE;
+            else
+              {
+                MR_Word check_hlds__det_report__TypeInfo_10_20;
+                MR_Word check_hlds__det_report__ArgX1_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgX2_5, (MR_Integer) 0)));
+                MR_Word check_hlds__det_report__ArgY1_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgY2_6, (MR_Integer) 0)));
+                MR_Word check_hlds__det_report__ArgX2_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgX2_5, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__ArgY2_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ArgY2_6, (MR_Integer) 1)));
+
+                {
+                  check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__ArgX1_13, check_hlds__det_report__ArgY1_14);
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__TypeInfo_10_20 = (MR_Word) &check_hlds__det_report_scalar_common_2[7];
+                    {
+                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_10_20, ((MR_Box) (check_hlds__det_report__ArgX2_15)), ((MR_Box) (check_hlds__det_report__ArgY2_16)));
+                    }
+                  }
+              }
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__TypeInfo_12_12 = (MR_Word) &check_hlds__det_report_scalar_common_2[5];
+                {
+                  check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_12_12, ((MR_Box) (check_hlds__det_report__ArgX3_7)), ((MR_Box) (check_hlds__det_report__ArgY3_8)));
+                }
+              }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____seen_call_id_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_13 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_14 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_13 == check_hlds__det_report__CastY_14);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((check_hlds__det_report__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+    else
+      {
+        MR_Integer check_hlds__det_report__Var_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer check_hlds__det_report__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__Var_8;
+
+            {
+              hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__det_report__Var_8, check_hlds__det_report__Var_18, check_hlds__det_report__ArgY1_5);
+            }
+            check_hlds__det_report__succeeded = (check_hlds__det_report__Var_8 == (MR_Integer) 0);
+            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+            if (check_hlds__det_report__succeeded)
+              *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_8;
+            else
+              {
+                mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_17, check_hlds__det_report__ArgY2_7);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____seen_call_id_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_9 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_10 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_9 == check_hlds__det_report__CastY_10);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer check_hlds__det_report__CastX_7 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+        MR_Integer check_hlds__det_report__CastY_8 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+        check_hlds__det_report__succeeded = (check_hlds__det_report__CastY_8 == check_hlds__det_report__CastX_7);
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4;
+        MR_Integer check_hlds__det_report__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer check_hlds__det_report__ArgY2_6;
+
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+            check_hlds__det_report__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+            {
+              check_hlds__det_report__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+            }
+            if (check_hlds__det_report__succeeded)
+              check_hlds__det_report__succeeded = (check_hlds__det_report__ArgX2_5 == check_hlds__det_report__ArgY2_6);
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____reported_switch_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_12 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_13 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_12 == check_hlds__det_report__CastY_13);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__Var_10;
+
+        {
+          mercury__term____Compare____context_0_0(&check_hlds__det_report__Var_10, check_hlds__det_report__ArgX1_4, check_hlds__det_report__ArgY1_5);
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_10 == (MR_Integer) 0);
+        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+        if (check_hlds__det_report__succeeded)
+          *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_10;
+        else
+          {
+            MR_Word check_hlds__det_report__Var_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], &check_hlds__det_report__Var_11, ((MR_Box) (check_hlds__det_report__ArgX2_6)), ((MR_Box) (check_hlds__det_report__ArgY2_7)));
+            }
+            check_hlds__det_report__succeeded = (check_hlds__det_report__Var_11 == (MR_Integer) 0);
+            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+            if (check_hlds__det_report__succeeded)
+              *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[4], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__ArgX3_8)), ((MR_Box) (check_hlds__det_report__ArgY3_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____reported_switch_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_9 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_10 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_9 == check_hlds__det_report__CastY_10);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_12_12;
+        MR_Word check_hlds__det_report__TypeInfo_13_13;
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          check_hlds__det_report__succeeded = mercury__term____Unify____context_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__TypeInfo_12_12 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+            {
+              check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_12_12, ((MR_Box) (check_hlds__det_report__ArgX2_5)), ((MR_Box) (check_hlds__det_report__ArgY2_6)));
+            }
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__TypeInfo_13_13 = (MR_Word) &check_hlds__det_report_scalar_common_2[4];
+                {
+                  check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_13_13, ((MR_Box) (check_hlds__det_report__ArgX3_7)), ((MR_Box) (check_hlds__det_report__ArgY3_8)));
+                }
+              }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____options_to_restore_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Cast_HeadVar1_4 = check_hlds__det_report__HeadVar__2_2;
+    MR_Word check_hlds__det_report__Cast_HeadVar2_5 = check_hlds__det_report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[3], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__det_report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____options_to_restore_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Cast_HeadVar1_3 = check_hlds__det_report__HeadVar__1_1;
+    MR_Word check_hlds__det_report__Cast_HeadVar2_4 = check_hlds__det_report__HeadVar__2_2;
+
+    {
+      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[3], ((MR_Box) (check_hlds__det_report__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__det_report__Cast_HeadVar2_4)));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____missing_cons_id_info_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_15 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_16 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_15 == check_hlds__det_report__CastY_16);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer check_hlds__det_report__ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer check_hlds__det_report__ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer check_hlds__det_report__ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer check_hlds__det_report__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__det_report__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word check_hlds__det_report__Var_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__det_report__Var_12, check_hlds__det_report__ArgX1_4, check_hlds__det_report__ArgY1_5);
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_12 == (MR_Integer) 0);
+        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+        if (check_hlds__det_report__succeeded)
+          *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_12;
+        else
+          {
+            MR_Word check_hlds__det_report__Var_13;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__det_report__Var_13, check_hlds__det_report__ArgX2_6, check_hlds__det_report__ArgY2_7);
+            }
+            check_hlds__det_report__succeeded = (check_hlds__det_report__Var_13 == (MR_Integer) 0);
+            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+            if (check_hlds__det_report__succeeded)
+              *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_13;
+            else
+              {
+                MR_Word check_hlds__det_report__Var_14;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[2], &check_hlds__det_report__Var_14, ((MR_Box) (check_hlds__det_report__ArgX3_8)), ((MR_Box) (check_hlds__det_report__ArgY3_9)));
+                }
+                check_hlds__det_report__succeeded = (check_hlds__det_report__Var_14 == (MR_Integer) 0);
+                check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                if (check_hlds__det_report__succeeded)
+                  *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_14;
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[2], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__ArgX4_10)), ((MR_Box) (check_hlds__det_report__ArgY4_11)));
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____missing_cons_id_info_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_11 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_12 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_11 == check_hlds__det_report__CastY_12);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_13_13;
+        MR_Word check_hlds__det_report__TypeInfo_14_14;
+        MR_Integer check_hlds__det_report__ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer check_hlds__det_report__ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer check_hlds__det_report__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer check_hlds__det_report__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word check_hlds__det_report__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 3)));
+
+        check_hlds__det_report__succeeded = (check_hlds__det_report__ArgX1_3 == check_hlds__det_report__ArgY1_4);
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__succeeded = (check_hlds__det_report__ArgX2_5 == check_hlds__det_report__ArgY2_6);
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__TypeInfo_13_13 = (MR_Word) &check_hlds__det_report_scalar_common_2[2];
+                {
+                  check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_13_13, ((MR_Box) (check_hlds__det_report__ArgX3_7)), ((MR_Box) (check_hlds__det_report__ArgY3_8)));
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__TypeInfo_14_14 = (MR_Word) &check_hlds__det_report_scalar_common_2[2];
+                    {
+                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_14_14, ((MR_Box) (check_hlds__det_report__ArgX4_9)), ((MR_Box) (check_hlds__det_report__ArgY4_10)));
+                    }
+                  }
+              }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__Cast_HeadVar1_4 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__Cast_HeadVar2_5 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Cast_HeadVar1_4, check_hlds__det_report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0(
+  MR_Word check_hlds__det_report__HeadVar__2_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded = (check_hlds__det_report__HeadVar__2_1 == check_hlds__det_report__HeadVar__2_2);
+
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____failing_context_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_9 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_10 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_9 == check_hlds__det_report__CastY_10);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Var_8;
+
+        {
+          mercury__term____Compare____context_0_0(&check_hlds__det_report__Var_8, check_hlds__det_report__ArgX1_4, check_hlds__det_report__ArgY1_5);
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_8 == (MR_Integer) 0);
+        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+        if (check_hlds__det_report__succeeded)
+          *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_8;
+        else
+          {
+            check_hlds__det_report____Compare____failing_goal_0_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__ArgX2_6, check_hlds__det_report__ArgY2_7);
+          }
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____failing_goal_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_119 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_120 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_119 == check_hlds__det_report__CastY_120);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__det_report__HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                  }
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__det_report__Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__Var_134)), ((MR_Box) (check_hlds__det_report__ArgY1_5)));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__det_report__Var_135 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__Var_136 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__det_report__ArgY1_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__det_report__ArgY2_35 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__det_report__Var_36;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], &check_hlds__det_report__Var_36, ((MR_Box) (check_hlds__det_report__Var_136)), ((MR_Box) (check_hlds__det_report__ArgY1_33)));
+                  }
+                  check_hlds__det_report__succeeded = (check_hlds__det_report__Var_36 == (MR_Integer) 0);
+                  check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                  if (check_hlds__det_report__succeeded)
+                    *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_36;
+                  else
+                    {
+                      {
+                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__Var_135)), ((MR_Box) (check_hlds__det_report__ArgY2_35)));
+                      }
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word check_hlds__det_report__Var_131 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word check_hlds__det_report__Var_132 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word check_hlds__det_report__ArgY1_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Word check_hlds__det_report__ArgY2_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Word check_hlds__det_report__Var_63;
+
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], &check_hlds__det_report__Var_63, ((MR_Box) (check_hlds__det_report__Var_132)), ((MR_Box) (check_hlds__det_report__ArgY1_60)));
+                          }
+                          check_hlds__det_report__succeeded = (check_hlds__det_report__Var_63 == (MR_Integer) 0);
+                          check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                          if (check_hlds__det_report__succeeded)
+                            *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_63;
+                          else
+                            {
+                              parse_tree__prog_data____Compare____cons_id_0_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_131, check_hlds__det_report__ArgY2_62);
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer check_hlds__det_report__Var_129 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word check_hlds__det_report__Var_130 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word check_hlds__det_report__ArgY1_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Integer check_hlds__det_report__ArgY2_89 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Word check_hlds__det_report__Var_90;
+
+                          {
+                            hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__det_report__Var_90, check_hlds__det_report__Var_130, check_hlds__det_report__ArgY1_87);
+                          }
+                          check_hlds__det_report__succeeded = (check_hlds__det_report__Var_90 == (MR_Integer) 0);
+                          check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                          if (check_hlds__det_report__succeeded)
+                            *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_90;
+                          else
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_129, check_hlds__det_report__ArgY2_89);
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word check_hlds__det_report__Var_133 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(check_hlds__det_report__HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word check_hlds__det_report__ArgY1_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            hlds__hlds_goal____Compare____generic_call_0_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_133, check_hlds__det_report__ArgY1_109);
+                          }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_context_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_7 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_8 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_7 == check_hlds__det_report__CastY_8);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__det_report__succeeded = mercury__term____Unify____context_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__succeeded = check_hlds__det_report____Unify____failing_goal_0_0(check_hlds__det_report__ArgX2_5, check_hlds__det_report__ArgY2_6);
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_goal_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_23 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_24 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_23 == check_hlds__det_report__CastY_24);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__det_report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__det_report__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer check_hlds__det_report__CastX_5 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+                MR_Integer check_hlds__det_report__CastY_6 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+                check_hlds__det_report__succeeded = (check_hlds__det_report__CastY_6 == check_hlds__det_report__CastX_5);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer check_hlds__det_report__CastX_21 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+                MR_Integer check_hlds__det_report__CastY_22 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+                check_hlds__det_report__succeeded = (check_hlds__det_report__CastY_22 == check_hlds__det_report__CastX_21);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__det_report__TypeInfo_29_29;
+            MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__ArgY1_4;
+
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__det_report__TypeInfo_29_29 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                {
+                  check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_29_29, ((MR_Box) (check_hlds__det_report__ArgX1_3)), ((MR_Box) (check_hlds__det_report__ArgY1_4)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__det_report__TypeInfo_30_30;
+            MR_Word check_hlds__det_report__TypeInfo_31_31;
+            MR_Word check_hlds__det_report__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__ArgY1_8;
+            MR_Word check_hlds__det_report__ArgX2_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__ArgY2_10;
+
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__det_report__ArgY2_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+                check_hlds__det_report__TypeInfo_30_30 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                {
+                  check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_30_30, ((MR_Box) (check_hlds__det_report__ArgX1_7)), ((MR_Box) (check_hlds__det_report__ArgY1_8)));
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__TypeInfo_31_31 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                    {
+                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_31_31, ((MR_Box) (check_hlds__det_report__ArgX2_9)), ((MR_Box) (check_hlds__det_report__ArgY2_10)));
+                    }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word check_hlds__det_report__TypeInfo_26_26;
+                MR_Word check_hlds__det_report__ArgX1_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__ArgY1_12;
+                MR_Word check_hlds__det_report__ArgX2_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word check_hlds__det_report__ArgY2_14;
+
+                check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__ArgY1_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__det_report__ArgY2_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+                    check_hlds__det_report__TypeInfo_26_26 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                    {
+                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_26_26, ((MR_Box) (check_hlds__det_report__ArgX1_11)), ((MR_Box) (check_hlds__det_report__ArgY1_12)));
+                    }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__ArgX2_13, check_hlds__det_report__ArgY2_14);
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word check_hlds__det_report__ArgX1_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__ArgY1_16;
+                MR_Integer check_hlds__det_report__ArgX2_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer check_hlds__det_report__ArgY2_18;
+
+                check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__ArgY1_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+                    check_hlds__det_report__ArgY2_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+                    {
+                      check_hlds__det_report__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__det_report__ArgX1_15, check_hlds__det_report__ArgY1_16);
+                    }
+                    if (check_hlds__det_report__succeeded)
+                      check_hlds__det_report__succeeded = (check_hlds__det_report__ArgX2_17 == check_hlds__det_report__ArgY2_18);
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word check_hlds__det_report__ArgX1_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word check_hlds__det_report__ArgY1_20;
+
+                check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__ArgY1_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+                    {
+                      check_hlds__det_report__succeeded = hlds__hlds_goal____Unify____generic_call_0_0(check_hlds__det_report__ArgX1_19, check_hlds__det_report__ArgY1_20);
+                    }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____detism_check_kind_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_22 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_23 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_22 == check_hlds__det_report__CastY_23);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word check_hlds__det_report__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              hlds__hlds_goal____Compare____hlds_goal_info_0_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_28, check_hlds__det_report__ArgY1_5);
+            }
+          }
+        else
+          *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word check_hlds__det_report__ArgY1_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__ArgY2_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__ArgY3_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__Var_20;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], &check_hlds__det_report__Var_20, ((MR_Box) (check_hlds__det_report__Var_31)), ((MR_Box) (check_hlds__det_report__ArgY1_15)));
+            }
+            check_hlds__det_report__succeeded = (check_hlds__det_report__Var_20 == (MR_Integer) 0);
+            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+            if (check_hlds__det_report__succeeded)
+              *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_20;
+            else
+              {
+                MR_Word check_hlds__det_report__Var_21;
+
+                {
+                  parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__det_report__Var_21, check_hlds__det_report__Var_30, check_hlds__det_report__ArgY2_17);
+                }
+                check_hlds__det_report__succeeded = (check_hlds__det_report__Var_21 == (MR_Integer) 0);
+                check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                if (check_hlds__det_report__succeeded)
+                  *check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__Var_21;
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[1], check_hlds__det_report__HeadVar__1_1, ((MR_Box) (check_hlds__det_report__Var_29)), ((MR_Box) (check_hlds__det_report__ArgY3_19)));
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____detism_check_kind_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_11 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_12 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_11 == check_hlds__det_report__CastY_12);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) check_hlds__det_report__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4;
+
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+            {
+              check_hlds__det_report__succeeded = hlds__hlds_goal____Unify____hlds_goal_info_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+            }
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_14_14;
+        MR_Word check_hlds__det_report__TypeInfo_16_16;
+        MR_Word check_hlds__det_report__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_6;
+        MR_Word check_hlds__det_report__ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ArgY2_8;
+        MR_Word check_hlds__det_report__ArgX3_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__ArgY3_10;
+
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+            check_hlds__det_report__ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+            check_hlds__det_report__ArgY3_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 2)));
+            check_hlds__det_report__TypeInfo_14_14 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+            {
+              check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_14_14, ((MR_Box) (check_hlds__det_report__ArgX1_5)), ((MR_Box) (check_hlds__det_report__ArgY1_6)));
+            }
+            if (check_hlds__det_report__succeeded)
+              {
+                {
+                  check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__ArgX2_7, check_hlds__det_report__ArgY2_8);
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__TypeInfo_16_16 = (MR_Word) &check_hlds__det_report_scalar_common_2[1];
+                    {
+                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_16_16, ((MR_Box) (check_hlds__det_report__ArgX3_9)), ((MR_Box) (check_hlds__det_report__ArgY3_10)));
+                    }
+                  }
+              }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report____Compare____cc_unify_context_0_0(
+  MR_Word * check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_8 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+    MR_Integer check_hlds__det_report__CastY_9 = (MR_Integer) check_hlds__det_report__HeadVar__3_3;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_8 == check_hlds__det_report__CastY_9);
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((check_hlds__det_report__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 2;
+    else
+      {
+        MR_Word check_hlds__det_report__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word check_hlds__det_report__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              hlds__hlds_goal____Compare____unify_context_0_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Var_11, check_hlds__det_report__ArgY1_5);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__det_report____Unify____cc_unify_context_0_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Integer check_hlds__det_report__CastX_7 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+    MR_Integer check_hlds__det_report__CastY_8 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+    check_hlds__det_report__succeeded = (check_hlds__det_report__CastX_7 == check_hlds__det_report__CastY_8);
+    if (check_hlds__det_report__succeeded)
+      check_hlds__det_report__succeeded = MR_TRUE;
+    else
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer check_hlds__det_report__CastX_5 = (MR_Integer) check_hlds__det_report__HeadVar__1_1;
+        MR_Integer check_hlds__det_report__CastY_6 = (MR_Integer) check_hlds__det_report__HeadVar__2_2;
+
+        check_hlds__det_report__succeeded = (check_hlds__det_report__CastY_6 == check_hlds__det_report__CastX_5);
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ArgY1_4;
+
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+            {
+              check_hlds__det_report__succeeded = hlds__hlds_goal____Unify____unify_context_0_0(check_hlds__det_report__ArgX1_3, check_hlds__det_report__ArgY1_4);
+            }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__restore_option_3_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Globals_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Globals_8)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Option_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word check_hlds__det_report__Value_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+
+    {
+      libs__globals__set_option_4_p_0(check_hlds__det_report__Option_4, check_hlds__det_report__Value_5, check_hlds__det_report__STATE_VARIABLE_Globals_0_7, check_hlds__det_report__STATE_VARIABLE_Globals_8);
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__det_report__failing_context_description_3_f_0(
+  MR_Word check_hlds__det_report__ModuleInfo_5,
+  MR_Word check_hlds__det_report__VarSet_6,
+  MR_Word check_hlds__det_report__FailingContext_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Msg_8;
+    MR_Word check_hlds__det_report__Context_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__FailingContext_7, (MR_Integer) 0)));
+    MR_Word check_hlds__det_report__FailingGoal_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__FailingContext_7, (MR_Integer) 1)));
+    MR_Word check_hlds__det_report__Pieces_13;
+    MR_Word check_hlds__det_report__Var_80;
+    MR_Word check_hlds__det_report__Var_81;
+    MR_Word check_hlds__det_report__Var_82;
+
+    switch (MR_tag((MR_Word) check_hlds__det_report__FailingGoal_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(check_hlds__det_report__FailingGoal_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[148]);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[152]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__det_report__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__FailingGoal_10, (MR_Integer) 0)));
+          MR_String check_hlds__det_report__VarStr_12;
+          MR_Word check_hlds__det_report__Var_74;
+          MR_Word check_hlds__det_report__Var_75;
+
+          {
+            check_hlds__det_report__VarStr_12 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_6, check_hlds__det_report__Var_11);
+          }
+          {
+            check_hlds__det_report__Var_75 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_75, 0) = ((MR_Box) (check_hlds__det_report__VarStr_12));
+          }
+          {
+            check_hlds__det_report__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_74, 0) = ((MR_Box) (check_hlds__det_report__Var_75));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_74, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[150])));
+          }
+          {
+            check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[87])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (check_hlds__det_report__Var_74));
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__det_report__TypeCtorInfo_90_90 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+          MR_Word check_hlds__det_report__Var1_14 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__FailingGoal_10, (MR_Integer) 0)));
+          MR_Word check_hlds__det_report__Var2_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__FailingGoal_10, (MR_Integer) 1)));
+          MR_String check_hlds__det_report__Var1Str_16;
+          MR_String check_hlds__det_report__Var2Str_17;
+          MR_Word check_hlds__det_report__Var_58;
+          MR_Word check_hlds__det_report__Var_59;
+          MR_Word check_hlds__det_report__Var_60;
+          MR_Word check_hlds__det_report__Var_63;
+          MR_Word check_hlds__det_report__Var_64;
+
+          {
+            check_hlds__det_report__Var1Str_16 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__det_report__TypeCtorInfo_90_90, check_hlds__det_report__VarSet_6, check_hlds__det_report__Var1_14);
+          }
+          {
+            check_hlds__det_report__Var2Str_17 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__det_report__TypeCtorInfo_90_90, check_hlds__det_report__VarSet_6, check_hlds__det_report__Var2_15);
+          }
+          {
+            check_hlds__det_report__Var_59 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_59, 0) = ((MR_Box) (check_hlds__det_report__Var1Str_16));
+          }
+          {
+            check_hlds__det_report__Var_64 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_64, 0) = ((MR_Box) (check_hlds__det_report__Var2Str_17));
+          }
+          {
+            check_hlds__det_report__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_63, 0) = ((MR_Box) (check_hlds__det_report__Var_64));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[145])));
+          }
+          {
+            check_hlds__det_report__Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_60, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[86])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_60, 1) = ((MR_Box) (check_hlds__det_report__Var_63));
+          }
+          {
+            check_hlds__det_report__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_58, 0) = ((MR_Box) (check_hlds__det_report__Var_59));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_58, 1) = ((MR_Box) (check_hlds__det_report__Var_60));
+          }
+          {
+            check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[146])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (check_hlds__det_report__Var_58));
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__det_report__ConsId_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Var_45;
+              MR_Word check_hlds__det_report__Var_46;
+              MR_Word check_hlds__det_report__Var_47;
+              MR_Word check_hlds__det_report__Var_50;
+              MR_Word check_hlds__det_report__Var_51;
+              MR_Word check_hlds__det_report__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 1)));
+              MR_String check_hlds__det_report__VarStr_88;
+
+              {
+                check_hlds__det_report__VarStr_88 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_6, check_hlds__det_report__Var_87);
+              }
+              {
+                check_hlds__det_report__Var_46 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_46, 0) = ((MR_Box) (check_hlds__det_report__VarStr_88));
+              }
+              {
+                check_hlds__det_report__Var_51 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_51, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_51, 1) = ((MR_Box) (check_hlds__det_report__ConsId_18));
+              }
+              {
+                check_hlds__det_report__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 0) = ((MR_Box) (check_hlds__det_report__Var_51));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[145])));
+              }
+              {
+                check_hlds__det_report__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[102])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 1) = ((MR_Box) (check_hlds__det_report__Var_50));
+              }
+              {
+                check_hlds__det_report__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 0) = ((MR_Box) (check_hlds__det_report__Var_46));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 1) = ((MR_Box) (check_hlds__det_report__Var_47));
+              }
+              {
+                check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[146])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (check_hlds__det_report__Var_45));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__det_report__PredId_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__PredInfo_21;
+              MR_String check_hlds__det_report__Name_22;
+              MR_Word check_hlds__det_report__Var_37;
+              MR_Word check_hlds__det_report__Var_38;
+              MR_Integer check_hlds__det_report___ProcId_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 2)));
+
+              {
+                hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__det_report__ModuleInfo_5, check_hlds__det_report__PredId_19, &check_hlds__det_report__PredInfo_21);
+              }
+              {
+                check_hlds__det_report__Name_22 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__det_report__PredInfo_21);
+              }
+              {
+                check_hlds__det_report__Var_38 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_38, 0) = ((MR_Box) (check_hlds__det_report__Name_22));
+              }
+              {
+                check_hlds__det_report__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_37, 0) = ((MR_Box) (check_hlds__det_report__Var_38));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_37, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[145])));
+              }
+              {
+                check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[108])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (check_hlds__det_report__Var_37));
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__det_report__GenericCall_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__FailingGoal_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__GenericCallId_24;
+              MR_Word check_hlds__det_report__Var_28;
+              MR_String check_hlds__det_report__Var_29;
+              MR_String check_hlds__det_report__Var_30;
+
+              {
+                hlds__hlds_goal__generic_call_to_id_2_p_0(check_hlds__det_report__GenericCall_23, &check_hlds__det_report__GenericCallId_24);
+              }
+              {
+                check_hlds__det_report__Var_30 = hlds__hlds_out__hlds_out_util__generic_call_id_to_string_1_f_0(check_hlds__det_report__GenericCallId_24);
+              }
+              {
+                check_hlds__det_report__Var_29 = parse_tree__error_util__capitalize_1_f_0(check_hlds__det_report__Var_30);
+              }
+              {
+                check_hlds__det_report__Var_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_28, 1) = ((MR_Box) (check_hlds__det_report__Var_29));
+              }
+              {
+                check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (check_hlds__det_report__Var_28));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[145])));
+              }
+            }
+            break;
+        }
+        break;
+    }
+    {
+      check_hlds__det_report__Var_82 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__Pieces_13, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8]));
+    }
+    {
+      check_hlds__det_report__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_81, 0) = ((MR_Box) (check_hlds__det_report__Var_82));
+    }
+    {
+      check_hlds__det_report__Var_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_80, 0) = ((MR_Box) (check_hlds__det_report__Var_81));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_80, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__det_report__Msg_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_8, 0) = ((MR_Box) (check_hlds__det_report__Context_9));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_8, 1) = ((MR_Box) (check_hlds__det_report__Var_80));
+    }
+    return check_hlds__det_report__Msg_8;
+  }
+}
+
+static MR_String MR_CALL 
+check_hlds__det_report__switch_match_to_string_2_f_0(
+  MR_Word check_hlds__det_report__VarSet_4,
+  MR_Word check_hlds__det_report__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_String check_hlds__det_report__HeadVar__3_3;
+    MR_Word check_hlds__det_report__ConsId_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Word check_hlds__det_report__MaybeArgVars_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+
+    {
+      check_hlds__det_report__HeadVar__3_3 = hlds__hlds_out__hlds_out_util__cons_id_and_vars_or_arity_to_string_4_f_0(check_hlds__det_report__VarSet_4, (MR_Integer) 1, check_hlds__det_report__ConsId_5, check_hlds__det_report__MaybeArgVars_6);
+    }
+    return check_hlds__det_report__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__make_switch_match_no_args_2_p_0(
+  MR_Word check_hlds__det_report__ConsId_3,
+  MR_Word * check_hlds__det_report__Match_4)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__det_report__Match_4 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__det_report__ConsId_3));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__get_valid_dets_2_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__get_valid_dets_2_p_0_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__get_valid_dets_2_p_0_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    {
+      (check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__Var_5 = hlds__hlds_pred__valid_determinism_for_eval_method_2_f_0((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__EvalMethod_3, *((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__Detism_4));
+    }
+    (check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__succeeded = ((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__Var_5 == (MR_Integer) 1);
+    if ((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__succeeded)
+      {
+        ((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont)((check_hlds__det_report__env_ptr)->check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont_env_ptr);
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__get_valid_dets_2_p_0(
+  MR_Word check_hlds__det_report__EvalMethod_3,
+  MR_Word * check_hlds__det_report__Detism_4,
+  MR_Cont check_hlds__det_report__cont,
+  void * check_hlds__det_report__cont_env_ptr)
+{
+  {
+    struct check_hlds__det_report__get_valid_dets_2_p_0_env_0_s check_hlds__det_report__env;
+
+    (check_hlds__det_report__env).check_hlds__det_report__get_valid_dets_2_p_0_env_0__EvalMethod_3 = check_hlds__det_report__EvalMethod_3;
+    (check_hlds__det_report__env).check_hlds__det_report__get_valid_dets_2_p_0_env_0__Detism_4 = check_hlds__det_report__Detism_4;
+    (check_hlds__det_report__env).check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont = check_hlds__det_report__cont;
+    (check_hlds__det_report__env).check_hlds__det_report__get_valid_dets_2_p_0_env_0__cont_env_ptr = check_hlds__det_report__cont_env_ptr;
+    {
+      MR_Integer check_hlds__det_report__slot_0 = (MR_Integer) 0;
+
+      do
+        {
+          *((check_hlds__det_report__env).check_hlds__det_report__get_valid_dets_2_p_0_env_0__Detism_4) = ((&check_hlds__det_report_vector_common_9[0 + check_hlds__det_report__slot_0]))->check_hlds__det_report__vector_common_type_9_0__vct_9_f_0;
+          {
+            check_hlds__det_report__get_valid_dets_2_p_0_1(&check_hlds__det_report__env);
+          }
+          check_hlds__det_report__slot_0 = (check_hlds__det_report__slot_0 + (MR_Integer) 1);
+        }
+      while ((check_hlds__det_report__slot_0 < (MR_Integer) 8));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__restore_det_warnings_3_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box * check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_Word check_hlds__det_report__conv0_STATE_VARIABLE_Globals_8;
+
+    {
+      check_hlds__det_report__restore_option_3_p_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2), &check_hlds__det_report__conv0_STATE_VARIABLE_Globals_8);
+    }
+    *check_hlds__det_report__wrapper_arg_3 = ((MR_Box) (check_hlds__det_report__conv0_STATE_VARIABLE_Globals_8));
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report__restore_det_warnings_3_p_0(
+  MR_Word check_hlds__det_report__OptionsToRestore_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Globals_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Globals_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Box check_hlds__det_report__conv1_STATE_VARIABLE_Globals_7;
+
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &check_hlds__det_report_scalar_common_1[0], (MR_Word) &libs__globals__libs__globals__type_ctor_info_globals_0, (MR_Word) &check_hlds__det_report_scalar_common_1[5], check_hlds__det_report__OptionsToRestore_4, ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Globals_0_6)), &check_hlds__det_report__conv1_STATE_VARIABLE_Globals_7);
+    }
+    *check_hlds__det_report__STATE_VARIABLE_Globals_7 = ((MR_Word) check_hlds__det_report__conv1_STATE_VARIABLE_Globals_7);
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report__disable_det_warnings_3_p_0(
+  MR_Word * check_hlds__det_report__OptionsToRestore_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Globals_0_8,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Globals_9)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__WarnSimple_6;
+    MR_Word check_hlds__det_report__WarnDeclsTooLax_7;
+    MR_Word check_hlds__det_report__Var_13;
+    MR_Word check_hlds__det_report__STATE_VARIABLE_Globals_14_14;
+    MR_Word check_hlds__det_report__Var_20;
+    MR_Word check_hlds__det_report__Var_22;
+    MR_Word check_hlds__det_report__Var_23;
+
+    {
+      libs__globals__lookup_option_3_p_0(check_hlds__det_report__STATE_VARIABLE_Globals_0_8, (MR_Integer) 24, &check_hlds__det_report__WarnSimple_6);
+    }
+    {
+      libs__globals__lookup_option_3_p_0(check_hlds__det_report__STATE_VARIABLE_Globals_0_8, (MR_Integer) 8, &check_hlds__det_report__WarnDeclsTooLax_7);
+    }
+    check_hlds__det_report__Var_13 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_3[6]);
+    {
+      libs__globals__set_option_4_p_0((MR_Integer) 24, check_hlds__det_report__Var_13, check_hlds__det_report__STATE_VARIABLE_Globals_0_8, &check_hlds__det_report__STATE_VARIABLE_Globals_14_14);
+    }
+    {
+      libs__globals__set_option_4_p_0((MR_Integer) 8, check_hlds__det_report__Var_13, check_hlds__det_report__STATE_VARIABLE_Globals_14_14, check_hlds__det_report__STATE_VARIABLE_Globals_9);
+    }
+    {
+      check_hlds__det_report__Var_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 0) = ((MR_Box) ((MR_Integer) 24));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 1) = ((MR_Box) (check_hlds__det_report__WarnSimple_6));
+    }
+    {
+      check_hlds__det_report__Var_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_23, 0) = ((MR_Box) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_23, 1) = ((MR_Box) (check_hlds__det_report__WarnDeclsTooLax_7));
+    }
+    {
+      check_hlds__det_report__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_22, 0) = ((MR_Box) (check_hlds__det_report__Var_23));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *check_hlds__det_report__OptionsToRestore_4 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_20));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__det_report__Var_22));
+    }
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__det_report__det_report_seen_call_id_2_f_0(
+  MR_Word check_hlds__det_report__ModuleInfo_4,
+  MR_Word check_hlds__det_report__SeenCall_5)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Pieces_6;
+
+    if ((check_hlds__det_report__SeenCall_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        check_hlds__det_report__Pieces_6 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[142]);
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__PredId_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__SeenCall_5, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__PredPieces_9;
+        MR_Integer check_hlds__det_report__Var_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__SeenCall_5, (MR_Integer) 1)));
+
+        {
+          check_hlds__det_report__PredPieces_9 = hlds__hlds_error_util__describe_one_pred_name_3_f_0(check_hlds__det_report__ModuleInfo_4, (MR_Integer) 0, check_hlds__det_report__PredId_7);
+        }
+        {
+          check_hlds__det_report__Pieces_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_6, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[143])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_6, 1) = ((MR_Box) (check_hlds__det_report__PredPieces_9));
+        }
+      }
+    return check_hlds__det_report__Pieces_6;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__det_report__failing_contexts_description_3_f_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__det_report__wrapper_arg_2;
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_Word check_hlds__det_report__conv0_Msg_8;
+
+    {
+      check_hlds__det_report__conv0_Msg_8 = check_hlds__det_report__failing_context_description_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__det_report__wrapper_arg_1));
+    }
+    check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv0_Msg_8));
+    return check_hlds__det_report__wrapper_arg_2;
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__det_report__failing_contexts_description_3_f_0(
+  MR_Word check_hlds__det_report__ModuleInfo_5,
+  MR_Word check_hlds__det_report__VarSet_6,
+  MR_Word check_hlds__det_report__FailingContexts_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__HeadVar__4_4;
+    MR_Word check_hlds__det_report__Var_8;
+
+    {
+      check_hlds__det_report__Var_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_8, 0) = ((MR_Box) (&check_hlds__det_report_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_8, 1) = ((MR_Box) (check_hlds__det_report__failing_contexts_description_3_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_8, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_8, 3) = ((MR_Box) (check_hlds__det_report__ModuleInfo_5));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_8, 4) = ((MR_Box) (check_hlds__det_report__VarSet_6));
+    }
+    {
+      check_hlds__det_report__HeadVar__4_4 = mercury__list__map_2_f_0((MR_Word) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_context_0, (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Var_8, check_hlds__det_report__FailingContexts_7);
+    }
+    return check_hlds__det_report__HeadVar__4_4;
+  }
+}
+
+MR_String MR_CALL 
+check_hlds__det_report__promise_solutions_kind_str_1_f_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_String check_hlds__det_report__HeadVar__2_2;
+
+    switch (check_hlds__det_report__HeadVar__1_1) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        check_hlds__det_report__HeadVar__2_2 = (MR_String) "promise_equivalent_solution_sets";
+        break;
+      case (MR_Integer) 2:
+        check_hlds__det_report__HeadVar__2_2 = (MR_String) "arbitrary";
+        break;
+      case (MR_Integer) 0:
+        check_hlds__det_report__HeadVar__2_2 = (MR_String) "promise_equivalent_solutions";
+        break;
+    }
+    return check_hlds__det_report__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report__det_check_lambda_7_p_0(
+  MR_Word check_hlds__det_report__DeclaredDetism_8,
+  MR_Word check_hlds__det_report__InferredDetism_9,
+  MR_Word check_hlds__det_report__Goal_10,
+  MR_Word check_hlds__det_report__GoalInfo_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_24)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Cmp_14;
+
+    {
+      parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__DeclaredDetism_8, check_hlds__det_report__InferredDetism_9, &check_hlds__det_report__Cmp_14);
+    }
+    switch (check_hlds__det_report__Cmp_14) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 3:
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__det_report__TypeCtorInfo_74_74;
+          MR_Word check_hlds__det_report__PredProcId_15;
+          MR_Word check_hlds__det_report__Context_16;
+          MR_Word check_hlds__det_report__ModuleInfo_17;
+          MR_Word check_hlds__det_report__PredPieces_18;
+          MR_Word check_hlds__det_report__Pieces_19;
+          MR_Word check_hlds__det_report__GoalMsgs_20;
+          MR_Word check_hlds__det_report__SortedGoalMsgs_21;
+          MR_Word check_hlds__det_report__Spec_22;
+          MR_Word check_hlds__det_report__Var_30;
+          MR_Word check_hlds__det_report__Var_31;
+          MR_Word check_hlds__det_report__Var_34;
+          MR_Word check_hlds__det_report__Var_36;
+          MR_Word check_hlds__det_report__Var_39;
+          MR_Word check_hlds__det_report__Var_41;
+          MR_Word check_hlds__det_report__Var_44;
+          MR_Word check_hlds__det_report__Var_45;
+          MR_String check_hlds__det_report__Var_46;
+          MR_Word check_hlds__det_report__Var_47;
+          MR_Word check_hlds__det_report__Var_50;
+          MR_Word check_hlds__det_report__Var_53;
+          MR_Word check_hlds__det_report__Var_54;
+          MR_String check_hlds__det_report__Var_55;
+          MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_63_63;
+          MR_Word check_hlds__det_report__Var_66;
+          MR_Word check_hlds__det_report__Var_67;
+          MR_Word check_hlds__det_report__Var_68;
+          MR_Word check_hlds__det_report__Var_69;
+          MR_Word check_hlds__det_report__Var_70;
+          MR_Word check_hlds__det_report__GoalExpr_84;
+          MR_Word check_hlds__det_report__GoalInfo_85;
+          MR_Word check_hlds__det_report__Actual_86;
+          MR_Word check_hlds__det_report__CompareResult_87;
+
+          {
+            check_hlds__det_util__det_info_get_pred_proc_id_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23, &check_hlds__det_report__PredProcId_15);
+          }
+          {
+            check_hlds__det_report__Context_16 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+          }
+          {
+            check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23, &check_hlds__det_report__ModuleInfo_17);
+          }
+          {
+            check_hlds__det_report__PredPieces_18 = hlds__hlds_error_util__describe_one_proc_name_mode_3_f_0(check_hlds__det_report__ModuleInfo_17, (MR_Integer) 1, check_hlds__det_report__PredProcId_15);
+          }
+          check_hlds__det_report__TypeCtorInfo_74_74 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            check_hlds__det_report__Var_46 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__DeclaredDetism_8);
+          }
+          {
+            check_hlds__det_report__Var_45 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_45, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_45, 1) = ((MR_Box) (check_hlds__det_report__Var_46));
+          }
+          {
+            check_hlds__det_report__Var_55 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__InferredDetism_9);
+          }
+          {
+            check_hlds__det_report__Var_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_54, 1) = ((MR_Box) (check_hlds__det_report__Var_55));
+          }
+          {
+            check_hlds__det_report__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_53, 0) = ((MR_Box) (check_hlds__det_report__Var_54));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_53, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[10])));
+          }
+          {
+            check_hlds__det_report__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[126])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 1) = ((MR_Box) (check_hlds__det_report__Var_53));
+          }
+          {
+            check_hlds__det_report__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[100])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 1) = ((MR_Box) (check_hlds__det_report__Var_50));
+          }
+          {
+            check_hlds__det_report__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 0) = ((MR_Box) (check_hlds__det_report__Var_45));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 1) = ((MR_Box) (check_hlds__det_report__Var_47));
+          }
+          {
+            check_hlds__det_report__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[125])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 1) = ((MR_Box) (check_hlds__det_report__Var_44));
+          }
+          {
+            check_hlds__det_report__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__Var_41));
+          }
+          {
+            check_hlds__det_report__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[140])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_36, 1) = ((MR_Box) (check_hlds__det_report__Var_39));
+          }
+          {
+            check_hlds__det_report__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_34, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_34, 1) = ((MR_Box) (check_hlds__det_report__Var_36));
+          }
+          {
+            check_hlds__det_report__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_31, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[106])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_31, 1) = ((MR_Box) (check_hlds__det_report__Var_34));
+          }
+          {
+            check_hlds__det_report__Var_30 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_74_74, check_hlds__det_report__PredPieces_18, check_hlds__det_report__Var_31);
+          }
+          {
+            check_hlds__det_report__Pieces_19 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_74_74, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[124]), check_hlds__det_report__Var_30);
+          }
+          check_hlds__det_report__GoalExpr_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_10, (MR_Integer) 0)));
+          check_hlds__det_report__GoalInfo_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_10, (MR_Integer) 1)));
+          {
+            check_hlds__det_report__Actual_86 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_85);
+          }
+          {
+            parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__DeclaredDetism_8, check_hlds__det_report__Actual_86, &check_hlds__det_report__CompareResult_87);
+          }
+          switch (check_hlds__det_report__CompareResult_87) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 3:
+            case (MR_Integer) 0:
+              {
+                check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_84, check_hlds__det_report__GoalInfo_85, check_hlds__det_report__InstMap0_12, check_hlds__det_report__DeclaredDetism_8, check_hlds__det_report__Actual_86, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23, &check_hlds__det_report__STATE_VARIABLE_DetInfo_63_63, &check_hlds__det_report__GoalMsgs_20);
+              }
+              break;
+            case (MR_Integer) 2:
+            case (MR_Integer) 1:
+              {
+                check_hlds__det_report__GoalMsgs_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                check_hlds__det_report__STATE_VARIABLE_DetInfo_63_63 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23;
+              }
+              break;
+          }
+          {
+            parse_tree__error_util__sort_error_msgs_2_p_0(check_hlds__det_report__GoalMsgs_20, &check_hlds__det_report__SortedGoalMsgs_21);
+          }
+          {
+            check_hlds__det_report__Var_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_70, 0) = ((MR_Box) (check_hlds__det_report__Pieces_19));
+          }
+          {
+            check_hlds__det_report__Var_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_69, 0) = ((MR_Box) (check_hlds__det_report__Var_70));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__det_report__Var_68 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_68, 0) = ((MR_Box) (check_hlds__det_report__Context_16));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_68, 1) = ((MR_Box) (check_hlds__det_report__Var_69));
+          }
+          {
+            check_hlds__det_report__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_67, 0) = ((MR_Box) (check_hlds__det_report__Var_68));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_67, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__det_report__Var_66 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Var_67, check_hlds__det_report__SortedGoalMsgs_21);
+          }
+          {
+            check_hlds__det_report__Spec_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_22, 2) = ((MR_Box) (check_hlds__det_report__Var_66));
+          }
+          {
+            check_hlds__det_util__det_info_add_error_spec_3_p_0(check_hlds__det_report__Spec_22, check_hlds__det_report__STATE_VARIABLE_DetInfo_63_63, check_hlds__det_report__STATE_VARIABLE_DetInfo_24);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_24 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23;
+        break;
+      case (MR_Integer) 1:
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_24 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_23;
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report__global_checking_pass_5_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_2,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_ModuleInfo_3,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_4,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__det_report__STATE_VARIABLE_Specs_5 = check_hlds__det_report__STATE_VARIABLE_Specs_0_4;
+            *check_hlds__det_report__STATE_VARIABLE_ModuleInfo_3 = check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_2;
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__PredProcId_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__PredProcIds_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__PredInfo_16;
+            MR_Word check_hlds__det_report__ProcInfo_17;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_ModuleInfo_22_22;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_23_23;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_24_24;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_25_25;
+            MR_Word check_hlds__det_report__MaybeDetism_33;
+            MR_Word check_hlds__det_report__DeclaredDetism_34;
+            MR_String check_hlds__det_report__Var_38;
+            MR_Integer check_hlds__det_report__Var_39;
+
+            {
+              hlds__hlds_module__module_info_pred_proc_info_4_p_0(check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_2, check_hlds__det_report__PredProcId_12, &check_hlds__det_report__PredInfo_16, &check_hlds__det_report__ProcInfo_17);
+            }
+            {
+              check_hlds__det_report__check_determinism_7_p_0(check_hlds__det_report__PredProcId_12, check_hlds__det_report__PredInfo_16, check_hlds__det_report__ProcInfo_17, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_2, &check_hlds__det_report__STATE_VARIABLE_ModuleInfo_22_22, check_hlds__det_report__STATE_VARIABLE_Specs_0_4, &check_hlds__det_report__STATE_VARIABLE_Specs_23_23);
+            }
+            {
+              hlds__hlds_pred__proc_info_get_declared_determinism_2_p_0(check_hlds__det_report__ProcInfo_17, &check_hlds__det_report__MaybeDetism_33);
+            }
+            {
+              check_hlds__det_report__Var_38 = hlds__hlds_pred__pred_info_name_1_f_0(check_hlds__det_report__PredInfo_16);
+            }
+            check_hlds__det_report__succeeded = (strcmp(check_hlds__det_report__Var_38, (MR_String) "main") == 0);
+            if (check_hlds__det_report__succeeded)
+              {
+                {
+                  check_hlds__det_report__Var_39 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(check_hlds__det_report__PredInfo_16);
+                }
+                check_hlds__det_report__succeeded = (check_hlds__det_report__Var_39 == (MR_Integer) 2);
+                if (check_hlds__det_report__succeeded)
+                  {
+                    {
+                      check_hlds__det_report__succeeded = hlds__hlds_pred__pred_info_is_exported_1_p_0(check_hlds__det_report__PredInfo_16);
+                    }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__MaybeDetism_33)) == (MR_mktag((MR_Integer) 1)));
+                        if (check_hlds__det_report__succeeded)
+                          {
+                            check_hlds__det_report__DeclaredDetism_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeDetism_33, (MR_Integer) 0)));
+                            switch (check_hlds__det_report__DeclaredDetism_34) {
+                              default:
+                                check_hlds__det_report__succeeded = MR_FALSE;
+                                break;
+                              case (MR_Integer) 4:
+                                check_hlds__det_report__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Integer) 0:
+                                check_hlds__det_report__succeeded = MR_TRUE;
+                                break;
+                            }
+                            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                          }
+                      }
+                  }
+              }
+            if (check_hlds__det_report__succeeded)
+              {
+                MR_Word check_hlds__det_report__ProcContext_35;
+                MR_Word check_hlds__det_report__Spec_37;
+                MR_Word check_hlds__det_report__Var_68;
+                MR_Word check_hlds__det_report__Var_69;
+
+                {
+                  hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__det_report__ProcInfo_17, &check_hlds__det_report__ProcContext_35);
+                }
+                {
+                  check_hlds__det_report__Var_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_69, 0) = ((MR_Box) (check_hlds__det_report__ProcContext_35));
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[139])));
+                }
+                {
+                  check_hlds__det_report__Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_68, 0) = ((MR_Box) (check_hlds__det_report__Var_69));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  check_hlds__det_report__Spec_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_37, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_37, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_37, 2) = ((MR_Box) (check_hlds__det_report__Var_68));
+                }
+                {
+                  check_hlds__det_report__STATE_VARIABLE_Specs_24_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_24_24, 0) = ((MR_Box) (check_hlds__det_report__Spec_37));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_24_24, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Specs_23_23));
+                }
+              }
+            else
+              check_hlds__det_report__STATE_VARIABLE_Specs_24_24 = check_hlds__det_report__STATE_VARIABLE_Specs_23_23;
+            {
+              check_hlds__det_report__check_for_multisoln_func_6_p_0(check_hlds__det_report__PredProcId_12, check_hlds__det_report__PredInfo_16, check_hlds__det_report__ProcInfo_17, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_22_22, check_hlds__det_report__STATE_VARIABLE_Specs_24_24, &check_hlds__det_report__STATE_VARIABLE_Specs_25_25);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__PredProcIds_13;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_ModuleInfo_0_2 = check_hlds__det_report__STATE_VARIABLE_ModuleInfo_22_22;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_Specs_0_4 = check_hlds__det_report__STATE_VARIABLE_Specs_25_25;
+
+              check_hlds__det_report__STATE_VARIABLE_Specs_0_4 = check_hlds__det_report__next_value_of_STATE_VARIABLE_Specs_0_4;
+              check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_2 = check_hlds__det_report__next_value_of_STATE_VARIABLE_ModuleInfo_0_2;
+              check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    MR_builtin_longjmp((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_3(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgMode_18 = ((MR_Word) (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__conv1_FuncArgMode_18);
+    {
+      check_hlds__det_report__check_for_multisoln_func_6_p_0_2(check_hlds__det_report__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_2(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    {
+      (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = check_hlds__mode_util__mode_is_fully_input_2_p_0((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__ModuleInfo_10, (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgMode_18);
+    }
+    (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = !((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded);
+    if ((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded)
+      {
+        check_hlds__det_report__check_for_multisoln_func_6_p_0_1(check_hlds__det_report__env_ptr);
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0_4(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    if (MR_builtin_setjmp((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__commit_0) == 0)
+      {
+        {
+          mercury__list__member_2_p_1((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__TypeCtorInfo_65_65, &(check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__conv1_FuncArgMode_18, (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgModes_16, check_hlds__det_report__check_for_multisoln_func_6_p_0_3, check_hlds__det_report__env_ptr);
+        }
+        (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (check_hlds__det_report__env_ptr)->check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_for_multisoln_func_6_p_0(
+  MR_Word check_hlds__det_report__PredProcId_7,
+  MR_Word check_hlds__det_report__PredInfo_8,
+  MR_Word check_hlds__det_report__ProcInfo_9,
+  MR_Word check_hlds__det_report__ModuleInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_27,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_28)
+{
+  {
+    struct check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0_s check_hlds__det_report__env;
+
+    (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__ModuleInfo_10 = check_hlds__det_report__ModuleInfo_10;
+    {
+      MR_Word check_hlds__det_report__InferredDetism_12;
+      MR_Word check_hlds__det_report__PredArgModes_15;
+      MR_Word check_hlds__det_report__NumSolns_14;
+      MR_Word check_hlds__det_report__Var_29;
+      MR_Word check_hlds__det_report___CanFail_13;
+      MR_Word check_hlds__det_report___FuncResultMode_17;
+      MR_Box check_hlds__det_report__conv0__FuncResultMode_17;
+
+      {
+        hlds__hlds_pred__proc_info_get_inferred_determinism_2_p_0(check_hlds__det_report__ProcInfo_9, &check_hlds__det_report__InferredDetism_12);
+      }
+      {
+        check_hlds__det_report__Var_29 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(check_hlds__det_report__PredInfo_8);
+      }
+      (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = (check_hlds__det_report__Var_29 == (MR_Integer) 1);
+      if ((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded)
+        {
+          {
+            parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__InferredDetism_12, &check_hlds__det_report___CanFail_13, &check_hlds__det_report__NumSolns_14);
+          }
+          (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = (check_hlds__det_report__NumSolns_14 == (MR_Integer) 0);
+          (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = !((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded);
+          if ((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded)
+            {
+              (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = (check_hlds__det_report__NumSolns_14 == (MR_Integer) 1);
+              (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = !((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded);
+              if ((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded)
+                {
+                  {
+                    hlds__hlds_pred__proc_info_get_argmodes_2_p_0(check_hlds__det_report__ProcInfo_9, &check_hlds__det_report__PredArgModes_15);
+                  }
+                  (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__TypeCtorInfo_65_65 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0;
+                  {
+                    parse_tree__prog_util__pred_args_to_func_args_3_p_0((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__TypeCtorInfo_65_65, check_hlds__det_report__PredArgModes_15, &(check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__FuncArgModes_16, &check_hlds__det_report__conv0__FuncResultMode_17);
+                  }
+                  check_hlds__det_report___FuncResultMode_17 = ((MR_Word) check_hlds__det_report__conv0__FuncResultMode_17);
+                  {
+                    check_hlds__det_report__check_for_multisoln_func_6_p_0_4(&check_hlds__det_report__env);
+                  }
+                  (check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded = !((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded);
+                }
+            }
+        }
+      if ((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__succeeded)
+        {
+          MR_Word check_hlds__det_report__TypeCtorInfo_66_66;
+          MR_Word check_hlds__det_report__FuncContext_19;
+          MR_Word check_hlds__det_report__InstVarSet_20;
+          MR_Word check_hlds__det_report__PredId_21;
+          MR_Word check_hlds__det_report__PredModePieces_23;
+          MR_Word check_hlds__det_report__MainPieces_24;
+          MR_Word check_hlds__det_report__Spec_26;
+          MR_Word check_hlds__det_report__Var_35;
+          MR_Word check_hlds__det_report__Var_36;
+          MR_Word check_hlds__det_report__Var_39;
+          MR_Word check_hlds__det_report__Var_41;
+          MR_Word check_hlds__det_report__Var_44;
+          MR_Word check_hlds__det_report__Var_45;
+          MR_String check_hlds__det_report__Var_46;
+          MR_Word check_hlds__det_report__Var_55;
+          MR_Word check_hlds__det_report__Var_56;
+          MR_Word check_hlds__det_report__Var_57;
+          MR_Word check_hlds__det_report__Var_58;
+          MR_Integer check_hlds__det_report___ProcId_22;
+
+          {
+            hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__det_report__ProcInfo_9, &check_hlds__det_report__FuncContext_19);
+          }
+          {
+            hlds__hlds_pred__proc_info_get_inst_varset_2_p_0(check_hlds__det_report__ProcInfo_9, &check_hlds__det_report__InstVarSet_20);
+          }
+          check_hlds__det_report__PredId_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__PredProcId_7, (MR_Integer) 0)));
+          check_hlds__det_report___ProcId_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__PredProcId_7, (MR_Integer) 1)));
+          {
+            check_hlds__det_report__PredModePieces_23 = hlds__hlds_error_util__describe_one_pred_name_mode_5_f_0((check_hlds__det_report__env).check_hlds__det_report__check_for_multisoln_func_6_p_0_env_0__ModuleInfo_10, (MR_Integer) 1, check_hlds__det_report__PredId_21, check_hlds__det_report__InstVarSet_20, check_hlds__det_report__PredArgModes_15);
+          }
+          check_hlds__det_report__TypeCtorInfo_66_66 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            check_hlds__det_report__Var_46 = parse_tree__mercury_to_mercury__mercury_det_to_string_1_f_0(check_hlds__det_report__InferredDetism_12);
+          }
+          {
+            check_hlds__det_report__Var_45 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_45, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_45, 1) = ((MR_Box) (check_hlds__det_report__Var_46));
+          }
+          {
+            check_hlds__det_report__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 0) = ((MR_Box) (check_hlds__det_report__Var_45));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+          }
+          {
+            check_hlds__det_report__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[136])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 1) = ((MR_Box) (check_hlds__det_report__Var_44));
+          }
+          {
+            check_hlds__det_report__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__Var_41));
+          }
+          {
+            check_hlds__det_report__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[106])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_36, 1) = ((MR_Box) (check_hlds__det_report__Var_39));
+          }
+          {
+            check_hlds__det_report__Var_35 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_66_66, check_hlds__det_report__PredModePieces_23, check_hlds__det_report__Var_36);
+          }
+          {
+            check_hlds__det_report__MainPieces_24 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_66_66, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[135]), check_hlds__det_report__Var_35);
+          }
+          {
+            check_hlds__det_report__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_58, 0) = ((MR_Box) (check_hlds__det_report__MainPieces_24));
+          }
+          {
+            check_hlds__det_report__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 0) = ((MR_Box) (check_hlds__det_report__Var_58));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[138])));
+          }
+          {
+            check_hlds__det_report__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_56, 0) = ((MR_Box) (check_hlds__det_report__FuncContext_19));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_56, 1) = ((MR_Box) (check_hlds__det_report__Var_57));
+          }
+          {
+            check_hlds__det_report__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_55, 0) = ((MR_Box) (check_hlds__det_report__Var_56));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__det_report__Spec_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_26, 2) = ((MR_Box) (check_hlds__det_report__Var_55));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *check_hlds__det_report__STATE_VARIABLE_Specs_28 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Spec_26));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Specs_0_27));
+          }
+        }
+      else
+        *check_hlds__det_report__STATE_VARIABLE_Specs_28 = check_hlds__det_report__STATE_VARIABLE_Specs_0_27;
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_3(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__det_report__wrapper_arg_2;
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_String check_hlds__det_report__conv1_HeadVar__2_2;
+
+    {
+      check_hlds__det_report__conv1_HeadVar__2_2 = parse_tree__prog_out__determinism_to_string_1_f_0(((MR_Word) check_hlds__det_report__wrapper_arg_1));
+    }
+    check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv1_HeadVar__2_2));
+    return check_hlds__det_report__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_1(
+  void * check_hlds__det_report__env_ptr_arg)
+{
+  {
+    struct check_hlds__det_report__check_determinism_7_p_0_2_env_0_s * check_hlds__det_report__env_ptr = (struct check_hlds__det_report__check_determinism_7_p_0_2_env_0_s *) check_hlds__det_report__env_ptr_arg;
+
+    *((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_determinism_7_p_0_2_env_0__wrapper_arg_1) = ((MR_Box) ((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_determinism_7_p_0_2_env_0__conv0_Detism_4));
+    {
+      ((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont)((check_hlds__det_report__env_ptr)->check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont_env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0_2(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Cont check_hlds__det_report__cont,
+  void * check_hlds__det_report__cont_env_ptr)
+{
+  {
+    struct check_hlds__det_report__check_determinism_7_p_0_2_env_0_s check_hlds__det_report__env;
+
+    (check_hlds__det_report__env).check_hlds__det_report__check_determinism_7_p_0_2_env_0__wrapper_arg_1 = check_hlds__det_report__wrapper_arg_1;
+    (check_hlds__det_report__env).check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont = check_hlds__det_report__cont;
+    (check_hlds__det_report__env).check_hlds__det_report__check_determinism_7_p_0_2_env_0__cont_env_ptr = check_hlds__det_report__cont_env_ptr;
+    {
+      MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+
+      {
+        check_hlds__det_report__get_valid_dets_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__closure, (MR_Integer) 3))), &(check_hlds__det_report__env).check_hlds__det_report__check_determinism_7_p_0_2_env_0__conv0_Detism_4, check_hlds__det_report__check_determinism_7_p_0_1, &check_hlds__det_report__env);
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__check_determinism_7_p_0(
+  MR_Word check_hlds__det_report__PredProcId_8,
+  MR_Word check_hlds__det_report__PredInfo_9,
+  MR_Word check_hlds__det_report__ProcInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_46,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_47)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__MaybeDetism_13;
+    MR_Word check_hlds__det_report__InferredDetism_14;
+    MR_Word check_hlds__det_report__EvalMethod_34;
+    MR_Word check_hlds__det_report__Valid_35;
+    MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_86_86;
+    MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_87_87;
+
+    {
+      hlds__hlds_pred__proc_info_get_declared_determinism_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__MaybeDetism_13);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_inferred_determinism_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__InferredDetism_14);
+    }
+    if ((check_hlds__det_report__MaybeDetism_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45 = check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44;
+        check_hlds__det_report__STATE_VARIABLE_Specs_86_86 = check_hlds__det_report__STATE_VARIABLE_Specs_0_46;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__DeclaredDetism_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeDetism_13, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Cmp_16;
+
+        {
+          parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__DeclaredDetism_15, check_hlds__det_report__InferredDetism_14, &check_hlds__det_report__Cmp_16);
+        }
+        switch (check_hlds__det_report__Cmp_16) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__det_report__Goal_26;
+              MR_Word check_hlds__det_report__VarSet_27;
+              MR_Word check_hlds__det_report__VarTypes_28;
+              MR_Word check_hlds__det_report__InstMap0_29;
+              MR_Word check_hlds__det_report__DetInfo0_30;
+              MR_Word check_hlds__det_report__DetInfo_31;
+              MR_Word check_hlds__det_report__GoalMsgs_32;
+              MR_Word check_hlds__det_report__SortedGoalMsgs_33;
+              MR_Word check_hlds__det_report__Var_50;
+              MR_Word check_hlds__det_report__Var_51;
+              MR_String check_hlds__det_report__Var_52;
+              MR_Word check_hlds__det_report__Var_65;
+              MR_Word check_hlds__det_report__DetismDecl_142;
+              MR_Word check_hlds__det_report__MessagePieces_143;
+              MR_Word check_hlds__det_report__ReportMsgs_144;
+              MR_Word check_hlds__det_report__ReportSpec_145;
+
+              {
+                hlds__hlds_pred__proc_info_get_detism_decl_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__DetismDecl_142);
+              }
+              {
+                check_hlds__det_report__Var_52 = check_hlds__det_report__detism_decl_name_1_f_0(check_hlds__det_report__DetismDecl_142);
+              }
+              {
+                check_hlds__det_report__Var_51 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_51, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_51, 1) = ((MR_Box) (check_hlds__det_report__Var_52));
+              }
+              {
+                check_hlds__det_report__Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 0) = ((MR_Box) (check_hlds__det_report__Var_51));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[12])));
+              }
+              {
+                check_hlds__det_report__MessagePieces_143 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__MessagePieces_143, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[127])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__MessagePieces_143, 1) = ((MR_Box) (check_hlds__det_report__Var_50));
+              }
+              {
+                check_hlds__det_report__report_determinism_problem_6_p_0(check_hlds__det_report__PredProcId_8, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44, check_hlds__det_report__MessagePieces_143, check_hlds__det_report__DeclaredDetism_15, check_hlds__det_report__InferredDetism_14, &check_hlds__det_report__ReportMsgs_144);
+              }
+              {
+                hlds__hlds_pred__proc_info_get_goal_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__Goal_26);
+              }
+              {
+                hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__VarSet_27);
+              }
+              {
+                hlds__hlds_pred__proc_info_get_vartypes_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__VarTypes_28);
+              }
+              {
+                hlds__hlds_pred__proc_info_get_initial_instmap_3_p_0(check_hlds__det_report__ProcInfo_10, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44, &check_hlds__det_report__InstMap0_29);
+              }
+              {
+                check_hlds__det_util__det_info_init_7_p_0(check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44, check_hlds__det_report__PredProcId_8, check_hlds__det_report__VarSet_27, check_hlds__det_report__VarTypes_28, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__det_report__DetInfo0_30);
+              }
+              {
+                check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__Goal_26, check_hlds__det_report__InstMap0_29, check_hlds__det_report__DeclaredDetism_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__DetInfo0_30, &check_hlds__det_report__DetInfo_31, &check_hlds__det_report__GoalMsgs_32);
+              }
+              {
+                check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__DetInfo_31, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45);
+              }
+              {
+                parse_tree__error_util__sort_error_msgs_2_p_0(check_hlds__det_report__GoalMsgs_32, &check_hlds__det_report__SortedGoalMsgs_33);
+              }
+              {
+                check_hlds__det_report__Var_65 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__ReportMsgs_144, check_hlds__det_report__SortedGoalMsgs_33);
+              }
+              {
+                check_hlds__det_report__ReportSpec_145 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_145, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_145, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_145, 2) = ((MR_Box) (check_hlds__det_report__Var_65));
+              }
+              {
+                check_hlds__det_report__STATE_VARIABLE_Specs_86_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_86_86, 0) = ((MR_Box) (check_hlds__det_report__ReportSpec_145));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_86_86, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Specs_0_46));
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__det_report__Globals_17;
+              MR_Word check_hlds__det_report__ShouldIssueWarning_18;
+              MR_Word check_hlds__det_report__WarnAboutInferredErroneous_19;
+              MR_Word check_hlds__det_report__Markers_20;
+              MR_Word check_hlds__det_report__Status_21;
+              MR_Word check_hlds__det_report__Var_72;
+              MR_Word check_hlds__det_report__Var_69;
+              MR_Word check_hlds__det_report__Var_70;
+              MR_Word check_hlds__det_report__Var_71;
+
+              {
+                hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44, &check_hlds__det_report__Globals_17);
+              }
+              {
+                libs__globals__lookup_bool_option_3_p_0(check_hlds__det_report__Globals_17, (MR_Integer) 8, &check_hlds__det_report__ShouldIssueWarning_18);
+              }
+              {
+                libs__globals__lookup_bool_option_3_p_0(check_hlds__det_report__Globals_17, (MR_Integer) 9, &check_hlds__det_report__WarnAboutInferredErroneous_19);
+              }
+              {
+                hlds__hlds_pred__pred_info_get_markers_2_p_0(check_hlds__det_report__PredInfo_9, &check_hlds__det_report__Markers_20);
+              }
+              check_hlds__det_report__succeeded = (check_hlds__det_report__ShouldIssueWarning_18 == (MR_Integer) 1);
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__Var_69 = (MR_Integer) 12;
+                  {
+                    check_hlds__det_report__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__det_report__Markers_20, check_hlds__det_report__Var_69);
+                  }
+                  check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                  if (check_hlds__det_report__succeeded)
+                    {
+                      check_hlds__det_report__Var_70 = (MR_Integer) 0;
+                      {
+                        check_hlds__det_report__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__det_report__Markers_20, check_hlds__det_report__Var_70);
+                      }
+                      check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                      if (check_hlds__det_report__succeeded)
+                        {
+                          check_hlds__det_report__Var_71 = (MR_Integer) 6;
+                          {
+                            check_hlds__det_report__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__det_report__Markers_20, check_hlds__det_report__Var_71);
+                          }
+                          check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                          if (check_hlds__det_report__succeeded)
+                            {
+                              {
+                                check_hlds__det_report__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(check_hlds__det_report__PredInfo_9);
+                              }
+                              check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                              if (check_hlds__det_report__succeeded)
+                                {
+                                  switch (check_hlds__det_report__WarnAboutInferredErroneous_19) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      {
+                                        check_hlds__det_report__succeeded = (check_hlds__det_report__InferredDetism_14 == (MR_Integer) 6);
+                                        check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      check_hlds__det_report__succeeded = MR_TRUE;
+                                      break;
+                                  }
+                                  if (check_hlds__det_report__succeeded)
+                                    {
+                                      {
+                                        hlds__hlds_pred__pred_info_get_status_2_p_0(check_hlds__det_report__PredInfo_9, &check_hlds__det_report__Status_21);
+                                      }
+                                      {
+                                        check_hlds__det_report__Var_72 = hlds__status__pred_status_defined_in_this_module_1_f_0(check_hlds__det_report__Status_21);
+                                      }
+                                      check_hlds__det_report__succeeded = (check_hlds__det_report__Var_72 == (MR_Integer) 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_Word check_hlds__det_report__DetismDecl_22;
+                  MR_Word check_hlds__det_report__MessagePieces_23;
+                  MR_Word check_hlds__det_report__ReportMsgs_24;
+                  MR_Word check_hlds__det_report__ReportSpec_25;
+                  MR_Word check_hlds__det_report__Var_75;
+                  MR_Word check_hlds__det_report__Var_76;
+                  MR_String check_hlds__det_report__Var_77;
+
+                  {
+                    hlds__hlds_pred__proc_info_get_detism_decl_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__DetismDecl_22);
+                  }
+                  {
+                    check_hlds__det_report__Var_77 = check_hlds__det_report__detism_decl_name_1_f_0(check_hlds__det_report__DetismDecl_22);
+                  }
+                  {
+                    check_hlds__det_report__Var_76 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_76, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                    MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_76, 1) = ((MR_Box) (check_hlds__det_report__Var_77));
+                  }
+                  {
+                    check_hlds__det_report__Var_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_75, 0) = ((MR_Box) (check_hlds__det_report__Var_76));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_75, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[14])));
+                  }
+                  {
+                    check_hlds__det_report__MessagePieces_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__MessagePieces_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[128])));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__MessagePieces_23, 1) = ((MR_Box) (check_hlds__det_report__Var_75));
+                  }
+                  {
+                    check_hlds__det_report__report_determinism_problem_6_p_0(check_hlds__det_report__PredProcId_8, check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44, check_hlds__det_report__MessagePieces_23, check_hlds__det_report__DeclaredDetism_15, check_hlds__det_report__InferredDetism_14, &check_hlds__det_report__ReportMsgs_24);
+                  }
+                  {
+                    check_hlds__det_report__ReportSpec_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_25, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportSpec_25, 2) = ((MR_Box) (check_hlds__det_report__ReportMsgs_24));
+                  }
+                  {
+                    check_hlds__det_report__STATE_VARIABLE_Specs_86_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_86_86, 0) = ((MR_Box) (check_hlds__det_report__ReportSpec_25));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_Specs_86_86, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Specs_0_46));
+                  }
+                }
+              else
+                check_hlds__det_report__STATE_VARIABLE_Specs_86_86 = check_hlds__det_report__STATE_VARIABLE_Specs_0_46;
+              *check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45 = check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45 = check_hlds__det_report__STATE_VARIABLE_ModuleInfo_0_44;
+              check_hlds__det_report__STATE_VARIABLE_Specs_86_86 = check_hlds__det_report__STATE_VARIABLE_Specs_0_46;
+            }
+            break;
+        }
+      }
+    {
+      check_hlds__det_report__make_reqscope_checks_if_needed_6_p_0(*check_hlds__det_report__STATE_VARIABLE_ModuleInfo_45, check_hlds__det_report__PredProcId_8, check_hlds__det_report__PredInfo_9, check_hlds__det_report__ProcInfo_10, check_hlds__det_report__STATE_VARIABLE_Specs_86_86, &check_hlds__det_report__STATE_VARIABLE_Specs_87_87);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_eval_method_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__EvalMethod_34);
+    }
+    {
+      check_hlds__det_report__Valid_35 = hlds__hlds_pred__valid_determinism_for_eval_method_2_f_0(check_hlds__det_report__EvalMethod_34, check_hlds__det_report__InferredDetism_14);
+    }
+    switch (check_hlds__det_report__Valid_35) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__det_report__TypeCtorInfo_148_148;
+          MR_Word check_hlds__det_report__TypeCtorInfo_149_149;
+          MR_Word check_hlds__det_report__Context_36;
+          MR_Word check_hlds__det_report__MainPieces_37;
+          MR_Word check_hlds__det_report__Detisms_38;
+          MR_Word check_hlds__det_report__DetismStrs_39;
+          MR_Word check_hlds__det_report__SortedDetismStrs_40;
+          MR_Word check_hlds__det_report__DetismPieces_41;
+          MR_Word check_hlds__det_report__VerbosePieces_42;
+          MR_Word check_hlds__det_report__ValidSpec_43;
+          MR_Word check_hlds__det_report__Var_90;
+          MR_Word check_hlds__det_report__Var_91;
+          MR_String check_hlds__det_report__Var_92;
+          MR_Word check_hlds__det_report__Var_93;
+          MR_Word check_hlds__det_report__Var_96;
+          MR_Word check_hlds__det_report__Var_99;
+          MR_Word check_hlds__det_report__Var_100;
+          MR_String check_hlds__det_report__Var_101;
+          MR_Word check_hlds__det_report__Var_108;
+          MR_Word check_hlds__det_report__Var_110;
+          MR_Word check_hlds__det_report__Var_113;
+          MR_Word check_hlds__det_report__Var_116;
+          MR_Word check_hlds__det_report__Var_117;
+          MR_String check_hlds__det_report__Var_118;
+          MR_Word check_hlds__det_report__Var_121;
+          MR_Word check_hlds__det_report__Var_132;
+          MR_Word check_hlds__det_report__Var_133;
+          MR_Word check_hlds__det_report__Var_134;
+          MR_Word check_hlds__det_report__Var_135;
+          MR_Word check_hlds__det_report__Var_136;
+          MR_Word check_hlds__det_report__Var_137;
+          MR_Box check_hlds__det_report__conv2_Var_118;
+
+          {
+            hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__Context_36);
+          }
+          {
+            check_hlds__det_report__Var_92 = parse_tree__prog_out__eval_method_to_pragma_name_1_f_0(check_hlds__det_report__EvalMethod_34);
+          }
+          {
+            check_hlds__det_report__Var_91 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_91, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 17));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_91, 1) = ((MR_Box) (check_hlds__det_report__Var_92));
+          }
+          {
+            check_hlds__det_report__Var_101 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__InferredDetism_14);
+          }
+          {
+            check_hlds__det_report__Var_100 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_100, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_100, 1) = ((MR_Box) (check_hlds__det_report__Var_101));
+          }
+          {
+            check_hlds__det_report__Var_99 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_99, 0) = ((MR_Box) (check_hlds__det_report__Var_100));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_99, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+          }
+          {
+            check_hlds__det_report__Var_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_96, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[131])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_96, 1) = ((MR_Box) (check_hlds__det_report__Var_99));
+          }
+          {
+            check_hlds__det_report__Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_93, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[130])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_93, 1) = ((MR_Box) (check_hlds__det_report__Var_96));
+          }
+          {
+            check_hlds__det_report__Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_90, 0) = ((MR_Box) (check_hlds__det_report__Var_91));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_90, 1) = ((MR_Box) (check_hlds__det_report__Var_93));
+          }
+          {
+            check_hlds__det_report__MainPieces_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__MainPieces_37, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[129])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__MainPieces_37, 1) = ((MR_Box) (check_hlds__det_report__Var_90));
+          }
+          {
+            check_hlds__det_report__Var_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_108, 0) = ((MR_Box) (&check_hlds__det_report_scalar_common_5[3]));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_108, 1) = ((MR_Box) (check_hlds__det_report__check_determinism_7_p_0_2));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_108, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_108, 3) = ((MR_Box) (check_hlds__det_report__EvalMethod_34));
+          }
+          check_hlds__det_report__TypeCtorInfo_148_148 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0;
+          {
+            mercury__solutions__solutions_2_p_1(check_hlds__det_report__TypeCtorInfo_148_148, check_hlds__det_report__Var_108, &check_hlds__det_report__Detisms_38);
+          }
+          check_hlds__det_report__TypeCtorInfo_149_149 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+          {
+            check_hlds__det_report__DetismStrs_39 = mercury__list__map_2_f_0(check_hlds__det_report__TypeCtorInfo_148_148, check_hlds__det_report__TypeCtorInfo_149_149, (MR_Word) &check_hlds__det_report_scalar_common_1[4], check_hlds__det_report__Detisms_38);
+          }
+          {
+            mercury__list__sort_2_p_0(check_hlds__det_report__TypeCtorInfo_149_149, check_hlds__det_report__DetismStrs_39, &check_hlds__det_report__SortedDetismStrs_40);
+          }
+          {
+            check_hlds__det_report__DetismPieces_41 = parse_tree__error_util__list_to_pieces_1_f_0(check_hlds__det_report__SortedDetismStrs_40);
+          }
+          {
+            check_hlds__det_report__conv2_Var_118 = parse_tree__error_util__choose_number_3_f_0(check_hlds__det_report__TypeCtorInfo_148_148, check_hlds__det_report__TypeCtorInfo_149_149, check_hlds__det_report__Detisms_38, ((MR_Box) ((MR_String) "determinism")), ((MR_Box) ((MR_String) "determinisms")));
+          }
+          check_hlds__det_report__Var_118 = ((MR_String) check_hlds__det_report__conv2_Var_118);
+          {
+            check_hlds__det_report__Var_117 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_117, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_117, 1) = ((MR_Box) (check_hlds__det_report__Var_118));
+          }
+          {
+            check_hlds__det_report__Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_121, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[106])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_121, 1) = ((MR_Box) (check_hlds__det_report__DetismPieces_41));
+          }
+          {
+            check_hlds__det_report__Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_116, 0) = ((MR_Box) (check_hlds__det_report__Var_117));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_116, 1) = ((MR_Box) (check_hlds__det_report__Var_121));
+          }
+          {
+            check_hlds__det_report__Var_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_113, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[133])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_113, 1) = ((MR_Box) (check_hlds__det_report__Var_116));
+          }
+          {
+            check_hlds__det_report__Var_110 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_110, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[132])));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_110, 1) = ((MR_Box) (check_hlds__det_report__Var_113));
+          }
+          {
+            check_hlds__det_report__VerbosePieces_42 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__Var_110, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16]));
+          }
+          {
+            check_hlds__det_report__Var_135 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_135, 0) = ((MR_Box) (check_hlds__det_report__MainPieces_37));
+          }
+          {
+            check_hlds__det_report__Var_137 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_137, 0) = ((MR_Box) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_137, 1) = ((MR_Box) (check_hlds__det_report__VerbosePieces_42));
+          }
+          {
+            check_hlds__det_report__Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_136, 0) = ((MR_Box) (check_hlds__det_report__Var_137));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_136, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__det_report__Var_134 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_134, 0) = ((MR_Box) (check_hlds__det_report__Var_135));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_134, 1) = ((MR_Box) (check_hlds__det_report__Var_136));
+          }
+          {
+            check_hlds__det_report__Var_133 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_133, 0) = ((MR_Box) (check_hlds__det_report__Context_36));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_133, 1) = ((MR_Box) (check_hlds__det_report__Var_134));
+          }
+          {
+            check_hlds__det_report__Var_132 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_132, 0) = ((MR_Box) (check_hlds__det_report__Var_133));
+            MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_132, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            check_hlds__det_report__ValidSpec_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__ValidSpec_43, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__ValidSpec_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+            MR_hl_field(MR_mktag(0), check_hlds__det_report__ValidSpec_43, 2) = ((MR_Box) (check_hlds__det_report__Var_132));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *check_hlds__det_report__STATE_VARIABLE_Specs_47 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__ValidSpec_43));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_Specs_87_87));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        *check_hlds__det_report__STATE_VARIABLE_Specs_47 = check_hlds__det_report__STATE_VARIABLE_Specs_87_87;
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__report_determinism_problem_6_p_0(
+  MR_Word check_hlds__det_report__PredProcId_7,
+  MR_Word check_hlds__det_report__ModuleInfo_8,
+  MR_Word check_hlds__det_report__MessagePieces_9,
+  MR_Word check_hlds__det_report__DeclaredDetism_10,
+  MR_Word check_hlds__det_report__InferredDetism_11,
+  MR_Word * check_hlds__det_report__Msgs_12)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__TypeCtorInfo_61_61;
+    MR_Word check_hlds__det_report__ProcInfo_13;
+    MR_Word check_hlds__det_report__Context_14;
+    MR_Word check_hlds__det_report__ProcPieces_15;
+    MR_Word check_hlds__det_report__Pieces_16;
+    MR_Word check_hlds__det_report__Var_22;
+    MR_Word check_hlds__det_report__Var_23;
+    MR_Word check_hlds__det_report__Var_30;
+    MR_Word check_hlds__det_report__Var_31;
+    MR_Word check_hlds__det_report__Var_35;
+    MR_Word check_hlds__det_report__Var_38;
+    MR_Word check_hlds__det_report__Var_39;
+    MR_String check_hlds__det_report__Var_40;
+    MR_Word check_hlds__det_report__Var_41;
+    MR_Word check_hlds__det_report__Var_44;
+    MR_Word check_hlds__det_report__Var_47;
+    MR_Word check_hlds__det_report__Var_48;
+    MR_String check_hlds__det_report__Var_49;
+    MR_Word check_hlds__det_report__Var_56;
+    MR_Word check_hlds__det_report__Var_57;
+    MR_Word check_hlds__det_report__Var_58;
+
+    {
+      hlds__hlds_module__module_info_proc_info_3_p_0(check_hlds__det_report__ModuleInfo_8, check_hlds__det_report__PredProcId_7, &check_hlds__det_report__ProcInfo_13);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__det_report__ProcInfo_13, &check_hlds__det_report__Context_14);
+    }
+    {
+      check_hlds__det_report__ProcPieces_15 = hlds__hlds_error_util__describe_one_proc_name_mode_3_f_0(check_hlds__det_report__ModuleInfo_8, (MR_Integer) 1, check_hlds__det_report__PredProcId_7);
+    }
+    check_hlds__det_report__TypeCtorInfo_61_61 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__det_report__Var_40 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__DeclaredDetism_10);
+    }
+    {
+      check_hlds__det_report__Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__Var_40));
+    }
+    {
+      check_hlds__det_report__Var_49 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__InferredDetism_11);
+    }
+    {
+      check_hlds__det_report__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_48, 1) = ((MR_Box) (check_hlds__det_report__Var_49));
+    }
+    {
+      check_hlds__det_report__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 0) = ((MR_Box) (check_hlds__det_report__Var_48));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+    }
+    {
+      check_hlds__det_report__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[126])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_44, 1) = ((MR_Box) (check_hlds__det_report__Var_47));
+    }
+    {
+      check_hlds__det_report__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[100])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 1) = ((MR_Box) (check_hlds__det_report__Var_44));
+    }
+    {
+      check_hlds__det_report__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_38, 0) = ((MR_Box) (check_hlds__det_report__Var_39));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_38, 1) = ((MR_Box) (check_hlds__det_report__Var_41));
+    }
+    {
+      check_hlds__det_report__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_35, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[125])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_35, 1) = ((MR_Box) (check_hlds__det_report__Var_38));
+    }
+    {
+      check_hlds__det_report__Var_31 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_61_61, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[8]), check_hlds__det_report__Var_35);
+    }
+    {
+      check_hlds__det_report__Var_30 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_61_61, check_hlds__det_report__MessagePieces_9, check_hlds__det_report__Var_31);
+    }
+    {
+      check_hlds__det_report__Var_23 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_61_61, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[47]), check_hlds__det_report__Var_30);
+    }
+    {
+      check_hlds__det_report__Var_22 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_61_61, check_hlds__det_report__ProcPieces_15, check_hlds__det_report__Var_23);
+    }
+    {
+      check_hlds__det_report__Pieces_16 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_61_61, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[124]), check_hlds__det_report__Var_22);
+    }
+    {
+      check_hlds__det_report__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_58, 0) = ((MR_Box) (check_hlds__det_report__Pieces_16));
+    }
+    {
+      check_hlds__det_report__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 0) = ((MR_Box) (check_hlds__det_report__Var_58));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__det_report__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_56, 0) = ((MR_Box) (check_hlds__det_report__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_56, 1) = ((MR_Box) (check_hlds__det_report__Var_57));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *check_hlds__det_report__Msgs_12 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_56));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static MR_String MR_CALL 
+check_hlds__det_report__detism_decl_name_1_f_0(
+  MR_Word check_hlds__det_report__DetismDecl_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_String check_hlds__det_report__Name_4;
+
+    switch (check_hlds__det_report__DetismDecl_3) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__det_report__Name_4 = (MR_String) "determinism declaration";
+        break;
+      case (MR_Integer) 1:
+        check_hlds__det_report__Name_4 = (MR_String) "implicit determinism declaration";
+        break;
+      case (MR_Integer) 2:
+        check_hlds__det_report__Name_4 = (MR_String) "nonexistent determinism declaration";
+        break;
+    }
+    return check_hlds__det_report__Name_4;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__make_reqscope_checks_if_needed_6_p_0(
+  MR_Word check_hlds__det_report__ModuleInfo_7,
+  MR_Word check_hlds__det_report__PredProcId_8,
+  MR_Word check_hlds__det_report__PredInfo_9,
+  MR_Word check_hlds__det_report__ProcInfo_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_Specs_0_22,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_Specs_23)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Markers_12;
+    MR_Word check_hlds__det_report__InformIncompleteSwitches_14;
+    MR_Word check_hlds__det_report__Globals_13;
+    MR_Word check_hlds__det_report__Var_25;
+    MR_Word check_hlds__det_report__Var_26;
+
+    {
+      hlds__hlds_pred__pred_info_get_markers_2_p_0(check_hlds__det_report__PredInfo_9, &check_hlds__det_report__Markers_12);
+    }
+    {
+      check_hlds__det_report__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__det_report__Markers_12, (MR_Integer) 26);
+    }
+    if (check_hlds__det_report__succeeded)
+      {
+        {
+          hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__det_report__ModuleInfo_7, &check_hlds__det_report__Globals_13);
+        }
+        check_hlds__det_report__Var_25 = (MR_Integer) 48;
+        check_hlds__det_report__Var_26 = (MR_Integer) 1;
+        {
+          check_hlds__det_report__succeeded = libs__globals__lookup_bool_option_3_p_1(check_hlds__det_report__Globals_13, check_hlds__det_report__Var_25, check_hlds__det_report__Var_26);
+        }
+      }
+    if (check_hlds__det_report__succeeded)
+      {
+        check_hlds__det_report__InformIncompleteSwitches_14 = (MR_Integer) 1;
+        check_hlds__det_report__succeeded = MR_TRUE;
+      }
+    else
+      {
+        {
+          check_hlds__det_report__succeeded = hlds__hlds_pred__check_marker_2_p_0(check_hlds__det_report__Markers_12, (MR_Integer) 25);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__InformIncompleteSwitches_14 = (MR_Integer) 0;
+            check_hlds__det_report__succeeded = MR_TRUE;
+          }
+      }
+    if (check_hlds__det_report__succeeded)
+      {
+        MR_Word check_hlds__det_report__Goal_15;
+        MR_Word check_hlds__det_report__VarSet_16;
+        MR_Word check_hlds__det_report__VarTypes_17;
+        MR_Word check_hlds__det_report__InstMap0_18;
+        MR_Word check_hlds__det_report__DetInfo0_19;
+        MR_Word check_hlds__det_report__DetInfo_20;
+        MR_Word check_hlds__det_report__RCSSpecs_21;
+
+        {
+          hlds__hlds_pred__proc_info_get_goal_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__Goal_15);
+        }
+        {
+          hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__VarSet_16);
+        }
+        {
+          hlds__hlds_pred__proc_info_get_vartypes_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__VarTypes_17);
+        }
+        {
+          hlds__hlds_pred__proc_info_get_initial_instmap_3_p_0(check_hlds__det_report__ProcInfo_10, check_hlds__det_report__ModuleInfo_7, &check_hlds__det_report__InstMap0_18);
+        }
+        {
+          check_hlds__det_util__det_info_init_7_p_0(check_hlds__det_report__ModuleInfo_7, check_hlds__det_report__PredProcId_8, check_hlds__det_report__VarSet_16, check_hlds__det_report__VarTypes_17, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__det_report__DetInfo0_19);
+        }
+        {
+          check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Goal_15, check_hlds__det_report__InstMap0_18, check_hlds__det_report__InformIncompleteSwitches_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__DetInfo0_19, &check_hlds__det_report__DetInfo_20);
+        }
+        {
+          check_hlds__det_util__det_info_get_error_specs_2_p_0(check_hlds__det_report__DetInfo_20, &check_hlds__det_report__RCSSpecs_21);
+        }
+        {
+          *check_hlds__det_report__STATE_VARIABLE_Specs_23 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, check_hlds__det_report__RCSSpecs_21, check_hlds__det_report__STATE_VARIABLE_Specs_0_22);
+        }
+      }
+    else
+      *check_hlds__det_report__STATE_VARIABLE_Specs_23 = check_hlds__det_report__STATE_VARIABLE_Specs_0_22;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_cases_8_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__HeadVar__6_6,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_8 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7;
+        else
+          {
+            MR_Word check_hlds__det_report__Case_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Cases_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__MainConsId_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_19, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__OtherConsIds_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_19, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__Goal_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_19, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__GoalSeq_28;
+            MR_Word check_hlds__det_report__MainMatch_29;
+            MR_Word check_hlds__det_report__OtherMatches_30;
+            MR_Word check_hlds__det_report__NewSwitchContext_31;
+            MR_Word check_hlds__det_report__SwitchContexts1_32;
+            MR_Word check_hlds__det_report__ModuleInfo0_33;
+            MR_Word check_hlds__det_report__InstMap1_34;
+            MR_Word check_hlds__det_report__ModuleInfo_35;
+            MR_Word check_hlds__det_report__Var_38;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_40_40;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_42_42;
+
+            {
+              hlds__hlds_goal__goal_to_conj_list_2_p_0(check_hlds__det_report__Goal_27, &check_hlds__det_report__GoalSeq_28);
+            }
+            {
+              check_hlds__det_report__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_38, 0) = ((MR_Box) (check_hlds__det_report__HeadVar__1_1));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__find_switch_var_matches_6_p_0(check_hlds__det_report__GoalSeq_28, check_hlds__det_report__Var_38, check_hlds__det_report__MainConsId_25, check_hlds__det_report__OtherConsIds_26, &check_hlds__det_report__MainMatch_29, &check_hlds__det_report__OtherMatches_30);
+            }
+            {
+              check_hlds__det_report__NewSwitchContext_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_31, 0) = ((MR_Box) (check_hlds__det_report__HeadVar__1_1));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_31, 1) = ((MR_Box) (check_hlds__det_report__MainMatch_29));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_31, 2) = ((MR_Box) (check_hlds__det_report__OtherMatches_30));
+            }
+            {
+              check_hlds__det_report__SwitchContexts1_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__SwitchContexts1_32, 0) = ((MR_Box) (check_hlds__det_report__NewSwitchContext_31));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__SwitchContexts1_32, 1) = ((MR_Box) (check_hlds__det_report__HeadVar__6_6));
+            }
+            {
+              check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7, &check_hlds__det_report__ModuleInfo0_33);
+            }
+            {
+              hlds__instmap__bind_var_to_functors_8_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__MainConsId_25, check_hlds__det_report__OtherConsIds_26, check_hlds__det_report__HeadVar__4_4, &check_hlds__det_report__InstMap1_34, check_hlds__det_report__ModuleInfo0_33, &check_hlds__det_report__ModuleInfo_35);
+            }
+            {
+              check_hlds__det_util__det_info_set_module_info_3_p_0(check_hlds__det_report__ModuleInfo_35, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7, &check_hlds__det_report__STATE_VARIABLE_DetInfo_40_40);
+            }
+            {
+              check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Goal_27, check_hlds__det_report__InstMap1_34, check_hlds__det_report__HeadVar__5_5, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__SwitchContexts1_32, check_hlds__det_report__STATE_VARIABLE_DetInfo_40_40, &check_hlds__det_report__STATE_VARIABLE_DetInfo_42_42);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__3_3 = check_hlds__det_report__Cases_20;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_7 = check_hlds__det_report__STATE_VARIABLE_DetInfo_42_42;
+
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_7;
+              check_hlds__det_report__HeadVar__3_3 = check_hlds__det_report__next_value_of_HeadVar__3_3;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_disj_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_6 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5;
+        else
+          {
+            MR_Word check_hlds__det_report__Goal_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Goals_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_22_22;
+
+            {
+              check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Goal_13, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__HeadVar__3_3, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5, &check_hlds__det_report__STATE_VARIABLE_DetInfo_22_22);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__Goals_14;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_5 = check_hlds__det_report__STATE_VARIABLE_DetInfo_22_22;
+
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_5;
+              check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_conj_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_7 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6;
+        else
+          {
+            MR_Word check_hlds__det_report__Goal_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Goals_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__InstMap1_22;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25;
+
+            {
+              check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Goal_15, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6, &check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25);
+            }
+            {
+              hlds__goal_util__update_instmap_3_p_0(check_hlds__det_report__Goal_15, check_hlds__det_report__HeadVar__2_2, &check_hlds__det_report__InstMap1_22);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__Goals_16;
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__2_2 = check_hlds__det_report__InstMap1_22;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_6 = check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25;
+
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_6;
+              check_hlds__det_report__HeadVar__2_2 = check_hlds__det_report__next_value_of_HeadVar__2_2;
+              check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_7_p_0(
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__InstMap0_9,
+  MR_Word check_hlds__det_report__IIS_10,
+  MR_Word check_hlds__det_report__MaybeReportedSwitch_11,
+  MR_Word check_hlds__det_report__SwitchContexts_12,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_88)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+        MR_Word check_hlds__det_report__GoalExpr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__GoalInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 1)));
+
+        switch (MR_tag((MR_Word) check_hlds__det_report__GoalExpr_14)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__det_report__SubGoal_33 = (MR_Word) MR_body(((MR_Word) check_hlds__det_report__GoalExpr_14), (MR_Integer) 0);
+
+              /* direct tailcall eliminated */
+              {
+                MR_Word check_hlds__det_report__next_value_of_Goal_8 = check_hlds__det_report__SubGoal_33;
+
+                check_hlds__det_report__MaybeReportedSwitch_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                check_hlds__det_report__Goal_8 = check_hlds__det_report__next_value_of_Goal_8;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__det_report__RHS_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_14, (MR_Integer) 0)));
+              MR_Word check_hlds__det_report__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_14, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_14, (MR_Integer) 3)));
+              MR_Word check_hlds__det_report__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_14, (MR_Integer) 4)));
+
+              switch (MR_tag((MR_Word) check_hlds__det_report__RHS_49)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *check_hlds__det_report__STATE_VARIABLE_DetInfo_88 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__det_report__STATE_VARIABLE_DetInfo_88 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word check_hlds__det_report__Vars_62 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 3)));
+                    MR_Word check_hlds__det_report__Modes_63 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 4)));
+                    MR_Word check_hlds__det_report__LambdaGoal_65 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 6)));
+                    MR_Word check_hlds__det_report__VarsModes_66;
+                    MR_Word check_hlds__det_report__ModuleInfo_67;
+                    MR_Word check_hlds__det_report__LambdaInstMap0_68;
+                    MR_Word check_hlds__det_report___Purity_57 = ((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 0)))) & (MR_Integer) 3);
+                    MR_Word check_hlds__det_report___Groundness_58 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+                    MR_Word check_hlds__det_report___PorF_59 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+                    MR_Word check_hlds__det_report___LambdaNonLocals_61 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 2)));
+                    MR_Word check_hlds__det_report___Detism_64 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__RHS_49, (MR_Integer) 5)));
+
+                    {
+                      mercury__assoc_list__from_corresponding_lists_3_p_0((MR_Word) &check_hlds__det_report_scalar_common_2[0], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0, check_hlds__det_report__Vars_62, check_hlds__det_report__Modes_63, &check_hlds__det_report__VarsModes_66);
+                    }
+                    {
+                      check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, &check_hlds__det_report__ModuleInfo_67);
+                    }
+                    {
+                      check_hlds__det_report__lambda_update_instmap_4_p_0(check_hlds__det_report__VarsModes_66, check_hlds__det_report__ModuleInfo_67, check_hlds__det_report__InstMap0_9, &check_hlds__det_report__LambdaInstMap0_68);
+                    }
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word check_hlds__det_report__next_value_of_Goal_8 = check_hlds__det_report__LambdaGoal_65;
+                      MR_Word check_hlds__det_report__next_value_of_InstMap0_9 = check_hlds__det_report__LambdaInstMap0_68;
+
+                      check_hlds__det_report__SwitchContexts_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      check_hlds__det_report__MaybeReportedSwitch_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      check_hlds__det_report__InstMap0_9 = check_hlds__det_report__next_value_of_InstMap0_9;
+                      check_hlds__det_report__Goal_8 = check_hlds__det_report__next_value_of_Goal_8;
+                    }
+                    continue;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            *check_hlds__det_report__STATE_VARIABLE_DetInfo_88 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__det_report__STATE_VARIABLE_DetInfo_88 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__det_report__STATE_VARIABLE_DetInfo_88 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__det_report__Goals_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 2)));
+                  MR_Word check_hlds__det_report__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+
+                  {
+                    check_hlds__det_report__reqscope_check_conj_7_p_0(check_hlds__det_report__Goals_17, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, check_hlds__det_report__MaybeReportedSwitch_11, check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, check_hlds__det_report__STATE_VARIABLE_DetInfo_88);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word check_hlds__det_report__Goals_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+
+                  {
+                    check_hlds__det_report__reqscope_check_disj_6_p_0(check_hlds__det_report__Goals_117, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, check_hlds__det_report__STATE_VARIABLE_DetInfo_88);
+                  }
+                }
+                break;
+              case (MR_Integer) 4:
+                {
+                  MR_Word check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+                  MR_Word check_hlds__det_report__CanFail_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 2)));
+                  MR_Word check_hlds__det_report__Cases_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 3)));
+                  MR_Word check_hlds__det_report__VarTypes_26;
+                  MR_Word check_hlds__det_report__VarType_27;
+                  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112;
+
+                  switch (check_hlds__det_report__CanFail_19) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word check_hlds__det_report__Context_21;
+
+                        {
+                          check_hlds__det_report__Context_21 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_15);
+                        }
+                        check_hlds__det_report__succeeded = (check_hlds__det_report__IIS_10 == (MR_Integer) 0);
+                        if (!(check_hlds__det_report__succeeded))
+                          {
+                            MR_Word check_hlds__det_report__TypeInfo_125_125;
+                            MR_Word check_hlds__det_report__TypeInfo_126_126;
+                            MR_Word check_hlds__det_report__ReportedSwitch_22;
+                            MR_Word check_hlds__det_report__ReportedContext_23;
+                            MR_Word check_hlds__det_report__ReportedVar_24;
+                            MR_Word check_hlds__det_report__ReportedCases_25;
+
+                            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__MaybeReportedSwitch_11)) == (MR_mktag((MR_Integer) 1)));
+                            if (check_hlds__det_report__succeeded)
+                              {
+                                check_hlds__det_report__ReportedSwitch_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeReportedSwitch_11, (MR_Integer) 0)));
+                                check_hlds__det_report__ReportedContext_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_22, (MR_Integer) 0)));
+                                check_hlds__det_report__ReportedVar_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_22, (MR_Integer) 1)));
+                                check_hlds__det_report__ReportedCases_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_22, (MR_Integer) 2)));
+                                {
+                                  check_hlds__det_report__succeeded = mercury__term____Unify____context_0_0(check_hlds__det_report__ReportedContext_23, check_hlds__det_report__Context_21);
+                                }
+                                if (check_hlds__det_report__succeeded)
+                                  {
+                                    check_hlds__det_report__TypeInfo_125_125 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                                    {
+                                      check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_125_125, ((MR_Box) (check_hlds__det_report__ReportedVar_24)), ((MR_Box) (check_hlds__det_report__Var_18)));
+                                    }
+                                    if (check_hlds__det_report__succeeded)
+                                      {
+                                        check_hlds__det_report__TypeInfo_126_126 = (MR_Word) &check_hlds__det_report_scalar_common_2[4];
+                                        {
+                                          check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_126_126, ((MR_Box) (check_hlds__det_report__ReportedCases_25)), ((MR_Box) (check_hlds__det_report__Cases_20)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                        if (check_hlds__det_report__succeeded)
+                          check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                        else
+                          {
+                            {
+                              check_hlds__det_report__generate_incomplete_switch_spec_9_p_0((MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_3[4]), check_hlds__det_report__InstMap0_9, check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__Var_18, check_hlds__det_report__Cases_20, check_hlds__det_report__Context_21, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, &check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112);
+                            }
+                          }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87;
+                      break;
+                  }
+                  {
+                    check_hlds__det_util__det_info_get_vartypes_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112, &check_hlds__det_report__VarTypes_26);
+                  }
+                  {
+                    hlds__vartypes__lookup_var_type_3_p_0(check_hlds__det_report__VarTypes_26, check_hlds__det_report__Var_18, &check_hlds__det_report__VarType_27);
+                  }
+                  {
+                    check_hlds__det_report__reqscope_check_cases_8_p_0(check_hlds__det_report__Var_18, check_hlds__det_report__VarType_27, check_hlds__det_report__Cases_20, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_112_112, check_hlds__det_report__STATE_VARIABLE_DetInfo_88);
+                  }
+                }
+                break;
+              case (MR_Integer) 5:
+                {
+                  MR_Word check_hlds__det_report__Reason_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+                  MR_Word check_hlds__det_report__ScopeMaybeReportedSwitch_35;
+                  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100;
+                  MR_Word check_hlds__det_report__SubGoal_118 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 2)));
+
+                  {
+                    check_hlds__det_report__reqscope_check_scope_8_p_0(check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__Reason_34, check_hlds__det_report__SubGoal_118, check_hlds__det_report__GoalInfo_15, check_hlds__det_report__InstMap0_9, &check_hlds__det_report__ScopeMaybeReportedSwitch_35, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, &check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100);
+                  }
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word check_hlds__det_report__next_value_of_Goal_8 = check_hlds__det_report__SubGoal_118;
+                    MR_Word check_hlds__det_report__next_value_of_MaybeReportedSwitch_11 = check_hlds__det_report__ScopeMaybeReportedSwitch_35;
+                    MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_87 = check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100;
+
+                    check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_87;
+                    check_hlds__det_report__MaybeReportedSwitch_11 = check_hlds__det_report__next_value_of_MaybeReportedSwitch_11;
+                    check_hlds__det_report__Goal_8 = check_hlds__det_report__next_value_of_Goal_8;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 6:
+                {
+                  MR_Word check_hlds__det_report__Cond_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 2)));
+                  MR_Word check_hlds__det_report__Then_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 3)));
+                  MR_Word check_hlds__det_report__Else_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 4)));
+                  MR_Word check_hlds__det_report__InstMap1_32;
+                  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_105_105;
+                  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_107_107;
+                  MR_Word check_hlds__det_report__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+
+                  {
+                    check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Cond_29, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, &check_hlds__det_report__STATE_VARIABLE_DetInfo_105_105);
+                  }
+                  {
+                    hlds__goal_util__update_instmap_3_p_0(check_hlds__det_report__Cond_29, check_hlds__det_report__InstMap0_9, &check_hlds__det_report__InstMap1_32);
+                  }
+                  {
+                    check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__Then_30, check_hlds__det_report__InstMap1_32, check_hlds__det_report__IIS_10, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_105_105, &check_hlds__det_report__STATE_VARIABLE_DetInfo_107_107);
+                  }
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word check_hlds__det_report__next_value_of_Goal_8 = check_hlds__det_report__Else_31;
+                    MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_87 = check_hlds__det_report__STATE_VARIABLE_DetInfo_107_107;
+
+                    check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_87;
+                    check_hlds__det_report__MaybeReportedSwitch_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    check_hlds__det_report__Goal_8 = check_hlds__det_report__next_value_of_Goal_8;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word check_hlds__det_report__ShortHand_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_14, (MR_Integer) 1)));
+
+                  switch (MR_tag((MR_Word) check_hlds__det_report__ShortHand_36)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        {
+                          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.det_report", (MR_String) "predicate \140check_hlds.det_report.reqscope_check_goal\'/7", (MR_String) "bi_implication");
+                          return;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word check_hlds__det_report__MainGoal_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 4)));
+                        MR_Word check_hlds__det_report__OrElseGoals_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 5)));
+                        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_98_98;
+                        MR_Word check_hlds__det_report__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 0)));
+                        MR_Word check_hlds__det_report__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 1)));
+                        MR_Word check_hlds__det_report__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 2)));
+                        MR_Word check_hlds__det_report__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 3)));
+                        MR_Word check_hlds__det_report__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_36, (MR_Integer) 6)));
+
+                        {
+                          check_hlds__det_report__reqscope_check_goal_7_p_0(check_hlds__det_report__MainGoal_41, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_87, &check_hlds__det_report__STATE_VARIABLE_DetInfo_98_98);
+                        }
+                        {
+                          check_hlds__det_report__reqscope_check_disj_6_p_0(check_hlds__det_report__OrElseGoals_42, check_hlds__det_report__InstMap0_9, check_hlds__det_report__IIS_10, check_hlds__det_report__SwitchContexts_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_98_98, check_hlds__det_report__STATE_VARIABLE_DetInfo_88);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_Word check_hlds__det_report__SubGoal_119 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_36, (MR_Integer) 2)));
+                        MR_Word check_hlds__det_report__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_36, (MR_Integer) 0)));
+                        MR_Word check_hlds__det_report__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_36, (MR_Integer) 1)));
+
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word check_hlds__det_report__next_value_of_Goal_8 = check_hlds__det_report__SubGoal_119;
+
+                          check_hlds__det_report__MaybeReportedSwitch_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                          check_hlds__det_report__Goal_8 = check_hlds__det_report__next_value_of_Goal_8;
+                        }
+                        continue;
+                      }
+                      break;
+                  }
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__lambda_update_instmap_4_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_InstMap_0_3,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_InstMap_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_InstMap_4 = check_hlds__det_report__STATE_VARIABLE_InstMap_0_3;
+        else
+          {
+            MR_Word check_hlds__det_report__Var_9;
+            MR_Word check_hlds__det_report__Mode_10;
+            MR_Word check_hlds__det_report__VarsModes_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__InitInst_14;
+            MR_Word check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__STATE_VARIABLE_InstMap_19_19;
+            MR_Word check_hlds__det_report___FinalInst_15;
+
+            check_hlds__det_report__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_18, (MR_Integer) 0)));
+            check_hlds__det_report__Mode_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_18, (MR_Integer) 1)));
+            {
+              check_hlds__mode_util__mode_get_insts_4_p_0(check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__Mode_10, &check_hlds__det_report__InitInst_14, &check_hlds__det_report___FinalInst_15);
+            }
+            {
+              hlds__instmap__instmap_set_var_4_p_0(check_hlds__det_report__Var_9, check_hlds__det_report__InitInst_14, check_hlds__det_report__STATE_VARIABLE_InstMap_0_3, &check_hlds__det_report__STATE_VARIABLE_InstMap_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__VarsModes_11;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_InstMap_0_3 = check_hlds__det_report__STATE_VARIABLE_InstMap_19_19;
+
+              check_hlds__det_report__STATE_VARIABLE_InstMap_0_3 = check_hlds__det_report__next_value_of_STATE_VARIABLE_InstMap_0_3;
+              check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_scope_8_p_0(
+  MR_Word check_hlds__det_report__SwitchContexts_9,
+  MR_Word check_hlds__det_report__Reason_10,
+  MR_Word check_hlds__det_report__SubGoal_11,
+  MR_Word check_hlds__det_report__ScopeGoalInfo_12,
+  MR_Word check_hlds__det_report__InstMap0_13,
+  MR_Word * check_hlds__det_report__MaybeReportedSwitch_14,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_51)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    switch (MR_tag((MR_Word) check_hlds__det_report__Reason_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_51 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_10, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+            {
+              *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              *check_hlds__det_report__STATE_VARIABLE_DetInfo_51 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__det_report__RequiredDetism_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Var_62;
+
+              {
+                check_hlds__det_report__Var_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_62, 0) = ((MR_Box) (check_hlds__det_report__ScopeGoalInfo_12));
+              }
+              {
+                check_hlds__det_report__reqscope_check_goal_detism_6_p_0(check_hlds__det_report__RequiredDetism_16, check_hlds__det_report__SubGoal_11, check_hlds__det_report__Var_62, check_hlds__det_report__InstMap0_13, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+              }
+              *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__det_report__RequiredVar_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__SwitchGoalContext_18;
+              MR_Word check_hlds__det_report__SwitchVar_19;
+              MR_Word check_hlds__det_report__CanFail_20;
+              MR_Word check_hlds__det_report__Cases_21;
+              MR_Word check_hlds__det_report__TypeInfo_70_70;
+
+              {
+                check_hlds__det_report__succeeded = check_hlds__det_report__is_scope_subgoal_a_sortof_switch_5_p_0(check_hlds__det_report__SubGoal_11, &check_hlds__det_report__SwitchGoalContext_18, &check_hlds__det_report__SwitchVar_19, &check_hlds__det_report__CanFail_20, &check_hlds__det_report__Cases_21);
+              }
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__TypeInfo_70_70 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                  {
+                    check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_70_70, ((MR_Box) (check_hlds__det_report__SwitchVar_19)), ((MR_Box) (check_hlds__det_report__RequiredVar_17)));
+                  }
+                }
+              if (check_hlds__det_report__succeeded)
+                switch (check_hlds__det_report__CanFail_20) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word check_hlds__det_report__ScopeContext_22;
+                      MR_Word check_hlds__det_report__ReportedSwitch_23;
+
+                      {
+                        check_hlds__det_report__ScopeContext_22 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__ScopeGoalInfo_12);
+                      }
+                      {
+                        check_hlds__det_report__generate_incomplete_switch_spec_9_p_0((MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__InstMap0_13, check_hlds__det_report__SwitchContexts_9, check_hlds__det_report__RequiredVar_17, check_hlds__det_report__Cases_21, check_hlds__det_report__ScopeContext_22, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+                      }
+                      {
+                        check_hlds__det_report__ReportedSwitch_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_23, 0) = ((MR_Box) (check_hlds__det_report__SwitchGoalContext_18));
+                        MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_23, 1) = ((MR_Box) (check_hlds__det_report__SwitchVar_19));
+                        MR_hl_field(MR_mktag(0), check_hlds__det_report__ReportedSwitch_23, 2) = ((MR_Box) (check_hlds__det_report__Cases_21));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        *check_hlds__det_report__MaybeReportedSwitch_14 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__ReportedSwitch_23));
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      *check_hlds__det_report__STATE_VARIABLE_DetInfo_51 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50;
+                    }
+                    break;
+                }
+              else
+                {
+                  {
+                    check_hlds__det_report__generate_error_not_switch_on_required_var_5_p_0(check_hlds__det_report__RequiredVar_17, (MR_String) "require_complete_switch", check_hlds__det_report__ScopeGoalInfo_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+                  }
+                  *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word check_hlds__det_report__RequiredDetism_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__RequiredVar_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__SwitchVar_64;
+              MR_Word check_hlds__det_report__Cases_65;
+              MR_Word check_hlds__det_report___SwitchContext_24;
+              MR_Word check_hlds__det_report___CanFail_25;
+
+              {
+                check_hlds__det_report__succeeded = check_hlds__det_report__is_scope_subgoal_a_sortof_switch_5_p_0(check_hlds__det_report__SubGoal_11, &check_hlds__det_report___SwitchContext_24, &check_hlds__det_report__SwitchVar_64, &check_hlds__det_report___CanFail_25, &check_hlds__det_report__Cases_65);
+              }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_Word check_hlds__det_report__VarTypes_26;
+                  MR_Word check_hlds__det_report__SwitchVarType_27;
+
+                  {
+                    check_hlds__det_util__det_info_get_vartypes_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, &check_hlds__det_report__VarTypes_26);
+                  }
+                  {
+                    hlds__vartypes__lookup_var_type_3_p_0(check_hlds__det_report__VarTypes_26, check_hlds__det_report__SwitchVar_64, &check_hlds__det_report__SwitchVarType_27);
+                  }
+                  {
+                    check_hlds__det_report__reqscope_check_goal_detism_for_cases_7_p_0(check_hlds__det_report__RequiredDetism_66, check_hlds__det_report__SwitchVar_64, check_hlds__det_report__SwitchVarType_27, check_hlds__det_report__Cases_65, check_hlds__det_report__InstMap0_13, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+                  }
+                }
+              else
+                {
+                  MR_String check_hlds__det_report__ScopeWord_28 = ((&check_hlds__det_report_vector_common_7[0 + check_hlds__det_report__RequiredDetism_66]))->check_hlds__det_report__vector_common_type_7_0__vct_7_f_0;
+
+                  {
+                    check_hlds__det_report__generate_error_not_switch_on_required_var_5_p_0(check_hlds__det_report__RequiredVar_67, check_hlds__det_report__ScopeWord_28, check_hlds__det_report__ScopeGoalInfo_12, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50, check_hlds__det_report__STATE_VARIABLE_DetInfo_51);
+                  }
+                }
+              *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Word check_hlds__det_report__SubGoalInfo_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_11, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Detism_34;
+              MR_Word check_hlds__det_report__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_11, (MR_Integer) 0)));
+
+              {
+                check_hlds__det_report__Detism_34 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__SubGoalInfo_33);
+              }
+              switch (check_hlds__det_report__Detism_34) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 4:
+                  {
+                  }
+                  break;
+                case (MR_Integer) 5:
+                case (MR_Integer) 6:
+                case (MR_Integer) 7:
+                case (MR_Integer) 2:
+                case (MR_Integer) 3:
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "check_hlds.det_report", (MR_String) "predicate \140check_hlds.det_report.reqscope_check_scope\'/8", (MR_String) "Loop control scope with strange determinism");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                  }
+                  break;
+              }
+              *check_hlds__det_report__MaybeReportedSwitch_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              *check_hlds__det_report__STATE_VARIABLE_DetInfo_51 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_50;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__generate_error_not_switch_on_required_var_5_p_0(
+  MR_Word check_hlds__det_report__RequiredVar_6,
+  MR_String check_hlds__det_report__ScopeWord_7,
+  MR_Word check_hlds__det_report__ScopeGoalInfo_8,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_17,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_18)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__ProcInfo_10;
+    MR_Word check_hlds__det_report__VarSet_11;
+    MR_String check_hlds__det_report__RequiredVarStr_12;
+    MR_Word check_hlds__det_report__Pieces_13;
+    MR_Word check_hlds__det_report__Context_14;
+    MR_Word check_hlds__det_report__Msg_15;
+    MR_Word check_hlds__det_report__Spec_16;
+    MR_Word check_hlds__det_report__Var_21;
+    MR_Word check_hlds__det_report__Var_22;
+    MR_Word check_hlds__det_report__Var_23;
+    MR_Word check_hlds__det_report__Var_24;
+    MR_String check_hlds__det_report__Var_25;
+    MR_String check_hlds__det_report__Var_27;
+    MR_Word check_hlds__det_report__Var_29;
+    MR_Word check_hlds__det_report__Var_32;
+    MR_Word check_hlds__det_report__Var_35;
+    MR_Word check_hlds__det_report__Var_36;
+    MR_Word check_hlds__det_report__Var_43;
+    MR_Word check_hlds__det_report__Var_44;
+    MR_Word check_hlds__det_report__Var_48;
+
+    {
+      check_hlds__det_util__det_get_proc_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_17, &check_hlds__det_report__ProcInfo_10);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_10, &check_hlds__det_report__VarSet_11);
+    }
+    {
+      check_hlds__det_report__RequiredVarStr_12 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_11, check_hlds__det_report__RequiredVar_6);
+    }
+    {
+      check_hlds__det_report__Var_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_22, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_22, 1) = ((MR_Box) (check_hlds__det_report__ScopeWord_7));
+    }
+    {
+      check_hlds__det_report__Var_27 = mercury__string__f_43_43_2_f_0(check_hlds__det_report__RequiredVarStr_12, (MR_String) "]");
+    }
+    {
+      check_hlds__det_report__Var_25 = mercury__string__f_43_43_2_f_0((MR_String) "[", check_hlds__det_report__Var_27);
+    }
+    {
+      check_hlds__det_report__Var_24 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_24, 0) = ((MR_Box) (check_hlds__det_report__Var_25));
+    }
+    {
+      check_hlds__det_report__Var_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_36, 1) = ((MR_Box) (check_hlds__det_report__RequiredVarStr_12));
+    }
+    {
+      check_hlds__det_report__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_35, 0) = ((MR_Box) (check_hlds__det_report__Var_36));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+    }
+    {
+      check_hlds__det_report__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_32, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[122])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_32, 1) = ((MR_Box) (check_hlds__det_report__Var_35));
+    }
+    {
+      check_hlds__det_report__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[121])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_29, 1) = ((MR_Box) (check_hlds__det_report__Var_32));
+    }
+    {
+      check_hlds__det_report__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_23, 0) = ((MR_Box) (check_hlds__det_report__Var_24));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_23, 1) = ((MR_Box) (check_hlds__det_report__Var_29));
+    }
+    {
+      check_hlds__det_report__Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_21, 0) = ((MR_Box) (check_hlds__det_report__Var_22));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_21, 1) = ((MR_Box) (check_hlds__det_report__Var_23));
+    }
+    {
+      check_hlds__det_report__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[120])));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_13, 1) = ((MR_Box) (check_hlds__det_report__Var_21));
+    }
+    {
+      check_hlds__det_report__Context_14 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__ScopeGoalInfo_8);
+    }
+    {
+      check_hlds__det_report__Var_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_44, 0) = ((MR_Box) (check_hlds__det_report__Pieces_13));
+    }
+    {
+      check_hlds__det_report__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 0) = ((MR_Box) (check_hlds__det_report__Var_44));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__det_report__Msg_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_15, 0) = ((MR_Box) (check_hlds__det_report__Context_14));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_15, 1) = ((MR_Box) (check_hlds__det_report__Var_43));
+    }
+    {
+      check_hlds__det_report__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 0) = ((MR_Box) (check_hlds__det_report__Msg_15));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__det_report__Spec_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_16, 2) = ((MR_Box) (check_hlds__det_report__Var_48));
+    }
+    {
+      check_hlds__det_util__det_info_add_error_spec_3_p_0(check_hlds__det_report__Spec_16, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_17, check_hlds__det_report__STATE_VARIABLE_DetInfo_18);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_for_cases_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_7 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6;
+        else
+          {
+            MR_Word check_hlds__det_report__Case_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__4_4, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Cases_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__4_4, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__MainConsId_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_18, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__OtherConsIds_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_18, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__Goal_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_18, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__ModuleInfo0_25;
+            MR_Word check_hlds__det_report__InstMap1_26;
+            MR_Word check_hlds__det_report__ModuleInfo_27;
+            MR_Word check_hlds__det_report__CheckKind_28;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_31_31;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_32_32;
+
+            {
+              check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6, &check_hlds__det_report__ModuleInfo0_25);
+            }
+            {
+              hlds__instmap__bind_var_to_functors_8_p_0(check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__MainConsId_22, check_hlds__det_report__OtherConsIds_23, check_hlds__det_report__HeadVar__5_5, &check_hlds__det_report__InstMap1_26, check_hlds__det_report__ModuleInfo0_25, &check_hlds__det_report__ModuleInfo_27);
+            }
+            {
+              check_hlds__det_util__det_info_set_module_info_3_p_0(check_hlds__det_report__ModuleInfo_27, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6, &check_hlds__det_report__STATE_VARIABLE_DetInfo_31_31);
+            }
+            {
+              check_hlds__det_report__CheckKind_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_28, 0) = ((MR_Box) (check_hlds__det_report__HeadVar__2_2));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_28, 1) = ((MR_Box) (check_hlds__det_report__MainConsId_22));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_28, 2) = ((MR_Box) (check_hlds__det_report__OtherConsIds_23));
+            }
+            {
+              check_hlds__det_report__reqscope_check_goal_detism_6_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__Goal_24, check_hlds__det_report__CheckKind_28, check_hlds__det_report__InstMap1_26, check_hlds__det_report__STATE_VARIABLE_DetInfo_31_31, &check_hlds__det_report__STATE_VARIABLE_DetInfo_32_32);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__4_4 = check_hlds__det_report__Cases_19;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_6 = check_hlds__det_report__STATE_VARIABLE_DetInfo_32_32;
+
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6 = check_hlds__det_report__next_value_of_STATE_VARIABLE_DetInfo_0_6;
+              check_hlds__det_report__HeadVar__4_4 = check_hlds__det_report__next_value_of_HeadVar__4_4;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Box MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_6_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__det_report__wrapper_arg_2;
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_String check_hlds__det_report__conv0_HeadVar__2_2;
+
+    {
+      check_hlds__det_report__conv0_HeadVar__2_2 = parse_tree__prog_out__cons_id_and_arity_to_string_1_f_0(((MR_Word) check_hlds__det_report__wrapper_arg_1));
+    }
+    check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__2_2));
+    return check_hlds__det_report__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__reqscope_check_goal_detism_6_p_0(
+  MR_Word check_hlds__det_report__RequiredDetism_7,
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__CheckKind_9,
+  MR_Word check_hlds__det_report__InstMap0_10,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_36,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_37)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__GoalInfo_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 1)));
+    MR_Word check_hlds__det_report__ActualDetism_14;
+    MR_Word check_hlds__det_report__CompareResult_15;
+    MR_Word check_hlds__det_report__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 0)));
+
+    {
+      check_hlds__det_report__ActualDetism_14 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_13);
+    }
+    {
+      parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__ActualDetism_14, check_hlds__det_report__RequiredDetism_7, &check_hlds__det_report__CompareResult_15);
+    }
+    if (((MR_tag((MR_Word) check_hlds__det_report__CheckKind_9)) == (MR_mktag((MR_Integer) 0))))
+      check_hlds__det_report__succeeded = (check_hlds__det_report__CompareResult_15 == (MR_Integer) 1);
+    else
+      switch (check_hlds__det_report__CompareResult_15) {
+        default:
+          check_hlds__det_report__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 1:
+          check_hlds__det_report__succeeded = MR_TRUE;
+          break;
+        case (MR_Integer) 0:
+          check_hlds__det_report__succeeded = MR_TRUE;
+          break;
+      }
+    if (check_hlds__det_report__succeeded)
+      *check_hlds__det_report__STATE_VARIABLE_DetInfo_37 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_36;
+    else
+      {
+        MR_String check_hlds__det_report__RequiredDetismStr_20;
+        MR_String check_hlds__det_report__ActualDetismStr_21;
+        MR_Word check_hlds__det_report__Context_23;
+        MR_Word check_hlds__det_report__Pieces_24;
+        MR_Word check_hlds__det_report__Msg_33;
+        MR_Word check_hlds__det_report__SubMsgs_34;
+        MR_Word check_hlds__det_report__Spec_35;
+        MR_Word check_hlds__det_report__Var_96;
+        MR_Word check_hlds__det_report__Var_97;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100;
+        MR_Word check_hlds__det_report__Var_103;
+
+        {
+          check_hlds__det_report__RequiredDetismStr_20 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__RequiredDetism_7);
+        }
+        {
+          check_hlds__det_report__ActualDetismStr_21 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__ActualDetism_14);
+        }
+        if (((MR_tag((MR_Word) check_hlds__det_report__CheckKind_9)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word check_hlds__det_report__ScopeGoalInfo_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__CheckKind_9, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Var_77;
+            MR_Word check_hlds__det_report__Var_80;
+            MR_Word check_hlds__det_report__Var_81;
+            MR_Word check_hlds__det_report__Var_82;
+            MR_Word check_hlds__det_report__Var_85;
+            MR_Word check_hlds__det_report__Var_88;
+            MR_Word check_hlds__det_report__Var_89;
+
+            {
+              check_hlds__det_report__Context_23 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__ScopeGoalInfo_22);
+            }
+            {
+              check_hlds__det_report__Var_81 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_81, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_81, 1) = ((MR_Box) (check_hlds__det_report__RequiredDetismStr_20));
+            }
+            {
+              check_hlds__det_report__Var_89 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_89, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_89, 1) = ((MR_Box) (check_hlds__det_report__ActualDetismStr_21));
+            }
+            {
+              check_hlds__det_report__Var_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_88, 0) = ((MR_Box) (check_hlds__det_report__Var_89));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_88, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+            }
+            {
+              check_hlds__det_report__Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_85, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[115])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_85, 1) = ((MR_Box) (check_hlds__det_report__Var_88));
+            }
+            {
+              check_hlds__det_report__Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_82, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[100])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_82, 1) = ((MR_Box) (check_hlds__det_report__Var_85));
+            }
+            {
+              check_hlds__det_report__Var_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_80, 0) = ((MR_Box) (check_hlds__det_report__Var_81));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_80, 1) = ((MR_Box) (check_hlds__det_report__Var_82));
+            }
+            {
+              check_hlds__det_report__Var_77 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_77, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[114])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_77, 1) = ((MR_Box) (check_hlds__det_report__Var_80));
+            }
+            {
+              check_hlds__det_report__Pieces_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[113])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_24, 1) = ((MR_Box) (check_hlds__det_report__Var_77));
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__TypeCtorInfo_110_110;
+            MR_Word check_hlds__det_report__SwitchVar_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_9, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__MainConsId_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_9, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__OtherConsIds_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__CheckKind_9, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__VarSet_28;
+            MR_String check_hlds__det_report__SwitchVarName_29;
+            MR_String check_hlds__det_report__MainConsIdStr_30;
+            MR_Word check_hlds__det_report__OtherConsIdStrs_31;
+            MR_Word check_hlds__det_report__ConsIdsPieces_32;
+            MR_Word check_hlds__det_report__Var_39;
+            MR_Word check_hlds__det_report__Var_40;
+            MR_Word check_hlds__det_report__Var_43;
+            MR_Word check_hlds__det_report__Var_44;
+            MR_Word check_hlds__det_report__Var_45;
+            MR_Word check_hlds__det_report__Var_48;
+            MR_Word check_hlds__det_report__Var_51;
+            MR_Word check_hlds__det_report__Var_52;
+            MR_Word check_hlds__det_report__Var_63;
+            MR_Word check_hlds__det_report__Var_64;
+            MR_Word check_hlds__det_report__Var_67;
+            MR_Word check_hlds__det_report__Var_68;
+
+            {
+              check_hlds__det_report__Context_23 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_13);
+            }
+            {
+              check_hlds__det_util__det_info_get_varset_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_36, &check_hlds__det_report__VarSet_28);
+            }
+            {
+              mercury__varset__lookup_name_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_28, check_hlds__det_report__SwitchVar_25, &check_hlds__det_report__SwitchVarName_29);
+            }
+            {
+              check_hlds__det_report__MainConsIdStr_30 = parse_tree__prog_out__cons_id_and_arity_to_string_1_f_0(check_hlds__det_report__MainConsId_26);
+            }
+            {
+              check_hlds__det_report__OtherConsIdStrs_31 = mercury__list__map_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &check_hlds__det_report_scalar_common_1[3], check_hlds__det_report__OtherConsIds_27);
+            }
+            {
+              check_hlds__det_report__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 0) = ((MR_Box) (check_hlds__det_report__MainConsIdStr_30));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__OtherConsIdStrs_31));
+            }
+            {
+              check_hlds__det_report__ConsIdsPieces_32 = parse_tree__error_util__list_to_pieces_1_f_0(check_hlds__det_report__Var_39);
+            }
+            check_hlds__det_report__TypeCtorInfo_110_110 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+            {
+              check_hlds__det_report__Var_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_44, 1) = ((MR_Box) (check_hlds__det_report__SwitchVarName_29));
+            }
+            {
+              check_hlds__det_report__Var_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_52, 1) = ((MR_Box) (check_hlds__det_report__RequiredDetismStr_20));
+            }
+            {
+              check_hlds__det_report__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_51, 0) = ((MR_Box) (check_hlds__det_report__Var_52));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[69])));
+            }
+            {
+              check_hlds__det_report__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[118])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 1) = ((MR_Box) (check_hlds__det_report__Var_51));
+            }
+            {
+              check_hlds__det_report__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[117])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 1) = ((MR_Box) (check_hlds__det_report__Var_48));
+            }
+            {
+              check_hlds__det_report__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 0) = ((MR_Box) (check_hlds__det_report__Var_44));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 1) = ((MR_Box) (check_hlds__det_report__Var_45));
+            }
+            {
+              check_hlds__det_report__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_40, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[116])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_40, 1) = ((MR_Box) (check_hlds__det_report__Var_43));
+            }
+            {
+              check_hlds__det_report__Var_68 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_68, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_68, 1) = ((MR_Box) (check_hlds__det_report__ActualDetismStr_21));
+            }
+            {
+              check_hlds__det_report__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_67, 0) = ((MR_Box) (check_hlds__det_report__Var_68));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_67, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+            }
+            {
+              check_hlds__det_report__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_64, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[119])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_64, 1) = ((MR_Box) (check_hlds__det_report__Var_67));
+            }
+            {
+              check_hlds__det_report__Var_63 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_110_110, check_hlds__det_report__ConsIdsPieces_32, check_hlds__det_report__Var_64);
+            }
+            {
+              check_hlds__det_report__Pieces_24 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_110_110, check_hlds__det_report__Var_40, check_hlds__det_report__Var_63);
+            }
+          }
+        {
+          check_hlds__det_report__Var_97 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_97, 0) = ((MR_Box) (check_hlds__det_report__Pieces_24));
+        }
+        {
+          check_hlds__det_report__Var_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_96, 0) = ((MR_Box) (check_hlds__det_report__Var_97));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_96, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__det_report__Msg_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_33, 0) = ((MR_Box) (check_hlds__det_report__Context_23));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_33, 1) = ((MR_Box) (check_hlds__det_report__Var_96));
+        }
+        {
+          check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__Goal_8, check_hlds__det_report__InstMap0_10, check_hlds__det_report__RequiredDetism_7, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__STATE_VARIABLE_DetInfo_0_36, &check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100, &check_hlds__det_report__SubMsgs_34);
+        }
+        {
+          check_hlds__det_report__Var_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_103, 0) = ((MR_Box) (check_hlds__det_report__Msg_33));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_103, 1) = ((MR_Box) (check_hlds__det_report__SubMsgs_34));
+        }
+        {
+          check_hlds__det_report__Spec_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_35, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_35, 2) = ((MR_Box) (check_hlds__det_report__Var_103));
+        }
+        {
+          check_hlds__det_util__det_info_add_error_spec_3_p_0(check_hlds__det_report__Spec_35, check_hlds__det_report__STATE_VARIABLE_DetInfo_100_100, check_hlds__det_report__STATE_VARIABLE_DetInfo_37);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_orelse_goals_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__InstMap0_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_6,
+  MR_Word * check_hlds__det_report__HeadVar__7_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__det_report__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_6 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Goal_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Goals_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Msgs1_21;
+        MR_Word check_hlds__det_report__Msgs2_22;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25;
+        MR_Word check_hlds__det_report__GoalExpr_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_14, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__GoalInfo_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_14, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Actual_38;
+        MR_Word check_hlds__det_report__CompareResult_39;
+
+        {
+          check_hlds__det_report__Actual_38 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_37);
+        }
+        {
+          parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__Actual_38, &check_hlds__det_report__CompareResult_39);
+        }
+        switch (check_hlds__det_report__CompareResult_39) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 0:
+            {
+              check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_36, check_hlds__det_report__GoalInfo_37, check_hlds__det_report__InstMap0_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__Actual_38, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5, &check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25, &check_hlds__det_report__Msgs1_21);
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            {
+              check_hlds__det_report__Msgs1_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5;
+            }
+            break;
+        }
+        {
+          check_hlds__det_report__det_diagnose_orelse_goals_7_p_0(check_hlds__det_report__Goals_15, check_hlds__det_report__InstMap0_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__STATE_VARIABLE_DetInfo_25_25, check_hlds__det_report__STATE_VARIABLE_DetInfo_6, &check_hlds__det_report__Msgs2_22);
+        }
+        {
+          *check_hlds__det_report__HeadVar__7_7 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Msgs1_21, check_hlds__det_report__Msgs2_22);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_switch_arms_9_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__InstMap0_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__HeadVar__6_6,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_8,
+  MR_Word * check_hlds__det_report__HeadVar__9_9)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__det_report__HeadVar__9_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_8 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Case_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Cases_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__MainConsId_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_20, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__OtherConsIds_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_20, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Goal_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_20, (MR_Integer) 2)));
+        MR_Word check_hlds__det_report__GoalSeq_30;
+        MR_Word check_hlds__det_report__MainMatch_31;
+        MR_Word check_hlds__det_report__OtherMatches_32;
+        MR_Word check_hlds__det_report__NewSwitchContext_33;
+        MR_Word check_hlds__det_report__SwitchContexts1_34;
+        MR_Word check_hlds__det_report__ModuleInfo0_35;
+        MR_Word check_hlds__det_report__InstMap1_36;
+        MR_Word check_hlds__det_report__ModuleInfo_37;
+        MR_Word check_hlds__det_report__Msgs1_38;
+        MR_Word check_hlds__det_report__Msgs2_39;
+        MR_Word check_hlds__det_report__Var_42;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_44_44;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_45_45;
+        MR_Word check_hlds__det_report__GoalExpr_56;
+        MR_Word check_hlds__det_report__GoalInfo_57;
+        MR_Word check_hlds__det_report__Actual_58;
+        MR_Word check_hlds__det_report__CompareResult_59;
+
+        {
+          hlds__hlds_goal__goal_to_conj_list_2_p_0(check_hlds__det_report__Goal_29, &check_hlds__det_report__GoalSeq_30);
+        }
+        {
+          check_hlds__det_report__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_42, 0) = ((MR_Box) (check_hlds__det_report__HeadVar__1_1));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__det_report__find_switch_var_matches_6_p_0(check_hlds__det_report__GoalSeq_30, check_hlds__det_report__Var_42, check_hlds__det_report__MainConsId_27, check_hlds__det_report__OtherConsIds_28, &check_hlds__det_report__MainMatch_31, &check_hlds__det_report__OtherMatches_32);
+        }
+        {
+          check_hlds__det_report__NewSwitchContext_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_33, 0) = ((MR_Box) (check_hlds__det_report__HeadVar__1_1));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_33, 1) = ((MR_Box) (check_hlds__det_report__MainMatch_31));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__NewSwitchContext_33, 2) = ((MR_Box) (check_hlds__det_report__OtherMatches_32));
+        }
+        {
+          check_hlds__det_report__SwitchContexts1_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__SwitchContexts1_34, 0) = ((MR_Box) (check_hlds__det_report__NewSwitchContext_33));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__SwitchContexts1_34, 1) = ((MR_Box) (check_hlds__det_report__HeadVar__6_6));
+        }
+        {
+          check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7, &check_hlds__det_report__ModuleInfo0_35);
+        }
+        {
+          hlds__instmap__bind_var_to_functors_8_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__MainConsId_27, check_hlds__det_report__OtherConsIds_28, check_hlds__det_report__InstMap0_4, &check_hlds__det_report__InstMap1_36, check_hlds__det_report__ModuleInfo0_35, &check_hlds__det_report__ModuleInfo_37);
+        }
+        {
+          check_hlds__det_util__det_info_set_module_info_3_p_0(check_hlds__det_report__ModuleInfo_37, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_7, &check_hlds__det_report__STATE_VARIABLE_DetInfo_44_44);
+        }
+        check_hlds__det_report__GoalExpr_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_29, (MR_Integer) 0)));
+        check_hlds__det_report__GoalInfo_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_29, (MR_Integer) 1)));
+        {
+          check_hlds__det_report__Actual_58 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_57);
+        }
+        {
+          parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__Actual_58, &check_hlds__det_report__CompareResult_59);
+        }
+        switch (check_hlds__det_report__CompareResult_59) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 0:
+            {
+              check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_56, check_hlds__det_report__GoalInfo_57, check_hlds__det_report__InstMap1_36, check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__Actual_58, check_hlds__det_report__SwitchContexts1_34, check_hlds__det_report__STATE_VARIABLE_DetInfo_44_44, &check_hlds__det_report__STATE_VARIABLE_DetInfo_45_45, &check_hlds__det_report__Msgs1_38);
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            {
+              check_hlds__det_report__Msgs1_38 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_45_45 = check_hlds__det_report__STATE_VARIABLE_DetInfo_44_44;
+            }
+            break;
+        }
+        {
+          check_hlds__det_report__det_diagnose_switch_arms_9_p_0(check_hlds__det_report__HeadVar__1_1, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__Cases_21, check_hlds__det_report__InstMap0_4, check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__HeadVar__6_6, check_hlds__det_report__STATE_VARIABLE_DetInfo_45_45, check_hlds__det_report__STATE_VARIABLE_DetInfo_8, &check_hlds__det_report__Msgs2_39);
+        }
+        {
+          *check_hlds__det_report__HeadVar__9_9 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Msgs1_38, check_hlds__det_report__Msgs2_39);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_disj_10_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__HeadVar__5_5,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_7,
+  MR_Integer check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_0_8,
+  MR_Integer * check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_9,
+  MR_Word * check_hlds__det_report__HeadVar__10_10)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__det_report__HeadVar__10_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_9 = check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_0_8;
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_7 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Goal_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Goals_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ActualCanFail_30;
+        MR_Word check_hlds__det_report__DesiredCanFail_32;
+        MR_Word check_hlds__det_report__DesiredSolns_33;
+        MR_Word check_hlds__det_report__ClauseCanFail_34;
+        MR_Word check_hlds__det_report__ClauseDesired_35;
+        MR_Word check_hlds__det_report__Msgs1_36;
+        MR_Word check_hlds__det_report__Msgs2_41;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_46_46;
+        MR_Integer check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_48_48;
+        MR_Word check_hlds__det_report__GoalExpr_62;
+        MR_Word check_hlds__det_report__GoalInfo_63;
+        MR_Word check_hlds__det_report__Actual_64;
+        MR_Word check_hlds__det_report__CompareResult_65;
+        MR_Word check_hlds__det_report__Var_31;
+        MR_Word check_hlds__det_report__GoalInfo_38;
+        MR_Word check_hlds__det_report__GoalDetism_39;
+        MR_Word check_hlds__det_report__Var_53;
+        MR_Word check_hlds__det_report__Var_37;
+        MR_Word check_hlds__det_report__Var_40;
+
+        {
+          parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__HeadVar__4_4, &check_hlds__det_report__ActualCanFail_30, &check_hlds__det_report__Var_31);
+        }
+        {
+          parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__HeadVar__3_3, &check_hlds__det_report__DesiredCanFail_32, &check_hlds__det_report__DesiredSolns_33);
+        }
+        check_hlds__det_report__succeeded = (check_hlds__det_report__DesiredCanFail_32 == (MR_Integer) 1);
+        if (check_hlds__det_report__succeeded)
+          check_hlds__det_report__succeeded = (check_hlds__det_report__ActualCanFail_30 == (MR_Integer) 0);
+        if (check_hlds__det_report__succeeded)
+          check_hlds__det_report__ClauseCanFail_34 = (MR_Integer) 1;
+        else
+          check_hlds__det_report__ClauseCanFail_34 = (MR_Integer) 0;
+        {
+          parse_tree__prog_data__determinism_components_3_p_1(&check_hlds__det_report__ClauseDesired_35, check_hlds__det_report__ClauseCanFail_34, check_hlds__det_report__DesiredSolns_33);
+        }
+        check_hlds__det_report__GoalExpr_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_21, (MR_Integer) 0)));
+        check_hlds__det_report__GoalInfo_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_21, (MR_Integer) 1)));
+        {
+          check_hlds__det_report__Actual_64 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_63);
+        }
+        {
+          parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__ClauseDesired_35, check_hlds__det_report__Actual_64, &check_hlds__det_report__CompareResult_65);
+        }
+        switch (check_hlds__det_report__CompareResult_65) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 0:
+            {
+              check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_62, check_hlds__det_report__GoalInfo_63, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__ClauseDesired_35, check_hlds__det_report__Actual_64, check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6, &check_hlds__det_report__STATE_VARIABLE_DetInfo_46_46, &check_hlds__det_report__Msgs1_36);
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            {
+              check_hlds__det_report__Msgs1_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_46_46 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_6;
+            }
+            break;
+        }
+        check_hlds__det_report__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_21, (MR_Integer) 0)));
+        check_hlds__det_report__GoalInfo_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_21, (MR_Integer) 1)));
+        {
+          check_hlds__det_report__GoalDetism_39 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_38);
+        }
+        {
+          parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__GoalDetism_39, &check_hlds__det_report__Var_40, &check_hlds__det_report__Var_53);
+        }
+        check_hlds__det_report__succeeded = ((MR_Integer) 0 == check_hlds__det_report__Var_53);
+        if (check_hlds__det_report__succeeded)
+          check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_48_48 = check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_0_8;
+        else
+          {
+            check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_48_48 = (check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_0_8 + (MR_Integer) 1);
+          }
+        {
+          check_hlds__det_report__det_diagnose_disj_10_p_0(check_hlds__det_report__Goals_22, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__HeadVar__5_5, check_hlds__det_report__STATE_VARIABLE_DetInfo_46_46, check_hlds__det_report__STATE_VARIABLE_DetInfo_7, check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_48_48, check_hlds__det_report__STATE_VARIABLE_DisjunctsWithSoln_9, &check_hlds__det_report__Msgs2_41);
+        }
+        {
+          *check_hlds__det_report__HeadVar__10_10 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Msgs1_36, check_hlds__det_report__Msgs2_41);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_goal_expr_9_p_0(
+  MR_Word check_hlds__det_report__GoalExpr_10,
+  MR_Word check_hlds__det_report__GoalInfo_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__Desired_13,
+  MR_Word check_hlds__det_report__Actual_14,
+  MR_Word check_hlds__det_report__SwitchContexts_15,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_116,
+  MR_Word * check_hlds__det_report__Msgs_17)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    switch (MR_tag((MR_Word) check_hlds__det_report__GoalExpr_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__det_report__DesiredCanFail_90;
+          MR_Word check_hlds__det_report__ActualCanFail_91;
+          MR_Word check_hlds__det_report__ActualSolns_92;
+          MR_Word check_hlds__det_report__DesiredSolns_247;
+
+          {
+            parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_13, &check_hlds__det_report__DesiredCanFail_90, &check_hlds__det_report__DesiredSolns_247);
+          }
+          {
+            parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Actual_14, &check_hlds__det_report__ActualCanFail_91, &check_hlds__det_report__ActualSolns_92);
+          }
+          check_hlds__det_report__succeeded = (check_hlds__det_report__DesiredCanFail_90 == (MR_Integer) 1);
+          if (check_hlds__det_report__succeeded)
+            check_hlds__det_report__succeeded = (check_hlds__det_report__ActualCanFail_91 == (MR_Integer) 0);
+          if (check_hlds__det_report__succeeded)
+            {
+              MR_Word check_hlds__det_report__Var_130;
+              MR_Word check_hlds__det_report__Context_237;
+
+              {
+                check_hlds__det_report__Context_237 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+              }
+              {
+                check_hlds__det_report__Var_130 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_130, 0) = ((MR_Box) (check_hlds__det_report__Context_237));
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_130, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[111])));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__det_report__Msgs_17 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_130));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+          else
+            {
+              check_hlds__det_report__succeeded = (check_hlds__det_report__DesiredSolns_247 == (MR_Integer) 0);
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__succeeded = (check_hlds__det_report__ActualSolns_92 == (MR_Integer) 0);
+                  check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_Word check_hlds__det_report__Var_140;
+                  MR_Word check_hlds__det_report__Context_239;
+
+                  {
+                    check_hlds__det_report__Context_239 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+                  }
+                  {
+                    check_hlds__det_report__Var_140 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_140, 0) = ((MR_Box) (check_hlds__det_report__Context_239));
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_140, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[112])));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *check_hlds__det_report__Msgs_17 = base;
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_140));
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                }
+              else
+                *check_hlds__det_report__Msgs_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_116 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__det_report__LHS_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_10, (MR_Integer) 0)));
+          MR_Word check_hlds__det_report__RHS_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+          MR_Word check_hlds__det_report__UnifyContext_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_10, (MR_Integer) 4)));
+          MR_Word check_hlds__det_report__Context_234;
+          MR_Word check_hlds__det_report__StartingPieces_235;
+          MR_Word check_hlds__det_report__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+          MR_Word check_hlds__det_report__Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_10, (MR_Integer) 3)));
+
+          {
+            check_hlds__det_report__Context_234 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+          }
+          {
+            check_hlds__det_report__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_114_101_112_111_114_116_95_117_110_105_102_121_95_99_111_110_116_101_120_116_95_95_91_51_93_95_48_8_p_0((MR_Integer) 0, (MR_Integer) 0, check_hlds__det_report__UnifyContext_63, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__LHS_59, check_hlds__det_report__RHS_60, &check_hlds__det_report__StartingPieces_235);
+          }
+          {
+            check_hlds__det_report__det_diagnose_primitive_goal_5_p_0(check_hlds__det_report__Desired_13, check_hlds__det_report__Actual_14, check_hlds__det_report__Context_234, check_hlds__det_report__StartingPieces_235, check_hlds__det_report__Msgs_17);
+          }
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_116 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__det_report__PredId_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 0)));
+          MR_Integer check_hlds__det_report__ProcId_45 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+          MR_Word check_hlds__det_report__CallContext_48 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 4)));
+          MR_Word check_hlds__det_report__InitMsgs_50;
+          MR_Word check_hlds__det_report__StartingPieces_51;
+          MR_Word check_hlds__det_report__AtomicMsgs_52;
+          MR_Word check_hlds__det_report__Context_231;
+          MR_Word check_hlds__det_report__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+          MR_Word check_hlds__det_report__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 3)));
+          MR_Word check_hlds__det_report__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__GoalExpr_10, (MR_Integer) 5)));
+
+          {
+            check_hlds__det_report__Context_231 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+          }
+          {
+            check_hlds__det_report__det_report_call_context_7_p_0(check_hlds__det_report__Context_231, check_hlds__det_report__CallContext_48, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__PredId_44, check_hlds__det_report__ProcId_45, &check_hlds__det_report__InitMsgs_50, &check_hlds__det_report__StartingPieces_51);
+          }
+          {
+            check_hlds__det_report__det_diagnose_primitive_goal_5_p_0(check_hlds__det_report__Desired_13, check_hlds__det_report__Actual_14, check_hlds__det_report__Context_231, check_hlds__det_report__StartingPieces_51, &check_hlds__det_report__AtomicMsgs_52);
+          }
+          {
+            *check_hlds__det_report__Msgs_17 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__InitMsgs_50, check_hlds__det_report__AtomicMsgs_52);
+          }
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_116 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__det_report__GenericCall_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__GenericCallId_58;
+              MR_Word check_hlds__det_report__Var_170;
+              MR_String check_hlds__det_report__Var_171;
+              MR_Word check_hlds__det_report__Context_232;
+              MR_Word check_hlds__det_report__StartingPieces_233;
+              MR_Word check_hlds__det_report__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 3)));
+              MR_Word check_hlds__det_report__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 4)));
+              MR_Word check_hlds__det_report__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 5)));
+
+              {
+                check_hlds__det_report__Context_232 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+              }
+              {
+                hlds__hlds_goal__generic_call_to_id_2_p_0(check_hlds__det_report__GenericCall_53, &check_hlds__det_report__GenericCallId_58);
+              }
+              {
+                check_hlds__det_report__Var_171 = hlds__hlds_out__hlds_out_util__generic_call_id_to_string_1_f_0(check_hlds__det_report__GenericCallId_58);
+              }
+              {
+                check_hlds__det_report__Var_170 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_170, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_170, 1) = ((MR_Box) (check_hlds__det_report__Var_171));
+              }
+              {
+                check_hlds__det_report__StartingPieces_233 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__StartingPieces_233, 0) = ((MR_Box) (check_hlds__det_report__Var_170));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__StartingPieces_233, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                check_hlds__det_report__det_diagnose_primitive_goal_5_p_0(check_hlds__det_report__Desired_13, check_hlds__det_report__Actual_14, check_hlds__det_report__Context_232, check_hlds__det_report__StartingPieces_233, check_hlds__det_report__Msgs_17);
+              }
+              *check_hlds__det_report__STATE_VARIABLE_DetInfo_116 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_String check_hlds__det_report__DesiredStr_71;
+              MR_Word check_hlds__det_report__Pieces_72;
+              MR_Word check_hlds__det_report__Var_152;
+              MR_Word check_hlds__det_report__Var_155;
+              MR_Word check_hlds__det_report__Var_156;
+              MR_Word check_hlds__det_report__Var_163;
+              MR_Word check_hlds__det_report__Var_164;
+              MR_Word check_hlds__det_report__Var_165;
+              MR_Word check_hlds__det_report__Context_236;
+
+              {
+                check_hlds__det_report__Context_236 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+              }
+              {
+                check_hlds__det_report__DesiredStr_71 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__Desired_13);
+              }
+              {
+                check_hlds__det_report__Var_156 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_156, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_156, 1) = ((MR_Box) (check_hlds__det_report__DesiredStr_71));
+              }
+              {
+                check_hlds__det_report__Var_155 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_155, 0) = ((MR_Box) (check_hlds__det_report__Var_156));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_155, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+              }
+              {
+                check_hlds__det_report__Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_152, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[110])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_152, 1) = ((MR_Box) (check_hlds__det_report__Var_155));
+              }
+              {
+                check_hlds__det_report__Pieces_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_72, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[109])));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_72, 1) = ((MR_Box) (check_hlds__det_report__Var_152));
+              }
+              {
+                check_hlds__det_report__Var_165 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_165, 0) = ((MR_Box) (check_hlds__det_report__Pieces_72));
+              }
+              {
+                check_hlds__det_report__Var_164 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_164, 0) = ((MR_Box) (check_hlds__det_report__Var_165));
+                MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_164, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                check_hlds__det_report__Var_163 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_163, 0) = ((MR_Box) (check_hlds__det_report__Context_236));
+                MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_163, 1) = ((MR_Box) (check_hlds__det_report__Var_164));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__det_report__Msgs_17 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_163));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              *check_hlds__det_report__STATE_VARIABLE_DetInfo_116 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__det_report__Goals_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+
+              {
+                check_hlds__det_report__det_diagnose_conj_7_p_0(check_hlds__det_report__Goals_19, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, check_hlds__det_report__Msgs_17);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Integer check_hlds__det_report__DisjunctsWithSoln_20;
+              MR_Word check_hlds__det_report__Msgs1_21;
+              MR_Word check_hlds__det_report__DesSolns_23;
+              MR_Word check_hlds__det_report__Goals_222 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Var_22;
+              MR_Integer check_hlds__det_report__Var_207;
+
+              {
+                check_hlds__det_report__det_diagnose_disj_10_p_0(check_hlds__det_report__Goals_222, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__Actual_14, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, (MR_Integer) 0, &check_hlds__det_report__DisjunctsWithSoln_20, &check_hlds__det_report__Msgs1_21);
+              }
+              {
+                parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_13, &check_hlds__det_report__Var_22, &check_hlds__det_report__DesSolns_23);
+              }
+              check_hlds__det_report__succeeded = (check_hlds__det_report__DesSolns_23 == (MR_Integer) 3);
+              check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__succeeded = (check_hlds__det_report__DesSolns_23 == (MR_Integer) 2);
+                  check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                  if (check_hlds__det_report__succeeded)
+                    {
+                      check_hlds__det_report__Var_207 = (MR_Integer) 1;
+                      check_hlds__det_report__succeeded = (check_hlds__det_report__DisjunctsWithSoln_20 > check_hlds__det_report__Var_207);
+                    }
+                }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_Word check_hlds__det_report__Context_24;
+                  MR_Word check_hlds__det_report__NestingPieces_25;
+                  MR_Word check_hlds__det_report__Msg_27;
+                  MR_Word check_hlds__det_report__Var_215;
+                  MR_Word check_hlds__det_report__Var_216;
+                  MR_Word check_hlds__det_report__Var_217;
+                  MR_Word check_hlds__det_report__Var_219;
+
+                  {
+                    check_hlds__det_report__Context_24 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+                  }
+                  {
+                    check_hlds__det_report__det_diagnose_switch_context_3_p_0(*check_hlds__det_report__STATE_VARIABLE_DetInfo_116, check_hlds__det_report__SwitchContexts_15, &check_hlds__det_report__NestingPieces_25);
+                  }
+                  {
+                    check_hlds__det_report__Var_217 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_25, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[50]));
+                  }
+                  {
+                    check_hlds__det_report__Var_216 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_216, 0) = ((MR_Box) (check_hlds__det_report__Var_217));
+                  }
+                  {
+                    check_hlds__det_report__Var_215 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_215, 0) = ((MR_Box) (check_hlds__det_report__Var_216));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_215, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__det_report__Msg_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_27, 0) = ((MR_Box) (check_hlds__det_report__Context_24));
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_27, 1) = ((MR_Box) (check_hlds__det_report__Var_215));
+                  }
+                  {
+                    check_hlds__det_report__Var_219 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_219, 0) = ((MR_Box) (check_hlds__det_report__Msg_27));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_219, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    *check_hlds__det_report__Msgs_17 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Var_219, check_hlds__det_report__Msgs1_21);
+                  }
+                }
+              else
+                *check_hlds__det_report__Msgs_17 = check_hlds__det_report__Msgs1_21;
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word check_hlds__det_report__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__SwitchCanFail_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Cases_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 3)));
+              MR_Word check_hlds__det_report__VarTypes_41;
+              MR_Word check_hlds__det_report__VarType_42;
+              MR_Word check_hlds__det_report__Msgs2_43;
+              MR_Word check_hlds__det_report__Msgs1_228;
+              MR_Word check_hlds__det_report__Var_173;
+              MR_Word check_hlds__det_report__Var_259;
+              MR_Word check_hlds__det_report__Var_31;
+
+              check_hlds__det_report__succeeded = (check_hlds__det_report__SwitchCanFail_29 == (MR_Integer) 0);
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__Var_173 = (MR_Integer) 1;
+                  {
+                    parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_13, &check_hlds__det_report__Var_259, &check_hlds__det_report__Var_31);
+                  }
+                  check_hlds__det_report__succeeded = (check_hlds__det_report__Var_173 == check_hlds__det_report__Var_259);
+                }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_String check_hlds__det_report__VarStr_32;
+                  MR_Word check_hlds__det_report__MaybeMissingInfo_33;
+                  MR_Word check_hlds__det_report__Component_40;
+                  MR_Word check_hlds__det_report__Var_200;
+                  MR_Word check_hlds__det_report__Var_201;
+                  MR_Word check_hlds__det_report__Context_224;
+                  MR_Word check_hlds__det_report__NestingPieces_225;
+
+                  {
+                    check_hlds__det_report__Context_224 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_11);
+                  }
+                  {
+                    check_hlds__det_report__find_missing_cons_ids_9_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_3[4]), check_hlds__det_report__InstMap0_12, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__Var_28, check_hlds__det_report__Cases_30, &check_hlds__det_report__NestingPieces_225, &check_hlds__det_report__VarStr_32, &check_hlds__det_report__MaybeMissingInfo_33);
+                  }
+                  if ((check_hlds__det_report__MaybeMissingInfo_33 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      MR_Word check_hlds__det_report__Var_177;
+                      MR_Word check_hlds__det_report__Var_180;
+                      MR_Word check_hlds__det_report__Var_181;
+                      MR_Word check_hlds__det_report__Var_188;
+                      MR_Word check_hlds__det_report__NoCoverPieces_223;
+
+                      {
+                        check_hlds__det_report__Var_181 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_181, 0) = ((MR_Box) (check_hlds__det_report__VarStr_32));
+                      }
+                      {
+                        check_hlds__det_report__Var_180 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_180, 0) = ((MR_Box) (check_hlds__det_report__Var_181));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_180, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[56])));
+                      }
+                      {
+                        check_hlds__det_report__Var_177 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_177, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[87])));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_177, 1) = ((MR_Box) (check_hlds__det_report__Var_180));
+                      }
+                      {
+                        check_hlds__det_report__NoCoverPieces_223 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_223, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_223, 1) = ((MR_Box) (check_hlds__det_report__Var_177));
+                      }
+                      {
+                        check_hlds__det_report__Var_188 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_225, check_hlds__det_report__NoCoverPieces_223);
+                      }
+                      {
+                        check_hlds__det_report__Component_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__det_report__Component_40, 0) = ((MR_Box) (check_hlds__det_report__Var_188));
+                      }
+                    }
+                  else
+                    {
+                      MR_Word check_hlds__det_report__MissingInfo_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeMissingInfo_33, (MR_Integer) 0)));
+                      MR_Word check_hlds__det_report__MainPieces_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_34, (MR_Integer) 2)));
+                      MR_Word check_hlds__det_report__VerbosePieces_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_34, (MR_Integer) 3)));
+                      MR_Word check_hlds__det_report__NoCoverPieces_39;
+                      MR_Word check_hlds__det_report__Var_190;
+                      MR_Word check_hlds__det_report__Var_193;
+                      MR_Word check_hlds__det_report__Var_194;
+                      MR_Word check_hlds__det_report__Var_199;
+                      MR_Integer check_hlds__det_report__Var_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_34, (MR_Integer) 0)));
+                      MR_Integer check_hlds__det_report__Var_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_34, (MR_Integer) 1)));
+
+                      {
+                        check_hlds__det_report__Var_194 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_194, 0) = ((MR_Box) (check_hlds__det_report__VarStr_32));
+                      }
+                      {
+                        check_hlds__det_report__Var_193 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_193, 0) = ((MR_Box) (check_hlds__det_report__Var_194));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_193, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[89])));
+                      }
+                      {
+                        check_hlds__det_report__Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_190, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[87])));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_190, 1) = ((MR_Box) (check_hlds__det_report__Var_193));
+                      }
+                      {
+                        check_hlds__det_report__NoCoverPieces_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_39, 1) = ((MR_Box) (check_hlds__det_report__Var_190));
+                      }
+                      {
+                        check_hlds__det_report__Var_199 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_225, check_hlds__det_report__NoCoverPieces_39);
+                      }
+                      {
+                        check_hlds__det_report__append_prefix_and_maybe_verbose_4_p_0(check_hlds__det_report__Var_199, check_hlds__det_report__MainPieces_37, check_hlds__det_report__VerbosePieces_38, &check_hlds__det_report__Component_40);
+                      }
+                    }
+                  {
+                    check_hlds__det_report__Var_201 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_201, 0) = ((MR_Box) (check_hlds__det_report__Component_40));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_201, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__det_report__Var_200 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_200, 0) = ((MR_Box) (check_hlds__det_report__Context_224));
+                    MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_200, 1) = ((MR_Box) (check_hlds__det_report__Var_201));
+                  }
+                  {
+                    check_hlds__det_report__Msgs1_228 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Msgs1_228, 0) = ((MR_Box) (check_hlds__det_report__Var_200));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__Msgs1_228, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                }
+              else
+                check_hlds__det_report__Msgs1_228 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                check_hlds__det_util__det_info_get_vartypes_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, &check_hlds__det_report__VarTypes_41);
+              }
+              {
+                hlds__vartypes__lookup_var_type_3_p_0(check_hlds__det_report__VarTypes_41, check_hlds__det_report__Var_28, &check_hlds__det_report__VarType_42);
+              }
+              {
+                check_hlds__det_report__det_diagnose_switch_arms_9_p_0(check_hlds__det_report__Var_28, check_hlds__det_report__VarType_42, check_hlds__det_report__Cases_30, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, &check_hlds__det_report__Msgs2_43);
+              }
+              {
+                *check_hlds__det_report__Msgs_17 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Msgs1_228, check_hlds__det_report__Msgs2_43);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__det_report__SubGoal_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__SubGoalInfo_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_94, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Internal_97;
+              MR_Word check_hlds__det_report__InternalDesired_98;
+              MR_Word check_hlds__det_report__Var_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_94, (MR_Integer) 0)));
+
+              {
+                check_hlds__det_report__Internal_97 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__SubGoalInfo_96);
+              }
+              check_hlds__det_report__succeeded = (check_hlds__det_report__Actual_14 == check_hlds__det_report__Internal_97);
+              if (check_hlds__det_report__succeeded)
+                check_hlds__det_report__InternalDesired_98 = check_hlds__det_report__Desired_13;
+              else
+                {
+                  MR_Word check_hlds__det_report__CanFail_99;
+                  MR_Word check_hlds__det_report__Var_100;
+
+                  {
+                    parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_13, &check_hlds__det_report__CanFail_99, &check_hlds__det_report__Var_100);
+                  }
+                  {
+                    parse_tree__prog_data__determinism_components_3_p_1(&check_hlds__det_report__InternalDesired_98, check_hlds__det_report__CanFail_99, (MR_Integer) 3);
+                  }
+                }
+              {
+                check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__SubGoal_94, check_hlds__det_report__InstMap0_12, check_hlds__det_report__InternalDesired_98, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, check_hlds__det_report__Msgs_17);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word check_hlds__det_report__TypeCtorInfo_257_257;
+              MR_Word check_hlds__det_report__Cond_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Then_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 3)));
+              MR_Word check_hlds__det_report__Else_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 4)));
+              MR_Word check_hlds__det_report__DesiredSolns_78;
+              MR_Word check_hlds__det_report__CondInfo_80;
+              MR_Word check_hlds__det_report__CondDetism_81;
+              MR_Word check_hlds__det_report__CondSolns_83;
+              MR_Word check_hlds__det_report__MsgsCond_85;
+              MR_Word check_hlds__det_report__InstMap1_86;
+              MR_Word check_hlds__det_report__MsgsThen_87;
+              MR_Word check_hlds__det_report__MsgsElse_88;
+              MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_146_146;
+              MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_147_147;
+              MR_Word check_hlds__det_report__Var_149;
+              MR_Word check_hlds__det_report___Vars_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report___DesiredCanFail_77;
+              MR_Word check_hlds__det_report___CondGoal_79;
+              MR_Word check_hlds__det_report___CondCanFail_82;
+
+              {
+                parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_13, &check_hlds__det_report___DesiredCanFail_77, &check_hlds__det_report__DesiredSolns_78);
+              }
+              check_hlds__det_report___CondGoal_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Cond_74, (MR_Integer) 0)));
+              check_hlds__det_report__CondInfo_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Cond_74, (MR_Integer) 1)));
+              {
+                check_hlds__det_report__CondDetism_81 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__CondInfo_80);
+              }
+              {
+                parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__CondDetism_81, &check_hlds__det_report___CondCanFail_82, &check_hlds__det_report__CondSolns_83);
+              }
+              check_hlds__det_report__succeeded = (check_hlds__det_report__CondSolns_83 == (MR_Integer) 3);
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report__succeeded = (check_hlds__det_report__DesiredSolns_78 == (MR_Integer) 3);
+                  check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+                }
+              if (check_hlds__det_report__succeeded)
+                {
+                  MR_Word check_hlds__det_report__DesiredCond_84;
+
+                  {
+                    parse_tree__prog_data__determinism_components_3_p_1(&check_hlds__det_report__DesiredCond_84, (MR_Integer) 0, check_hlds__det_report__DesiredSolns_78);
+                  }
+                  {
+                    check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__Cond_74, check_hlds__det_report__InstMap0_12, check_hlds__det_report__DesiredCond_84, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, &check_hlds__det_report__STATE_VARIABLE_DetInfo_146_146, &check_hlds__det_report__MsgsCond_85);
+                  }
+                }
+              else
+                {
+                  check_hlds__det_report__MsgsCond_85 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  check_hlds__det_report__STATE_VARIABLE_DetInfo_146_146 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115;
+                }
+              {
+                hlds__goal_util__update_instmap_3_p_0(check_hlds__det_report__Cond_74, check_hlds__det_report__InstMap0_12, &check_hlds__det_report__InstMap1_86);
+              }
+              {
+                check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__Then_75, check_hlds__det_report__InstMap1_86, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_146_146, &check_hlds__det_report__STATE_VARIABLE_DetInfo_147_147, &check_hlds__det_report__MsgsThen_87);
+              }
+              {
+                check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__Else_76, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_147_147, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, &check_hlds__det_report__MsgsElse_88);
+              }
+              check_hlds__det_report__TypeCtorInfo_257_257 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0;
+              {
+                check_hlds__det_report__Var_149 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_257_257, check_hlds__det_report__MsgsThen_87, check_hlds__det_report__MsgsElse_88);
+              }
+              {
+                *check_hlds__det_report__Msgs_17 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_257_257, check_hlds__det_report__MsgsCond_85, check_hlds__det_report__Var_149);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word check_hlds__det_report__ShortHand_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_10, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) check_hlds__det_report__ShortHand_101)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "check_hlds.det_report", (MR_String) "predicate \140check_hlds.det_report.det_diagnose_goal_expr\'/9", (MR_String) "bi_implication");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word check_hlds__det_report__MainGoal_106 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 4)));
+                    MR_Word check_hlds__det_report__OrElseGoals_107 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 5)));
+                    MR_Word check_hlds__det_report__MainMsgs_109;
+                    MR_Word check_hlds__det_report__OrElseMsgs_110;
+                    MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_121_121;
+                    MR_Word check_hlds__det_report__Var_102 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 0)));
+                    MR_Word check_hlds__det_report__Var_103 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 1)));
+                    MR_Word check_hlds__det_report__Var_104 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 2)));
+                    MR_Word check_hlds__det_report__Var_105 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 3)));
+                    MR_Word check_hlds__det_report__Var_108 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ShortHand_101, (MR_Integer) 6)));
+
+                    {
+                      check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__MainGoal_106, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, &check_hlds__det_report__STATE_VARIABLE_DetInfo_121_121, &check_hlds__det_report__MainMsgs_109);
+                    }
+                    {
+                      check_hlds__det_report__det_diagnose_orelse_goals_7_p_0(check_hlds__det_report__OrElseGoals_107, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_121_121, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, &check_hlds__det_report__OrElseMsgs_110);
+                    }
+                    {
+                      *check_hlds__det_report__Msgs_17 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__MainMsgs_109, check_hlds__det_report__OrElseMsgs_110);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word check_hlds__det_report__SubGoal_248 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_101, (MR_Integer) 2)));
+                    MR_Word check_hlds__det_report__Var_111 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_101, (MR_Integer) 0)));
+                    MR_Word check_hlds__det_report__Var_112 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__ShortHand_101, (MR_Integer) 1)));
+
+                    {
+                      check_hlds__det_report__det_diagnose_goal_7_p_0(check_hlds__det_report__SubGoal_248, check_hlds__det_report__InstMap0_12, check_hlds__det_report__Desired_13, check_hlds__det_report__SwitchContexts_15, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_115, check_hlds__det_report__STATE_VARIABLE_DetInfo_116, check_hlds__det_report__Msgs_17);
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_goal_7_p_0(
+  MR_Word check_hlds__det_report__Goal_8,
+  MR_Word check_hlds__det_report__InstMap0_9,
+  MR_Word check_hlds__det_report__Desired_10,
+  MR_Word check_hlds__det_report__SwitchContexts_11,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_18,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_19,
+  MR_Word * check_hlds__det_report__Msgs_13)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__GoalExpr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 0)));
+    MR_Word check_hlds__det_report__GoalInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_8, (MR_Integer) 1)));
+    MR_Word check_hlds__det_report__Actual_16;
+    MR_Word check_hlds__det_report__CompareResult_17;
+
+    {
+      check_hlds__det_report__Actual_16 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_15);
+    }
+    {
+      parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__Desired_10, check_hlds__det_report__Actual_16, &check_hlds__det_report__CompareResult_17);
+    }
+    switch (check_hlds__det_report__CompareResult_17) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 3:
+      case (MR_Integer) 0:
+        {
+          check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_14, check_hlds__det_report__GoalInfo_15, check_hlds__det_report__InstMap0_9, check_hlds__det_report__Desired_10, check_hlds__det_report__Actual_16, check_hlds__det_report__SwitchContexts_11, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_18, check_hlds__det_report__STATE_VARIABLE_DetInfo_19, check_hlds__det_report__Msgs_13);
+        }
+        break;
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        {
+          *check_hlds__det_report__Msgs_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *check_hlds__det_report__STATE_VARIABLE_DetInfo_19 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_18;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+check_hlds__det_report__det_diagnose_conj_7_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_6,
+  MR_Word * check_hlds__det_report__HeadVar__7_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__det_report__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__det_report__STATE_VARIABLE_DetInfo_6 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Goal_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Goals_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Msgs1_21;
+        MR_Word check_hlds__det_report__InstMap1_22;
+        MR_Word check_hlds__det_report__Msgs2_23;
+        MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_26_26;
+        MR_Word check_hlds__det_report__GoalExpr_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_14, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__GoalInfo_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_14, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Actual_39;
+        MR_Word check_hlds__det_report__CompareResult_40;
+
+        {
+          check_hlds__det_report__Actual_39 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(check_hlds__det_report__GoalInfo_38);
+        }
+        {
+          parse_tree__prog_detism__compare_determinisms_3_p_0(check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__Actual_39, &check_hlds__det_report__CompareResult_40);
+        }
+        switch (check_hlds__det_report__CompareResult_40) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 0:
+            {
+              check_hlds__det_report__det_diagnose_goal_expr_9_p_0(check_hlds__det_report__GoalExpr_37, check_hlds__det_report__GoalInfo_38, check_hlds__det_report__HeadVar__2_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__Actual_39, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5, &check_hlds__det_report__STATE_VARIABLE_DetInfo_26_26, &check_hlds__det_report__Msgs1_21);
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            {
+              check_hlds__det_report__Msgs1_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              check_hlds__det_report__STATE_VARIABLE_DetInfo_26_26 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_5;
+            }
+            break;
+        }
+        {
+          hlds__goal_util__update_instmap_3_p_0(check_hlds__det_report__Goal_14, check_hlds__det_report__HeadVar__2_2, &check_hlds__det_report__InstMap1_22);
+        }
+        {
+          check_hlds__det_report__det_diagnose_conj_7_p_0(check_hlds__det_report__Goals_15, check_hlds__det_report__InstMap1_22, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__HeadVar__4_4, check_hlds__det_report__STATE_VARIABLE_DetInfo_26_26, check_hlds__det_report__STATE_VARIABLE_DetInfo_6, &check_hlds__det_report__Msgs2_23);
+        }
+        {
+          *check_hlds__det_report__HeadVar__7_7 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0, check_hlds__det_report__Msgs1_21, check_hlds__det_report__Msgs2_23);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_report_call_context_7_p_0(
+  MR_Word check_hlds__det_report__Context_8,
+  MR_Word check_hlds__det_report__CallUnifyContext_9,
+  MR_Word check_hlds__det_report__DetInfo_10,
+  MR_Word check_hlds__det_report__PredId_11,
+  MR_Integer check_hlds__det_report__ProcId_12,
+  MR_Word * check_hlds__det_report__InitMsgs_13,
+  MR_Word * check_hlds__det_report__StartingPieces_14)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__ModuleInfo_15;
+    MR_Word check_hlds__det_report__PredInfo_16;
+    MR_Word check_hlds__det_report__Origin_17;
+    MR_Word check_hlds__det_report__Var_30;
+    MR_Word check_hlds__det_report__Var_18;
+
+    {
+      check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__DetInfo_10, &check_hlds__det_report__ModuleInfo_15);
+    }
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__det_report__ModuleInfo_15, check_hlds__det_report__PredId_11, &check_hlds__det_report__PredInfo_16);
+    }
+    {
+      hlds__hlds_pred__pred_info_get_origin_2_p_0(check_hlds__det_report__PredInfo_16, &check_hlds__det_report__Origin_17);
+    }
+    check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Origin_17)) == (MR_mktag((MR_Integer) 0)));
+    if (check_hlds__det_report__succeeded)
+      {
+        check_hlds__det_report__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Origin_17, (MR_Integer) 0)));
+        check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Origin_17, (MR_Integer) 1)));
+        check_hlds__det_report__succeeded = (check_hlds__det_report__Var_30 == (MR_Integer) 0);
+      }
+    if (check_hlds__det_report__succeeded)
+      {
+        *check_hlds__det_report__InitMsgs_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        if ((check_hlds__det_report__CallUnifyContext_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__det_report__StartingPieces_14 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[105]);
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__LHS_19;
+            MR_Word check_hlds__det_report__RHS_20;
+            MR_Word check_hlds__det_report__UC_21;
+            MR_Word check_hlds__det_report__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__CallUnifyContext_9, (MR_Integer) 0)));
+
+            check_hlds__det_report__LHS_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_36, (MR_Integer) 0)));
+            check_hlds__det_report__RHS_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_36, (MR_Integer) 1)));
+            check_hlds__det_report__UC_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_36, (MR_Integer) 2)));
+            {
+              check_hlds__det_report__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_114_101_112_111_114_116_95_117_110_105_102_121_95_99_111_110_116_101_120_116_95_95_91_51_93_95_48_8_p_0((MR_Integer) 0, (MR_Integer) 0, check_hlds__det_report__UC_21, check_hlds__det_report__DetInfo_10, check_hlds__det_report__LHS_19, check_hlds__det_report__RHS_20, check_hlds__det_report__StartingPieces_14);
+            }
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__ProcTable_25;
+        MR_Word check_hlds__det_report__ProcInfo_26;
+        MR_Word check_hlds__det_report__ArgModes_27;
+        MR_Word check_hlds__det_report__InstVarSet_28;
+        MR_Word check_hlds__det_report__PredPieces_29;
+        MR_Box check_hlds__det_report__conv0_ProcInfo_26;
+
+        if ((check_hlds__det_report__CallUnifyContext_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__InitMsgs_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word check_hlds__det_report__UnifyPieces0_22;
+            MR_Word check_hlds__det_report__UnifyPieces_23;
+            MR_Word check_hlds__det_report__UnifyMsg_24;
+            MR_Word check_hlds__det_report__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__CallUnifyContext_9, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Var_46;
+            MR_Word check_hlds__det_report__Var_47;
+            MR_Word check_hlds__det_report__LHS_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_39, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__RHS_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_39, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__UC_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_39, (MR_Integer) 2)));
+
+            {
+              check_hlds__det_report__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_114_101_112_111_114_116_95_117_110_105_102_121_95_99_111_110_116_101_120_116_95_95_91_51_93_95_48_8_p_0((MR_Integer) 0, (MR_Integer) 1, check_hlds__det_report__UC_55, check_hlds__det_report__DetInfo_10, check_hlds__det_report__LHS_53, check_hlds__det_report__RHS_54, &check_hlds__det_report__UnifyPieces0_22);
+            }
+            {
+              check_hlds__det_report__UnifyPieces_23 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__UnifyPieces0_22, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[107]));
+            }
+            {
+              check_hlds__det_report__Var_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_47, 0) = ((MR_Box) (check_hlds__det_report__UnifyPieces_23));
+            }
+            {
+              check_hlds__det_report__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_46, 0) = ((MR_Box) (check_hlds__det_report__Var_47));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__UnifyMsg_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__UnifyMsg_24, 0) = ((MR_Box) (check_hlds__det_report__Context_8));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__UnifyMsg_24, 1) = ((MR_Box) (check_hlds__det_report__Var_46));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *check_hlds__det_report__InitMsgs_13 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__UnifyMsg_24));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+          }
+        {
+          hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__det_report__PredInfo_16, &check_hlds__det_report__ProcTable_25);
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, check_hlds__det_report__ProcTable_25, check_hlds__det_report__ProcId_12, &check_hlds__det_report__conv0_ProcInfo_26);
+        }
+        check_hlds__det_report__ProcInfo_26 = ((MR_Word) check_hlds__det_report__conv0_ProcInfo_26);
+        {
+          hlds__hlds_pred__proc_info_declared_argmodes_2_p_0(check_hlds__det_report__ProcInfo_26, &check_hlds__det_report__ArgModes_27);
+        }
+        {
+          hlds__hlds_pred__proc_info_get_inst_varset_2_p_0(check_hlds__det_report__ProcInfo_26, &check_hlds__det_report__InstVarSet_28);
+        }
+        {
+          check_hlds__det_report__PredPieces_29 = hlds__hlds_error_util__describe_one_pred_name_mode_5_f_0(check_hlds__det_report__ModuleInfo_15, (MR_Integer) 0, check_hlds__det_report__PredId_11, check_hlds__det_report__InstVarSet_28, check_hlds__det_report__ArgModes_27);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__det_report__StartingPieces_14 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[108])));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__det_report__PredPieces_29));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_114_101_112_111_114_116_95_117_110_105_102_121_95_99_111_110_116_101_120_116_95_95_91_51_93_95_48_8_p_0(
+  MR_Word check_hlds__det_report__STATE_VARIABLE_First_0_27,
+  MR_Word check_hlds__det_report__Last_10,
+  MR_Word check_hlds__det_report__UnifyContext_12,
+  MR_Word check_hlds__det_report__DetInfo_13,
+  MR_Word check_hlds__det_report__LHS_14,
+  MR_Word check_hlds__det_report__RHS_15,
+  MR_Word * check_hlds__det_report__AllPieces_16)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__UnifyContextPieces_17;
+    MR_Word check_hlds__det_report__ProcInfo_18;
+    MR_Word check_hlds__det_report__VarSet_19;
+    MR_Word check_hlds__det_report__ModuleInfo_20;
+    MR_String check_hlds__det_report__StartWords_21;
+    MR_Word check_hlds__det_report__Pieces_26;
+    MR_Word check_hlds__det_report__STATE_VARIABLE_First_28_28;
+    MR_String check_hlds__det_report__Var_22;
+
+    {
+      hlds__hlds_out__hlds_out_util__unify_context_first_to_pieces_5_p_0(check_hlds__det_report__STATE_VARIABLE_First_0_27, &check_hlds__det_report__STATE_VARIABLE_First_28_28, check_hlds__det_report__UnifyContext_12, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__det_report__UnifyContextPieces_17);
+    }
+    {
+      check_hlds__det_util__det_get_proc_info_2_p_0(check_hlds__det_report__DetInfo_13, &check_hlds__det_report__ProcInfo_18);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_18, &check_hlds__det_report__VarSet_19);
+    }
+    {
+      check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__DetInfo_13, &check_hlds__det_report__ModuleInfo_20);
+    }
+    switch (check_hlds__det_report__Last_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (check_hlds__det_report__STATE_VARIABLE_First_28_28) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            check_hlds__det_report__StartWords_21 = (MR_String) "Unification";
+            break;
+          case (MR_Integer) 1:
+            check_hlds__det_report__StartWords_21 = (MR_String) "unification";
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        switch (check_hlds__det_report__STATE_VARIABLE_First_28_28) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            check_hlds__det_report__StartWords_21 = (MR_String) "In unification";
+            break;
+          case (MR_Integer) 1:
+            check_hlds__det_report__StartWords_21 = (MR_String) "in unification";
+            break;
+        }
+        break;
+    }
+    {
+      check_hlds__det_report__succeeded = mercury__varset__search_name_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_19, check_hlds__det_report__LHS_14, &check_hlds__det_report__Var_22);
+    }
+    if (check_hlds__det_report__succeeded)
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_65_65 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+        MR_String check_hlds__det_report__LHSVarName_23;
+        MR_Word check_hlds__det_report__RV_24;
+        MR_String check_hlds__det_report__Var_25;
+
+        {
+          check_hlds__det_report__LHSVarName_23 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0(check_hlds__det_report__TypeCtorInfo_65_65, check_hlds__det_report__VarSet_19, check_hlds__det_report__LHS_14);
+        }
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__RHS_15)) == (MR_mktag((MR_Integer) 0)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__RV_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__RHS_15, (MR_Integer) 0)));
+            {
+              check_hlds__det_report__succeeded = mercury__varset__search_name_3_p_0(check_hlds__det_report__TypeCtorInfo_65_65, check_hlds__det_report__VarSet_19, check_hlds__det_report__RV_24, &check_hlds__det_report__Var_25);
+            }
+            check_hlds__det_report__succeeded = !(check_hlds__det_report__succeeded);
+          }
+        if (check_hlds__det_report__succeeded)
+          {
+            MR_Word check_hlds__det_report__Var_30;
+            MR_Word check_hlds__det_report__Var_31;
+            MR_Word check_hlds__det_report__Var_34;
+            MR_Word check_hlds__det_report__Var_35;
+            MR_String check_hlds__det_report__Var_36;
+
+            {
+              check_hlds__det_report__Var_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_30, 1) = ((MR_Box) (check_hlds__det_report__StartWords_21));
+            }
+            {
+              check_hlds__det_report__Var_36 = parse_tree__error_util__add_quotes_1_f_0(check_hlds__det_report__LHSVarName_23);
+            }
+            {
+              check_hlds__det_report__Var_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_35, 1) = ((MR_Box) (check_hlds__det_report__Var_36));
+            }
+            {
+              check_hlds__det_report__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_34, 0) = ((MR_Box) (check_hlds__det_report__Var_35));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_31, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[102])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_31, 1) = ((MR_Box) (check_hlds__det_report__Var_34));
+            }
+            {
+              check_hlds__det_report__Pieces_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 0) = ((MR_Box) (check_hlds__det_report__Var_30));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 1) = ((MR_Box) (check_hlds__det_report__Var_31));
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__Var_38;
+            MR_Word check_hlds__det_report__Var_39;
+            MR_Word check_hlds__det_report__Var_42;
+            MR_Word check_hlds__det_report__Var_43;
+            MR_String check_hlds__det_report__Var_44;
+            MR_Word check_hlds__det_report__Var_45;
+            MR_Word check_hlds__det_report__Var_48;
+            MR_Word check_hlds__det_report__Var_49;
+            MR_String check_hlds__det_report__Var_50;
+            MR_String check_hlds__det_report__Var_51;
+
+            {
+              check_hlds__det_report__Var_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_38, 1) = ((MR_Box) (check_hlds__det_report__StartWords_21));
+            }
+            {
+              check_hlds__det_report__Var_44 = parse_tree__error_util__add_quotes_1_f_0(check_hlds__det_report__LHSVarName_23);
+            }
+            {
+              check_hlds__det_report__Var_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_43, 1) = ((MR_Box) (check_hlds__det_report__Var_44));
+            }
+            {
+              check_hlds__det_report__Var_51 = hlds__hlds_out__hlds_out_goal__unify_rhs_to_string_4_f_0(check_hlds__det_report__ModuleInfo_20, check_hlds__det_report__VarSet_19, (MR_Integer) 0, check_hlds__det_report__RHS_15);
+            }
+            {
+              check_hlds__det_report__Var_50 = parse_tree__error_util__add_quotes_1_f_0(check_hlds__det_report__Var_51);
+            }
+            {
+              check_hlds__det_report__Var_49 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_49, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_49, 1) = ((MR_Box) (check_hlds__det_report__Var_50));
+            }
+            {
+              check_hlds__det_report__Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 0) = ((MR_Box) (check_hlds__det_report__Var_49));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[86])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_45, 1) = ((MR_Box) (check_hlds__det_report__Var_48));
+            }
+            {
+              check_hlds__det_report__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_42, 0) = ((MR_Box) (check_hlds__det_report__Var_43));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_42, 1) = ((MR_Box) (check_hlds__det_report__Var_45));
+            }
+            {
+              check_hlds__det_report__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[103])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__Var_42));
+            }
+            {
+              check_hlds__det_report__Pieces_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 0) = ((MR_Box) (check_hlds__det_report__Var_38));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 1) = ((MR_Box) (check_hlds__det_report__Var_39));
+            }
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__Var_54;
+        MR_Word check_hlds__det_report__Var_55;
+        MR_Word check_hlds__det_report__Var_58;
+        MR_Word check_hlds__det_report__Var_59;
+        MR_String check_hlds__det_report__Var_60;
+        MR_String check_hlds__det_report__Var_61;
+
+        {
+          check_hlds__det_report__Var_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_54, 1) = ((MR_Box) (check_hlds__det_report__StartWords_21));
+        }
+        {
+          check_hlds__det_report__Var_61 = hlds__hlds_out__hlds_out_goal__unify_rhs_to_string_4_f_0(check_hlds__det_report__ModuleInfo_20, check_hlds__det_report__VarSet_19, (MR_Integer) 0, check_hlds__det_report__RHS_15);
+        }
+        {
+          check_hlds__det_report__Var_60 = parse_tree__error_util__add_quotes_1_f_0(check_hlds__det_report__Var_61);
+        }
+        {
+          check_hlds__det_report__Var_59 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_59, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_59, 1) = ((MR_Box) (check_hlds__det_report__Var_60));
+        }
+        {
+          check_hlds__det_report__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_58, 0) = ((MR_Box) (check_hlds__det_report__Var_59));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__det_report__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_55, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[102])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_55, 1) = ((MR_Box) (check_hlds__det_report__Var_58));
+        }
+        {
+          check_hlds__det_report__Pieces_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 0) = ((MR_Box) (check_hlds__det_report__Var_54));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_26, 1) = ((MR_Box) (check_hlds__det_report__Var_55));
+        }
+      }
+    {
+      *check_hlds__det_report__AllPieces_16 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__UnifyContextPieces_17, check_hlds__det_report__Pieces_26);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__find_switch_var_matches_6_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box * check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_Word check_hlds__det_report__conv0_Match_4;
+
+    {
+      check_hlds__det_report__make_switch_match_no_args_2_p_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), &check_hlds__det_report__conv0_Match_4);
+    }
+    *check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv0_Match_4));
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__find_switch_var_matches_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2,
+  MR_Word check_hlds__det_report__MainConsId_3,
+  MR_Word check_hlds__det_report__OtherConsIds_4,
+  MR_Word * check_hlds__det_report__MainMatch_5,
+  MR_Word * check_hlds__det_report__OtherMatches_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *check_hlds__det_report__MainMatch_5 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__det_report__MainConsId_3));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0, (MR_Word) &check_hlds__det_report_scalar_common_1[2], check_hlds__det_report__OtherConsIds_4, check_hlds__det_report__OtherMatches_6);
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__Conjunct_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Conjuncts_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__GoalExpr_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Conjunct_13, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__GoalInfo_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Conjunct_13, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__ArgVars_28;
+            MR_Word check_hlds__det_report__TypeInfo_61_61;
+            MR_Word check_hlds__det_report__Unification_25;
+            MR_Word check_hlds__det_report__Var_27;
+            MR_Word check_hlds__det_report__Var_64;
+            MR_Word check_hlds__det_report__Var_22;
+            MR_Word check_hlds__det_report__Var_23;
+            MR_Word check_hlds__det_report__Var_24;
+            MR_Word check_hlds__det_report__Var_26;
+            MR_Word check_hlds__det_report__Var_29;
+            MR_Word check_hlds__det_report__Var_30;
+            MR_Word check_hlds__det_report__Var_31;
+
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__GoalExpr_20)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 0)));
+                check_hlds__det_report__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 1)));
+                check_hlds__det_report__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 2)));
+                check_hlds__det_report__Unification_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 3)));
+                check_hlds__det_report__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 4)));
+                check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Unification_25)) == (MR_mktag((MR_Integer) 1)));
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 0)));
+                    check_hlds__det_report__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 1)));
+                    check_hlds__det_report__ArgVars_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 2)));
+                    check_hlds__det_report__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 3)));
+                    check_hlds__det_report__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 4)));
+                    check_hlds__det_report__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_25, (MR_Integer) 5)));
+                    {
+                      check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__MainConsId_3, check_hlds__det_report__Var_64);
+                    }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__TypeInfo_61_61 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                        {
+                          check_hlds__det_report__succeeded = mercury__list__member_2_p_0(check_hlds__det_report__TypeInfo_61_61, ((MR_Box) (check_hlds__det_report__Var_27)), check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2);
+                        }
+                        if (check_hlds__det_report__succeeded)
+                          check_hlds__det_report__succeeded = (check_hlds__det_report__OtherConsIds_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+            if (check_hlds__det_report__succeeded)
+              {
+                MR_Word check_hlds__det_report__TypeCtorInfo_62_62;
+                MR_Word check_hlds__det_report__NonLocals_32;
+                MR_Word check_hlds__det_report__ArgVarsSet_33;
+                MR_Word check_hlds__det_report__MaybeArgVars_35;
+                MR_Word check_hlds__det_report__NonLocalArgVarsSet_34;
+
+                {
+                  check_hlds__det_report__NonLocals_32 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__det_report__GoalInfo_21);
+                }
+                check_hlds__det_report__TypeCtorInfo_62_62 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                {
+                  check_hlds__det_report__ArgVarsSet_33 = parse_tree__set_of_var__list_to_set_1_f_0(check_hlds__det_report__TypeCtorInfo_62_62, check_hlds__det_report__ArgVars_28);
+                }
+                {
+                  parse_tree__set_of_var__intersect_3_p_0(check_hlds__det_report__TypeCtorInfo_62_62, check_hlds__det_report__NonLocals_32, check_hlds__det_report__ArgVarsSet_33, &check_hlds__det_report__NonLocalArgVarsSet_34);
+                }
+                {
+                  check_hlds__det_report__succeeded = parse_tree__set_of_var__is_non_empty_1_p_0(check_hlds__det_report__TypeCtorInfo_62_62, check_hlds__det_report__NonLocalArgVarsSet_34);
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__MaybeArgVars_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeArgVars_35, 0) = ((MR_Box) (check_hlds__det_report__ArgVars_28));
+                  }
+                else
+                  check_hlds__det_report__MaybeArgVars_35 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  *check_hlds__det_report__MainMatch_5 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__det_report__MainConsId_3));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__det_report__MaybeArgVars_35));
+                }
+                *check_hlds__det_report__OtherMatches_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              }
+            else
+              {
+                MR_Word check_hlds__det_report__MainMatch0_37;
+                MR_Word check_hlds__det_report__OtherMatches0_38;
+                MR_Word check_hlds__det_report__Disjuncts_36;
+                MR_Word check_hlds__det_report__Var_46;
+                MR_Word check_hlds__det_report__Var_47;
+
+                check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__GoalExpr_20)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_20, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__Disjuncts_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_20, (MR_Integer) 1)));
+                    {
+                      check_hlds__det_report__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_46, 0) = ((MR_Box) (check_hlds__det_report__MainConsId_3));
+                    }
+                    {
+                      check_hlds__det_report__succeeded = check_hlds__det_report__find_switch_var_submatches_6_p_0(check_hlds__det_report__Disjuncts_36, check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2, check_hlds__det_report__Var_46, check_hlds__det_report__OtherConsIds_4, &check_hlds__det_report__Var_47, &check_hlds__det_report__OtherMatches0_38);
+                    }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Var_47)) == (MR_mktag((MR_Integer) 1)));
+                        if (check_hlds__det_report__succeeded)
+                          check_hlds__det_report__MainMatch0_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_47, (MR_Integer) 0)));
+                      }
+                  }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    *check_hlds__det_report__MainMatch_5 = check_hlds__det_report__MainMatch0_37;
+                    *check_hlds__det_report__OtherMatches_6 = check_hlds__det_report__OtherMatches0_38;
+                  }
+                else
+                  {
+                    MR_Word check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54;
+                    MR_Word check_hlds__det_report__ToVar_43;
+                    MR_Word check_hlds__det_report__TypeInfo_63_63;
+                    MR_Word check_hlds__det_report__FromVar_44;
+                    MR_Word check_hlds__det_report__Unification_51;
+                    MR_Word check_hlds__det_report__Var_39;
+                    MR_Word check_hlds__det_report__Var_40;
+                    MR_Word check_hlds__det_report__Var_41;
+                    MR_Word check_hlds__det_report__Var_42;
+
+                    check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__GoalExpr_20)) == (MR_mktag((MR_Integer) 1)));
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 0)));
+                        check_hlds__det_report__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 1)));
+                        check_hlds__det_report__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 2)));
+                        check_hlds__det_report__Unification_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 3)));
+                        check_hlds__det_report__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_20, (MR_Integer) 4)));
+                        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Unification_51)) == (MR_mktag((MR_Integer) 2)));
+                        if (check_hlds__det_report__succeeded)
+                          {
+                            check_hlds__det_report__ToVar_43 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__Unification_51, (MR_Integer) 0)));
+                            check_hlds__det_report__FromVar_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__det_report__Unification_51, (MR_Integer) 1)));
+                            check_hlds__det_report__TypeInfo_63_63 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                            {
+                              check_hlds__det_report__succeeded = mercury__list__member_2_p_0(check_hlds__det_report__TypeInfo_63_63, ((MR_Box) (check_hlds__det_report__FromVar_44)), check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2);
+                            }
+                          }
+                      }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54, 0) = ((MR_Box) (check_hlds__det_report__ToVar_43));
+                        MR_hl_field(MR_mktag(1), check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54, 1) = ((MR_Box) (check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2));
+                      }
+                    else
+                      check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54 = check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2;
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__Conjuncts_14;
+                      MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_SwitchVarSynonyms_0_2 = check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_48_54;
+
+                      check_hlds__det_report__STATE_VARIABLE_SwitchVarSynonyms_0_2 = check_hlds__det_report__next_value_of_STATE_VARIABLE_SwitchVarSynonyms_0_2;
+                      check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+                    }
+                    continue;
+                  }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report__find_switch_var_submatches_6_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__SwitchVarSynonyms_2,
+  MR_Word check_hlds__det_report__HeadVar__3_3,
+  MR_Word check_hlds__det_report__HeadVar__4_4,
+  MR_Word * check_hlds__det_report__HeadVar__5_5,
+  MR_Word * check_hlds__det_report__HeadVar__6_6)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        check_hlds__det_report__succeeded = (check_hlds__det_report__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__succeeded = (check_hlds__det_report__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            if (check_hlds__det_report__succeeded)
+              {
+                *check_hlds__det_report__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                *check_hlds__det_report__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                check_hlds__det_report__succeeded = MR_TRUE;
+              }
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__TypeInfo_40_40;
+        MR_Word check_hlds__det_report__Disjunct_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Disjuncts_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__GoalExpr_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Disjunct_8, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__GoalInfo_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Disjunct_8, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Unification_20;
+        MR_Word check_hlds__det_report__Var_22;
+        MR_Word check_hlds__det_report__ConsId_23;
+        MR_Word check_hlds__det_report__ArgVars_24;
+        MR_Word check_hlds__det_report__Var_17;
+        MR_Word check_hlds__det_report__Var_18;
+        MR_Word check_hlds__det_report__Var_19;
+        MR_Word check_hlds__det_report__Var_21;
+        MR_Word check_hlds__det_report__Var_25;
+        MR_Word check_hlds__det_report__Var_26;
+        MR_Word check_hlds__det_report__Var_27;
+        MR_Word check_hlds__det_report__MainConsId_28;
+
+        check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__GoalExpr_15)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_15, (MR_Integer) 0)));
+            check_hlds__det_report__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_15, (MR_Integer) 1)));
+            check_hlds__det_report__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_15, (MR_Integer) 2)));
+            check_hlds__det_report__Unification_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_15, (MR_Integer) 3)));
+            check_hlds__det_report__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__GoalExpr_15, (MR_Integer) 4)));
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Unification_20)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 0)));
+                check_hlds__det_report__ConsId_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 1)));
+                check_hlds__det_report__ArgVars_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 2)));
+                check_hlds__det_report__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 3)));
+                check_hlds__det_report__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 4)));
+                check_hlds__det_report__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Unification_20, (MR_Integer) 5)));
+                check_hlds__det_report__TypeInfo_40_40 = (MR_Word) &check_hlds__det_report_scalar_common_2[0];
+                {
+                  check_hlds__det_report__succeeded = mercury__list__member_2_p_0(check_hlds__det_report__TypeInfo_40_40, ((MR_Box) (check_hlds__det_report__Var_22)), check_hlds__det_report__SwitchVarSynonyms_2);
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        check_hlds__det_report__MainConsId_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__3_3, (MR_Integer) 0)));
+                        {
+                          check_hlds__det_report__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__det_report__ConsId_23, check_hlds__det_report__MainConsId_28);
+                        }
+                      }
+                    if (check_hlds__det_report__succeeded)
+                      {
+                        MR_Word check_hlds__det_report__TypeInfo_45_45;
+                        MR_Word check_hlds__det_report__Var_37;
+                        MR_Word check_hlds__det_report__Var_38;
+                        MR_Word check_hlds__det_report__Var_43;
+
+                        {
+                          check_hlds__det_report__succeeded = check_hlds__det_report__find_switch_var_submatches_6_p_0(check_hlds__det_report__Disjuncts_9, check_hlds__det_report__SwitchVarSynonyms_2, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__det_report__HeadVar__4_4, &check_hlds__det_report__Var_43, check_hlds__det_report__HeadVar__6_6);
+                        }
+                        if (check_hlds__det_report__succeeded)
+                          {
+                            check_hlds__det_report__TypeInfo_45_45 = (MR_Word) &check_hlds__det_report_scalar_common_2[57];
+                            {
+                              check_hlds__det_report__succeeded = mercury__builtin__unify_2_p_0(check_hlds__det_report__TypeInfo_45_45, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), ((MR_Box) (check_hlds__det_report__Var_43)));
+                            }
+                            if (check_hlds__det_report__succeeded)
+                              {
+                                {
+                                  check_hlds__det_report__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_38, 0) = ((MR_Box) (check_hlds__det_report__ArgVars_24));
+                                }
+                                {
+                                  check_hlds__det_report__Var_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_37, 0) = ((MR_Box) (check_hlds__det_report__ConsId_23));
+                                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_37, 1) = ((MR_Box) (check_hlds__det_report__Var_38));
+                                }
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                  *check_hlds__det_report__HeadVar__5_5 = base;
+                                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_37));
+                                }
+                                check_hlds__det_report__succeeded = MR_TRUE;
+                              }
+                          }
+                      }
+                    else
+                      {
+                        MR_Word check_hlds__det_report__TypeCtorInfo_42_42;
+                        MR_Word check_hlds__det_report__LeftOverConsIds_29;
+                        MR_Word check_hlds__det_report__LeftOverMatches_30;
+                        MR_Word check_hlds__det_report__NonLocals_31;
+                        MR_Word check_hlds__det_report__ArgVarsSet_32;
+                        MR_Word check_hlds__det_report__MaybeArgVars_34;
+                        MR_Word check_hlds__det_report__Var_39;
+                        MR_Word check_hlds__det_report__NonLocalArgVarsSet_33;
+
+                        {
+                          check_hlds__det_report__succeeded = mercury__list__delete_first_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__det_report__HeadVar__4_4, ((MR_Box) (check_hlds__det_report__ConsId_23)), &check_hlds__det_report__LeftOverConsIds_29);
+                        }
+                        if (check_hlds__det_report__succeeded)
+                          {
+                            {
+                              check_hlds__det_report__succeeded = check_hlds__det_report__find_switch_var_submatches_6_p_0(check_hlds__det_report__Disjuncts_9, check_hlds__det_report__SwitchVarSynonyms_2, check_hlds__det_report__HeadVar__3_3, check_hlds__det_report__LeftOverConsIds_29, check_hlds__det_report__HeadVar__5_5, &check_hlds__det_report__LeftOverMatches_30);
+                            }
+                            if (check_hlds__det_report__succeeded)
+                              {
+                                {
+                                  check_hlds__det_report__NonLocals_31 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__det_report__GoalInfo_16);
+                                }
+                                check_hlds__det_report__TypeCtorInfo_42_42 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                                {
+                                  parse_tree__set_of_var__list_to_set_2_p_0(check_hlds__det_report__TypeCtorInfo_42_42, check_hlds__det_report__ArgVars_24, &check_hlds__det_report__ArgVarsSet_32);
+                                }
+                                {
+                                  parse_tree__set_of_var__intersect_3_p_0(check_hlds__det_report__TypeCtorInfo_42_42, check_hlds__det_report__NonLocals_31, check_hlds__det_report__ArgVarsSet_32, &check_hlds__det_report__NonLocalArgVarsSet_33);
+                                }
+                                {
+                                  check_hlds__det_report__succeeded = parse_tree__set_of_var__is_non_empty_1_p_0(check_hlds__det_report__TypeCtorInfo_42_42, check_hlds__det_report__NonLocalArgVarsSet_33);
+                                }
+                                if (check_hlds__det_report__succeeded)
+                                  {
+                                    check_hlds__det_report__MaybeArgVars_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeArgVars_34, 0) = ((MR_Box) (check_hlds__det_report__ArgVars_24));
+                                  }
+                                else
+                                  check_hlds__det_report__MaybeArgVars_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                {
+                                  check_hlds__det_report__Var_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_39, 0) = ((MR_Box) (check_hlds__det_report__ConsId_23));
+                                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_39, 1) = ((MR_Box) (check_hlds__det_report__MaybeArgVars_34));
+                                }
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *check_hlds__det_report__HeadVar__6_6 = base;
+                                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_39));
+                                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__det_report__LeftOverMatches_30));
+                                }
+                                check_hlds__det_report__succeeded = MR_TRUE;
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_primitive_goal_5_p_0(
+  MR_Word check_hlds__det_report__Desired_6,
+  MR_Word check_hlds__det_report__Actual_7,
+  MR_Word check_hlds__det_report__Context_8,
+  MR_Word check_hlds__det_report__StartingPieces_9,
+  MR_Word * check_hlds__det_report__Msgs_10)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__TypeCtorInfo_78_78;
+    MR_Word check_hlds__det_report__DesiredCanFail_11;
+    MR_Word check_hlds__det_report__DesiredSolns_12;
+    MR_Word check_hlds__det_report__ActualCanFail_13;
+    MR_Word check_hlds__det_report__ActualSolns_14;
+    MR_Word check_hlds__det_report__CmpCanFail_15;
+    MR_Word check_hlds__det_report__CanFailPieces_16;
+    MR_Word check_hlds__det_report__CmpSolns_17;
+    MR_Word check_hlds__det_report__ConnectPieces_20;
+    MR_Word check_hlds__det_report__SolnsPieces_21;
+    MR_Word check_hlds__det_report__RawPieces_22;
+    MR_Word check_hlds__det_report__Pieces_25;
+    MR_Word check_hlds__det_report__Var_38;
+    MR_Word check_hlds__det_report__Var_72;
+    MR_Word check_hlds__det_report__Var_73;
+    MR_Word check_hlds__det_report__Var_74;
+    MR_Word check_hlds__det_report__Var_75;
+
+    {
+      parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Desired_6, &check_hlds__det_report__DesiredCanFail_11, &check_hlds__det_report__DesiredSolns_12);
+    }
+    {
+      parse_tree__prog_data__determinism_components_3_p_0(check_hlds__det_report__Actual_7, &check_hlds__det_report__ActualCanFail_13, &check_hlds__det_report__ActualSolns_14);
+    }
+    {
+      parse_tree__prog_detism__compare_canfails_3_p_0(check_hlds__det_report__DesiredCanFail_11, check_hlds__det_report__ActualCanFail_13, &check_hlds__det_report__CmpCanFail_15);
+    }
+    switch (check_hlds__det_report__CmpCanFail_15) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        check_hlds__det_report__CanFailPieces_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+      case (MR_Integer) 0:
+        {
+          check_hlds__det_report__CanFailPieces_16 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[92]);
+        }
+        break;
+    }
+    {
+      parse_tree__prog_detism__compare_solncounts_3_p_0(check_hlds__det_report__DesiredSolns_12, check_hlds__det_report__ActualSolns_14, &check_hlds__det_report__CmpSolns_17);
+    }
+    switch (check_hlds__det_report__CmpSolns_17) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        {
+          check_hlds__det_report__ConnectPieces_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          check_hlds__det_report__SolnsPieces_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          if ((check_hlds__det_report__CanFailPieces_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            check_hlds__det_report__ConnectPieces_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          else
+            {
+              check_hlds__det_report__ConnectPieces_20 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[93]);
+            }
+          check_hlds__det_report__SolnsPieces_21 = ((&check_hlds__det_report_vector_common_6[0 + check_hlds__det_report__DesiredSolns_12]))->check_hlds__det_report__vector_common_type_6_0__vct_6_f_0;
+        }
+        break;
+    }
+    check_hlds__det_report__TypeCtorInfo_78_78 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__det_report__Var_38 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_78_78, check_hlds__det_report__ConnectPieces_20, check_hlds__det_report__SolnsPieces_21);
+    }
+    {
+      check_hlds__det_report__RawPieces_22 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_78_78, check_hlds__det_report__CanFailPieces_16, check_hlds__det_report__Var_38);
+    }
+    if ((check_hlds__det_report__RawPieces_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word check_hlds__det_report__Var_41;
+        MR_Word check_hlds__det_report__Var_43;
+        MR_Word check_hlds__det_report__Var_46;
+        MR_Word check_hlds__det_report__Var_47;
+        MR_String check_hlds__det_report__Var_48;
+        MR_Word check_hlds__det_report__Var_49;
+        MR_Word check_hlds__det_report__Var_52;
+        MR_Word check_hlds__det_report__Var_54;
+        MR_Word check_hlds__det_report__Var_57;
+        MR_Word check_hlds__det_report__Var_58;
+        MR_String check_hlds__det_report__Var_59;
+
+        {
+          check_hlds__det_report__Var_48 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__Desired_6);
+        }
+        {
+          check_hlds__det_report__Var_47 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_47, 0) = ((MR_Box) (check_hlds__det_report__Var_48));
+        }
+        {
+          check_hlds__det_report__Var_59 = parse_tree__prog_out__determinism_to_string_1_f_0(check_hlds__det_report__Actual_7);
+        }
+        {
+          check_hlds__det_report__Var_58 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_58, 0) = ((MR_Box) (check_hlds__det_report__Var_59));
+        }
+        {
+          check_hlds__det_report__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 0) = ((MR_Box) (check_hlds__det_report__Var_58));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16])));
+        }
+        {
+          check_hlds__det_report__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_54, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[101])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_54, 1) = ((MR_Box) (check_hlds__det_report__Var_57));
+        }
+        {
+          check_hlds__det_report__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_52, 1) = ((MR_Box) (check_hlds__det_report__Var_54));
+        }
+        {
+          check_hlds__det_report__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_49, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[100])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_49, 1) = ((MR_Box) (check_hlds__det_report__Var_52));
+        }
+        {
+          check_hlds__det_report__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_46, 0) = ((MR_Box) (check_hlds__det_report__Var_47));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_46, 1) = ((MR_Box) (check_hlds__det_report__Var_49));
+        }
+        {
+          check_hlds__det_report__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[99])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 1) = ((MR_Box) (check_hlds__det_report__Var_46));
+        }
+        {
+          check_hlds__det_report__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_41, 1) = ((MR_Box) (check_hlds__det_report__Var_43));
+        }
+        {
+          check_hlds__det_report__Pieces_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_25, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[98])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_25, 1) = ((MR_Box) (check_hlds__det_report__Var_41));
+        }
+      }
+    else
+      {
+        {
+          check_hlds__det_report__Pieces_25 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_78_78, check_hlds__det_report__RawPieces_22, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[16]));
+        }
+      }
+    {
+      check_hlds__det_report__Var_75 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_78_78, check_hlds__det_report__StartingPieces_9, check_hlds__det_report__Pieces_25);
+    }
+    {
+      check_hlds__det_report__Var_74 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_74, 0) = ((MR_Box) (check_hlds__det_report__Var_75));
+    }
+    {
+      check_hlds__det_report__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_73, 0) = ((MR_Box) (check_hlds__det_report__Var_74));
+      MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_73, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__det_report__Var_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_72, 0) = ((MR_Box) (check_hlds__det_report__Context_8));
+      MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_72, 1) = ((MR_Box) (check_hlds__det_report__Var_73));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *check_hlds__det_report__Msgs_10 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__Var_72));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__generate_incomplete_switch_spec_9_p_0(
+  MR_Word check_hlds__det_report__Why_10,
+  MR_Word check_hlds__det_report__MaybeLimit_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__SwitchContexts_13,
+  MR_Word check_hlds__det_report__SwitchVar_14,
+  MR_Word check_hlds__det_report__Cases_15,
+  MR_Word check_hlds__det_report__Context_16,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_DetInfo_38)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__NestingPieces_18;
+    MR_String check_hlds__det_report__SwitchVarStr_19;
+    MR_Word check_hlds__det_report__MaybeMissingInfo_20;
+    MR_Word check_hlds__det_report__MaybeSeverityComponents_28;
+
+    {
+      check_hlds__det_report__find_missing_cons_ids_9_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37, check_hlds__det_report__MaybeLimit_11, check_hlds__det_report__InstMap0_12, check_hlds__det_report__SwitchContexts_13, check_hlds__det_report__SwitchVar_14, check_hlds__det_report__Cases_15, &check_hlds__det_report__NestingPieces_18, &check_hlds__det_report__SwitchVarStr_19, &check_hlds__det_report__MaybeMissingInfo_20);
+    }
+    switch (check_hlds__det_report__Why_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        if ((check_hlds__det_report__MaybeMissingInfo_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          check_hlds__det_report__MaybeSeverityComponents_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word check_hlds__det_report__MissingInfo_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeMissingInfo_20, (MR_Integer) 0)));
+            MR_Integer check_hlds__det_report__NumPossibleConsIds_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_21, (MR_Integer) 0)));
+            MR_Integer check_hlds__det_report__NumUncoveredConsIds_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_21, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__MainPieces_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_21, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__VerbosePieces_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_21, (MR_Integer) 3)));
+            MR_Word check_hlds__det_report__ModuleInfo_29;
+            MR_Word check_hlds__det_report__Globals_30;
+            MR_Integer check_hlds__det_report__Threshold_31;
+            MR_Integer check_hlds__det_report__NumCoveredConsIds_32;
+            MR_Integer check_hlds__det_report__Var_57;
+            MR_Integer check_hlds__det_report__Var_58;
+
+            {
+              check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37, &check_hlds__det_report__ModuleInfo_29);
+            }
+            {
+              hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__det_report__ModuleInfo_29, &check_hlds__det_report__Globals_30);
+            }
+            {
+              libs__globals__lookup_int_option_3_p_0(check_hlds__det_report__Globals_30, (MR_Integer) 49, &check_hlds__det_report__Threshold_31);
+            }
+            check_hlds__det_report__NumCoveredConsIds_32 = (check_hlds__det_report__NumPossibleConsIds_22 - check_hlds__det_report__NumUncoveredConsIds_23);
+            check_hlds__det_report__Var_57 = (check_hlds__det_report__NumCoveredConsIds_32 * (MR_Integer) 100);
+            check_hlds__det_report__Var_58 = (check_hlds__det_report__NumPossibleConsIds_22 * check_hlds__det_report__Threshold_31);
+            check_hlds__det_report__succeeded = (check_hlds__det_report__Var_57 >= check_hlds__det_report__Var_58);
+            if (check_hlds__det_report__succeeded)
+              {
+                MR_Word check_hlds__det_report__Var_61;
+                MR_Word check_hlds__det_report__Var_64;
+                MR_Word check_hlds__det_report__Var_65;
+                MR_Word check_hlds__det_report__Var_70;
+                MR_Tuple check_hlds__det_report__Var_71;
+                MR_Word check_hlds__det_report__Var_73;
+                MR_Word check_hlds__det_report__NoCoverPieces_98;
+                MR_Word check_hlds__det_report__Component_99;
+
+                {
+                  check_hlds__det_report__Var_65 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_65, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_65, 1) = ((MR_Box) (check_hlds__det_report__SwitchVarStr_19));
+                }
+                {
+                  check_hlds__det_report__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_64, 0) = ((MR_Box) (check_hlds__det_report__Var_65));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[89])));
+                }
+                {
+                  check_hlds__det_report__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_61, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[87])));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_61, 1) = ((MR_Box) (check_hlds__det_report__Var_64));
+                }
+                {
+                  check_hlds__det_report__NoCoverPieces_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_98, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_98, 1) = ((MR_Box) (check_hlds__det_report__Var_61));
+                }
+                {
+                  check_hlds__det_report__Var_70 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_18, check_hlds__det_report__NoCoverPieces_98);
+                }
+                {
+                  check_hlds__det_report__append_prefix_and_maybe_verbose_4_p_0(check_hlds__det_report__Var_70, check_hlds__det_report__MainPieces_24, check_hlds__det_report__VerbosePieces_25, &check_hlds__det_report__Component_99);
+                }
+                {
+                  check_hlds__det_report__Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_73, 0) = ((MR_Box) (check_hlds__det_report__Component_99));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_73, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  check_hlds__det_report__Var_71 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_71, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                  MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_71, 1) = ((MR_Box) (check_hlds__det_report__Var_73));
+                }
+                {
+                  check_hlds__det_report__MaybeSeverityComponents_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeSeverityComponents_28, 0) = ((MR_Box) (check_hlds__det_report__Var_71));
+                }
+              }
+            else
+              check_hlds__det_report__MaybeSeverityComponents_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        break;
+      case (MR_Integer) 0:
+        if ((check_hlds__det_report__MaybeMissingInfo_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word check_hlds__det_report__Var_40;
+            MR_Word check_hlds__det_report__Var_43;
+            MR_Word check_hlds__det_report__Var_44;
+            MR_Word check_hlds__det_report__Var_51;
+            MR_Tuple check_hlds__det_report__Var_52;
+            MR_Word check_hlds__det_report__Var_54;
+            MR_Word check_hlds__det_report__NoCoverPieces_104;
+            MR_Word check_hlds__det_report__Component_105;
+
+            {
+              check_hlds__det_report__Var_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_44, 1) = ((MR_Box) (check_hlds__det_report__SwitchVarStr_19));
+            }
+            {
+              check_hlds__det_report__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 0) = ((MR_Box) (check_hlds__det_report__Var_44));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[59])));
+            }
+            {
+              check_hlds__det_report__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_40, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[90])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_40, 1) = ((MR_Box) (check_hlds__det_report__Var_43));
+            }
+            {
+              check_hlds__det_report__NoCoverPieces_104 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_104, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_104, 1) = ((MR_Box) (check_hlds__det_report__Var_40));
+            }
+            {
+              check_hlds__det_report__Var_51 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_18, check_hlds__det_report__NoCoverPieces_104);
+            }
+            {
+              check_hlds__det_report__Component_105 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Component_105, 0) = ((MR_Box) (check_hlds__det_report__Var_51));
+            }
+            {
+              check_hlds__det_report__Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_54, 0) = ((MR_Box) (check_hlds__det_report__Component_105));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_54, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__Var_52 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_52, 1) = ((MR_Box) (check_hlds__det_report__Var_54));
+            }
+            {
+              check_hlds__det_report__MaybeSeverityComponents_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeSeverityComponents_28, 0) = ((MR_Box) (check_hlds__det_report__Var_52));
+            }
+          }
+        else
+          {
+            MR_Word check_hlds__det_report__NoCoverPieces_26;
+            MR_Word check_hlds__det_report__Component_27;
+            MR_Word check_hlds__det_report__Var_76;
+            MR_Word check_hlds__det_report__Var_79;
+            MR_Word check_hlds__det_report__Var_80;
+            MR_Word check_hlds__det_report__Var_88;
+            MR_Tuple check_hlds__det_report__Var_89;
+            MR_Word check_hlds__det_report__Var_91;
+            MR_Word check_hlds__det_report__MissingInfo_115 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeMissingInfo_20, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__MainPieces_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_115, (MR_Integer) 2)));
+            MR_Word check_hlds__det_report__VerbosePieces_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_115, (MR_Integer) 3)));
+            MR_Integer check_hlds__det_report__NumPossibleConsIds_113 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_115, (MR_Integer) 0)));
+            MR_Integer check_hlds__det_report__NumUncoveredConsIds_114 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_115, (MR_Integer) 1)));
+
+            {
+              check_hlds__det_report__Var_80 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_80, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_80, 1) = ((MR_Box) (check_hlds__det_report__SwitchVarStr_19));
+            }
+            {
+              check_hlds__det_report__Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_79, 0) = ((MR_Box) (check_hlds__det_report__Var_80));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[63])));
+            }
+            {
+              check_hlds__det_report__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_76, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[90])));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_76, 1) = ((MR_Box) (check_hlds__det_report__Var_79));
+            }
+            {
+              check_hlds__det_report__NoCoverPieces_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__NoCoverPieces_26, 1) = ((MR_Box) (check_hlds__det_report__Var_76));
+            }
+            {
+              check_hlds__det_report__Var_88 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__NestingPieces_18, check_hlds__det_report__NoCoverPieces_26);
+            }
+            {
+              check_hlds__det_report__append_prefix_and_maybe_verbose_4_p_0(check_hlds__det_report__Var_88, check_hlds__det_report__MainPieces_118, check_hlds__det_report__VerbosePieces_119, &check_hlds__det_report__Component_27);
+            }
+            {
+              check_hlds__det_report__Var_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_91, 0) = ((MR_Box) (check_hlds__det_report__Component_27));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_91, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              check_hlds__det_report__Var_89 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_89, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_89, 1) = ((MR_Box) (check_hlds__det_report__Var_91));
+            }
+            {
+              check_hlds__det_report__MaybeSeverityComponents_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeSeverityComponents_28, 0) = ((MR_Box) (check_hlds__det_report__Var_89));
+            }
+          }
+        break;
+    }
+    if ((check_hlds__det_report__MaybeSeverityComponents_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *check_hlds__det_report__STATE_VARIABLE_DetInfo_38 = check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37;
+    else
+      {
+        MR_Word check_hlds__det_report__Severity_33;
+        MR_Word check_hlds__det_report__SpecComponents_34;
+        MR_Word check_hlds__det_report__Msg_35;
+        MR_Word check_hlds__det_report__Spec_36;
+        MR_Tuple check_hlds__det_report__Var_93 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeSeverityComponents_28, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__Var_95;
+
+        check_hlds__det_report__Severity_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_93, (MR_Integer) 0)));
+        check_hlds__det_report__SpecComponents_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_93, (MR_Integer) 1)));
+        {
+          check_hlds__det_report__Msg_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_35, 0) = ((MR_Box) (check_hlds__det_report__Context_16));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Msg_35, 1) = ((MR_Box) (check_hlds__det_report__SpecComponents_34));
+        }
+        {
+          check_hlds__det_report__Var_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_95, 0) = ((MR_Box) (check_hlds__det_report__Msg_35));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__det_report__Spec_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_36, 0) = ((MR_Box) (check_hlds__det_report__Severity_33));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Spec_36, 2) = ((MR_Box) (check_hlds__det_report__Var_95));
+        }
+        {
+          check_hlds__det_util__det_info_add_error_spec_3_p_0(check_hlds__det_report__Spec_36, check_hlds__det_report__STATE_VARIABLE_DetInfo_0_37, check_hlds__det_report__STATE_VARIABLE_DetInfo_38);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__find_missing_cons_ids_9_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box * check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_Word check_hlds__det_report__conv0_HeadVar__2_2;
+
+    {
+      parse_tree__prog_util__strip_module_qualifier_from_cons_id_2_p_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), &check_hlds__det_report__conv0_HeadVar__2_2);
+    }
+    *check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__2_2));
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__find_missing_cons_ids_9_p_0(
+  MR_Word check_hlds__det_report__DetInfo_10,
+  MR_Word check_hlds__det_report__MaybeLimit_11,
+  MR_Word check_hlds__det_report__InstMap0_12,
+  MR_Word check_hlds__det_report__SwitchContexts_13,
+  MR_Word check_hlds__det_report__Var_14,
+  MR_Word check_hlds__det_report__Cases_15,
+  MR_Word * check_hlds__det_report__NestingPieces_16,
+  MR_String * check_hlds__det_report__VarStr_17,
+  MR_Word * check_hlds__det_report__MaybeMissingInfo_18)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__ProcInfo_19;
+    MR_Word check_hlds__det_report__VarSet_20;
+    MR_Word check_hlds__det_report__ModuleInfo_21;
+    MR_Word check_hlds__det_report__VarInst_22;
+    MR_Word check_hlds__det_report__PossibleConsIdsSet_35;
+    MR_Word check_hlds__det_report__BoundInsts_23;
+
+    {
+      check_hlds__det_report__det_diagnose_switch_context_3_p_0(check_hlds__det_report__DetInfo_10, check_hlds__det_report__SwitchContexts_13, check_hlds__det_report__NestingPieces_16);
+    }
+    {
+      check_hlds__det_util__det_get_proc_info_2_p_0(check_hlds__det_report__DetInfo_10, &check_hlds__det_report__ProcInfo_19);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_19, &check_hlds__det_report__VarSet_20);
+    }
+    {
+      *check_hlds__det_report__VarStr_17 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_20, check_hlds__det_report__Var_14);
+    }
+    {
+      check_hlds__det_util__det_info_get_module_info_2_p_0(check_hlds__det_report__DetInfo_10, &check_hlds__det_report__ModuleInfo_21);
+    }
+    {
+      hlds__instmap__instmap_lookup_var_3_p_0(check_hlds__det_report__InstMap0_12, check_hlds__det_report__Var_14, &check_hlds__det_report__VarInst_22);
+    }
+    {
+      check_hlds__det_report__succeeded = check_hlds__inst_test__inst_is_bound_to_functors_3_p_0(check_hlds__det_report__ModuleInfo_21, check_hlds__det_report__VarInst_22, &check_hlds__det_report__BoundInsts_23);
+    }
+    if (check_hlds__det_report__succeeded)
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_137_137;
+        MR_Word check_hlds__det_report__VarTypes_24;
+        MR_Word check_hlds__det_report__VarType_25;
+        MR_Word check_hlds__det_report__VarTypeCtor_26;
+        MR_Word check_hlds__det_report__BoundConsIds_27;
+        MR_Word check_hlds__det_report__SortedBoundConsIds_28;
+        MR_Word check_hlds__det_report__BoundConsIdsSet_29;
+        MR_Word check_hlds__det_report__ConsTable_32;
+        MR_Word check_hlds__det_report__TypeDefn_30;
+        MR_Word check_hlds__det_report__TypeBody_31;
+        MR_Word check_hlds__det_report__Var_120;
+        MR_Word check_hlds__det_report__Var_121;
+        MR_Word check_hlds__det_report__Var_122;
+        MR_Word check_hlds__det_report__Var_123;
+        MR_Word check_hlds__det_report__Var_124;
+        MR_Word check_hlds__det_report__Var_125;
+        MR_Word check_hlds__det_report__Var_126;
+        MR_Word check_hlds__det_report__Var_127;
+
+        {
+          check_hlds__det_util__det_info_get_vartypes_2_p_0(check_hlds__det_report__DetInfo_10, &check_hlds__det_report__VarTypes_24);
+        }
+        {
+          hlds__vartypes__lookup_var_type_3_p_0(check_hlds__det_report__VarTypes_24, check_hlds__det_report__Var_14, &check_hlds__det_report__VarType_25);
+        }
+        {
+          parse_tree__prog_type__type_to_ctor_det_2_p_0(check_hlds__det_report__VarType_25, &check_hlds__det_report__VarTypeCtor_26);
+        }
+        {
+          parse_tree__prog_mode__bound_insts_to_cons_ids_3_p_0(check_hlds__det_report__VarTypeCtor_26, check_hlds__det_report__BoundInsts_23, &check_hlds__det_report__BoundConsIds_27);
+        }
+        check_hlds__det_report__TypeCtorInfo_137_137 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+        {
+          mercury__list__sort_and_remove_dups_2_p_0(check_hlds__det_report__TypeCtorInfo_137_137, check_hlds__det_report__BoundConsIds_27, &check_hlds__det_report__SortedBoundConsIds_28);
+        }
+        {
+          mercury__set_tree234__sorted_list_to_set_2_p_0(check_hlds__det_report__TypeCtorInfo_137_137, check_hlds__det_report__SortedBoundConsIds_28, &check_hlds__det_report__BoundConsIdsSet_29);
+        }
+        {
+          check_hlds__det_report__succeeded = check_hlds__det_util__det_lookup_var_type_4_p_0(check_hlds__det_report__ModuleInfo_21, check_hlds__det_report__ProcInfo_19, check_hlds__det_report__Var_14, &check_hlds__det_report__TypeDefn_30);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            {
+              hlds__hlds_data__get_type_defn_body_2_p_0(check_hlds__det_report__TypeDefn_30, &check_hlds__det_report__TypeBody_31);
+            }
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__TypeBody_31)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__Var_120 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 0)));
+                check_hlds__det_report__ConsTable_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 1)));
+                check_hlds__det_report__Var_121 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 2)));
+                check_hlds__det_report__Var_122 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 3)));
+                check_hlds__det_report__Var_123 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 4)));
+                check_hlds__det_report__Var_124 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 5)));
+                check_hlds__det_report__Var_125 = ((((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 6)))) & (MR_Integer) 1);
+                check_hlds__det_report__Var_126 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                check_hlds__det_report__Var_127 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_31, (MR_Integer) 7)));
+              }
+          }
+        if (check_hlds__det_report__succeeded)
+          {
+            MR_Word check_hlds__det_report__SortedTypeConsIds_33;
+            MR_Word check_hlds__det_report__TypeConsIdsSet_34;
+
+            {
+              mercury__map__keys_2_p_0(check_hlds__det_report__TypeCtorInfo_137_137, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0, check_hlds__det_report__ConsTable_32, &check_hlds__det_report__SortedTypeConsIds_33);
+            }
+            {
+              mercury__set_tree234__sorted_list_to_set_2_p_0(check_hlds__det_report__TypeCtorInfo_137_137, check_hlds__det_report__SortedTypeConsIds_33, &check_hlds__det_report__TypeConsIdsSet_34);
+            }
+            {
+              mercury__set_tree234__intersect_3_p_0(check_hlds__det_report__TypeCtorInfo_137_137, check_hlds__det_report__TypeConsIdsSet_34, check_hlds__det_report__BoundConsIdsSet_29, &check_hlds__det_report__PossibleConsIdsSet_35);
+            }
+          }
+        else
+          check_hlds__det_report__PossibleConsIdsSet_35 = check_hlds__det_report__BoundConsIdsSet_29;
+        check_hlds__det_report__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_139_139;
+        MR_Word check_hlds__det_report__TypeCtorInfo_140_140;
+        MR_Word check_hlds__det_report__TypeDefn_115;
+        MR_Word check_hlds__det_report__TypeBody_116;
+        MR_Word check_hlds__det_report__ConsTable_117;
+        MR_Word check_hlds__det_report__SortedTypeConsIds_118;
+        MR_Word check_hlds__det_report__Var_128;
+        MR_Word check_hlds__det_report__Var_129;
+        MR_Word check_hlds__det_report__Var_130;
+        MR_Word check_hlds__det_report__Var_131;
+        MR_Word check_hlds__det_report__Var_132;
+        MR_Word check_hlds__det_report__Var_133;
+        MR_Word check_hlds__det_report__Var_134;
+        MR_Word check_hlds__det_report__Var_135;
+
+        {
+          check_hlds__det_report__succeeded = check_hlds__det_util__det_lookup_var_type_4_p_0(check_hlds__det_report__ModuleInfo_21, check_hlds__det_report__ProcInfo_19, check_hlds__det_report__Var_14, &check_hlds__det_report__TypeDefn_115);
+        }
+        if (check_hlds__det_report__succeeded)
+          {
+            {
+              hlds__hlds_data__get_type_defn_body_2_p_0(check_hlds__det_report__TypeDefn_115, &check_hlds__det_report__TypeBody_116);
+            }
+            check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__TypeBody_116)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__Var_128 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 0)));
+                check_hlds__det_report__ConsTable_117 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 1)));
+                check_hlds__det_report__Var_129 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 2)));
+                check_hlds__det_report__Var_130 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 3)));
+                check_hlds__det_report__Var_131 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 4)));
+                check_hlds__det_report__Var_132 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 5)));
+                check_hlds__det_report__Var_133 = ((((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 6)))) & (MR_Integer) 1);
+                check_hlds__det_report__Var_134 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                check_hlds__det_report__Var_135 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__TypeBody_116, (MR_Integer) 7)));
+                check_hlds__det_report__TypeCtorInfo_139_139 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+                check_hlds__det_report__TypeCtorInfo_140_140 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0;
+                {
+                  mercury__map__keys_2_p_0(check_hlds__det_report__TypeCtorInfo_139_139, check_hlds__det_report__TypeCtorInfo_140_140, check_hlds__det_report__ConsTable_117, &check_hlds__det_report__SortedTypeConsIds_118);
+                }
+                {
+                  mercury__set_tree234__sorted_list_to_set_2_p_0(check_hlds__det_report__TypeCtorInfo_139_139, check_hlds__det_report__SortedTypeConsIds_118, &check_hlds__det_report__PossibleConsIdsSet_35);
+                }
+                check_hlds__det_report__succeeded = MR_TRUE;
+              }
+          }
+      }
+    if (check_hlds__det_report__succeeded)
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_141_141 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+        MR_Word check_hlds__det_report__CoveredConsIdsSet_36;
+        MR_Word check_hlds__det_report__UncoveredConsIdsSet_37;
+        MR_Integer check_hlds__det_report__NumPossibleConsIds_38;
+        MR_Integer check_hlds__det_report__NumUncoveredConsIds_39;
+        MR_Word check_hlds__det_report__UncoveredConsIds_40;
+        MR_Word check_hlds__det_report__UnQualConsIds_41;
+        MR_Word check_hlds__det_report__SortedUnQualConsIds_42;
+        MR_Word check_hlds__det_report__PrintedConsIds_43;
+        MR_Word check_hlds__det_report__NonPrintedConsIds_44;
+        MR_Word check_hlds__det_report__Var_55;
+
+        {
+          check_hlds__det_report__Var_55 = mercury__set_tree234__init_0_f_0(check_hlds__det_report__TypeCtorInfo_141_141);
+        }
+        {
+          check_hlds__det_report__compute_covered_cons_ids_3_p_0(check_hlds__det_report__Cases_15, check_hlds__det_report__Var_55, &check_hlds__det_report__CoveredConsIdsSet_36);
+        }
+        {
+          mercury__set_tree234__difference_3_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__PossibleConsIdsSet_35, check_hlds__det_report__CoveredConsIdsSet_36, &check_hlds__det_report__UncoveredConsIdsSet_37);
+        }
+        {
+          check_hlds__det_report__NumPossibleConsIds_38 = mercury__set_tree234__count_1_f_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__PossibleConsIdsSet_35);
+        }
+        {
+          check_hlds__det_report__NumUncoveredConsIds_39 = mercury__set_tree234__count_1_f_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__UncoveredConsIdsSet_37);
+        }
+        {
+          check_hlds__det_report__UncoveredConsIds_40 = mercury__set_tree234__to_sorted_list_1_f_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__UncoveredConsIdsSet_37);
+        }
+        {
+          mercury__list__map_3_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__TypeCtorInfo_141_141, (MR_Word) &check_hlds__det_report_scalar_common_1[1], check_hlds__det_report__UncoveredConsIds_40, &check_hlds__det_report__UnQualConsIds_41);
+        }
+        {
+          mercury__list__sort_2_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__UnQualConsIds_41, &check_hlds__det_report__SortedUnQualConsIds_42);
+        }
+        if ((check_hlds__det_report__MaybeLimit_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            check_hlds__det_report__PrintedConsIds_43 = check_hlds__det_report__SortedUnQualConsIds_42;
+            check_hlds__det_report__NonPrintedConsIds_44 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        else
+          {
+            MR_Integer check_hlds__det_report__Limit_45 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__det_report__MaybeLimit_11, (MR_Integer) 0)));
+            MR_Integer check_hlds__det_report__NumConsIds_46;
+
+            {
+              mercury__list__length_2_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__SortedUnQualConsIds_42, &check_hlds__det_report__NumConsIds_46);
+            }
+            check_hlds__det_report__succeeded = (check_hlds__det_report__NumConsIds_46 <= check_hlds__det_report__Limit_45);
+            if (check_hlds__det_report__succeeded)
+              {
+                check_hlds__det_report__PrintedConsIds_43 = check_hlds__det_report__SortedUnQualConsIds_42;
+                check_hlds__det_report__NonPrintedConsIds_44 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              }
+            else
+              {
+                MR_Integer check_hlds__det_report__Var_57 = (check_hlds__det_report__Limit_45 - (MR_Integer) 1);
+
+                {
+                  mercury__list__split_upto_4_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__Var_57, check_hlds__det_report__SortedUnQualConsIds_42, &check_hlds__det_report__PrintedConsIds_43, &check_hlds__det_report__NonPrintedConsIds_44);
+                }
+              }
+          }
+        if ((check_hlds__det_report__PrintedConsIds_43 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__MaybeMissingInfo_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word check_hlds__det_report__HeadPrintedConsId_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__PrintedConsIds_43, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__TailPrintedConsIds_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__PrintedConsIds_43, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__MainPieces_49;
+            MR_Word check_hlds__det_report__VerbosePieces_50;
+            MR_Word check_hlds__det_report__MissingInfo_54;
+
+            if ((check_hlds__det_report__NonPrintedConsIds_44 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word check_hlds__det_report__TypeCtorInfo_144_144 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                MR_Word check_hlds__det_report__Var_105;
+                MR_Word check_hlds__det_report__Var_106;
+
+                {
+                  check_hlds__det_report__Var_106 = check_hlds__det_report__cons_id_list_to_pieces_3_f_0(check_hlds__det_report__HeadPrintedConsId_47, check_hlds__det_report__TailPrintedConsIds_48, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[83]));
+                }
+                {
+                  check_hlds__det_report__Var_105 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_144_144, check_hlds__det_report__Var_106, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[85]));
+                }
+                {
+                  check_hlds__det_report__MainPieces_49 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_144_144, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[81]), check_hlds__det_report__Var_105);
+                }
+                check_hlds__det_report__VerbosePieces_50 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              }
+            else
+              {
+                MR_Word check_hlds__det_report__TypeCtorInfo_145_145;
+                MR_Integer check_hlds__det_report__NumNonPrintedConsIds_53;
+                MR_Word check_hlds__det_report__Var_59;
+                MR_Word check_hlds__det_report__Var_63;
+                MR_Word check_hlds__det_report__Var_64;
+                MR_Word check_hlds__det_report__Var_72;
+                MR_Word check_hlds__det_report__Var_75;
+                MR_Word check_hlds__det_report__Var_78;
+                MR_Word check_hlds__det_report__Var_79;
+                MR_Word check_hlds__det_report__Var_90;
+                MR_Word check_hlds__det_report__Var_91;
+                MR_Word check_hlds__det_report__Var_92;
+
+                {
+                  mercury__list__length_2_p_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__NonPrintedConsIds_44, &check_hlds__det_report__NumNonPrintedConsIds_53);
+                }
+                check_hlds__det_report__TypeCtorInfo_145_145 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                check_hlds__det_report__Var_59 = (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[81]);
+                {
+                  check_hlds__det_report__Var_64 = check_hlds__det_report__cons_id_list_to_pieces_3_f_0(check_hlds__det_report__HeadPrintedConsId_47, check_hlds__det_report__TailPrintedConsIds_48, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[72]));
+                }
+                {
+                  check_hlds__det_report__Var_79 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_79, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_79, 1) = ((MR_Box) (check_hlds__det_report__NumNonPrintedConsIds_53));
+                }
+                {
+                  check_hlds__det_report__Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_78, 0) = ((MR_Box) (check_hlds__det_report__Var_79));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_78, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[74])));
+                }
+                {
+                  check_hlds__det_report__Var_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_75, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[86])));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_75, 1) = ((MR_Box) (check_hlds__det_report__Var_78));
+                }
+                {
+                  check_hlds__det_report__Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_72, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[84])));
+                  MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_72, 1) = ((MR_Box) (check_hlds__det_report__Var_75));
+                }
+                {
+                  check_hlds__det_report__Var_63 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_145_145, check_hlds__det_report__Var_64, check_hlds__det_report__Var_72);
+                }
+                {
+                  check_hlds__det_report__MainPieces_49 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_145_145, check_hlds__det_report__Var_59, check_hlds__det_report__Var_63);
+                }
+                {
+                  check_hlds__det_report__Var_92 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_141_141, check_hlds__det_report__TailPrintedConsIds_48, check_hlds__det_report__NonPrintedConsIds_44);
+                }
+                {
+                  check_hlds__det_report__Var_91 = check_hlds__det_report__cons_id_list_to_pieces_3_f_0(check_hlds__det_report__HeadPrintedConsId_47, check_hlds__det_report__Var_92, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[83]));
+                }
+                {
+                  check_hlds__det_report__Var_90 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_145_145, check_hlds__det_report__Var_91, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[85]));
+                }
+                {
+                  check_hlds__det_report__VerbosePieces_50 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_145_145, check_hlds__det_report__Var_59, check_hlds__det_report__Var_90);
+                }
+              }
+            {
+              check_hlds__det_report__MissingInfo_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_54, 0) = ((MR_Box) (check_hlds__det_report__NumPossibleConsIds_38));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_54, 1) = ((MR_Box) (check_hlds__det_report__NumUncoveredConsIds_39));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_54, 2) = ((MR_Box) (check_hlds__det_report__MainPieces_49));
+              MR_hl_field(MR_mktag(0), check_hlds__det_report__MissingInfo_54, 3) = ((MR_Box) (check_hlds__det_report__VerbosePieces_50));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *check_hlds__det_report__MaybeMissingInfo_18 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__det_report__MissingInfo_54));
+            }
+          }
+      }
+    else
+      *check_hlds__det_report__MaybeMissingInfo_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__det_report__det_diagnose_switch_context_3_p_0_1(
+  MR_Box check_hlds__det_report__closure_arg,
+  MR_Box check_hlds__det_report__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__det_report__wrapper_arg_2;
+    MR_Box check_hlds__det_report__closure = check_hlds__det_report__closure_arg;
+    MR_String check_hlds__det_report__conv0_HeadVar__3_3;
+
+    {
+      check_hlds__det_report__conv0_HeadVar__3_3 = check_hlds__det_report__switch_match_to_string_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__det_report__wrapper_arg_1));
+    }
+    check_hlds__det_report__wrapper_arg_2 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__3_3));
+    return check_hlds__det_report__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__det_diagnose_switch_context_3_p_0(
+  MR_Word check_hlds__det_report__DetInfo_1,
+  MR_Word check_hlds__det_report__HeadVar__2_2,
+  MR_Word * check_hlds__det_report__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *check_hlds__det_report__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_47_47;
+        MR_Word check_hlds__det_report__SwitchContext_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__SwitchContexts_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__ProcInfo_9;
+        MR_Word check_hlds__det_report__VarSet_10;
+        MR_Word check_hlds__det_report__Var_11;
+        MR_Word check_hlds__det_report__MainMatch_12;
+        MR_Word check_hlds__det_report__OtherMatches_13;
+        MR_String check_hlds__det_report__MainMatchStr_14;
+        MR_Word check_hlds__det_report__OtherMatchStrs_15;
+        MR_String check_hlds__det_report__MatchsStr_16;
+        MR_String check_hlds__det_report__VarStr_17;
+        MR_Word check_hlds__det_report__InnerPieces_18;
+        MR_Word check_hlds__det_report__OuterPieces_19;
+        MR_Word check_hlds__det_report__Var_20;
+        MR_Word check_hlds__det_report__Var_22;
+        MR_Word check_hlds__det_report__Var_25;
+        MR_Word check_hlds__det_report__Var_26;
+        MR_Word check_hlds__det_report__Var_27;
+        MR_Word check_hlds__det_report__Var_30;
+        MR_Word check_hlds__det_report__Var_31;
+        MR_Word check_hlds__det_report__Var_38;
+        MR_Word check_hlds__det_report__ConsId_49;
+        MR_Word check_hlds__det_report__MaybeArgVars_50;
+
+        {
+          check_hlds__det_util__det_get_proc_info_2_p_0(check_hlds__det_report__DetInfo_1, &check_hlds__det_report__ProcInfo_9);
+        }
+        {
+          hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__det_report__ProcInfo_9, &check_hlds__det_report__VarSet_10);
+        }
+        check_hlds__det_report__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SwitchContext_6, (MR_Integer) 0)));
+        check_hlds__det_report__MainMatch_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SwitchContext_6, (MR_Integer) 1)));
+        check_hlds__det_report__OtherMatches_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SwitchContext_6, (MR_Integer) 2)));
+        check_hlds__det_report__ConsId_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MainMatch_12, (MR_Integer) 0)));
+        check_hlds__det_report__MaybeArgVars_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__MainMatch_12, (MR_Integer) 1)));
+        {
+          check_hlds__det_report__MainMatchStr_14 = hlds__hlds_out__hlds_out_util__cons_id_and_vars_or_arity_to_string_4_f_0(check_hlds__det_report__VarSet_10, (MR_Integer) 1, check_hlds__det_report__ConsId_49, check_hlds__det_report__MaybeArgVars_50);
+        }
+        {
+          check_hlds__det_report__Var_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 0) = ((MR_Box) (&check_hlds__det_report_scalar_common_4[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 1) = ((MR_Box) (check_hlds__det_report__det_diagnose_switch_context_3_p_0_1));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, 3) = ((MR_Box) (check_hlds__det_report__VarSet_10));
+        }
+        {
+          check_hlds__det_report__OtherMatchStrs_15 = mercury__list__map_2_f_0((MR_Word) &check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, check_hlds__det_report__Var_20, check_hlds__det_report__OtherMatches_13);
+        }
+        {
+          check_hlds__det_report__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_22, 0) = ((MR_Box) (check_hlds__det_report__MainMatchStr_14));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_22, 1) = ((MR_Box) (check_hlds__det_report__OtherMatchStrs_15));
+        }
+        {
+          check_hlds__det_report__MatchsStr_16 = mercury__string__join_list_2_f_0((MR_String) ", ", check_hlds__det_report__Var_22);
+        }
+        {
+          check_hlds__det_report__VarStr_17 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__det_report__VarSet_10, check_hlds__det_report__Var_11);
+        }
+        {
+          check_hlds__det_report__Var_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), check_hlds__det_report__Var_26, 1) = ((MR_Box) (check_hlds__det_report__MatchsStr_16));
+        }
+        {
+          check_hlds__det_report__Var_31 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), check_hlds__det_report__Var_31, 0) = ((MR_Box) (check_hlds__det_report__VarStr_17));
+        }
+        {
+          check_hlds__det_report__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_30, 0) = ((MR_Box) (check_hlds__det_report__Var_31));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[47])));
+        }
+        {
+          check_hlds__det_report__Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[78])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_27, 1) = ((MR_Box) (check_hlds__det_report__Var_30));
+        }
+        {
+          check_hlds__det_report__Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_25, 0) = ((MR_Box) (check_hlds__det_report__Var_26));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__Var_25, 1) = ((MR_Box) (check_hlds__det_report__Var_27));
+        }
+        {
+          check_hlds__det_report__InnerPieces_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__InnerPieces_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__det_report_scalar_common_2[77])));
+          MR_hl_field(MR_mktag(1), check_hlds__det_report__InnerPieces_18, 1) = ((MR_Box) (check_hlds__det_report__Var_25));
+        }
+        {
+          check_hlds__det_report__det_diagnose_switch_context_3_p_0(check_hlds__det_report__DetInfo_1, check_hlds__det_report__SwitchContexts_7, &check_hlds__det_report__OuterPieces_19);
+        }
+        check_hlds__det_report__TypeCtorInfo_47_47 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+        {
+          check_hlds__det_report__Var_38 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_47_47, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[79]), check_hlds__det_report__InnerPieces_18);
+        }
+        {
+          *check_hlds__det_report__HeadVar__3_3 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_47_47, check_hlds__det_report__OuterPieces_19, check_hlds__det_report__Var_38);
+        }
+      }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__det_report__cons_id_list_to_pieces_3_f_0(
+  MR_Word check_hlds__det_report__ConsId1_5,
+  MR_Word check_hlds__det_report__ConsIds2Plus_6,
+  MR_Word check_hlds__det_report__EndCommaPieces_7)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__Pieces_8;
+    MR_Word check_hlds__det_report__ConsIdPiece1_9;
+
+    {
+      check_hlds__det_report__ConsIdPiece1_9 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__ConsIdPiece1_9, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 12));
+      MR_hl_field(MR_mktag(3), check_hlds__det_report__ConsIdPiece1_9, 1) = ((MR_Box) (check_hlds__det_report__ConsId1_5));
+    }
+    if ((check_hlds__det_report__ConsIds2Plus_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        check_hlds__det_report__Pieces_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_8, 0) = ((MR_Box) (check_hlds__det_report__ConsIdPiece1_9));
+        MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces_8, 1) = ((MR_Box) (check_hlds__det_report__EndCommaPieces_7));
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__ConsId2_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ConsIds2Plus_6, (MR_Integer) 0)));
+        MR_Word check_hlds__det_report__ConsIds3Plus_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__ConsIds2Plus_6, (MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Pieces1_14;
+        MR_Word check_hlds__det_report__Pieces2Plus_15;
+
+        if ((check_hlds__det_report__ConsIds3Plus_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              check_hlds__det_report__Pieces1_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces1_14, 0) = ((MR_Box) (check_hlds__det_report__ConsIdPiece1_9));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces1_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[75])));
+            }
+          }
+        else
+          {
+            {
+              check_hlds__det_report__Pieces1_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces1_14, 0) = ((MR_Box) (check_hlds__det_report__ConsIdPiece1_9));
+              MR_hl_field(MR_mktag(1), check_hlds__det_report__Pieces1_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__det_report_scalar_common_2[76])));
+            }
+          }
+        {
+          check_hlds__det_report__Pieces2Plus_15 = check_hlds__det_report__cons_id_list_to_pieces_3_f_0(check_hlds__det_report__ConsId2_10, check_hlds__det_report__ConsIds3Plus_11, check_hlds__det_report__EndCommaPieces_7);
+        }
+        {
+          check_hlds__det_report__Pieces_8 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__Pieces1_14, check_hlds__det_report__Pieces2Plus_15);
+        }
+      }
+    return check_hlds__det_report__Pieces_8;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report__compute_covered_cons_ids_3_p_0(
+  MR_Word check_hlds__det_report__HeadVar__1_1,
+  MR_Word check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_0_2,
+  MR_Word * check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded;
+
+        if ((check_hlds__det_report__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_3 = check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_0_2;
+        else
+          {
+            MR_Word check_hlds__det_report__TypeCtorInfo_18_18 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+            MR_Word check_hlds__det_report__Case_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__Cases_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__MainConsId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_7, (MR_Integer) 0)));
+            MR_Word check_hlds__det_report__OtherConsIds_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_7, (MR_Integer) 1)));
+            MR_Word check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_15_15;
+            MR_Word check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_16_16;
+            MR_Word check_hlds__det_report___Goal_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Case_7, (MR_Integer) 2)));
+
+            {
+              mercury__set_tree234__insert_3_p_0(check_hlds__det_report__TypeCtorInfo_18_18, ((MR_Box) (check_hlds__det_report__MainConsId_10)), check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_0_2, &check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_15_15);
+            }
+            {
+              mercury__set_tree234__insert_list_3_p_0(check_hlds__det_report__TypeCtorInfo_18_18, check_hlds__det_report__OtherConsIds_11, check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_15_15, &check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_16_16);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__det_report__next_value_of_HeadVar__1_1 = check_hlds__det_report__Cases_8;
+              MR_Word check_hlds__det_report__next_value_of_STATE_VARIABLE_CoveredConsIds_0_2 = check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_16_16;
+
+              check_hlds__det_report__STATE_VARIABLE_CoveredConsIds_0_2 = check_hlds__det_report__next_value_of_STATE_VARIABLE_CoveredConsIds_0_2;
+              check_hlds__det_report__HeadVar__1_1 = check_hlds__det_report__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__det_report__append_prefix_and_maybe_verbose_4_p_0(
+  MR_Word check_hlds__det_report__PrefixPieces_5,
+  MR_Word check_hlds__det_report__MainPieces_6,
+  MR_Word check_hlds__det_report__VerbosePieces_7,
+  MR_Word * check_hlds__det_report__Component_8)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    if ((check_hlds__det_report__VerbosePieces_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word check_hlds__det_report__Var_13;
+
+        {
+          check_hlds__det_report__Var_13 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, check_hlds__det_report__PrefixPieces_5, check_hlds__det_report__MainPieces_6);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *check_hlds__det_report__Component_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__det_report__Var_13));
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__det_report__TypeCtorInfo_15_15 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+        MR_Word check_hlds__det_report__Var_11;
+        MR_Word check_hlds__det_report__Var_12;
+
+        {
+          check_hlds__det_report__Var_11 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_15_15, check_hlds__det_report__PrefixPieces_5, check_hlds__det_report__VerbosePieces_7);
+        }
+        {
+          check_hlds__det_report__Var_12 = mercury__list__f_43_43_2_f_0(check_hlds__det_report__TypeCtorInfo_15_15, check_hlds__det_report__PrefixPieces_5, check_hlds__det_report__MainPieces_6);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__det_report__Component_8 = base;
+          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__det_report__Var_11));
+          MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (check_hlds__det_report__Var_12));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report__is_scope_subgoal_a_sortof_switch_5_p_0(
+  MR_Word check_hlds__det_report__Goal_6,
+  MR_Word * check_hlds__det_report__SwitchContext_7,
+  MR_Word * check_hlds__det_report__SwitchVar_8,
+  MR_Word * check_hlds__det_report__CanFail_9,
+  MR_Word * check_hlds__det_report__Cases_10)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+    MR_Word check_hlds__det_report__GoalExpr_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_6, (MR_Integer) 0)));
+    MR_Word check_hlds__det_report__GoalInfo_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Goal_6, (MR_Integer) 1)));
+
+    switch (MR_tag((MR_Word) check_hlds__det_report__GoalExpr_11)) {
+      default:
+        check_hlds__det_report__succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 0)))) {
+          default:
+            check_hlds__det_report__succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__det_report__Conjuncts0_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__Conjuncts_19;
+              MR_Word check_hlds__det_report__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 1)));
+
+              check_hlds__det_report__succeeded = (check_hlds__det_report__Var_50 == (MR_Integer) 0);
+              if (check_hlds__det_report__succeeded)
+                {
+                  {
+                    hlds__goal_util__flatten_conj_2_p_0(check_hlds__det_report__Conjuncts0_18, &check_hlds__det_report__Conjuncts_19);
+                  }
+                  {
+                    check_hlds__det_report__succeeded = check_hlds__det_report__cse_lifted_then_sortof_switch_5_p_0(check_hlds__det_report__Conjuncts_19, check_hlds__det_report__SwitchContext_7, check_hlds__det_report__SwitchVar_8, check_hlds__det_report__CanFail_9, check_hlds__det_report__Cases_10);
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              *check_hlds__det_report__SwitchVar_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 1)));
+              *check_hlds__det_report__CanFail_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 2)));
+              *check_hlds__det_report__Cases_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 3)));
+              {
+                *check_hlds__det_report__SwitchContext_7 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_12);
+              }
+              check_hlds__det_report__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__det_report__Reason_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 1)));
+              MR_Word check_hlds__det_report__SubGoal_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_11, (MR_Integer) 2)));
+              MR_Word check_hlds__det_report__SubGoalExpr_16;
+              MR_Word check_hlds__det_report__SubGoalInfo_17;
+              MR_Word check_hlds__det_report___MaybeForcePruning_15;
+
+              check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__Reason_13)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_13, (MR_Integer) 0)))) == (MR_Integer) 4)));
+              if (check_hlds__det_report__succeeded)
+                {
+                  check_hlds__det_report___MaybeForcePruning_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_13, (MR_Integer) 1)));
+                  check_hlds__det_report__SubGoalExpr_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_14, (MR_Integer) 0)));
+                  check_hlds__det_report__SubGoalInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_14, (MR_Integer) 1)));
+                  check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__SubGoalExpr_16)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_16, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                  if (check_hlds__det_report__succeeded)
+                    {
+                      *check_hlds__det_report__SwitchVar_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_16, (MR_Integer) 1)));
+                      *check_hlds__det_report__CanFail_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_16, (MR_Integer) 2)));
+                      *check_hlds__det_report__Cases_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_16, (MR_Integer) 3)));
+                      {
+                        *check_hlds__det_report__SwitchContext_7 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__SubGoalInfo_17);
+                      }
+                      check_hlds__det_report__succeeded = MR_TRUE;
+                    }
+                }
+            }
+            break;
+        }
+        break;
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report__cse_lifted_then_sortof_switch_5_p_0(
+  MR_Word check_hlds__det_report__Conjuncts_6,
+  MR_Word * check_hlds__det_report__SwitchContext_7,
+  MR_Word * check_hlds__det_report__SwitchVar_8,
+  MR_Word * check_hlds__det_report__CanFail_9,
+  MR_Word * check_hlds__det_report__Cases_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__det_report__succeeded = ((MR_tag((MR_Word) check_hlds__det_report__Conjuncts_6)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word check_hlds__det_report__Var_19;
+        MR_Word check_hlds__det_report__Var_20;
+
+        if (check_hlds__det_report__succeeded)
+          {
+            check_hlds__det_report__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Conjuncts_6, (MR_Integer) 0)));
+            check_hlds__det_report__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__det_report__Conjuncts_6, (MR_Integer) 1)));
+            if ((check_hlds__det_report__Var_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word check_hlds__det_report__GoalExpr_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, (MR_Integer) 0)));
+                MR_Word check_hlds__det_report__GoalInfo_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__Var_20, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) check_hlds__det_report__GoalExpr_26)) {
+                  default:
+                    check_hlds__det_report__succeeded = MR_FALSE;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 0)))) {
+                      default:
+                        check_hlds__det_report__succeeded = MR_FALSE;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word check_hlds__det_report__Conjuncts0_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 2)));
+                          MR_Word check_hlds__det_report__Conjuncts_34;
+                          MR_Word check_hlds__det_report__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 1)));
+
+                          check_hlds__det_report__succeeded = (check_hlds__det_report__Var_65 == (MR_Integer) 0);
+                          if (check_hlds__det_report__succeeded)
+                            {
+                              {
+                                hlds__goal_util__flatten_conj_2_p_0(check_hlds__det_report__Conjuncts0_33, &check_hlds__det_report__Conjuncts_34);
+                              }
+                              /* direct tailcall eliminated */
+                              {
+                                MR_Word check_hlds__det_report__next_value_of_Conjuncts_6 = check_hlds__det_report__Conjuncts_34;
+
+                                check_hlds__det_report__Conjuncts_6 = check_hlds__det_report__next_value_of_Conjuncts_6;
+                              }
+                              continue;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          *check_hlds__det_report__SwitchVar_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 1)));
+                          *check_hlds__det_report__CanFail_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 2)));
+                          *check_hlds__det_report__Cases_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 3)));
+                          {
+                            *check_hlds__det_report__SwitchContext_7 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__GoalInfo_27);
+                          }
+                          check_hlds__det_report__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_Word check_hlds__det_report__Reason_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 1)));
+                          MR_Word check_hlds__det_report__SubGoal_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__GoalExpr_26, (MR_Integer) 2)));
+                          MR_Word check_hlds__det_report__SubGoalExpr_31;
+                          MR_Word check_hlds__det_report__SubGoalInfo_32;
+                          MR_Word check_hlds__det_report___MaybeForcePruning_30;
+
+                          check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__Reason_28)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_28, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                          if (check_hlds__det_report__succeeded)
+                            {
+                              check_hlds__det_report___MaybeForcePruning_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__Reason_28, (MR_Integer) 1)));
+                              check_hlds__det_report__SubGoalExpr_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_29, (MR_Integer) 0)));
+                              check_hlds__det_report__SubGoalInfo_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__det_report__SubGoal_29, (MR_Integer) 1)));
+                              check_hlds__det_report__succeeded = ((((MR_tag((MR_Word) check_hlds__det_report__SubGoalExpr_31)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_31, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                              if (check_hlds__det_report__succeeded)
+                                {
+                                  *check_hlds__det_report__SwitchVar_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_31, (MR_Integer) 1)));
+                                  *check_hlds__det_report__CanFail_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_31, (MR_Integer) 2)));
+                                  *check_hlds__det_report__Cases_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__det_report__SubGoalExpr_31, (MR_Integer) 3)));
+                                  {
+                                    *check_hlds__det_report__SwitchContext_7 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__det_report__SubGoalInfo_32);
+                                  }
+                                  check_hlds__det_report__succeeded = MR_TRUE;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+            else
+              {
+                {
+                  check_hlds__det_report__succeeded = hlds__hlds_goal__goal_has_feature_2_p_0(check_hlds__det_report__Var_20, (MR_Integer) 25);
+                }
+                if (check_hlds__det_report__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word check_hlds__det_report__next_value_of_Conjuncts_6 = check_hlds__det_report__Var_19;
+
+                      check_hlds__det_report__Conjuncts_6 = check_hlds__det_report__next_value_of_Conjuncts_6;
+                    }
+                    continue;
+                  }
+              }
+          }
+        return check_hlds__det_report__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____cc_unify_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____cc_unify_context_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____cc_unify_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____cc_unify_context_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____detism_check_kind_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____detism_check_kind_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____detism_check_kind_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____detism_check_kind_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____failing_context_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____failing_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____failing_context_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____failing_goal_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____failing_goal_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____failing_goal_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____failing_goal_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____maybe_inform_incomplete_switches_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____maybe_inform_incomplete_switches_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____missing_cons_id_info_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____missing_cons_id_info_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____missing_cons_id_info_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____missing_cons_id_info_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____options_to_restore_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____options_to_restore_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____options_to_restore_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____options_to_restore_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____reported_switch_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____reported_switch_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____reported_switch_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____reported_switch_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____seen_call_id_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____seen_call_id_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____seen_call_id_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____seen_call_id_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_context_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____switch_context_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_context_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____switch_context_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____switch_match_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____switch_match_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____switch_match_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____switch_match_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__det_report____Unify____why_report_incomplete_switch_0_0_10001(
+  MR_Box check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__det_report__succeeded;
+
+    {
+      check_hlds__det_report__succeeded = check_hlds__det_report____Unify____why_report_incomplete_switch_0_0(((MR_Word) check_hlds__det_report__wrapper_arg_1), ((MR_Word) check_hlds__det_report__wrapper_arg_2));
+    }
+    return check_hlds__det_report__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__det_report____Compare____why_report_incomplete_switch_0_0_10001(
+  MR_Box * check_hlds__det_report__wrapper_arg_1,
+  MR_Box check_hlds__det_report__wrapper_arg_2,
+  MR_Box check_hlds__det_report__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__det_report__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__det_report____Compare____why_report_incomplete_switch_0_0(&check_hlds__det_report__conv0_HeadVar__1_1, ((MR_Word) check_hlds__det_report__wrapper_arg_2), ((MR_Word) check_hlds__det_report__wrapper_arg_3));
+    }
+    *check_hlds__det_report__wrapper_arg_1 = ((MR_Box) (check_hlds__det_report__conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__check_hlds__det_report__init(void)
+{
+}
+
+void mercury__check_hlds__det_report__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_cc_unify_context_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_detism_check_kind_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_context_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_failing_goal_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_maybe_inform_incomplete_switches_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_missing_cons_id_info_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_options_to_restore_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_reported_switch_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_seen_call_id_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_context_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_switch_match_0);
+	MR_register_type_ctor_info(&check_hlds__det_report__check_hlds__det_report__type_ctor_info_why_report_incomplete_switch_0);
+}
+
+void mercury__check_hlds__det_report__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__det_report__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module check_hlds.det_report. */
