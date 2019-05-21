@@ -1,0 +1,184 @@
+:- module (hlds.hlds_data).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.status).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- type cons_id_to_tag_map == map.map(parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- type cons_table.
+:- type cons_tag
+    --->    string_tag(string)
+    ;       float_tag(float)
+    ;       int_tag(hlds.hlds_data.int_tag)
+    ;       foreign_tag(libs.globals.foreign_language, string)
+    ;       closure_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.lambda_eval_method)
+    ;       type_ctor_info_tag(mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity)
+    ;       base_typeclass_info_tag(mdbcomp.sym_name.module_name, parse_tree.prog_data.class_id, string)
+    ;       type_info_const_tag(int)
+    ;       typeclass_info_const_tag(int)
+    ;       ground_term_const_tag(int, hlds.hlds_data.cons_tag)
+    ;       tabling_info_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       deep_profiling_proc_layout_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       table_io_entry_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       single_functor_tag 
+    ;       unshared_tag(hlds.hlds_data.tag_bits)
+    ;       direct_arg_tag(hlds.hlds_data.tag_bits)
+    ;       shared_remote_tag(hlds.hlds_data.tag_bits, int)
+    ;       shared_local_tag(hlds.hlds_data.tag_bits, int)
+    ;       no_tag .
+:- type constructor_arg_repn
+    --->    ctor_arg_repn(((hlds.hlds_data).car_field_name) :: maybe.maybe(parse_tree.prog_data.ctor_field_name), ((hlds.hlds_data).car_type) :: parse_tree.prog_data.mer_type, ((hlds.hlds_data).car_width) :: parse_tree.prog_data.arg_width, ((hlds.hlds_data).car_context) :: parse_tree.prog_data.prog_context).
+:- type constructor_repn
+    --->    ctor_repn(((hlds.hlds_data).cr_maybe_exist) :: parse_tree.prog_data.maybe_cons_exist_constraints, ((hlds.hlds_data).cr_name) :: mdbcomp.sym_name.sym_name, ((hlds.hlds_data).cr_tag) :: hlds.hlds_data.cons_tag, ((hlds.hlds_data).cr_args) :: list.list(hlds.hlds_data.constructor_arg_repn), ((hlds.hlds_data).cr_num_args) :: int, ((hlds.hlds_data).cr_context) :: parse_tree.prog_data.prog_context).
+:- type ctor_field_table == map.map(mdbcomp.sym_name.sym_name, list.list(hlds.hlds_data.hlds_ctor_field_defn)).
+:- type ctor_name_to_repn_map == map.map(string, list.one_or_more(hlds.hlds_data.constructor_repn)).
+:- type du_type_kind
+    --->    du_type_kind_mercury_enum 
+    ;       du_type_kind_foreign_enum(((hlds.hlds_data).dtkfe_language) :: libs.globals.foreign_language)
+    ;       du_type_kind_direct_dummy 
+    ;       du_type_kind_notag(((hlds.hlds_data).dtkn_functor_name) :: mdbcomp.sym_name.sym_name, ((hlds.hlds_data).dtkn_arg_type) :: parse_tree.prog_data.mer_type, ((hlds.hlds_data).dtkn_maybe_arg_name) :: maybe.maybe(string))
+    ;       du_type_kind_general .
+:- type du_type_repn
+    --->    du_type_repn(((hlds.hlds_data).dur_cons_id_to_tag_map) :: hlds.hlds_data.cons_id_to_tag_map, ((hlds.hlds_data).dur_ctor_repns) :: list.list(hlds.hlds_data.constructor_repn), ((hlds.hlds_data).dur_ctor_map) :: hlds.hlds_data.ctor_name_to_repn_map, ((hlds.hlds_data).dur_cheaper_tag_test) :: hlds.hlds_data.maybe_cheaper_tag_test, ((hlds.hlds_data).dur_kind) :: hlds.hlds_data.du_type_kind, ((hlds.hlds_data).dur_direct_arg_ctors) :: maybe.maybe(list.list(parse_tree.prog_data.sym_name_and_arity))).
+:- type field_access_type
+    --->    get 
+    ;       set .
+:- type foreign_type_body
+    --->    foreign_type_body(((hlds.hlds_data).c) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.c_foreign_type), ((hlds.hlds_data).java) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.java_foreign_type), ((hlds.hlds_data).csharp) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.csharp_foreign_type), ((hlds.hlds_data).erlang) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.erlang_foreign_type)).
+:- type foreign_type_lang_body(T) == maybe.maybe(hlds.hlds_data.foreign_type_lang_data(T)).
+:- type foreign_type_lang_data(T)
+    --->    foreign_type_lang_data(T, parse_tree.prog_data.maybe_canonical, parse_tree.prog_data.foreign_type_assertions).
+:- type hlds_cons_defn
+    --->    hlds_cons_defn(((hlds.hlds_data).cons_type_ctor) :: parse_tree.prog_data.type_ctor, ((hlds.hlds_data).cons_type_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_data).cons_type_params) :: list.list(parse_tree.prog_data.type_param), ((hlds.hlds_data).cons_type_kinds) :: parse_tree.prog_data.tvar_kind_map, ((hlds.hlds_data).cons_maybe_exist) :: parse_tree.prog_data.maybe_cons_exist_constraints, ((hlds.hlds_data).cons_args) :: list.list(parse_tree.prog_data.constructor_arg), ((hlds.hlds_data).cons_context) :: parse_tree.prog_data.prog_context).
+:- type hlds_ctor_field_defn
+    --->    hlds_ctor_field_defn(((hlds.hlds_data).field_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_data).field_status) :: hlds.status.type_status, ((hlds.hlds_data).field_type_ctor) :: parse_tree.prog_data.type_ctor, ((hlds.hlds_data).field_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).field_arg_num) :: int).
+:- type hlds_type_body
+    --->    hlds_du_type(((hlds.hlds_data).du_type_ctors) :: list.list(parse_tree.prog_data.constructor), ((hlds.hlds_data).du_type_canonical) :: parse_tree.prog_data.maybe_canonical, ((hlds.hlds_data).du_type_repn) :: maybe.maybe(hlds.hlds_data.du_type_repn), ((hlds.hlds_data).du_type_is_foreign_type) :: maybe.maybe(hlds.hlds_data.foreign_type_body))
+    ;       hlds_eqv_type(parse_tree.prog_data.mer_type)
+    ;       hlds_foreign_type(hlds.hlds_data.foreign_type_body)
+    ;       hlds_solver_type(parse_tree.prog_data.type_details_solver)
+    ;       hlds_abstract_type(parse_tree.prog_data.type_details_abstract).
+:- type hlds_type_defn.
+:- type int_tag
+    --->    int_tag_int(int)
+    ;       int_tag_uint(uint)
+    ;       int_tag_int8(int8)
+    ;       int_tag_uint8(uint8)
+    ;       int_tag_int16(int16)
+    ;       int_tag_uint16(uint16)
+    ;       int_tag_int32(int32)
+    ;       int_tag_uint32(uint32)
+    ;       int_tag_int64(int64)
+    ;       int_tag_uint64(uint64).
+:- type may_use_atomic_alloc
+    --->    may_use_atomic_alloc 
+    ;       may_not_use_atomic_alloc .
+:- type maybe_cheaper_tag_test
+    --->    no_cheaper_tag_test 
+    ;       cheaper_tag_test(((hlds.hlds_data).more_expensive_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).more_expensive_cons_tag) :: hlds.hlds_data.cons_tag, ((hlds.hlds_data).less_expensive_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).less_expensive_cons_tag) :: hlds.hlds_data.cons_tag).
+:- type no_tag_type
+    --->    no_tag_type(list.list(parse_tree.prog_data.type_param), mdbcomp.sym_name.sym_name, parse_tree.prog_data.mer_type).
+:- type no_tag_type_table == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_data.no_tag_type).
+:- type tag_bits == int.
+:- type tagged_cons_id
+    --->    tagged_cons_id(parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- type type_defn_prev_errors
+    --->    type_defn_no_prev_errors 
+    ;       type_defn_prev_errors .
+:- type type_table.
+:- pred add_type_ctor_defn(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.type_table, hlds.hlds_data.type_table).
+:- mode add_type_ctor_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred asserted_can_pass_as_mercury_type(parse_tree.prog_data.foreign_type_assertions).
+:- mode asserted_can_pass_as_mercury_type((builtin.in)) is semidet.
+:- pred asserted_stable(parse_tree.prog_data.foreign_type_assertions).
+:- mode asserted_stable((builtin.in)) is semidet.
+:- pred asserted_word_aligned_pointer(parse_tree.prog_data.foreign_type_assertions).
+:- mode asserted_word_aligned_pointer((builtin.in)) is semidet.
+:- pred cons_table_optimize(hlds.hlds_data.cons_table, hlds.hlds_data.cons_table).
+:- mode cons_table_optimize((builtin.in), (builtin.out)) is det.
+:- func constructor_cons_ids(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.constructor)) = list.list(parse_tree.prog_data.cons_id).
+:- pred create_hlds_type_defn(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.tvar_kind_map, hlds.hlds_data.hlds_type_body, bool.bool, hlds.status.type_status, parse_tree.prog_data.need_qualifier, hlds.hlds_data.type_defn_prev_errors, parse_tree.prog_data.prog_context, hlds.hlds_data.hlds_type_defn).
+:- mode create_hlds_type_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred foldl2_over_type_ctor_defns(pred(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, T, T, U, U), hlds.hlds_data.type_table, T, T, U, U).
+:- mode foldl2_over_type_ctor_defns(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred foldl3_over_type_ctor_defns(pred(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, T, T, U, U, V, V), hlds.hlds_data.type_table, T, T, U, U, V, V).
+:- mode foldl3_over_type_ctor_defns(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred foldl_over_type_ctor_defns(pred(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, T, T), hlds.hlds_data.type_table, T, T).
+:- mode foldl_over_type_ctor_defns(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_all_cons_defns(hlds.hlds_data.cons_table, assoc_list.assoc_list(parse_tree.prog_data.cons_id, hlds.hlds_data.hlds_cons_defn)).
+:- mode get_all_cons_defns((builtin.in), (builtin.out)) is det.
+:- pred get_all_type_ctor_defns(hlds.hlds_data.type_table, assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn)).
+:- mode get_all_type_ctor_defns((builtin.in), (builtin.out)) is det.
+:- func get_maybe_cheaper_tag_test(hlds.hlds_data.hlds_type_body) = hlds.hlds_data.maybe_cheaper_tag_test.
+:- func get_primary_tag(hlds.hlds_data.cons_tag) = maybe.maybe(int).
+:- func get_secondary_tag(hlds.hlds_data.cons_tag) = maybe.maybe(int).
+:- pred get_type_defn_body(hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_body).
+:- mode get_type_defn_body((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_context(hlds.hlds_data.hlds_type_defn, parse_tree.prog_data.prog_context).
+:- mode get_type_defn_context((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_ctors_need_qualifier(hlds.hlds_data.hlds_type_defn, parse_tree.prog_data.need_qualifier).
+:- mode get_type_defn_ctors_need_qualifier((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_in_exported_eqv(hlds.hlds_data.hlds_type_defn, bool.bool).
+:- mode get_type_defn_in_exported_eqv((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_kind_map(hlds.hlds_data.hlds_type_defn, parse_tree.prog_data.tvar_kind_map).
+:- mode get_type_defn_kind_map((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_prev_errors(hlds.hlds_data.hlds_type_defn, hlds.hlds_data.type_defn_prev_errors).
+:- mode get_type_defn_prev_errors((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_status(hlds.hlds_data.hlds_type_defn, hlds.status.type_status).
+:- mode get_type_defn_status((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_tparams(hlds.hlds_data.hlds_type_defn, list.list(parse_tree.prog_data.type_param)).
+:- mode get_type_defn_tparams((builtin.in), (builtin.out)) is det.
+:- pred get_type_defn_tvarset(hlds.hlds_data.hlds_type_defn, parse_tree.prog_data.tvarset).
+:- mode get_type_defn_tvarset((builtin.in), (builtin.out)) is det.
+:- func init_cons_table = hlds.hlds_data.cons_table.
+:- func init_type_table = hlds.hlds_data.type_table.
+:- pred insert_ctor_repn_into_map(hlds.hlds_data.constructor_repn, hlds.hlds_data.ctor_name_to_repn_map, hlds.hlds_data.ctor_name_to_repn_map).
+:- mode insert_ctor_repn_into_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_into_cons_table(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.cons_id), hlds.hlds_data.hlds_cons_defn, hlds.hlds_data.cons_table, hlds.hlds_data.cons_table).
+:- mode insert_into_cons_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_cons_table_of_type_ctor(hlds.hlds_data.cons_table, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id, hlds.hlds_data.hlds_cons_defn).
+:- mode lookup_cons_table_of_type_ctor((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_type_ctor_defn(hlds.hlds_data.type_table, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn).
+:- mode lookup_type_ctor_defn((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred map_foldl_over_type_ctor_defns(pred(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn, T, T), hlds.hlds_data.type_table, hlds.hlds_data.type_table, T, T).
+:- mode map_foldl_over_type_ctor_defns(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func project_tagged_cons_id_tag(hlds.hlds_data.tagged_cons_id) = hlds.hlds_data.cons_tag.
+:- pred replace_cons_defns_in_cons_table(pred(hlds.hlds_data.hlds_cons_defn, hlds.hlds_data.hlds_cons_defn), hlds.hlds_data.cons_table, hlds.hlds_data.cons_table).
+:- mode replace_cons_defns_in_cons_table(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred replace_type_ctor_defn(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.type_table, hlds.hlds_data.type_table).
+:- mode replace_type_ctor_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred return_cons_arities(hlds.hlds_data.cons_table, mdbcomp.sym_name.sym_name, list.list(int)).
+:- mode return_cons_arities((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred search_cons_table(hlds.hlds_data.cons_table, parse_tree.prog_data.cons_id, list.list(hlds.hlds_data.hlds_cons_defn)).
+:- mode search_cons_table((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred search_cons_table_of_type_ctor(hlds.hlds_data.cons_table, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id, hlds.hlds_data.hlds_cons_defn).
+:- mode search_cons_table_of_type_ctor((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred search_type_ctor_defn(hlds.hlds_data.type_table, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn).
+:- mode search_type_ctor_defn((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred set_all_type_ctor_defns(assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn), hlds.hlds_data.type_table).
+:- mode set_all_type_ctor_defns((builtin.in), (builtin.out)) is det.
+:- pred set_type_defn_body(hlds.hlds_data.hlds_type_body, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn).
+:- mode set_type_defn_body((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_type_defn_in_exported_eqv(bool.bool, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn).
+:- mode set_type_defn_in_exported_eqv((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_type_defn_prev_errors(hlds.hlds_data.type_defn_prev_errors, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn).
+:- mode set_type_defn_prev_errors((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_type_defn_status(hlds.status.type_status, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn).
+:- mode set_type_defn_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_type_defn_tvarset(parse_tree.prog_data.tvarset, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.hlds_type_defn).
+:- mode set_type_defn_tvarset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- type cons_table == map.map(string, hlds.hlds_data.inner_cons_table).
+:- type inner_cons_entry.
+:- type inner_cons_table == list.list(hlds.hlds_data.inner_cons_entry).
+:- type type_ctor_table == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn).
+:- type type_table == map.map(string, hlds.hlds_data.type_ctor_table).
