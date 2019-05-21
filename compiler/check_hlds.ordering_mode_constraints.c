@@ -1,0 +1,4964 @@
+/*
+** Automatically generated from `ordering_mode_constraints.m'
+** by the Mercury compiler,
+** version rotd-2017-07-23
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.ordering_mode_constraints. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__ordering_mode_constraints__init
+ENDINIT
+*/
+
+#include "check_hlds.ordering_mode_constraints.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.abstract_mode_constraints.mih"
+#include "check_hlds.build_mode_constraints.mih"
+#include "check_hlds.clause_to_proc.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mcsolver.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "check_hlds.prop_mode_constraints.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s {
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__ContainingGoalMap_10;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__VarMap_12;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__PredId_13;
+  MR_bool check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Goal0_18;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__SolverConstraints_22;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__STATE_VARIABLE_Goal_23_46;
+  jmp_buf check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_0;
+  MR_Word check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Bindings_44;
+  jmp_buf check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_1;
+};
+
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+static const MR_VA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints____vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain___vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0__plain_mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0__plain_bool__type_ctor_info_bool_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_0[1];
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_1[2];
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_1[2];
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_1;
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_2[1];
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_analysis_failure_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_analysis_failure_0[3];
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_analysis_failure_0[3];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0;
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_ordering_constraint_0_0[2];
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_ordering_constraint_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_ordering_constraint_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_ordering_constraint_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_ordering_constraint_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_ordering_constraint_0[1];
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_ordering_constraint_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__ti_set_ordlist_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_ordering_constraints_info_0_0[3];
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_ordering_constraints_info_0_0[3];
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_ordering_constraints_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_ordering_constraints_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_ordering_constraints_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_ordering_constraints_info_0[1];
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_ordering_constraints_info_0[1];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__topological_sort_min_reordering__677__1_2_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__First_11,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22);
+
+static MR_Integer MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__topological_sort_min_reordering__671__1_1_f_0(
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_19);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__make_conjunct_nonlocal_repvars__505__1_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_5,
+  MR_Word check_hlds__ordering_mode_constraints__GoalId_10,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_18,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__2_19,
+  MR_Word * check_hlds__ordering_mode_constraints__LambdaHeadVar__3_20);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__445__1_2_f_0(
+  MR_Integer check_hlds__ordering_mode_constraints__To_9,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_20,
+  MR_Integer * check_hlds__ordering_mode_constraints__LambdaHeadVar__2_21);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__443__1_2_f_0(
+  MR_Integer check_hlds__ordering_mode_constraints__From_8,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_17,
+  MR_Integer * check_hlds__ordering_mode_constraints__LambdaHeadVar__2_18);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__goal_reordering__354__1_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Goals0_40,
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__2_77,
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__3_78);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__scc_reordering__187__1_2_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__add_ordering_constraint__425__1_1_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_13);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_proc_goal_paths_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Globals_6,
+  MR_Word check_hlds__ordering_mode_constraints__ProcTable_7,
+  MR_Integer check_hlds__ordering_mode_constraints__ProcId_8);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Globals_6,
+  MR_Integer check_hlds__ordering_mode_constraints__Indent_7,
+  MR_Word check_hlds__ordering_mode_constraints__Goal_8);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_6);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__constrain_if_possible_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_2,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__original_order_constraints_2_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__N_3,
+  MR_Word * check_hlds__ordering_mode_constraints__MOCs_4);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_0_2,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__get_position_in_conj_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_4,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Integer * check_hlds__ordering_mode_constraints__N_8);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__produced_at_path_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_4,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_5,
+  MR_Word check_hlds__ordering_mode_constraints__RepVar_6);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__prog_var_ordering_constraints_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_8,
+  MR_Word check_hlds__ordering_mode_constraints___ProgVar_9,
+  MR_Word check_hlds__ordering_mode_constraints__RepVars_10,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_8,
+  MR_Word check_hlds__ordering_mode_constraints__RepVars_10,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_5,
+  MR_Word check_hlds__ordering_mode_constraints__Goal_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_0_14,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_15);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraint_4_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__A_5,
+  MR_Integer check_hlds__ordering_mode_constraints__B_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Bs_5,
+  MR_Integer check_hlds__ordering_mode_constraints__A_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_1(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_2(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_3(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_4(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_5(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_10,
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraints_11,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_12,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_13,
+  MR_Integer check_hlds__ordering_mode_constraints__ProcId_14,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_0_27,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_28,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_0_29,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_30);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_8,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_9,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_10,
+  MR_Word check_hlds__ordering_mode_constraints__Goal0_11,
+  MR_Word * check_hlds__ordering_mode_constraints__Goal_12);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__minimum_reordering_2_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__OCI_3,
+  MR_Word * check_hlds__ordering_mode_constraints__Order_4);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Constraints0_4,
+  MR_Word check_hlds__ordering_mode_constraints__Conjuncts0_5,
+  MR_Word * check_hlds__ordering_mode_constraints__Ordering_6);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_7,
+  MR_Word check_hlds__ordering_mode_constraints__RepVarMap_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_10,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_11);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_4,
+  MR_Word check_hlds__ordering_mode_constraints__Goals_5,
+  MR_Word * check_hlds__ordering_mode_constraints__RepvarMap_6);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__pred_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_5);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__pred_reordering_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraintsMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_20,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_21);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraintsMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__SCC0_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_19);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__mode_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____conjunct_id_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____conjunct_id_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraint_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraint_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraints_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraints_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____ordering_constraints_info_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____ordering_constraints_info_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3);
+
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_1[16][2];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_2[5][3];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_3[2][4];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_4[5][8];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_5[4][5];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_6[5][7];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_7[4][6];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_8[1][12];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_9[2][9];
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_10[1][1];
+
+
+
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_1[16][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__ordering_mode_constraints_scalar_common_1[8]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[7])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &check_hlds__ordering_mode_constraints_scalar_common_10[0]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Goal paths for"))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__ordering_mode_constraints_scalar_common_1[11]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "mode"))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__ordering_mode_constraints_scalar_common_1[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_2[5][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_1[3])),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_1[4]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_3[1])),
+    ((MR_Box) (check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[1])),
+    ((MR_Box) (check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[3])),
+    ((MR_Box) (check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_3[2][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_2[0])),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_4[5][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain___vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain___vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_5[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_6[5][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_7[4][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0__plain_bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0__plain_mdbcomp__goal_path__type_ctor_info_containing_goal_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_8[1][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0__plain_mdbcomp__goal_path__type_ctor_info_containing_goal_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_9[2][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0__plain_bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0__plain_mdbcomp__goal_path__type_ctor_info_containing_goal_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0__plain_bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__ordering_mode_constraints_scalar_common_10[1][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) ""))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0,
+    (MR_TypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0
+  }
+};
+
+static const MR_VA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints____vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0,
+    (MR_TypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain___vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints____vti_tuple_2tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__bimap__bimap__type_ctor_info_bimap_2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0,
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__pti_set_ordlist_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0__plain_mdbcomp__goal_path__type_ctor_info_containing_goal_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0,
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0__plain_bool__type_ctor_info_bool_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_conjunct_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____conjunct_id_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____conjunct_id_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "conjunct_id",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_0[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+};
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_0[1] = {
+  (MR_String) "failing_predicate"
+};
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_0 = {
+  (MR_String) "no_producer_consumer_sols",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_1[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0
+};
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_1[2] = {
+  (MR_String) "caller",
+  (MR_String) "scc"
+};
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_1 = {
+  (MR_String) "mode_inference_failed",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_1,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_analysis_failure_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_2[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_2 = {
+  (MR_String) "conjunct_ordering_failed",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_analysis_failure_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_0[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_1[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_2
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_2[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_1
+};
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_analysis_failure_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_analysis_failure_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_analysis_failure_0[3] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_2,
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_1,
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_analysis_failure_0_0
+};
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_analysis_failure_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "mode_analysis_failure",
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_analysis_failure_0 },
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_analysis_failure_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_analysis_failure_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failures_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "mode_analysis_failures",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_ordering_constraint_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_ordering_constraint_0_0[2] = {
+  (MR_String) "first",
+  (MR_String) "second"
+};
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_ordering_constraint_0_0 = {
+  (MR_String) "lt",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_mode_ordering_constraint_0_0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_mode_ordering_constraint_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_ordering_constraint_0_0[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_ordering_constraint_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_ordering_constraint_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_mode_ordering_constraint_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_ordering_constraint_0[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_mode_ordering_constraint_0_0
+};
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_ordering_constraint_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraint_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraint_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "mode_ordering_constraint",
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_mode_ordering_constraint_0 },
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_mode_ordering_constraint_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_mode_ordering_constraint_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraints_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraints_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraints_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "mode_ordering_constraints",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__ordering_mode_constraints__set_ordlist__ti_set_ordlist_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_ordering_constraints_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__tree234__ti_tree234_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__set_ordlist__ti_set_ordlist_1check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0
+};
+
+static const MR_ConstString check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_ordering_constraints_info_0_0[3] = {
+  (MR_String) "oci_containing_map",
+  (MR_String) "oci_num_conjuncts",
+  (MR_String) "oci_constraints"
+};
+
+static const MR_DuFunctorDesc check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_ordering_constraints_info_0_0 = {
+  (MR_String) "ordering_constraints_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_types_ordering_constraints_info_0_0,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__field_names_ordering_constraints_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_ordering_constraints_info_0_0[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_ordering_constraints_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_ordering_constraints_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_stag_ordered_ordering_constraints_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_ordering_constraints_info_0[1] = {
+  &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_functor_desc_ordering_constraints_info_0_0
+};
+
+static const MR_Integer check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_ordering_constraints_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____ordering_constraints_info_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____ordering_constraints_info_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "ordering_constraints_info",
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_name_ordered_ordering_constraints_info_0 },
+  {     check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__du_ptag_ordered_ordering_constraints_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__functor_number_map_ordering_constraints_info_0
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__ordering_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_TypeInfo) &check_hlds__ordering_mode_constraints__list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_prog_var_at_conjuncts_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0_10001)),
+  ((MR_Box) (check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0_10001)),
+  (MR_String) "check_hlds.ordering_mode_constraints",
+  (MR_String) "prog_var_at_conjuncts_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__ordering_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__topological_sort_min_reordering__677__1_2_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__First_11,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__From_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22, (MR_Integer) 0)));
+    MR_Integer check_hlds__ordering_mode_constraints___To_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22, (MR_Integer) 1)));
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__From_27 == check_hlds__ordering_mode_constraints__First_11);
+    check_hlds__ordering_mode_constraints__succeeded = !(check_hlds__ordering_mode_constraints__succeeded);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_Integer MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__topological_sort_min_reordering__671__1_1_f_0(
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_19)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__LambdaHeadVar__2_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_19, (MR_Integer) 1)));
+    MR_Integer check_hlds__ordering_mode_constraints___From_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_19, (MR_Integer) 0)));
+
+    return check_hlds__ordering_mode_constraints__LambdaHeadVar__2_20;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__make_conjunct_nonlocal_repvars__505__1_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_5,
+  MR_Word check_hlds__ordering_mode_constraints__GoalId_10,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_18,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__2_19,
+  MR_Word * check_hlds__ordering_mode_constraints__LambdaHeadVar__3_20)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_21;
+    MR_Word check_hlds__ordering_mode_constraints__Var_22;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__LambdaHeadVar__1_18));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_5));
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_22));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__GoalId_10));
+    }
+    {
+      mercury__multi_map__set_4_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[3], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, ((MR_Box) (check_hlds__ordering_mode_constraints__LambdaHeadVar__1_18)), ((MR_Box) (check_hlds__ordering_mode_constraints__Var_21)), check_hlds__ordering_mode_constraints__LambdaHeadVar__2_19, check_hlds__ordering_mode_constraints__LambdaHeadVar__3_20);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__445__1_2_f_0(
+  MR_Integer check_hlds__ordering_mode_constraints__To_9,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_20,
+  MR_Integer * check_hlds__ordering_mode_constraints__LambdaHeadVar__2_21)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__T_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_20, (MR_Integer) 0)));
+
+    *check_hlds__ordering_mode_constraints__LambdaHeadVar__2_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_20, (MR_Integer) 1)));
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__T_28 == check_hlds__ordering_mode_constraints__To_9);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__443__1_2_f_0(
+  MR_Integer check_hlds__ordering_mode_constraints__From_8,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_17,
+  MR_Integer * check_hlds__ordering_mode_constraints__LambdaHeadVar__2_18)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__F_27;
+
+    *check_hlds__ordering_mode_constraints__LambdaHeadVar__2_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_17, (MR_Integer) 0)));
+    check_hlds__ordering_mode_constraints__F_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_17, (MR_Integer) 1)));
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__F_27 == check_hlds__ordering_mode_constraints__From_8);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__goal_reordering__354__1_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Goals0_40,
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__2_77,
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__3_78)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__conv0_HeadVar__3_78;
+
+    {
+      mercury__list__det_index1_3_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, check_hlds__ordering_mode_constraints__Goals0_40, check_hlds__ordering_mode_constraints__HeadVar__2_77, &check_hlds__ordering_mode_constraints__conv0_HeadVar__3_78);
+    }
+    *check_hlds__ordering_mode_constraints__HeadVar__3_78 = ((MR_Word) check_hlds__ordering_mode_constraints__conv0_HeadVar__3_78);
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__scc_reordering__187__1_2_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18,
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__PredInfo_13;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18, check_hlds__ordering_mode_constraints__LambdaHeadVar__1_22, &check_hlds__ordering_mode_constraints__PredInfo_13);
+    }
+    {
+      check_hlds__ordering_mode_constraints__succeeded = hlds__hlds_pred__pred_info_infer_modes_1_p_0(check_hlds__ordering_mode_constraints__PredInfo_13);
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__IntroducedFrom__pred__add_ordering_constraint__425__1_1_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__LambdaHeadVar__1_13)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__Var_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_13, (MR_Integer) 1)));
+    MR_Integer check_hlds__ordering_mode_constraints__X_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__LambdaHeadVar__1_13, (MR_Integer) 0)));
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_14 == check_hlds__ordering_mode_constraints__X_18);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_5 = check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[1], check_hlds__ordering_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_3 = check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[1], ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____ordering_constraints_info_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_12 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_13 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_12 == check_hlds__ordering_mode_constraints__CastY_13);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__ordering_mode_constraints__Var_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[0], &check_hlds__ordering_mode_constraints__Var_10, ((MR_Box) (check_hlds__ordering_mode_constraints__ArgX1_4)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY1_5)));
+        }
+        check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_10 == (MR_Integer) 0);
+        check_hlds__ordering_mode_constraints__succeeded = !(check_hlds__ordering_mode_constraints__succeeded);
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          *check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__Var_10;
+        else
+          {
+            MR_Word check_hlds__ordering_mode_constraints__Var_11;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__ordering_mode_constraints__Var_11, check_hlds__ordering_mode_constraints__ArgX2_6, check_hlds__ordering_mode_constraints__ArgY2_7);
+            }
+            check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_11 == (MR_Integer) 0);
+            check_hlds__ordering_mode_constraints__succeeded = !(check_hlds__ordering_mode_constraints__succeeded);
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              *check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__Var_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[2], check_hlds__ordering_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__ordering_mode_constraints__ArgX3_8)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY3_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____ordering_constraints_info_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_9 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_10 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_9 == check_hlds__ordering_mode_constraints__CastY_10);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__TypeInfo_12_12;
+        MR_Word check_hlds__ordering_mode_constraints__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__ordering_mode_constraints__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[0], ((MR_Box) (check_hlds__ordering_mode_constraints__ArgX1_3)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY1_4)));
+        }
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          {
+            check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__ArgX2_5 == check_hlds__ordering_mode_constraints__ArgY2_6);
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                check_hlds__ordering_mode_constraints__TypeInfo_12_12 = (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[2];
+                {
+                  check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0(check_hlds__ordering_mode_constraints__TypeInfo_12_12, ((MR_Box) (check_hlds__ordering_mode_constraints__ArgX3_7)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY3_8)));
+                }
+              }
+          }
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraints_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_5 = check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[6], check_hlds__ordering_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraints_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_3 = check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[6], ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraint_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_9 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_10 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_9 == check_hlds__ordering_mode_constraints__CastY_10);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__Var_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__ordering_mode_constraints__Var_8, check_hlds__ordering_mode_constraints__ArgX1_4, check_hlds__ordering_mode_constraints__ArgY1_5);
+        }
+        check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_8 == (MR_Integer) 0);
+        check_hlds__ordering_mode_constraints__succeeded = !(check_hlds__ordering_mode_constraints__succeeded);
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          *check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__Var_8;
+        else
+          {
+            mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__ordering_mode_constraints__HeadVar__1_1, check_hlds__ordering_mode_constraints__ArgX2_6, check_hlds__ordering_mode_constraints__ArgY2_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraint_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_7 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_8 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_7 == check_hlds__ordering_mode_constraints__CastY_8);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer check_hlds__ordering_mode_constraints__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+
+        check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__ArgX1_3 == check_hlds__ordering_mode_constraints__ArgY1_4);
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__ArgX2_5 == check_hlds__ordering_mode_constraints__ArgY2_6);
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_5 = check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[1], check_hlds__ordering_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar1_3 = check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__ordering_mode_constraints__Cast_HeadVar2_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[1], ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__ordering_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_29 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_30 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_29 == check_hlds__ordering_mode_constraints__CastY_30);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__Var_38 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2), (MR_Integer) 0);
+
+            switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__ArgY1_5 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__3_3), (MR_Integer) 0);
+
+                  {
+                    hlds__hlds_pred____Compare____pred_proc_id_0_0(check_hlds__ordering_mode_constraints__HeadVar__1_1, check_hlds__ordering_mode_constraints__Var_38, check_hlds__ordering_mode_constraints__ArgY1_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__Var_35 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2), (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__ArgY1_28 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__3_3), (MR_Integer) 1);
+
+                  {
+                    hlds__hlds_pred____Compare____pred_proc_id_0_0(check_hlds__ordering_mode_constraints__HeadVar__1_1, check_hlds__ordering_mode_constraints__Var_35, check_hlds__ordering_mode_constraints__ArgY1_28);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word check_hlds__ordering_mode_constraints__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__ordering_mode_constraints__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__ArgY1_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word check_hlds__ordering_mode_constraints__ArgY2_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word check_hlds__ordering_mode_constraints__Var_18;
+
+                  {
+                    hlds__hlds_pred____Compare____pred_id_0_0(&check_hlds__ordering_mode_constraints__Var_18, check_hlds__ordering_mode_constraints__Var_37, check_hlds__ordering_mode_constraints__ArgY1_15);
+                  }
+                  check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_18 == (MR_Integer) 0);
+                  check_hlds__ordering_mode_constraints__succeeded = !(check_hlds__ordering_mode_constraints__succeeded);
+                  if (check_hlds__ordering_mode_constraints__succeeded)
+                    *check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__Var_18;
+                  else
+                    {
+                      {
+                        mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[0], check_hlds__ordering_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_36)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY2_17)));
+                      }
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__CastX_11 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__ordering_mode_constraints__CastY_12 = (MR_Integer) check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__CastX_11 == check_hlds__ordering_mode_constraints__CastY_12);
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__ArgX1_3 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__1_1), (MR_Integer) 0);
+            MR_Word check_hlds__ordering_mode_constraints__ArgY1_4;
+
+            check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                check_hlds__ordering_mode_constraints__ArgY1_4 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2), (MR_Integer) 0);
+                {
+                  check_hlds__ordering_mode_constraints__succeeded = hlds__hlds_pred____Unify____pred_proc_id_0_0(check_hlds__ordering_mode_constraints__ArgX1_3, check_hlds__ordering_mode_constraints__ArgY1_4);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__ArgX1_9 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__1_1), (MR_Integer) 1);
+            MR_Word check_hlds__ordering_mode_constraints__ArgY1_10;
+
+            check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                check_hlds__ordering_mode_constraints__ArgY1_10 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2), (MR_Integer) 1);
+                {
+                  check_hlds__ordering_mode_constraints__succeeded = hlds__hlds_pred____Unify____pred_proc_id_0_0(check_hlds__ordering_mode_constraints__ArgX1_9, check_hlds__ordering_mode_constraints__ArgY1_10);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word check_hlds__ordering_mode_constraints__TypeInfo_15_15;
+            MR_Word check_hlds__ordering_mode_constraints__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__ordering_mode_constraints__ArgY1_6;
+            MR_Word check_hlds__ordering_mode_constraints__ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__ordering_mode_constraints__ArgY2_8;
+
+            check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                check_hlds__ordering_mode_constraints__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__ordering_mode_constraints__ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+                {
+                  check_hlds__ordering_mode_constraints__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__ordering_mode_constraints__ArgX1_5, check_hlds__ordering_mode_constraints__ArgY1_6);
+                }
+                if (check_hlds__ordering_mode_constraints__succeeded)
+                  {
+                    check_hlds__ordering_mode_constraints__TypeInfo_15_15 = (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[0];
+                    {
+                      check_hlds__ordering_mode_constraints__succeeded = mercury__builtin__unify_2_p_0(check_hlds__ordering_mode_constraints__TypeInfo_15_15, ((MR_Box) (check_hlds__ordering_mode_constraints__ArgX2_7)), ((MR_Box) (check_hlds__ordering_mode_constraints__ArgY2_8)));
+                    }
+                  }
+              }
+          }
+          break;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____conjunct_id_0_0(
+  MR_Word * check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__Cast_HeadVar1_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__ordering_mode_constraints__Cast_HeadVar2_5 = check_hlds__ordering_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__ordering_mode_constraints__HeadVar__1_1, check_hlds__ordering_mode_constraints__Cast_HeadVar1_4, check_hlds__ordering_mode_constraints__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____conjunct_id_0_0(
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Integer check_hlds__ordering_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Integer check_hlds__ordering_mode_constraints__Cast_HeadVar1_3 = check_hlds__ordering_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__ordering_mode_constraints__Cast_HeadVar2_4 = check_hlds__ordering_mode_constraints__HeadVar__2_2;
+
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Cast_HeadVar1_3 == check_hlds__ordering_mode_constraints__Cast_HeadVar2_4);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_proc_goal_paths_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Globals_6,
+  MR_Word check_hlds__ordering_mode_constraints__ProcTable_7,
+  MR_Integer check_hlds__ordering_mode_constraints__ProcId_8)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_String check_hlds__ordering_mode_constraints__ProcIdString_10;
+    MR_Word check_hlds__ordering_mode_constraints__ProcHeaderFormat_11;
+    MR_Word check_hlds__ordering_mode_constraints__ProcInfo_12;
+    MR_Word check_hlds__ordering_mode_constraints__Goal_13;
+    MR_Integer check_hlds__ordering_mode_constraints__Var_17;
+    MR_Word check_hlds__ordering_mode_constraints__Var_20;
+    MR_Word check_hlds__ordering_mode_constraints__Var_21;
+    MR_Box check_hlds__ordering_mode_constraints__conv0_ProcInfo_12;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_17 = hlds__hlds_pred__proc_id_to_int_1_f_0(check_hlds__ordering_mode_constraints__ProcId_8);
+    }
+    {
+      check_hlds__ordering_mode_constraints__ProcIdString_10 = mercury__string__from_int_1_f_0(check_hlds__ordering_mode_constraints__Var_17);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__Var_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__Var_21, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__ProcIdString_10));
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_20, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_21));
+      MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[15])));
+    }
+    {
+      check_hlds__ordering_mode_constraints__ProcHeaderFormat_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ProcHeaderFormat_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &check_hlds__ordering_mode_constraints_scalar_common_1[13])));
+      MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ProcHeaderFormat_11, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_20));
+    }
+    {
+      parse_tree__error_util__write_error_pieces_plain_4_p_0(check_hlds__ordering_mode_constraints__Globals_6, check_hlds__ordering_mode_constraints__ProcHeaderFormat_11);
+    }
+    {
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, check_hlds__ordering_mode_constraints__ProcTable_7, check_hlds__ordering_mode_constraints__ProcId_8, &check_hlds__ordering_mode_constraints__conv0_ProcInfo_12);
+    }
+    check_hlds__ordering_mode_constraints__ProcInfo_12 = ((MR_Word) check_hlds__ordering_mode_constraints__conv0_ProcInfo_12);
+    {
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(check_hlds__ordering_mode_constraints__ProcInfo_12, &check_hlds__ordering_mode_constraints__Goal_13);
+    }
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(check_hlds__ordering_mode_constraints__Globals_6, (MR_Integer) 0, check_hlds__ordering_mode_constraints__Goal_13);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Globals_6,
+  MR_Integer check_hlds__ordering_mode_constraints__Indent_7,
+  MR_Word check_hlds__ordering_mode_constraints__Goal_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__ordering_mode_constraints__succeeded;
+        MR_Word check_hlds__ordering_mode_constraints__GoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal_8, (MR_Integer) 0)));
+        MR_Word check_hlds__ordering_mode_constraints__GoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal_8, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__GoalId_12;
+        MR_Integer check_hlds__ordering_mode_constraints__GoalIdNum_13;
+        MR_Word check_hlds__ordering_mode_constraints__GoalIdPieces_14;
+        MR_Integer check_hlds__ordering_mode_constraints__SubGoalIndent_15;
+        MR_Word check_hlds__ordering_mode_constraints__Var_65;
+        MR_String check_hlds__ordering_mode_constraints__Var_66;
+
+        {
+          check_hlds__ordering_mode_constraints__GoalId_12 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__ordering_mode_constraints__GoalInfo_11);
+        }
+        check_hlds__ordering_mode_constraints__GoalIdNum_13 = (MR_Integer) check_hlds__ordering_mode_constraints__GoalId_12;
+        {
+          check_hlds__ordering_mode_constraints__Var_66 = mercury__string__int_to_string_1_f_0(check_hlds__ordering_mode_constraints__GoalIdNum_13);
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_65 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__Var_65, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__Var_65, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_66));
+        }
+        {
+          check_hlds__ordering_mode_constraints__GoalIdPieces_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__GoalIdPieces_14, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_65));
+          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__GoalIdPieces_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[7])));
+        }
+        {
+          parse_tree__error_util__write_error_pieces_maybe_with_context_6_p_0(check_hlds__ordering_mode_constraints__Globals_6, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__ordering_mode_constraints__Indent_7, check_hlds__ordering_mode_constraints__GoalIdPieces_14);
+        }
+        check_hlds__ordering_mode_constraints__SubGoalIndent_15 = (check_hlds__ordering_mode_constraints__Indent_7 + (MR_Integer) 1);
+        switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__GoalExpr_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__ordering_mode_constraints__SubGoal_48 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__GoalExpr_10), (MR_Integer) 0);
+
+              /* direct tailcall eliminated */
+              {
+                MR_Integer check_hlds__ordering_mode_constraints__next_value_of_Indent_7 = check_hlds__ordering_mode_constraints__SubGoalIndent_15;
+                MR_Word check_hlds__ordering_mode_constraints__next_value_of_Goal_8 = check_hlds__ordering_mode_constraints__SubGoal_48;
+
+                check_hlds__ordering_mode_constraints__Goal_8 = check_hlds__ordering_mode_constraints__next_value_of_Goal_8;
+                check_hlds__ordering_mode_constraints__Indent_7 = check_hlds__ordering_mode_constraints__next_value_of_Indent_7;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__Goals_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Word check_hlds__ordering_mode_constraints__Var_93;
+                  MR_Word check_hlds__ordering_mode_constraints__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Box check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_IO_64;
+
+                  {
+                    check_hlds__ordering_mode_constraints__Var_93 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_93, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[3]));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_93, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_1));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_93, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_93, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_93, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__SubGoalIndent_15));
+                  }
+                  {
+                    mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_93, check_hlds__ordering_mode_constraints__Goals_40, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_IO_64);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__Var_91;
+                  MR_Word check_hlds__ordering_mode_constraints__Goals_95 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_IO_64;
+
+                  {
+                    check_hlds__ordering_mode_constraints__Var_91 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_91, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[3]));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_91, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_2));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_91, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_91, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_91, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__SubGoalIndent_15));
+                  }
+                  {
+                    mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_91, check_hlds__ordering_mode_constraints__Goals_95, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_IO_64);
+                  }
+                }
+                break;
+              case (MR_Integer) 4:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.dump_goal_goal_paths\'/5", (MR_String) "switch");
+                    return;
+                  }
+                }
+                break;
+              case (MR_Integer) 5:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__SubGoal_97 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Word check_hlds__ordering_mode_constraints__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Integer check_hlds__ordering_mode_constraints__next_value_of_Indent_7 = check_hlds__ordering_mode_constraints__SubGoalIndent_15;
+                    MR_Word check_hlds__ordering_mode_constraints__next_value_of_Goal_8 = check_hlds__ordering_mode_constraints__SubGoal_97;
+
+                    check_hlds__ordering_mode_constraints__Goal_8 = check_hlds__ordering_mode_constraints__next_value_of_Goal_8;
+                    check_hlds__ordering_mode_constraints__Indent_7 = check_hlds__ordering_mode_constraints__next_value_of_Indent_7;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 6:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__CondGoal_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Word check_hlds__ordering_mode_constraints__ThenGoal_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 3)));
+                  MR_Word check_hlds__ordering_mode_constraints__ElseGoal_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 4)));
+                  MR_Word check_hlds__ordering_mode_constraints__Var_83;
+                  MR_Word check_hlds__ordering_mode_constraints__Var_84;
+                  MR_Word check_hlds__ordering_mode_constraints__Var_86;
+                  MR_Word check_hlds__ordering_mode_constraints__Goals_96;
+                  MR_Word check_hlds__ordering_mode_constraints__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Box check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_IO_64;
+
+                  {
+                    check_hlds__ordering_mode_constraints__Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_84, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__ElseGoal_47));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_84, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__ordering_mode_constraints__Var_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_83, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__ThenGoal_46));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_83, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_84));
+                  }
+                  {
+                    check_hlds__ordering_mode_constraints__Goals_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Goals_96, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__CondGoal_45));
+                    MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Goals_96, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_83));
+                  }
+                  {
+                    check_hlds__ordering_mode_constraints__Var_86 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_86, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[3]));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_86, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_3));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_86, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_86, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_86, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__SubGoalIndent_15));
+                  }
+                  {
+                    mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_86, check_hlds__ordering_mode_constraints__Goals_96, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_IO_64);
+                  }
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__ShortHand_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+
+                  switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__ShortHand_50)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        {
+                          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.dump_goal_goal_paths\'/5", (MR_String) "bi_implication");
+                          return;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word check_hlds__ordering_mode_constraints__MainGoal_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 4)));
+                        MR_Word check_hlds__ordering_mode_constraints__OrElseGoals_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 5)));
+                        MR_Word check_hlds__ordering_mode_constraints__Var_79;
+                        MR_Word check_hlds__ordering_mode_constraints__Goals_98;
+                        MR_Word check_hlds__ordering_mode_constraints__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 0)));
+                        MR_Word check_hlds__ordering_mode_constraints__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 1)));
+                        MR_Word check_hlds__ordering_mode_constraints__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 2)));
+                        MR_Word check_hlds__ordering_mode_constraints__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 3)));
+                        MR_Word check_hlds__ordering_mode_constraints__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ShortHand_50, (MR_Integer) 6)));
+                        MR_Box check_hlds__ordering_mode_constraints__conv3_STATE_VARIABLE_IO_64;
+
+                        {
+                          check_hlds__ordering_mode_constraints__Goals_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Goals_98, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__MainGoal_55));
+                          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Goals_98, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__OrElseGoals_56));
+                        }
+                        {
+                          check_hlds__ordering_mode_constraints__Var_79 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_79, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[3]));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_79, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0_4));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_79, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_79, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_6));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_79, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__SubGoalIndent_15));
+                        }
+                        {
+                          mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_79, check_hlds__ordering_mode_constraints__Goals_98, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv3_STATE_VARIABLE_IO_64);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        {
+                          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.dump_goal_goal_paths\'/5", (MR_String) "try_goal");
+                          return;
+                        }
+                      }
+                      break;
+                  }
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_proc_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_goal_goal_paths_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__2_2;
+
+    {
+      check_hlds__ordering_mode_constraints__conv0_HeadVar__2_2 = hlds__hlds_clauses__clause_body_1_f_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__2_2));
+    return check_hlds__ordering_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_6)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_51_51;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_53_53;
+    MR_Word check_hlds__ordering_mode_constraints__PredInfo_8;
+    MR_Word check_hlds__ordering_mode_constraints__ProcTable_9;
+    MR_Word check_hlds__ordering_mode_constraints__ProcIds_10;
+    MR_Word check_hlds__ordering_mode_constraints__Globals_11;
+    MR_Word check_hlds__ordering_mode_constraints__PredHeaderFormat_12;
+    MR_Word check_hlds__ordering_mode_constraints__Var_33;
+    MR_Word check_hlds__ordering_mode_constraints__Var_34;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__ordering_mode_constraints__ModuleInfo_5, check_hlds__ordering_mode_constraints__PredId_6, &check_hlds__ordering_mode_constraints__PredInfo_8);
+    }
+    {
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__ordering_mode_constraints__PredInfo_8, &check_hlds__ordering_mode_constraints__ProcTable_9);
+    }
+    check_hlds__ordering_mode_constraints__TypeCtorInfo_51_51 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      check_hlds__ordering_mode_constraints__ProcIds_10 = mercury__map__keys_1_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_51_51, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, check_hlds__ordering_mode_constraints__ProcTable_9);
+    }
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__ordering_mode_constraints__ModuleInfo_5, &check_hlds__ordering_mode_constraints__Globals_11);
+    }
+    {
+      parse_tree__error_util__write_error_pieces_plain_4_p_0(check_hlds__ordering_mode_constraints__Globals_11, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[10]));
+    }
+    check_hlds__ordering_mode_constraints__TypeCtorInfo_53_53 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    {
+      check_hlds__ordering_mode_constraints__Var_34 = hlds__hlds_error_util__describe_one_pred_info_name_2_f_0((MR_Integer) 0, check_hlds__ordering_mode_constraints__PredInfo_8);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_33 = mercury__list__f_43_43_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_53_53, check_hlds__ordering_mode_constraints__Var_34, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[9]));
+    }
+    {
+      check_hlds__ordering_mode_constraints__PredHeaderFormat_12 = mercury__list__f_43_43_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_53_53, (MR_Word) MR_mkword(MR_mktag(1), &check_hlds__ordering_mode_constraints_scalar_common_1[12]), check_hlds__ordering_mode_constraints__Var_33);
+    }
+    {
+      parse_tree__error_util__write_error_pieces_plain_4_p_0(check_hlds__ordering_mode_constraints__Globals_11, check_hlds__ordering_mode_constraints__PredHeaderFormat_12);
+    }
+    if ((check_hlds__ordering_mode_constraints__ProcIds_10 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_55_55;
+        MR_Word check_hlds__ordering_mode_constraints__ClausesInfo_13;
+        MR_Word check_hlds__ordering_mode_constraints__ClausesRep_14;
+        MR_Word check_hlds__ordering_mode_constraints__Clauses_16;
+        MR_Word check_hlds__ordering_mode_constraints__Goals_17;
+        MR_Word check_hlds__ordering_mode_constraints__Var_48;
+        MR_Word check_hlds__ordering_mode_constraints___ItemNumbers_15;
+        MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_IO_23;
+
+        {
+          hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(check_hlds__ordering_mode_constraints__PredInfo_8, &check_hlds__ordering_mode_constraints__ClausesInfo_13);
+        }
+        {
+          hlds__hlds_clauses__clauses_info_get_clauses_rep_3_p_0(check_hlds__ordering_mode_constraints__ClausesInfo_13, &check_hlds__ordering_mode_constraints__ClausesRep_14, &check_hlds__ordering_mode_constraints___ItemNumbers_15);
+        }
+        {
+          hlds__hlds_clauses__get_clause_list_maybe_repeated_2_p_0(check_hlds__ordering_mode_constraints__ClausesRep_14, &check_hlds__ordering_mode_constraints__Clauses_16);
+        }
+        check_hlds__ordering_mode_constraints__TypeCtorInfo_55_55 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+        {
+          check_hlds__ordering_mode_constraints__Goals_17 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0, check_hlds__ordering_mode_constraints__TypeCtorInfo_55_55, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[4], check_hlds__ordering_mode_constraints__Clauses_16);
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_48, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[3]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_48, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_2));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_48, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_48, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_11));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_48, 4) = ((MR_Box) ((MR_Integer) 0));
+        }
+        {
+          mercury__list__foldl_4_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_55_55, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_48, check_hlds__ordering_mode_constraints__Goals_17, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_IO_23);
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__Var_43;
+        MR_Box check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_IO_23;
+
+        {
+          check_hlds__ordering_mode_constraints__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[4]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0_3));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Globals_11));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__ProcTable_9));
+        }
+        {
+          mercury__list__foldl_4_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_51_51, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_43, check_hlds__ordering_mode_constraints__ProcIds_10, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_IO_23);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__constrain_if_possible_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_2,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+        if ((check_hlds__ordering_mode_constraints__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_3 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_2;
+        else
+          {
+            MR_Word check_hlds__ordering_mode_constraints__Constraint_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__ordering_mode_constraints__Constraints_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_12_12;
+
+            {
+              check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0(check_hlds__ordering_mode_constraints__Constraint_7, check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_2, &check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_12_12);
+            }
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1 = check_hlds__ordering_mode_constraints__Constraints_8;
+                  MR_Word check_hlds__ordering_mode_constraints__next_value_of_STATE_VARIABLE_OCI_0_2 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_12_12;
+
+                  check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_2 = check_hlds__ordering_mode_constraints__next_value_of_STATE_VARIABLE_OCI_0_2;
+                  check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1;
+                }
+                continue;
+              }
+            else
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1 = check_hlds__ordering_mode_constraints__Constraints_8;
+
+                  check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1;
+                }
+                continue;
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__original_order_constraints_2_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__N_3,
+  MR_Word * check_hlds__ordering_mode_constraints__MOCs_4)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_7_11;
+    MR_Word check_hlds__ordering_mode_constraints__Var_5;
+    MR_Word check_hlds__ordering_mode_constraints__MOCs0_9;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_5 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, check_hlds__ordering_mode_constraints__N_3);
+    }
+    check_hlds__ordering_mode_constraints__TypeCtorInfo_7_11 = (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+    {
+      check_hlds__ordering_mode_constraints__Var_10 = mercury__set__init_0_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_7_11);
+    }
+    {
+      check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0(check_hlds__ordering_mode_constraints__Var_5, check_hlds__ordering_mode_constraints__Var_10, &check_hlds__ordering_mode_constraints__MOCs0_9);
+    }
+    {
+      *check_hlds__ordering_mode_constraints__MOCs_4 = mercury__set__to_sorted_list_1_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_7_11, check_hlds__ordering_mode_constraints__MOCs0_9);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9;
+
+    {
+      check_hlds__ordering_mode_constraints__insert_lt_constraint_4_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9));
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_0_2,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+        if ((check_hlds__ordering_mode_constraints__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_3 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_0_2;
+        else
+          {
+            MR_Integer check_hlds__ordering_mode_constraints__Conjunct_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__ordering_mode_constraints__Conjuncts_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__ordering_mode_constraints__Var_12;
+            MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_13_13;
+            MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_MOCs_13_13;
+
+            {
+              check_hlds__ordering_mode_constraints__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[3]));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__add_complete_order_constraints_3_p_0_1));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Conjunct_7));
+            }
+            {
+              mercury__list__foldl_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[2], check_hlds__ordering_mode_constraints__Var_12, check_hlds__ordering_mode_constraints__Conjuncts_8, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_0_2)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_MOCs_13_13);
+            }
+            check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_13_13 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_MOCs_13_13);
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1 = check_hlds__ordering_mode_constraints__Conjuncts_8;
+              MR_Word check_hlds__ordering_mode_constraints__next_value_of_STATE_VARIABLE_MOCs_0_2 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_13_13;
+
+              check_hlds__ordering_mode_constraints__STATE_VARIABLE_MOCs_0_2 = check_hlds__ordering_mode_constraints__next_value_of_STATE_VARIABLE_MOCs_0_2;
+              check_hlds__ordering_mode_constraints__HeadVar__1_1 = check_hlds__ordering_mode_constraints__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__get_position_in_conj_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_4,
+  MR_Word check_hlds__ordering_mode_constraints__HeadVar__2_2,
+  MR_Integer * check_hlds__ordering_mode_constraints__N_8)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__GoalId_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Word check_hlds__ordering_mode_constraints__ContainingGoal_9;
+    MR_Word check_hlds__ordering_mode_constraints__LastStep_11;
+    MR_Word check_hlds__ordering_mode_constraints__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Box check_hlds__ordering_mode_constraints__conv0_ContainingGoal_9;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+
+    {
+      mercury__map__lookup_3_p_0((MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0, (MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0, check_hlds__ordering_mode_constraints__ContainingGoalMap_4, ((MR_Box) (check_hlds__ordering_mode_constraints__GoalId_7)), &check_hlds__ordering_mode_constraints__conv0_ContainingGoal_9);
+    }
+    check_hlds__ordering_mode_constraints__ContainingGoal_9 = ((MR_Word) check_hlds__ordering_mode_constraints__conv0_ContainingGoal_9);
+    check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__ContainingGoal_9)) == (MR_mktag((MR_Integer) 1)));
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        check_hlds__ordering_mode_constraints__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ContainingGoal_9, (MR_Integer) 0)));
+        check_hlds__ordering_mode_constraints__LastStep_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ContainingGoal_9, (MR_Integer) 1)));
+        check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__LastStep_11)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          *check_hlds__ordering_mode_constraints__N_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__LastStep_11, (MR_Integer) 0)));
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__produced_at_path_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_4,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_5,
+  MR_Word check_hlds__ordering_mode_constraints__RepVar_6)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeInfo_9_9 = (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[5];
+    MR_Word check_hlds__ordering_mode_constraints__Var_7;
+    MR_Word check_hlds__ordering_mode_constraints__Var_8;
+    MR_Box check_hlds__ordering_mode_constraints__conv0_Var_8;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_Var_7;
+
+    {
+      check_hlds__ordering_mode_constraints__conv0_Var_8 = mercury__bimap__lookup_2_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, check_hlds__ordering_mode_constraints__TypeInfo_9_9, check_hlds__ordering_mode_constraints__VarMap_4, ((MR_Box) (check_hlds__ordering_mode_constraints__RepVar_6)));
+    }
+    check_hlds__ordering_mode_constraints__Var_8 = ((MR_Word) check_hlds__ordering_mode_constraints__conv0_Var_8);
+    {
+      check_hlds__ordering_mode_constraints__conv1_Var_7 = mercury__map__lookup_2_f_0(check_hlds__ordering_mode_constraints__TypeInfo_9_9, (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0, check_hlds__ordering_mode_constraints__Bindings_5, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_8)));
+    }
+    check_hlds__ordering_mode_constraints__Var_7 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_Var_7);
+    check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_7 == (MR_Integer) 1);
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__prog_var_ordering_constraints_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_8,
+  MR_Word check_hlds__ordering_mode_constraints___ProgVar_9,
+  MR_Word check_hlds__ordering_mode_constraints__RepVars_10,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(check_hlds__ordering_mode_constraints__VarMap_7, check_hlds__ordering_mode_constraints__Bindings_8, check_hlds__ordering_mode_constraints__RepVars_10, check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18, check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19);
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_OCI_9;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__add_lt_constraint_4_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_OCI_9);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_OCI_9));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Integer check_hlds__ordering_mode_constraints__conv1_N_8;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__get_position_in_conj_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv1_N_8);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv1_N_8));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__produced_at_path_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_8,
+  MR_Word check_hlds__ordering_mode_constraints__RepVars_10,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_28_28 = (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+    MR_Word check_hlds__ordering_mode_constraints__ProgVarAtProducers_12;
+    MR_Word check_hlds__ordering_mode_constraints__ProgVarAtConsumers_13;
+    MR_Word check_hlds__ordering_mode_constraints__Var_20;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_7[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_7));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__Bindings_8));
+    }
+    {
+      mercury__list__filter_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_28_28, check_hlds__ordering_mode_constraints__Var_20, check_hlds__ordering_mode_constraints__RepVars_10, &check_hlds__ordering_mode_constraints__ProgVarAtProducers_12, &check_hlds__ordering_mode_constraints__ProgVarAtConsumers_13);
+    }
+    if ((check_hlds__ordering_mode_constraints__ProgVarAtProducers_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18;
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_31_31;
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_35_35;
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_13_45;
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_14_46;
+        MR_Word check_hlds__ordering_mode_constraints__RepVar_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ProgVarAtProducers_12, (MR_Integer) 0)));
+        MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_15;
+        MR_Integer check_hlds__ordering_mode_constraints__First_16;
+        MR_Word check_hlds__ordering_mode_constraints__Laters_17;
+        MR_Word check_hlds__ordering_mode_constraints__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ProgVarAtProducers_12, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__Var_22;
+        MR_Word check_hlds__ordering_mode_constraints__Var_23;
+        MR_Word check_hlds__ordering_mode_constraints__GoalId_40;
+        MR_Word check_hlds__ordering_mode_constraints__ContainingGoal_41;
+        MR_Word check_hlds__ordering_mode_constraints__LastStep_43;
+        MR_Integer check_hlds__ordering_mode_constraints__Var_25;
+        MR_Word check_hlds__ordering_mode_constraints__Var_26;
+        MR_Word check_hlds__ordering_mode_constraints__Var_44;
+        MR_Box check_hlds__ordering_mode_constraints__conv0_ContainingGoal_41;
+        MR_Word check_hlds__ordering_mode_constraints__Var_42;
+        MR_Box check_hlds__ordering_mode_constraints__conv3_STATE_VARIABLE_OCInfo_19;
+
+        check_hlds__ordering_mode_constraints__succeeded = (check_hlds__ordering_mode_constraints__Var_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          {
+            check_hlds__ordering_mode_constraints__ContainingGoalMap_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18, (MR_Integer) 0)));
+            check_hlds__ordering_mode_constraints__Var_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18, (MR_Integer) 1)));
+            check_hlds__ordering_mode_constraints__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18, (MR_Integer) 2)));
+            check_hlds__ordering_mode_constraints__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__RepVar_14, (MR_Integer) 0)));
+            check_hlds__ordering_mode_constraints__GoalId_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__RepVar_14, (MR_Integer) 1)));
+            check_hlds__ordering_mode_constraints__TypeCtorInfo_13_45 = (MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0;
+            check_hlds__ordering_mode_constraints__TypeCtorInfo_14_46 = (MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+            {
+              mercury__map__lookup_3_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_13_45, check_hlds__ordering_mode_constraints__TypeCtorInfo_14_46, check_hlds__ordering_mode_constraints__ContainingGoalMap_15, ((MR_Box) (check_hlds__ordering_mode_constraints__GoalId_40)), &check_hlds__ordering_mode_constraints__conv0_ContainingGoal_41);
+            }
+            check_hlds__ordering_mode_constraints__ContainingGoal_41 = ((MR_Word) check_hlds__ordering_mode_constraints__conv0_ContainingGoal_41);
+            check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__ContainingGoal_41)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                check_hlds__ordering_mode_constraints__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ContainingGoal_41, (MR_Integer) 0)));
+                check_hlds__ordering_mode_constraints__LastStep_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__ContainingGoal_41, (MR_Integer) 1)));
+                check_hlds__ordering_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__ordering_mode_constraints__LastStep_43)) == (MR_mktag((MR_Integer) 1)));
+                if (check_hlds__ordering_mode_constraints__succeeded)
+                  {
+                    check_hlds__ordering_mode_constraints__First_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__LastStep_43, (MR_Integer) 0)));
+                    check_hlds__ordering_mode_constraints__TypeCtorInfo_31_31 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+                    {
+                      check_hlds__ordering_mode_constraints__Var_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_7[3]));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_2));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_22, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_15));
+                    }
+                    {
+                      check_hlds__ordering_mode_constraints__succeeded = mercury__list__map_3_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_28_28, check_hlds__ordering_mode_constraints__TypeCtorInfo_31_31, check_hlds__ordering_mode_constraints__Var_22, check_hlds__ordering_mode_constraints__ProgVarAtConsumers_13, &check_hlds__ordering_mode_constraints__Laters_17);
+                    }
+                    if (check_hlds__ordering_mode_constraints__succeeded)
+                      {
+                        check_hlds__ordering_mode_constraints__TypeCtorInfo_35_35 = (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0;
+                        {
+                          check_hlds__ordering_mode_constraints__Var_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_23, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[4]));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_23, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_103_95_118_97_114_95_111_114_100_101_114_105_110_103_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0_3));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_23, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_23, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__First_16));
+                        }
+                        {
+                          check_hlds__ordering_mode_constraints__succeeded = mercury__list__foldl_4_p_3(check_hlds__ordering_mode_constraints__TypeCtorInfo_31_31, check_hlds__ordering_mode_constraints__TypeCtorInfo_35_35, check_hlds__ordering_mode_constraints__Var_23, check_hlds__ordering_mode_constraints__Laters_17, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_18)), &check_hlds__ordering_mode_constraints__conv3_STATE_VARIABLE_OCInfo_19);
+                        }
+                        if (check_hlds__ordering_mode_constraints__succeeded)
+                          {
+                            *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_19 = ((MR_Word) check_hlds__ordering_mode_constraints__conv3_STATE_VARIABLE_OCInfo_19);
+                            check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__3_20;
+
+    {
+      check_hlds__ordering_mode_constraints__IntroducedFrom__pred__make_conjunct_nonlocal_repvars__505__1_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__3_20);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__3_20));
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_5,
+  MR_Word check_hlds__ordering_mode_constraints__Goal_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_0_14,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_15)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__GoalInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal_6, (MR_Integer) 1)));
+    MR_Word check_hlds__ordering_mode_constraints__Nonlocals_9;
+    MR_Word check_hlds__ordering_mode_constraints__GoalId_10;
+    MR_Word check_hlds__ordering_mode_constraints__Var_16;
+    MR_Word check_hlds__ordering_mode_constraints__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal_6, (MR_Integer) 0)));
+    MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_RepvarMap_15;
+
+    {
+      check_hlds__ordering_mode_constraints__Nonlocals_9 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__ordering_mode_constraints__GoalInfo_8);
+    }
+    {
+      check_hlds__ordering_mode_constraints__GoalId_10 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__ordering_mode_constraints__GoalInfo_8);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_16, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_16, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_16, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_5));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_16, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__GoalId_10));
+    }
+    {
+      parse_tree__set_of_var__fold_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[1], check_hlds__ordering_mode_constraints__Var_16, check_hlds__ordering_mode_constraints__Nonlocals_9, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_0_14)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_RepvarMap_15);
+    }
+    *check_hlds__ordering_mode_constraints__STATE_VARIABLE_RepvarMap_15 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_RepvarMap_15);
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraint_4_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__A_5,
+  MR_Integer check_hlds__ordering_mode_constraints__B_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__A_5));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__B_6));
+    }
+    {
+      mercury__set__insert_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_10)), check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8, check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9;
+
+    {
+      check_hlds__ordering_mode_constraints__insert_lt_constraint_4_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_Cs_9));
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Bs_5,
+  MR_Integer check_hlds__ordering_mode_constraints__A_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_Cs_9;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[3]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__A_6));
+    }
+    {
+      mercury__set__fold_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[2], check_hlds__ordering_mode_constraints__Var_10, check_hlds__ordering_mode_constraints__Bs_5, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_0_8)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_Cs_9);
+    }
+    *check_hlds__ordering_mode_constraints__STATE_VARIABLE_Cs_9 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_Cs_9);
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_1(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s * check_hlds__ordering_mode_constraints__env_ptr = (struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s *) check_hlds__ordering_mode_constraints__env_ptr_arg;
+
+    MR_builtin_longjmp((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_2(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s * check_hlds__ordering_mode_constraints__env_ptr = (struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s *) check_hlds__ordering_mode_constraints__env_ptr_arg;
+
+    {
+      (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__ContainingGoalMap_10, (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__PredId_13, (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__VarMap_12, (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Bindings_44, (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Goal0_18, &(check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__STATE_VARIABLE_Goal_23_46);
+    }
+    if ((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded)
+      {
+        check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_1(check_hlds__ordering_mode_constraints__env_ptr);
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_3(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s * check_hlds__ordering_mode_constraints__env_ptr = (struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s *) check_hlds__ordering_mode_constraints__env_ptr_arg;
+
+    if (MR_builtin_setjmp((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_0) == 0)
+      {
+        {
+          check_hlds__mcsolver__solve_2_p_0((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__SolverConstraints_22, &(check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Bindings_44, check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_2, check_hlds__ordering_mode_constraints__env_ptr);
+        }
+        (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_4(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s * check_hlds__ordering_mode_constraints__env_ptr = (struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s *) check_hlds__ordering_mode_constraints__env_ptr_arg;
+
+    MR_builtin_longjmp((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_1, 1);
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_5(
+  void * check_hlds__ordering_mode_constraints__env_ptr_arg)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s * check_hlds__ordering_mode_constraints__env_ptr = (struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s *) check_hlds__ordering_mode_constraints__env_ptr_arg;
+
+    if (MR_builtin_setjmp((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__commit_1) == 0)
+      {
+        {
+          MR_Word check_hlds__ordering_mode_constraints__Var_45;
+
+          {
+            check_hlds__mcsolver__solve_2_p_0((check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__SolverConstraints_22, &check_hlds__ordering_mode_constraints__Var_45, check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_4, check_hlds__ordering_mode_constraints__env_ptr);
+          }
+        }
+        (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (check_hlds__ordering_mode_constraints__env_ptr)->check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__proc_reordering_9_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_10,
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraints_11,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_12,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_13,
+  MR_Integer check_hlds__ordering_mode_constraints__ProcId_14,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_0_27,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_28,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_0_29,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_30)
+{
+  {
+    struct check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0_s check_hlds__ordering_mode_constraints__env;
+
+    (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__ContainingGoalMap_10 = check_hlds__ordering_mode_constraints__ContainingGoalMap_10;
+    (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__VarMap_12 = check_hlds__ordering_mode_constraints__VarMap_12;
+    (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__PredId_13 = check_hlds__ordering_mode_constraints__PredId_13;
+    {
+      MR_Word check_hlds__ordering_mode_constraints__ProcInfo0_17;
+      MR_Word check_hlds__ordering_mode_constraints__ConstraintsForProc_19;
+      MR_Word check_hlds__ordering_mode_constraints__PrepConstraints0_20;
+      MR_Word check_hlds__ordering_mode_constraints__PrepConstraints1_21;
+      MR_Word check_hlds__ordering_mode_constraints__Goal_25;
+      MR_Word check_hlds__ordering_mode_constraints__ProcInfo_26;
+
+      {
+        hlds__hlds_pred__pred_info_proc_info_3_p_0(check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_0_29, check_hlds__ordering_mode_constraints__ProcId_14, &check_hlds__ordering_mode_constraints__ProcInfo0_17);
+      }
+      {
+        hlds__hlds_pred__proc_info_get_goal_2_p_0(check_hlds__ordering_mode_constraints__ProcInfo0_17, &(check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Goal0_18);
+      }
+      {
+        check_hlds__ordering_mode_constraints__ConstraintsForProc_19 = check_hlds__abstract_mode_constraints__all_constraints_for_proc_2_f_0(check_hlds__ordering_mode_constraints__ProcId_14, check_hlds__ordering_mode_constraints__PredConstraints_11);
+      }
+      {
+        check_hlds__ordering_mode_constraints__PrepConstraints0_20 = check_hlds__mcsolver__new_prep_cstrts_0_f_0();
+      }
+      {
+        check_hlds__mcsolver__prepare_abstract_constraints_3_p_0(check_hlds__ordering_mode_constraints__ConstraintsForProc_19, check_hlds__ordering_mode_constraints__PrepConstraints0_20, &check_hlds__ordering_mode_constraints__PrepConstraints1_21);
+      }
+      {
+        (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__SolverConstraints_22 = check_hlds__mcsolver__make_solver_cstrts_1_f_0(check_hlds__ordering_mode_constraints__PrepConstraints1_21);
+      }
+      {
+        check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_3(&check_hlds__ordering_mode_constraints__env);
+      }
+      if ((check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded)
+        {
+          check_hlds__ordering_mode_constraints__Goal_25 = (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__STATE_VARIABLE_Goal_23_46;
+          *check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_28 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_0_27;
+        }
+      else
+        {
+          {
+            check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_5(&check_hlds__ordering_mode_constraints__env);
+          }
+          if ((check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__succeeded)
+            {
+              MR_Word check_hlds__ordering_mode_constraints__Var_47;
+              MR_Word check_hlds__ordering_mode_constraints__Var_49;
+
+              {
+                check_hlds__ordering_mode_constraints__Var_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_49, 0) = ((MR_Box) ((check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__PredId_13));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_49, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__ProcId_14));
+              }
+              check_hlds__ordering_mode_constraints__Var_47 = (MR_Word) MR_mkword(MR_mktag(1), (MR_Word) check_hlds__ordering_mode_constraints__Var_49);
+              {
+                mercury__list__cons_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_47)), check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_0_27, check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_28);
+              }
+            }
+          else
+            {
+              MR_Word check_hlds__ordering_mode_constraints__Var_50;
+              MR_Word check_hlds__ordering_mode_constraints__Var_52;
+
+              {
+                check_hlds__ordering_mode_constraints__Var_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_52, 0) = ((MR_Box) ((check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__PredId_13));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_52, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__ProcId_14));
+              }
+              check_hlds__ordering_mode_constraints__Var_50 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) check_hlds__ordering_mode_constraints__Var_52);
+              {
+                mercury__list__cons_3_p_0((MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_50)), check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_0_27, check_hlds__ordering_mode_constraints__STATE_VARIABLE_Errors_28);
+              }
+            }
+          check_hlds__ordering_mode_constraints__Goal_25 = (check_hlds__ordering_mode_constraints__env).check_hlds__ordering_mode_constraints__proc_reordering_9_p_0_env_0__Goal0_18;
+        }
+      {
+        hlds__hlds_pred__proc_info_set_goal_3_p_0(check_hlds__ordering_mode_constraints__Goal_25, check_hlds__ordering_mode_constraints__ProcInfo0_17, &check_hlds__ordering_mode_constraints__ProcInfo_26);
+      }
+      {
+        hlds__hlds_pred__pred_info_set_proc_info_4_p_0(check_hlds__ordering_mode_constraints__ProcId_14, check_hlds__ordering_mode_constraints__ProcInfo_26, check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_0_29, check_hlds__ordering_mode_constraints__STATE_VARIABLE_PredInfo_30);
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv3_Goal_12;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 6))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv3_Goal_12);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv3_Goal_12));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv2_Goal_12;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 6))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv2_Goal_12);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv2_Goal_12));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv1_HeadVar__3_78;
+
+    {
+      check_hlds__ordering_mode_constraints__IntroducedFrom__pred__goal_reordering__354__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv1_HeadVar__3_78);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv1_HeadVar__3_78));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_Goal_12;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 6))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv0_Goal_12);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_Goal_12));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_8,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_9,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_10,
+  MR_Word check_hlds__ordering_mode_constraints__Goal0_11,
+  MR_Word * check_hlds__ordering_mode_constraints__Goal_12)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__GoalExpr0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal0_11, (MR_Integer) 0)));
+    MR_Word check_hlds__ordering_mode_constraints__GoalInfo_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Goal0_11, (MR_Integer) 1)));
+    MR_Word check_hlds__ordering_mode_constraints__GoalExpr_38;
+
+    switch (MR_tag((MR_Word) check_hlds__ordering_mode_constraints__GoalExpr0_13)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__ordering_mode_constraints__SubGoal0_57 = (MR_Word) MR_body(((MR_Word) check_hlds__ordering_mode_constraints__GoalExpr0_13), (MR_Integer) 0);
+          MR_Word check_hlds__ordering_mode_constraints__SubGoal_58;
+
+          {
+            check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(check_hlds__ordering_mode_constraints__ContainingGoalMap_7, check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__SubGoal0_57, &check_hlds__ordering_mode_constraints__SubGoal_58);
+          }
+          if (check_hlds__ordering_mode_constraints__succeeded)
+            {
+              check_hlds__ordering_mode_constraints__GoalExpr_38 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) check_hlds__ordering_mode_constraints__SubGoal_58);
+              check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+            }
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          check_hlds__ordering_mode_constraints__GoalExpr_38 = check_hlds__ordering_mode_constraints__GoalExpr0_13;
+          check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            {
+              check_hlds__ordering_mode_constraints__GoalExpr_38 = check_hlds__ordering_mode_constraints__GoalExpr0_13;
+              check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__ordering_mode_constraints__ConjType_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 1)));
+              MR_Word check_hlds__ordering_mode_constraints__Goals0_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 2)));
+              MR_Word check_hlds__ordering_mode_constraints__Goals_46;
+
+              switch (check_hlds__ordering_mode_constraints__ConjType_39) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_85_85 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                    MR_Word check_hlds__ordering_mode_constraints__Var_68;
+
+                    {
+                      check_hlds__ordering_mode_constraints__Var_68 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_9[1]));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_1));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_7));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 5) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_9));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_68, 6) = ((MR_Box) (check_hlds__ordering_mode_constraints__Bindings_10));
+                    }
+                    {
+                      check_hlds__ordering_mode_constraints__succeeded = mercury__list__map_3_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_85_85, check_hlds__ordering_mode_constraints__TypeCtorInfo_85_85, check_hlds__ordering_mode_constraints__Var_68, check_hlds__ordering_mode_constraints__Goals0_40, &check_hlds__ordering_mode_constraints__Goals_46);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76;
+                    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_80_80;
+                    MR_Word check_hlds__ordering_mode_constraints__RepVarMap_41;
+                    MR_Word check_hlds__ordering_mode_constraints__OCInfo0_42;
+                    MR_Word check_hlds__ordering_mode_constraints__OCInfo_43;
+                    MR_Word check_hlds__ordering_mode_constraints__Order_44;
+                    MR_Word check_hlds__ordering_mode_constraints__Goals1_45;
+                    MR_Integer check_hlds__ordering_mode_constraints__Var_69;
+                    MR_Word check_hlds__ordering_mode_constraints__Var_70;
+                    MR_Word check_hlds__ordering_mode_constraints__Var_71;
+                    MR_Word check_hlds__ordering_mode_constraints__Var_91;
+
+                    {
+                      check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0(check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__Goals0_40, &check_hlds__ordering_mode_constraints__RepVarMap_41);
+                    }
+                    check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                    {
+                      check_hlds__ordering_mode_constraints__Var_69 = mercury__list__length_1_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76, check_hlds__ordering_mode_constraints__Goals0_40);
+                    }
+                    {
+                      check_hlds__ordering_mode_constraints__Var_91 = mercury__set__init_0_f_0((MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0);
+                    }
+                    {
+                      check_hlds__ordering_mode_constraints__OCInfo0_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCInfo0_42, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_7));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCInfo0_42, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_69));
+                      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCInfo0_42, 2) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_91));
+                    }
+                    {
+                      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0(check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__RepVarMap_41, check_hlds__ordering_mode_constraints__OCInfo0_42, &check_hlds__ordering_mode_constraints__OCInfo_43);
+                    }
+                    if (check_hlds__ordering_mode_constraints__succeeded)
+                      {
+                        {
+                          check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__minimum_reordering_2_p_0(check_hlds__ordering_mode_constraints__OCInfo_43, &check_hlds__ordering_mode_constraints__Order_44);
+                        }
+                        if (check_hlds__ordering_mode_constraints__succeeded)
+                          {
+                            check_hlds__ordering_mode_constraints__TypeCtorInfo_80_80 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+                            {
+                              check_hlds__ordering_mode_constraints__Var_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_70, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_7[1]));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_70, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_2));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_70, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Goals0_40));
+                            }
+                            {
+                              mercury__list__map_3_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_80_80, check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76, check_hlds__ordering_mode_constraints__Var_70, check_hlds__ordering_mode_constraints__Order_44, &check_hlds__ordering_mode_constraints__Goals1_45);
+                            }
+                            {
+                              check_hlds__ordering_mode_constraints__Var_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_9[1]));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_3));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_7));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 5) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_9));
+                              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_71, 6) = ((MR_Box) (check_hlds__ordering_mode_constraints__Bindings_10));
+                            }
+                            {
+                              check_hlds__ordering_mode_constraints__succeeded = mercury__list__map_3_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76, check_hlds__ordering_mode_constraints__TypeCtorInfo_76_76, check_hlds__ordering_mode_constraints__Var_71, check_hlds__ordering_mode_constraints__Goals1_45, &check_hlds__ordering_mode_constraints__Goals_46);
+                            }
+                          }
+                      }
+                  }
+                  break;
+              }
+              if (check_hlds__ordering_mode_constraints__succeeded)
+                {
+                  {
+                    check_hlds__ordering_mode_constraints__GoalExpr_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__ConjType_39));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 2) = ((MR_Box) (check_hlds__ordering_mode_constraints__Goals_46));
+                  }
+                  check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+                }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_88_88 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+              MR_Word check_hlds__ordering_mode_constraints__Var_67;
+              MR_Word check_hlds__ordering_mode_constraints__Goals0_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 1)));
+              MR_Word check_hlds__ordering_mode_constraints__Goals_73;
+
+              {
+                check_hlds__ordering_mode_constraints__Var_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_9[1]));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__goal_reordering_6_p_0_4));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_7));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 5) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_9));
+                MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_67, 6) = ((MR_Box) (check_hlds__ordering_mode_constraints__Bindings_10));
+              }
+              {
+                check_hlds__ordering_mode_constraints__succeeded = mercury__list__map_3_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_88_88, check_hlds__ordering_mode_constraints__TypeCtorInfo_88_88, check_hlds__ordering_mode_constraints__Var_67, check_hlds__ordering_mode_constraints__Goals0_72, &check_hlds__ordering_mode_constraints__Goals_73);
+              }
+              if (check_hlds__ordering_mode_constraints__succeeded)
+                {
+                  {
+                    check_hlds__ordering_mode_constraints__GoalExpr_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Goals_73));
+                  }
+                  check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+                }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.goal_reordering\'/6", (MR_String) "switch");
+              }
+              check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__ordering_mode_constraints__Reason_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 1)));
+              MR_Word check_hlds__ordering_mode_constraints__SubGoal0_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 2)));
+              MR_Word check_hlds__ordering_mode_constraints__SubGoal_75;
+
+              {
+                check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(check_hlds__ordering_mode_constraints__ContainingGoalMap_7, check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__SubGoal0_74, &check_hlds__ordering_mode_constraints__SubGoal_75);
+              }
+              if (check_hlds__ordering_mode_constraints__succeeded)
+                {
+                  {
+                    check_hlds__ordering_mode_constraints__GoalExpr_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Reason_59));
+                    MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 2) = ((MR_Box) (check_hlds__ordering_mode_constraints__SubGoal_75));
+                  }
+                  check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+                }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word check_hlds__ordering_mode_constraints__Vars_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 1)));
+              MR_Word check_hlds__ordering_mode_constraints__Cond0_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 2)));
+              MR_Word check_hlds__ordering_mode_constraints__Then0_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 3)));
+              MR_Word check_hlds__ordering_mode_constraints__Else0_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr0_13, (MR_Integer) 4)));
+              MR_Word check_hlds__ordering_mode_constraints__Cond_54;
+              MR_Word check_hlds__ordering_mode_constraints__Then_55;
+              MR_Word check_hlds__ordering_mode_constraints__Else_56;
+
+              {
+                check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(check_hlds__ordering_mode_constraints__ContainingGoalMap_7, check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__Cond0_51, &check_hlds__ordering_mode_constraints__Cond_54);
+              }
+              if (check_hlds__ordering_mode_constraints__succeeded)
+                {
+                  {
+                    check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(check_hlds__ordering_mode_constraints__ContainingGoalMap_7, check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__Then0_52, &check_hlds__ordering_mode_constraints__Then_55);
+                  }
+                  if (check_hlds__ordering_mode_constraints__succeeded)
+                    {
+                      {
+                        check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__goal_reordering_6_p_0(check_hlds__ordering_mode_constraints__ContainingGoalMap_7, check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__VarMap_9, check_hlds__ordering_mode_constraints__Bindings_10, check_hlds__ordering_mode_constraints__Else0_53, &check_hlds__ordering_mode_constraints__Else_56);
+                      }
+                      if (check_hlds__ordering_mode_constraints__succeeded)
+                        {
+                          {
+                            check_hlds__ordering_mode_constraints__GoalExpr_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                            MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Vars_50));
+                            MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 2) = ((MR_Box) (check_hlds__ordering_mode_constraints__Cond_54));
+                            MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Then_55));
+                            MR_hl_field(MR_mktag(3), check_hlds__ordering_mode_constraints__GoalExpr_38, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__Else_56));
+                          }
+                          check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+                        }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.goal_reordering\'/6", (MR_String) "NYI: shorthand");
+              }
+              check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+            }
+            break;
+        }
+        break;
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *check_hlds__ordering_mode_constraints__Goal_12 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__GoalExpr_38));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__GoalInfo_14));
+        }
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__minimum_reordering_2_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__OCI_3,
+  MR_Word * check_hlds__ordering_mode_constraints__Order_4)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Conjuncts_5;
+    MR_Word check_hlds__ordering_mode_constraints__Var_6;
+    MR_Integer check_hlds__ordering_mode_constraints__Var_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 1)));
+    MR_Word check_hlds__ordering_mode_constraints__Var_9;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 0)));
+    MR_Word check_hlds__ordering_mode_constraints__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 2)));
+    MR_Word check_hlds__ordering_mode_constraints__Var_12;
+    MR_Integer check_hlds__ordering_mode_constraints__Var_13;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_6 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, check_hlds__ordering_mode_constraints__Var_8);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Conjuncts_5 = mercury__set__from_sorted_list_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, check_hlds__ordering_mode_constraints__Var_6);
+    }
+    check_hlds__ordering_mode_constraints__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 0)));
+    check_hlds__ordering_mode_constraints__Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 1)));
+    check_hlds__ordering_mode_constraints__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__OCI_3, (MR_Integer) 2)));
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0(check_hlds__ordering_mode_constraints__Var_9, check_hlds__ordering_mode_constraints__Conjuncts_5, check_hlds__ordering_mode_constraints__Order_4);
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__IntroducedFrom__pred__topological_sort_min_reordering__677__1_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Integer check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_20;
+
+    {
+      check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_20 = check_hlds__ordering_mode_constraints__IntroducedFrom__func__topological_sort_min_reordering__671__1_1_f_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_20));
+    return check_hlds__ordering_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Constraints0_4,
+  MR_Word check_hlds__ordering_mode_constraints__Conjuncts0_5,
+  MR_Word * check_hlds__ordering_mode_constraints__Ordering_6)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_29_29 = (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    MR_Word check_hlds__ordering_mode_constraints__NotFirst_7;
+    MR_Word check_hlds__ordering_mode_constraints__CandidatesForFirst_10;
+    MR_Integer check_hlds__ordering_mode_constraints__First_11;
+    MR_Word check_hlds__ordering_mode_constraints__Var_12;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_First_11;
+
+    {
+      check_hlds__ordering_mode_constraints__NotFirst_7 = mercury__set__map_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_29_29, check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[3], check_hlds__ordering_mode_constraints__Constraints0_4);
+    }
+    {
+      check_hlds__ordering_mode_constraints__CandidatesForFirst_10 = mercury__set__difference_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, check_hlds__ordering_mode_constraints__Conjuncts0_5, check_hlds__ordering_mode_constraints__NotFirst_7);
+    }
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__set__remove_least_3_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, &check_hlds__ordering_mode_constraints__conv1_First_11, check_hlds__ordering_mode_constraints__CandidatesForFirst_10, &check_hlds__ordering_mode_constraints__Var_12);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        check_hlds__ordering_mode_constraints__First_11 = ((MR_Integer) check_hlds__ordering_mode_constraints__conv1_First_11);
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        MR_Word check_hlds__ordering_mode_constraints__Conjuncts_13;
+        MR_Word check_hlds__ordering_mode_constraints__Constraints_14;
+        MR_Word check_hlds__ordering_mode_constraints__Ordering0_17;
+        MR_Word check_hlds__ordering_mode_constraints__Var_21;
+
+        {
+          check_hlds__ordering_mode_constraints__succeeded = mercury__set__remove_3_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, ((MR_Box) (check_hlds__ordering_mode_constraints__First_11)), check_hlds__ordering_mode_constraints__Conjuncts0_5, &check_hlds__ordering_mode_constraints__Conjuncts_13);
+        }
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          {
+            {
+              check_hlds__ordering_mode_constraints__Var_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[2]));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0_2));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__First_11));
+            }
+            {
+              check_hlds__ordering_mode_constraints__Constraints_14 = mercury__set__filter_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_29_29, check_hlds__ordering_mode_constraints__Var_21, check_hlds__ordering_mode_constraints__Constraints0_4);
+            }
+            {
+              check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__topological_sort_min_reordering_3_p_0(check_hlds__ordering_mode_constraints__Constraints_14, check_hlds__ordering_mode_constraints__Conjuncts_13, &check_hlds__ordering_mode_constraints__Ordering0_17);
+            }
+            if (check_hlds__ordering_mode_constraints__succeeded)
+              {
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *check_hlds__ordering_mode_constraints__Ordering_6 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__First_11));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Ordering0_17));
+                }
+                check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+              }
+          }
+      }
+    else
+      {
+        {
+          check_hlds__ordering_mode_constraints__succeeded = mercury__set__is_empty_1_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, check_hlds__ordering_mode_constraints__Conjuncts0_5);
+        }
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          {
+            *check_hlds__ordering_mode_constraints__Ordering_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+          }
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_OCInfo_19;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__prog_var_ordering_constraints_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_OCInfo_19);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_OCInfo_19));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__Bindings_7,
+  MR_Word check_hlds__ordering_mode_constraints__RepVarMap_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_10,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_11)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_12;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_OCInfo_11;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_9[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__conjunct_ordering_constraints_5_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_6));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__Bindings_7));
+    }
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__map__foldl_4_p_3((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[3], (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[4], (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0, check_hlds__ordering_mode_constraints__Var_12, check_hlds__ordering_mode_constraints__RepVarMap_8, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_0_10)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_OCInfo_11);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCInfo_11 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_OCInfo_11);
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_RepvarMap_15;
+
+    {
+      check_hlds__ordering_mode_constraints__make_conjunct_nonlocal_repvars_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_RepvarMap_15);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_RepvarMap_15));
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredId_4,
+  MR_Word check_hlds__ordering_mode_constraints__Goals_5,
+  MR_Word * check_hlds__ordering_mode_constraints__RepvarMap_6)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_7;
+    MR_Word check_hlds__ordering_mode_constraints__Var_8;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_RepvarMap_6;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_7, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_7, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__make_conjuncts_nonlocal_repvars_3_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_7, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_7, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_4));
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_8 = mercury__multi_map__init_0_f_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[3], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0);
+    }
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[1], check_hlds__ordering_mode_constraints__Var_7, check_hlds__ordering_mode_constraints__Goals_5, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_8)), &check_hlds__ordering_mode_constraints__conv1_RepvarMap_6);
+    }
+    *check_hlds__ordering_mode_constraints__RepvarMap_6 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_RepvarMap_6);
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__pred_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Errors_28;
+    MR_Word check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_PredInfo_30;
+
+    {
+      check_hlds__ordering_mode_constraints__proc_reordering_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 6))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Errors_28, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_4), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_PredInfo_30);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Errors_28));
+    *check_hlds__ordering_mode_constraints__wrapper_arg_5 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_PredInfo_30));
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__pred_reordering_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraintsMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__PredId_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_20,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_21)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__PredInfo0_10;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_20, check_hlds__ordering_mode_constraints__PredId_8, &check_hlds__ordering_mode_constraints__PredInfo0_10);
+    }
+    {
+      check_hlds__ordering_mode_constraints__succeeded = hlds__hlds_pred__pred_info_infer_modes_1_p_0(check_hlds__ordering_mode_constraints__PredInfo0_10);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        {
+          mercury__require__sorry_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.pred_reordering\'/5", (MR_String) "mode inference constraints");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__TypeInfo_44_44;
+        MR_Word check_hlds__ordering_mode_constraints__PredInfo1_11;
+        MR_Word check_hlds__ordering_mode_constraints__ContainingGoalMap_12;
+        MR_Word check_hlds__ordering_mode_constraints__PredConstraints_13;
+        MR_Word check_hlds__ordering_mode_constraints__ProcIds_14;
+        MR_Word check_hlds__ordering_mode_constraints__Errors_15;
+        MR_Word check_hlds__ordering_mode_constraints__PredInfo_16;
+        MR_Word check_hlds__ordering_mode_constraints__Var_25;
+        MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_26_26;
+        MR_Tuple check_hlds__ordering_mode_constraints__Var_28;
+        MR_Word check_hlds__ordering_mode_constraints__Var_29;
+        MR_Box check_hlds__ordering_mode_constraints__conv0_Var_28;
+        MR_Box check_hlds__ordering_mode_constraints__conv4_Errors_15;
+        MR_Box check_hlds__ordering_mode_constraints__conv3_PredInfo_16;
+
+        {
+          check_hlds__ordering_mode_constraints__Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_25, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8));
+          MR_hl_field(MR_mktag(1), check_hlds__ordering_mode_constraints__Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__clause_to_proc__copy_module_clauses_to_procs_3_p_0(check_hlds__ordering_mode_constraints__Var_25, check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_20, &check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_26_26);
+        }
+        {
+          hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_26_26, check_hlds__ordering_mode_constraints__PredId_8, &check_hlds__ordering_mode_constraints__PredInfo1_11);
+        }
+        {
+          mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_3[0], check_hlds__ordering_mode_constraints__PredConstraintsMap_6, ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8)), &check_hlds__ordering_mode_constraints__conv0_Var_28);
+        }
+        check_hlds__ordering_mode_constraints__Var_28 = ((MR_Tuple) check_hlds__ordering_mode_constraints__conv0_Var_28);
+        check_hlds__ordering_mode_constraints__ContainingGoalMap_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_28, (MR_Integer) 0)));
+        check_hlds__ordering_mode_constraints__PredConstraints_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_28, (MR_Integer) 1)));
+        {
+          check_hlds__ordering_mode_constraints__ProcIds_14 = hlds__hlds_pred__pred_info_all_procids_1_f_0(check_hlds__ordering_mode_constraints__PredInfo1_11);
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_8[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__pred_reordering_5_p_0_1));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ContainingGoalMap_12));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredConstraints_13));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 5) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_7));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_29, 6) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredId_8));
+        }
+        check_hlds__ordering_mode_constraints__TypeInfo_44_44 = (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[1];
+        {
+          mercury__list__foldl2_6_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, check_hlds__ordering_mode_constraints__TypeInfo_44_44, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0, check_hlds__ordering_mode_constraints__Var_29, check_hlds__ordering_mode_constraints__ProcIds_14, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &check_hlds__ordering_mode_constraints__conv4_Errors_15, ((MR_Box) (check_hlds__ordering_mode_constraints__PredInfo1_11)), &check_hlds__ordering_mode_constraints__conv3_PredInfo_16);
+        }
+        check_hlds__ordering_mode_constraints__Errors_15 = ((MR_Word) check_hlds__ordering_mode_constraints__conv4_Errors_15);
+        check_hlds__ordering_mode_constraints__PredInfo_16 = ((MR_Word) check_hlds__ordering_mode_constraints__conv3_PredInfo_16);
+        if ((check_hlds__ordering_mode_constraints__Errors_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            hlds__hlds_module__module_info_set_pred_info_4_p_0(check_hlds__ordering_mode_constraints__PredId_8, check_hlds__ordering_mode_constraints__PredInfo_16, check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_26_26, check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_21);
+          }
+        else
+          {
+            MR_String check_hlds__ordering_mode_constraints__ErrorsString_19;
+            MR_String check_hlds__ordering_mode_constraints__Var_33;
+
+            {
+              check_hlds__ordering_mode_constraints__ErrorsString_19 = mercury__string__string_1_f_0(check_hlds__ordering_mode_constraints__TypeInfo_44_44, ((MR_Box) (check_hlds__ordering_mode_constraints__Errors_15)));
+            }
+            {
+              check_hlds__ordering_mode_constraints__Var_33 = mercury__string__f_43_43_2_f_0((MR_String) "mode checking failure: ", check_hlds__ordering_mode_constraints__ErrorsString_19);
+            }
+            {
+              mercury__require__sorry_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.pred_reordering\'/5", check_hlds__ordering_mode_constraints__Var_33);
+              return;
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_21;
+
+    {
+      check_hlds__ordering_mode_constraints__pred_reordering_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_21);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_21));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__IntroducedFrom__pred__scc_reordering__187__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__prop_mode_constraints__module_info_pred_status_is_imported_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__scc_reordering_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraintsMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__SCC0_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_19)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30;
+    MR_Word check_hlds__ordering_mode_constraints__SCC_11;
+    MR_Word check_hlds__ordering_mode_constraints__PredsToInfer_14;
+    MR_Word check_hlds__ordering_mode_constraints__PredsToCheck_15;
+    MR_Word check_hlds__ordering_mode_constraints__Var_20;
+    MR_Word check_hlds__ordering_mode_constraints__Var_21;
+    MR_Word check_hlds__ordering_mode_constraints__Var_26;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_19;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_20, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18));
+    }
+    check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+    {
+      mercury__list__filter_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, check_hlds__ordering_mode_constraints__Var_20, check_hlds__ordering_mode_constraints__SCC0_8, &check_hlds__ordering_mode_constraints__Var_10, &check_hlds__ordering_mode_constraints__SCC_11);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_21, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18));
+    }
+    {
+      mercury__list__filter_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, check_hlds__ordering_mode_constraints__Var_21, check_hlds__ordering_mode_constraints__SCC_11, &check_hlds__ordering_mode_constraints__PredsToInfer_14, &check_hlds__ordering_mode_constraints__PredsToCheck_15);
+    }
+    if ((check_hlds__ordering_mode_constraints__PredsToInfer_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+      }
+    else
+      {
+        {
+          mercury__require__sorry_3_p_0((MR_String) "check_hlds.ordering_mode_constraints", (MR_String) "predicate \140check_hlds.ordering_mode_constraints.scc_reordering\'/5", (MR_String) "NYI: mode inference");
+          return;
+        }
+      }
+    {
+      check_hlds__ordering_mode_constraints__Var_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_26, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[1]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_26, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__scc_reordering_5_p_0_3));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_26, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredConstraintsMap_6));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_26, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_7));
+    }
+    {
+      mercury__list__foldl_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_30_30, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, check_hlds__ordering_mode_constraints__Var_26, check_hlds__ordering_mode_constraints__PredsToCheck_15, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_18)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_19);
+    }
+    *check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_19 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_19);
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_lt_constraint_4_p_0(
+  MR_Integer check_hlds__ordering_mode_constraints__A_5,
+  MR_Integer check_hlds__ordering_mode_constraints__B_6,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_9)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__A_5));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__B_6));
+    }
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0(check_hlds__ordering_mode_constraints__Var_10, check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_9);
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_4(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__IntroducedFrom__pred__add_ordering_constraint__425__1_1_p_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_3(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Cs_9;
+
+    {
+      check_hlds__ordering_mode_constraints__insert_lt_constraints_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Cs_9);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv2_STATE_VARIABLE_Cs_9));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Integer check_hlds__ordering_mode_constraints__conv1_LambdaHeadVar__2_21;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__445__1_2_f_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv1_LambdaHeadVar__2_21);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv1_LambdaHeadVar__2_21));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Integer check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_18;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints__IntroducedFrom__func__constraint_transitive_closure__443__1_2_f_0(((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), &check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_18);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_LambdaHeadVar__2_18));
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__Constraint_4,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_9)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 2)));
+    MR_Word check_hlds__ordering_mode_constraints__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 0)));
+    MR_Integer check_hlds__ordering_mode_constraints__Var_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 1)));
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = mercury__set__member_2_p_0((MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0, ((MR_Box) (check_hlds__ordering_mode_constraints__Constraint_4)), check_hlds__ordering_mode_constraints__Var_10);
+    }
+    if (check_hlds__ordering_mode_constraints__succeeded)
+      {
+        *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_9 = check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8;
+        check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_27_27;
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_32_56 = (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+        MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+        MR_Word check_hlds__ordering_mode_constraints__NewConstraints_6;
+        MR_Word check_hlds__ordering_mode_constraints__Var_11;
+        MR_Word check_hlds__ordering_mode_constraints__Var_16;
+        MR_Word check_hlds__ordering_mode_constraints__Var_17;
+        MR_Word check_hlds__ordering_mode_constraints__Constraints_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 2)));
+        MR_Integer check_hlds__ordering_mode_constraints__From_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Constraint_4, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__To_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Constraint_4, (MR_Integer) 1)));
+        MR_Word check_hlds__ordering_mode_constraints__ComesBefore_34;
+        MR_Word check_hlds__ordering_mode_constraints__ComesAfter_37;
+        MR_Word check_hlds__ordering_mode_constraints__Var_40;
+        MR_Word check_hlds__ordering_mode_constraints__Var_43;
+        MR_Word check_hlds__ordering_mode_constraints__Var_46;
+        MR_Word check_hlds__ordering_mode_constraints__Var_47;
+        MR_Word check_hlds__ordering_mode_constraints__Var_48;
+        MR_Word check_hlds__ordering_mode_constraints__Var_49;
+        MR_Word check_hlds__ordering_mode_constraints__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 0)));
+        MR_Integer check_hlds__ordering_mode_constraints__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 1)));
+        MR_Box check_hlds__ordering_mode_constraints__conv3_NewConstraints_6;
+        MR_Word check_hlds__ordering_mode_constraints__Var_21;
+        MR_Integer check_hlds__ordering_mode_constraints__Var_22;
+        MR_Word check_hlds__ordering_mode_constraints__Var_23;
+        MR_Integer check_hlds__ordering_mode_constraints__Var_24;
+        MR_Word check_hlds__ordering_mode_constraints__Var_25;
+
+        {
+          check_hlds__ordering_mode_constraints__Var_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_40, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_7[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_40, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_1));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_40, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_40, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__From_32));
+        }
+        {
+          check_hlds__ordering_mode_constraints__ComesBefore_34 = mercury__set__filter_map_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_32_56, check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57, check_hlds__ordering_mode_constraints__Var_40, check_hlds__ordering_mode_constraints__Constraints_31);
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_7[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_2));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_43, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__To_33));
+        }
+        {
+          check_hlds__ordering_mode_constraints__ComesAfter_37 = mercury__set__filter_map_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_32_56, check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57, check_hlds__ordering_mode_constraints__Var_43, check_hlds__ordering_mode_constraints__Constraints_31);
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_49 = mercury__set__insert_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57, check_hlds__ordering_mode_constraints__ComesAfter_37, ((MR_Box) (check_hlds__ordering_mode_constraints__To_33)));
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_46, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[1]));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_46, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__add_ordering_constraint_3_p_0_3));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_46, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_46, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_49));
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_47 = mercury__set__insert_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57, check_hlds__ordering_mode_constraints__ComesBefore_34, ((MR_Box) (check_hlds__ordering_mode_constraints__From_32)));
+        }
+        {
+          check_hlds__ordering_mode_constraints__Var_48 = mercury__set__init_0_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_32_56);
+        }
+        {
+          mercury__set__fold_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_33_57, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[2], check_hlds__ordering_mode_constraints__Var_46, check_hlds__ordering_mode_constraints__Var_47, ((MR_Box) (check_hlds__ordering_mode_constraints__Var_48)), &check_hlds__ordering_mode_constraints__conv3_NewConstraints_6);
+        }
+        check_hlds__ordering_mode_constraints__NewConstraints_6 = ((MR_Word) check_hlds__ordering_mode_constraints__conv3_NewConstraints_6);
+        check_hlds__ordering_mode_constraints__TypeCtorInfo_27_27 = (MR_Word) &check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0;
+        {
+          check_hlds__ordering_mode_constraints__Var_11 = mercury__set__filter_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_27_27, (MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_2[2], check_hlds__ordering_mode_constraints__NewConstraints_6);
+        }
+        {
+          check_hlds__ordering_mode_constraints__succeeded = mercury__set__is_empty_1_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_27_27, check_hlds__ordering_mode_constraints__Var_11);
+        }
+        if (check_hlds__ordering_mode_constraints__succeeded)
+          {
+            check_hlds__ordering_mode_constraints__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 0)));
+            check_hlds__ordering_mode_constraints__Var_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 1)));
+            check_hlds__ordering_mode_constraints__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 2)));
+            {
+              check_hlds__ordering_mode_constraints__Var_16 = mercury__set__union_2_f_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_27_27, check_hlds__ordering_mode_constraints__NewConstraints_6, check_hlds__ordering_mode_constraints__Var_17);
+            }
+            check_hlds__ordering_mode_constraints__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 0)));
+            check_hlds__ordering_mode_constraints__Var_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 1)));
+            check_hlds__ordering_mode_constraints__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_0_8, (MR_Integer) 2)));
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              *check_hlds__ordering_mode_constraints__STATE_VARIABLE_OCI_9 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_23));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_24));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__ordering_mode_constraints__Var_16));
+            }
+            check_hlds__ordering_mode_constraints__succeeded = MR_TRUE;
+          }
+      }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_2(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__dump_pred_goal_paths_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__prop_mode_constraints__module_info_pred_status_is_imported_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__ordering_mode_constraints__PredIds0_6)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__TypeCtorInfo_16_16;
+    MR_Word check_hlds__ordering_mode_constraints__PredIds_9;
+    MR_Word check_hlds__ordering_mode_constraints__Var_12;
+    MR_Word check_hlds__ordering_mode_constraints__Var_13;
+    MR_Word check_hlds__ordering_mode_constraints__Var_8;
+    MR_Box check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_IO_11;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ModuleInfo_5));
+    }
+    check_hlds__ordering_mode_constraints__TypeCtorInfo_16_16 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+    {
+      mercury__list__filter_4_p_0(check_hlds__ordering_mode_constraints__TypeCtorInfo_16_16, check_hlds__ordering_mode_constraints__Var_12, check_hlds__ordering_mode_constraints__PredIds0_6, &check_hlds__ordering_mode_constraints__Var_8, &check_hlds__ordering_mode_constraints__PredIds_9);
+    }
+    {
+      check_hlds__ordering_mode_constraints__Var_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_13, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_13, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__dump_goal_paths_4_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_13, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__ModuleInfo_5));
+    }
+    {
+      mercury__list__foldl_4_p_2(check_hlds__ordering_mode_constraints__TypeCtorInfo_16_16, (MR_Word) &mercury__io__io__type_ctor_info_state_0, check_hlds__ordering_mode_constraints__Var_13, check_hlds__ordering_mode_constraints__PredIds_9, ((MR_Box) ((MR_Integer) 0)), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_IO_11);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints__mode_reordering_5_p_0_1(
+  MR_Box check_hlds__ordering_mode_constraints__closure_arg,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__ordering_mode_constraints__closure = check_hlds__ordering_mode_constraints__closure_arg;
+    MR_Word check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_19;
+
+    {
+      check_hlds__ordering_mode_constraints__scc_reordering_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), &check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_19);
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_STATE_VARIABLE_ModuleInfo_19));
+  }
+}
+
+void MR_CALL 
+check_hlds__ordering_mode_constraints__mode_reordering_5_p_0(
+  MR_Word check_hlds__ordering_mode_constraints__PredConstraintsMap_6,
+  MR_Word check_hlds__ordering_mode_constraints__VarMap_7,
+  MR_Word check_hlds__ordering_mode_constraints__SCCs_8,
+  MR_Word check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_10,
+  MR_Word * check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_11)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+    MR_Word check_hlds__ordering_mode_constraints__Var_12;
+    MR_Box check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_11;
+
+    {
+      check_hlds__ordering_mode_constraints__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 0) = ((MR_Box) (&check_hlds__ordering_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 1) = ((MR_Box) (check_hlds__ordering_mode_constraints__mode_reordering_5_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 3) = ((MR_Box) (check_hlds__ordering_mode_constraints__PredConstraintsMap_6));
+      MR_hl_field(MR_mktag(0), check_hlds__ordering_mode_constraints__Var_12, 4) = ((MR_Box) (check_hlds__ordering_mode_constraints__VarMap_7));
+    }
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &check_hlds__ordering_mode_constraints_scalar_common_1[0], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, check_hlds__ordering_mode_constraints__Var_12, check_hlds__ordering_mode_constraints__SCCs_8, ((MR_Box) (check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_0_10)), &check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_11);
+    }
+    *check_hlds__ordering_mode_constraints__STATE_VARIABLE_ModuleInfo_11 = ((MR_Word) check_hlds__ordering_mode_constraints__conv1_STATE_VARIABLE_ModuleInfo_11);
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____conjunct_id_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____conjunct_id_0_0(((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____conjunct_id_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____conjunct_id_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Integer) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____mode_analysis_failure_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____mode_analysis_failure_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____mode_analysis_failures_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____mode_analysis_failures_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraint_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraint_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraint_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraint_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraints_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____mode_ordering_constraints_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraints_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____mode_ordering_constraints_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____ordering_constraints_info_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____ordering_constraints_info_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____ordering_constraints_info_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____ordering_constraints_info_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0_10001(
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__ordering_mode_constraints__succeeded;
+
+    {
+      check_hlds__ordering_mode_constraints__succeeded = check_hlds__ordering_mode_constraints____Unify____prog_var_at_conjuncts_map_0_0(((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__ordering_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0_10001(
+  MR_Box * check_hlds__ordering_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__ordering_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__ordering_mode_constraints____Compare____prog_var_at_conjuncts_map_0_0(&check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__ordering_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__ordering_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__ordering_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__check_hlds__ordering_mode_constraints__init(void)
+{
+}
+
+void mercury__check_hlds__ordering_mode_constraints__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_conjunct_id_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failure_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_analysis_failures_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraint_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_mode_ordering_constraints_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_ordering_constraints_info_0);
+	MR_register_type_ctor_info(&check_hlds__ordering_mode_constraints__check_hlds__ordering_mode_constraints__type_ctor_info_prog_var_at_conjuncts_map_0);
+}
+
+void mercury__check_hlds__ordering_mode_constraints__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__ordering_mode_constraints__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module check_hlds.ordering_mode_constraints. */

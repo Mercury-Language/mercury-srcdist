@@ -1,0 +1,4 @@
+:- module (libs.compiler_util).
+:- interface.
+:- type warning_or_error
+	where	type_is_abstract_enum(1).
