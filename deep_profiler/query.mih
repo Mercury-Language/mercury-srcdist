@@ -1,0 +1,484 @@
+/*
+** Automatically generated from `query.m'
+** by the Mercury compiler,
+** version rotd-2018-04-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module query.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_query
+#define MR_HEADER_GUARD_query
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef QUERY_DECL_GUARD
+#define QUERY_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_alloc_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_box_tables_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_caller_groups_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_callseqs_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_cmd_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_colour_column_groups_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_contour_exclusion_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_cost_kind_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_deep_query_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_descendants_meaningful_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_developer_mode_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_display_limit_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_inactive_items_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_inactive_status_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_include_descendants_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_measurement_scope_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_memory_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_module_qual_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_order_criteria_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_port_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_preferences_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_preferences_indication_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_summarize_ho_call_sites_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_time_fields_0;
+
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_time_format_0;
+
+void MR_CALL 
+query__try_exec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4);
+
+MR_Word MR_CALL 
+query__all_fields_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_ancestor_limit_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_box_tables_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_colour_column_groups_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_command_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_contour_exclusion_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_cost_kind_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_developer_mode_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_fields_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+query__default_inactive_items_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_incl_desc_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_module_qual_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_order_criteria_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_preferences_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+query__default_proc_statics_per_rec_type_limit_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_scope_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_summarize_ho_call_sites_0_f_0(void);
+
+MR_Word MR_CALL 
+query__default_time_format_0_f_0(void);
+
+MR_String MR_CALL 
+query__query_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+query__should_display_times_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+query__solidify_preference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+query__string_to_maybe_cmd_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+query__string_to_maybe_pref_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+query__string_to_maybe_query_1_f_0(
+  MR_String param_1);
+
+void MR_CALL 
+query____Compare____alloc_fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____box_tables_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____caller_groups_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____callseqs_fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____cmd_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____colour_column_groups_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____contour_exclusion_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____cost_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____deep_query_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____descendants_meaningful_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____developer_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____display_limit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____inactive_items_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____inactive_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____include_descendants_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____measurement_scope_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____memory_fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____module_qual_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____order_criteria_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____port_fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____preferences_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____preferences_indication_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____summarize_ho_call_sites_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____time_fields_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Compare____time_format_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+query____Index____cmd_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+query____Unify____alloc_fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____box_tables_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____caller_groups_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____callseqs_fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____cmd_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____colour_column_groups_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____contour_exclusion_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____cost_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____deep_query_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____descendants_meaningful_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____developer_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____display_limit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____inactive_items_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____inactive_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____include_descendants_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____measurement_scope_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____memory_fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____module_qual_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____order_criteria_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____port_fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____preferences_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____preferences_indication_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____summarize_ho_call_sites_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____time_fields_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+query____Unify____time_format_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__query__init(void);
+void mercury__query__init_type_tables(void);
+void mercury__query__init_debugger(void);
+const char *mercury__query__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_query
+
+// :- end_interface query.
