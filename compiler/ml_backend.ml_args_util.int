@@ -1,0 +1,53 @@
+:- module (ml_backend.ml_args_util).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (mdbcomp.prim_data).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type copy_out_when
+    --->    copy_out_never 
+    ;       copy_out_only_last_arg 
+    ;       copy_out_always .
+:- type ml_call_arg
+    --->    arg_not_for_closure_wrapper(parse_tree.prog_data.prog_var)
+    ;       arg_for_closure_wrapper(ml_backend.mlds.mlds_local_var_name, ml_backend.mlds.mlds_lval, parse_tree.prog_data.mer_type).
+:- type solo_or_tscc
+    --->    sot_solo 
+    ;       sot_tscc .
+:- type var_mvar_type_mode
+    --->    var_mvar_type_mode(parse_tree.prog_data.prog_var, ml_backend.mlds.mlds_local_var_name, parse_tree.prog_data.mer_type, hlds.hlds_pred.top_functor_mode).
+:- type what_params
+    --->    input_params_only 
+    ;       input_and_output_params .
+:- inst (fcw) for (ml_backend.ml_args_util).ml_call_arg/0 == bound(arg_for_closure_wrapper(ground, ground, ground)).
+:- inst (not_fcw) for (ml_backend.ml_args_util).ml_call_arg/0 == bound(arg_not_for_closure_wrapper(ground)).
+:- func compute_when_to_copy_out(bool.bool, hlds.code_model.code_model, mdbcomp.prim_data.pred_or_func) = ml_backend.ml_args_util.copy_out_when.
+:- pred ml_append_return_statement(hlds.code_model.code_model, ml_backend.ml_args_util.solo_or_tscc, list.list(ml_backend.mlds.mlds_lval), parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_stmt), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_append_return_statement((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_args(mdbcomp.prim_data.pred_or_func, hlds.code_model.code_model, parse_tree.prog_data.prog_context, ml_backend.ml_args_util.what_params, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(ml_backend.ml_args_util.ml_call_arg), list.list(ml_backend.mlds.mlds_rval), list.list(ml_backend.mlds.mlds_lval), list.list(ml_backend.mlds.mlds_type), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(list.list_skel(((ml_backend.ml_args_util).not_fcw))), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode ml_gen_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(list.list_skel(((ml_backend.ml_args_util).fcw))), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_proc_params(hlds.hlds_pred.pred_proc_id, list.list(ml_backend.ml_args_util.var_mvar_type_mode), ml_backend.mlds.mlds_func_params, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_proc_params((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_params_no_gc_stmts(hlds.hlds_module.module_info, mdbcomp.prim_data.pred_or_func, hlds.code_model.code_model, list.list(parse_tree.prog_data.prog_var), list.list(ml_backend.mlds.mlds_local_var_name), list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(ml_backend.ml_args_util.var_mvar_type_mode), ml_backend.mlds.mlds_func_params).
+:- mode ml_gen_params_no_gc_stmts((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func ml_gen_proc_params_from_rtti_no_gc_stmts(hlds.hlds_module.module_info, hlds.hlds_rtti.rtti_proc_label) = ml_backend.mlds.mlds_func_params.
+:- func ml_gen_proc_params_inputs_only_no_gc_stmts(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = list.list(ml_backend.mlds.mlds_argument).
+:- pred ml_gen_proc_params_no_gc_stmts(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, list.list(ml_backend.ml_args_util.var_mvar_type_mode), ml_backend.mlds.mlds_func_params).
+:- mode ml_gen_proc_params_no_gc_stmts((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred ml_gen_tscc_arg_params(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, ml_backend.mlds.proc_id_in_tscc, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(ml_backend.ml_args_util.var_mvar_type_mode), int, int, int, map.map(int, string), map.map(int, string), list.list(ml_backend.mlds.mlds_argument), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_argument), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt)).
+:- mode ml_gen_tscc_arg_params((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func wrap_plain_not_fcw_arg(parse_tree.prog_data.prog_var) = ml_backend.ml_args_util.ml_call_arg.
+:- mode wrap_plain_not_fcw_arg((builtin.in)) = builtin.out(((ml_backend.ml_args_util).not_fcw)) is det.
+:- func wrap_plain_not_fcw_args(list.list(parse_tree.prog_data.prog_var)) = list.list(ml_backend.ml_args_util.ml_call_arg).
+:- mode wrap_plain_not_fcw_args((builtin.in)) = builtin.out(list.list_skel(((ml_backend.ml_args_util).not_fcw))) is det.

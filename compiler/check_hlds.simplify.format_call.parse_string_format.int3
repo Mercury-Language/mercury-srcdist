@@ -1,0 +1,6 @@
+:- module (((check_hlds.simplify).format_call).parse_string_format).
+:- interface.
+:- type abstract_poly_type.
+:- type compiler_format_maybe_prec.
+:- type compiler_format_maybe_width.
+:- type compiler_format_spec.

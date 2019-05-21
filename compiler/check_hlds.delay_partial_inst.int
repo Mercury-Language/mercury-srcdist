@@ -1,0 +1,7 @@
+:- module (check_hlds.delay_partial_inst).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred delay_partial_inst_preds(list.list(hlds.hlds_pred.pred_id), list.list(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode delay_partial_inst_preds((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
