@@ -1,0 +1,34 @@
+:- module parser.
+:- interface.
+:- import_module io.
+:- import_module lexer.
+:- import_module ops.
+:- import_module term_io.
+:- pred parse_tokens(string, lexer.token_list, term_io.read_term(T)).
+:- mode parse_tokens((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_tokens_with_op_table(Ops, string, lexer.token_list, term_io.read_term(T)) <= (ops.op_table(Ops)).
+:- mode parse_tokens_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred read_term(term_io.read_term(T), io.io, io.io).
+:- mode read_term((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term(io.text_input_stream, term_io.read_term(T), io.io, io.io).
+:- mode read_term((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_filename(string, term_io.read_term(T), io.io, io.io).
+:- mode read_term_filename((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_filename(io.text_input_stream, string, term_io.read_term(T), io.io, io.io).
+:- mode read_term_filename((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_filename_with_op_table(Ops, string, term_io.read_term(T), io.io, io.io) <= (ops.op_table(Ops)).
+:- mode read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_filename_with_op_table(io.text_input_stream, Ops, string, term_io.read_term(T), io.io, io.io) <= (ops.op_table(Ops)).
+:- mode read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_from_string(string, string, io.posn, term_io.read_term(T)).
+:- mode read_term_from_string((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred read_term_from_string_with_op_table(Ops, string, string, io.posn, term_io.read_term(T)) <= (ops.op_table(Ops)).
+:- mode read_term_from_string_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred read_term_from_substring(string, string, int, io.posn, io.posn, term_io.read_term(T)).
+:- mode read_term_from_substring((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred read_term_from_substring_with_op_table(Ops, string, string, int, io.posn, io.posn, term_io.read_term(T)) <= (ops.op_table(Ops)).
+:- mode read_term_from_substring_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred read_term_with_op_table(Ops, term_io.read_term(T), io.io, io.io) <= (ops.op_table(Ops)).
+:- mode read_term_with_op_table((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_term_with_op_table(io.text_input_stream, Ops, term_io.read_term(T), io.io, io.io) <= (ops.op_table(Ops)).
+:- mode read_term_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

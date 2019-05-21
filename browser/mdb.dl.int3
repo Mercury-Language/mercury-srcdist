@@ -1,0 +1,9 @@
+:- module (mdb.dl).
+:- interface.
+:- type dl_result.
+:- type dl_result(T).
+:- type handle.
+:- type link_mode
+	where	type_is_abstract_enum(1).
+:- type scope
+	where	type_is_abstract_enum(1).
