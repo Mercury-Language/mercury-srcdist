@@ -1,0 +1,2452 @@
+/*
+** Automatically generated from `ml_accurate_gc.m'
+** by the Mercury compiler,
+** version 2017-12-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_accurate_gc.
+// :- implementation.
+
+/*
+INIT mercury__ml_backend__ml_accurate_gc__init
+ENDINIT
+*/
+
+#include "ml_backend.ml_accurate_gc.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "ml_backend.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.foreign.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.polymorphism.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.mark_tail_calls.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "ml_backend.ml_code_gen.mih"
+#include "ml_backend.ml_code_util.mih"
+#include "ml_backend.ml_gen_info.mih"
+#include "ml_backend.ml_global_data.mih"
+#include "ml_backend.mlds.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.builtin_lib_types.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_accurate_gc__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ml_backend__ml_accurate_gc__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_accurate_gc__cord__ti_cord_1ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0;
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_fixup_newobj_info_0_0[3];
+
+static const MR_ConstString ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_names_fixup_newobj_info_0_0[3];
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_fixup_newobj_info_0_0;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_fixup_newobj_info_0_0[1];
+
+static const MR_DuPtagLayout ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_fixup_newobj_info_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_fixup_newobj_info_0[1];
+
+static const MR_Integer ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_fixup_newobj_info_0[1];
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_0[1];
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_0;
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_1[1];
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_1;
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_0[1];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_1[1];
+
+static const MR_DuPtagLayout ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_how_to_get_type_info_0[2];
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_how_to_get_type_info_0[2];
+
+static const MR_Integer ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_how_to_get_type_info_0[2];
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__pred__ml_gen_make_type_info_var__412__1_2_p_0(
+  MR_Word PolySpecs_18,
+  MR_Word HeadVar__2_31);
+
+static MR_Word MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__340__1_5_f_0(
+  MR_Word Context_11,
+  MR_Word ModuleInfo_24,
+  MR_Word VarSet_30,
+  MR_Word VarTypes_31,
+  MR_Word LambdaHeadVar__1_51);
+
+static MR_Word MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__304__1_1_f_0(
+  MR_Word LambdaHeadVar__1_43);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__init_field_n_7_p_0(
+  MR_Word PointerType_8,
+  MR_Word PointerRval_9,
+  MR_Word Context_10,
+  MR_Word ArgRval_11,
+  MR_Word * Stmt_12,
+  MR_Integer FieldNum_13,
+  MR_Integer * HeadVar__7_7);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_case_4_p_0(
+  MR_Word Case0_5,
+  MR_Word * Case_6,
+  MR_Word STATE_VARIABLE_Fixup_0_12,
+  MR_Word * STATE_VARIABLE_Fixup_13);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_do_gen_gc_statement_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word HowToGetTypeInfo_10,
+  MR_Word Context_11,
+  MR_Word * GCStmt_12,
+  MR_Word STATE_VARIABLE_Info_0_26,
+  MR_Word * STATE_VARIABLE_Info_27);
+
+static MR_Box MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word ActualType_10,
+  MR_Word Context_11,
+  MR_Word * GC_TraceCode_12,
+  MR_Word STATE_VARIABLE_Info_0_39,
+  MR_Word * STATE_VARIABLE_Info_40);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_default_4_p_0(
+  MR_Word Default0_5,
+  MR_Word * Default_6,
+  MR_Word STATE_VARIABLE_Fixup_0_10,
+  MR_Word * STATE_VARIABLE_Fixup_11);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(
+  MR_Word Stmt0_5,
+  MR_Word * Stmt_6,
+  MR_Word STATE_VARIABLE_Fixup_0_45,
+  MR_Word * STATE_VARIABLE_Fixup_46);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0(
+  MR_Word AtomicStmt0_6,
+  MR_Word Context_7,
+  MR_Word * Stmt_8,
+  MR_Word STATE_VARIABLE_Fixup_0_36,
+  MR_Word * STATE_VARIABLE_Fixup_37);
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0(
+  MR_Word Type_7,
+  MR_Word Context_8,
+  MR_Word * TypeInfoVar_9,
+  MR_Word * TypeInfoGoals_10,
+  MR_Word STATE_VARIABLE_Info_0_25,
+  MR_Word * STATE_VARIABLE_Info_26);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_trace_var_6_p_0(
+  MR_Word Info_7,
+  MR_Word VarName_8,
+  MR_Word Type_9,
+  MR_Word TypeInfoRval_10,
+  MR_Word Context_11,
+  MR_Word * TraceStmt_12);
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_1[8][2];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_2[1][6];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_3[2][5];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_4[2][1];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_5[1][10];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_6[2][7];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_7[3][3];
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_8[1][9];
+
+
+/* sealed */ struct ml_backend__ml_accurate_gc__vector_common_type_9_0_s {
+  const MR_String ml_backend__ml_accurate_gc__vector_common_type_9_0__vct_9_f_0;
+  const MR_Integer ml_backend__ml_accurate_gc__vector_common_type_9_0__vct_9_f_1;
+};
+
+static /* final */ const struct ml_backend__ml_accurate_gc__vector_common_type_9_0_s ml_backend__ml_accurate_gc_vector_common_9[16];
+
+
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_1[8][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6))))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6))))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_accurate_gc_scalar_common_1[6])))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_2[1][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) ((MR_String) "gc_trace")),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_3[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_4[2][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_accurate_gc_scalar_common_1[7])))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_5[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_6[2][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_7[3][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_6[0])),
+    ((MR_Box) (ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_6[1])),
+    ((MR_Box) (ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_3[1])),
+    ((MR_Box) (ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ml_backend__ml_accurate_gc_scalar_common_8[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&ml_backend__ml_accurate_gc__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0))
+  },
+};
+
+
+static /* final */ const struct ml_backend__ml_accurate_gc__vector_common_type_9_0_s ml_backend__ml_accurate_gc_vector_common_9[16] = {
+  /* row 0 */
+  {
+    (MR_String) "zero_base_typeclass_info",
+    (MR_Integer) -1
+  },
+  /* row 1 */
+  {
+    (MR_String) "zero_type_ctor_info",
+    (MR_Integer) -1
+  },
+  /* row 2 */
+  {
+    (MR_String) "type_ctor_info",
+    (MR_Integer) -1
+  },
+  /* row 3 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 4 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 5 */
+  {
+    (MR_String) "typeclass_info",
+    (MR_Integer) -1
+  },
+  /* row 6 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 7 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 8 */
+  {
+    (MR_String) "type_info",
+    (MR_Integer) 1
+  },
+  /* row 9 */
+  {
+    (MR_String) "zero_typeclass_info",
+    (MR_Integer) -1
+  },
+  /* row 10 */
+  {
+    (MR_String) "zero_type_info",
+    (MR_Integer) -1
+  },
+  /* row 11 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 12 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 13 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+  /* row 14 */
+  {
+    (MR_String) "base_typeclass_info",
+    (MR_Integer) -1
+  },
+  /* row 15 */
+  {
+    NULL,
+    (MR_Integer) -2
+  },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_accurate_gc__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) &ml_backend__ml_accurate_gc__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ml_backend__ml_accurate_gc__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ml_backend__ml_accurate_gc__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ml_backend__ml_accurate_gc__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ml_backend__ml_accurate_gc__cord__ti_cord_1ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0
+  }
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_fixup_newobj_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+  (MR_PseudoTypeInfo) &ml_backend__ml_accurate_gc__cord__ti_cord_1ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0,
+  (MR_PseudoTypeInfo) &mercury__counter__counter__type_ctor_info_counter_0
+};
+
+static const MR_ConstString ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_names_fixup_newobj_info_0_0[3] = {
+  (MR_String) "fnoi_module_name",
+  (MR_String) "fnoi_locals",
+  (MR_String) "fnoi_next_id"
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_fixup_newobj_info_0_0 = {
+  (MR_String) "fixup_newobj_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_fixup_newobj_info_0_0,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_names_fixup_newobj_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_fixup_newobj_info_0_0[1] = {
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_fixup_newobj_info_0_0
+};
+
+static const MR_DuPtagLayout ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_fixup_newobj_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_fixup_newobj_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_fixup_newobj_info_0[1] = {
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_fixup_newobj_info_0_0
+};
+
+static const MR_Integer ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_fixup_newobj_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0_10001)),
+  (MR_String) "ml_backend.ml_accurate_gc",
+  (MR_String) "fixup_newobj_info",
+  {     ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_fixup_newobj_info_0 },
+  {     ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_fixup_newobj_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_fixup_newobj_info_0
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_0[1] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_0 = {
+  (MR_String) "construct_from_type",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_1[1] = {
+  (MR_PseudoTypeInfo) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_1 = {
+  (MR_String) "already_provided",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__field_types_how_to_get_type_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_0[1] = {
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_0
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_1[1] = {
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_1
+};
+
+static const MR_DuPtagLayout ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_how_to_get_type_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_stag_ordered_how_to_get_type_info_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_how_to_get_type_info_0[2] = {
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_1,
+  &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_functor_desc_how_to_get_type_info_0_0
+};
+
+static const MR_Integer ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_how_to_get_type_info_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_how_to_get_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0_10001)),
+  ((MR_Box) (ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0_10001)),
+  (MR_String) "ml_backend.ml_accurate_gc",
+  (MR_String) "how_to_get_type_info",
+  {     ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_name_ordered_how_to_get_type_info_0 },
+  {     ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__du_ptag_ordered_how_to_get_type_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__functor_number_map_how_to_get_type_info_0
+};
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__pred__ml_gen_make_type_info_var__412__1_2_p_0(
+  MR_Word PolySpecs_18,
+  MR_Word HeadVar__2_31)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ml_backend__ml_accurate_gc_scalar_common_1[2], ((MR_Box) (PolySpecs_18)), ((MR_Box) (HeadVar__2_31)));
+    return succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__340__1_5_f_0(
+  MR_Word Context_11,
+  MR_Word ModuleInfo_24,
+  MR_Word VarSet_30,
+  MR_Word VarTypes_31,
+  MR_Word LambdaHeadVar__1_51)
+{
+  {
+    MR_Word LambdaHeadVar__2_52;
+    MR_Word LocalVarName_35;
+    MR_Word LocalVarType_36;
+    MR_Word Var_53;
+
+    LocalVarName_35 = ml_backend__ml_code_util__ml_gen_local_var_name_2_f_0(VarSet_30, LambdaHeadVar__1_51);
+    hlds__vartypes__lookup_var_type_3_p_0(VarTypes_31, LambdaHeadVar__1_51, &LocalVarType_36);
+    Var_53 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ModuleInfo_24, LocalVarType_36);
+    LambdaHeadVar__2_52 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_4_f_0(LocalVarName_35, Var_53, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), Context_11);
+    return LambdaHeadVar__2_52;
+  }
+}
+
+static MR_Word MR_CALL 
+ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__304__1_1_f_0(
+  MR_Word LambdaHeadVar__1_43)
+{
+  {
+    MR_Word LambdaHeadVar__2_44;
+    MR_Word GI_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), LambdaHeadVar__1_43, (MR_Integer) 1)));
+    MR_Word _GX_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), LambdaHeadVar__1_43, (MR_Integer) 0)));
+
+    LambdaHeadVar__2_44 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GI_62);
+    return LambdaHeadVar__2_44;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ArgY1_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+        ml_backend__mlds____Compare____mlds_rval_0_0(HeadVar__1_1, Var_16, ArgY1_11);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 2;
+    }
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+
+        parse_tree__prog_data____Compare____mer_type_0_0(HeadVar__1_1, Var_17, ArgY1_5);
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = ml_backend__mlds____Unify____mlds_rval_0_0(ArgX1_5, ArgY1_6);
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = parse_tree__prog_data____Unify____mer_type_0_0(ArgX1_3, ArgY1_4);
+      }
+    }
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      ml_backend__mlds____Compare____mlds_module_name_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &ml_backend__ml_accurate_gc_scalar_common_1[3], &Var_11, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+          mercury__counter____Compare____counter_0_0(HeadVar__1_1, ArgX3_8, ArgY3_9);
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_12_12;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = ml_backend__mlds____Unify____mlds_module_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_12_12 = (MR_Word) &ml_backend__ml_accurate_gc_scalar_common_1[3];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_12_12, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+          succeeded = mercury__counter____Unify____counter_0_0(ArgX3_7, ArgY3_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__init_field_n_7_p_0(
+  MR_Word PointerType_8,
+  MR_Word PointerRval_9,
+  MR_Word Context_10,
+  MR_Word ArgRval_11,
+  MR_Word * Stmt_12,
+  MR_Integer FieldNum_13,
+  MR_Integer * HeadVar__7_7)
+{
+  {
+    MR_Word FieldId_14;
+    MR_Word Field_17;
+    MR_Word Var_19;
+    MR_Word Var_20;
+    MR_Word Var_22;
+
+    *HeadVar__7_7 = (FieldNum_13 + (MR_Integer) 1);
+    {
+      Var_20 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_20, 0) = ((MR_Box) (FieldNum_13));
+    }
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_19, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), Var_19, 1) = ((MR_Box) (Var_20));
+    }
+    {
+      FieldId_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), FieldId_14, 0) = ((MR_Box) (Var_19));
+    }
+    {
+      Field_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Field_17, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_accurate_gc_scalar_common_4[1])));
+      MR_hl_field(MR_mktag(0), Field_17, 1) = ((MR_Box) (PointerRval_9));
+      MR_hl_field(MR_mktag(0), Field_17, 2) = ((MR_Box) (FieldId_14));
+      MR_hl_field(MR_mktag(0), Field_17, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6))));
+      MR_hl_field(MR_mktag(0), Field_17, 4) = ((MR_Box) (PointerType_8));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_22, 0) = ((MR_Box) (Field_17));
+      MR_hl_field(MR_mktag(2), Var_22, 1) = ((MR_Box) (ArgRval_11));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      *Stmt_12 = base;
+      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (Var_22));
+      MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (Context_10));
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_case_4_p_0(
+  MR_Word Case0_5,
+  MR_Word * Case_6,
+  MR_Word STATE_VARIABLE_Fixup_0_12,
+  MR_Word * STATE_VARIABLE_Fixup_13)
+{
+  {
+    MR_Word FirstCond_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), Case0_5, (MR_Integer) 0)));
+    MR_Word LaterConds_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), Case0_5, (MR_Integer) 1)));
+    MR_Word Stmt0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), Case0_5, (MR_Integer) 2)));
+    MR_Word Stmt_11;
+
+    ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(Stmt0_10, &Stmt_11, STATE_VARIABLE_Fixup_0_12, STATE_VARIABLE_Fixup_13);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      *Case_6 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (FirstCond_8));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (LaterConds_9));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (Stmt_11));
+    }
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_with_typeinfo_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word TypeInfoRval_10,
+  MR_Word Context_11,
+  MR_Word * GCStmt_12,
+  MR_Word STATE_VARIABLE_Info_0_16,
+  MR_Word * STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GC_14;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_gc_2_p_0(STATE_VARIABLE_Info_0_16, &GC_14);
+    succeeded = (GC_14 == (MR_Integer) 5);
+    if (succeeded)
+    {
+      MR_Word HowToGetTypeInfo_15;
+
+      {
+        HowToGetTypeInfo_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), HowToGetTypeInfo_15, 0) = ((MR_Box) (TypeInfoRval_10));
+      }
+      ml_backend__ml_accurate_gc__ml_do_gen_gc_statement_7_p_0(VarName_8, DeclType_9, HowToGetTypeInfo_15, Context_11, GCStmt_12, STATE_VARIABLE_Info_0_16, STATE_VARIABLE_Info_17);
+    }
+    else
+    {
+      *GCStmt_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *STATE_VARIABLE_Info_17 = STATE_VARIABLE_Info_0_16;
+    }
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_poly_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word ActualType_10,
+  MR_Word Context_11,
+  MR_Word * GCStmt_12,
+  MR_Word STATE_VARIABLE_Info_0_16,
+  MR_Word * STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GC_14;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_gc_2_p_0(STATE_VARIABLE_Info_0_16, &GC_14);
+    succeeded = (GC_14 == (MR_Integer) 5);
+    if (succeeded)
+    {
+      MR_Word HowToGetTypeInfo_15;
+
+      {
+        HowToGetTypeInfo_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), HowToGetTypeInfo_15, 0) = ((MR_Box) (ActualType_10));
+      }
+      ml_backend__ml_accurate_gc__ml_do_gen_gc_statement_7_p_0(VarName_8, DeclType_9, HowToGetTypeInfo_15, Context_11, GCStmt_12, STATE_VARIABLE_Info_0_16, STATE_VARIABLE_Info_17);
+    }
+    else
+    {
+      *GCStmt_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *STATE_VARIABLE_Info_17 = STATE_VARIABLE_Info_0_16;
+    }
+  }
+}
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_6_p_0(
+  MR_Word VarName_7,
+  MR_Word Type_8,
+  MR_Word Context_9,
+  MR_Word * GCStmt_10,
+  MR_Word STATE_VARIABLE_Info_0_12,
+  MR_Word * STATE_VARIABLE_Info_13)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GC_24;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_gc_2_p_0(STATE_VARIABLE_Info_0_12, &GC_24);
+    succeeded = (GC_24 == (MR_Integer) 5);
+    if (succeeded)
+    {
+      MR_Word HowToGetTypeInfo_25;
+
+      {
+        HowToGetTypeInfo_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), HowToGetTypeInfo_25, 0) = ((MR_Box) (Type_8));
+      }
+      ml_backend__ml_accurate_gc__ml_do_gen_gc_statement_7_p_0(VarName_7, Type_8, HowToGetTypeInfo_25, Context_9, GCStmt_10, STATE_VARIABLE_Info_0_12, STATE_VARIABLE_Info_13);
+    }
+    else
+    {
+      *GCStmt_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *STATE_VARIABLE_Info_13 = STATE_VARIABLE_Info_0_12;
+    }
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_do_gen_gc_statement_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word HowToGetTypeInfo_10,
+  MR_Word Context_11,
+  MR_Word * GCStmt_12,
+  MR_Word STATE_VARIABLE_Info_0_26,
+  MR_Word * STATE_VARIABLE_Info_27)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleInfo_14;
+    MR_Word MLDS_DeclType_15;
+    MR_Word PredId_16;
+    MR_Word PredModule_18;
+    MR_String PredName_19;
+    MR_Integer PredArity_20;
+    MR_Word Var_29;
+    MR_Integer _ProcId_17;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(STATE_VARIABLE_Info_0_26, &ModuleInfo_14);
+    MLDS_DeclType_15 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ModuleInfo_14, DeclType_9);
+    switch (MR_tag((MR_Word) MLDS_DeclType_15)) {
+      default:
+        succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(MLDS_DeclType_15)) {
+          default:
+            succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+            succeeded = MR_TRUE;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ClassKind_38;
+          MR_Word Var_48 = (MR_Word) MR_body(((MR_Word) MLDS_DeclType_15), (MR_Integer) 1);
+          MR_Word Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_48, (MR_Integer) 0)));
+          MR_Integer Var_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), Var_48, (MR_Integer) 1)));
+
+          ClassKind_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_48, (MR_Integer) 2)));
+          succeeded = (ClassKind_38 == (MR_Integer) 3);
+          if (succeeded)
+            succeeded = MR_FALSE;
+          else
+            succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), MLDS_DeclType_15, (MR_Integer) 0)))) {
+          default:
+            succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 0:
+            {
+              MR_Word TypeCategory_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), MLDS_DeclType_15, (MR_Integer) 2)));
+              MR_Word _Type_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), MLDS_DeclType_15, (MR_Integer) 1)));
+              MR_Word Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), MLDS_DeclType_15, (MR_Integer) 3)));
+
+              switch (MR_tag((MR_Word) TypeCategory_34)) {
+                default:
+                  succeeded = MR_FALSE;
+                  break;
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(TypeCategory_34)) {
+                    default:
+                      succeeded = MR_FALSE;
+                      break;
+                    case (MR_Integer) 0:
+                      succeeded = MR_TRUE;
+                      break;
+                    case (MR_Integer) 1:
+                      succeeded = MR_TRUE;
+                      break;
+                    case (MR_Integer) 3:
+                      succeeded = MR_TRUE;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCategory_34, (MR_Integer) 0)));
+
+                    succeeded = (Var_64 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TypeCategory_34, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCategory_34, (MR_Integer) 1)));
+
+                        switch (Var_65) {
+                          default:
+                            succeeded = MR_FALSE;
+                            break;
+                          case (MR_Integer) 0:
+                            succeeded = MR_TRUE;
+                            break;
+                          case (MR_Integer) 2:
+                            succeeded = MR_TRUE;
+                            break;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCategory_34, (MR_Integer) 1)));
+
+                        switch (Var_66) {
+                          default:
+                            succeeded = MR_FALSE;
+                            break;
+                          case (MR_Integer) 2:
+                            succeeded = MR_TRUE;
+                            break;
+                          case (MR_Integer) 1:
+                            succeeded = MR_TRUE;
+                            break;
+                        }
+                      }
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+            succeeded = MR_TRUE;
+            break;
+        }
+        break;
+    }
+    if (succeeded)
+    {
+      ml_backend__ml_gen_info__ml_gen_info_get_pred_proc_id_2_p_0(STATE_VARIABLE_Info_0_26, &Var_29);
+      PredId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_29, (MR_Integer) 0)));
+      _ProcId_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), Var_29, (MR_Integer) 1)));
+      hlds__hlds_module__predicate_id_5_p_0(ModuleInfo_14, PredId_16, &PredModule_18, &PredName_19, &PredArity_20);
+      succeeded = mdbcomp__program_representation__no_type_info_builtin_3_p_0(PredModule_18, PredName_19, PredArity_20);
+      succeeded = !(succeeded);
+    }
+    if (succeeded)
+    {
+      MR_Word GC_TraceCode_24;
+
+      if (((MR_tag((MR_Word) HowToGetTypeInfo_10)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word TypeInfoRval_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), HowToGetTypeInfo_10, (MR_Integer) 0)));
+
+        ml_backend__ml_accurate_gc__ml_gen_trace_var_6_p_0(STATE_VARIABLE_Info_0_26, VarName_8, DeclType_9, TypeInfoRval_25, Context_11, &GC_TraceCode_24);
+        *STATE_VARIABLE_Info_27 = STATE_VARIABLE_Info_0_26;
+      }
+      else
+      {
+        MR_Word ActualType0_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), HowToGetTypeInfo_10, (MR_Integer) 0)));
+        MR_Word ActualType_23;
+        MR_Word ActualType1_22;
+        MR_Word TypeName_69;
+        MR_Word PrivateBuiltin_72;
+        MR_String Name_73;
+        MR_Word Var_74;
+        MR_Word Var_70;
+        MR_Word Var_71;
+        MR_Integer slot_0;
+        MR_String str_1;
+
+        succeeded = ((MR_tag((MR_Word) ActualType0_21)) == (MR_mktag((MR_Integer) 1)));
+        if (succeeded)
+        {
+          TypeName_69 = ((MR_Word) (MR_hl_field(MR_mktag(1), ActualType0_21, (MR_Integer) 0)));
+          Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(1), ActualType0_21, (MR_Integer) 1)));
+          Var_71 = ((MR_Word) (MR_hl_field(MR_mktag(1), ActualType0_21, (MR_Integer) 2)));
+          succeeded = ((MR_tag((MR_Word) TypeName_69)) == (MR_mktag((MR_Integer) 1)));
+          if (succeeded)
+          {
+            PrivateBuiltin_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeName_69, (MR_Integer) 0)));
+            Name_73 = ((MR_String) (MR_hl_field(MR_mktag(1), TypeName_69, (MR_Integer) 1)));
+            Var_74 = mdbcomp__builtin_modules__mercury_private_builtin_module_0_f_0();
+            succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(PrivateBuiltin_72, Var_74);
+            if (succeeded)
+            {
+              // hashed string jump switch
+              // compute the hash value of the input string
+              slot_0 = ((MR_hash_string5(Name_73)) & (MR_Integer) 15);
+              // hash chain loop
+              do
+              {
+                // lookup the string for this hash slot
+                str_1 = ((&ml_backend__ml_accurate_gc_vector_common_9[0 + slot_0]))->ml_backend__ml_accurate_gc__vector_common_type_9_0__vct_9_f_0;
+                // did we find a match?
+                if ((((str_1 != NULL)) && ((strcmp(str_1, Name_73) == 0))))
+                {
+                  // we found a match; dispatch to the corresponding code
+                  switch (slot_0) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        // case "zero_base_typeclass_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        // case "zero_type_ctor_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        // case "type_ctor_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 5:
+                      {
+                        // case "typeclass_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__sample_typeclass_info_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 8:
+                      {
+                        // case "type_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__sample_type_info_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 9:
+                      {
+                        // case "zero_typeclass_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__sample_typeclass_info_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 10:
+                      {
+                        // case "zero_type_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__sample_type_info_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                    case (MR_Integer) 14:
+                      {
+                        // case "base_typeclass_info"
+                        ActualType1_22 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+                        succeeded = MR_TRUE;
+                      }
+                      break;
+                  }
+                  // jump out of search loop
+                  goto label_0;
+                }
+                else
+                {
+                  // no match yet, so get next slot in hash chain
+                  slot_0 = ((&ml_backend__ml_accurate_gc_vector_common_9[0 + slot_0]))->ml_backend__ml_accurate_gc__vector_common_type_9_0__vct_9_f_1;
+                }
+              }
+              while ((slot_0 >= (MR_Integer) 0));
+              succeeded = MR_FALSE;
+            label_0:;
+            }
+          }
+        }
+        if (succeeded)
+          ActualType_23 = ActualType1_22;
+        else
+          ActualType_23 = ActualType0_21;
+        ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0(VarName_8, DeclType_9, ActualType_23, Context_11, &GC_TraceCode_24, STATE_VARIABLE_Info_0_26, STATE_VARIABLE_Info_27);
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        *GCStmt_12 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (GC_TraceCode_24));
+      }
+    }
+    else
+    {
+      *GCStmt_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *STATE_VARIABLE_Info_27 = STATE_VARIABLE_Info_0_26;
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_LambdaHeadVar__2_52;
+
+    conv1_LambdaHeadVar__2_52 = ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__340__1_5_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6))), ((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv1_LambdaHeadVar__2_52));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_LambdaHeadVar__2_44;
+
+    conv0_LambdaHeadVar__2_44 = ml_backend__ml_accurate_gc__IntroducedFrom__func__ml_gen_gc_trace_code__304__1_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_44));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0(
+  MR_Word VarName_8,
+  MR_Word DeclType_9,
+  MR_Word ActualType_10,
+  MR_Word Context_11,
+  MR_Word * GC_TraceCode_12,
+  MR_Word STATE_VARIABLE_Info_0_39,
+  MR_Word * STATE_VARIABLE_Info_40)
+{
+  {
+    MR_Word TypeCtorInfo_66_66;
+    MR_Word TypeCtorInfo_68_68;
+    MR_Word TypeCtorInfo_17_81;
+    MR_Word TypeInfoVar_14;
+    MR_Word HLDS_TypeInfoGoals_15;
+    MR_Word NonLocalsList_16;
+    MR_Word NonLocals_19;
+    MR_Word InstMapDelta_20;
+    MR_Word GoalInfo_21;
+    MR_Word Conj_22;
+    MR_Word MLDS_TypeInfoStmt0_23;
+    MR_Word ModuleInfo_24;
+    MR_Word ModuleName_25;
+    MR_Word MLDS_TypeInfoStmt_26;
+    MR_Word NewObjLocalVarDefns_27;
+    MR_Word TypeInfoLval_28;
+    MR_Word MLDS_TraceStmt_29;
+    MR_Word VarSet_30;
+    MR_Word VarTypes_31;
+    MR_Word GenLocalVarDecl_32;
+    MR_Word NonLocalVarList_37;
+    MR_Word NonLocalVarDefns_38;
+    MR_Word STATE_VARIABLE_Info_41_41;
+    MR_Word Var_49;
+    MR_Word Var_50;
+    MR_Word Var_55;
+    MR_Word Var_57;
+    MR_Word Var_58;
+    MR_Word Info0_73;
+    MR_Word Info_74;
+    MR_Word Var_75;
+    MR_Word Var_76;
+    MR_Word Var_78;
+    MR_Word Var_79;
+    MR_Word Var_80;
+
+    ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0(ActualType_10, Context_11, &TypeInfoVar_14, &HLDS_TypeInfoGoals_15, STATE_VARIABLE_Info_0_39, &STATE_VARIABLE_Info_41_41);
+    NonLocalsList_16 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &ml_backend__ml_accurate_gc_scalar_common_1[0], (MR_Word) &ml_backend__ml_accurate_gc_scalar_common_7[2], HLDS_TypeInfoGoals_15);
+    TypeCtorInfo_66_66 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    NonLocals_19 = parse_tree__set_of_var__union_list_1_f_0(TypeCtorInfo_66_66, NonLocalsList_16);
+    InstMapDelta_20 = hlds__instmap__instmap_delta_bind_var_1_f_0(TypeInfoVar_14);
+    hlds__hlds_goal__goal_info_init_5_p_0(NonLocals_19, InstMapDelta_20, (MR_Integer) 0, (MR_Integer) 2, &GoalInfo_21);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(HLDS_TypeInfoGoals_15, GoalInfo_21, &Conj_22);
+    ml_backend__ml_code_gen__ml_gen_goal_as_block_5_p_0((MR_Integer) 0, Conj_22, &MLDS_TypeInfoStmt0_23, STATE_VARIABLE_Info_41_41, STATE_VARIABLE_Info_40);
+    ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(*STATE_VARIABLE_Info_40, &ModuleInfo_24);
+    hlds__hlds_module__module_info_get_name_2_p_0(ModuleInfo_24, &ModuleName_25);
+    Var_49 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(ModuleName_25);
+    TypeCtorInfo_17_81 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0;
+    Var_75 = mercury__cord__init_0_f_0(TypeCtorInfo_17_81);
+    Var_76 = mercury__counter__init_1_f_0((MR_Integer) 0);
+    {
+      Info0_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Info0_73, 0) = ((MR_Box) (Var_49));
+      MR_hl_field(MR_mktag(0), Info0_73, 1) = ((MR_Box) (Var_75));
+      MR_hl_field(MR_mktag(0), Info0_73, 2) = ((MR_Box) (Var_76));
+    }
+    ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(MLDS_TypeInfoStmt0_23, &MLDS_TypeInfoStmt_26, Info0_73, &Info_74);
+    Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), Info_74, (MR_Integer) 0)));
+    Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), Info_74, (MR_Integer) 1)));
+    Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), Info_74, (MR_Integer) 2)));
+    NewObjLocalVarDefns_27 = mercury__cord__to_list_1_f_0(TypeCtorInfo_17_81, Var_78);
+    ml_backend__ml_code_util__ml_gen_var_3_p_0(*STATE_VARIABLE_Info_40, TypeInfoVar_14, &TypeInfoLval_28);
+    {
+      Var_50 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_50, 0) = ((MR_Box) (TypeInfoLval_28));
+    }
+    ml_backend__ml_accurate_gc__ml_gen_trace_var_6_p_0(*STATE_VARIABLE_Info_40, VarName_8, DeclType_9, Var_50, Context_11, &MLDS_TraceStmt_29);
+    ml_backend__ml_gen_info__ml_gen_info_get_varset_2_p_0(*STATE_VARIABLE_Info_40, &VarSet_30);
+    ml_backend__ml_gen_info__ml_gen_info_get_var_types_2_p_0(*STATE_VARIABLE_Info_40, &VarTypes_31);
+    {
+      GenLocalVarDecl_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 0) = ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 1) = ((MR_Box) (ml_backend__ml_accurate_gc__ml_gen_gc_trace_code_7_p_0_2));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 3) = ((MR_Box) (Context_11));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 4) = ((MR_Box) (ModuleInfo_24));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 5) = ((MR_Box) (VarSet_30));
+      MR_hl_field(MR_mktag(0), GenLocalVarDecl_32, 6) = ((MR_Box) (VarTypes_31));
+    }
+    parse_tree__set_of_var__to_sorted_list_2_p_0(TypeCtorInfo_66_66, NonLocals_19, &NonLocalVarList_37);
+    TypeCtorInfo_68_68 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0;
+    NonLocalVarDefns_38 = mercury__list__map_2_f_0((MR_Word) &ml_backend__ml_accurate_gc_scalar_common_1[1], TypeCtorInfo_68_68, GenLocalVarDecl_32, NonLocalVarList_37);
+    Var_55 = mercury__list__f_43_43_2_f_0(TypeCtorInfo_68_68, NewObjLocalVarDefns_27, NonLocalVarDefns_38);
+    {
+      Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_58, 0) = ((MR_Box) (MLDS_TraceStmt_29));
+      MR_hl_field(MR_mktag(1), Var_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_57, 0) = ((MR_Box) (MLDS_TypeInfoStmt_26));
+      MR_hl_field(MR_mktag(1), Var_57, 1) = ((MR_Box) (Var_58));
+    }
+    *GC_TraceCode_12 = ml_backend__ml_code_util__ml_gen_block_4_f_0(Var_55, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), Var_57, Context_11);
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_default_4_p_0(
+  MR_Word Default0_5,
+  MR_Word * Default_6,
+  MR_Word STATE_VARIABLE_Fixup_0_10,
+  MR_Word * STATE_VARIABLE_Fixup_11)
+{
+  switch (MR_tag((MR_Word) Default0_5)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        *Default_6 = Default0_5;
+        *STATE_VARIABLE_Fixup_11 = STATE_VARIABLE_Fixup_0_10;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Stmt0_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), Default0_5, (MR_Integer) 0)));
+        MR_Word Stmt_9;
+
+        ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(Stmt0_8, &Stmt_9, STATE_VARIABLE_Fixup_0_10, STATE_VARIABLE_Fixup_11);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          *Default_6 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Stmt_9));
+        }
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv4_Case_6;
+    MR_Word conv3_STATE_VARIABLE_Fixup_13;
+
+    ml_backend__ml_accurate_gc__fixup_newobj_in_case_4_p_0(((MR_Word) wrapper_arg_1), &conv4_Case_6, ((MR_Word) wrapper_arg_3), &conv3_STATE_VARIABLE_Fixup_13);
+    *wrapper_arg_2 = ((MR_Box) (conv4_Case_6));
+    *wrapper_arg_4 = ((MR_Box) (conv3_STATE_VARIABLE_Fixup_13));
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv1_Stmt_6;
+    MR_Word conv0_STATE_VARIABLE_Fixup_46;
+
+    ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(((MR_Word) wrapper_arg_1), &conv1_Stmt_6, ((MR_Word) wrapper_arg_3), &conv0_STATE_VARIABLE_Fixup_46);
+    *wrapper_arg_2 = ((MR_Box) (conv1_Stmt_6));
+    *wrapper_arg_4 = ((MR_Box) (conv0_STATE_VARIABLE_Fixup_46));
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(
+  MR_Word Stmt0_5,
+  MR_Word * Stmt_6,
+  MR_Word STATE_VARIABLE_Fixup_0_45,
+  MR_Word * STATE_VARIABLE_Fixup_46)
+{
+  switch (MR_tag((MR_Word) Stmt0_5)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word TypeCtorInfo_74_74 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+        MR_Word LocalVarDefns_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), Stmt0_5, (MR_Integer) 0)));
+        MR_Word FuncDefns_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), Stmt0_5, (MR_Integer) 1)));
+        MR_Word SubStmts0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), Stmt0_5, (MR_Integer) 2)));
+        MR_Word Context_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), Stmt0_5, (MR_Integer) 3)));
+        MR_Word SubStmts_12;
+        MR_Box conv2_STATE_VARIABLE_Fixup_46;
+
+        mercury__list__map_foldl_5_p_0(TypeCtorInfo_74_74, TypeCtorInfo_74_74, (MR_Word) &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0, (MR_Word) &ml_backend__ml_accurate_gc_scalar_common_7[0], SubStmts0_10, &SubStmts_12, ((MR_Box) (STATE_VARIABLE_Fixup_0_45)), &conv2_STATE_VARIABLE_Fixup_46);
+        *STATE_VARIABLE_Fixup_46 = ((MR_Word) conv2_STATE_VARIABLE_Fixup_46);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          *Stmt_6 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (LocalVarDefns_8));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (FuncDefns_9));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (SubStmts_12));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (Context_11));
+        }
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Kind_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), Stmt0_5, (MR_Integer) 0)));
+        MR_Word Rval_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), Stmt0_5, (MR_Integer) 1)));
+        MR_Word BodyStmt0_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), Stmt0_5, (MR_Integer) 2)));
+        MR_Word BodyStmt_16;
+        MR_Word Context_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), Stmt0_5, (MR_Integer) 3)));
+
+        ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(BodyStmt0_15, &BodyStmt_16, STATE_VARIABLE_Fixup_0_45, STATE_VARIABLE_Fixup_46);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          *Stmt_6 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Kind_13));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (Rval_14));
+          MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (BodyStmt_16));
+          MR_hl_field(MR_mktag(1), base, 3) = ((MR_Box) (Context_58));
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word Cond_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), Stmt0_5, (MR_Integer) 0)));
+        MR_Word Then0_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), Stmt0_5, (MR_Integer) 1)));
+        MR_Word MaybeElse0_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), Stmt0_5, (MR_Integer) 2)));
+        MR_Word Then_20;
+        MR_Word MaybeElse_21;
+        MR_Word STATE_VARIABLE_Fixup_53_53;
+        MR_Word Context_59 = ((MR_Word) (MR_hl_field(MR_mktag(2), Stmt0_5, (MR_Integer) 3)));
+
+        ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(Then0_18, &Then_20, STATE_VARIABLE_Fixup_0_45, &STATE_VARIABLE_Fixup_53_53);
+        if ((MaybeElse0_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          MaybeElse_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *STATE_VARIABLE_Fixup_46 = STATE_VARIABLE_Fixup_53_53;
+        }
+        else
+        {
+          MR_Word Stmt0_85 = ((MR_Word) (MR_hl_field(MR_mktag(1), MaybeElse0_19, (MR_Integer) 0)));
+          MR_Word Stmt_86;
+
+          ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(Stmt0_85, &Stmt_86, STATE_VARIABLE_Fixup_53_53, STATE_VARIABLE_Fixup_46);
+          {
+            MaybeElse_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeElse_21, 0) = ((MR_Box) (Stmt_86));
+          }
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          *Stmt_6 = base;
+          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (Cond_17));
+          MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (Then_20));
+          MR_hl_field(MR_mktag(2), base, 2) = ((MR_Box) (MaybeElse_21));
+          MR_hl_field(MR_mktag(2), base, 3) = ((MR_Box) (Context_59));
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word TypeCtorInfo_80_80 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0;
+            MR_Word Type_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 1)));
+            MR_Word Val_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 2)));
+            MR_Word Range_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 3)));
+            MR_Word Cases0_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 4)));
+            MR_Word Default0_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 5)));
+            MR_Word Cases_27;
+            MR_Word Default_28;
+            MR_Word STATE_VARIABLE_Fixup_51_51;
+            MR_Word Context_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 6)));
+            MR_Box conv5_STATE_VARIABLE_Fixup_51_51;
+
+            mercury__list__map_foldl_5_p_0(TypeCtorInfo_80_80, TypeCtorInfo_80_80, (MR_Word) &ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0, (MR_Word) &ml_backend__ml_accurate_gc_scalar_common_7[1], Cases0_25, &Cases_27, ((MR_Box) (STATE_VARIABLE_Fixup_0_45)), &conv5_STATE_VARIABLE_Fixup_51_51);
+            STATE_VARIABLE_Fixup_51_51 = ((MR_Word) conv5_STATE_VARIABLE_Fixup_51_51);
+            ml_backend__ml_accurate_gc__fixup_newobj_in_default_4_p_0(Default0_26, &Default_28, STATE_VARIABLE_Fixup_51_51, STATE_VARIABLE_Fixup_46);
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+              *Stmt_6 = base;
+              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (Type_22));
+              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (Val_23));
+              MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (Range_24));
+              MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (Cases_27));
+              MR_hl_field(MR_mktag(3), base, 5) = ((MR_Box) (Default_28));
+              MR_hl_field(MR_mktag(3), base, 6) = ((MR_Box) (Context_60));
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+        case (MR_Integer) 2:
+        case (MR_Integer) 3:
+        case (MR_Integer) 4:
+        case (MR_Integer) 5:
+        case (MR_Integer) 7:
+          {
+            *Stmt_6 = Stmt0_5;
+            *STATE_VARIABLE_Fixup_46 = STATE_VARIABLE_Fixup_0_45;
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word Ref_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 1)));
+            MR_Word HandlerStmt0_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 3)));
+            MR_Word HandlerStmt_43;
+            MR_Word STATE_VARIABLE_Fixup_48_48;
+            MR_Word Context_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 4)));
+            MR_Word BodyStmt0_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 2)));
+            MR_Word BodyStmt_68;
+
+            ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(BodyStmt0_67, &BodyStmt_68, STATE_VARIABLE_Fixup_0_45, &STATE_VARIABLE_Fixup_48_48);
+            ml_backend__ml_accurate_gc__fixup_newobj_in_stmt_4_p_0(HandlerStmt0_42, &HandlerStmt_43, STATE_VARIABLE_Fixup_48_48, STATE_VARIABLE_Fixup_46);
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+              *Stmt_6 = base;
+              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (Ref_41));
+              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (BodyStmt_68));
+              MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (HandlerStmt_43));
+              MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (Context_66));
+            }
+          }
+          break;
+        case (MR_Integer) 8:
+          {
+            MR_Word AtomicStmt0_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 1)));
+            MR_Word Context_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), Stmt0_5, (MR_Integer) 2)));
+
+            ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0(AtomicStmt0_44, Context_69, Stmt_6, STATE_VARIABLE_Fixup_0_45, STATE_VARIABLE_Fixup_46);
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv1_Stmt_12;
+    MR_Integer conv0_HeadVar__7_7;
+
+    ml_backend__ml_accurate_gc__init_field_n_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5))), ((MR_Word) wrapper_arg_1), &conv1_Stmt_12, ((MR_Integer) wrapper_arg_3), &conv0_HeadVar__7_7);
+    *wrapper_arg_2 = ((MR_Box) (conv1_Stmt_12));
+    *wrapper_arg_4 = ((MR_Box) (conv0_HeadVar__7_7));
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0(
+  MR_Word AtomicStmt0_6,
+  MR_Word Context_7,
+  MR_Word * Stmt_8,
+  MR_Word STATE_VARIABLE_Fixup_0_36,
+  MR_Word * STATE_VARIABLE_Fixup_37)
+{
+  {
+    MR_bool succeeded = ((((MR_tag((MR_Word) AtomicStmt0_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 0)))) == (MR_Integer) 2)));
+    MR_Word Lval_10;
+    MR_Word MaybeTag_11;
+    MR_Word PointerType_13;
+    MR_Word ArgRvals_16;
+    MR_Word _ExplicitSecTag_12;
+    MR_Word _MaybeSizeInWordsRval_14;
+    MR_Word _MaybeCtorName_15;
+    MR_Word _ArgTypes_17;
+    MR_Word _MayUseAtomic_18;
+    MR_Word _AllocId_19;
+
+    if (succeeded)
+    {
+      Lval_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 1)));
+      MaybeTag_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 2)));
+      _ExplicitSecTag_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 3)));
+      PointerType_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 4)));
+      _MaybeSizeInWordsRval_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 5)));
+      _MaybeCtorName_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 6)));
+      ArgRvals_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 7)));
+      _ArgTypes_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 8)));
+      _MayUseAtomic_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 9)));
+      _AllocId_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), AtomicStmt0_6, (MR_Integer) 10)));
+      {
+        MR_Word TypeCtorInfo_69_69;
+        MR_Word TypeCtorInfo_75_75;
+        MR_Integer Id_20;
+        MR_Word NextId_21;
+        MR_Word VarName_22;
+        MR_Word VarType_23;
+        MR_Word NullPointers_24;
+        MR_Word Initializer_25;
+        MR_Word VarDecl_27;
+        MR_Word Locals0_28;
+        MR_Word Locals_29;
+        MR_Word VarLval_30;
+        MR_Word PtrRval_31;
+        MR_Word ArgInitStmts_32;
+        MR_Word TaggedPtrRval_34;
+        MR_Word AssignStmt_35;
+        MR_Word Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 2)));
+        MR_Word Var_39;
+        MR_Integer Var_41;
+        MR_Word STATE_VARIABLE_Fixup_46_46;
+        MR_Word Var_48;
+        MR_Word Var_49;
+        MR_Word Var_50;
+        MR_Word Var_52;
+        MR_Word Var_55;
+        MR_Word Var_56;
+        MR_Word Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 0)));
+        MR_Word Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 1)));
+        MR_Word Var_60;
+        MR_Word Var_62;
+        MR_Word Var_65;
+        MR_Word Var_67;
+        MR_Word Var_66;
+        MR_Integer _NumFields_33;
+        MR_Box conv2__NumFields_33;
+
+        mercury__counter__allocate_3_p_0(&Id_20, Var_38, &NextId_21);
+        {
+          Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), Var_39, 1) = ((MR_Box) (Id_20));
+        }
+        {
+          VarName_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), VarName_22, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), VarName_22, 1) = ((MR_Box) (Var_39));
+        }
+        VarType_23 = (MR_Word) MR_mkword(MR_mktag(3), &ml_backend__ml_accurate_gc_scalar_common_1[5]);
+        TypeCtorInfo_69_69 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0;
+        Var_41 = mercury__list__length_1_f_0(TypeCtorInfo_69_69, ArgRvals_16);
+        NullPointers_24 = mercury__list__duplicate_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0, Var_41, ((MR_Box) (MR_mkword(MR_mktag(1), &ml_backend__ml_accurate_gc_scalar_common_4[0]))));
+        {
+          Initializer_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Initializer_25, 0) = ((MR_Box) (NullPointers_24));
+        }
+        VarDecl_27 = ml_backend__ml_code_util__ml_gen_mlds_var_decl_init_5_f_0(VarName_22, VarType_23, Initializer_25, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), Context_7);
+        Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 0)));
+        Locals0_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 1)));
+        Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_0_36, (MR_Integer) 2)));
+        {
+          STATE_VARIABLE_Fixup_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, 0) = ((MR_Box) (Var_60));
+          MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, 1) = ((MR_Box) (Locals0_28));
+          MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, 2) = ((MR_Box) (NextId_21));
+        }
+        Locals_29 = mercury__cord__snoc_2_f_0((MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0, Locals0_28, ((MR_Box) (VarDecl_27)));
+        Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, (MR_Integer) 0)));
+        Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, (MR_Integer) 1)));
+        Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_Fixup_46_46, (MR_Integer) 2)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          *STATE_VARIABLE_Fixup_37 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_65));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Locals_29));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (Var_67));
+        }
+        {
+          VarLval_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), VarLval_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), VarLval_30, 1) = ((MR_Box) (VarName_22));
+          MR_hl_field(MR_mktag(3), VarLval_30, 2) = ((MR_Box) (VarType_23));
+        }
+        {
+          Var_48 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), Var_48, 0) = ((MR_Box) (PointerType_13));
+        }
+        {
+          Var_49 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_49, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(3), Var_49, 1) = ((MR_Box) (VarLval_30));
+        }
+        {
+          PtrRval_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), PtrRval_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(3), PtrRval_31, 1) = ((MR_Box) (Var_48));
+          MR_hl_field(MR_mktag(3), PtrRval_31, 2) = ((MR_Box) (Var_49));
+        }
+        {
+          Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_50, 0) = ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_5[0]));
+          MR_hl_field(MR_mktag(0), Var_50, 1) = ((MR_Box) (ml_backend__ml_accurate_gc__fixup_newobj_in_atomic_statement_5_p_0_1));
+          MR_hl_field(MR_mktag(0), Var_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(0), Var_50, 3) = ((MR_Box) (PointerType_13));
+          MR_hl_field(MR_mktag(0), Var_50, 4) = ((MR_Box) (PtrRval_31));
+          MR_hl_field(MR_mktag(0), Var_50, 5) = ((MR_Box) (Context_7));
+        }
+        TypeCtorInfo_75_75 = (MR_Word) &ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+        mercury__list__map_foldl_5_p_0(TypeCtorInfo_69_69, TypeCtorInfo_75_75, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, Var_50, ArgRvals_16, &ArgInitStmts_32, ((MR_Box) ((MR_Integer) 0)), &conv2__NumFields_33);
+        _NumFields_33 = ((MR_Integer) conv2__NumFields_33);
+        if ((MaybeTag_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          TaggedPtrRval_34 = PtrRval_31;
+        else
+        {
+          MR_Integer Tag_79 = ((MR_Integer) (MR_hl_field(MR_mktag(1), MaybeTag_11, (MR_Integer) 0)));
+          MR_Word Var_84;
+
+          {
+            Var_84 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), Var_84, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), Var_84, 1) = ((MR_Box) (Tag_79));
+            MR_hl_field(MR_mktag(3), Var_84, 2) = ((MR_Box) (PtrRval_31));
+          }
+          {
+            TaggedPtrRval_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), TaggedPtrRval_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(3), TaggedPtrRval_34, 1) = ((MR_Box) (Var_48));
+            MR_hl_field(MR_mktag(3), TaggedPtrRval_34, 2) = ((MR_Box) (Var_84));
+          }
+        }
+        {
+          Var_52 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), Var_52, 0) = ((MR_Box) (Lval_10));
+          MR_hl_field(MR_mktag(2), Var_52, 1) = ((MR_Box) (TaggedPtrRval_34));
+        }
+        {
+          AssignStmt_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), AssignStmt_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+          MR_hl_field(MR_mktag(3), AssignStmt_35, 1) = ((MR_Box) (Var_52));
+          MR_hl_field(MR_mktag(3), AssignStmt_35, 2) = ((MR_Box) (Context_7));
+        }
+        {
+          Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_56, 0) = ((MR_Box) (AssignStmt_35));
+          MR_hl_field(MR_mktag(1), Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        Var_55 = mercury__list__f_43_43_2_f_0(TypeCtorInfo_75_75, ArgInitStmts_32, Var_56);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          *Stmt_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (Var_55));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (Context_7));
+        }
+      }
+    }
+    else
+    {
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        *Stmt_8 = base;
+        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+        MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (AtomicStmt0_6));
+        MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (Context_7));
+      }
+      *STATE_VARIABLE_Fixup_37 = STATE_VARIABLE_Fixup_0_36;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = ml_backend__ml_accurate_gc__IntroducedFrom__pred__ml_gen_make_type_info_var__412__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4))));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0(
+  MR_Word Type_7,
+  MR_Word Context_8,
+  MR_Word * TypeInfoVar_9,
+  MR_Word * TypeInfoGoals_10,
+  MR_Word STATE_VARIABLE_Info_0_25,
+  MR_Word * STATE_VARIABLE_Info_26)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleInfo0_12;
+    MR_Word PredProcId_13;
+    MR_Word PredInfo0_14;
+    MR_Word ProcInfo0_15;
+    MR_Word PolyInfo0_16;
+    MR_Word PolyInfo_17;
+    MR_Word PolySpecs_18;
+    MR_Word PredInfo_19;
+    MR_Word ProcInfo_20;
+    MR_Word ModuleInfo1_21;
+    MR_Word ModuleInfo_22;
+    MR_Word VarSet_23;
+    MR_Word VarTypes_24;
+    MR_Word Var_27;
+    MR_Word STATE_VARIABLE_Info_32_32;
+    MR_Word STATE_VARIABLE_Info_33_33;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(STATE_VARIABLE_Info_0_25, &ModuleInfo0_12);
+    ml_backend__ml_gen_info__ml_gen_info_get_pred_proc_id_2_p_0(STATE_VARIABLE_Info_0_25, &PredProcId_13);
+    hlds__hlds_module__module_info_pred_proc_info_4_p_0(ModuleInfo0_12, PredProcId_13, &PredInfo0_14, &ProcInfo0_15);
+    check_hlds__polymorphism__create_poly_info_4_p_0(ModuleInfo0_12, PredInfo0_14, ProcInfo0_15, &PolyInfo0_16);
+    check_hlds__polymorphism__polymorphism_make_type_info_var_6_p_0(Type_7, Context_8, TypeInfoVar_9, TypeInfoGoals_10, PolyInfo0_16, &PolyInfo_17);
+    check_hlds__polymorphism__poly_info_extract_7_p_0(PolyInfo_17, &PolySpecs_18, PredInfo0_14, &PredInfo_19, ProcInfo0_15, &ProcInfo_20, &ModuleInfo1_21);
+    {
+      Var_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_27, 0) = ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_3[0]));
+      MR_hl_field(MR_mktag(0), Var_27, 1) = ((MR_Box) (ml_backend__ml_accurate_gc__ml_gen_make_type_info_var_6_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), Var_27, 3) = ((MR_Box) (PolySpecs_18));
+      MR_hl_field(MR_mktag(0), Var_27, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    mercury__require__expect_4_p_0(Var_27, (MR_String) "ml_backend.ml_accurate_gc", (MR_String) "predicate \140ml_backend.ml_accurate_gc.ml_gen_make_type_info_var\'/6", (MR_String) "got errors while making type_info_var");
+    hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(PredProcId_13, PredInfo_19, ProcInfo_20, ModuleInfo1_21, &ModuleInfo_22);
+    hlds__hlds_pred__proc_info_get_varset_2_p_0(ProcInfo_20, &VarSet_23);
+    hlds__hlds_pred__proc_info_get_vartypes_2_p_0(ProcInfo_20, &VarTypes_24);
+    ml_backend__ml_gen_info__ml_gen_info_set_module_info_3_p_0(ModuleInfo_22, STATE_VARIABLE_Info_0_25, &STATE_VARIABLE_Info_32_32);
+    ml_backend__ml_gen_info__ml_gen_info_set_varset_3_p_0(VarSet_23, STATE_VARIABLE_Info_32_32, &STATE_VARIABLE_Info_33_33);
+    ml_backend__ml_gen_info__ml_gen_info_set_var_types_3_p_0(VarTypes_24, STATE_VARIABLE_Info_33_33, STATE_VARIABLE_Info_26);
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_trace_var_6_p_0(
+  MR_Word Info_7,
+  MR_Word VarName_8,
+  MR_Word Type_9,
+  MR_Word TypeInfoRval_10,
+  MR_Word Context_11,
+  MR_Word * TraceStmt_12)
+{
+  {
+    MR_Word ModuleInfo_13;
+    MR_Word MLDS_Type_14;
+    MR_Word VarLval_15;
+    MR_Integer ProcId_19;
+    MR_Word PredModule_20;
+    MR_Word MLDS_Module_21;
+    MR_Word ProcLabel_22;
+    MR_Word FuncLabel_23;
+    MR_Word QualFuncLabel_24;
+    MR_Word CPointerType_25;
+    MR_Word ArgTypes_26;
+    MR_Word Signature_27;
+    MR_Word FuncAddr_28;
+    MR_Word CastVarAddr_29;
+    MR_Word Var_35;
+    MR_Word Var_38;
+    MR_Word Var_39;
+    MR_Word Var_41;
+    MR_Word Var_44;
+    MR_Word Var_45;
+    MR_Word Var_46;
+    MR_Word Var_47;
+    MR_Word Var_48;
+    MR_Word Var_49;
+
+    ml_backend__ml_gen_info__ml_gen_info_get_module_info_2_p_0(Info_7, &ModuleInfo_13);
+    MLDS_Type_14 = ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(ModuleInfo_13, Type_9);
+    {
+      VarLval_15 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), VarLval_15, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), VarLval_15, 1) = ((MR_Box) (VarName_8));
+      MR_hl_field(MR_mktag(3), VarLval_15, 2) = ((MR_Box) (MLDS_Type_14));
+    }
+    ProcId_19 = hlds__hlds_pred__initial_proc_id_0_f_0();
+    PredModule_20 = mdbcomp__builtin_modules__mercury_private_builtin_module_0_f_0();
+    MLDS_Module_21 = ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(PredModule_20);
+    {
+      ProcLabel_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ProcLabel_22, 0) = ((MR_Box) (&ml_backend__ml_accurate_gc_scalar_common_2[0]));
+      MR_hl_field(MR_mktag(0), ProcLabel_22, 1) = ((MR_Box) (ProcId_19));
+    }
+    {
+      FuncLabel_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), FuncLabel_23, 0) = ((MR_Box) (ProcLabel_22));
+      MR_hl_field(MR_mktag(0), FuncLabel_23, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      QualFuncLabel_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), QualFuncLabel_24, 0) = ((MR_Box) (MLDS_Module_21));
+      MR_hl_field(MR_mktag(0), QualFuncLabel_24, 1) = ((MR_Box) (FuncLabel_23));
+    }
+    Var_35 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+    Var_39 = parse_tree__builtin_lib_types__c_pointer_type_0_f_0();
+    Var_38 = backend_libs__foreign__non_foreign_type_1_f_0(Var_39);
+    {
+      CPointerType_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), CPointerType_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), CPointerType_25, 1) = ((MR_Box) (Var_35));
+      MR_hl_field(MR_mktag(3), CPointerType_25, 2) = ((MR_Box) (MR_mkword(MR_mktag(3), &ml_backend__ml_accurate_gc_scalar_common_1[4])));
+      MR_hl_field(MR_mktag(3), CPointerType_25, 3) = ((MR_Box) (Var_38));
+    }
+    {
+      Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (CPointerType_25));
+      MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ArgTypes_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ArgTypes_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9))));
+      MR_hl_field(MR_mktag(1), ArgTypes_26, 1) = ((MR_Box) (Var_41));
+    }
+    {
+      Signature_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Signature_27, 0) = ((MR_Box) (ArgTypes_26));
+      MR_hl_field(MR_mktag(0), Signature_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      Var_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_45, 0) = ((MR_Box) (QualFuncLabel_24));
+      MR_hl_field(MR_mktag(0), Var_45, 1) = ((MR_Box) (Signature_27));
+    }
+    Var_44 = (MR_Word) MR_mkword(MR_mktag(1), (MR_Word) Var_45);
+    {
+      FuncAddr_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), FuncAddr_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), FuncAddr_28, 1) = ((MR_Box) (Var_44));
+    }
+    {
+      Var_46 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_46, 0) = ((MR_Box) (CPointerType_25));
+    }
+    {
+      Var_47 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_47, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), Var_47, 1) = ((MR_Box) (VarLval_15));
+    }
+    {
+      CastVarAddr_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), CastVarAddr_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(3), CastVarAddr_29, 1) = ((MR_Box) (Var_46));
+      MR_hl_field(MR_mktag(3), CastVarAddr_29, 2) = ((MR_Box) (Var_47));
+    }
+    {
+      Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (CastVarAddr_29));
+      MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_48, 0) = ((MR_Box) (TypeInfoRval_10));
+      MR_hl_field(MR_mktag(1), Var_48, 1) = ((MR_Box) (Var_49));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+      *TraceStmt_12 = base;
+      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (Signature_27));
+      MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (FuncAddr_28));
+      MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (Var_48));
+      MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(3), base, 5) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(3), base, 6) = ((MR_Box) (Context_11));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = ml_backend__ml_accurate_gc____Unify____fixup_newobj_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    ml_backend__ml_accurate_gc____Compare____fixup_newobj_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = ml_backend__ml_accurate_gc____Unify____how_to_get_type_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    ml_backend__ml_accurate_gc____Compare____how_to_get_type_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__ml_backend__ml_accurate_gc__init(void)
+{
+}
+
+void mercury__ml_backend__ml_accurate_gc__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0);
+	MR_register_type_ctor_info(&ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_how_to_get_type_info_0);
+}
+
+void mercury__ml_backend__ml_accurate_gc__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ml_backend__ml_accurate_gc__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module ml_backend.ml_accurate_gc.

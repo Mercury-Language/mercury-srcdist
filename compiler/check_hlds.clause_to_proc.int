@@ -1,0 +1,13 @@
+:- module (check_hlds.clause_to_proc).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred copy_clauses_to_proc(hlds.hlds_pred.proc_id, hlds.hlds_clauses.clauses_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode copy_clauses_to_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred copy_module_clauses_to_procs(list.list(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode copy_module_clauses_to_procs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_copy_clauses_to_procs(hlds.hlds_pred.pred_info).
+:- mode should_copy_clauses_to_procs((builtin.in)) is semidet.
