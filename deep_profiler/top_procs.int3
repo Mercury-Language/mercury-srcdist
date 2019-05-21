@@ -1,0 +1,3 @@
+:- module top_procs.
+:- interface.
+:- type line_group(FL, LL).
