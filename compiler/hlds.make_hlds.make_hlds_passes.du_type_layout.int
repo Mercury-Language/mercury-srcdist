@@ -1,0 +1,6 @@
+:- module (((hlds.make_hlds).make_hlds_passes).du_type_layout).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- pred decide_du_type_layout(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.hlds_data.type_table, hlds.hlds_data.type_table).
+:- mode decide_du_type_layout((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

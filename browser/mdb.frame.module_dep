@@ -1,0 +1,13 @@
+module(1, "frame.m",
+	(mdb.frame),
+	{mdb},
+	{builtin, list, pair, private_builtin},
+	{assoc_list, builtin, int, list, pair, private_builtin, string, (mdb.util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
