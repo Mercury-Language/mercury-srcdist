@@ -1,0 +1,44 @@
+:- module var_use_analysis.
+:- interface.
+:- import_module analysis_utils.
+:- import_module coverage.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module profile.
+:- import_module report.
+:- import_module set.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type intermodule_var_use
+    --->    follow_calls_into_module(string)
+    ;       follow_any_call .
+:- type var_use_info
+    --->    var_use_info((var_use_analysis.vui_cost_until_use) :: float, (var_use_analysis.vui_proc_cost) :: float, (var_use_analysis.vui_use_type) :: var_use_analysis.var_use_type).
+:- type var_use_options
+    --->    var_use_options((var_use_analysis.vuo_deep) :: profile.deep, (var_use_analysis.vuo_intermodule_var_use) :: var_use_analysis.intermodule_var_use, (var_use_analysis.vuo_var_use_type) :: var_use_analysis.var_use_type).
+:- type var_use_type
+    --->    var_use_production 
+    ;       var_use_consumption 
+    ;       var_use_other .
+:- func average_var_use(list.list(var_use_analysis.var_use_info)) = var_use_analysis.var_use_info.
+:- pred clique_var_use_info(profile.clique_ptr, int, var_use_analysis.var_use_options, maybe.maybe_error(var_use_analysis.var_use_info)).
+:- mode clique_var_use_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_call_site_dynamic_var_use_info(profile.call_site_dynamic_ptr, int, report.recursion_type, float, var_use_analysis.var_use_options, maybe.maybe_error(var_use_analysis.var_use_info)).
+:- mode get_call_site_dynamic_var_use_info((builtin.in), (builtin.in), builtin.in((report.recursion_type_known_costs)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode get_call_site_dynamic_var_use_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_call_site_dynamic_var_use_info_rec_level(profile.clique_ptr, profile.call_site_dynamic_ptr, int, report.recursion_type, maybe.maybe(measurements.recursion_depth), float, set.set(profile.proc_dynamic_ptr), var_use_analysis.var_use_options, maybe.maybe_error(var_use_analysis.var_use_info)).
+:- mode get_call_site_dynamic_var_use_info_rec_level((builtin.in), (builtin.in), (builtin.in), builtin.in((report.recursion_type_known_costs)), builtin.in(maybe.maybe_yes(ground)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode get_call_site_dynamic_var_use_info_rec_level((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pessimistic_var_use_info(var_use_analysis.var_use_type, float, var_use_analysis.var_use_info).
+:- mode pessimistic_var_use_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pessimistic_var_use_time(var_use_analysis.var_use_type, float, float).
+:- mode pessimistic_var_use_time((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_dynamic_var_use_info(profile.clique_ptr, profile.proc_dynamic_ptr, int, report.recursion_type, measurements.recursion_depth, float, set.set(profile.proc_dynamic_ptr), var_use_analysis.var_use_options, maybe.maybe_error(var_use_analysis.var_use_info)).
+:- mode proc_dynamic_var_use_info((builtin.in), (builtin.in), (builtin.in), builtin.in((report.recursion_type_known_costs)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_first_use(profile.clique_ptr, map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees), map.map(mdbcomp.goal_path.reverse_goal_path, measurements.cs_cost_csq), mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_attr_array(coverage.coverage_info), report.recursion_type, measurements.recursion_depth, mdbcomp.program_representation.goal_rep(mdbcomp.goal_path.goal_id), mdbcomp.goal_path.reverse_goal_path, float, mdbcomp.program_representation.var_rep, var_use_analysis.var_use_options, var_use_analysis.var_use_info).
+:- mode var_first_use((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((report.recursion_type_known_costs)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_mode_to_var_use_type(mdbcomp.program_representation.var_mode_rep, var_use_analysis.var_use_type).
+:- mode var_mode_to_var_use_type((builtin.in), (builtin.out)) is det.
