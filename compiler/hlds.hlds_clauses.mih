@@ -1,0 +1,357 @@
+/*
+** Automatically generated from `hlds_clauses.m'
+** by the Mercury compiler,
+** version rotd-2017-08-07
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_clauses. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_clauses
+#define MR_HEADER_GUARD_hlds__hlds_clauses
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_CLAUSES_DECL_GUARD
+#define HLDS__HLDS_CLAUSES_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_applicable_modes_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_item_number_region_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_item_number_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_item_number_types_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_item_numbers_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clauses_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clauses_rep_0;
+
+void MR_CALL 
+hlds__hlds_clauses__add_clause_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__add_clause_item_number_5_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3,
+  MR_Word hlds__hlds_clauses__param_4,
+  MR_Word * hlds__hlds_clauses__param_5);
+
+void MR_CALL 
+hlds__hlds_clauses__clause_item_number_regions_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses__clauses_are_non_contiguous_5_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3,
+  MR_Word * hlds__hlds_clauses__param_4,
+  MR_Word * hlds__hlds_clauses__param_5);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_clauses_4_p_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3,
+  MR_Word * hlds__hlds_clauses__param_4);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_clauses_rep_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_explicit_vartypes_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_had_syntax_errors_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_have_foreign_clauses_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_headvar_list_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_headvars_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_rtti_varmaps_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_tvar_name_map_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_varset_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_get_vartypes_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_init_4_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Integer hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3,
+  MR_Word * hlds__hlds_clauses__param_4);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_init_for_assertion_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_clauses_rep_4_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3,
+  MR_Word * hlds__hlds_clauses__param_4);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_explicit_vartypes_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_had_syntax_errors_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_have_foreign_clauses_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_headvars_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_rtti_varmaps_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_tvar_name_map_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_varset_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__clauses_info_set_vartypes_3_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__get_clause_list_3_p_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word * hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses__get_clause_list_for_replacement_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__get_clause_list_maybe_repeated_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses__get_first_clause_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+void MR_CALL 
+hlds__hlds_clauses__set_clause_list_2_p_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word * hlds__hlds_clauses__param_2);
+
+MR_Word MR_CALL 
+hlds__hlds_clauses__clause_body_1_f_0(
+  MR_Word hlds__hlds_clauses__param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_clauses__clause_list_is_empty_1_f_0(
+  MR_Word hlds__hlds_clauses__param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_clauses__init_clause_item_numbers_comp_gen_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__hlds_clauses__init_clause_item_numbers_user_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__hlds_clauses__init_clauses_rep_0_f_0(void);
+
+MR_Integer MR_CALL 
+hlds__hlds_clauses__num_clauses_in_clauses_rep_1_f_0(
+  MR_Word hlds__hlds_clauses__param_1);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_applicable_modes_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_item_number_region_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_item_number_type_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_item_number_types_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clause_item_numbers_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clauses_info_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+void MR_CALL 
+hlds__hlds_clauses____Compare____clauses_rep_0_0(
+  MR_Word * hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2,
+  MR_Word hlds__hlds_clauses__param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_applicable_modes_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_item_number_region_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_item_number_type_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_item_number_types_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clause_item_numbers_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clauses_info_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_clauses____Unify____clauses_rep_0_0(
+  MR_Word hlds__hlds_clauses__param_1,
+  MR_Word hlds__hlds_clauses__param_2);
+
+void mercury__hlds__hlds_clauses__init(void);
+void mercury__hlds__hlds_clauses__init_type_tables(void);
+void mercury__hlds__hlds_clauses__init_debugger(void);
+const char *mercury__hlds__hlds_clauses__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_clauses */
+
+/* :- end_interface hlds.hlds_clauses. */

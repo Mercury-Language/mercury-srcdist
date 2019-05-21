@@ -1,0 +1,3 @@
+:- module random.
+:- interface.
+:- type supply.
