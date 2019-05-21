@@ -1,0 +1,8 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- type cons_type_info.
+:- type cons_type_info_source.
+:- type overloaded_symbol.
+:- type overloaded_symbol_map.
+:- type type_error_clause_context.
+:- type typecheck_info.

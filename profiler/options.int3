@@ -1,0 +1,5 @@
+:- module options.
+:- interface.
+:- type option
+	where	type_is_abstract_enum(5).
+:- type option_table.
