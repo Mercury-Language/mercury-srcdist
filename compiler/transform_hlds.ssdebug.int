@@ -1,0 +1,10 @@
+:- module (transform_hlds.ssdebug).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- inst (shallow_or_deep) for (libs.globals).ssdb_trace_level/0 == bound(deep ; shallow).
+:- pred ssdebug_transform_module(libs.globals.ssdb_trace_level, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode ssdebug_transform_module(builtin.in(((transform_hlds.ssdebug).shallow_or_deep)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

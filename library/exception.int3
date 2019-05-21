@@ -1,0 +1,13 @@
+:- module exception.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module store.
+:- import_module univ.
+:- type exception_result(T).
+:- type near_stack_limits.
+:- type software_error.
+:- inst ([]) for list/1 == bound([]).
+:- inst (cannot_fail) for exception.exception_result/1 == bound(exception(ground) ; succeeded(ground)).
+:- inst (nil_or_singleton_list) for list/1 == bound([] ; '[|]'(ground, (exception.[]))).

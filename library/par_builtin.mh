@@ -1,0 +1,44 @@
+/*
+** Automatically generated from `par_builtin.m'
+** by the Mercury compiler,
+** version 2018-02-21
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PAR_BUILTIN_MH
+#define PAR_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PAR_BUILTIN_DECL_GUARD
+#define PAR_BUILTIN_DECL_GUARD
+
+/*
+INIT mercury_sys_init_par_builtin_modules
+*/
+
+#if !defined(MR_HIGHLEVEL_CODE) && defined(MR_THREAD_SAFE)
+    MR_define_extern_entry(mercury__par_builtin__wait_resume);
+#endif
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PAR_BUILTIN_MH */
