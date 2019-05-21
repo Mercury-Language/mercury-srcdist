@@ -1,0 +1,6 @@
+infinite_recursion.m:017: Warning: recursive call will lead to infinite
+infinite_recursion.m:017:   recursion.
+infinite_recursion.m:026: Warning: recursive call will lead to infinite
+infinite_recursion.m:026:   recursion.
+infinite_recursion.m:038: Warning: recursive call will lead to infinite
+infinite_recursion.m:038:   recursion.
