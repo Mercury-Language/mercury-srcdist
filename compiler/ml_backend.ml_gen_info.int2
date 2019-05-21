@@ -1,0 +1,55 @@
+:- module (ml_backend.ml_gen_info).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module counter.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.mark_tail_calls).
+:- import_module (hlds.vartypes).
+:- import_module (libs.globals).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type cond_seq
+    --->    cond_seq(int).
+:- type conv_seq
+    --->    conv_seq(int).
+:- type have_we_done_mutual_tail_rec
+    --->    have_not_done_mutual_tail_rec 
+    ;       have_done_mutual_tail_rec .
+:- type have_we_done_nontail_rec
+    --->    have_not_done_nontail_rec 
+    ;       have_done_nontail_rec .
+:- type have_we_done_self_tail_rec
+    --->    have_not_done_self_tail_rec 
+    ;       have_done_self_tail_rec .
+:- type label_num == int.
+:- type ml_const_struct_map == map.map(int, ml_backend.ml_gen_info.ml_ground_term).
+:- type ml_gen_info.
+:- type ml_gen_tscc_info
+    --->    ml_gen_tscc_info(((ml_backend.ml_gen_info).mgti_func_label_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_label_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_aux_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_cond_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_conv_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_tail_rec_info) :: ml_backend.ml_gen_info.tail_rec_info).
+:- type ml_ground_term
+    --->    ml_ground_term(ml_backend.mlds.mlds_rval, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_type).
+:- type ml_ground_term_map == map.map(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term).
+:- type success_cont
+    --->    success_cont(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval, assoc_list.assoc_list(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_type)).
+:- type tail_rec_info
+    --->    tail_rec_info(((ml_backend.ml_gen_info).tri_target_map) :: ml_backend.ml_gen_info.tail_rec_target_map, ((ml_backend.ml_gen_info).tri_tscc_kind) :: ml_backend.ml_gen_info.tscc_kind, ((ml_backend.ml_gen_info).tri_loop_kind) :: ml_backend.ml_gen_info.tail_rec_loop_kind, ((ml_backend.ml_gen_info).tri_default_warn_params) :: hlds.mark_tail_calls.warn_non_tail_rec_params, ((ml_backend.ml_gen_info).tri_proc_warn_params) :: hlds.mark_tail_calls.warn_non_tail_rec_params, ((ml_backend.ml_gen_info).tri_msgs) :: list.list(parse_tree.error_util.error_spec)).
+:- type tail_rec_loop_kind
+    --->    tail_rec_loop_while_continue 
+    ;       tail_rec_loop_label_goto .
+:- type tail_rec_target_info
+    --->    tail_rec_target_info(((ml_backend.ml_gen_info).trti_id) :: ml_backend.mlds.proc_id_in_tscc, ((ml_backend.ml_gen_info).trti_input_args) :: list.list(ml_backend.mlds.mlds_argument), ((ml_backend.ml_gen_info).trti_done_self_tail_rec) :: ml_backend.ml_gen_info.have_we_done_self_tail_rec, ((ml_backend.ml_gen_info).trti_done_mutual_tail_rec) :: ml_backend.ml_gen_info.have_we_done_mutual_tail_rec, ((ml_backend.ml_gen_info).trti_done_nontail_rec) :: ml_backend.ml_gen_info.have_we_done_nontail_rec).
+:- type tail_rec_target_map == map.map(hlds.hlds_pred.pred_proc_id, ml_backend.ml_gen_info.tail_rec_target_info).
+:- type tscc_kind
+    --->    tscc_self_rec_only 
+    ;       tscc_self_and_mutual_rec .

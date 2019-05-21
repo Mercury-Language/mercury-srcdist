@@ -1,0 +1,9 @@
+:- module (mdbcomp.prim_data).
+:- interface.
+:- type pred_or_func
+	where	type_is_abstract_enum(1).
+:- type proc_label.
+:- type special_pred_id
+	where	type_is_abstract_enum(2).
+:- type trace_port
+	where	type_is_abstract_enum(4).

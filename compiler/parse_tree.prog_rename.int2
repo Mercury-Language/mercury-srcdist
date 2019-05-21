@@ -1,0 +1,12 @@
+:- module (parse_tree.prog_rename).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module term.
+:- import_module (parse_tree.set_of_var).
+:- type must_rename
+    --->    must_rename 
+    ;       need_not_rename .
+:- inst (must_rename) == bound(must_rename).
+:- inst (need_not_rename) == bound(need_not_rename).
