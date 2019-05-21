@@ -1,0 +1,16 @@
+:- module list.
+:- interface.
+:- import_module pretty_printer.
+:- import_module term.
+:- type list(T).
+:- type one_or_more(T).
+:- inst (empty_list) for list.list/1 == bound([]).
+:- inst (list(I)) == list.list_skel(I).
+:- inst (list_skel) == list.list_skel(free).
+:- inst (list_skel(I)) for list.list/1 == bound([] ; '[|]'(I, list.list_skel(I))).
+:- inst (non_empty_list) for list.list/1 == bound('[|]'(ground, ground)).
+:- mode (in_list_skel) == ((list.list_skel) >> (list.list_skel)).
+:- mode (list_skel_in(I)) == (list.list_skel(I) >> list.list_skel(I)).
+:- mode (list_skel_out) == ((list.list_skel) >> ground).
+:- mode (list_skel_out(I)) == (free >> list.list_skel(I)).
+:- mode (out_list_skel) == (free >> (list.list_skel)).
