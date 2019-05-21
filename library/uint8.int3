@@ -1,0 +1,3 @@
+:- module uint8.
+:- interface.
+:- type placeholder_uint8.
