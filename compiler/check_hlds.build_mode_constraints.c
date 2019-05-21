@@ -1,0 +1,5975 @@
+/*
+** Automatically generated from `build_mode_constraints.m'
+** by the Mercury compiler,
+** version rotd-2017-07-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.build_mode_constraints. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__build_mode_constraints__init
+ENDINIT
+*/
+
+#include "check_hlds.build_mode_constraints.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.abstract_mode_constraints.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.inst_test.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.mode_util.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_desc.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_mode_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_VA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints____vpti_func_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__build_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_conj_constraints_info_0_0[2];
+
+static const MR_ConstString check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_conj_constraints_info_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_conj_constraints_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_conj_constraints_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_conj_constraints_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_conj_constraints_info_0[1];
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_conj_constraints_info_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_prog_var_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_prog_var_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_prog_var_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_prog_var_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_prog_var_0[1];
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_prog_var_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_rep_var_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_rep_var_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_rep_var_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_rep_var_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_rep_var_0[1];
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_rep_var_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__varset__ti_varset_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__build_mode_constraints__bimap__ti_bimap_2check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_var_info_0_0[2];
+
+static const MR_ConstString check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_mc_var_info_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_var_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_var_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_var_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_var_info_0[1];
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_var_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____args_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____args_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_info_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_info_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_map_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_map_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mode_constraints_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mode_constraints_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____nonlocals_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____nonlocals_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__SubIds_13,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_27,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__2_28,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_29,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__4_30);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_20,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__2_21,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_22,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__4_23);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_call_headvar_constraints__794__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_35,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_36);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__577__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_204,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_205);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__629__1_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_185,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_186,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_187);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__611__1_2_p_0(
+  MR_Word check_hlds__build_mode_constraints__ThenNonlocals_115,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_390);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__609__1_2_p_0(
+  MR_Word check_hlds__build_mode_constraints__CondNonlocals_114,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_387);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__541__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_359,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_360);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__mode_decls_constraints__689__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_18,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_28);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_mc_vars_for_goal__299__1_1_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_88);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__cons_prog_var_at_path_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__GoalId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__MCVars0_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVars_12);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__lookup_prog_var_at_path_4_f_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_6,
+  MR_Word check_hlds__build_mode_constraints__PredId_7,
+  MR_Word check_hlds__build_mode_constraints__GoalId_8,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_9);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_local_var_conj_constraints_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__MCVarSet_7,
+  MR_Word check_hlds__build_mode_constraints__Context_8,
+  MR_Word check_hlds__build_mode_constraints___ProgVar_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_108_111_99_97_108_95_118_97_114_95_99_111_110_106_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__MCVarSet_7,
+  MR_Word check_hlds__build_mode_constraints__Context_8,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_nonlocal_var_conj_constraints_10_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_11,
+  MR_Word check_hlds__build_mode_constraints__PredId_12,
+  MR_Word check_hlds__build_mode_constraints__Context_13,
+  MR_Word check_hlds__build_mode_constraints__GoalId_14,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_15,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_16,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_20,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_21,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_23);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_variable_to_conjunct_production_map_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__GoalId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_0_13,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_14);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_9,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__4_4,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_0_19,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_20);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__single_mode_constraints_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__MCVar_6,
+  MR_Word check_hlds__build_mode_constraints__Mode_7);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_var_for_pred_head_5_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_6,
+  MR_Word check_hlds__build_mode_constraints__PredId_7,
+  MR_Word check_hlds__build_mode_constraints__HeadVar_8,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_11,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_12);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__PredId_6,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_13);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__ConstraintVars_6,
+  MR_Word check_hlds__build_mode_constraints__ArgModes_7);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_22(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_21(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_20(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_19(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_18(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_17(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_16(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_15(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_14(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_13(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_12(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_11(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_10(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_9(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_8(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_5);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_7(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_6(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_5(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_5,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_6);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_4(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_5);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_12,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_13,
+  MR_Word check_hlds__build_mode_constraints__PredId_14,
+  MR_Word check_hlds__build_mode_constraints__GoalExpr_15,
+  MR_Word check_hlds__build_mode_constraints__Context_16,
+  MR_Word check_hlds__build_mode_constraints__GoalId_17,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__Goal_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_24,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25);
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____maybe__maybe_1_1(
+  MR_Word check_hlds__build_mode_constraints__TypeInfo_for_T_9,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__GoalId_12,
+  MR_Word check_hlds__build_mode_constraints__SubIds_13,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_14,
+  MR_Word * check_hlds__build_mode_constraints__NonlocalsAtId_15,
+  MR_Word * check_hlds__build_mode_constraints__NonlocalsAtSubIds_16,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVar_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_18,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_19);
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__conj_constraints_info_init_0_f_0(void);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_12,
+  MR_Word check_hlds__build_mode_constraints__Context_13,
+  MR_Word check_hlds__build_mode_constraints__GoalId_14,
+  MR_Word check_hlds__build_mode_constraints__CallerPredId_15,
+  MR_Word check_hlds__build_mode_constraints__CallArgs_16,
+  MR_Word check_hlds__build_mode_constraints__CalleePredId_17,
+  MR_Word check_hlds__build_mode_constraints__CalleeHeadVars_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_26,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_27,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_28,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_29);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_12,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_13,
+  MR_Word check_hlds__build_mode_constraints__CallContext_14,
+  MR_Word check_hlds__build_mode_constraints__CallingPred_15,
+  MR_Word check_hlds__build_mode_constraints__Decls_16,
+  MR_Word check_hlds__build_mode_constraints__GoalId_17,
+  MR_Word check_hlds__build_mode_constraints__CallArgs_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_24,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_25,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_26,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_27);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_5(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_4(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVars_10,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVars_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_16,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_17);
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_scc_heads_4_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3);
+
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_1[8][2];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_2[12][3];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_3[4][7];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_4[3][10];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_5[6][8];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_6[7][5];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_7[3][6];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_8[6][9];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_9[1][11];
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_10[1][13];
+
+
+
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_1[8][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[2]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__varset__varset__type_ctor_info_varset_1)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[0]))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_2[12][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[0])),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[3]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__bimap__bimap__type_ctor_info_bimap_2)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_1[2]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[0])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_7[0])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[1])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[2])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_6)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[3])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_7)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_7[1])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_9)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_3[2])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_13)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[5])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_20)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_7[0])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_21)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[6])),
+    ((MR_Box) (check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_3[4][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_mode_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_4[3][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_5[6][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_6[7][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_mode_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_7[3][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&check_hlds__build_mode_constraints____vpti_func_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_8[6][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_9[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__build_mode_constraints_scalar_common_10[1][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0)),
+    ((MR_Box) (&check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__term__pti_var_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_mode_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__varset__pti_varset_1__plain_check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_mdbcomp__goal_path__type_ctor_info_goal_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints__bimap__pti_bimap_2__plain_check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__bimap__bimap__type_ctor_info_bimap_2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0,
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints____vpti_func_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__builtin__builtin__type_ctor_info_func_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__build_mode_constraints__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__build_mode_constraints__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_args_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____args_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____args_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "args",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__build_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_conj_constraints_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+};
+
+static const MR_ConstString check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_conj_constraints_info_0_0[2] = {
+  (MR_String) "locals_positions",
+  (MR_String) "nonlocals_positions"
+};
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_conj_constraints_info_0_0 = {
+  (MR_String) "conj_constraints_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_conj_constraints_info_0_0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_conj_constraints_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_conj_constraints_info_0_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_conj_constraints_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_conj_constraints_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_conj_constraints_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_conj_constraints_info_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_conj_constraints_info_0_0
+};
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_conj_constraints_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "conj_constraints_info",
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_conj_constraints_info_0 },
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_conj_constraints_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_conj_constraints_info_0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conjunct_production_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "conjunct_production_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_prog_var_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_prog_var_0_0 = {
+  (MR_String) "in",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_prog_var_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_prog_var_0_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_prog_var_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_prog_var_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_prog_var_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_prog_var_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_prog_var_0_0
+};
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_prog_var_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_prog_var_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "mc_prog_var",
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_prog_var_0 },
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_prog_var_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_prog_var_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_rep_var_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_prog_var_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0
+};
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_rep_var_0_0 = {
+  (MR_String) "at",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_rep_var_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_rep_var_0_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_rep_var_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_rep_var_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_rep_var_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_rep_var_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_rep_var_0_0
+};
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_rep_var_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "mc_rep_var",
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_rep_var_0 },
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_rep_var_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_rep_var_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__varset__ti_varset_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_TypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__build_mode_constraints__bimap__ti_bimap_2check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 = {
+  &mercury__bimap__bimap__type_ctor_info_bimap_2,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0,
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_var_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__varset__ti_varset_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__bimap__ti_bimap_2check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0
+};
+
+static const MR_ConstString check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_mc_var_info_0_0[2] = {
+  (MR_String) "mc_varset",
+  (MR_String) "rep_var_map"
+};
+
+static const MR_DuFunctorDesc check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_var_info_0_0 = {
+  (MR_String) "mc_var_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_types_mc_var_info_0_0,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__field_names_mc_var_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_var_info_0_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_var_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_var_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_stag_ordered_mc_var_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_var_info_0[1] = {
+  &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_functor_desc_mc_var_info_0_0
+};
+
+static const MR_Integer check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_var_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____mc_var_info_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____mc_var_info_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "mc_var_info",
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_name_ordered_mc_var_info_0 },
+  {     check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__du_ptag_ordered_mc_var_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__functor_number_map_mc_var_info_0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____mc_var_map_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____mc_var_map_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "mc_var_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__bimap__ti_bimap_2check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0term__ti_var_1check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mode_constraints_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____mode_constraints_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____mode_constraints_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "mode_constraints",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__build_mode_constraints__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &check_hlds__build_mode_constraints__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_nonlocals_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__build_mode_constraints____Unify____nonlocals_0_0_10001)),
+  ((MR_Box) (check_hlds__build_mode_constraints____Compare____nonlocals_0_0_10001)),
+  (MR_String) "check_hlds.build_mode_constraints",
+  (MR_String) "nonlocals",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__build_mode_constraints__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____args_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____args_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____args_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____args_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_info_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mc_var_info_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_info_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____mc_var_info_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_map_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mc_var_map_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_map_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____mc_var_map_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mode_constraints_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mode_constraints_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mode_constraints_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____mode_constraints_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____nonlocals_0_0_10001(
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____nonlocals_0_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____nonlocals_0_0_10001(
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__build_mode_constraints____Compare____nonlocals_0_0(&check_hlds__build_mode_constraints__conv0_HeadVar__1_1, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_1 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_MCVar_12;
+    MR_Word check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_19;
+
+    {
+      check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_MCVar_12, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_19);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_MCVar_12));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_19));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__SubIds_13,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_27,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__2_28,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_29,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__4_30)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Var_50;
+    MR_Box check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_30;
+
+    {
+      check_hlds__build_mode_constraints__Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 1) = ((MR_Box) (check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_50, 5) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__1_27));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_50, check_hlds__build_mode_constraints__SubIds_13, check_hlds__build_mode_constraints__LambdaHeadVar__2_28, ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__3_29)), &check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_30);
+    }
+    *check_hlds__build_mode_constraints__LambdaHeadVar__4_30 = ((MR_Word) check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_30);
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_20,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__2_21,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_22,
+  MR_Word * check_hlds__build_mode_constraints__LambdaHeadVar__4_23)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_8, check_hlds__build_mode_constraints__PredId_9, check_hlds__build_mode_constraints__LambdaHeadVar__1_20, check_hlds__build_mode_constraints__GoalId_11, check_hlds__build_mode_constraints__LambdaHeadVar__2_21, check_hlds__build_mode_constraints__LambdaHeadVar__3_22, check_hlds__build_mode_constraints__LambdaHeadVar__4_23);
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_call_headvar_constraints__794__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_35,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_36)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_37;
+    MR_Word check_hlds__build_mode_constraints__Var_38;
+
+    {
+      check_hlds__build_mode_constraints__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_38, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__2_36));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__build_mode_constraints__LambdaHeadVar__3_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__3_37, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__1_35));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__3_37, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_38));
+    }
+    return check_hlds__build_mode_constraints__LambdaHeadVar__3_37;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__577__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_204,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_205)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_206;
+    MR_Word check_hlds__build_mode_constraints__Var_207;
+
+    {
+      check_hlds__build_mode_constraints__Var_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_207, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__2_205));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_207, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__build_mode_constraints__LambdaHeadVar__3_206 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__3_206, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__1_204));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__3_206, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_207));
+    }
+    return check_hlds__build_mode_constraints__LambdaHeadVar__3_206;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__629__1_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_185,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_186,
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__3_187)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__4_188;
+    MR_Word check_hlds__build_mode_constraints__Var_189;
+    MR_Word check_hlds__build_mode_constraints__Var_190;
+
+    {
+      check_hlds__build_mode_constraints__Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_190, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__3_187));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_190, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_189 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_189, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__2_186));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_189, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_190));
+    }
+    {
+      check_hlds__build_mode_constraints__LambdaHeadVar__4_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__4_188, 0) = ((MR_Box) (check_hlds__build_mode_constraints__LambdaHeadVar__1_185));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__LambdaHeadVar__4_188, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_189));
+    }
+    return check_hlds__build_mode_constraints__LambdaHeadVar__4_188;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__611__1_2_p_0(
+  MR_Word check_hlds__build_mode_constraints__ThenNonlocals_115,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_390)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = parse_tree__set_of_var__contains_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__ThenNonlocals_115, check_hlds__build_mode_constraints__HeadVar__2_390);
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__609__1_2_p_0(
+  MR_Word check_hlds__build_mode_constraints__CondNonlocals_114,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_387)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = parse_tree__set_of_var__contains_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__CondNonlocals_114, check_hlds__build_mode_constraints__HeadVar__2_387);
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__541__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_359,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_360)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__3_361;
+
+    {
+      check_hlds__build_mode_constraints__HeadVar__3_361 = mercury__list__cons_2_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], ((MR_Box) (check_hlds__build_mode_constraints__HeadVar__1_359)), check_hlds__build_mode_constraints__HeadVar__2_360);
+    }
+    return check_hlds__build_mode_constraints__HeadVar__3_361;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__mode_decls_constraints__689__1_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_18,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_28)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__3_29;
+
+    {
+      check_hlds__build_mode_constraints__HeadVar__3_29 = mercury__list__map_2_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__HeadVar__1_18, check_hlds__build_mode_constraints__HeadVar__2_28);
+    }
+    return check_hlds__build_mode_constraints__HeadVar__3_29;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__IntroducedFrom__func__add_mc_vars_for_goal__299__1_1_f_0(
+  MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__1_88)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__LambdaHeadVar__2_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__LambdaHeadVar__1_88, (MR_Integer) 2)));
+    MR_Word check_hlds__build_mode_constraints__Var_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__LambdaHeadVar__1_88, (MR_Integer) 0)));
+    MR_Word check_hlds__build_mode_constraints__Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__LambdaHeadVar__1_88, (MR_Integer) 1)));
+
+    return check_hlds__build_mode_constraints__LambdaHeadVar__2_89;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____nonlocals_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_5 = check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[7], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____nonlocals_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_3 = check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[7], ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mode_constraints_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_5 = check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    {
+      check_hlds__abstract_mode_constraints____Compare____pred_p_c_constraints_0_0(check_hlds__build_mode_constraints__HeadVar__1_1, check_hlds__build_mode_constraints__Cast_HeadVar1_4, check_hlds__build_mode_constraints__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mode_constraints_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_3 = check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__abstract_mode_constraints____Unify____pred_p_c_constraints_0_0(check_hlds__build_mode_constraints__Cast_HeadVar1_3, check_hlds__build_mode_constraints__Cast_HeadVar2_4);
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_map_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_5 = check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[1], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_map_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_3 = check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[1], ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_info_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_9 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__build_mode_constraints__CastY_10 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_9 == check_hlds__build_mode_constraints__CastY_10);
+    if (check_hlds__build_mode_constraints__succeeded)
+      *check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[6], &check_hlds__build_mode_constraints__Var_8, ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_4)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_5)));
+        }
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_8 == (MR_Integer) 0);
+        check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+        if (check_hlds__build_mode_constraints__succeeded)
+          *check_hlds__build_mode_constraints__HeadVar__1_1 = check_hlds__build_mode_constraints__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[1], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__ArgX2_6)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY2_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_info_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_7 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__build_mode_constraints__CastY_8 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_7 == check_hlds__build_mode_constraints__CastY_8);
+    if (check_hlds__build_mode_constraints__succeeded)
+      check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__TypeInfo_10_10;
+        MR_Word check_hlds__build_mode_constraints__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[6], ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_3)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_4)));
+        }
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__TypeInfo_10_10 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[1];
+            {
+              check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0(check_hlds__build_mode_constraints__TypeInfo_10_10, ((MR_Box) (check_hlds__build_mode_constraints__ArgX2_5)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY2_6)));
+            }
+          }
+      }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_9 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__build_mode_constraints__CastY_10 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_9 == check_hlds__build_mode_constraints__CastY_10);
+    if (check_hlds__build_mode_constraints__succeeded)
+      *check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_8;
+
+        {
+          check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0(&check_hlds__build_mode_constraints__Var_8, check_hlds__build_mode_constraints__ArgX1_4, check_hlds__build_mode_constraints__ArgY1_5);
+        }
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_8 == (MR_Integer) 0);
+        check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+        if (check_hlds__build_mode_constraints__succeeded)
+          *check_hlds__build_mode_constraints__HeadVar__1_1 = check_hlds__build_mode_constraints__Var_8;
+        else
+          {
+            MR_Integer check_hlds__build_mode_constraints__Var_13 = (MR_Integer) check_hlds__build_mode_constraints__ArgX2_6;
+            MR_Integer check_hlds__build_mode_constraints__Var_14 = (MR_Integer) check_hlds__build_mode_constraints__ArgY2_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__build_mode_constraints__HeadVar__1_1, check_hlds__build_mode_constraints__Var_13, check_hlds__build_mode_constraints__Var_14);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_7 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__build_mode_constraints__CastY_8 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_7 == check_hlds__build_mode_constraints__CastY_8);
+    if (check_hlds__build_mode_constraints__succeeded)
+      check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer check_hlds__build_mode_constraints__Var_10;
+        MR_Integer check_hlds__build_mode_constraints__Var_11;
+
+        {
+          check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0(check_hlds__build_mode_constraints__ArgX1_3, check_hlds__build_mode_constraints__ArgY1_4);
+        }
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__Var_10 = (MR_Integer) check_hlds__build_mode_constraints__ArgX2_5;
+            check_hlds__build_mode_constraints__Var_11 = (MR_Integer) check_hlds__build_mode_constraints__ArgY2_6;
+            check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_10 == check_hlds__build_mode_constraints__Var_11);
+          }
+      }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_9 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__build_mode_constraints__CastY_10 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_9 == check_hlds__build_mode_constraints__CastY_10);
+    if (check_hlds__build_mode_constraints__succeeded)
+      *check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], &check_hlds__build_mode_constraints__Var_8, ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_4)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_5)));
+        }
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_8 == (MR_Integer) 0);
+        check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+        if (check_hlds__build_mode_constraints__succeeded)
+          *check_hlds__build_mode_constraints__HeadVar__1_1 = check_hlds__build_mode_constraints__Var_8;
+        else
+          {
+            hlds__hlds_pred____Compare____pred_id_0_0(check_hlds__build_mode_constraints__HeadVar__1_1, check_hlds__build_mode_constraints__ArgX2_6, check_hlds__build_mode_constraints__ArgY2_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_7 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__build_mode_constraints__CastY_8 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_7 == check_hlds__build_mode_constraints__CastY_8);
+    if (check_hlds__build_mode_constraints__succeeded)
+      check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_3)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_4)));
+        }
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(check_hlds__build_mode_constraints__ArgX2_5, check_hlds__build_mode_constraints__ArgY2_6);
+          }
+      }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conjunct_production_map_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_5 = check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conjunct_production_map_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_3 = check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0], ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints____Compare____conj_constraints_info_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_9 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Integer check_hlds__build_mode_constraints__CastY_10 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_9 == check_hlds__build_mode_constraints__CastY_10);
+    if (check_hlds__build_mode_constraints__succeeded)
+      *check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0], &check_hlds__build_mode_constraints__Var_8, ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_4)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_5)));
+        }
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_8 == (MR_Integer) 0);
+        check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+        if (check_hlds__build_mode_constraints__succeeded)
+          *check_hlds__build_mode_constraints__HeadVar__1_1 = check_hlds__build_mode_constraints__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__ArgX2_6)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY2_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____conj_constraints_info_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Integer check_hlds__build_mode_constraints__CastX_7 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Integer check_hlds__build_mode_constraints__CastY_8 = (MR_Integer) check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__CastX_7 == check_hlds__build_mode_constraints__CastY_8);
+    if (check_hlds__build_mode_constraints__succeeded)
+      check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__TypeInfo_10_10;
+        MR_Word check_hlds__build_mode_constraints__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0], ((MR_Box) (check_hlds__build_mode_constraints__ArgX1_3)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY1_4)));
+        }
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__TypeInfo_10_10 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0];
+            {
+              check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0(check_hlds__build_mode_constraints__TypeInfo_10_10, ((MR_Box) (check_hlds__build_mode_constraints__ArgX2_5)), ((MR_Box) (check_hlds__build_mode_constraints__ArgY2_6)));
+            }
+          }
+      }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____args_0_0(
+  MR_Word * check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_5 = check_hlds__build_mode_constraints__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[1], check_hlds__build_mode_constraints__HeadVar__1_1, ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____args_0_0(
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar1_3 = check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Cast_HeadVar2_4 = check_hlds__build_mode_constraints__HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[1], ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__build_mode_constraints__Cast_HeadVar2_4)));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__cons_prog_var_at_path_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__GoalId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__MCVars0_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVars_12)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__MCVar_13;
+    MR_Word check_hlds__build_mode_constraints__Var_18;
+    MR_Word check_hlds__build_mode_constraints__Var_19;
+    MR_Box check_hlds__build_mode_constraints__conv0_MCVar_13;
+
+    {
+      check_hlds__build_mode_constraints__Var_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_19, 0) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVar_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_19, 1) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_8));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_19));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 1) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_9));
+    }
+    {
+      check_hlds__build_mode_constraints__conv0_MCVar_13 = mercury__bimap__lookup_2_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__VarMap_7, ((MR_Box) (check_hlds__build_mode_constraints__Var_18)));
+    }
+    check_hlds__build_mode_constraints__MCVar_13 = ((MR_Word) check_hlds__build_mode_constraints__conv0_MCVar_13);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *check_hlds__build_mode_constraints__MCVars_12 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__build_mode_constraints__MCVar_13));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__build_mode_constraints__MCVars0_11));
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__lookup_prog_var_at_path_4_f_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_6,
+  MR_Word check_hlds__build_mode_constraints__PredId_7,
+  MR_Word check_hlds__build_mode_constraints__GoalId_8,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_9)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__5_5;
+    MR_Word check_hlds__build_mode_constraints__Var_10;
+    MR_Word check_hlds__build_mode_constraints__Var_11;
+    MR_Box check_hlds__build_mode_constraints__conv0_HeadVar__5_5;
+
+    {
+      check_hlds__build_mode_constraints__Var_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_11, 0) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVar_9));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_11, 1) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_7));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_8));
+    }
+    {
+      check_hlds__build_mode_constraints__conv0_HeadVar__5_5 = mercury__bimap__lookup_2_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__VarMap_6, ((MR_Box) (check_hlds__build_mode_constraints__Var_10)));
+    }
+    check_hlds__build_mode_constraints__HeadVar__5_5 = ((MR_Word) check_hlds__build_mode_constraints__conv0_HeadVar__5_5);
+    return check_hlds__build_mode_constraints__HeadVar__5_5;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_local_var_conj_constraints_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__MCVarSet_7,
+  MR_Word check_hlds__build_mode_constraints__Context_8,
+  MR_Word check_hlds__build_mode_constraints___ProgVar_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__build_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_108_111_99_97_108_95_118_97_114_95_99_111_110_106_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(check_hlds__build_mode_constraints__MCVarSet_7, check_hlds__build_mode_constraints__Context_8, check_hlds__build_mode_constraints__ProgVarAtConjuncts_10, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_108_111_99_97_108_95_118_97_114_95_99_111_110_106_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_51_93_95_48_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__MCVarSet_7,
+  MR_Word check_hlds__build_mode_constraints__Context_8,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    {
+      check_hlds__abstract_mode_constraints__exactly_one_5_p_0(check_hlds__build_mode_constraints__MCVarSet_7, check_hlds__build_mode_constraints__Context_8, check_hlds__build_mode_constraints__ProgVarAtConjuncts_10, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_12, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_13);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_nonlocal_var_conj_constraints_10_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_11,
+  MR_Word check_hlds__build_mode_constraints__PredId_12,
+  MR_Word check_hlds__build_mode_constraints__Context_13,
+  MR_Word check_hlds__build_mode_constraints__GoalId_14,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_15,
+  MR_Word check_hlds__build_mode_constraints__ProgVarAtConjuncts_16,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_20,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_21,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_23)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__ProgVarAtGoalId_19;
+    MR_Word check_hlds__build_mode_constraints__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_20, (MR_Integer) 0)));
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25_25;
+    MR_Word check_hlds__build_mode_constraints__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_20, (MR_Integer) 1)));
+
+    {
+      check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_11, check_hlds__build_mode_constraints__PredId_12, check_hlds__build_mode_constraints__ProgVar_15, check_hlds__build_mode_constraints__GoalId_14, &check_hlds__build_mode_constraints__ProgVarAtGoalId_19, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_20, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_21);
+    }
+    {
+      check_hlds__abstract_mode_constraints__equiv_disj_6_p_0(check_hlds__build_mode_constraints__Var_24, check_hlds__build_mode_constraints__Context_13, check_hlds__build_mode_constraints__ProgVarAtGoalId_19, check_hlds__build_mode_constraints__ProgVarAtConjuncts_16, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_22, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25_25);
+    }
+    {
+      check_hlds__abstract_mode_constraints__at_most_one_5_p_0(check_hlds__build_mode_constraints__Var_24, check_hlds__build_mode_constraints__Context_13, check_hlds__build_mode_constraints__ProgVarAtConjuncts_16, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25_25, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_23);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_variable_to_conjunct_production_map_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__GoalId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_0_13,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_14)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__MCVar_12;
+    MR_Word check_hlds__build_mode_constraints__Var_22;
+    MR_Word check_hlds__build_mode_constraints__Var_23;
+    MR_Box check_hlds__build_mode_constraints__conv0_MCVar_12;
+
+    {
+      check_hlds__build_mode_constraints__Var_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 0) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVar_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 1) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_8));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_22, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_23));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_22, 1) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_9));
+    }
+    {
+      check_hlds__build_mode_constraints__conv0_MCVar_12 = mercury__bimap__lookup_2_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__VarMap_7, ((MR_Box) (check_hlds__build_mode_constraints__Var_22)));
+    }
+    check_hlds__build_mode_constraints__MCVar_12 = ((MR_Word) check_hlds__build_mode_constraints__conv0_MCVar_12);
+    {
+      mercury__multi_map__set_4_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], ((MR_Box) (check_hlds__build_mode_constraints__ProgVar_10)), ((MR_Box) (check_hlds__build_mode_constraints__MCVar_12)), check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_0_13, check_hlds__build_mode_constraints__STATE_VARIABLE_ConjunctProductionMap_14);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_ConjunctProductionMap_14;
+
+    {
+      check_hlds__build_mode_constraints__add_variable_to_conjunct_production_map_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_ConjunctProductionMap_14);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_ConjunctProductionMap_14));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__VarMap_7,
+  MR_Word check_hlds__build_mode_constraints__PredId_8,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_9,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__4_4,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_0_19,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_20)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_35_35;
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_39_39;
+    MR_Word check_hlds__build_mode_constraints__SubGoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__4_4, (MR_Integer) 1)));
+    MR_Word check_hlds__build_mode_constraints__SubGoalNonlocals_13;
+    MR_Word check_hlds__build_mode_constraints__SubGoalId_14;
+    MR_Word check_hlds__build_mode_constraints__Nonlocal_15;
+    MR_Word check_hlds__build_mode_constraints__Local_16;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_21_21;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_22_22;
+    MR_Word check_hlds__build_mode_constraints__Var_23;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_24_24;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_26_26;
+    MR_Word check_hlds__build_mode_constraints___SubGoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__4_4, (MR_Integer) 0)));
+    MR_Box check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_LocalsMap_24_24;
+    MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_NonlocalsMap_26_26;
+
+    {
+      check_hlds__build_mode_constraints__SubGoalNonlocals_13 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__build_mode_constraints__SubGoalInfo_11);
+    }
+    {
+      check_hlds__build_mode_constraints__SubGoalId_14 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__SubGoalInfo_11);
+    }
+    check_hlds__build_mode_constraints__TypeCtorInfo_35_35 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      check_hlds__build_mode_constraints__Nonlocal_15 = parse_tree__set_of_var__intersect_2_f_0(check_hlds__build_mode_constraints__TypeCtorInfo_35_35, check_hlds__build_mode_constraints__SubGoalNonlocals_13, check_hlds__build_mode_constraints__Nonlocals_9);
+    }
+    {
+      check_hlds__build_mode_constraints__Local_16 = parse_tree__set_of_var__difference_2_f_0(check_hlds__build_mode_constraints__TypeCtorInfo_35_35, check_hlds__build_mode_constraints__SubGoalNonlocals_13, check_hlds__build_mode_constraints__Nonlocals_9);
+    }
+    check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_0_19, (MR_Integer) 0)));
+    check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_0_19, (MR_Integer) 1)));
+    {
+      check_hlds__build_mode_constraints__Var_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[5]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 3) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_7));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_8));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_23, 5) = ((MR_Box) (check_hlds__build_mode_constraints__SubGoalId_14));
+    }
+    check_hlds__build_mode_constraints__TypeInfo_39_39 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[0];
+    {
+      parse_tree__set_of_var__fold_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_35_35, check_hlds__build_mode_constraints__TypeInfo_39_39, check_hlds__build_mode_constraints__Var_23, check_hlds__build_mode_constraints__Local_16, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_21_21)), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_LocalsMap_24_24);
+    }
+    check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_24_24 = ((MR_Word) check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_LocalsMap_24_24);
+    {
+      parse_tree__set_of_var__fold_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_35_35, check_hlds__build_mode_constraints__TypeInfo_39_39, check_hlds__build_mode_constraints__Var_23, check_hlds__build_mode_constraints__Nonlocal_15, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_22_22)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_NonlocalsMap_26_26);
+    }
+    check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_26_26 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_NonlocalsMap_26_26);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__build_mode_constraints__STATE_VARIABLE_ConjConstraintsInfo_20 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_LocalsMap_24_24));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_NonlocalsMap_26_26));
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__single_mode_constraints_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__MCVar_6,
+  MR_Word check_hlds__build_mode_constraints__Mode_7)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Constraint_8;
+    MR_Word check_hlds__build_mode_constraints__InitialInst_9;
+    MR_Word check_hlds__build_mode_constraints__FinalInst_10;
+    MR_Word check_hlds__build_mode_constraints__IsProduced_11;
+    MR_Word check_hlds__build_mode_constraints__Var_12;
+
+    {
+      check_hlds__mode_util__mode_get_insts_4_p_0(check_hlds__build_mode_constraints__ModuleInfo_5, check_hlds__build_mode_constraints__Mode_7, &check_hlds__build_mode_constraints__InitialInst_9, &check_hlds__build_mode_constraints__FinalInst_10);
+    }
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__inst_test__inst_is_free_2_p_0(check_hlds__build_mode_constraints__ModuleInfo_5, check_hlds__build_mode_constraints__InitialInst_9);
+    }
+    check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+    if (check_hlds__build_mode_constraints__succeeded)
+      check_hlds__build_mode_constraints__IsProduced_11 = (MR_Integer) 0;
+    else
+      {
+        {
+          check_hlds__build_mode_constraints__succeeded = check_hlds__inst_test__inst_is_free_2_p_0(check_hlds__build_mode_constraints__ModuleInfo_5, check_hlds__build_mode_constraints__FinalInst_10);
+        }
+        check_hlds__build_mode_constraints__succeeded = !(check_hlds__build_mode_constraints__succeeded);
+        if (check_hlds__build_mode_constraints__succeeded)
+          check_hlds__build_mode_constraints__IsProduced_11 = (MR_Integer) 1;
+        else
+          check_hlds__build_mode_constraints__IsProduced_11 = (MR_Integer) 0;
+      }
+    {
+      check_hlds__build_mode_constraints__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_12, 0) = ((MR_Box) (check_hlds__build_mode_constraints__MCVar_6));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_12, 1) = ((MR_Box) (check_hlds__build_mode_constraints__IsProduced_11));
+    }
+    {
+      check_hlds__build_mode_constraints__Constraint_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Constraint_8, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_12));
+    }
+    return check_hlds__build_mode_constraints__Constraint_8;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_var_for_pred_head_5_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_6,
+  MR_Word check_hlds__build_mode_constraints__PredId_7,
+  MR_Word check_hlds__build_mode_constraints__HeadVar_8,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_11,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_12)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Var_10;
+
+    {
+      check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_6, check_hlds__build_mode_constraints__PredId_7, check_hlds__build_mode_constraints__HeadVar_8, (MR_Word) ((MR_Box) ((MR_Integer) 0)), &check_hlds__build_mode_constraints__Var_10, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_11, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_12);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_12;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_var_for_pred_head_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_12);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_12));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__PredId_6,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_12,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_13)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__PredInfo_8;
+    MR_Word check_hlds__build_mode_constraints__ClausesInfo_9;
+    MR_Word check_hlds__build_mode_constraints__HeadVars_10;
+    MR_Word check_hlds__build_mode_constraints__ProgVarset_11;
+    MR_Word check_hlds__build_mode_constraints__Var_14;
+    MR_Box check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_13;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__build_mode_constraints__ModuleInfo_5, check_hlds__build_mode_constraints__PredId_6, &check_hlds__build_mode_constraints__PredInfo_8);
+    }
+    {
+      hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(check_hlds__build_mode_constraints__PredInfo_8, &check_hlds__build_mode_constraints__ClausesInfo_9);
+    }
+    {
+      hlds__hlds_clauses__clauses_info_get_headvar_list_2_p_0(check_hlds__build_mode_constraints__ClausesInfo_9, &check_hlds__build_mode_constraints__HeadVars_10);
+    }
+    {
+      hlds__hlds_clauses__clauses_info_get_varset_2_p_0(check_hlds__build_mode_constraints__ClausesInfo_9, &check_hlds__build_mode_constraints__ProgVarset_11);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_14, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[5]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_14, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_14, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_14, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_6));
+    }
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_14, check_hlds__build_mode_constraints__HeadVars_10, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_12)), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_13);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_13 = ((MR_Word) check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_13);
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__build_mode_constraints__var_info_init_0_f_0(void)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__Var_2;
+    MR_Word check_hlds__build_mode_constraints__Var_3;
+
+    {
+      check_hlds__build_mode_constraints__Var_2 = mercury__varset__init_0_f_0((MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_3 = mercury__bimap__init_0_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2]);
+    }
+    {
+      check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_3));
+    }
+    return check_hlds__build_mode_constraints__HeadVar__1_1;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv3_HeadVar__6_6;
+
+    {
+      check_hlds__abstract_mode_constraints__add_proc_specific_constraint_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv3_HeadVar__6_6);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv3_HeadVar__6_6));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21;
+    MR_Word check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23));
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Integer check_hlds__build_mode_constraints__ProcId_12,
+  MR_Word check_hlds__build_mode_constraints__Decl_13,
+  MR_Word check_hlds__build_mode_constraints__Args_14,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_24,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__ProcInfo_17;
+    MR_Word check_hlds__build_mode_constraints__ProgVarset_18;
+    MR_Word check_hlds__build_mode_constraints__Context_19;
+    MR_Word check_hlds__build_mode_constraints__ArgsAtHead_20;
+    MR_Word check_hlds__build_mode_constraints__DeclConstraints_21;
+    MR_Word check_hlds__build_mode_constraints__Var_29;
+    MR_Word check_hlds__build_mode_constraints__Var_31;
+    MR_Word check_hlds__build_mode_constraints__Var_48;
+    MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_23;
+    MR_Word check_hlds__build_mode_constraints__Var_32;
+    MR_Box check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_Constraints_25;
+
+    {
+      hlds__hlds_module__module_info_proc_info_4_p_0(check_hlds__build_mode_constraints__ModuleInfo_10, check_hlds__build_mode_constraints__PredId_11, check_hlds__build_mode_constraints__ProcId_12, &check_hlds__build_mode_constraints__ProcInfo_17);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_varset_2_p_0(check_hlds__build_mode_constraints__ProcInfo_17, &check_hlds__build_mode_constraints__ProgVarset_18);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_context_2_p_0(check_hlds__build_mode_constraints__ProcInfo_17, &check_hlds__build_mode_constraints__Context_19);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_18));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_48, 5) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_48, check_hlds__build_mode_constraints__Args_14, &check_hlds__build_mode_constraints__ArgsAtHead_20, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_23);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_23);
+    {
+      check_hlds__build_mode_constraints__DeclConstraints_21 = check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0(check_hlds__build_mode_constraints__ModuleInfo_10, check_hlds__build_mode_constraints__ArgsAtHead_20, check_hlds__build_mode_constraints__Decl_13);
+    }
+    check_hlds__build_mode_constraints__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23, (MR_Integer) 0)));
+    check_hlds__build_mode_constraints__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23, (MR_Integer) 1)));
+    {
+      check_hlds__build_mode_constraints__Var_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[4]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_31));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_19));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_29, 5) = ((MR_Box) (check_hlds__build_mode_constraints__ProcId_12));
+    }
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0, (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0, check_hlds__build_mode_constraints__Var_29, check_hlds__build_mode_constraints__DeclConstraints_21, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_24)), &check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_Constraints_25);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25 = ((MR_Word) check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_Constraints_25);
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_3;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_Constraint_8;
+
+    {
+      check_hlds__build_mode_constraints__conv0_Constraint_8 = check_hlds__build_mode_constraints__single_mode_constraints_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_Constraint_8));
+    return check_hlds__build_mode_constraints__wrapper_arg_3;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__ConstraintVars_6,
+  MR_Word check_hlds__build_mode_constraints__ArgModes_7)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__4_4;
+    MR_Word check_hlds__build_mode_constraints__Var_8;
+    MR_Word check_hlds__build_mode_constraints__Var_9;
+    MR_Word check_hlds__build_mode_constraints__Var_10;
+
+    {
+      check_hlds__build_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_3[3]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_5));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_9 = mercury__list__map_corresponding_3_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0, (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0, check_hlds__build_mode_constraints__Var_10, check_hlds__build_mode_constraints__ConstraintVars_6, check_hlds__build_mode_constraints__ArgModes_7);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_8 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__Var_8, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_9));
+    }
+    {
+      check_hlds__build_mode_constraints__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__HeadVar__4_4, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_8));
+      MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__HeadVar__4_4, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    return check_hlds__build_mode_constraints__HeadVar__4_4;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_3;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv2_HeadVar__4_4;
+
+    {
+      check_hlds__build_mode_constraints__conv2_HeadVar__4_4 = check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv2_HeadVar__4_4));
+    return check_hlds__build_mode_constraints__wrapper_arg_3;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_HeadVar__3_29;
+
+    {
+      check_hlds__build_mode_constraints__conv1_HeadVar__3_29 = check_hlds__build_mode_constraints__IntroducedFrom__func__mode_decls_constraints__689__1_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_HeadVar__3_29));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__5_5;
+
+    {
+      check_hlds__build_mode_constraints__conv0_HeadVar__5_5 = check_hlds__build_mode_constraints__lookup_prog_var_at_path_4_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__5_5));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_7,
+  MR_Word check_hlds__build_mode_constraints__VarMap_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__Decls_10,
+  MR_Word check_hlds__build_mode_constraints__HeadVarsList_11,
+  MR_Word * check_hlds__build_mode_constraints__Constraints_12)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_27_27 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+    MR_Word check_hlds__build_mode_constraints__HeadVarsMCVars_13;
+    MR_Word check_hlds__build_mode_constraints__ConstraintsList_14;
+    MR_Word check_hlds__build_mode_constraints__Constraints0_15;
+    MR_Word check_hlds__build_mode_constraints__Var_17;
+    MR_Word check_hlds__build_mode_constraints__Var_18;
+    MR_Word check_hlds__build_mode_constraints__Var_21;
+    MR_Word check_hlds__build_mode_constraints__OneModeOnlyConstraints_16;
+    MR_Word check_hlds__build_mode_constraints__Var_22;
+    MR_Word check_hlds__build_mode_constraints__Var_23;
+
+    {
+      check_hlds__build_mode_constraints__Var_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[4]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 1) = ((MR_Box) (check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 3) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_8));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_9));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 5) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_17, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_7[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_17, 1) = ((MR_Box) (check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_17, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_17, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_18));
+    }
+    {
+      check_hlds__build_mode_constraints__HeadVarsMCVars_13 = mercury__list__map_2_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[1], check_hlds__build_mode_constraints__TypeInfo_27_27, check_hlds__build_mode_constraints__Var_17, check_hlds__build_mode_constraints__HeadVarsList_11);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_21, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_3[1]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_21, 1) = ((MR_Box) (check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0_3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_21, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_7));
+    }
+    {
+      check_hlds__build_mode_constraints__ConstraintsList_14 = mercury__list__map_corresponding_3_f_0(check_hlds__build_mode_constraints__TypeInfo_27_27, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[4], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[5], check_hlds__build_mode_constraints__Var_21, check_hlds__build_mode_constraints__HeadVarsMCVars_13, check_hlds__build_mode_constraints__Decls_10);
+    }
+    {
+      check_hlds__build_mode_constraints__Constraints0_15 = mercury__list__condense_1_f_0((MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0, check_hlds__build_mode_constraints__ConstraintsList_14);
+    }
+    check_hlds__build_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__build_mode_constraints__Constraints0_15)) == (MR_mktag((MR_Integer) 1)));
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        check_hlds__build_mode_constraints__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Constraints0_15, (MR_Integer) 0)));
+        check_hlds__build_mode_constraints__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Constraints0_15, (MR_Integer) 1)));
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__build_mode_constraints__Var_22)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__build_mode_constraints__succeeded)
+              check_hlds__build_mode_constraints__OneModeOnlyConstraints_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__Var_22, (MR_Integer) 0)));
+          }
+      }
+    if (check_hlds__build_mode_constraints__succeeded)
+      *check_hlds__build_mode_constraints__Constraints_12 = check_hlds__build_mode_constraints__OneModeOnlyConstraints_16;
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__Var_24;
+
+        {
+          check_hlds__build_mode_constraints__Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_24, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Constraints0_15));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__build_mode_constraints__Constraints_12 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_24));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__conv0_HeadVar__2_2 = hlds__hlds_clauses__clause_body_1_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__2_2));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__PredInfo_10,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_25,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_26,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_27,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_28)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__ClausesInfo_13;
+    MR_Word check_hlds__build_mode_constraints__HeadVars_14;
+    MR_Word check_hlds__build_mode_constraints__ClausesRep_15;
+    MR_Word check_hlds__build_mode_constraints__Clauses_17;
+    MR_Word check_hlds__build_mode_constraints__ProgVarset_18;
+    MR_Word check_hlds__build_mode_constraints___ItemNumbers_16;
+
+    {
+      hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(check_hlds__build_mode_constraints__PredInfo_10, &check_hlds__build_mode_constraints__ClausesInfo_13);
+    }
+    {
+      hlds__hlds_clauses__clauses_info_get_headvars_2_p_0(check_hlds__build_mode_constraints__ClausesInfo_13, &check_hlds__build_mode_constraints__HeadVars_14);
+    }
+    {
+      hlds__hlds_clauses__clauses_info_get_clauses_rep_3_p_0(check_hlds__build_mode_constraints__ClausesInfo_13, &check_hlds__build_mode_constraints__ClausesRep_15, &check_hlds__build_mode_constraints___ItemNumbers_16);
+    }
+    {
+      hlds__hlds_clauses__get_clause_list_maybe_repeated_2_p_0(check_hlds__build_mode_constraints__ClausesRep_15, &check_hlds__build_mode_constraints__Clauses_17);
+    }
+    {
+      hlds__hlds_clauses__clauses_info_get_varset_2_p_0(check_hlds__build_mode_constraints__ClausesInfo_13, &check_hlds__build_mode_constraints__ProgVarset_18);
+    }
+    if ((check_hlds__build_mode_constraints__Clauses_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_26 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_25;
+        *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_28 = check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_27;
+      }
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_42_42 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+        MR_Word check_hlds__build_mode_constraints__FirstClause_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Clauses_17, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__Context_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__FirstClause_19, (MR_Integer) 3)));
+        MR_Word check_hlds__build_mode_constraints__Goals_22;
+        MR_Word check_hlds__build_mode_constraints__MainGoal_23;
+        MR_Word check_hlds__build_mode_constraints__Nonlocals_24;
+        MR_Word check_hlds__build_mode_constraints__Var_30;
+        MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31;
+        MR_Word check_hlds__build_mode_constraints__Var_32;
+        MR_Word check_hlds__build_mode_constraints__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Clauses_17, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__FirstClause_19, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__FirstClause_19, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__FirstClause_19, (MR_Integer) 2)));
+        MR_Word check_hlds__build_mode_constraints__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__FirstClause_19, (MR_Integer) 4)));
+        MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31;
+
+        {
+          check_hlds__build_mode_constraints__Goals_22 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0, check_hlds__build_mode_constraints__TypeCtorInfo_42_42, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[11], check_hlds__build_mode_constraints__Clauses_17);
+        }
+        {
+          check_hlds__build_mode_constraints__Var_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0_2));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 3) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_9));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_18));
+        }
+        {
+          mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_42_42, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_30, check_hlds__build_mode_constraints__Goals_22, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_25)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31);
+        }
+        check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31);
+        {
+          check_hlds__build_mode_constraints__MainGoal_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__MainGoal_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__MainGoal_23, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Goals_22));
+        }
+        {
+          check_hlds__build_mode_constraints__Var_32 = hlds__hlds_args__proc_arg_vector_to_list_1_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], check_hlds__build_mode_constraints__HeadVars_14);
+        }
+        {
+          check_hlds__build_mode_constraints__Nonlocals_24 = parse_tree__set_of_var__list_to_set_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__Var_32);
+        }
+        {
+          check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0(check_hlds__build_mode_constraints__ModuleInfo_8, check_hlds__build_mode_constraints__ProgVarset_18, check_hlds__build_mode_constraints__PredId_9, check_hlds__build_mode_constraints__MainGoal_23, check_hlds__build_mode_constraints__Context_21, (MR_Word) ((MR_Box) ((MR_Integer) 0)), check_hlds__build_mode_constraints__Nonlocals_24, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_26, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_27, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_28);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_22(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv37_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equivalent_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv37_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv37_HeadVar__5_5));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_21(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_3;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv36_LambdaHeadVar__3_206;
+
+    {
+      check_hlds__build_mode_constraints__conv36_LambdaHeadVar__3_206 = check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__577__1_2_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv36_LambdaHeadVar__3_206));
+    return check_hlds__build_mode_constraints__wrapper_arg_3;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_20(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv35_HeadVar__2_2;
+
+    {
+      hlds__hlds_pred__proc_info_get_argmodes_2_p_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv35_HeadVar__2_2);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv35_HeadVar__2_2));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_19(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv33_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equiv_no_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv33_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv33_HeadVar__5_5));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_18(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv31_MCVars_12;
+
+    {
+      check_hlds__build_mode_constraints__cons_prog_var_at_path_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv31_MCVars_12);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv31_MCVars_12));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_17(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv29_MCVars_12;
+
+    {
+      check_hlds__build_mode_constraints__cons_prog_var_at_path_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv29_MCVars_12);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv29_MCVars_12));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_16(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv27_HeadVar__6_6;
+
+    {
+      check_hlds__abstract_mode_constraints__xor_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv27_HeadVar__6_6);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv27_HeadVar__6_6));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_15(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv25_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equiv_no_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv25_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv25_HeadVar__5_5));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_14(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv23_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equivalent_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv23_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv23_HeadVar__5_5));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_13(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_4;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv22_LambdaHeadVar__4_188;
+
+    {
+      check_hlds__build_mode_constraints__conv22_LambdaHeadVar__4_188 = check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__629__1_3_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv22_LambdaHeadVar__4_188));
+    return check_hlds__build_mode_constraints__wrapper_arg_4;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_12(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__611__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_11(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+
+    {
+      check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints__IntroducedFrom__pred__add_goal_expr_constraints__609__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_10(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv20_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equivalent_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv20_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv20_HeadVar__5_5));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_9(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_3;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv19_HeadVar__3_361;
+
+    {
+      check_hlds__build_mode_constraints__conv19_HeadVar__3_361 = check_hlds__build_mode_constraints__IntroducedFrom__func__add_goal_expr_constraints__541__1_2_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv19_HeadVar__3_361));
+    return check_hlds__build_mode_constraints__wrapper_arg_3;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_8(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv16_STATE_VARIABLE_VarInfo_23;
+    MR_Word check_hlds__build_mode_constraints__conv15_STATE_VARIABLE_Constraints_25;
+
+    {
+      check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv16_STATE_VARIABLE_VarInfo_23, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_4), &check_hlds__build_mode_constraints__conv15_STATE_VARIABLE_Constraints_25);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv16_STATE_VARIABLE_VarInfo_23));
+    *check_hlds__build_mode_constraints__wrapper_arg_5 = ((MR_Box) (check_hlds__build_mode_constraints__conv15_STATE_VARIABLE_Constraints_25));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_7(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv14_HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__conv14_HeadVar__2_2 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv14_HeadVar__2_2));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_6(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv13_HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__conv13_HeadVar__2_2 = hlds__hlds_goal__get_hlds_goal_info_1_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv13_HeadVar__2_2));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_5(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_5,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_6)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv10_STATE_VARIABLE_VarInfo_21;
+    MR_Word check_hlds__build_mode_constraints__conv9_STATE_VARIABLE_Constraints_23;
+
+    {
+      check_hlds__build_mode_constraints__add_nonlocal_var_conj_constraints_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 6))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv10_STATE_VARIABLE_VarInfo_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_5), &check_hlds__build_mode_constraints__conv9_STATE_VARIABLE_Constraints_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv10_STATE_VARIABLE_VarInfo_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_6 = ((MR_Box) (check_hlds__build_mode_constraints__conv9_STATE_VARIABLE_Constraints_23));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_4(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_Constraints_13;
+
+    {
+      check_hlds__build_mode_constraints__add_local_var_conj_constraints_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_Constraints_13);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_Constraints_13));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_4,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_23;
+    MR_Word check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_Constraints_25;
+
+    {
+      check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_23, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_4), &check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_Constraints_25);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_23));
+    *check_hlds__build_mode_constraints__wrapper_arg_5 = ((MR_Box) (check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_Constraints_25));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_ConjConstraintsInfo_20;
+
+    {
+      check_hlds__build_mode_constraints__add_goal_nonlocals_to_conjunct_production_maps_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_ConjConstraintsInfo_20);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_ConjConstraintsInfo_20));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_HeadVar__2_2;
+
+    {
+      check_hlds__build_mode_constraints__conv0_HeadVar__2_2 = hlds__hlds_goal__foreign_arg_var_1_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_HeadVar__2_2));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_12,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_13,
+  MR_Word check_hlds__build_mode_constraints__PredId_14,
+  MR_Word check_hlds__build_mode_constraints__GoalExpr_15,
+  MR_Word check_hlds__build_mode_constraints__Context_16,
+  MR_Word check_hlds__build_mode_constraints__GoalId_17,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+
+    switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__GoalExpr_15)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_369_369;
+          MR_Word check_hlds__build_mode_constraints__TypeInfo_370_370;
+          MR_Word check_hlds__build_mode_constraints__Goal_84 = (MR_Word) MR_body(((MR_Word) check_hlds__build_mode_constraints__GoalExpr_15), (MR_Integer) 0);
+          MR_Word check_hlds__build_mode_constraints__NegatedGoalInfo_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_84, (MR_Integer) 1)));
+          MR_Word check_hlds__build_mode_constraints__NegatedGoalId_87;
+          MR_Word check_hlds__build_mode_constraints__NonlocalsAtId_88;
+          MR_Word check_hlds__build_mode_constraints__NonlocalsConstraintVars_89;
+          MR_Word check_hlds__build_mode_constraints__Var_214;
+          MR_Word check_hlds__build_mode_constraints__Var_216;
+          MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_218_218;
+          MR_Word check_hlds__build_mode_constraints__Var_219;
+          MR_Word check_hlds__build_mode_constraints__Var_221;
+          MR_Word check_hlds__build_mode_constraints__VarMap_287;
+          MR_Word check_hlds__build_mode_constraints__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_84, (MR_Integer) 0)));
+          MR_Word check_hlds__build_mode_constraints__Var_308;
+          MR_Box check_hlds__build_mode_constraints__conv30_NonlocalsAtId_88;
+          MR_Box check_hlds__build_mode_constraints__conv32_NonlocalsConstraintVars_89;
+          MR_Word check_hlds__build_mode_constraints__Var_309;
+          MR_Box check_hlds__build_mode_constraints__conv34_STATE_VARIABLE_Constraints_151;
+
+          {
+            check_hlds__build_mode_constraints__NegatedGoalId_87 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__NegatedGoalInfo_86);
+          }
+          check_hlds__build_mode_constraints__Var_308 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, (MR_Integer) 0)));
+          check_hlds__build_mode_constraints__VarMap_287 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, (MR_Integer) 1)));
+          {
+            check_hlds__build_mode_constraints__Var_214 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[3]));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_17));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 3) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_287));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_214, 5) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_17));
+          }
+          check_hlds__build_mode_constraints__TypeCtorInfo_369_369 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+          check_hlds__build_mode_constraints__TypeInfo_370_370 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+          {
+            parse_tree__set_of_var__fold_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_369_369, check_hlds__build_mode_constraints__TypeInfo_370_370, check_hlds__build_mode_constraints__Var_214, check_hlds__build_mode_constraints__Nonlocals_18, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &check_hlds__build_mode_constraints__conv30_NonlocalsAtId_88);
+          }
+          check_hlds__build_mode_constraints__NonlocalsAtId_88 = ((MR_Word) check_hlds__build_mode_constraints__conv30_NonlocalsAtId_88);
+          {
+            check_hlds__build_mode_constraints__Var_216 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[3]));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_18));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 3) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_287));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_216, 5) = ((MR_Box) (check_hlds__build_mode_constraints__NegatedGoalId_87));
+          }
+          {
+            parse_tree__set_of_var__fold_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_369_369, check_hlds__build_mode_constraints__TypeInfo_370_370, check_hlds__build_mode_constraints__Var_216, check_hlds__build_mode_constraints__Nonlocals_18, ((MR_Box) (check_hlds__build_mode_constraints__NonlocalsAtId_88)), &check_hlds__build_mode_constraints__conv32_NonlocalsConstraintVars_89);
+          }
+          check_hlds__build_mode_constraints__NonlocalsConstraintVars_89 = ((MR_Word) check_hlds__build_mode_constraints__conv32_NonlocalsConstraintVars_89);
+          {
+            check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Goal_84, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_218_218);
+          }
+          check_hlds__build_mode_constraints__Var_221 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+          check_hlds__build_mode_constraints__Var_309 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+          {
+            check_hlds__build_mode_constraints__Var_219 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_219, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[3]));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_219, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_19));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_219, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_219, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_221));
+            MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_219, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+          }
+          {
+            mercury__list__foldl_4_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0, check_hlds__build_mode_constraints__Var_219, check_hlds__build_mode_constraints__NonlocalsConstraintVars_89, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_218_218)), &check_hlds__build_mode_constraints__conv34_STATE_VARIABLE_Constraints_151);
+          }
+          *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = ((MR_Word) check_hlds__build_mode_constraints__conv34_STATE_VARIABLE_Constraints_151);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__build_mode_constraints__LHSvar_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 0)));
+          MR_Word check_hlds__build_mode_constraints__RHS_57 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+          MR_Word check_hlds__build_mode_constraints__LHSvarProducedHere_61;
+          MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_232_232;
+          MR_Word check_hlds__build_mode_constraints___Mode_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+          MR_Word check_hlds__build_mode_constraints___Kind_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 3)));
+          MR_Word check_hlds__build_mode_constraints___UnifyContext_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 4)));
+
+          {
+            check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__LHSvar_56, check_hlds__build_mode_constraints__GoalId_17, &check_hlds__build_mode_constraints__LHSvarProducedHere_61, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_232_232);
+          }
+          switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__RHS_57)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word check_hlds__build_mode_constraints__RHSvar_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__RHS_57, (MR_Integer) 0)));
+                MR_Word check_hlds__build_mode_constraints__RHSvarProducedHere_63;
+                MR_Word check_hlds__build_mode_constraints__Var_246;
+                MR_Word check_hlds__build_mode_constraints__Var_303;
+
+                {
+                  check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__RHSvar_62, check_hlds__build_mode_constraints__GoalId_17, &check_hlds__build_mode_constraints__RHSvarProducedHere_63, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_232_232, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149);
+                }
+                check_hlds__build_mode_constraints__Var_246 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+                check_hlds__build_mode_constraints__Var_303 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+                {
+                  check_hlds__abstract_mode_constraints__not_both_6_p_0(check_hlds__build_mode_constraints__Var_246, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__LHSvarProducedHere_61, check_hlds__build_mode_constraints__RHSvarProducedHere_63, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word check_hlds__build_mode_constraints__ArgsProducedHere_66;
+                MR_Word check_hlds__build_mode_constraints__Args_283 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__RHS_57, (MR_Integer) 2)));
+                MR_Word check_hlds__build_mode_constraints___Functor_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__RHS_57, (MR_Integer) 0)));
+                MR_Word check_hlds__build_mode_constraints___IsExistConstr_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__RHS_57, (MR_Integer) 1)));
+
+                {
+                  check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Args_283, check_hlds__build_mode_constraints__GoalId_17, &check_hlds__build_mode_constraints__ArgsProducedHere_66, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_232_232, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149);
+                }
+                if ((check_hlds__build_mode_constraints__ArgsProducedHere_66 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150;
+                else
+                  {
+                    MR_Word check_hlds__build_mode_constraints__Var_410 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__ArgsProducedHere_66, (MR_Integer) 1)));
+                    MR_Word check_hlds__build_mode_constraints__Var_411 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__ArgsProducedHere_66, (MR_Integer) 0)));
+                    MR_Word check_hlds__build_mode_constraints__Var_413 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+                    MR_Word check_hlds__build_mode_constraints__Var_412 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+
+                    if ((check_hlds__build_mode_constraints__Var_410 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                      {
+                        check_hlds__abstract_mode_constraints__not_both_6_p_0(check_hlds__build_mode_constraints__Var_413, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__LHSvarProducedHere_61, check_hlds__build_mode_constraints__Var_411, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+                      }
+                    else
+                      {
+                        MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_242_242;
+                        MR_Word check_hlds__build_mode_constraints__Var_243;
+                        MR_Word check_hlds__build_mode_constraints__Var_305;
+
+                        {
+                          check_hlds__abstract_mode_constraints__equivalent_5_p_0(check_hlds__build_mode_constraints__Var_413, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__ArgsProducedHere_66, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_242_242);
+                        }
+                        check_hlds__build_mode_constraints__Var_243 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+                        check_hlds__build_mode_constraints__Var_305 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+                        {
+                          check_hlds__abstract_mode_constraints__not_both_6_p_0(check_hlds__build_mode_constraints__Var_243, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__LHSvarProducedHere_61, check_hlds__build_mode_constraints__Var_411, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_242_242, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+                        }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                {
+                  mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "unify with lambda goal");
+                  return;
+                }
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word check_hlds__build_mode_constraints__CalleePredId_25 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 0)));
+          MR_Word check_hlds__build_mode_constraints__Args_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+          MR_Word check_hlds__build_mode_constraints__CalleePredInfo_31;
+          MR_Integer check_hlds__build_mode_constraints__Var_26 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+          MR_Word check_hlds__build_mode_constraints__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 3)));
+          MR_Word check_hlds__build_mode_constraints__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 4)));
+          MR_Word check_hlds__build_mode_constraints__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 5)));
+
+          {
+            hlds__hlds_module__module_info_pred_info_3_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__CalleePredId_25, &check_hlds__build_mode_constraints__CalleePredInfo_31);
+          }
+          {
+            check_hlds__build_mode_constraints__succeeded = hlds__hlds_pred__pred_info_infer_modes_1_p_0(check_hlds__build_mode_constraints__CalleePredInfo_31);
+          }
+          if (check_hlds__build_mode_constraints__succeeded)
+            {
+              MR_Word check_hlds__build_mode_constraints__CalleeClausesInfo_33;
+              MR_Word check_hlds__build_mode_constraints__CalleeHeadVars_34;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_260_260;
+
+              {
+                hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(check_hlds__build_mode_constraints__CalleePredInfo_31, &check_hlds__build_mode_constraints__CalleeClausesInfo_33);
+              }
+              {
+                hlds__hlds_clauses__clauses_info_get_headvar_list_2_p_0(check_hlds__build_mode_constraints__CalleeClausesInfo_33, &check_hlds__build_mode_constraints__CalleeHeadVars_34);
+              }
+              {
+                check_hlds__abstract_mode_constraints__add_mode_infer_callee_3_p_0(check_hlds__build_mode_constraints__CalleePredId_25, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_260_260);
+              }
+              {
+                check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__GoalId_17, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Args_27, check_hlds__build_mode_constraints__CalleePredId_25, check_hlds__build_mode_constraints__CalleeHeadVars_34, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_260_260, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+              }
+            }
+          else
+            {
+              MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_339_339;
+              MR_Word check_hlds__build_mode_constraints__CalleeProcTable_35;
+              MR_Word check_hlds__build_mode_constraints__CalleeProcInfos_36;
+              MR_Word check_hlds__build_mode_constraints__CalleeArgModeDecls_37;
+
+              {
+                hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__build_mode_constraints__CalleePredInfo_31, &check_hlds__build_mode_constraints__CalleeProcTable_35);
+              }
+              check_hlds__build_mode_constraints__TypeCtorInfo_339_339 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+              {
+                mercury__map__values_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, check_hlds__build_mode_constraints__TypeCtorInfo_339_339, check_hlds__build_mode_constraints__CalleeProcTable_35, &check_hlds__build_mode_constraints__CalleeProcInfos_36);
+              }
+              {
+                mercury__list__map_3_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_339_339, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[4], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[9], check_hlds__build_mode_constraints__CalleeProcInfos_36, &check_hlds__build_mode_constraints__CalleeArgModeDecls_37);
+              }
+              {
+                check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__CalleeArgModeDecls_37, check_hlds__build_mode_constraints__GoalId_17, check_hlds__build_mode_constraints__Args_27, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+              }
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__build_mode_constraints__Details_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+              MR_Word check_hlds__build_mode_constraints__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 3)));
+              MR_Word check_hlds__build_mode_constraints__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 4)));
+              MR_Word check_hlds__build_mode_constraints__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 5)));
+
+              switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__Details_38)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "higher_order generic_call");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "class_method generic_call");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "event_call generic_call");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                  }
+                  break;
+              }
+              *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148;
+              *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__build_mode_constraints__CalledPred_124 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+              MR_Integer check_hlds__build_mode_constraints__ProcId_125 = ((MR_Integer) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 3)));
+              MR_Word check_hlds__build_mode_constraints__ForeignArgs_126 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 4)));
+              MR_Word check_hlds__build_mode_constraints__CallArgs_130;
+              MR_Word check_hlds__build_mode_constraints__ProcInfo_132;
+              MR_Word check_hlds__build_mode_constraints__Var_123 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__Var_127 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 5)));
+              MR_Word check_hlds__build_mode_constraints__Var_128 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 6)));
+              MR_Word check_hlds__build_mode_constraints__Var_129 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 7)));
+              MR_Word check_hlds__build_mode_constraints__Var_131;
+              MR_Word check_hlds__build_mode_constraints__Var_162;
+              MR_Word check_hlds__build_mode_constraints__Var_409;
+              MR_Word check_hlds__build_mode_constraints___OrigDecl_133;
+
+              {
+                check_hlds__build_mode_constraints__CallArgs_130 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[4], check_hlds__build_mode_constraints__ForeignArgs_126);
+              }
+              {
+                hlds__hlds_module__module_info_pred_proc_info_5_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__CalledPred_124, check_hlds__build_mode_constraints__ProcId_125, &check_hlds__build_mode_constraints__Var_131, &check_hlds__build_mode_constraints__ProcInfo_132);
+              }
+              {
+                check_hlds__build_mode_constraints__Var_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_162, 0) = NULL;
+              }
+              {
+                hlds__hlds_pred__proc_info_get_maybe_declared_argmodes_2_p_0(check_hlds__build_mode_constraints__ProcInfo_132, &check_hlds__build_mode_constraints__Var_409);
+              }
+              {
+                check_hlds__build_mode_constraints__succeeded = check_hlds__build_mode_constraints____Unify____maybe__maybe_1_1((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[4], check_hlds__build_mode_constraints__Var_162, check_hlds__build_mode_constraints__Var_409);
+              }
+              if (check_hlds__build_mode_constraints__succeeded)
+                {
+                  MR_Word check_hlds__build_mode_constraints__Decl_134;
+                  MR_Word check_hlds__build_mode_constraints__Var_163;
+
+                  {
+                    hlds__hlds_pred__proc_info_get_argmodes_2_p_0(check_hlds__build_mode_constraints__ProcInfo_132, &check_hlds__build_mode_constraints__Decl_134);
+                  }
+                  {
+                    check_hlds__build_mode_constraints__Var_163 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_163, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Decl_134));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_163, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__Context_16, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Var_163, check_hlds__build_mode_constraints__GoalId_17, check_hlds__build_mode_constraints__CallArgs_130, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+                  }
+                }
+              else
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "no mode declaration for foreign proc");
+                    return;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__build_mode_constraints__ConjType_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__Goals_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+
+              switch (check_hlds__build_mode_constraints__ConjType_21) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "par_conj");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_317_317;
+                    MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_324_324;
+                    MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_325_325;
+                    MR_Word check_hlds__build_mode_constraints__TypeInfo_330_330;
+                    MR_Word check_hlds__build_mode_constraints__TypeInfo_331_331;
+                    MR_Word check_hlds__build_mode_constraints__VarMap_23;
+                    MR_Word check_hlds__build_mode_constraints__ConjConstraintsInfo_24;
+                    MR_Word check_hlds__build_mode_constraints__Var_269;
+                    MR_Word check_hlds__build_mode_constraints__Var_270;
+                    MR_Word check_hlds__build_mode_constraints__Var_271;
+                    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_272_272;
+                    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_273_273;
+                    MR_Word check_hlds__build_mode_constraints__Var_274;
+                    MR_Word check_hlds__build_mode_constraints__Var_275;
+                    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_276_276;
+                    MR_Word check_hlds__build_mode_constraints__Var_277;
+                    MR_Word check_hlds__build_mode_constraints__Var_278;
+                    MR_Word check_hlds__build_mode_constraints__Var_279;
+                    MR_Word check_hlds__build_mode_constraints__Var_299;
+                    MR_Box check_hlds__build_mode_constraints__conv2_ConjConstraintsInfo_24;
+                    MR_Box check_hlds__build_mode_constraints__conv6_STATE_VARIABLE_VarInfo_272_272;
+                    MR_Box check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_273_273;
+                    MR_Word check_hlds__build_mode_constraints__Var_300;
+                    MR_Word check_hlds__build_mode_constraints__Var_301;
+                    MR_Box check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_Constraints_276_276;
+                    MR_Word check_hlds__build_mode_constraints__Var_302;
+                    MR_Box check_hlds__build_mode_constraints__conv12_STATE_VARIABLE_VarInfo_149;
+                    MR_Box check_hlds__build_mode_constraints__conv11_STATE_VARIABLE_Constraints_151;
+
+                    {
+                      check_hlds__build_mode_constraints__Var_270 = check_hlds__build_mode_constraints__conj_constraints_info_init_0_f_0();
+                    }
+                    check_hlds__build_mode_constraints__TypeCtorInfo_317_317 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                    check_hlds__build_mode_constraints__Var_299 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, (MR_Integer) 0)));
+                    check_hlds__build_mode_constraints__VarMap_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, (MR_Integer) 1)));
+                    {
+                      check_hlds__build_mode_constraints__Var_269 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[0]));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_2));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 3) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_23));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_269, 5) = ((MR_Box) (check_hlds__build_mode_constraints__Nonlocals_18));
+                    }
+                    {
+                      mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_317_317, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0, check_hlds__build_mode_constraints__Var_269, check_hlds__build_mode_constraints__Goals_22, ((MR_Box) (check_hlds__build_mode_constraints__Var_270)), &check_hlds__build_mode_constraints__conv2_ConjConstraintsInfo_24);
+                    }
+                    check_hlds__build_mode_constraints__ConjConstraintsInfo_24 = ((MR_Word) check_hlds__build_mode_constraints__conv2_ConjConstraintsInfo_24);
+                    {
+                      check_hlds__build_mode_constraints__Var_271 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_9[0]));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_3));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_12));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_13));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_271, 5) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+                    }
+                    check_hlds__build_mode_constraints__TypeCtorInfo_324_324 = (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0;
+                    check_hlds__build_mode_constraints__TypeCtorInfo_325_325 = (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0;
+                    {
+                      mercury__list__foldl2_6_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_317_317, check_hlds__build_mode_constraints__TypeCtorInfo_324_324, check_hlds__build_mode_constraints__TypeCtorInfo_325_325, check_hlds__build_mode_constraints__Var_271, check_hlds__build_mode_constraints__Goals_22, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148)), &check_hlds__build_mode_constraints__conv6_STATE_VARIABLE_VarInfo_272_272, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150)), &check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_273_273);
+                    }
+                    check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_272_272 = ((MR_Word) check_hlds__build_mode_constraints__conv6_STATE_VARIABLE_VarInfo_272_272);
+                    check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_273_273 = ((MR_Word) check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_273_273);
+                    check_hlds__build_mode_constraints__Var_277 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_272_272, (MR_Integer) 0)));
+                    check_hlds__build_mode_constraints__Var_300 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_272_272, (MR_Integer) 1)));
+                    {
+                      check_hlds__build_mode_constraints__Var_274 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_274, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[1]));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_274, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_4));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_274, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_274, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_277));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_274, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+                    }
+                    check_hlds__build_mode_constraints__Var_275 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__ConjConstraintsInfo_24, (MR_Integer) 0)));
+                    check_hlds__build_mode_constraints__Var_301 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__ConjConstraintsInfo_24, (MR_Integer) 1)));
+                    check_hlds__build_mode_constraints__TypeInfo_330_330 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0];
+                    check_hlds__build_mode_constraints__TypeInfo_331_331 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+                    {
+                      mercury__map__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_330_330, check_hlds__build_mode_constraints__TypeInfo_331_331, check_hlds__build_mode_constraints__TypeCtorInfo_325_325, check_hlds__build_mode_constraints__Var_274, check_hlds__build_mode_constraints__Var_275, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_273_273)), &check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_Constraints_276_276);
+                    }
+                    check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_276_276 = ((MR_Word) check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_Constraints_276_276);
+                    {
+                      check_hlds__build_mode_constraints__Var_278 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_10[0]));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_5));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_13));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 5) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+                      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_278, 6) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_17));
+                    }
+                    check_hlds__build_mode_constraints__Var_302 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__ConjConstraintsInfo_24, (MR_Integer) 0)));
+                    check_hlds__build_mode_constraints__Var_279 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__ConjConstraintsInfo_24, (MR_Integer) 1)));
+                    {
+                      mercury__map__foldl2_6_p_0(check_hlds__build_mode_constraints__TypeInfo_330_330, check_hlds__build_mode_constraints__TypeInfo_331_331, check_hlds__build_mode_constraints__TypeCtorInfo_324_324, check_hlds__build_mode_constraints__TypeCtorInfo_325_325, check_hlds__build_mode_constraints__Var_278, check_hlds__build_mode_constraints__Var_279, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_272_272)), &check_hlds__build_mode_constraints__conv12_STATE_VARIABLE_VarInfo_149, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_276_276)), &check_hlds__build_mode_constraints__conv11_STATE_VARIABLE_Constraints_151);
+                    }
+                    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149 = ((MR_Word) check_hlds__build_mode_constraints__conv12_STATE_VARIABLE_VarInfo_149);
+                    *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = ((MR_Word) check_hlds__build_mode_constraints__conv11_STATE_VARIABLE_Constraints_151);
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_343_343 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+              MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_344_344 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0;
+              MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_356_356;
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_358_358;
+              MR_Word check_hlds__build_mode_constraints__DisjunctGoalIds_79;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsHere_80;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsAtDisjuncts_81;
+              MR_Word check_hlds__build_mode_constraints__GoalInfos_82;
+              MR_Word check_hlds__build_mode_constraints__EquivVarss_83;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_222_222;
+              MR_Word check_hlds__build_mode_constraints__Var_225;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_227_227;
+              MR_Word check_hlds__build_mode_constraints__Var_229;
+              MR_Word check_hlds__build_mode_constraints__Var_231;
+              MR_Word check_hlds__build_mode_constraints__Goals_286 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Box check_hlds__build_mode_constraints__conv18_STATE_VARIABLE_VarInfo_149;
+              MR_Box check_hlds__build_mode_constraints__conv17_STATE_VARIABLE_Constraints_227_227;
+              MR_Word check_hlds__build_mode_constraints__Var_307;
+              MR_Box check_hlds__build_mode_constraints__conv21_STATE_VARIABLE_Constraints_151;
+
+              {
+                check_hlds__build_mode_constraints__GoalInfos_82 = mercury__list__map_2_f_0(check_hlds__build_mode_constraints__TypeCtorInfo_343_343, check_hlds__build_mode_constraints__TypeCtorInfo_344_344, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[5], check_hlds__build_mode_constraints__Goals_286);
+              }
+              {
+                check_hlds__build_mode_constraints__DisjunctGoalIds_79 = mercury__list__map_2_f_0(check_hlds__build_mode_constraints__TypeCtorInfo_344_344, (MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[6], check_hlds__build_mode_constraints__GoalInfos_82);
+              }
+              {
+                check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__GoalId_17, check_hlds__build_mode_constraints__DisjunctGoalIds_79, check_hlds__build_mode_constraints__Nonlocals_18, &check_hlds__build_mode_constraints__NonlocalsHere_80, &check_hlds__build_mode_constraints__NonlocalsAtDisjuncts_81, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_222_222);
+              }
+              {
+                check_hlds__build_mode_constraints__Var_225 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_9[0]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_8));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_12));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_13));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_225, 5) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_14));
+              }
+              check_hlds__build_mode_constraints__TypeCtorInfo_356_356 = (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0;
+              {
+                mercury__list__foldl2_6_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_343_343, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__TypeCtorInfo_356_356, check_hlds__build_mode_constraints__Var_225, check_hlds__build_mode_constraints__Goals_286, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_222_222)), &check_hlds__build_mode_constraints__conv18_STATE_VARIABLE_VarInfo_149, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150)), &check_hlds__build_mode_constraints__conv17_STATE_VARIABLE_Constraints_227_227);
+              }
+              *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149 = ((MR_Word) check_hlds__build_mode_constraints__conv18_STATE_VARIABLE_VarInfo_149);
+              check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_227_227 = ((MR_Word) check_hlds__build_mode_constraints__conv17_STATE_VARIABLE_Constraints_227_227);
+              check_hlds__build_mode_constraints__TypeInfo_358_358 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+              {
+                check_hlds__build_mode_constraints__EquivVarss_83 = mercury__list__map_corresponding_3_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__TypeInfo_358_358, check_hlds__build_mode_constraints__TypeInfo_358_358, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[7], check_hlds__build_mode_constraints__NonlocalsHere_80, check_hlds__build_mode_constraints__NonlocalsAtDisjuncts_81);
+              }
+              check_hlds__build_mode_constraints__Var_231 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+              check_hlds__build_mode_constraints__Var_307 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__Var_229 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_229, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[2]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_229, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_10));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_229, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_229, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_231));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_229, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+              }
+              {
+                mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_358_358, check_hlds__build_mode_constraints__TypeCtorInfo_356_356, check_hlds__build_mode_constraints__Var_229, check_hlds__build_mode_constraints__EquivVarss_83, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_227_227)), &check_hlds__build_mode_constraints__conv21_STATE_VARIABLE_Constraints_151);
+              }
+              *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = ((MR_Word) check_hlds__build_mode_constraints__conv21_STATE_VARIABLE_Constraints_151);
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "switch");
+                return;
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_380_380;
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_381_381;
+              MR_Word check_hlds__build_mode_constraints__SomeGoalInfo_92;
+              MR_Word check_hlds__build_mode_constraints__SomeGoalId_93;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsList_94;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsAtSubGoal_95;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_201_201;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_202_202;
+              MR_Word check_hlds__build_mode_constraints__Var_209;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_210_210;
+              MR_Word check_hlds__build_mode_constraints__Var_211;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsHere_290;
+              MR_Word check_hlds__build_mode_constraints__EquivVarss_291;
+              MR_Word check_hlds__build_mode_constraints__Goal_292 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+              MR_Word check_hlds__build_mode_constraints___Reason_90 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__Var_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_292, (MR_Integer) 0)));
+              MR_Word check_hlds__build_mode_constraints__Var_310;
+              MR_Box check_hlds__build_mode_constraints__conv38_STATE_VARIABLE_Constraints_210_210;
+
+              check_hlds__build_mode_constraints__SomeGoalInfo_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_292, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__SomeGoalId_93 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__SomeGoalInfo_92);
+              }
+              {
+                check_hlds__build_mode_constraints__NonlocalsList_94 = parse_tree__set_of_var__to_sorted_list_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__Nonlocals_18);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_94, check_hlds__build_mode_constraints__GoalId_17, &check_hlds__build_mode_constraints__NonlocalsHere_290, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_201_201);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_94, check_hlds__build_mode_constraints__SomeGoalId_93, &check_hlds__build_mode_constraints__NonlocalsAtSubGoal_95, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_201_201, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_202_202);
+              }
+              check_hlds__build_mode_constraints__TypeInfo_380_380 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2];
+              check_hlds__build_mode_constraints__TypeInfo_381_381 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+              {
+                check_hlds__build_mode_constraints__EquivVarss_291 = mercury__list__map_corresponding_3_f_0(check_hlds__build_mode_constraints__TypeInfo_380_380, check_hlds__build_mode_constraints__TypeInfo_380_380, check_hlds__build_mode_constraints__TypeInfo_381_381, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[10], check_hlds__build_mode_constraints__NonlocalsHere_290, check_hlds__build_mode_constraints__NonlocalsAtSubGoal_95);
+              }
+              check_hlds__build_mode_constraints__Var_211 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_202_202, (MR_Integer) 0)));
+              check_hlds__build_mode_constraints__Var_310 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_202_202, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__Var_209 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_209, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[2]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_209, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_22));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_209, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_209, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_211));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_209, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+              }
+              {
+                mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_381_381, (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0, check_hlds__build_mode_constraints__Var_209, check_hlds__build_mode_constraints__EquivVarss_291, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150)), &check_hlds__build_mode_constraints__conv38_STATE_VARIABLE_Constraints_210_210);
+              }
+              check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_210_210 = ((MR_Word) check_hlds__build_mode_constraints__conv38_STATE_VARIABLE_Constraints_210_210);
+              {
+                check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Goal_292, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_202_202, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_210_210, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_389_389;
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_392_392;
+              MR_Word check_hlds__build_mode_constraints__TypeInfo_393_393;
+              MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_397_397;
+              MR_Word check_hlds__build_mode_constraints__ExistVars_98 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__Cond_99 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 2)));
+              MR_Word check_hlds__build_mode_constraints__Then_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 3)));
+              MR_Word check_hlds__build_mode_constraints__Else_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 4)));
+              MR_Word check_hlds__build_mode_constraints__CondInfo_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Cond_99, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__ThenInfo_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Then_100, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__ElseInfo_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Else_101, (MR_Integer) 1)));
+              MR_Word check_hlds__build_mode_constraints__CondId_108;
+              MR_Word check_hlds__build_mode_constraints__ThenId_109;
+              MR_Word check_hlds__build_mode_constraints__ElseId_110;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsAtCond_111;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsAtThen_112;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsAtElse_113;
+              MR_Word check_hlds__build_mode_constraints__CondNonlocals_114;
+              MR_Word check_hlds__build_mode_constraints__ThenNonlocals_115;
+              MR_Word check_hlds__build_mode_constraints__NonlocalToCond_116;
+              MR_Word check_hlds__build_mode_constraints__LocalAndShared_117;
+              MR_Word check_hlds__build_mode_constraints__LocalAndSharedAtCond_118;
+              MR_Word check_hlds__build_mode_constraints__LocalAndSharedAtThen_119;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_170_170;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_171_171;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_172_172;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_173_173;
+              MR_Word check_hlds__build_mode_constraints__Var_174;
+              MR_Word check_hlds__build_mode_constraints__Var_175;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_176_176;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_177_177;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_178_178;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_179_179;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_180_180;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_181_181;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_183_183;
+              MR_Word check_hlds__build_mode_constraints__Var_192;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_193_193;
+              MR_Word check_hlds__build_mode_constraints__Var_194;
+              MR_Word check_hlds__build_mode_constraints__Var_195;
+              MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_196_196;
+              MR_Word check_hlds__build_mode_constraints__Var_197;
+              MR_Word check_hlds__build_mode_constraints__Var_198;
+              MR_Word check_hlds__build_mode_constraints__Var_200;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsHere_296;
+              MR_Word check_hlds__build_mode_constraints__EquivVarss_297;
+              MR_Word check_hlds__build_mode_constraints__NonlocalsList_298;
+              MR_Word check_hlds__build_mode_constraints__Var_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Cond_99, (MR_Integer) 0)));
+              MR_Word check_hlds__build_mode_constraints__Var_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Then_100, (MR_Integer) 0)));
+              MR_Word check_hlds__build_mode_constraints__Var_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Else_101, (MR_Integer) 0)));
+              MR_Word check_hlds__build_mode_constraints__Var_311;
+              MR_Box check_hlds__build_mode_constraints__conv24_STATE_VARIABLE_Constraints_193_193;
+              MR_Word check_hlds__build_mode_constraints__Var_312;
+              MR_Box check_hlds__build_mode_constraints__conv26_STATE_VARIABLE_Constraints_196_196;
+              MR_Word check_hlds__build_mode_constraints__Var_313;
+              MR_Box check_hlds__build_mode_constraints__conv28_STATE_VARIABLE_Constraints_151;
+
+              {
+                check_hlds__build_mode_constraints__CondId_108 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__CondInfo_103);
+              }
+              {
+                check_hlds__build_mode_constraints__ThenId_109 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__ThenInfo_105);
+              }
+              {
+                check_hlds__build_mode_constraints__ElseId_110 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__ElseInfo_107);
+              }
+              {
+                check_hlds__build_mode_constraints__NonlocalsList_298 = parse_tree__set_of_var__to_sorted_list_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__Nonlocals_18);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_298, check_hlds__build_mode_constraints__GoalId_17, &check_hlds__build_mode_constraints__NonlocalsHere_296, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_148, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_170_170);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_298, check_hlds__build_mode_constraints__CondId_108, &check_hlds__build_mode_constraints__NonlocalsAtCond_111, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_170_170, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_171_171);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_298, check_hlds__build_mode_constraints__ThenId_109, &check_hlds__build_mode_constraints__NonlocalsAtThen_112, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_171_171, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_172_172);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__NonlocalsList_298, check_hlds__build_mode_constraints__ElseId_110, &check_hlds__build_mode_constraints__NonlocalsAtElse_113, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_172_172, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_173_173);
+              }
+              {
+                check_hlds__build_mode_constraints__CondNonlocals_114 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__build_mode_constraints__CondInfo_103);
+              }
+              {
+                check_hlds__build_mode_constraints__ThenNonlocals_115 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__build_mode_constraints__ThenInfo_105);
+              }
+              {
+                check_hlds__build_mode_constraints__Var_174 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_174, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[4]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_174, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_11));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_174, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_174, 3) = ((MR_Box) (check_hlds__build_mode_constraints__CondNonlocals_114));
+              }
+              check_hlds__build_mode_constraints__TypeInfo_389_389 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0];
+              {
+                mercury__list__filter_3_p_0(check_hlds__build_mode_constraints__TypeInfo_389_389, check_hlds__build_mode_constraints__Var_174, check_hlds__build_mode_constraints__ExistVars_98, &check_hlds__build_mode_constraints__NonlocalToCond_116);
+              }
+              {
+                check_hlds__build_mode_constraints__Var_175 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_175, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_6[4]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_175, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_12));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_175, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_175, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ThenNonlocals_115));
+              }
+              {
+                mercury__list__filter_3_p_0(check_hlds__build_mode_constraints__TypeInfo_389_389, check_hlds__build_mode_constraints__Var_175, check_hlds__build_mode_constraints__NonlocalToCond_116, &check_hlds__build_mode_constraints__LocalAndShared_117);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__LocalAndShared_117, check_hlds__build_mode_constraints__CondId_108, &check_hlds__build_mode_constraints__LocalAndSharedAtCond_118, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_173_173, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_176_176);
+              }
+              {
+                check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__LocalAndShared_117, check_hlds__build_mode_constraints__ThenId_109, &check_hlds__build_mode_constraints__LocalAndSharedAtThen_119, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_176_176, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_177_177);
+              }
+              {
+                check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Cond_99, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_177_177, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_178_178, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_150, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_179_179);
+              }
+              {
+                check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Then_100, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_178_178, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_180_180, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_179_179, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_181_181);
+              }
+              {
+                check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(check_hlds__build_mode_constraints__ModuleInfo_12, check_hlds__build_mode_constraints__ProgVarset_13, check_hlds__build_mode_constraints__PredId_14, check_hlds__build_mode_constraints__Else_101, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_180_180, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_181_181, &check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_183_183);
+              }
+              check_hlds__build_mode_constraints__TypeInfo_392_392 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2];
+              check_hlds__build_mode_constraints__TypeInfo_393_393 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+              {
+                check_hlds__build_mode_constraints__EquivVarss_297 = mercury__list__map_corresponding3_4_f_0(check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeInfo_393_393, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[8], check_hlds__build_mode_constraints__NonlocalsHere_296, check_hlds__build_mode_constraints__NonlocalsAtThen_112, check_hlds__build_mode_constraints__NonlocalsAtElse_113);
+              }
+              check_hlds__build_mode_constraints__Var_194 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+              check_hlds__build_mode_constraints__Var_311 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__Var_192 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_192, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[2]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_192, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_14));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_192, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_192, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_194));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_192, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+              }
+              check_hlds__build_mode_constraints__TypeCtorInfo_397_397 = (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0;
+              {
+                mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_393_393, check_hlds__build_mode_constraints__TypeCtorInfo_397_397, check_hlds__build_mode_constraints__Var_192, check_hlds__build_mode_constraints__EquivVarss_297, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_183_183)), &check_hlds__build_mode_constraints__conv24_STATE_VARIABLE_Constraints_193_193);
+              }
+              check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_193_193 = ((MR_Word) check_hlds__build_mode_constraints__conv24_STATE_VARIABLE_Constraints_193_193);
+              check_hlds__build_mode_constraints__Var_197 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+              check_hlds__build_mode_constraints__Var_312 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__Var_195 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_195, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[3]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_195, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_15));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_195, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_195, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_197));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_195, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+              }
+              {
+                mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeCtorInfo_397_397, check_hlds__build_mode_constraints__Var_195, check_hlds__build_mode_constraints__NonlocalsAtCond_111, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_193_193)), &check_hlds__build_mode_constraints__conv26_STATE_VARIABLE_Constraints_196_196);
+              }
+              check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_196_196 = ((MR_Word) check_hlds__build_mode_constraints__conv26_STATE_VARIABLE_Constraints_196_196);
+              check_hlds__build_mode_constraints__Var_200 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 0)));
+              check_hlds__build_mode_constraints__Var_313 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_149, (MR_Integer) 1)));
+              {
+                check_hlds__build_mode_constraints__Var_198 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_198, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_8[2]));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_198, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0_16));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_198, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_198, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_200));
+                MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_198, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_16));
+              }
+              {
+                mercury__list__foldl_corresponding_5_p_0(check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeInfo_392_392, check_hlds__build_mode_constraints__TypeCtorInfo_397_397, check_hlds__build_mode_constraints__Var_198, check_hlds__build_mode_constraints__LocalAndSharedAtCond_118, check_hlds__build_mode_constraints__LocalAndSharedAtThen_119, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_196_196)), &check_hlds__build_mode_constraints__conv28_STATE_VARIABLE_Constraints_151);
+              }
+              *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_151 = ((MR_Word) check_hlds__build_mode_constraints__conv28_STATE_VARIABLE_Constraints_151);
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word check_hlds__build_mode_constraints__Shorthand_135 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_15, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__Shorthand_135)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "shorthand goal");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "NYI: atomic_goal");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    {
+                      mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_goal_expr_constraints\'/11", (MR_String) "NYI: try_goal");
+                      return;
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_goal_constraints_8_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__Goal_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_24,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__GoalExpr_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_12, (MR_Integer) 0)));
+    MR_Word check_hlds__build_mode_constraints__GoalInfo_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_12, (MR_Integer) 1)));
+    MR_Word check_hlds__build_mode_constraints__Nonlocals_17;
+    MR_Word check_hlds__build_mode_constraints__GoalId_18;
+    MR_Word check_hlds__build_mode_constraints__Context_19;
+
+    {
+      check_hlds__build_mode_constraints__Nonlocals_17 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__build_mode_constraints__GoalInfo_16);
+    }
+    {
+      check_hlds__build_mode_constraints__GoalId_18 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__GoalInfo_16);
+    }
+    {
+      check_hlds__build_mode_constraints__Context_19 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__build_mode_constraints__GoalInfo_16);
+    }
+    {
+      check_hlds__build_mode_constraints__add_goal_expr_constraints_11_p_0(check_hlds__build_mode_constraints__ModuleInfo_9, check_hlds__build_mode_constraints__ProgVarset_10, check_hlds__build_mode_constraints__PredId_11, check_hlds__build_mode_constraints__GoalExpr_15, check_hlds__build_mode_constraints__Context_19, check_hlds__build_mode_constraints__GoalId_18, check_hlds__build_mode_constraints__Nonlocals_17, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_24, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_25);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____maybe__maybe_1_1(
+  MR_Word check_hlds__build_mode_constraints__TypeInfo_for_T_9,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__1_1,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__build_mode_constraints__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+    MR_Box check_hlds__build_mode_constraints__ArgX1_5;
+
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        check_hlds__build_mode_constraints__ArgX1_5 = (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0));
+        (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__HeadVar__1_1, (MR_Integer) 0)) = check_hlds__build_mode_constraints__ArgX1_5;
+        check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+      }
+    return check_hlds__build_mode_constraints__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv3_LambdaHeadVar__2_21;
+    MR_Word check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_23;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv3_LambdaHeadVar__2_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv3_LambdaHeadVar__2_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv2_LambdaHeadVar__4_23));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_28;
+    MR_Word check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_30;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__nonlocals_at_path_and_subpaths__1082__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_28, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_30);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_28));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_30));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_10,
+  MR_Word check_hlds__build_mode_constraints__PredId_11,
+  MR_Word check_hlds__build_mode_constraints__GoalId_12,
+  MR_Word check_hlds__build_mode_constraints__SubIds_13,
+  MR_Word check_hlds__build_mode_constraints__Nonlocals_14,
+  MR_Word * check_hlds__build_mode_constraints__NonlocalsAtId_15,
+  MR_Word * check_hlds__build_mode_constraints__NonlocalsAtSubIds_16,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__NonlocalsList_18;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_24_24;
+    MR_Word check_hlds__build_mode_constraints__Var_25;
+    MR_Word check_hlds__build_mode_constraints__Var_52;
+    MR_Box check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_24_24;
+    MR_Box check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_23;
+
+    {
+      check_hlds__build_mode_constraints__Var_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[1]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 1) = ((MR_Box) (check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_25, 5) = ((MR_Box) (check_hlds__build_mode_constraints__SubIds_13));
+    }
+    {
+      check_hlds__build_mode_constraints__NonlocalsList_18 = parse_tree__set_of_var__to_sorted_list_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__Nonlocals_14);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 1) = ((MR_Box) (check_hlds__build_mode_constraints__nonlocals_at_path_and_subpaths_9_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_11));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_52, 5) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_12));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_52, check_hlds__build_mode_constraints__NonlocalsList_18, check_hlds__build_mode_constraints__NonlocalsAtId_15, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_22)), &check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_24_24);
+    }
+    check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_24_24 = ((MR_Word) check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_24_24);
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_25, check_hlds__build_mode_constraints__NonlocalsList_18, check_hlds__build_mode_constraints__NonlocalsAtSubIds_16, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_24_24)), &check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_23);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_23 = ((MR_Word) check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_23);
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_var_at_path_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVar_10,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVar_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_18,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_19)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__MCVarset0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_18, (MR_Integer) 0)));
+    MR_Word check_hlds__build_mode_constraints__VarMap0_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_18, (MR_Integer) 1)));
+    MR_Word check_hlds__build_mode_constraints__MCVarset_16;
+    MR_Word check_hlds__build_mode_constraints__VarMap_17;
+    MR_Word check_hlds__build_mode_constraints__RepVar_31;
+    MR_Word check_hlds__build_mode_constraints__Var_35;
+    MR_Word check_hlds__build_mode_constraints__Var_32;
+    MR_Box check_hlds__build_mode_constraints__conv0_Var_32;
+    MR_Box check_hlds__build_mode_constraints__conv1_MCVar_12;
+
+    {
+      check_hlds__build_mode_constraints__Var_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_35, 0) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVar_10));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_35, 1) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_9));
+    }
+    {
+      check_hlds__build_mode_constraints__RepVar_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__RepVar_31, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_35));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__RepVar_31, 1) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_11));
+    }
+    {
+      check_hlds__build_mode_constraints__succeeded = mercury__bimap__search_3_p_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__VarMap0_15, ((MR_Box) (check_hlds__build_mode_constraints__RepVar_31)), &check_hlds__build_mode_constraints__conv0_Var_32);
+    }
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        check_hlds__build_mode_constraints__Var_32 = ((MR_Word) check_hlds__build_mode_constraints__conv0_Var_32);
+        check_hlds__build_mode_constraints__succeeded = MR_TRUE;
+      }
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        check_hlds__build_mode_constraints__VarMap_17 = check_hlds__build_mode_constraints__VarMap0_15;
+        check_hlds__build_mode_constraints__MCVarset_16 = check_hlds__build_mode_constraints__MCVarset0_14;
+      }
+    else
+      {
+        MR_String check_hlds__build_mode_constraints__MCVarName_33;
+        MR_Word check_hlds__build_mode_constraints__NewMCVar_34;
+
+        {
+          check_hlds__build_mode_constraints__MCVarName_33 = check_hlds__build_mode_constraints__rep_var_to_string_2_f_0(check_hlds__build_mode_constraints__ProgVarset_8, check_hlds__build_mode_constraints__RepVar_31);
+        }
+        {
+          mercury__varset__new_named_var_4_p_0((MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_type_0, check_hlds__build_mode_constraints__MCVarName_33, &check_hlds__build_mode_constraints__NewMCVar_34, check_hlds__build_mode_constraints__MCVarset0_14, &check_hlds__build_mode_constraints__MCVarset_16);
+        }
+        {
+          mercury__bimap__det_insert_4_p_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], ((MR_Box) (check_hlds__build_mode_constraints__RepVar_31)), ((MR_Box) (check_hlds__build_mode_constraints__NewMCVar_34)), check_hlds__build_mode_constraints__VarMap0_15, &check_hlds__build_mode_constraints__VarMap_17);
+        }
+      }
+    {
+      check_hlds__build_mode_constraints__conv1_MCVar_12 = mercury__bimap__lookup_2_f_0((MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], check_hlds__build_mode_constraints__VarMap_17, ((MR_Box) (check_hlds__build_mode_constraints__RepVar_31)));
+    }
+    *check_hlds__build_mode_constraints__MCVar_12 = ((MR_Word) check_hlds__build_mode_constraints__conv1_MCVar_12);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_19 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__build_mode_constraints__MCVarset_16));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__build_mode_constraints__VarMap_17));
+    }
+  }
+}
+
+MR_String MR_CALL 
+check_hlds__build_mode_constraints__rep_var_to_string_2_f_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_4,
+  MR_Word check_hlds__build_mode_constraints__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_String check_hlds__build_mode_constraints__RepString_8;
+    MR_Word check_hlds__build_mode_constraints__ProgVar_5;
+    MR_Word check_hlds__build_mode_constraints__GoalId_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Integer check_hlds__build_mode_constraints__GoalIdNum_9;
+    MR_String check_hlds__build_mode_constraints__GoalIdString_10;
+    MR_String check_hlds__build_mode_constraints__ProgVarString_11;
+    MR_Word check_hlds__build_mode_constraints__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__2_2, (MR_Integer) 0)));
+    MR_String check_hlds__build_mode_constraints__Var_13;
+    MR_Word check_hlds__build_mode_constraints__Var_6;
+
+    check_hlds__build_mode_constraints__ProgVar_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_12, (MR_Integer) 0)));
+    check_hlds__build_mode_constraints__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_12, (MR_Integer) 1)));
+    check_hlds__build_mode_constraints__GoalIdNum_9 = (MR_Integer) check_hlds__build_mode_constraints__GoalId_7;
+    {
+      check_hlds__build_mode_constraints__GoalIdString_10 = mercury__string__int_to_string_1_f_0(check_hlds__build_mode_constraints__GoalIdNum_9);
+    }
+    {
+      mercury__varset__lookup_name_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__ProgVarset_4, check_hlds__build_mode_constraints__ProgVar_5, &check_hlds__build_mode_constraints__ProgVarString_11);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_13 = mercury__string__f_43_43_2_f_0((MR_String) ".", check_hlds__build_mode_constraints__GoalIdString_10);
+    }
+    {
+      check_hlds__build_mode_constraints__RepString_8 = mercury__string__f_43_43_2_f_0(check_hlds__build_mode_constraints__ProgVarString_11, check_hlds__build_mode_constraints__Var_13);
+    }
+    return check_hlds__build_mode_constraints__RepString_8;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__build_mode_constraints__conj_constraints_info_init_0_f_0(void)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__HeadVar__1_1;
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_4_4 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0];
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_5_5 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2];
+    MR_Word check_hlds__build_mode_constraints__Var_2;
+    MR_Word check_hlds__build_mode_constraints__Var_3;
+
+    {
+      check_hlds__build_mode_constraints__Var_2 = mercury__multi_map__init_0_f_0(check_hlds__build_mode_constraints__TypeInfo_4_4, check_hlds__build_mode_constraints__TypeInfo_5_5);
+    }
+    {
+      check_hlds__build_mode_constraints__Var_3 = mercury__multi_map__init_0_f_0(check_hlds__build_mode_constraints__TypeInfo_4_4, check_hlds__build_mode_constraints__TypeInfo_5_5);
+    }
+    {
+      check_hlds__build_mode_constraints__HeadVar__1_1 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Var_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__HeadVar__1_1, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_3));
+    }
+    return check_hlds__build_mode_constraints__HeadVar__1_1;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv4_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__equivalent_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv4_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv4_HeadVar__5_5));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_3;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv3_LambdaHeadVar__3_37;
+
+    {
+      check_hlds__build_mode_constraints__conv3_LambdaHeadVar__3_37 = check_hlds__build_mode_constraints__IntroducedFrom__func__add_call_headvar_constraints__794__1_2_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv3_LambdaHeadVar__3_37));
+    return check_hlds__build_mode_constraints__wrapper_arg_3;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21;
+    MR_Word check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_12,
+  MR_Word check_hlds__build_mode_constraints__Context_13,
+  MR_Word check_hlds__build_mode_constraints__GoalId_14,
+  MR_Word check_hlds__build_mode_constraints__CallerPredId_15,
+  MR_Word check_hlds__build_mode_constraints__CallArgs_16,
+  MR_Word check_hlds__build_mode_constraints__CalleePredId_17,
+  MR_Word check_hlds__build_mode_constraints__CalleeHeadVars_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_26,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_27,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_28,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_29)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_46_46;
+    MR_Word check_hlds__build_mode_constraints__TypeInfo_47_47;
+    MR_Word check_hlds__build_mode_constraints__HeadVarsAtHead_21;
+    MR_Word check_hlds__build_mode_constraints__CallArgsHere_22;
+    MR_Word check_hlds__build_mode_constraints__EquivVarss_23;
+    MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31;
+    MR_Word check_hlds__build_mode_constraints__Var_40;
+    MR_Word check_hlds__build_mode_constraints__Var_42;
+    MR_Word check_hlds__build_mode_constraints__Var_62;
+    MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31;
+    MR_Word check_hlds__build_mode_constraints__Var_45;
+    MR_Box check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_29;
+
+    {
+      check_hlds__build_mode_constraints__Var_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_12));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 4) = ((MR_Box) (check_hlds__build_mode_constraints__CalleePredId_17));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 5) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_62, check_hlds__build_mode_constraints__CalleeHeadVars_18, &check_hlds__build_mode_constraints__HeadVarsAtHead_21, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_26)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31);
+    }
+    check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_31_31);
+    {
+      check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_12, check_hlds__build_mode_constraints__CallerPredId_15, check_hlds__build_mode_constraints__CallArgs_16, check_hlds__build_mode_constraints__GoalId_14, &check_hlds__build_mode_constraints__CallArgsHere_22, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_31_31, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_27);
+    }
+    check_hlds__build_mode_constraints__TypeInfo_46_46 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2];
+    check_hlds__build_mode_constraints__TypeInfo_47_47 = (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[3];
+    {
+      check_hlds__build_mode_constraints__EquivVarss_23 = mercury__list__map_corresponding_3_f_0(check_hlds__build_mode_constraints__TypeInfo_46_46, check_hlds__build_mode_constraints__TypeInfo_46_46, check_hlds__build_mode_constraints__TypeInfo_47_47, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[3], check_hlds__build_mode_constraints__HeadVarsAtHead_21, check_hlds__build_mode_constraints__CallArgsHere_22);
+    }
+    check_hlds__build_mode_constraints__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_27, (MR_Integer) 0)));
+    check_hlds__build_mode_constraints__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_27, (MR_Integer) 1)));
+    {
+      check_hlds__build_mode_constraints__Var_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_40, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[2]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_40, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_call_headvar_constraints_11_p_0_3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_40, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_40, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_42));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_40, 4) = ((MR_Box) (check_hlds__build_mode_constraints__Context_13));
+    }
+    {
+      mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeInfo_47_47, (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0, check_hlds__build_mode_constraints__Var_40, check_hlds__build_mode_constraints__EquivVarss_23, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_28)), &check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_29);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_29 = ((MR_Word) check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_29);
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv4_HeadVar__5_5;
+
+    {
+      check_hlds__abstract_mode_constraints__add_constraint_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv4_HeadVar__5_5);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv4_HeadVar__5_5));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv3_HeadVar__4_4;
+
+    {
+      check_hlds__build_mode_constraints__conv3_HeadVar__4_4 = check_hlds__build_mode_constraints__mode_decl_constraints_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv3_HeadVar__4_4));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21;
+    MR_Word check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_12,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_13,
+  MR_Word check_hlds__build_mode_constraints__CallContext_14,
+  MR_Word check_hlds__build_mode_constraints__CallingPred_15,
+  MR_Word check_hlds__build_mode_constraints__Decls_16,
+  MR_Word check_hlds__build_mode_constraints__GoalId_17,
+  MR_Word check_hlds__build_mode_constraints__CallArgs_18,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_24,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_25,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_26,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_27)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_41_41;
+    MR_Word check_hlds__build_mode_constraints__CallArgsHere_21;
+    MR_Word check_hlds__build_mode_constraints__ModeSpecificConstraints_22;
+    MR_Word check_hlds__build_mode_constraints__Var_29;
+    MR_Word check_hlds__build_mode_constraints__Var_30;
+    MR_Word check_hlds__build_mode_constraints__Var_51;
+    MR_Word check_hlds__build_mode_constraints__Var_62;
+    MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_25;
+    MR_Word check_hlds__build_mode_constraints__Var_50;
+    MR_Word check_hlds__build_mode_constraints__OneModeOnlyConstraints_23;
+    MR_Word check_hlds__build_mode_constraints__Var_31;
+    MR_Word check_hlds__build_mode_constraints__Var_32;
+
+    {
+      check_hlds__build_mode_constraints__Var_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_13));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 4) = ((MR_Box) (check_hlds__build_mode_constraints__CallingPred_15));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_62, 5) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_17));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_62, check_hlds__build_mode_constraints__CallArgs_18, &check_hlds__build_mode_constraints__CallArgsHere_21, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_24)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_25);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_25 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_25);
+    check_hlds__build_mode_constraints__TypeCtorInfo_41_41 = (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_mc_constraint_0;
+    {
+      check_hlds__build_mode_constraints__Var_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_3[1]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_12));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_30, 4) = ((MR_Box) (check_hlds__build_mode_constraints__CallArgsHere_21));
+    }
+    {
+      check_hlds__build_mode_constraints__Var_29 = mercury__list__map_2_f_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[4], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[5], check_hlds__build_mode_constraints__Var_30, check_hlds__build_mode_constraints__Decls_16);
+    }
+    {
+      check_hlds__build_mode_constraints__ModeSpecificConstraints_22 = mercury__list__condense_1_f_0(check_hlds__build_mode_constraints__TypeCtorInfo_41_41, check_hlds__build_mode_constraints__Var_29);
+    }
+    check_hlds__build_mode_constraints__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_25, (MR_Integer) 0)));
+    check_hlds__build_mode_constraints__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_25, (MR_Integer) 1)));
+    check_hlds__build_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__build_mode_constraints__ModeSpecificConstraints_22)) == (MR_mktag((MR_Integer) 1)));
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        check_hlds__build_mode_constraints__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__ModeSpecificConstraints_22, (MR_Integer) 0)));
+        check_hlds__build_mode_constraints__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__ModeSpecificConstraints_22, (MR_Integer) 1)));
+        check_hlds__build_mode_constraints__succeeded = (check_hlds__build_mode_constraints__Var_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (check_hlds__build_mode_constraints__succeeded)
+          {
+            check_hlds__build_mode_constraints__succeeded = ((MR_tag((MR_Word) check_hlds__build_mode_constraints__Var_31)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__build_mode_constraints__succeeded)
+              check_hlds__build_mode_constraints__OneModeOnlyConstraints_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__build_mode_constraints__Var_31, (MR_Integer) 0)));
+          }
+      }
+    if (check_hlds__build_mode_constraints__succeeded)
+      {
+        MR_Word check_hlds__build_mode_constraints__Var_33;
+        MR_Box check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_27;
+
+        {
+          check_hlds__build_mode_constraints__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_33, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[1]));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_33, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_call_mode_decls_constraints_11_p_0_3));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_33, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_33, 3) = ((MR_Box) (check_hlds__build_mode_constraints__Var_51));
+          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_33, 4) = ((MR_Box) (check_hlds__build_mode_constraints__CallContext_14));
+        }
+        {
+          mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_41_41, (MR_Word) &check_hlds__abstract_mode_constraints__check_hlds__abstract_mode_constraints__type_ctor_info_pred_p_c_constraints_0, check_hlds__build_mode_constraints__Var_33, check_hlds__build_mode_constraints__OneModeOnlyConstraints_23, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_26)), &check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_27);
+        }
+        *check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_27 = ((MR_Word) check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_Constraints_27);
+      }
+    else
+      {
+        MR_Word check_hlds__build_mode_constraints__Var_37;
+
+        {
+          check_hlds__build_mode_constraints__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_37, 0) = ((MR_Box) (check_hlds__build_mode_constraints__ModeSpecificConstraints_22));
+        }
+        {
+          check_hlds__abstract_mode_constraints__add_constraint_5_p_0(check_hlds__build_mode_constraints__Var_51, check_hlds__build_mode_constraints__CallContext_14, check_hlds__build_mode_constraints__Var_37, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_0_26, check_hlds__build_mode_constraints__STATE_VARIABLE_Constraints_27);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_5(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_VarInfo_67;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_VarInfo_67);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv7_STATE_VARIABLE_VarInfo_67));
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_4(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__wrapper_arg_2;
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv6_LambdaHeadVar__2_89;
+
+    {
+      check_hlds__build_mode_constraints__conv6_LambdaHeadVar__2_89 = check_hlds__build_mode_constraints__IntroducedFrom__func__add_mc_vars_for_goal__299__1_1_f_0(((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1));
+    }
+    check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv6_LambdaHeadVar__2_89));
+    return check_hlds__build_mode_constraints__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_3(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_67;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_67);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv4_STATE_VARIABLE_VarInfo_67));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_2(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_67;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_67);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_67));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_67;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_67);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_67));
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(
+  MR_Word check_hlds__build_mode_constraints__PredId_6,
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_7,
+  MR_Word check_hlds__build_mode_constraints__Goal_8,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_66,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__build_mode_constraints__succeeded;
+        MR_Word check_hlds__build_mode_constraints__GoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_8, (MR_Integer) 0)));
+        MR_Word check_hlds__build_mode_constraints__GoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Goal_8, (MR_Integer) 1)));
+        MR_Word check_hlds__build_mode_constraints__Nonlocals_12;
+        MR_Word check_hlds__build_mode_constraints__GoalId_13;
+        MR_Word check_hlds__build_mode_constraints__NlsList_14;
+        MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+        MR_Word check_hlds__build_mode_constraints__Var_15;
+
+        {
+          check_hlds__build_mode_constraints__Nonlocals_12 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__build_mode_constraints__GoalInfo_11);
+        }
+        {
+          check_hlds__build_mode_constraints__GoalId_13 = hlds__hlds_goal__goal_info_get_goal_id_1_f_0(check_hlds__build_mode_constraints__GoalInfo_11);
+        }
+        {
+          parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__build_mode_constraints__Nonlocals_12, &check_hlds__build_mode_constraints__NlsList_14);
+        }
+        {
+          check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(check_hlds__build_mode_constraints__ProgVarset_7, check_hlds__build_mode_constraints__PredId_6, check_hlds__build_mode_constraints__NlsList_14, check_hlds__build_mode_constraints__GoalId_13, &check_hlds__build_mode_constraints__Var_15, check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_66, &check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68);
+        }
+        switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__GoalExpr_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__build_mode_constraints__SubGoal_24 = (MR_Word) MR_body(((MR_Word) check_hlds__build_mode_constraints__GoalExpr_10), (MR_Integer) 0);
+
+              /* direct tailcall eliminated */
+              {
+                MR_Word check_hlds__build_mode_constraints__next_value_of_Goal_8 = check_hlds__build_mode_constraints__SubGoal_24;
+                MR_Word check_hlds__build_mode_constraints__next_value_of_STATE_VARIABLE_VarInfo_0_66 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+
+                check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_66 = check_hlds__build_mode_constraints__next_value_of_STATE_VARIABLE_VarInfo_0_66;
+                check_hlds__build_mode_constraints__Goal_8 = check_hlds__build_mode_constraints__next_value_of_Goal_8;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 1:
+            *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+            break;
+          case (MR_Integer) 2:
+            *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word check_hlds__build_mode_constraints__ConjType_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Word check_hlds__build_mode_constraints__Goals_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+
+                  switch (check_hlds__build_mode_constraints__ConjType_16) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+                      break;
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word check_hlds__build_mode_constraints__Var_92;
+                        MR_Box check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67;
+
+                        {
+                          check_hlds__build_mode_constraints__Var_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_92, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[0]));
+                          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_92, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_1));
+                          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_92, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_92, 3) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_6));
+                          MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_92, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_7));
+                        }
+                        {
+                          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_92, check_hlds__build_mode_constraints__Goals_17, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68)), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67);
+                        }
+                        *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = ((MR_Word) check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_67);
+                      }
+                      break;
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word check_hlds__build_mode_constraints__Var_85;
+                  MR_Word check_hlds__build_mode_constraints__Goals_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Box check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_VarInfo_67;
+
+                  {
+                    check_hlds__build_mode_constraints__Var_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_85, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[0]));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_85, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_2));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_85, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_85, 3) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_85, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_7));
+                  }
+                  {
+                    mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_85, check_hlds__build_mode_constraints__Goals_100, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68)), &check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_VarInfo_67);
+                  }
+                  *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = ((MR_Word) check_hlds__build_mode_constraints__conv3_STATE_VARIABLE_VarInfo_67);
+                }
+                break;
+              case (MR_Integer) 4:
+                {
+                  MR_Word check_hlds__build_mode_constraints__TypeCtorInfo_110_110 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                  MR_Word check_hlds__build_mode_constraints__Cases_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 3)));
+                  MR_Word check_hlds__build_mode_constraints__Var_90;
+                  MR_Word check_hlds__build_mode_constraints__Goals_99;
+                  MR_Word check_hlds__build_mode_constraints__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Word check_hlds__build_mode_constraints__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Box check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_VarInfo_67;
+
+                  {
+                    check_hlds__build_mode_constraints__Goals_99 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, check_hlds__build_mode_constraints__TypeCtorInfo_110_110, (MR_Word) &check_hlds__build_mode_constraints_scalar_common_2[2], check_hlds__build_mode_constraints__Cases_20);
+                  }
+                  {
+                    check_hlds__build_mode_constraints__Var_90 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_90, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[0]));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_90, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_5));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_90, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_90, 3) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_90, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_7));
+                  }
+                  {
+                    mercury__list__foldl_4_p_0(check_hlds__build_mode_constraints__TypeCtorInfo_110_110, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_90, check_hlds__build_mode_constraints__Goals_99, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68)), &check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_VarInfo_67);
+                  }
+                  *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = ((MR_Word) check_hlds__build_mode_constraints__conv8_STATE_VARIABLE_VarInfo_67);
+                }
+                break;
+              case (MR_Integer) 5:
+                {
+                  MR_Word check_hlds__build_mode_constraints__SubGoal_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Word check_hlds__build_mode_constraints__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word check_hlds__build_mode_constraints__next_value_of_Goal_8 = check_hlds__build_mode_constraints__SubGoal_101;
+                    MR_Word check_hlds__build_mode_constraints__next_value_of_STATE_VARIABLE_VarInfo_0_66 = check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68;
+
+                    check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_66 = check_hlds__build_mode_constraints__next_value_of_STATE_VARIABLE_VarInfo_0_66;
+                    check_hlds__build_mode_constraints__Goal_8 = check_hlds__build_mode_constraints__next_value_of_Goal_8;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 6:
+                {
+                  MR_Word check_hlds__build_mode_constraints__Cond_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 2)));
+                  MR_Word check_hlds__build_mode_constraints__Then_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 3)));
+                  MR_Word check_hlds__build_mode_constraints__Else_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 4)));
+                  MR_Word check_hlds__build_mode_constraints__Var_78;
+                  MR_Word check_hlds__build_mode_constraints__Var_79;
+                  MR_Word check_hlds__build_mode_constraints__Var_81;
+                  MR_Word check_hlds__build_mode_constraints__Goals_102;
+                  MR_Word check_hlds__build_mode_constraints__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+                  MR_Box check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_67;
+
+                  {
+                    check_hlds__build_mode_constraints__Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_79, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Else_29));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    check_hlds__build_mode_constraints__Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_78, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Then_28));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Var_78, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_79));
+                  }
+                  {
+                    check_hlds__build_mode_constraints__Goals_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Goals_102, 0) = ((MR_Box) (check_hlds__build_mode_constraints__Cond_27));
+                    MR_hl_field(MR_mktag(1), check_hlds__build_mode_constraints__Goals_102, 1) = ((MR_Box) (check_hlds__build_mode_constraints__Var_78));
+                  }
+                  {
+                    check_hlds__build_mode_constraints__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_81, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_5[0]));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_81, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0_3));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_81, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_81, 3) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_81, 4) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_7));
+                  }
+                  {
+                    mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_81, check_hlds__build_mode_constraints__Goals_102, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_68_68)), &check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_67);
+                  }
+                  *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_67 = ((MR_Word) check_hlds__build_mode_constraints__conv5_STATE_VARIABLE_VarInfo_67);
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word check_hlds__build_mode_constraints__ShortHand_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__build_mode_constraints__GoalExpr_10, (MR_Integer) 1)));
+
+                  switch (MR_tag((MR_Word) check_hlds__build_mode_constraints__ShortHand_30)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        {
+                          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_mc_vars_for_goal\'/5", (MR_String) "bi_implication");
+                          return;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        {
+                          mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_mc_vars_for_goal\'/5", (MR_String) "NYI: atomic_goal");
+                          return;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        {
+                          mercury__require__sorry_3_p_0((MR_String) "check_hlds.build_mode_constraints", (MR_String) "predicate \140check_hlds.build_mode_constraints.add_mc_vars_for_goal\'/5", (MR_String) "try_goal");
+                          return;
+                        }
+                      }
+                      break;
+                  }
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_3,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_4)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21;
+    MR_Word check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23;
+
+    {
+      check_hlds__build_mode_constraints__IntroducedFrom__pred__prog_vars_at_path__1010__1_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), &check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21, ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_3), &check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_2 = ((MR_Box) (check_hlds__build_mode_constraints__conv1_LambdaHeadVar__2_21));
+    *check_hlds__build_mode_constraints__wrapper_arg_4 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_LambdaHeadVar__4_23));
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0(
+  MR_Word check_hlds__build_mode_constraints__ProgVarset_8,
+  MR_Word check_hlds__build_mode_constraints__PredId_9,
+  MR_Word check_hlds__build_mode_constraints__ProgVars_10,
+  MR_Word check_hlds__build_mode_constraints__GoalId_11,
+  MR_Word * check_hlds__build_mode_constraints__MCVars_12,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_16,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_17)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Var_18;
+    MR_Box check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_17;
+
+    {
+      check_hlds__build_mode_constraints__Var_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 1) = ((MR_Box) (check_hlds__build_mode_constraints__prog_vars_at_path_7_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ProgVarset_8));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 4) = ((MR_Box) (check_hlds__build_mode_constraints__PredId_9));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_18, 5) = ((MR_Box) (check_hlds__build_mode_constraints__GoalId_11));
+    }
+    {
+      mercury__list__map_foldl_5_p_0((MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[0], (MR_Word) &check_hlds__build_mode_constraints_scalar_common_1[2], (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_18, check_hlds__build_mode_constraints__ProgVars_10, check_hlds__build_mode_constraints__MCVars_12, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_16)), &check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_17);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_17 = ((MR_Word) check_hlds__build_mode_constraints__conv2_STATE_VARIABLE_VarInfo_17);
+  }
+}
+
+static void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_scc_heads_4_p_0_1(
+  MR_Box check_hlds__build_mode_constraints__closure_arg,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_1,
+  MR_Box check_hlds__build_mode_constraints__wrapper_arg_2,
+  MR_Box * check_hlds__build_mode_constraints__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__build_mode_constraints__closure = check_hlds__build_mode_constraints__closure_arg;
+    MR_Word check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_13;
+
+    {
+      check_hlds__build_mode_constraints__add_mc_vars_for_pred_head_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_1), ((MR_Word) check_hlds__build_mode_constraints__wrapper_arg_2), &check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_13);
+    }
+    *check_hlds__build_mode_constraints__wrapper_arg_3 = ((MR_Box) (check_hlds__build_mode_constraints__conv0_STATE_VARIABLE_VarInfo_13));
+  }
+}
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_scc_heads_4_p_0(
+  MR_Word check_hlds__build_mode_constraints__ModuleInfo_5,
+  MR_Word check_hlds__build_mode_constraints__PredIds_6,
+  MR_Word check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_8,
+  MR_Word * check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_9)
+{
+  {
+    MR_bool check_hlds__build_mode_constraints__succeeded;
+    MR_Word check_hlds__build_mode_constraints__Var_10;
+    MR_Box check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_9;
+
+    {
+      check_hlds__build_mode_constraints__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 0) = ((MR_Box) (&check_hlds__build_mode_constraints_scalar_common_3[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 1) = ((MR_Box) (check_hlds__build_mode_constraints__add_mc_vars_for_scc_heads_4_p_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__build_mode_constraints__Var_10, 3) = ((MR_Box) (check_hlds__build_mode_constraints__ModuleInfo_5));
+    }
+    {
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0, check_hlds__build_mode_constraints__Var_10, check_hlds__build_mode_constraints__PredIds_6, ((MR_Box) (check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_0_8)), &check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_9);
+    }
+    *check_hlds__build_mode_constraints__STATE_VARIABLE_VarInfo_9 = ((MR_Word) check_hlds__build_mode_constraints__conv1_STATE_VARIABLE_VarInfo_9);
+  }
+}
+
+void mercury__check_hlds__build_mode_constraints__init(void)
+{
+}
+
+void mercury__check_hlds__build_mode_constraints__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_args_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conjunct_production_map_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_prog_var_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_map_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mode_constraints_0);
+	MR_register_type_ctor_info(&check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_nonlocals_0);
+}
+
+void mercury__check_hlds__build_mode_constraints__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__build_mode_constraints__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module check_hlds.build_mode_constraints. */

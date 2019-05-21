@@ -1,0 +1,11 @@
+:- module (backend_libs.arg_pack).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (parse_tree.prog_data).
+:- func count_distinct_words(list.list(parse_tree.prog_data.arg_width)) = int.
+:- pred group_same_word_elements(list.list(parse_tree.prog_data.arg_width), list.list(T), list.list(list.list(T))).
+:- mode group_same_word_elements((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pack_args(pred(T, int, maybe.maybe(T), T, Acc1, Acc1, Acc2, Acc2), list.list(parse_tree.prog_data.arg_width), list.list(T), list.list(T), Acc1, Acc1, Acc2, Acc2).
+:- mode pack_args(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
