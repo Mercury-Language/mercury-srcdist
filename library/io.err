@@ -1,0 +1,2 @@
+io.m:3914: Warning: inst `uniq_buffer'/0 includes references to function
+io.m:3914:   symbols, but does not declare what type constructor it is for.

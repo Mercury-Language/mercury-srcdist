@@ -1,0 +1,135 @@
+/*
+** Automatically generated from `rbmm.region_instruction.m'
+** by the Mercury compiler,
+** version rotd-2017-11-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.region_instruction.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__region_instruction
+#define MR_HEADER_GUARD_transform_hlds__rbmm__region_instruction
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__REGION_INSTRUCTION_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__REGION_INSTRUCTION_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_type_0;
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word * param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__rbmm__region_instruction__init(void);
+void mercury__transform_hlds__rbmm__region_instruction__init_type_tables(void);
+void mercury__transform_hlds__rbmm__region_instruction__init_debugger(void);
+const char *mercury__transform_hlds__rbmm__region_instruction__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.rbmm.region_instruction
+
+// :- end_interface transform_hlds.rbmm.region_instruction.
