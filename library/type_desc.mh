@@ -1,0 +1,43 @@
+/*
+** Automatically generated from `type_desc.m'
+** by the Mercury compiler,
+** version rotd-2017-10-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef TYPE_DESC_MH
+#define TYPE_DESC_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TYPE_DESC_DECL_GUARD
+#define TYPE_DESC_DECL_GUARD
+
+#include "mercury_heap.h" /* for MR_incr_hp_msg() etc. */
+#include "mercury_misc.h" /* for MR_fatal_error() */
+#include "mercury_string.h"   /* for MR_make_aligned_string() */
+#include "mercury_type_desc.h"
+
+
+#endif
+MR_String ML_type_name(MR_Word);
+MR_Word ML_get_type_info_for_type_info(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TYPE_DESC_MH */
