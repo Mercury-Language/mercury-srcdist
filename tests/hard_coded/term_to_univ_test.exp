@@ -1,0 +1,2 @@
+functor(atom("univ_cons"), [functor(integer(base_10, i(1, [4]), signed, size_word), [], context("", 0))], context("", 0))
+univ_cons(4)

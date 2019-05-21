@@ -1,0 +1,20 @@
+:- module (parse_tree.parse_inst_mode_name).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var(parse_tree.parse_inst_mode_name.why_no_constrained_inst_var).
+:- type why_no_constrained_inst_var
+    --->    wnciv_constraint_rhs 
+    ;       wnciv_inst_defn_lhs 
+    ;       wnciv_eqv_inst_defn_rhs 
+    ;       wnciv_mode_defn_rhs 
+    ;       wnciv_type_and_mode 
+    ;       wnciv_solver_type_inst 
+    ;       wnciv_mutable_inst .
