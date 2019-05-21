@@ -1,0 +1,11 @@
+:- module (parse_tree.module_deps_graph).
+:- interface.
+:- import_module digraph.
+:- import_module mdbcomp.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_imports).
+:- type deps_graph == digraph.digraph(mdbcomp.sym_name.module_name).
+:- type lookup_module_and_imports == ((func mdbcomp.sym_name.module_name) = parse_tree.module_imports.module_and_imports).
+:- mode (lookup_module_and_imports) == builtin.in((func((builtin.in)) = (builtin.out) is det)).
+:- pred add_module_and_imports_to_deps_graph(parse_tree.module_imports.module_and_imports, parse_tree.module_deps_graph.lookup_module_and_imports, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph).
+:- mode add_module_and_imports_to_deps_graph((builtin.in), ((parse_tree.module_deps_graph).lookup_module_and_imports), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
