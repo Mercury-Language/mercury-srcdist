@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_closure_gen).
+:- interface.
+:- type closure_kind
+	where	type_is_abstract_enum(2).
