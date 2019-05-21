@@ -1,0 +1,14 @@
+:- module (hlds.special_pred).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.status).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type special_pred_maps
+    --->    special_pred_maps(((hlds.special_pred).spm_unify_map) :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id), ((hlds.special_pred).spm_index_map) :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id), ((hlds.special_pred).spm_compare_map) :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id)).

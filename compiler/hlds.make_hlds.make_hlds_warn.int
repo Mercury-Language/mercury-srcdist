@@ -1,0 +1,18 @@
+:- module ((hlds.make_hlds).make_hlds_warn).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.quantification).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- pred add_quant_warnings(parse_tree.prog_data.simple_call_id, parse_tree.prog_data.prog_varset, list.list(hlds.quantification.quant_warning), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_quant_warnings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred check_promise_ex_decl(parse_tree.prog_data.prog_vars, parse_tree.prog_data.promise_type, parse_tree.prog_item.goal, parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_promise_ex_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_singletons(hlds.hlds_module.module_info, parse_tree.prog_data.simple_call_id, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode warn_singletons((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_singletons_in_pragma_foreign_proc(hlds.hlds_module.module_info, parse_tree.prog_data_foreign.pragma_foreign_proc_impl, libs.globals.foreign_language, list.list(maybe.maybe(parse_tree.prog_data_foreign.foreign_arg_name_mode)), parse_tree.prog_data.prog_context, parse_tree.prog_data.simple_call_id, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode warn_singletons_in_pragma_foreign_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

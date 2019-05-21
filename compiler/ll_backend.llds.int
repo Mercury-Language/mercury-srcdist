@@ -1,0 +1,409 @@
+:- module (ll_backend.llds).
+:- interface.
+:- import_module assoc_list.
+:- import_module backend_libs.
+:- import_module bool.
+:- import_module check_hlds.
+:- import_module cord.
+:- import_module counter.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (backend_libs.rtti).
+:- import_module (check_hlds.type_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.layout).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- import_module (parse_tree.prog_data_pragma).
+:- import_module (parse_tree.prog_foreign).
+:- type add_region_ops
+    --->    add_region_ops 
+    ;       do_not_add_region_ops .
+:- type add_trail_ops
+    --->    add_trail_ops 
+    ;       do_not_add_trail_ops .
+:- type alloc_site_id
+    --->    alloc_site_id(ll_backend.layout.alloc_site_info).
+:- type allow_lco
+    --->    do_not_allow_lco 
+    ;       allow_lco .
+:- type c_code_live_lvals
+    --->    no_live_lvals_info 
+    ;       live_lvals_info(set.set(ll_backend.llds.lval)).
+:- type c_file
+    --->    c_file(((ll_backend.llds).cfile_modulename) :: mdbcomp.sym_name.module_name, ((ll_backend.llds).cfile_foreign_decl_codes) :: list.list(parse_tree.prog_foreign.foreign_decl_code), ((ll_backend.llds).cfile_foreign_body_codes) :: list.list(parse_tree.prog_foreign.foreign_body_code), ((ll_backend.llds).cfile_foreign_export_defns) :: list.list(parse_tree.prog_foreign.foreign_export_defn), ((ll_backend.llds).cfile_vars) :: list.list(ll_backend.llds.tabling_info_struct), ((ll_backend.llds).cfile_scalar_common_data) :: list.list(ll_backend.llds.scalar_common_data_array), ((ll_backend.llds).cfile_vector_common_data) :: list.list(ll_backend.llds.vector_common_data_array), ((ll_backend.llds).cfile_rtti_data) :: list.list(backend_libs.rtti.rtti_data), ((ll_backend.llds).cfile_ptis) :: list.list(ll_backend.llds.rval), ((ll_backend.llds).cfile_hlds_var_nums) :: list.list(int), ((ll_backend.llds).cfile_short_locns) :: list.list(int), ((ll_backend.llds).cfile_long_locns) :: list.list(int), ((ll_backend.llds).cfile_user_event_var_nums) :: list.list(maybe.maybe(int)), ((ll_backend.llds).cfile_user_events) :: list.list(ll_backend.layout.user_event_data), ((ll_backend.llds).cfile_no_var_label_layouts) :: list.list(ll_backend.layout.label_layout_no_vars), ((ll_backend.llds).cfile_svar_label_layouts) :: list.list(ll_backend.layout.label_layout_short_vars), ((ll_backend.llds).cfile_lvar_label_layouts) :: list.list(ll_backend.layout.label_layout_long_vars), ((ll_backend.llds).cfile_i_label_to_layout_map) :: map.map(ll_backend.llds.label, ll_backend.layout.layout_slot_name), ((ll_backend.llds).cfile_p_label_to_layout_map) :: map.map(ll_backend.llds.label, ll_backend.llds.data_id), ((ll_backend.llds).cfile_call_sites) :: list.list(hlds.hlds_pred.call_site_static_data), ((ll_backend.llds).cfile_coverage_points) :: list.list(mdbcomp.program_representation.coverage_point_info), ((ll_backend.llds).cfile_proc_statics) :: list.list(ll_backend.layout.proc_layout_proc_static), ((ll_backend.llds).cfile_proc_head_var_nums) :: list.list(int), ((ll_backend.llds).cfile_proc_var_names) :: list.list(int), ((ll_backend.llds).cfile_proc_body_bytecodes) :: list.list(int), ((ll_backend.llds).cfile_ts_string_table) :: list.list(string), ((ll_backend.llds).cfile_table_io_entries) :: list.list(ll_backend.layout.table_io_entry_data), ((ll_backend.llds).cfile_table_io_entry_map) :: map.map(hlds.hlds_pred.pred_proc_id, ll_backend.layout.layout_slot_name), ((ll_backend.llds).cfile_proc_event_layouts) :: list.list(ll_backend.layout.layout_slot_name), ((ll_backend.llds).cfile_exec_traces) :: list.list(ll_backend.layout.proc_layout_exec_trace), ((ll_backend.llds).cfile_proc_layouts) :: list.list(ll_backend.layout.proc_layout_data), ((ll_backend.llds).cfile_module_layout_data) :: list.list(ll_backend.layout.module_layout_data), ((ll_backend.llds).cfile_closure_layout_data) :: list.list(ll_backend.layout.closure_proc_id_data), ((ll_backend.llds).cfile_alloc_sites) :: list.list(ll_backend.layout.alloc_site_info), ((ll_backend.llds).cfile_alloc_site_map) :: map.map(ll_backend.llds.alloc_site_id, ll_backend.layout.layout_slot_name), ((ll_backend.llds).cfile_code) :: list.list(ll_backend.llds.comp_gen_c_module), ((ll_backend.llds).cfile_user_init_c_names) :: list.list(string), ((ll_backend.llds).cfile_user_final_c_names) :: list.list(string), ((ll_backend.llds).cfile_complexity) :: list.list(hlds.hlds_module.complexity_proc_info)).
+:- type c_global_var_ref
+    --->    env_var_ref(string).
+:- type c_procedure
+    --->    c_procedure(((ll_backend.llds).cproc_name) :: string, ((ll_backend.llds).cproc_orig_arity) :: int, ((ll_backend.llds).cproc_id) :: hlds.hlds_pred.pred_proc_id, ((ll_backend.llds).cproc_proc_label) :: mdbcomp.prim_data.proc_label, ((ll_backend.llds).cproc_code_model) :: hlds.code_model.code_model, ((ll_backend.llds).cproc_code) :: list.list(ll_backend.llds.instruction), ((ll_backend.llds).cproc_label_nums) :: counter.counter, ((ll_backend.llds).cproc_may_alter_rtti) :: ll_backend.llds.may_alter_rtti, ((ll_backend.llds).cproc_c_global_vars) :: set.set(string)).
+:- type call_model
+    --->    call_model_det(ll_backend.llds.allow_lco)
+    ;       call_model_semidet(ll_backend.llds.allow_lco)
+    ;       call_model_nondet(ll_backend.llds.nondet_tail_call).
+:- type can_branch_away
+    --->    can_branch_away 
+    ;       cannot_branch_away .
+:- type cell_arg
+    --->    cell_arg_full_word(ll_backend.llds.rval, ll_backend.llds.completeness)
+    ;       cell_arg_double_word(ll_backend.llds.rval)
+    ;       cell_arg_skip 
+    ;       cell_arg_take_addr(parse_tree.prog_data.prog_var, maybe.maybe(ll_backend.llds.rval)).
+:- type code_addr
+    --->    code_label(ll_backend.llds.label)
+    ;       code_imported_proc(mdbcomp.prim_data.proc_label)
+    ;       code_succip 
+    ;       do_succeed(bool.bool)
+    ;       do_redo 
+    ;       do_fail 
+    ;       do_trace_redo_fail_shallow 
+    ;       do_trace_redo_fail_deep 
+    ;       do_call_closure(ll_backend.llds.ho_call_variant)
+    ;       do_call_class_method(ll_backend.llds.ho_call_variant)
+    ;       do_not_reached .
+:- type common_cell_arg_group
+    --->    common_cell_grouped_args(ll_backend.llds.llds_type, int, list.list(ll_backend.llds.rval))
+    ;       common_cell_ungrouped_arg(ll_backend.llds.llds_type, ll_backend.llds.rval).
+:- type common_cell_type
+    --->    plain_type(list.list(ll_backend.llds.llds_type))
+    ;       grouped_args_type(assoc_list.assoc_list(ll_backend.llds.llds_type, int)).
+:- type common_cell_value
+    --->    plain_value(list.list(ll_backend.llds.typed_rval))
+    ;       grouped_args_value(list.list(ll_backend.llds.common_cell_arg_group)).
+:- type comp_gen_c_module
+    --->    comp_gen_c_module(((ll_backend.llds).cgcm_name) :: string, ((ll_backend.llds).cgcm_procs) :: list.list(ll_backend.llds.c_procedure)).
+:- type completeness
+    --->    complete 
+    ;       incomplete .
+:- type const_struct_map == map.map(int, ll_backend.llds.typed_rval).
+:- type data_id
+    --->    rtti_data_id(backend_libs.rtti.rtti_id)
+    ;       proc_tabling_data_id(mdbcomp.prim_data.proc_label, backend_libs.rtti.proc_tabling_struct_id)
+    ;       scalar_common_data_id(ll_backend.llds.type_num, int)
+    ;       vector_common_data_id(ll_backend.llds.type_num, int)
+    ;       layout_id(ll_backend.layout.layout_name)
+    ;       layout_slot_id(ll_backend.llds.layout_slot_id_kind, hlds.hlds_pred.pred_proc_id).
+:- type double_stack_type
+    --->    double_stackvar 
+    ;       double_parent_stackvar .
+:- type embedded_stack_frame_id
+    --->    embedded_stack_frame_id(ll_backend.llds.main_stack, int, int).
+:- type entry_label_type
+    --->    entry_label_c_local 
+    ;       entry_label_local 
+    ;       entry_label_exported .
+:- type exprn_opts
+    --->    exprn_opts(((ll_backend.llds).non_local_gotos) :: ll_backend.llds.have_non_local_gotos, ((ll_backend.llds).asm_labels) :: ll_backend.llds.have_asm_labels, ((ll_backend.llds).unboxed_floats) :: ll_backend.llds.have_unboxed_floats, ((ll_backend.llds).float_registers) :: ll_backend.llds.use_float_registers, ((ll_backend.llds).det_stack_float_width) :: hlds.hlds_llds.stack_slot_width, ((ll_backend.llds).static_ground_cells) :: ll_backend.llds.have_static_ground_cells, ((ll_backend.llds).static_ground_floats) :: ll_backend.llds.have_static_ground_floats, ((ll_backend.llds).static_code_addresses) :: ll_backend.llds.have_static_code_addresses, ((ll_backend.llds).unboxed_int64s) :: ll_backend.llds.have_unboxed_int64s).
+:- type foreign_proc_component
+    --->    foreign_proc_inputs(list.list(ll_backend.llds.foreign_proc_input))
+    ;       foreign_proc_outputs(list.list(ll_backend.llds.foreign_proc_output))
+    ;       foreign_proc_user_code(maybe.maybe(parse_tree.prog_data.prog_context), parse_tree.prog_data_foreign.proc_affects_liveness, string)
+    ;       foreign_proc_raw_code(ll_backend.llds.can_branch_away, parse_tree.prog_data_foreign.proc_affects_liveness, ll_backend.llds.c_code_live_lvals, string)
+    ;       foreign_proc_fail_to(ll_backend.llds.label)
+    ;       foreign_proc_alloc_id(ll_backend.llds.alloc_site_id)
+    ;       foreign_proc_noop .
+:- type foreign_proc_decl
+    --->    foreign_proc_arg_decl(parse_tree.prog_data.mer_type, string, string).
+:- type foreign_proc_input
+    --->    foreign_proc_input(((ll_backend.llds).in_foreign_lang_var_name) :: string, ((ll_backend.llds).in_var_type) :: parse_tree.prog_data.mer_type, ((ll_backend.llds).in_var_type_is_dummy) :: check_hlds.type_util.is_dummy_type, ((ll_backend.llds).in_original_type) :: parse_tree.prog_data.mer_type, ((ll_backend.llds).in_arg_value) :: ll_backend.llds.rval, ((ll_backend.llds).in_maybe_foreign_type) :: maybe.maybe(ll_backend.llds.foreign_proc_type), ((ll_backend.llds).in_box_policy) :: parse_tree.prog_data_foreign.box_policy).
+:- type foreign_proc_output
+    --->    foreign_proc_output(((ll_backend.llds).out_arg_dest) :: ll_backend.llds.lval, ((ll_backend.llds).out_var_type) :: parse_tree.prog_data.mer_type, ((ll_backend.llds).out_var_type_is_dummy) :: check_hlds.type_util.is_dummy_type, ((ll_backend.llds).out_original_type) :: parse_tree.prog_data.mer_type, ((ll_backend.llds).out_var_name) :: string, ((ll_backend.llds).out_maybe_foreign_type) :: maybe.maybe(ll_backend.llds.foreign_proc_type), ((ll_backend.llds).out_box_policy) :: parse_tree.prog_data_foreign.box_policy).
+:- type foreign_proc_type
+    --->    foreign_proc_type(string, parse_tree.prog_data.foreign_type_assertions).
+:- type have_asm_labels
+    --->    have_asm_labels 
+    ;       do_not_have_asm_labels .
+:- type have_non_local_gotos
+    --->    have_non_local_gotos 
+    ;       do_not_have_non_local_gotos .
+:- type have_static_code_addresses
+    --->    have_static_code_addresses 
+    ;       do_not_have_static_code_addresses .
+:- type have_static_ground_cells
+    --->    have_static_ground_cells 
+    ;       do_not_have_static_ground_cells .
+:- type have_static_ground_floats
+    --->    have_static_ground_floats 
+    ;       do_not_have_static_ground_floats .
+:- type have_unboxed_floats
+    --->    have_unboxed_floats 
+    ;       do_not_have_unboxed_floats .
+:- type have_unboxed_int64s
+    --->    have_unboxed_int64s 
+    ;       do_not_have_unboxed_int64s .
+:- type ho_call_variant
+    --->    generic 
+    ;       specialized_known(int).
+:- type instr
+    --->    comment(string)
+    ;       livevals(set.set(ll_backend.llds.lval))
+    ;       block(int, int, list.list(ll_backend.llds.instruction))
+    ;       assign(ll_backend.llds.lval, ll_backend.llds.rval)
+    ;       keep_assign(ll_backend.llds.lval, ll_backend.llds.rval)
+    ;       llcall(ll_backend.llds.code_addr, ll_backend.llds.code_addr, list.list(ll_backend.llds.liveinfo), term.context, maybe.maybe(mdbcomp.goal_path.forward_goal_path), ll_backend.llds.call_model)
+    ;       mkframe(ll_backend.llds.nondet_frame_info, maybe.maybe(ll_backend.llds.code_addr))
+    ;       label(ll_backend.llds.label)
+    ;       goto(ll_backend.llds.code_addr)
+    ;       computed_goto(ll_backend.llds.rval, list.list(maybe.maybe(ll_backend.llds.label)))
+    ;       arbitrary_c_code(parse_tree.prog_data_foreign.proc_affects_liveness, ll_backend.llds.c_code_live_lvals, string)
+    ;       if_val(ll_backend.llds.rval, ll_backend.llds.code_addr)
+    ;       save_maxfr(ll_backend.llds.lval)
+    ;       restore_maxfr(ll_backend.llds.lval)
+    ;       incr_hp(ll_backend.llds.lval, maybe.maybe(ll_backend.llds.tag), maybe.maybe(int), ll_backend.llds.rval, maybe.maybe(ll_backend.llds.alloc_site_id), hlds.hlds_data.may_use_atomic_alloc, maybe.maybe(ll_backend.llds.rval), ll_backend.llds.llds_reuse)
+    ;       mark_hp(ll_backend.llds.lval)
+    ;       restore_hp(ll_backend.llds.rval)
+    ;       free_heap(ll_backend.llds.rval)
+    ;       push_region_frame(ll_backend.llds.region_stack_id, ll_backend.llds.embedded_stack_frame_id)
+    ;       region_fill_frame(ll_backend.llds.region_fill_frame_op, ll_backend.llds.embedded_stack_frame_id, ll_backend.llds.rval, ll_backend.llds.lval, ll_backend.llds.lval)
+    ;       region_set_fixed_slot(ll_backend.llds.region_set_fixed_op, ll_backend.llds.embedded_stack_frame_id, ll_backend.llds.rval)
+    ;       use_and_maybe_pop_region_frame(ll_backend.llds.region_use_frame_op, ll_backend.llds.embedded_stack_frame_id)
+    ;       store_ticket(ll_backend.llds.lval)
+    ;       reset_ticket(ll_backend.llds.rval, ll_backend.llds.reset_trail_reason)
+    ;       prune_ticket 
+    ;       discard_ticket 
+    ;       mark_ticket_stack(ll_backend.llds.lval)
+    ;       prune_tickets_to(ll_backend.llds.rval)
+    ;       incr_sp(int, string, ll_backend.llds.stack_incr_kind)
+    ;       decr_sp(int)
+    ;       decr_sp_and_return(int)
+    ;       foreign_proc_code(((ll_backend.llds).fproc_decls) :: list.list(ll_backend.llds.foreign_proc_decl), ((ll_backend.llds).fproc_components) :: list.list(ll_backend.llds.foreign_proc_component), ((ll_backend.llds).fproc_may_call_merc) :: parse_tree.prog_data_foreign.proc_may_call_mercury, ((ll_backend.llds).fproc_fix_nolayout) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.llds).fproc_fix_layout) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.llds).fproc_fix_onlylayout) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.llds).fproc_nofix) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.llds).fproc_hash_def_label) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.llds).fproc_stack_slot_ref) :: bool.bool, ((ll_backend.llds).fproc_maybe_dupl) :: parse_tree.prog_data_foreign.proc_may_duplicate)
+    ;       init_sync_term(ll_backend.llds.lval, int, int)
+    ;       fork_new_child(ll_backend.llds.lval, ll_backend.llds.label)
+    ;       join_and_continue(ll_backend.llds.lval, ll_backend.llds.label)
+    ;       lc_create_loop_control(int, ll_backend.llds.lval)
+    ;       lc_wait_free_slot(ll_backend.llds.rval, ll_backend.llds.lval, ll_backend.llds.label)
+    ;       lc_spawn_off(ll_backend.llds.rval, ll_backend.llds.rval, ll_backend.llds.label)
+    ;       lc_join_and_terminate(ll_backend.llds.rval, ll_backend.llds.rval).
+:- type instruction
+    --->    llds_instr(((ll_backend.llds).llds_inst) :: ll_backend.llds.instr, ((ll_backend.llds).llds_comment) :: string).
+:- type label
+    --->    internal_label(int, mdbcomp.prim_data.proc_label)
+    ;       entry_label(ll_backend.llds.entry_label_type, mdbcomp.prim_data.proc_label).
+:- type layout_locn
+    --->    locn_direct(ll_backend.llds.lval)
+    ;       locn_indirect(ll_backend.llds.lval, int).
+:- type layout_slot_id_kind
+    --->    table_io_entry_id .
+:- type live_value_type
+    --->    live_value_succip 
+    ;       live_value_curfr 
+    ;       live_value_maxfr 
+    ;       live_value_redoip 
+    ;       live_value_redofr 
+    ;       live_value_hp 
+    ;       live_value_trail_ptr 
+    ;       live_value_ticket 
+    ;       live_value_region_ite 
+    ;       live_value_region_disj 
+    ;       live_value_region_commit 
+    ;       live_value_var(parse_tree.prog_data.prog_var, string, parse_tree.prog_data.mer_type, ll_backend.llds.llds_inst)
+    ;       live_value_unwanted .
+:- type liveinfo
+    --->    live_lvalue(ll_backend.llds.layout_locn, ll_backend.llds.live_value_type, map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn))).
+:- type llds_code == cord.cord(ll_backend.llds.instruction).
+:- type llds_inst
+    --->    llds_inst_better_be_ground .
+:- type llds_proc_id == int.
+:- type llds_reuse
+    --->    no_llds_reuse 
+    ;       llds_reuse(ll_backend.llds.rval, maybe.maybe(ll_backend.llds.lval)).
+:- type llds_type
+    --->    lt_bool 
+    ;       lt_int_least8 
+    ;       lt_uint_least8 
+    ;       lt_int_least16 
+    ;       lt_uint_least16 
+    ;       lt_int_least32 
+    ;       lt_uint_least32 
+    ;       lt_int(parse_tree.prog_data.int_type)
+    ;       lt_float 
+    ;       lt_string 
+    ;       lt_data_ptr 
+    ;       lt_code_ptr 
+    ;       lt_word .
+:- type lval
+    --->    reg(hlds.hlds_llds.reg_type, int)
+    ;       succip 
+    ;       maxfr 
+    ;       curfr 
+    ;       hp 
+    ;       sp 
+    ;       parent_sp 
+    ;       temp(hlds.hlds_llds.reg_type, int)
+    ;       stackvar(int)
+    ;       parent_stackvar(int)
+    ;       framevar(int)
+    ;       double_stackvar(ll_backend.llds.double_stack_type, int)
+    ;       succip_slot(ll_backend.llds.rval)
+    ;       succfr_slot(ll_backend.llds.rval)
+    ;       redoip_slot(ll_backend.llds.rval)
+    ;       redofr_slot(ll_backend.llds.rval)
+    ;       prevfr_slot(ll_backend.llds.rval)
+    ;       field(maybe.maybe(ll_backend.llds.tag), ll_backend.llds.rval, ll_backend.llds.rval)
+    ;       mem_ref(ll_backend.llds.rval)
+    ;       global_var_ref(ll_backend.llds.c_global_var_ref)
+    ;       lvar(parse_tree.prog_data.prog_var).
+:- type lval_or_any_reg
+    --->    loa_lval(ll_backend.llds.lval)
+    ;       loa_any_reg .
+:- type main_stack
+    --->    det_stack 
+    ;       nondet_stack .
+:- type may_alter_rtti
+    --->    may_alter_rtti 
+    ;       must_not_alter_rtti .
+:- type mem_ref
+    --->    stackvar_ref(ll_backend.llds.rval)
+    ;       framevar_ref(ll_backend.llds.rval)
+    ;       heap_ref(ll_backend.llds.rval, maybe.maybe(int), ll_backend.llds.rval).
+:- type nondet_frame_info
+    --->    temp_frame(ll_backend.llds.temp_frame_type)
+    ;       ordinary_frame(string, int).
+:- type nondet_tail_call
+    --->    no_tail_call 
+    ;       checked_tail_call 
+    ;       unchecked_tail_call .
+:- type region_fill_frame_op
+    --->    region_fill_ite_protect 
+    ;       region_fill_ite_snapshot(ll_backend.llds.removed_at_start_of_else)
+    ;       region_fill_semi_disj_protect 
+    ;       region_fill_disj_snapshot 
+    ;       region_fill_commit .
+:- type region_ite_kind
+    --->    region_ite_semidet_cond 
+    ;       region_ite_nondet_cond .
+:- type region_set_fixed_op
+    --->    region_set_ite_num_protects 
+    ;       region_set_ite_num_snapshots 
+    ;       region_set_disj_num_protects 
+    ;       region_set_disj_num_snapshots 
+    ;       region_set_commit_num_entries .
+:- type region_stack_id
+    --->    region_stack_ite 
+    ;       region_stack_disj 
+    ;       region_stack_commit .
+:- type region_use_frame_op
+    --->    region_ite_then(ll_backend.llds.region_ite_kind)
+    ;       region_ite_else(ll_backend.llds.region_ite_kind)
+    ;       region_ite_nondet_cond_fail 
+    ;       region_disj_later 
+    ;       region_disj_last 
+    ;       region_disj_nonlast_semi_commit 
+    ;       region_commit_success 
+    ;       region_commit_failure .
+:- type removed_at_start_of_else
+    --->    removed_at_start_of_else 
+    ;       not_removed_at_start_of_else .
+:- type reset_trail_reason
+    --->    reset_reason_undo 
+    ;       reset_reason_commit 
+    ;       reset_reason_solve 
+    ;       reset_reason_exception 
+    ;       reset_reason_retry 
+    ;       reset_reason_gc .
+:- type rval
+    --->    lval(ll_backend.llds.lval)
+    ;       var(parse_tree.prog_data.prog_var)
+    ;       mkword(ll_backend.llds.tag, ll_backend.llds.rval)
+    ;       mkword_hole(ll_backend.llds.tag)
+    ;       const(ll_backend.llds.rval_const)
+    ;       unop(backend_libs.builtin_ops.unary_op, ll_backend.llds.rval)
+    ;       binop(backend_libs.builtin_ops.binary_op, ll_backend.llds.rval, ll_backend.llds.rval)
+    ;       mem_addr(ll_backend.llds.mem_ref).
+:- type rval_const
+    --->    llconst_true 
+    ;       llconst_false 
+    ;       llconst_int(int)
+    ;       llconst_uint(uint)
+    ;       llconst_int8(int8)
+    ;       llconst_uint8(uint8)
+    ;       llconst_int16(int16)
+    ;       llconst_uint16(uint16)
+    ;       llconst_int32(int32)
+    ;       llconst_uint32(uint32)
+    ;       llconst_int64(int)
+    ;       llconst_uint64(int)
+    ;       llconst_foreign(string, ll_backend.llds.llds_type)
+    ;       llconst_float(float)
+    ;       llconst_string(string)
+    ;       llconst_multi_string(list.list(string))
+    ;       llconst_code_addr(ll_backend.llds.code_addr)
+    ;       llconst_data_addr(ll_backend.llds.data_id, maybe.maybe(int)).
+:- type scalar_common_data_array
+    --->    scalar_common_data_array(((ll_backend.llds).scda_rval_types) :: ll_backend.llds.common_cell_type, ((ll_backend.llds).scda_type_num) :: ll_backend.llds.type_num, ((ll_backend.llds).scda_values) :: list.list(ll_backend.llds.common_cell_value)).
+:- type stack_incr_kind
+    --->    stack_incr_leaf 
+    ;       stack_incr_nonleaf .
+:- type tabling_info_struct
+    --->    tabling_info_struct(((ll_backend.llds).tis_proc_label) :: mdbcomp.prim_data.proc_label, ((ll_backend.llds).tis_eval_method) :: parse_tree.prog_data_pragma.eval_method, ((ll_backend.llds).tis_num_inputs) :: int, ((ll_backend.llds).tis_num_outputs) :: int, ((ll_backend.llds).tis_input_steps) :: list.list(hlds.hlds_pred.table_step_desc), ((ll_backend.llds).tis_maybe_output_steps) :: maybe.maybe(list.list(hlds.hlds_pred.table_step_desc)), ((ll_backend.llds).tis_ptis) :: ll_backend.llds.rval, ((ll_backend.llds).tis_type_params) :: ll_backend.llds.rval, ((ll_backend.llds).tis_size_limit) :: maybe.maybe(int), ((ll_backend.llds).tis_stats) :: parse_tree.prog_data_pragma.table_attr_statistics).
+:- type tag == int.
+:- type temp_frame_type
+    --->    det_stack_proc 
+    ;       nondet_stack_proc .
+:- type type_num
+    --->    type_num(int).
+:- type typed_rval
+    --->    typed_rval(ll_backend.llds.rval, ll_backend.llds.llds_type).
+:- type use_float_registers
+    --->    use_float_registers 
+    ;       do_not_use_float_registers .
+:- type vector_common_data_array
+    --->    vector_common_data_array(((ll_backend.llds).vcda_rval_types) :: ll_backend.llds.common_cell_type, ((ll_backend.llds).vcda_type_num) :: ll_backend.llds.type_num, ((ll_backend.llds).vcda_vector_num) :: int, ((ll_backend.llds).vcda_values) :: list.list(ll_backend.llds.common_cell_value)).
+:- inst (instr_foreign_proc_code) for (ll_backend.llds).instr/0 == bound(foreign_proc_code(ground, ground, ground, ground, ground, ground, ground, ground, ground, ground)).
+:- inst (instr_goto) for (ll_backend.llds).instr/0 == bound(goto(ground)).
+:- inst (instr_if_val) for (ll_backend.llds).instr/0 == bound(if_val(ground, ground)).
+:- inst (instr_llcall) for (ll_backend.llds).instr/0 == bound(llcall(ground, ground, ground, ground, ground, ground)).
+:- func abs_locn_to_lval(hlds.hlds_llds.abs_locn) = ll_backend.llds.lval.
+:- func abs_locn_to_lval_or_any_reg(hlds.hlds_llds.abs_locn) = ll_backend.llds.lval_or_any_reg.
+:- pred binop_return_type(backend_libs.builtin_ops.binary_op, ll_backend.llds.llds_type).
+:- mode binop_return_type((builtin.in), (builtin.out)) is det.
+:- pred break_up_local_label(ll_backend.llds.label, mdbcomp.prim_data.proc_label, int).
+:- mode break_up_local_label((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred build_typed_rvals(list.list(ll_backend.llds.rval), list.list(ll_backend.llds.llds_type), list.list(ll_backend.llds.typed_rval)).
+:- mode build_typed_rvals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func code_model_to_main_stack(hlds.code_model.code_model) = ll_backend.llds.main_stack.
+:- pred const_type(ll_backend.llds.rval_const, ll_backend.llds.llds_type).
+:- mode const_type((builtin.in), (builtin.out)) is det.
+:- func first_nonfixed_embedded_slot_addr(ll_backend.llds.embedded_stack_frame_id, int) = ll_backend.llds.rval.
+:- func get_asm_labels(ll_backend.llds.exprn_opts) = ll_backend.llds.have_asm_labels.
+:- func get_defining_module_name(mdbcomp.prim_data.proc_label) = mdbcomp.sym_name.module_name.
+:- func get_det_stack_float_width(ll_backend.llds.exprn_opts) = hlds.hlds_llds.stack_slot_width.
+:- func get_float_registers(ll_backend.llds.exprn_opts) = ll_backend.llds.use_float_registers.
+:- func get_nonlocal_gotos(ll_backend.llds.exprn_opts) = ll_backend.llds.have_non_local_gotos.
+:- func get_proc_label(ll_backend.llds.label) = mdbcomp.prim_data.proc_label.
+:- func get_static_code_addresses(ll_backend.llds.exprn_opts) = ll_backend.llds.have_static_code_addresses.
+:- func get_static_ground_cells(ll_backend.llds.exprn_opts) = ll_backend.llds.have_static_ground_cells.
+:- func get_static_ground_floats(ll_backend.llds.exprn_opts) = ll_backend.llds.have_static_ground_floats.
+:- func get_unboxed_floats(ll_backend.llds.exprn_opts) = ll_backend.llds.have_unboxed_floats.
+:- func get_unboxed_int64s(ll_backend.llds.exprn_opts) = ll_backend.llds.have_unboxed_int64s.
+:- func key_abs_locn_to_lval(V_1, hlds.hlds_llds.abs_locn) = ll_backend.llds.lval.
+:- func key_stack_slot_to_lval(V_1, hlds.hlds_llds.stack_slot) = ll_backend.llds.lval.
+:- pred lval_type(ll_backend.llds.lval, ll_backend.llds.llds_type).
+:- mode lval_type((builtin.in), (builtin.out)) is det.
+:- func region_stack_id_to_string(ll_backend.llds.region_stack_id) = string.
+:- pred register_type(hlds.hlds_llds.reg_type, ll_backend.llds.llds_type).
+:- mode register_type((builtin.in), (builtin.out)) is det.
+:- pred rval_type(ll_backend.llds.rval, ll_backend.llds.llds_type).
+:- mode rval_type((builtin.in), (builtin.out)) is det.
+:- func stack_slot_num_to_lval(ll_backend.llds.main_stack, int) = ll_backend.llds.lval.
+:- func stack_slot_num_to_lval_ref(ll_backend.llds.main_stack, int) = ll_backend.llds.rval.
+:- func stack_slot_to_lval(hlds.hlds_llds.stack_slot) = ll_backend.llds.lval.
+:- func typed_rvals_project_rvals(list.list(ll_backend.llds.typed_rval)) = list.list(ll_backend.llds.rval).
+:- func typed_rvals_project_types(list.list(ll_backend.llds.typed_rval)) = list.list(ll_backend.llds.llds_type).
+:- pred unop_arg_type(backend_libs.builtin_ops.unary_op, ll_backend.llds.llds_type).
+:- mode unop_arg_type((builtin.in), (builtin.out)) is det.
+:- pred unop_return_type(backend_libs.builtin_ops.unary_op, ll_backend.llds.llds_type).
+:- mode unop_return_type((builtin.in), (builtin.out)) is det.
