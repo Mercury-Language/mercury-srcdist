@@ -1,0 +1,27 @@
+:- module string.
+:- interface.
+:- include_module (string.builder).
+:- include_module (string.format).
+:- include_module (string.parse_util).
+:- import_module assoc_list.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module maybe.
+:- import_module ops.
+:- import_module pretty_printer.
+:- type justified_column
+    --->    left(list.list(string))
+    ;       right(list.list(string)).
+:- type line
+    --->    line(string).
+:- type poly_type
+    --->    f(float)
+    ;       i(int)
+    ;       s(string)
+    ;       c(char.char).
+:- type text_file
+    --->    text_file(string).
+:- implementation.
+:- include_module (string.parse_runtime).
+:- include_module (string.to_string).

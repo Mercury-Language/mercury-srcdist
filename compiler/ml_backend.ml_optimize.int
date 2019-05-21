@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_optimize).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred mlds_optimize(libs.globals.globals, ml_backend.mlds.mlds, ml_backend.mlds.mlds).
+:- mode mlds_optimize((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred tail_rec_call_assign_input_args(ml_backend.mlds.mlds_module_name, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_argument), list.list(ml_backend.mlds.mlds_rval), list.list(ml_backend.mlds.mlds_stmt), list.list(ml_backend.mlds.mlds_stmt), list.list(ml_backend.mlds.mlds_local_var_defn)).
+:- mode tail_rec_call_assign_input_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
