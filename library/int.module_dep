@@ -1,0 +1,13 @@
+module(1, "int.m",
+	int,
+	{},
+	{array, builtin, enum, pretty_printer, private_builtin},
+	{array, builtin, enum, exception, math, pretty_printer, private_builtin, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - int, "C#" - int, "Java" - int, "Erlang" - int},
+	no_foreign_export,
+	no_main
+).

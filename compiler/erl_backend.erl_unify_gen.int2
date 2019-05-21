@@ -1,0 +1,11 @@
+:- module (erl_backend.erl_unify_gen).
+:- interface.
+:- import_module hlds.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (erl_backend.elds).
+:- import_module (erl_backend.erl_code_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (parse_tree.prog_data).
+:- inst (termable_cons_id) for (parse_tree.prog_data).cons_id/0 == bound(char_const(ground) ; cons(ground, ground, ground) ; float_const(ground) ; int16_const(ground) ; int32_const(ground) ; int8_const(ground) ; int_const(ground) ; string_const(ground) ; tuple_cons(ground) ; uint16_const(ground) ; uint32_const(ground) ; uint8_const(ground) ; uint_const(ground)).

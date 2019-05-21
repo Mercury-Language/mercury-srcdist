@@ -1,0 +1,495 @@
+/*
+** Automatically generated from `instmap.m'
+** by the Mercury compiler,
+** version rotd-2018-01-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.instmap.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__instmap
+#define MR_HEADER_GUARD_hlds__instmap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__INSTMAP_DECL_GUARD
+#define HLDS__INSTMAP_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_arm_instmap_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmap_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmap_delta_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmapping_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_overlay_how_0;
+
+void MR_CALL 
+hlds__instmap__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_110_115_116_109_97_112_95_100_101_108_116_97_95_102_114_111_109_95_102_114_111_109_95_116_111_95_105_110_115_116_115_95_108_105_115_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_105_110_115_116_109_97_112_95_100_101_108_116_97_95_95_91_49_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__instmap__apply_instmap_delta_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__apply_instmap_delta_sv_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__bind_var_to_functor_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__instmap__bind_var_to_functors_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__instmap__compute_instmap_delta_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__init_reachable_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__instmap__init_unreachable_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__instmap__instmap_apply_sub_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_bound_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_changed_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_apply_instmap_delta_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_apply_sub_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_bind_var_to_functor_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_bind_var_to_functors_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_changed_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_delete_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_from_from_to_insts_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_from_mode_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_init_reachable_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_init_unreachable_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_insert_var_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_is_reachable_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_is_unreachable_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_lookup_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_map_foldl_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_no_output_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_restrict_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_search_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_set_var_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_set_vars_same_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_delta_to_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_is_reachable_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__instmap__instmap_is_unreachable_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__instmap__instmap_lookup_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_lookup_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_merge_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__instmap__instmap_restrict_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_set_var_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_set_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__instmap_set_vars_corresponding_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_set_vars_same_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__instmap__instmap_to_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__instmap__instmap_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__instmap__instmap_vars_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__instmap__make_arm_instmaps_for_cases_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__make_arm_instmaps_for_goals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__instmap__merge_instmap_delta_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__instmap__merge_instmap_deltas_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__instmap__pre_lambda_update_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__instmap__unify_instmap_delta_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+hlds__instmap__var_is_any_in_instmap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__instmap__var_is_bound_in_instmap_delta_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+hlds__instmap__var_is_ground_in_instmap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_no_var_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_var_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_vars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_from_assoc_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__instmap__instmap_from_assoc_list_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__instmap____Compare____arm_instmap_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__instmap____Compare____instmap_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__instmap____Compare____instmap_delta_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__instmap____Compare____overlay_how_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__instmap____Unify____arm_instmap_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__instmap____Unify____instmap_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__instmap____Unify____instmap_delta_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__instmap____Unify____overlay_how_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__instmap__init(void);
+void mercury__hlds__instmap__init_type_tables(void);
+void mercury__hlds__instmap__init_debugger(void);
+const char *mercury__hlds__instmap__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.instmap
+
+// :- end_interface hlds.instmap.
