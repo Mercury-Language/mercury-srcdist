@@ -1,0 +1,22 @@
+:- module (mdb.util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module (mdbcomp.prim_data).
+:- type line_number == int.
+:- func is_function(mdbcomp.prim_data.pred_or_func) = bool.bool.
+:- func is_predicate(mdbcomp.prim_data.pred_or_func) = bool.bool.
+:- pred limit(pred(list.list(T), list.list(T)), list.list(T), list.list(T)).
+:- mode limit(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred trace_get_command(string, string, io.io, io.io).
+:- mode trace_get_command((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred trace_get_command(string, string, io.input_stream, io.output_stream, io.io, io.io).
+:- mode trace_get_command((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred trace_getline(string, io.result(string), io.io, io.io).
+:- mode trace_getline((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred trace_getline(string, io.result(string), io.input_stream, io.output_stream, io.io, io.io).
+:- mode trace_getline((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred zip_with(pred(T1, T2, T3), list.list(T1), list.list(T2), list.list(T3)).
+:- mode zip_with(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
