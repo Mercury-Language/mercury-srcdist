@@ -1,0 +1,52 @@
+/*
+** Automatically generated from `inst_test.m'
+** by the Mercury compiler,
+** version rotd-2017-08-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef CHECK_HLDS__INST_TEST_MH
+#define CHECK_HLDS__INST_TEST_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CHECK_HLDS__INST_TEST_DECL_GUARD
+#define CHECK_HLDS__INST_TEST_DECL_GUARD
+
+typedef struct {
+    MR_Word     iig_inst_addr;
+    MR_Word     iig_is_ground;
+} InstIsGroundCacheEntry;
+
+#define INST_IS_GROUND_CACHE_SIZE 1307
+
+/*
+** Every entry should be implicitly initialized to zeros. Since zero is
+** not a valid address for an inst, uninitialized entries cannot be mistaken
+** for filled-in entries.
+*/
+
+static  InstIsGroundCacheEntry
+                inst_is_ground_cache[INST_IS_GROUND_CACHE_SIZE];
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CHECK_HLDS__INST_TEST_MH */

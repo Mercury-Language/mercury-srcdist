@@ -1,0 +1,3416 @@
+/*
+** Automatically generated from `lookup_switch.m'
+** by the Mercury compiler,
+** version rotd-2017-08-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.lookup_switch. */
+/* :- implementation. */
+
+/*
+INIT mercury__ll_backend__lookup_switch__init
+ENDINIT
+*/
+
+#include "ll_backend.lookup_switch.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "ll_backend.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "backend_libs.switch_util.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "check_hlds.type_util.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_form.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.code_info.mih"
+#include "ll_backend.code_loc_dep.mih"
+#include "ll_backend.continuation_info.mih"
+#include "ll_backend.global_data.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.llds.mih"
+#include "ll_backend.lookup_util.mih"
+#include "ll_backend.trace_gen.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "std_util.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__lookup_switch__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_VA_PseudoTypeInfo_Struct0 ll_backend__lookup_switch____vpti_pred_0;
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_0;
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_1;
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_2;
+
+static const MR_EnumFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__enum_value_ordered_case_kind_0[3];
+
+static const MR_EnumFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__enum_name_ordered_case_kind_0[3];
+
+static const MR_Integer ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_case_kind_0[3];
+
+static const MR_FA_PseudoTypeInfo_Struct3 ll_backend__lookup_switch__backend_libs__switch_util__pti_case_consts_3__pseudo_1__plain_ll_backend__llds__type_ctor_info_rval_0__plain_backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__list__ti_list_1ll_backend__llds__type_ctor_info_llds_type_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo ll_backend__lookup_switch__ll_backend__lookup_switch__field_types_lookup_switch_info_1_0[4];
+
+static const MR_ConstString ll_backend__lookup_switch__ll_backend__lookup_switch__field_names_lookup_switch_info_1_0[4];
+
+static const MR_DuFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__du_functor_desc_lookup_switch_info_1_0;
+
+static const MR_DuFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__du_stag_ordered_lookup_switch_info_1_0[1];
+
+static const MR_DuPtagLayout ll_backend__lookup_switch__ll_backend__lookup_switch__du_ptag_ordered_lookup_switch_info_1[1];
+
+static const MR_DuFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__du_name_ordered_lookup_switch_info_1[1];
+
+static const MR_Integer ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_lookup_switch_info_1[1];
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__IntroducedFrom__pred__generate_several_soln_int_lookup_switch__493__1_2_p_0(
+  MR_Word ll_backend__lookup_switch__OutVars_27,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_68);
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_115_105_109_112_108_101_95_105_110_116_95_108_111_111_107_117_112_95_115_119_105_116_99_104_95_95_91_52_93_95_48_13_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_14,
+  MR_Word ll_backend__lookup_switch__StoreMap_15,
+  MR_Integer ll_backend__lookup_switch__StartVal_16,
+  MR_Word ll_backend__lookup_switch__CaseValues_18,
+  MR_Word ll_backend__lookup_switch__OutVars_19,
+  MR_Word ll_backend__lookup_switch__OutTypes_20,
+  MR_Word ll_backend__lookup_switch__NeedBitVecCheck_21,
+  MR_Word ll_backend__lookup_switch__Liveness_22,
+  MR_Word * ll_backend__lookup_switch__Code_23,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_39,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_40,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_41);
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_118_101_99_95_116_101_115_116_95_95_91_49_44_32_53_93_95_48_9_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_10,
+  MR_Word ll_backend__lookup_switch__CaseVals_11,
+  MR_Integer ll_backend__lookup_switch__Start_12,
+  MR_Word * ll_backend__lookup_switch__CheckCode_14,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_27,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_28,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_29,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CLD_30);
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_95_118_101_99_95_50_95_95_91_49_93_95_48_5_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__Start_2,
+  MR_Integer ll_backend__lookup_switch__WordBits_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_BitMap_5);
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_bit_vec_args_3_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__Count_2,
+  MR_Word * ll_backend__lookup_switch__HeadVar__3_3);
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__CurIndex_2,
+  MR_Word ll_backend__lookup_switch__OutTypes_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_RevRows_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_RevRows_5);
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_3(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_2(
+  MR_Box ll_backend__lookup_switch__closure_arg);
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg);
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_19,
+  MR_Word ll_backend__lookup_switch__EndLabel_20,
+  MR_Word ll_backend__lookup_switch__StoreMap_21,
+  MR_Integer ll_backend__lookup_switch__StartVal_22,
+  MR_Integer ll_backend__lookup_switch__EndVal_23,
+  MR_Word ll_backend__lookup_switch__CaseSolns_24,
+  MR_Word ll_backend__lookup_switch__ResumeVars_25,
+  MR_Word ll_backend__lookup_switch__AddTrailOps_26,
+  MR_Word ll_backend__lookup_switch__OutVars_27,
+  MR_Word ll_backend__lookup_switch__OutTypes_28,
+  MR_Word ll_backend__lookup_switch__NeedBitVecCheck_29,
+  MR_Word ll_backend__lookup_switch__Liveness_30,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_58,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_59,
+  MR_Word * ll_backend__lookup_switch__Code_32,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_60,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_61,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_62);
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_several_soln_int_lookup_vector_15_p_0(
+  MR_Integer ll_backend__lookup_switch__CurIndex_1,
+  MR_Integer ll_backend__lookup_switch__EndVal_2,
+  MR_Word ll_backend__lookup_switch__OutTypes_3,
+  MR_Integer ll_backend__lookup_switch__NumOutTypes_4,
+  MR_Word ll_backend__lookup_switch__HeadVar__5_5,
+  MR_Word * ll_backend__lookup_switch__HeadVar__6_6,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_9,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_13,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_15);
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__construct_fail_row_4_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1);
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_fail_row_4_p_0(
+  MR_Word ll_backend__lookup_switch__OutTypes_5,
+  MR_Word * ll_backend__lookup_switch__MainRow_6,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11);
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_code_for_each_kind_18_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__NumPrevColumns_2,
+  MR_Word ll_backend__lookup_switch__OutVars_3,
+  MR_Word ll_backend__lookup_switch__ResumeVars_4,
+  MR_Word ll_backend__lookup_switch__BranchStart_5,
+  MR_Word ll_backend__lookup_switch__EndLabel_6,
+  MR_Word ll_backend__lookup_switch__StoreMap_7,
+  MR_Word ll_backend__lookup_switch__Liveness_8,
+  MR_Word ll_backend__lookup_switch__AddTrailOps_9,
+  MR_Word ll_backend__lookup_switch__BaseReg_10,
+  MR_Word ll_backend__lookup_switch__CurSlot_11,
+  MR_Word ll_backend__lookup_switch__MaxSlot_12,
+  MR_Word ll_backend__lookup_switch__LaterVectorAddrRval_13,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_14,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_15,
+  MR_Word * ll_backend__lookup_switch__Code_16,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_18);
+
+static MR_String MR_CALL 
+ll_backend__lookup_switch__case_kind_to_string_1_f_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_constants_for_lookup_switch_17_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_107,
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3,
+  MR_Word ll_backend__lookup_switch__HeadVar__4_4,
+  MR_Word ll_backend__lookup_switch__HeadVar__5_5,
+  MR_Word ll_backend__lookup_switch__HeadVar__6_6,
+  MR_Word * ll_backend__lookup_switch__HeadVar__7_7,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_8,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_9,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_10,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_11,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_13,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_0_14,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_15,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_17);
+
+static void MR_CALL 
+ll_backend__lookup_switch__record_lookup_for_tagged_cons_id_5_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_16,
+  MR_Word ll_backend__lookup_switch__GetTag_6,
+  MR_Word ll_backend__lookup_switch__SolnConsts_7,
+  MR_Word ll_backend__lookup_switch__TaggedConsId_8,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_13,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_14);
+
+static void MR_CALL 
+ll_backend__lookup_switch__record_lookup_for_tagged_cons_ids_5_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_20,
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_5);
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____case_kind_0_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__lookup_switch____Compare____case_kind_0_0_10001(
+  MR_Box * ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____lookup_switch_info_1_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__lookup_switch____Compare____lookup_switch_info_1_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box * ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_4);
+
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_1[38][2];
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_2[4][3];
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_3[7][1];
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_4[2][5];
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_5[1][4];
+
+static /* final */ const MR_Float ll_backend__lookup_switch_scalar_common_6[1];
+
+
+/* sealed */ struct ll_backend__lookup_switch__vector_common_type_7_0_s {
+  const MR_Word ll_backend__lookup_switch__vector_common_type_7_0__vct_7_f_0;
+};
+
+static /* final */ const struct ll_backend__lookup_switch__vector_common_type_7_0_s ll_backend__lookup_switch_vector_common_7[8];
+
+
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_1[38][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ll_backend__lookup_switch_scalar_common_1[2]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&ll_backend__lookup_switch_scalar_common_1[2]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[6]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[1])))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[8]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_1[7])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 14)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 15)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[3])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[4]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[5]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    (MR_Box) &ll_backend__lookup_switch_scalar_common_6[0]
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[21])))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[23])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[25])))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[27])))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(2), &ll_backend__lookup_switch_scalar_common_3[6])))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[30])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[32])))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[34])))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[36])))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_2[4][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_case_kind_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&ll_backend__lookup_switch_scalar_common_4[0])),
+    ((MR_Box) (ll_backend__lookup_switch__construct_fail_row_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&ll_backend__lookup_switch_scalar_common_4[0])),
+    ((MR_Box) (ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&ll_backend__lookup_switch_scalar_common_4[0])),
+    ((MR_Box) (ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_3[7][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "simple lookup switch"))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_String) "several soln lookup switch"))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (0U))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_4[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__lookup_switch__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&ll_backend__lookup_switch__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__lookup_switch_scalar_common_5[1][4] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&ll_backend__lookup_switch____vpti_pred_0))
+  },
+};
+
+static /* final */ const MR_Float ll_backend__lookup_switch_scalar_common_6[1] = {
+  /* row 0 */
+  (MR_Float) 0.0000000000000000,
+};
+
+
+static /* final */ const struct ll_backend__lookup_switch__vector_common_type_7_0_s ll_backend__lookup_switch_vector_common_7[8] = {
+  /* row 0 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]) },
+  /* row 1 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[29]) },
+  /* row 2 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[28]) },
+  /* row 3 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[35]) },
+  /* row 4 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[24]) },
+  /* row 5 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[31]) },
+  /* row 6 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[26]) },
+  /* row 7 */   {     (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[33]) },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__lookup_switch__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__lookup_switch__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct0 ll_backend__lookup_switch____vpti_pred_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 0,
+  { 0 }
+
+};
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_0 = {
+  (MR_String) "kind_zero_solns",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_1 = {
+  (MR_String) "kind_one_soln",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_2 = {
+  (MR_String) "kind_several_solns",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__enum_value_ordered_case_kind_0[3] = {
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_0,
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_1,
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_2
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__enum_name_ordered_case_kind_0[3] = {
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_1,
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_2,
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__enum_functor_desc_case_kind_0_0
+};
+
+static const MR_Integer ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_case_kind_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_case_kind_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (ll_backend__lookup_switch____Unify____case_kind_0_0_10001)),
+  ((MR_Box) (ll_backend__lookup_switch____Compare____case_kind_0_0_10001)),
+  (MR_String) "ll_backend.lookup_switch",
+  (MR_String) "case_kind",
+  {     ll_backend__lookup_switch__ll_backend__lookup_switch__enum_name_ordered_case_kind_0 },
+  {     ll_backend__lookup_switch__ll_backend__lookup_switch__enum_value_ordered_case_kind_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_case_kind_0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct3 ll_backend__lookup_switch__backend_libs__switch_util__pti_case_consts_3__pseudo_1__plain_ll_backend__llds__type_ctor_info_rval_0__plain_backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_3,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ll_backend__lookup_switch__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__list__ti_list_1ll_backend__llds__type_ctor_info_llds_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__lookup_switch__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &ll_backend__lookup_switch__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo ll_backend__lookup_switch__ll_backend__lookup_switch__field_types_lookup_switch_info_1_0[4] = {
+  (MR_PseudoTypeInfo) &ll_backend__lookup_switch__backend_libs__switch_util__pti_case_consts_3__pseudo_1__plain_ll_backend__llds__type_ctor_info_rval_0__plain_backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0,
+  (MR_PseudoTypeInfo) &ll_backend__lookup_switch__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &ll_backend__lookup_switch__list__ti_list_1ll_backend__llds__type_ctor_info_llds_type_0,
+  (MR_PseudoTypeInfo) &ll_backend__lookup_switch__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_ConstString ll_backend__lookup_switch__ll_backend__lookup_switch__field_names_lookup_switch_info_1_0[4] = {
+  (MR_String) "lsi_cases",
+  (MR_String) "lsi_out_variables",
+  (MR_String) "lsi_out_types",
+  (MR_String) "lsi_liveness"
+};
+
+static const MR_DuFunctorDesc ll_backend__lookup_switch__ll_backend__lookup_switch__du_functor_desc_lookup_switch_info_1_0 = {
+  (MR_String) "lookup_switch_info",
+  (MR_Integer) 4,
+  (MR_Integer) 1,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__lookup_switch__ll_backend__lookup_switch__field_types_lookup_switch_info_1_0,
+  ll_backend__lookup_switch__ll_backend__lookup_switch__field_names_lookup_switch_info_1_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__du_stag_ordered_lookup_switch_info_1_0[1] = {
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__du_functor_desc_lookup_switch_info_1_0
+};
+
+static const MR_DuPtagLayout ll_backend__lookup_switch__ll_backend__lookup_switch__du_ptag_ordered_lookup_switch_info_1[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__lookup_switch__ll_backend__lookup_switch__du_stag_ordered_lookup_switch_info_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__lookup_switch__ll_backend__lookup_switch__du_name_ordered_lookup_switch_info_1[1] = {
+  &ll_backend__lookup_switch__ll_backend__lookup_switch__du_functor_desc_lookup_switch_info_1_0
+};
+
+static const MR_Integer ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_lookup_switch_info_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_lookup_switch_info_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__lookup_switch____Unify____lookup_switch_info_1_0_10001)),
+  ((MR_Box) (ll_backend__lookup_switch____Compare____lookup_switch_info_1_0_10001)),
+  (MR_String) "ll_backend.lookup_switch",
+  (MR_String) "lookup_switch_info",
+  {     ll_backend__lookup_switch__ll_backend__lookup_switch__du_name_ordered_lookup_switch_info_1 },
+  {     ll_backend__lookup_switch__ll_backend__lookup_switch__du_ptag_ordered_lookup_switch_info_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__lookup_switch__ll_backend__lookup_switch__functor_number_map_lookup_switch_info_1
+};
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__IntroducedFrom__pred__generate_several_soln_int_lookup_switch__493__1_2_p_0(
+  MR_Word ll_backend__lookup_switch__OutVars_27,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_68)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    ll_backend__lookup_switch__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[3], ((MR_Box) (ll_backend__lookup_switch__OutVars_27)), ((MR_Box) (ll_backend__lookup_switch__HeadVar__2_68)));
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+void MR_CALL 
+ll_backend__lookup_switch____Compare____lookup_switch_info_1_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_17,
+  MR_Word * ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Integer ll_backend__lookup_switch__CastX_15 = (MR_Integer) ll_backend__lookup_switch__HeadVar__2_2;
+    MR_Integer ll_backend__lookup_switch__CastY_16 = (MR_Integer) ll_backend__lookup_switch__HeadVar__3_3;
+
+    ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__CastX_15 == ll_backend__lookup_switch__CastY_16);
+    if (ll_backend__lookup_switch__succeeded)
+      *ll_backend__lookup_switch__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ll_backend__lookup_switch__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ll_backend__lookup_switch__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word ll_backend__lookup_switch__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ll_backend__lookup_switch__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word ll_backend__lookup_switch__Var_12;
+
+      backend_libs__switch_util____Compare____case_consts_3_0(ll_backend__lookup_switch__TypeInfo_for_Key_17, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0, &ll_backend__lookup_switch__Var_12, ll_backend__lookup_switch__ArgX1_4, ll_backend__lookup_switch__ArgY1_5);
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__Var_12 == (MR_Integer) 0);
+      ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+      if (ll_backend__lookup_switch__succeeded)
+        *ll_backend__lookup_switch__HeadVar__1_1 = ll_backend__lookup_switch__Var_12;
+      else
+      {
+        MR_Word ll_backend__lookup_switch__Var_13;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[3], &ll_backend__lookup_switch__Var_13, ((MR_Box) (ll_backend__lookup_switch__ArgX2_6)), ((MR_Box) (ll_backend__lookup_switch__ArgY2_7)));
+        ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__Var_13 == (MR_Integer) 0);
+        ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+        if (ll_backend__lookup_switch__succeeded)
+          *ll_backend__lookup_switch__HeadVar__1_1 = ll_backend__lookup_switch__Var_13;
+        else
+        {
+          MR_Word ll_backend__lookup_switch__Var_14;
+
+          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[4], &ll_backend__lookup_switch__Var_14, ((MR_Box) (ll_backend__lookup_switch__ArgX3_8)), ((MR_Box) (ll_backend__lookup_switch__ArgY3_9)));
+          ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__Var_14 == (MR_Integer) 0);
+          ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+          if (ll_backend__lookup_switch__succeeded)
+            *ll_backend__lookup_switch__HeadVar__1_1 = ll_backend__lookup_switch__Var_14;
+          else
+          {
+            mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[5], ll_backend__lookup_switch__HeadVar__1_1, ((MR_Box) (ll_backend__lookup_switch__ArgX4_10)), ((MR_Box) (ll_backend__lookup_switch__ArgY4_11)));
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____lookup_switch_info_1_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_13,
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Integer ll_backend__lookup_switch__CastX_11 = (MR_Integer) ll_backend__lookup_switch__HeadVar__1_1;
+    MR_Integer ll_backend__lookup_switch__CastY_12 = (MR_Integer) ll_backend__lookup_switch__HeadVar__2_2;
+
+    ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__CastX_11 == ll_backend__lookup_switch__CastY_12);
+    if (ll_backend__lookup_switch__succeeded)
+      ll_backend__lookup_switch__succeeded = MR_TRUE;
+    else
+    {
+      MR_Word ll_backend__lookup_switch__TypeInfo_18_18;
+      MR_Word ll_backend__lookup_switch__TypeInfo_19_19;
+      MR_Word ll_backend__lookup_switch__TypeInfo_20_20;
+      MR_Word ll_backend__lookup_switch__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ll_backend__lookup_switch__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ll_backend__lookup_switch__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word ll_backend__lookup_switch__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__2_2, (MR_Integer) 3)));
+
+      ll_backend__lookup_switch__succeeded = backend_libs__switch_util____Unify____case_consts_3_0(ll_backend__lookup_switch__TypeInfo_for_Key_13, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0, ll_backend__lookup_switch__ArgX1_3, ll_backend__lookup_switch__ArgY1_4);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        ll_backend__lookup_switch__TypeInfo_18_18 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[3];
+        ll_backend__lookup_switch__succeeded = mercury__builtin__unify_2_p_0(ll_backend__lookup_switch__TypeInfo_18_18, ((MR_Box) (ll_backend__lookup_switch__ArgX2_5)), ((MR_Box) (ll_backend__lookup_switch__ArgY2_6)));
+        if (ll_backend__lookup_switch__succeeded)
+        {
+          ll_backend__lookup_switch__TypeInfo_19_19 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[4];
+          ll_backend__lookup_switch__succeeded = mercury__builtin__unify_2_p_0(ll_backend__lookup_switch__TypeInfo_19_19, ((MR_Box) (ll_backend__lookup_switch__ArgX3_7)), ((MR_Box) (ll_backend__lookup_switch__ArgY3_8)));
+          if (ll_backend__lookup_switch__succeeded)
+          {
+            ll_backend__lookup_switch__TypeInfo_20_20 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[5];
+            ll_backend__lookup_switch__succeeded = mercury__builtin__unify_2_p_0(ll_backend__lookup_switch__TypeInfo_20_20, ((MR_Box) (ll_backend__lookup_switch__ArgX4_9)), ((MR_Box) (ll_backend__lookup_switch__ArgY4_10)));
+          }
+        }
+      }
+    }
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+void MR_CALL 
+ll_backend__lookup_switch____Compare____case_kind_0_0(
+  MR_Word * ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3)
+{
+  {
+    MR_Integer ll_backend__lookup_switch__Cast_HeadVar1_4 = (MR_Integer) ll_backend__lookup_switch__HeadVar__2_2;
+    MR_Integer ll_backend__lookup_switch__Cast_HeadVar2_5 = (MR_Integer) ll_backend__lookup_switch__HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__lookup_switch__HeadVar__1_1, ll_backend__lookup_switch__Cast_HeadVar1_4, ll_backend__lookup_switch__Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____case_kind_0_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__2_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__HeadVar__2_1 == ll_backend__lookup_switch__HeadVar__2_2);
+
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+ll_backend__lookup_switch__default_value_for_type_1_f_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__lookup_switch__HeadVar__2_2;
+
+    switch (MR_tag((MR_Word) ll_backend__lookup_switch__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(ll_backend__lookup_switch__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[22]);
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[37]);
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              ll_backend__lookup_switch__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__lookup_switch__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+
+          ll_backend__lookup_switch__HeadVar__2_2 = ((&ll_backend__lookup_switch_vector_common_7[0 + ll_backend__lookup_switch__Var_51]))->ll_backend__lookup_switch__vector_common_type_7_0__vct_7_f_0;
+        }
+        break;
+    }
+    return ll_backend__lookup_switch__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+ll_backend__lookup_switch__generate_int_lookup_switch_14_p_0(
+  MR_Word ll_backend__lookup_switch__VarRval_15,
+  MR_Word ll_backend__lookup_switch__LookupSwitchInfo_16,
+  MR_Word ll_backend__lookup_switch__EndLabel_17,
+  MR_Word ll_backend__lookup_switch__StoreMap_18,
+  MR_Integer ll_backend__lookup_switch__StartVal_19,
+  MR_Integer ll_backend__lookup_switch__EndVal_20,
+  MR_Word ll_backend__lookup_switch__NeedBitVecCheck_21,
+  MR_Word ll_backend__lookup_switch__NeedRangeCheck_22,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_45,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_46,
+  MR_Word * ll_backend__lookup_switch__Code_24,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_47,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_48,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_49)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__StartVal_19 == (MR_Integer) 0);
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_79_79;
+    MR_Word ll_backend__lookup_switch__CaseConsts_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__LookupSwitchInfo_16, (MR_Integer) 0)));
+    MR_Word ll_backend__lookup_switch__OutVars_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__LookupSwitchInfo_16, (MR_Integer) 1)));
+    MR_Word ll_backend__lookup_switch__OutTypes_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__LookupSwitchInfo_16, (MR_Integer) 2)));
+    MR_Word ll_backend__lookup_switch__Liveness_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__LookupSwitchInfo_16, (MR_Integer) 3)));
+    MR_Word ll_backend__lookup_switch__IndexRval_31;
+    MR_Word ll_backend__lookup_switch__RangeCheckCode_34;
+    MR_Word ll_backend__lookup_switch__Comment_36;
+    MR_Word ll_backend__lookup_switch__RestCode_38;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_58_58;
+    MR_Word ll_backend__lookup_switch__Var_71;
+
+    if (ll_backend__lookup_switch__succeeded)
+      ll_backend__lookup_switch__IndexRval_31 = ll_backend__lookup_switch__VarRval_15;
+    else
+    {
+      MR_Word ll_backend__lookup_switch__Var_52;
+      MR_Word ll_backend__lookup_switch__Var_53;
+
+      {
+        ll_backend__lookup_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_53, 0) = ((MR_Box) (ll_backend__lookup_switch__StartVal_19));
+      }
+      {
+        ll_backend__lookup_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_52, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_53));
+      }
+      {
+        ll_backend__lookup_switch__IndexRval_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__IndexRval_31, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__IndexRval_31, 1) = ((MR_Box) (MR_mkword(MR_mktag(2), &ll_backend__lookup_switch_scalar_common_3[2])));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__IndexRval_31, 2) = ((MR_Box) (ll_backend__lookup_switch__VarRval_15));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__IndexRval_31, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_52));
+      }
+    }
+    switch (ll_backend__lookup_switch__NeedRangeCheck_22) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          ll_backend__lookup_switch__RangeCheckCode_34 = mercury__cord__empty_0_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0);
+          ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57 = ll_backend__lookup_switch__STATE_VARIABLE_CI_0_47;
+          ll_backend__lookup_switch__STATE_VARIABLE_CLD_58_58 = ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_49;
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Integer ll_backend__lookup_switch__Difference_32 = (ll_backend__lookup_switch__EndVal_20 - ll_backend__lookup_switch__StartVal_19);
+          MR_Word ll_backend__lookup_switch__CmpRval_33;
+          MR_Word ll_backend__lookup_switch__Var_55;
+          MR_Word ll_backend__lookup_switch__Var_56;
+
+          {
+            ll_backend__lookup_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_56, 0) = ((MR_Box) (ll_backend__lookup_switch__Difference_32));
+          }
+          {
+            ll_backend__lookup_switch__Var_55 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_55, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_55, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_56));
+          }
+          {
+            ll_backend__lookup_switch__CmpRval_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__CmpRval_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__CmpRval_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11))));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__CmpRval_33, 2) = ((MR_Box) (ll_backend__lookup_switch__IndexRval_31));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__CmpRval_33, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_55));
+          }
+          ll_backend__code_loc_dep__fail_if_rval_is_false_6_p_0(ll_backend__lookup_switch__CmpRval_33, &ll_backend__lookup_switch__RangeCheckCode_34, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_47, &ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57, ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_49, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_58_58);
+        }
+        break;
+    }
+    if (((MR_tag((MR_Word) ll_backend__lookup_switch__CaseConsts_27)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word ll_backend__lookup_switch__CaseValuesMap_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__CaseConsts_27, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__CaseValues_37;
+
+      ll_backend__lookup_switch__Comment_36 = mercury__cord__singleton_1_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ((MR_Box) (&ll_backend__lookup_switch_scalar_common_1[19])));
+      mercury__map__to_assoc_list_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ll_backend__lookup_switch_scalar_common_1[1], ll_backend__lookup_switch__CaseValuesMap_35, &ll_backend__lookup_switch__CaseValues_37);
+      ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_115_105_109_112_108_101_95_105_110_116_95_108_111_111_107_117_112_95_115_119_105_116_99_104_95_95_91_52_93_95_48_13_p_0(ll_backend__lookup_switch__IndexRval_31, ll_backend__lookup_switch__StoreMap_18, ll_backend__lookup_switch__StartVal_19, ll_backend__lookup_switch__CaseValues_37, ll_backend__lookup_switch__OutVars_28, ll_backend__lookup_switch__OutTypes_29, ll_backend__lookup_switch__NeedBitVecCheck_21, ll_backend__lookup_switch__Liveness_30, &ll_backend__lookup_switch__RestCode_38, ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57, ll_backend__lookup_switch__STATE_VARIABLE_CI_48, ll_backend__lookup_switch__STATE_VARIABLE_CLD_58_58);
+      *ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_46 = ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_45;
+    }
+    else
+    {
+      MR_Word ll_backend__lookup_switch__CaseSolnMap_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__CaseConsts_27, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__ResumeVars_40;
+      MR_Word ll_backend__lookup_switch__GoalsMayModifyTrail_41;
+      MR_Word ll_backend__lookup_switch__AddTrailOps_43;
+      MR_Word ll_backend__lookup_switch__CaseSolns_44;
+      MR_Word ll_backend__lookup_switch__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__CaseConsts_27, (MR_Integer) 1)));
+
+      ll_backend__lookup_switch__ResumeVars_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_59, (MR_Integer) 0)));
+      ll_backend__lookup_switch__GoalsMayModifyTrail_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_59, (MR_Integer) 1)));
+      switch (ll_backend__lookup_switch__GoalsMayModifyTrail_41) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          ll_backend__lookup_switch__AddTrailOps_43 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 1:
+          ll_backend__code_info__get_emit_trail_ops_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57, &ll_backend__lookup_switch__AddTrailOps_43);
+          break;
+      }
+      ll_backend__lookup_switch__Comment_36 = mercury__cord__singleton_1_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ((MR_Box) (&ll_backend__lookup_switch_scalar_common_1[20])));
+      mercury__map__to_assoc_list_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ll_backend__lookup_switch_scalar_common_1[0], ll_backend__lookup_switch__CaseSolnMap_39, &ll_backend__lookup_switch__CaseSolns_44);
+      ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0(ll_backend__lookup_switch__IndexRval_31, ll_backend__lookup_switch__EndLabel_17, ll_backend__lookup_switch__StoreMap_18, ll_backend__lookup_switch__StartVal_19, ll_backend__lookup_switch__EndVal_20, ll_backend__lookup_switch__CaseSolns_44, ll_backend__lookup_switch__ResumeVars_40, ll_backend__lookup_switch__AddTrailOps_43, ll_backend__lookup_switch__OutVars_28, ll_backend__lookup_switch__OutTypes_29, ll_backend__lookup_switch__NeedBitVecCheck_21, ll_backend__lookup_switch__Liveness_30, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_45, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_46, &ll_backend__lookup_switch__RestCode_38, ll_backend__lookup_switch__STATE_VARIABLE_CI_57_57, ll_backend__lookup_switch__STATE_VARIABLE_CI_48, ll_backend__lookup_switch__STATE_VARIABLE_CLD_58_58);
+    }
+    ll_backend__lookup_switch__TypeCtorInfo_79_79 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+    ll_backend__lookup_switch__Var_71 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_79_79, ll_backend__lookup_switch__RangeCheckCode_34, ll_backend__lookup_switch__RestCode_38);
+    *ll_backend__lookup_switch__Code_24 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_79_79, ll_backend__lookup_switch__Comment_36, ll_backend__lookup_switch__Var_71);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_115_105_109_112_108_101_95_105_110_116_95_108_111_111_107_117_112_95_115_119_105_116_99_104_95_95_91_52_93_95_48_13_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_14,
+  MR_Word ll_backend__lookup_switch__StoreMap_15,
+  MR_Integer ll_backend__lookup_switch__StartVal_16,
+  MR_Word ll_backend__lookup_switch__CaseValues_18,
+  MR_Word ll_backend__lookup_switch__OutVars_19,
+  MR_Word ll_backend__lookup_switch__OutTypes_20,
+  MR_Word ll_backend__lookup_switch__NeedBitVecCheck_21,
+  MR_Word ll_backend__lookup_switch__Liveness_22,
+  MR_Word * ll_backend__lookup_switch__Code_23,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_39,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_40,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_41)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_71_71;
+    MR_Word ll_backend__lookup_switch__CheckBitVecCode_26;
+    MR_Word ll_backend__lookup_switch__BaseRegInitCode_27;
+    MR_Word ll_backend__lookup_switch__BranchEndCode_38;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_42_42;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_43_43;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_62_62;
+    MR_Word ll_backend__lookup_switch__Var_64;
+    MR_Word ll_backend__lookup_switch___MaybeEnd_37;
+
+    switch (ll_backend__lookup_switch__NeedBitVecCheck_21) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          ll_backend__lookup_switch__CheckBitVecCode_26 = mercury__cord__empty_0_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0);
+          ll_backend__lookup_switch__STATE_VARIABLE_CI_42_42 = ll_backend__lookup_switch__STATE_VARIABLE_CI_0_39;
+          ll_backend__lookup_switch__STATE_VARIABLE_CLD_43_43 = ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_41;
+        }
+        break;
+      case (MR_Integer) 0:
+        ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_118_101_99_95_116_101_115_116_95_95_91_49_44_32_53_93_95_48_9_p_0(ll_backend__lookup_switch__IndexRval_14, ll_backend__lookup_switch__CaseValues_18, ll_backend__lookup_switch__StartVal_16, &ll_backend__lookup_switch__CheckBitVecCode_26, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_39, &ll_backend__lookup_switch__STATE_VARIABLE_CI_42_42, ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_41, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_43_43);
+        break;
+    }
+    if ((ll_backend__lookup_switch__OutVars_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      ll_backend__lookup_switch__BaseRegInitCode_27 = mercury__cord__empty_0_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0);
+      *ll_backend__lookup_switch__STATE_VARIABLE_CI_40 = ll_backend__lookup_switch__STATE_VARIABLE_CI_42_42;
+      ll_backend__lookup_switch__STATE_VARIABLE_CLD_62_62 = ll_backend__lookup_switch__STATE_VARIABLE_CLD_43_43;
+    }
+    else
+    {
+      MR_Word ll_backend__lookup_switch__BaseReg_30;
+      MR_Integer ll_backend__lookup_switch__NumOutVars_31;
+      MR_Word ll_backend__lookup_switch__RevVectorRvals_32;
+      MR_Word ll_backend__lookup_switch__VectorRvals_33;
+      MR_Word ll_backend__lookup_switch__VectorAddr_34;
+      MR_Word ll_backend__lookup_switch__VectorAddrRval_35;
+      MR_Word ll_backend__lookup_switch__BaseRval_36;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_45_45;
+      MR_Word ll_backend__lookup_switch__Var_48;
+      MR_Word ll_backend__lookup_switch__Var_54;
+      MR_Word ll_backend__lookup_switch__Var_55;
+      MR_Word ll_backend__lookup_switch__Var_56;
+      MR_Word ll_backend__lookup_switch__Var_57;
+
+      ll_backend__code_loc_dep__acquire_reg_not_in_storemap_5_p_0(ll_backend__lookup_switch__StoreMap_15, (MR_Integer) 0, &ll_backend__lookup_switch__BaseReg_30, ll_backend__lookup_switch__STATE_VARIABLE_CLD_43_43, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_45_45);
+      mercury__list__length_2_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[2], ll_backend__lookup_switch__OutVars_19, &ll_backend__lookup_switch__NumOutVars_31);
+      ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0(ll_backend__lookup_switch__CaseValues_18, ll_backend__lookup_switch__StartVal_16, ll_backend__lookup_switch__OutTypes_20, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__lookup_switch__RevVectorRvals_32);
+      mercury__list__reverse_2_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[1], ll_backend__lookup_switch__RevVectorRvals_32, &ll_backend__lookup_switch__VectorRvals_33);
+      ll_backend__code_info__add_vector_static_cell_5_p_0(ll_backend__lookup_switch__OutTypes_20, ll_backend__lookup_switch__VectorRvals_33, &ll_backend__lookup_switch__VectorAddr_34, ll_backend__lookup_switch__STATE_VARIABLE_CI_42_42, ll_backend__lookup_switch__STATE_VARIABLE_CI_40);
+      {
+        ll_backend__lookup_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 1) = ((MR_Box) (ll_backend__lookup_switch__VectorAddr_34));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+      {
+        ll_backend__lookup_switch__VectorAddrRval_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__VectorAddrRval_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__VectorAddrRval_35, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_48));
+      }
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__NumOutVars_31 == (MR_Integer) 1);
+      if (ll_backend__lookup_switch__succeeded)
+        ll_backend__lookup_switch__BaseRval_36 = ll_backend__lookup_switch__IndexRval_14;
+      else
+      {
+        MR_Word ll_backend__lookup_switch__Var_52;
+        MR_Word ll_backend__lookup_switch__Var_53;
+
+        {
+          ll_backend__lookup_switch__Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_53, 0) = ((MR_Box) (ll_backend__lookup_switch__NumOutVars_31));
+        }
+        {
+          ll_backend__lookup_switch__Var_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_52, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_53));
+        }
+        {
+          ll_backend__lookup_switch__BaseRval_36 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BaseRval_36, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BaseRval_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[14])));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BaseRval_36, 2) = ((MR_Box) (ll_backend__lookup_switch__IndexRval_14));
+          MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BaseRval_36, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_52));
+        }
+      }
+      {
+        ll_backend__lookup_switch__Var_57 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_57, 0) = ((MR_Box) (ll_backend__lookup_switch__VectorAddrRval_35));
+        MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])));
+        MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_57, 2) = ((MR_Box) (ll_backend__lookup_switch__BaseRval_36));
+      }
+      {
+        ll_backend__lookup_switch__Var_56 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_56, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_56, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_57));
+      }
+      {
+        ll_backend__lookup_switch__Var_55 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_55, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_55, 1) = ((MR_Box) (ll_backend__lookup_switch__BaseReg_30));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_55, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_56));
+      }
+      {
+        ll_backend__lookup_switch__Var_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_54, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_55));
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_54, 1) = ((MR_Box) ((MR_String) "Compute base address for this case"));
+      }
+      ll_backend__lookup_switch__BaseRegInitCode_27 = mercury__cord__singleton_1_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ((MR_Box) (ll_backend__lookup_switch__Var_54)));
+      ll_backend__lookup_util__generate_offset_assigns_6_p_0(ll_backend__lookup_switch__OutVars_19, (MR_Integer) 0, ll_backend__lookup_switch__BaseReg_30, *ll_backend__lookup_switch__STATE_VARIABLE_CI_40, ll_backend__lookup_switch__STATE_VARIABLE_CLD_45_45, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_62_62);
+    }
+    ll_backend__lookup_util__set_liveness_and_end_branch_7_p_0(ll_backend__lookup_switch__StoreMap_15, ll_backend__lookup_switch__Liveness_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__lookup_switch___MaybeEnd_37, &ll_backend__lookup_switch__BranchEndCode_38, *ll_backend__lookup_switch__STATE_VARIABLE_CI_40, ll_backend__lookup_switch__STATE_VARIABLE_CLD_62_62);
+    ll_backend__lookup_switch__TypeCtorInfo_71_71 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+    ll_backend__lookup_switch__Var_64 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_71_71, ll_backend__lookup_switch__BaseRegInitCode_27, ll_backend__lookup_switch__BranchEndCode_38);
+    *ll_backend__lookup_switch__Code_23 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_71_71, ll_backend__lookup_switch__CheckBitVecCode_26, ll_backend__lookup_switch__Var_64);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_118_101_99_95_116_101_115_116_95_95_91_49_44_32_53_93_95_48_9_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_10,
+  MR_Word ll_backend__lookup_switch__CaseVals_11,
+  MR_Integer ll_backend__lookup_switch__Start_12,
+  MR_Word * ll_backend__lookup_switch__CheckCode_14,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_27,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_28,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_29,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CLD_30)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_25_73;
+    MR_Word ll_backend__lookup_switch__Globals_17;
+    MR_Integer ll_backend__lookup_switch__WordBits_18;
+    MR_Integer ll_backend__lookup_switch__Log2WordBits_19;
+    MR_Word ll_backend__lookup_switch__BitVecArgs_20;
+    MR_Word ll_backend__lookup_switch__BitVecRval_21;
+    MR_Word ll_backend__lookup_switch__Word_23;
+    MR_Word ll_backend__lookup_switch__BitNum_24;
+    MR_Word ll_backend__lookup_switch__HasBit_26;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_31_31;
+    MR_Word ll_backend__lookup_switch__Var_48;
+    MR_Word ll_backend__lookup_switch__BitMap0_65;
+    MR_Word ll_backend__lookup_switch__BitMap_66;
+    MR_Word ll_backend__lookup_switch__WordVals_67;
+    MR_Word ll_backend__lookup_switch__DataAddr_68;
+    MR_Word ll_backend__lookup_switch__Var_71;
+    MR_Word ll_backend__lookup_switch__SingleWord_22;
+    MR_Word ll_backend__lookup_switch__Var_32;
+
+    ll_backend__code_info__get_globals_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CI_0_27, &ll_backend__lookup_switch__Globals_17);
+    backend_libs__switch_util__get_word_bits_3_p_0(ll_backend__lookup_switch__Globals_17, &ll_backend__lookup_switch__WordBits_18, &ll_backend__lookup_switch__Log2WordBits_19);
+    ll_backend__lookup_switch__TypeCtorInfo_25_73 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    mercury__map__init_1_p_0(ll_backend__lookup_switch__TypeCtorInfo_25_73, ll_backend__lookup_switch__TypeCtorInfo_25_73, &ll_backend__lookup_switch__BitMap0_65);
+    ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_95_118_101_99_95_50_95_95_91_49_93_95_48_5_p_0(ll_backend__lookup_switch__CaseVals_11, ll_backend__lookup_switch__Start_12, ll_backend__lookup_switch__WordBits_18, ll_backend__lookup_switch__BitMap0_65, &ll_backend__lookup_switch__BitMap_66);
+    mercury__map__to_assoc_list_2_p_0(ll_backend__lookup_switch__TypeCtorInfo_25_73, ll_backend__lookup_switch__TypeCtorInfo_25_73, ll_backend__lookup_switch__BitMap_66, &ll_backend__lookup_switch__WordVals_67);
+    ll_backend__lookup_switch__generate_bit_vec_args_3_p_0(ll_backend__lookup_switch__WordVals_67, (MR_Integer) 0, &ll_backend__lookup_switch__BitVecArgs_20);
+    ll_backend__code_info__add_scalar_static_cell_natural_types_4_p_0(ll_backend__lookup_switch__BitVecArgs_20, &ll_backend__lookup_switch__DataAddr_68, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_27, &ll_backend__lookup_switch__STATE_VARIABLE_CI_31_31);
+    {
+      ll_backend__lookup_switch__Var_71 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_71, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_71, 1) = ((MR_Box) (ll_backend__lookup_switch__DataAddr_68));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_71, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__lookup_switch__BitVecRval_21 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitVecRval_21, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitVecRval_21, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_71));
+    }
+    ll_backend__lookup_switch__succeeded = ((MR_tag((MR_Word) ll_backend__lookup_switch__BitVecArgs_20)) == (MR_mktag((MR_Integer) 1)));
+    if (ll_backend__lookup_switch__succeeded)
+    {
+      ll_backend__lookup_switch__SingleWord_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__BitVecArgs_20, (MR_Integer) 0)));
+      ll_backend__lookup_switch__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__BitVecArgs_20, (MR_Integer) 1)));
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__Var_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    if (ll_backend__lookup_switch__succeeded)
+    {
+      ll_backend__lookup_switch__Word_23 = ll_backend__lookup_switch__SingleWord_22;
+      ll_backend__lookup_switch__BitNum_24 = ll_backend__lookup_switch__IndexRval_10;
+    }
+    else
+    {
+      MR_Word ll_backend__lookup_switch__WordNum_25;
+      MR_Word ll_backend__lookup_switch__Var_35;
+      MR_Word ll_backend__lookup_switch__Var_36;
+      MR_Word ll_backend__lookup_switch__Var_37;
+      MR_Word ll_backend__lookup_switch__Var_42;
+      MR_Word ll_backend__lookup_switch__Var_43;
+      MR_Integer ll_backend__lookup_switch__Var_44;
+
+      {
+        ll_backend__lookup_switch__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_36, 0) = ((MR_Box) (ll_backend__lookup_switch__Log2WordBits_19));
+      }
+      {
+        ll_backend__lookup_switch__Var_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_35, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_36));
+      }
+      {
+        ll_backend__lookup_switch__WordNum_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__WordNum_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__WordNum_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[15])));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__WordNum_25, 2) = ((MR_Box) (ll_backend__lookup_switch__IndexRval_10));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__WordNum_25, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_35));
+      }
+      {
+        ll_backend__lookup_switch__Var_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_37, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_37, 2) = ((MR_Box) (ll_backend__lookup_switch__BitVecRval_21));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_37, 3) = ((MR_Box) (ll_backend__lookup_switch__WordNum_25));
+      }
+      {
+        ll_backend__lookup_switch__Word_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Word_23, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_37));
+      }
+      ll_backend__lookup_switch__Var_44 = (ll_backend__lookup_switch__WordBits_18 - (MR_Integer) 1);
+      {
+        ll_backend__lookup_switch__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_43, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_44));
+      }
+      {
+        ll_backend__lookup_switch__Var_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_42, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_42, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_43));
+      }
+      {
+        ll_backend__lookup_switch__BitNum_24 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitNum_24, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitNum_24, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[16])));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitNum_24, 2) = ((MR_Box) (ll_backend__lookup_switch__IndexRval_10));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__BitNum_24, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_42));
+      }
+    }
+    {
+      ll_backend__lookup_switch__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[17])));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 2) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[18])));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_48, 3) = ((MR_Box) (ll_backend__lookup_switch__BitNum_24));
+    }
+    {
+      ll_backend__lookup_switch__HasBit_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__HasBit_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__HasBit_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[16])));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__HasBit_26, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_48));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__HasBit_26, 3) = ((MR_Box) (ll_backend__lookup_switch__Word_23));
+    }
+    ll_backend__code_loc_dep__fail_if_rval_is_false_6_p_0(ll_backend__lookup_switch__HasBit_26, ll_backend__lookup_switch__CheckCode_14, ll_backend__lookup_switch__STATE_VARIABLE_CI_31_31, ll_backend__lookup_switch__STATE_VARIABLE_CI_28, ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_29, ll_backend__lookup_switch__STATE_VARIABLE_CLD_30);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_98_105_116_95_118_101_99_95_50_95_95_91_49_93_95_48_5_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__Start_2,
+  MR_Integer ll_backend__lookup_switch__WordBits_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_BitMap_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool ll_backend__lookup_switch__succeeded;
+
+      if ((ll_backend__lookup_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *ll_backend__lookup_switch__STATE_VARIABLE_BitMap_5 = ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4;
+      else
+      {
+        MR_Integer ll_backend__lookup_switch__Tag_11;
+        MR_Word ll_backend__lookup_switch__Rest_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer ll_backend__lookup_switch__Val_17;
+        MR_Integer ll_backend__lookup_switch__Word_18;
+        MR_Integer ll_backend__lookup_switch__Offset_19;
+        MR_Integer ll_backend__lookup_switch__X1_21;
+        MR_Word ll_backend__lookup_switch__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__lookup_switch__STATE_VARIABLE_BitMap_28_28;
+        MR_Box ll_backend__lookup_switch__Var_12;
+        MR_Integer ll_backend__lookup_switch__X0_20;
+        MR_Box ll_backend__lookup_switch__conv0_X0_20;
+
+        ll_backend__lookup_switch__Tag_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_24, (MR_Integer) 0)));
+        ll_backend__lookup_switch__Var_12 = (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_24, (MR_Integer) 1));
+        ll_backend__lookup_switch__Val_17 = (ll_backend__lookup_switch__Tag_11 - ll_backend__lookup_switch__Start_2);
+        ll_backend__lookup_switch__Word_18 = mercury__int__f_47_47_2_f_0(ll_backend__lookup_switch__Val_17, ll_backend__lookup_switch__WordBits_3);
+        ll_backend__lookup_switch__Offset_19 = mercury__int__mod_2_f_0(ll_backend__lookup_switch__Val_17, ll_backend__lookup_switch__WordBits_3);
+        ll_backend__lookup_switch__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4, ll_backend__lookup_switch__Word_18, &ll_backend__lookup_switch__conv0_X0_20);
+        if (ll_backend__lookup_switch__succeeded)
+        {
+          ll_backend__lookup_switch__X0_20 = ((MR_Integer) ll_backend__lookup_switch__conv0_X0_20);
+          ll_backend__lookup_switch__succeeded = MR_TRUE;
+        }
+        if (ll_backend__lookup_switch__succeeded)
+        {
+          MR_Integer ll_backend__lookup_switch__Var_25;
+
+          ll_backend__lookup_switch__Var_25 = mercury__int__f_60_60_2_f_0((MR_Integer) 1, ll_backend__lookup_switch__Offset_19);
+          ll_backend__lookup_switch__X1_21 = (ll_backend__lookup_switch__X0_20 | ll_backend__lookup_switch__Var_25);
+        }
+        else
+        {
+          ll_backend__lookup_switch__X1_21 = mercury__int__f_60_60_2_f_0((MR_Integer) 1, ll_backend__lookup_switch__Offset_19);
+        }
+        mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ll_backend__lookup_switch__Word_18, ((MR_Box) (ll_backend__lookup_switch__X1_21)), ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4, &ll_backend__lookup_switch__STATE_VARIABLE_BitMap_28_28);
+        /* direct tailcall eliminated */
+        {
+          MR_Word ll_backend__lookup_switch__next_value_of_HeadVar__1_1 = ll_backend__lookup_switch__Rest_13;
+          MR_Word ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_BitMap_0_4 = ll_backend__lookup_switch__STATE_VARIABLE_BitMap_28_28;
+
+          ll_backend__lookup_switch__HeadVar__1_1 = ll_backend__lookup_switch__next_value_of_HeadVar__1_1;
+          ll_backend__lookup_switch__STATE_VARIABLE_BitMap_0_4 = ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_BitMap_0_4;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_bit_vec_args_3_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__Count_2,
+  MR_Word * ll_backend__lookup_switch__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    if ((ll_backend__lookup_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *ll_backend__lookup_switch__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+    {
+      MR_Integer ll_backend__lookup_switch__Word_5;
+      MR_Integer ll_backend__lookup_switch__Bits_6;
+      MR_Word ll_backend__lookup_switch__Rest_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__Rval_9;
+      MR_Word ll_backend__lookup_switch__Rvals_10;
+      MR_Integer ll_backend__lookup_switch__WordVal_11;
+      MR_Word ll_backend__lookup_switch__Remainder_12;
+      MR_Integer ll_backend__lookup_switch__Count1_13;
+      MR_Word ll_backend__lookup_switch__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__Var_16;
+
+      ll_backend__lookup_switch__Word_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_14, (MR_Integer) 0)));
+      ll_backend__lookup_switch__Bits_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_14, (MR_Integer) 1)));
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__Count_2 < ll_backend__lookup_switch__Word_5);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        ll_backend__lookup_switch__WordVal_11 = (MR_Integer) 0;
+        ll_backend__lookup_switch__Remainder_12 = ll_backend__lookup_switch__HeadVar__1_1;
+      }
+      else
+      {
+        ll_backend__lookup_switch__WordVal_11 = ll_backend__lookup_switch__Bits_6;
+        ll_backend__lookup_switch__Remainder_12 = ll_backend__lookup_switch__Rest_7;
+      }
+      {
+        ll_backend__lookup_switch__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_16, 0) = ((MR_Box) (ll_backend__lookup_switch__WordVal_11));
+      }
+      {
+        ll_backend__lookup_switch__Rval_9 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Rval_9, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Rval_9, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_16));
+      }
+      ll_backend__lookup_switch__Count1_13 = (ll_backend__lookup_switch__Count_2 + (MR_Integer) 1);
+      ll_backend__lookup_switch__generate_bit_vec_args_3_p_0(ll_backend__lookup_switch__Remainder_12, ll_backend__lookup_switch__Count1_13, &ll_backend__lookup_switch__Rvals_10);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        *ll_backend__lookup_switch__HeadVar__3_3 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__lookup_switch__Rval_9));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__lookup_switch__Rvals_10));
+      }
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__lookup_switch__wrapper_arg_2;
+    MR_Box ll_backend__lookup_switch__closure = ll_backend__lookup_switch__closure_arg;
+    MR_Word ll_backend__lookup_switch__conv0_HeadVar__2_2;
+
+    ll_backend__lookup_switch__conv0_HeadVar__2_2 = ll_backend__lookup_switch__default_value_for_type_1_f_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1));
+    ll_backend__lookup_switch__wrapper_arg_2 = ((MR_Box) (ll_backend__lookup_switch__conv0_HeadVar__2_2));
+    return ll_backend__lookup_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_simple_int_lookup_vector_5_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__CurIndex_2,
+  MR_Word ll_backend__lookup_switch__OutTypes_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_RevRows_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_RevRows_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool ll_backend__lookup_switch__succeeded;
+
+      if ((ll_backend__lookup_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *ll_backend__lookup_switch__STATE_VARIABLE_RevRows_5 = ll_backend__lookup_switch__STATE_VARIABLE_RevRows_0_4;
+      else
+      {
+        MR_Integer ll_backend__lookup_switch__Index_11;
+        MR_Word ll_backend__lookup_switch__Rvals_12;
+        MR_Word ll_backend__lookup_switch__Rest_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__lookup_switch__Row_17;
+        MR_Word ll_backend__lookup_switch__Remainder_18;
+        MR_Word ll_backend__lookup_switch__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__lookup_switch__STATE_VARIABLE_RevRows_24_24;
+        MR_Integer ll_backend__lookup_switch__Var_25;
+
+        ll_backend__lookup_switch__Index_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_21, (MR_Integer) 0)));
+        ll_backend__lookup_switch__Rvals_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_21, (MR_Integer) 1)));
+        ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__CurIndex_2 < ll_backend__lookup_switch__Index_11);
+        if (ll_backend__lookup_switch__succeeded)
+        {
+          ll_backend__lookup_switch__Row_17 = mercury__list__map_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, (MR_Word) &ll_backend__lookup_switch_scalar_common_2[3], ll_backend__lookup_switch__OutTypes_3);
+          ll_backend__lookup_switch__Remainder_18 = ll_backend__lookup_switch__HeadVar__1_1;
+        }
+        else
+        {
+          ll_backend__lookup_switch__Row_17 = ll_backend__lookup_switch__Rvals_12;
+          ll_backend__lookup_switch__Remainder_18 = ll_backend__lookup_switch__Rest_13;
+        }
+        {
+          ll_backend__lookup_switch__STATE_VARIABLE_RevRows_24_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__STATE_VARIABLE_RevRows_24_24, 0) = ((MR_Box) (ll_backend__lookup_switch__Row_17));
+          MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__STATE_VARIABLE_RevRows_24_24, 1) = ((MR_Box) (ll_backend__lookup_switch__STATE_VARIABLE_RevRows_0_4));
+        }
+        ll_backend__lookup_switch__Var_25 = (ll_backend__lookup_switch__CurIndex_2 + (MR_Integer) 1);
+        /* direct tailcall eliminated */
+        {
+          MR_Word ll_backend__lookup_switch__next_value_of_HeadVar__1_1 = ll_backend__lookup_switch__Remainder_18;
+          MR_Integer ll_backend__lookup_switch__next_value_of_CurIndex_2 = ll_backend__lookup_switch__Var_25;
+          MR_Word ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_RevRows_0_4 = ll_backend__lookup_switch__STATE_VARIABLE_RevRows_24_24;
+
+          ll_backend__lookup_switch__HeadVar__1_1 = ll_backend__lookup_switch__next_value_of_HeadVar__1_1;
+          ll_backend__lookup_switch__CurIndex_2 = ll_backend__lookup_switch__next_value_of_CurIndex_2;
+          ll_backend__lookup_switch__STATE_VARIABLE_RevRows_0_4 = ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_RevRows_0_4;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_3(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__lookup_switch__wrapper_arg_2;
+    MR_Box ll_backend__lookup_switch__closure = ll_backend__lookup_switch__closure_arg;
+    MR_Word ll_backend__lookup_switch__conv0_HeadVar__2_2;
+
+    ll_backend__lookup_switch__conv0_HeadVar__2_2 = ll_backend__lookup_switch__default_value_for_type_1_f_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1));
+    ll_backend__lookup_switch__wrapper_arg_2 = ((MR_Box) (ll_backend__lookup_switch__conv0_HeadVar__2_2));
+    return ll_backend__lookup_switch__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_2(
+  MR_Box ll_backend__lookup_switch__closure_arg)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Box ll_backend__lookup_switch__closure = ll_backend__lookup_switch__closure_arg;
+
+    ll_backend__lookup_switch__succeeded = mercury__std_util__negate_1_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__closure, (MR_Integer) 3))));
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Box ll_backend__lookup_switch__closure = ll_backend__lookup_switch__closure_arg;
+
+    ll_backend__lookup_switch__succeeded = ll_backend__lookup_switch__IntroducedFrom__pred__generate_several_soln_int_lookup_switch__493__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__closure, (MR_Integer) 4))));
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0(
+  MR_Word ll_backend__lookup_switch__IndexRval_19,
+  MR_Word ll_backend__lookup_switch__EndLabel_20,
+  MR_Word ll_backend__lookup_switch__StoreMap_21,
+  MR_Integer ll_backend__lookup_switch__StartVal_22,
+  MR_Integer ll_backend__lookup_switch__EndVal_23,
+  MR_Word ll_backend__lookup_switch__CaseSolns_24,
+  MR_Word ll_backend__lookup_switch__ResumeVars_25,
+  MR_Word ll_backend__lookup_switch__AddTrailOps_26,
+  MR_Word ll_backend__lookup_switch__OutVars_27,
+  MR_Word ll_backend__lookup_switch__OutTypes_28,
+  MR_Word ll_backend__lookup_switch__NeedBitVecCheck_29,
+  MR_Word ll_backend__lookup_switch__Liveness_30,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_58,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_59,
+  MR_Word * ll_backend__lookup_switch__Code_32,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_60,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_61,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_62)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_121_121;
+    MR_Word ll_backend__lookup_switch__TypeInfo_125_125;
+    MR_Word ll_backend__lookup_switch__TypeInfo_126_126;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_129_129;
+    MR_Integer ll_backend__lookup_switch__NumOutTypes_35;
+    MR_Word ll_backend__lookup_switch__DummyLaterSolnRow_37;
+    MR_Word ll_backend__lookup_switch__LaterSolnArrayCord0_38;
+    MR_Word ll_backend__lookup_switch__MainRows_39;
+    MR_Word ll_backend__lookup_switch__LaterSolnArrayCord_40;
+    MR_Integer ll_backend__lookup_switch__FailCaseCount_41;
+    MR_Integer ll_backend__lookup_switch__OneSolnCaseCount_42;
+    MR_Integer ll_backend__lookup_switch__SeveralSolnCaseCount_43;
+    MR_Word ll_backend__lookup_switch__LaterSolnArray_44;
+    MR_Word ll_backend__lookup_switch__MainRowTypes_45;
+    MR_Integer ll_backend__lookup_switch__MainNumColumns_46;
+    MR_Word ll_backend__lookup_switch__MainVectorAddr_47;
+    MR_Word ll_backend__lookup_switch__MainVectorAddrRval_48;
+    MR_Word ll_backend__lookup_switch__LaterVectorAddr_49;
+    MR_Word ll_backend__lookup_switch__LaterVectorAddrRval_50;
+    MR_Word ll_backend__lookup_switch__AscendingSortedCountKinds_51;
+    MR_Word ll_backend__lookup_switch__DescendingSortedCountKinds_52;
+    MR_Word ll_backend__lookup_switch__DescendingSortedKinds_53;
+    MR_Word ll_backend__lookup_switch__BaseReg_54;
+    MR_Word ll_backend__lookup_switch__BaseRegInitCode_55;
+    MR_Word ll_backend__lookup_switch__KindsCode_56;
+    MR_Word ll_backend__lookup_switch__EndLabelCode_57;
+    MR_Word ll_backend__lookup_switch__Var_63;
+    MR_Word ll_backend__lookup_switch__Var_67;
+    MR_Word ll_backend__lookup_switch__Var_77;
+    MR_Word ll_backend__lookup_switch__Var_79;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_82_82;
+    MR_Word ll_backend__lookup_switch__Var_83;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_85_85;
+    MR_Word ll_backend__lookup_switch__Var_86;
+    MR_Word ll_backend__lookup_switch__Var_88;
+    MR_Word ll_backend__lookup_switch__Var_89;
+    MR_Word ll_backend__lookup_switch__Var_91;
+    MR_Word ll_backend__lookup_switch__Var_92;
+    MR_Word ll_backend__lookup_switch__Var_94;
+    MR_Word ll_backend__lookup_switch__Var_95;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_99_99;
+    MR_Word ll_backend__lookup_switch__Var_100;
+    MR_Word ll_backend__lookup_switch__Var_101;
+    MR_Word ll_backend__lookup_switch__Var_102;
+    MR_Word ll_backend__lookup_switch__Var_103;
+    MR_Word ll_backend__lookup_switch__Var_106;
+    MR_Word ll_backend__lookup_switch__Var_109;
+    MR_Word ll_backend__lookup_switch__Var_110;
+    MR_Word ll_backend__lookup_switch__Var_115;
+    MR_Word ll_backend__lookup_switch__Var_116;
+    MR_Word ll_backend__lookup_switch__Var_118;
+    MR_Integer ll_backend__lookup_switch__Var_73;
+    MR_Integer ll_backend__lookup_switch__Var_119;
+
+    {
+      ll_backend__lookup_switch__Var_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_67, 0) = ((MR_Box) (&ll_backend__lookup_switch_scalar_common_4[1]));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_67, 1) = ((MR_Box) (ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_1));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_67, 3) = ((MR_Box) (ll_backend__lookup_switch__OutVars_27));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_67, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__lookup_switch__Var_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_63, 0) = ((MR_Box) (&ll_backend__lookup_switch_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_63, 1) = ((MR_Box) (ll_backend__lookup_switch__generate_several_soln_int_lookup_switch_18_p_0_2));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_63, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_63, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_67));
+    }
+    mercury__require__expect_4_p_0(ll_backend__lookup_switch__Var_63, (MR_String) "ll_backend.lookup_switch", (MR_String) "predicate \140ll_backend.lookup_switch.generate_several_soln_int_lookup_switch\'/18", (MR_String) "no OutVars");
+    ll_backend__lookup_switch__TypeCtorInfo_121_121 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0;
+    mercury__list__length_2_p_0(ll_backend__lookup_switch__TypeCtorInfo_121_121, ll_backend__lookup_switch__OutTypes_28, &ll_backend__lookup_switch__NumOutTypes_35);
+    ll_backend__lookup_switch__DummyLaterSolnRow_37 = mercury__list__map_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_121_121, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, (MR_Word) &ll_backend__lookup_switch_scalar_common_2[2], ll_backend__lookup_switch__OutTypes_28);
+    ll_backend__lookup_switch__TypeInfo_125_125 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[1];
+    ll_backend__lookup_switch__LaterSolnArrayCord0_38 = mercury__cord__singleton_1_f_0(ll_backend__lookup_switch__TypeInfo_125_125, ((MR_Box) (ll_backend__lookup_switch__DummyLaterSolnRow_37)));
+    ll_backend__lookup_switch__construct_several_soln_int_lookup_vector_15_p_0(ll_backend__lookup_switch__StartVal_22, ll_backend__lookup_switch__EndVal_23, ll_backend__lookup_switch__OutTypes_28, ll_backend__lookup_switch__NumOutTypes_35, ll_backend__lookup_switch__CaseSolns_24, &ll_backend__lookup_switch__MainRows_39, (MR_Integer) 1, ll_backend__lookup_switch__LaterSolnArrayCord0_38, &ll_backend__lookup_switch__LaterSolnArrayCord_40, (MR_Integer) 0, &ll_backend__lookup_switch__FailCaseCount_41, (MR_Integer) 0, &ll_backend__lookup_switch__OneSolnCaseCount_42, (MR_Integer) 0, &ll_backend__lookup_switch__SeveralSolnCaseCount_43);
+    ll_backend__lookup_switch__LaterSolnArray_44 = mercury__cord__list_1_f_0(ll_backend__lookup_switch__TypeInfo_125_125, ll_backend__lookup_switch__LaterSolnArrayCord_40);
+    ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__NeedBitVecCheck_29 == (MR_Integer) 0);
+    if (ll_backend__lookup_switch__succeeded)
+    {
+      ll_backend__lookup_switch__Var_73 = (MR_Integer) 0;
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__FailCaseCount_41 > ll_backend__lookup_switch__Var_73);
+      ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+    }
+    ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+    if (ll_backend__lookup_switch__succeeded)
+    {
+      ll_backend__lookup_switch__Var_119 = (MR_Integer) 0;
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__FailCaseCount_41 > ll_backend__lookup_switch__Var_119);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__NeedBitVecCheck_29 == (MR_Integer) 0);
+        ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+      }
+      ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+    }
+    if (!(ll_backend__lookup_switch__succeeded))
+    {
+      {
+        mercury__require__unexpected_3_p_0((MR_String) "ll_backend.lookup_switch", (MR_String) "predicate \140ll_backend.lookup_switch.generate_several_soln_int_lookup_switch\'/18", (MR_String) "bad FailCaseCount");
+        return;
+      }
+    }
+    ll_backend__lookup_switch__Var_77 = (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[2]);
+    {
+      ll_backend__lookup_switch__Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_79, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_77));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_79, 1) = ((MR_Box) (ll_backend__lookup_switch__OutTypes_28));
+    }
+    {
+      ll_backend__lookup_switch__MainRowTypes_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRowTypes_45, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_77));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRowTypes_45, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_79));
+    }
+    mercury__list__length_2_p_0(ll_backend__lookup_switch__TypeCtorInfo_121_121, ll_backend__lookup_switch__MainRowTypes_45, &ll_backend__lookup_switch__MainNumColumns_46);
+    ll_backend__code_info__add_vector_static_cell_5_p_0(ll_backend__lookup_switch__MainRowTypes_45, ll_backend__lookup_switch__MainRows_39, &ll_backend__lookup_switch__MainVectorAddr_47, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_60, &ll_backend__lookup_switch__STATE_VARIABLE_CI_82_82);
+    {
+      ll_backend__lookup_switch__Var_83 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_83, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_83, 1) = ((MR_Box) (ll_backend__lookup_switch__MainVectorAddr_47));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_83, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__lookup_switch__MainVectorAddrRval_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MainVectorAddrRval_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MainVectorAddrRval_48, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_83));
+    }
+    ll_backend__code_info__add_vector_static_cell_5_p_0(ll_backend__lookup_switch__OutTypes_28, ll_backend__lookup_switch__LaterSolnArray_44, &ll_backend__lookup_switch__LaterVectorAddr_49, ll_backend__lookup_switch__STATE_VARIABLE_CI_82_82, &ll_backend__lookup_switch__STATE_VARIABLE_CI_85_85);
+    {
+      ll_backend__lookup_switch__Var_86 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_86, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_86, 1) = ((MR_Box) (ll_backend__lookup_switch__LaterVectorAddr_49));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_86, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__lookup_switch__LaterVectorAddrRval_50 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__LaterVectorAddrRval_50, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__LaterVectorAddrRval_50, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_86));
+    }
+    {
+      ll_backend__lookup_switch__Var_89 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_89, 0) = ((MR_Box) (ll_backend__lookup_switch__FailCaseCount_41));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_89, 1) = ((MR_Box) ((MR_Integer) 0));
+    }
+    {
+      ll_backend__lookup_switch__Var_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_92, 0) = ((MR_Box) (ll_backend__lookup_switch__OneSolnCaseCount_42));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_92, 1) = ((MR_Box) ((MR_Integer) 1));
+    }
+    {
+      ll_backend__lookup_switch__Var_95 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_95, 0) = ((MR_Box) (ll_backend__lookup_switch__SeveralSolnCaseCount_43));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_95, 1) = ((MR_Box) ((MR_Integer) 2));
+    }
+    {
+      ll_backend__lookup_switch__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_94, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_95));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_94, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__lookup_switch__Var_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_91, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_92));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_91, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_94));
+    }
+    {
+      ll_backend__lookup_switch__Var_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_88, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_89));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_88, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_91));
+    }
+    ll_backend__lookup_switch__TypeInfo_126_126 = (MR_Word) &ll_backend__lookup_switch_scalar_common_2[0];
+    mercury__list__sort_2_p_0(ll_backend__lookup_switch__TypeInfo_126_126, ll_backend__lookup_switch__Var_88, &ll_backend__lookup_switch__AscendingSortedCountKinds_51);
+    mercury__list__reverse_2_p_0(ll_backend__lookup_switch__TypeInfo_126_126, ll_backend__lookup_switch__AscendingSortedCountKinds_51, &ll_backend__lookup_switch__DescendingSortedCountKinds_52);
+    mercury__assoc_list__values_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_case_kind_0, ll_backend__lookup_switch__DescendingSortedCountKinds_52, &ll_backend__lookup_switch__DescendingSortedKinds_53);
+    ll_backend__code_loc_dep__acquire_reg_not_in_storemap_5_p_0(ll_backend__lookup_switch__StoreMap_21, (MR_Integer) 0, &ll_backend__lookup_switch__BaseReg_54, ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_62, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_99_99);
+    ll_backend__lookup_switch__TypeCtorInfo_129_129 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+    {
+      ll_backend__lookup_switch__Var_110 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_110, 0) = ((MR_Box) (ll_backend__lookup_switch__MainNumColumns_46));
+    }
+    {
+      ll_backend__lookup_switch__Var_109 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_109, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_109, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_110));
+    }
+    {
+      ll_backend__lookup_switch__Var_106 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_106, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_106, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[14])));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_106, 2) = ((MR_Box) (ll_backend__lookup_switch__IndexRval_19));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_106, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_109));
+    }
+    {
+      ll_backend__lookup_switch__Var_103 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_103, 0) = ((MR_Box) (ll_backend__lookup_switch__MainVectorAddrRval_48));
+      MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])));
+      MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_103, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_106));
+    }
+    {
+      ll_backend__lookup_switch__Var_102 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_102, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_102, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_103));
+    }
+    {
+      ll_backend__lookup_switch__Var_101 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_101, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_101, 1) = ((MR_Box) (ll_backend__lookup_switch__BaseReg_54));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_101, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_102));
+    }
+    {
+      ll_backend__lookup_switch__Var_100 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_100, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_101));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_100, 1) = ((MR_Box) ((MR_String) "Compute base address for this case"));
+    }
+    ll_backend__lookup_switch__BaseRegInitCode_55 = mercury__cord__singleton_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_129_129, ((MR_Box) (ll_backend__lookup_switch__Var_100)));
+    ll_backend__lookup_switch__generate_code_for_all_kinds_16_p_0(ll_backend__lookup_switch__DescendingSortedKinds_53, (MR_Integer) 0, ll_backend__lookup_switch__OutVars_27, ll_backend__lookup_switch__ResumeVars_25, ll_backend__lookup_switch__EndLabel_20, ll_backend__lookup_switch__StoreMap_21, ll_backend__lookup_switch__Liveness_30, ll_backend__lookup_switch__AddTrailOps_26, ll_backend__lookup_switch__BaseReg_54, ll_backend__lookup_switch__LaterVectorAddrRval_50, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_58, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_59, &ll_backend__lookup_switch__KindsCode_56, ll_backend__lookup_switch__STATE_VARIABLE_CI_85_85, ll_backend__lookup_switch__STATE_VARIABLE_CI_61, ll_backend__lookup_switch__STATE_VARIABLE_CLD_99_99);
+    {
+      ll_backend__lookup_switch__Var_116 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_116, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_116, 1) = ((MR_Box) (ll_backend__lookup_switch__EndLabel_20));
+    }
+    {
+      ll_backend__lookup_switch__Var_115 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_115, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_116));
+      MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_115, 1) = ((MR_Box) ((MR_String) "end of int several soln lookup switch"));
+    }
+    ll_backend__lookup_switch__EndLabelCode_57 = mercury__cord__singleton_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_129_129, ((MR_Box) (ll_backend__lookup_switch__Var_115)));
+    ll_backend__lookup_switch__Var_118 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_129_129, ll_backend__lookup_switch__KindsCode_56, ll_backend__lookup_switch__EndLabelCode_57);
+    *ll_backend__lookup_switch__Code_32 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_129_129, ll_backend__lookup_switch__BaseRegInitCode_55, ll_backend__lookup_switch__Var_118);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_several_soln_int_lookup_vector_15_p_0(
+  MR_Integer ll_backend__lookup_switch__CurIndex_1,
+  MR_Integer ll_backend__lookup_switch__EndVal_2,
+  MR_Word ll_backend__lookup_switch__OutTypes_3,
+  MR_Integer ll_backend__lookup_switch__NumOutTypes_4,
+  MR_Word ll_backend__lookup_switch__HeadVar__5_5,
+  MR_Word * ll_backend__lookup_switch__HeadVar__6_6,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_9,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_13,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_15)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    if ((ll_backend__lookup_switch__HeadVar__5_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__CurIndex_1 > ll_backend__lookup_switch__EndVal_2);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        *ll_backend__lookup_switch__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_15 = ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14;
+        *ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_13 = ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12;
+        *ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11 = ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10;
+        *ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_9 = ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8;
+      }
+      else
+      {
+        MR_Word ll_backend__lookup_switch__MainRow_26;
+        MR_Word ll_backend__lookup_switch__MoreMainRows_27;
+        MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_37_37;
+        MR_Integer ll_backend__lookup_switch__Var_38;
+
+        ll_backend__lookup_switch__construct_fail_row_4_p_0(ll_backend__lookup_switch__OutTypes_3, &ll_backend__lookup_switch__MainRow_26, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10, &ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_37_37);
+        ll_backend__lookup_switch__Var_38 = (ll_backend__lookup_switch__CurIndex_1 + (MR_Integer) 1);
+        ll_backend__lookup_switch__construct_several_soln_int_lookup_vector_15_p_0(ll_backend__lookup_switch__Var_38, ll_backend__lookup_switch__EndVal_2, ll_backend__lookup_switch__OutTypes_3, ll_backend__lookup_switch__NumOutTypes_4, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__lookup_switch__MoreMainRows_27, ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7, ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8, ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_9, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_37_37, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11, ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12, ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_13, ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14, ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_15);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *ll_backend__lookup_switch__HeadVar__6_6 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__lookup_switch__MainRow_26));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__lookup_switch__MoreMainRows_27));
+        }
+      }
+    }
+    else
+    {
+      MR_Integer ll_backend__lookup_switch__Index_49;
+      MR_Word ll_backend__lookup_switch__Soln_50;
+      MR_Word ll_backend__lookup_switch__Rest_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__5_5, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__MainRow_52;
+      MR_Word ll_backend__lookup_switch__MainRows_53;
+      MR_Word ll_backend__lookup_switch__Remainder_59;
+      MR_Word ll_backend__lookup_switch__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__5_5, (MR_Integer) 0)));
+      MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_79_79;
+      MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_81_81;
+      MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_89_89;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_90_90;
+      MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_92_92;
+      MR_Integer ll_backend__lookup_switch__Var_97;
+
+      ll_backend__lookup_switch__Index_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_78, (MR_Integer) 0)));
+      ll_backend__lookup_switch__Soln_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_78, (MR_Integer) 1)));
+      ll_backend__lookup_switch__succeeded = (ll_backend__lookup_switch__CurIndex_1 < ll_backend__lookup_switch__Index_49);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        ll_backend__lookup_switch__construct_fail_row_4_p_0(ll_backend__lookup_switch__OutTypes_3, &ll_backend__lookup_switch__MainRow_52, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10, &ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_79_79);
+        ll_backend__lookup_switch__Remainder_59 = ll_backend__lookup_switch__HeadVar__5_5;
+        ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_81_81 = ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14;
+        ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_92_92 = ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12;
+        ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_90_90 = ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8;
+        ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_89_89 = ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7;
+      }
+      else
+      {
+        if (((MR_tag((MR_Word) ll_backend__lookup_switch__Soln_50)) == (MR_mktag((MR_Integer) 0))))
+        {
+          MR_Word ll_backend__lookup_switch__OutRvals_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Soln_50, (MR_Integer) 0)));
+          MR_Word ll_backend__lookup_switch__ZeroRval_61;
+          MR_Word ll_backend__lookup_switch__Var_96;
+
+          ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_92_92 = (ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12 + (MR_Integer) 1);
+          ll_backend__lookup_switch__ZeroRval_61 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13]);
+          {
+            ll_backend__lookup_switch__Var_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_96, 0) = ((MR_Box) (ll_backend__lookup_switch__ZeroRval_61));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_96, 1) = ((MR_Box) (ll_backend__lookup_switch__OutRvals_60));
+          }
+          {
+            ll_backend__lookup_switch__MainRow_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRow_52, 0) = ((MR_Box) (ll_backend__lookup_switch__ZeroRval_61));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRow_52, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_96));
+          }
+          ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_89_89 = ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7;
+          ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_90_90 = ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8;
+          ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_81_81 = ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14;
+        }
+        else
+        {
+          MR_Word ll_backend__lookup_switch__TypeInfo_103_103;
+          MR_Word ll_backend__lookup_switch__FirstSolnRvals_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Soln_50, (MR_Integer) 0)));
+          MR_Word ll_backend__lookup_switch__LaterSolns_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Soln_50, (MR_Integer) 1)));
+          MR_Integer ll_backend__lookup_switch__NumLaterSolns_64;
+          MR_Integer ll_backend__lookup_switch__FirstRowOffset_65;
+          MR_Integer ll_backend__lookup_switch__LastRowOffset_66;
+          MR_Word ll_backend__lookup_switch__FirstRowRval_67;
+          MR_Word ll_backend__lookup_switch__LastRowRval_68;
+          MR_Integer ll_backend__lookup_switch__Var_83;
+          MR_Integer ll_backend__lookup_switch__Var_84;
+          MR_Word ll_backend__lookup_switch__Var_86;
+          MR_Word ll_backend__lookup_switch__Var_87;
+          MR_Word ll_backend__lookup_switch__Var_88;
+          MR_Word ll_backend__lookup_switch__Var_91;
+
+          ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_81_81 = (ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_0_14 + (MR_Integer) 1);
+          ll_backend__lookup_switch__TypeInfo_103_103 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[1];
+          mercury__list__length_2_p_0(ll_backend__lookup_switch__TypeInfo_103_103, ll_backend__lookup_switch__LaterSolns_63, &ll_backend__lookup_switch__NumLaterSolns_64);
+          ll_backend__lookup_switch__FirstRowOffset_65 = (ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7 * ll_backend__lookup_switch__NumOutTypes_4);
+          ll_backend__lookup_switch__Var_84 = (ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7 + ll_backend__lookup_switch__NumLaterSolns_64);
+          ll_backend__lookup_switch__Var_83 = (ll_backend__lookup_switch__Var_84 - (MR_Integer) 1);
+          ll_backend__lookup_switch__LastRowOffset_66 = (ll_backend__lookup_switch__Var_83 * ll_backend__lookup_switch__NumOutTypes_4);
+          {
+            ll_backend__lookup_switch__Var_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_86, 0) = ((MR_Box) (ll_backend__lookup_switch__FirstRowOffset_65));
+          }
+          {
+            ll_backend__lookup_switch__FirstRowRval_67 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__FirstRowRval_67, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__FirstRowRval_67, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_86));
+          }
+          {
+            ll_backend__lookup_switch__Var_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_87, 0) = ((MR_Box) (ll_backend__lookup_switch__LastRowOffset_66));
+          }
+          {
+            ll_backend__lookup_switch__LastRowRval_68 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__LastRowRval_68, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__LastRowRval_68, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_87));
+          }
+          {
+            ll_backend__lookup_switch__Var_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_88, 0) = ((MR_Box) (ll_backend__lookup_switch__LastRowRval_68));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_88, 1) = ((MR_Box) (ll_backend__lookup_switch__FirstSolnRvals_62));
+          }
+          {
+            ll_backend__lookup_switch__MainRow_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRow_52, 0) = ((MR_Box) (ll_backend__lookup_switch__FirstRowRval_67));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__MainRow_52, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_88));
+          }
+          ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_89_89 = (ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_0_7 + ll_backend__lookup_switch__NumLaterSolns_64);
+          ll_backend__lookup_switch__Var_91 = mercury__cord__from_list_1_f_0(ll_backend__lookup_switch__TypeInfo_103_103, ll_backend__lookup_switch__LaterSolns_63);
+          ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_90_90 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeInfo_103_103, ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_0_8, ll_backend__lookup_switch__Var_91);
+          ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_92_92 = ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_0_12;
+        }
+        ll_backend__lookup_switch__Remainder_59 = ll_backend__lookup_switch__Rest_51;
+        ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_79_79 = ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10;
+      }
+      ll_backend__lookup_switch__Var_97 = (ll_backend__lookup_switch__CurIndex_1 + (MR_Integer) 1);
+      ll_backend__lookup_switch__construct_several_soln_int_lookup_vector_15_p_0(ll_backend__lookup_switch__Var_97, ll_backend__lookup_switch__EndVal_2, ll_backend__lookup_switch__OutTypes_3, ll_backend__lookup_switch__NumOutTypes_4, ll_backend__lookup_switch__Remainder_59, &ll_backend__lookup_switch__MainRows_53, ll_backend__lookup_switch__STATE_VARIABLE_LaterNextRow_89_89, ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_90_90, ll_backend__lookup_switch__STATE_VARIABLE_LaterSolnArray_9, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_79_79, ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11, ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_92_92, ll_backend__lookup_switch__STATE_VARIABLE_OneSolnCaseCount_13, ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_81_81, ll_backend__lookup_switch__STATE_VARIABLE_SeveralSolnCaseCount_15);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        *ll_backend__lookup_switch__HeadVar__6_6 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__lookup_switch__MainRow_52));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__lookup_switch__MainRows_53));
+      }
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__lookup_switch__construct_fail_row_4_p_0_1(
+  MR_Box ll_backend__lookup_switch__closure_arg,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__lookup_switch__wrapper_arg_2;
+    MR_Box ll_backend__lookup_switch__closure = ll_backend__lookup_switch__closure_arg;
+    MR_Word ll_backend__lookup_switch__conv0_HeadVar__2_2;
+
+    ll_backend__lookup_switch__conv0_HeadVar__2_2 = ll_backend__lookup_switch__default_value_for_type_1_f_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1));
+    ll_backend__lookup_switch__wrapper_arg_2 = ((MR_Box) (ll_backend__lookup_switch__conv0_HeadVar__2_2));
+    return ll_backend__lookup_switch__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__construct_fail_row_4_p_0(
+  MR_Word ll_backend__lookup_switch__OutTypes_5,
+  MR_Word * ll_backend__lookup_switch__MainRow_6,
+  MR_Integer ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10,
+  MR_Integer * ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11)
+{
+  {
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_24_24 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0;
+    MR_Word ll_backend__lookup_switch__VarRvals_9;
+
+    ll_backend__lookup_switch__VarRvals_9 = mercury__list__map_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0, ll_backend__lookup_switch__TypeCtorInfo_24_24, (MR_Word) &ll_backend__lookup_switch_scalar_common_2[1], ll_backend__lookup_switch__OutTypes_5);
+    *ll_backend__lookup_switch__MainRow_6 = mercury__list__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_24_24, (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_1[9]), ll_backend__lookup_switch__VarRvals_9);
+    *ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_11 = (ll_backend__lookup_switch__STATE_VARIABLE_FailCaseCount_0_10 + (MR_Integer) 1);
+  }
+}
+
+void MR_CALL 
+ll_backend__lookup_switch__generate_code_for_all_kinds_16_p_0(
+  MR_Word ll_backend__lookup_switch__Kinds_17,
+  MR_Integer ll_backend__lookup_switch__NumPrevColumns_18,
+  MR_Word ll_backend__lookup_switch__OutVars_19,
+  MR_Word ll_backend__lookup_switch__ResumeVars_20,
+  MR_Word ll_backend__lookup_switch__EndLabel_21,
+  MR_Word ll_backend__lookup_switch__StoreMap_22,
+  MR_Word ll_backend__lookup_switch__Liveness_23,
+  MR_Word ll_backend__lookup_switch__AddTrailOps_24,
+  MR_Word ll_backend__lookup_switch__BaseReg_25,
+  MR_Word ll_backend__lookup_switch__LaterVectorAddrRval_26,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_34,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_35,
+  MR_Word * ll_backend__lookup_switch__Code_28,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_36,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_37,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_38)
+{
+  {
+    MR_Word ll_backend__lookup_switch__CurSlot_31;
+    MR_Word ll_backend__lookup_switch__MaxSlot_32;
+    MR_Word ll_backend__lookup_switch__BranchStart_33;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_41_41;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_42_42;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_45_45;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_46_46;
+
+    ll_backend__code_loc_dep__acquire_temp_slot_7_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)), (MR_Integer) 1, &ll_backend__lookup_switch__CurSlot_31, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_36, &ll_backend__lookup_switch__STATE_VARIABLE_CI_41_41, ll_backend__lookup_switch__STATE_VARIABLE_CLD_0_38, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_42_42);
+    ll_backend__code_loc_dep__acquire_temp_slot_7_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5)), (MR_Integer) 1, &ll_backend__lookup_switch__MaxSlot_32, ll_backend__lookup_switch__STATE_VARIABLE_CI_41_41, &ll_backend__lookup_switch__STATE_VARIABLE_CI_45_45, ll_backend__lookup_switch__STATE_VARIABLE_CLD_42_42, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_46_46);
+    ll_backend__code_loc_dep__remember_position_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CLD_46_46, &ll_backend__lookup_switch__BranchStart_33);
+    ll_backend__lookup_switch__generate_code_for_each_kind_18_p_0(ll_backend__lookup_switch__Kinds_17, ll_backend__lookup_switch__NumPrevColumns_18, ll_backend__lookup_switch__OutVars_19, ll_backend__lookup_switch__ResumeVars_20, ll_backend__lookup_switch__BranchStart_33, ll_backend__lookup_switch__EndLabel_21, ll_backend__lookup_switch__StoreMap_22, ll_backend__lookup_switch__Liveness_23, ll_backend__lookup_switch__AddTrailOps_24, ll_backend__lookup_switch__BaseReg_25, ll_backend__lookup_switch__CurSlot_31, ll_backend__lookup_switch__MaxSlot_32, ll_backend__lookup_switch__LaterVectorAddrRval_26, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_34, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_35, ll_backend__lookup_switch__Code_28, ll_backend__lookup_switch__STATE_VARIABLE_CI_45_45, ll_backend__lookup_switch__STATE_VARIABLE_CI_37);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__generate_code_for_each_kind_18_p_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Integer ll_backend__lookup_switch__NumPrevColumns_2,
+  MR_Word ll_backend__lookup_switch__OutVars_3,
+  MR_Word ll_backend__lookup_switch__ResumeVars_4,
+  MR_Word ll_backend__lookup_switch__BranchStart_5,
+  MR_Word ll_backend__lookup_switch__EndLabel_6,
+  MR_Word ll_backend__lookup_switch__StoreMap_7,
+  MR_Word ll_backend__lookup_switch__Liveness_8,
+  MR_Word ll_backend__lookup_switch__AddTrailOps_9,
+  MR_Word ll_backend__lookup_switch__BaseReg_10,
+  MR_Word ll_backend__lookup_switch__CurSlot_11,
+  MR_Word ll_backend__lookup_switch__MaxSlot_12,
+  MR_Word ll_backend__lookup_switch__LaterVectorAddrRval_13,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_14,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_15,
+  MR_Word * ll_backend__lookup_switch__Code_16,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_18)
+{
+  if ((ll_backend__lookup_switch__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+  {
+    {
+      mercury__require__unexpected_3_p_0((MR_String) "ll_backend.lookup_switch", (MR_String) "predicate \140ll_backend.lookup_switch.generate_code_for_each_kind\'/18", (MR_String) "no kinds");
+      return;
+    }
+  }
+  else
+  {
+    MR_Word ll_backend__lookup_switch__Kind_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word ll_backend__lookup_switch__Kinds_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__lookup_switch__TestOp_58;
+    MR_Word ll_backend__lookup_switch__KindCode_60;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247;
+    MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255;
+
+    switch (ll_backend__lookup_switch__Kind_41) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__lookup_switch__TypeCtorInfo_297_297;
+          MR_Word ll_backend__lookup_switch__BranchEndCode_61;
+          MR_Word ll_backend__lookup_switch__GotoEndCode_62;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_243_243;
+          MR_Integer ll_backend__lookup_switch__Var_244;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_245_245;
+          MR_Word ll_backend__lookup_switch__Var_248;
+          MR_Word ll_backend__lookup_switch__Var_249;
+          MR_Word ll_backend__lookup_switch__Var_250;
+
+          ll_backend__lookup_switch__TestOp_58 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[10]);
+          ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__BranchStart_5, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_243_243);
+          ll_backend__lookup_switch__Var_244 = (ll_backend__lookup_switch__NumPrevColumns_2 + (MR_Integer) 2);
+          ll_backend__lookup_util__generate_offset_assigns_6_p_0(ll_backend__lookup_switch__OutVars_3, ll_backend__lookup_switch__Var_244, ll_backend__lookup_switch__BaseReg_10, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, ll_backend__lookup_switch__STATE_VARIABLE_CLD_243_243, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_245_245);
+          ll_backend__lookup_util__set_liveness_and_end_branch_7_p_0(ll_backend__lookup_switch__StoreMap_7, ll_backend__lookup_switch__Liveness_8, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_14, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247, &ll_backend__lookup_switch__BranchEndCode_61, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, ll_backend__lookup_switch__STATE_VARIABLE_CLD_245_245);
+          ll_backend__lookup_switch__TypeCtorInfo_297_297 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+          {
+            ll_backend__lookup_switch__Var_250 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_250, 0) = ((MR_Box) (ll_backend__lookup_switch__EndLabel_6));
+          }
+          {
+            ll_backend__lookup_switch__Var_249 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_249, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_249, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_250));
+          }
+          {
+            ll_backend__lookup_switch__Var_248 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_248, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_249));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_248, 1) = ((MR_Box) ((MR_String) "goto end of switch from one_soln"));
+          }
+          ll_backend__lookup_switch__GotoEndCode_62 = mercury__cord__singleton_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_297_297, ((MR_Box) (ll_backend__lookup_switch__Var_248)));
+          ll_backend__lookup_switch__KindCode_60 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_297_297, ll_backend__lookup_switch__BranchEndCode_61, ll_backend__lookup_switch__GotoEndCode_62);
+          ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255 = ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ll_backend__lookup_switch__TypeCtorInfo_298_298;
+          MR_Word ll_backend__lookup_switch__TypeCtorInfo_300_300;
+          MR_Word ll_backend__lookup_switch__Globals_63;
+          MR_Word ll_backend__lookup_switch__ResumeMap_64;
+          MR_Word ll_backend__lookup_switch__FlushCode_65;
+          MR_Word ll_backend__lookup_switch__MinOffsetColumnRval_66;
+          MR_Word ll_backend__lookup_switch__MaxOffsetColumnRval_67;
+          MR_Word ll_backend__lookup_switch__SaveSlotsCode_68;
+          MR_Word ll_backend__lookup_switch__SaveTicketCode_69;
+          MR_Word ll_backend__lookup_switch__MaybeTicketSlot_70;
+          MR_Word ll_backend__lookup_switch__ReclaimHeap_71;
+          MR_Word ll_backend__lookup_switch__SaveHpCode_72;
+          MR_Word ll_backend__lookup_switch__MaybeHpSlot_73;
+          MR_Word ll_backend__lookup_switch__HijackInfo_74;
+          MR_Word ll_backend__lookup_switch__PrepareHijackCode_75;
+          MR_Word ll_backend__lookup_switch__DisjEntry_76;
+          MR_Word ll_backend__lookup_switch__ResumePoint_77;
+          MR_Word ll_backend__lookup_switch__UpdateRedoipCode_78;
+          MR_Word ll_backend__lookup_switch__FirstFlushResumeVarsCode_79;
+          MR_Word ll_backend__lookup_switch__FirstZombies_80;
+          MR_Word ll_backend__lookup_switch__FirstBranchEndCode_81;
+          MR_Word ll_backend__lookup_switch__ResumePointCode_82;
+          MR_Word ll_backend__lookup_switch__RestoreTicketCode_83;
+          MR_Word ll_backend__lookup_switch__RestoreHpCode_84;
+          MR_Word ll_backend__lookup_switch__LaterBaseReg_85;
+          MR_Word ll_backend__lookup_switch__UndoLabel_86;
+          MR_Word ll_backend__lookup_switch__AfterUndoLabel_87;
+          MR_Integer ll_backend__lookup_switch__NumOutVars_88;
+          MR_Word ll_backend__lookup_switch__TestMoreSolnsCode_89;
+          MR_Word ll_backend__lookup_switch__UndoHijackCode_90;
+          MR_Word ll_backend__lookup_switch__AfterUndoLabelCode_91;
+          MR_Word ll_backend__lookup_switch__LaterFlushResumeVarsCode_93;
+          MR_Word ll_backend__lookup_switch__LaterZombies_94;
+          MR_Word ll_backend__lookup_switch__LaterBranchEndCode_95;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_108_108;
+          MR_Word ll_backend__lookup_switch__Var_109;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_110_110;
+          MR_Word ll_backend__lookup_switch__Var_111;
+          MR_Word ll_backend__lookup_switch__Var_112;
+          MR_Integer ll_backend__lookup_switch__Var_113;
+          MR_Word ll_backend__lookup_switch__Var_115;
+          MR_Word ll_backend__lookup_switch__Var_116;
+          MR_Word ll_backend__lookup_switch__Var_117;
+          MR_Word ll_backend__lookup_switch__Var_118;
+          MR_Word ll_backend__lookup_switch__Var_119;
+          MR_Word ll_backend__lookup_switch__Var_120;
+          MR_Word ll_backend__lookup_switch__Var_122;
+          MR_Word ll_backend__lookup_switch__Var_124;
+          MR_Word ll_backend__lookup_switch__Var_125;
+          MR_Word ll_backend__lookup_switch__Var_126;
+          MR_Word ll_backend__lookup_switch__Var_127;
+          MR_Word ll_backend__lookup_switch__Var_128;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_134_134;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_135_135;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_137_137;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_138_138;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_140_140;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_141_141;
+          MR_Word ll_backend__lookup_switch__Var_142;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_146_146;
+          MR_Integer ll_backend__lookup_switch__Var_147;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_148_148;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_150_150;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_151_151;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_152_152;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_153_153;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_154_154;
+          MR_Word ll_backend__lookup_switch__Var_155;
+          MR_Word ll_backend__lookup_switch__Var_156;
+          MR_Word ll_backend__lookup_switch__Var_157;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_159_159;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_160_160;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_161_161;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_164_164;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_165_165;
+          MR_Word ll_backend__lookup_switch__Var_167;
+          MR_Word ll_backend__lookup_switch__Var_168;
+          MR_Word ll_backend__lookup_switch__Var_169;
+          MR_Word ll_backend__lookup_switch__Var_170;
+          MR_Word ll_backend__lookup_switch__Var_172;
+          MR_Word ll_backend__lookup_switch__Var_173;
+          MR_Word ll_backend__lookup_switch__Var_174;
+          MR_Word ll_backend__lookup_switch__Var_175;
+          MR_Word ll_backend__lookup_switch__Var_178;
+          MR_Word ll_backend__lookup_switch__Var_179;
+          MR_Word ll_backend__lookup_switch__Var_180;
+          MR_Word ll_backend__lookup_switch__Var_182;
+          MR_Word ll_backend__lookup_switch__Var_183;
+          MR_Word ll_backend__lookup_switch__Var_184;
+          MR_Word ll_backend__lookup_switch__Var_185;
+          MR_Word ll_backend__lookup_switch__Var_189;
+          MR_Word ll_backend__lookup_switch__Var_190;
+          MR_Word ll_backend__lookup_switch__Var_192;
+          MR_Word ll_backend__lookup_switch__Var_193;
+          MR_Word ll_backend__lookup_switch__Var_194;
+          MR_Word ll_backend__lookup_switch__Var_195;
+          MR_Word ll_backend__lookup_switch__Var_197;
+          MR_Word ll_backend__lookup_switch__Var_198;
+          MR_Word ll_backend__lookup_switch__Var_199;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_202_202;
+          MR_Word ll_backend__lookup_switch__Var_203;
+          MR_Word ll_backend__lookup_switch__Var_204;
+          MR_Word ll_backend__lookup_switch__Var_205;
+          MR_Word ll_backend__lookup_switch__Var_207;
+          MR_Word ll_backend__lookup_switch__Var_208;
+          MR_Word ll_backend__lookup_switch__Var_209;
+          MR_Word ll_backend__lookup_switch__Var_210;
+          MR_Word ll_backend__lookup_switch__Var_211;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_218_218;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_220_220;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_221_221;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_222_222;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_223_223;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_224_224;
+          MR_Word ll_backend__lookup_switch__Var_226;
+          MR_Word ll_backend__lookup_switch__Var_227;
+          MR_Word ll_backend__lookup_switch__Var_228;
+          MR_Word ll_backend__lookup_switch__Var_229;
+          MR_Word ll_backend__lookup_switch__Var_230;
+          MR_Word ll_backend__lookup_switch__Var_231;
+          MR_Word ll_backend__lookup_switch__Var_232;
+          MR_Word ll_backend__lookup_switch__Var_233;
+          MR_Word ll_backend__lookup_switch__Var_234;
+          MR_Word ll_backend__lookup_switch__Var_235;
+          MR_Word ll_backend__lookup_switch__Var_236;
+          MR_Word ll_backend__lookup_switch__Var_237;
+          MR_Word ll_backend__lookup_switch__Var_238;
+          MR_Word ll_backend__lookup_switch__Var_239;
+          MR_Word ll_backend__lookup_switch__Var_240;
+          MR_Word ll_backend__lookup_switch__Var_241;
+          MR_Word ll_backend__lookup_switch__GotoEndCode_296;
+          MR_Word ll_backend__lookup_switch___LaterUpdateRedoipCode_92;
+
+          ll_backend__lookup_switch__TestOp_58 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[11]);
+          ll_backend__code_info__get_globals_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__Globals_63);
+          ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__BranchStart_5, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_108_108);
+          ll_backend__lookup_switch__TypeCtorInfo_298_298 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+          ll_backend__lookup_switch__Var_109 = parse_tree__set_of_var__to_sorted_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_298_298, ll_backend__lookup_switch__ResumeVars_4);
+          ll_backend__code_loc_dep__produce_vars_6_p_0(ll_backend__lookup_switch__Var_109, &ll_backend__lookup_switch__ResumeMap_64, &ll_backend__lookup_switch__FlushCode_65, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, ll_backend__lookup_switch__STATE_VARIABLE_CLD_108_108, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_110_110);
+          {
+            ll_backend__lookup_switch__Var_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_111, 0) = ((MR_Box) (ll_backend__lookup_switch__NumPrevColumns_2));
+          }
+          {
+            ll_backend__lookup_switch__MinOffsetColumnRval_66 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MinOffsetColumnRval_66, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MinOffsetColumnRval_66, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_111));
+          }
+          ll_backend__lookup_switch__Var_113 = (ll_backend__lookup_switch__NumPrevColumns_2 + (MR_Integer) 1);
+          {
+            ll_backend__lookup_switch__Var_112 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_112, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_113));
+          }
+          {
+            ll_backend__lookup_switch__MaxOffsetColumnRval_67 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MaxOffsetColumnRval_67, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__MaxOffsetColumnRval_67, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_112));
+          }
+          ll_backend__lookup_switch__Var_120 = (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0]);
+          {
+            ll_backend__lookup_switch__Var_122 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_122, 0) = ((MR_Box) (ll_backend__lookup_switch__BaseReg_10));
+          }
+          {
+            ll_backend__lookup_switch__Var_119 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_119, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_119, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_120));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_119, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_122));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_119, 3) = ((MR_Box) (ll_backend__lookup_switch__MinOffsetColumnRval_66));
+          }
+          {
+            ll_backend__lookup_switch__Var_118 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_118, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_119));
+          }
+          {
+            ll_backend__lookup_switch__Var_117 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_117, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_117, 1) = ((MR_Box) (ll_backend__lookup_switch__CurSlot_11));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_117, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_118));
+          }
+          {
+            ll_backend__lookup_switch__Var_116 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_116, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_117));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_116, 1) = ((MR_Box) ((MR_String) "Setup current slot in the later solution array"));
+          }
+          {
+            ll_backend__lookup_switch__Var_128 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_128, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_128, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_120));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_128, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_122));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_128, 3) = ((MR_Box) (ll_backend__lookup_switch__MaxOffsetColumnRval_67));
+          }
+          {
+            ll_backend__lookup_switch__Var_127 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_127, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_128));
+          }
+          {
+            ll_backend__lookup_switch__Var_126 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_126, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_126, 1) = ((MR_Box) (ll_backend__lookup_switch__MaxSlot_12));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_126, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_127));
+          }
+          {
+            ll_backend__lookup_switch__Var_125 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_125, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_126));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_125, 1) = ((MR_Box) ((MR_String) "Setup maximum slot in the later solution array"));
+          }
+          {
+            ll_backend__lookup_switch__Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_124, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_125));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_124, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ll_backend__lookup_switch__Var_115 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_115, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_116));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_115, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_124));
+          }
+          ll_backend__lookup_switch__SaveSlotsCode_68 = mercury__cord__from_list_1_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__lookup_switch__Var_115);
+          ll_backend__code_loc_dep__maybe_save_ticket_7_p_0(ll_backend__lookup_switch__AddTrailOps_9, &ll_backend__lookup_switch__SaveTicketCode_69, &ll_backend__lookup_switch__MaybeTicketSlot_70, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__STATE_VARIABLE_CI_134_134, ll_backend__lookup_switch__STATE_VARIABLE_CLD_110_110, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_135_135);
+          libs__globals__lookup_bool_option_3_p_0(ll_backend__lookup_switch__Globals_63, (MR_Integer) 313, &ll_backend__lookup_switch__ReclaimHeap_71);
+          ll_backend__code_loc_dep__maybe_save_hp_7_p_0(ll_backend__lookup_switch__ReclaimHeap_71, &ll_backend__lookup_switch__SaveHpCode_72, &ll_backend__lookup_switch__MaybeHpSlot_73, ll_backend__lookup_switch__STATE_VARIABLE_CI_134_134, &ll_backend__lookup_switch__STATE_VARIABLE_CI_137_137, ll_backend__lookup_switch__STATE_VARIABLE_CLD_135_135, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_138_138);
+          ll_backend__code_loc_dep__prepare_for_disj_hijack_7_p_0((MR_Integer) 2, &ll_backend__lookup_switch__HijackInfo_74, &ll_backend__lookup_switch__PrepareHijackCode_75, ll_backend__lookup_switch__STATE_VARIABLE_CI_137_137, &ll_backend__lookup_switch__STATE_VARIABLE_CI_140_140, ll_backend__lookup_switch__STATE_VARIABLE_CLD_138_138, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_141_141);
+          ll_backend__code_loc_dep__remember_position_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CLD_141_141, &ll_backend__lookup_switch__DisjEntry_76);
+          ll_backend__lookup_switch__Var_142 = parse_tree__set_of_var__to_sorted_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_298_298, ll_backend__lookup_switch__ResumeVars_4);
+          ll_backend__code_loc_dep__make_resume_point_6_p_0(ll_backend__lookup_switch__Var_142, (MR_Integer) 1, ll_backend__lookup_switch__ResumeMap_64, &ll_backend__lookup_switch__ResumePoint_77, ll_backend__lookup_switch__STATE_VARIABLE_CI_140_140, &ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144);
+          ll_backend__code_loc_dep__effect_resume_point_5_p_0(ll_backend__lookup_switch__ResumePoint_77, (MR_Integer) 2, &ll_backend__lookup_switch__UpdateRedoipCode_78, ll_backend__lookup_switch__STATE_VARIABLE_CLD_141_141, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_146_146);
+          ll_backend__lookup_switch__Var_147 = (ll_backend__lookup_switch__NumPrevColumns_2 + (MR_Integer) 2);
+          ll_backend__lookup_util__generate_offset_assigns_6_p_0(ll_backend__lookup_switch__OutVars_3, ll_backend__lookup_switch__Var_147, ll_backend__lookup_switch__BaseReg_10, ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144, ll_backend__lookup_switch__STATE_VARIABLE_CLD_146_146, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_148_148);
+          ll_backend__code_loc_dep__flush_resume_vars_to_stack_4_p_0(&ll_backend__lookup_switch__FirstFlushResumeVarsCode_79, ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144, ll_backend__lookup_switch__STATE_VARIABLE_CLD_148_148, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_150_150);
+          ll_backend__code_loc_dep__pop_resume_point_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CLD_150_150, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_151_151);
+          ll_backend__code_loc_dep__pickup_zombies_3_p_0(&ll_backend__lookup_switch__FirstZombies_80, ll_backend__lookup_switch__STATE_VARIABLE_CLD_151_151, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_152_152);
+          ll_backend__code_loc_dep__make_vars_forward_dead_3_p_0(ll_backend__lookup_switch__FirstZombies_80, ll_backend__lookup_switch__STATE_VARIABLE_CLD_152_152, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_153_153);
+          ll_backend__lookup_util__set_liveness_and_end_branch_7_p_0(ll_backend__lookup_switch__StoreMap_7, ll_backend__lookup_switch__Liveness_8, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_14, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_154_154, &ll_backend__lookup_switch__FirstBranchEndCode_81, ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144, ll_backend__lookup_switch__STATE_VARIABLE_CLD_153_153);
+          ll_backend__lookup_switch__TypeCtorInfo_300_300 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+          {
+            ll_backend__lookup_switch__Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_157, 0) = ((MR_Box) (ll_backend__lookup_switch__EndLabel_6));
+          }
+          {
+            ll_backend__lookup_switch__Var_156 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_156, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_156, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_157));
+          }
+          {
+            ll_backend__lookup_switch__Var_155 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_155, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_156));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_155, 1) = ((MR_Box) ((MR_String) "goto end of switch from several_soln"));
+          }
+          ll_backend__lookup_switch__GotoEndCode_296 = mercury__cord__singleton_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ((MR_Box) (ll_backend__lookup_switch__Var_155)));
+          ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__DisjEntry_76, ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_159_159);
+          ll_backend__code_loc_dep__generate_resume_point_6_p_0(ll_backend__lookup_switch__ResumePoint_77, &ll_backend__lookup_switch__ResumePointCode_82, ll_backend__lookup_switch__STATE_VARIABLE_CI_144_144, &ll_backend__lookup_switch__STATE_VARIABLE_CI_160_160, ll_backend__lookup_switch__STATE_VARIABLE_CLD_159_159, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_161_161);
+          ll_backend__code_loc_dep__maybe_reset_ticket_3_p_0(ll_backend__lookup_switch__MaybeTicketSlot_70, (MR_Integer) 0, &ll_backend__lookup_switch__RestoreTicketCode_83);
+          ll_backend__code_loc_dep__maybe_restore_hp_2_p_0(ll_backend__lookup_switch__MaybeHpSlot_73, &ll_backend__lookup_switch__RestoreHpCode_84);
+          ll_backend__code_loc_dep__acquire_reg_not_in_storemap_5_p_0(ll_backend__lookup_switch__StoreMap_7, (MR_Integer) 0, &ll_backend__lookup_switch__LaterBaseReg_85, ll_backend__lookup_switch__STATE_VARIABLE_CLD_161_161, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_164_164);
+          ll_backend__code_info__get_next_label_3_p_0(&ll_backend__lookup_switch__UndoLabel_86, ll_backend__lookup_switch__STATE_VARIABLE_CI_160_160, &ll_backend__lookup_switch__STATE_VARIABLE_CI_165_165);
+          ll_backend__code_info__get_next_label_3_p_0(&ll_backend__lookup_switch__AfterUndoLabel_87, ll_backend__lookup_switch__STATE_VARIABLE_CI_165_165, &ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255);
+          mercury__list__length_2_p_0((MR_Word) &ll_backend__lookup_switch_scalar_common_1[2], ll_backend__lookup_switch__OutVars_3, &ll_backend__lookup_switch__NumOutVars_88);
+          {
+            ll_backend__lookup_switch__Var_170 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_170, 0) = ((MR_Box) (ll_backend__lookup_switch__CurSlot_11));
+          }
+          {
+            ll_backend__lookup_switch__Var_169 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_169, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_169, 1) = ((MR_Box) (ll_backend__lookup_switch__LaterBaseReg_85));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_169, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_170));
+          }
+          {
+            ll_backend__lookup_switch__Var_168 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_168, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_169));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_168, 1) = ((MR_Box) ((MR_String) "Init later base register"));
+          }
+          {
+            ll_backend__lookup_switch__Var_178 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_178, 0) = ((MR_Box) (ll_backend__lookup_switch__LaterBaseReg_85));
+          }
+          {
+            ll_backend__lookup_switch__Var_179 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_179, 0) = ((MR_Box) (ll_backend__lookup_switch__MaxSlot_12));
+          }
+          {
+            ll_backend__lookup_switch__Var_175 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_175, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_175, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[12])));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_175, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_178));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_175, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_179));
+          }
+          {
+            ll_backend__lookup_switch__Var_180 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_180, 0) = ((MR_Box) (ll_backend__lookup_switch__UndoLabel_86));
+          }
+          {
+            ll_backend__lookup_switch__Var_174 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_174, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_174, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_175));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_174, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_180));
+          }
+          {
+            ll_backend__lookup_switch__Var_173 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_173, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_174));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_173, 1) = ((MR_Box) ((MR_String) "Jump to undo hijack code if there are no more solutions"));
+          }
+          {
+            ll_backend__lookup_switch__Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_190, 0) = ((MR_Box) (ll_backend__lookup_switch__NumOutVars_88));
+          }
+          {
+            ll_backend__lookup_switch__Var_189 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_189, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_189, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_190));
+          }
+          {
+            ll_backend__lookup_switch__Var_185 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_185, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_185, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[2])));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_185, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_170));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_185, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_189));
+          }
+          {
+            ll_backend__lookup_switch__Var_184 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_184, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_184, 1) = ((MR_Box) (ll_backend__lookup_switch__CurSlot_11));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_184, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_185));
+          }
+          {
+            ll_backend__lookup_switch__Var_183 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_183, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_184));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_183, 1) = ((MR_Box) ((MR_String) "Update current slot in the later solution array"));
+          }
+          {
+            ll_backend__lookup_switch__Var_195 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_195, 0) = ((MR_Box) (ll_backend__lookup_switch__AfterUndoLabel_87));
+          }
+          {
+            ll_backend__lookup_switch__Var_194 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_194, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_194, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_195));
+          }
+          {
+            ll_backend__lookup_switch__Var_193 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_193, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_194));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_193, 1) = ((MR_Box) ((MR_String) "Jump around undo hijack code"));
+          }
+          {
+            ll_backend__lookup_switch__Var_199 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_199, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_199, 1) = ((MR_Box) (ll_backend__lookup_switch__UndoLabel_86));
+          }
+          {
+            ll_backend__lookup_switch__Var_198 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_198, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_199));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_198, 1) = ((MR_Box) ((MR_String) "Undo hijack code"));
+          }
+          {
+            ll_backend__lookup_switch__Var_197 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_197, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_198));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_197, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ll_backend__lookup_switch__Var_192 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_192, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_193));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_192, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_197));
+          }
+          {
+            ll_backend__lookup_switch__Var_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_182, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_183));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_182, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_192));
+          }
+          {
+            ll_backend__lookup_switch__Var_172 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_172, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_173));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_172, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_182));
+          }
+          {
+            ll_backend__lookup_switch__Var_167 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_167, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_168));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_167, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_172));
+          }
+          ll_backend__lookup_switch__TestMoreSolnsCode_89 = mercury__cord__from_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__Var_167);
+          ll_backend__code_loc_dep__undo_disj_hijack_4_p_0(ll_backend__lookup_switch__HijackInfo_74, &ll_backend__lookup_switch__UndoHijackCode_90, ll_backend__lookup_switch__STATE_VARIABLE_CLD_164_164, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_202_202);
+          {
+            ll_backend__lookup_switch__Var_205 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_205, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_205, 1) = ((MR_Box) (ll_backend__lookup_switch__AfterUndoLabel_87));
+          }
+          {
+            ll_backend__lookup_switch__Var_204 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_204, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_205));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_204, 1) = ((MR_Box) ((MR_String) "Return later answer code"));
+          }
+          {
+            ll_backend__lookup_switch__Var_211 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_211, 0) = ((MR_Box) (ll_backend__lookup_switch__LaterVectorAddrRval_13));
+            MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_211, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_120));
+            MR_hl_field(MR_mktag(2), ll_backend__lookup_switch__Var_211, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_178));
+          }
+          {
+            ll_backend__lookup_switch__Var_210 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_210, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_210, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_211));
+          }
+          {
+            ll_backend__lookup_switch__Var_209 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_209, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_209, 1) = ((MR_Box) (ll_backend__lookup_switch__LaterBaseReg_85));
+            MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_209, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_210));
+          }
+          {
+            ll_backend__lookup_switch__Var_208 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_208, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_209));
+            MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_208, 1) = ((MR_Box) ((MR_String) "Compute base address in later array for this solution"));
+          }
+          {
+            ll_backend__lookup_switch__Var_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_207, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_208));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_207, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            ll_backend__lookup_switch__Var_203 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_203, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_204));
+            MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_203, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_207));
+          }
+          ll_backend__lookup_switch__AfterUndoLabelCode_91 = mercury__cord__from_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__Var_203);
+          ll_backend__code_loc_dep__effect_resume_point_5_p_0(ll_backend__lookup_switch__ResumePoint_77, (MR_Integer) 2, &ll_backend__lookup_switch___LaterUpdateRedoipCode_92, ll_backend__lookup_switch__STATE_VARIABLE_CLD_202_202, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_218_218);
+          ll_backend__lookup_util__generate_offset_assigns_6_p_0(ll_backend__lookup_switch__OutVars_3, (MR_Integer) 0, ll_backend__lookup_switch__LaterBaseReg_85, ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255, ll_backend__lookup_switch__STATE_VARIABLE_CLD_218_218, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_220_220);
+          ll_backend__code_loc_dep__flush_resume_vars_to_stack_4_p_0(&ll_backend__lookup_switch__LaterFlushResumeVarsCode_93, ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255, ll_backend__lookup_switch__STATE_VARIABLE_CLD_220_220, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_221_221);
+          ll_backend__code_loc_dep__pop_resume_point_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CLD_221_221, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_222_222);
+          ll_backend__code_loc_dep__pickup_zombies_3_p_0(&ll_backend__lookup_switch__LaterZombies_94, ll_backend__lookup_switch__STATE_VARIABLE_CLD_222_222, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_223_223);
+          ll_backend__code_loc_dep__make_vars_forward_dead_3_p_0(ll_backend__lookup_switch__LaterZombies_94, ll_backend__lookup_switch__STATE_VARIABLE_CLD_223_223, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_224_224);
+          ll_backend__lookup_util__set_liveness_and_end_branch_7_p_0(ll_backend__lookup_switch__StoreMap_7, ll_backend__lookup_switch__Liveness_8, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_154_154, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247, &ll_backend__lookup_switch__LaterBranchEndCode_95, ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255, ll_backend__lookup_switch__STATE_VARIABLE_CLD_224_224);
+          ll_backend__lookup_switch__Var_241 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__LaterBranchEndCode_95, ll_backend__lookup_switch__GotoEndCode_296);
+          ll_backend__lookup_switch__Var_240 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__LaterFlushResumeVarsCode_93, ll_backend__lookup_switch__Var_241);
+          ll_backend__lookup_switch__Var_239 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__AfterUndoLabelCode_91, ll_backend__lookup_switch__Var_240);
+          ll_backend__lookup_switch__Var_238 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__UndoHijackCode_90, ll_backend__lookup_switch__Var_239);
+          ll_backend__lookup_switch__Var_237 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__TestMoreSolnsCode_89, ll_backend__lookup_switch__Var_238);
+          ll_backend__lookup_switch__Var_236 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__RestoreHpCode_84, ll_backend__lookup_switch__Var_237);
+          ll_backend__lookup_switch__Var_235 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__RestoreTicketCode_83, ll_backend__lookup_switch__Var_236);
+          ll_backend__lookup_switch__Var_234 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__ResumePointCode_82, ll_backend__lookup_switch__Var_235);
+          ll_backend__lookup_switch__Var_233 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__GotoEndCode_296, ll_backend__lookup_switch__Var_234);
+          ll_backend__lookup_switch__Var_232 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__FirstBranchEndCode_81, ll_backend__lookup_switch__Var_233);
+          ll_backend__lookup_switch__Var_231 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__FirstFlushResumeVarsCode_79, ll_backend__lookup_switch__Var_232);
+          ll_backend__lookup_switch__Var_230 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__UpdateRedoipCode_78, ll_backend__lookup_switch__Var_231);
+          ll_backend__lookup_switch__Var_229 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__PrepareHijackCode_75, ll_backend__lookup_switch__Var_230);
+          ll_backend__lookup_switch__Var_228 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__SaveHpCode_72, ll_backend__lookup_switch__Var_229);
+          ll_backend__lookup_switch__Var_227 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__SaveTicketCode_69, ll_backend__lookup_switch__Var_228);
+          ll_backend__lookup_switch__Var_226 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__SaveSlotsCode_68, ll_backend__lookup_switch__Var_227);
+          ll_backend__lookup_switch__KindCode_60 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_300_300, ll_backend__lookup_switch__FlushCode_65, ll_backend__lookup_switch__Var_226);
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_253_253;
+          MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_254_254;
+
+          ll_backend__lookup_switch__TestOp_58 = (MR_Word) MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[12]);
+          ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__BranchStart_5, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_253_253);
+          ll_backend__code_loc_dep__release_reg_3_p_0(ll_backend__lookup_switch__BaseReg_10, ll_backend__lookup_switch__STATE_VARIABLE_CLD_253_253, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_254_254);
+          ll_backend__code_loc_dep__generate_failure_4_p_0(&ll_backend__lookup_switch__KindCode_60, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_17, &ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255, ll_backend__lookup_switch__STATE_VARIABLE_CLD_254_254);
+          ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247 = ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_14;
+        }
+        break;
+    }
+    if ((ll_backend__lookup_switch__Kinds_42 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *ll_backend__lookup_switch__Code_16 = ll_backend__lookup_switch__KindCode_60;
+      *ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_15 = ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247;
+      *ll_backend__lookup_switch__STATE_VARIABLE_CI_18 = ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255;
+    }
+    else
+    {
+      MR_Word ll_backend__lookup_switch__TypeCtorInfo_302_302;
+      MR_Word ll_backend__lookup_switch__NextKind_96 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Kinds_42, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__NextKindLabel_98;
+      MR_Word ll_backend__lookup_switch__TestRval_99;
+      MR_Word ll_backend__lookup_switch__TestCode_100;
+      MR_Word ll_backend__lookup_switch__NextKindLabelCode_101;
+      MR_Word ll_backend__lookup_switch__LaterKindsCode_102;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_256_256;
+      MR_Word ll_backend__lookup_switch__Var_257;
+      MR_Word ll_backend__lookup_switch__Var_258;
+      MR_Word ll_backend__lookup_switch__Var_261;
+      MR_Word ll_backend__lookup_switch__Var_262;
+      MR_Word ll_backend__lookup_switch__Var_263;
+      MR_Word ll_backend__lookup_switch__Var_267;
+      MR_Word ll_backend__lookup_switch__Var_268;
+      MR_Word ll_backend__lookup_switch__Var_269;
+      MR_Word ll_backend__lookup_switch__Var_270;
+      MR_Word ll_backend__lookup_switch__Var_272;
+      MR_Word ll_backend__lookup_switch__Var_273;
+      MR_Word ll_backend__lookup_switch__Var_274;
+      MR_String ll_backend__lookup_switch__Var_275;
+      MR_String ll_backend__lookup_switch__Var_277;
+      MR_Word ll_backend__lookup_switch__Var_280;
+      MR_Word ll_backend__lookup_switch__Var_281;
+      MR_Word ll_backend__lookup_switch__Var_282;
+      MR_Word ll_backend__lookup_switch__Var_284;
+      MR_Word ll_backend__lookup_switch__Var_285;
+      MR_Word ll_backend__lookup_switch__Var_286;
+      MR_String ll_backend__lookup_switch__Var_287;
+      MR_String ll_backend__lookup_switch__Var_289;
+      MR_Word ll_backend__lookup_switch__Var_294;
+      MR_Word ll_backend__lookup_switch__Var_295;
+      MR_Word ll_backend__lookup_switch__Var_97 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Kinds_42, (MR_Integer) 1)));
+
+      ll_backend__code_info__get_next_label_3_p_0(&ll_backend__lookup_switch__NextKindLabel_98, ll_backend__lookup_switch__STATE_VARIABLE_CI_255_255, &ll_backend__lookup_switch__STATE_VARIABLE_CI_256_256);
+      {
+        ll_backend__lookup_switch__Var_261 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_261, 0) = ((MR_Box) (ll_backend__lookup_switch__BaseReg_10));
+      }
+      {
+        ll_backend__lookup_switch__Var_263 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_263, 0) = ((MR_Box) (ll_backend__lookup_switch__NumPrevColumns_2));
+      }
+      {
+        ll_backend__lookup_switch__Var_262 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_262, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_262, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_263));
+      }
+      {
+        ll_backend__lookup_switch__Var_258 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_258, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_258, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__lookup_switch_scalar_common_3[0])));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_258, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_261));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_258, 3) = ((MR_Box) (ll_backend__lookup_switch__Var_262));
+      }
+      {
+        ll_backend__lookup_switch__Var_257 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_257, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_258));
+      }
+      {
+        ll_backend__lookup_switch__TestRval_99 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__TestRval_99, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__TestRval_99, 1) = ((MR_Box) (ll_backend__lookup_switch__TestOp_58));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__TestRval_99, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_257));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__TestRval_99, 3) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__lookup_switch_scalar_common_1[13])));
+      }
+      ll_backend__lookup_switch__TypeCtorInfo_302_302 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+      {
+        ll_backend__lookup_switch__Var_270 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_270, 0) = ((MR_Box) (ll_backend__lookup_switch__NextKindLabel_98));
+      }
+      {
+        ll_backend__lookup_switch__Var_269 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_269, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_269, 1) = ((MR_Box) (ll_backend__lookup_switch__TestRval_99));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_269, 2) = ((MR_Box) (ll_backend__lookup_switch__Var_270));
+      }
+      {
+        ll_backend__lookup_switch__Var_268 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_268, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_269));
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_268, 1) = ((MR_Box) ((MR_String) "skip to next kind in several_soln lookup switch"));
+      }
+      ll_backend__lookup_switch__Var_277 = ll_backend__lookup_switch__case_kind_to_string_1_f_0(ll_backend__lookup_switch__Kind_41);
+      ll_backend__lookup_switch__Var_275 = mercury__string__f_43_43_2_f_0((MR_String) "This kind is ", ll_backend__lookup_switch__Var_277);
+      {
+        ll_backend__lookup_switch__Var_274 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_274, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_275));
+      }
+      {
+        ll_backend__lookup_switch__Var_273 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_273, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_274));
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_273, 1) = ((MR_Box) ((MR_String) ""));
+      }
+      {
+        ll_backend__lookup_switch__Var_272 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_272, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_273));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_272, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+      {
+        ll_backend__lookup_switch__Var_267 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_267, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_268));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_267, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_272));
+      }
+      ll_backend__lookup_switch__TestCode_100 = mercury__cord__from_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_302_302, ll_backend__lookup_switch__Var_267);
+      {
+        ll_backend__lookup_switch__Var_282 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_282, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+        MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__Var_282, 1) = ((MR_Box) (ll_backend__lookup_switch__NextKindLabel_98));
+      }
+      {
+        ll_backend__lookup_switch__Var_281 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_281, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_282));
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_281, 1) = ((MR_Box) ((MR_String) "next kind in several_soln lookup switch"));
+      }
+      ll_backend__lookup_switch__Var_289 = ll_backend__lookup_switch__case_kind_to_string_1_f_0(ll_backend__lookup_switch__NextKind_96);
+      ll_backend__lookup_switch__Var_287 = mercury__string__f_43_43_2_f_0((MR_String) "Next kind is ", ll_backend__lookup_switch__Var_289);
+      {
+        ll_backend__lookup_switch__Var_286 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_286, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_287));
+      }
+      {
+        ll_backend__lookup_switch__Var_285 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_285, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_286));
+        MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_285, 1) = ((MR_Box) ((MR_String) ""));
+      }
+      {
+        ll_backend__lookup_switch__Var_284 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_284, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_285));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_284, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+      {
+        ll_backend__lookup_switch__Var_280 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_280, 0) = ((MR_Box) (ll_backend__lookup_switch__Var_281));
+        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Var_280, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_284));
+      }
+      ll_backend__lookup_switch__NextKindLabelCode_101 = mercury__cord__from_list_1_f_0(ll_backend__lookup_switch__TypeCtorInfo_302_302, ll_backend__lookup_switch__Var_280);
+      ll_backend__lookup_switch__generate_code_for_each_kind_18_p_0(ll_backend__lookup_switch__Kinds_42, ll_backend__lookup_switch__NumPrevColumns_2, ll_backend__lookup_switch__OutVars_3, ll_backend__lookup_switch__ResumeVars_4, ll_backend__lookup_switch__BranchStart_5, ll_backend__lookup_switch__EndLabel_6, ll_backend__lookup_switch__StoreMap_7, ll_backend__lookup_switch__Liveness_8, ll_backend__lookup_switch__AddTrailOps_9, ll_backend__lookup_switch__BaseReg_10, ll_backend__lookup_switch__CurSlot_11, ll_backend__lookup_switch__MaxSlot_12, ll_backend__lookup_switch__LaterVectorAddrRval_13, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_247_247, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_15, &ll_backend__lookup_switch__LaterKindsCode_102, ll_backend__lookup_switch__STATE_VARIABLE_CI_256_256, ll_backend__lookup_switch__STATE_VARIABLE_CI_18);
+      ll_backend__lookup_switch__Var_295 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_302_302, ll_backend__lookup_switch__NextKindLabelCode_101, ll_backend__lookup_switch__LaterKindsCode_102);
+      ll_backend__lookup_switch__Var_294 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_302_302, ll_backend__lookup_switch__KindCode_60, ll_backend__lookup_switch__Var_295);
+      *ll_backend__lookup_switch__Code_16 = mercury__cord__f_43_43_2_f_0(ll_backend__lookup_switch__TypeCtorInfo_302_302, ll_backend__lookup_switch__TestCode_100, ll_backend__lookup_switch__Var_294);
+    }
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__lookup_switch__case_kind_to_string_1_f_0(
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1)
+{
+  {
+    MR_String ll_backend__lookup_switch__HeadVar__2_2;
+
+    switch (ll_backend__lookup_switch__HeadVar__1_1) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        ll_backend__lookup_switch__HeadVar__2_2 = (MR_String) "kind_one_soln";
+        break;
+      case (MR_Integer) 2:
+        ll_backend__lookup_switch__HeadVar__2_2 = (MR_String) "kind_several_solns";
+        break;
+      case (MR_Integer) 0:
+        ll_backend__lookup_switch__HeadVar__2_2 = (MR_String) "kind_zero_solns";
+        break;
+    }
+    return ll_backend__lookup_switch__HeadVar__2_2;
+  }
+}
+
+MR_bool MR_CALL 
+ll_backend__lookup_switch__is_lookup_switch_10_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_46,
+  MR_Word ll_backend__lookup_switch__BranchStart_11,
+  MR_Word ll_backend__lookup_switch__GetTag_12,
+  MR_Word ll_backend__lookup_switch__TaggedCases_13,
+  MR_Word ll_backend__lookup_switch__GoalInfo_14,
+  MR_Word ll_backend__lookup_switch__StoreMap_15,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_35,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_36,
+  MR_Word * ll_backend__lookup_switch__LookupSwitchInfo_17,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_37,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_38)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_47_47;
+    MR_Word ll_backend__lookup_switch__TypeInfo_48_48;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_50_50;
+    MR_Word ll_backend__lookup_switch__StartCLD_19;
+    MR_Word ll_backend__lookup_switch__OutVars_20;
+    MR_Word ll_backend__lookup_switch__ArmNonLocals_21;
+    MR_Word ll_backend__lookup_switch__Liveness_22;
+    MR_Word ll_backend__lookup_switch__CaseSolnMap_23;
+    MR_Word ll_backend__lookup_switch__ResumeVars_24;
+    MR_Word ll_backend__lookup_switch__GoalsMayModifyTrail_25;
+    MR_Word ll_backend__lookup_switch__VarTypes_26;
+    MR_Word ll_backend__lookup_switch__OutTypes_27;
+    MR_Word ll_backend__lookup_switch__CaseConsts_29;
+    MR_Word ll_backend__lookup_switch__ExprnOpts_30;
+    MR_Word ll_backend__lookup_switch__UnboxFloats_31;
+    MR_Word ll_backend__lookup_switch__CaseSolns_32;
+    MR_Word ll_backend__lookup_switch__CaseValues_33;
+    MR_Word ll_backend__lookup_switch__OutLLDSTypes_34;
+    MR_Word ll_backend__lookup_switch__Var_39;
+    MR_Word ll_backend__lookup_switch__Var_41;
+    MR_Word ll_backend__lookup_switch__Var_45;
+    MR_Word ll_backend__lookup_switch__CaseValuePairsMap_28;
+    MR_Word ll_backend__lookup_switch__TypeCtorInfo_49_49;
+
+    ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__BranchStart_11, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_37, &ll_backend__lookup_switch__StartCLD_19);
+    ll_backend__lookup_util__figure_out_output_vars_4_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CI_0_37, ll_backend__lookup_switch__StartCLD_19, ll_backend__lookup_switch__GoalInfo_14, &ll_backend__lookup_switch__OutVars_20);
+    ll_backend__lookup_switch__TypeCtorInfo_47_47 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    parse_tree__set_of_var__list_to_set_2_p_0(ll_backend__lookup_switch__TypeCtorInfo_47_47, ll_backend__lookup_switch__OutVars_20, &ll_backend__lookup_switch__ArmNonLocals_21);
+    ll_backend__lookup_switch__TypeInfo_48_48 = (MR_Word) &ll_backend__lookup_switch_scalar_common_1[0];
+    ll_backend__lookup_switch__Var_39 = mercury__map__init_0_f_0(ll_backend__lookup_switch__TypeInfo_for_Key_46, ll_backend__lookup_switch__TypeInfo_48_48);
+    ll_backend__lookup_switch__Var_41 = parse_tree__set_of_var__init_0_f_0(ll_backend__lookup_switch__TypeCtorInfo_47_47);
+    ll_backend__lookup_switch__succeeded = ll_backend__lookup_switch__generate_constants_for_lookup_switch_17_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_46, ll_backend__lookup_switch__BranchStart_11, ll_backend__lookup_switch__GetTag_12, ll_backend__lookup_switch__TaggedCases_13, ll_backend__lookup_switch__OutVars_20, ll_backend__lookup_switch__ArmNonLocals_21, ll_backend__lookup_switch__StoreMap_15, &ll_backend__lookup_switch__Liveness_22, ll_backend__lookup_switch__Var_39, &ll_backend__lookup_switch__CaseSolnMap_23, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_35, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_36, ll_backend__lookup_switch__Var_41, &ll_backend__lookup_switch__ResumeVars_24, (MR_Integer) 0, &ll_backend__lookup_switch__GoalsMayModifyTrail_25, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_37, ll_backend__lookup_switch__STATE_VARIABLE_CI_38);
+    if (ll_backend__lookup_switch__succeeded)
+    {
+      ll_backend__code_info__get_vartypes_2_p_0(*ll_backend__lookup_switch__STATE_VARIABLE_CI_38, &ll_backend__lookup_switch__VarTypes_26);
+      hlds__vartypes__lookup_var_types_3_p_0(ll_backend__lookup_switch__VarTypes_26, ll_backend__lookup_switch__OutVars_20, &ll_backend__lookup_switch__OutTypes_27);
+      ll_backend__lookup_switch__TypeCtorInfo_49_49 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0;
+      ll_backend__lookup_switch__succeeded = backend_libs__switch_util__project_all_to_one_solution_2_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_46, ll_backend__lookup_switch__TypeCtorInfo_49_49, ll_backend__lookup_switch__CaseSolnMap_23, &ll_backend__lookup_switch__CaseValuePairsMap_28);
+      if (ll_backend__lookup_switch__succeeded)
+        {
+          ll_backend__lookup_switch__CaseConsts_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__CaseConsts_29, 0) = ((MR_Box) (ll_backend__lookup_switch__CaseValuePairsMap_28));
+        }
+      else
+      {
+        MR_Word ll_backend__lookup_switch__Var_44;
+
+        {
+          ll_backend__lookup_switch__Var_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_44, 0) = ((MR_Box) (ll_backend__lookup_switch__ResumeVars_24));
+          MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Var_44, 1) = ((MR_Box) (ll_backend__lookup_switch__GoalsMayModifyTrail_25));
+        }
+        {
+          ll_backend__lookup_switch__CaseConsts_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__CaseConsts_29, 0) = ((MR_Box) (ll_backend__lookup_switch__CaseSolnMap_23));
+          MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__CaseConsts_29, 1) = ((MR_Box) (ll_backend__lookup_switch__Var_44));
+        }
+      }
+      ll_backend__code_info__get_exprn_opts_2_p_0(*ll_backend__lookup_switch__STATE_VARIABLE_CI_38, &ll_backend__lookup_switch__ExprnOpts_30);
+      ll_backend__lookup_switch__UnboxFloats_31 = ll_backend__llds__get_unboxed_floats_1_f_0(ll_backend__lookup_switch__ExprnOpts_30);
+      mercury__map__to_assoc_list_2_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_46, ll_backend__lookup_switch__TypeInfo_48_48, ll_backend__lookup_switch__CaseSolnMap_23, &ll_backend__lookup_switch__CaseSolns_32);
+      ll_backend__lookup_switch__Var_45 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      ll_backend__lookup_switch__TypeCtorInfo_50_50 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0;
+      backend_libs__switch_util__project_solns_to_rval_lists_3_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_46, ll_backend__lookup_switch__TypeCtorInfo_50_50, ll_backend__lookup_switch__CaseSolns_32, ll_backend__lookup_switch__Var_45, &ll_backend__lookup_switch__CaseValues_33);
+      ll_backend__lookup_switch__succeeded = ll_backend__global_data__find_general_llds_types_4_p_0(ll_backend__lookup_switch__UnboxFloats_31, ll_backend__lookup_switch__OutTypes_27, ll_backend__lookup_switch__CaseValues_33, &ll_backend__lookup_switch__OutLLDSTypes_34);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          *ll_backend__lookup_switch__LookupSwitchInfo_17 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__lookup_switch__CaseConsts_29));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__lookup_switch__OutVars_20));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ll_backend__lookup_switch__OutLLDSTypes_34));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (ll_backend__lookup_switch__Liveness_22));
+        }
+        ll_backend__lookup_switch__succeeded = MR_TRUE;
+      }
+    }
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch__generate_constants_for_lookup_switch_17_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_107,
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3,
+  MR_Word ll_backend__lookup_switch__HeadVar__4_4,
+  MR_Word ll_backend__lookup_switch__HeadVar__5_5,
+  MR_Word ll_backend__lookup_switch__HeadVar__6_6,
+  MR_Word * ll_backend__lookup_switch__HeadVar__7_7,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_8,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_9,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_10,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_11,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_13,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_0_14,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_15,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_CI_17)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    if ((ll_backend__lookup_switch__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *ll_backend__lookup_switch__HeadVar__7_7 = parse_tree__set_of_var__init_0_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0);
+      *ll_backend__lookup_switch__STATE_VARIABLE_CI_17 = ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16;
+      *ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_15 = ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_0_14;
+      *ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_13 = ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12;
+      *ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_11 = ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_10;
+      *ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_9 = ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_8;
+      ll_backend__lookup_switch__succeeded = MR_TRUE;
+    }
+    else
+    {
+      MR_Word ll_backend__lookup_switch__TaggedCase_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__TaggedCases_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__TaggedMainConsId_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedCase_40, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__TaggedOtherConsIds_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedCase_40, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__Goal_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedCase_40, (MR_Integer) 3)));
+      MR_Word ll_backend__lookup_switch__GoalExpr_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Goal_54, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__GoalInfo_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__Goal_54, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__Features_57;
+      MR_Word ll_backend__lookup_switch__SolnConsts_70;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_86_86;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_87_87;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_93_93;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_94_94;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_100_100;
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_101_101;
+      MR_Word ll_backend__lookup_switch__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedCase_40, (MR_Integer) 2)));
+      MR_Word ll_backend__lookup_switch__TypeCtorInfo_110_110;
+      MR_Word ll_backend__lookup_switch__Var_84;
+      MR_Word ll_backend__lookup_switch__Disjuncts_58;
+      MR_Word ll_backend__lookup_switch___LivenessRest_72;
+
+      ll_backend__lookup_switch__Features_57 = hlds__hlds_goal__goal_info_get_features_1_f_0(ll_backend__lookup_switch__GoalInfo_56);
+      ll_backend__lookup_switch__succeeded = mercury__set__member_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_feature_0, ((MR_Box) ((MR_Integer) 5)), ll_backend__lookup_switch__Features_57);
+      ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+      if (ll_backend__lookup_switch__succeeded)
+      {
+        ll_backend__lookup_switch__Var_84 = (MR_Integer) 7;
+        ll_backend__lookup_switch__TypeCtorInfo_110_110 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_feature_0;
+        ll_backend__lookup_switch__succeeded = mercury__set__member_2_p_0(ll_backend__lookup_switch__TypeCtorInfo_110_110, ((MR_Box) (ll_backend__lookup_switch__Var_84)), ll_backend__lookup_switch__Features_57);
+        ll_backend__lookup_switch__succeeded = !(ll_backend__lookup_switch__succeeded);
+        if (ll_backend__lookup_switch__succeeded)
+        {
+          ll_backend__lookup_switch__succeeded = ((((MR_tag((MR_Word) ll_backend__lookup_switch__GoalExpr_55)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__GoalExpr_55, (MR_Integer) 0)))) == (MR_Integer) 3)));
+          if (ll_backend__lookup_switch__succeeded)
+          {
+            ll_backend__lookup_switch__Disjuncts_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__lookup_switch__GoalExpr_55, (MR_Integer) 1)));
+            if ((ll_backend__lookup_switch__Disjuncts_58 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "ll_backend.lookup_switch", (MR_String) "predicate \140ll_backend.lookup_switch.generate_constants_for_lookup_switch\'/17", (MR_String) "disj([])");
+              ll_backend__lookup_switch__succeeded = MR_TRUE;
+            }
+            else
+            {
+              MR_Word ll_backend__lookup_switch__FirstDisjunct_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Disjuncts_58, (MR_Integer) 0)));
+              MR_Word ll_backend__lookup_switch__LaterDisjuncts_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__Disjuncts_58, (MR_Integer) 1)));
+              MR_Word ll_backend__lookup_switch__FirstDisjunctGoalInfo_62;
+              MR_Word ll_backend__lookup_switch__ThisResumePoint_63;
+              MR_Word ll_backend__lookup_switch__GoalBranchStart_67;
+              MR_Word ll_backend__lookup_switch__FirstSoln_68;
+              MR_Word ll_backend__lookup_switch__LaterSolns_69;
+              MR_Word ll_backend__lookup_switch__Var_85;
+              MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_88_88;
+              MR_Word ll_backend__lookup_switch__Var_89;
+              MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CLD_90_90;
+              MR_Word ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_91_91;
+              MR_Word ll_backend__lookup_switch__STATE_VARIABLE_CI_92_92;
+              MR_Word ll_backend__lookup_switch__Var_61;
+
+              ll_backend__lookup_switch__succeeded = hlds__goal_form__goal_is_conj_of_unify_2_p_0(ll_backend__lookup_switch__HeadVar__5_5, ll_backend__lookup_switch__FirstDisjunct_59);
+              if (ll_backend__lookup_switch__succeeded)
+              {
+                ll_backend__lookup_switch__succeeded = hlds__goal_form__all_disjuncts_are_conj_of_unify_2_p_0(ll_backend__lookup_switch__HeadVar__5_5, ll_backend__lookup_switch__LaterDisjuncts_60);
+                if (ll_backend__lookup_switch__succeeded)
+                {
+                  ll_backend__lookup_switch__Var_85 = hlds__goal_form__goal_may_modify_trail_1_f_0(ll_backend__lookup_switch__GoalInfo_56);
+                  mercury__bool__or_3_p_0(ll_backend__lookup_switch__Var_85, ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_0_14, &ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_86_86);
+                  ll_backend__lookup_switch__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__FirstDisjunct_59, (MR_Integer) 0)));
+                  ll_backend__lookup_switch__FirstDisjunctGoalInfo_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__FirstDisjunct_59, (MR_Integer) 1)));
+                  hlds__hlds_llds__goal_info_get_resume_point_2_p_0(ll_backend__lookup_switch__FirstDisjunctGoalInfo_62, &ll_backend__lookup_switch__ThisResumePoint_63);
+                  if ((ll_backend__lookup_switch__ThisResumePoint_63 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_87_87 = ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12;
+                  else
+                  {
+                    MR_Word ll_backend__lookup_switch__ThisResumeVars_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__ThisResumePoint_63, (MR_Integer) 0)));
+                    MR_Word ll_backend__lookup_switch__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__ThisResumePoint_63, (MR_Integer) 1)));
+
+                    parse_tree__set_of_var__union_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, ll_backend__lookup_switch__ThisResumeVars_64, ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12, &ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_87_87);
+                  }
+                  ll_backend__code_loc_dep__reset_to_position_3_p_0(ll_backend__lookup_switch__HeadVar__1_1, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_88_88);
+                  ll_backend__lookup_switch__Var_89 = (MR_Integer) 0;
+                  ll_backend__code_loc_dep__pre_goal_update_4_p_0(ll_backend__lookup_switch__GoalInfo_56, ll_backend__lookup_switch__Var_89, ll_backend__lookup_switch__STATE_VARIABLE_CLD_88_88, &ll_backend__lookup_switch__STATE_VARIABLE_CLD_90_90);
+                  ll_backend__code_loc_dep__remember_position_2_p_0(ll_backend__lookup_switch__STATE_VARIABLE_CLD_90_90, &ll_backend__lookup_switch__GoalBranchStart_67);
+                  ll_backend__lookup_switch__succeeded = ll_backend__lookup_util__generate_constants_for_disjunct_10_p_0(ll_backend__lookup_switch__GoalBranchStart_67, ll_backend__lookup_switch__FirstDisjunct_59, ll_backend__lookup_switch__HeadVar__4_4, ll_backend__lookup_switch__HeadVar__6_6, &ll_backend__lookup_switch__FirstSoln_68, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_10, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_91_91, ll_backend__lookup_switch__HeadVar__7_7, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16, &ll_backend__lookup_switch__STATE_VARIABLE_CI_92_92);
+                  if (ll_backend__lookup_switch__succeeded)
+                  {
+                    ll_backend__lookup_switch__succeeded = ll_backend__lookup_util__generate_constants_for_disjuncts_9_p_0(ll_backend__lookup_switch__GoalBranchStart_67, ll_backend__lookup_switch__LaterDisjuncts_60, ll_backend__lookup_switch__HeadVar__4_4, ll_backend__lookup_switch__HeadVar__6_6, &ll_backend__lookup_switch__LaterSolns_69, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_91_91, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_93_93, ll_backend__lookup_switch__STATE_VARIABLE_CI_92_92, &ll_backend__lookup_switch__STATE_VARIABLE_CI_94_94);
+                    if (ll_backend__lookup_switch__succeeded)
+                    {
+                      {
+                        ll_backend__lookup_switch__SolnConsts_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__SolnConsts_70, 0) = ((MR_Box) (ll_backend__lookup_switch__FirstSoln_68));
+                        MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__SolnConsts_70, 1) = ((MR_Box) (ll_backend__lookup_switch__LaterSolns_69));
+                      }
+                      ll_backend__lookup_switch__succeeded = MR_TRUE;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          else
+          {
+            MR_Word ll_backend__lookup_switch__Soln_71;
+
+            ll_backend__lookup_switch__succeeded = hlds__goal_form__goal_is_conj_of_unify_2_p_0(ll_backend__lookup_switch__HeadVar__5_5, ll_backend__lookup_switch__Goal_54);
+            if (ll_backend__lookup_switch__succeeded)
+            {
+              ll_backend__lookup_switch__succeeded = ll_backend__lookup_util__generate_constants_for_arm_10_p_0(ll_backend__lookup_switch__HeadVar__1_1, ll_backend__lookup_switch__Goal_54, ll_backend__lookup_switch__HeadVar__4_4, ll_backend__lookup_switch__HeadVar__6_6, &ll_backend__lookup_switch__Soln_71, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_0_10, &ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_93_93, ll_backend__lookup_switch__HeadVar__7_7, ll_backend__lookup_switch__STATE_VARIABLE_CI_0_16, &ll_backend__lookup_switch__STATE_VARIABLE_CI_94_94);
+              if (ll_backend__lookup_switch__succeeded)
+              {
+                ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_86_86 = ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_0_14;
+                ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_87_87 = ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_0_12;
+                {
+                  ll_backend__lookup_switch__SolnConsts_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__SolnConsts_70, 0) = ((MR_Box) (ll_backend__lookup_switch__Soln_71));
+                }
+                ll_backend__lookup_switch__succeeded = MR_TRUE;
+              }
+            }
+          }
+          if (ll_backend__lookup_switch__succeeded)
+          {
+            ll_backend__lookup_switch__record_lookup_for_tagged_cons_id_5_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_107, ll_backend__lookup_switch__HeadVar__2_2, ll_backend__lookup_switch__SolnConsts_70, ll_backend__lookup_switch__TaggedMainConsId_51, ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_8, &ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_100_100);
+            ll_backend__lookup_switch__record_lookup_for_tagged_cons_ids_5_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_107, ll_backend__lookup_switch__HeadVar__2_2, ll_backend__lookup_switch__SolnConsts_70, ll_backend__lookup_switch__TaggedOtherConsIds_52, ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_100_100, &ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_101_101);
+            ll_backend__lookup_switch__succeeded = ll_backend__lookup_switch__generate_constants_for_lookup_switch_17_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_107, ll_backend__lookup_switch__HeadVar__1_1, ll_backend__lookup_switch__HeadVar__2_2, ll_backend__lookup_switch__TaggedCases_41, ll_backend__lookup_switch__HeadVar__4_4, ll_backend__lookup_switch__HeadVar__5_5, ll_backend__lookup_switch__HeadVar__6_6, &ll_backend__lookup_switch___LivenessRest_72, ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_101_101, ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_9, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_93_93, ll_backend__lookup_switch__STATE_VARIABLE_MaybeEnd_11, ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_87_87, ll_backend__lookup_switch__STATE_VARIABLE_ResumeVars_13, ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_86_86, ll_backend__lookup_switch__STATE_VARIABLE_GoalsMayModifyTrail_15, ll_backend__lookup_switch__STATE_VARIABLE_CI_94_94, ll_backend__lookup_switch__STATE_VARIABLE_CI_17);
+          }
+        }
+      }
+    }
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__record_lookup_for_tagged_cons_id_5_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_16,
+  MR_Word ll_backend__lookup_switch__GetTag_6,
+  MR_Word ll_backend__lookup_switch__SolnConsts_7,
+  MR_Word ll_backend__lookup_switch__TaggedConsId_8,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_13,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_14)
+{
+  {
+    MR_Word ll_backend__lookup_switch__ConsTag_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedConsId_8, (MR_Integer) 1)));
+    MR_Box ll_backend__lookup_switch__Index_12;
+    MR_Word ll_backend__lookup_switch___ConsId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedConsId_8, (MR_Integer) 0)));
+    void MR_CALL (* ll_backend__lookup_switch__func_0)(MR_Box, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__GetTag_6, (MR_Integer) 1)));
+
+    ll_backend__lookup_switch__func_0(((MR_Box) ll_backend__lookup_switch__GetTag_6), ((MR_Box) (ll_backend__lookup_switch__ConsTag_11)), &ll_backend__lookup_switch__Index_12);
+    mercury__map__det_insert_4_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_16, (MR_Word) &ll_backend__lookup_switch_scalar_common_1[0], ll_backend__lookup_switch__Index_12, ((MR_Box) (ll_backend__lookup_switch__SolnConsts_7)), ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_13, ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_14);
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch__record_lookup_for_tagged_cons_ids_5_p_0(
+  MR_Word ll_backend__lookup_switch__TypeInfo_for_Key_20,
+  MR_Word ll_backend__lookup_switch__HeadVar__1_1,
+  MR_Word ll_backend__lookup_switch__HeadVar__2_2,
+  MR_Word ll_backend__lookup_switch__HeadVar__3_3,
+  MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_4,
+  MR_Word * ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((ll_backend__lookup_switch__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_5 = ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_4;
+    else
+    {
+      MR_Word ll_backend__lookup_switch__TaggedConsId_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ll_backend__lookup_switch__TaggedConsIds_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__lookup_switch__HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_18_18;
+      MR_Word ll_backend__lookup_switch__ConsTag_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedConsId_13, (MR_Integer) 1)));
+      MR_Box ll_backend__lookup_switch__Index_29;
+      MR_Word ll_backend__lookup_switch___ConsId_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__TaggedConsId_13, (MR_Integer) 0)));
+      void MR_CALL (* ll_backend__lookup_switch__func_0)(MR_Box, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), ll_backend__lookup_switch__HeadVar__1_1, (MR_Integer) 1)));
+
+      ll_backend__lookup_switch__func_0(((MR_Box) ll_backend__lookup_switch__HeadVar__1_1), ((MR_Box) (ll_backend__lookup_switch__ConsTag_28)), &ll_backend__lookup_switch__Index_29);
+      mercury__map__det_insert_4_p_0(ll_backend__lookup_switch__TypeInfo_for_Key_20, (MR_Word) &ll_backend__lookup_switch_scalar_common_1[0], ll_backend__lookup_switch__Index_29, ((MR_Box) (ll_backend__lookup_switch__HeadVar__2_2)), ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_4, &ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_18_18);
+      /* direct tailcall eliminated */
+      {
+        MR_Word ll_backend__lookup_switch__next_value_of_HeadVar__3_3 = ll_backend__lookup_switch__TaggedConsIds_14;
+        MR_Word ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_IndexMap_0_4 = ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_18_18;
+
+        ll_backend__lookup_switch__HeadVar__3_3 = ll_backend__lookup_switch__next_value_of_HeadVar__3_3;
+        ll_backend__lookup_switch__STATE_VARIABLE_IndexMap_0_4 = ll_backend__lookup_switch__next_value_of_STATE_VARIABLE_IndexMap_0_4;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____case_kind_0_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    ll_backend__lookup_switch__succeeded = ll_backend__lookup_switch____Unify____case_kind_0_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1), ((MR_Word) ll_backend__lookup_switch__wrapper_arg_2));
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch____Compare____case_kind_0_0_10001(
+  MR_Box * ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__lookup_switch__conv0_HeadVar__1_1;
+
+    ll_backend__lookup_switch____Compare____case_kind_0_0(&ll_backend__lookup_switch__conv0_HeadVar__1_1, ((MR_Word) ll_backend__lookup_switch__wrapper_arg_2), ((MR_Word) ll_backend__lookup_switch__wrapper_arg_3));
+    *ll_backend__lookup_switch__wrapper_arg_1 = ((MR_Box) (ll_backend__lookup_switch__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__lookup_switch____Unify____lookup_switch_info_1_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3)
+{
+  {
+    MR_bool ll_backend__lookup_switch__succeeded;
+
+    ll_backend__lookup_switch__succeeded = ll_backend__lookup_switch____Unify____lookup_switch_info_1_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1), ((MR_Word) ll_backend__lookup_switch__wrapper_arg_2), ((MR_Word) ll_backend__lookup_switch__wrapper_arg_3));
+    return ll_backend__lookup_switch__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__lookup_switch____Compare____lookup_switch_info_1_0_10001(
+  MR_Box ll_backend__lookup_switch__wrapper_arg_1,
+  MR_Box * ll_backend__lookup_switch__wrapper_arg_2,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_3,
+  MR_Box ll_backend__lookup_switch__wrapper_arg_4)
+{
+  {
+    MR_Word ll_backend__lookup_switch__conv0_HeadVar__1_1;
+
+    ll_backend__lookup_switch____Compare____lookup_switch_info_1_0(((MR_Word) ll_backend__lookup_switch__wrapper_arg_1), &ll_backend__lookup_switch__conv0_HeadVar__1_1, ((MR_Word) ll_backend__lookup_switch__wrapper_arg_3), ((MR_Word) ll_backend__lookup_switch__wrapper_arg_4));
+    *ll_backend__lookup_switch__wrapper_arg_2 = ((MR_Box) (ll_backend__lookup_switch__conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__ll_backend__lookup_switch__init(void)
+{
+}
+
+void mercury__ll_backend__lookup_switch__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_case_kind_0);
+	MR_register_type_ctor_info(&ll_backend__lookup_switch__ll_backend__lookup_switch__type_ctor_info_lookup_switch_info_1);
+}
+
+void mercury__ll_backend__lookup_switch__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ll_backend__lookup_switch__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module ll_backend.lookup_switch. */

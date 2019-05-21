@@ -1,0 +1,7354 @@
+/*
+** Automatically generated from `dead_proc_elim.m'
+** by the Mercury compiler,
+** version rotd-2017-08-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.dead_proc_elim. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__dead_proc_elim__init
+ENDINIT
+*/
+
+#include "transform_hlds.dead_proc_elim.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "check_hlds.simplify.mih"
+#include "check_hlds.try_expand.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_goal.mih"
+#include "hlds.passes_aux.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "check_hlds.simplify.simplify_proc.mih"
+#include "check_hlds.simplify.simplify_tasks.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s {
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Needed_12;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__PredId_13;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__AllProcsInPred_16;
+  MR_bool transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded;
+  jmp_buf transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_0;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_41_41;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_42_42;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Var_33;
+  MR_Integer transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__OtherProcId_36;
+  MR_Box transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv0_OtherProcId_36;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableModuleName_22;
+  MR_String transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableName_23;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKinds_25;
+  jmp_buf transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_1;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_44_44;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_45_45;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressMutableEntity_27;
+  MR_Word transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKind_37;
+  MR_Box transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv1_SuppressPredKind_37;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__maybe__pti_maybe_1__plain_builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__list__pti_list_1__plain_builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_analyze_links_0_0[3];
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_analyze_links_0_0[3];
+
+static const MR_DuArgLocn transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_locns_analyze_links_0_0[3];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_analyze_links_0_0;
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_analyze_links_0_0[1];
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_analyze_links_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_analyze_links_0[1];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_analyze_links_0[1];
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_0[2];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_0;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_1[2];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_1;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_2[3];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_2;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_3[1];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_3;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_4[3];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_4;
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_1[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_2[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_3[2];
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_entity_0[4];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_entity_0[5];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_entity_0[5];
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__ti_queue_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_0;
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_1;
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_const_struct_0[2];
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_const_struct_0[2];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_const_struct_0[2];
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_0;
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_1;
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_deleted_calls_0[2];
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_deleted_calls_0[2];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_deleted_calls_0[2];
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_0;
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_1;
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_type_ctor_0[2];
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_type_ctor_0[2];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_type_ctor_0[2];
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_0;
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_1;
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_elim_opt_imported_0[2];
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_elim_opt_imported_0[2];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_elim_opt_imported_0[2];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_0;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_maybe_needed_0_1[1];
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_maybe_needed_0_1[1];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_1;
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_1[1];
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_maybe_needed_0[2];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_maybe_needed_0[2];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_needed_0[2];
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__ti_tree234_2transform_hlds__dead_proc_elim__type_ctor_info_entity_0transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__ti_queue_1hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1hlds__hlds_pred__type_ctor_info_pred_id_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_pred_elim_info_0_0[5];
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_pred_elim_info_0_0[5];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_pred_elim_info_0_0;
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_pred_elim_info_0_0[1];
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_pred_elim_info_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_pred_elim_info_0[1];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_pred_elim_info_0[1];
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_id_0hlds__hlds_pred__type_ctor_info_pred_info_0;
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_proc_elim_info_0_0[4];
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_proc_elim_info_0_0[4];
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_proc_elim_info_0_0;
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_proc_elim_info_0_0[1];
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_proc_elim_info_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_proc_elim_info_0[1];
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_proc_elim_info_0[1];
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_proc_eliminate_pred__1006__1_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ProcTable0_56,
+  MR_Integer transform_hlds__dead_proc_elim__LambdaHeadVar__1_40,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__2_41,
+  MR_Word * transform_hlds__dead_proc_elim__LambdaHeadVar__3_42);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1345__1_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__NeededPreds_38,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_80);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1333__1_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__SpecMap0_31,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__1_51,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__2_52,
+  MR_Word * transform_hlds__dead_proc_elim__LambdaHeadVar__3_53);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____examined_set_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____examined_set_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_queue_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_queue_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____analyze_links_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____analyze_links_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_case_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Case_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_9,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_10);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_process_clause_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Clause_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_6,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_7);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_unify_rhs_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__RHS_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_4(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_3(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__GoalExpr_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Goal_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_8,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_9);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_info_add_pred_name_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Name_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_14);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_initialize_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__PredId_4,
+  MR_Word transform_hlds__dead_proc_elim__DeadInfo0_5,
+  MR_Word * transform_hlds__dead_proc_elim__DeadInfo_6);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_add_entity_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Entity_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_1(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_3(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_2(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_4(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_5(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_7(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_6(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_8(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_11,
+  MR_Word transform_hlds__dead_proc_elim__Needed_12,
+  MR_Word transform_hlds__dead_proc_elim__PredId_13,
+  MR_Word transform_hlds__dead_proc_elim__PredInfo_14,
+  MR_Word transform_hlds__dead_proc_elim__WarnWithLiveSiblings_15,
+  MR_Word transform_hlds__dead_proc_elim__AllProcsInPred_16,
+  MR_Word transform_hlds__dead_proc_elim__ProcTable_17,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_18,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_31,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_32);
+
+static MR_Word MR_CALL 
+transform_hlds__dead_proc_elim__warn_dead_proc_4_f_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_6,
+  MR_Word transform_hlds__dead_proc_elim__PredId_7,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_8,
+  MR_Word transform_hlds__dead_proc_elim__Context_9);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_8,
+  MR_Word transform_hlds__dead_proc_elim__PredTable_9,
+  MR_Word transform_hlds__dead_proc_elim__WarnWithLiveSiblings_10,
+  MR_Word transform_hlds__dead_proc_elim__Needed_11,
+  MR_Word transform_hlds__dead_proc_elim__PredId_12,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_19,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_20);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_proc_8_p_0(
+  MR_Word transform_hlds__dead_proc_elim__PredId_9,
+  MR_Word transform_hlds__dead_proc_elim__Keep_10,
+  MR_Word transform_hlds__dead_proc_elim__ProcElimInfo_11,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_12,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_23);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ElimOptImported_5,
+  MR_Word transform_hlds__dead_proc_elim__PredId_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_33);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__need_trace_goal_proc_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__TraceGoalProc_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_interface_pred_proc_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ClassProc_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Class_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_10,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_11,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_13);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Instance_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_4(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_3(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_16);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Classes_7,
+  MR_Word transform_hlds__dead_proc_elim__Instances_8,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_16,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_17);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_elim_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_const_structs_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_4);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_type_ctor_infos_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__3_3);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_4,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeLinks_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_9);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_28,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_0_29,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeLinks_9,
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_10,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_10,
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_11,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_30,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_31,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_32,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_33);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Goal_7,
+  MR_Word transform_hlds__dead_proc_elim__CurrProc_8,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_cases_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_goals_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__CurrProc_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_const_struct_args_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_refs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__find_type_ctor_info_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleName_6,
+  MR_String transform_hlds__dead_proc_elim__TypeName_7,
+  MR_Integer transform_hlds__dead_proc_elim__TypeArity_8,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__4_4,
+  MR_Word * transform_hlds__dead_proc_elim__Refs_11);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_type_ctor_infos_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_init_fn_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_pragma_exports_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_preds_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_procs_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_5,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_7);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____analyze_links_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____analyze_links_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_queue_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_queue_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____examined_set_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____examined_set_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____needed_map_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____needed_map_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_1[24][2];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_2[17][3];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_3[5][1];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_4[4][8];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_5[3][7];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_6[1][10];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_7[4][6];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_8[1][5];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_9[1][11];
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_10[1][13];
+
+
+/* sealed */ struct transform_hlds__dead_proc_elim__vector_common_type_11_0_s {
+  const MR_Word transform_hlds__dead_proc_elim__vector_common_type_11_0__vct_11_f_0;
+};
+
+static /* final */ const struct transform_hlds__dead_proc_elim__vector_common_type_11_0_s transform_hlds__dead_proc_elim_vector_common_11[12];
+
+
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_1[24][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__queue__queue__type_ctor_info_queue_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_instance_defn_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__queue__queue__type_ctor_info_queue_1)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_Integer) 6)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[8])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[9])))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[10])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[11])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[12])))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[13])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[15])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[17])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is never called."))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__dead_proc_elim_scalar_common_1[20]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[19])))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Warning:"))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__dead_proc_elim_scalar_common_1[22]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_2[17][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[0])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[0])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[1])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[0])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_4[0])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[2])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[2])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[2])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_7[3])),
+    ((MR_Box) (transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_3[5][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((MR_Integer) 0 << (MR_Integer) 2)))))))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 1 << (MR_Integer) 1)) | (((MR_Integer) 1 << (MR_Integer) 2)))))))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (((MR_Integer) 1 | (((((MR_Integer) 1 << (MR_Integer) 1)) | (((MR_Integer) 1 << (MR_Integer) 2)))))))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_4[4][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_instance_defn_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_defn_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_5[3][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_elim_opt_imported_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_6[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_7[4][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_8[1][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_9[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__maybe__pti_maybe_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__dead_proc_elim_scalar_common_10[1][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__list__pti_list_1__plain_builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+
+static /* final */ const struct transform_hlds__dead_proc_elim__vector_common_type_11_0_s transform_hlds__dead_proc_elim_vector_common_11[12] = {
+  /* row 0 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[17]) },
+  /* row 1 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[18]) },
+  /* row 2 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[16]) },
+  /* row 3 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[16]) },
+  /* row 4 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+  /* row 5 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+  /* row 6 */   {     (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)) },
+  /* row 7 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[8]) },
+  /* row 8 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+  /* row 9 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+  /* row 10 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+  /* row 11 */   {     (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[14]) },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0 = {
+  &mercury__queue__queue__type_ctor_info_queue_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_transform_hlds__dead_proc_elim__type_ctor_info_entity_0__plain_transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0,
+    (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__pti_queue_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__queue__queue__type_ctor_info_queue_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__pti_set_tree234_1__plain_hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__maybe__pti_maybe_1__plain_builtin__type_ctor_info_int_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__dead_proc_elim__list__pti_list_1__plain_builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_analyze_links_0_0[3] = {
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_deleted_calls_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_type_ctor_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_const_struct_0
+};
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_analyze_links_0_0[3] = {
+  (MR_String) "al_deleted_calls",
+  (MR_String) "al_type_ctor",
+  (MR_String) "al_const_struct"
+};
+
+static const MR_DuArgLocn transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_locns_analyze_links_0_0[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_analyze_links_0_0 = {
+  (MR_String) "analyze_links",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_analyze_links_0_0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_analyze_links_0_0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_locns_analyze_links_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_analyze_links_0_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_analyze_links_0_0
+};
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_analyze_links_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_analyze_links_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_analyze_links_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_analyze_links_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_analyze_links_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_analyze_links_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____analyze_links_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____analyze_links_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "analyze_links",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_analyze_links_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_analyze_links_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_analyze_links_0
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_0 = {
+  (MR_String) "entity_proc",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_1[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_1 = {
+  (MR_String) "entity_table_struct",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_2[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_2 = {
+  (MR_String) "entity_type_ctor",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_3 = {
+  (MR_String) "entity_const_struct",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_4[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_mutable_pred_kind_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_4 = {
+  (MR_String) "entity_mutable",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_entity_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_0
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_1[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_1
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_2[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_2
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_3[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_3,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_4
+};
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_entity_0[4] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_2
+  },
+  {
+    (MR_Integer) 2,
+    MR_SECTAG_REMOTE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_entity_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_entity_0[5] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_3,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_4,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_0,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_entity_0_2
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_entity_0[5] = {
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____entity_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____entity_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "entity",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_entity_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_entity_0 },
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_entity_0
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__ti_queue_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0 = {
+  &mercury__queue__queue__type_ctor_info_queue_1,
+  {
+    (MR_TypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_queue_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____entity_queue_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____entity_queue_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "entity_queue",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__queue__ti_queue_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_TypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_examined_set_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____examined_set_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____examined_set_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "examined_set",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1transform_hlds__dead_proc_elim__type_ctor_info_entity_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_0 = {
+  (MR_String) "do_not_analyze_link_const_struct",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_1 = {
+  (MR_String) "analyze_link_const_struct",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_const_struct_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_0,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_const_struct_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_const_struct_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_const_struct_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_const_struct_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "maybe_analyze_link_const_struct",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_const_struct_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_const_struct_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_const_struct_0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_0 = {
+  (MR_String) "do_not_analyze_link_deleted_calls",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_1 = {
+  (MR_String) "analyze_link_deleted_calls",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_deleted_calls_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_0,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_deleted_calls_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_deleted_calls_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_deleted_calls_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_deleted_calls_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "maybe_analyze_link_deleted_calls",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_deleted_calls_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_deleted_calls_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_deleted_calls_0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_0 = {
+  (MR_String) "do_not_analyze_link_type_ctor",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_1 = {
+  (MR_String) "analyze_link_type_ctor",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_type_ctor_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_0,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_type_ctor_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_analyze_link_type_ctor_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_type_ctor_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_type_ctor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "maybe_analyze_link_type_ctor",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_analyze_link_type_ctor_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_analyze_link_type_ctor_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_analyze_link_type_ctor_0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_0 = {
+  (MR_String) "elim_opt_imported",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_1 = {
+  (MR_String) "do_not_elim_opt_imported",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_elim_opt_imported_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_0,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_1
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_elim_opt_imported_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_functor_desc_maybe_elim_opt_imported_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_elim_opt_imported_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_elim_opt_imported_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "maybe_elim_opt_imported",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_name_ordered_maybe_elim_opt_imported_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__enum_value_ordered_maybe_elim_opt_imported_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_elim_opt_imported_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_0 = {
+  (MR_String) "not_eliminable",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_maybe_needed_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_maybe_needed_0_1[1] = {
+  (MR_String) "num_references"
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_1 = {
+  (MR_String) "maybe_eliminable",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_maybe_needed_0_1,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_maybe_needed_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_0
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_1[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_1
+};
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_maybe_needed_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_LOCAL,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_maybe_needed_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_maybe_needed_0[2] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_1,
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_maybe_needed_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_needed_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "maybe_needed",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_maybe_needed_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_maybe_needed_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_maybe_needed_0
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__ti_tree234_2transform_hlds__dead_proc_elim__type_ctor_info_entity_0transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0,
+    (MR_TypeInfo) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_needed_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____needed_map_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____needed_map_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "needed_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__tree234__ti_tree234_2transform_hlds__dead_proc_elim__type_ctor_info_entity_0transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__queue__ti_queue_1hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__queue__queue__type_ctor_info_queue_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1hlds__hlds_pred__type_ctor_info_pred_id_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_TypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+  }
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_pred_elim_info_0_0[5] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__queue__ti_queue_1hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1hlds__hlds_pred__type_ctor_info_pred_id_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__set_tree234__ti_set_tree234_1mdbcomp__sym_name__type_ctor_info_sym_name_0
+};
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_pred_elim_info_0_0[5] = {
+  (MR_String) "pred_elim_module_info",
+  (MR_String) "pred_elim_queue",
+  (MR_String) "pred_elim_examined",
+  (MR_String) "pred_elim_needed_ids",
+  (MR_String) "pred_elim_needed_named"
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_pred_elim_info_0_0 = {
+  (MR_String) "pred_elim_info",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_pred_elim_info_0_0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_pred_elim_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_pred_elim_info_0_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_pred_elim_info_0_0
+};
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_pred_elim_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_pred_elim_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_pred_elim_info_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_pred_elim_info_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_pred_elim_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "pred_elim_info",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_pred_elim_info_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_pred_elim_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_pred_elim_info_0
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__dead_proc_elim__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_id_0hlds__hlds_pred__type_ctor_info_pred_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_proc_elim_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__tree234__ti_tree234_2transform_hlds__dead_proc_elim__type_ctor_info_entity_0transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &transform_hlds__dead_proc_elim__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_id_0hlds__hlds_pred__type_ctor_info_pred_info_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+};
+
+static const MR_ConstString transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_proc_elim_info_0_0[4] = {
+  (MR_String) "proc_elim_needed_map",
+  (MR_String) "proc_elim_module_info",
+  (MR_String) "proc_elim_pred_table",
+  (MR_String) "proc_elim_changed"
+};
+
+static const MR_DuFunctorDesc transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_proc_elim_info_0_0 = {
+  (MR_String) "proc_elim_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_types_proc_elim_info_0_0,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__field_names_proc_elim_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_proc_elim_info_0_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_proc_elim_info_0_0
+};
+
+static const MR_DuPtagLayout transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_proc_elim_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_stag_ordered_proc_elim_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_proc_elim_info_0[1] = {
+  &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_functor_desc_proc_elim_info_0_0
+};
+
+static const MR_Integer transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_proc_elim_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0_10001)),
+  ((MR_Box) (transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0_10001)),
+  (MR_String) "transform_hlds.dead_proc_elim",
+  (MR_String) "proc_elim_info",
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_name_ordered_proc_elim_info_0 },
+  {     transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__du_ptag_ordered_proc_elim_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__functor_number_map_proc_elim_info_0
+};
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_proc_eliminate_pred__1006__1_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ProcTable0_56,
+  MR_Integer transform_hlds__dead_proc_elim__LambdaHeadVar__1_40,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__2_41,
+  MR_Word * transform_hlds__dead_proc_elim__LambdaHeadVar__3_42)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_78_78 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+    MR_Word transform_hlds__dead_proc_elim__ProcInfo0_26;
+    MR_Word transform_hlds__dead_proc_elim__ProcInfo_27;
+    MR_Word transform_hlds__dead_proc_elim__Var_43;
+    MR_Box transform_hlds__dead_proc_elim__conv0_ProcInfo0_26;
+
+    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_78_78, transform_hlds__dead_proc_elim__ProcTable0_56, transform_hlds__dead_proc_elim__LambdaHeadVar__1_40, &transform_hlds__dead_proc_elim__conv0_ProcInfo0_26);
+    transform_hlds__dead_proc_elim__ProcInfo0_26 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_ProcInfo0_26);
+    transform_hlds__dead_proc_elim__Var_43 = hlds__make_goal__true_goal_0_f_0();
+    hlds__hlds_pred__proc_info_set_goal_3_p_0(transform_hlds__dead_proc_elim__Var_43, transform_hlds__dead_proc_elim__ProcInfo0_26, &transform_hlds__dead_proc_elim__ProcInfo_27);
+    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_78_78, transform_hlds__dead_proc_elim__LambdaHeadVar__1_40, ((MR_Box) (transform_hlds__dead_proc_elim__ProcInfo_27)), transform_hlds__dead_proc_elim__LambdaHeadVar__2_41, transform_hlds__dead_proc_elim__LambdaHeadVar__3_42);
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1345__1_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__NeededPreds_38,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_80)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__dead_proc_elim__NeededPreds_38, ((MR_Box) (transform_hlds__dead_proc_elim__HeadVar__2_80)));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1333__1_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__SpecMap0_31,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__1_51,
+  MR_Word transform_hlds__dead_proc_elim__LambdaHeadVar__2_52,
+  MR_Word * transform_hlds__dead_proc_elim__LambdaHeadVar__3_53)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__NewNeededPreds_37;
+    MR_Box transform_hlds__dead_proc_elim__conv0_NewNeededPreds_37;
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[2], transform_hlds__dead_proc_elim__SpecMap0_31, ((MR_Box) (transform_hlds__dead_proc_elim__LambdaHeadVar__1_51)), &transform_hlds__dead_proc_elim__conv0_NewNeededPreds_37);
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      transform_hlds__dead_proc_elim__NewNeededPreds_37 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_NewNeededPreds_37);
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      mercury__set_tree234__insert_list_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__dead_proc_elim__NewNeededPreds_37, transform_hlds__dead_proc_elim__LambdaHeadVar__2_52, transform_hlds__dead_proc_elim__LambdaHeadVar__3_53);
+    }
+    else
+      *transform_hlds__dead_proc_elim__LambdaHeadVar__3_53 = transform_hlds__dead_proc_elim__LambdaHeadVar__2_52;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_15 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_16 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_15 == transform_hlds__dead_proc_elim__CastY_16);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__Var_12;
+
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], &transform_hlds__dead_proc_elim__Var_12, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX1_4)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY1_5)));
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_12 == (MR_Integer) 0);
+      transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+      if (transform_hlds__dead_proc_elim__succeeded)
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_12;
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__Var_13;
+
+        hlds__hlds_module____Compare____module_info_0_0(&transform_hlds__dead_proc_elim__Var_13, transform_hlds__dead_proc_elim__ArgX2_6, transform_hlds__dead_proc_elim__ArgY2_7);
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_13 == (MR_Integer) 0);
+        transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+        if (transform_hlds__dead_proc_elim__succeeded)
+          *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_13;
+        else
+        {
+          MR_Word transform_hlds__dead_proc_elim__Var_14;
+
+          mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[2], &transform_hlds__dead_proc_elim__Var_14, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX3_8)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY3_9)));
+          transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_14 == (MR_Integer) 0);
+          transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+          if (transform_hlds__dead_proc_elim__succeeded)
+            *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_14;
+          else
+          {
+            MR_Integer transform_hlds__dead_proc_elim__Var_21 = (MR_Integer) transform_hlds__dead_proc_elim__ArgX4_10;
+            MR_Integer transform_hlds__dead_proc_elim__Var_22 = (MR_Integer) transform_hlds__dead_proc_elim__ArgY4_11;
+
+            mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_21, transform_hlds__dead_proc_elim__Var_22);
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_11 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_12 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_11 == transform_hlds__dead_proc_elim__CastY_12);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeInfo_15_15;
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+
+      transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], ((MR_Box) (transform_hlds__dead_proc_elim__ArgX1_3)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY1_4)));
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__succeeded = hlds__hlds_module____Unify____module_info_0_0(transform_hlds__dead_proc_elim__ArgX2_5, transform_hlds__dead_proc_elim__ArgY2_6);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__TypeInfo_15_15 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[2];
+          transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__dead_proc_elim__TypeInfo_15_15, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX3_7)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY3_8)));
+          if (transform_hlds__dead_proc_elim__succeeded)
+            transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX4_9 == transform_hlds__dead_proc_elim__ArgY4_10);
+        }
+      }
+    }
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_18 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_19 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_18 == transform_hlds__dead_proc_elim__CastY_19);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 4)));
+      MR_Word transform_hlds__dead_proc_elim__Var_14;
+
+      hlds__hlds_module____Compare____module_info_0_0(&transform_hlds__dead_proc_elim__Var_14, transform_hlds__dead_proc_elim__ArgX1_4, transform_hlds__dead_proc_elim__ArgY1_5);
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_14 == (MR_Integer) 0);
+      transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+      if (transform_hlds__dead_proc_elim__succeeded)
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_14;
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__Var_15;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[0], &transform_hlds__dead_proc_elim__Var_15, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX2_6)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY2_7)));
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_15 == (MR_Integer) 0);
+        transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+        if (transform_hlds__dead_proc_elim__succeeded)
+          *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_15;
+        else
+        {
+          MR_Word transform_hlds__dead_proc_elim__Var_16;
+
+          mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[1], &transform_hlds__dead_proc_elim__Var_16, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX3_8)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY3_9)));
+          transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_16 == (MR_Integer) 0);
+          transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+          if (transform_hlds__dead_proc_elim__succeeded)
+            *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_16;
+          else
+          {
+            MR_Word transform_hlds__dead_proc_elim__Var_17;
+
+            mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[1], &transform_hlds__dead_proc_elim__Var_17, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX4_10)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY4_11)));
+            transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_17 == (MR_Integer) 0);
+            transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+            if (transform_hlds__dead_proc_elim__succeeded)
+              *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_17;
+            else
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[7], transform_hlds__dead_proc_elim__HeadVar__1_1, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX5_12)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY5_13)));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_13 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_14 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_13 == transform_hlds__dead_proc_elim__CastY_14);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeInfo_16_16;
+      MR_Word transform_hlds__dead_proc_elim__TypeInfo_17_17;
+      MR_Word transform_hlds__dead_proc_elim__TypeInfo_18_18;
+      MR_Word transform_hlds__dead_proc_elim__TypeInfo_19_19;
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 4)));
+      MR_Word transform_hlds__dead_proc_elim__ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 4)));
+
+      transform_hlds__dead_proc_elim__succeeded = hlds__hlds_module____Unify____module_info_0_0(transform_hlds__dead_proc_elim__ArgX1_3, transform_hlds__dead_proc_elim__ArgY1_4);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__TypeInfo_16_16 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[0];
+        transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__dead_proc_elim__TypeInfo_16_16, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX2_5)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY2_6)));
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__TypeInfo_17_17 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[1];
+          transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__dead_proc_elim__TypeInfo_17_17, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX3_7)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY3_8)));
+          if (transform_hlds__dead_proc_elim__succeeded)
+          {
+            transform_hlds__dead_proc_elim__TypeInfo_18_18 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[1];
+            transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__dead_proc_elim__TypeInfo_18_18, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX4_9)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY4_10)));
+            if (transform_hlds__dead_proc_elim__succeeded)
+            {
+              transform_hlds__dead_proc_elim__TypeInfo_19_19 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[7];
+              transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__dead_proc_elim__TypeInfo_19_19, ((MR_Box) (transform_hlds__dead_proc_elim__ArgX5_11)), ((MR_Box) (transform_hlds__dead_proc_elim__ArgY5_12)));
+            }
+          }
+        }
+      }
+    }
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____needed_map_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], transform_hlds__dead_proc_elim__HeadVar__1_1, ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____needed_map_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_3 = transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_4)));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_8 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_9 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_8 == transform_hlds__dead_proc_elim__CastY_9);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((transform_hlds__dead_proc_elim__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((transform_hlds__dead_proc_elim__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      MR_Integer transform_hlds__dead_proc_elim__Var_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Integer transform_hlds__dead_proc_elim__ArgY1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_11, transform_hlds__dead_proc_elim__ArgY1_7);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_7 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_8 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_7 == transform_hlds__dead_proc_elim__CastY_8);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    else
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      MR_Integer transform_hlds__dead_proc_elim__CastX_3 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+      MR_Integer transform_hlds__dead_proc_elim__CastY_4 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastY_4 == transform_hlds__dead_proc_elim__CastX_3);
+    }
+    else
+    {
+      MR_Integer transform_hlds__dead_proc_elim__ArgX1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer transform_hlds__dead_proc_elim__ArgY1_6;
+
+      transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__ArgY1_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX1_5 == transform_hlds__dead_proc_elim__ArgY1_6);
+      }
+    }
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Cast_HeadVar1_4, transform_hlds__dead_proc_elim__Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__HeadVar__2_1 == transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Cast_HeadVar1_4, transform_hlds__dead_proc_elim__Cast_HeadVar2_5);
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__HeadVar__2_1 == transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Cast_HeadVar1_4, transform_hlds__dead_proc_elim__Cast_HeadVar2_5);
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__HeadVar__2_1 == transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Cast_HeadVar1_4, transform_hlds__dead_proc_elim__Cast_HeadVar2_5);
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__HeadVar__2_1 == transform_hlds__dead_proc_elim__HeadVar__2_2);
+
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____examined_set_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[6], transform_hlds__dead_proc_elim__HeadVar__1_1, ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_5)));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____examined_set_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_3 = transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[6], ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_4)));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_queue_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_5 = transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4], transform_hlds__dead_proc_elim__HeadVar__1_1, ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_5)));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_queue_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar1_3 = transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Word transform_hlds__dead_proc_elim__Cast_HeadVar2_4 = transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4], ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__dead_proc_elim__Cast_HeadVar2_4)));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_120 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_121 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_120 == transform_hlds__dead_proc_elim__CastY_121);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer transform_hlds__dead_proc_elim__Var_137 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim__Var_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer transform_hlds__dead_proc_elim__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_8;
+
+                  hlds__hlds_pred____Compare____pred_id_0_0(&transform_hlds__dead_proc_elim__Var_8, transform_hlds__dead_proc_elim__Var_138, transform_hlds__dead_proc_elim__ArgY1_5);
+                  transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_8 == (MR_Integer) 0);
+                  transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                  if (transform_hlds__dead_proc_elim__succeeded)
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_8;
+                  else
+                    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_137, transform_hlds__dead_proc_elim__ArgY2_7);
+                }
+                break;
+              case (MR_Integer) 1:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer transform_hlds__dead_proc_elim__Var_139 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim__Var_140 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__ArgY1_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer transform_hlds__dead_proc_elim__ArgY2_33 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_34;
+
+                  hlds__hlds_pred____Compare____pred_id_0_0(&transform_hlds__dead_proc_elim__Var_34, transform_hlds__dead_proc_elim__Var_140, transform_hlds__dead_proc_elim__ArgY1_31);
+                  transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_34 == (MR_Integer) 0);
+                  transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                  if (transform_hlds__dead_proc_elim__succeeded)
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_34;
+                  else
+                    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_139, transform_hlds__dead_proc_elim__ArgY2_33);
+                }
+                break;
+              case (MR_Integer) 2:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer transform_hlds__dead_proc_elim__Var_141 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+            MR_String transform_hlds__dead_proc_elim__Var_142 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim__Var_143 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__ArgY1_59 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_String transform_hlds__dead_proc_elim__ArgY2_61 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Integer transform_hlds__dead_proc_elim__ArgY3_63 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_64;
+
+                  mdbcomp__sym_name____Compare____sym_name_0_0(&transform_hlds__dead_proc_elim__Var_64, transform_hlds__dead_proc_elim__Var_143, transform_hlds__dead_proc_elim__ArgY1_59);
+                  transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_64 == (MR_Integer) 0);
+                  transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                  if (transform_hlds__dead_proc_elim__succeeded)
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_64;
+                  else
+                  {
+                    MR_Word transform_hlds__dead_proc_elim__Var_65;
+
+                    mercury__private_builtin__builtin_compare_string_3_p_0(&transform_hlds__dead_proc_elim__Var_65, transform_hlds__dead_proc_elim__Var_142, transform_hlds__dead_proc_elim__ArgY2_61);
+                    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_65 == (MR_Integer) 0);
+                    transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                    if (transform_hlds__dead_proc_elim__succeeded)
+                      *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_65;
+                    else
+                      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_141, transform_hlds__dead_proc_elim__ArgY3_63);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer transform_hlds__dead_proc_elim__Var_133 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer transform_hlds__dead_proc_elim__ArgY1_87 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+
+                          mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_133, transform_hlds__dead_proc_elim__ArgY1_87);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+                MR_String transform_hlds__dead_proc_elim__Var_135 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word transform_hlds__dead_proc_elim__Var_136 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word transform_hlds__dead_proc_elim__ArgY1_113 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 1)));
+                          MR_String transform_hlds__dead_proc_elim__ArgY2_115 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Word transform_hlds__dead_proc_elim__ArgY3_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Word transform_hlds__dead_proc_elim__Var_118;
+
+                          mdbcomp__sym_name____Compare____sym_name_0_0(&transform_hlds__dead_proc_elim__Var_118, transform_hlds__dead_proc_elim__Var_136, transform_hlds__dead_proc_elim__ArgY1_113);
+                          transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_118 == (MR_Integer) 0);
+                          transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                          if (transform_hlds__dead_proc_elim__succeeded)
+                            *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_118;
+                          else
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__Var_119;
+
+                            mercury__private_builtin__builtin_compare_string_3_p_0(&transform_hlds__dead_proc_elim__Var_119, transform_hlds__dead_proc_elim__Var_135, transform_hlds__dead_proc_elim__ArgY2_115);
+                            transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_119 == (MR_Integer) 0);
+                            transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+                            if (transform_hlds__dead_proc_elim__succeeded)
+                              *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_119;
+                            else
+                            {
+                              MR_Integer transform_hlds__dead_proc_elim__Var_144 = (MR_Integer) transform_hlds__dead_proc_elim__Var_134;
+                              MR_Integer transform_hlds__dead_proc_elim__Var_145 = (MR_Integer) transform_hlds__dead_proc_elim__ArgY3_117;
+
+                              mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_144, transform_hlds__dead_proc_elim__Var_145);
+                            }
+                          }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_25 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_26 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_25 == transform_hlds__dead_proc_elim__CastY_26);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word transform_hlds__dead_proc_elim__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word transform_hlds__dead_proc_elim__ArgY1_4;
+            MR_Integer transform_hlds__dead_proc_elim__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer transform_hlds__dead_proc_elim__ArgY2_6;
+
+            transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (transform_hlds__dead_proc_elim__succeeded)
+            {
+              transform_hlds__dead_proc_elim__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+              transform_hlds__dead_proc_elim__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+              transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(transform_hlds__dead_proc_elim__ArgX1_3, transform_hlds__dead_proc_elim__ArgY1_4);
+              if (transform_hlds__dead_proc_elim__succeeded)
+                transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX2_5 == transform_hlds__dead_proc_elim__ArgY2_6);
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word transform_hlds__dead_proc_elim__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word transform_hlds__dead_proc_elim__ArgY1_8;
+            MR_Integer transform_hlds__dead_proc_elim__ArgX2_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer transform_hlds__dead_proc_elim__ArgY2_10;
+
+            transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (transform_hlds__dead_proc_elim__succeeded)
+            {
+              transform_hlds__dead_proc_elim__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+              transform_hlds__dead_proc_elim__ArgY2_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+              transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(transform_hlds__dead_proc_elim__ArgX1_7, transform_hlds__dead_proc_elim__ArgY1_8);
+              if (transform_hlds__dead_proc_elim__succeeded)
+                transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX2_9 == transform_hlds__dead_proc_elim__ArgY2_10);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word transform_hlds__dead_proc_elim__ArgX1_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word transform_hlds__dead_proc_elim__ArgY1_12;
+            MR_String transform_hlds__dead_proc_elim__ArgX2_13 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String transform_hlds__dead_proc_elim__ArgY2_14;
+            MR_Integer transform_hlds__dead_proc_elim__ArgX3_15 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Integer transform_hlds__dead_proc_elim__ArgY3_16;
+
+            transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (transform_hlds__dead_proc_elim__succeeded)
+            {
+              transform_hlds__dead_proc_elim__ArgY1_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+              transform_hlds__dead_proc_elim__ArgY2_14 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+              transform_hlds__dead_proc_elim__ArgY3_16 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+              transform_hlds__dead_proc_elim__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(transform_hlds__dead_proc_elim__ArgX1_11, transform_hlds__dead_proc_elim__ArgY1_12);
+              if (transform_hlds__dead_proc_elim__succeeded)
+              {
+                transform_hlds__dead_proc_elim__succeeded = (strcmp(transform_hlds__dead_proc_elim__ArgX2_13, transform_hlds__dead_proc_elim__ArgY2_14) == 0);
+                if (transform_hlds__dead_proc_elim__succeeded)
+                  transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX3_15 == transform_hlds__dead_proc_elim__ArgY3_16);
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer transform_hlds__dead_proc_elim__ArgX1_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer transform_hlds__dead_proc_elim__ArgY1_18;
+
+                transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (transform_hlds__dead_proc_elim__succeeded)
+                {
+                  transform_hlds__dead_proc_elim__ArgY1_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+                  transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX1_17 == transform_hlds__dead_proc_elim__ArgY1_18);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word transform_hlds__dead_proc_elim__ArgX1_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word transform_hlds__dead_proc_elim__ArgY1_20;
+                MR_String transform_hlds__dead_proc_elim__ArgX2_21 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 2)));
+                MR_String transform_hlds__dead_proc_elim__ArgY2_22;
+                MR_Word transform_hlds__dead_proc_elim__ArgX3_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word transform_hlds__dead_proc_elim__ArgY3_24;
+
+                transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (transform_hlds__dead_proc_elim__succeeded)
+                {
+                  transform_hlds__dead_proc_elim__ArgY1_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+                  transform_hlds__dead_proc_elim__ArgY2_22 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 2)));
+                  transform_hlds__dead_proc_elim__ArgY3_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 3)));
+                  transform_hlds__dead_proc_elim__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(transform_hlds__dead_proc_elim__ArgX1_19, transform_hlds__dead_proc_elim__ArgY1_20);
+                  if (transform_hlds__dead_proc_elim__succeeded)
+                  {
+                    transform_hlds__dead_proc_elim__succeeded = (strcmp(transform_hlds__dead_proc_elim__ArgX2_21, transform_hlds__dead_proc_elim__ArgY2_22) == 0);
+                    if (transform_hlds__dead_proc_elim__succeeded)
+                      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX3_23 == transform_hlds__dead_proc_elim__ArgY3_24);
+                  }
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____analyze_links_0_0(
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_12 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_13 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__3_3;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_12 == transform_hlds__dead_proc_elim__CastY_13);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_5 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_7 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_8 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_9 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__3_3, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__Var_10;
+      MR_Integer transform_hlds__dead_proc_elim__Var_17 = (MR_Integer) transform_hlds__dead_proc_elim__ArgX1_4;
+      MR_Integer transform_hlds__dead_proc_elim__Var_18 = (MR_Integer) transform_hlds__dead_proc_elim__ArgY1_5;
+
+      mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__dead_proc_elim__Var_10, transform_hlds__dead_proc_elim__Var_17, transform_hlds__dead_proc_elim__Var_18);
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_10 == (MR_Integer) 0);
+      transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+      if (transform_hlds__dead_proc_elim__succeeded)
+        *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_10;
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__Var_11;
+        MR_Integer transform_hlds__dead_proc_elim__Var_19 = (MR_Integer) transform_hlds__dead_proc_elim__ArgX2_6;
+        MR_Integer transform_hlds__dead_proc_elim__Var_20 = (MR_Integer) transform_hlds__dead_proc_elim__ArgY2_7;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__dead_proc_elim__Var_11, transform_hlds__dead_proc_elim__Var_19, transform_hlds__dead_proc_elim__Var_20);
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_11 == (MR_Integer) 0);
+        transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+        if (transform_hlds__dead_proc_elim__succeeded)
+          *transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__Var_11;
+        else
+        {
+          MR_Integer transform_hlds__dead_proc_elim__Var_21 = (MR_Integer) transform_hlds__dead_proc_elim__ArgX3_8;
+          MR_Integer transform_hlds__dead_proc_elim__Var_22 = (MR_Integer) transform_hlds__dead_proc_elim__ArgY3_9;
+
+          mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__Var_21, transform_hlds__dead_proc_elim__Var_22);
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____analyze_links_0_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Integer transform_hlds__dead_proc_elim__CastX_9 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__1_1;
+    MR_Integer transform_hlds__dead_proc_elim__CastY_10 = (MR_Integer) transform_hlds__dead_proc_elim__HeadVar__2_2;
+
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__CastX_9 == transform_hlds__dead_proc_elim__CastY_10);
+    if (transform_hlds__dead_proc_elim__succeeded)
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__ArgX1_3 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)))) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY1_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgX2_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY2_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgX3_7 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+      MR_Word transform_hlds__dead_proc_elim__ArgY3_8 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX1_3 == transform_hlds__dead_proc_elim__ArgY1_4);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX2_5 == transform_hlds__dead_proc_elim__ArgY2_6);
+        if (transform_hlds__dead_proc_elim__succeeded)
+          transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ArgX3_7 == transform_hlds__dead_proc_elim__ArgY3_8);
+      }
+    }
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_case_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Case_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_9,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_10)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Goal_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Case_4, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__GoalExpr_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_8, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Case_4, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Case_4, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_8, (MR_Integer) 1)));
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(transform_hlds__dead_proc_elim__GoalExpr_16, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_9, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_10);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_process_clause_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Clause_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_6,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_7)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Var_8;
+    MR_Word transform_hlds__dead_proc_elim__GoalExpr_14;
+    MR_Word transform_hlds__dead_proc_elim__Var_15;
+
+    transform_hlds__dead_proc_elim__Var_8 = hlds__hlds_clauses__clause_body_1_f_0(transform_hlds__dead_proc_elim__Clause_4);
+    transform_hlds__dead_proc_elim__GoalExpr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_8, (MR_Integer) 0)));
+    transform_hlds__dead_proc_elim__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_8, (MR_Integer) 1)));
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(transform_hlds__dead_proc_elim__GoalExpr_14, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_6, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_7);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_unify_rhs_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__RHS_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__RHS_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word transform_hlds__dead_proc_elim__Functor_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 0)));
+          MR_Word transform_hlds__dead_proc_elim__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 1)));
+          MR_Word transform_hlds__dead_proc_elim__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 2)));
+          MR_Word transform_hlds__dead_proc_elim__Name_10;
+          MR_Integer transform_hlds__dead_proc_elim__Var_11;
+          MR_Word transform_hlds__dead_proc_elim__Var_12;
+
+          transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Functor_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Functor_7, (MR_Integer) 0)))) == (MR_Integer) 2)));
+          if (transform_hlds__dead_proc_elim__succeeded)
+          {
+            transform_hlds__dead_proc_elim__Name_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Functor_7, (MR_Integer) 1)));
+            transform_hlds__dead_proc_elim__Var_11 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Functor_7, (MR_Integer) 2)));
+            transform_hlds__dead_proc_elim__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Functor_7, (MR_Integer) 3)));
+            {
+              MR_Word transform_hlds__dead_proc_elim__ModuleInfo_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, (MR_Integer) 0)));
+              MR_Word transform_hlds__dead_proc_elim__Examined_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, (MR_Integer) 2)));
+              MR_Word transform_hlds__dead_proc_elim__Needed_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, (MR_Integer) 3)));
+              MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, (MR_Integer) 1)));
+              MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, (MR_Integer) 4)));
+
+              transform_hlds__dead_proc_elim__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_38, ((MR_Box) (transform_hlds__dead_proc_elim__Name_10)));
+              if (transform_hlds__dead_proc_elim__succeeded)
+                *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22;
+              else
+              {
+                MR_Word transform_hlds__dead_proc_elim__PredicateTable_35;
+                MR_Word transform_hlds__dead_proc_elim__PredIds_36;
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_43;
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_44;
+
+                hlds__hlds_module__module_info_get_predicate_table_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_32, &transform_hlds__dead_proc_elim__PredicateTable_35);
+                mercury__set_tree234__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (transform_hlds__dead_proc_elim__Name_10)), transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_38, &transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_43);
+                hlds__pred_table__predicate_table_lookup_sym_4_p_0(transform_hlds__dead_proc_elim__PredicateTable_35, (MR_Integer) 1, transform_hlds__dead_proc_elim__Name_10, &transform_hlds__dead_proc_elim__PredIds_36);
+                mercury__queue__put_list_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__dead_proc_elim__PredIds_36, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15_37, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_44);
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_32));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_44));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Examined_33));
+                  MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_34));
+                  MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_43));
+                }
+              }
+            }
+          }
+          else
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word transform_hlds__dead_proc_elim__Goal_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 6)));
+          MR_Word transform_hlds__dead_proc_elim__GoalExpr_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_21, (MR_Integer) 0)));
+          MR_Word transform_hlds__dead_proc_elim__Var_13 = ((((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 0)))) & (MR_Integer) 3);
+          MR_Word transform_hlds__dead_proc_elim__Var_14 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+          MR_Word transform_hlds__dead_proc_elim__Var_15 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+          MR_Word transform_hlds__dead_proc_elim__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 2)));
+          MR_Word transform_hlds__dead_proc_elim__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 3)));
+          MR_Word transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 4)));
+          MR_Word transform_hlds__dead_proc_elim__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__RHS_4, (MR_Integer) 5)));
+          MR_Word transform_hlds__dead_proc_elim__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_21, (MR_Integer) 1)));
+
+          transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(transform_hlds__dead_proc_elim__GoalExpr_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_22, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_23);
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_4(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_DeadInfo_10;
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_case_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_DeadInfo_10);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_DeadInfo_10));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_3(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_DeadInfo_9;
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_DeadInfo_9);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_DeadInfo_9));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_9;
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_9);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_9));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_DeadInfo_9;
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_DeadInfo_9);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_DeadInfo_9));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__GoalExpr_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53)
+{
+  switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__GoalExpr_4)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word transform_hlds__dead_proc_elim__SubGoal_15 = (MR_Word) MR_body(((MR_Word) transform_hlds__dead_proc_elim__GoalExpr_4), (MR_Integer) 0);
+
+        transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__SubGoal_15, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word transform_hlds__dead_proc_elim__RHS_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+        MR_Word transform_hlds__dead_proc_elim__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 3)));
+        MR_Word transform_hlds__dead_proc_elim__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 4)));
+
+        transform_hlds__dead_proc_elim__pre_modecheck_examine_unify_rhs_3_p_0(transform_hlds__dead_proc_elim__RHS_36, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word transform_hlds__dead_proc_elim__PredName_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 5)));
+        MR_Word transform_hlds__dead_proc_elim__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 0)));
+        MR_Integer transform_hlds__dead_proc_elim__Var_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+        MR_Word transform_hlds__dead_proc_elim__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 3)));
+        MR_Word transform_hlds__dead_proc_elim__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 4)));
+
+        transform_hlds__dead_proc_elim__dead_pred_info_add_pred_name_3_p_0(transform_hlds__dead_proc_elim__PredName_22, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52;
+          break;
+        case (MR_Integer) 1:
+          *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52;
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word transform_hlds__dead_proc_elim__Goals_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+            MR_Word transform_hlds__dead_proc_elim___ConjType_6 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+            MR_Box transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_53;
+
+            mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[13], transform_hlds__dead_proc_elim__Goals_7, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52)), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_53);
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = ((MR_Word) transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_53);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word transform_hlds__dead_proc_elim__Goals_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+            MR_Box transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_DeadInfo_53;
+
+            mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[14], transform_hlds__dead_proc_elim__Goals_74, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52)), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_DeadInfo_53);
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_DeadInfo_53);
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word transform_hlds__dead_proc_elim__Cases_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 3)));
+            MR_Word transform_hlds__dead_proc_elim__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+            MR_Box transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_DeadInfo_53;
+
+            mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[16], transform_hlds__dead_proc_elim__Cases_14, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52)), &transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_DeadInfo_53);
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = ((MR_Word) transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_DeadInfo_53);
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word transform_hlds__dead_proc_elim__SubGoal_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+            MR_Word transform_hlds__dead_proc_elim__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+
+            transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__SubGoal_75, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word transform_hlds__dead_proc_elim__Cond_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 2)));
+            MR_Word transform_hlds__dead_proc_elim__Then_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 3)));
+            MR_Word transform_hlds__dead_proc_elim__Else_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 4)));
+            MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_67_67;
+            MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_68_68;
+            MR_Word transform_hlds__dead_proc_elim__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+
+            transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__Cond_9, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, &transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_67_67);
+            transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__Then_10, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_67_67, &transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_68_68);
+            transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__Else_11, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_68_68, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            MR_Word transform_hlds__dead_proc_elim__ShortHand_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_4, (MR_Integer) 1)));
+
+            switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__ShortHand_40)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.dead_proc_elim", (MR_String) "predicate \140transform_hlds.dead_proc_elim.pre_modecheck_examine_goal_expr\'/3", (MR_String) "unexpected bi_implication");
+                    return;
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__MainGoal_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 4)));
+                  MR_Word transform_hlds__dead_proc_elim__OrElseGoals_46 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 5)));
+                  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_58_58;
+                  MR_Word transform_hlds__dead_proc_elim___GoalType_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 0)));
+                  MR_Word transform_hlds__dead_proc_elim___Outer_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 1)));
+                  MR_Word transform_hlds__dead_proc_elim___Inner_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 2)));
+                  MR_Word transform_hlds__dead_proc_elim___MaybeOutputVars_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 3)));
+                  MR_Word transform_hlds__dead_proc_elim___OrElseInners_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 6)));
+                  MR_Box transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_DeadInfo_53;
+
+                  transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__MainGoal_45, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, &transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_58_58);
+                  mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[15], transform_hlds__dead_proc_elim__OrElseGoals_46, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_58_58)), &transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_DeadInfo_53);
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53 = ((MR_Word) transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_DeadInfo_53);
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__SubGoal_76 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 2)));
+                  MR_Word transform_hlds__dead_proc_elim___MaybeIO_48 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 0)));
+                  MR_Word transform_hlds__dead_proc_elim___ResultVar_49 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__ShortHand_40, (MR_Integer) 1)));
+
+                  transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(transform_hlds__dead_proc_elim__SubGoal_76, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_52, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_53);
+                }
+                break;
+            }
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Goal_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_8,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_9)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__GoalExpr_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_4, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_4, (MR_Integer) 1)));
+
+    transform_hlds__dead_proc_elim__pre_modecheck_examine_goal_expr_3_p_0(transform_hlds__dead_proc_elim__GoalExpr_6, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_9);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_info_add_pred_name_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Name_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_14)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__ModuleInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Examined_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__Needed_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13, (MR_Integer) 3)));
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13, (MR_Integer) 4)));
+
+    transform_hlds__dead_proc_elim__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_16, ((MR_Box) (transform_hlds__dead_proc_elim__Name_4)));
+    if (transform_hlds__dead_proc_elim__succeeded)
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_14 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_13;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__PredicateTable_11;
+      MR_Word transform_hlds__dead_proc_elim__PredIds_12;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_21;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_22;
+
+      hlds__hlds_module__module_info_get_predicate_table_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_8, &transform_hlds__dead_proc_elim__PredicateTable_11);
+      mercury__set_tree234__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (transform_hlds__dead_proc_elim__Name_4)), transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_16_16, &transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_21);
+      hlds__pred_table__predicate_table_lookup_sym_4_p_0(transform_hlds__dead_proc_elim__PredicateTable_11, (MR_Integer) 1, transform_hlds__dead_proc_elim__Name_4, &transform_hlds__dead_proc_elim__PredIds_12);
+      mercury__queue__put_list_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__dead_proc_elim__PredIds_12, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15_15, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_22);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_14 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_8));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_22));
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Examined_9));
+        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_10));
+        MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_17_21));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_initialize_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__PredId_4,
+  MR_Word transform_hlds__dead_proc_elim__DeadInfo0_5,
+  MR_Word * transform_hlds__dead_proc_elim__DeadInfo_6)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__ModuleInfo_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_5, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Examined_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_5, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__NeededIds_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_5, (MR_Integer) 3)));
+    MR_Word transform_hlds__dead_proc_elim__PredInfo_12;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_5, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_5, (MR_Integer) 4)));
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_25_25;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26;
+    MR_Word transform_hlds__dead_proc_elim__PredModule_13;
+    MR_String transform_hlds__dead_proc_elim__PredName_14;
+    MR_Integer transform_hlds__dead_proc_elim__PredArity_15;
+
+    hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__dead_proc_elim__ModuleInfo_9, transform_hlds__dead_proc_elim__PredId_4, &transform_hlds__dead_proc_elim__PredInfo_12);
+    transform_hlds__dead_proc_elim__PredModule_13 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__dead_proc_elim__PredInfo_12);
+    transform_hlds__dead_proc_elim__PredName_14 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__dead_proc_elim__PredInfo_12);
+    transform_hlds__dead_proc_elim__PredArity_15 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__dead_proc_elim__PredInfo_12);
+    transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__dead_proc_elim__PredInfo_12);
+    if (!(transform_hlds__dead_proc_elim__succeeded))
+    {
+      transform_hlds__dead_proc_elim__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__dead_proc_elim__PredModule_13);
+      if (!(transform_hlds__dead_proc_elim__succeeded))
+      {
+        {
+          MR_String transform_hlds__dead_proc_elim__PredModuleName_16;
+
+          transform_hlds__dead_proc_elim__succeeded = mdbcomp__builtin_modules__is_std_lib_module_name_2_p_0(transform_hlds__dead_proc_elim__PredModule_13, &transform_hlds__dead_proc_elim__PredModuleName_16);
+          if (transform_hlds__dead_proc_elim__succeeded)
+            transform_hlds__dead_proc_elim__succeeded = check_hlds__simplify__simplify_proc__simplify_may_introduce_calls_3_p_0(transform_hlds__dead_proc_elim__PredModuleName_16, transform_hlds__dead_proc_elim__PredName_14, transform_hlds__dead_proc_elim__PredArity_15);
+        }
+        if (!(transform_hlds__dead_proc_elim__succeeded))
+        {
+          {
+            MR_Word transform_hlds__dead_proc_elim__Var_29;
+
+            transform_hlds__dead_proc_elim__Var_29 = mdbcomp__builtin_modules__mercury_exception_module_0_f_0();
+            transform_hlds__dead_proc_elim__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(transform_hlds__dead_proc_elim__PredModule_13, transform_hlds__dead_proc_elim__Var_29);
+            if (transform_hlds__dead_proc_elim__succeeded)
+              transform_hlds__dead_proc_elim__succeeded = check_hlds__try_expand__try_expand_may_introduce_calls_2_p_0(transform_hlds__dead_proc_elim__PredName_14, transform_hlds__dead_proc_elim__PredArity_15);
+          }
+          if (!(transform_hlds__dead_proc_elim__succeeded))
+          {
+            {
+              MR_Word transform_hlds__dead_proc_elim__PredStatus_17;
+              MR_Word transform_hlds__dead_proc_elim__Var_23;
+
+              transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__pred_info_is_imported_1_p_0(transform_hlds__dead_proc_elim__PredInfo_12);
+              transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+              if (transform_hlds__dead_proc_elim__succeeded)
+              {
+                hlds__hlds_pred__pred_info_get_status_2_p_0(transform_hlds__dead_proc_elim__PredInfo_12, &transform_hlds__dead_proc_elim__PredStatus_17);
+                transform_hlds__dead_proc_elim__Var_23 = (MR_Word) transform_hlds__dead_proc_elim__PredStatus_17;
+                transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+              }
+            }
+            if (!(transform_hlds__dead_proc_elim__succeeded))
+            {
+              {
+                MR_Word transform_hlds__dead_proc_elim__Var_30;
+
+                hlds__hlds_module__module_info_get_name_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_9, &transform_hlds__dead_proc_elim__Var_30);
+                transform_hlds__dead_proc_elim__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(transform_hlds__dead_proc_elim__PredModule_13, transform_hlds__dead_proc_elim__Var_30);
+              }
+              if (!(transform_hlds__dead_proc_elim__succeeded))
+              {
+                {
+                  MR_String transform_hlds__dead_proc_elim__Var_18;
+
+                  transform_hlds__dead_proc_elim__succeeded = mercury__string__remove_suffix_3_p_0(transform_hlds__dead_proc_elim__PredName_14, (MR_String) "_init_any", &transform_hlds__dead_proc_elim__Var_18);
+                  if (transform_hlds__dead_proc_elim__succeeded)
+                    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__PredArity_15 == (MR_Integer) 1);
+                }
+                if (!(transform_hlds__dead_proc_elim__succeeded))
+                {
+                  MR_Word transform_hlds__dead_proc_elim__Var_19;
+
+                  transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__pred_info_is_promise_2_p_0(transform_hlds__dead_proc_elim__PredInfo_12, &transform_hlds__dead_proc_elim__Var_19);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      MR_Word transform_hlds__dead_proc_elim__Var_24;
+
+      {
+        transform_hlds__dead_proc_elim__Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredModule_13));
+        MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__PredName_14));
+      }
+      mercury__set_tree234__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (transform_hlds__dead_proc_elim__Var_24)), transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_21_21, &transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_25_25);
+      mercury__queue__put_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_4)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26);
+    }
+    else
+    {
+      transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_25_25 = transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_21_21;
+      transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      *transform_hlds__dead_proc_elim__DeadInfo_6 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_9));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Examined_10));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__NeededIds_11));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_NeededNames_25_25));
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_add_entity_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Entity_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23)
+{
+  switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__Entity_6)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+        MR_Word transform_hlds__dead_proc_elim__PredId_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_6, (MR_Integer) 0)));
+        MR_Integer transform_hlds__dead_proc_elim__Var_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_6, (MR_Integer) 1)));
+
+        mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_26, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21);
+        mercury__set_tree234__insert_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_26, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22, transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22;
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_6, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20;
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20;
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Preds_0_22;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_1(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    MR_builtin_longjmp((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_3(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__OtherProcId_36 = ((MR_Integer) (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv0_OtherProcId_36);
+    transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_2(transform_hlds__dead_proc_elim__env_ptr);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_2(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_41_41 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_42_42 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Var_33 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__PredId_13));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__OtherProcId_36));
+    }
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = mercury__map__contains_2_p_0((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_41_41, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_42_42, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Needed_12, ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Var_33)));
+    if ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded)
+      transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_1(transform_hlds__dead_proc_elim__env_ptr);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_4(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    if (MR_builtin_setjmp((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_0) == 0)
+      {
+        {
+          mercury__list__member_2_p_1((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, &(transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv0_OtherProcId_36, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__AllProcsInPred_16, transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_3, transform_hlds__dead_proc_elim__env_ptr);
+        }
+        (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_5(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    MR_builtin_longjmp((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_1, 1);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_7(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKind_37 = ((MR_Word) (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv1_SuppressPredKind_37);
+    transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_6(transform_hlds__dead_proc_elim__env_ptr);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_6(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_44_44 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_45_45 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressMutableEntity_27 = base;
+      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableModuleName_22));
+      MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableName_23));
+      MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKind_37));
+    }
+    (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = mercury__map__contains_2_p_0((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_44_44, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__TypeCtorInfo_45_45, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Needed_12, ((MR_Box) ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressMutableEntity_27)));
+    if ((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded)
+      transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_5(transform_hlds__dead_proc_elim__env_ptr);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_8(
+  void * transform_hlds__dead_proc_elim__env_ptr_arg)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s * transform_hlds__dead_proc_elim__env_ptr = (struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s *) transform_hlds__dead_proc_elim__env_ptr_arg;
+
+    if (MR_builtin_setjmp((transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__commit_1) == 0)
+      {
+        {
+          mercury__list__member_2_p_1((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_mutable_pred_kind_0, &(transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__conv1_SuppressPredKind_37, (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKinds_25, transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_7, transform_hlds__dead_proc_elim__env_ptr);
+        }
+        (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (transform_hlds__dead_proc_elim__env_ptr)->transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_11,
+  MR_Word transform_hlds__dead_proc_elim__Needed_12,
+  MR_Word transform_hlds__dead_proc_elim__PredId_13,
+  MR_Word transform_hlds__dead_proc_elim__PredInfo_14,
+  MR_Word transform_hlds__dead_proc_elim__WarnWithLiveSiblings_15,
+  MR_Word transform_hlds__dead_proc_elim__AllProcsInPred_16,
+  MR_Word transform_hlds__dead_proc_elim__ProcTable_17,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_18,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_31,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_32)
+{
+  {
+    struct transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0_s transform_hlds__dead_proc_elim__env;
+
+    (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Needed_12 = transform_hlds__dead_proc_elim__Needed_12;
+    (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__PredId_13 = transform_hlds__dead_proc_elim__PredId_13;
+    (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__AllProcsInPred_16 = transform_hlds__dead_proc_elim__AllProcsInPred_16;
+    {
+      MR_Word transform_hlds__dead_proc_elim__Var_34;
+
+      {
+        transform_hlds__dead_proc_elim__Var_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_34, 0) = ((MR_Box) ((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__PredId_13));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_34, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_18));
+      }
+      (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = mercury__map__contains_2_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__Needed_12, ((MR_Box) (transform_hlds__dead_proc_elim__Var_34)));
+    }
+    if (!((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded))
+    {
+      (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = (transform_hlds__dead_proc_elim__WarnWithLiveSiblings_15 == (MR_Integer) 0);
+      if ((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded)
+        transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_4(&transform_hlds__dead_proc_elim__env);
+      if (!((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded))
+      {
+        MR_Word transform_hlds__dead_proc_elim__Origin_21;
+        MR_Word transform_hlds__dead_proc_elim__PredKind_24;
+
+        hlds__hlds_pred__pred_info_get_origin_2_p_0(transform_hlds__dead_proc_elim__PredInfo_14, &transform_hlds__dead_proc_elim__Origin_21);
+        (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Origin_21)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_21, (MR_Integer) 0)))) == (MR_Integer) 5)));
+        if ((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded)
+        {
+          (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableModuleName_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_21, (MR_Integer) 1)));
+          (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__MutableName_23 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_21, (MR_Integer) 2)));
+          transform_hlds__dead_proc_elim__PredKind_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_21, (MR_Integer) 3)));
+          (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__SuppressPredKinds_25 = ((&transform_hlds__dead_proc_elim_vector_common_11[0 + transform_hlds__dead_proc_elim__PredKind_24]))->transform_hlds__dead_proc_elim__vector_common_type_11_0__vct_11_f_0;
+          transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_8(&transform_hlds__dead_proc_elim__env);
+        }
+      }
+    }
+    if ((transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__succeeded)
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_32 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_31;
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__ProcInfo_28;
+      MR_Word transform_hlds__dead_proc_elim__Context_29;
+      MR_Word transform_hlds__dead_proc_elim__Spec_30;
+      MR_Box transform_hlds__dead_proc_elim__conv2_ProcInfo_28;
+
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, transform_hlds__dead_proc_elim__ProcTable_17, transform_hlds__dead_proc_elim__ProcId_18, &transform_hlds__dead_proc_elim__conv2_ProcInfo_28);
+      transform_hlds__dead_proc_elim__ProcInfo_28 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_ProcInfo_28);
+      hlds__hlds_pred__proc_info_get_context_2_p_0(transform_hlds__dead_proc_elim__ProcInfo_28, &transform_hlds__dead_proc_elim__Context_29);
+      transform_hlds__dead_proc_elim__Spec_30 = transform_hlds__dead_proc_elim__warn_dead_proc_4_f_0(transform_hlds__dead_proc_elim__ModuleInfo_11, (transform_hlds__dead_proc_elim__env).transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0_env_0__PredId_13, transform_hlds__dead_proc_elim__ProcId_18, transform_hlds__dead_proc_elim__Context_29);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_32 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Spec_30));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_31));
+      }
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+transform_hlds__dead_proc_elim__warn_dead_proc_4_f_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_6,
+  MR_Word transform_hlds__dead_proc_elim__PredId_7,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_8,
+  MR_Word transform_hlds__dead_proc_elim__Context_9)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Spec_10;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_34_34;
+    MR_Word transform_hlds__dead_proc_elim__ProcPieces_11;
+    MR_Word transform_hlds__dead_proc_elim__Pieces_12;
+    MR_Word transform_hlds__dead_proc_elim__Msg_13;
+    MR_Word transform_hlds__dead_proc_elim__Var_15;
+    MR_Word transform_hlds__dead_proc_elim__Var_20;
+    MR_Word transform_hlds__dead_proc_elim__Var_27;
+    MR_Word transform_hlds__dead_proc_elim__Var_28;
+    MR_Word transform_hlds__dead_proc_elim__Var_32;
+
+    {
+      transform_hlds__dead_proc_elim__Var_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_15, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_7));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_15, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_8));
+    }
+    transform_hlds__dead_proc_elim__ProcPieces_11 = hlds__hlds_error_util__describe_one_proc_name_3_f_0(transform_hlds__dead_proc_elim__ModuleInfo_6, (MR_Integer) 1, transform_hlds__dead_proc_elim__Var_15);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_34_34 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+    transform_hlds__dead_proc_elim__Var_20 = mercury__list__f_43_43_2_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, transform_hlds__dead_proc_elim__ProcPieces_11, (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[21]));
+    transform_hlds__dead_proc_elim__Pieces_12 = mercury__list__f_43_43_2_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_1[23]), transform_hlds__dead_proc_elim__Var_20);
+    {
+      transform_hlds__dead_proc_elim__Var_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_28, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Pieces_12));
+    }
+    {
+      transform_hlds__dead_proc_elim__Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_27, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Var_28));
+      MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      transform_hlds__dead_proc_elim__Msg_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Msg_13, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Context_9));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Msg_13, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__Var_27));
+    }
+    {
+      transform_hlds__dead_proc_elim__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_32, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Msg_13));
+      MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      transform_hlds__dead_proc_elim__Spec_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Spec_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Spec_10, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 13))));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Spec_10, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Var_32));
+    }
+    return transform_hlds__dead_proc_elim__Spec_10;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Specs_32;
+
+    transform_hlds__dead_proc_elim__dead_proc_maybe_warn_proc_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 9))), ((MR_Integer) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Specs_32);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Specs_32));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_8,
+  MR_Word transform_hlds__dead_proc_elim__PredTable_9,
+  MR_Word transform_hlds__dead_proc_elim__WarnWithLiveSiblings_10,
+  MR_Word transform_hlds__dead_proc_elim__Needed_11,
+  MR_Word transform_hlds__dead_proc_elim__PredId_12,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_19,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_20)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__PredInfo_14;
+    MR_Word transform_hlds__dead_proc_elim__PredStatus_15;
+    MR_Box transform_hlds__dead_proc_elim__conv0_PredInfo_14;
+    MR_String transform_hlds__dead_proc_elim__PredName_16;
+    MR_Word transform_hlds__dead_proc_elim__Var_21;
+    MR_String transform_hlds__dead_proc_elim__Var_22;
+    MR_String transform_hlds__dead_proc_elim__Var_23;
+
+    mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0, transform_hlds__dead_proc_elim__PredTable_9, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_12)), &transform_hlds__dead_proc_elim__conv0_PredInfo_14);
+    transform_hlds__dead_proc_elim__PredInfo_14 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_PredInfo_14);
+    hlds__hlds_pred__pred_info_get_status_2_p_0(transform_hlds__dead_proc_elim__PredInfo_14, &transform_hlds__dead_proc_elim__PredStatus_15);
+    transform_hlds__dead_proc_elim__Var_21 = (MR_Word) transform_hlds__dead_proc_elim__PredStatus_15;
+    transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8))));
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__dead_proc_elim__PredInfo_14);
+      transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__PredName_16 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__dead_proc_elim__PredInfo_14);
+        transform_hlds__dead_proc_elim__Var_22 = (MR_String) "IntroducedFrom__";
+        transform_hlds__dead_proc_elim__succeeded = mercury__string__prefix_2_p_0(transform_hlds__dead_proc_elim__PredName_16, transform_hlds__dead_proc_elim__Var_22);
+        transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__Var_23 = (MR_String) "TypeSpecOf__";
+          transform_hlds__dead_proc_elim__succeeded = mercury__string__prefix_2_p_0(transform_hlds__dead_proc_elim__PredName_16, transform_hlds__dead_proc_elim__Var_23);
+          transform_hlds__dead_proc_elim__succeeded = !(transform_hlds__dead_proc_elim__succeeded);
+        }
+      }
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      MR_Word transform_hlds__dead_proc_elim__ProcIds_17;
+      MR_Word transform_hlds__dead_proc_elim__ProcTable_18;
+      MR_Word transform_hlds__dead_proc_elim__Var_24;
+      MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Specs_20;
+
+      transform_hlds__dead_proc_elim__ProcIds_17 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo_14);
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__dead_proc_elim__PredInfo_14, &transform_hlds__dead_proc_elim__ProcTable_18);
+      {
+        transform_hlds__dead_proc_elim__Var_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_10[0]));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0_1));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_8));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_11));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 5) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_12));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 6) = ((MR_Box) (transform_hlds__dead_proc_elim__PredInfo_14));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 7) = ((MR_Box) (transform_hlds__dead_proc_elim__WarnWithLiveSiblings_10));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 8) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcIds_17));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 9) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcTable_18));
+      }
+      mercury__list__foldl_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[5], transform_hlds__dead_proc_elim__Var_24, transform_hlds__dead_proc_elim__ProcIds_17, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_19)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Specs_20);
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_20 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Specs_20);
+    }
+    else
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_20 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Specs_0_19;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_proc_8_p_0(
+  MR_Word transform_hlds__dead_proc_elim__PredId_9,
+  MR_Word transform_hlds__dead_proc_elim__Keep_10,
+  MR_Word transform_hlds__dead_proc_elim__ProcElimInfo_11,
+  MR_Integer transform_hlds__dead_proc_elim__ProcId_12,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_23)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__Needed_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_11, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__ModuleInfo_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_11, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_11, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_11, (MR_Integer) 3)));
+
+    {
+      MR_Word transform_hlds__dead_proc_elim__Var_24;
+
+      {
+        transform_hlds__dead_proc_elim__Var_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_12));
+      }
+      transform_hlds__dead_proc_elim__succeeded = mercury__map__contains_2_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, transform_hlds__dead_proc_elim__Needed_15, ((MR_Box) (transform_hlds__dead_proc_elim__Var_24)));
+    }
+    if (!(transform_hlds__dead_proc_elim__succeeded))
+    {
+      MR_Integer transform_hlds__dead_proc_elim__Var_41;
+
+      transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Keep_10)) == (MR_mktag((MR_Integer) 1)));
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__Var_41 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Keep_10, (MR_Integer) 0)));
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ProcId_12 == transform_hlds__dead_proc_elim__Var_41);
+      }
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_0_22;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_0_20;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__Globals_17;
+      MR_Word transform_hlds__dead_proc_elim__VeryVerbose_18;
+
+      mercury__map__delete_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_12)), transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_0_20, transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcTable_21);
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Changed_23 = (MR_Integer) 1;
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_16, &transform_hlds__dead_proc_elim__Globals_17);
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__dead_proc_elim__Globals_17, (MR_Integer) 57, &transform_hlds__dead_proc_elim__VeryVerbose_18);
+      switch (transform_hlds__dead_proc_elim__VeryVerbose_18) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            hlds__passes_aux__write_proc_progress_message_6_p_0((MR_String) "% Eliminated the dead procedure ", transform_hlds__dead_proc_elim__PredId_9, transform_hlds__dead_proc_elim__ProcId_12, transform_hlds__dead_proc_elim__ModuleInfo_16);
+          }
+          break;
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv5_LambdaHeadVar__3_42;
+
+    transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_proc_eliminate_pred__1006__1_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Integer) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv5_LambdaHeadVar__3_42);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv5_LambdaHeadVar__3_42));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_ProcTable_21;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Changed_23;
+
+    transform_hlds__dead_proc_elim__dead_proc_eliminate_proc_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 5))), ((MR_Integer) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_ProcTable_21, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Changed_23);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_ProcTable_21));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Changed_23));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ElimOptImported_5,
+  MR_Word transform_hlds__dead_proc_elim__PredId_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_33)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_67_67 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_68_68 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+    MR_Word transform_hlds__dead_proc_elim__Needed_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__ModuleInfo_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__PredTable0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__Changed0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32, (MR_Integer) 3)));
+    MR_Word transform_hlds__dead_proc_elim__PredInfo0_12;
+    MR_Word transform_hlds__dead_proc_elim__PredStatus_13;
+    MR_Box transform_hlds__dead_proc_elim__conv0_PredInfo0_12;
+    MR_Word transform_hlds__dead_proc_elim__Keep_14;
+    MR_Word transform_hlds__dead_proc_elim__Var_81;
+
+    mercury__map__lookup_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_67_67, transform_hlds__dead_proc_elim__TypeCtorInfo_68_68, transform_hlds__dead_proc_elim__PredTable0_10, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_6)), &transform_hlds__dead_proc_elim__conv0_PredInfo0_12);
+    transform_hlds__dead_proc_elim__PredInfo0_12 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_PredInfo0_12);
+    hlds__hlds_pred__pred_info_get_status_2_p_0(transform_hlds__dead_proc_elim__PredInfo0_12, &transform_hlds__dead_proc_elim__PredStatus_13);
+    transform_hlds__dead_proc_elim__Var_81 = (MR_Word) transform_hlds__dead_proc_elim__PredStatus_13;
+    switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__Var_81)) {
+      default:
+        transform_hlds__dead_proc_elim__succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(transform_hlds__dead_proc_elim__Var_81)) {
+          default:
+            transform_hlds__dead_proc_elim__succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 2:
+            {
+              transform_hlds__dead_proc_elim__Keep_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Integer transform_hlds__dead_proc_elim__InitProcId_15;
+
+              hlds__hlds_pred__in_in_unification_proc_id_1_p_0(&transform_hlds__dead_proc_elim__InitProcId_15);
+              {
+                transform_hlds__dead_proc_elim__Keep_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Keep_14, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__InitProcId_15));
+              }
+              transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              transform_hlds__dead_proc_elim__Keep_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+            }
+            break;
+        }
+        break;
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      MR_Word transform_hlds__dead_proc_elim__ProcIds_16;
+      MR_Word transform_hlds__dead_proc_elim__ProcTable0_17;
+      MR_Word transform_hlds__dead_proc_elim__ProcTable_18;
+      MR_Word transform_hlds__dead_proc_elim__Changed_19;
+      MR_Word transform_hlds__dead_proc_elim__PredInfo_20;
+      MR_Word transform_hlds__dead_proc_elim__PredTable_21;
+      MR_Word transform_hlds__dead_proc_elim__Var_37;
+      MR_Box transform_hlds__dead_proc_elim__conv4_ProcTable_18;
+      MR_Box transform_hlds__dead_proc_elim__conv3_Changed_19;
+
+      transform_hlds__dead_proc_elim__ProcIds_16 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo0_12);
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__dead_proc_elim__PredInfo0_12, &transform_hlds__dead_proc_elim__ProcTable0_17);
+      {
+        transform_hlds__dead_proc_elim__Var_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_9[0]));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_1));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_6));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__Keep_14));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_37, 5) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32));
+      }
+      mercury__list__foldl2_6_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[1], (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0, transform_hlds__dead_proc_elim__Var_37, transform_hlds__dead_proc_elim__ProcIds_16, ((MR_Box) (transform_hlds__dead_proc_elim__ProcTable0_17)), &transform_hlds__dead_proc_elim__conv4_ProcTable_18, ((MR_Box) (transform_hlds__dead_proc_elim__Changed0_11)), &transform_hlds__dead_proc_elim__conv3_Changed_19);
+      transform_hlds__dead_proc_elim__ProcTable_18 = ((MR_Word) transform_hlds__dead_proc_elim__conv4_ProcTable_18);
+      transform_hlds__dead_proc_elim__Changed_19 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_Changed_19);
+      hlds__hlds_pred__pred_info_set_proc_table_3_p_0(transform_hlds__dead_proc_elim__ProcTable_18, transform_hlds__dead_proc_elim__PredInfo0_12, &transform_hlds__dead_proc_elim__PredInfo_20);
+      mercury__map__det_update_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_67_67, transform_hlds__dead_proc_elim__TypeCtorInfo_68_68, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_6)), ((MR_Box) (transform_hlds__dead_proc_elim__PredInfo_20)), transform_hlds__dead_proc_elim__PredTable0_10, &transform_hlds__dead_proc_elim__PredTable_21);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_33 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_8));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_9));
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__PredTable_21));
+        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__Changed_19));
+      }
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__Var_39;
+
+      transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ElimOptImported_5 == (MR_Integer) 0);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__Var_39 = (MR_Word) transform_hlds__dead_proc_elim__PredStatus_13;
+        transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__Var_39 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        MR_Word transform_hlds__dead_proc_elim__DestroyGoal_22;
+        MR_Word transform_hlds__dead_proc_elim__PredInfo1_28;
+        MR_Word transform_hlds__dead_proc_elim__Globals_29;
+        MR_Word transform_hlds__dead_proc_elim__VeryVerbose_30;
+        MR_Word transform_hlds__dead_proc_elim__ProcIds_55;
+        MR_Word transform_hlds__dead_proc_elim__ProcTable0_56;
+        MR_Word transform_hlds__dead_proc_elim__ProcTable_57;
+        MR_Word transform_hlds__dead_proc_elim__PredInfo_59;
+        MR_Word transform_hlds__dead_proc_elim__PredTable_60;
+        MR_Box transform_hlds__dead_proc_elim__conv6_ProcTable_57;
+
+        transform_hlds__dead_proc_elim__ProcIds_55 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo0_12);
+        hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__dead_proc_elim__PredInfo0_12, &transform_hlds__dead_proc_elim__ProcTable0_56);
+        {
+          transform_hlds__dead_proc_elim__DestroyGoal_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DestroyGoal_22, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_5[2]));
+          MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DestroyGoal_22, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0_2));
+          MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DestroyGoal_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DestroyGoal_22, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcTable0_56));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[1], transform_hlds__dead_proc_elim__DestroyGoal_22, transform_hlds__dead_proc_elim__ProcIds_55, ((MR_Box) (transform_hlds__dead_proc_elim__ProcTable0_56)), &transform_hlds__dead_proc_elim__conv6_ProcTable_57);
+        transform_hlds__dead_proc_elim__ProcTable_57 = ((MR_Word) transform_hlds__dead_proc_elim__conv6_ProcTable_57);
+        hlds__hlds_pred__pred_info_set_proc_table_3_p_0(transform_hlds__dead_proc_elim__ProcTable_57, transform_hlds__dead_proc_elim__PredInfo0_12, &transform_hlds__dead_proc_elim__PredInfo1_28);
+        hlds__hlds_pred__pred_info_set_status_3_p_0((MR_Word) ((MR_Box) (MR_mkword(MR_mktag(2), &transform_hlds__dead_proc_elim_scalar_common_3[4]))), transform_hlds__dead_proc_elim__PredInfo1_28, &transform_hlds__dead_proc_elim__PredInfo_59);
+        mercury__map__det_update_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_67_67, transform_hlds__dead_proc_elim__TypeCtorInfo_68_68, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_6)), ((MR_Box) (transform_hlds__dead_proc_elim__PredInfo_59)), transform_hlds__dead_proc_elim__PredTable0_10, &transform_hlds__dead_proc_elim__PredTable_60);
+        hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_9, &transform_hlds__dead_proc_elim__Globals_29);
+        libs__globals__lookup_bool_option_3_p_0(transform_hlds__dead_proc_elim__Globals_29, (MR_Integer) 57, &transform_hlds__dead_proc_elim__VeryVerbose_30);
+        switch (transform_hlds__dead_proc_elim__VeryVerbose_30) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              hlds__passes_aux__write_pred_progress_message_5_p_0((MR_String) "% Eliminated opt_imported predicate ", transform_hlds__dead_proc_elim__PredId_6, transform_hlds__dead_proc_elim__ModuleInfo_9);
+            }
+            break;
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          *transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_33 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_8));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_9));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__PredTable_60));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) ((MR_Integer) 1));
+        }
+      }
+      else
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_33 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ProcElimInfo_0_32;
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__need_trace_goal_proc_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__TraceGoalProc_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_19_19;
+    MR_Word transform_hlds__dead_proc_elim__PredId_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TraceGoalProc_6, (MR_Integer) 0)));
+    MR_Integer transform_hlds__dead_proc_elim__ProcId_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TraceGoalProc_6, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Entity_11;
+
+    {
+      transform_hlds__dead_proc_elim__Entity_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_11, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_11, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_10));
+    }
+    transform_hlds__dead_proc_elim__TypeCtorInfo_19_19 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_19_19, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_11)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15);
+    mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_19_19, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_11)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_interface_pred_proc_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ClassProc_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_19_19;
+    MR_Word transform_hlds__dead_proc_elim__PredId_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ClassProc_6, (MR_Integer) 0)));
+    MR_Integer transform_hlds__dead_proc_elim__ProcId_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ClassProc_6, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Entity_11;
+
+    {
+      transform_hlds__dead_proc_elim__Entity_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_11, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_11, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_10));
+    }
+    transform_hlds__dead_proc_elim__TypeCtorInfo_19_19 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_19_19, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_11)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_12, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_13);
+    mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_19_19, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_11)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_14, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_15);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15;
+
+    transform_hlds__dead_proc_elim__get_class_interface_pred_proc_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Class_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_10,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_11,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_12,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_13)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Methods_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 7)));
+    MR_Word transform_hlds__dead_proc_elim__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 3)));
+    MR_Word transform_hlds__dead_proc_elim__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 4)));
+    MR_Word transform_hlds__dead_proc_elim__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 5)));
+    MR_Word transform_hlds__dead_proc_elim__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 6)));
+    MR_Word transform_hlds__dead_proc_elim__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 8)));
+    MR_Word transform_hlds__dead_proc_elim__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Class_6, (MR_Integer) 9)));
+    MR_Box transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_11;
+    MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_13;
+
+    mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[12], transform_hlds__dead_proc_elim__Methods_9, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_10)), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_11, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_12)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_13);
+    *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_11 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_11);
+    *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_13 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_13);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15;
+
+    transform_hlds__dead_proc_elim__get_class_interface_pred_proc_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_13));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_15));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Instance_6,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_22,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__PredProcIds_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 7)));
+    MR_Word transform_hlds__dead_proc_elim__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 0)));
+    MR_Word transform_hlds__dead_proc_elim__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 2)));
+    MR_Word transform_hlds__dead_proc_elim__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 3)));
+    MR_Word transform_hlds__dead_proc_elim__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 4)));
+    MR_Word transform_hlds__dead_proc_elim__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 5)));
+    MR_Word transform_hlds__dead_proc_elim__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 6)));
+    MR_Word transform_hlds__dead_proc_elim__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 8)));
+    MR_Word transform_hlds__dead_proc_elim__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Instance_6, (MR_Integer) 9)));
+
+    if ((transform_hlds__dead_proc_elim__PredProcIds_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_22;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__Ids_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__PredProcIds_16, (MR_Integer) 0)));
+      MR_Box transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_21;
+      MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_23;
+
+      mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[11], transform_hlds__dead_proc_elim__Ids_19, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_20)), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_21, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_22)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_23);
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_21 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_21);
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_23);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_4(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1345__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_3(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv6_LambdaHeadVar__3_53;
+
+    transform_hlds__dead_proc_elim__IntroducedFrom__pred__dead_pred_elim__1333__1_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv6_LambdaHeadVar__3_53);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv6_LambdaHeadVar__3_53));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv4_DeadInfo_6;
+
+    transform_hlds__dead_proc_elim__dead_pred_elim_initialize_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv4_DeadInfo_6);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv4_DeadInfo_6));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Preds_23;
+
+    transform_hlds__dead_proc_elim__dead_pred_elim_add_entity_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Preds_23);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Preds_23));
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_45)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_61_61 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_62_62;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_64_64;
+    MR_Word transform_hlds__dead_proc_elim__TypeInfo_71_71;
+    MR_Word transform_hlds__dead_proc_elim__Queue0_4;
+    MR_Word transform_hlds__dead_proc_elim__Needed0_5;
+    MR_Word transform_hlds__dead_proc_elim__PragmaExports_6;
+    MR_Word transform_hlds__dead_proc_elim__Needed1_8;
+    MR_Word transform_hlds__dead_proc_elim__Instances_9;
+    MR_Word transform_hlds__dead_proc_elim__Classes_10;
+    MR_Word transform_hlds__dead_proc_elim__Needed_12;
+    MR_Word transform_hlds__dead_proc_elim__Entities_13;
+    MR_Word transform_hlds__dead_proc_elim__Queue1_14;
+    MR_Word transform_hlds__dead_proc_elim__NeededPreds0_15;
+    MR_Word transform_hlds__dead_proc_elim__Queue_16;
+    MR_Word transform_hlds__dead_proc_elim__NeededPreds1_17;
+    MR_Word transform_hlds__dead_proc_elim__PredIds_18;
+    MR_Word transform_hlds__dead_proc_elim__Preds0_19;
+    MR_Word transform_hlds__dead_proc_elim__Names0_20;
+    MR_Word transform_hlds__dead_proc_elim__DeadInfo0_21;
+    MR_Word transform_hlds__dead_proc_elim__DeadInfo1_22;
+    MR_Word transform_hlds__dead_proc_elim__DeadInfo_23;
+    MR_Word transform_hlds__dead_proc_elim__NeededPreds2_26;
+    MR_Word transform_hlds__dead_proc_elim__TypeSpecInfo0_28;
+    MR_Word transform_hlds__dead_proc_elim__TypeSpecProcs0_29;
+    MR_Word transform_hlds__dead_proc_elim__TypeSpecForcePreds0_30;
+    MR_Word transform_hlds__dead_proc_elim__SpecMap0_31;
+    MR_Word transform_hlds__dead_proc_elim__PragmaMap0_32;
+    MR_Word transform_hlds__dead_proc_elim__NeededPredList2_33;
+    MR_Word transform_hlds__dead_proc_elim__NeededPreds_38;
+    MR_Word transform_hlds__dead_proc_elim__TypeSpecForcePreds_39;
+    MR_Word transform_hlds__dead_proc_elim__TypeSpecInfo_40;
+    MR_Word transform_hlds__dead_proc_elim__PredTable0_41;
+    MR_Word transform_hlds__dead_proc_elim__PartialQualInfo_42;
+    MR_Word transform_hlds__dead_proc_elim__PredTable_43;
+    MR_Word transform_hlds__dead_proc_elim__Var_46;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_49_49;
+    MR_Word transform_hlds__dead_proc_elim__Var_50;
+    MR_Word transform_hlds__dead_proc_elim__Var_54;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_55_55;
+    MR_Word transform_hlds__dead_proc_elim__Var_56;
+    MR_Word transform_hlds__dead_proc_elim__Var_7;
+    MR_Word transform_hlds__dead_proc_elim__Var_11;
+    MR_Box transform_hlds__dead_proc_elim__conv3_Queue_16;
+    MR_Box transform_hlds__dead_proc_elim__conv2_NeededPreds1_17;
+    MR_Box transform_hlds__dead_proc_elim__conv5_DeadInfo1_22;
+    MR_Word transform_hlds__dead_proc_elim__Var_24;
+    MR_Word transform_hlds__dead_proc_elim__Var_25;
+    MR_Word transform_hlds__dead_proc_elim__Var_27;
+    MR_Box transform_hlds__dead_proc_elim__conv7_NeededPreds_38;
+
+    mercury__queue__init_1_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_61_61, &transform_hlds__dead_proc_elim__Queue0_4);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_62_62 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+    mercury__map__init_1_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_61_61, transform_hlds__dead_proc_elim__TypeCtorInfo_62_62, &transform_hlds__dead_proc_elim__Needed0_5);
+    hlds__hlds_module__module_info_get_pragma_exported_procs_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44, &transform_hlds__dead_proc_elim__PragmaExports_6);
+    transform_hlds__dead_proc_elim__Var_46 = mercury__cord__list_1_f_0((MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_pragma_exported_proc_0, transform_hlds__dead_proc_elim__PragmaExports_6);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_pragma_exports_5_p_0(transform_hlds__dead_proc_elim__Var_46, transform_hlds__dead_proc_elim__Queue0_4, &transform_hlds__dead_proc_elim__Var_7, transform_hlds__dead_proc_elim__Needed0_5, &transform_hlds__dead_proc_elim__Needed1_8);
+    hlds__hlds_module__module_info_get_instance_table_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44, &transform_hlds__dead_proc_elim__Instances_9);
+    hlds__hlds_module__module_info_get_class_table_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44, &transform_hlds__dead_proc_elim__Classes_10);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0(transform_hlds__dead_proc_elim__Classes_10, transform_hlds__dead_proc_elim__Instances_9, transform_hlds__dead_proc_elim__Queue0_4, &transform_hlds__dead_proc_elim__Var_11, transform_hlds__dead_proc_elim__Needed1_8, &transform_hlds__dead_proc_elim__Needed_12);
+    mercury__map__keys_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_61_61, transform_hlds__dead_proc_elim__TypeCtorInfo_62_62, transform_hlds__dead_proc_elim__Needed_12, &transform_hlds__dead_proc_elim__Entities_13);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_64_64 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+    mercury__queue__init_1_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, &transform_hlds__dead_proc_elim__Queue1_14);
+    transform_hlds__dead_proc_elim__NeededPreds0_15 = mercury__set_tree234__init_0_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64);
+    transform_hlds__dead_proc_elim__TypeInfo_71_71 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[1];
+    mercury__list__foldl2_6_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_61_61, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[0], transform_hlds__dead_proc_elim__TypeInfo_71_71, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[9], transform_hlds__dead_proc_elim__Entities_13, ((MR_Box) (transform_hlds__dead_proc_elim__Queue1_14)), &transform_hlds__dead_proc_elim__conv3_Queue_16, ((MR_Box) (transform_hlds__dead_proc_elim__NeededPreds0_15)), &transform_hlds__dead_proc_elim__conv2_NeededPreds1_17);
+    transform_hlds__dead_proc_elim__Queue_16 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_Queue_16);
+    transform_hlds__dead_proc_elim__NeededPreds1_17 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_NeededPreds1_17);
+    hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44, &transform_hlds__dead_proc_elim__PredIds_18);
+    transform_hlds__dead_proc_elim__Preds0_19 = mercury__set_tree234__init_0_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64);
+    transform_hlds__dead_proc_elim__Names0_20 = mercury__set_tree234__init_0_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0);
+    {
+      transform_hlds__dead_proc_elim__DeadInfo0_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_21, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_44));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_21, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__Queue_16));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_21, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Preds0_19));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_21, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__NeededPreds1_17));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo0_21, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__Names0_20));
+    }
+    mercury__list__foldl_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[10], transform_hlds__dead_proc_elim__PredIds_18, ((MR_Box) (transform_hlds__dead_proc_elim__DeadInfo0_21)), &transform_hlds__dead_proc_elim__conv5_DeadInfo1_22);
+    transform_hlds__dead_proc_elim__DeadInfo1_22 = ((MR_Word) transform_hlds__dead_proc_elim__conv5_DeadInfo1_22);
+    transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0(transform_hlds__dead_proc_elim__DeadInfo1_22, &transform_hlds__dead_proc_elim__DeadInfo_23);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo_23, (MR_Integer) 0)));
+    transform_hlds__dead_proc_elim__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo_23, (MR_Integer) 1)));
+    transform_hlds__dead_proc_elim__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo_23, (MR_Integer) 2)));
+    transform_hlds__dead_proc_elim__NeededPreds2_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo_23, (MR_Integer) 3)));
+    transform_hlds__dead_proc_elim__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__DeadInfo_23, (MR_Integer) 4)));
+    hlds__hlds_module__module_info_get_type_spec_info_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_49_49, &transform_hlds__dead_proc_elim__TypeSpecInfo0_28);
+    transform_hlds__dead_proc_elim__TypeSpecProcs0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo0_28, (MR_Integer) 0)));
+    transform_hlds__dead_proc_elim__TypeSpecForcePreds0_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo0_28, (MR_Integer) 1)));
+    transform_hlds__dead_proc_elim__SpecMap0_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo0_28, (MR_Integer) 2)));
+    transform_hlds__dead_proc_elim__PragmaMap0_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo0_28, (MR_Integer) 3)));
+    transform_hlds__dead_proc_elim__NeededPredList2_33 = mercury__set_tree234__to_sorted_list_1_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, transform_hlds__dead_proc_elim__NeededPreds2_26);
+    {
+      transform_hlds__dead_proc_elim__Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_50, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_5[1]));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_50, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_3));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_50, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__SpecMap0_31));
+    }
+    mercury__list__foldl_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, transform_hlds__dead_proc_elim__TypeInfo_71_71, transform_hlds__dead_proc_elim__Var_50, transform_hlds__dead_proc_elim__NeededPredList2_33, ((MR_Box) (transform_hlds__dead_proc_elim__NeededPreds2_26)), &transform_hlds__dead_proc_elim__conv7_NeededPreds_38);
+    transform_hlds__dead_proc_elim__NeededPreds_38 = ((MR_Word) transform_hlds__dead_proc_elim__conv7_NeededPreds_38);
+    {
+      transform_hlds__dead_proc_elim__Var_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_54, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_54, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0_4));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_54, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_54, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__NeededPreds_38));
+    }
+    transform_hlds__dead_proc_elim__TypeSpecForcePreds_39 = mercury__set__filter_2_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, transform_hlds__dead_proc_elim__Var_54, transform_hlds__dead_proc_elim__TypeSpecForcePreds0_30);
+    {
+      transform_hlds__dead_proc_elim__TypeSpecInfo_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo_40, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeSpecProcs0_29));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo_40, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeSpecForcePreds_39));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo_40, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__SpecMap0_31));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeSpecInfo_40, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__PragmaMap0_32));
+    }
+    hlds__hlds_module__module_info_set_type_spec_info_3_p_0(transform_hlds__dead_proc_elim__TypeSpecInfo_40, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_49_49, &transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_55_55);
+    hlds__hlds_module__module_info_get_predicate_table_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_55_55, &transform_hlds__dead_proc_elim__PredTable0_41);
+    hlds__hlds_module__module_info_get_partial_qualifier_info_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_55_55, &transform_hlds__dead_proc_elim__PartialQualInfo_42);
+    transform_hlds__dead_proc_elim__Var_56 = mercury__set_tree234__to_sorted_list_1_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_64_64, transform_hlds__dead_proc_elim__NeededPreds_38);
+    hlds__pred_table__predicate_table_restrict_4_p_0(transform_hlds__dead_proc_elim__PartialQualInfo_42, transform_hlds__dead_proc_elim__Var_56, transform_hlds__dead_proc_elim__PredTable0_41, &transform_hlds__dead_proc_elim__PredTable_43);
+    hlds__hlds_module__module_info_set_predicate_table_3_p_0(transform_hlds__dead_proc_elim__PredTable_43, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_55_55, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_45);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_7;
+
+    transform_hlds__dead_proc_elim__dead_pred_elim_process_clause_3_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_7);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_DeadInfo_7));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_analyze_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_16)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+      MR_Word transform_hlds__dead_proc_elim__ModuleInfo_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__NeededNames_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15, (MR_Integer) 4)));
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim__PredId_9;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20;
+      MR_Box transform_hlds__dead_proc_elim__conv0_PredId_9;
+
+      transform_hlds__dead_proc_elim__succeeded = mercury__queue__get_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, &transform_hlds__dead_proc_elim__conv0_PredId_9, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_17_17, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__PredId_9 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_PredId_9);
+        transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+      }
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21;
+
+        transform_hlds__dead_proc_elim__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_18_18, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9)));
+        if (transform_hlds__dead_proc_elim__succeeded)
+          {
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_7));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_18_18));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_19_19));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__NeededNames_8));
+          }
+        else
+        {
+          MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_39_39 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+          MR_Word transform_hlds__dead_proc_elim__PredInfo_10;
+          MR_Word transform_hlds__dead_proc_elim__ClausesInfo_11;
+          MR_Word transform_hlds__dead_proc_elim__ClausesRep_12;
+          MR_Word transform_hlds__dead_proc_elim__Clauses_14;
+          MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24;
+          MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_22_29;
+          MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_23_30;
+          MR_Word transform_hlds__dead_proc_elim___ItemNumbers_13;
+          MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_21_21;
+
+          mercury__set_tree234__insert_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_39_39, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_19_19, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_22_29);
+          mercury__set_tree234__insert_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_39_39, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_9)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_18_18, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_23_30);
+          {
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_7));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_20_20));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_23_30));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_22_29));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__NeededNames_8));
+          }
+          hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__dead_proc_elim__ModuleInfo_7, transform_hlds__dead_proc_elim__PredId_9, &transform_hlds__dead_proc_elim__PredInfo_10);
+          hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(transform_hlds__dead_proc_elim__PredInfo_10, &transform_hlds__dead_proc_elim__ClausesInfo_11);
+          hlds__hlds_clauses__clauses_info_get_clauses_rep_3_p_0(transform_hlds__dead_proc_elim__ClausesInfo_11, &transform_hlds__dead_proc_elim__ClausesRep_12, &transform_hlds__dead_proc_elim___ItemNumbers_13);
+          hlds__hlds_clauses__get_clause_list_maybe_repeated_2_p_0(transform_hlds__dead_proc_elim__ClausesRep_12, &transform_hlds__dead_proc_elim__Clauses_14);
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[8], transform_hlds__dead_proc_elim__Clauses_14, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_24_24)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_21_21);
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_DeadInfo_21_21);
+        }
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_DeadInfo_0_15 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_21_21;
+
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_DeadInfo_0_15;
+        }
+        continue;
+      }
+      else
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_16 = transform_hlds__dead_proc_elim__STATE_VARIABLE_DeadInfo_0_15;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11;
+    MR_Word transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13;
+
+    transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23;
+
+    transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_class_methods_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Classes_7,
+  MR_Word transform_hlds__dead_proc_elim__Instances_8,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_14,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_16,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_17)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_24_24 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_id_0;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_26_26;
+    MR_Word transform_hlds__dead_proc_elim__TypeInfo_32_32;
+    MR_Word transform_hlds__dead_proc_elim__TypeInfo_33_33;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_34_34;
+    MR_Word transform_hlds__dead_proc_elim__InstanceDefnsLists_11;
+    MR_Word transform_hlds__dead_proc_elim__InstanceDefns_12;
+    MR_Word transform_hlds__dead_proc_elim__ClassDefns_13;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_19;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_20;
+    MR_Box transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_19;
+    MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_20;
+    MR_Box transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_Queue_15;
+    MR_Box transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_17;
+
+    mercury__map__values_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_24_24, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[3], transform_hlds__dead_proc_elim__Instances_8, &transform_hlds__dead_proc_elim__InstanceDefnsLists_11);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+    mercury__list__condense_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_26, transform_hlds__dead_proc_elim__InstanceDefnsLists_11, &transform_hlds__dead_proc_elim__InstanceDefns_12);
+    transform_hlds__dead_proc_elim__TypeInfo_32_32 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4];
+    transform_hlds__dead_proc_elim__TypeInfo_33_33 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0];
+    mercury__list__foldl2_6_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_26, transform_hlds__dead_proc_elim__TypeInfo_32_32, transform_hlds__dead_proc_elim__TypeInfo_33_33, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[6], transform_hlds__dead_proc_elim__InstanceDefns_12, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_14)), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_19, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_16)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_20);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_19 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_19);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_20 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_20);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_34_34 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_defn_0;
+    mercury__map__values_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_24_24, transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, transform_hlds__dead_proc_elim__Classes_7, &transform_hlds__dead_proc_elim__ClassDefns_13);
+    mercury__list__foldl2_6_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, transform_hlds__dead_proc_elim__TypeInfo_32_32, transform_hlds__dead_proc_elim__TypeInfo_33_33, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[7], transform_hlds__dead_proc_elim__ClassDefns_13, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_19)), &transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_Queue_15, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_20)), &transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_17);
+    *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_15 = ((MR_Word) transform_hlds__dead_proc_elim__conv7_STATE_VARIABLE_Queue_15);
+    *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_17 = ((MR_Word) transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_17);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_2_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Specs_20;
+
+    transform_hlds__dead_proc_elim__dead_proc_warn_pred_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 6))), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Specs_20);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Specs_20));
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_3,
+  MR_Word * transform_hlds__dead_proc_elim__Specs_4)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Needed_6;
+    MR_Word transform_hlds__dead_proc_elim__PredIds_13;
+    MR_Word transform_hlds__dead_proc_elim__PredTable_14;
+    MR_Word transform_hlds__dead_proc_elim__Globals_15;
+    MR_Word transform_hlds__dead_proc_elim__WarnWithLiveSiblings_16;
+    MR_Word transform_hlds__dead_proc_elim__Var_18;
+    MR_Box transform_hlds__dead_proc_elim__conv1_Specs_4;
+
+    transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0(transform_hlds__dead_proc_elim__ModuleInfo_3, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_3[3], &transform_hlds__dead_proc_elim__Needed_6);
+    hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_3, &transform_hlds__dead_proc_elim__PredIds_13);
+    hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_3, &transform_hlds__dead_proc_elim__PredTable_14);
+    hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_3, &transform_hlds__dead_proc_elim__Globals_15);
+    libs__globals__lookup_bool_option_3_p_0(transform_hlds__dead_proc_elim__Globals_15, (MR_Integer) 37, &transform_hlds__dead_proc_elim__WarnWithLiveSiblings_16);
+    {
+      transform_hlds__dead_proc_elim__Var_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_warn_2_p_0_1));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleInfo_3));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 4) = ((MR_Box) (transform_hlds__dead_proc_elim__PredTable_14));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 5) = ((MR_Box) (transform_hlds__dead_proc_elim__WarnWithLiveSiblings_16));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, 6) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_6));
+    }
+    mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[5], transform_hlds__dead_proc_elim__Var_18, transform_hlds__dead_proc_elim__PredIds_13, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__dead_proc_elim__conv1_Specs_4);
+    *transform_hlds__dead_proc_elim__Specs_4 = ((MR_Word) transform_hlds__dead_proc_elim__conv1_Specs_4);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_elim_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_ProcElimInfo_33;
+
+    transform_hlds__dead_proc_elim__dead_proc_eliminate_pred_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_ProcElimInfo_33);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_ProcElimInfo_33));
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_elim_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ElimOptImported_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_8,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_9)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__Needed_7;
+    MR_Word transform_hlds__dead_proc_elim__PredIds_20;
+    MR_Word transform_hlds__dead_proc_elim__PredTable0_21;
+    MR_Word transform_hlds__dead_proc_elim__ProcElimInfo0_23;
+    MR_Word transform_hlds__dead_proc_elim__ProcElimInfo_24;
+    MR_Word transform_hlds__dead_proc_elim__PredTable_25;
+    MR_Word transform_hlds__dead_proc_elim__Changed_26;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos0_27;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos_28;
+    MR_Word transform_hlds__dead_proc_elim__ConstStructDb0_29;
+    MR_Word transform_hlds__dead_proc_elim__ConstNumStructs0_30;
+    MR_Word transform_hlds__dead_proc_elim__ConstStructDb_31;
+    MR_Word transform_hlds__dead_proc_elim__Var_32;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_33;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_25_34;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_26_35;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_27_36;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_28_37;
+    MR_Box transform_hlds__dead_proc_elim__conv1_ProcElimInfo_24;
+
+    transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_8, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_3[2], &transform_hlds__dead_proc_elim__Needed_7);
+    hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_8, &transform_hlds__dead_proc_elim__PredIds_20);
+    hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_8, &transform_hlds__dead_proc_elim__PredTable0_21);
+    {
+      transform_hlds__dead_proc_elim__ProcElimInfo0_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo0_23, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Needed_7));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo0_23, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_0_8));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo0_23, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__PredTable0_21));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo0_23, 3) = ((MR_Box) ((MR_Integer) 0));
+    }
+    {
+      transform_hlds__dead_proc_elim__Var_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_32, 0) = ((MR_Box) (&transform_hlds__dead_proc_elim_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_32, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__dead_proc_elim_3_p_0_1));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_32, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__ElimOptImported_4));
+    }
+    mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0, transform_hlds__dead_proc_elim__Var_32, transform_hlds__dead_proc_elim__PredIds_20, ((MR_Box) (transform_hlds__dead_proc_elim__ProcElimInfo0_23)), &transform_hlds__dead_proc_elim__conv1_ProcElimInfo_24);
+    transform_hlds__dead_proc_elim__ProcElimInfo_24 = ((MR_Word) transform_hlds__dead_proc_elim__conv1_ProcElimInfo_24);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_24, (MR_Integer) 0)));
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_25_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_24, (MR_Integer) 1)));
+    transform_hlds__dead_proc_elim__PredTable_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_24, (MR_Integer) 2)));
+    transform_hlds__dead_proc_elim__Changed_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ProcElimInfo_24, (MR_Integer) 3)));
+    hlds__hlds_module__module_info_set_preds_3_p_0(transform_hlds__dead_proc_elim__PredTable_25, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_25_34, &transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_26_35);
+    hlds__hlds_module__module_info_get_type_ctor_gen_infos_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_26_35, &transform_hlds__dead_proc_elim__TypeCtorGenInfos0_27);
+    transform_hlds__dead_proc_elim__dead_proc_eliminate_type_ctor_infos_3_p_0(transform_hlds__dead_proc_elim__TypeCtorGenInfos0_27, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_33, &transform_hlds__dead_proc_elim__TypeCtorGenInfos_28);
+    hlds__hlds_module__module_info_set_type_ctor_gen_infos_3_p_0(transform_hlds__dead_proc_elim__TypeCtorGenInfos_28, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_26_35, &transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_27_36);
+    hlds__hlds_module__module_info_get_const_struct_db_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_27_36, &transform_hlds__dead_proc_elim__ConstStructDb0_29);
+    hlds__const_struct__const_struct_db_get_structs_2_p_0(transform_hlds__dead_proc_elim__ConstStructDb0_29, &transform_hlds__dead_proc_elim__ConstNumStructs0_30);
+    transform_hlds__dead_proc_elim__dead_proc_eliminate_const_structs_4_p_0(transform_hlds__dead_proc_elim__ConstNumStructs0_30, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_33, transform_hlds__dead_proc_elim__ConstStructDb0_29, &transform_hlds__dead_proc_elim__ConstStructDb_31);
+    hlds__hlds_module__module_info_set_const_struct_db_3_p_0(transform_hlds__dead_proc_elim__ConstStructDb_31, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_27_36, &transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_28_37);
+    switch (transform_hlds__dead_proc_elim__Changed_26) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_9 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_28_37;
+        break;
+      case (MR_Integer) 1:
+        hlds__hlds_module__module_info_clobber_dependency_info_2_p_0(transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_28_37, transform_hlds__dead_proc_elim__STATE_VARIABLE_ModuleInfo_9);
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_const_structs_4_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_4)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3;
+      else
+      {
+        MR_Integer transform_hlds__dead_proc_elim__ConstNum_9;
+        MR_Word transform_hlds__dead_proc_elim__ConstNumStructs_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__Entity_14;
+        MR_Word transform_hlds__dead_proc_elim__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_19_19;
+        MR_Word transform_hlds__dead_proc_elim__Var_10;
+        MR_Word transform_hlds__dead_proc_elim__Var_15;
+        MR_Box transform_hlds__dead_proc_elim__conv0_Var_15;
+
+        transform_hlds__dead_proc_elim__ConstNum_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, (MR_Integer) 0)));
+        transform_hlds__dead_proc_elim__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_18, (MR_Integer) 1)));
+        {
+          transform_hlds__dead_proc_elim__Entity_14 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_14, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_14, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ConstNum_9));
+        }
+        transform_hlds__dead_proc_elim__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, transform_hlds__dead_proc_elim__HeadVar__2_2, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_14)), &transform_hlds__dead_proc_elim__conv0_Var_15);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__Var_15 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_Var_15);
+          transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+        }
+        if (transform_hlds__dead_proc_elim__succeeded)
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_19_19 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3;
+        else
+          hlds__const_struct__delete_const_struct_3_p_0(transform_hlds__dead_proc_elim__ConstNum_9, transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3, &transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_19_19);
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__ConstNumStructs_11;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_ConstStructDb_0_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_19_19;
+
+          transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_ConstStructDb_0_3 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_ConstStructDb_0_3;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_eliminate_type_ctor_infos_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word * transform_hlds__dead_proc_elim__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *transform_hlds__dead_proc_elim__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos0_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos1_9;
+      MR_Word transform_hlds__dead_proc_elim__ModuleName_11;
+      MR_String transform_hlds__dead_proc_elim__TypeName_12;
+      MR_Integer transform_hlds__dead_proc_elim__Arity_13;
+      MR_Word transform_hlds__dead_proc_elim___TypeCtor_10;
+      MR_Word transform_hlds__dead_proc_elim___Status_14;
+      MR_Word transform_hlds__dead_proc_elim___HldsDefn_15;
+      MR_Word transform_hlds__dead_proc_elim___Unify_16;
+      MR_Word transform_hlds__dead_proc_elim___Compare_17;
+      MR_Word transform_hlds__dead_proc_elim__Entity_18;
+      MR_Word transform_hlds__dead_proc_elim__Var_19;
+      MR_Box transform_hlds__dead_proc_elim__conv0_Var_19;
+
+      transform_hlds__dead_proc_elim__dead_proc_eliminate_type_ctor_infos_3_p_0(transform_hlds__dead_proc_elim__TypeCtorGenInfos0_6, transform_hlds__dead_proc_elim__HeadVar__2_2, &transform_hlds__dead_proc_elim__TypeCtorGenInfos1_9);
+      transform_hlds__dead_proc_elim___TypeCtor_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 0)));
+      transform_hlds__dead_proc_elim__ModuleName_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 1)));
+      transform_hlds__dead_proc_elim__TypeName_12 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 2)));
+      transform_hlds__dead_proc_elim__Arity_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 3)));
+      transform_hlds__dead_proc_elim___Status_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 4)));
+      transform_hlds__dead_proc_elim___HldsDefn_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 5)));
+      transform_hlds__dead_proc_elim___Unify_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 6)));
+      transform_hlds__dead_proc_elim___Compare_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5, (MR_Integer) 7)));
+      {
+        transform_hlds__dead_proc_elim__Entity_18 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_18, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleName_11));
+        MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_18, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeName_12));
+        MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_18, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Arity_13));
+      }
+      transform_hlds__dead_proc_elim__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, transform_hlds__dead_proc_elim__HeadVar__2_2, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_18)), &transform_hlds__dead_proc_elim__conv0_Var_19);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_Var_19);
+        transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+      }
+      if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *transform_hlds__dead_proc_elim__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeCtorGenInfo0_5));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeCtorGenInfos1_9));
+        }
+      else
+        *transform_hlds__dead_proc_elim__HeadVar__3_3 = transform_hlds__dead_proc_elim__TypeCtorGenInfos1_9;
+    }
+  }
+}
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_analyze_2_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_3,
+  MR_Word * transform_hlds__dead_proc_elim__Needed_4)
+{
+  {
+    transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0(transform_hlds__dead_proc_elim__ModuleInfo_3, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_3[1], transform_hlds__dead_proc_elim__Needed_4);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_2(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11;
+    MR_Word transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13;
+
+    transform_hlds__dead_proc_elim__get_class_pred_procs_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_11));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_13));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21;
+    MR_Word transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23;
+
+    transform_hlds__dead_proc_elim__get_instance_pred_procs_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv1_STATE_VARIABLE_Queue_21));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_STATE_VARIABLE_Needed_23));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__do_dead_proc_analyze_3_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_4,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeLinks_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_9)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_32_41;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_24_61;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_26_63;
+    MR_Word transform_hlds__dead_proc_elim__TypeInfo_32_69;
+    MR_Word transform_hlds__dead_proc_elim__TypeInfo_33_70;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_34_71;
+    MR_Word transform_hlds__dead_proc_elim__Examined0_7;
+    MR_Word transform_hlds__dead_proc_elim__Queue0_8;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_10_10;
+    MR_Word transform_hlds__dead_proc_elim__PredIds_18;
+    MR_Word transform_hlds__dead_proc_elim__PredTable_19;
+    MR_Word transform_hlds__dead_proc_elim__PragmaExports_20;
+    MR_Word transform_hlds__dead_proc_elim__InitProcs_21;
+    MR_Word transform_hlds__dead_proc_elim__FinalPreds_22;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos_23;
+    MR_Word transform_hlds__dead_proc_elim__Classes_24;
+    MR_Word transform_hlds__dead_proc_elim__Instances_25;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_17_26;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_18_27;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_28;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_29;
+    MR_Word transform_hlds__dead_proc_elim__Var_30;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_22_31;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23_32;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_24_33;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_34;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_35;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_36;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_28_37;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_29_38;
+    MR_Word transform_hlds__dead_proc_elim__InstanceDefnsLists_52;
+    MR_Word transform_hlds__dead_proc_elim__InstanceDefns_53;
+    MR_Word transform_hlds__dead_proc_elim__ClassDefns_54;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_56;
+    MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_57;
+    MR_Box transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_56;
+    MR_Box transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_57;
+    MR_Box transform_hlds__dead_proc_elim__conv7_Queue0_8;
+    MR_Box transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_10_10;
+
+    transform_hlds__dead_proc_elim__Examined0_7 = mercury__set_tree234__init_0_f_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_32_41 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_17_26 = mercury__queue__init_0_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_32_41);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_18_27 = mercury__map__init_0_f_0(transform_hlds__dead_proc_elim__TypeCtorInfo_32_41, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0);
+    hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__PredIds_18);
+    hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__PredTable_19);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_preds_6_p_0(transform_hlds__dead_proc_elim__PredIds_18, transform_hlds__dead_proc_elim__PredTable_19, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_17_26, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_28, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_18_27, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_29);
+    hlds__hlds_module__module_info_get_pragma_exported_procs_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__PragmaExports_20);
+    transform_hlds__dead_proc_elim__Var_30 = mercury__cord__list_1_f_0((MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_pragma_exported_proc_0, transform_hlds__dead_proc_elim__PragmaExports_20);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_pragma_exports_5_p_0(transform_hlds__dead_proc_elim__Var_30, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_28, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_22_31, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_29, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23_32);
+    hlds__hlds_module__module_info_user_init_pred_procs_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__InitProcs_21);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_init_fn_procs_5_p_0(transform_hlds__dead_proc_elim__InitProcs_21, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_22_31, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_24_33, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_23_32, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_34);
+    hlds__hlds_module__module_info_user_final_pred_procs_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__FinalPreds_22);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_init_fn_procs_5_p_0(transform_hlds__dead_proc_elim__FinalPreds_22, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_24_33, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_35, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_34, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_36);
+    hlds__hlds_module__module_info_get_type_ctor_gen_infos_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__TypeCtorGenInfos_23);
+    transform_hlds__dead_proc_elim__dead_proc_initialize_type_ctor_infos_5_p_0(transform_hlds__dead_proc_elim__TypeCtorGenInfos_23, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_35, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_28_37, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_36, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_29_38);
+    hlds__hlds_module__module_info_get_class_table_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__Classes_24);
+    hlds__hlds_module__module_info_get_instance_table_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_4, &transform_hlds__dead_proc_elim__Instances_25);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_24_61 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_id_0;
+    mercury__map__values_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_24_61, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[3], transform_hlds__dead_proc_elim__Instances_25, &transform_hlds__dead_proc_elim__InstanceDefnsLists_52);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_26_63 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+    mercury__list__condense_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_63, transform_hlds__dead_proc_elim__InstanceDefnsLists_52, &transform_hlds__dead_proc_elim__InstanceDefns_53);
+    transform_hlds__dead_proc_elim__TypeInfo_32_69 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4];
+    transform_hlds__dead_proc_elim__TypeInfo_33_70 = (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0];
+    mercury__list__foldl2_6_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_26_63, transform_hlds__dead_proc_elim__TypeInfo_32_69, transform_hlds__dead_proc_elim__TypeInfo_33_70, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[4], transform_hlds__dead_proc_elim__InstanceDefns_53, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_28_37)), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_56, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_29_38)), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_57);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_56 = ((MR_Word) transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_19_56);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_57 = ((MR_Word) transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_20_57);
+    transform_hlds__dead_proc_elim__TypeCtorInfo_34_71 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_defn_0;
+    mercury__map__values_2_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_24_61, transform_hlds__dead_proc_elim__TypeCtorInfo_34_71, transform_hlds__dead_proc_elim__Classes_24, &transform_hlds__dead_proc_elim__ClassDefns_54);
+    mercury__list__foldl2_6_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_71, transform_hlds__dead_proc_elim__TypeInfo_32_69, transform_hlds__dead_proc_elim__TypeInfo_33_70, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[5], transform_hlds__dead_proc_elim__ClassDefns_54, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_19_56)), &transform_hlds__dead_proc_elim__conv7_Queue0_8, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_20_57)), &transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_10_10);
+    transform_hlds__dead_proc_elim__Queue0_8 = ((MR_Word) transform_hlds__dead_proc_elim__conv7_Queue0_8);
+    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_10_10 = ((MR_Word) transform_hlds__dead_proc_elim__conv6_STATE_VARIABLE_Needed_10_10);
+    transform_hlds__dead_proc_elim__dead_proc_examine_6_p_0(transform_hlds__dead_proc_elim__Queue0_8, transform_hlds__dead_proc_elim__Examined0_7, transform_hlds__dead_proc_elim__AnalyzeLinks_5, transform_hlds__dead_proc_elim__ModuleInfo_4, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_10_10, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_9);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_28,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_0_29,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeLinks_9,
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_10,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+      MR_Word transform_hlds__dead_proc_elim__Entity_12;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+      MR_Box transform_hlds__dead_proc_elim__conv0_Entity_12;
+
+      transform_hlds__dead_proc_elim__succeeded = mercury__queue__get_3_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, &transform_hlds__dead_proc_elim__conv0_Entity_12, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_28, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32);
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__Entity_12 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_Entity_12);
+        transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+      }
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_40_40;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_33_33;
+
+        transform_hlds__dead_proc_elim__succeeded = mercury__set_tree234__insert_new_3_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_12)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_0_29, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_33_33);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_40_40 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_33_33;
+          switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__Entity_12)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word transform_hlds__dead_proc_elim__PredId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 0)));
+                MR_Integer transform_hlds__dead_proc_elim__ProcId_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 1)));
+                MR_Word transform_hlds__dead_proc_elim__PredProcId_15;
+                MR_Word transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_16;
+                MR_Word transform_hlds__dead_proc_elim__Var_46;
+                MR_Word transform_hlds__dead_proc_elim__Var_47;
+
+                {
+                  transform_hlds__dead_proc_elim__PredProcId_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PredProcId_15, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_13));
+                  MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PredProcId_15, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_14));
+                }
+                transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_16 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) & (MR_Integer) 1);
+                transform_hlds__dead_proc_elim__Var_46 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                transform_hlds__dead_proc_elim__Var_47 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+                transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0(transform_hlds__dead_proc_elim__PredProcId_15, transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_16, transform_hlds__dead_proc_elim__ModuleInfo_10, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Module_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 0)));
+                MR_String transform_hlds__dead_proc_elim__Type_23 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 1)));
+                MR_Integer transform_hlds__dead_proc_elim__Arity_24 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 2)));
+                MR_Word transform_hlds__dead_proc_elim__AnalyzeTypeCtor_25 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                MR_Word transform_hlds__dead_proc_elim__Var_48 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) & (MR_Integer) 1);
+                MR_Word transform_hlds__dead_proc_elim__Var_49 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+
+                switch (transform_hlds__dead_proc_elim__AnalyzeTypeCtor_25) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos_89;
+                      MR_Word transform_hlds__dead_proc_elim__Refs_90;
+
+                      hlds__hlds_module__module_info_get_type_ctor_gen_infos_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_10, &transform_hlds__dead_proc_elim__TypeCtorGenInfos_89);
+                      transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim__find_type_ctor_info_5_p_0(transform_hlds__dead_proc_elim__Module_22, transform_hlds__dead_proc_elim__Type_23, transform_hlds__dead_proc_elim__Arity_24, transform_hlds__dead_proc_elim__TypeCtorGenInfos_89, &transform_hlds__dead_proc_elim__Refs_90);
+                      if (transform_hlds__dead_proc_elim__succeeded)
+                        transform_hlds__dead_proc_elim__dead_proc_examine_refs_5_p_0(transform_hlds__dead_proc_elim__Refs_90, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39);
+                      else
+                      {
+                        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+                        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                      transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 0)))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Integer transform_hlds__dead_proc_elim__ConstNum_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_12, (MR_Integer) 1)));
+                    MR_Word transform_hlds__dead_proc_elim__AnalyzeConstStruct_27 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+                    MR_Word transform_hlds__dead_proc_elim__Var_50 = ((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) & (MR_Integer) 1);
+                    MR_Word transform_hlds__dead_proc_elim__Var_51 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__AnalyzeLinks_9, (MR_Integer) 0)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+
+                    switch (transform_hlds__dead_proc_elim__AnalyzeConstStruct_27) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word transform_hlds__dead_proc_elim__ConstStructDb_62;
+                          MR_Word transform_hlds__dead_proc_elim__ConstStruct_63;
+                          MR_Word transform_hlds__dead_proc_elim__ConsId_64;
+                          MR_Word transform_hlds__dead_proc_elim__Args_65;
+                          MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_25_72;
+                          MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_74;
+                          MR_Word transform_hlds__dead_proc_elim__Var_66;
+                          MR_Word transform_hlds__dead_proc_elim__Var_67;
+                          MR_Word transform_hlds__dead_proc_elim__Module_68;
+                          MR_String transform_hlds__dead_proc_elim__TypeName_69;
+                          MR_Integer transform_hlds__dead_proc_elim__Arity_70;
+
+                          hlds__hlds_module__module_info_get_const_struct_db_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_10, &transform_hlds__dead_proc_elim__ConstStructDb_62);
+                          hlds__const_struct__lookup_const_struct_num_3_p_0(transform_hlds__dead_proc_elim__ConstStructDb_62, transform_hlds__dead_proc_elim__ConstNum_26, &transform_hlds__dead_proc_elim__ConstStruct_63);
+                          transform_hlds__dead_proc_elim__ConsId_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ConstStruct_63, (MR_Integer) 0)));
+                          transform_hlds__dead_proc_elim__Args_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ConstStruct_63, (MR_Integer) 1)));
+                          transform_hlds__dead_proc_elim__Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ConstStruct_63, (MR_Integer) 2)));
+                          transform_hlds__dead_proc_elim__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__ConstStruct_63, (MR_Integer) 3)));
+                          transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__ConsId_64)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_64, (MR_Integer) 0)))) == (MR_Integer) 17)));
+                          if (transform_hlds__dead_proc_elim__succeeded)
+                          {
+                            transform_hlds__dead_proc_elim__Module_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_64, (MR_Integer) 1)));
+                            transform_hlds__dead_proc_elim__TypeName_69 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_64, (MR_Integer) 2)));
+                            transform_hlds__dead_proc_elim__Arity_70 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_64, (MR_Integer) 3)));
+                            {
+                              MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_30_77;
+                              MR_Word transform_hlds__dead_proc_elim__Entity_71;
+
+                              {
+                                transform_hlds__dead_proc_elim__Entity_71 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_71, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Module_68));
+                                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_71, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeName_69));
+                                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_71, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Arity_70));
+                              }
+                              transform_hlds__dead_proc_elim__TypeCtorInfo_30_77 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                              mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_30_77, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_71)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_25_72);
+                              mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_30_77, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_71)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_74);
+                            }
+                          }
+                          else
+                          {
+                            transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_74 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+                            transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_25_72 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                          }
+                          transform_hlds__dead_proc_elim__dead_proc_examine_const_struct_args_5_p_0(transform_hlds__dead_proc_elim__Args_65, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_25_72, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_74, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39);
+                        }
+                        break;
+                      case (MR_Integer) 0:
+                        {
+                          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+                        }
+                        break;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+                    transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+                  }
+                  break;
+              }
+              break;
+          }
+        }
+        else
+        {
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_40_40 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_0_29;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_32_32;
+        }
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_28 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_38_38;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Examined_0_29 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_40_40;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_30 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_39_39;
+
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_28 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_28;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Examined_0_29 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Examined_0_29;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_30;
+        }
+        continue;
+      }
+      else
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_30;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0_1(
+  MR_Box transform_hlds__dead_proc_elim__closure_arg,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_3,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_4,
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_5)
+{
+  {
+    MR_Box transform_hlds__dead_proc_elim__closure = transform_hlds__dead_proc_elim__closure_arg;
+    MR_Word transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_13;
+    MR_Word transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_15;
+
+    transform_hlds__dead_proc_elim__need_trace_goal_proc_5_p_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), &transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_13, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_4), &transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_15);
+    *transform_hlds__dead_proc_elim__wrapper_arg_3 = ((MR_Box) (transform_hlds__dead_proc_elim__conv3_STATE_VARIABLE_Queue_13));
+    *transform_hlds__dead_proc_elim__wrapper_arg_5 = ((MR_Box) (transform_hlds__dead_proc_elim__conv2_STATE_VARIABLE_Needed_15));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_proc_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_10,
+  MR_Word transform_hlds__dead_proc_elim__ModuleInfo_11,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_30,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_31,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_32,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_33)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+    MR_Word transform_hlds__dead_proc_elim__PredId_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Integer transform_hlds__dead_proc_elim__ProcId_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word transform_hlds__dead_proc_elim__PredInfo_15;
+    MR_Word transform_hlds__dead_proc_elim__ProcInfo_18;
+    MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_77_77;
+    MR_Word transform_hlds__dead_proc_elim__PredTable_14;
+    MR_Word transform_hlds__dead_proc_elim__ProcIds_16;
+    MR_Word transform_hlds__dead_proc_elim__ProcTable_17;
+    MR_Box transform_hlds__dead_proc_elim__conv0_PredInfo_15;
+    MR_Box transform_hlds__dead_proc_elim__conv1_ProcInfo_18;
+
+    hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__dead_proc_elim__ModuleInfo_11, &transform_hlds__dead_proc_elim__PredTable_14);
+    mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0, transform_hlds__dead_proc_elim__PredTable_14, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_8)), &transform_hlds__dead_proc_elim__conv0_PredInfo_15);
+    transform_hlds__dead_proc_elim__PredInfo_15 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_PredInfo_15);
+    transform_hlds__dead_proc_elim__ProcIds_16 = hlds__hlds_pred__pred_info_non_imported_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo_15);
+    transform_hlds__dead_proc_elim__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_9)), transform_hlds__dead_proc_elim__ProcIds_16);
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__dead_proc_elim__PredInfo_15, &transform_hlds__dead_proc_elim__ProcTable_17);
+      transform_hlds__dead_proc_elim__TypeCtorInfo_77_77 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_77_77, transform_hlds__dead_proc_elim__ProcTable_17, transform_hlds__dead_proc_elim__ProcId_9, &transform_hlds__dead_proc_elim__conv1_ProcInfo_18);
+      transform_hlds__dead_proc_elim__ProcInfo_18 = ((MR_Word) transform_hlds__dead_proc_elim__conv1_ProcInfo_18);
+      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+    }
+    if (transform_hlds__dead_proc_elim__succeeded)
+    {
+      MR_Word transform_hlds__dead_proc_elim__Goal_20;
+      MR_Word transform_hlds__dead_proc_elim__EvalMethod_22;
+      MR_Word transform_hlds__dead_proc_elim__HasPerProcTablingPtr_23;
+      MR_Word transform_hlds__dead_proc_elim__Origin_25;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_45_45;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_46_46;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_49_49;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_61_61;
+      MR_Word transform_hlds__dead_proc_elim__ModuleName_26;
+      MR_String transform_hlds__dead_proc_elim__MutableName_27;
+      MR_Word transform_hlds__dead_proc_elim__PredKind_28;
+
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__dead_proc_elim__ProcInfo_18, &transform_hlds__dead_proc_elim__Goal_20);
+      transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(transform_hlds__dead_proc_elim__Goal_20, transform_hlds__dead_proc_elim__HeadVar__1_1, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_30, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_45_45, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_32, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_46_46);
+      switch (transform_hlds__dead_proc_elim__AnalyzeTraceGoalProcs_10) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          {
+            MR_Word transform_hlds__dead_proc_elim__DeletedCallCallees_21;
+            MR_Box transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_31;
+            MR_Box transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_49_49;
+
+            hlds__hlds_pred__proc_info_get_deleted_call_callees_2_p_0(transform_hlds__dead_proc_elim__ProcInfo_18, &transform_hlds__dead_proc_elim__DeletedCallCallees_21);
+            mercury__set__foldl2_6_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_1[4], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[0], (MR_Word) &transform_hlds__dead_proc_elim_scalar_common_2[3], transform_hlds__dead_proc_elim__DeletedCallCallees_21, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_45_45)), &transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_31, ((MR_Box) (transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_46_46)), &transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_49_49);
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_31 = ((MR_Word) transform_hlds__dead_proc_elim__conv5_STATE_VARIABLE_Queue_31);
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_49_49 = ((MR_Word) transform_hlds__dead_proc_elim__conv4_STATE_VARIABLE_Needed_49_49);
+          }
+          break;
+        case (MR_Integer) 0:
+          {
+            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_31 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_45_45;
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_49_49 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_46_46;
+          }
+          break;
+      }
+      hlds__hlds_pred__proc_info_get_eval_method_2_p_0(transform_hlds__dead_proc_elim__ProcInfo_18, &transform_hlds__dead_proc_elim__EvalMethod_22);
+      transform_hlds__dead_proc_elim__HasPerProcTablingPtr_23 = hlds__hlds_pred__eval_method_has_per_proc_tabling_pointer_1_f_0(transform_hlds__dead_proc_elim__EvalMethod_22);
+      switch (transform_hlds__dead_proc_elim__HasPerProcTablingPtr_23) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_61_61 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_49_49;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word transform_hlds__dead_proc_elim__TableStructEntity_24;
+
+            {
+              transform_hlds__dead_proc_elim__TableStructEntity_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__TableStructEntity_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_8));
+              MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__TableStructEntity_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_9));
+            }
+            mercury__map__set_4_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__TableStructEntity_24)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_49_49, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_61_61);
+          }
+          break;
+      }
+      hlds__hlds_pred__pred_info_get_origin_2_p_0(transform_hlds__dead_proc_elim__PredInfo_15, &transform_hlds__dead_proc_elim__Origin_25);
+      transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Origin_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_25, (MR_Integer) 0)))) == (MR_Integer) 5)));
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__ModuleName_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_25, (MR_Integer) 1)));
+        transform_hlds__dead_proc_elim__MutableName_27 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_25, (MR_Integer) 2)));
+        transform_hlds__dead_proc_elim__PredKind_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Origin_25, (MR_Integer) 3)));
+        {
+          MR_Word transform_hlds__dead_proc_elim__MutableEntity_29;
+
+          {
+            transform_hlds__dead_proc_elim__MutableEntity_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__MutableEntity_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__MutableEntity_29, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleName_26));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__MutableEntity_29, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__MutableName_27));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__MutableEntity_29, 3) = ((MR_Box) (transform_hlds__dead_proc_elim__PredKind_28));
+          }
+          mercury__map__set_4_p_0((MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__MutableEntity_29)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_61_61, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_33);
+        }
+      }
+      else
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_33 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_61_61;
+    }
+    else
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_33 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_32;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_31 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_30;
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__Goal_7,
+  MR_Word transform_hlds__dead_proc_elim__CurrProc_8,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+      MR_Word transform_hlds__dead_proc_elim__GoalExpr_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_7, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Goal_7, (MR_Integer) 1)));
+
+      switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__GoalExpr_11)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word transform_hlds__dead_proc_elim__SubGoal_18 = (MR_Word) MR_body(((MR_Word) transform_hlds__dead_proc_elim__GoalExpr_11), (MR_Integer) 0);
+
+            /* direct tailcall eliminated */
+            {
+              MR_Word transform_hlds__dead_proc_elim__next_value_of_Goal_7 = transform_hlds__dead_proc_elim__SubGoal_18;
+
+              transform_hlds__dead_proc_elim__Goal_7 = transform_hlds__dead_proc_elim__next_value_of_Goal_7;
+            }
+            continue;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word transform_hlds__dead_proc_elim__Unification_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 3)));
+            MR_Word transform_hlds__dead_proc_elim___LHS_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 0)));
+            MR_Word transform_hlds__dead_proc_elim___RHS_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim___UniModes_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+            MR_Word transform_hlds__dead_proc_elim___UnifyContext_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 4)));
+
+            switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__Unification_50)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word transform_hlds__dead_proc_elim__ConsId_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 1)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 0)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 2)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 3)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 4)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 5)));
+                  MR_Word transform_hlds__dead_proc_elim__Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 6)));
+
+                  switch (MR_tag((MR_Word) transform_hlds__dead_proc_elim__ConsId_53)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_252_261;
+                        MR_Word transform_hlds__dead_proc_elim__Var_116;
+                        MR_Word transform_hlds__dead_proc_elim__PredId_224;
+                        MR_Integer transform_hlds__dead_proc_elim__ProcId_225;
+                        MR_Word transform_hlds__dead_proc_elim__ShroudedPredProcId_226 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 0)));
+                        MR_Word transform_hlds__dead_proc_elim__Entity_260;
+
+                        transform_hlds__dead_proc_elim__Var_116 = hlds__hlds_pred__unshroud_pred_proc_id_1_f_0(transform_hlds__dead_proc_elim__ShroudedPredProcId_226);
+                        transform_hlds__dead_proc_elim__PredId_224 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_116, (MR_Integer) 0)));
+                        transform_hlds__dead_proc_elim__ProcId_225 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_116, (MR_Integer) 1)));
+                        {
+                          transform_hlds__dead_proc_elim__Entity_260 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Entity_260, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_224));
+                          MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Entity_260, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_225));
+                        }
+                        transform_hlds__dead_proc_elim__TypeCtorInfo_252_261 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                        mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_261, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_260)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                        mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_261, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_260)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 0)))) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 2:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 3:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 4:
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_252_252;
+                            MR_Word transform_hlds__dead_proc_elim__ShroudedPredProcId_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 1)));
+                            MR_Word transform_hlds__dead_proc_elim__Var_127;
+                            MR_Word transform_hlds__dead_proc_elim__PredId_222;
+                            MR_Integer transform_hlds__dead_proc_elim__ProcId_223;
+                            MR_Word transform_hlds__dead_proc_elim__Entity_231;
+
+                            transform_hlds__dead_proc_elim__Var_127 = hlds__hlds_pred__unshroud_pred_proc_id_1_f_0(transform_hlds__dead_proc_elim__ShroudedPredProcId_59);
+                            transform_hlds__dead_proc_elim__PredId_222 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_127, (MR_Integer) 0)));
+                            transform_hlds__dead_proc_elim__ProcId_223 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_127, (MR_Integer) 1)));
+                            {
+                              transform_hlds__dead_proc_elim__Entity_231 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                              MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_231, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_222));
+                              MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_231, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_223));
+                            }
+                            transform_hlds__dead_proc_elim__TypeCtorInfo_252_252 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_252, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_231)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                            mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_252, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_231)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                          }
+                          break;
+                        case (MR_Integer) 5:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 6:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 7:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 8:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 9:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 10:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 11:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 12:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 13:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 14:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 15:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 16:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 17:
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_252_265;
+                            MR_Word transform_hlds__dead_proc_elim__Module_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 1)));
+                            MR_String transform_hlds__dead_proc_elim__TypeName_62 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 2)));
+                            MR_Integer transform_hlds__dead_proc_elim__Arity_63 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 3)));
+                            MR_Word transform_hlds__dead_proc_elim__Entity_264;
+
+                            {
+                              transform_hlds__dead_proc_elim__Entity_264 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_264, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Module_61));
+                              MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_264, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeName_62));
+                              MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_264, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Arity_63));
+                            }
+                            transform_hlds__dead_proc_elim__TypeCtorInfo_252_265 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_265, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_264)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                            mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_252_265, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_264)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                          }
+                          break;
+                        case (MR_Integer) 18:
+                          {
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                            *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                          }
+                          break;
+                        case (MR_Integer) 19:
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_254_270;
+                            MR_Integer transform_hlds__dead_proc_elim__ConstNum_267 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 1)));
+                            MR_Word transform_hlds__dead_proc_elim__Entity_269;
+
+                            {
+                              transform_hlds__dead_proc_elim__Entity_269 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_269, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_269, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ConstNum_267));
+                            }
+                            transform_hlds__dead_proc_elim__TypeCtorInfo_254_270 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_270, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_269)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                            mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_270, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_269)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                          }
+                          break;
+                        case (MR_Integer) 20:
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_254_275;
+                            MR_Integer transform_hlds__dead_proc_elim__ConstNum_272 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 1)));
+                            MR_Word transform_hlds__dead_proc_elim__Entity_274;
+
+                            {
+                              transform_hlds__dead_proc_elim__Entity_274 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_274, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_274, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ConstNum_272));
+                            }
+                            transform_hlds__dead_proc_elim__TypeCtorInfo_254_275 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_275, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_274)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                            mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_275, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_274)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                          }
+                          break;
+                        case (MR_Integer) 21:
+                          {
+                            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_254_254;
+                            MR_Integer transform_hlds__dead_proc_elim__ConstNum_64 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 1)));
+                            MR_Word transform_hlds__dead_proc_elim__Entity_232;
+                            MR_Word transform_hlds__dead_proc_elim__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_53, (MR_Integer) 2)));
+
+                            {
+                              transform_hlds__dead_proc_elim__Entity_232 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_232, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                              MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_232, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ConstNum_64));
+                            }
+                            transform_hlds__dead_proc_elim__TypeCtorInfo_254_254 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_254, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_232)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                            mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_254_254, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_232)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+                          }
+                          break;
+                      }
+                      break;
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Unification_50, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.dead_proc_elim", (MR_String) "predicate \140transform_hlds.dead_proc_elim.dead_proc_examine_goal\'/6", (MR_String) "complicated_unify");
+                        return;
+                      }
+                    }
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_245_245;
+            MR_Word transform_hlds__dead_proc_elim__PredId_31 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 0)));
+            MR_Integer transform_hlds__dead_proc_elim__ProcId_32 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+            MR_Word transform_hlds__dead_proc_elim__Entity_37;
+            MR_Word transform_hlds__dead_proc_elim__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+            MR_Word transform_hlds__dead_proc_elim__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 3)));
+            MR_Word transform_hlds__dead_proc_elim__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 4)));
+            MR_Word transform_hlds__dead_proc_elim__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 5)));
+            MR_Word transform_hlds__dead_proc_elim__Var_256;
+            MR_Integer transform_hlds__dead_proc_elim__Var_257;
+
+            {
+              transform_hlds__dead_proc_elim__Entity_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_37, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_31));
+              MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_37, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_32));
+            }
+            transform_hlds__dead_proc_elim__TypeCtorInfo_245_245 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+            mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_245_245, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_37)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+            transform_hlds__dead_proc_elim__Var_256 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__CurrProc_8, (MR_Integer) 0)));
+            transform_hlds__dead_proc_elim__Var_257 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__CurrProc_8, (MR_Integer) 1)));
+            transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred____Unify____pred_id_0_0(transform_hlds__dead_proc_elim__PredId_31, transform_hlds__dead_proc_elim__Var_256);
+            if (transform_hlds__dead_proc_elim__succeeded)
+              transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__ProcId_32 == transform_hlds__dead_proc_elim__Var_257);
+            if (transform_hlds__dead_proc_elim__succeeded)
+            {
+              mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_245_245, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_37)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+            }
+            else
+            {
+              MR_Word transform_hlds__dead_proc_elim__OldNotation_40;
+              MR_Box transform_hlds__dead_proc_elim__conv0_OldNotation_40;
+
+              transform_hlds__dead_proc_elim__succeeded = mercury__map__search_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_245_245, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_37)), &transform_hlds__dead_proc_elim__conv0_OldNotation_40);
+              if (transform_hlds__dead_proc_elim__succeeded)
+              {
+                transform_hlds__dead_proc_elim__OldNotation_40 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_OldNotation_40);
+                transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+              }
+              if (transform_hlds__dead_proc_elim__succeeded)
+              {
+                MR_Word transform_hlds__dead_proc_elim__NewNotation_216;
+
+                if ((transform_hlds__dead_proc_elim__OldNotation_40 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  transform_hlds__dead_proc_elim__NewNotation_216 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                else
+                {
+                  MR_Integer transform_hlds__dead_proc_elim__Count_41 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__OldNotation_40, (MR_Integer) 0)));
+                  MR_Integer transform_hlds__dead_proc_elim__Var_166 = (transform_hlds__dead_proc_elim__Count_41 + (MR_Integer) 1);
+
+                  {
+                    transform_hlds__dead_proc_elim__NewNotation_216 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__NewNotation_216, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Var_166));
+                  }
+                }
+                mercury__map__det_update_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_245_245, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_37)), ((MR_Box) (transform_hlds__dead_proc_elim__NewNotation_216)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+              else
+              {
+                mercury__map__det_insert_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_245_245, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_37)), ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__dead_proc_elim_scalar_common_3[0]))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_250_250;
+                MR_Word transform_hlds__dead_proc_elim__PredId_219 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+                MR_Integer transform_hlds__dead_proc_elim__ProcId_220 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 3)));
+                MR_Word transform_hlds__dead_proc_elim__Entity_221;
+                MR_Word transform_hlds__dead_proc_elim__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+                MR_Word transform_hlds__dead_proc_elim__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 4)));
+                MR_Word transform_hlds__dead_proc_elim__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 5)));
+                MR_Word transform_hlds__dead_proc_elim__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 6)));
+                MR_Word transform_hlds__dead_proc_elim__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 7)));
+
+                {
+                  transform_hlds__dead_proc_elim__Entity_221 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_221, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_219));
+                  MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_221, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_220));
+                }
+                transform_hlds__dead_proc_elim__TypeCtorInfo_250_250 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+                mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_250_250, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_221)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104);
+                mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_250_250, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_221)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Goals_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+                MR_Word transform_hlds__dead_proc_elim___ConjType_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+
+                transform_hlds__dead_proc_elim__dead_proc_examine_goals_6_p_0(transform_hlds__dead_proc_elim__Goals_14, transform_hlds__dead_proc_elim__CurrProc_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Goals_258 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+
+                transform_hlds__dead_proc_elim__dead_proc_examine_goals_6_p_0(transform_hlds__dead_proc_elim__Goals_258, transform_hlds__dead_proc_elim__CurrProc_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Cases_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 3)));
+                MR_Word transform_hlds__dead_proc_elim___Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+                MR_Word transform_hlds__dead_proc_elim___CanFail_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+
+                transform_hlds__dead_proc_elim__dead_proc_examine_cases_6_p_0(transform_hlds__dead_proc_elim__Cases_17, transform_hlds__dead_proc_elim__CurrProc_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Reason_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+                MR_Word transform_hlds__dead_proc_elim__SubGoal_215 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+                MR_Word transform_hlds__dead_proc_elim__FGT_21;
+                MR_Word transform_hlds__dead_proc_elim__Var_20;
+
+                transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Reason_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Reason_19, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (transform_hlds__dead_proc_elim__succeeded)
+                {
+                  transform_hlds__dead_proc_elim__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Reason_19, (MR_Integer) 1)));
+                  transform_hlds__dead_proc_elim__FGT_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Reason_19, (MR_Integer) 2)));
+                  switch (transform_hlds__dead_proc_elim__FGT_21) {
+                    default:
+                      transform_hlds__dead_proc_elim__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Integer) 1:
+                      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Integer) 2:
+                      transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+                      break;
+                  }
+                }
+                if (transform_hlds__dead_proc_elim__succeeded)
+                {
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_106 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105;
+                  *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_104 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103;
+                }
+                else
+                {
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word transform_hlds__dead_proc_elim__next_value_of_Goal_7 = transform_hlds__dead_proc_elim__SubGoal_215;
+
+                    transform_hlds__dead_proc_elim__Goal_7 = transform_hlds__dead_proc_elim__next_value_of_Goal_7;
+                  }
+                  continue;
+                }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word transform_hlds__dead_proc_elim__Cond_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 2)));
+                MR_Word transform_hlds__dead_proc_elim__Then_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 3)));
+                MR_Word transform_hlds__dead_proc_elim__Else_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 4)));
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_201_201;
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_202_202;
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_203_203;
+                MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_204_204;
+                MR_Word transform_hlds__dead_proc_elim__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__GoalExpr_11, (MR_Integer) 1)));
+
+                transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(transform_hlds__dead_proc_elim__Cond_23, transform_hlds__dead_proc_elim__CurrProc_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_201_201, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_202_202);
+                transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(transform_hlds__dead_proc_elim__Then_24, transform_hlds__dead_proc_elim__CurrProc_8, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_201_201, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_203_203, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_202_202, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_204_204);
+                /* direct tailcall eliminated */
+                {
+                  MR_Word transform_hlds__dead_proc_elim__next_value_of_Goal_7 = transform_hlds__dead_proc_elim__Else_25;
+                  MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_103 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_203_203;
+                  MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_105 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_204_204;
+
+                  transform_hlds__dead_proc_elim__Goal_7 = transform_hlds__dead_proc_elim__next_value_of_Goal_7;
+                  transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_103 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_103;
+                  transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_105 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_105;
+                }
+                continue;
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                {
+                  mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.dead_proc_elim", (MR_String) "predicate \140transform_hlds.dead_proc_elim.dead_proc_examine_goal\'/6", (MR_String) "shorthand");
+                  return;
+                }
+              }
+              break;
+          }
+          break;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_cases_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__Goal_16;
+      MR_Word transform_hlds__dead_proc_elim__Cases_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_27;
+      MR_Word transform_hlds__dead_proc_elim__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_25, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_25, (MR_Integer) 1)));
+
+      transform_hlds__dead_proc_elim__Goal_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Var_25, (MR_Integer) 2)));
+      transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(transform_hlds__dead_proc_elim__Goal_16, transform_hlds__dead_proc_elim__HeadVar__2_2, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_27);
+      /* direct tailcall eliminated */
+      {
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__Cases_17;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_27_27;
+
+        transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_goals_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__CurrProc_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__Goal_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__Goals_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_24;
+
+      transform_hlds__dead_proc_elim__dead_proc_examine_goal_6_p_0(transform_hlds__dead_proc_elim__Goal_14, transform_hlds__dead_proc_elim__CurrProc_2, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_24);
+      /* direct tailcall eliminated */
+      {
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__Goals_15;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_24_24;
+
+        transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_const_struct_args_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+      }
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__Arg_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__Args_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32;
+
+        if (((MR_tag((MR_Word) transform_hlds__dead_proc_elim__Arg_12)) == (MR_mktag((MR_Integer) 0))))
+        {
+          MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_38_38;
+          MR_Integer transform_hlds__dead_proc_elim__ConstNum_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Arg_12, (MR_Integer) 0)));
+          MR_Word transform_hlds__dead_proc_elim__Entity_17;
+
+          {
+            transform_hlds__dead_proc_elim__Entity_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__Entity_17, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ConstNum_16));
+          }
+          transform_hlds__dead_proc_elim__TypeCtorInfo_38_38 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+          mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_38_38, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_17)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30);
+          mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_38_38, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_17)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32);
+        }
+        else
+        {
+          MR_Word transform_hlds__dead_proc_elim__ConsId_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Arg_12, (MR_Integer) 0)));
+          MR_Word transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Arg_12, (MR_Integer) 1)));
+          MR_Word transform_hlds__dead_proc_elim__Module_20;
+          MR_String transform_hlds__dead_proc_elim__TypeName_21;
+          MR_Integer transform_hlds__dead_proc_elim__Arity_22;
+
+          transform_hlds__dead_proc_elim__succeeded = ((((MR_tag((MR_Word) transform_hlds__dead_proc_elim__ConsId_18)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_18, (MR_Integer) 0)))) == (MR_Integer) 17)));
+          if (transform_hlds__dead_proc_elim__succeeded)
+          {
+            transform_hlds__dead_proc_elim__Module_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_18, (MR_Integer) 1)));
+            transform_hlds__dead_proc_elim__TypeName_21 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_18, (MR_Integer) 2)));
+            transform_hlds__dead_proc_elim__Arity_22 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__dead_proc_elim__ConsId_18, (MR_Integer) 3)));
+            {
+              MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_40_40;
+              MR_Word transform_hlds__dead_proc_elim__Entity_35;
+
+              {
+                transform_hlds__dead_proc_elim__Entity_35 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_35, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Module_20));
+                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_35, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeName_21));
+                MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_35, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Arity_22));
+              }
+              transform_hlds__dead_proc_elim__TypeCtorInfo_40_40 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+              mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_40_40, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_35)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30);
+              mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_40_40, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_35)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32);
+            }
+          }
+          else
+          {
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+            transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+          }
+        }
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__Args_13;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32;
+
+          transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_examine_refs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_28_28;
+      MR_Word transform_hlds__dead_proc_elim__Ref_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__Refs_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__PredId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Ref_12, (MR_Integer) 0)));
+      MR_Integer transform_hlds__dead_proc_elim__ProcId_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Ref_12, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__Entity_18;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25;
+
+      {
+        transform_hlds__dead_proc_elim__Entity_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_18, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_16));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_18, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_17));
+      }
+      transform_hlds__dead_proc_elim__TypeCtorInfo_28_28 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+      mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_28_28, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_18)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23);
+      mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_28_28, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_18)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25);
+      /* direct tailcall eliminated */
+      {
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__Refs_13;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25;
+
+        transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim__find_type_ctor_info_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__ModuleName_6,
+  MR_String transform_hlds__dead_proc_elim__TypeName_7,
+  MR_Integer transform_hlds__dead_proc_elim__TypeArity_8,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__4_4,
+  MR_Word * transform_hlds__dead_proc_elim__Refs_11)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded = ((MR_tag((MR_Word) transform_hlds__dead_proc_elim__HeadVar__4_4)) == (MR_mktag((MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfo_9;
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos_10;
+      MR_Word transform_hlds__dead_proc_elim__Unify_15;
+      MR_Word transform_hlds__dead_proc_elim__Compare_16;
+      MR_Word transform_hlds__dead_proc_elim__Var_19;
+      MR_String transform_hlds__dead_proc_elim__Var_20;
+      MR_Integer transform_hlds__dead_proc_elim__Var_21;
+      MR_Word transform_hlds__dead_proc_elim___TypeCtor_12;
+      MR_Word transform_hlds__dead_proc_elim___Status_13;
+      MR_Word transform_hlds__dead_proc_elim___HldsDefn_14;
+
+      if (transform_hlds__dead_proc_elim__succeeded)
+      {
+        transform_hlds__dead_proc_elim__TypeCtorGenInfo_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__4_4, (MR_Integer) 0)));
+        transform_hlds__dead_proc_elim__TypeCtorGenInfos_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__4_4, (MR_Integer) 1)));
+        transform_hlds__dead_proc_elim___TypeCtor_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 0)));
+        transform_hlds__dead_proc_elim__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 1)));
+        transform_hlds__dead_proc_elim__Var_20 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 2)));
+        transform_hlds__dead_proc_elim__Var_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 3)));
+        transform_hlds__dead_proc_elim___Status_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 4)));
+        transform_hlds__dead_proc_elim___HldsDefn_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 5)));
+        transform_hlds__dead_proc_elim__Unify_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 6)));
+        transform_hlds__dead_proc_elim__Compare_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_9, (MR_Integer) 7)));
+        transform_hlds__dead_proc_elim__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(transform_hlds__dead_proc_elim__ModuleName_6, transform_hlds__dead_proc_elim__Var_19);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__succeeded = (strcmp(transform_hlds__dead_proc_elim__TypeName_7, transform_hlds__dead_proc_elim__Var_20) == 0);
+          if (transform_hlds__dead_proc_elim__succeeded)
+            transform_hlds__dead_proc_elim__succeeded = (transform_hlds__dead_proc_elim__TypeArity_8 == transform_hlds__dead_proc_elim__Var_21);
+        }
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          MR_Word transform_hlds__dead_proc_elim__Var_17;
+
+          {
+            transform_hlds__dead_proc_elim__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_17, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Compare_16));
+            MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__Var_17, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *transform_hlds__dead_proc_elim__Refs_11 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__Unify_15));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__Var_17));
+          }
+          transform_hlds__dead_proc_elim__succeeded = MR_TRUE;
+        }
+        else
+        {
+          /* direct tailcall eliminated */
+          {
+            MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__4_4 = transform_hlds__dead_proc_elim__TypeCtorGenInfos_10;
+
+            transform_hlds__dead_proc_elim__HeadVar__4_4 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__4_4;
+          }
+          continue;
+        }
+      }
+      return transform_hlds__dead_proc_elim__succeeded;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_type_ctor_infos_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+      }
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfo_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__TypeCtorGenInfos_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__ModuleName_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 1)));
+        MR_String transform_hlds__dead_proc_elim__TypeName_18 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 2)));
+        MR_Integer transform_hlds__dead_proc_elim__Arity_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 3)));
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31_31;
+        MR_Word transform_hlds__dead_proc_elim___TypeCtor_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim___Status_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 4)));
+        MR_Word transform_hlds__dead_proc_elim___HldsDefn_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 5)));
+        MR_Word transform_hlds__dead_proc_elim___Unify_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 6)));
+        MR_Word transform_hlds__dead_proc_elim___Compare_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__TypeCtorGenInfo_12, (MR_Integer) 7)));
+
+        transform_hlds__dead_proc_elim__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_34_34;
+          MR_Word transform_hlds__dead_proc_elim__Entity_24;
+
+          {
+            transform_hlds__dead_proc_elim__Entity_24 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__ModuleName_17));
+            MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__TypeName_18));
+            MR_hl_field(MR_mktag(2), transform_hlds__dead_proc_elim__Entity_24, 2) = ((MR_Box) (transform_hlds__dead_proc_elim__Arity_19));
+          }
+          transform_hlds__dead_proc_elim__TypeCtorInfo_34_34 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+          mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_24)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29);
+          mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_34_34, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_24)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31_31);
+        }
+        else
+        {
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31_31 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+        }
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__TypeCtorGenInfos_13;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_31_31;
+
+          transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_init_fn_procs_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_28_28;
+      MR_Word transform_hlds__dead_proc_elim__PPId_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__PPIds_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__PredId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PPId_12, (MR_Integer) 0)));
+      MR_Integer transform_hlds__dead_proc_elim__ProcId_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PPId_12, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__Entity_18;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25;
+
+      {
+        transform_hlds__dead_proc_elim__Entity_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_18, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_16));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_18, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_17));
+      }
+      transform_hlds__dead_proc_elim__TypeCtorInfo_28_28 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+      mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_28_28, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_18)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23);
+      mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_28_28, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_18)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25);
+      /* direct tailcall eliminated */
+      {
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__PPIds_13;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_23_23;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_25_25;
+
+        transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_pragma_exports_5_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4;
+      *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2;
+    }
+    else
+    {
+      MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_31_31;
+      MR_Word transform_hlds__dead_proc_elim__PragmaProc_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word transform_hlds__dead_proc_elim__PragmaProcs_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word transform_hlds__dead_proc_elim__PredId_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PragmaProc_12, (MR_Integer) 1)));
+      MR_Integer transform_hlds__dead_proc_elim__ProcId_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PragmaProc_12, (MR_Integer) 2)));
+      MR_Word transform_hlds__dead_proc_elim__Entity_21;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26;
+      MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_28_28;
+      MR_Word transform_hlds__dead_proc_elim___Lang_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PragmaProc_12, (MR_Integer) 0)));
+      MR_String transform_hlds__dead_proc_elim___ExportName_19 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PragmaProc_12, (MR_Integer) 3)));
+      MR_Word transform_hlds__dead_proc_elim___Ctxt_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__PragmaProc_12, (MR_Integer) 4)));
+
+      {
+        transform_hlds__dead_proc_elim__Entity_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_21, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__PredId_17));
+        MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_21, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_18));
+      }
+      transform_hlds__dead_proc_elim__TypeCtorInfo_31_31 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+      mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_31_31, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_21)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26);
+      mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_31_31, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_21)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_28_28);
+      /* direct tailcall eliminated */
+      {
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__PragmaProcs_13;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_26_26;
+        MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_28_28;
+
+        transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_2 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_2;
+        transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_4;
+      }
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_preds_6_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_6 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3;
+      }
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__PredId_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__PredIds_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__PredInfo_19;
+        MR_Word transform_hlds__dead_proc_elim__PredMarkers_20;
+        MR_Word transform_hlds__dead_proc_elim__LiveProcIds_21;
+        MR_Word transform_hlds__dead_proc_elim__ProcTable_22;
+        MR_Word transform_hlds__dead_proc_elim__Procs_23;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_30_30;
+        MR_Box transform_hlds__dead_proc_elim__conv0_PredInfo_19;
+
+        mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0, transform_hlds__dead_proc_elim__HeadVar__2_2, ((MR_Box) (transform_hlds__dead_proc_elim__PredId_14)), &transform_hlds__dead_proc_elim__conv0_PredInfo_19);
+        transform_hlds__dead_proc_elim__PredInfo_19 = ((MR_Word) transform_hlds__dead_proc_elim__conv0_PredInfo_19);
+        hlds__hlds_pred__pred_info_get_markers_2_p_0(transform_hlds__dead_proc_elim__PredInfo_19, &transform_hlds__dead_proc_elim__PredMarkers_20);
+        transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__check_marker_2_p_0(transform_hlds__dead_proc_elim__PredMarkers_20, (MR_Integer) 10);
+        if (transform_hlds__dead_proc_elim__succeeded)
+          transform_hlds__dead_proc_elim__LiveProcIds_21 = hlds__hlds_pred__pred_info_all_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo_19);
+        else
+          transform_hlds__dead_proc_elim__LiveProcIds_21 = hlds__hlds_pred__pred_info_exported_procids_1_f_0(transform_hlds__dead_proc_elim__PredInfo_19);
+        hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__dead_proc_elim__PredInfo_19, &transform_hlds__dead_proc_elim__ProcTable_22);
+        mercury__map__to_assoc_list_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, transform_hlds__dead_proc_elim__ProcTable_22, &transform_hlds__dead_proc_elim__Procs_23);
+        transform_hlds__dead_proc_elim__dead_proc_initialize_procs_7_p_0(transform_hlds__dead_proc_elim__PredId_14, transform_hlds__dead_proc_elim__Procs_23, transform_hlds__dead_proc_elim__LiveProcIds_21, transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29, transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_30_30);
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1 = transform_hlds__dead_proc_elim__PredIds_15;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_29_29;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_30_30;
+
+          transform_hlds__dead_proc_elim__HeadVar__1_1 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__1_1;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_3 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_3;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_5 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_5;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_initialize_procs_7_p_0(
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__1_1,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__2_2,
+  MR_Word transform_hlds__dead_proc_elim__HeadVar__3_3,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_5,
+  MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6,
+  MR_Word * transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_7)
+{
+  while (MR_TRUE)
+  {
+    /* tailcall optimized into a loop */
+    {
+      MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+      if ((transform_hlds__dead_proc_elim__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_7 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6;
+        *transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_5 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4;
+      }
+      else
+      {
+        MR_Word transform_hlds__dead_proc_elim__Proc_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__Procs_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__dead_proc_elim__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer transform_hlds__dead_proc_elim__ProcId_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Proc_17, (MR_Integer) 0)));
+        MR_Word transform_hlds__dead_proc_elim__ProcInfo_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Proc_17, (MR_Integer) 1)));
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30;
+        MR_Word transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32;
+
+        transform_hlds__dead_proc_elim__succeeded = hlds__hlds_pred__proc_info_is_valid_mode_1_p_0(transform_hlds__dead_proc_elim__ProcInfo_23);
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          transform_hlds__dead_proc_elim__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_22)), transform_hlds__dead_proc_elim__HeadVar__3_3);
+          if (!(transform_hlds__dead_proc_elim__succeeded))
+          {
+            MR_Word transform_hlds__dead_proc_elim__Var_38;
+
+            hlds__hlds_pred__proc_info_get_has_any_foreign_exports_2_p_0(transform_hlds__dead_proc_elim__ProcInfo_23, &transform_hlds__dead_proc_elim__Var_38);
+            transform_hlds__dead_proc_elim__succeeded = ((MR_Integer) 1 == transform_hlds__dead_proc_elim__Var_38);
+          }
+        }
+        if (transform_hlds__dead_proc_elim__succeeded)
+        {
+          MR_Word transform_hlds__dead_proc_elim__TypeCtorInfo_36_36;
+          MR_Word transform_hlds__dead_proc_elim__Entity_24;
+
+          {
+            transform_hlds__dead_proc_elim__Entity_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_24, 0) = ((MR_Box) (transform_hlds__dead_proc_elim__HeadVar__1_1));
+            MR_hl_field(MR_mktag(0), transform_hlds__dead_proc_elim__Entity_24, 1) = ((MR_Box) (transform_hlds__dead_proc_elim__ProcId_22));
+          }
+          transform_hlds__dead_proc_elim__TypeCtorInfo_36_36 = (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+          mercury__queue__put_3_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_36_36, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_24)), transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30);
+          mercury__map__set_4_p_0(transform_hlds__dead_proc_elim__TypeCtorInfo_36_36, (MR_Word) &transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0, ((MR_Box) (transform_hlds__dead_proc_elim__Entity_24)), ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6, &transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32);
+        }
+        else
+        {
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4;
+        }
+        /* direct tailcall eliminated */
+        {
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_HeadVar__2_2 = transform_hlds__dead_proc_elim__Procs_18;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_4 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_30_30;
+          MR_Word transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_6 = transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_32_32;
+
+          transform_hlds__dead_proc_elim__HeadVar__2_2 = transform_hlds__dead_proc_elim__next_value_of_HeadVar__2_2;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Queue_0_4 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Queue_0_4;
+          transform_hlds__dead_proc_elim__STATE_VARIABLE_Needed_0_6 = transform_hlds__dead_proc_elim__next_value_of_STATE_VARIABLE_Needed_0_6;
+        }
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____analyze_links_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____analyze_links_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____analyze_links_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____analyze_links_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____entity_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____entity_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_queue_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____entity_queue_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_queue_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____entity_queue_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____examined_set_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____examined_set_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____examined_set_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____examined_set_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_const_struct_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_const_struct_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_deleted_calls_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_deleted_calls_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____maybe_analyze_link_type_ctor_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____maybe_analyze_link_type_ctor_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____needed_map_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____needed_map_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____needed_map_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____needed_map_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____pred_elim_info_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____pred_elim_info_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0_10001(
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__dead_proc_elim__succeeded;
+
+    transform_hlds__dead_proc_elim__succeeded = transform_hlds__dead_proc_elim____Unify____proc_elim_info_0_0(((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_1), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2));
+    return transform_hlds__dead_proc_elim__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0_10001(
+  MR_Box * transform_hlds__dead_proc_elim__wrapper_arg_1,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_2,
+  MR_Box transform_hlds__dead_proc_elim__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__dead_proc_elim__conv0_HeadVar__1_1;
+
+    transform_hlds__dead_proc_elim____Compare____proc_elim_info_0_0(&transform_hlds__dead_proc_elim__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_2), ((MR_Word) transform_hlds__dead_proc_elim__wrapper_arg_3));
+    *transform_hlds__dead_proc_elim__wrapper_arg_1 = ((MR_Box) (transform_hlds__dead_proc_elim__conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__transform_hlds__dead_proc_elim__init(void)
+{
+}
+
+void mercury__transform_hlds__dead_proc_elim__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_analyze_links_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_queue_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_examined_set_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_const_struct_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_deleted_calls_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_type_ctor_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_elim_opt_imported_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_needed_map_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0);
+	MR_register_type_ctor_info(&transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0);
+}
+
+void mercury__transform_hlds__dead_proc_elim__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__transform_hlds__dead_proc_elim__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module transform_hlds.dead_proc_elim. */

@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `compiler_util.m'
+** by the Mercury compiler,
+** version rotd-2017-08-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module libs.compiler_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_libs__compiler_util
+#define MR_HEADER_GUARD_libs__compiler_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__COMPILER_UTIL_DECL_GUARD
+#define LIBS__COMPILER_UTIL_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__compiler_util__libs__compiler_util__type_ctor_info_warning_or_error_0;
+
+void MR_CALL 
+libs__compiler_util__add_error_4_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_Word libs__compiler_util__param_2,
+  MR_Word libs__compiler_util__param_3,
+  MR_Word * libs__compiler_util__param_4);
+
+void MR_CALL 
+libs__compiler_util__add_warning_4_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_Word libs__compiler_util__param_2,
+  MR_Word libs__compiler_util__param_3,
+  MR_Word * libs__compiler_util__param_4);
+
+void MR_CALL 
+libs__compiler_util__record_warning_3_p_0(
+  MR_Word libs__compiler_util__param_1);
+
+void MR_CALL 
+libs__compiler_util__report_warning_4_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_String libs__compiler_util__param_2);
+
+void MR_CALL 
+libs__compiler_util__report_warning_to_stream_5_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_Word libs__compiler_util__param_2,
+  MR_String libs__compiler_util__param_3);
+
+void MR_CALL 
+libs__compiler_util__warning_or_error_severity_2_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_Word * libs__compiler_util__param_2);
+
+void MR_CALL 
+libs__compiler_util__warning_or_error_string_2_p_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_String * libs__compiler_util__param_2);
+
+MR_bool MR_CALL 
+libs__compiler_util__warning_or_error_string_2_p_1(
+  MR_Word * libs__compiler_util__param_1,
+  MR_String libs__compiler_util__param_2);
+
+void MR_CALL 
+libs__compiler_util____Compare____warning_or_error_0_0(
+  MR_Word * libs__compiler_util__param_1,
+  MR_Word libs__compiler_util__param_2,
+  MR_Word libs__compiler_util__param_3);
+
+MR_bool MR_CALL 
+libs__compiler_util____Unify____warning_or_error_0_0(
+  MR_Word libs__compiler_util__param_1,
+  MR_Word libs__compiler_util__param_2);
+
+void mercury__libs__compiler_util__init(void);
+void mercury__libs__compiler_util__init_type_tables(void);
+void mercury__libs__compiler_util__init_debugger(void);
+const char *mercury__libs__compiler_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_libs.compiler_util */
+
+/* :- end_interface libs.compiler_util. */
