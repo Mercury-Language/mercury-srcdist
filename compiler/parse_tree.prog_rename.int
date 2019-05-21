@@ -1,0 +1,36 @@
+:- module (parse_tree.prog_rename).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module term.
+:- import_module (parse_tree.set_of_var).
+:- type must_rename
+    --->    must_rename 
+    ;       need_not_rename .
+:- inst (must_rename) == bound(must_rename).
+:- inst (need_not_rename) == bound(need_not_rename).
+:- pred rename_var(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), term.var(V), term.var(V)).
+:- mode rename_var(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_var(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_var_list(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), list.list(term.var(V)), list.list(term.var(V))).
+:- mode rename_var_list(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_var_list(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_var_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_vars_in_set_of_var(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), parse_tree.set_of_var.set_of_var(V), parse_tree.set_of_var.set_of_var(V)).
+:- mode rename_vars_in_set_of_var(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_set_of_var(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_set_of_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_vars_in_term(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), term.term(V), term.term(V)).
+:- mode rename_vars_in_term(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_term(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_vars_in_term_list(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), list.list(term.term(V)), list.list(term.term(V))).
+:- mode rename_vars_in_term_list(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_term_list(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_term_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_vars_in_var_set(parse_tree.prog_rename.must_rename, map.map(term.var(V), term.var(V)), set.set(term.var(V)), set.set(term.var(V))).
+:- mode rename_vars_in_var_set(builtin.in(((parse_tree.prog_rename).must_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_var_set(builtin.in(((parse_tree.prog_rename).need_not_rename)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rename_vars_in_var_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

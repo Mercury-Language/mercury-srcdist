@@ -1,0 +1,8 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units
+	where	type_is_abstract_enum(1).
+:- type percent.
+:- type probability.
+:- type time.

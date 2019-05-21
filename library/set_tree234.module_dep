@@ -1,0 +1,13 @@
+module(1, "set_tree234.m",
+	set_tree234,
+	{},
+	{bool, builtin, list, private_builtin, set},
+	{bool, builtin, cord, int, io, list, private_builtin, require, set, string, term, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,84 @@
+/*
+** Automatically generated from `tupling.m'
+** by the Mercury compiler,
+** version rotd-2017-10-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.tupling.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__tupling
+#define MR_HEADER_GUARD_transform_hlds__tupling
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__TUPLING_DECL_GUARD
+#define TRANSFORM_HLDS__TUPLING_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_candidate_headvar_origins_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_candidate_headvars_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_costs_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_count_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_count_state_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_opt_tuple_alloc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_transform_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_transformed_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_tuning_params_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_tupling_proposal_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__tupling__transform_hlds__tupling__type_ctor_info_tupling_scheme_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__interval__build_interval_info_acc__arity1__unit__unit__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__live_vars__stack_alloc_info__arity1__transform_hlds__tupling__opt_tuple_alloc__arity0__[9];
+
+void MR_CALL 
+transform_hlds__tupling__tuple_arguments_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__transform_hlds__tupling__init(void);
+void mercury__transform_hlds__tupling__init_type_tables(void);
+void mercury__transform_hlds__tupling__init_debugger(void);
+const char *mercury__transform_hlds__tupling__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.tupling
+
+// :- end_interface transform_hlds.tupling.
