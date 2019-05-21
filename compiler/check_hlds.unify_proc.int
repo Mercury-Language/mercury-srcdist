@@ -1,0 +1,17 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- import_module hlds.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- pred add_lazily_generated_compare_pred_decl(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_lazily_generated_compare_pred_decl((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_lazily_generated_unify_pred(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_lazily_generated_unify_pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_clause_info(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_clauses.clauses_info).
+:- mode generate_clause_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
