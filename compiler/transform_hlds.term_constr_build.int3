@@ -1,0 +1,3 @@
+:- module (transform_hlds.term_constr_build).
+:- interface.
+:- type term_build_options.

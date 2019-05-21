@@ -1,0 +1,24 @@
+:- module term_to_xml.
+:- interface.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module maybe.
+:- import_module stream.
+:- import_module type_desc.
+:- type attr.
+:- type attr_from_source.
+:- type attr_source
+	where	type_is_abstract_enum(2).
+:- type doctype.
+:- type dtd_generation_result.
+:- type element_mapping.
+:- type element_pred.
+:- type maybe_dtd.
+:- type maybe_functor_info.
+:- type maybe_stylesheet.
+:- type xml.
+:- inst (element_mapping) for term_to_xml.element_mapping/0 == bound(custom((term_to_xml.element_pred)) ; simple ; unique).
+:- inst (element_pred) == (pred(in, in, out, out) is det).
+:- inst (non_embedded_dtd) for term_to_xml.maybe_dtd/0 == bound(external_dtd(ground) ; no_dtd).
+:- inst (xml_doc) for term_to_xml.xml/0 == bound(elem(ground, ground, ground)).
+:- typeclass xmlable(T).
