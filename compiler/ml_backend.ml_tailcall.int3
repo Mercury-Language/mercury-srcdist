@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_tailcall).
+:- interface.
+:- type may_yield_dangling_stack_ref
+	where	type_is_abstract_enum(1).

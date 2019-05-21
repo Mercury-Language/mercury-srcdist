@@ -1,0 +1,16 @@
+:- module (check_hlds.mode_comparison).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type match
+    --->    better 
+    ;       worse 
+    ;       same 
+    ;       incomparable .
+:- type proc_mode
+    --->    proc_mode(hlds.hlds_pred.proc_id, parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_mode)).
