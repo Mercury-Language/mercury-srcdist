@@ -1,0 +1,743 @@
+/*
+** Automatically generated from `globals.m'
+** by the Mercury compiler,
+** version rotd-2018-04-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.globals.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__globals
+#define MR_HEADER_GUARD_libs__globals
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__GLOBALS_DECL_GUARD
+#define LIBS__GLOBALS_DECL_GUARD
+#include "libs.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_from_ground_term_threshold_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#else
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_extra_error_info_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_some_errors_were_context_limited;
+#else
+    extern MR_Word libs__globals__mutable_variable_some_errors_were_context_limited;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_some_errors_were_context_limited_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_smart_recompilation_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_generate_item_version_numbers_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_source_file_map_lock;
+#endif
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_backend_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_c_compiler_type_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_clang_version_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_compilation_target_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_csharp_compiler_type_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_env_type_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_file_install_cmd_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_foreign_language_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_gc_method_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_globals_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_limit_error_contexts_map_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_line_number_range_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_may_be_thread_safe_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_reuse_strategy_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_source_file_map_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_ssdb_trace_level_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_tags_method_0;
+
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_termination_norm_0;
+
+MR_bool MR_CALL 
+libs__globals__convert_c_compiler_type_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_csharp_compiler_type_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_env_type_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_foreign_language_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_gc_method_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__convert_limit_error_contexts_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__globals__convert_maybe_thread_safe_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_reuse_strategy_3_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__globals__convert_ssdb_trace_level_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__globals__convert_tags_method_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_target_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__globals__convert_termination_norm_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__current_grade_supports_concurrency_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__current_grade_supports_par_conj_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__current_grade_supports_tabling_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__double_width_floats_on_det_stack_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_any_intermod_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_backend_foreign_languages_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_c_compiler_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_csharp_compiler_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_file_install_cmd_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_gc_method_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_host_env_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_limit_error_contexts_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_maybe_feedback_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_maybe_thread_safe_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_op_mode_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_reuse_strategy_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_ssdb_trace_level_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_system_env_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_tags_method_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_target_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_target_env_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_termination2_norm_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_termination_norm_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_trace_level_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__get_trace_suppress_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__globals_init_21_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word * param_21);
+
+void MR_CALL 
+libs__globals__globals_init_mutables_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__io_get_disable_generate_item_version_numbers_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__globals__io_get_disable_smart_recompilation_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__globals__io_get_extra_error_info_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__globals__io_get_maybe_source_file_map_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__globals__io_get_some_errors_were_context_limited_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__globals__io_set_disable_generate_item_version_numbers_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__io_set_disable_smart_recompilation_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__io_set_extra_error_info_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__io_set_maybe_source_file_map_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__io_set_some_errors_were_context_limited_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals__lookup_accumulating_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__lookup_bool_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__globals__lookup_bool_option_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals__lookup_int_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+libs__globals__lookup_maybe_int_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__lookup_maybe_string_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__lookup_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__lookup_string_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+libs__globals__set_file_install_cmd_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_gc_method_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_maybe_feedback_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_op_mode_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_option_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__globals__set_options_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_ssdb_trace_level_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_tags_method_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_trace_level_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__globals__set_trace_level_none_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__globals__want_return_var_layouts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_String MR_CALL 
+libs__globals__compilation_target_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+libs__globals__foreign_language_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__globals__gc_is_conservative_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__globals__get_maybe_from_ground_term_threshold_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__globals__lookup_current_backend_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+libs__globals__simple_foreign_language_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__globals__target_lang_to_foreign_export_lang_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__globals____Compare____backend_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____c_compiler_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____clang_version_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____compilation_target_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____csharp_compiler_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____env_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____file_install_cmd_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____foreign_language_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____gc_method_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____globals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____limit_error_contexts_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____line_number_range_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____may_be_thread_safe_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____reuse_strategy_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____source_file_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____ssdb_trace_level_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____tags_method_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__globals____Compare____termination_norm_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__globals____Unify____backend_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____c_compiler_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____clang_version_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____compilation_target_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____csharp_compiler_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____env_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____file_install_cmd_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____foreign_language_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____gc_method_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____globals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____limit_error_contexts_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____line_number_range_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____may_be_thread_safe_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____reuse_strategy_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____source_file_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____ssdb_trace_level_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____tags_method_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__globals____Unify____termination_norm_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__globals__init(void);
+void mercury__libs__globals__init_type_tables(void);
+void mercury__libs__globals__init_debugger(void);
+void mercury__libs__globals__required_init(void);
+const char *mercury__libs__globals__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.globals
+
+// :- end_interface libs.globals.
