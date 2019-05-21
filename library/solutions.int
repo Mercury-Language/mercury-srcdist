@@ -1,0 +1,60 @@
+:- module solutions.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module set.
+:- pred aggregate((pred T), pred(T, U, U), U, U).
+:- mode aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- func aggregate((pred T), (func(T, U) = U), U) = U.
+:- mode aggregate((pred((builtin.out)) is multi), (func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in)) = (builtin.out) is det.
+:- mode aggregate((pred((builtin.out)) is nondet), (func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in)) = (builtin.out) is det.
+:- pred aggregate2((pred T), pred(T, U, U, V, V), U, U, V, V).
+:- mode aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred do_while((pred T), pred(T, bool.bool, T2, T2), T2, T2).
+:- mode do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is cc_multi.
+:- mode do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is cc_multi.
+:- mode do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred solutions((pred T), list.list(T)).
+:- mode solutions((pred((builtin.out)) is multi), builtin.out((list.non_empty_list))) is det.
+:- mode solutions((pred((builtin.out)) is nondet), (builtin.out)) is det.
+:- func solutions((pred T)) = list.list(T).
+:- mode solutions((pred((builtin.out)) is multi)) = builtin.out((list.non_empty_list)) is det.
+:- mode solutions((pred((builtin.out)) is nondet)) = (builtin.out) is det.
+:- pred solutions_set((pred T), set.set(T)).
+:- mode solutions_set((pred((builtin.out)) is multi), (builtin.out)) is det.
+:- mode solutions_set((pred((builtin.out)) is nondet), (builtin.out)) is det.
+:- func solutions_set((pred T)) = set.set(T).
+:- mode solutions_set((pred((builtin.out)) is multi)) = (builtin.out) is det.
+:- mode solutions_set((pred((builtin.out)) is nondet)) = (builtin.out) is det.
+:- pred unsorted_aggregate((pred T), pred(T, U, U), U, U).
+:- mode unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.muo)) is multi), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate((pred((builtin.muo)) is nondet), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred unsorted_aggregate2((pred T), pred(T, U, U, V, V), U, U, V, V).
+:- mode unsorted_aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsorted_aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred unsorted_solutions((pred T), list.list(T)).
+:- mode unsorted_solutions((pred((builtin.out)) is multi), builtin.out((list.non_empty_list))) is cc_multi.
+:- mode unsorted_solutions((pred((builtin.out)) is nondet), (builtin.out)) is cc_multi.

@@ -1,0 +1,120 @@
+/*
+** Automatically generated from `util.m'
+** by the Mercury compiler,
+** version rotd-2017-09-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__util
+#define MR_HEADER_GUARD_mdb__util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__UTIL_DECL_GUARD
+#define MDB__UTIL_DECL_GUARD
+#include "mdb.mih"
+
+    #include "mercury_wrapper.h"
+    #include "mercury_string.h"
+    #include "mercury_trace_base.h"
+    #include "mercury_library_types.h"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__util__mdb__util__type_ctor_info_line_number_0;
+
+void MR_CALL 
+mdb__util__limit_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__util__trace_get_command_4_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mdb__util__trace_get_command_6_p_0(
+  MR_String param_1,
+  MR_String * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__util__trace_getline_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__util__trace_getline_6_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__util__zip_with_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_Word MR_CALL 
+mdb__util__is_function_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__util__is_predicate_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdb__util____Compare____line_number_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__util____Unify____line_number_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__mdb__util__init(void);
+void mercury__mdb__util__init_type_tables(void);
+void mercury__mdb__util__init_debugger(void);
+const char *mercury__mdb__util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.util
+
+// :- end_interface mdb.util.

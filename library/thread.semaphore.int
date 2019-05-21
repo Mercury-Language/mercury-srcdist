@@ -1,0 +1,39 @@
+:- module (thread.semaphore).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type semaphore.
+:- impure pred impure_init(thread.semaphore.semaphore).
+:- mode impure_init((builtin.uo)) is det.
+:- impure pred impure_init(int, thread.semaphore.semaphore).
+:- mode impure_init((builtin.in), (builtin.uo)) is det.
+:- impure func impure_init(int) = thread.semaphore.semaphore.
+:- mode impure_init((builtin.in)) = (builtin.uo) is det.
+:- impure pred impure_signal(thread.semaphore.semaphore).
+:- mode impure_signal((builtin.in)) is det.
+:- impure pred impure_try_wait(thread.semaphore.semaphore, bool.bool).
+:- mode impure_try_wait((builtin.in), (builtin.out)) is det.
+:- impure pred impure_wait(thread.semaphore.semaphore).
+:- mode impure_wait((builtin.in)) is det.
+:- impure func init(int) = thread.semaphore.semaphore.
+:- mode init((builtin.in)) = (builtin.uo) is det.
+:- pred init(thread.semaphore.semaphore, io.io, io.io).
+:- mode init((builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- pred init(int, thread.semaphore.semaphore, io.io, io.io).
+:- mode init((builtin.in), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- pred signal(thread.semaphore.semaphore, io.io, io.io).
+:- mode signal((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred try_wait(thread.semaphore.semaphore, bool.bool, io.io, io.io).
+:- mode try_wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred wait(thread.semaphore.semaphore, io.io, io.io).
+:- mode wait((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("C#", (thread.semaphore)).
+:- pragma foreign_import_module("Java", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).
+:- pragma obsolete(((thread.semaphore).init)/1).
+:- implementation.
+:- pragma foreign_type(c, semaphore, "struct ML_SEMAPHORE_STRUCT *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(csharp, semaphore, "thread__semaphore.ML_Semaphore").
+:- pragma foreign_type(erlang, semaphore, "").
+:- pragma foreign_type(java, semaphore, "jmercury.runtime.Semaphore").

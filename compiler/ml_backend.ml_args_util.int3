@@ -1,0 +1,6 @@
+:- module (ml_backend.ml_args_util).
+:- interface.
+:- type solo_or_tscc
+	where	type_is_abstract_enum(1).
+:- type what_params
+	where	type_is_abstract_enum(1).

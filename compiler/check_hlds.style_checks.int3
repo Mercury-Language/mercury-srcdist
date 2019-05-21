@@ -1,0 +1,3 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- type style_warnings_task.
