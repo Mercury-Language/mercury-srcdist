@@ -1,0 +1,6 @@
+:- module (ll_backend.opt_util).
+:- interface.
+:- type instrmap.
+:- type lvalmap.
+:- type succmap.
+:- type tailmap.
