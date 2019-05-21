@@ -1,0 +1,12 @@
+:- module (check_hlds.mode_constraint_robdd).
+:- interface.
+:- type lambda_path.
+:- type mc_type.
+:- type mode_constraint.
+:- type mode_constraint_info.
+:- type mode_constraint_var.
+:- type mode_constraint_vars.
+:- type prodvars_map.
+:- type prog_var_and_level.
+:- type rep_var.
+:- type threshold.
