@@ -1,0 +1,4 @@
+:- module (check_hlds.mode_util).
+:- interface.
+:- type recompute_atomic_instmap_deltas
+	where	type_is_abstract_enum(1).
