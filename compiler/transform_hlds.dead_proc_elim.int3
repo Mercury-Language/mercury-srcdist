@@ -1,0 +1,7 @@
+:- module (transform_hlds.dead_proc_elim).
+:- interface.
+:- type entity.
+:- type maybe_elim_opt_imported
+	where	type_is_abstract_enum(1).
+:- type maybe_needed.
+:- type needed_map.

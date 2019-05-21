@@ -1,0 +1,6 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- type args_type_assign.
+:- type args_type_assign_set.
+:- type type_assign.
+:- type type_assign_set.
