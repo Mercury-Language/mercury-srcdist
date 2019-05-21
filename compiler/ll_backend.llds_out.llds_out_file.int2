@@ -1,0 +1,10 @@
+:- module ((ll_backend.llds_out).llds_out_file).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module libs.
+:- import_module (libs.globals).
+:- import_module (ll_backend.llds).
+:- type linkage
+    --->    extern 
+    ;       static .

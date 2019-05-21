@@ -1,0 +1,10 @@
+:- module (ml_backend.ml_proc_gen).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.error_util).
+:- pred ml_code_gen(ml_backend.mlds.mlds_target_lang, ml_backend.mlds.mlds, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode ml_code_gen((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
