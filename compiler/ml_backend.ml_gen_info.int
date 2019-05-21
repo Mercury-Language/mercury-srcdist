@@ -1,0 +1,157 @@
+:- module (ml_backend.ml_gen_info).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.mark_tail_calls).
+:- import_module (hlds.vartypes).
+:- import_module (libs.globals).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type cond_seq
+    --->    cond_seq(int).
+:- type conv_seq
+    --->    conv_seq(int).
+:- type have_we_done_mutual_tail_rec
+    --->    have_not_done_mutual_tail_rec 
+    ;       have_done_mutual_tail_rec .
+:- type have_we_done_nontail_rec
+    --->    have_not_done_nontail_rec 
+    ;       have_done_nontail_rec .
+:- type have_we_done_self_tail_rec
+    --->    have_not_done_self_tail_rec 
+    ;       have_done_self_tail_rec .
+:- type label_num == int.
+:- type ml_const_struct_map == map.map(int, ml_backend.ml_gen_info.ml_ground_term).
+:- type ml_gen_info.
+:- type ml_gen_tscc_info
+    --->    ml_gen_tscc_info(((ml_backend.ml_gen_info).mgti_func_label_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_label_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_aux_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_cond_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_conv_var_counter) :: counter.counter, ((ml_backend.ml_gen_info).mgti_tail_rec_info) :: ml_backend.ml_gen_info.tail_rec_info).
+:- type ml_ground_term
+    --->    ml_ground_term(ml_backend.mlds.mlds_rval, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_type).
+:- type ml_ground_term_map == map.map(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term).
+:- type success_cont
+    --->    success_cont(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval, list.list(ml_backend.mlds.mlds_type), list.list(ml_backend.mlds.mlds_lval)).
+:- type tail_rec_info
+    --->    tail_rec_info(((ml_backend.ml_gen_info).tri_target_map) :: ml_backend.ml_gen_info.tail_rec_target_map, ((ml_backend.ml_gen_info).tri_tscc_kind) :: ml_backend.ml_gen_info.tscc_kind, ((ml_backend.ml_gen_info).tri_loop_kind) :: ml_backend.ml_gen_info.tail_rec_loop_kind, ((ml_backend.ml_gen_info).tri_default_warn_params) :: hlds.mark_tail_calls.warn_non_tail_rec_params, ((ml_backend.ml_gen_info).tri_proc_warn_params) :: hlds.mark_tail_calls.warn_non_tail_rec_params, ((ml_backend.ml_gen_info).tri_msgs) :: list.list(parse_tree.error_util.error_spec)).
+:- type tail_rec_loop_kind
+    --->    tail_rec_loop_while_continue 
+    ;       tail_rec_loop_label_goto .
+:- type tail_rec_target_info
+    --->    tail_rec_target_info(((ml_backend.ml_gen_info).trti_id) :: ml_backend.mlds.proc_id_in_tscc, ((ml_backend.ml_gen_info).trti_input_args) :: list.list(ml_backend.mlds.mlds_argument), ((ml_backend.ml_gen_info).trti_done_self_tail_rec) :: ml_backend.ml_gen_info.have_we_done_self_tail_rec, ((ml_backend.ml_gen_info).trti_done_mutual_tail_rec) :: ml_backend.ml_gen_info.have_we_done_mutual_tail_rec, ((ml_backend.ml_gen_info).trti_done_nontail_rec) :: ml_backend.ml_gen_info.have_we_done_nontail_rec).
+:- type tail_rec_target_map == map.map(hlds.hlds_pred.pred_proc_id, ml_backend.ml_gen_info.tail_rec_target_info).
+:- type tscc_kind
+    --->    tscc_self_rec_only 
+    ;       tscc_self_and_mutual_rec .
+:- func generate_tail_rec_start_label(ml_backend.ml_gen_info.tscc_kind, ml_backend.mlds.proc_id_in_tscc) = ml_backend.mlds.mlds_label.
+:- func init_ml_gen_tscc_info(hlds.hlds_module.module_info, ml_backend.ml_gen_info.tail_rec_target_map, ml_backend.ml_gen_info.tscc_kind) = ml_backend.ml_gen_info.ml_gen_tscc_info.
+:- pred ml_gen_info_add_closure_wrapper_defn(ml_backend.mlds.mlds_function_defn, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_add_closure_wrapper_defn((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_add_env_var_name(string, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_add_env_var_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_bump_counters(ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_bump_counters((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_current_success_cont(ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.success_cont).
+:- mode ml_gen_info_current_success_cont((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_final(ml_backend.ml_gen_info.ml_gen_info, set.set(string), list.list(ml_backend.mlds.mlds_function_defn), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_gen_info.ml_gen_tscc_info).
+:- mode ml_gen_info_final((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred ml_gen_info_get_byref_output_vars(ml_backend.ml_gen_info.ml_gen_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode ml_gen_info_get_byref_output_vars((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_closure_wrapper_defns(ml_backend.ml_gen_info.ml_gen_info, list.list(ml_backend.mlds.mlds_function_defn)).
+:- mode ml_gen_info_get_closure_wrapper_defns((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_const_struct_map(ml_backend.ml_gen_info.ml_gen_info, map.map(int, ml_backend.ml_gen_info.ml_ground_term)).
+:- mode ml_gen_info_get_const_struct_map((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_const_var_map(ml_backend.ml_gen_info.ml_gen_info, map.map(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term)).
+:- mode ml_gen_info_get_const_var_map((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_copy_out(ml_backend.ml_gen_info.ml_gen_info, hlds.code_model.code_model, bool.bool).
+:- mode ml_gen_info_get_copy_out((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_det_copy_out(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_get_det_copy_out((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_disabled_warnings(ml_backend.ml_gen_info.ml_gen_info, set.set(parse_tree.prog_data.goal_warning)).
+:- mode ml_gen_info_get_disabled_warnings((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_env_var_names(ml_backend.ml_gen_info.ml_gen_info, set.set(string)).
+:- mode ml_gen_info_get_env_var_names((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_gc(ml_backend.ml_gen_info.ml_gen_info, libs.globals.gc_method).
+:- mode ml_gen_info_get_gc((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_global_data(ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_gen_info_get_global_data((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_globals(ml_backend.ml_gen_info.ml_gen_info, libs.globals.globals).
+:- mode ml_gen_info_get_globals((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_high_level_data(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_get_high_level_data((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_module_info(ml_backend.ml_gen_info.ml_gen_info, hlds.hlds_module.module_info).
+:- mode ml_gen_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_module_name(ml_backend.ml_gen_info.ml_gen_info, ml_backend.mlds.mercury_module_name).
+:- mode ml_gen_info_get_module_name((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_nondet_copy_out(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_get_nondet_copy_out((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_pred_proc_id(ml_backend.ml_gen_info.ml_gen_info, hlds.hlds_pred.pred_proc_id).
+:- mode ml_gen_info_get_pred_proc_id((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_tail_rec_info(ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.tail_rec_info).
+:- mode ml_gen_info_get_tail_rec_info((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_target(ml_backend.ml_gen_info.ml_gen_info, ml_backend.mlds.mlds_target_lang).
+:- mode ml_gen_info_get_target((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_used_succeeded_var(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_get_used_succeeded_var((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_var_lvals(ml_backend.ml_gen_info.ml_gen_info, map.map(parse_tree.prog_data.prog_var, ml_backend.mlds.mlds_lval)).
+:- mode ml_gen_info_get_var_lvals((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_var_types(ml_backend.ml_gen_info.ml_gen_info, hlds.vartypes.vartypes).
+:- mode ml_gen_info_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_get_varset(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.prog_varset).
+:- mode ml_gen_info_get_varset((builtin.in), (builtin.out)) is det.
+:- func ml_gen_info_init(hlds.hlds_module.module_info, ml_backend.mlds.mlds_target_lang, ml_backend.ml_gen_info.ml_const_struct_map, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_gen_info.ml_gen_tscc_info) = ml_backend.ml_gen_info.ml_gen_info.
+:- pred ml_gen_info_lookup_const_var(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term).
+:- mode ml_gen_info_lookup_const_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_new_aux_func_id(ml_backend.mlds.mlds_maybe_aux_func_id, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_new_aux_func_id((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_new_aux_var_name(ml_backend.mlds.mlds_compiler_aux_var, ml_backend.mlds.mlds_local_var_name, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_new_aux_var_name((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_new_cond_var(ml_backend.ml_gen_info.cond_seq, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_new_cond_var((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_new_conv_var(ml_backend.ml_gen_info.conv_seq, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_new_conv_var((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_new_label(ml_backend.ml_gen_info.label_num, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_new_label((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_pop_success_cont(ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_pop_success_cont((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_push_success_cont(ml_backend.ml_gen_info.success_cont, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_push_success_cont((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_put_commit_in_own_func(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_put_commit_in_own_func((builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_search_const_var(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term).
+:- mode ml_gen_info_search_const_var((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred ml_gen_info_set_byref_output_vars(list.list(parse_tree.prog_data.prog_var), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_byref_output_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_const_var(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_const_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_const_var_map(map.map(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_const_var_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_disabled_warnings(set.set(parse_tree.prog_data.goal_warning), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_disabled_warnings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_global_data(ml_backend.ml_global_data.ml_global_data, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_global_data((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_module_info(hlds.hlds_module.module_info, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_module_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_tail_rec_info(ml_backend.ml_gen_info.tail_rec_info, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_tail_rec_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_used_succeeded_var(bool.bool, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_used_succeeded_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_var_lval(parse_tree.prog_data.prog_var, ml_backend.mlds.mlds_lval, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_var_lval((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_var_lvals(map.map(parse_tree.prog_data.prog_var, ml_backend.mlds.mlds_lval), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_var_lvals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_var_types(hlds.vartypes.vartypes, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_var_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_set_varset(parse_tree.prog_data.prog_varset, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_info_set_varset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_info_use_gcc_nested_functions(ml_backend.ml_gen_info.ml_gen_info, bool.bool).
+:- mode ml_gen_info_use_gcc_nested_functions((builtin.in), (builtin.out)) is det.
