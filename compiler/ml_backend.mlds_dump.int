@@ -1,0 +1,6 @@
+:- module (ml_backend.mlds_dump).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- pred dump_mlds_stmt(int, ml_backend.mlds.mlds_stmt, io.io, io.io).
+:- mode dump_mlds_stmt((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

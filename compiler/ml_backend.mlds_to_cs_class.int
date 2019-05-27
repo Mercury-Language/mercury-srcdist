@@ -1,0 +1,8 @@
+:- module (ml_backend.mlds_to_cs_class).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_cs_util).
+:- import_module (ml_backend.mlds_to_target_util).
+:- pred output_class_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.mlds_class_defn, io.io, io.io).
+:- mode output_class_defn_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
