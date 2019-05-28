@@ -1,0 +1,16 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+
+# An example of a *short* Mmake file
+# In fact you don't really need any Mmake file at all,
+# just `mmake diff.depend; mmake diff' is enough.
+# But `mmake depend; mmake' is standard, so we will
+# define a target `depend' and a default target `all'
+# to make that work.
+
+# This source file is hereby placed in the public domain.  -fjh (the author).
+
+MAIN_TARGET=all
+depend: diff.depend
+all: diff

@@ -1,0 +1,13 @@
+module(1, "bit_buffer.m",
+	bit_buffer,
+	{},
+	{bitmap, builtin, private_builtin, stream},
+	{bitmap, bool, builtin, exception, int, list, private_builtin, stream},
+	{(bit_buffer.read), (bit_buffer.write)},
+	{},
+	{},
+	{"C"},
+	{"C" - bit_buffer},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,19 @@
+:- module (backend_libs.foreign).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- import_module (parse_tree.prog_foreign).
+:- type foreign_type_and_assertions
+    --->    foreign_type_and_assertions(mdbcomp.sym_name.sym_name, parse_tree.prog_data.foreign_type_assertions).

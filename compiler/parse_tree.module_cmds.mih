@@ -1,0 +1,224 @@
+/*
+** Automatically generated from `module_cmds.m'
+** by the Mercury compiler,
+** version rotd-2019-05-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_cmds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_cmds
+#define MR_HEADER_GUARD_parse_tree__module_cmds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_CMDS_DECL_GUARD
+#define PARSE_TREE__MODULE_CMDS_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_cmds__parse_tree__module_cmds__type_ctor_info_command_verbosity_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_cmds__parse_tree__module_cmds__type_ctor_info_quote_char_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_cmds__parse_tree__module_cmds__type_ctor_info_update_interface_result_0;
+
+void MR_CALL 
+parse_tree__module_cmds__copy_file_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__create_erlang_shell_script_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__create_java_shell_script_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__create_launcher_batch_file_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__create_launcher_shell_script_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__get_env_classpath_3_p_0(
+  MR_String * param_1);
+
+void MR_CALL 
+parse_tree__module_cmds__get_mercury_std_libs_for_java_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_cmds__invoke_system_command_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds__invoke_system_command_maybe_filter_output_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__module_cmds__list_class_files_for_jar_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__list_class_files_for_jar_mmake_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__make_command_string_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__make_symlink_or_copy_dir_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__make_symlink_or_copy_file_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__maybe_make_symlink_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__maybe_set_exit_status_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__module_cmds__touch_datestamp_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+parse_tree__module_cmds__touch_interface_datestamp_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__update_interface_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+parse_tree__module_cmds__update_interface_return_changed_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__update_interface_return_succeeded_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds____Compare____command_verbosity_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_cmds____Compare____quote_char_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_cmds____Compare____update_interface_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__module_cmds____Unify____command_verbosity_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_cmds____Unify____quote_char_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_cmds____Unify____update_interface_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__module_cmds__init(void);
+void mercury__parse_tree__module_cmds__init_type_tables(void);
+void mercury__parse_tree__module_cmds__init_debugger(void);
+const char *mercury__parse_tree__module_cmds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_cmds
+
+// :- end_interface parse_tree.module_cmds.
