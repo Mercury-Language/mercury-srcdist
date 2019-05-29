@@ -1,0 +1,11 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units
+    --->    units_words 
+    ;       units_bytes .
+:- type percent.
+:- type probability.
+:- type time.
+:- implementation.
+:- type probability == float.
