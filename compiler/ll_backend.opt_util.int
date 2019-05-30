@@ -1,0 +1,109 @@
+:- module (ll_backend.opt_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- type instrmap == map.map(ll_backend.llds.label, ll_backend.llds.instruction).
+:- type lvalmap == map.map(ll_backend.llds.label, maybe.maybe(ll_backend.llds.instruction)).
+:- type succmap == map.map(ll_backend.llds.label, bool.bool).
+:- type tailmap == map.map(ll_backend.llds.label, list.list(ll_backend.llds.instruction)).
+:- func block_refers_to_stack(list.list(ll_backend.llds.instruction)) = bool.bool.
+:- func can_instr_branch_away(ll_backend.llds.instr) = bool.bool.
+:- func can_instr_fall_through(ll_backend.llds.instr) = bool.bool.
+:- pred count_incr_hp(list.list(ll_backend.llds.instruction), int).
+:- mode count_incr_hp((builtin.in), (builtin.out)) is det.
+:- pred count_temps_instr(ll_backend.llds.instr, int, int, int, int).
+:- mode count_temps_instr((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred count_temps_instr_list(list.list(ll_backend.llds.instruction), int, int, int, int).
+:- mode count_temps_instr_list((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred filter_in_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode filter_in_livevals((builtin.in), (builtin.out)) is det.
+:- pred filter_out_bad_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode filter_out_bad_livevals((builtin.in), (builtin.out)) is det.
+:- pred filter_out_labels(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode filter_out_labels((builtin.in), (builtin.out)) is det.
+:- pred filter_out_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode filter_out_livevals((builtin.in), (builtin.out)) is det.
+:- pred filter_out_r1(list.list(ll_backend.llds.instruction), maybe.maybe(ll_backend.llds.rval_const), list.list(ll_backend.llds.instruction)).
+:- mode filter_out_r1((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred find_first_label(list.list(ll_backend.llds.instruction), ll_backend.llds.label).
+:- mode find_first_label((builtin.in), (builtin.out)) is det.
+:- pred find_no_fallthrough(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode find_no_fallthrough((builtin.in), (builtin.out)) is det.
+:- func format_label(ll_backend.llds.label) = string.
+:- func format_proc_label(mdbcomp.prim_data.proc_label) = string.
+:- pred gather_comments(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode gather_comments((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred gather_comments_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode gather_comments_livevals((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_prologue(list.list(ll_backend.llds.instruction), ll_backend.llds.instruction, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode get_prologue((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred has_both_incr_decr_sp(list.list(ll_backend.llds.instruction)).
+:- mode has_both_incr_decr_sp((builtin.in)) is semidet.
+:- pred instr_labels(ll_backend.llds.instr, list.list(ll_backend.llds.label), list.list(ll_backend.llds.code_addr)).
+:- mode instr_labels((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred instr_labels_only(ll_backend.llds.instr, list.list(ll_backend.llds.label)).
+:- mode instr_labels_only((builtin.in), (builtin.out)) is det.
+:- func instr_refers_to_stack(ll_backend.llds.instruction) = bool.bool.
+:- pred is_const_condition(ll_backend.llds.rval, bool.bool).
+:- mode is_const_condition((builtin.in), (builtin.out)) is semidet.
+:- pred is_forkproceed_next(list.list(ll_backend.llds.instruction), ll_backend.opt_util.tailmap, list.list(ll_backend.llds.instruction)).
+:- mode is_forkproceed_next((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_proceed_next(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode is_proceed_next((builtin.in), (builtin.out)) is semidet.
+:- pred is_sdproceed_next(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode is_sdproceed_next((builtin.in), (builtin.out)) is semidet.
+:- pred is_sdproceed_next_sf(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool).
+:- mode is_sdproceed_next_sf((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred is_succeed_next(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode is_succeed_next((builtin.in), (builtin.out)) is semidet.
+:- pred is_this_label_next(ll_backend.llds.label, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode is_this_label_next((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func livevals_addr(ll_backend.llds.code_addr) = bool.bool.
+:- pred lval_access_rvals(ll_backend.llds.lval, list.list(ll_backend.llds.rval)).
+:- mode lval_access_rvals((builtin.in), (builtin.out)) is det.
+:- func lval_refers_stackvars(ll_backend.llds.lval) = bool.bool.
+:- pred may_replace_succeed_with_succeed_discard(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), string, list.list(ll_backend.llds.instruction)).
+:- mode may_replace_succeed_with_succeed_discard((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred next_assign_to_redoip(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.lval), list.list(ll_backend.llds.instruction), ll_backend.llds.code_addr, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode next_assign_to_redoip((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred no_stack_straight_line(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode no_stack_straight_line((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred no_stackvars_til_decr_sp(list.list(ll_backend.llds.instruction), int, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode no_stackvars_til_decr_sp((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred possible_targets(ll_backend.llds.instr, list.list(ll_backend.llds.label), list.list(ll_backend.llds.code_addr)).
+:- mode possible_targets((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred propagate_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode propagate_livevals((builtin.in), (builtin.out)) is det.
+:- pred replace_labels_code_addr(ll_backend.llds.code_addr, ll_backend.llds.code_addr, map.map(ll_backend.llds.label, ll_backend.llds.label)).
+:- mode replace_labels_code_addr((builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred replace_labels_comps(list.list(ll_backend.llds.foreign_proc_component), list.list(ll_backend.llds.foreign_proc_component), map.map(ll_backend.llds.label, ll_backend.llds.label)).
+:- mode replace_labels_comps((builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred replace_labels_instr(ll_backend.llds.instr, ll_backend.llds.instr, map.map(ll_backend.llds.label, ll_backend.llds.label), bool.bool).
+:- mode replace_labels_instr((builtin.in), (builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred replace_labels_instruction(ll_backend.llds.instruction, ll_backend.llds.instruction, map.map(ll_backend.llds.label, ll_backend.llds.label), bool.bool).
+:- mode replace_labels_instruction((builtin.in), (builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred replace_labels_instruction_list(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), map.map(ll_backend.llds.label, ll_backend.llds.label), bool.bool, bool.bool).
+:- mode replace_labels_instruction_list((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- pred replace_labels_label(ll_backend.llds.label, ll_backend.llds.label, map.map(ll_backend.llds.label, ll_backend.llds.label)).
+:- mode replace_labels_label((builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred replace_labels_maybe_label_list(list.list(maybe.maybe(ll_backend.llds.label)), list.list(maybe.maybe(ll_backend.llds.label)), map.map(ll_backend.llds.label, ll_backend.llds.label)).
+:- mode replace_labels_maybe_label_list((builtin.in), (builtin.out), (builtin.in)) is det.
+:- func rval_refers_stackvars(ll_backend.llds.rval) = bool.bool.
+:- pred skip_comments(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode skip_comments((builtin.in), (builtin.out)) is det.
+:- pred skip_comments_labels(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode skip_comments_labels((builtin.in), (builtin.out)) is det.
+:- pred skip_comments_livevals(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode skip_comments_livevals((builtin.in), (builtin.out)) is det.
+:- pred skip_comments_livevals_labels(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode skip_comments_livevals_labels((builtin.in), (builtin.out)) is det.
+:- pred skip_to_next_label(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode skip_to_next_label((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred straight_alternative(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode straight_alternative((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func touches_nondet_ctrl(list.list(ll_backend.llds.instruction)) = bool.bool.
