@@ -1,0 +1,5 @@
+:- module (mdb.help).
+:- interface.
+:- type help_res.
+:- type path.
+:- type system.
