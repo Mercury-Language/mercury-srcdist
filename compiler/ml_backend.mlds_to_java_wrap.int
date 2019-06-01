@@ -1,0 +1,11 @@
+:- module (ml_backend.mlds_to_java_wrap).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_java_util).
+:- import_module (parse_tree.prog_data).
+:- pred generate_addr_wrapper_class(ml_backend.mlds.mlds_module_name, pair.pair(parse_tree.prog_data.arity, list.list(ml_backend.mlds.mlds_code_addr)), ml_backend.mlds.mlds_class_defn, map.map(ml_backend.mlds.mlds_code_addr, ml_backend.mlds_to_java_util.code_addr_wrapper), map.map(ml_backend.mlds.mlds_code_addr, ml_backend.mlds_to_java_util.code_addr_wrapper)).
+:- mode generate_addr_wrapper_class((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

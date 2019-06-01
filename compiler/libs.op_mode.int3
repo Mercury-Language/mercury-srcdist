@@ -1,0 +1,11 @@
+:- module (libs.op_mode).
+:- interface.
+:- type op_mode.
+:- type op_mode_args.
+:- type op_mode_augment.
+:- type op_mode_codegen
+	where	type_is_abstract_enum(2).
+:- type op_mode_interface_file
+	where	type_is_abstract_enum(2).
+:- type op_mode_query
+	where	type_is_abstract_enum(4).
