@@ -1,0 +1,29 @@
+:- module (ml_backend.mlds_to_java_data).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_java_util).
+:- import_module (ml_backend.mlds_to_target_util).
+:- func get_default_initializer_for_java(ml_backend.mlds.mlds_type) = string.
+:- pred output_boxed_rval_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_boxed_rval_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_bracketed_rval_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_bracketed_rval_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_call_rval_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_call_rval_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_alloc_only_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_initializer, maybe.maybe(ml_backend.mlds.mlds_type), io.io, io.io).
+:- mode output_initializer_alloc_only_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_body_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_initializer, maybe.maybe(ml_backend.mlds.mlds_type), io.io, io.io).
+:- mode output_initializer_body_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_body_list_for_java(ml_backend.mlds_to_java_util.java_out_info, list.list(ml_backend.mlds.mlds_initializer), io.io, io.io).
+:- mode output_initializer_body_list_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds_to_target_util.output_aux, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_initializer, io.io, io.io).
+:- mode output_initializer_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_lval_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_lval, io.io, io.io).
+:- mode output_lval_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_rval_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval_maybe_with_enum_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_rval_maybe_with_enum_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

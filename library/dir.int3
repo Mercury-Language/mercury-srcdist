@@ -1,0 +1,7 @@
+:- module dir.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- type foldl_pred(T).
+:- inst (foldl_pred) == (pred(in, in, in, out, in, out, di, uo) is det).
