@@ -1,0 +1,61 @@
+:- module (parse_tree.get_dependencies).
+:- interface.
+:- import_module cord.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module multi_map.
+:- import_module set.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- import_module (parse_tree.prog_item).
+:- type implicit_import_needs
+    --->    implicit_import_needs(((parse_tree.get_dependencies).iin_tabling) :: parse_tree.get_dependencies.maybe_need_tabling, ((parse_tree.get_dependencies).iin_tabling_statistics) :: parse_tree.get_dependencies.maybe_need_tabling_statistics, ((parse_tree.get_dependencies).iin_stm) :: parse_tree.get_dependencies.maybe_need_stm, ((parse_tree.get_dependencies).iin_exception) :: parse_tree.get_dependencies.maybe_need_exception, ((parse_tree.get_dependencies).iin_string_format) :: parse_tree.get_dependencies.maybe_need_string_format, ((parse_tree.get_dependencies).iin_stream_format) :: parse_tree.get_dependencies.maybe_need_stream_format, ((parse_tree.get_dependencies).iin_io) :: parse_tree.get_dependencies.maybe_need_io).
+:- type item_contents
+    --->    item_contents(((parse_tree.get_dependencies).ic_fifos) :: cord.cord(parse_tree.prog_data_foreign.foreign_include_file_info), ((parse_tree.get_dependencies).ic_fact_tables) :: set.set(string), ((parse_tree.get_dependencies).ic_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.get_dependencies).ic_foreign_export_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.get_dependencies).ic_has_main) :: parse_tree.prog_data.has_main).
+:- type maybe_need_exception
+    --->    dont_need_exception 
+    ;       do_need_exception .
+:- type maybe_need_io
+    --->    dont_need_io 
+    ;       do_need_io .
+:- type maybe_need_stm
+    --->    dont_need_stm 
+    ;       do_need_stm .
+:- type maybe_need_stream_format
+    --->    dont_need_stream_format 
+    ;       do_need_stream_format .
+:- type maybe_need_string_format
+    --->    dont_need_string_format 
+    ;       do_need_string_format .
+:- type maybe_need_tabling
+    --->    dont_need_tabling 
+    ;       do_need_tabling .
+:- type maybe_need_tabling_statistics
+    --->    dont_need_tabling_statistics 
+    ;       do_need_tabling_statistics .
+:- pred compute_implicit_import_needs(libs.globals.globals, parse_tree.get_dependencies.implicit_import_needs, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode compute_implicit_import_needs((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred gather_implicit_import_needs_in_clause(parse_tree.prog_item.item_clause_info, parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.implicit_import_needs).
+:- mode gather_implicit_import_needs_in_clause((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred gather_implicit_import_needs_in_goal(parse_tree.prog_item.goal, parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.implicit_import_needs).
+:- mode gather_implicit_import_needs_in_goal((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred gather_implicit_import_needs_in_instance_method(parse_tree.prog_data.instance_method, parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.implicit_import_needs).
+:- mode gather_implicit_import_needs_in_instance_method((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred gather_implicit_import_needs_in_mutable(parse_tree.prog_item.item_mutable_info, parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.implicit_import_needs).
+:- mode gather_implicit_import_needs_in_mutable((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_dependencies_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), multi_map.multi_map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context), multi_map.multi_map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context)).
+:- mode get_dependencies_in_item_blocks((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_fact_table_dependencies_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), list.list(string)).
+:- mode get_fact_table_dependencies_in_item_blocks((builtin.in), (builtin.out)) is det.
+:- pred get_foreign_include_files_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), parse_tree.prog_data_foreign.foreign_include_file_infos).
+:- mode get_foreign_include_files_in_item_blocks((builtin.in), (builtin.out)) is det.
+:- pred get_implicit_dependencies_in_item_blocks(libs.globals.globals, list.list(parse_tree.prog_item.item_block(MS)), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_implicit_dependencies_in_item_blocks((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_implicit_dependencies_in_items(libs.globals.globals, list.list(parse_tree.prog_item.item), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_implicit_dependencies_in_items((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_implicits_foreigns_fact_tables(list.list(parse_tree.prog_item.item), list.list(parse_tree.prog_item.item), parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.implicit_import_needs, parse_tree.get_dependencies.item_contents).
+:- mode get_implicits_foreigns_fact_tables((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func init_implicit_import_needs = parse_tree.get_dependencies.implicit_import_needs.
