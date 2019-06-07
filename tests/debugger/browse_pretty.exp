@@ -1,0 +1,121 @@
+       1:      1  1 CALL pred browse_pretty.main/2-0 (det) browse_pretty.m:18
+mdb> echo on
+Command echo enabled.
+mdb> goto 3
+       3:      2  2 EXIT pred browse_pretty.big_data/1-0 (det) browse_pretty.m:25 (browse_pretty.m:19)
+mdb> print *
+       Data (arg 1)           	big(big(big(small, [|]/2, small), [1, ...], small), [1, 2, 3], big(big/3, [|]/2, small))
+mdb> browse 1
+browser> format pretty
+browser> depth 20
+browser> ls
+big(big(big(small, [1], small), [1, 2], small), [1, 2, 3], 
+  big(big(small, [1, 2, 3, 4], big(small, [1, 2, 3, 4, 5], small)), 
+    [1, 2, 3, 4, 5, 6], small))
+browser> width 131
+browser> ls
+big(big(big(small, [1], small), [1, 2], small), [1, 2, 3], 
+  big(big(small, [1, 2, 3, 4], big(small, [1, 2, 3, 4, 5], small)), [1, 2, 3, 4, 5, 6], small))
+browser> width 30
+browser> ls
+big(
+  big(big(small, [1], small), 
+    [1, 2], small), 
+  [1, 2, 3], 
+  big(
+    big(small, [1, 2, 3, 4], 
+      big(small, 
+        [1, 2, 3, 4, 5], 
+        small)), 
+    [1, 2, 3, 4, 5, 6], 
+    small))
+browser> width 10
+browser> ls
+big(
+  big(
+    big(
+      small, 
+      [1], 
+      small), 
+    [1, 
+     2], 
+    small), 
+  [1, 2, 
+   3], 
+  big(
+    big(
+      small, 
+      [1, 
+       2, 
+       3, 
+       4], 
+      big(
+        small, 
+        [1, 
+         2, 
+         3, 
+         4, 
+         5], 
+        ...
+browser> width 79
+browser> depth 3
+browser> ls
+big(big(big(...), ...), [..., ...], ...)
+browser> format raw_pretty
+browser> lines 4
+browser> width 40
+browser> ls
+big(
+  big(big/3, [|]/2, small), 
+  [|](1, [|](2, [|](3, []))), 
+  big(big/3, [|]/2, small))
+browser> width 80
+browser> ls
+big(
+  big(big(small, [|](1, []), small), [|](1, [|](2, [])), small), 
+  [|](1, [|](2, [|](3, []))), 
+  big(big(small, [|]/2, big/3), [|](1, [|](2, [|](3, [|]/2))), small))
+browser> lines 12
+browser> width 40
+browser> ls
+big(
+  big(
+    big(small, [|](1, []), small), 
+    [|](1, [|](2, [])), 
+    small), 
+  [|](1, [|](2, [|](3, []))), 
+  big(
+    big(small, [|]/2, big/3), 
+    [|](1, [|](2, [|](3, [|]/2))), 
+    small))
+browser> cd 3
+browser> lines 4
+browser> width 30
+browser> ls
+big(
+  big(small, [|]/2, big/3), 
+  [|](1, [|](2, [|]/2)), 
+  small)
+browser> quit
+mdb> print goal
+big_data(big(big(big/3, [|]/2, small), [1, ...], big(big/3, [|]/2, small)))
+mdb> browse goal
+browser> ls
+big_data(
+  big(big/3, [|]/2, big/3))
+browser> ^1
+browser> ls
+big(
+  big(big/3, [|]/2, small), 
+  [|](1, [|](2, [|]/2)), 
+  big(big/3, [|]/2, small))
+browser> ^..
+browser> ls
+big_data(
+  big(big/3, [|]/2, big/3))
+browser> ^1^2^2
+browser> ls
+[|](2, [|](3, []))
+browser> quit
+mdb> continue
+big(big(big(small, [1], small), [1, 2], small), [1, 2, 3], big(big(small, [1, 2, 3, 4], big(small, [1, 2, 3, 4, 5], small)), [1, 2, 3, 4, 5, 6], small)).
