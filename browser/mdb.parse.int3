@@ -1,0 +1,11 @@
+:- module (mdb.parse).
+:- interface.
+:- type command.
+:- type external_request.
+:- type format_option
+	where	type_is_abstract_enum(2).
+:- type format_param_cmd
+	where	type_is_abstract_enum(2).
+:- type path.
+:- type setting_option
+	where	type_is_abstract_enum(3).
