@@ -1,0 +1,13 @@
+module(1, "eqvclass.m",
+	eqvclass,
+	{},
+	{builtin, list, private_builtin, set},
+	{builtin, counter, int, list, map, private_builtin, require, set},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
