@@ -13,6 +13,8 @@ then click on the ellipsis (...) to expand the list of tags.
 
 To keep a clone up-to-date, please use `git fetch --tags`.
 
+To fetch a single tag, use `git fetch origin tag TAG`.
+
 Building from a git checkout
 ----------------------------
 
