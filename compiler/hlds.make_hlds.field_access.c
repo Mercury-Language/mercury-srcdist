@@ -1,0 +1,1207 @@
+/*
+** Automatically generated from `field_access.m'
+** by the Mercury compiler,
+** version rotd-2019-06-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.field_access.
+// :- implementation.
+
+/*
+INIT mercury__hlds__make_hlds__field_access__init
+ENDINIT
+*/
+
+#include "hlds.make_hlds.field_access.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.equiv_type.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_sym_name.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.make_hlds.add_class.mih"
+#include "hlds.make_hlds.goal_expr_to_goal.mih"
+#include "hlds.make_hlds.make_hlds_passes.mih"
+#include "hlds.make_hlds.qual_info.mih"
+#include "hlds.make_hlds.state_var.mih"
+#include "hlds.make_hlds.superhomogeneous.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__field_access__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static MR_Word MR_CALL 
+hlds__make_hlds__field_access__make_field_list_error_4_f_0(
+  MR_Word VarSet_6,
+  MR_Word Context_7,
+  MR_Word Term_8,
+  MR_Word ContextPieces_9);
+
+static void MR_CALL 
+hlds__make_hlds__field_access__expand_get_field_function_call_2_22_p_0(
+  MR_Word Context_1,
+  MR_Word MainContext_2,
+  MR_Word SubContext0_3,
+  MR_Word HeadVar__4_4,
+  MR_Word FieldValueVar_5,
+  MR_Word TermInputVar_6,
+  MR_Word Purity_7,
+  MR_Word * Functor_8,
+  MR_Word * FieldSubContext_9,
+  MR_Word * Goals_10,
+  MR_Word STATE_VARIABLE_SVarState_0_11,
+  MR_Word * STATE_VARIABLE_SVarState_12,
+  MR_Word STATE_VARIABLE_SVarStore_0_13,
+  MR_Word * STATE_VARIABLE_SVarStore_14,
+  MR_Word STATE_VARIABLE_VarSet_0_15,
+  MR_Word * STATE_VARIABLE_VarSet_16,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_17,
+  MR_Word * STATE_VARIABLE_ModuleInfo_18,
+  MR_Word STATE_VARIABLE_QualInfo_0_19,
+  MR_Word * STATE_VARIABLE_QualInfo_20,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22);
+
+static void MR_CALL 
+hlds__make_hlds__field_access__expand_set_field_function_call_2_22_p_0(
+  MR_Word Context_1,
+  MR_Word MainContext_2,
+  MR_Word SubContext0_3,
+  MR_Word HeadVar__4_4,
+  MR_Word FieldValueVar_5,
+  MR_Word TermInputVar_6,
+  MR_Word TermOutputVar_7,
+  MR_Word * Functor_8,
+  MR_Word * FieldSubContext_9,
+  MR_Word * Goals_10,
+  MR_Word STATE_VARIABLE_SVarState_0_11,
+  MR_Word * STATE_VARIABLE_SVarState_12,
+  MR_Word STATE_VARIABLE_SVarStore_0_13,
+  MR_Word * STATE_VARIABLE_SVarStore_14,
+  MR_Word STATE_VARIABLE_VarSet_0_15,
+  MR_Word * STATE_VARIABLE_VarSet_16,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_17,
+  MR_Word * STATE_VARIABLE_ModuleInfo_18,
+  MR_Word STATE_VARIABLE_QualInfo_0_19,
+  MR_Word * STATE_VARIABLE_QualInfo_20,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22);
+
+static void MR_CALL 
+hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0(
+  MR_Word AccessType_13,
+  MR_Word Context_14,
+  MR_Word MainContext_15,
+  MR_Word SubContext_16,
+  MR_Word FieldName_17,
+  MR_Word RetArg_18,
+  MR_Word Args_19,
+  MR_Word Purity_20,
+  MR_Word * Functor_21,
+  MR_Word * Goal_22,
+  MR_Word STATE_VARIABLE_QualInfo_0_26,
+  MR_Word * STATE_VARIABLE_QualInfo_27);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__field_access____Unify____field_list_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__field_access____Compare____field_list_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box hlds__make_hlds__field_access_scalar_common_1[8][2];
+
+static /* final */ const MR_Box hlds__make_hlds__field_access_scalar_common_2[1][3];
+
+
+
+
+static /* final */ const MR_Box hlds__make_hlds__field_access_scalar_common_1[8][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__make_hlds__field_access_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__make_hlds__field_access_scalar_common_2[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__field_access_scalar_common_1[5]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__field_access_scalar_common_1[4])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: expected field name, found"))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__field_access_scalar_common_2[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&hlds__make_hlds__field_access_scalar_common_1[2]))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__field_access__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__field_access__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+    (MR_TypeInfo) (&hlds__make_hlds__field_access__list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__field_access__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__field_access__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__field_access__hlds__make_hlds__field_access__type_ctor_info_field_list_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__make_hlds__field_access____Unify____field_list_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__field_access____Compare____field_list_0_0_10001)),
+  (MR_String) "hlds.make_hlds.field_access",
+  (MR_String) "field_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&hlds__make_hlds__field_access__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0list__ti_list_1term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL
+};
+
+void MR_CALL 
+hlds__make_hlds__field_access____Compare____field_list_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[3]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+hlds__make_hlds__field_access____Unify____field_list_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[3]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__field_access__parse_field_list_4_p_0(
+  MR_Word Term_5,
+  MR_Word VarSet_6,
+  MR_Word ContextPieces_7,
+  MR_Word * MaybeFieldNames_8)
+{
+  {
+    MR_bool succeeded = ((MR_tag((MR_Word) Term_5)) == (MR_Integer) 0);
+    MR_Word FieldNameTerm_9;
+    MR_Word OtherFieldNamesTerm_10;
+    MR_Word Var_18;
+    MR_String Var_19;
+    MR_Word Var_20;
+    MR_Word Var_21;
+    MR_Word Var_22;
+
+    if (succeeded)
+    {
+      Var_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Term_5, (MR_Integer) 0))));
+      Var_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Term_5, (MR_Integer) 1))));
+      succeeded = ((MR_tag((MR_Word) Var_18)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_19 = ((MR_String) ((MR_hl_field(MR_mktag(0), Var_18, (MR_Integer) 0))));
+        succeeded = (strcmp(Var_19, (MR_String) "^") == 0);
+        if (succeeded)
+        {
+          succeeded = (Var_20 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            FieldNameTerm_9 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_20, (MR_Integer) 0))));
+            Var_21 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_20, (MR_Integer) 1))));
+            succeeded = (Var_21 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              OtherFieldNamesTerm_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_21, (MR_Integer) 0))));
+              Var_22 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_21, (MR_Integer) 1))));
+              succeeded = (Var_22 == (MR_Word) ((MR_Unsigned) 0U));
+            }
+          }
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word FieldName_12;
+      MR_Word Args_13;
+
+      succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_args_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), FieldNameTerm_9, &FieldName_12, &Args_13);
+      if (succeeded)
+      {
+        MR_Word MaybeFieldNamesTail_14;
+
+        hlds__make_hlds__field_access__parse_field_list_4_p_0(OtherFieldNamesTerm_10, VarSet_6, ContextPieces_7, &MaybeFieldNamesTail_14);
+        if (((MR_tag((MR_Word) MaybeFieldNamesTail_14)) == (MR_Integer) 0))
+          *MaybeFieldNames_8 = MaybeFieldNamesTail_14;
+        else
+        {
+          MR_Word FieldNamesTail_16 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeFieldNamesTail_14, (MR_Integer) 0))));
+          MR_Word Var_23;
+          MR_Word Var_24;
+
+          {
+            Var_24 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_24, 0) = ((MR_Box) (FieldName_12));
+            MR_hl_field(MR_mktag(0), Var_24, 1) = ((MR_Box) (Args_13));
+          }
+          {
+            Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) (Var_24));
+            MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (FieldNamesTail_16));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *MaybeFieldNames_8 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_23));
+          }
+        }
+      }
+      else
+      {
+        MR_Word Spec_17;
+        MR_Word Var_25;
+        MR_Word Var_26;
+        MR_String TermStr_47;
+        MR_Word Pieces_48;
+        MR_Word Var_50;
+        MR_Word Var_52;
+        MR_Word Var_55;
+        MR_Word Var_56;
+        MR_Word Var_65;
+        MR_Word Var_66;
+        MR_Word Var_67;
+        MR_Word Var_68;
+
+        Var_25 = mercury__term__get_term_context_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), FieldNameTerm_9);
+        TermStr_47 = parse_tree__parse_tree_out_term__mercury_term_to_string_3_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_6, (MR_Integer) 0, Term_5);
+        {
+          Var_56 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_56, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(MR_mktag(3), Var_56, 1) = ((MR_Box) (TermStr_47));
+        }
+        {
+          Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_55, 0) = ((MR_Box) (Var_56));
+          MR_hl_field(MR_mktag(1), Var_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__field_access_scalar_common_1[6])));
+        }
+        {
+          Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__field_access_scalar_common_1[7])));
+          MR_hl_field(MR_mktag(1), Var_52, 1) = ((MR_Box) (Var_55));
+        }
+        {
+          Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_50, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(MR_mktag(1), Var_50, 1) = ((MR_Box) (Var_52));
+        }
+        Pieces_48 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), ContextPieces_7, Var_50);
+        {
+          Var_68 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_68, 0) = ((MR_Box) (Pieces_48));
+        }
+        {
+          Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_67, 0) = ((MR_Box) (Var_68));
+          MR_hl_field(MR_mktag(1), Var_67, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_66 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_66, 0) = ((MR_Box) (Var_25));
+          MR_hl_field(MR_mktag(0), Var_66, 1) = ((MR_Box) (Var_67));
+        }
+        {
+          Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_65, 0) = ((MR_Box) (Var_66));
+          MR_hl_field(MR_mktag(1), Var_65, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Spec_17 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Spec_17, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(MR_mktag(0), Spec_17, 1) = ((MR_Box) ((MR_Unsigned) 12U));
+          MR_hl_field(MR_mktag(0), Spec_17, 2) = ((MR_Box) (Var_65));
+        }
+        {
+          Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_26, 0) = ((MR_Box) (Spec_17));
+          MR_hl_field(MR_mktag(1), Var_26, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeFieldNames_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_26));
+        }
+      }
+    }
+    else
+    {
+      MR_Word FieldName_35;
+      MR_Word Args_36;
+
+      succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_args_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Term_5, &FieldName_35, &Args_36);
+      if (succeeded)
+      {
+        MR_Word Var_28;
+        MR_Word Var_29;
+
+        {
+          Var_29 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_29, 0) = ((MR_Box) (FieldName_35));
+          MR_hl_field(MR_mktag(0), Var_29, 1) = ((MR_Box) (Args_36));
+        }
+        {
+          Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_28, 0) = ((MR_Box) (Var_29));
+          MR_hl_field(MR_mktag(1), Var_28, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeFieldNames_8 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_28));
+        }
+      }
+      else
+      {
+        MR_Word Var_31;
+        MR_Word Var_32;
+        MR_Word Spec_34;
+
+        Var_31 = mercury__term__get_term_context_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Term_5);
+        Spec_34 = hlds__make_hlds__field_access__make_field_list_error_4_f_0(VarSet_6, Var_31, Term_5, ContextPieces_7);
+        {
+          Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_32, 0) = ((MR_Box) (Spec_34));
+          MR_hl_field(MR_mktag(1), Var_32, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeFieldNames_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_32));
+        }
+      }
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__field_access__make_field_list_error_4_f_0(
+  MR_Word VarSet_6,
+  MR_Word Context_7,
+  MR_Word Term_8,
+  MR_Word ContextPieces_9)
+{
+  {
+    MR_Word Spec_10;
+    MR_String TermStr_11;
+    MR_Word Pieces_12;
+    MR_Word Var_14;
+    MR_Word Var_16;
+    MR_Word Var_19;
+    MR_Word Var_20;
+    MR_Word Var_29;
+    MR_Word Var_30;
+    MR_Word Var_31;
+    MR_Word Var_32;
+
+    TermStr_11 = parse_tree__parse_tree_out_term__mercury_term_to_string_3_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_6, (MR_Integer) 0, Term_8);
+    {
+      Var_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_20, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(3), Var_20, 1) = ((MR_Box) (TermStr_11));
+    }
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (Var_20));
+      MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__field_access_scalar_common_1[6])));
+    }
+    {
+      Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__field_access_scalar_common_1[7])));
+      MR_hl_field(MR_mktag(1), Var_16, 1) = ((MR_Box) (Var_19));
+    }
+    {
+      Var_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_14, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(1), Var_14, 1) = ((MR_Box) (Var_16));
+    }
+    Pieces_12 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), ContextPieces_9, Var_14);
+    {
+      Var_32 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_32, 0) = ((MR_Box) (Pieces_12));
+    }
+    {
+      Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_31, 0) = ((MR_Box) (Var_32));
+      MR_hl_field(MR_mktag(1), Var_31, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_30 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_30, 0) = ((MR_Box) (Context_7));
+      MR_hl_field(MR_mktag(0), Var_30, 1) = ((MR_Box) (Var_31));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (Var_30));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Spec_10 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_10, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(0), Spec_10, 1) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_10, 2) = ((MR_Box) (Var_29));
+    }
+    return Spec_10;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__field_access__expand_get_field_function_call_22_p_0(
+  MR_Word Context_23,
+  MR_Word MainContext_24,
+  MR_Word SubContext0_25,
+  MR_Word FieldNames_26,
+  MR_Word FieldValueVar_27,
+  MR_Word TermInputVar_28,
+  MR_Word Purity_29,
+  MR_Word * Functor_30,
+  MR_Word * FieldSubContext_31,
+  MR_Word * Goal_32,
+  MR_Word STATE_VARIABLE_SVarState_0_41,
+  MR_Word * STATE_VARIABLE_SVarState_42,
+  MR_Word STATE_VARIABLE_SVarStore_0_43,
+  MR_Word * STATE_VARIABLE_SVarStore_44,
+  MR_Word STATE_VARIABLE_VarSet_0_45,
+  MR_Word * STATE_VARIABLE_VarSet_46,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_47,
+  MR_Word * STATE_VARIABLE_ModuleInfo_48,
+  MR_Word STATE_VARIABLE_QualInfo_0_49,
+  MR_Word * STATE_VARIABLE_QualInfo_50,
+  MR_Word STATE_VARIABLE_Specs_0_51,
+  MR_Word * STATE_VARIABLE_Specs_52)
+{
+  {
+    MR_Word Goals_39;
+    MR_Word GoalInfo_40;
+
+    hlds__make_hlds__field_access__expand_get_field_function_call_2_22_p_0(Context_23, MainContext_24, SubContext0_25, FieldNames_26, FieldValueVar_27, TermInputVar_28, Purity_29, Functor_30, FieldSubContext_31, &Goals_39, STATE_VARIABLE_SVarState_0_41, STATE_VARIABLE_SVarState_42, STATE_VARIABLE_SVarStore_0_43, STATE_VARIABLE_SVarStore_44, STATE_VARIABLE_VarSet_0_45, STATE_VARIABLE_VarSet_46, STATE_VARIABLE_ModuleInfo_0_47, STATE_VARIABLE_ModuleInfo_48, STATE_VARIABLE_QualInfo_0_49, STATE_VARIABLE_QualInfo_50, STATE_VARIABLE_Specs_0_51, STATE_VARIABLE_Specs_52);
+    hlds__hlds_goal__goal_info_init_2_p_0(Context_23, &GoalInfo_40);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(Goals_39, GoalInfo_40, Goal_32);
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__field_access__expand_dcg_field_extraction_goal_22_p_0(
+  MR_Word Context_23,
+  MR_Word MainContext_24,
+  MR_Word SubContext_25,
+  MR_Word FieldNames_26,
+  MR_Word FieldValueVar_27,
+  MR_Word TermInputVar_28,
+  MR_Word TermOutputVar_29,
+  MR_Word * Functor_30,
+  MR_Word * FieldSubContext_31,
+  MR_Word * Goal_32,
+  MR_Word STATE_VARIABLE_SVarState_0_43,
+  MR_Word * STATE_VARIABLE_SVarState_44,
+  MR_Word STATE_VARIABLE_SVarStore_0_45,
+  MR_Word * STATE_VARIABLE_SVarStore_46,
+  MR_Word STATE_VARIABLE_VarSet_0_47,
+  MR_Word * STATE_VARIABLE_VarSet_48,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_49,
+  MR_Word * STATE_VARIABLE_ModuleInfo_50,
+  MR_Word STATE_VARIABLE_QualInfo_0_51,
+  MR_Word * STATE_VARIABLE_QualInfo_52,
+  MR_Word STATE_VARIABLE_Specs_0_53,
+  MR_Word * STATE_VARIABLE_Specs_54)
+{
+  {
+    MR_Word UnifyDCG_39;
+    MR_Word Goals1_40;
+    MR_Word Goals_41;
+    MR_Word GoalInfo_42;
+    MR_Word Var_55;
+    MR_Word STATE_VARIABLE_QualInfo_56_56;
+
+    {
+      Var_55 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_55, 0) = ((MR_Box) (TermInputVar_28));
+    }
+    hlds__make_hlds__qual_info__make_atomic_unification_8_p_0(TermOutputVar_29, Var_55, Context_23, MainContext_24, SubContext_25, &UnifyDCG_39, STATE_VARIABLE_QualInfo_0_51, &STATE_VARIABLE_QualInfo_56_56);
+    hlds__make_hlds__field_access__expand_get_field_function_call_2_22_p_0(Context_23, MainContext_24, SubContext_25, FieldNames_26, FieldValueVar_27, TermOutputVar_29, (MR_Integer) 0, Functor_30, FieldSubContext_31, &Goals1_40, STATE_VARIABLE_SVarState_0_43, STATE_VARIABLE_SVarState_44, STATE_VARIABLE_SVarStore_0_45, STATE_VARIABLE_SVarStore_46, STATE_VARIABLE_VarSet_0_47, STATE_VARIABLE_VarSet_48, STATE_VARIABLE_ModuleInfo_0_49, STATE_VARIABLE_ModuleInfo_50, STATE_VARIABLE_QualInfo_56_56, STATE_VARIABLE_QualInfo_52, STATE_VARIABLE_Specs_0_53, STATE_VARIABLE_Specs_54);
+    {
+      Goals_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Goals_41, 0) = ((MR_Box) (UnifyDCG_39));
+      MR_hl_field(MR_mktag(1), Goals_41, 1) = ((MR_Box) (Goals1_40));
+    }
+    hlds__hlds_goal__goal_info_init_2_p_0(Context_23, &GoalInfo_42);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(Goals_41, GoalInfo_42, Goal_32);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__field_access__expand_get_field_function_call_2_22_p_0(
+  MR_Word Context_1,
+  MR_Word MainContext_2,
+  MR_Word SubContext0_3,
+  MR_Word HeadVar__4_4,
+  MR_Word FieldValueVar_5,
+  MR_Word TermInputVar_6,
+  MR_Word Purity_7,
+  MR_Word * Functor_8,
+  MR_Word * FieldSubContext_9,
+  MR_Word * Goals_10,
+  MR_Word STATE_VARIABLE_SVarState_0_11,
+  MR_Word * STATE_VARIABLE_SVarState_12,
+  MR_Word STATE_VARIABLE_SVarStore_0_13,
+  MR_Word * STATE_VARIABLE_SVarStore_14,
+  MR_Word STATE_VARIABLE_VarSet_0_15,
+  MR_Word * STATE_VARIABLE_VarSet_16,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_17,
+  MR_Word * STATE_VARIABLE_ModuleInfo_18,
+  MR_Word STATE_VARIABLE_QualInfo_0_19,
+  MR_Word * STATE_VARIABLE_QualInfo_20,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22)
+{
+  if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    {
+      mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.field_access.expand_get_field_function_call_2\'/22", (MR_String) "empty list of field names");
+      return;
+    }
+  }
+  else
+  {
+    MR_Word FieldName_55;
+    MR_Word FieldArgs_56;
+    MR_Word FieldNames_57 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__4_4, (MR_Integer) 1))));
+    MR_Word FieldArgVars_70;
+    MR_Word GetArgVars_71;
+    MR_Word Goals2_81;
+    MR_Word ArgContext_82;
+    MR_Word GoalInfo_83;
+    MR_Word Conj0_84;
+    MR_Word Conj_85;
+    MR_Word Var_98 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__4_4, (MR_Integer) 0))));
+    MR_Word STATE_VARIABLE_VarSet_99_99;
+    MR_Word STATE_VARIABLE_SVarState_100_100;
+    MR_Word STATE_VARIABLE_Specs_101_101;
+    MR_Word Var_102;
+    MR_Word STATE_VARIABLE_SVarState_112_112;
+    MR_Word STATE_VARIABLE_SVarStore_113_113;
+    MR_Word STATE_VARIABLE_VarSet_114_114;
+    MR_Word STATE_VARIABLE_ModuleInfo_115_115;
+    MR_Word STATE_VARIABLE_QualInfo_116_116;
+    MR_Word STATE_VARIABLE_Specs_117_117;
+    MR_Word STATE_VARIABLE_SVarStore_119_119;
+
+    FieldName_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_98, (MR_Integer) 0))));
+    FieldArgs_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_98, (MR_Integer) 1))));
+    hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_8_p_0(FieldArgs_56, &FieldArgVars_70, STATE_VARIABLE_VarSet_0_15, &STATE_VARIABLE_VarSet_99_99, STATE_VARIABLE_SVarState_0_11, &STATE_VARIABLE_SVarState_100_100, STATE_VARIABLE_Specs_0_21, &STATE_VARIABLE_Specs_101_101);
+    {
+      Var_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_102, 0) = ((MR_Box) (TermInputVar_6));
+      MR_hl_field(MR_mktag(1), Var_102, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    GetArgVars_71 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), FieldArgVars_70, Var_102);
+    if ((FieldNames_57 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Goal_125;
+
+      hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0((MR_Integer) 0, Context_1, MainContext_2, SubContext0_3, FieldName_55, FieldValueVar_5, GetArgVars_71, Purity_7, Functor_8, &Goal_125, STATE_VARIABLE_QualInfo_0_19, &STATE_VARIABLE_QualInfo_116_116);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        *FieldSubContext_9 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (*Functor_8));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (SubContext0_3));
+      }
+      {
+        Goals2_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Goals2_81, 0) = ((MR_Box) (Goal_125));
+        MR_hl_field(MR_mktag(1), Goals2_81, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      STATE_VARIABLE_SVarState_112_112 = STATE_VARIABLE_SVarState_100_100;
+      STATE_VARIABLE_SVarStore_113_113 = STATE_VARIABLE_SVarStore_0_13;
+      STATE_VARIABLE_VarSet_114_114 = STATE_VARIABLE_VarSet_99_99;
+      STATE_VARIABLE_ModuleInfo_115_115 = STATE_VARIABLE_ModuleInfo_0_17;
+      STATE_VARIABLE_Specs_117_117 = STATE_VARIABLE_Specs_101_101;
+    }
+    else
+    {
+      MR_Word SubTermInputVar_74;
+      MR_Word Goal_75;
+      MR_Integer TermInputArgNumber_76;
+      MR_Word TermInputContext_77;
+      MR_Word SubContext_78;
+      MR_Word Goals1_80;
+      MR_Word STATE_VARIABLE_VarSet_107_107;
+      MR_Word STATE_VARIABLE_QualInfo_109_109;
+      MR_Integer Var_111;
+      MR_Word Var_79;
+
+      mercury__varset__new_var_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &SubTermInputVar_74, STATE_VARIABLE_VarSet_99_99, &STATE_VARIABLE_VarSet_107_107);
+      hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0((MR_Integer) 0, Context_1, MainContext_2, SubContext0_3, FieldName_55, SubTermInputVar_74, GetArgVars_71, Purity_7, Functor_8, &Goal_75, STATE_VARIABLE_QualInfo_0_19, &STATE_VARIABLE_QualInfo_109_109);
+      Var_111 = mercury__list__length_1_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), FieldArgVars_70);
+      TermInputArgNumber_76 = (MR_Integer) ((MR_Unsigned) (MR_Integer) 1 + (MR_Unsigned) Var_111);
+      {
+        TermInputContext_77 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), TermInputContext_77, 0) = ((MR_Box) (*Functor_8));
+        MR_hl_field(MR_mktag(0), TermInputContext_77, 1) = ((MR_Box) (TermInputArgNumber_76));
+      }
+      {
+        SubContext_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), SubContext_78, 0) = ((MR_Box) (TermInputContext_77));
+        MR_hl_field(MR_mktag(1), SubContext_78, 1) = ((MR_Box) (SubContext0_3));
+      }
+      hlds__make_hlds__field_access__expand_get_field_function_call_2_22_p_0(Context_1, MainContext_2, SubContext_78, FieldNames_57, FieldValueVar_5, SubTermInputVar_74, Purity_7, &Var_79, FieldSubContext_9, &Goals1_80, STATE_VARIABLE_SVarState_100_100, &STATE_VARIABLE_SVarState_112_112, STATE_VARIABLE_SVarStore_0_13, &STATE_VARIABLE_SVarStore_113_113, STATE_VARIABLE_VarSet_107_107, &STATE_VARIABLE_VarSet_114_114, STATE_VARIABLE_ModuleInfo_0_17, &STATE_VARIABLE_ModuleInfo_115_115, STATE_VARIABLE_QualInfo_109_109, &STATE_VARIABLE_QualInfo_116_116, STATE_VARIABLE_Specs_101_101, &STATE_VARIABLE_Specs_117_117);
+      {
+        Goals2_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Goals2_81, 0) = ((MR_Box) (Goal_75));
+        MR_hl_field(MR_mktag(1), Goals2_81, 1) = ((MR_Box) (Goals1_80));
+      }
+    }
+    {
+      ArgContext_82 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ArgContext_82, 0) = ((MR_Box) (*Functor_8));
+      MR_hl_field(MR_mktag(2), ArgContext_82, 1) = ((MR_Box) (MainContext_2));
+      MR_hl_field(MR_mktag(2), ArgContext_82, 2) = ((MR_Box) (SubContext0_3));
+    }
+    hlds__hlds_goal__goal_info_init_2_p_0(Context_1, &GoalInfo_83);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(Goals2_81, GoalInfo_83, &Conj0_84);
+    hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(FieldArgVars_70, FieldArgs_56, Context_1, ArgContext_82, Conj0_84, &Conj_85, STATE_VARIABLE_SVarState_112_112, STATE_VARIABLE_SVarState_12, STATE_VARIABLE_SVarStore_113_113, &STATE_VARIABLE_SVarStore_119_119, STATE_VARIABLE_VarSet_114_114, STATE_VARIABLE_VarSet_16, STATE_VARIABLE_ModuleInfo_115_115, STATE_VARIABLE_ModuleInfo_18, STATE_VARIABLE_QualInfo_116_116, STATE_VARIABLE_QualInfo_20, STATE_VARIABLE_Specs_117_117, STATE_VARIABLE_Specs_22);
+    hlds__make_hlds__state_var__svar_goal_to_conj_list_4_p_0(Conj_85, Goals_10, STATE_VARIABLE_SVarStore_119_119, STATE_VARIABLE_SVarStore_14);
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__field_access__expand_set_field_function_call_22_p_0(
+  MR_Word Context_23,
+  MR_Word MainContext_24,
+  MR_Word SubContext0_25,
+  MR_Word FieldNames_26,
+  MR_Word FieldValueVar_27,
+  MR_Word TermInputVar_28,
+  MR_Word TermOutputVar_29,
+  MR_Word * Functor_30,
+  MR_Word * FieldSubContext_31,
+  MR_Word * Goal_32,
+  MR_Word STATE_VARIABLE_SVarState_0_41,
+  MR_Word * STATE_VARIABLE_SVarState_42,
+  MR_Word STATE_VARIABLE_SVarStore_0_43,
+  MR_Word * STATE_VARIABLE_SVarStore_44,
+  MR_Word STATE_VARIABLE_VarSet_0_45,
+  MR_Word * STATE_VARIABLE_VarSet_46,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_47,
+  MR_Word * STATE_VARIABLE_ModuleInfo_48,
+  MR_Word STATE_VARIABLE_QualInfo_0_49,
+  MR_Word * STATE_VARIABLE_QualInfo_50,
+  MR_Word STATE_VARIABLE_Specs_0_51,
+  MR_Word * STATE_VARIABLE_Specs_52)
+{
+  {
+    MR_Word Goals_39;
+    MR_Word GoalInfo_40;
+
+    hlds__make_hlds__field_access__expand_set_field_function_call_2_22_p_0(Context_23, MainContext_24, SubContext0_25, FieldNames_26, FieldValueVar_27, TermInputVar_28, TermOutputVar_29, Functor_30, FieldSubContext_31, &Goals_39, STATE_VARIABLE_SVarState_0_41, STATE_VARIABLE_SVarState_42, STATE_VARIABLE_SVarStore_0_43, STATE_VARIABLE_SVarStore_44, STATE_VARIABLE_VarSet_0_45, STATE_VARIABLE_VarSet_46, STATE_VARIABLE_ModuleInfo_0_47, STATE_VARIABLE_ModuleInfo_48, STATE_VARIABLE_QualInfo_0_49, STATE_VARIABLE_QualInfo_50, STATE_VARIABLE_Specs_0_51, STATE_VARIABLE_Specs_52);
+    hlds__hlds_goal__goal_info_init_2_p_0(Context_23, &GoalInfo_40);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(Goals_39, GoalInfo_40, Goal_32);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__field_access__expand_set_field_function_call_2_22_p_0(
+  MR_Word Context_1,
+  MR_Word MainContext_2,
+  MR_Word SubContext0_3,
+  MR_Word HeadVar__4_4,
+  MR_Word FieldValueVar_5,
+  MR_Word TermInputVar_6,
+  MR_Word TermOutputVar_7,
+  MR_Word * Functor_8,
+  MR_Word * FieldSubContext_9,
+  MR_Word * Goals_10,
+  MR_Word STATE_VARIABLE_SVarState_0_11,
+  MR_Word * STATE_VARIABLE_SVarState_12,
+  MR_Word STATE_VARIABLE_SVarStore_0_13,
+  MR_Word * STATE_VARIABLE_SVarStore_14,
+  MR_Word STATE_VARIABLE_VarSet_0_15,
+  MR_Word * STATE_VARIABLE_VarSet_16,
+  MR_Word STATE_VARIABLE_ModuleInfo_0_17,
+  MR_Word * STATE_VARIABLE_ModuleInfo_18,
+  MR_Word STATE_VARIABLE_QualInfo_0_19,
+  MR_Word * STATE_VARIABLE_QualInfo_20,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22)
+{
+  if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    {
+      mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.field_access.expand_set_field_function_call_2\'/22", (MR_String) "empty list of field names");
+      return;
+    }
+  }
+  else
+  {
+    MR_Word FieldName_55;
+    MR_Word FieldArgs_56;
+    MR_Word FieldNames_57 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__4_4, (MR_Integer) 1))));
+    MR_Word FieldArgVars_70;
+    MR_Word Goals1_84;
+    MR_Word ArgContext_86;
+    MR_Word GoalInfo_87;
+    MR_Word Conj0_88;
+    MR_Word Conj_89;
+    MR_Word Var_102 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__4_4, (MR_Integer) 0))));
+    MR_Word STATE_VARIABLE_VarSet_103_103;
+    MR_Word STATE_VARIABLE_SVarState_104_104;
+    MR_Word STATE_VARIABLE_Specs_105_105;
+    MR_Word STATE_VARIABLE_SVarState_129_129;
+    MR_Word STATE_VARIABLE_SVarStore_130_130;
+    MR_Word STATE_VARIABLE_VarSet_131_131;
+    MR_Word STATE_VARIABLE_ModuleInfo_132_132;
+    MR_Word STATE_VARIABLE_QualInfo_133_133;
+    MR_Word STATE_VARIABLE_Specs_134_134;
+    MR_Word STATE_VARIABLE_SVarStore_139_139;
+
+    FieldName_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_102, (MR_Integer) 0))));
+    FieldArgs_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_102, (MR_Integer) 1))));
+    hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_8_p_0(FieldArgs_56, &FieldArgVars_70, STATE_VARIABLE_VarSet_0_15, &STATE_VARIABLE_VarSet_103_103, STATE_VARIABLE_SVarState_0_11, &STATE_VARIABLE_SVarState_104_104, STATE_VARIABLE_Specs_0_21, &STATE_VARIABLE_Specs_105_105);
+    if ((FieldNames_57 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Goal_85;
+      MR_Word Var_106;
+      MR_Word Var_107;
+      MR_Word SetArgs_145;
+
+      {
+        Var_107 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_107, 0) = ((MR_Box) (FieldValueVar_5));
+        MR_hl_field(MR_mktag(1), Var_107, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_106, 0) = ((MR_Box) (TermInputVar_6));
+        MR_hl_field(MR_mktag(1), Var_106, 1) = ((MR_Box) (Var_107));
+      }
+      SetArgs_145 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), FieldArgVars_70, Var_106);
+      hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0((MR_Integer) 1, Context_1, MainContext_2, SubContext0_3, FieldName_55, TermOutputVar_7, SetArgs_145, (MR_Integer) 0, Functor_8, &Goal_85, STATE_VARIABLE_QualInfo_0_19, &STATE_VARIABLE_QualInfo_133_133);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        *FieldSubContext_9 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (*Functor_8));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (SubContext0_3));
+      }
+      {
+        Goals1_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Goals1_84, 0) = ((MR_Box) (Goal_85));
+        MR_hl_field(MR_mktag(1), Goals1_84, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      STATE_VARIABLE_SVarState_129_129 = STATE_VARIABLE_SVarState_104_104;
+      STATE_VARIABLE_SVarStore_130_130 = STATE_VARIABLE_SVarStore_0_13;
+      STATE_VARIABLE_VarSet_131_131 = STATE_VARIABLE_VarSet_103_103;
+      STATE_VARIABLE_ModuleInfo_132_132 = STATE_VARIABLE_ModuleInfo_0_17;
+      STATE_VARIABLE_Specs_134_134 = STATE_VARIABLE_Specs_105_105;
+    }
+    else
+    {
+      MR_Word SubTermInputVar_73;
+      MR_Word SubTermOutputVar_74;
+      MR_Word SetArgs_75;
+      MR_Word UpdateGoal_76;
+      MR_Word GetSubFieldGoal_78;
+      MR_Integer SubTermInputArgNumber_79;
+      MR_Word TermInputContext_80;
+      MR_Word SubContext_81;
+      MR_Word Goals0_83;
+      MR_Word STATE_VARIABLE_VarSet_113_113;
+      MR_Word STATE_VARIABLE_VarSet_114_114;
+      MR_Word Var_115;
+      MR_Word Var_116;
+      MR_Word STATE_VARIABLE_QualInfo_120_120;
+      MR_Word Var_122;
+      MR_Word STATE_VARIABLE_QualInfo_124_124;
+      MR_Word Var_125;
+      MR_Integer Var_128;
+      MR_Word Var_135;
+      MR_Word Var_136;
+      MR_Word Var_77;
+      MR_Word Var_82;
+
+      mercury__varset__new_var_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &SubTermInputVar_73, STATE_VARIABLE_VarSet_103_103, &STATE_VARIABLE_VarSet_113_113);
+      mercury__varset__new_var_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &SubTermOutputVar_74, STATE_VARIABLE_VarSet_113_113, &STATE_VARIABLE_VarSet_114_114);
+      {
+        Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_116, 0) = ((MR_Box) (SubTermOutputVar_74));
+        MR_hl_field(MR_mktag(1), Var_116, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_115 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_115, 0) = ((MR_Box) (TermInputVar_6));
+        MR_hl_field(MR_mktag(1), Var_115, 1) = ((MR_Box) (Var_116));
+      }
+      SetArgs_75 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), FieldArgVars_70, Var_115);
+      hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0((MR_Integer) 1, Context_1, MainContext_2, SubContext0_3, FieldName_55, TermOutputVar_7, SetArgs_75, (MR_Integer) 0, Functor_8, &UpdateGoal_76, STATE_VARIABLE_QualInfo_0_19, &STATE_VARIABLE_QualInfo_120_120);
+      {
+        Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_125, 0) = ((MR_Box) (TermInputVar_6));
+        MR_hl_field(MR_mktag(1), Var_125, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      Var_122 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), FieldArgVars_70, Var_125);
+      hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0((MR_Integer) 0, Context_1, MainContext_2, SubContext0_3, FieldName_55, SubTermInputVar_73, Var_122, (MR_Integer) 0, &Var_77, &GetSubFieldGoal_78, STATE_VARIABLE_QualInfo_120_120, &STATE_VARIABLE_QualInfo_124_124);
+      Var_128 = mercury__list__length_1_f_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[1]), FieldArgs_56);
+      SubTermInputArgNumber_79 = (MR_Integer) ((MR_Unsigned) (MR_Integer) 2 + (MR_Unsigned) Var_128);
+      {
+        TermInputContext_80 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), TermInputContext_80, 0) = ((MR_Box) (*Functor_8));
+        MR_hl_field(MR_mktag(0), TermInputContext_80, 1) = ((MR_Box) (SubTermInputArgNumber_79));
+      }
+      {
+        SubContext_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), SubContext_81, 0) = ((MR_Box) (TermInputContext_80));
+        MR_hl_field(MR_mktag(1), SubContext_81, 1) = ((MR_Box) (SubContext0_3));
+      }
+      hlds__make_hlds__field_access__expand_set_field_function_call_2_22_p_0(Context_1, MainContext_2, SubContext_81, FieldNames_57, FieldValueVar_5, SubTermInputVar_73, SubTermOutputVar_74, &Var_82, FieldSubContext_9, &Goals0_83, STATE_VARIABLE_SVarState_104_104, &STATE_VARIABLE_SVarState_129_129, STATE_VARIABLE_SVarStore_0_13, &STATE_VARIABLE_SVarStore_130_130, STATE_VARIABLE_VarSet_114_114, &STATE_VARIABLE_VarSet_131_131, STATE_VARIABLE_ModuleInfo_0_17, &STATE_VARIABLE_ModuleInfo_132_132, STATE_VARIABLE_QualInfo_124_124, &STATE_VARIABLE_QualInfo_133_133, STATE_VARIABLE_Specs_105_105, &STATE_VARIABLE_Specs_134_134);
+      {
+        Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_135, 0) = ((MR_Box) (GetSubFieldGoal_78));
+        MR_hl_field(MR_mktag(1), Var_135, 1) = ((MR_Box) (Goals0_83));
+      }
+      {
+        Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_136, 0) = ((MR_Box) (UpdateGoal_76));
+        MR_hl_field(MR_mktag(1), Var_136, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      Goals1_84 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), Var_135, Var_136);
+    }
+    {
+      ArgContext_86 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), ArgContext_86, 0) = ((MR_Box) (*Functor_8));
+      MR_hl_field(MR_mktag(2), ArgContext_86, 1) = ((MR_Box) (MainContext_2));
+      MR_hl_field(MR_mktag(2), ArgContext_86, 2) = ((MR_Box) (SubContext0_3));
+    }
+    hlds__hlds_goal__goal_info_init_2_p_0(Context_1, &GoalInfo_87);
+    hlds__hlds_goal__conj_list_to_goal_3_p_0(Goals1_84, GoalInfo_87, &Conj0_88);
+    hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(FieldArgVars_70, FieldArgs_56, Context_1, ArgContext_86, Conj0_88, &Conj_89, STATE_VARIABLE_SVarState_129_129, STATE_VARIABLE_SVarState_12, STATE_VARIABLE_SVarStore_130_130, &STATE_VARIABLE_SVarStore_139_139, STATE_VARIABLE_VarSet_131_131, STATE_VARIABLE_VarSet_16, STATE_VARIABLE_ModuleInfo_132_132, STATE_VARIABLE_ModuleInfo_18, STATE_VARIABLE_QualInfo_133_133, STATE_VARIABLE_QualInfo_20, STATE_VARIABLE_Specs_134_134, STATE_VARIABLE_Specs_22);
+    hlds__make_hlds__state_var__svar_goal_to_conj_list_4_p_0(Conj_89, Goals_10, STATE_VARIABLE_SVarStore_139_139, STATE_VARIABLE_SVarStore_14);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__field_access__construct_field_access_function_call_12_p_0(
+  MR_Word AccessType_13,
+  MR_Word Context_14,
+  MR_Word MainContext_15,
+  MR_Word SubContext_16,
+  MR_Word FieldName_17,
+  MR_Word RetArg_18,
+  MR_Word Args_19,
+  MR_Word Purity_20,
+  MR_Word * Functor_21,
+  MR_Word * Goal_22,
+  MR_Word STATE_VARIABLE_QualInfo_0_26,
+  MR_Word * STATE_VARIABLE_QualInfo_27)
+{
+  {
+    MR_Word FuncName_24;
+    MR_Integer Arity_25;
+    MR_Word Var_28;
+    MR_Word Var_29;
+
+    hlds__hlds_pred__field_access_function_name_3_p_0(AccessType_13, FieldName_17, &FuncName_24);
+    mercury__list__length_2_p_0((MR_Word) (&hlds__make_hlds__field_access_scalar_common_1[0]), Args_19, &Arity_25);
+    Var_28 = parse_tree__prog_data__cons_id_dummy_type_ctor_0_f_0();
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+      *Functor_21 = base;
+      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (FuncName_24));
+      MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (Arity_25));
+      MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (Var_28));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (*Functor_21));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(1), Var_29, 2) = ((MR_Box) (Args_19));
+    }
+    hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(RetArg_18, Var_29, Context_14, MainContext_15, SubContext_16, Purity_20, Goal_22, STATE_VARIABLE_QualInfo_0_26, STATE_VARIABLE_QualInfo_27);
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__field_access____Unify____field_list_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__field_access____Unify____field_list_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__field_access____Compare____field_list_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__field_access____Compare____field_list_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__hlds__make_hlds__field_access__init(void)
+{
+}
+
+void mercury__hlds__make_hlds__field_access__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&hlds__make_hlds__field_access__hlds__make_hlds__field_access__type_ctor_info_field_list_0);
+}
+
+void mercury__hlds__make_hlds__field_access__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__make_hlds__field_access__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module hlds.make_hlds.field_access.

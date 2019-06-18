@@ -1,0 +1,7 @@
+:- module display_report.
+:- interface.
+:- import_module display.
+:- import_module profile.
+:- import_module query.
+:- import_module report.
+:- func report_to_display(profile.deep, query.preferences, report.deep_report) = display.display.
