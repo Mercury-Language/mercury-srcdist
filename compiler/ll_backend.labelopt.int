@@ -1,0 +1,10 @@
+:- module (ll_backend.labelopt).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module set_tree234.
+:- import_module (ll_backend.llds).
+:- pred build_useset(list.list(ll_backend.llds.instruction), set_tree234.set_tree234(ll_backend.llds.label), set_tree234.set_tree234(ll_backend.llds.label)).
+:- mode build_useset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred labelopt_main(bool.bool, set_tree234.set_tree234(ll_backend.llds.label), list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool).
+:- mode labelopt_main((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
