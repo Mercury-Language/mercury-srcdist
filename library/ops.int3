@@ -1,0 +1,12 @@
+:- module ops.
+:- interface.
+:- import_module list.
+:- type assoc
+	where	type_is_abstract_enum(1).
+:- type class.
+:- type mercury_op_table.
+:- type op_info.
+:- type priority.
+:- type table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
