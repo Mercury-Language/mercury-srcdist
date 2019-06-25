@@ -1,0 +1,5 @@
+:- module exclude.
+:- interface.
+:- type exclude_contents.
+:- type exclude_file.
+:- type excluded_modules.

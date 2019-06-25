@@ -1,0 +1,12 @@
+:- module (hlds.goal_form).
+:- interface.
+:- type goal_loop_or_throw_status
+	where	type_is_abstract_enum(1).
+:- type goal_loop_status
+	where	type_is_abstract_enum(1).
+:- type goal_throw_status
+	where	type_is_abstract_enum(1).
+:- type has_subgoals
+	where	type_is_abstract_enum(1).
+:- type is_termvar_needed
+	where	type_is_abstract_enum(1).

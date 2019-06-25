@@ -1,0 +1,10 @@
+:- module (hlds.code_model).
+:- interface.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type code_model
+    --->    model_det 
+    ;       model_semi 
+    ;       model_non .

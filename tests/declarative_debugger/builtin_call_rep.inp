@@ -1,0 +1,16 @@
+context none
+register --quiet
+untrust 0
+echo on
+step
+print proc_body
+browse proc_body
+cd 2
+ls
+quit
+f
+dd -d 3 -n 7
+b 3
+mark
+y
+c
