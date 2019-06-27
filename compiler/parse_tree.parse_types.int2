@@ -1,0 +1,19 @@
+:- module (parse_tree.parse_types).
+:- interface.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module recompilation.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type item_or_marker
+    --->    iom_item(parse_tree.prog_item.item)
+    ;       iom_marker_include(list.one_or_more(parse_tree.prog_item.item_include))
+    ;       iom_marker_avail(list.one_or_more(parse_tree.prog_item.item_avail))
+    ;       iom_marker_version_numbers(recompilation.version_numbers)
+    ;       iom_marker_src_file(string)
+    ;       iom_marker_module_start(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context, int)
+    ;       iom_marker_module_end(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context, int)
+    ;       iom_marker_section(parse_tree.prog_item.module_section, parse_tree.prog_data.prog_context, int)
+    ;       iom_handled(list.list(parse_tree.error_util.error_spec)).

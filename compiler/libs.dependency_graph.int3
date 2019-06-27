@@ -1,0 +1,8 @@
+:- module (libs.dependency_graph).
+:- interface.
+:- type bottom_up_dependency_sccs(T).
+:- type dependency_arcs(T).
+:- type dependency_graph(T).
+:- type dependency_graph_key(T).
+:- type dependency_info(T).
+:- type scc_map(T).
