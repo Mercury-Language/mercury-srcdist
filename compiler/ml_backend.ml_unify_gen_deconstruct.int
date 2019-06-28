@@ -1,0 +1,20 @@
+:- module (ml_backend.ml_unify_gen_deconstruct).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.ml_unify_gen_util).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type take_addr_info
+    --->    take_addr_info(((ml_backend.ml_unify_gen_deconstruct).tai_address_var) :: parse_tree.prog_data.prog_var, ((ml_backend.ml_unify_gen_deconstruct).tai_offset) :: parse_tree.prog_data.cell_offset, ((ml_backend.ml_unify_gen_deconstruct).tai_field_var_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_unify_gen_deconstruct).tai_maybe_boxed_field_type) :: ml_backend.mlds.mlds_type).
+:- pred ml_gen_dynamic_deconstruct_args(ml_backend.ml_unify_gen_util.field_gen, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_data.constructor_arg_repn), list.list(hlds.hlds_goal.unify_mode), int, parse_tree.prog_data.prog_context, list.list(int), list.list(ml_backend.ml_unify_gen_deconstruct.take_addr_info), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_dynamic_deconstruct_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(bound([])), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode ml_gen_dynamic_deconstruct_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_deconstruction_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), parse_tree.prog_data.can_fail, hlds.hlds_goal.can_cgc, hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_deconstruction_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
