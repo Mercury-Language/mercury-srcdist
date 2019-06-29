@@ -1,0 +1,173 @@
+/*
+** Automatically generated from `message.m'
+** by the Mercury compiler,
+** version rotd-2019-06-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module message.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_message
+#define MR_HEADER_GUARD_message
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MESSAGE_DECL_GUARD
+#define MESSAGE_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer message__mutable_variable_verbosity_level_mut;
+#else
+    extern MR_Word message__mutable_variable_verbosity_level_mut;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock message__mutable_variable_verbosity_level_mut_lock;
+#endif
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct message__message__type_ctor_info_message_0;
+
+extern const MR_TypeCtorInfo_Struct message__message__type_ctor_info_message_level_0;
+
+extern const MR_TypeCtorInfo_Struct message__message__type_ctor_info_message_type_0;
+
+extern const MR_TypeCtorInfo_Struct message__message__type_ctor_info_program_location_0;
+
+void MR_CALL 
+message__append_message_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+message__location_to_string_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+message__message_to_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+message__set_verbosity_level_3_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+message__write_out_messages_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+message__default_verbosity_level_0_f_0(void);
+
+MR_Word MR_CALL 
+message__indent_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+message__indent_size_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+message__message_get_level_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+message__message_level_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+message__nl_0_f_0(void);
+
+MR_Word MR_CALL 
+message__nl_indent_1_f_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+message____Compare____message_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+message____Compare____message_level_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+message____Compare____message_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+message____Compare____program_location_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+message____Index____message_type_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+message____Unify____message_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+message____Unify____message_level_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+message____Unify____message_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+message____Unify____program_location_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__message__init(void);
+void mercury__message__init_type_tables(void);
+void mercury__message__init_debugger(void);
+void mercury__message__required_init(void);
+const char *mercury__message__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_message
+
+// :- end_interface message.

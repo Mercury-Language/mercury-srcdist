@@ -1,0 +1,44 @@
+:- module (parse_tree.parse_tree_out_pragma).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_pragma).
+:- import_module (parse_tree.prog_item).
+:- pred mercury_output_item_pragma(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.item_pragma_info, io.io, io.io).
+:- mode mercury_output_item_pragma((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_decl(mdbcomp.sym_name.sym_name, int, mdbcomp.prim_data.pred_or_func, string, maybe.maybe(string), io.io, io.io).
+:- mode mercury_output_pragma_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_exceptions(parse_tree.prog_item.pragma_info_exceptions, io.io, io.io).
+:- mode mercury_output_pragma_exceptions((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_foreign_decl(parse_tree.prog_item.pragma_info_foreign_decl, io.io, io.io).
+:- mode mercury_output_pragma_foreign_decl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_foreign_proc(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_item.pragma_info_foreign_proc, io.io, io.io).
+:- mode mercury_output_pragma_foreign_proc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_mm_tabling_info(parse_tree.prog_item.pragma_info_mm_tabling_info, io.io, io.io).
+:- mode mercury_output_pragma_mm_tabling_info((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_trailing_info(parse_tree.prog_item.pragma_info_trailing_info, io.io, io.io).
+:- mode mercury_output_pragma_trailing_info((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_type_spec(parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_item.pragma_info_type_spec, io.io, io.io).
+:- mode mercury_output_pragma_type_spec((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_pragma_unused_args(parse_tree.prog_item.pragma_info_unused_args, io.io, io.io).
+:- mode mercury_output_pragma_unused_args((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_pragma_decl_to_string(mdbcomp.sym_name.sym_name, int, mdbcomp.prim_data.pred_or_func, string, maybe.maybe(string)) = string.
+:- func mercury_pragma_foreign_decl_to_string(parse_tree.prog_item.pragma_info_foreign_decl) = string.
+:- func mercury_pragma_foreign_proc_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_item.pragma_info_foreign_proc) = string.
+:- pred write_maybe_arg_size_info(bool.bool, maybe.maybe(parse_tree.prog_data_pragma.generic_arg_size_info(T)), io.io, io.io).
+:- mode write_maybe_arg_size_info((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_maybe_termination_info(bool.bool, maybe.maybe(parse_tree.prog_data_pragma.generic_termination_info(S, T)), io.io, io.io).
+:- mode write_maybe_termination_info((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pragma_structure_reuse_info(parse_tree.parse_tree_out_info.output_lang, maybe.maybe(parse_tree.prog_data.prog_varset), maybe.maybe(parse_tree.prog_data.tvarset), parse_tree.prog_item.pragma_info_structure_reuse, io.io, io.io).
+:- mode write_pragma_structure_reuse_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pragma_structure_sharing_info(parse_tree.parse_tree_out_info.output_lang, maybe.maybe(parse_tree.prog_data.prog_varset), maybe.maybe(parse_tree.prog_data.tvarset), parse_tree.prog_item.pragma_info_structure_sharing, io.io, io.io).
+:- mode write_pragma_structure_sharing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pragma_termination_info_components(parse_tree.parse_tree_out_info.output_lang, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data_pragma.generic_arg_size_info(T)), maybe.maybe(parse_tree.prog_data_pragma.generic_termination_info(S, T)), io.io, io.io).
+:- mode write_pragma_termination_info_components((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
