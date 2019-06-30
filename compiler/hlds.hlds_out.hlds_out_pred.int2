@@ -1,0 +1,18 @@
+:- module ((hlds.hlds_out).hlds_out_pred).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.status).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.prog_data).
+:- import_module ((hlds.hlds_out).hlds_out_util).
+:- type write_which_modes
+    --->    write_actual_modes 
+    ;       write_declared_modes .
