@@ -1,0 +1,12 @@
+:- module (hlds.hlds_promise).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_pred).
+:- type assert_id.
+:- type assertion_table.
+:- type exclusive_id == hlds.hlds_pred.pred_id.
+:- type exclusive_ids == list.list(hlds.hlds_pred.pred_id).
+:- type exclusive_table.
+:- implementation.
+:- import_module multi_map.
+:- type exclusive_table == multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_promise.exclusive_id).

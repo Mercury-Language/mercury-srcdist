@@ -1,0 +1,6 @@
+:- module (hlds.inst_graph).
+:- interface.
+:- type inst_graph.
+:- type inst_graph_info.
+:- type maybe_parent.
+:- type node.

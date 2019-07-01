@@ -1,0 +1,19 @@
+:- module (hlds.hlds_code_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_class).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- func base_typeclass_info_cons_id(hlds.hlds_class.instance_table, parse_tree.prog_data.prog_constraint, int, list.list(parse_tree.prog_data.mer_type)) = parse_tree.prog_data.cons_id.
+:- func cons_id_to_tag(hlds.hlds_module.module_info, parse_tree.prog_data.cons_id) = hlds.hlds_data.cons_tag.
+:- pred get_procedure_matching_argmodes(assoc_list.assoc_list(hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info), list.list(parse_tree.prog_data.mer_mode), hlds.hlds_module.module_info, hlds.hlds_pred.proc_id).
+:- mode get_procedure_matching_argmodes((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_procedure_matching_declmodes_with_renaming(assoc_list.assoc_list(hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info), list.list(parse_tree.prog_data.mer_mode), hlds.hlds_module.module_info, hlds.hlds_pred.proc_id).
+:- mode get_procedure_matching_declmodes_with_renaming((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred make_instance_string(list.list(parse_tree.prog_data.mer_type), string).
+:- mode make_instance_string((builtin.in), (builtin.out)) is det.
+:- func type_ctor_info_cons_id(parse_tree.prog_data.type_ctor) = parse_tree.prog_data.cons_id.
