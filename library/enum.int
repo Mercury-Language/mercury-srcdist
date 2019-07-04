@@ -1,0 +1,7 @@
+:- module enum.
+:- interface.
+:- func det_from_int(int) = T <= (enum.enum(T)).
+:- typeclass enum(T) where [
+	func to_int(T) = int,
+	func from_int(int) = T is semidet
+].

@@ -1,0 +1,55 @@
+echo on
+register --quiet
+break shallow__test
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+yes
+yes
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+yes
+yes
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+yes
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+yes
+yes
+yes
+continue
+continue
