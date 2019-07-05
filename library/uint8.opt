@@ -1,0 +1,224 @@
+:- module uint8.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module math.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module uint.
+
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", uint8).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", uint8).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", uint8).
+:- pragma foreign_import_module("Erlang", io).
+
+:- pragma inline((uint8.(/))/2).
+uint8.(V_4 / V_5) = V_3 :-
+    V_3 = uint8.(V_4 // V_5).
+
+:- pragma inline((uint8.(//))/2).
+uint8.(V_4 // V_5) = V_6 :-
+    ( if
+      V_5 = 0u8 : uint8
+    then
+      V_7 = math.domain_error(V_8) : math.domain_error,
+      V_8 = "uint8.\'//\': division by zero" : string,
+      exception.throw(V_7)
+    else
+      V_6 = uint8.unchecked_quotient(V_4, V_5)
+    ).
+
+:- pragma foreign_proc("C", uint8.cast_from_int(I :: (builtin.in)) = (U8 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U8 = (uint8_t) I;
+").
+
+:- pragma foreign_proc("C", uint8.cast_from_int8(I8 :: (builtin.in)) = (U8 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U8 = (uint8_t) I8;
+").
+
+:- pragma foreign_proc("C", uint8.cast_to_int(U8 :: (builtin.in)) = (I :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    I = U8;
+").
+
+:- pragma foreign_proc("C", uint8.cast_to_uint(U8 :: (builtin.in)) = (U :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U = (MR_Unsigned) U8;
+").
+
+uint8.(V_4 div V_5) = V_3 :-
+    V_3 = uint8.(V_4 // V_5).
+
+:- pragma inline((uint8.even)/1).
+uint8.even(V_2) :-
+    V_3 = uint8.(V_2 /\ V_4),
+    V_4 = 1u8 : uint8,
+    V_3 = 0u8 : uint8.
+
+uint8.max(V_4, V_5) = V_3 :-
+    ( if
+      uint8.(V_4 > V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+uint8.max_uint8 = 255u8.
+
+uint8.min(V_4, V_5) = V_3 :-
+    ( if
+      uint8.(V_4 < V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+uint8.(V_4 mod V_5) = V_3 :-
+    V_3 = uint8.(V_4 rem V_5).
+
+:- pragma foreign_proc("C", uint8.num_leading_zeros(I :: (builtin.in)) = (N :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    N = ML_uint8_nlz_table[I];
+").
+
+:- pragma foreign_proc("C", uint8.num_ones(U :: (builtin.in)) = (N :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    N = ML_uint8_num_ones_table[U];
+").
+
+uint8.num_zeros(V_3) = V_2 :-
+    V_2 = int.(V_4 - V_5),
+    V_4 = 8 : int,
+    V_5 = uint8.num_ones(V_3).
+
+:- pragma inline((uint8.odd)/1).
+uint8.odd(V_2) :-
+    not (
+      V_3 = uint8.(V_2 /\ V_4),
+      V_4 = 1u8 : uint8,
+      V_3 = 0u8 : uint8
+    ).
+
+:- pragma inline((uint8.(rem))/2).
+uint8.(V_4 rem V_5) = V_6 :-
+    ( if
+      V_5 = 0u8 : uint8
+    then
+      V_7 = math.domain_error(V_8) : math.domain_error,
+      V_8 = "uint8.rem: division by zero" : string,
+      exception.throw(V_7)
+    else
+      V_6 = uint8.unchecked_rem(V_4, V_5)
+    ).
+
+:- pragma foreign_proc("C", uint8.to_int(U8 :: (builtin.in)) = (I :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    I = U8;
+").
+
+uint8.uint8_to_doc(V_3) = pretty_printer.str(V_4) :-
+    V_4 = string.uint8_to_string(V_3).
+
+:- pragma exceptions(function, (uint8.(*)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(+)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(+)), 3, 1, will_not_throw).
+:- pragma exceptions(function, (uint8.(+)), 3, 2, will_not_throw).
+:- pragma exceptions(function, (uint8.(-)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(-)), 3, 1, will_not_throw).
+:- pragma exceptions(function, (uint8.(-)), 3, 2, will_not_throw).
+:- pragma exceptions(function, (uint8.(/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.(//)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.(/\)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint8.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(<<)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint8.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint8.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint8.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(>>)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.(\)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(\/)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.cast_from_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.cast_from_int8), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.cast_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.cast_to_uint), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.det_from_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.(div)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint8.even), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint8.from_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.max), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.max_uint8), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.min), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.minus), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(mod)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.num_leading_zeros), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.num_ones), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.num_trailing_zeros), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.num_zeros), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint8.odd), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.plus), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.(rem)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.reverse_bits), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.times), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.uint8_to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint8.unchecked_left_shift), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.unchecked_quotient), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.unchecked_rem), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.unchecked_right_shift), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.xor), 3, 0, will_not_throw).
+:- pragma exceptions(function, (uint8.xor), 3, 1, will_not_throw).
+:- pragma exceptions(function, (uint8.xor), 3, 2, will_not_throw).
+
+:- pragma termination_info(uint8.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'+'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'+'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'-'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'-'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.'//'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.'/\\'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.'<<'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.'>>'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.'\\'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.'\\/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.cast_from_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.cast_from_int8((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.cast_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.cast_to_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.det_from_int((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint8.div((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.even((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint8.from_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(uint8.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((uint8.max_uint8) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint8.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(uint8.minus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.mod((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.num_leading_zeros((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.num_ones((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.num_trailing_zeros((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.num_zeros((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint8.odd((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint8.plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint8.reverse_bits((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint8.times((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint8.uint8_to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint8.unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.xor((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.xor((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint8.xor((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
