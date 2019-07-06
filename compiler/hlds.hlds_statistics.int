@@ -1,0 +1,6 @@
+:- module (hlds.hlds_statistics).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred write_proc_stats_for_module(io.output_stream, string, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_proc_stats_for_module((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
