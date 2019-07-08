@@ -1,0 +1,4 @@
+:- module (ll_backend.exprn_aux).
+:- interface.
+:- type transform_lval(T).
+:- abstract_inst((transform_lval)).

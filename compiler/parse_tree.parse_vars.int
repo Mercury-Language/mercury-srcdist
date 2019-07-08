@@ -1,0 +1,20 @@
+:- module (parse_tree.parse_vars).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.maybe_error).
+:- type plain_state_dot_colon_vars(T)
+    --->    plain_state_dot_colon_vars(list.list(term.var(T)), list.list(term.var(T)), list.list(term.var(T)), list.list(term.var(T))).
+:- type plain_state_vars(T)
+    --->    plain_state_vars(list.list(term.var(T)), list.list(term.var(T))).
+:- pred parse_possibly_repeated_vars(term.term(T), varset.varset(T), cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(list.list(term.var(T)))).
+:- mode parse_possibly_repeated_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_vars(term.term(T), varset.varset(T), cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(list.list(term.var(T)))).
+:- mode parse_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_vars_state_dot_colon_vars(term.term(T), varset.varset(T), cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(parse_tree.parse_vars.plain_state_dot_colon_vars(T))).
+:- mode parse_vars_state_dot_colon_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_vars_state_vars(term.term(T), varset.varset(T), cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(parse_tree.parse_vars.plain_state_vars(T))).
+:- mode parse_vars_state_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

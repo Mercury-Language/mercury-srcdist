@@ -1,0 +1,22 @@
+:- module (mdb.declarative_debugger).
+:- interface.
+:- type decl_answer(T).
+:- type decl_bug.
+:- type decl_confirmation
+	where	type_is_abstract_enum(2).
+:- type decl_contour.
+:- type decl_e_bug.
+:- type decl_evidence(T).
+:- type decl_exception.
+:- type decl_i_bug.
+:- type decl_position.
+:- type decl_question(T).
+:- type decl_truth
+	where	type_is_abstract_enum(2).
+:- type diagnoser_exception.
+:- type diagnoser_response(R).
+:- type diagnoser_state(R).
+:- type final_decl_atom.
+:- type init_decl_atom.
+:- type some_decl_atom.
+:- abstract_inst((known_answer)).

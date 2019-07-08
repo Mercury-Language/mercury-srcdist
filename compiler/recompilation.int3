@@ -1,0 +1,27 @@
+:- module recompilation.
+:- interface.
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.version).
+:- type eqv_expanded_info.
+:- type eqv_expanded_item_set.
+:- type functor_set.
+:- type instance_version_numbers.
+:- type item_id.
+:- type item_id_set(T).
+:- type item_id_set(Map, Set, Cons).
+:- type item_name.
+:- type item_type
+	where	type_is_abstract_enum(4).
+:- type item_version_numbers.
+:- type module_qualifier.
+:- type module_version_numbers_map.
+:- type pred_or_func_set.
+:- type recompilation_info.
+:- type simple_item_set.
+:- type used_items.
+:- type version_number.
+:- type version_number_map.
+:- type version_numbers.
+:- abstract_inst((pred_or_func_item)).
+:- abstract_inst((simple_item)).

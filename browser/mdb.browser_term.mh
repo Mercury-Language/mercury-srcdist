@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `browser_term.m'
+** by the Mercury compiler,
+** version rotd-2019-07-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDB__BROWSER_TERM_MH
+#define MDB__BROWSER_TERM_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+MR_Word ML_BROWSE_plain_term_to_browser_term(MR_Word, MR_Word);
+MR_Word ML_BROWSE_univ_to_browser_term(MR_Word);
+MR_Word ML_BROWSE_synthetic_term_to_browser_term(MR_String, MR_Word, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__BROWSER_TERM_MH */
