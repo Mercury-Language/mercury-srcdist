@@ -1,0 +1,18 @@
+:- module (check_hlds.ordering_mode_constraints).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module (check_hlds.build_mode_constraints).
+:- import_module (check_hlds.prop_mode_constraints).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.goal_path).
+:- type conjunct_id == int.
+:- type mode_ordering_constraint
+    --->    lt(((check_hlds.ordering_mode_constraints).first) :: check_hlds.ordering_mode_constraints.conjunct_id, ((check_hlds.ordering_mode_constraints).second) :: check_hlds.ordering_mode_constraints.conjunct_id).
+:- type mode_ordering_constraints == list.list(check_hlds.ordering_mode_constraints.mode_ordering_constraint).
+:- type ordering_constraints_info
+    --->    ordering_constraints_info(((check_hlds.ordering_mode_constraints).oci_containing_map) :: mdbcomp.goal_path.containing_goal_map, ((check_hlds.ordering_mode_constraints).oci_num_conjuncts) :: int, ((check_hlds.ordering_mode_constraints).oci_constraints) :: set.set(check_hlds.ordering_mode_constraints.mode_ordering_constraint)).
