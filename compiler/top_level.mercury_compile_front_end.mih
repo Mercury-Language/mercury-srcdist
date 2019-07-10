@@ -1,0 +1,93 @@
+/*
+** Automatically generated from `mercury_compile_front_end.m'
+** by the Mercury compiler,
+** version rotd-2019-07-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module top_level.mercury_compile_front_end.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_top_level__mercury_compile_front_end
+#define MR_HEADER_GUARD_top_level__mercury_compile_front_end
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TOP_LEVEL__MERCURY_COMPILE_FRONT_END_DECL_GUARD
+#define TOP_LEVEL__MERCURY_COMPILE_FRONT_END_DECL_GUARD
+#include "top_level.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct top_level__mercury_compile_front_end__top_level__mercury_compile_front_end__type_ctor_info_simplify_pass_0;
+
+void MR_CALL 
+top_level__mercury_compile_front_end__frontend_pass_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12);
+
+void MR_CALL 
+top_level__mercury_compile_front_end__maybe_simplify_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+top_level__mercury_compile_front_end____Compare____simplify_pass_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+top_level__mercury_compile_front_end____Unify____simplify_pass_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__top_level__mercury_compile_front_end__init(void);
+void mercury__top_level__mercury_compile_front_end__init_type_tables(void);
+void mercury__top_level__mercury_compile_front_end__init_debugger(void);
+const char *mercury__top_level__mercury_compile_front_end__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_top_level.mercury_compile_front_end
+
+// :- end_interface top_level.mercury_compile_front_end.

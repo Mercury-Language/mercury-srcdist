@@ -1,0 +1,13 @@
+module(1, "queue.m",
+	queue,
+	{},
+	{builtin, list, private_builtin},
+	{builtin, int, list, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

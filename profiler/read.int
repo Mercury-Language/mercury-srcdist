@@ -1,0 +1,21 @@
+:- module read.
+:- interface.
+:- import_module globals.
+:- import_module io.
+:- import_module maybe.
+:- pred maybe_read_label_addr(maybe.maybe(int), io.io, io.io).
+:- mode maybe_read_label_addr((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_read_label_name(maybe.maybe(string), io.io, io.io).
+:- mode maybe_read_label_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_float(float, io.io, io.io).
+:- mode read_float((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_int(int, io.io, io.io).
+:- mode read_int((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_label_addr(int, io.io, io.io).
+:- mode read_label_addr((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_label_name(string, io.io, io.io).
+:- mode read_label_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_string(string, io.io, io.io).
+:- mode read_string((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_what_to_profile(globals.what_to_profile, io.io, io.io).
+:- mode read_what_to_profile((builtin.out), (builtin.di), (builtin.uo)) is det.

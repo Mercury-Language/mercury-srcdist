@@ -1,0 +1,3 @@
+:- module version_bitmap.
+:- interface.
+:- type version_bitmap.

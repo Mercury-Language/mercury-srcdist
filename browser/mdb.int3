@@ -1,0 +1,15 @@
+:- module mdb.
+:- interface.
+:- include_module (mdb.browse).
+:- include_module (mdb.browser_info).
+:- include_module (mdb.browser_term).
+:- include_module (mdb.collect_lib).
+:- include_module (mdb.cterm).
+:- include_module (mdb.debugger_interface).
+:- include_module (mdb.declarative_debugger).
+:- include_module (mdb.declarative_execution).
+:- include_module (mdb.diff).
+:- include_module (mdb.help).
+:- include_module (mdb.interactive_query).
+:- include_module (mdb.io_action).
+:- include_module (mdb.listing).
