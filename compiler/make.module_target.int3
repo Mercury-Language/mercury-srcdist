@@ -1,0 +1,3 @@
+:- module (make.module_target).
+:- interface.
+:- type foreign_code_file.
