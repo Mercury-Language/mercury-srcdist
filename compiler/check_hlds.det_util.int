@@ -1,0 +1,72 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type contains_format_call
+    --->    does_not_contain_format_call 
+    ;       contains_format_call .
+:- type contains_incomplete_switch
+    --->    does_not_contain_incomplete_switch 
+    ;       contains_incomplete_switch .
+:- type contains_require_scope
+    --->    does_not_contain_require_scope 
+    ;       contains_require_scope .
+:- type det_info.
+:- type maybe_changed
+    --->    changed 
+    ;       unchanged .
+:- type report_pess_extra_vars
+    --->    pess_extra_vars_report 
+    ;       pess_extra_vars_ignore .
+:- pred delete_unreachable_cases(list.list(hlds.hlds_goal.case), list.list(parse_tree.prog_data.cons_id), list.list(hlds.hlds_goal.case), list.list(hlds.hlds_goal.hlds_goal)).
+:- mode delete_unreachable_cases((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred det_get_proc_info(check_hlds.det_util.det_info, hlds.hlds_pred.proc_info).
+:- mode det_get_proc_info((builtin.in), (builtin.out)) is det.
+:- pred det_info_add_error_spec(parse_tree.error_util.error_spec, check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_info_add_error_spec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_info_get_error_specs(check_hlds.det_util.det_info, list.list(parse_tree.error_util.error_spec)).
+:- mode det_info_get_error_specs((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_has_format_call(check_hlds.det_util.det_info, check_hlds.det_util.contains_format_call).
+:- mode det_info_get_has_format_call((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_has_incomplete_switch(check_hlds.det_util.det_info, check_hlds.det_util.contains_incomplete_switch).
+:- mode det_info_get_has_incomplete_switch((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_has_req_scope(check_hlds.det_util.det_info, check_hlds.det_util.contains_require_scope).
+:- mode det_info_get_has_req_scope((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_module_info(check_hlds.det_util.det_info, hlds.hlds_module.module_info).
+:- mode det_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_pess_extra_vars(check_hlds.det_util.det_info, check_hlds.det_util.report_pess_extra_vars).
+:- mode det_info_get_pess_extra_vars((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_pred_proc_id(check_hlds.det_util.det_info, hlds.hlds_pred.pred_proc_id).
+:- mode det_info_get_pred_proc_id((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_varset(check_hlds.det_util.det_info, parse_tree.prog_data.prog_varset).
+:- mode det_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred det_info_get_vartypes(check_hlds.det_util.det_info, hlds.vartypes.vartypes).
+:- mode det_info_get_vartypes((builtin.in), (builtin.out)) is det.
+:- pred det_info_init(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, check_hlds.det_util.report_pess_extra_vars, list.list(parse_tree.error_util.error_spec), check_hlds.det_util.det_info).
+:- mode det_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_info_set_has_format_call(check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_info_set_has_format_call((builtin.in), (builtin.out)) is det.
+:- pred det_info_set_has_incomplete_switch(check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_info_set_has_incomplete_switch((builtin.in), (builtin.out)) is det.
+:- pred det_info_set_has_req_scope(check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_info_set_has_req_scope((builtin.in), (builtin.out)) is det.
+:- pred det_info_set_module_info(hlds.hlds_module.module_info, check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_info_set_module_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_lookup_pred_info_and_detism(check_hlds.det_util.det_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, parse_tree.prog_data.determinism).
+:- mode det_lookup_pred_info_and_detism((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred det_lookup_var_type(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.prog_data.prog_var, hlds.hlds_data.hlds_type_defn).
+:- mode det_lookup_var_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred det_no_output_vars(check_hlds.det_util.det_info, hlds.instmap.instmap, hlds.instmap.instmap_delta, parse_tree.set_of_var.set_of_progvar).
+:- mode det_no_output_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred interpret_unify(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, parse_tree.prog_data.prog_substitution, parse_tree.prog_data.prog_substitution).
+:- mode interpret_unify((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
