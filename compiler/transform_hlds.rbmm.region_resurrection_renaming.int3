@@ -1,0 +1,10 @@
+:- module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- interface.
+:- type exec_path_region_set_table.
+:- type join_point_region_name_table.
+:- type proc_resurrection_path_table.
+:- type rbmm_renaming.
+:- type rbmm_renaming_annotation_proc.
+:- type rbmm_renaming_annotation_table.
+:- type rbmm_renaming_proc.
+:- type rbmm_renaming_table.

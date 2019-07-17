@@ -1,0 +1,15 @@
+:- module (((transform_hlds.ctgc).structure_reuse).indirect).
+:- interface.
+:- import_module hlds.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module ((transform_hlds.ctgc).structure_sharing).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- type sr_request
+    --->    sr_request(((((transform_hlds.ctgc).structure_reuse).indirect).srreq_ppid) :: hlds.hlds_pred.pred_proc_id, ((((transform_hlds.ctgc).structure_reuse).indirect).srreq_args) :: transform_hlds.ctgc.structure_reuse.domain.no_clobber_args).
+:- pred indirect_reuse_pass(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, set.set(transform_hlds.ctgc.structure_reuse.domain.ppid_no_clobbers), set.set(transform_hlds.ctgc.structure_reuse.indirect.sr_request), set.set(transform_hlds.ctgc.structure_reuse.indirect.sr_request)).
+:- mode indirect_reuse_pass((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred indirect_reuse_rerun(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, set.set(transform_hlds.ctgc.structure_reuse.domain.ppid_no_clobbers), set.set(transform_hlds.ctgc.structure_reuse.indirect.sr_request), set.set(transform_hlds.ctgc.structure_reuse.indirect.sr_request), set.set(transform_hlds.ctgc.structure_reuse.indirect.sr_request)).
+:- mode indirect_reuse_rerun((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

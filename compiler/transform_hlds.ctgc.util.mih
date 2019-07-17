@@ -1,0 +1,100 @@
+/*
+** Automatically generated from `ctgc.util.m'
+** by the Mercury compiler,
+** version rotd-2019-07-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__util
+#define MR_HEADER_GUARD_transform_hlds__ctgc__util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__UTIL_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__UTIL_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__pred_requires_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__pred_requires_no_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__some_preds_require_no_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__top_cell_may_be_reusable_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__type_needs_sharing_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__util__var_needs_sharing_analysis_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__util__get_type_substitution_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__util__get_variable_renaming_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__transform_hlds__ctgc__util__init(void);
+void mercury__transform_hlds__ctgc__util__init_type_tables(void);
+void mercury__transform_hlds__ctgc__util__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.util
+
+// :- end_interface transform_hlds.ctgc.util.

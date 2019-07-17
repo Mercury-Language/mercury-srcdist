@@ -1,0 +1,4 @@
+:- module (ll_backend.basic_block).
+:- interface.
+:- type block_info.
+:- type block_map.

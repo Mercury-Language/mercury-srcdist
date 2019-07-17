@@ -1,0 +1,13 @@
+module(1, "prolog.m",
+	prolog,
+	{},
+	{builtin, list, pair, private_builtin, univ},
+	{builtin, deconstruct, int, list, pair, private_builtin, require, univ},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
