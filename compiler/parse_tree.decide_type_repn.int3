@@ -1,0 +1,4 @@
+:- module (parse_tree.decide_type_repn).
+:- interface.
+:- type foreign_enum_map.
+:- type unqual_type_ctor.
