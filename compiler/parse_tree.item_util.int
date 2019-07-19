@@ -1,0 +1,13 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- import_module bool.
+:- import_module libs.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (parse_tree.prog_item).
+:- type short_int_file_kind
+    --->    sifk_int2 
+    ;       sifk_int3 .
+:- func item_needs_foreign_imports(parse_tree.prog_item.item) = list.list(libs.globals.foreign_language).
+:- func item_needs_imports(parse_tree.prog_item.item) = bool.bool.
+:- func pragma_needs_foreign_imports(parse_tree.prog_item.pragma_type) = list.list(libs.globals.foreign_language).

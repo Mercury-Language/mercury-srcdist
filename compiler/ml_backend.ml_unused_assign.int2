@@ -1,0 +1,8 @@
+:- module (ml_backend.ml_unused_assign).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (ml_backend.mlds).
+:- type seen_at_label_map == map.map(ml_backend.mlds.mlds_label, ml_backend.ml_unused_assign.seen_set).
+:- type seen_set == set.set(ml_backend.mlds.mlds_local_var_name).
