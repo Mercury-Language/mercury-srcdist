@@ -1,0 +1,32 @@
+:- module (recompilation.usage).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module io.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_data).
+:- type resolved_functor
+    --->    resolved_functor_pred_or_func(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity)
+    ;       resolved_functor_constructor(recompilation.item_name)
+    ;       resolved_functor_field(recompilation.item_name, recompilation.item_name).
+:- type resolved_functor_map == recompilation.usage.resolved_item_map(set.set(recompilation.usage.resolved_functor)).
+:- type resolved_functor_set == recompilation.usage.resolved_item_set(set.set(recompilation.usage.resolved_functor)).
+:- type resolved_item_list(T) == assoc_list.assoc_list(parse_tree.prog_data.arity, recompilation.usage.resolved_item_map(T)).
+:- type resolved_item_map(T) == map.map(recompilation.module_qualifier, T).
+:- type resolved_item_set(T) == map.map(string, recompilation.usage.resolved_item_list(T)).
+:- type resolved_pred_or_func_map == recompilation.usage.resolved_item_map(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_pred_or_func_set == recompilation.usage.resolved_item_set(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_used_items == recompilation.item_id_set(recompilation.simple_item_set, recompilation.usage.resolved_pred_or_func_set, recompilation.usage.resolved_functor_set).
+:- func usage_file_version_number = int.
+:- pred write_usage_file(hlds.hlds_module.module_info, set.set(mdbcomp.sym_name.module_name), maybe.maybe(parse_tree.module_imports.module_timestamp_map), io.io, io.io).
+:- mode write_usage_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
