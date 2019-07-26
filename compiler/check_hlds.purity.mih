@@ -1,0 +1,79 @@
+/*
+** Automatically generated from `purity.m'
+** by the Mercury compiler,
+** version rotd-2019-07-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.purity.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__purity
+#define MR_HEADER_GUARD_check_hlds__purity
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__PURITY_DECL_GUARD
+#define CHECK_HLDS__PURITY_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_converted_unify_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_purity_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_run_post_typecheck_tasks_0;
+
+void MR_CALL 
+check_hlds__purity__puritycheck_module_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__purity__repuritycheck_proc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+check_hlds__purity__impure_unification_expr_error_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__purity__init(void);
+void mercury__check_hlds__purity__init_type_tables(void);
+void mercury__check_hlds__purity__init_debugger(void);
+const char *mercury__check_hlds__purity__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.purity
+
+// :- end_interface check_hlds.purity.
