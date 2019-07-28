@@ -1,0 +1,200 @@
+:- module dir.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module exception.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module std_util.
+:- use_module string.
+
+:- type make_single_directory_status
+    --->    ok 
+    ;       name_exists 
+    ;       dir_exists 
+    ;       error .
+:- type stream
+    --->    stream .
+:- pragma foreign_type(c, stream, "ML_DIR_STREAM").
+:- pragma foreign_type(java, stream, "java.util.Iterator").
+:- pragma foreign_type(csharp, stream, "System.Collections.IEnumerator").
+:- pragma foreign_type(erlang, stream, "").
+
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Erlang", dir).
+:- pragma foreign_import_module("Erlang", io).
+
+:- func dir.canonicalize_path_chars(list.list(character)) = list.list(character).
+:- mode dir.canonicalize_path_chars((builtin.in)) = (builtin.out) is det.
+:- func dir.expand(list.list(character)) = list.list(list.list(character)).
+:- mode dir.expand((builtin.in)) = (builtin.out) is det.
+:- func dir.expand_acc(list.list(character), list.list(list.list(character))) = list.list(list.list(character)).
+:- mode dir.expand_acc((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func dir.fixup_dirname(string) = string.
+:- mode dir.fixup_dirname((builtin.in)) = (builtin.out) is det.
+:- pred dir.foldl2_process_dir(bool.bool, pred(string, string, io.file_type, bool.bool, T_1, T_1, io.state, io.state), string, list.list(io.file_id), bool.bool, bool.bool, bool.bool, io.res, T_1, T_1, io.state, io.state).
+:- mode dir.foldl2_process_dir((builtin.in), builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred dir.is_root_directory(list.list(character)).
+:- mode dir.is_root_directory((builtin.in)) is semidet.
+
+dir.basename(V_3, V_2) :-
+    V_2 = dir.basename(V_3).
+
+dir.directory_separator(V_1) :-
+    V_1 = dir.directory_separator.
+
+dir.directory_separator = V_1 :-
+    ( if
+      io.have_win32
+    then
+      V_1 = ('\\') : character
+    else
+      V_1 = ('/') : character
+    ).
+
+dir.dirname(V_3, V_2) :-
+    V_2 = dir.dirname(V_3).
+
+dir.expand(V_3) = V_2 :-
+    V_2 = dir.expand_acc(V_3, V_4),
+    V_4 = list.[V_5 | V_6] : list.list(list.list(character)),
+    V_5 = list.[] : list.list(character),
+    V_6 = list.[] : list.list(list.list(character)).
+
+dir.expand_braces(V_3) = V_4 :-
+    V_5 = string.to_char_list(V_3),
+    V_6 = dir.expand(V_5),
+    V_4 = list.map(V_7, V_6),
+    V_7 = string.from_char_list : ((func list.list(character)) = string).
+
+dir.foldl2(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    V_18 = bool.no : bool.bool,
+    V_19 = dir.fixup_dirname(V_8),
+    V_20 = list.[] : list.list(io.file_id),
+    V_21 = bool.no : bool.bool,
+    V_22 = bool.no : bool.bool,
+    dir.foldl2_process_dir(V_18, V_7, V_19, V_20, V_21, V_22, V_12, V_13, V_9, V_14, V_16, V_17),
+    ( % disjunction
+      V_13 = io.ok : io.res,
+      V_10 = io.ok(V_14) : io.maybe_partial_res(T_1)
+    ;
+      V_13 = io.error(V_15) : io.res,
+      V_10 = io.error(V_14, V_15) : io.maybe_partial_res(T_1)
+    ).
+
+dir.make_path_name(V_4, V_5) = V_3 :-
+    V_3 = dir.(V_4 / V_5).
+
+dir.parent_directory(V_1) :-
+    V_1 = dir.parent_directory.
+
+dir.parent_directory = "..".
+
+dir.path_name_is_root_directory(V_2) :-
+    V_3 = dir.canonicalize_path_chars(V_4),
+    V_4 = string.to_char_list(V_2),
+    dir.is_root_directory(V_3).
+
+dir.recursive_foldl2(V_8, V_9, V_10, V_11, V_12, V_18, V_19) :-
+    V_20 = bool.no : bool.bool,
+    V_21 = dir.fixup_dirname(V_9),
+    V_22 = list.[] : list.list(io.file_id),
+    V_23 = bool.yes : bool.bool,
+    dir.foldl2_process_dir(V_20, V_8, V_21, V_22, V_23, V_10, V_14, V_15, V_11, V_16, V_18, V_19),
+    ( % disjunction
+      V_15 = io.ok : io.res,
+      V_12 = io.ok(V_16) : io.maybe_partial_res(T_1)
+    ;
+      V_15 = io.error(V_17) : io.res,
+      V_12 = io.error(V_16, V_17) : io.maybe_partial_res(T_1)
+    ).
+
+dir.relative_path_name_from_components(V_3) = V_4 :-
+    V_5 = string.from_char(V_6),
+    V_6 = dir.directory_separator,
+    V_4 = string.join_list(V_5, V_3).
+
+dir.this_directory(V_1) :-
+    V_1 = dir.this_directory.
+
+dir.this_directory = ".".
+
+dir.use_windows_paths :-
+    V_1 = dir.directory_separator,
+    V_1 = ('\\') : character.
+
+:- pragma exceptions(function, (dir.(/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.canonicalize_path_chars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.current_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.det_basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.directory_separator), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.directory_separator), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand_acc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand_braces), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.fixup_dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.foldl2_process_dir), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.is_directory_separator), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.is_directory_separator), 1, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.is_root_directory), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.make_directory), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.make_path_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.make_single_directory), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.parent_directory), 1, 0, will_not_throw).
+:- pragma exceptions(function, (dir.parent_directory), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.path_name_is_absolute), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.path_name_is_root_directory), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.recursive_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.relative_path_name_from_components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.split_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.this_directory), 1, 0, will_not_throw).
+:- pragma exceptions(function, (dir.this_directory), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.use_windows_paths), 0, 0, may_throw(user_exception)).
+
+:- pragma termination_info(dir.'/'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.basename((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.basename((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.canonicalize_path_chars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.current_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.det_basename((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.directory_separator((builtin.out)), finite(0, [no]), can_loop).
+:- pragma termination_info((dir.directory_separator) = (builtin.out), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.dirname((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.dirname((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.expand((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.expand_acc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.expand_braces((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.fixup_dirname((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.foldl2_process_dir((builtin.in), builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.is_directory_separator((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.is_directory_separator((builtin.out)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.is_root_directory((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.make_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.make_path_name((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.make_single_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.parent_directory((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((dir.parent_directory) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.path_name_is_absolute((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.path_name_is_root_directory((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.recursive_foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.relative_path_name_from_components((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.split_name((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.this_directory((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((dir.this_directory) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info((dir.use_windows_paths), finite(0, []), can_loop).

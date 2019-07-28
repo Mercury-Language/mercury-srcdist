@@ -1,0 +1,17 @@
+:- module (parse_tree.decide_type_repn).
+:- interface.
+:- import_module assoc_list.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type foreign_enum_map == map.map(parse_tree.decide_type_repn.unqual_type_ctor, assoc_list.assoc_list(libs.globals.foreign_language, list.one_or_more(pair.pair(mdbcomp.sym_name.sym_name, string)))).
+:- type unqual_type_ctor
+    --->    unqual_type_ctor(string, parse_tree.prog_data.arity).
+:- pred decide_repns_for_simple_types(mdbcomp.sym_name.module_name, list.list(parse_tree.prog_item.item_type_defn_info), list.list(parse_tree.prog_item.item_type_defn_info), parse_tree.decide_type_repn.foreign_enum_map, list.list(parse_tree.prog_item.item), list.list(parse_tree.prog_item.item)).
+:- mode decide_repns_for_simple_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

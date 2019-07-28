@@ -1,0 +1,4 @@
+:- module (ll_backend.livemap).
+:- interface.
+:- type livemap.
+:- type lvalset.

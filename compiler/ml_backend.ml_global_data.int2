@@ -1,0 +1,35 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- import_module assoc_list.
+:- import_module backend_libs.
+:- import_module bimap.
+:- import_module cord.
+:- import_module counter.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (backend_libs.rtti).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type have_unboxed_floats
+    --->    have_unboxed_floats 
+    ;       do_not_have_unboxed_floats .
+:- type have_unboxed_int64s
+    --->    have_unboxed_int64s 
+    ;       do_not_have_unboxed_int64s .
+:- type ml_alloc_site_data
+    --->    ml_alloc_site_data(((ml_backend.ml_global_data).masd_proc_label) :: ml_backend.mlds.mlds_function_name, ((ml_backend.ml_global_data).masd_context) :: parse_tree.prog_data.prog_context, ((ml_backend.ml_global_data).masd_type) :: string, ((ml_backend.ml_global_data).masd_size) :: int).
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map == map.map(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type).
+:- type ml_rval_and_type
+    --->    ml_rval_and_type(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type).
+:- type ml_scalar_cell_group
+    --->    ml_scalar_cell_group(((ml_backend.ml_global_data).mscg_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_global_data).mscg_array_size) :: ml_backend.mlds.initializer_array_size, ((ml_backend.ml_global_data).mscg_counter) :: counter.counter, ((ml_backend.ml_global_data).mscg_members) :: bimap.bimap(ml_backend.mlds.mlds_initializer, ml_backend.mlds.mlds_scalar_common), ((ml_backend.ml_global_data).mscg_rows) :: cord.cord(ml_backend.mlds.mlds_initializer)).
+:- type ml_scalar_cell_map == map.map(ml_backend.mlds.ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group).
+:- type ml_vector_cell_group
+    --->    ml_vector_cell_group(((ml_backend.ml_global_data).mvcg_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_global_data).mvcg_type_defn) :: ml_backend.mlds.mlds_class_defn, ((ml_backend.ml_global_data).mvcg_field_ids) :: list.list(ml_backend.mlds.mlds_field_id), ((ml_backend.ml_global_data).mvcg_next_row) :: int, ((ml_backend.ml_global_data).mvcg_rows) :: cord.cord(ml_backend.mlds.mlds_initializer)).
+:- type ml_vector_cell_map == map.map(ml_backend.mlds.ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group).
+:- type use_common_cells
+    --->    do_not_use_common_cells 
+    ;       use_common_cells .

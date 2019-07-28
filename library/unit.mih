@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `unit.m'
+** by the Mercury compiler,
+** version rotd-2019-07-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module unit.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_unit
+#define MR_HEADER_GUARD_unit
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef UNIT_DECL_GUARD
+#define UNIT_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__unit__unit__type_ctor_info_unit_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__unit__unit__type_ctor_info_unit_1;
+
+void MR_CALL 
+mercury__unit__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_117_110_105_116_95_95_117_110_105_116_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__unit__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_117_110_105_116_95_95_117_110_105_116_95_49_95_95_91_49_44_32_51_44_32_52_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__unit__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_117_110_105_116_95_95_117_110_105_116_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+MR_bool MR_CALL 
+mercury__unit__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_117_110_105_116_95_95_117_110_105_116_95_49_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void);
+
+void MR_CALL 
+mercury__unit____Compare____unit_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__unit____Compare____unit_1_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__unit____Unify____unit_0_0(void);
+
+MR_bool MR_CALL 
+mercury__unit____Unify____unit_1_0(
+  MR_Word param_1);
+
+void mercury__unit__init(void);
+void mercury__unit__init_type_tables(void);
+void mercury__unit__init_debugger(void);
+const char *mercury__unit__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_unit
+
+// :- end_interface unit.

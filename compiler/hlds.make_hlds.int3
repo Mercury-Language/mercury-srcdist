@@ -1,0 +1,14 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- type found_invalid_inst_or_mode
+	where	type_is_abstract_enum(1).
+:- type found_invalid_type
+	where	type_is_abstract_enum(1).
+:- type ims_item(T).
+:- type ims_list(T).
+:- type make_hlds_qual_info.
+:- type sec_info.
+:- type sec_item(T).
+:- type sec_list(T).
+:- abstract_inst((ims_item(I))).
+:- abstract_inst((sec_item(I))).
