@@ -1,0 +1,391 @@
+/*
+** Automatically generated from `stream.m'
+** by the Mercury compiler,
+** version rotd-2019-07-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module stream.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_stream
+#define MR_HEADER_GUARD_stream
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STREAM_DECL_GUARD
+#define STREAM_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_maybe_partial_res_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_name_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_res_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_res_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_result_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_result_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__stream__stream__type_ctor_info_whence_0;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_bulk_reader_5;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_duplex_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_error_1;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_input_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_line_oriented_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_output_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_putback_4;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_reader_4;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_seekable_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_stream_2;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_unbounded_putback_4;
+
+extern const MR_TypeClassDeclStruct mercury__stream__stream__type_class_decl_writer_3;
+
+void MR_CALL 
+mercury__stream__bulk_get_9_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Integer * param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__stream__flush_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__stream__get_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__get_line_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__ignore_whitespace_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__input_stream_fold_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold2_state_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold2_state_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold2_state_maybe_stop_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold2_state_maybe_stop_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__input_stream_fold_state_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__stream__input_stream_fold_state_5_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__stream__name_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__put_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__put_list_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__put_list_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__put_list_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__stream__seek_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__stream__set_line_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__stream__unget_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_String MR_CALL 
+mercury__stream__error_message_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__stream____Compare____maybe_partial_res_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__stream____Compare____name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mercury__stream____Compare____res_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__stream____Compare____res_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__stream____Compare____result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__stream____Compare____result_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__stream____Compare____whence_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____maybe_partial_res_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____res_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____res_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____result_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__stream____Unify____whence_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__stream__init(void);
+void mercury__stream__init_type_tables(void);
+void mercury__stream__init_debugger(void);
+const char *mercury__stream__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_stream
+
+// :- end_interface stream.

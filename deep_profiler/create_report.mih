@@ -1,0 +1,122 @@
+/*
+** Automatically generated from `create_report.m'
+** by the Mercury compiler,
+** version rotd-2019-07-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module create_report.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_create_report
+#define MR_HEADER_GUARD_create_report
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CREATE_REPORT_DECL_GUARD
+#define CREATE_REPORT_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_call_site_callee_perf_0;
+
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_gs_field_raw_data_0;
+
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_ds_map_0;
+
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_field_info_0;
+
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_field_map_0;
+
+void MR_CALL 
+create_report__create_call_site_dynamic_var_use_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_clique_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_dynamic_procrep_coverage_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_proc_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_static_procrep_coverage_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+create_report__create_top_procs_report_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+create_report__own_and_inherit_to_perf_row_data_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+create_report__describe_proc_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__create_report__init(void);
+void mercury__create_report__init_type_tables(void);
+void mercury__create_report__init_debugger(void);
+const char *mercury__create_report__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_create_report
+
+// :- end_interface create_report.
