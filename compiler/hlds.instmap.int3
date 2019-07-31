@@ -1,0 +1,7 @@
+:- module (hlds.instmap).
+:- interface.
+:- type arm_instmap.
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+	where	type_is_abstract_enum(2).

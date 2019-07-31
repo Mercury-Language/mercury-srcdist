@@ -1,0 +1,27 @@
+:- module (make.dependencies).
+:- interface.
+:- import_module bool.
+:- import_module enum.
+:- import_module io.
+:- import_module libs.
+:- import_module maybe.
+:- import_module set.
+:- import_module sparse_bitset.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (make.util).
+:- type cached_direct_imports.
+:- type cached_foreign_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result
+	where	type_is_abstract_enum(2).
+:- type dependency_file.
+:- type dependency_file_index.
+:- type deps_set(T).
+:- type find_module_deps(T).
+:- type find_module_deps_plain_set(T).
+:- type module_index.
+:- abstract_inst((find_module_deps)).
+:- abstract_inst((find_module_deps_plain_set)).
+:- instance (enum(make.dependencies.dependency_file_index)).
+:- instance (enum(make.dependencies.module_index)).
