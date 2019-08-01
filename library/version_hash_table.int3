@@ -1,0 +1,5 @@
+:- module version_hash_table.
+:- interface.
+:- type hash_pred(K).
+:- type version_hash_table(K, V).
+:- abstract_inst((hash_pred)).
