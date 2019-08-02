@@ -1,0 +1,13 @@
+:- module (parse_tree.set_of_var).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module set.
+:- import_module term.
+:- import_module (parse_tree.prog_data).
+:- type set_of_progvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.prog_var_type).
+:- type set_of_tvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.tvar_type).
+:- type set_of_var(T).
+:- implementation.
+:- import_module sparse_bitset.
+:- type set_of_var(T) == sparse_bitset.sparse_bitset(term.var(T)).
