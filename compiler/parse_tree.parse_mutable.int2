@@ -1,0 +1,14 @@
+:- module (parse_tree.parse_mutable).
+:- interface.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.parse_types).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type mutable_locn
+    --->    mutable_locn_item 
+    ;       mutable_locn_in_solver_type .
