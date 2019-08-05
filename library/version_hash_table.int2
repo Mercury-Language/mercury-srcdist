@@ -1,0 +1,7 @@
+:- module version_hash_table.
+:- interface.
+:- use_module assoc_list.
+:- use_module char.
+:- type hash_pred(K) == pred(K, int).
+:- type version_hash_table(K, V).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out)) is det).

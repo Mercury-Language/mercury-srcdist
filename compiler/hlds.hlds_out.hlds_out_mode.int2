@@ -1,0 +1,13 @@
+:- module ((hlds.hlds_out).hlds_out_mode).
+:- interface.
+:- use_module assoc_list.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type incl_addr
+    --->    do_not_incl_addr 
+    ;       do_incl_addr .

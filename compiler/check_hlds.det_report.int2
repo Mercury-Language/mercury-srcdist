@@ -1,0 +1,37 @@
+:- module (check_hlds.det_report).
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.det_util).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type cc_unify_context
+    --->    ccuc_unify(hlds.hlds_goal.unify_context)
+    ;       ccuc_switch .
+:- type failing_context
+    --->    failing_context(parse_tree.prog_data.prog_context, check_hlds.det_report.failing_goal).
+:- type failing_goal
+    --->    incomplete_switch(parse_tree.prog_data.prog_var)
+    ;       fail_goal 
+    ;       test_goal(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)
+    ;       deconstruct_goal(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id)
+    ;       call_goal(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       generic_call_goal(hlds.hlds_goal.generic_call)
+    ;       negated_goal .
+:- type options_to_restore.
+:- type seen_call_id
+    --->    seen_call(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       higher_order_call .
+:- type switch_context.
+:- implementation.
+:- use_module assoc_list.
+:- use_module getopt_io.
+:- use_module (libs.options).
+:- type options_to_restore == assoc_list.assoc_list(libs.options.option, getopt_io.option_data).

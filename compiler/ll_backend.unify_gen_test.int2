@@ -1,0 +1,12 @@
+:- module (ll_backend.unify_gen_test).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_data).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- type test_sense
+    --->    branch_on_success 
+    ;       branch_on_failure .

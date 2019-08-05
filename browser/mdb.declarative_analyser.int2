@@ -1,0 +1,20 @@
+:- module (mdb.declarative_analyser).
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module (mdb.declarative_debugger).
+:- use_module (mdb.declarative_edt).
+:- use_module (mdb.declarative_oracle).
+:- use_module (mdb.declarative_user).
+:- type analyser_response(T)
+    --->    analyser_response_no_suspects 
+    ;       analyser_response_bug_found(mdb.declarative_debugger.decl_bug, mdb.declarative_debugger.decl_evidence(T))
+    ;       analyser_response_oracle_question(mdb.declarative_debugger.decl_question(T))
+    ;       analyser_response_require_explicit_subtree(T)
+    ;       analyser_response_require_explicit_supertree(T)
+    ;       analyser_response_revise(mdb.declarative_debugger.decl_question(T)).
+:- type analyser_state(T).
+:- type analysis_type(T)
+    --->    new_tree(T)
+    ;       resume_previous .
+:- type search_mode.

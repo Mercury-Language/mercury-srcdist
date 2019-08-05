@@ -1,0 +1,11 @@
+:- module (libs.compiler_util).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_util).
+:- type warning_or_error
+    --->    we_warning 
+    ;       we_error .

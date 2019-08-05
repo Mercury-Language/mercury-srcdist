@@ -1,0 +1,16 @@
+:- module (transform_hlds.smm_common).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.goal_path).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- type program_point
+    --->    pp(((transform_hlds.smm_common).pp_context) :: term.context, ((transform_hlds.smm_common).pp_id) :: mdbcomp.goal_path.reverse_goal_path).

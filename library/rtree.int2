@@ -1,0 +1,14 @@
+:- module rtree.
+:- interface.
+:- use_module list.
+:- type box
+    --->    box(float, float, float, float).
+:- type box3d
+    --->    box3d(float, float, float, float, float, float).
+:- type interval
+    --->    interval(float, float).
+:- type rtree(K, V).
+:- typeclass region(K).
+:- instance (rtree.region(rtree.box)).
+:- instance (rtree.region(rtree.box3d)).
+:- instance (rtree.region(rtree.interval)).

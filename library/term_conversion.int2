@@ -1,0 +1,16 @@
+:- module term_conversion.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- use_module type_desc.
+:- use_module univ.
+:- type term_to_type_arg_context
+    --->    arg_context(term.const, int, term.context).
+:- type term_to_type_context == list.list(term_conversion.term_to_type_arg_context).
+:- type term_to_type_error(T)
+    --->    type_error(term.term(T), type_desc.type_desc, term.context, term_conversion.term_to_type_context)
+    ;       mode_error(term.var(T), term_conversion.term_to_type_context).
+:- type term_to_type_result(T) == term_conversion.term_to_type_result(T, term.generic).
+:- type term_to_type_result(T, U)
+    --->    ok(T)
+    ;       error(term_conversion.term_to_type_error(U)).

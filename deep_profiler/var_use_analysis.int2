@@ -1,0 +1,25 @@
+:- module var_use_analysis.
+:- interface.
+:- use_module analysis_utils.
+:- use_module coverage.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module measurements.
+:- use_module profile.
+:- use_module report.
+:- use_module set.
+:- use_module (mdbcomp.goal_path).
+:- use_module (mdbcomp.program_representation).
+:- type intermodule_var_use
+    --->    follow_calls_into_module(string)
+    ;       follow_any_call .
+:- type var_use_info
+    --->    var_use_info((var_use_analysis.vui_cost_until_use) :: float, (var_use_analysis.vui_proc_cost) :: float, (var_use_analysis.vui_use_type) :: var_use_analysis.var_use_type).
+:- type var_use_options
+    --->    var_use_options((var_use_analysis.vuo_deep) :: profile.deep, (var_use_analysis.vuo_intermodule_var_use) :: var_use_analysis.intermodule_var_use, (var_use_analysis.vuo_var_use_type) :: var_use_analysis.var_use_type).
+:- type var_use_type
+    --->    var_use_production 
+    ;       var_use_consumption 
+    ;       var_use_other .

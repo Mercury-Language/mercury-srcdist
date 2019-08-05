@@ -1,0 +1,13 @@
+:- module (check_hlds.prop_mode_constraints).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module (check_hlds.abstract_mode_constraints).
+:- use_module (check_hlds.build_mode_constraints).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.goal_path).
+:- type pred_constraints_map == map.map(hlds.hlds_pred.pred_id, {mdbcomp.goal_path.containing_goal_map, check_hlds.build_mode_constraints.mode_constraints}).

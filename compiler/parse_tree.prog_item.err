@@ -1,0 +1,3 @@
+prog_item.m:1691: This `:- import_module' declaration for `list' is redundant.
+prog_item.m:042:   This is the location of the previous `:- import_module'
+prog_item.m:042:   declaration for module `list' that makes this one redundant.

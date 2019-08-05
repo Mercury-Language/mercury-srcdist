@@ -1,0 +1,21 @@
+:- module (ml_backend.mlds_to_java_util).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_target_util).
+:- use_module (parse_tree.prog_data).
+:- type code_addr_wrapper
+    --->    code_addr_wrapper(((ml_backend.mlds_to_java_util).caw_class) :: string, ((ml_backend.mlds_to_java_util).caw_ptr_num) :: maybe.maybe(int)).
+:- type context_marker
+    --->    marker_begin_block 
+    ;       marker_end_block 
+    ;       marker_comment .
+:- type java_out_info
+    --->    java_out_info(((ml_backend.mlds_to_java_util).joi_module_info) :: hlds.hlds_module.module_info, ((ml_backend.mlds_to_java_util).joi_auto_comments) :: bool.bool, ((ml_backend.mlds_to_java_util).joi_line_numbers) :: bool.bool, ((ml_backend.mlds_to_java_util).joi_foreign_line_numbers) :: bool.bool, ((ml_backend.mlds_to_java_util).joi_module_name) :: ml_backend.mlds.mlds_module_name, ((ml_backend.mlds_to_java_util).joi_source_filename) :: string, ((ml_backend.mlds_to_java_util).joi_addrof_map) :: map.map(ml_backend.mlds.mlds_code_addr, ml_backend.mlds_to_java_util.code_addr_wrapper), ((ml_backend.mlds_to_java_util).joi_output_generics) :: ml_backend.mlds_to_target_util.output_generics, ((ml_backend.mlds_to_java_util).joi_break_context) :: ml_backend.mlds_to_target_util.break_context, ((ml_backend.mlds_to_java_util).joi_univ_tvars) :: list.list(parse_tree.prog_data.tvar)).

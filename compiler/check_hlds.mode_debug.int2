@@ -1,0 +1,7 @@
+:- module (check_hlds.mode_debug).
+:- interface.
+:- use_module (check_hlds.mode_info).
+:- type port
+    --->    enter 
+    ;       exit 
+    ;       wakeup .

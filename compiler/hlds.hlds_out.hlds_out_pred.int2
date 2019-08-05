@@ -1,0 +1,17 @@
+:- module ((hlds.hlds_out).hlds_out_pred).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- use_module ((hlds.hlds_out).hlds_out_util).
+:- type write_which_modes
+    --->    write_actual_modes 
+    ;       write_declared_modes .

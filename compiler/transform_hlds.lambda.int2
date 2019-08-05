@@ -1,0 +1,19 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.set_of_var).
+:- type lambda_info.
+:- type reg_wrapper_proc
+    --->    reg_wrapper_proc(parse_tree.set_of_var.set_of_progvar)
+    ;       not_reg_wrapper_proc .

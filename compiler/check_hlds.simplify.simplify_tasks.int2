@@ -1,0 +1,25 @@
+:- module ((check_hlds.simplify).simplify_tasks).
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- type simplify_task
+    --->    simptask_warn_simple_code 
+    ;       simptask_warn_duplicate_calls 
+    ;       simptask_warn_implicit_stream_calls 
+    ;       simptask_format_calls 
+    ;       simptask_warn_obsolete 
+    ;       simptask_mark_code_model_changes 
+    ;       simptask_after_front_end 
+    ;       simptask_excess_assigns 
+    ;       simptask_test_after_switch 
+    ;       simptask_elim_removable_scopes 
+    ;       simptask_opt_duplicate_calls 
+    ;       simptask_constant_prop 
+    ;       simptask_common_struct 
+    ;       simptask_extra_common_struct 
+    ;       simptask_ignore_par_conjs 
+    ;       simptask_warn_suspicious_recursion .
+:- type simplify_tasks
+    --->    simplify_tasks((((check_hlds.simplify).simplify_tasks).do_warn_simple_code) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_warn_duplicate_calls) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_warn_implicit_stream_calls) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_format_calls) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_warn_obsolete) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_mark_code_model_changes) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_after_front_end) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_excess_assign) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_test_after_switch) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_elim_removable_scopes) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_opt_duplicate_calls) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_constant_prop) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_common_struct) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_extra_common_struct) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_ignore_par_conjunctions) :: bool.bool, (((check_hlds.simplify).simplify_tasks).do_warn_suspicious_recursion) :: bool.bool).

@@ -1,0 +1,22 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- type int_or_var
+    --->    iov_int(int)
+    ;       iov_var(parse_tree.prog_data.prog_var).
+:- type poly_info.
+:- type type_info_kind
+    --->    type_info 
+    ;       type_ctor_info .

@@ -1,0 +1,18 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .
+:- implementation.
+:- include_module (((check_hlds.simplify).format_call).parse_string_format).

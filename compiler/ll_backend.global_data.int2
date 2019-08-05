@@ -1,0 +1,22 @@
+:- module (ll_backend.global_data).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set_tree234.
+:- use_module (hlds.hlds_pred).
+:- use_module (ll_backend.continuation_info).
+:- use_module (ll_backend.layout).
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type global_data.
+:- type global_data_remapping.
+:- type num_words
+    --->    one_word 
+    ;       two_words .
+:- type static_cell_info.
+:- type static_cell_remap_info.

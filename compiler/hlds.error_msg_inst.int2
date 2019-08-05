@@ -1,0 +1,13 @@
+:- module (hlds.error_msg_inst).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type maybe_expand_named_insts
+    --->    dont_expand_named_insts 
+    ;       expand_named_insts .
+:- type short_inst
+    --->    quote_short_inst 
+    ;       fixed_short_inst .

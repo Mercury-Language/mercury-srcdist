@@ -1,0 +1,19 @@
+:- module (check_hlds.det_analysis).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (check_hlds.det_report).
+:- use_module (check_hlds.det_util).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type pess_info
+    --->    pess_info(parse_tree.prog_data.prog_vars, parse_tree.prog_data.prog_context).
+:- type soln_context
+    --->    all_solns 
+    ;       first_soln .

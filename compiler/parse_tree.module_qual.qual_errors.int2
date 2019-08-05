@@ -1,0 +1,29 @@
+:- module ((parse_tree.module_qual).qual_errors).
+:- interface.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- type mq_constraint_error_context
+    --->    mqcec_class_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_name, int)
+    ;       mqcec_class_method(parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, string)
+    ;       mqcec_instance_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_name, list.list(parse_tree.prog_data.mer_type))
+    ;       mqcec_type_defn_constructor(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, string)
+    ;       mqcec_pred_decl(parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, int).
+:- type mq_error_context
+    --->    mqec_type_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor)
+    ;       mqec_constructor_arg(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, string, int, maybe.maybe(parse_tree.prog_data.ctor_field_name))
+    ;       mqec_typeclass_constraint_name(parse_tree.module_qual.qual_errors.mq_constraint_error_context)
+    ;       mqec_typeclass_constraint(mdbcomp.sym_name.sym_name, int, parse_tree.module_qual.qual_errors.mq_constraint_error_context)
+    ;       mqec_inst(parse_tree.prog_data.prog_context, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_mode(parse_tree.prog_data.prog_context, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_pred_or_func(parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_pred_or_func_mode(parse_tree.prog_data.prog_context, maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_pragma(parse_tree.prog_data.prog_context, parse_tree.prog_item.pragma_type)
+    ;       mqec_lambda_expr(parse_tree.prog_data.prog_context)
+    ;       mqec_clause_mode_annotation(parse_tree.prog_data.prog_context)
+    ;       mqec_type_qual(parse_tree.prog_data.prog_context)
+    ;       mqec_class(parse_tree.prog_data.prog_context, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_instance(parse_tree.prog_data.prog_context, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_mutable(parse_tree.prog_data.prog_context, string)
+    ;       mqec_type_repn(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor)
+    ;       mqec_event_spec_attr(parse_tree.prog_data.prog_context, string, string).

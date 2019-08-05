@@ -1,0 +1,12 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_find_best_par).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module message.
+:- use_module (mdbcomp.feedback).
+:- use_module ((mdbcomp.feedback).automatic_parallelism).
+:- use_module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- type full_parallelisation
+    --->    fp_parallel_execution((((mdprof_fb.automatic_parallelism).autopar_find_best_par).fp_goals_before) :: list.list(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), (((mdprof_fb.automatic_parallelism).autopar_find_best_par).fp_par_conjs) :: list.list(mdbcomp.feedback.automatic_parallelism.seq_conj(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail)), (((mdprof_fb.automatic_parallelism).autopar_find_best_par).fp_goals_after) :: list.list(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), (((mdprof_fb.automatic_parallelism).autopar_find_best_par).fp_is_dependent) :: mdbcomp.feedback.automatic_parallelism.conjuncts_are_dependent, (((mdprof_fb.automatic_parallelism).autopar_find_best_par).fp_par_exec_metrics) :: mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics).

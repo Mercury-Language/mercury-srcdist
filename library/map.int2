@@ -1,0 +1,10 @@
+:- module map.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module maybe.
+:- use_module set.
+:- use_module term.
+:- use_module tree234.
+:- type map(_K, _V).
+:- type map(K, V) == tree234.tree234(K, V).

@@ -1,0 +1,16 @@
+:- module (check_hlds.mode_comparison).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- type match
+    --->    better 
+    ;       worse 
+    ;       same 
+    ;       incomparable .
+:- type proc_mode
+    --->    proc_mode(hlds.hlds_pred.proc_id, parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_mode)).

@@ -1,0 +1,15 @@
+:- module (check_hlds.resolve_unify_functor).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type is_plain_unify
+    --->    is_not_plain_unify 
+    ;       is_plain_unify 
+    ;       is_unknown_ref(parse_tree.error_util.error_spec).
