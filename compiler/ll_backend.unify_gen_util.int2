@@ -1,0 +1,19 @@
+:- module (ll_backend.unify_gen_util).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- type arg_and_width(Arg)
+    --->    arg_and_width(Arg, parse_tree.prog_data.arg_pos_width).
+:- type assign_dir
+    --->    assign_left 
+    ;       assign_right 
+    ;       assign_unused .
+:- type maybe_zero_const
+    --->    is_not_zero_const 
+    ;       is_zero_const .

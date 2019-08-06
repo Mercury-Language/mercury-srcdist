@@ -1,0 +1,10 @@
+:- module (ml_backend.mlds_to_c_stmt).
+:- interface.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_c_util).
+:- use_module (ml_backend.mlds_to_target_util).
+:- use_module (parse_tree.prog_data).
+:- type func_info_c
+    --->    func_info_c(ml_backend.mlds.qual_function_name, ml_backend.mlds.mlds_func_signature).

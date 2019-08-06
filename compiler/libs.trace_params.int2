@@ -1,0 +1,10 @@
+:- module (libs.trace_params).
+:- interface.
+:- type trace_level.
+:- type trace_suppress_items.
+:- implementation.
+:- use_module set.
+:- type trace_level
+	where	type_is_abstract_enum(3).
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).

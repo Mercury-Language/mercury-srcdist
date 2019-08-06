@@ -1,0 +1,13 @@
+:- module (parse_tree.parse_sym_name).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- type maybe_functor == parse_tree.parse_sym_name.maybe_functor(term.generic).
+:- type maybe_functor(T) == parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, list.list(term.term(T))).

@@ -1,0 +1,10 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- use_module (parse_tree.prog_item).
+:- type short_int_file_kind
+    --->    sifk_int2 
+    ;       sifk_int3 .

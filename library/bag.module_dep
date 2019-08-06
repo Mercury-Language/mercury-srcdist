@@ -1,0 +1,13 @@
+module(1, "bag.m",
+	bag,
+	{},
+	{assoc_list, builtin, list, private_builtin, set, term},
+	{assoc_list, builtin, int, list, map, pair, private_builtin, require, set, term},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

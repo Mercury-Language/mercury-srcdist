@@ -1,0 +1,8 @@
+:- module construct.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module type_desc.
+:- use_module univ.
+:- type functor_number_lex == int.
+:- type functor_number_ordinal == int.

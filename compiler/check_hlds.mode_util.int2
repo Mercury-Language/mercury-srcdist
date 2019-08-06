@@ -1,0 +1,15 @@
+:- module (check_hlds.mode_util).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- type recompute_atomic_instmap_deltas
+    --->    recompute_atomic_instmap_deltas 
+    ;       do_not_recompute_atomic_instmap_deltas .

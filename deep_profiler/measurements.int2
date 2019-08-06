@@ -1,0 +1,23 @@
+:- module measurements.
+:- interface.
+:- use_module array.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module measurement_units.
+:- use_module (mdbcomp.feedback).
+:- use_module ((mdbcomp.feedback).automatic_parallelism).
+:- type cs_cost_csq.
+:- type goal_cost_csq.
+:- type inherit_prof_info.
+:- type is_active
+    --->    is_active 
+    ;       is_not_active .
+:- type own_prof_info.
+:- type parallel_exec_metrics_incomplete.
+:- type parallelism_amount.
+:- type proc_cost_csq.
+:- type recursion_depth.
+:- type static_coverage_info.
+:- implementation.
+:- type static_coverage_info == maybe.maybe(array.array(int)).

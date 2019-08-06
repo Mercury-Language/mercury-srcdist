@@ -1,0 +1,15 @@
+:- module test_bitset.
+:- interface.
+:- use_module enum.
+:- use_module list.
+:- use_module set.
+:- type bitset_error(T)
+    --->    zero_argument(string, test_bitset.test_bitset(T))
+    ;       one_argument(string, test_bitset.test_bitset(T), test_bitset.test_bitset(T))
+    ;       two_arguments(string, test_bitset.test_bitset(T), test_bitset.test_bitset(T), test_bitset.test_bitset(T)).
+:- type test_bitset(T).
+:- implementation.
+:- use_module pair.
+:- use_module set_ordlist.
+:- use_module tree_bitset.
+:- type test_bitset(T) == pair.pair(tree_bitset.tree_bitset(T), set_ordlist.set_ordlist(T)).
