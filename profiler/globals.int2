@@ -1,0 +1,15 @@
+:- module globals.
+:- interface.
+:- use_module bool.
+:- use_module getopt.
+:- use_module io.
+:- use_module list.
+:- use_module options.
+:- type globals.
+:- type what_to_profile
+    --->    memory_words 
+    ;       memory_cells 
+    ;       memory_snapshots 
+    ;       user_plus_system_time 
+    ;       user_time 
+    ;       real_time .

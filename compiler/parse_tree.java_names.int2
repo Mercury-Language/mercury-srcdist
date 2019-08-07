@@ -1,0 +1,7 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- type csj_qual_kind
+    --->    module_qual 
+    ;       type_qual .

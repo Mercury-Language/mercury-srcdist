@@ -1,0 +1,5 @@
+:- module globals.
+:- interface.
+:- type globals.
+:- type what_to_profile
+	where	type_is_abstract_enum(3).

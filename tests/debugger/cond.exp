@@ -1,0 +1,195 @@
+      E1:     C1 CALL pred cond.main/2-0 (det) cond.m:23
+mdb> mdb> echo on
+Command echo enabled.
+mdb> context none
+Contexts will not be printed.
+mdb> break p
+ 0: + stop  interface pred cond.p/2-0 (det)
+mdb> condition X = yes(_)
+ 0: + stop  interface pred cond.p/2-0 (det)
+            X = yes(_)
+mdb> continue
+      E2:     C2 CALL pred cond.p/2-0 (det)
+mdb> print
+p(yes(2), _)
+mdb> delete *
+ 0: E stop  interface pred cond.p/2-0 (det)
+            X = yes(_)
+mdb> finish 1
+[no, yes(3), yes(4)]
+      E3:     C3 EXIT pred cond.test_maybe/2-0 (det)
+mdb> break p
+ 0: + stop  interface pred cond.p/2-0 (det)
+mdb> condition X = yes(3)
+ 0: + stop  interface pred cond.p/2-0 (det)
+            X = yes(3)
+mdb> continue
+      E4:     C4 CALL pred cond.p/2-0 (det)
+mdb> print
+p(yes(3), _)
+mdb> delete *
+ 0: E stop  interface pred cond.p/2-0 (det)
+            X = yes(3)
+mdb> finish 1
+[no, yes(3), yes(4)]
+      E5:     C5 EXIT pred cond.test_maybe/2-0 (det)
+mdb> break p
+ 0: + stop  interface pred cond.p/2-0 (det)
+mdb> condition -v Y = yes( 3)
+ 0: + stop  interface pred cond.p/2-0 (det)
+            -v -p Y = yes(3)
+mdb> continue
+      E6:     C6 EXIT pred cond.p/2-0 (det)
+mdb> print
+p(yes(2), yes(3))
+mdb> delete *
+ 0: E stop  interface pred cond.p/2-0 (det)
+            -v -p Y = yes(3)
+mdb> finish 1
+[no, yes(3), yes(4)]
+      E7:     C7 EXIT pred cond.test_maybe/2-0 (det)
+mdb> break p
+ 0: + stop  interface pred cond.p/2-0 (det)
+mdb> condition -v Y^1 != 3
+ 0: + stop  interface pred cond.p/2-0 (det)
+            -v -p Y ^1 != 3
+mdb> continue
+      E8:     C8 EXIT pred cond.p/2-0 (det)
+mdb> print
+p(yes(3), yes(4))
+mdb> delete *
+ 0: E stop  interface pred cond.p/2-0 (det)
+            -v -p Y ^1 != 3
+mdb> finish 1
+[no, yes(3), yes(4)]
+      E9:     C9 EXIT pred cond.test_maybe/2-0 (det)
+mdb> break q
+ 0: + stop  interface pred cond.q/2-0 (det)
+mdb> condition -v Y != "abc "
+ 0: + stop  interface pred cond.q/2-0 (det)
+            -v -p Y != "abc "
+mdb> continue
+     E10:    C10 EXIT pred cond.q/2-0 (det)
+mdb> print
+q("abc", "xabcx")
+mdb> continue
+xabcx
+     E11:    C11 EXIT pred cond.q/2-0 (det)
+mdb> print
+q("def", "ydefy")
+mdb> delete *
+ 0: E stop  interface pred cond.q/2-0 (det)
+            -v -p Y != "abc "
+mdb> finish 1
+ydefy
+else
+     E12:    C12 EXIT pred cond.test_string/2-0 (det)
+mdb> break q
+ 0: + stop  interface pred cond.q/2-0 (det)
+mdb> continue
+     E13:    C13 CALL pred cond.q/2-0 (det)
+mdb> condition -v Z != "abc "
+ 0: + stop  interface pred cond.q/2-0 (det)
+            -v -p Z != "abc "
+mdb> finish 1
+xabcx
+ydefy
+else
+     E14:    C14 EXIT pred cond.test_string/2-0 (det)
+mdb> delete *
+ 0: E stop  interface pred cond.q/2-0 (det)
+            -v -p Z != "abc "
+mdb> break r
+ 0: + stop  interface pred cond.r/2-0 (det)
+mdb> condition Y^1^2 = 1
+ 0: + stop  interface pred cond.r/2-0 (det)
+            Y ^1^2 = 1
+mdb> continue
+mdb: couldn't evaluate break point condition
+Y ^1^2 = 1: there is no such variable.
+     E15:    C15 CALL pred cond.r/2-0 (det)
+mdb> condition -p Y^1^2 = 1
+ 0: + stop  interface pred cond.r/2-0 (det)
+            -p Y ^1^2 = 1
+mdb> continue
+mdb: couldn't evaluate break point condition
+Y ^1^2 = 1: there is no such variable.
+     E16:    C16 CALL pred cond.r/2-0 (det)
+mdb> delete *
+ 0: E stop  interface pred cond.r/2-0 (det)
+            -p Y ^1^2 = 1
+mdb> finish 1
+     E17:    C15 EXIT pred cond.r/2-0 (det)
+mdb> break r
+ 0: + stop  interface pred cond.r/2-0 (det)
+mdb> condition -v Y^1^2 = 1
+ 0: + stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^1^2 = 1
+mdb> continue
+node(empty, 1, empty)
+     E18:    C17 EXIT pred cond.r/2-0 (det)
+mdb> print
+r(2, node(node(empty, 1, empty), 2, node(empty, 1, empty)))
+mdb> delete *
+ 0: E stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^1^2 = 1
+mdb> finish 1
+node(node(empty, 1, empty), 2, node(empty, 1, empty))
+     E19:    C18 EXIT pred cond.test_tree/2-0 (det)
+mdb> break r
+ 0: + stop  interface pred cond.r/2-0 (det)
+mdb> condition -v Y^2 = 1
+ 0: + stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^2 = 1
+mdb> continue
+     E20:    C19 EXIT pred cond.r/2-0 (det)
+mdb> print
+r(1, node(empty, 1, empty))
+mdb> delete *
+ 0: E stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^2 = 1
+mdb> finish 1
+node(empty, 1, empty)
+node(node(empty, 1, empty), 2, node(empty, 1, empty))
+     E21:    C20 EXIT pred cond.test_tree/2-0 (det)
+mdb> break r
+ 0: + stop  interface pred cond.r/2-0 (det)
+mdb> condition X^4 = 1
+ 0: + stop  interface pred cond.r/2-0 (det)
+            X ^4 = 1
+mdb> continue
+mdb: couldn't evaluate break point condition
+X ^4 = 1: the path 4 does not exist.
+     E22:    C21 CALL pred cond.r/2-0 (det)
+mdb> print
+r(1, _)
+mdb> delete *
+ 0: E stop  interface pred cond.r/2-0 (det)
+            X ^4 = 1
+mdb> finish 1
+node(empty, 1, empty)
+node(node(empty, 1, empty), 2, node(empty, 1, empty))
+     E23:    C22 EXIT pred cond.test_tree/2-0 (det)
+mdb> break r
+ 0: + stop  interface pred cond.r/2-0 (det)
+mdb> condition -v Y^1 = node(empty, 1, empty)
+ 0: + stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^1 = node(empty, 1, empty)
+mdb> continue
+node(empty, 1, empty)
+     E24:    C23 EXIT pred cond.r/2-0 (det)
+mdb> print
+r(2, node(node(empty, 1, empty), 2, node(empty, 1, empty)))
+mdb> delete *
+ 0: E stop  interface pred cond.r/2-0 (det)
+            -v -p Y ^1 = node(empty, 1, empty)
+mdb> finish 1
+node(node(empty, 1, empty), 2, node(empty, 1, empty))
+     E25:    C24 EXIT pred cond.test_tree/2-0 (det)
+mdb> break main
+ 0: + stop  interface pred cond.main/2-0 (det)
+mdb> continue
+node(empty, 1, empty)
+node(node(empty, 1, empty), 2, node(empty, 1, empty))
+     E26:     C1 EXIT pred cond.main/2-0 (det)
+mdb> quit -y

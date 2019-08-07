@@ -1,0 +1,11 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module term.
+:- use_module varset.
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type needs_quotes
+    --->    next_to_graphic_token 
+    ;       not_next_to_graphic_token .

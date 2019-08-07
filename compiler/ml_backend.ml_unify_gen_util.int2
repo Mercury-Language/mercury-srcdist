@@ -1,0 +1,36 @@
+:- module (ml_backend.ml_unify_gen_util).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.const_struct).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type arg_const_type_and_width == ml_backend.ml_unify_gen_util.arg_type_and_width(hlds.const_struct.const_struct_arg).
+:- type arg_to_type(Arg) == ((func Arg) = parse_tree.prog_data.mer_type).
+:- type arg_type_and_width(Arg)
+    --->    arg_type_and_width(Arg, parse_tree.prog_data.mer_type, parse_tree.prog_data.arg_pos_width).
+:- type arg_var_type_and_width == ml_backend.ml_unify_gen_util.arg_type_and_width(parse_tree.prog_data.prog_var).
+:- type assign_dir
+    --->    assign_nondummy_left 
+    ;       assign_nondummy_right 
+    ;       assign_nondummy_unused 
+    ;       assign_dummy .
+:- type field_gen
+    --->    field_gen(maybe.maybe(hlds.hlds_data.ptag), ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, ml_backend.ml_unify_gen_util.field_via).
+:- type field_via
+    --->    field_via_offset 
+    ;       field_via_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_type).
+:- type may_have_extra_args
+    --->    may_not_have_extra_args 
+    ;       may_have_extra_args .
+:- type ml_maybe_zero_const
+    --->    ml_is_not_zero_const 
+    ;       ml_is_zero_const .

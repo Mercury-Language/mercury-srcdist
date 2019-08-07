@@ -1,0 +1,3 @@
+:- module (libs.md4).
+:- interface.
+:- func md4sum(string) = string.

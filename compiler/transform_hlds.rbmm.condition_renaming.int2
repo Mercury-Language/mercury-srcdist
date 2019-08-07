@@ -1,0 +1,14 @@
+:- module ((transform_hlds.rbmm).condition_renaming).
+:- interface.
+:- use_module hlds.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.goal_path).
+:- use_module ((transform_hlds.rbmm).points_to_info).
+:- use_module ((transform_hlds.rbmm).region_liveness_info).
+:- use_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- type goal_path_regions_table == map.map(mdbcomp.goal_path.reverse_goal_path, set.set(string)).
+:- type proc_goal_path_regions_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.condition_renaming.goal_path_regions_table).

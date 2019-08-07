@@ -1,0 +1,14 @@
+:- module (ml_backend.ml_closure_gen).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type closure_kind
+    --->    higher_order_proc_closure 
+    ;       typeclass_info_closure 
+    ;       special_pred_closure .

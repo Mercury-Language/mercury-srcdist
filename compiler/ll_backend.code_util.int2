@@ -1,0 +1,20 @@
+:- module (ll_backend.code_util).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- type immed == maybe.maybe(pair.pair(int, hlds.hlds_pred.pred_proc_id)).

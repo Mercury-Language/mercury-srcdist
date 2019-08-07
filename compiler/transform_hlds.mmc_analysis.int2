@@ -1,0 +1,11 @@
+:- module (transform_hlds.mmc_analysis).
+:- interface.
+:- use_module analysis.
+:- use_module hlds.
+:- use_module mdbcomp.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- type mmc
+    --->    mmc .
+:- instance (analysis.compiler(transform_hlds.mmc_analysis.mmc)).

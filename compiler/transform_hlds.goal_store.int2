@@ -1,0 +1,14 @@
+:- module (transform_hlds.goal_store).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module set.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.instmap).
+:- use_module (hlds.vartypes).
+:- type goal_store(T).
+:- type stored_goal
+    --->    stored_goal(hlds.hlds_goal.hlds_goal, hlds.instmap.instmap).
+:- implementation.
+:- type goal_store(T) == map.map(T, transform_hlds.goal_store.stored_goal).

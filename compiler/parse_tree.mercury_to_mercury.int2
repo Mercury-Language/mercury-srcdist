@@ -1,0 +1,19 @@
+:- module (parse_tree.mercury_to_mercury).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.parse_tree_out_term).
+:- use_module (parse_tree.prog_data).
+:- type maybe_exist_constraints
+    --->    no_exist_constraints 
+    ;       have_exist_constraints_print_paren(list.list(parse_tree.prog_data.prog_constraint)).
+:- type needs_brackets
+    --->    needs_brackets 
+    ;       does_not_need_brackets .

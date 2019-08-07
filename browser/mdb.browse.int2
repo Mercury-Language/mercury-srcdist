@@ -1,0 +1,11 @@
+:- module (mdb.browse).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module univ.
+:- use_module (mdb.browser_info).
+:- use_module (mdb.browser_term).
+:- type unbound
+    --->    '_' .

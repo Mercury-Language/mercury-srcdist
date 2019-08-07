@@ -1,0 +1,26 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (hlds.vartypes).
+:- use_module (libs.trace_params).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module ((check_hlds.simplify).simplify_tasks).
+:- type innermost_proc
+    --->    imp_whole_proc 
+    ;       imp_lambda(parse_tree.prog_data.prog_context).
+:- type maybe_allow_messages
+    --->    do_not_allow_messages 
+    ;       allow_messages .
+:- type simplify_info.
+:- type simplify_nested_context
+    --->    simplify_nested_context((((check_hlds.simplify).simplify_info).snc_inside_dupl_for_switch) :: bool.bool, (((check_hlds.simplify).simplify_info).snc_proc_is_model_non) :: maybe.maybe(check_hlds.simplify.simplify_info.innermost_proc), (((check_hlds.simplify).simplify_info).snc_num_enclosing_barriers) :: uint).

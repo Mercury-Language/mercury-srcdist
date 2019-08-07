@@ -1,0 +1,20 @@
+:- module (top_level.mercury_compile_front_end).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.make_hlds).
+:- use_module (hlds.passes_aux).
+:- use_module (libs.op_mode).
+:- use_module (parse_tree.error_util).
+:- type simplify_pass
+    --->    simplify_pass_frontend 
+    ;       simplify_pass_post_untuple 
+    ;       simplify_pass_pre_prof_transforms 
+    ;       simplify_pass_pre_implicit_parallelism 
+    ;       simplify_pass_ml_backend 
+    ;       simplify_pass_ll_backend .

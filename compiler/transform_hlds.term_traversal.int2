@@ -1,0 +1,23 @@
+:- module (transform_hlds.term_traversal).
+:- interface.
+:- use_module bag.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- use_module (transform_hlds.term_errors).
+:- use_module (transform_hlds.term_norm).
+:- use_module (transform_hlds.term_util).
+:- type term_path_info
+    --->    term_path_info(hlds.hlds_pred.pred_proc_id, maybe.maybe(pair.pair(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context)), int, list.list(hlds.hlds_pred.pred_proc_id), bag.bag(parse_tree.prog_data.prog_var)).
+:- type term_traversal_info
+    --->    term_traversal_ok(set.set(transform_hlds.term_traversal.term_path_info), list.list(transform_hlds.term_errors.term_error))
+    ;       term_traversal_error(list.list(transform_hlds.term_errors.term_error), list.list(transform_hlds.term_errors.term_error)).
+:- type term_traversal_params.

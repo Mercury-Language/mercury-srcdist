@@ -1,0 +1,20 @@
+:- module stm_builtin.
+:- interface.
+:- use_module io.
+:- type rollback_exception
+    --->    rollback_invalid_transaction 
+    ;       rollback_retry .
+:- type stm.
+:- type stm_dummy_output
+    --->    stm_dummy_output .
+:- type stm_validation_result
+    --->    stm_transaction_valid 
+    ;       stm_transaction_invalid .
+:- type stm_var(T).
+:- implementation.
+:- pragma foreign_type(c, stm, "MR_STM_TransLog *", [can_pass_as_mercury_type]).
+:- type stm
+    --->    stm(builtin.c_pointer).
+:- pragma foreign_type(c, stm_var(T), "MR_STM_Var *", [can_pass_as_mercury_type, stable]).
+:- type stm_var(T)
+    --->    tvar(builtin.c_pointer).

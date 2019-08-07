@@ -1,0 +1,50 @@
+:- module lexer.
+:- interface.
+:- use_module char.
+:- use_module integer.
+:- use_module io.
+:- type integer_base
+    --->    base_2 
+    ;       base_8 
+    ;       base_10 
+    ;       base_16 .
+:- type integer_size
+    --->    size_word 
+    ;       size_8_bit 
+    ;       size_16_bit 
+    ;       size_32_bit 
+    ;       size_64_bit .
+:- type line_context
+    --->    line_context((lexer.line_context_current_line_number) :: int, (lexer.line_context_offset_of_start_of_line) :: int).
+:- type line_posn
+    --->    line_posn((lexer.line_posn_current_offset_in_file) :: int).
+:- type offset == int.
+:- type signedness
+    --->    signed 
+    ;       unsigned .
+:- type token
+    --->    name(string)
+    ;       variable(string)
+    ;       integer(lexer.integer_base, integer.integer, lexer.signedness, lexer.integer_size)
+    ;       float(float)
+    ;       string(string)
+    ;       implementation_defined(string)
+    ;       open 
+    ;       open_ct 
+    ;       close 
+    ;       open_list 
+    ;       close_list 
+    ;       open_curly 
+    ;       close_curly 
+    ;       ht_sep 
+    ;       comma 
+    ;       end 
+    ;       junk(char.char)
+    ;       error(string)
+    ;       io_error(io.error)
+    ;       eof 
+    ;       integer_dot(integer.integer).
+:- type token_context == int.
+:- type token_list
+    --->    token_cons(lexer.token, lexer.token_context, lexer.token_list)
+    ;       token_nil .

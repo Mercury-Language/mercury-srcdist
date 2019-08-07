@@ -1,0 +1,21 @@
+:- module (ll_backend.layout_out).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (hlds.hlds_pred).
+:- use_module (ll_backend.layout).
+:- use_module (ll_backend.llds).
+:- use_module (ll_backend.llds_out).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.program_representation).
+:- use_module ((ll_backend.llds_out).llds_out_util).
+:- type being_defined
+    --->    not_being_defined 
+    ;       being_defined .
+:- type use_layout_macro
+    --->    do_not_use_layout_macro 
+    ;       use_layout_macro .

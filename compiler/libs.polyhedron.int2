@@ -1,0 +1,10 @@
+:- module (libs.polyhedron).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module set.
+:- use_module (libs.lp_rational).
+:- type polyhedra == list.list(libs.polyhedron.polyhedron).
+:- type polyhedron.

@@ -1,0 +1,4 @@
+:- module (transform_hlds.term_errors).
+:- interface.
+:- type term_error.
+:- type term_error_kind.
