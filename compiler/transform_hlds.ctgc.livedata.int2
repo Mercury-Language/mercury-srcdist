@@ -1,0 +1,16 @@
+:- module ((transform_hlds.ctgc).livedata).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module ((transform_hlds.ctgc).structure_sharing).
+:- use_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- type livedata.
+:- type nodes_are_not_live_result
+    --->    nodes_all_live 
+    ;       nodes_are_live(list.list(parse_tree.prog_data_pragma.datastruct)).

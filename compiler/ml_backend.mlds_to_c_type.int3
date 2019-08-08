@@ -1,0 +1,4 @@
+:- module (ml_backend.mlds_to_c_type).
+:- interface.
+:- type output_type.
+:- abstract_inst((output_type)).

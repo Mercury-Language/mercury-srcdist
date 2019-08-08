@@ -1,0 +1,18 @@
+:- module (check_hlds.modecheck_util).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.prog_data).
+:- type after_goals
+    --->    no_after_goals 
+    ;       after_goals(((check_hlds.modecheck_util).after_instmap) :: hlds.instmap.instmap, ((check_hlds.modecheck_util).after_goals) :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type extra_goals
+    --->    no_extra_goals 
+    ;       extra_goals(((check_hlds.modecheck_util).extra_before_main) :: list.list(hlds.hlds_goal.hlds_goal), ((check_hlds.modecheck_util).extra_after_main) :: list.list(hlds.hlds_goal.hlds_goal)).

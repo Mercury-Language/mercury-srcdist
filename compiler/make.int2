@@ -1,0 +1,16 @@
+:- module make.
+:- interface.
+:- include_module (make.options_file).
+:- include_module (make.util).
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (make.options_file).
+:- use_module (parse_tree.module_imports).
+:- type make_info.
+:- type rebuild_module_deps
+    --->    do_rebuild_module_deps 
+    ;       do_not_rebuild_module_deps .

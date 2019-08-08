@@ -1,0 +1,40 @@
+:- module time.
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- type clock_t == int.
+:- type dst
+    --->    standard_time 
+    ;       daylight_time .
+:- type time_error
+    --->    time_error(string).
+:- type time_t.
+:- type tm
+    --->    tm((time.tm_year) :: int, (time.tm_mon) :: int, (time.tm_mday) :: int, (time.tm_hour) :: int, (time.tm_min) :: int, (time.tm_sec) :: int, (time.tm_yday) :: int, (time.tm_wday) :: int, (time.tm_dst) :: maybe.maybe(time.dst)).
+:- type tms
+    --->    tms(time.clock_t, time.clock_t, time.clock_t, time.clock_t).
+:- func asctime(time.tm) = string.
+:- func clk_tck = int.
+:- pred clock(time.clock_t, io.io, io.io).
+:- mode clock((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func clocks_per_sec = int.
+:- func ctime(time.time_t) = string.
+:- func difftime(time.time_t, time.time_t) = float.
+:- func gmtime(time.time_t) = time.tm.
+:- func localtime(time.time_t) = time.tm.
+:- pred localtime(time.time_t, time.tm, io.io, io.io).
+:- mode localtime((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func mktime(time.tm) = time.time_t.
+:- pred mktime(time.tm, time.time_t, io.io, io.io).
+:- mode mktime((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred time(time.time_t, io.io, io.io).
+:- mode time((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred times(time.tms, time.clock_t, io.io, io.io).
+:- mode times((builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma obsolete((time.ctime)/1).
+:- pragma obsolete((time.localtime)/1).
+:- pragma obsolete((time.mktime)/1).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("Erlang", time).

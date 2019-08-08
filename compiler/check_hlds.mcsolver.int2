@@ -1,0 +1,10 @@
+:- module (check_hlds.mcsolver).
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module pair.
+:- use_module (check_hlds.abstract_mode_constraints).
+:- type mcvar == check_hlds.abstract_mode_constraints.mc_var.
+:- type mcvars == list.list(check_hlds.mcsolver.mcvar).
+:- type prep_cstrts.
+:- type solver_cstrts.

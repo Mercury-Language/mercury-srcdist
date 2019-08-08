@@ -1,0 +1,18 @@
+:- module (hlds.hlds_error_util).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.pred_table).
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type should_module_qualify
+    --->    should_module_qualify 
+    ;       should_not_module_qualify .

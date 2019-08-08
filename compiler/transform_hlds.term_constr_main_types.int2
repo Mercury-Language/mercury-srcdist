@@ -1,0 +1,22 @@
+:- module (transform_hlds.term_constr_main_types).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (libs.polyhedron).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module (transform_hlds.term_constr_data).
+:- use_module (transform_hlds.term_constr_errors).
+:- type constr_arg_size_info == libs.polyhedron.polyhedron.
+:- type constr_termination_info == parse_tree.prog_data_pragma.generic_termination_info(transform_hlds.term_constr_main_types.term_reason, list.list(transform_hlds.term_constr_errors.term2_error)).
+:- type intermod_status
+    --->    not_mutually_recursive 
+    ;       may_be_mutually_recursive .
+:- type term_reason
+    --->    term_reason_builtin 
+    ;       term_reason_pragma_supplied 
+    ;       term_reason_foreign_supplied 
+    ;       term_reason_import_supplied 
+    ;       term_reason_analysis .
+:- type termination2_info.

@@ -1,0 +1,21 @@
+:- module (transform_hlds.term_constr_util).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (libs.lp_rational).
+:- use_module (libs.polyhedron).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module (transform_hlds.term_constr_data).
+:- use_module (transform_hlds.term_constr_main_types).
+:- type var_substitution == map.map(transform_hlds.term_constr_data.size_var, transform_hlds.term_constr_data.size_var).

@@ -1,0 +1,8 @@
+:- module diet.
+:- interface.
+:- use_module bool.
+:- use_module enum.
+:- use_module list.
+:- type diet(T).
+:- typeclass diet_element(T).
+:- instance (diet.diet_element(int)).

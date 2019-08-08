@@ -1,0 +1,12 @@
+:- module (libs.file_util).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module time.
+:- use_module (libs.globals).
+:- type dir_name == string.
+:- type file_name == string.
+:- type path_name_and_stream
+    --->    path_name_and_stream(string, io.text_input_stream).

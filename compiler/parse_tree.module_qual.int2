@@ -1,0 +1,33 @@
+:- module (parse_tree.module_qual).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module recompilation.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_event).
+:- use_module (parse_tree.prog_item).
+:- type maybe_found_undef_inst
+    --->    did_not_find_undef_inst 
+    ;       found_undef_inst .
+:- type maybe_found_undef_mode
+    --->    did_not_find_undef_mode 
+    ;       found_undef_mode .
+:- type maybe_found_undef_type
+    --->    did_not_find_undef_type 
+    ;       found_undef_type .
+:- type maybe_found_undef_typeclass
+    --->    did_not_find_undef_typeclass 
+    ;       found_undef_typeclass .
+:- type maybe_suppress_found_undef
+    --->    do_not_suppress_found_undef 
+    ;       suppress_found_undef .
+:- type mq_in_interface
+    --->    mq_not_used_in_interface 
+    ;       mq_used_in_interface .
+:- type mq_info.
+:- type partial_qualifier_info.

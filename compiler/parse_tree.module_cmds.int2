@@ -1,0 +1,21 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- type command_verbosity
+    --->    cmd_verbose 
+    ;       cmd_verbose_commands .
+:- type quote_char
+    --->    forward 
+    ;       double .
+:- type update_interface_result
+    --->    interface_new_or_changed 
+    ;       interface_unchanged 
+    ;       interface_error .

@@ -1,0 +1,25 @@
+:- module (hlds.instmap).
+:- interface.
+:- use_module assoc_list.
+:- use_module check_hlds.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module (check_hlds.mode_errors).
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_rename).
+:- use_module (parse_tree.set_of_var).
+:- type arm_instmap
+    --->    arm_instmap(parse_tree.prog_data.prog_context, hlds.instmap.instmap).
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+    --->    large_base 
+    ;       large_overlay 
+    ;       test_size .
+:- implementation.
+:- type instmap_delta == hlds.instmap.instmap.

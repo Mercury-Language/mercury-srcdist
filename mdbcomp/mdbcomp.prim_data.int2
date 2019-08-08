@@ -1,0 +1,30 @@
+:- module (mdbcomp.prim_data).
+:- interface.
+:- use_module (mdbcomp.sym_name).
+:- type pred_or_func
+    --->    pf_predicate 
+    ;       pf_function .
+:- type proc_label
+    --->    ordinary_proc_label(((mdbcomp.prim_data).ord_defining_module) :: mdbcomp.sym_name.module_name, ((mdbcomp.prim_data).ord_p_or_f) :: mdbcomp.prim_data.pred_or_func, ((mdbcomp.prim_data).ord_declaring_module) :: mdbcomp.sym_name.module_name, ((mdbcomp.prim_data).ord_pred_name) :: string, ((mdbcomp.prim_data).ord_arity) :: int, ((mdbcomp.prim_data).ord_mode_number) :: int)
+    ;       special_proc_label(((mdbcomp.prim_data).spec_defining_module) :: mdbcomp.sym_name.module_name, ((mdbcomp.prim_data).spec_spec_id) :: mdbcomp.prim_data.special_pred_id, ((mdbcomp.prim_data).spec_type_module) :: mdbcomp.sym_name.module_name, ((mdbcomp.prim_data).spec_type_name) :: string, ((mdbcomp.prim_data).spec_type_arity) :: int, ((mdbcomp.prim_data).spec_mode_number) :: int).
+:- type special_pred_id
+    --->    spec_pred_unify 
+    ;       spec_pred_index 
+    ;       spec_pred_compare .
+:- type trace_port
+    --->    port_call 
+    ;       port_exit 
+    ;       port_redo 
+    ;       port_fail 
+    ;       port_tailrec_call 
+    ;       port_exception 
+    ;       port_ite_cond 
+    ;       port_ite_then 
+    ;       port_ite_else 
+    ;       port_neg_enter 
+    ;       port_neg_success 
+    ;       port_neg_failure 
+    ;       port_disj_first 
+    ;       port_disj_later 
+    ;       port_switch 
+    ;       port_user .
