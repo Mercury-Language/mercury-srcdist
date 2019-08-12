@@ -1,0 +1,25 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_class).
+:- use_module (hlds.hlds_cons).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_type).
+:- use_module (parse_tree.set_of_var).
+:- type ctor_defn
+    --->    ctor_defn(((check_hlds.type_util).ctor_tvars) :: parse_tree.prog_data.tvarset, ((check_hlds.type_util).ctor_tvar_kinds) :: parse_tree.prog_data.tvar_kind_map, ((check_hlds.type_util).ctor_maybe_exist) :: parse_tree.prog_data.maybe_cons_exist_constraints, ((check_hlds.type_util).ctor_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.type_util).ctor_result_type) :: parse_tree.prog_data.mer_type).
+:- type is_dummy_type
+    --->    is_dummy_type 
+    ;       is_not_dummy_type .
+:- type is_either_dummy_type
+    --->    at_least_one_is_dummy_type 
+    ;       neither_is_dummy_type .

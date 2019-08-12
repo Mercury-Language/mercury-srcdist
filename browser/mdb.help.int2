@@ -1,0 +1,13 @@
+:- module (mdb.help).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module type_desc.
+:- type help_res
+    --->    help_ok 
+    ;       help_error(string).
+:- type path == list.list(string).
+:- type system.
+:- implementation.
+:- type entry.
+:- type system == list.list(mdb.help.entry).

@@ -1,0 +1,18 @@
+:- module (transform_hlds.term_constr_errors).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type term2_error
+    --->    term2_error(parse_tree.prog_data.prog_context, transform_hlds.term_constr_errors.term2_error_kind).
+:- type term2_error_kind
+    --->    imported_pred 
+    ;       can_loop_proc_called(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       cond_not_satisfied 
+    ;       horder_call 
+    ;       does_not_term_pragma(hlds.hlds_pred.pred_id)
+    ;       foreign_proc_called(hlds.hlds_pred.pred_proc_id).

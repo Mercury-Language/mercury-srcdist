@@ -1,0 +1,41 @@
+echo on
+goto 3
+print *
+browse 1
+format pretty
+depth 20
+ls
+width 131
+ls
+width 30
+ls
+width 10
+ls
+width 79
+depth 3
+ls
+format raw_pretty
+lines 4
+width 40
+ls
+width 80
+ls
+lines 12
+width 40
+ls
+cd 3
+lines 4
+width 30
+ls
+quit
+print goal
+browse goal
+ls
+^1
+ls
+^..
+ls
+^1^2^2
+ls
+quit
+continue

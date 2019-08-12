@@ -1,0 +1,9 @@
+:- module (ml_backend.mlds_to_cs_file).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- use_module (ml_backend.mlds).
+:- pred output_csharp_mlds(hlds.hlds_module.module_info, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode output_csharp_mlds((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

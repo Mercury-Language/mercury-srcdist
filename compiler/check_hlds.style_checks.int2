@@ -1,0 +1,12 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- type style_warnings_task
+    --->    non_contiguous_decls_only 
+    ;       inconsistent_pred_order_only(hlds.hlds_clauses.clause_item_number_types)
+    ;       non_contiguous_decls_and_inconsistent_pred_order(hlds.hlds_clauses.clause_item_number_types).

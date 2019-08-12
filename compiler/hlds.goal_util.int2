@@ -1,0 +1,36 @@
+:- module (hlds.goal_util).
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module term.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (hlds.instmap).
+:- use_module (hlds.pred_table).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.goal_path).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- use_module (parse_tree.set_of_var).
+:- type attach_in_from_ground_term
+    --->    attach_in_from_ground_term 
+    ;       do_not_attach_in_from_ground_term .
+:- type goal_is_atomic
+    --->    goal_is_atomic 
+    ;       goal_is_nonatomic .
+:- type is_leaf
+    --->    is_leaf 
+    ;       is_not_leaf .
+:- type maybe_transformed_goal
+    --->    ok(hlds.hlds_goal.hlds_goal)
+    ;       error(string)
+    ;       goal_not_found .

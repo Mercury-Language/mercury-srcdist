@@ -1,0 +1,8 @@
+:- module (mdb.util).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.prim_data).
+:- type line_number == int.
