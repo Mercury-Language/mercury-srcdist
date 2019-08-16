@@ -1,0 +1,238 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- use_module assoc_list.
+:- use_module bag.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (check_hlds.delay_info).
+:- use_module (check_hlds.mode_errors).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_inst_mode).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (hlds.pred_table).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.set_of_var).
+:- type call_context
+    --->    call_context_unify(hlds.hlds_goal.unify_context)
+    ;       call_context_call(check_hlds.mode_info.mode_call_id).
+:- type debug_flags
+    --->    debug_flags(((check_hlds.mode_info).verbose) :: bool.bool, ((check_hlds.mode_info).minimal) :: bool.bool, ((check_hlds.mode_info).statistics) :: bool.bool).
+:- type had_from_ground_term_scope
+    --->    had_from_ground_term_scope 
+    ;       did_not_have_from_ground_term_scope .
+:- type how_to_check_goal
+    --->    check_modes 
+    ;       check_unique_modes .
+:- type in_dupl_for_switch
+    --->    in_dupl_for_switch 
+    ;       not_in_dupl_for_switch .
+:- type in_from_ground_term_scope
+    --->    in_from_ground_term_scope 
+    ;       not_in_from_ground_term_scope .
+:- type in_promise_purity_scope
+    --->    in_promise_purity_scope 
+    ;       not_in_promise_purity_scope .
+:- type locked_vars == assoc_list.assoc_list(check_hlds.mode_info.var_lock_reason, parse_tree.set_of_var.set_of_progvar).
+:- type make_ground_terms_unique
+    --->    make_ground_terms_unique 
+    ;       do_not_make_ground_terms_unique .
+:- type may_change_called_proc
+    --->    may_change_called_proc 
+    ;       may_not_change_called_proc .
+:- type mode_call_id
+    --->    mode_call_plain(hlds.hlds_pred.pred_id)
+    ;       mode_call_generic(hlds.hlds_pred.generic_call_id).
+:- type mode_context
+    --->    mode_context_call(check_hlds.mode_info.mode_call_id, int)
+    ;       mode_context_unify(hlds.hlds_goal.unify_context, check_hlds.mode_info.side)
+    ;       mode_context_uninitialized .
+:- type mode_info.
+:- type par_conj_mode_check
+    --->    par_conj_mode_check(((check_hlds.mode_info).par_conj_nonlocals) :: parse_tree.set_of_var.set_of_progvar, ((check_hlds.mode_info).par_conj_bound) :: parse_tree.set_of_var.set_of_progvar).
+:- type par_conj_mode_check_stack == list.list(check_hlds.mode_info.par_conj_mode_check).
+:- type pred_var_multimode_map == map.map(parse_tree.prog_data.prog_var, check_hlds.mode_errors.pred_var_multimode_pred_error).
+:- type side
+    --->    left 
+    ;       right .
+:- type var_lock_reason
+    --->    var_lock_negation 
+    ;       var_lock_if_then_else 
+    ;       var_lock_lambda(mdbcomp.prim_data.pred_or_func)
+    ;       var_lock_trace_goal 
+    ;       var_lock_atomic_goal 
+    ;       var_lock_par_conj .
+:- pred mode_info_add_error(check_hlds.mode_errors.mode_error_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_add_error((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_add_live_vars(parse_tree.set_of_var.set_of_progvar, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_add_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_add_warning(check_hlds.mode_errors.mode_warning_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_add_warning((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_error(parse_tree.set_of_var.set_of_progvar, check_hlds.mode_errors.mode_error, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_error((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_changed_flag(check_hlds.mode_info.mode_info, bool.bool).
+:- mode mode_info_get_changed_flag((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_checking_extra_goals(check_hlds.mode_info.mode_info, bool.bool).
+:- mode mode_info_get_checking_extra_goals((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_context(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_context).
+:- mode mode_info_get_context((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_debug_modes(check_hlds.mode_info.mode_info, maybe.maybe(check_hlds.mode_info.debug_flags)).
+:- mode mode_info_get_debug_modes((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_delay_info(check_hlds.mode_info.mode_info, check_hlds.delay_info.delay_info).
+:- mode mode_info_get_delay_info((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_errors(check_hlds.mode_info.mode_info, list.list(check_hlds.mode_errors.mode_error_info)).
+:- mode mode_info_get_errors((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_had_from_ground_term(check_hlds.mode_info.mode_info, check_hlds.mode_info.had_from_ground_term_scope).
+:- mode mode_info_get_had_from_ground_term((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_head_inst_vars(check_hlds.mode_info.mode_info, parse_tree.prog_data.head_inst_vars).
+:- mode mode_info_get_head_inst_vars((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_how_to_check(check_hlds.mode_info.mode_info, check_hlds.mode_info.how_to_check_goal).
+:- mode mode_info_get_how_to_check((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_in_dupl_for_switch(check_hlds.mode_info.mode_info, check_hlds.mode_info.in_dupl_for_switch).
+:- mode mode_info_get_in_dupl_for_switch((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_in_from_ground_term(check_hlds.mode_info.mode_info, check_hlds.mode_info.in_from_ground_term_scope).
+:- mode mode_info_get_in_from_ground_term((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_in_promise_purity_scope(check_hlds.mode_info.mode_info, check_hlds.mode_info.in_promise_purity_scope).
+:- mode mode_info_get_in_promise_purity_scope((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_initial_instmap(check_hlds.mode_info.mode_info, hlds.instmap.instmap).
+:- mode mode_info_get_initial_instmap((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_instmap(check_hlds.mode_info.mode_info, hlds.instmap.instmap).
+:- mode mode_info_get_instmap((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_insts(check_hlds.mode_info.mode_info, hlds.hlds_inst_mode.inst_table).
+:- mode mode_info_get_insts((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_instvarset(check_hlds.mode_info.mode_info, parse_tree.prog_data.inst_varset).
+:- mode mode_info_get_instvarset((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_last_checkpoint_insts(check_hlds.mode_info.mode_info, hlds.instmap.instmap).
+:- mode mode_info_get_last_checkpoint_insts((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_live_vars(check_hlds.mode_info.mode_info, bag.bag(parse_tree.prog_data.prog_var)).
+:- mode mode_info_get_live_vars((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_liveness(check_hlds.mode_info.mode_info, parse_tree.set_of_var.set_of_progvar).
+:- mode mode_info_get_liveness((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_locked_vars(check_hlds.mode_info.mode_info, check_hlds.mode_info.locked_vars).
+:- mode mode_info_get_locked_vars((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_make_ground_terms_unique(check_hlds.mode_info.mode_info, check_hlds.mode_info.make_ground_terms_unique).
+:- mode mode_info_get_make_ground_terms_unique((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_may_change_called_proc(check_hlds.mode_info.mode_info, check_hlds.mode_info.may_change_called_proc).
+:- mode mode_info_get_may_change_called_proc((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_mode_context(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_context).
+:- mode mode_info_get_mode_context((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_modes(check_hlds.mode_info.mode_info, hlds.hlds_inst_mode.mode_table).
+:- mode mode_info_get_modes((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_module_info(check_hlds.mode_info.mode_info, hlds.hlds_module.module_info).
+:- mode mode_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_need_to_requantify(check_hlds.mode_info.mode_info, hlds.hlds_pred.need_to_requantify).
+:- mode mode_info_get_need_to_requantify((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_nondet_live_vars(check_hlds.mode_info.mode_info, bag.bag(parse_tree.prog_data.prog_var)).
+:- mode mode_info_get_nondet_live_vars((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_num_errors(check_hlds.mode_info.mode_info, int).
+:- mode mode_info_get_num_errors((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_parallel_vars(check_hlds.mode_info.mode_info, check_hlds.mode_info.par_conj_mode_check_stack).
+:- mode mode_info_get_parallel_vars((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_pred_id(check_hlds.mode_info.mode_info, hlds.hlds_pred.pred_id).
+:- mode mode_info_get_pred_id((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_pred_var_multimode_map(check_hlds.mode_info.mode_info, check_hlds.mode_info.pred_var_multimode_map).
+:- mode mode_info_get_pred_var_multimode_map((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_preds(check_hlds.mode_info.mode_info, hlds.pred_table.pred_table).
+:- mode mode_info_get_preds((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_proc_id(check_hlds.mode_info.mode_info, hlds.hlds_pred.proc_id).
+:- mode mode_info_get_proc_id((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_simple_call_id(check_hlds.mode_info.mode_info, hlds.hlds_pred.pred_id, parse_tree.prog_data.simple_call_id).
+:- mode mode_info_get_simple_call_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_types_of_vars(check_hlds.mode_info.mode_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type)).
+:- mode mode_info_get_types_of_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_var_types(check_hlds.mode_info.mode_info, hlds.vartypes.vartypes).
+:- mode mode_info_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_varset(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_varset).
+:- mode mode_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred mode_info_get_warnings(check_hlds.mode_info.mode_info, list.list(check_hlds.mode_errors.mode_warning_info)).
+:- mode mode_info_get_warnings((builtin.in), (builtin.out)) is det.
+:- pred mode_info_init(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.prog_context, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.head_inst_vars, hlds.instmap.instmap, check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.may_change_called_proc, check_hlds.mode_info.mode_info).
+:- mode mode_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_lock_vars(check_hlds.mode_info.var_lock_reason, parse_tree.set_of_var.set_of_progvar, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_lock_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_need_to_requantify(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_need_to_requantify((builtin.in), (builtin.out)) is det.
+:- pred mode_info_remove_live_vars(parse_tree.set_of_var.set_of_progvar, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_remove_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_call_arg_context(int, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_call_arg_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_call_context(check_hlds.mode_info.call_context, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_call_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_changed_flag(bool.bool, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_changed_flag((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_checking_extra_goals(bool.bool, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_checking_extra_goals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_context(parse_tree.prog_data.prog_context, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_delay_info(check_hlds.delay_info.delay_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_delay_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_errors(list.list(check_hlds.mode_errors.mode_error_info), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_errors((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_had_from_ground_term(check_hlds.mode_info.had_from_ground_term_scope, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_had_from_ground_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_how_to_check(check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_how_to_check((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_in_dupl_for_switch(check_hlds.mode_info.in_dupl_for_switch, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_in_dupl_for_switch((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_in_from_ground_term(check_hlds.mode_info.in_from_ground_term_scope, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_in_from_ground_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_in_promise_purity_scope(check_hlds.mode_info.in_promise_purity_scope, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_in_promise_purity_scope((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_instmap(hlds.instmap.instmap, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_instmap((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_instvarset(parse_tree.prog_data.inst_varset, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_instvarset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_last_checkpoint_insts(hlds.instmap.instmap, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_last_checkpoint_insts((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_live_vars(bag.bag(parse_tree.prog_data.prog_var), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_locked_vars(check_hlds.mode_info.locked_vars, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_locked_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_make_ground_terms_unique(check_hlds.mode_info.make_ground_terms_unique, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_make_ground_terms_unique((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_may_change_called_proc(check_hlds.mode_info.may_change_called_proc, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_may_change_called_proc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_mode_context(check_hlds.mode_info.mode_context, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_mode_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_module_info(hlds.hlds_module.module_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_module_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_need_to_requantify(hlds.hlds_pred.need_to_requantify, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_need_to_requantify((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_nondet_live_vars(bag.bag(parse_tree.prog_data.prog_var), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_nondet_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_parallel_vars(check_hlds.mode_info.par_conj_mode_check_stack, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_parallel_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_pred_id(hlds.hlds_pred.pred_id, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_pred_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_pred_var_multimode_map(check_hlds.mode_info.pred_var_multimode_map, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_pred_var_multimode_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_proc_id(hlds.hlds_pred.proc_id, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_proc_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_var_types(hlds.vartypes.vartypes, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_var_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_varset(parse_tree.prog_data.prog_varset, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_varset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_set_warnings(list.list(check_hlds.mode_errors.mode_warning_info), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_set_warnings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_unlock_vars(check_hlds.mode_info.var_lock_reason, parse_tree.set_of_var.set_of_progvar, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_unlock_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_unset_call_context(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_unset_call_context((builtin.in), (builtin.out)) is det.
+:- pred mode_info_var_is_live(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_var, parse_tree.prog_data.is_live).
+:- mode mode_info_var_is_live((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_var_is_locked(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_var, check_hlds.mode_info.var_lock_reason).
+:- mode mode_info_var_is_locked((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred mode_info_var_is_nondet_live(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_var, parse_tree.prog_data.is_live).
+:- mode mode_info_var_is_nondet_live((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_var_list_is_live(check_hlds.mode_info.mode_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live)).
+:- mode mode_info_var_list_is_live((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_warning(check_hlds.mode_errors.mode_warning, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_warning((builtin.in), (builtin.in), (builtin.out)) is det.
