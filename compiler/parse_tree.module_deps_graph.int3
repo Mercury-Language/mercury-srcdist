@@ -1,0 +1,5 @@
+:- module (parse_tree.module_deps_graph).
+:- interface.
+:- type deps_graph.
+:- type lookup_module_and_imports.
+:- abstract_mode((lookup_module_and_imports)).

@@ -1,0 +1,19 @@
+:- module (mdb.cterm).
+:- interface.
+:- use_module bool.
+:- type cargs.
+:- type cterm.
+:- pred cterm_deconstruct(mdb.cterm.cterm, string, mdb.cterm.cargs).
+:- mode cterm_deconstruct((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred cterm_head_tail(mdb.cterm.cargs, mdb.cterm.cterm, mdb.cterm.cargs).
+:- mode cterm_head_tail((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred match_with_cterm(T, mdb.cterm.cterm, bool.bool).
+:- mode match_with_cterm((builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma foreign_import_module("C", (mdb.cterm)).
+:- implementation.
+:- pragma foreign_type(c, cargs, "MR_CArgs", [can_pass_as_mercury_type]).
+:- type cargs
+    --->    cargs .
+:- pragma foreign_type(c, cterm, "MR_CTerm", [can_pass_as_mercury_type]).
+:- type cterm
+    --->    cterm .
