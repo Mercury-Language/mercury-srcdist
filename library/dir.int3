@@ -1,0 +1,4 @@
+:- module dir.
+:- interface.
+:- type foldl_pred(T).
+:- abstract_inst((foldl_pred)).
