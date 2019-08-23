@@ -1,0 +1,63 @@
+:- module deconstruct.
+:- interface.
+:- use_module construct.
+:- use_module list.
+:- use_module maybe.
+:- use_module univ.
+:- type maybe_arg
+    --->    some [T] (arg(T))
+    ;       no_arg .
+:- type noncanon_handling
+    --->    do_not_allow 
+    ;       canonicalize 
+    ;       include_details_cc .
+:- inst (canonicalize) for deconstruct.noncanon_handling/0 == bound(canonicalize).
+:- inst (canonicalize_or_do_not_allow) for deconstruct.noncanon_handling/0 == bound(canonicalize ; do_not_allow).
+:- inst (do_not_allow) for deconstruct.noncanon_handling/0 == bound(do_not_allow).
+:- inst (do_not_allow_or_include_details_cc) for deconstruct.noncanon_handling/0 == bound(do_not_allow ; include_details_cc).
+:- inst (include_details_cc) for deconstruct.noncanon_handling/0 == bound(include_details_cc).
+:- some [ArgT] (pred arg(T, deconstruct.noncanon_handling, int, ArgT)).
+:- mode arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)) is semidet.
+:- mode arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)) is semidet.
+:- mode arg((builtin.in), builtin.in((deconstruct.canonicalize_or_do_not_allow)), (builtin.in), (builtin.out)) is semidet.
+:- pred arg_cc(T, int, deconstruct.maybe_arg).
+:- mode arg_cc((builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred deconstruct(T, deconstruct.noncanon_handling, string, int, list.list(univ.univ)).
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- mode deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- pred deconstruct_du(T, deconstruct.noncanon_handling, construct.functor_number_lex, int, list.list(univ.univ)).
+:- mode deconstruct_du((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- mode deconstruct_du((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+:- mode deconstruct_du((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+:- some [ArgT] (pred det_arg(T, deconstruct.noncanon_handling, int, ArgT)).
+:- mode det_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)) is det.
+:- mode det_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)) is det.
+:- mode det_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)) is cc_multi.
+:- mode det_arg((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- some [ArgT] (pred det_named_arg(T, deconstruct.noncanon_handling, string, ArgT)).
+:- mode det_named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)) is det.
+:- mode det_named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)) is det.
+:- mode det_named_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)) is cc_multi.
+:- mode det_named_arg((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred functor(T, deconstruct.noncanon_handling, string, int).
+:- mode functor((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out)) is det.
+:- mode functor((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out)) is det.
+:- mode functor((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out)) is cc_multi.
+:- mode functor((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is cc_multi.
+:- pred functor_number(T, construct.functor_number_lex, int).
+:- mode functor_number((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred functor_number_cc(T, construct.functor_number_lex, int).
+:- mode functor_number_cc((builtin.in), (builtin.out), (builtin.out)) is cc_nondet.
+:- pred limited_deconstruct(T, deconstruct.noncanon_handling, int, string, int, list.list(univ.univ)).
+:- mode limited_deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- mode limited_deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred limited_deconstruct_cc(T, int, maybe.maybe({string, int, list.list(univ.univ)})).
+:- mode limited_deconstruct_cc((builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- some [ArgT] (pred named_arg(T, deconstruct.noncanon_handling, string, ArgT)).
+:- mode named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)) is semidet.
+:- mode named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)) is semidet.
+:- mode named_arg((builtin.in), builtin.in((deconstruct.canonicalize_or_do_not_allow)), (builtin.in), (builtin.out)) is semidet.
+:- pred named_arg_cc(T, string, deconstruct.maybe_arg).
+:- mode named_arg_cc((builtin.in), (builtin.in), (builtin.out)) is cc_multi.
