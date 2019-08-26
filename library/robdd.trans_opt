@@ -1,0 +1,159 @@
+:- module robdd.
+
+:- pragma termination_info(robdd.'*'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'+'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=:='((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=<'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=\\='((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(robdd.add_equivalences((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.add_equivalences_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.add_implications((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.at_most_one_of((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.at_most_one_of_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((robdd.clear_caches), finite(0, []), cannot_loop).
+:- pragma termination_info(robdd.clear_caches((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(robdd.conj_not_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.conj_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.definite_vars((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.disj_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.dnf((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((robdd.empty_vars_set) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(robdd.entails((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.eq_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.equivalent_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.equivalent_vars_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.extract_implications((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.fa((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.filter_2((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.imp_res_to_imp_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.imp_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.implication_result_to_imp_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.implications_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.intersection((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.is_terminal((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(robdd.ite((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.ite_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.labelling((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.labelling_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.make_equiv((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.make_equiv_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.make_node((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.minimal_model((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.neq_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.node_name((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.not_var((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((robdd.one) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.print_robdd((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.remove_implications((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.remove_implications_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.rename_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.restrict_filter((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_filter((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_threshold((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.restrict_true_false_vars((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_true_false_vars_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.rev_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.robdd_to_dot_2((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.size((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.size((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.squeeze_equiv((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.terminal_name((builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.tr((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.value((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.var((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.var_entailed((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.var_is_constrained((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.var_restrict_false((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.var_restrict_true((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.vars_are_constrained((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.vars_are_constrained_2((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.vars_disentailed((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.vars_entailed((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.write_edge((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.write_node((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((robdd.zero) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'~'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+
+:- pragma exceptions(function, (robdd.(*)), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.(+)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=:=)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=<)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=\=)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.add_equivalences), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.add_equivalences_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.add_implications), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.at_most_one_of), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.at_most_one_of_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.clear_caches), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.clear_caches), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.conj_not_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.conj_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.definite_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.disj_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.dnf), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.empty_vars_set), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.entails), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.eq_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.equivalent_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.equivalent_vars_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.extract_implications), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.fa), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.filter_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.imp_res_to_imp_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.imp_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.implication_result_to_imp_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.implications_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.intersection), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.is_terminal), 1, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.ite), 4, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.ite_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.labelling), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.labelling_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.make_equiv), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.make_equiv_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.make_node), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.minimal_model), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.neq_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.node_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.not_var), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.one), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.print_robdd), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.remove_implications), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.remove_implications_2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.rename_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.restrict_filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict_filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict_threshold), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.restrict_true_false_vars), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.restrict_true_false_vars_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.rev_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.size), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.size), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.squeeze_equiv), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.terminal_name), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.tr), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.value), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.var), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.var_entailed), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.var_is_constrained), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.var_restrict_false), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.var_restrict_true), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (robdd.vars_are_constrained), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.vars_are_constrained_2), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.vars_disentailed), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.vars_entailed), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.write_edge), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.write_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.zero), 1, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(~)), 2, 0, will_not_throw).
