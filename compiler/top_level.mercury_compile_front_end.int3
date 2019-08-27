@@ -1,0 +1,4 @@
+:- module (top_level.mercury_compile_front_end).
+:- interface.
+:- type simplify_pass
+	where	type_is_abstract_enum(3).
