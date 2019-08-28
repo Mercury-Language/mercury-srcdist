@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `prolog.m'
+** by the Mercury compiler,
+** version rotd-2019-08-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module prolog.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_prolog
+#define MR_HEADER_GUARD_prolog
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROLOG_DECL_GUARD
+#define PROLOG_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__prolog__prolog__type_ctor_info_univ_result_0;
+
+void MR_CALL 
+mercury__prolog__f_61_46_46_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__prolog__f_61_58_61_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__prolog__f_61_61_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__prolog__f_61_92_61_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__prolog__f_92_61_61_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__prolog__arg_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__prolog__det_arg_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__prolog____Compare____univ_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__prolog____Unify____univ_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__prolog__init(void);
+void mercury__prolog__init_type_tables(void);
+void mercury__prolog__init_debugger(void);
+const char *mercury__prolog__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_prolog
+
+// :- end_interface prolog.

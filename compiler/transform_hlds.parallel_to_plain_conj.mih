@@ -1,0 +1,66 @@
+/*
+** Automatically generated from `parallel_to_plain_conj.m'
+** by the Mercury compiler,
+** version rotd-2019-08-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.parallel_to_plain_conj.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__parallel_to_plain_conj
+#define MR_HEADER_GUARD_transform_hlds__parallel_to_plain_conj
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__PARALLEL_TO_PLAIN_CONJ_DECL_GUARD
+#define TRANSFORM_HLDS__PARALLEL_TO_PLAIN_CONJ_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+transform_hlds__parallel_to_plain_conj__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_97_108_108_101_108_95_116_111_95_112_108_97_105_110_95_99_111_110_106_115_95_95_91_49_44_32_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__parallel_to_plain_conj__parallel_to_plain_conjs_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__transform_hlds__parallel_to_plain_conj__init(void);
+void mercury__transform_hlds__parallel_to_plain_conj__init_type_tables(void);
+void mercury__transform_hlds__parallel_to_plain_conj__init_debugger(void);
+const char *mercury__transform_hlds__parallel_to_plain_conj__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.parallel_to_plain_conj
+
+// :- end_interface transform_hlds.parallel_to_plain_conj.
