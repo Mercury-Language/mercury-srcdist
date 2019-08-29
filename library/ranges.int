@@ -1,0 +1,105 @@
+:- module ranges.
+:- interface.
+:- use_module list.
+:- use_module set.
+:- type ranges.
+:- pred compare_lex(builtin.comparison_result, ranges.ranges, ranges.ranges).
+:- mode compare_lex((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- func contraction(ranges.ranges, int) = ranges.ranges.
+:- func delete(int, ranges.ranges) = ranges.ranges.
+:- func difference(ranges.ranges, ranges.ranges) = ranges.ranges.
+:- func dilation(ranges.ranges, int) = ranges.ranges.
+:- pred disjoint(ranges.ranges, ranges.ranges).
+:- mode disjoint((builtin.in), (builtin.in)) is semidet.
+:- func empty = ranges.ranges.
+:- pred foldl(pred(int, A, A), ranges.ranges, A, A).
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl2(pred(int, A, A, B, B), ranges.ranges, A, A, B, B).
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl3(pred(int, A, A, B, B, C, C), ranges.ranges, A, A, B, B, C, C).
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr(pred(int, A, A), ranges.ranges, A, A).
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- func from_list(list.list(int)) = ranges.ranges.
+:- func from_set(set.set(int)) = ranges.ranges.
+:- pred greatest(ranges.ranges, int).
+:- mode greatest((builtin.in), (builtin.out)) is semidet.
+:- pred insert(int, ranges.ranges, ranges.ranges).
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert(int, ranges.ranges) = ranges.ranges.
+:- func intersection(ranges.ranges, ranges.ranges) = ranges.ranges.
+:- pred is_contiguous(ranges.ranges, int, int).
+:- mode is_contiguous((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred is_empty(ranges.ranges).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_non_empty(ranges.ranges).
+:- mode is_non_empty((builtin.in)) is semidet.
+:- pred least(ranges.ranges, int).
+:- mode least((builtin.in), (builtin.out)) is semidet.
+:- func median(ranges.ranges) = int.
+:- pred member(int, ranges.ranges).
+:- mode member((builtin.in), (builtin.in)) is semidet.
+:- func negate(ranges.ranges) = ranges.ranges.
+:- pred next(ranges.ranges, int, int).
+:- mode next((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred nondet_member(int, ranges.ranges).
+:- mode nondet_member((builtin.out), (builtin.in)) is nondet.
+:- func plus(ranges.ranges, ranges.ranges) = ranges.ranges.
+:- pred prune_to_next_non_member(ranges.ranges, ranges.ranges, int, int).
+:- mode prune_to_next_non_member((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred prune_to_prev_non_member(ranges.ranges, ranges.ranges, int, int).
+:- mode prune_to_prev_non_member((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func range(int, int) = ranges.ranges.
+:- pred range_foldl(pred(int, int, A, A), ranges.ranges, A, A).
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode range_foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred range_foldl2(pred(int, int, A, A, B, B), ranges.ranges, A, A, B, B).
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred range_foldr(pred(int, int, A, A), ranges.ranges, A, A).
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode range_foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred range_member(int, int, ranges.ranges).
+:- mode range_member((builtin.out), (builtin.out), (builtin.in)) is nondet.
+:- func restrict_max(int, ranges.ranges) = ranges.ranges.
+:- func restrict_min(int, ranges.ranges) = ranges.ranges.
+:- func restrict_range(int, int, ranges.ranges) = ranges.ranges.
+:- func shift(ranges.ranges, int) = ranges.ranges.
+:- func size(ranges.ranges) = int.
+:- pred split(ranges.ranges, int, int, ranges.ranges).
+:- mode split((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred subset(ranges.ranges, ranges.ranges).
+:- mode subset((builtin.in), (builtin.in)) is semidet.
+:- func to_sorted_list(ranges.ranges) = list.list(int).
+:- func union(ranges.ranges, ranges.ranges) = ranges.ranges.
+:- func universe = ranges.ranges.
