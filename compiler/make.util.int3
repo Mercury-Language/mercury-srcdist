@@ -1,0 +1,13 @@
+:- module (make.util).
+:- interface.
+:- type build(T).
+:- type build(T, Info).
+:- type build(T, Info1, Info2).
+:- type build2(T, U).
+:- type foldl2_pred_with_status(T, Info, IO).
+:- type foldl3_pred_with_status(T, Acc, Info, IO).
+:- type stdout_lock.
+:- abstract_inst((build)).
+:- abstract_inst((build2)).
+:- abstract_inst((foldl2_pred_with_status)).
+:- abstract_inst((foldl3_pred_with_status)).

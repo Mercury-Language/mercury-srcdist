@@ -1,0 +1,13 @@
+module(1, "random.sfc16.m",
+	(random.sfc16),
+	{random},
+	{builtin, private_builtin},
+	{builtin, int, private_builtin, uint, uint16, uint32, uint64, uint8},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
