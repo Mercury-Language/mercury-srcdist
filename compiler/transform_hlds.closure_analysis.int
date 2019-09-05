@@ -1,0 +1,7 @@
+:- module (transform_hlds.closure_analysis).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- pred closure_analyse_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode closure_analyse_module((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

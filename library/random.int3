@@ -1,0 +1,21 @@
+:- module random.
+:- interface.
+:- include_module (random.sfc16).
+:- include_module (random.sfc32).
+:- include_module (random.sfc64).
+:- import_module io.
+:- import_module list.
+:- type io_random(R).
+:- type io_urandom(P, S).
+:- type shared_random(P, S).
+:- type supply.
+:- type urandom_params(R).
+:- type urandom_state(R).
+:- typeclass random(R).
+:- typeclass urandom(P, S).
+:- typeclass urandom_dup(S).
+:- instance (random.random(random.shared_random(P, S))) <= (random.urandom(P, S), random.urandom_dup(S)).
+:- instance (random.urandom(random.io_random(R), io)) <= (random.random(R)).
+:- instance (random.urandom(random.io_urandom(P, S), io)) <= (random.urandom(P, S)).
+:- instance (random.urandom(random.urandom_params(R), random.urandom_state(R))) <= (random.random(R)).
+:- instance (random.urandom_dup(random.urandom_state(R))) <= (random.random(R)).
