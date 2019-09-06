@@ -1,0 +1,10 @@
+:- module (mdb.name_mangle).
+:- interface.
+:- type arity.
+:- type is_pred_or_func
+	where	type_is_abstract_enum(1).
+:- type mercury_proc.
+:- type mode_num.
+:- type module_name.
+:- type pred_name.
+:- type sym_name.
