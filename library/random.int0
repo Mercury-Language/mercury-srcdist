@@ -1,0 +1,162 @@
+:- module random.
+:- interface.
+:- include_module (random.sfc16).
+:- include_module (random.sfc32).
+:- include_module (random.sfc64).
+:- import_module array.
+:- import_module io.
+:- import_module list.
+:- type io_random(R).
+:- type io_urandom(P, S).
+:- type shared_random(P, S).
+:- type supply.
+:- type urandom_params(R).
+:- type urandom_state(R).
+:- pred init(int, random.supply).
+:- mode init((builtin.in), (builtin.uo)) is det.
+:- pred make_io_random(R, random.io_random(R), io.io, io.io) <= (random.random(R)).
+:- mode make_io_random((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_io_urandom(P, S, random.io_urandom(P, S), io.io, io.io) <= (random.urandom(P, S)).
+:- mode make_io_urandom((builtin.in), (builtin.di), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_shared_random(P, S) = random.shared_random(P, S).
+:- mode make_shared_random((builtin.in), (builtin.di)) = (builtin.out) is det.
+:- pred make_urandom(R, random.urandom_params(R), random.urandom_state(R)).
+:- mode make_urandom((builtin.in), (builtin.out), (builtin.uo)) is det.
+:- pred normal_floats(float, float, R, R) <= (random.random(R)).
+:- mode normal_floats((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred normal_floats(P, float, float, S, S) <= (random.urandom(P, S)).
+:- mode normal_floats((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred normal_floats(float, float, float, float, R, R) <= (random.random(R)).
+:- mode normal_floats((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred normal_floats(P, float, float, float, float, S, S) <= (random.urandom(P, S)).
+:- mode normal_floats((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred permutation(list.list(T), list.list(T), random.supply, random.supply).
+:- mode permutation((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode permutation((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred randcount(int, random.supply, random.supply).
+:- mode randcount((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode randcount((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred randmax(int, random.supply, random.supply).
+:- mode randmax((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode randmax((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred random(int, random.supply, random.supply).
+:- mode random((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode random((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred random(int, int, int, random.supply, random.supply).
+:- mode random((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode random((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred shuffle_array(array.array(T), array.array(T), R, R) <= (random.random(R)).
+:- mode shuffle_array((array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- pred shuffle_array(P, array.array(T), array.array(T), S, S) <= (random.urandom(P, S)).
+:- mode shuffle_array((builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- pred shuffle_list(list.list(T), list.list(T), R, R) <= (random.random(R)).
+:- mode shuffle_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred shuffle_list(P, list.list(T), list.list(T), S, S) <= (random.urandom(P, S)).
+:- mode shuffle_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred test(int, int, list.list(int), int).
+:- mode test((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred uniform_float_around_mid(float, float, float, R, R) <= (random.random(R)).
+:- mode uniform_float_around_mid((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred uniform_float_around_mid(P, float, float, float, S, S) <= (random.urandom(P, S)).
+:- mode uniform_float_around_mid((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred uniform_float_in_01(float, R, R) <= (random.random(R)).
+:- mode uniform_float_in_01((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred uniform_float_in_01(P, float, S, S) <= (random.urandom(P, S)).
+:- mode uniform_float_in_01((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred uniform_float_in_range(float, float, float, R, R) <= (random.random(R)).
+:- mode uniform_float_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred uniform_float_in_range(P, float, float, float, S, S) <= (random.urandom(P, S)).
+:- mode uniform_float_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred uniform_int_in_range(int, int, int, R, R) <= (random.random(R)).
+:- mode uniform_int_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred uniform_int_in_range(P, int, int, int, S, S) <= (random.urandom(P, S)).
+:- mode uniform_int_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred uniform_uint_in_range(uint, uint, uint, R, R) <= (random.random(R)).
+:- mode uniform_uint_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred uniform_uint_in_range(P, uint, uint, uint, S, S) <= (random.urandom(P, S)).
+:- mode uniform_uint_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma obsolete((random.init)/2).
+:- pragma obsolete((random.test)/4).
+:- typeclass random(R) where [
+	pred generate_uint8(uint8, R, R),
+	mode generate_uint8((builtin.out), (builtin.in), (builtin.out)) is det,
+	pred generate_uint16(uint16, R, R),
+	mode generate_uint16((builtin.out), (builtin.in), (builtin.out)) is det,
+	pred generate_uint32(uint32, R, R),
+	mode generate_uint32((builtin.out), (builtin.in), (builtin.out)) is det,
+	pred generate_uint64(uint64, R, R),
+	mode generate_uint64((builtin.out), (builtin.in), (builtin.out)) is det
+].
+:- typeclass urandom(P, S) <= ((P -> S)) where [
+	pred generate_uint8(P, uint8, S, S),
+	mode generate_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det,
+	pred generate_uint16(P, uint16, S, S),
+	mode generate_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det,
+	pred generate_uint32(P, uint32, S, S),
+	mode generate_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det,
+	pred generate_uint64(P, uint64, S, S),
+	mode generate_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass urandom_dup(S) where [
+	pred urandom_dup(S, S, S),
+	mode urandom_dup((builtin.di), (builtin.uo), (builtin.uo)) is det
+].
+:- instance (random.random(random.shared_random(P, S))) <= (random.urandom(P, S), random.urandom_dup(S)).
+:- instance (random.urandom(random.io_random(R), io.io)) <= (random.random(R)).
+:- instance (random.urandom(random.io_urandom(P, S), io.io)) <= (random.urandom(P, S)).
+:- instance (random.urandom(random.urandom_params(R), random.urandom_state(R))) <= (random.random(R)).
+:- instance (random.urandom_dup(random.urandom_state(R))) <= (random.random(R)).
+:- implementation.
+:- import_module float.
+:- import_module int.
+:- import_module math.
+:- import_module mutvar.
+:- import_module uint.
+:- import_module uint32.
+:- type io_random(R)
+    --->    io_random(mutvar.mutvar(R)).
+:- type io_urandom(P, S)
+    --->    io_urandom(P, mutvar.mutvar(S)).
+:- type shared_random(P, S)
+    --->    shared_random((random.shared_random_params) :: P, (random.shared_random_state) :: S).
+:- type supply
+    --->    rs(int).
+:- type urandom_params(R)
+    --->    urandom_params .
+:- type urandom_state(R)
+    --->    urandom_state(R).
+:- pred io_random_gen_uint16(random.io_random(R), uint16, io.io, io.io) <= (random.random(R)).
+:- mode io_random_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_random_gen_uint32(random.io_random(R), uint32, io.io, io.io) <= (random.random(R)).
+:- mode io_random_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_random_gen_uint64(random.io_random(R), uint64, io.io, io.io) <= (random.random(R)).
+:- mode io_random_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_random_gen_uint8(random.io_random(R), uint8, io.io, io.io) <= (random.random(R)).
+:- mode io_random_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_urandom_gen_uint16(random.io_urandom(P, S), uint16, io.io, io.io) <= (random.urandom(P, S)).
+:- mode io_urandom_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_urandom_gen_uint32(random.io_urandom(P, S), uint32, io.io, io.io) <= (random.urandom(P, S)).
+:- mode io_urandom_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_urandom_gen_uint64(random.io_urandom(P, S), uint64, io.io, io.io) <= (random.urandom(P, S)).
+:- mode io_urandom_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_urandom_gen_uint8(random.io_urandom(P, S), uint8, io.io, io.io) <= (random.urandom(P, S)).
+:- mode io_urandom_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred params(int, int, int).
+:- mode params((builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred perform_sampling(int, array.array(T), list.list(T), list.list(T), random.supply, random.supply).
+:- mode perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred shuffle_2(int, int, int, int, array.array(T), array.array(T), R, R) <= (random.random(R)).
+:- mode shuffle_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- pred shuffle_2(P, int, int, int, int, array.array(T), array.array(T), S, S) <= (random.urandom(P, S)).
+:- mode shuffle_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- pred test_2(int, list.list(int), random.supply, random.supply).
+:- mode test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode test_2((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred uniform_to_normal(float, float, float, float).
+:- mode uniform_to_normal((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- instance (random.random(random.shared_random(P, S))) <= (random.urandom(P, S), random.urandom_dup(S)).
+:- instance (random.urandom(random.io_random(R), io.io)) <= (random.random(R)).
+:- instance (random.urandom(random.io_urandom(P, S), io.io)) <= (random.urandom(P, S)).
+:- instance (random.urandom(random.urandom_params(R), random.urandom_state(R))) <= (random.random(R)).
+:- instance (random.urandom_dup(random.urandom_state(R))) <= (random.random(R)).

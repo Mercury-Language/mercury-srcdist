@@ -1,0 +1,29 @@
+:- module (libs.pickle).
+:- interface.
+:- use_module io.
+:- use_module type_desc.
+:- use_module univ.
+:- type pickler_pred == pred(libs.pickle.picklers, univ.univ, io.io, io.io).
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred == pred(libs.pickle.unpicklers, libs.pickle.unpickle_handle, type_desc.type_desc, univ.univ, libs.pickle.unpickle_state, libs.pickle.unpickle_state).
+:- type unpicklers.
+:- inst (pickler_pred) == (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det).
+:- inst (unpickler_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- func init_picklers = libs.pickle.picklers.
+:- func init_unpicklers = libs.pickle.unpicklers.
+:- pred pickle(libs.pickle.picklers, T, io.io, io.io).
+:- mode pickle((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred register_pickler(type_desc.type_ctor_desc, libs.pickle.pickler_pred, libs.pickle.picklers, libs.pickle.picklers).
+:- mode register_pickler((builtin.in), builtin.in(((libs.pickle).pickler_pred)), (builtin.in), (builtin.out)) is det.
+:- pred register_unpickler(type_desc.type_ctor_desc, libs.pickle.unpickler_pred, libs.pickle.unpicklers, libs.pickle.unpicklers).
+:- mode register_unpickler((builtin.in), builtin.in(((libs.pickle).unpickler_pred)), (builtin.in), (builtin.out)) is det.
+:- pred unpickle(libs.pickle.unpicklers, libs.pickle.unpickle_handle, T, libs.pickle.unpickle_state, libs.pickle.unpickle_state).
+:- mode unpickle((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unpickle_from_file(libs.pickle.unpicklers, string, io.res(T), io.io, io.io).
+:- mode unpickle_from_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- use_module bitmap.
+:- type unpickle_handle == bitmap.bitmap.
+:- type unpickle_state == int.

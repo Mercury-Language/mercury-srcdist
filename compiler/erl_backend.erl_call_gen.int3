@@ -1,0 +1,4 @@
+:- module (erl_backend.erl_call_gen).
+:- interface.
+:- abstract_inst((ground_class_method)).
+:- abstract_inst((ground_higher_order)).
