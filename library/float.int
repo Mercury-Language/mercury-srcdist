@@ -1,0 +1,70 @@
+:- module float.
+:- interface.
+:- use_module pretty_printer.
+:- func *(float, float) = float.
+:- mode *((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func +(float) = float.
+:- mode +((builtin.in)) = (builtin.uo) is det.
+:- func +(float, float) = float.
+:- mode +((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func -(float) = float.
+:- mode -((builtin.in)) = (builtin.uo) is det.
+:- func -(float, float) = float.
+:- mode -((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func /(float, float) = float.
+:- mode /((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred <(float, float).
+:- mode <((builtin.in), (builtin.in)) is semidet.
+:- pred =<(float, float).
+:- mode =<((builtin.in), (builtin.in)) is semidet.
+:- pred >(float, float).
+:- mode >((builtin.in), (builtin.in)) is semidet.
+:- pred >=(float, float).
+:- mode >=((builtin.in), (builtin.in)) is semidet.
+:- func abs(float) = float.
+:- func cast_from_int32(int32) = float.
+:- func cast_from_int64(int64) = float.
+:- func cast_from_uint32(uint32) = float.
+:- func cast_from_uint64(uint64) = float.
+:- func ceiling_to_int(float) = int.
+:- func epsilon = float.
+:- func float(int) = float.
+:- func float32_bits_string(float) = string.
+:- mode float32_bits_string((builtin.in)) = (builtin.uo) is det.
+:- func float64_bits_string(float) = string.
+:- mode float64_bits_string((builtin.in)) = (builtin.uo) is det.
+:- func float_to_doc(float) = pretty_printer.doc.
+:- func floor_to_int(float) = int.
+:- func from_int16(int16) = float.
+:- func from_int8(int8) = float.
+:- func from_uint16(uint16) = float.
+:- func from_uint8(uint8) = float.
+:- func hash(float) = int.
+:- func infinity = float.
+:- pred is_finite(float).
+:- mode is_finite((builtin.in)) is semidet.
+:- pred is_inf(float).
+:- mode is_inf((builtin.in)) is semidet.
+:- pred is_infinite(float).
+:- mode is_infinite((builtin.in)) is semidet.
+:- pred is_nan(float).
+:- mode is_nan((builtin.in)) is semidet.
+:- pred is_nan_or_inf(float).
+:- mode is_nan_or_inf((builtin.in)) is semidet.
+:- pred is_nan_or_infinite(float).
+:- mode is_nan_or_infinite((builtin.in)) is semidet.
+:- pred is_zero(float).
+:- mode is_zero((builtin.in)) is semidet.
+:- func mantissa_digits = int.
+:- func max = float.
+:- func max(float, float) = float.
+:- func max_exponent = int.
+:- func min = float.
+:- func min(float, float) = float.
+:- func min_exponent = int.
+:- func pow(float, int) = float.
+:- func radix = int.
+:- func round_to_int(float) = int.
+:- func truncate_to_int(float) = int.
+:- func unchecked_quotient(float, float) = float.
+:- mode unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo) is det.

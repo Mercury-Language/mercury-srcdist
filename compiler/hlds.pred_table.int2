@@ -1,0 +1,16 @@
+:- module (hlds.pred_table).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- type constraint_search == pred(int, list.list(parse_tree.prog_data.prog_constraint)).
+:- type is_fully_qualified
+    --->    is_fully_qualified 
+    ;       may_be_partially_qualified .
+:- type mode_no
+    --->    only_mode 
+    ;       mode_no(int).
+:- type pred_table == map.map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info).
+:- type predicate_table.
+:- inst (constraint_search) == (pred((builtin.in), (builtin.out)) is semidet).

@@ -1,0 +1,486 @@
+/*
+** Automatically generated from `type_util.m'
+** by the Mercury compiler,
+** version rotd-2019-09-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.type_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__type_util
+#define MR_HEADER_GUARD_check_hlds__type_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPE_UTIL_DECL_GUARD
+#define CHECK_HLDS__TYPE_UTIL_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_util__check_hlds__type_util__type_ctor_info_ctor_defn_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_util__check_hlds__type_util__type_ctor_info_exist_qvar_action_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_util__check_hlds__type_util__type_ctor_info_is_dummy_type_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_util__check_hlds__type_util__type_ctor_info_is_either_dummy_type_0;
+
+void MR_CALL 
+check_hlds__type_util__apply_rec_subst_to_constraint_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_rec_subst_to_constraint_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_rec_subst_to_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_rec_subst_to_constraint_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_rec_subst_to_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_subst_to_constraint_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_subst_to_constraint_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_subst_to_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_subst_to_constraint_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_subst_to_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_variable_renaming_to_constraint_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_variable_renaming_to_constraint_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_variable_renaming_to_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_variable_renaming_to_constraint_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__apply_variable_renaming_to_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__classify_type_ctor_if_special_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_util__cons_id_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+MR_bool MR_CALL 
+check_hlds__type_util__cons_id_is_existq_cons_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__get_cons_defn_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__type_util__get_cons_defn_det_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__type_util__get_cons_id_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__get_cons_id_non_existential_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__get_cons_repn_defn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__get_cons_repn_defn_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__get_existq_cons_defn_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__is_region_var_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+check_hlds__type_util__maybe_get_cons_id_arg_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__type_util__maybe_get_higher_order_arg_types_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__switch_type_num_functors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_body_has_solver_type_details_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_body_has_user_defined_equality_pred_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_body_is_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_body_is_solver_type_from_type_table_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_constructors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_ctor_has_hand_defined_rtti_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_ctor_is_atomic_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+check_hlds__type_util__type_ctor_module_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_definitely_has_no_user_defined_equality_pred_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_has_solver_type_details_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_atomic_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_existq_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_no_tag_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_no_tag_type_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_or_may_contain_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_is_solver_type_from_type_table_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_not_stored_in_region_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_to_type_defn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_to_type_defn_body_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_to_type_defn_body_from_type_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util__type_to_type_defn_from_type_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_util__update_type_may_use_atomic_alloc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__type_util__var_is_or_may_contain_solver_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__type_util__classify_type_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__classify_type_ctor_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__classify_type_defn_body_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+check_hlds__type_util__cons_id_adjusted_arity_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__type_util__is_either_type_a_dummy_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__type_util__is_type_a_dummy_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__put_typeinfo_vars_first_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__remove_typeinfo_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__remove_typeinfo_vars_from_set_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__type_util__remove_typeinfo_vars_from_set_of_var_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+check_hlds__type_util__type_ctor_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_util__type_ctor_module_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+check_hlds__type_util__type_ctor_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_util__type_may_use_atomic_alloc_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+check_hlds__type_util____Compare____ctor_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_util____Compare____is_dummy_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_util____Compare____is_either_dummy_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_util____Unify____ctor_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util____Unify____is_dummy_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_util____Unify____is_either_dummy_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__type_util__init(void);
+void mercury__check_hlds__type_util__init_type_tables(void);
+void mercury__check_hlds__type_util__init_debugger(void);
+const char *mercury__check_hlds__type_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.type_util
+
+// :- end_interface check_hlds.type_util.
