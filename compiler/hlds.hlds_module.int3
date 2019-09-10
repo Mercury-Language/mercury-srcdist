@@ -1,0 +1,26 @@
+:- module (hlds.hlds_module).
+:- interface.
+:- type avail_module.
+:- type avail_module_entry.
+:- type avail_module_map.
+:- type complexity_arg_info.
+:- type complexity_arg_kind
+	where	type_is_abstract_enum(2).
+:- type complexity_proc_info.
+:- type complexity_proc_map.
+:- type direct_arg_map.
+:- type exported_enum_info.
+:- type item_foreign_enum_info.
+:- type item_foreign_export_enum_info.
+:- type module_info.
+:- type oisu_map.
+:- type oisu_preds.
+:- type pragma_exported_proc.
+:- type proc_analysis_kind
+	where	type_is_abstract_enum(3).
+:- type table_struct_info.
+:- type table_struct_map.
+:- type type_ctor_gen_info.
+:- type type_repn_decision_data.
+:- type type_spec_info.
+:- type unused_arg_info.
