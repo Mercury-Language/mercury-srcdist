@@ -1,0 +1,4 @@
+:- module (transform_hlds.goal_store).
+:- interface.
+:- type goal_store(T).
+:- type stored_goal.
