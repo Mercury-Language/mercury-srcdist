@@ -1,0 +1,39 @@
+      E1:     C1 CALL pred track_through_catch.main/2-0 (cc_multi) track_through_catch.m:18
+mdb> mdb> echo on
+Command echo enabled.
+mdb> untrust 0
+mdb> table_io start
+I/O tabling started.
+mdb> break try
+Ambiguous procedure specification. The matches are:
+0: pred exception.try/2-0 (cc_multi)
+1: pred exception.try/2-1 (cc_multi)
+2: pred exception.try/2-2 (cc_multi)
+3: pred exception.try/2-3 (cc_multi)
+
+Which do you want to put a breakpoint on (0-3 or *)? *
+ 0: + stop  interface pred exception.try/2-0 (cc_multi)
+ 1: + stop  interface pred exception.try/2-1 (cc_multi)
+ 2: + stop  interface pred exception.try/2-2 (cc_multi)
+ 3: + stop  interface pred exception.try/2-3 (cc_multi)
+mdb> c
+      E2:     C2 CALL pred exception.try/2-0 (cc_multi) exception.m:NNNN (track_through_catch.m:20)
+mdb> f
+      E3:     C2 EXIT pred exception.try/2-0 (cc_multi) exception.m:NNNN (track_through_catch.m:20)
+mdb> dd
+try(q(2), succeeded(2))
+Valid? b 2
+browser> cd 1
+browser> track
+succeeded(2)
+p(2)
+Valid? info
+Context of current question : track_through_catch.m:26 (track_through_catch.m:19)
+Search mode                 : top down                                           
+The current question was chosen because the marked subterm was bound by
+the unification inside the predicate track_through_catch.p/1
+(track_through_catch.m:26). The path to the subterm in the atom is 1.
+dd> quit
+Diagnosis aborted.
+      E3:     C2 EXIT pred exception.try/2-0 (cc_multi) exception.m:NNNN (track_through_catch.m:20)
+mdb> quit -y

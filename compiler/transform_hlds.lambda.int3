@@ -1,0 +1,4 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- type lambda_info.
+:- type reg_wrapper_proc.

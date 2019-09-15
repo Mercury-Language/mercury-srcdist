@@ -1,0 +1,4 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- type needs_quotes
+	where	type_is_abstract_enum(1).
