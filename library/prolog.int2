@@ -1,0 +1,6 @@
+:- module prolog.
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- use_module univ.
+:- type univ_result == pair.pair(string, list.list(univ.univ)).
