@@ -1,0 +1,5 @@
+:- module (hlds.vartypes).
+:- interface.
+:- type maybe_vartypes.
+:- type prog_var_set_types.
+:- type vartypes.
