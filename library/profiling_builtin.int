@@ -1,0 +1,148 @@
+:- module profiling_builtin.
+:- interface.
+:- pragma foreign_import_module("C", profiling_builtin).
+:- type call_site_dynamic.
+:- type call_site_nums_2
+    --->    call_site_nums_2(int, int).
+:- type call_site_nums_3
+    --->    call_site_nums_3(int, int, int).
+:- type call_site_nums_4
+    --->    call_site_nums_4(int, int, int, int).
+:- type call_site_nums_5
+    --->    call_site_nums_5(int, int, int, int, int).
+:- type call_site_nums_6
+    --->    call_site_nums_6(int, int, int, int, int, int).
+:- type call_site_nums_7
+    --->    call_site_nums_7(int, int, int, int, int, int, int).
+:- type call_site_nums_8
+    --->    call_site_nums_8(int, int, int, int, int, int, int, int).
+:- type call_site_nums_9
+    --->    call_site_nums_9(int, int, int, int, int, int, int, int, int).
+:- type proc_dynamic.
+:- type proc_layout.
+:- impure pred det_call_port_code_ac(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode det_call_port_code_ac((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred det_call_port_code_sr(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode det_call_port_code_sr((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred det_exit_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode det_exit_port_code_ac((builtin.in), (builtin.in)) is det.
+:- impure pred det_exit_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode det_exit_port_code_sr((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred increment_dynamic_coverage_point_count(int).
+:- mode increment_dynamic_coverage_point_count((builtin.in)) is det.
+:- impure pred increment_static_coverage_point_count(profiling_builtin.proc_layout, int).
+:- mode increment_static_coverage_point_count((builtin.in), (builtin.in)) is det.
+:- impure pred non_call_port_code_ac(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_call_port_code_ac((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred non_call_port_code_sr(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_call_port_code_sr((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred non_exit_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode non_exit_port_code_ac((builtin.in), (builtin.in)) is det.
+:- impure pred non_exit_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_exit_port_code_sr((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred non_fail_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode non_fail_port_code_ac((builtin.in), (builtin.in)) is failure.
+:- impure pred non_fail_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_fail_port_code_sr((builtin.in), (builtin.in), (builtin.in)) is failure.
+:- impure pred non_redo_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_redo_port_code_ac((builtin.in), (builtin.in)) is failure.
+:- impure pred non_redo_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode non_redo_port_code_sr((builtin.in), (builtin.in)) is failure.
+:- impure pred prepare_for_callback(int).
+:- mode prepare_for_callback((builtin.in)) is det.
+:- impure pred prepare_for_ho_call(int, builtin.c_pointer).
+:- mode prepare_for_ho_call((builtin.in), (builtin.in)) is det.
+:- impure pred prepare_for_method_call(int, builtin.c_pointer, int).
+:- mode prepare_for_method_call((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred prepare_for_normal_call(int).
+:- mode prepare_for_normal_call((builtin.in)) is det.
+:- impure pred prepare_for_special_call(int, builtin.c_pointer).
+:- mode prepare_for_special_call((builtin.in), (builtin.in)) is det.
+:- impure pred prepare_for_tail_call(int).
+:- mode prepare_for_tail_call((builtin.in)) is det.
+:- impure pred reset_activation_info_ac(int, profiling_builtin.proc_dynamic).
+:- mode reset_activation_info_ac((builtin.in), (builtin.in)) is det.
+:- impure pred reset_activation_info_sr(profiling_builtin.proc_dynamic).
+:- mode reset_activation_info_sr((builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_1(profiling_builtin.call_site_dynamic, int, int).
+:- mode restore_recursion_depth_exit_1((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_2(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_2, int, int).
+:- mode restore_recursion_depth_exit_2((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_3(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_3, int, int, int).
+:- mode restore_recursion_depth_exit_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_4(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_4, int, int, int, int).
+:- mode restore_recursion_depth_exit_4((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_5(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_5, int, int, int, int, int).
+:- mode restore_recursion_depth_exit_5((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_6(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_6, int, int, int, int, int, int).
+:- mode restore_recursion_depth_exit_6((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_7(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_7, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_exit_7((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_8(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_8, int, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_exit_8((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_exit_9(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_9, int, int, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_exit_9((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_1(profiling_builtin.call_site_dynamic, int, int).
+:- mode restore_recursion_depth_fail_1((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_2(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_2, int, int).
+:- mode restore_recursion_depth_fail_2((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_3(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_3, int, int, int).
+:- mode restore_recursion_depth_fail_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_4(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_4, int, int, int, int).
+:- mode restore_recursion_depth_fail_4((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_5(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_5, int, int, int, int, int).
+:- mode restore_recursion_depth_fail_5((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_6(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_6, int, int, int, int, int, int).
+:- mode restore_recursion_depth_fail_6((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_7(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_7, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_fail_7((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_8(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_8, int, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_fail_8((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred restore_recursion_depth_fail_9(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_9, int, int, int, int, int, int, int, int, int).
+:- mode restore_recursion_depth_fail_9((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred rezero_activation_info_ac is det.
+:- impure pred rezero_activation_info_sr is det.
+:- impure pred save_and_zero_activation_info_ac(int, profiling_builtin.proc_dynamic).
+:- mode save_and_zero_activation_info_ac((builtin.out), (builtin.out)) is det.
+:- impure pred save_and_zero_activation_info_sr(profiling_builtin.proc_dynamic).
+:- mode save_and_zero_activation_info_sr((builtin.out)) is det.
+:- impure pred save_recursion_depth_1(profiling_builtin.call_site_dynamic, int, int).
+:- mode save_recursion_depth_1((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred save_recursion_depth_2(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_2, int, int).
+:- mode save_recursion_depth_2((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_3(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_3, int, int, int).
+:- mode save_recursion_depth_3((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_4(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_4, int, int, int, int).
+:- mode save_recursion_depth_4((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_5(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_5, int, int, int, int, int).
+:- mode save_recursion_depth_5((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_6(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_6, int, int, int, int, int, int).
+:- mode save_recursion_depth_6((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_7(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_7, int, int, int, int, int, int, int).
+:- mode save_recursion_depth_7((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_8(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_8, int, int, int, int, int, int, int, int).
+:- mode save_recursion_depth_8((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred save_recursion_depth_9(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_nums_9, int, int, int, int, int, int, int, int, int).
+:- mode save_recursion_depth_9((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred semi_call_port_code_ac(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode semi_call_port_code_ac((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred semi_call_port_code_sr(profiling_builtin.proc_layout, profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode semi_call_port_code_sr((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- impure pred semi_exit_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode semi_exit_port_code_ac((builtin.in), (builtin.in)) is det.
+:- impure pred semi_exit_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode semi_exit_port_code_sr((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred semi_fail_port_code_ac(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic).
+:- mode semi_fail_port_code_ac((builtin.in), (builtin.in)) is failure.
+:- impure pred semi_fail_port_code_sr(profiling_builtin.call_site_dynamic, profiling_builtin.call_site_dynamic, profiling_builtin.proc_dynamic).
+:- mode semi_fail_port_code_sr((builtin.in), (builtin.in), (builtin.in)) is failure.
+:- implementation.
+:- type call_site_dynamic
+    --->    call_site_dynamic(builtin.c_pointer).
+:- pragma foreign_type(c, call_site_dynamic, "MR_CallSiteDynamic *").
+:- type proc_dynamic
+    --->    proc_dynamic(builtin.c_pointer).
+:- pragma foreign_type(c, proc_dynamic, "MR_ProcDynamic *").
+:- type proc_layout
+    --->    proc_layout(builtin.c_pointer).
+:- pragma foreign_type(c, proc_layout, "MR_ProcLayout *").

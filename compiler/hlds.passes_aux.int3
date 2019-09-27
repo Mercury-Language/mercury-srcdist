@@ -1,0 +1,25 @@
+:- module (hlds.passes_aux).
+:- interface.
+:- type dump_info.
+:- type module_cookie_task.
+:- type module_pred_cookie_task.
+:- type module_pred_task.
+:- type module_task.
+:- type pred_error_task.
+:- type proc_ids_pred_task.
+:- type proc_ids_task.
+:- type proc_task.
+:- type update_pred_task.
+:- type update_proc_task.
+:- abstract_inst((module_cookie_task)).
+:- abstract_inst((module_pred_cookie_task)).
+:- abstract_inst((module_pred_task)).
+:- abstract_inst((module_task)).
+:- abstract_inst((pred_error_task)).
+:- abstract_inst((proc_ids_pred_task)).
+:- abstract_inst((proc_ids_task)).
+:- abstract_inst((proc_task)).
+:- abstract_inst((update_pred_task)).
+:- abstract_inst((update_proc_task)).
+:- abstract_mode((update_pred_task)).
+:- abstract_mode((update_proc_task)).

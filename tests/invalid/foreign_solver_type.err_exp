@@ -1,0 +1,13 @@
+foreign_solver_type.m:009: Error: the definition (as opposed to the name) of a
+foreign_solver_type.m:009:   solver type such as `foo'/0 must not be exported
+foreign_solver_type.m:009:   from its defining module.
+foreign_solver_type.m:017: Error: type `foreign_solver_type.foo'/0 multiply
+foreign_solver_type.m:017:   defined.
+foreign_solver_type.m:009: Here is the previous definition of type
+foreign_solver_type.m:009:   `foreign_solver_type.foo'/0.
+foreign_solver_type.m:017: Error: this definition of type `foo'/0 is not a
+foreign_solver_type.m:017:   solver type, but its previous definition is.
+foreign_solver_type.m:009:   The previous definition is here.
+foreign_solver_type.m:018: Error: this definition of type `bar'/0 is not a
+foreign_solver_type.m:018:   solver type, but its declaration is.
+foreign_solver_type.m:015:   The declaration is here.

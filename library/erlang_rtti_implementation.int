@@ -1,0 +1,87 @@
+:- module erlang_rtti_implementation.
+:- interface.
+:- use_module construct.
+:- use_module deconstruct.
+:- use_module list.
+:- use_module type_desc.
+:- use_module univ.
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).
+:- type type_ctor_info.
+:- type type_ctor_info_evaled.
+:- type type_info.
+:- pred compare_type_infos(builtin.comparison_result, erlang_rtti_implementation.type_info, erlang_rtti_implementation.type_info).
+:- mode compare_type_infos((builtin.out), (builtin.in), (builtin.in)) is det.
+:- func construct(type_desc.type_desc, construct.functor_number_lex, list.list(univ.univ)) = univ.univ.
+:- mode construct((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is semidet.
+:- func construct_tuple_2(list.list(univ.univ), list.list(type_desc.type_desc), int) = univ.univ.
+:- pred deconstruct(T, deconstruct.noncanon_handling, string, int, list.list(univ.univ)).
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- mode deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- pred deconstruct_du(T, deconstruct.noncanon_handling, construct.functor_number_lex, int, list.list(univ.univ)).
+:- mode deconstruct_du((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- mode deconstruct_du((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+:- mode deconstruct_du((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+:- pred functor_number(T, construct.functor_number_lex, int).
+:- mode functor_number((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred functor_number_cc(T, construct.functor_number_lex, int).
+:- mode functor_number_cc((builtin.in), (builtin.out), (builtin.out)) is cc_nondet.
+:- pred generic_compare(builtin.comparison_result, T, T).
+:- mode generic_compare((builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred generic_unify(T, T).
+:- mode generic_unify((builtin.in), (builtin.in)) is semidet.
+:- pred get_functor(type_desc.type_desc, construct.functor_number_lex, string, int, list.list(type_desc.type_desc)).
+:- mode get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred get_functor_lex(type_desc.type_desc, construct.functor_number_ordinal, construct.functor_number_lex).
+:- mode get_functor_lex((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_functor_ordinal(type_desc.type_desc, construct.functor_number_lex, construct.functor_number_ordinal).
+:- mode get_functor_ordinal((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_functor_with_names(type_desc.type_desc, construct.functor_number_lex, string, int, list.list(type_desc.type_desc), list.list(string)).
+:- mode get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- func get_type_info(T) = erlang_rtti_implementation.type_info.
+:- mode get_type_info((builtin.unused)) = (builtin.out) is det.
+:- pred is_erlang_backend is semidet.
+:- pred is_exist_pseudo_type_desc(type_desc.pseudo_type_desc, int).
+:- mode is_exist_pseudo_type_desc((builtin.in), (builtin.out)) is semidet.
+:- pred is_univ_pseudo_type_desc(type_desc.pseudo_type_desc, int).
+:- mode is_univ_pseudo_type_desc((builtin.in), (builtin.out)) is semidet.
+:- pred make_type_desc(type_desc.type_ctor_desc, list.list(type_desc.type_desc), type_desc.type_desc).
+:- mode make_type_desc((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func num_functors(type_desc.type_desc) = int is semidet.
+:- pred pseudo_type_ctor_and_args(type_desc.pseudo_type_desc, type_desc.type_ctor_desc, list.list(type_desc.pseudo_type_desc)).
+:- mode pseudo_type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred type_ctor_desc(type_desc.type_desc, type_desc.type_ctor_desc).
+:- mode type_ctor_desc((builtin.in), (builtin.out)) is det.
+:- pred type_ctor_desc_and_args(type_desc.type_desc, type_desc.type_ctor_desc, list.list(type_desc.type_desc)).
+:- mode type_ctor_desc_and_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred type_ctor_desc_name_and_arity(type_desc.type_ctor_desc, string, string, int).
+:- mode type_ctor_desc_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred type_ctor_info_and_args(erlang_rtti_implementation.type_info, erlang_rtti_implementation.type_ctor_info_evaled, list.list(erlang_rtti_implementation.type_info)).
+:- mode type_ctor_info_and_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- implementation.
+:- type erlang_atom.
+:- type erlang_atom
+    --->    erlang_atom .
+:- pragma foreign_type(erlang, erlang_atom, "").
+:- type pseudo_type_info.
+:- type pseudo_type_info
+    --->    pseudo_type_info .
+:- pragma foreign_type(erlang, pseudo_type_info, "").
+:- type pseudo_type_info_thunk.
+:- type pseudo_type_info_thunk
+    --->    pseudo_type_info_thunk .
+:- pragma foreign_type(erlang, pseudo_type_info_thunk, "").
+:- type type_ctor_info
+    --->    type_ctor_info .
+:- pragma foreign_type(erlang, type_ctor_info, "").
+:- type type_ctor_info_evaled
+    --->    type_ctor_info_evaled .
+:- pragma foreign_type(erlang, type_ctor_info_evaled, "").
+:- type type_info
+    --->    type_info .
+:- pragma foreign_type(erlang, type_info, "").
+:- type type_info_thunk.
+:- type type_info_thunk
+    --->    type_info_thunk .
+:- pragma foreign_type(erlang, type_info_thunk, "").

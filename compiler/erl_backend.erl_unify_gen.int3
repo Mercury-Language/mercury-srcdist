@@ -1,0 +1,3 @@
+:- module (erl_backend.erl_unify_gen).
+:- interface.
+:- abstract_inst((termable_cons_id)).
