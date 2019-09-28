@@ -1,0 +1,18 @@
+:- module (parse_tree.check_parse_tree_type_defns).
+:- interface.
+:- type abstract_solver_type_status
+	where	type_is_abstract_enum(1).
+:- type c_j_cs_e_maybe_defn_or_enum.
+:- type foreign_type_or_enum.
+:- type maybe_insist_on_defn
+	where	type_is_abstract_enum(1).
+:- type solver_type_defn.
+:- type std_abs_type_status
+	where	type_is_abstract_enum(2).
+:- type std_du_type_status
+	where	type_is_abstract_enum(2).
+:- type std_eqv_type_status
+	where	type_is_abstract_enum(2).
+:- type std_type_defn.
+:- type type_ctor_checked_defn.
+:- type type_ctor_checked_map.

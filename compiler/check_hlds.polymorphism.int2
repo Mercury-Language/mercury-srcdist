@@ -1,0 +1,9 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- type int_or_var
+    --->    iov_int(int)
+    ;       iov_var(parse_tree.prog_data.prog_var).
+:- type poly_info.
+:- type type_info_kind
+    --->    type_info 
+    ;       type_ctor_info .
