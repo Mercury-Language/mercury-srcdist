@@ -1,0 +1,49 @@
+:- module (parse_tree.check_parse_tree_type_defns).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- type abstract_solver_type_status
+    --->    abstract_solver_type_exported 
+    ;       abstract_solver_type_private .
+:- type c_j_cs_e_maybe_defn_or_enum == parse_tree.prog_item.c_java_csharp_erlang(maybe.maybe(parse_tree.check_parse_tree_type_defns.foreign_type_or_enum)).
+:- type foreign_type_or_enum
+    --->    foreign_type_or_enum_type(parse_tree.prog_item.item_type_defn_info)
+    ;       foreign_type_or_enum_enum(parse_tree.prog_item.item_foreign_enum_info).
+:- type maybe_insist_on_defn
+    --->    do_not_insist_on_defn 
+    ;       do_insist_on_defn .
+:- type maybe_only_constants
+    --->    not_only_constants 
+    ;       only_constants(((parse_tree.check_parse_tree_type_defns).oc_num_functors) :: int, ((parse_tree.check_parse_tree_type_defns).oc_num_bits) :: int).
+:- type solver_type_defn
+    --->    solver_type_abstract(parse_tree.check_parse_tree_type_defns.abstract_solver_type_status, parse_tree.prog_item.item_type_defn_info)
+    ;       solver_type_full(maybe.maybe(parse_tree.prog_item.item_type_defn_info), parse_tree.prog_item.item_type_defn_info).
+:- type std_abs_type_status
+    --->    std_abs_type_ft_exported 
+    ;       std_abs_type_abstract_exported 
+    ;       std_abs_type_all_private .
+:- type std_du_type_status
+    --->    std_du_type_mer_ft_exported 
+    ;       std_du_type_mer_exported 
+    ;       std_du_type_abstract_exported 
+    ;       std_du_type_all_private .
+:- type std_eqv_type_status
+    --->    std_eqv_type_mer_exported 
+    ;       std_eqv_type_abstract_exported 
+    ;       std_eqv_type_all_private .
+:- type std_type_defn
+    --->    std_mer_type_eqv(parse_tree.check_parse_tree_type_defns.std_eqv_type_status, parse_tree.prog_item.item_type_defn_info)
+    ;       std_mer_type_du(parse_tree.check_parse_tree_type_defns.std_du_type_status, parse_tree.prog_item.item_type_defn_info, parse_tree.check_parse_tree_type_defns.maybe_only_constants, parse_tree.check_parse_tree_type_defns.c_j_cs_e_maybe_defn_or_enum)
+    ;       std_mer_type_abstract(parse_tree.check_parse_tree_type_defns.std_abs_type_status, parse_tree.prog_item.item_type_defn_info, parse_tree.prog_item.c_j_cs_e_maybe_defn).
+:- type type_ctor_checked_defn
+    --->    checked_defn_solver(parse_tree.check_parse_tree_type_defns.solver_type_defn)
+    ;       checked_defn_std(parse_tree.check_parse_tree_type_defns.std_type_defn).
+:- type type_ctor_checked_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.check_parse_tree_type_defns.type_ctor_checked_defn).
+:- pred create_type_ctor_checked_map(parse_tree.check_parse_tree_type_defns.maybe_insist_on_defn, mdbcomp.sym_name.module_name, parse_tree.prog_item.type_ctor_defn_map, parse_tree.prog_item.type_ctor_defn_map, parse_tree.prog_item.type_ctor_foreign_enum_map, parse_tree.prog_item.type_ctor_foreign_enum_map, parse_tree.check_parse_tree_type_defns.type_ctor_checked_map, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode create_type_ctor_checked_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
