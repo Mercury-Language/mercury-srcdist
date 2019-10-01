@@ -1,0 +1,153 @@
+/*
+** Automatically generated from `parse_tree_out_pragma.m'
+** by the Mercury compiler,
+** version rotd-2019-10-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_tree_out_pragma.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_tree_out_pragma
+#define MR_HEADER_GUARD_parse_tree__parse_tree_out_pragma
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_TREE_OUT_PRAGMA_DECL_GUARD
+#define PARSE_TREE__PARSE_TREE_OUT_PRAGMA_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_item_pragma_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_decl_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_exceptions_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_foreign_decl_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_foreign_proc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_mm_tabling_info_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_trailing_info_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_type_spec_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_output_pragma_unused_args_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__write_maybe_arg_size_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__write_maybe_termination_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__write_pragma_structure_reuse_info_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__write_pragma_structure_sharing_info_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__parse_tree_out_pragma__write_pragma_termination_info_components_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_pragma_decl_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_pragma_foreign_decl_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_out_pragma__mercury_pragma_foreign_proc_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__parse_tree_out_pragma__init(void);
+void mercury__parse_tree__parse_tree_out_pragma__init_type_tables(void);
+void mercury__parse_tree__parse_tree_out_pragma__init_debugger(void);
+const char *mercury__parse_tree__parse_tree_out_pragma__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_tree_out_pragma
+
+// :- end_interface parse_tree.parse_tree_out_pragma.

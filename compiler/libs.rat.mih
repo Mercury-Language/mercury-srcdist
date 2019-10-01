@@ -1,0 +1,150 @@
+/*
+** Automatically generated from `rat.m'
+** by the Mercury compiler,
+** version rotd-2019-10-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.rat.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__rat
+#define MR_HEADER_GUARD_libs__rat
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__RAT_DECL_GUARD
+#define LIBS__RAT_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__rat__libs__rat__type_ctor_info_rat_0;
+
+MR_bool MR_CALL 
+libs__rat__f_less_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__rat__f_less_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__rat__f_greater_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__rat__f_greater_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__rat__write_rat_3_p_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__rat__f_times_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__rat__f_plus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__rat__f_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__rat__f_minus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__rat__f_minus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__rat__f_slash_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__rat__abs_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+libs__rat__denom_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+libs__rat__numer_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__rat__one_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__rat__rat_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+libs__rat__rat_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+libs__rat__to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__rat__zero_0_f_0(void);
+
+void MR_CALL 
+libs__rat____Compare____rat_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__rat____Unify____rat_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__rat__init(void);
+void mercury__libs__rat__init_type_tables(void);
+void mercury__libs__rat__init_debugger(void);
+const char *mercury__libs__rat__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.rat
+
+// :- end_interface libs.rat.

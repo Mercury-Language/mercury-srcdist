@@ -1,0 +1,7 @@
+:- module ((hlds.make_hlds).add_pragma).
+:- interface.
+:- abstract_inst((ims_pragma_pass_2)).
+:- abstract_inst((ims_pragma_pass_3)).
+:- abstract_inst((item_pragma_info_inst(I))).
+:- abstract_inst((pragma_pass_2_inst)).
+:- abstract_inst((pragma_pass_3_inst)).
