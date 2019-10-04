@@ -1,0 +1,17 @@
+:- module (recompilation.version).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (libs.timestamp).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_item).
+:- pred compute_version_numbers(libs.timestamp.timestamp, parse_tree.prog_item.parse_tree_int, maybe.maybe(parse_tree.prog_item.parse_tree_int), recompilation.version_numbers).
+:- mode compute_version_numbers((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_version_numbers(term.term, parse_tree.maybe_error.maybe1(recompilation.version_numbers)).
+:- mode parse_version_numbers((builtin.in), (builtin.out)) is det.
+:- func version_numbers_version_number = int.
+:- pred write_version_numbers(recompilation.version_numbers, io.io, io.io).
+:- mode write_version_numbers((builtin.in), (builtin.di), (builtin.uo)) is det.

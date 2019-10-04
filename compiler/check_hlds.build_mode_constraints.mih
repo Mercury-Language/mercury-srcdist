@@ -1,0 +1,203 @@
+/*
+** Automatically generated from `build_mode_constraints.m'
+** by the Mercury compiler,
+** version rotd-2019-10-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.build_mode_constraints.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__build_mode_constraints
+#define MR_HEADER_GUARD_check_hlds__build_mode_constraints
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__BUILD_MODE_CONSTRAINTS_DECL_GUARD
+#define CHECK_HLDS__BUILD_MODE_CONSTRAINTS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_args_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conj_constraints_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_conjunct_production_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_prog_var_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_rep_var_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mc_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_mode_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__build_mode_constraints__check_hlds__build_mode_constraints__type_ctor_info_nonlocals_0;
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_clauses_constraints_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_goal_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mc_vars_for_scc_heads_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__build_mode_constraints__add_mode_decl_constraints_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+check_hlds__build_mode_constraints__mode_decls_constraints_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_String MR_CALL 
+check_hlds__build_mode_constraints__rep_var_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__build_mode_constraints__var_info_init_0_f_0(void);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_prog_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_rep_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mc_var_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____mode_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__build_mode_constraints____Compare____nonlocals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_prog_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_rep_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mc_var_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____mode_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__build_mode_constraints____Unify____nonlocals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__build_mode_constraints__init(void);
+void mercury__check_hlds__build_mode_constraints__init_type_tables(void);
+void mercury__check_hlds__build_mode_constraints__init_debugger(void);
+const char *mercury__check_hlds__build_mode_constraints__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.build_mode_constraints
+
+// :- end_interface check_hlds.build_mode_constraints.

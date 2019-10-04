@@ -1,0 +1,4 @@
+:- module (transform_hlds.inlining).
+:- interface.
+:- type may_inline_purity_promised_pred
+	where	type_is_abstract_enum(1).
