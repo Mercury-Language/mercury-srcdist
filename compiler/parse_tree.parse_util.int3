@@ -1,0 +1,6 @@
+:- module (parse_tree.parse_util).
+:- interface.
+:- type conflict(T).
+:- type maybe_pred_or_func(T).
+:- type parser(T).
+:- abstract_mode((parser)).
