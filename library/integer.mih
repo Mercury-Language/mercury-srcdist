@@ -1,0 +1,516 @@
+/*
+** Automatically generated from `integer.m'
+** by the Mercury compiler,
+** version rotd-2019-10-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module integer.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_integer
+#define MR_HEADER_GUARD_integer
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INTEGER_DECL_GUARD
+#define INTEGER_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_digit_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_integer_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_printbase_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_sign_0;
+
+MR_bool MR_CALL 
+mercury__integer__f_less_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer__f_less_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer__f_greater_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer__f_greater_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer__big_isnegative_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__integer__big_quot_rem_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__integer__divide_with_rem_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__integer__from_base_string_3_p_0(
+  MR_Integer param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__integer__from_base_string_underscore_3_p_0(
+  MR_Integer param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__integer__from_string_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__is_zero_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__integer__neg_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__string_to_integer_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_int_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_int16_2_p_0(
+  MR_Word param_1,
+  int16_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_int32_2_p_0(
+  MR_Word param_1,
+  int32_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_int64_2_p_0(
+  MR_Word param_1,
+  int64_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_int8_2_p_0(
+  MR_Word param_1,
+  int8_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_uint_2_p_0(
+  MR_Word param_1,
+  MR_Unsigned * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_uint16_2_p_0(
+  MR_Word param_1,
+  uint16_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_uint32_2_p_0(
+  MR_Word param_1,
+  uint32_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_uint64_2_p_0(
+  MR_Word param_1,
+  uint64_t * param_2);
+
+MR_bool MR_CALL 
+mercury__integer__to_uint8_2_p_0(
+  MR_Word param_1,
+  uint8_t * param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_times_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_plus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__f_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_minus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__f_minus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_47_47_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_47_92_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_60_60_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_62_62_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__integer__f_92_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__f_92_47_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__abs_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__integer__base_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__integer__big_abs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__big_cmp_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_div_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_mod_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_mul_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_neg_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__big_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_pow_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_quot_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_rem_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__big_sign_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__det_from_base_string_2_f_0(
+  MR_Integer param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+mercury__integer__det_from_string_1_f_0(
+  MR_String param_1);
+
+MR_Integer MR_CALL 
+mercury__integer__det_to_int_1_f_0(
+  MR_Word param_1);
+
+int16_t MR_CALL 
+mercury__integer__det_to_int16_1_f_0(
+  MR_Word param_1);
+
+int32_t MR_CALL 
+mercury__integer__det_to_int32_1_f_0(
+  MR_Word param_1);
+
+int64_t MR_CALL 
+mercury__integer__det_to_int64_1_f_0(
+  MR_Word param_1);
+
+int8_t MR_CALL 
+mercury__integer__det_to_int8_1_f_0(
+  MR_Word param_1);
+
+MR_Unsigned MR_CALL 
+mercury__integer__det_to_uint_1_f_0(
+  MR_Word param_1);
+
+uint16_t MR_CALL 
+mercury__integer__det_to_uint16_1_f_0(
+  MR_Word param_1);
+
+uint32_t MR_CALL 
+mercury__integer__det_to_uint32_1_f_0(
+  MR_Word param_1);
+
+uint64_t MR_CALL 
+mercury__integer__det_to_uint64_1_f_0(
+  MR_Word param_1);
+
+uint8_t MR_CALL 
+mercury__integer__det_to_uint8_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__div_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Float MR_CALL 
+mercury__integer__float_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+mercury__integer__float_list_3_f_0(
+  MR_Float param_1,
+  MR_Float param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__integer__from_base_string_2_f_0(
+  MR_Integer param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mercury__integer__from_int16_1_f_0(
+  int16_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_int32_1_f_0(
+  int32_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_int64_1_f_0(
+  int64_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_int8_1_f_0(
+  int8_t param_1);
+
+MR_bool MR_CALL 
+mercury__integer__from_string_1_f_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+mercury__integer__from_uint_1_f_0(
+  MR_Unsigned param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_uint16_1_f_0(
+  uint16_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_uint32_1_f_0(
+  uint32_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_uint64_1_f_0(
+  uint64_t param_1);
+
+MR_Word MR_CALL 
+mercury__integer__from_uint8_1_f_0(
+  uint8_t param_1);
+
+MR_Integer MR_CALL 
+mercury__integer__int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__int_to_integer_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__integer__integer_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__integer__integer_signum_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__mod_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__negative_one_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__integer__one_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__integer__pos_mul_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__pow_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__rem_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__integer__signum_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__integer__ten_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__integer__to_base_string_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+mercury__integer__to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__integer__two_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__integer__xor_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__integer__zero_0_f_0(void);
+
+void MR_CALL 
+mercury__integer____Compare____digit_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__integer____Compare____integer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__integer____Compare____printbase_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__integer____Compare____sign_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__integer____Unify____digit_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__integer____Unify____integer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer____Unify____printbase_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__integer____Unify____sign_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__integer__init(void);
+void mercury__integer__init_type_tables(void);
+void mercury__integer__init_debugger(void);
+const char *mercury__integer__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_integer
+
+// :- end_interface integer.
