@@ -1,0 +1,905 @@
+/*
+** Automatically generated from `mdbcomp.program_representation.m'
+** by the Mercury compiler,
+** version rotd-2019-10-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.program_representation.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__program_representation
+#define MR_HEADER_GUARD_mdbcomp__program_representation
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#define MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#include "mdbcomp.mih"
+
+#ifdef MR_HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_arg_pos_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_atomic_goal_id_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_atomic_goal_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_builtin_type_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_bytecode_goal_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_call_site_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_call_type_and_callee_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_can_fail_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_case_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_case_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_committed_choice_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_cons_id_arity_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_cons_id_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_coverage_point_info_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_cp_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_detism_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_encoded_type_table_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_expr_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_head_var_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_inst_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_maybe_include_var_name_table_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_maybe_include_var_types_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_module_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_module_map_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_module_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_module_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_more_modules_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_more_procs_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_oisu_type_procs_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_defn_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_defn_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_map_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proclabel_kind_token_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_prog_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_prog_rep_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_read_proc_rep_info_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_solution_count_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_switch_can_fail_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_term_path_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_type_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_mode_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_name_table_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_num_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_type_table_0;
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__byte_to_goal_type_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__call_does_not_generate_events_3_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__can_fail_byte_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__can_fail_byte_2_p_1(
+  MR_Word * param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__case_get_goal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__coverage_point_type_c_value_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__cut_byte_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__cut_byte_2_p_1(
+  MR_Word * param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__determinism_representation_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__determinism_representation_2_p_1(
+  MR_Word * param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__detism_committed_choice_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__detism_committed_choice_2_p_1(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mdbcomp__program_representation__detism_components_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__detism_components_3_p_1(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mdbcomp__program_representation__inst_representation_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__inst_representation_2_p_1(
+  MR_Word * param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__is_proclabel_kind_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__program_representation__lookup_var_name_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__maybe_search_var_name_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__no_type_info_builtin_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__read_prog_rep_file_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__search_var_name_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__trace_read_proc_defn_rep_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__program_representation__transform_goal_rep_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdbcomp__program_representation__var_flag_byte_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__var_flag_byte_4_p_1(
+  MR_Word * param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mdbcomp__program_representation__var_num_rep_byte_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation__var_num_rep_byte_2_p_1(
+  MR_Word * param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__atomic_goal_generates_event_like_call_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__atomic_goal_identifiable_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__detism_get_can_fail_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__detism_get_solutions_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mdbcomp__program_representation__detism_rep_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__goal_generates_internal_event_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__goal_rep_type_0_f_0(void);
+
+MR_Integer MR_CALL 
+mdbcomp__program_representation__goal_type_to_byte_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mdbcomp__program_representation__head_var_to_var_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__program_representation__proc_defn_rep_type_0_f_0(void);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____arg_pos_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____atomic_goal_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____atomic_goal_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____builtin_type_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____bytecode_goal_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____call_site_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____call_type_and_callee_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____can_fail_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____case_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____case_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____committed_choice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____cons_id_arity_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____cons_id_rep_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____coverage_point_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____cp_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____detism_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____encoded_type_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____goal_expr_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____goal_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____goal_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____head_var_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____inst_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____maybe_include_var_name_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____maybe_include_var_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____module_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____module_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____module_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____module_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____oisu_type_procs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_defn_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_defn_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proc_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____proclabel_kind_token_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____prog_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____prog_rep_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____solution_count_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____string_proc_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____switch_can_fail_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____term_path_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____type_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____var_mode_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____var_name_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____var_num_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____var_rep_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdbcomp__program_representation____Compare____var_type_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____arg_pos_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____atomic_goal_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____atomic_goal_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____builtin_type_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____bytecode_goal_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____call_site_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____call_type_and_callee_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____can_fail_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____case_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____case_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____committed_choice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____cons_id_arity_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____cons_id_rep_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____coverage_point_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____cp_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____detism_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____encoded_type_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____goal_expr_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____goal_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____goal_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____head_var_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____inst_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____maybe_include_var_name_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____maybe_include_var_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____module_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____module_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____module_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____module_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____oisu_type_procs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_defn_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_defn_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proc_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____proclabel_kind_token_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____prog_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____prog_rep_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____solution_count_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____string_proc_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____switch_can_fail_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____term_path_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____type_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____var_mode_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____var_name_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____var_num_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____var_rep_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdbcomp__program_representation____Unify____var_type_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__program_representation__init(void);
+void mercury__mdbcomp__program_representation__init_type_tables(void);
+void mercury__mdbcomp__program_representation__init_debugger(void);
+const char *mercury__mdbcomp__program_representation__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.program_representation
+
+// :- end_interface mdbcomp.program_representation.
