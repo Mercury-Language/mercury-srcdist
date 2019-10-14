@@ -1,0 +1,23 @@
+:- module (random.sfc16).
+
+:- pragma termination_info((random.sfc16).'ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint16_3'((builtin.out), (builtin.in), (builtin.out)), finite(1, [no, no, no]), cannot_loop).
+:- pragma termination_info((random.sfc16).'ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint32_3'((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((random.sfc16).'ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint64_3'((builtin.out), (builtin.in), (builtin.out)), finite(1, [no, no, no]), cannot_loop).
+:- pragma termination_info((random.sfc16).'ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint8_3'((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((random.sfc16).generate_uint16((builtin.out), (builtin.in), (builtin.out)), finite(1, [no, no, no]), cannot_loop).
+:- pragma termination_info((random.sfc16).generate_uint32((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((random.sfc16).generate_uint64((builtin.out), (builtin.in), (builtin.out)), finite(1, [no, no, no]), cannot_loop).
+:- pragma termination_info((random.sfc16).generate_uint8((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(((random.sfc16).init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((random.sfc16).pack_uint64((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info((random.sfc16).seed((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((random.sfc16).skip((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((random.sfc16).generate_uint16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.sfc16).generate_uint32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.sfc16).generate_uint64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.sfc16).generate_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((random.sfc16).init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((random.sfc16).pack_uint64), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((random.sfc16).seed), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.sfc16).skip), 3, 0, may_throw(user_exception)).

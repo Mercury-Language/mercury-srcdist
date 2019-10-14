@@ -1,0 +1,125 @@
+       1:      1  1 CALL pred completion.main/2-0 (det) completion.m:17
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> 
+!                    fail_trace_counts    query
+?                    finish               quit
+P                    flag                 r
+alias                format               register
+all_class_decls      format_param         retry
+all_procedures       forward              return
+all_regs             g                    s
+all_type_ctors       gen_stack            save
+ambiguity            goal_paths           scope
+b                    goto                 scroll
+break                grep                 shell
+break_print          h                    source
+browse               held_vars            stack
+c                    help                 stack_default_limit
+cc_query             histogram_all        stack_regs
+class_decl           histogram_exp        stats
+clear_histogram      hold                 step
+condition            ignore               subgoal
+consumer             io_query             table
+context              level                table_io
+continue             list                 term_size
+current              list_context_lines   track
+cut_stack            list_path            trail_details
+d                    max_io_actions       trust
+dd                   maxdepth             trusted
+debug_vars           mindepth             type_ctor
+delete               mm_stacks            unalias
+dice                 mmc_options          unhide_events
+diff                 modules              untrust
+disable              next                 up
+document             nondet_stack         user
+document_category    open                 user_event_context
+down                 p                    v
+dump                 pass_trace_counts    var_details
+e                    pneg_stack           vars
+echo                 pop_list_dir         view
+enable               print                web_browser_cmd
+exception            print_optionals      xml_browser_cmd
+excp                 printlevel           xml_tmp_filename
+f                    procedures           
+fail                 push_list_dir        
+h              help           histogram_exp  
+held_vars      histogram_all  hold           
+var_details  vars         view         
+var_details  vars         
+ help vars 
+vars
+     Prints the names of all the known variables in the current
+     environment, together with an ordinal number for each variable.
+mdb> 
+*          --pretty   -f         -v         goal       
+--flat     --verbose  -p         exception  
+p --flat D
+mdb: there is no such variable.
+mdb> 
+stack                stack_default_limit  stack_regs
+stack --detailed 
+   0       1       1    1 pred completion.main/2-0 (det) (completion.m:17) (empty)
+mdb> 
+completion            completion.sub2       
+completion.sub1       completion.sub2.sub3  
+completion.sub1       completion.sub2       completion.sub2.sub3
+procedures completion.sub1
+List of procedures in module `completion.sub1'
+func completion.sub1.z1/0-0 (det)
+pred completion.sub1.zp/1-0 (det)
+mdb> 
+format        format_param  
+format_param  --flat  lines 10
+mdb> unalias excp 
+Alias `excp' removed.
+mdb> b zabc3 
+ 0: + stop  interface func completion.sub2.sub3.zabc3/0-0 (det)
+mdb> 
+func*completion.            func*completion.sub2.
+func*completion.sub1.       func*completion.sub2.sub3.
+func*completion.z   func*completion.zz  
+b func*completion.z
+ 1: + stop  interface func completion.z/0-0 (det)
+mdb> 
+completion.                completion.sub1.m:15
+completion.m:17            completion.sub1.m:17
+completion.m:18            completion.sub2.
+completion.m:21            completion.sub2.m:15
+completion.m:24            completion.sub2.sub3.
+completion.sub1.           completion.sub2.sub3.m:13
+completion.sub1.           completion.sub2.m:15
+completion.sub1.m:15       completion.sub2.sub3.
+completion.sub1.m:17       completion.sub2.sub3.m:13
+completion.sub2.           
+completion.sub1.m:15  completion.sub1.z1    
+completion.sub1.m:17  completion.sub1.zp    
+b completion.sub1.z1
+ 2: + stop  interface func completion.sub1.z1/0-0 (det)
+mdb> 
+completion.                completion.sub1.m:15
+completion.m:17            completion.sub1.m:17
+completion.m:18            completion.sub2.
+completion.m:21            completion.sub2.m:15
+completion.m:24            completion.sub2.sub3.
+completion.sub1.           completion.sub2.sub3.m:13
+completion.sub1.           completion.sub2.m:15
+completion.sub1.m:15       completion.sub2.sub3.
+completion.sub1.m:17       completion.sub2.sub3.m:13
+completion.sub2.           
+completion.sub2.           completion.sub2.sub3.
+completion.sub2.m:15       completion.sub2.sub3.m:13
+completion.sub2.sub3.m:13   completion.sub2.sub3.zabc3
+b completion.sub2.sub3.zabc3 
+ 3: + stop  interface func completion.sub2.sub3.zabc3/0-0 (det)
+mdb> 
+2d                  2dice               2document_category
+2dd                 2diff               2down
+2debug_vars         2disable            2dump
+2delete             2document           
+2debug_vars  2delete      
+2delete 
+ 2: E stop  interface func completion.sub1.z1/0-0 (det)
+mdb> c
+ok
