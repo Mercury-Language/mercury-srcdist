@@ -1,0 +1,3 @@
+:- module ((hlds.make_hlds).field_access).
+:- interface.
+:- type field_list.
