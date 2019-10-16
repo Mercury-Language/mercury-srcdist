@@ -1,0 +1,318 @@
+/*
+** Automatically generated from `dir.m'
+** by the Mercury compiler,
+** version rotd-2019-10-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module dir.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_dir
+#define MR_HEADER_GUARD_dir
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DIR_DECL_GUARD
+#define DIR_DECL_GUARD
+
+#endif
+
+#define ML_MAKE_SINGLE_DIRECTORY_OK 0
+#define ML_MAKE_SINGLE_DIRECTORY_NAME_EXISTS 1
+#define ML_MAKE_SINGLE_DIRECTORY_DIR_EXISTS 2
+#define ML_MAKE_SINGLE_DIRECTORY_ERROR 3
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__dir__dir__type_ctor_info_foldl_pred_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__dir__dir__type_ctor_info_make_single_directory_status_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__dir__dir__type_ctor_info_stream_0;
+
+MR_bool MR_CALL 
+mercury__dir__basename_2_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__dir__check_for_symlink_loop_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__dir__close_4_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__dir__close_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__dir__current_directory_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__dir__current_directory_2_4_p_0(
+  MR_String * param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__dir__directory_separator_1_p_0(
+  MR_Char * param_1);
+
+void MR_CALL 
+mercury__dir__dirname_2_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__dir__foldl2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__dir__foldl2_process_dir_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__dir__foldl2_process_dir_aux_11_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Tuple * param_10);
+
+void MR_CALL 
+mercury__dir__foldl2_process_dir_entries_13_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__dir__is_directory_separator_1_p_0(
+  MR_Char param_1);
+
+void MR_CALL 
+mercury__dir__is_directory_separator_1_p_1(
+  MR_Char * param_1,
+  MR_Cont param_2,
+  void * param_3);
+
+MR_bool MR_CALL 
+mercury__dir__is_root_directory_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__dir__make_directory_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__dir__make_single_directory_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__dir__open_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__dir__parent_directory_1_p_0(
+  MR_String * param_1);
+
+MR_bool MR_CALL 
+mercury__dir__path_name_is_absolute_1_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__dir__path_name_is_root_directory_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__dir__recursive_foldl2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__dir__split_name_3_p_0(
+  MR_String param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+MR_bool MR_CALL 
+mercury__dir__split_name_2_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__dir__this_directory_1_p_0(
+  MR_String * param_1);
+
+MR_bool MR_CALL 
+mercury__dir__use_windows_paths_0_p_0(void);
+
+MR_String MR_CALL 
+mercury__dir__f_slash_2_f_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_Char MR_CALL 
+mercury__dir__alt_directory_separator_0_f_0(void);
+
+MR_bool MR_CALL 
+mercury__dir__basename_1_f_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+MR_Word MR_CALL 
+mercury__dir__canonicalize_path_chars_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__dir__det_basename_1_f_0(
+  MR_String param_1);
+
+MR_Char MR_CALL 
+mercury__dir__directory_separator_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__dir__dirname_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mercury__dir__expand_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__dir__expand_acc_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__dir__expand_braces_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+mercury__dir__fixup_dirname_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+mercury__dir__make_path_name_2_f_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_String MR_CALL 
+mercury__dir__parent_directory_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__dir__relative_path_name_from_components_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__dir__this_directory_0_f_0(void);
+
+void MR_CALL 
+mercury__dir____Compare____foldl_pred_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__dir____Compare____make_single_directory_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__dir____Compare____stream_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__dir____Unify____foldl_pred_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__dir____Unify____make_single_directory_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__dir____Unify____stream_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__dir__init(void);
+void mercury__dir__init_type_tables(void);
+void mercury__dir__init_debugger(void);
+const char *mercury__dir__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_dir
+
+// :- end_interface dir.

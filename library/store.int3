@@ -1,0 +1,13 @@
+:- module store.
+:- interface.
+:- import_module io.
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_mutvar(T).
+:- type io_ref(T, S).
+:- type store(S).
+:- type store_mutvar(T, S).
+:- type store_ref(T, S).
+:- typeclass store(T).
+:- instance (store.store(io)).
+:- instance (store.store(store.store(S))).

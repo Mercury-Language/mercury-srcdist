@@ -1,0 +1,36 @@
+:- module (ml_backend.ml_type_gen).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_module).
+:- use_module (mdbcomp.sym_name).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type mlds_field_info
+    --->    mlds_field_info(ml_backend.mlds.mlds_field_var_name, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_gc_statement, parse_tree.prog_data.prog_context).
+:- type tag_uses_base_class
+    --->    tag_does_not_use_base_class 
+    ;       tag_uses_base_class .
+:- pred ctors_with_and_without_secondary_tag(list.list(hlds.hlds_data.constructor_repn), int, int).
+:- mode ctors_with_and_without_secondary_tag((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func ml_gen_const_member_data_decl_flags = ml_backend.mlds.mlds_field_var_decl_flags.
+:- func ml_gen_constructor_function(ml_backend.mlds.mlds_target_lang, ml_backend.mlds.mlds_class_id, ml_backend.mlds.mlds_class_id, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_class_id, maybe.maybe(int), list.list(ml_backend.ml_type_gen.mlds_field_info), parse_tree.prog_data.prog_context) = ml_backend.mlds.mlds_function_defn.
+:- func ml_gen_du_ctor_name(ml_backend.mlds.mlds_target_lang, parse_tree.prog_data.type_ctor, mdbcomp.sym_name.sym_name, int) = string.
+:- func ml_gen_du_ctor_name_unqual_type(ml_backend.mlds.mlds_target_lang, string, int, mdbcomp.sym_name.sym_name, int) = string.
+:- func ml_gen_enum_constant_data_decl_flags = ml_backend.mlds.mlds_field_var_decl_flags.
+:- pred ml_gen_exported_enums(hlds.hlds_module.module_info, list.list(ml_backend.mlds.mlds_exported_enum)).
+:- mode ml_gen_exported_enums((builtin.in), (builtin.out)) is det.
+:- func ml_gen_member_data_decl_flags = ml_backend.mlds.mlds_field_var_decl_flags.
+:- func ml_gen_member_decl_flags = ml_backend.mlds.mlds_function_decl_flags.
+:- func ml_gen_type_decl_flags = ml_backend.mlds.mlds_class_decl_flags.
+:- pred ml_gen_type_name(parse_tree.prog_data.type_ctor, ml_backend.mlds.qual_class_name, parse_tree.prog_data.arity).
+:- mode ml_gen_type_name((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred ml_gen_types(hlds.hlds_module.module_info, ml_backend.mlds.mlds_target_lang, list.list(ml_backend.mlds.mlds_class_defn)).
+:- mode ml_gen_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ml_tag_uses_base_class(hlds.hlds_data.cons_tag) = ml_backend.ml_type_gen.tag_uses_base_class.
+:- func ml_target_uses_constructors(ml_backend.mlds.mlds_target_lang) = bool.bool.

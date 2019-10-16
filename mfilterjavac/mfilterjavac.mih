@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `mfilterjavac.m'
+** by the Mercury compiler,
+** version rotd-2019-10-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mfilterjavac.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mfilterjavac
+#define MR_HEADER_GUARD_mfilterjavac
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MFILTERJAVAC_DECL_GUARD
+#define MFILTERJAVAC_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_begin_or_end_block_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_filter_result_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_cache_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_end_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_error_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_error_type_0;
+
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_mark_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mfilterjavac__init(void);
+void mercury__mfilterjavac__init_type_tables(void);
+void mercury__mfilterjavac__init_debugger(void);
+const char *mercury__mfilterjavac__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mfilterjavac
+
+// :- end_interface mfilterjavac.
