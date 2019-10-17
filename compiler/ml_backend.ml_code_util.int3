@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- type gen_pred.
+:- abstract_inst((gen_pred)).
