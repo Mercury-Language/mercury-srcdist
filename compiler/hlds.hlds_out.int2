@@ -1,0 +1,7 @@
+:- module (hlds.hlds_out).
+:- interface.
+:- include_module ((hlds.hlds_out).hlds_out_goal).
+:- include_module ((hlds.hlds_out).hlds_out_mode).
+:- include_module ((hlds.hlds_out).hlds_out_module).
+:- include_module ((hlds.hlds_out).hlds_out_pred).
+:- include_module ((hlds.hlds_out).hlds_out_util).
