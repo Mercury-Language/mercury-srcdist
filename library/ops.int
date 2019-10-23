@@ -1,0 +1,43 @@
+:- module ops.
+:- interface.
+:- use_module list.
+:- type assoc
+    --->    x 
+    ;       y .
+:- type class
+    --->    infix(ops.assoc, ops.assoc)
+    ;       prefix(ops.assoc)
+    ;       binary_prefix(ops.assoc, ops.assoc)
+    ;       postfix(ops.assoc).
+:- type mercury_op_table.
+:- type op_info
+    --->    op_info(ops.class, ops.priority).
+:- type priority == int.
+:- type table == ops.mercury_op_table.
+:- pred adjust_priority_for_assoc(ops.priority, ops.assoc, ops.priority).
+:- mode adjust_priority_for_assoc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func init_mercury_op_table = ops.mercury_op_table.
+:- mode init_mercury_op_table = (builtin.uo) is det.
+:- func mercury_max_priority(ops.mercury_op_table) = ops.priority.
+:- typeclass op_table(Table) where [
+	pred lookup_infix_op(Table, string, ops.priority, ops.assoc, ops.assoc),
+	mode lookup_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_prefix_op(Table, string, ops.priority, ops.assoc),
+	mode lookup_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_binary_prefix_op(Table, string, ops.priority, ops.assoc, ops.assoc),
+	mode lookup_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_postfix_op(Table, string, ops.priority, ops.assoc),
+	mode lookup_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_op(Table, string),
+	mode lookup_op((builtin.in), (builtin.in)) is semidet,
+	pred lookup_op_infos(Table, string, ops.op_info, list.list(ops.op_info)),
+	mode lookup_op_infos((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_operator_term(Table, ops.priority, ops.assoc, ops.assoc),
+	mode lookup_operator_term((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	func max_priority(Table) = ops.priority,
+	func arg_priority(Table) = ops.priority
+].
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- implementation.
+:- type mercury_op_table
+    --->    mercury_op_table .

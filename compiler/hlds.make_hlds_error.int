@@ -1,0 +1,25 @@
+:- module (hlds.make_hlds_error).
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.status).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred error_is_exported(parse_tree.prog_data.prog_context, parse_tree.error_util.format_components, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode error_is_exported((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_report_undefined_pred_error(hlds.hlds_module.module_info, mdbcomp.sym_name.sym_name, int, mdbcomp.prim_data.pred_or_func, hlds.status.pred_status, parse_tree.prog_data.maybe_class_method, parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode maybe_report_undefined_pred_error((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_if_pragma_is_wrongly_in_interface(hlds.status.item_mercury_status, parse_tree.prog_item.item_pragma_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode report_if_pragma_is_wrongly_in_interface((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_multiple_def_error(mdbcomp.sym_name.sym_name, int, string, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode report_multiple_def_error((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_undefined_mode_error(mdbcomp.sym_name.sym_name, int, parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode report_undefined_mode_error((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_undefined_pred_or_func_error(maybe.maybe(mdbcomp.prim_data.pred_or_func), mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.arity), parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode report_undefined_pred_or_func_error((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
