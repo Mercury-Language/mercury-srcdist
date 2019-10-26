@@ -1,0 +1,12 @@
+:- module (transform_hlds.tabling_analysis).
+:- interface.
+:- use_module analysis.
+:- use_module hlds.
+:- use_module (hlds.hlds_module).
+:- type mm_tabling_analysis_answer.
+:- pred analyse_mm_tabling_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode analyse_mm_tabling_in_module((builtin.in), (builtin.out)) is det.
+:- instance (analysis.analysis(analysis.no_func_info, analysis.any_call, transform_hlds.tabling_analysis.mm_tabling_analysis_answer)).
+:- instance (analysis.answer_pattern(analysis.no_func_info, transform_hlds.tabling_analysis.mm_tabling_analysis_answer)).
+:- instance (analysis.partial_order(analysis.no_func_info, transform_hlds.tabling_analysis.mm_tabling_analysis_answer)).
+:- instance (analysis.to_term(transform_hlds.tabling_analysis.mm_tabling_analysis_answer)).

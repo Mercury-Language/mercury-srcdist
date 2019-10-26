@@ -1,0 +1,342 @@
+:- module ranges.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+
+:- type ranges
+    --->    nil 
+    ;       range(int, int, ranges.ranges).
+
+:- pred ranges.greatest_2(int, ranges.ranges, int).
+:- mode ranges.greatest_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ranges.negate_aux(ranges.ranges, ranges.ranges) = ranges.ranges.
+:- mode ranges.negate_aux((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func ranges.to_sorted_list_2(int, int, list.list(int)) = list.list(int).
+:- mode ranges.to_sorted_list_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+
+ranges.delete(V_4, V_5) = V_3 :-
+    V_3 = ranges.difference(V_5, V_6),
+    V_6 = ranges.range(V_4, V_7),
+    V_7 = V_4.
+
+ranges.disjoint(V_3, V_4) :-
+    V_5 = ranges.intersection(V_3, V_4),
+    V_5 = ranges.nil : ranges.ranges.
+
+ranges.empty = ranges.nil.
+
+ranges.foldl(V_5, V_6, V_11, V_12) :-
+    ( % disjunction
+      V_6 = ranges.nil : ranges.ranges,
+      V_12 = V_11
+    ;
+      V_6 = ranges.range(V_8, V_9, V_10) : ranges.ranges,
+      V_13 = int.(V_8 + V_15),
+      V_15 = 1 : int,
+      int.fold_up(V_5, V_13, V_9, V_11, V_14),
+      ranges.foldl(V_5, V_10, V_14, V_12)
+    ).
+
+ranges.foldl2(V_7, V_8, V_14, V_15, V_16, V_17) :-
+    ( % disjunction
+      V_8 = ranges.nil : ranges.ranges,
+      V_15 = V_14,
+      V_17 = V_16
+    ;
+      V_8 = ranges.range(V_11, V_12, V_13) : ranges.ranges,
+      V_18 = int.(V_11 + V_21),
+      V_21 = 1 : int,
+      int.fold_up2(V_7, V_18, V_12, V_14, V_19, V_16, V_20),
+      ranges.foldl2(V_7, V_13, V_19, V_15, V_20, V_17)
+    ).
+
+ranges.foldl3(V_9, V_10, V_17, V_18, V_19, V_20, V_21, V_22) :-
+    ( % disjunction
+      V_10 = ranges.nil : ranges.ranges,
+      V_18 = V_17,
+      V_20 = V_19,
+      V_22 = V_21
+    ;
+      V_10 = ranges.range(V_14, V_15, V_16) : ranges.ranges,
+      V_23 = int.(V_14 + V_27),
+      V_27 = 1 : int,
+      int.fold_up3(V_9, V_23, V_15, V_17, V_24, V_19, V_25, V_21, V_26),
+      ranges.foldl3(V_9, V_16, V_24, V_18, V_25, V_20, V_26, V_22)
+    ).
+
+ranges.foldr(V_5, V_6, V_11, V_12) :-
+    ( % disjunction
+      V_6 = ranges.nil : ranges.ranges,
+      V_12 = V_11
+    ;
+      V_6 = ranges.range(V_8, V_9, V_10) : ranges.ranges,
+      ranges.foldr(V_5, V_10, V_11, V_13),
+      V_14 = int.(V_8 + V_16),
+      V_16 = 1 : int,
+      int.fold_down(V_5, V_14, V_9, V_13, V_12)
+    ).
+
+ranges.from_list(V_3) = V_2 :-
+    V_2 = list.foldl(V_4, V_3, V_5),
+    V_4 = ranges.insert : (func(int, ranges.ranges) = ranges.ranges),
+    V_5 = ranges.empty.
+
+ranges.from_set(V_3) = V_2 :-
+    V_2 = ranges.from_list(V_4),
+    V_4 = set.to_sorted_list(V_3).
+
+ranges.greatest(ranges.range(V_3, V_4, V_5), V_6) :-
+    ranges.greatest_2(V_4, V_5, V_6).
+
+ranges.insert(V_4, V_5, V_6) :-
+    V_6 = ranges.insert(V_4, V_5).
+
+ranges.insert(V_4, V_5) = V_3 :-
+    V_3 = ranges.union(V_5, V_6),
+    V_6 = ranges.range(V_4, V_7),
+    V_7 = V_4.
+
+ranges.is_contiguous(V_4, V_2, V_6) :-
+    V_2 = int.(V_5 + V_7),
+    V_7 = 1 : int,
+    V_4 = ranges.range(V_5, V_6, V_8) : ranges.ranges,
+    V_8 = ranges.nil : ranges.ranges.
+
+ranges.is_empty(ranges.nil).
+
+ranges.is_non_empty(ranges.range(V_2, V_3, V_4)).
+
+ranges.least(ranges.range(V_3, V_4, V_5), V_2) :-
+    V_2 = int.(V_3 + V_6),
+    V_6 = 1 : int.
+
+ranges.member(V_3, ranges.range(V_4, V_5, V_6)) :-
+    ( % disjunction
+      int.(V_3 > V_4),
+      int.(V_3 =< V_5)
+    ;
+      ranges.member(V_3, V_6)
+    ).
+
+ranges.negate(V_3) = V_2 :-
+    V_2 = ranges.negate_aux(V_3, V_4),
+    V_4 = ranges.nil : ranges.ranges.
+
+ranges.nondet_member(V_3, V_4) :-
+    ranges.range_member(V_5, V_6, V_4),
+    int.nondet_int_in_range(V_5, V_6, V_3).
+
+ranges.range_foldl(V_5, ranges.nil, V_7, V_8) :-
+    V_8 = V_7.
+ranges.range_foldl(V_9, ranges.range(V_10, V_11, V_12), V_14, V_15) :-
+    V_16 = int.(V_10 + V_18),
+    V_18 = 1 : int,
+    call(V_9, V_16, V_11, V_14, V_17),
+    ranges.range_foldl(V_9, V_12, V_17, V_15).
+
+ranges.range_foldl2(V_7, ranges.nil, V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+ranges.range_foldl2(V_14, ranges.range(V_15, V_16, V_17), V_20, V_21, V_22, V_23) :-
+    V_24 = int.(V_15 + V_27),
+    V_27 = 1 : int,
+    call(V_14, V_24, V_16, V_20, V_25, V_22, V_26),
+    ranges.range_foldl2(V_14, V_17, V_25, V_21, V_26, V_23).
+
+ranges.range_foldr(V_5, ranges.nil, V_7, V_8) :-
+    V_8 = V_7.
+ranges.range_foldr(V_9, ranges.range(V_10, V_11, V_12), V_14, V_15) :-
+    ranges.range_foldr(V_9, V_12, V_14, V_16),
+    V_17 = int.(V_10 + V_19),
+    V_19 = 1 : int,
+    call(V_9, V_17, V_11, V_16, V_15).
+
+ranges.restrict_range(V_5, V_6, V_7) = V_4 :-
+    V_4 = ranges.intersection(V_8, V_7),
+    V_8 = ranges.range(V_9, V_6, V_11) : ranges.ranges,
+    V_9 = int.(V_5 - V_10),
+    V_10 = 1 : int,
+    V_11 = ranges.nil : ranges.ranges.
+
+ranges.split(ranges.range(V_5, V_6, V_7), V_2, V_6, V_7) :-
+    V_2 = int.(V_5 + V_8),
+    V_8 = 1 : int.
+
+ranges.subset(V_3, V_4) :-
+    V_5 = ranges.difference(V_3, V_4),
+    V_5 = ranges.nil : ranges.ranges.
+
+ranges.to_sorted_list(ranges.nil) = list.[].
+ranges.to_sorted_list(ranges.range(V_3, V_4, V_5)) = V_2 :-
+    V_2 = ranges.to_sorted_list_2(V_3, V_4, V_6),
+    V_6 = ranges.to_sorted_list(V_5).
+
+ranges.universe = ranges.range(V_2, V_3, V_4) :-
+    V_2 = int.min_int,
+    V_3 = int.max_int,
+    V_4 = ranges.nil : ranges.ranges.
+
+:- pragma exceptions(predicate, (ranges.compare_lex), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.contraction), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.difference), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.dilation), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.disjoint), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.from_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.greatest), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.greatest_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.intersection), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.is_contiguous), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.is_non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.least), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.median), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.member), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.negate), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.negate_aux), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.next), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.nondet_member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ranges.plus), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.prune_to_next_non_member), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.prune_to_prev_non_member), 4, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.range), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ranges.range_member), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.restrict_max), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.restrict_min), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.restrict_range), 4, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.shift), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.size), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.split), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ranges.subset), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.to_sorted_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.to_sorted_list_2), 4, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.union), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ranges.universe), 1, 0, may_throw(user_exception)).
+
+:- pragma termination_info(ranges.compare_lex((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(ranges.contraction((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.delete((builtin.in), (builtin.in)) = (builtin.out), finite(3, [yes, yes, no]), can_loop).
+:- pragma termination_info(ranges.difference((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.dilation((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.disjoint((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((ranges.empty) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.from_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.from_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.greatest((builtin.in), (builtin.out)), finite(-3, [yes, no]), cannot_loop).
+:- pragma termination_info(ranges.greatest_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.insert((builtin.in), (builtin.in), (builtin.out)), finite(3, [yes, yes, no]), can_loop).
+:- pragma termination_info(ranges.insert((builtin.in), (builtin.in)) = (builtin.out), finite(3, [yes, yes, no]), can_loop).
+:- pragma termination_info(ranges.intersection((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.is_contiguous((builtin.in), (builtin.out), (builtin.out)), finite(-3, [yes, no, no]), cannot_loop).
+:- pragma termination_info(ranges.is_empty((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(ranges.is_non_empty((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(ranges.least((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ranges.median((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(ranges.member((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ranges.negate((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.negate_aux((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.next((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(ranges.nondet_member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(ranges.plus((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.prune_to_next_non_member((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.prune_to_prev_non_member((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.range((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, no]), can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ranges.range_member((builtin.out), (builtin.out), (builtin.in)), finite(-3, [no, no, yes]), cannot_loop).
+:- pragma termination_info(ranges.restrict_max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.restrict_min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.restrict_range((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(ranges.shift((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(ranges.size((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ranges.split((builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(-3, [yes, no, no, no]), cannot_loop).
+:- pragma termination_info(ranges.subset((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ranges.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.to_sorted_list_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ranges.union((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((ranges.universe) = (builtin.out), infinite, can_loop).
