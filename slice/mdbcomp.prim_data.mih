@@ -1,0 +1,149 @@
+/*
+** Automatically generated from `mdbcomp.prim_data.m'
+** by the Mercury compiler,
+** version rotd-2019-10-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.prim_data.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__prim_data
+#define MR_HEADER_GUARD_mdbcomp__prim_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__PRIM_DATA_DECL_GUARD
+#define MDBCOMP__PRIM_DATA_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_proc_label_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_special_pred_id_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_trace_port_0;
+
+void MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_1(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_2(
+  MR_Word * param_1,
+  MR_String * param_2,
+  MR_String param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mdbcomp__prim_data__string_to_trace_port_2_p_1(
+  MR_String * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data__string_to_trace_port_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_arity_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_generic_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_target_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdbcomp__prim_data____Compare____pred_or_func_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__prim_data____Compare____proc_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__prim_data____Compare____special_pred_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__prim_data____Compare____trace_port_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____pred_or_func_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____proc_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____special_pred_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____trace_port_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__prim_data__init(void);
+void mercury__mdbcomp__prim_data__init_type_tables(void);
+void mercury__mdbcomp__prim_data__init_debugger(void);
+const char *mercury__mdbcomp__prim_data__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.prim_data
+
+// :- end_interface mdbcomp.prim_data.
