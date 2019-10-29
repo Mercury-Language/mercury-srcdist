@@ -1,0 +1,26 @@
+:- module display.
+:- interface.
+:- type attr_string.
+:- type deep_link.
+:- type display.
+:- type display_item.
+:- type link_class
+	where	type_is_abstract_enum(1).
+:- type list_class
+	where	type_is_abstract_enum(2).
+:- type pseudo_link.
+:- type str_attr
+	where	type_is_abstract_enum(2).
+:- type table.
+:- type table_cell.
+:- type table_class
+	where	type_is_abstract_enum(2).
+:- type table_column_class
+	where	type_is_abstract_enum(4).
+:- type table_column_colour
+	where	type_is_abstract_enum(2).
+:- type table_data.
+:- type table_header.
+:- type table_header_group.
+:- type table_header_group_columns.
+:- type table_row.

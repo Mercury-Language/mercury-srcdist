@@ -1,0 +1,10 @@
+:- module (hlds.vartypes).
+:- interface.
+:- type maybe_vartypes
+    --->    varset_vartypes(parse_tree.prog_data.tvarset, hlds.vartypes.vartypes)
+    ;       no_varset_vartypes .
+:- type prog_var_set_types
+    --->    prog_var_set_types(parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes).
+:- type vartypes.
+:- implementation.
+:- type vartypes == map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).

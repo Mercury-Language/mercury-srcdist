@@ -1,0 +1,126 @@
+/*
+** Automatically generated from `delay_info.m'
+** by the Mercury compiler,
+** version rotd-2019-10-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.delay_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__delay_info
+#define MR_HEADER_GUARD_check_hlds__delay_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__DELAY_INFO_DECL_GUARD
+#define CHECK_HLDS__DELAY_INFO_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_stack_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_depth_num_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_pending_goals_table_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_seq_num_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_table_0;
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_all_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_var_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_delay_goal_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_enter_conj_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_init_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_leave_conj_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__delay_info__delay_info_wakeup_goals_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__delay_info____Compare____delay_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__delay_info__init(void);
+void mercury__check_hlds__delay_info__init_type_tables(void);
+void mercury__check_hlds__delay_info__init_debugger(void);
+const char *mercury__check_hlds__delay_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.delay_info
+
+// :- end_interface check_hlds.delay_info.
