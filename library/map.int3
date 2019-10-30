@@ -1,0 +1,3 @@
+:- module map.
+:- interface.
+:- type map(_K, _V).

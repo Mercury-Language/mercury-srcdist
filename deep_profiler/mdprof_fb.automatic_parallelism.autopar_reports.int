@@ -1,0 +1,12 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_reports).
+:- interface.
+:- use_module cord.
+:- use_module io.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.feedback).
+:- use_module (mdbcomp.program_representation).
+:- use_module ((mdbcomp.feedback).automatic_parallelism).
+:- pred create_candidate_parallel_conj_report(mdbcomp.program_representation.var_name_table, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(mdbcomp.feedback.automatic_parallelism.pard_goal), cord.cord(string)).
+:- mode create_candidate_parallel_conj_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred print_feedback_report(mdbcomp.feedback.feedback_info, io.io, io.io).
+:- mode print_feedback_report((builtin.in), (builtin.di), (builtin.uo)) is det.
