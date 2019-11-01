@@ -1,0 +1,38 @@
+:- module (string.parse_util).
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module ops.
+:- use_module pair.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module term_io.
+:- use_module (string.format).
+:- use_module (string.to_string).
+
+:- pred (string.parse_util).get_number_prefix_loop(list.list(character), list.list(character), int, int).
+:- mode (string.parse_util).get_number_prefix_loop((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+
+(string.parse_util).get_number_prefix(V_6, V_7, V_5) :-
+    V_9 = 0 : int,
+    (string.parse_util).get_number_prefix_loop(V_6, V_7, V_9, V_5).
+
+:- pragma termination_info((string.parse_util).gather_flag_chars((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).gather_non_percent_chars((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).get_nonzero_number_prefix((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), can_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix_loop((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), can_loop).
+:- pragma termination_info((string.parse_util).string_format_error_to_msg((builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((string.parse_util).gather_flag_chars), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).gather_non_percent_chars), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).get_nonzero_number_prefix), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix_loop), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.parse_util).string_format_error_to_msg), 2, 0, may_throw(user_exception)).
