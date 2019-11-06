@@ -1,0 +1,20 @@
+:- module (hlds.status).
+:- interface.
+:- type inst_status.
+:- type instance_status.
+:- type instmode_export
+	where	type_is_abstract_enum(2).
+:- type instmode_import
+	where	type_is_abstract_enum(2).
+:- type item_export
+	where	type_is_abstract_enum(2).
+:- type item_import.
+:- type item_mercury_status.
+:- type maybe_opt_imported
+	where	type_is_abstract_enum(1).
+:- type mode_status.
+:- type new_instmode_status.
+:- type old_import_status.
+:- type pred_status.
+:- type type_status.
+:- type typeclass_status.
