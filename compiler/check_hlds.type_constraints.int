@@ -1,0 +1,9 @@
+:- module (check_hlds.type_constraints).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- pred typecheck_constraints(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode typecheck_constraints((builtin.in), (builtin.out), (builtin.out)) is det.

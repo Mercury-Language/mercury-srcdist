@@ -1,0 +1,5 @@
+:- module (hlds.add_foreign_enum).
+:- interface.
+:- type cons_id_to_tag_map.
+:- type type_ctor_foreign_enums.
+:- type type_ctor_to_foreign_enums_map.
