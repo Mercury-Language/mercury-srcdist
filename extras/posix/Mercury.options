@@ -1,0 +1,4 @@
+MCFLAGS = \
+	--libgrades-exclude java \
+	--libgrades-exclude csharp \
+	--libgrades-exclude erlang

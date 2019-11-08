@@ -1,0 +1,4 @@
+:- module ((hlds.make_hlds).add_solver).
+:- interface.
+:- type solver_aux_pred_info
+    --->    solver_aux_pred_info(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.tvarset, parse_tree.prog_data.solver_type_details, parse_tree.prog_data.prog_context, hlds.status.item_mercury_status, parse_tree.prog_data.need_qualifier).
