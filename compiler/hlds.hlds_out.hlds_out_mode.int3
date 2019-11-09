@@ -1,0 +1,4 @@
+:- module ((hlds.hlds_out).hlds_out_mode).
+:- interface.
+:- type incl_addr
+	where	type_is_abstract_enum(1).

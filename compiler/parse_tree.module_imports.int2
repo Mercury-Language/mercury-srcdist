@@ -1,0 +1,11 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- use_module map.
+:- use_module (mdbcomp.sym_name).
+:- type module_and_imports.
+:- type module_timestamp
+    --->    module_timestamp(((parse_tree.module_imports).mts_file_kind) :: parse_tree.file_kind.file_kind, ((parse_tree.module_imports).mts_timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).mts_need_qualifier) :: parse_tree.module_imports.recomp_need_qualifier).
+:- type module_timestamp_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.module_timestamp).
+:- type recomp_need_qualifier
+    --->    recomp_must_be_qualified 
+    ;       recomp_may_be_unqualified .
