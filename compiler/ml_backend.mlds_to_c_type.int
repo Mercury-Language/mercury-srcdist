@@ -1,0 +1,20 @@
+:- module (ml_backend.mlds_to_c_type).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_c_util).
+:- type output_type == pred(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- inst (output_type) == (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det).
+:- pred mlds_output_cast(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode mlds_output_cast((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_return_list(list.list(T), pred(T, io.io, io.io), io.io, io.io).
+:- mode mlds_output_return_list((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_type(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode mlds_output_type((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_type_prefix(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode mlds_output_type_prefix((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_type_suffix(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, ml_backend.mlds.initializer_array_size, io.io, io.io).
+:- mode mlds_output_type_suffix((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_type_suffix_no_size(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode mlds_output_type_suffix_no_size((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
