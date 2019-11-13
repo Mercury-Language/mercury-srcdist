@@ -1,0 +1,7 @@
+:- module (libs.check_libgrades).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module (libs.globals).
+:- pred maybe_check_libraries_are_installed(libs.globals.globals, bool.bool, io.io, io.io).
+:- mode maybe_check_libraries_are_installed((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

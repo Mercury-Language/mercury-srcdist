@@ -1,0 +1,100 @@
+/*
+** Automatically generated from `erl_unify_gen.m'
+** by the Mercury compiler,
+** version rotd-2019-11-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module erl_backend.erl_unify_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_erl_backend__erl_unify_gen
+#define MR_HEADER_GUARD_erl_backend__erl_unify_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ERL_BACKEND__ERL_UNIFY_GEN_DECL_GUARD
+#define ERL_BACKEND__ERL_UNIFY_GEN_DECL_GUARD
+#include "erl_backend.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+erl_backend__erl_unify_gen__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_101_114_108_95_103_101_110_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_51_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+erl_backend__erl_unify_gen__cons_id_to_expr_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+erl_backend__erl_unify_gen__cons_id_to_term_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+erl_backend__erl_unify_gen__cons_id_to_term_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+erl_backend__erl_unify_gen__erl_gen_unification_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__erl_backend__erl_unify_gen__init(void);
+void mercury__erl_backend__erl_unify_gen__init_type_tables(void);
+void mercury__erl_backend__erl_unify_gen__init_debugger(void);
+const char *mercury__erl_backend__erl_unify_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_erl_backend.erl_unify_gen
+
+// :- end_interface erl_backend.erl_unify_gen.
