@@ -1,0 +1,11 @@
+:- module (parse_tree.prog_foreign).
+:- interface.
+:- type foreign_body_code.
+:- type foreign_body_codes.
+:- type foreign_decl_code.
+:- type foreign_decl_codes.
+:- type foreign_export_decl.
+:- type foreign_export_decls.
+:- type foreign_export_defn.
+:- type foreign_export_defns.
+:- abstract_inst((lang_gen_ext_file)).
