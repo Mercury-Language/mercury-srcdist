@@ -1,0 +1,22 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .
+:- pred analyze_and_optimize_format_calls(hlds.hlds_module.module_info, check_hlds.simplify.format_call.maybe_generate_implicit_stream_warnings, hlds.hlds_goal.hlds_goal, maybe.maybe(hlds.hlds_goal.hlds_goal), list.list(parse_tree.error_util.error_spec), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode analyze_and_optimize_format_calls((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred is_format_call(mdbcomp.sym_name.module_name, string, list.list(parse_tree.prog_data.prog_var)).
+:- mode is_format_call((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- implementation.
+:- include_module (((check_hlds.simplify).format_call).parse_string_format).

@@ -1,0 +1,20 @@
+:- module string.
+:- interface.
+:- include_module (string.builder).
+:- include_module (string.format).
+:- include_module (string.parse_util).
+:- type justified_column
+    --->    left(list.list(string))
+    ;       right(list.list(string)).
+:- type line
+    --->    line(string).
+:- type poly_type
+    --->    f(float)
+    ;       i(int)
+    ;       s(string)
+    ;       c(char.char).
+:- type string_piece
+    --->    string(string)
+    ;       substring(string, int, int).
+:- type text_file
+    --->    text_file(string).

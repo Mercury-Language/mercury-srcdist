@@ -1,0 +1,4 @@
+:- module math.
+:- interface.
+:- type domain_error.
+:- type quadratic_roots.
