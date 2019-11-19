@@ -1,0 +1,338 @@
+/*
+** Automatically generated from `io.m'
+** by the Mercury compiler,
+** version rotd-2019-11-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef IO_MH
+#define IO_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO_DECL_GUARD
+#define IO_DECL_GUARD
+#define ML_FILE_TYPE_REGULAR_FILE 0
+#define ML_FILE_TYPE_DIRECTORY 1
+#define ML_FILE_TYPE_SYMBOLIC_LINK 2
+#define ML_FILE_TYPE_NAMED_PIPE 3
+#define ML_FILE_TYPE_SOCKET 4
+#define ML_FILE_TYPE_CHARACTER_DEVICE 5
+#define ML_FILE_TYPE_BLOCK_DEVICE 6
+#define ML_FILE_TYPE_MESSAGE_QUEUE 7
+#define ML_FILE_TYPE_SEMAPHORE 8
+#define ML_FILE_TYPE_SHARED_MEMORY 9
+#define ML_FILE_TYPE_UNKNOWN 10
+#define ML_READ_LINE_AS_STRING_OK 0
+#define ML_READ_LINE_AS_STRING_EOF 1
+#define ML_READ_LINE_AS_STRING_NULL_CHAR 2
+#define ML_READ_LINE_AS_STRING_ERROR 3
+#define ML_BIG_ENDIAN 0
+#define ML_LITTLE_ENDIAN 1
+#define ML_MIRC_OK 0
+#define ML_MIRC_EOF 1
+#define ML_MIRC_INCOMPLETE 2
+#define ML_MIRC_ERROR 3
+#define ML_RESULT_CODE_OK 0
+#define ML_RESULT_CODE_EOF 1
+#define ML_RESULT_CODE_ERROR 2
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+#ifdef MR_HAVE_SYS_STAT_H
+    #include <sys/stat.h>
+#endif
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_library_types.h"    // for MercuryFilePtr
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+
+#include "mercury_init.h"
+#include "mercury_wrapper.h"
+#include "mercury_type_info.h"
+#include "mercury_library_types.h"
+#include "mercury_file.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+#include "mercury_runtime_util.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <limits.h>
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>     // for WIFEXITED, WEXITSTATUS, etc.
+#endif
+
+#ifdef MR_WIN32
+  #include "mercury_windows.h"
+#endif
+
+#if defined(MR_MSVC)
+    typedef SSIZE_T ML_ssize_t;
+#else
+    typedef ssize_t ML_ssize_t;
+#endif
+
+extern MercuryFile mercury_stdin;
+extern MercuryFile mercury_stdout;
+extern MercuryFile mercury_stderr;
+extern MercuryFile mercury_stdin_binary;
+extern MercuryFile mercury_stdout_binary;
+extern MR_Unsigned mercury_current_text_input_index;
+extern MR_Unsigned mercury_current_text_output_index;
+extern MR_Unsigned mercury_current_binary_input_index;
+extern MR_Unsigned mercury_current_binary_output_index;
+
+#define MR_initial_io_state()       0   // some random number
+#define MR_final_io_state(r)        ((void) 0)
+
+void            mercury_init_io(void);
+MercuryFilePtr  mercury_current_text_input(void);
+MercuryFilePtr  mercury_current_text_output(void);
+MercuryFilePtr  mercury_current_binary_input(void);
+MercuryFilePtr  mercury_current_binary_output(void);
+int             mercury_next_stream_id(void);
+MercuryFilePtr  mercury_open(const char *filename, const char *openmode,
+                    MR_AllocSiteInfoPtr alloc_id);
+int             mercury_get_byte(MercuryFilePtr mf);
+int             mercury_close(MercuryFilePtr mf);
+int             ML_fprintf(MercuryFilePtr mf, const char *format, ...);
+
+#ifdef MR_WIN32
+    wchar_t     *ML_utf8_to_wide(const char *s);
+    char        *ML_wide_to_utf8(const wchar_t *ws,
+                    MR_AllocSiteInfoPtr alloc_id);
+#endif
+
+
+    extern MR_Word      ML_io_stream_db;
+    extern MR_Word      ML_io_user_globals;
+
+    extern int          ML_next_stream_id;
+    #if 0
+      extern MR_Word    ML_io_ops_table;
+    #endif
+
+    #ifdef MR_THREAD_SAFE
+        extern MercuryLock ML_io_stream_db_lock;
+        extern MercuryLock ML_io_user_globals_lock;
+        extern MercuryLock ML_io_next_stream_id_lock;
+    #endif
+
+
+// ML_N_BIT_UINT_T(n) expands to the name of an n-bit unsigned integer type
+// in C, if N is 8, 16, 32 or 64.
+//
+#define ML_N_BIT_INT_T(n)     MR_PASTE3(uint, n, _t)
+
+// ML_REVERSE_BYTES_FUNC(n) expands to the name a function exported by the
+// Mercury runtime that can be used to reverse the bytes in an n-bit
+// unsigned integer, if N is 16, 32 or 64.
+//
+#define ML_REVERSE_BYTES_FUNC(n)     MR_PASTE3(MR_uint, n, _reverse_bytes)
+
+// ML_build_uintN(int n, MR_Word byte_order, unsigned char *buffer,
+//     uintN_t value):
+//
+// Build an n-bit unsigned integer using the bytes stored in the array
+// 'buffer'. The order of the bytes in the buffer are given by 'byte_order'.
+// The result is assigned to the lvalue 'value'
+//
+// We have two definitions of this macro, one for big-endian machines
+// and one for little-endian machines.
+//
+#if defined(MR_BIG_ENDIAN)
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            } else {                                                                 value = *((ML_N_BIT_INT_T(n) *) buffer);                         }                                                                } while (0)
+#else
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = *((ML_N_BIT_INT_T(n) *) buffer);                         } else {                                                                 value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            }                                                                } while (0)
+#endif
+
+// ML_do_read_binary_uintN(int nbytes, int nbits, MR_Word stream,
+//     MR_Word byte_order, MR_Word result_code, MR_Word result_value,
+//     MR_Word result_incomplete, MR_Word result_error):
+//
+// This macro implements the do_read_binary_uint{16 32,64}/8 predicates.
+// It expands to code for reading an 'nbits'-bit ('nbytes'-byte) unsigned
+// integer from the binary stream 'stream', with the bytes in the stream
+// being in 'byte_order' order.
+//
+// The result is returned as follows:
+//
+// 'result_code' is set the status code (maybe_incomplete_result_code/0)
+// for the read.
+// 'result_value' is the value of the integer read on a successful read
+// and zero otherwise.
+// 'result_incomplete' is the list of bytes read so far for an incomplete
+// read, and the empty list otherwise.
+// 'result_error' is the errno if an I/O error occurs, and zero otherwise.
+//
+#define ML_do_read_binary_uintN(nbytes, nbits, stream, byte_order,                  result_code, result_value, result_incomplete, result_error)               do {                                                                             unsigned char buffer[nbytes];                                                size_t nread = MR_READ(*stream, buffer, nbytes);                             result_incomplete = MR_list_empty();                                                                                                                      if (nread < nbytes) {                                                            result_value = 0;                                                            if (MR_FERROR(*stream)) {                                                        result_code = ML_MIRC_ERROR,                                                 result_error = errno;                                                    } else if (nread > 0) {                                                          int i;                                                                       result_code = ML_MIRC_INCOMPLETE;                                            for (i = nread - 1; i >= 0; i--) {                                               result_incomplete =                                                              MR_list_cons(buffer[i],                                                      result_incomplete);                                                  }                                                                            result_error = 0;                                                        } else {                                                                         result_code = ML_MIRC_EOF;                                                   result_error = 0;                                                        }                                                                        } else {                                                                         result_code = ML_MIRC_OK;                                                    ML_build_uintN(nbits, byte_order, buffer, result_value);                     result_error = 0;                                                        }                                                                        } while (0)
+
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
+
+    #define ML_MAX_TEMPNAME_TRIES   (6 * 4)
+
+    extern long ML_io_tempnam_counter;
+
+
+#include <stdlib.h> // for getenv() and setenv()
+
+
+// A note regarding the declaration of the environ global variable
+// that follows:
+//
+// The man page (on Linux) says that it should be declared by the user
+// program.
+//
+// On MinGW, environ is a macro (defined in stdlib.h) that expands to a
+// function call that returns the user environment; no additional
+// declaration is required.
+//
+// On Mac OS X shared libraries do not have direct access to environ.
+// The man page for environ(7) says that we should look it up at
+// runtime using _NSGetEnviron().
+
+#if defined(MR_HAVE_ENVIRON) && !defined(MR_MAC_OSX)
+    #include <unistd.h>
+
+    #if !defined(MR_MINGW)
+        extern char **environ;
+    #endif
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <crt_externs.h>
+#endif
+
+#ifdef MR_HAVE_SPAWN_H
+    #include <spawn.h>
+#endif
+
+
+#include <string.h>
+#include <errno.h>
+
+// ML_make_err_msg(errnum, msg, alloc_id, error_msg):
+// Append `msg' and a message for errnum to give `error_msg'.
+//
+// WARNING: this must only be called when the `hp' register is valid.
+// That means it must only be called from procedures declared
+// `[will_not_call_mercury, promise_pure]'.
+//
+// This is defined as a macro rather than a C function
+// to avoid worrying about the `hp' register being
+// invalidated by the function call.
+
+#define ML_make_err_msg(errnum, msg, alloc_id, error_msg)                   \
+    do {                                                                    \
+        char    errbuf[MR_STRERROR_BUF_SIZE];                               \
+        const char *errno_msg;                                              \
+        size_t  total_len;                                                  \
+                                                                            \
+        errno_msg = MR_strerror(errnum, errbuf, sizeof(errbuf));            \
+        total_len = strlen(msg) + strlen(errno_msg);                        \
+        MR_allocate_aligned_string_msg((error_msg), total_len, (alloc_id)); \
+        strcpy((error_msg), msg);                                           \
+        strcat((error_msg), errno_msg);                                     \
+    } while(0)
+
+// ML_make_win32_err_msg(error, msg, alloc_id, error_msg):
+// Append `msg' and the string returned by the Win32 API function
+// FormatMessage() for the last error to give `error_msg'.
+//
+// WARNING: this must only be called when the `hp' register is valid.
+// That means it must only be called from procedures declared
+// `[will_not_call_mercury]'.
+//
+// This is defined as a macro rather than a C function
+// to avoid worrying about the `hp' register being
+// invalidated by the function call.
+
+#ifdef MR_WIN32
+
+#define ML_make_win32_err_msg(error, msg, alloc_id, error_msg)              \
+    do {                                                                    \
+        size_t total_len;                                                   \
+        LPVOID  err_buf;                                                    \
+        MR_bool free_err_buf = MR_TRUE;                                     \
+                                                                            \
+        if (!FormatMessage(                                                 \
+                FORMAT_MESSAGE_ALLOCATE_BUFFER                              \
+                | FORMAT_MESSAGE_FROM_SYSTEM                                \
+                | FORMAT_MESSAGE_IGNORE_INSERTS,                            \
+                NULL,                                                       \
+                error,                                                      \
+                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),                  \
+                (LPTSTR) &err_buf,                                          \
+                0,                                                          \
+                NULL))                                                      \
+        {                                                                   \
+            free_err_buf = MR_FALSE;                                        \
+            err_buf = (LPVOID) "could not retrieve error message";        \
+        }                                                                   \
+        total_len = strlen(msg) + strlen((char *)err_buf);                  \
+        MR_allocate_aligned_string_msg((error_msg), total_len, (alloc_id)); \
+        strcpy((error_msg), msg);                                           \
+        strcat((error_msg), (char *)err_buf);                               \
+        if (free_err_buf) {                                                 \
+            LocalFree(err_buf);                                             \
+        }                                                                   \
+    } while(0)
+
+#endif // !MR_WIN32
+
+
+#ifdef MR_HAVE_DEV_T
+  typedef   dev_t       ML_dev_t;
+#else
+  typedef   MR_Integer  ML_dev_t;
+#endif
+
+#ifdef MR_HAVE_INO_T
+  typedef   ino_t       ML_ino_t;
+#else
+  typedef   MR_Integer  ML_ino_t;
+#endif
+
+typedef struct {
+    ML_dev_t device;
+    ML_ino_t inode;
+} ML_File_Id;
+
+
+#endif
+void ML_io_stdin_stream(MercuryFilePtr *);
+void ML_io_stdout_stream(MercuryFilePtr *);
+void ML_io_stderr_stream(MercuryFilePtr *);
+void ML_io_print_to_stream(MR_Word, MercuryFilePtr, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO_MH */

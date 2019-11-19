@@ -1,0 +1,41 @@
+:- module (libs.polyhedron).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module set.
+:- use_module (libs.lp_rational).
+:- type polyhedra == list.list(libs.polyhedron.polyhedron).
+:- type polyhedron.
+:- func bounding_box(libs.polyhedron.polyhedron, libs.lp_rational.lp_varset) = libs.polyhedron.polyhedron.
+:- func constraints(libs.polyhedron.polyhedron) = libs.lp_rational.constraints.
+:- pred convex_union(libs.lp_rational.lp_varset, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron).
+:- mode convex_union((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func convex_union(libs.lp_rational.lp_varset, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- pred convex_union(libs.lp_rational.lp_varset, maybe.maybe(int), libs.polyhedron.polyhedron, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron).
+:- mode convex_union((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func convex_union(libs.lp_rational.lp_varset, maybe.maybe(int), libs.polyhedron.polyhedron, libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- func empty = libs.polyhedron.polyhedron.
+:- func from_constraints(libs.lp_rational.constraints) = libs.polyhedron.polyhedron.
+:- pred intersection(libs.polyhedron.polyhedron, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron).
+:- mode intersection((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func intersection(libs.polyhedron.polyhedron, libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- pred is_empty(libs.polyhedron.polyhedron).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_universe(libs.polyhedron.polyhedron).
+:- mode is_universe((builtin.in)) is semidet.
+:- func non_false_constraints(libs.polyhedron.polyhedron) = libs.lp_rational.constraints.
+:- pred optimize(libs.lp_rational.lp_varset, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron).
+:- mode optimize((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred project(libs.lp_rational.lp_vars, libs.lp_rational.lp_varset, libs.polyhedron.polyhedron, libs.polyhedron.polyhedron).
+:- mode project((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func project(libs.lp_rational.lp_vars, libs.lp_rational.lp_varset, libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- func project_all(libs.lp_rational.lp_varset, libs.lp_rational.lp_vars, libs.polyhedron.polyhedra) = libs.polyhedron.polyhedra.
+:- func substitute_vars(map.map(libs.lp_rational.lp_var, libs.lp_rational.lp_var), libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- func substitute_vars(libs.lp_rational.lp_vars, libs.lp_rational.lp_vars, libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.
+:- func universe = libs.polyhedron.polyhedron.
+:- func widen(libs.polyhedron.polyhedron, libs.polyhedron.polyhedron, libs.lp_rational.lp_varset) = libs.polyhedron.polyhedron.
+:- pred write_polyhedron(libs.polyhedron.polyhedron, libs.lp_rational.lp_varset, io.io, io.io).
+:- mode write_polyhedron((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func zero_vars(set.set(libs.lp_rational.lp_var), libs.polyhedron.polyhedron) = libs.polyhedron.polyhedron.

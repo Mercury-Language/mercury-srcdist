@@ -1,0 +1,189 @@
+/*
+** Automatically generated from `rbmm.region_liveness_info.m'
+** by the Mercury compiler,
+** version rotd-2019-11-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.region_liveness_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__region_liveness_info
+#define MR_HEADER_GUARD_transform_hlds__rbmm__region_liveness_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__REGION_LIVENESS_INFO_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__REGION_LIVENESS_INFO_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_execution_path_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_execution_path_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_pp_region_set_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_pp_varset_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_proc_pp_region_set_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_proc_pp_varset_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_proc_region_set_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_region_set_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_liveness_info__transform_hlds__rbmm__region_liveness_info__type_ctor_info_variable_set_0;
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info__find_input_output_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info__proc_region_set_table_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info__region_set_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____execution_path_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____execution_path_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____pp_region_set_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____pp_varset_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____proc_pp_region_set_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____proc_pp_varset_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____proc_region_set_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____region_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Compare____variable_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____execution_path_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____execution_path_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____pp_region_set_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____pp_varset_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____proc_pp_region_set_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____proc_pp_varset_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____proc_region_set_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____region_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_liveness_info____Unify____variable_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__rbmm__region_liveness_info__init(void);
+void mercury__transform_hlds__rbmm__region_liveness_info__init_type_tables(void);
+void mercury__transform_hlds__rbmm__region_liveness_info__init_debugger(void);
+const char *mercury__transform_hlds__rbmm__region_liveness_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.rbmm.region_liveness_info
+
+// :- end_interface transform_hlds.rbmm.region_liveness_info.
