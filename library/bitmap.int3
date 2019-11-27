@@ -1,0 +1,16 @@
+:- module bitmap.
+:- interface.
+:- type bit_index.
+:- type bitmap.
+:- type bitmap_error.
+:- type byte.
+:- type byte_index.
+:- type num_bits.
+:- type num_bytes.
+:- type slice.
+:- type word.
+:- abstract_inst((bitmap)).
+:- abstract_inst((uniq_bitmap)).
+:- abstract_mode((bitmap_di)).
+:- abstract_mode((bitmap_ui)).
+:- abstract_mode((bitmap_uo)).

@@ -1,0 +1,200 @@
+/*
+** Automatically generated from `benchmarking.m'
+** by the Mercury compiler,
+** version rotd-2019-11-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module benchmarking.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_benchmarking
+#define MR_HEADER_GUARD_benchmarking
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BENCHMARKING_DECL_GUARD
+#define BENCHMARKING_DECL_GUARD
+
+
+#include "mercury_timing.h"
+#include "mercury_heap.h"
+
+extern void ML_report_stats(void);
+
+extern void ML_report_full_memory_stats(void);
+
+
+
+    extern  volatile    MR_Word ML_benchmarking_dummy_word;
+
+
+#endif
+
+
+
+
+void MR_CALL 
+mercury__benchmarking__benchmark_det_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__benchmarking__benchmark_det_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__benchmarking__benchmark_det_io_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Integer param_9,
+  MR_Integer * param_10);
+
+void MR_CALL 
+mercury__benchmarking__benchmark_func_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__benchmarking__benchmark_nondet_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Integer * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__benchmarking__log_threadscope_message_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__benchmarking__report_full_memory_stats_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__report_memory_attribution_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__benchmarking__report_memory_attribution_2_p_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__benchmarking__report_memory_attribution_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__benchmarking__report_memory_attribution_4_p_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__benchmarking__report_stats_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_call_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_call_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_heap_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_heap_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_time_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_off_time_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_call_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_call_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_heap_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_heap_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_time_profiling_0_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__turn_on_time_profiling_2_p_0(void);
+
+void MR_CALL 
+mercury__benchmarking__write_out_trace_counts_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void mercury__benchmarking__init(void);
+void mercury__benchmarking__init_type_tables(void);
+void mercury__benchmarking__init_debugger(void);
+const char *mercury__benchmarking__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_benchmarking
+
+// :- end_interface benchmarking.
