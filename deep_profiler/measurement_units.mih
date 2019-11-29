@@ -1,0 +1,216 @@
+/*
+** Automatically generated from `measurement_units.m'
+** by the Mercury compiler,
+** version 2019-11-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module measurement_units.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_measurement_units
+#define MR_HEADER_GUARD_measurement_units
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MEASUREMENT_UNITS_DECL_GUARD
+#define MEASUREMENT_UNITS_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct measurement_units__measurement_units__type_ctor_info_memory_0;
+
+extern const MR_TypeCtorInfo_Struct measurement_units__measurement_units__type_ctor_info_memory_units_0;
+
+extern const MR_TypeCtorInfo_Struct measurement_units__measurement_units__type_ctor_info_percent_0;
+
+extern const MR_TypeCtorInfo_Struct measurement_units__measurement_units__type_ctor_info_probability_0;
+
+extern const MR_TypeCtorInfo_Struct measurement_units__measurement_units__type_ctor_info_time_0;
+
+void MR_CALL 
+measurement_units__compare_memory_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+measurement_units__percent_at_or_above_threshold_2_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurement_units__f_slash_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Float MR_CALL 
+measurement_units__and_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+measurement_units__certain_0_f_0(void);
+
+MR_String MR_CALL 
+measurement_units__commas_1_f_0(
+  MR_Integer param_1);
+
+MR_String MR_CALL 
+measurement_units__decimal_fraction_2_f_0(
+  MR_String param_1,
+  MR_Float param_2);
+
+MR_String MR_CALL 
+measurement_units__format_memory_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+measurement_units__format_percent_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+measurement_units__format_time_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+measurement_units__four_decimal_fraction_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+measurement_units__impossible_0_f_0(void);
+
+MR_Word MR_CALL 
+measurement_units__memory_words_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Float MR_CALL 
+measurement_units__not_probability_1_f_0(
+  MR_Float param_1);
+
+MR_String MR_CALL 
+measurement_units__one_decimal_fraction_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+measurement_units__or_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Word MR_CALL 
+measurement_units__percent_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+measurement_units__probability_to_float_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+measurement_units__probable_1_f_0(
+  MR_Float param_1);
+
+MR_Word MR_CALL 
+measurement_units__ticks_to_time_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+measurement_units__time_percall_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+measurement_units__two_decimal_fraction_1_f_0(
+  MR_Float param_1);
+
+void MR_CALL 
+measurement_units____Compare____memory_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurement_units____Compare____memory_units_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurement_units____Compare____percent_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurement_units____Compare____probability_0_0(
+  MR_Word * param_1,
+  MR_Float param_2,
+  MR_Float param_3);
+
+void MR_CALL 
+measurement_units____Compare____time_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+measurement_units____Unify____memory_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurement_units____Unify____memory_units_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurement_units____Unify____percent_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurement_units____Unify____probability_0_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_bool MR_CALL 
+measurement_units____Unify____time_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__measurement_units__init(void);
+void mercury__measurement_units__init_type_tables(void);
+void mercury__measurement_units__init_debugger(void);
+const char *mercury__measurement_units__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_measurement_units
+
+// :- end_interface measurement_units.
