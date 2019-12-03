@@ -1,0 +1,13 @@
+module(1, "browse.m",
+	(mdb.browse),
+	{mdb},
+	{bool, builtin, io, list, maybe, private_builtin, univ, (mdb.browser_info), (mdb.browser_term)},
+	{bool, builtin, deconstruct, dir, getopt, int, io, list, map, maybe, pair, pretty_printer, private_builtin, stream, string, term_io, term_to_xml, type_desc, univ, (mdb.browser_info), (mdb.browser_term), (mdb.frame), (mdb.parse), (mdb.sized_pretty), (mdb.term_to_html), (stream.string_writer), (string.builder), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.browse)},
+	contains_foreign_export,
+	no_main
+).
