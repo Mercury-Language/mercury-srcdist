@@ -1,0 +1,14 @@
+:- module (check_hlds.post_typecheck).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_util).
+:- pred post_typecheck_finish_preds(hlds.hlds_module.module_info, hlds.hlds_module.module_info, int, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode post_typecheck_finish_preds((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred propagate_types_into_modes(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.proc_id), hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode propagate_types_into_modes((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred setup_vartypes_in_clauses_for_imported_pred(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode setup_vartypes_in_clauses_for_imported_pred((builtin.in), (builtin.out)) is det.

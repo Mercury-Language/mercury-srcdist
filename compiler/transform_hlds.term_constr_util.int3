@@ -1,0 +1,3 @@
+:- module (transform_hlds.term_constr_util).
+:- interface.
+:- type var_substitution.

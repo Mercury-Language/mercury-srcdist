@@ -1,0 +1,39 @@
+:- module dump.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module profile.
+:- use_module set.
+:- type dump_cliques
+    --->    dump_cliques 
+    ;       do_not_dump_cliques .
+:- type dump_options
+    --->    dump_options((dump.do_restricted) :: dump.show_restricted_dump, (dump.do_arrays) :: set.set(dump.dumpable_array), (dump.do_stats) :: dump.show_stats, (dump.do_dump_cliques) :: dump.dump_cliques, (dump.do_dump_rev_links) :: dump.dump_rev_links, (dump.do_dump_prop_measurements) :: dump.dump_prop_measurements).
+:- type dump_prop_measurements
+    --->    dump_prop_measurements 
+    ;       do_not_dump_prop_measurements .
+:- type dump_rev_links
+    --->    dump_rev_links 
+    ;       do_not_dump_rev_links .
+:- type dumpable_array
+    --->    csd 
+    ;       css 
+    ;       pd 
+    ;       ps .
+:- type show_restricted_dump
+    --->    show_restricted_dump 
+    ;       show_complete_dump .
+:- type show_stats
+    --->    show_stats 
+    ;       do_not_show_stats .
+:- func default_dump_options = dump.dump_options.
+:- pred det_dump_array_options(list.list(string), set.set(dump.dumpable_array)).
+:- mode det_dump_array_options((builtin.in), (builtin.out)) is det.
+:- pred dump_array_options(list.list(string), set.set(dump.dumpable_array)).
+:- mode dump_array_options((builtin.in), (builtin.out)) is semidet.
+:- pred dump_array_options_to_dump_options(list.list(string), dump.dump_options).
+:- mode dump_array_options_to_dump_options((builtin.in), (builtin.out)) is det.
+:- pred dump_deep(profile.deep, dump.dump_options, io.io, io.io).
+:- mode dump_deep((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_initial_deep(profile.initial_deep, dump.dump_options, io.io, io.io).
+:- mode dump_initial_deep((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
