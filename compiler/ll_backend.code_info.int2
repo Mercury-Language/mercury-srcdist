@@ -1,0 +1,3 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- type code_info.

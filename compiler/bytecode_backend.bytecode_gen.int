@@ -1,0 +1,9 @@
+:- module (bytecode_backend.bytecode_gen).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module (bytecode_backend.bytecode).
+:- use_module (hlds.hlds_module).
+:- pred gen_module(hlds.hlds_module.module_info, list.list(bytecode_backend.bytecode.byte_code), io.io, io.io).
+:- mode gen_module((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

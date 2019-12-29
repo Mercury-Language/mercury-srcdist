@@ -1,0 +1,14 @@
+:- module (check_hlds.mode_ordering).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module (check_hlds.mode_constraint_robdd).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- type pred_constraint_info
+    --->    pci(((check_hlds.mode_ordering).pci_mode_constraint) :: check_hlds.mode_constraint_robdd.mode_constraint, ((check_hlds.mode_ordering).pci_mci) :: check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- type pred_constraint_map == map.map(hlds.hlds_pred.pred_id, check_hlds.mode_ordering.pred_constraint_info).
+:- pred mode_ordering(check_hlds.mode_ordering.pred_constraint_map, list.list(list.list(hlds.hlds_pred.pred_id)), hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode mode_ordering((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
