@@ -1,0 +1,143 @@
+/*
+** Automatically generated from `dead_proc_elim.m'
+** by the Mercury compiler,
+** version rotd-2019-12-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.dead_proc_elim.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__dead_proc_elim
+#define MR_HEADER_GUARD_transform_hlds__dead_proc_elim
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__DEAD_PROC_ELIM_DECL_GUARD
+#define TRANSFORM_HLDS__DEAD_PROC_ELIM_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_analyze_links_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_entity_queue_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_examined_set_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_const_struct_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_deleted_calls_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_analyze_link_type_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_elim_opt_imported_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_maybe_needed_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_needed_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_pred_elim_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dead_proc_elim__transform_hlds__dead_proc_elim__type_ctor_info_proc_elim_info_0;
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_pred_elim_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_analyze_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_elim_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim__dead_proc_warn_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____entity_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_elim_opt_imported_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____maybe_needed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__dead_proc_elim____Compare____needed_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____entity_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_elim_opt_imported_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____maybe_needed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__dead_proc_elim____Unify____needed_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__dead_proc_elim__init(void);
+void mercury__transform_hlds__dead_proc_elim__init_type_tables(void);
+void mercury__transform_hlds__dead_proc_elim__init_debugger(void);
+const char *mercury__transform_hlds__dead_proc_elim__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.dead_proc_elim
+
+// :- end_interface transform_hlds.dead_proc_elim.
