@@ -1,0 +1,4 @@
+:- module (mdb.sized_pretty).
+:- implementation.
+:- type no_measure_params
+    --->    no_measure_params .

@@ -1,0 +1,5 @@
+:- module (ml_backend.ml_type_gen).
+:- interface.
+:- type mlds_field_info.
+:- type tag_uses_base_class
+	where	type_is_abstract_enum(1).
