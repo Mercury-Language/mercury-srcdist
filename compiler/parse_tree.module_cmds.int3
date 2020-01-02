@@ -1,0 +1,8 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- type command_verbosity
+	where	type_is_abstract_enum(1).
+:- type quote_char
+	where	type_is_abstract_enum(1).
+:- type update_interface_result
+	where	type_is_abstract_enum(2).
