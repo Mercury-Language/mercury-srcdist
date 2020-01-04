@@ -1,0 +1,74 @@
+/*
+** Automatically generated from `conf.m'
+** by the Mercury compiler,
+** version rotd-2020-01-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module conf.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_conf
+#define MR_HEADER_GUARD_conf
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CONF_DECL_GUARD
+#define CONF_DECL_GUARD
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+#include    <sys/types.h>
+#include    <unistd.h>
+#endif
+
+
+#endif
+
+
+
+
+void MR_CALL 
+conf__script_name_3_p_0(
+  MR_String * param_1);
+
+void MR_CALL 
+conf__server_name_port_3_p_0(
+  MR_String * param_1);
+
+MR_Integer MR_CALL 
+conf__getpid_0_f_0(void);
+
+MR_String MR_CALL 
+conf__make_pipe_cmd_1_f_0(
+  MR_String param_1);
+
+void mercury__conf__init(void);
+void mercury__conf__init_type_tables(void);
+void mercury__conf__init_debugger(void);
+const char *mercury__conf__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_conf
+
+// :- end_interface conf.

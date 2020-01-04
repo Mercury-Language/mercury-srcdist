@@ -1,0 +1,58 @@
+/*
+** Automatically generated from `declarative_debugger.m'
+** by the Mercury compiler,
+** version rotd-2020-01-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDB__DECLARATIVE_DEBUGGER_MH
+#define MDB__DECLARATIVE_DEBUGGER_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__DECLARATIVE_DEBUGGER_DECL_GUARD
+#define MDB__DECLARATIVE_DEBUGGER_DECL_GUARD
+
+extern  int MR_DD_debug_origin;
+
+
+#endif
+void MR_DD_decl_diagnosis_state_init(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word *);
+void MR_DD_decl_session_init(MR_Word, MR_Word *);
+void MR_DD_decl_set_diagnoser_testing_flag(MR_Word, MR_Word, MR_Word *);
+void MR_DD_decl_set_fallback_search_mode(MR_Word, MR_Word, MR_Word, MR_Word *);
+void MR_DD_decl_reset_knowledge_base(MR_Word, MR_Word *);
+MR_Word MR_DD_decl_top_down_search_mode(void);
+MR_Word MR_DD_decl_divide_and_query_search_mode(void);
+MR_Word MR_DD_decl_suspicion_divide_and_query_search_mode(void);
+void MR_DD_decl_diagnosis_new_tree(MR_Word, MR_Word, MR_Word *, MR_Word, MR_Word *, MR_Word, MR_Word *);
+void MR_DD_decl_diagnosis_resume_previous(MR_Word, MR_Word *, MR_Word, MR_Word *, MR_Word, MR_Word *);
+MR_bool MR_DD_diagnoser_bug_found(MR_Word, MR_Integer *);
+MR_bool MR_DD_diagnoser_symptom_found(MR_Word, MR_Integer *);
+MR_bool MR_DD_diagnoser_no_bug_found(MR_Word);
+MR_bool MR_DD_diagnoser_require_subtree(MR_Word, MR_Integer *, MR_Integer *, MR_Word *, MR_Integer *);
+MR_bool MR_DD_diagnoser_require_supertree(MR_Word, MR_Integer *, MR_Integer *);
+void MR_DD_decl_add_trusted_module(MR_String, MR_Word, MR_Word *);
+void MR_DD_decl_add_trusted_pred_or_func(const MR_ProcLayout *, MR_Word, MR_Word *);
+void MR_DD_decl_trust_standard_library(MR_Word, MR_Word *);
+MR_bool MR_DD_decl_remove_trusted(MR_Integer, MR_Word, MR_Word *);
+void MR_DD_decl_get_trusted_list(MR_Word, MR_Word, MR_String *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__DECLARATIVE_DEBUGGER_MH */
