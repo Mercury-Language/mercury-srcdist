@@ -1,0 +1,6 @@
+:- module type_desc.
+:- interface.
+:- type pseudo_type_desc.
+:- type pseudo_type_rep.
+:- type type_ctor_desc.
+:- type type_desc.
