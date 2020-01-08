@@ -1,0 +1,10 @@
+:- module ((hlds.make_hlds).add_foreign_proc).
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_item).
+:- pred add_pragma_foreign_proc(parse_tree.prog_item.pragma_info_foreign_proc, hlds.status.pred_status, parse_tree.prog_data.prog_context, maybe.maybe(int), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_pragma_foreign_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

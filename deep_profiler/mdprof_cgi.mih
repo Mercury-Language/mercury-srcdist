@@ -1,0 +1,75 @@
+/*
+** Automatically generated from `mdprof_cgi.m'
+** by the Mercury compiler,
+** version rotd-2020-01-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_cgi.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_cgi
+#define MR_HEADER_GUARD_mdprof_cgi
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_CGI_DECL_GUARD
+#define MDPROF_CGI_DECL_GUARD
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+  #include <sys/types.h>
+  #include <sys/stat.h>
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <unistd.h>
+#endif
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_child_has_parent_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_cmd_pref_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_detach_process_result_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_option_table_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mdprof_cgi__init(void);
+void mercury__mdprof_cgi__init_type_tables(void);
+void mercury__mdprof_cgi__init_debugger(void);
+const char *mercury__mdprof_cgi__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_cgi
+
+// :- end_interface mdprof_cgi.
