@@ -1,0 +1,9 @@
+:- module (hlds.from_ground_term_util).
+:- interface.
+:- type fgt_build_info.
+:- type fgt_build_info_map.
+:- type fgt_invariants_status
+	where	type_is_abstract_enum(1).
+:- type fgt_marked_goal.
+:- type goal_order
+	where	type_is_abstract_enum(1).
