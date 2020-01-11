@@ -1,0 +1,9 @@
+:- module pretty_printer.
+:- interface.
+:- type doc.
+:- type docs.
+:- type formatter.
+:- type formatter_map.
+:- type func_symbol_limit.
+:- type pp_internal.
+:- type pp_params.

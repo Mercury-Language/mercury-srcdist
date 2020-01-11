@@ -1,0 +1,37 @@
+:- module (transform_hlds.term_errors).
+:- interface.
+:- use_module assoc_list.
+:- use_module bag.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type term_error
+    --->    term_error(parse_tree.prog_data.prog_context, transform_hlds.term_errors.term_error_kind).
+:- type term_error_kind
+    --->    pragma_foreign_code 
+    ;       imported_pred 
+    ;       can_loop_proc_called(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       horder_args(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       horder_call 
+    ;       method_call 
+    ;       inf_termination_const(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       ho_inf_termination_const(hlds.hlds_pred.pred_proc_id, list.list(hlds.hlds_pred.pred_proc_id))
+    ;       not_subset(hlds.hlds_pred.pred_proc_id, bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var))
+    ;       inf_call(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       cycle(hlds.hlds_pred.pred_proc_id, assoc_list.assoc_list(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context))
+    ;       no_eqns 
+    ;       too_many_paths 
+    ;       solver_failed 
+    ;       is_builtin(hlds.hlds_pred.pred_id)
+    ;       does_not_term_pragma(hlds.hlds_pred.pred_id)
+    ;       inconsistent_annotations 
+    ;       does_not_term_foreign(hlds.hlds_pred.pred_proc_id).
+:- pred report_term_errors(hlds.hlds_module.module_info, hlds.hlds_pred.scc, list.list(transform_hlds.term_errors.term_error), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode report_term_errors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func term_error_kind_is_direct_error(transform_hlds.term_errors.term_error_kind) = bool.bool.
+:- func term_error_kind_is_fatal_error(transform_hlds.term_errors.term_error_kind) = bool.bool.
