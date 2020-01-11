@@ -1,0 +1,50 @@
+/*
+** Automatically generated from `time.m'
+** by the Mercury compiler,
+** version rotd-2020-01-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef TIME_MH
+#define TIME_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TIME_DECL_GUARD
+#define TIME_DECL_GUARD
+
+    #include <time.h>
+    #ifdef MR_HAVE_SYS_TYPES_H
+        #include <sys/types.h>
+    #endif
+    #ifdef MR_HAVE_SYS_TIMES_H
+        #include <sys/times.h>
+    #endif
+    #ifdef MR_HAVE_UNISTD_H
+        #include <unistd.h>
+    #endif
+
+    #include "mercury_timing.h" // for MR_CLOCK_TICKS_PER_SECOND
+
+
+#endif
+MR_Word ML_construct_time_t(time_t);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TIME_MH */

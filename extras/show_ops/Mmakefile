@@ -1,0 +1,25 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+-include ../Mmake.params
+
+.PHONY: default_target
+default_target:	show_ops
+
+.PHONY: install
+install:
+	test -d $(INSTALL_BINDIR) || mkdir -p $(INSTALL_BINDIR)
+	cp show_ops $(INSTALL_BINDIR)
+
+.PHONY: depend
+depend:	show_ops.depend
+
+.PHONY: check
+check:
+	true

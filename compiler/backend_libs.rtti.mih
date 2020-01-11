@@ -1,0 +1,949 @@
+/*
+** Automatically generated from `rtti.m'
+** by the Mercury compiler,
+** version rotd-2020-01-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.rtti.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__rtti
+#define MR_HEADER_GUARD_backend_libs__rtti
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__RTTI_DECL_GUARD
+#define BACKEND_LIBS__RTTI_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_base_typeclass_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_builtin_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ctor_rtti_name_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_rep_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_maybe_dummy_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_functor_subtype_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_impl_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_notag_functor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ptag_map_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_data_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_or_self_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_and_locn_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_stag_map_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_target_prefixes_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_decl_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_dict_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_instance_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_rtti_name_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_type_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_data_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_details_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0;
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_c_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__functor_subtype_info_to_string_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+backend_libs__rtti__id_to_c_identifier_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+backend_libs__rtti__pred_or_func_to_string_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+backend_libs__rtti__rtti_data_to_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_c_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_csharp_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+backend_libs__rtti__rtti_id_emits_type_ctor_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_java_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_c_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_csharp_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_java_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__sectag_and_locn_to_locn_string_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+backend_libs__rtti__sectag_locn_to_string_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+backend_libs__rtti__table_trie_step_to_c_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__tabling_id_c_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__tabling_id_java_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_c_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_java_type_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__rtti__type_ctor_rep_to_string_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+MR_Word MR_CALL 
+backend_libs__rtti__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_111_100_117_108_101_95_113_117_97_108_105_102_121_95_110_97_109_101_95_111_102_95_99_116_111_114_95_114_116_116_105_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_has_array_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_would_include_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_pos_width_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_functor_rtti_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__rtti__encode_tc_instance_type_1_f_0(
+  MR_Word param_1);
+
+uint16_t MR_CALL 
+backend_libs__rtti__encode_type_ctor_flags_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__enum_functor_rtti_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__foreign_enum_functor_rtti_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_or_self_to_rtti_data_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_to_rtti_data_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_ctor_rtti_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_rtti_id_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_tc_rtti_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__pseudo_type_info_would_incl_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_has_array_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_would_include_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__tabling_id_has_array_type_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__rtti__tabling_info_id_str_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_has_array_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_would_include_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__tcd_get_rtti_type_ctor_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_ctor_details_num_functors_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_ctor_details_num_ptags_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_to_rtti_data_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_would_incl_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+backend_libs__rtti____Compare____base_typeclass_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____builtin_ctor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____call_or_answer_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____ctor_rtti_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____curr_or_prev_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_arg_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____enum_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____enum_maybe_dummy_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____equality_axioms_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____exist_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____exist_typeinfo_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____foreign_enum_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____functor_subtype_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____impl_ctor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____is_array_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____is_stable_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____notag_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____proc_tabling_struct_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____ptag_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_maybe_element_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_ctor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_and_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____stag_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____target_prefixes_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_constraint_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_decl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_dict_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_instance_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_method_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_rtti_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_details_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_flag_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Compare____var_arity_ctor_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__rtti____Index____builtin_ctor_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+backend_libs__rtti____Index____ctor_rtti_name_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____base_typeclass_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____builtin_ctor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____call_or_answer_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ctor_rtti_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____curr_or_prev_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_arg_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_maybe_dummy_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____equality_axioms_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_typeinfo_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____foreign_enum_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____functor_subtype_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____impl_ctor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_array_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_stable_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____notag_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____proc_tabling_struct_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ptag_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_maybe_element_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_ctor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_and_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____stag_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____target_prefixes_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_constraint_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_decl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_dict_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_instance_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_method_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_rtti_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_details_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_flag_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____var_arity_ctor_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__rtti__init(void);
+void mercury__backend_libs__rtti__init_type_tables(void);
+void mercury__backend_libs__rtti__init_debugger(void);
+const char *mercury__backend_libs__rtti__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.rtti
+
+// :- end_interface backend_libs.rtti.
