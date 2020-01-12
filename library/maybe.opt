@@ -1,0 +1,149 @@
+:- module maybe.
+:- use_module builtin.
+:- use_module list.
+:- use_module private_builtin.
+
+maybe.fold2_maybe(V_7, maybe.no, V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+maybe.fold2_maybe(V_14, maybe.yes(V_15), V_18, V_19, V_20, V_21) :-
+    call(V_14, V_15, V_18, V_19, V_20, V_21).
+
+maybe.fold_maybe(V_5, maybe.no, V_7, V_8) :-
+    V_8 = V_7.
+maybe.fold_maybe(V_9, maybe.yes(V_10), V_12, V_13) :-
+    call(V_9, V_10, V_12, V_13).
+
+maybe.fold_maybe(V_5, maybe.no, V_6) = V_6.
+maybe.fold_maybe(V_7, maybe.yes(V_8), V_9) = V_4 :-
+    V_4 = apply(V_7, V_8, V_9).
+
+maybe.func_to_maybe(V_3) = V_2 :-
+    ( if
+      V_4 = apply(V_3)
+    then
+      V_2 = maybe.yes(V_4) : maybe.maybe(T_1)
+    else
+      V_2 = maybe.no : maybe.maybe(T_1)
+    ).
+
+maybe.map_fold2_maybe(V_8, maybe.no, maybe.no, V_11, V_12, V_13, V_14) :-
+    V_14 = V_13,
+    V_12 = V_11.
+maybe.map_fold2_maybe(V_15, maybe.yes(V_16), maybe.yes(V_17), V_20, V_21, V_22, V_23) :-
+    call(V_15, V_16, V_17, V_20, V_21, V_22, V_23).
+
+maybe.map_fold3_maybe(V_10, maybe.no, maybe.no, V_14, V_15, V_16, V_17, V_18, V_19) :-
+    V_19 = V_18,
+    V_17 = V_16,
+    V_15 = V_14.
+maybe.map_fold3_maybe(V_20, maybe.yes(V_21), maybe.yes(V_22), V_26, V_27, V_28, V_29, V_30, V_31) :-
+    call(V_20, V_21, V_22, V_26, V_27, V_28, V_29, V_30, V_31).
+
+maybe.map_fold_maybe(V_6, maybe.no, maybe.no, V_7, V_7).
+maybe.map_fold_maybe(V_8, maybe.yes(V_9), maybe.yes(V_10), V_11, V_12) :-
+    call(V_8, V_9, V_10, V_11, V_12).
+
+maybe.map_maybe(V_4, maybe.no, maybe.no).
+maybe.map_maybe(V_5, maybe.yes(V_6), maybe.yes(V_7)) :-
+    call(V_5, V_6, V_7).
+
+maybe.map_maybe(V_4, maybe.no) = maybe.no.
+maybe.map_maybe(V_5, maybe.yes(V_6)) = maybe.yes(V_7) :-
+    V_7 = apply(V_5, V_6).
+
+maybe.maybe_default(V_4, maybe.yes(V_5)) = V_5.
+maybe.maybe_default(V_6, maybe.no) = V_6.
+
+maybe.maybe_is_yes(maybe.yes(V_3), V_3).
+
+maybe.pred_to_maybe(V_3) = V_4 :-
+    ( if
+      call(V_3, V_5)
+    then
+      V_4 = maybe.yes(V_5) : maybe.maybe(T_1)
+    else
+      V_4 = maybe.no : maybe.maybe(T_1)
+    ).
+
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold2_maybe((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.fold_maybe((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(maybe.func_to_maybe(((func) = (builtin.out) is semidet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold2_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold3_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_fold_maybe((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(maybe.map_maybe((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_maybe((pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_maybe((pred((builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_maybe((pred((builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(maybe.map_maybe((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(maybe.maybe_default((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(maybe.maybe_is_yes((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(maybe.pred_to_maybe((pred((builtin.out)) is semidet)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold2_maybe), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.fold_maybe), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (maybe.fold_maybe), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (maybe.func_to_maybe), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold2_maybe), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold3_maybe), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_fold_maybe), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_maybe), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_maybe), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_maybe), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (maybe.map_maybe), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(function, (maybe.map_maybe), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (maybe.maybe_default), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (maybe.maybe_is_yes), 2, 0, will_not_throw).
+:- pragma exceptions(function, (maybe.pred_to_maybe), 2, 0, may_throw(user_exception)).

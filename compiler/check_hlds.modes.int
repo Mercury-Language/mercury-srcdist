@@ -1,0 +1,23 @@
+:- module (check_hlds.modes).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- pred check_pred_modes(check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.may_change_called_proc, hlds.hlds_module.module_info, hlds.hlds_module.module_info, parse_tree.maybe_error.maybe_safe_to_continue, list.list(parse_tree.error_util.error_spec)).
+:- mode check_pred_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred modecheck_lambda_final_insts(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_lambda_final_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_module(hlds.hlds_module.module_info, {hlds.hlds_module.module_info, parse_tree.maybe_error.maybe_safe_to_continue, list.list(parse_tree.error_util.error_spec)}).
+:- mode modecheck_module((builtin.in), (builtin.out)) is det.
+:- pred modecheck_proc(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), bool.bool).
+:- mode modecheck_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred modecheck_proc_general(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.may_change_called_proc, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), bool.bool).
+:- mode modecheck_proc_general((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
