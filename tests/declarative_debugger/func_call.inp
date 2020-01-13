@@ -1,0 +1,22 @@
+echo on
+register --quiet
+break fib
+continue
+finish -n
+dd -d 3 -n 7
+no
+yes
+yes
+no
+yes
+yes
+no
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+quit -y
+
