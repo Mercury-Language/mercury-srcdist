@@ -1,0 +1,7 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- type intermod_info.
+:- type maybe_should_write
+	where	type_is_abstract_enum(1).
+:- type should_write_for
+	where	type_is_abstract_enum(1).
