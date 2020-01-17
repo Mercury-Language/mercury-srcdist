@@ -1,0 +1,8 @@
+:- module (check_hlds.switch_detection).
+:- interface.
+:- type found_deconstruct
+	where	type_is_abstract_enum(1).
+:- type may_pull.
+:- type process_unify(Result, Info).
+:- type switch_detect_info.
+:- abstract_inst((process_unify)).

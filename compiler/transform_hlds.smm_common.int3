@@ -1,0 +1,3 @@
+:- module (transform_hlds.smm_common).
+:- interface.
+:- type program_point.
