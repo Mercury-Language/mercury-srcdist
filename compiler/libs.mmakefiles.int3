@@ -1,0 +1,12 @@
+:- module (libs.mmakefiles).
+:- interface.
+:- type is_mmake_rule_phony
+	where	type_is_abstract_enum(1).
+:- type mmake_action.
+:- type mmake_condition.
+:- type mmake_entry.
+:- type mmake_file_name.
+:- type mmake_file_name_group.
+:- type mmake_fragment.
+:- type mmake_grade_component.
+:- type mmakefile.
