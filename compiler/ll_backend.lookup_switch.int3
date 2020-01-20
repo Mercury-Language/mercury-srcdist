@@ -1,0 +1,5 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- type case_kind
+	where	type_is_abstract_enum(2).
+:- type lookup_switch_info(Key).

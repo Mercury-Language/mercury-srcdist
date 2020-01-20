@@ -1,0 +1,5 @@
+:- module ((hlds.make_hlds).superhomogeneous).
+:- interface.
+:- type arg_context.
+:- type unify_var_term.
+:- type unify_var_term_num_context.
