@@ -1,0 +1,13 @@
+:- module (top_level.mercury_compile_erl_back_end).
+:- interface.
+:- use_module bool.
+:- use_module erl_backend.
+:- use_module hlds.
+:- use_module io.
+:- use_module (erl_backend.elds).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.passes_aux).
+:- pred elds_to_erlang(hlds.hlds_module.module_info, erl_backend.elds.elds, bool.bool, io.io, io.io).
+:- mode elds_to_erlang((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred erlang_backend(hlds.hlds_module.module_info, erl_backend.elds.elds, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode erlang_backend((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

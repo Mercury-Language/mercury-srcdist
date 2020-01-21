@@ -1,0 +1,10 @@
+:- module html_format.
+:- interface.
+:- use_module display.
+:- use_module profile.
+:- use_module query.
+:- func escape_break_html_attr_string(display.attr_string) = string.
+:- func escape_break_html_string(string) = string.
+:- func escape_html_attr_string(display.attr_string) = string.
+:- func escape_html_string(string) = string.
+:- func htmlize_display(profile.deep, query.preferences, display.display) = string.
