@@ -1,0 +1,14 @@
+:- module (ml_backend.ml_switch_gen).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- pred ml_gen_switch(parse_tree.prog_data.prog_var, parse_tree.prog_data.can_fail, list.list(hlds.hlds_goal.case), hlds.code_model.code_model, parse_tree.prog_data.prog_context, hlds.hlds_goal.hlds_goal_info, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_switch_generate_default(parse_tree.prog_data.can_fail, hlds.code_model.code_model, parse_tree.prog_data.prog_context, ml_backend.mlds.mlds_switch_default, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_switch_generate_default((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
