@@ -1,0 +1,9 @@
+:- module ((parse_tree.module_qual).collect_mq_info).
+:- interface.
+:- type mq_section
+    --->    mq_section_exported 
+    ;       mq_section_local 
+    ;       mq_section_imported(parse_tree.prog_item.import_locn)
+    ;       mq_section_abstract_imported .
+:- type section_mq_info(MS) == pred(MS, parse_tree.module_qual.collect_mq_info.mq_section, parse_tree.module_qual.id_set.module_permissions).
+:- inst (section_mq_info) == (pred((builtin.in), (builtin.out), (builtin.out)) is det).

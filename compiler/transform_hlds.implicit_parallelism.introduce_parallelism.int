@@ -1,0 +1,7 @@
+:- module ((transform_hlds.implicit_parallelism).introduce_parallelism).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- pred apply_implicit_parallelism_transformation(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode apply_implicit_parallelism_transformation((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
