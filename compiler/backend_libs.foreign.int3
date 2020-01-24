@@ -1,0 +1,3 @@
+:- module (backend_libs.foreign).
+:- interface.
+:- type foreign_type_and_assertions.

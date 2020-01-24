@@ -1,0 +1,3 @@
+:- module (transform_hlds.ssdebug).
+:- interface.
+:- abstract_inst((shallow_or_deep)).

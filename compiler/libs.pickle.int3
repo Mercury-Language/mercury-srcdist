@@ -1,0 +1,10 @@
+:- module (libs.pickle).
+:- interface.
+:- type pickler_pred.
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred.
+:- type unpicklers.
+:- abstract_inst((pickler_pred)).
+:- abstract_inst((unpickler_pred)).
