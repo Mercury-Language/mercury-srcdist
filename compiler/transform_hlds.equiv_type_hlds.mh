@@ -1,0 +1,51 @@
+/*
+** Automatically generated from `equiv_type_hlds.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef TRANSFORM_HLDS__EQUIV_TYPE_HLDS_MH
+#define TRANSFORM_HLDS__EQUIV_TYPE_HLDS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TRANSFORM_HLDS__EQUIV_TYPE_HLDS_DECL_GUARD
+#define TRANSFORM_HLDS__EQUIV_TYPE_HLDS_DECL_GUARD
+
+typedef struct {
+    MR_Word     tice_inst_addr;
+    MR_Word     tice_may_occur;
+} TypeInInstCacheEntry;
+
+#define TYPE_IN_INST_CACHE_SIZE 1307
+
+/*
+** Every entry should be implicitly initialized to zeros. Since zero is
+** not a valid address for an inst, uninitialized entries cannot be mistaken
+** for filled-in entries.
+*/
+
+static  TypeInInstCacheEntry  type_in_inst_cache[TYPE_IN_INST_CACHE_SIZE];
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TRANSFORM_HLDS__EQUIV_TYPE_HLDS_MH */
