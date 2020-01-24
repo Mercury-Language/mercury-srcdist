@@ -1,0 +1,12 @@
+:- module (parse_tree.maybe_error).
+:- interface.
+:- type maybe1(T1).
+:- type maybe2(T1, T2).
+:- type maybe3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4).
+:- type maybe_safe_to_continue
+	where	type_is_abstract_enum(1).
+:- abstract_inst((maybe1(I))).
+:- abstract_inst((maybe2(I1, I2))).
+:- abstract_inst((maybe3(I1, I2, I3))).
+:- abstract_inst((maybe4(I1, I2, I3, I4))).

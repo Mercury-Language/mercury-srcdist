@@ -1,0 +1,9 @@
+:- module generate_output.
+:- interface.
+:- use_module io.
+:- use_module map.
+:- use_module output_prof_info.
+:- use_module prof_info.
+:- func checked_float_divide(float, float) = float.
+:- pred generate_prof_output(prof_info.prof, map.map(string, int), output_prof_info.profiler_output, io.io, io.io).
+:- mode generate_prof_output((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,6 @@
+:- module util.
+:- interface.
+:- use_module char.
+:- use_module list.
+:- pred split(string, char.char, list.list(string)).
+:- mode split((builtin.in), (builtin.in), (builtin.out)) is det.

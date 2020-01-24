@@ -1,0 +1,208 @@
+/*
+** Automatically generated from `llds_out_data.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.llds_out.llds_out_data.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__llds_out__llds_out_data
+#define MR_HEADER_GUARD_ll_backend__llds_out__llds_out_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LLDS_OUT__LLDS_OUT_DATA_DECL_GUARD
+#define LL_BACKEND__LLDS_OUT__LLDS_OUT_DATA_DECL_GUARD
+#include "ll_backend.mih"
+#include "ll_backend.llds_out.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+ll_backend__llds_out__llds_out_data__float_const_expr_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds_out__llds_out_data__int64_const_expr_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_common_scalar_cell_array_name_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_common_vector_cell_array_name_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_data_id_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_data_id_addr_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_llds_type_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_llds_type_cast_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_lval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_lval_as_word_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_lval_for_assign_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_ptag_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_data_id_decls_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_data_id_decls_format_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_lval_decls_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_lval_decls_tab_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_rval_decls_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_rval_decls_tab_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_record_rvals_decls_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_rval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_rval_as_type_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__output_test_rval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds_out__llds_out_data__uint64_const_expr_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_data__write_ptag_3_p_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ll_backend__llds_out__llds_out_data__c_global_var_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds_out__llds_out_data__direct_field_int_constant_1_f_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+ll_backend__llds_out__llds_out_data__lval_to_string_1_f_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_String MR_CALL 
+ll_backend__llds_out__llds_out_data__reg_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+void mercury__ll_backend__llds_out__llds_out_data__init(void);
+void mercury__ll_backend__llds_out__llds_out_data__init_type_tables(void);
+void mercury__ll_backend__llds_out__llds_out_data__init_debugger(void);
+const char *mercury__ll_backend__llds_out__llds_out_data__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.llds_out.llds_out_data
+
+// :- end_interface ll_backend.llds_out.llds_out_data.
