@@ -1,0 +1,27 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000, 2002-2004 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+-include ../Mmake.params
+
+LIBRARY = libmercury_www
+
+MAIN_TARGET = $(LIBRARY)
+
+MCFLAGS-mercury_www = --no-warn-nothing-exported
+
+depend: mercury_www.depend
+
+distclean: realclean
+
+install: libmercury_www.install
+
+.PHONY: check
+check:
+	true

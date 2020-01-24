@@ -1,0 +1,112 @@
+/*
+** Automatically generated from `name_mangle.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.name_mangle.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__name_mangle
+#define MR_HEADER_GUARD_backend_libs__name_mangle
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__NAME_MANGLE_DECL_GUARD
+#define BACKEND_LIBS__NAME_MANGLE_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+backend_libs__name_mangle__name_doesnt_need_mangling_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+backend_libs__name_mangle__output_base_typeclass_info_name_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+backend_libs__name_mangle__output_init_name_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+backend_libs__name_mangle__output_proc_label_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+backend_libs__name_mangle__output_proc_label_maybe_prefix_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+backend_libs__name_mangle__output_proc_label_no_prefix_3_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+backend_libs__name_mangle__sym_name_doesnt_need_mangling_1_p_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__make_base_typeclass_info_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_common_type_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_data_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_label_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_scalar_common_array_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_var_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__mercury_vector_common_array_prefix_0_f_0(void);
+
+MR_String MR_CALL 
+backend_libs__name_mangle__proc_label_to_c_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__name_mangle__init(void);
+void mercury__backend_libs__name_mangle__init_type_tables(void);
+void mercury__backend_libs__name_mangle__init_debugger(void);
+const char *mercury__backend_libs__name_mangle__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.name_mangle
+
+// :- end_interface backend_libs.name_mangle.
