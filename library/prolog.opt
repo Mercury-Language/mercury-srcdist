@@ -1,0 +1,43 @@
+:- module prolog.
+:- use_module builtin.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module list.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module univ.
+
+prolog.(V_3 =.. pair.(V_4 - V_5)) :-
+    V_7 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    deconstruct.deconstruct(V_3, V_7, V_4, V_6, V_5).
+
+prolog.(V_3 =:= V_3).
+
+prolog.(V_3 == V_3).
+
+prolog.(V_3 =\= V_4) :-
+    not (
+      V_3 = V_4
+    ).
+
+prolog.(V_3 \== V_4) :-
+    not (
+      V_3 = V_4
+    ).
+
+:- pragma termination_info(prolog.'=..'((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(prolog.'=:='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=\\='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'\\=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.arg((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(prolog.det_arg((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (prolog.(=..)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.(=:=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(=\=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(\==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.arg), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.det_arg), 3, 0, may_throw(user_exception)).

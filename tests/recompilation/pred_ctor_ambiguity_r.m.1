@@ -1,0 +1,27 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module pred_ctor_ambiguity_r.
+
+:- interface.
+
+:- import_module io.
+
+:- pred main(io::di, io::uo) is det.
+
+:- implementation.
+
+:- import_module pred_ctor_ambiguity_r_2.
+
+:- type t
+    --->    c(int).
+
+main(!IO) :-
+    output(c(1), !IO).
+
+:- pred output(t::in, io::di, io::uo) is det.
+
+output(X, !IO) :-
+    io.write(X, !IO),
+    io.nl(!IO).

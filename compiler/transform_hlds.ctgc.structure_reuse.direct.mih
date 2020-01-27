@@ -1,0 +1,182 @@
+/*
+** Automatically generated from `structure_reuse.direct.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.structure_reuse.direct.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__direct
+#define MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__direct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.ctgc.structure_reuse.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_reuse__direct__transform_hlds__ctgc__structure_reuse__direct__type_ctor_info_dead_cell_table_0;
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_entry_dump_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_add_unconditional_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_is_empty_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_maybe_dump_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_conditionals_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_set_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_pass_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_process_ppid_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_process_pred_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_process_proc_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_process_proc_2_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__direct_reuse_process_specific_procs_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__set_external_pred_reuse_as_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_init_0_f_0(void);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_search_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct____Compare____dead_cell_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__direct____Unify____dead_cell_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__init(void);
+void mercury__transform_hlds__ctgc__structure_reuse__direct__init_type_tables(void);
+void mercury__transform_hlds__ctgc__structure_reuse__direct__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__structure_reuse__direct__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.structure_reuse.direct
+
+// :- end_interface transform_hlds.ctgc.structure_reuse.direct.

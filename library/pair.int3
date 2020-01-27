@@ -1,0 +1,6 @@
+:- module pair.
+:- interface.
+:- type pair(T).
+:- type pair(T1, T2).
+:- abstract_inst((pair(I))).
+:- abstract_inst((pair(I1, I2))).
