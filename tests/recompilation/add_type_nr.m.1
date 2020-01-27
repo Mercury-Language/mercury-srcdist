@@ -1,0 +1,25 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module add_type_nr.
+
+:- interface.
+
+:- import_module io.
+
+:- pred main(io::di, io::uo) is det.
+
+:- implementation.
+
+:- import_module add_type_nr_2.
+
+main(!IO) :-
+    init(X),
+    output(X, !IO).
+
+:- pred output(foo::in, io::di, io::uo) is det.
+
+output(X, !IO) :-
+    io.write(X, !IO),
+    io.nl(!IO).

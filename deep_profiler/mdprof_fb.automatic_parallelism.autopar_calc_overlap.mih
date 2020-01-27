@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `autopar_calc_overlap.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_fb.automatic_parallelism.autopar_calc_overlap.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_calc_overlap
+#define MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_calc_overlap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_CALC_OVERLAP_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_CALC_OVERLAP_DECL_GUARD
+#include "mdprof_fb.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_find_production_or_consumption_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_is_last_par_conjunct_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_calc_overlap__mdprof_fb__automatic_parallelism__autopar_calc_overlap__type_ctor_info_production_or_consumption_0;
+
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__init_debugger(void);
+const char *mercury__mdprof_fb__automatic_parallelism__autopar_calc_overlap__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_fb.automatic_parallelism.autopar_calc_overlap
+
+// :- end_interface mdprof_fb.automatic_parallelism.autopar_calc_overlap.
