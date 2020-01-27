@@ -1,0 +1,5 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- type short_int_file_kind
+    --->    sifk_int2 
+    ;       sifk_int3 .

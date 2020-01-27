@@ -1,0 +1,9 @@
+:- module (ll_backend.trace_gen).
+:- interface.
+:- type external_event_info.
+:- type external_trace_port
+	where	type_is_abstract_enum(2).
+:- type negation_end_port
+	where	type_is_abstract_enum(1).
+:- type trace_info.
+:- type trace_slot_info.

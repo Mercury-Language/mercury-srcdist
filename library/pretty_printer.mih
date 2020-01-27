@@ -1,0 +1,334 @@
+/*
+** Automatically generated from `pretty_printer.m'
+** by the Mercury compiler,
+** version rotd-2020-01-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module pretty_printer.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_pretty_printer
+#define MR_HEADER_GUARD_pretty_printer
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PRETTY_PRINTER_DECL_GUARD
+#define PRETTY_PRINTER_DECL_GUARD
+
+    extern MR_Bool ML_pretty_printer_is_initialised;
+    extern MR_Word ML_pretty_printer_default_formatter_map;
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word mercury__pretty_printer__mutable_variable_io_pp_params;
+#else
+    extern MR_Word mercury__pretty_printer__mutable_variable_io_pp_params;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock mercury__pretty_printer__mutable_variable_io_pp_params_lock;
+#endif
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_doc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_docs_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_formatter_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_formatter_map_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_func_symbol_limit_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_indent_stack_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_pp_internal_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pretty_printer__pretty_printer__type_ctor_info_pp_params_0;
+
+void MR_CALL 
+mercury__pretty_printer__do_put_doc_17_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer * param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Integer param_11,
+  MR_Integer * param_12,
+  MR_Word param_13,
+  MR_Word * param_14,
+  MR_Integer param_15,
+  MR_Integer * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__pretty_printer__do_put_doc_17_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer * param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Integer param_11,
+  MR_Integer * param_12,
+  MR_Word param_13,
+  MR_Word * param_14,
+  MR_Integer param_15,
+  MR_Integer * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__pretty_printer__get_default_formatter_map_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__get_default_params_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__get_io_pp_params_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__lock_io_pp_params_0_p_0(void);
+
+void MR_CALL 
+mercury__pretty_printer__pretty_printer_is_initialised_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__put_doc_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__pretty_printer__put_doc_7_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__pretty_printer__set_default_formatter_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__pretty_printer__set_default_formatter_map_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__pretty_printer__set_default_params_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__pretty_printer__set_formatter_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__pretty_printer__set_io_pp_params_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__pretty_printer__unlock_io_pp_params_0_p_0(void);
+
+void MR_CALL 
+mercury__pretty_printer__unsafe_get_default_formatter_map_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__unsafe_get_io_pp_params_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__pretty_printer__unsafe_set_io_pp_params_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__pretty_printer__write_doc_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__pretty_printer__write_doc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__format_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__format_arg_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__group_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__indent_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__indent_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__initial_formatter_map_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pretty_printer__new_formatter_map_0_f_0(void);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____doc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____docs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____formatter_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____formatter_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____func_symbol_limit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____indent_stack_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____pp_internal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pretty_printer____Compare____pp_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____doc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____docs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____formatter_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____formatter_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____func_symbol_limit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____indent_stack_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____pp_internal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pretty_printer____Unify____pp_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__pretty_printer__init(void);
+void mercury__pretty_printer__init_type_tables(void);
+void mercury__pretty_printer__init_debugger(void);
+void mercury__pretty_printer__required_init(void);
+const char *mercury__pretty_printer__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_pretty_printer
+
+// :- end_interface pretty_printer.

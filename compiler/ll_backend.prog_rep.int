@@ -1,0 +1,29 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- use_module assoc_list.
+:- use_module cord.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.instmap).
+:- use_module (hlds.vartypes).
+:- use_module (ll_backend.prog_rep_tables).
+:- use_module (mdbcomp.program_representation).
+:- use_module (parse_tree.prog_data).
+:- type flatten_par_conjs
+    --->    flatten_par_conjs 
+    ;       expect_no_par_conjs .
+:- type prog_rep_info
+    --->    prog_rep_info(((ll_backend.prog_rep).pri_module_info) :: hlds.hlds_module.module_info, ((ll_backend.prog_rep).pri_filename) :: string, ((ll_backend.prog_rep).pri_vartypes) :: hlds.vartypes.vartypes, ((ll_backend.prog_rep).pri_var_num_map) :: ll_backend.prog_rep.var_num_map, ((ll_backend.prog_rep).pri_var_num_rep) :: mdbcomp.program_representation.var_num_rep, ((ll_backend.prog_rep).pri_flatten_par_conjs) :: ll_backend.prog_rep.flatten_par_conjs).
+:- type var_num_map == map.map(parse_tree.prog_data.prog_var, pair.pair(int, string)).
+:- pred encode_oisu_type_procs(hlds.hlds_module.module_info, assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds), int, cord.cord(int)).
+:- mode encode_oisu_type_procs((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred goal_to_goal_rep(ll_backend.prog_rep.prog_rep_info, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, mdbcomp.program_representation.goal_rep).
+:- mode goal_to_goal_rep((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred represent_proc_as_bytecodes(list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, hlds.vartypes.vartypes, ll_backend.prog_rep.var_num_map, hlds.hlds_module.module_info, mdbcomp.program_representation.maybe_include_var_name_table, mdbcomp.program_representation.maybe_include_var_types, parse_tree.prog_data.determinism, ll_backend.prog_rep_tables.string_table_info, ll_backend.prog_rep_tables.string_table_info, ll_backend.prog_rep_tables.type_table_info, ll_backend.prog_rep_tables.type_table_info, list.list(int)).
+:- mode represent_proc_as_bytecodes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
