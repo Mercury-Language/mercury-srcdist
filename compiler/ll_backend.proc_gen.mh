@@ -1,0 +1,31 @@
+/*
+** Automatically generated from `proc_gen.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef LL_BACKEND__PROC_GEN_MH
+#define LL_BACKEND__PROC_GEN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LL_BACKEND__PROC_GEN_MH */
