@@ -1,0 +1,4 @@
+:- module varset.
+:- interface.
+:- type varset.
+:- type varset(T).

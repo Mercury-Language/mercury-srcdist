@@ -1,0 +1,28 @@
+:- module (thread.mvar).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module maybe.
+:- type mvar(T).
+:- impure func impure_init = thread.mvar.mvar(T).
+:- mode impure_init = (builtin.uo) is det.
+:- impure func impure_init(T) = thread.mvar.mvar(T).
+:- impure func init = thread.mvar.mvar(T).
+:- mode init = (builtin.uo) is det.
+:- pred init(thread.mvar.mvar(T), io.io, io.io).
+:- mode init((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred init(T, thread.mvar.mvar(T), io.io, io.io).
+:- mode init((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred put(thread.mvar.mvar(T), T, io.io, io.io).
+:- mode put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred read(thread.mvar.mvar(T), T, io.io, io.io).
+:- mode read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred take(thread.mvar.mvar(T), T, io.io, io.io).
+:- mode take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred try_put(thread.mvar.mvar(T), T, bool.bool, io.io, io.io).
+:- mode try_put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred try_read(thread.mvar.mvar(T), maybe.maybe(T), io.io, io.io).
+:- mode try_read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred try_take(thread.mvar.mvar(T), maybe.maybe(T), io.io, io.io).
+:- mode try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma obsolete(((thread.mvar).init)/0, []).
