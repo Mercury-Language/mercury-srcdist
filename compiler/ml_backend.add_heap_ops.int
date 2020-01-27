@@ -1,0 +1,7 @@
+:- module (ml_backend.add_heap_ops).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- pred add_heap_ops(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode add_heap_ops((builtin.in), (builtin.in), (builtin.out)) is det.
