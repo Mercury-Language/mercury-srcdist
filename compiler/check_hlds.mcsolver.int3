@@ -1,0 +1,6 @@
+:- module (check_hlds.mcsolver).
+:- interface.
+:- type mcvar.
+:- type mcvars.
+:- type prep_cstrts.
+:- type solver_cstrts.

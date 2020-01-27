@@ -1,0 +1,204 @@
+/*
+** Automatically generated from `convert_parse_tree.m'
+** by the Mercury compiler,
+** version 20.01-beta-2020-01-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.convert_parse_tree.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__convert_parse_tree
+#define MR_HEADER_GUARD_parse_tree__convert_parse_tree
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__CONVERT_PARSE_TREE_DECL_GUARD
+#define PARSE_TREE__CONVERT_PARSE_TREE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_int_to_int0_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_int_to_int1_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_int_to_int2_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_int_to_int3_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_opt_to_plain_opt_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_parse_tree__check_convert_parse_tree_opt_to_trans_opt_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_int0_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_int1_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_int2_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_int3_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_plain_opt_to_opt_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__convert_parse_tree_trans_opt_to_opt_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__inst_ctor_defn_items_to_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__mode_ctor_defn_items_to_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__type_ctor_defn_items_to_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__type_ctor_foreign_enum_items_to_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__type_ctor_repn_items_to_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_foreign_enum_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_import_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_import_avail_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_include_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_inst_defn_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_instance_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_mode_decl_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_mode_defn_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_pragma_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_pred_decl_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_promise_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_type_defn_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_type_repn_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_typeclass_item_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_use_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_parse_tree__wrap_use_avail_1_f_0(
+  MR_Word param_1);
+
+void mercury__parse_tree__convert_parse_tree__init(void);
+void mercury__parse_tree__convert_parse_tree__init_type_tables(void);
+void mercury__parse_tree__convert_parse_tree__init_debugger(void);
+const char *mercury__parse_tree__convert_parse_tree__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.convert_parse_tree
+
+// :- end_interface parse_tree.convert_parse_tree.
