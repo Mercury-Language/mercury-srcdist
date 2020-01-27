@@ -1,0 +1,24 @@
+:- module libs.
+:- interface.
+:- include_module (libs.check_libgrades).
+:- include_module (libs.compiler_util).
+:- include_module (libs.compute_grade).
+:- include_module (libs.dependency_graph).
+:- include_module (libs.file_util).
+:- include_module (libs.globals).
+:- include_module (libs.graph_colour).
+:- include_module (libs.handle_options).
+:- include_module (libs.int_emu).
+:- include_module (libs.lp).
+:- include_module (libs.lp_rational).
+:- include_module (libs.md4).
+:- include_module (libs.mmakefiles).
+:- include_module (libs.op_mode).
+:- include_module (libs.options).
+:- include_module (libs.pickle).
+:- include_module (libs.polyhedron).
+:- include_module (libs.process_util).
+:- include_module (libs.rat).
+:- include_module (libs.timestamp).
+:- include_module (libs.trace_params).
+:- include_module (libs.uint_emu).

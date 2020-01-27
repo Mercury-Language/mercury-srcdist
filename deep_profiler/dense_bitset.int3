@@ -1,0 +1,3 @@
+:- module dense_bitset.
+:- interface.
+:- type dense_bitset.

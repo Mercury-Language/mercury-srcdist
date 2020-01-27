@@ -1,0 +1,14 @@
+:- module lexer.
+:- interface.
+:- type integer_base
+	where	type_is_abstract_enum(2).
+:- type integer_size
+	where	type_is_abstract_enum(3).
+:- type line_context.
+:- type line_posn.
+:- type offset.
+:- type signedness
+	where	type_is_abstract_enum(1).
+:- type token.
+:- type token_context.
+:- type token_list.

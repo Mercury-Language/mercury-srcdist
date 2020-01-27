@@ -1,0 +1,7 @@
+:- module ((transform_hlds.rbmm).execution_path).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.hlds_module).
+:- use_module ((transform_hlds.rbmm).region_liveness_info).
+:- pred execution_path_analysis(hlds.hlds_module.module_info, transform_hlds.rbmm.region_liveness_info.execution_path_table).
+:- mode execution_path_analysis((builtin.in), (builtin.out)) is det.
