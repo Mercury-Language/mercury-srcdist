@@ -1,0 +1,15 @@
+:- module robdd.
+:- interface.
+:- type entailment_result(T).
+:- type equiv_vars(T).
+:- type equivalent_result(T).
+:- type imp_map(T).
+:- type imp_vars(T).
+:- type leader_map(T).
+:- type literal(T).
+:- type robdd.
+:- type robdd(T).
+:- type vars(T).
+:- type vars_entailed_result(T).
+:- type write_var(T).
+:- abstract_inst((write_var)).
