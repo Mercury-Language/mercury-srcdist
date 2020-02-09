@@ -1,0 +1,23 @@
+:- module (hlds.hlds_class).
+:- interface.
+:- type ancestor_constraints.
+:- type class_table.
+:- type constraint_id.
+:- type constraint_map.
+:- type constraint_proof.
+:- type constraint_proof_map.
+:- type constraint_type
+	where	type_is_abstract_enum(1).
+:- type hlds_class_argpos.
+:- type hlds_class_defn.
+:- type hlds_class_fundep.
+:- type hlds_class_fundeps.
+:- type hlds_class_interface.
+:- type hlds_constraint.
+:- type hlds_constraints.
+:- type hlds_instance_defn.
+:- type instance_id.
+:- type instance_table.
+:- type maybe_bad_class_defn
+	where	type_is_abstract_enum(1).
+:- type redundant_constraints.
