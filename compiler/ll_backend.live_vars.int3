@@ -1,0 +1,4 @@
+:- module (ll_backend.live_vars).
+:- interface.
+:- type alloc_data.
+:- typeclass stack_alloc_info(T).

@@ -1,0 +1,20 @@
+:- module (parse_tree.prog_mutable).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred compute_needed_public_mutable_aux_preds(parse_tree.prog_item.mutable_var_attributes, list.list(parse_tree.prog_data.mutable_pred_kind)).
+:- mode compute_needed_public_mutable_aux_preds((builtin.in), (builtin.out)) is det.
+:- pred make_mutable_aux_pred_decl(mdbcomp.sym_name.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context, parse_tree.prog_data.mutable_pred_kind, parse_tree.prog_item.item_pred_decl_info).
+:- mode make_mutable_aux_pred_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func mutable_get_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_init_pred_sym_name(mdbcomp.sym_name.module_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_lock_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_pre_init_pred_sym_name(mdbcomp.sym_name.module_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_secret_set_pred_sym_name(mdbcomp.sym_name.module_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_set_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_unlock_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_unsafe_get_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
+:- func mutable_unsafe_set_pred_sym_name(mdbcomp.sym_name.sym_name, string) = mdbcomp.sym_name.sym_name.
