@@ -1,0 +1,34 @@
+:- module (transform_hlds.rbmm).
+:- interface.
+:- include_module ((transform_hlds.rbmm).add_rbmm_goal_infos).
+:- include_module ((transform_hlds.rbmm).condition_renaming).
+:- include_module ((transform_hlds.rbmm).execution_path).
+:- include_module ((transform_hlds.rbmm).interproc_region_lifetime).
+:- include_module ((transform_hlds.rbmm).live_region_analysis).
+:- include_module ((transform_hlds.rbmm).live_variable_analysis).
+:- include_module ((transform_hlds.rbmm).points_to_analysis).
+:- include_module ((transform_hlds.rbmm).points_to_graph).
+:- include_module ((transform_hlds.rbmm).points_to_info).
+:- include_module ((transform_hlds.rbmm).region_arguments).
+:- include_module ((transform_hlds.rbmm).region_instruction).
+:- include_module ((transform_hlds.rbmm).region_liveness_info).
+:- include_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- include_module ((transform_hlds.rbmm).region_transformation).
+:- import_module hlds.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred do_region_analysis(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode do_region_analysis((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module map.
+:- import_module ((transform_hlds.rbmm).add_rbmm_goal_infos).
+:- import_module ((transform_hlds.rbmm).condition_renaming).
+:- import_module ((transform_hlds.rbmm).execution_path).
+:- import_module ((transform_hlds.rbmm).interproc_region_lifetime).
+:- import_module ((transform_hlds.rbmm).live_region_analysis).
+:- import_module ((transform_hlds.rbmm).live_variable_analysis).
+:- import_module ((transform_hlds.rbmm).points_to_analysis).
+:- import_module ((transform_hlds.rbmm).region_arguments).
+:- import_module ((transform_hlds.rbmm).region_instruction).
+:- import_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- import_module ((transform_hlds.rbmm).region_transformation).
