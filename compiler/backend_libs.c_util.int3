@@ -1,0 +1,8 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- type binop_category.
+:- type literal_language
+	where	type_is_abstract_enum(2).
+:- type maybe_set_line_numbers
+	where	type_is_abstract_enum(1).
+:- type multi_string.

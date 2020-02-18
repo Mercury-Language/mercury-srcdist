@@ -1,0 +1,35 @@
+:- module ((hlds.hlds_out).hlds_out_mode).
+:- interface.
+:- use_module assoc_list.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type incl_addr
+    --->    do_not_incl_addr 
+    ;       do_incl_addr .
+:- pred mercury_output_structured_inst(parse_tree.prog_data.mer_inst, int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_structured_inst((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_structured_inst_list(list.list(parse_tree.prog_data.mer_inst), int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_structured_inst_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_structured_unify_mode(hlds.hlds_goal.unify_mode, int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_structured_unify_mode((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_structured_unify_mode_list(list.list(hlds.hlds_goal.unify_mode), int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_structured_unify_mode_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_unify_mode(hlds.hlds_goal.unify_mode, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_unify_mode((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_unify_mode_list(list.list(hlds.hlds_goal.unify_mode), parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_unify_mode_list((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_structured_inst_list_to_string(list.list(parse_tree.prog_data.mer_inst), int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset) = string.
+:- func mercury_structured_inst_to_string(parse_tree.prog_data.mer_inst, int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset) = string.
+:- func mercury_structured_unify_mode_list_to_string(list.list(hlds.hlds_goal.unify_mode), int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset) = string.
+:- func mercury_structured_unify_mode_to_string(hlds.hlds_goal.unify_mode, int, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_mode.incl_addr, parse_tree.prog_data.inst_varset) = string.
+:- func mercury_unify_mode_list_to_string(list.list(hlds.hlds_goal.unify_mode), parse_tree.prog_data.inst_varset) = string.
+:- func mercury_unify_mode_to_string(hlds.hlds_goal.unify_mode, parse_tree.prog_data.inst_varset) = string.
+:- pred write_instmap(parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, int, hlds.instmap.instmap, io.io, io.io).
+:- mode write_instmap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_inst_list(parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, int, assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst), io.io, io.io).
+:- mode write_var_inst_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

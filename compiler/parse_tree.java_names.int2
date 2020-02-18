@@ -1,0 +1,5 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- type csj_qual_kind
+    --->    module_qual 
+    ;       type_qual .
