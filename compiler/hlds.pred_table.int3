@@ -1,0 +1,9 @@
+:- module (hlds.pred_table).
+:- interface.
+:- type constraint_search.
+:- type is_fully_qualified
+	where	type_is_abstract_enum(1).
+:- type mode_no.
+:- type pred_table.
+:- type predicate_table.
+:- abstract_inst((constraint_search)).
