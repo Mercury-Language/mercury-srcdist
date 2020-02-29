@@ -1,0 +1,6 @@
+:- module (ml_backend.mlds_to_java_util).
+:- interface.
+:- type code_addr_wrapper.
+:- type context_marker
+	where	type_is_abstract_enum(2).
+:- type java_out_info.
