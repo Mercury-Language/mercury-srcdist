@@ -1,0 +1,28 @@
+:- module (parse_tree.parse_item).
+:- interface.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.parse_types).
+:- use_module (parse_tree.prog_item).
+:- type decl_in_class
+    --->    decl_is_in_class 
+    ;       decl_is_not_in_class .
+:- type var_term_kind
+    --->    vtk_type_decl_pred(parse_tree.parse_item.decl_in_class)
+    ;       vtk_type_decl_func(parse_tree.parse_item.decl_in_class)
+    ;       vtk_mode_decl_pred(parse_tree.parse_item.decl_in_class)
+    ;       vtk_mode_decl_func(parse_tree.parse_item.decl_in_class)
+    ;       vtk_class_decl 
+    ;       vtk_instance_decl 
+    ;       vtk_clause_pred 
+    ;       vtk_clause_func .
+:- pred is_the_name_a_variable(varset.varset, parse_tree.parse_item.var_term_kind, term.term, parse_tree.error_util.error_spec).
+:- mode is_the_name_a_variable((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred parse_class_decl(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_item.class_decl)).
+:- mode parse_class_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_item_or_marker(mdbcomp.sym_name.module_name, varset.varset, term.term, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_item_or_marker((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,13 @@
+:- module (ml_backend.mlds_to_target_util).
+:- interface.
+:- type break_context
+	where	type_is_abstract_enum(2).
+:- type code_addrs_in_consts.
+:- type exit_method
+	where	type_is_abstract_enum(3).
+:- type exit_methods.
+:- type func_info_csj.
+:- type indent.
+:- type output_aux.
+:- type output_generics
+	where	type_is_abstract_enum(1).
