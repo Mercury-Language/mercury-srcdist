@@ -1,0 +1,109 @@
+:- module one_or_more_map.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module map.
+:- use_module one_or_more.
+:- use_module set.
+:- type one_or_more_map(K, V) == map.map(K, one_or_more.one_or_more(V)).
+:- pred add(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode add((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func add(one_or_more_map.one_or_more_map(K, V), K, V) = one_or_more_map.one_or_more_map(K, V).
+:- pred all_count(one_or_more_map.one_or_more_map(K, V), int).
+:- mode all_count((builtin.in), (builtin.out)) is det.
+:- func all_count(one_or_more_map.one_or_more_map(K, V)) = int.
+:- pred apply_to_list(list.list(K), one_or_more_map.one_or_more_map(K, V), list.list(V)).
+:- mode apply_to_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func apply_to_list(list.list(K), one_or_more_map.one_or_more_map(K, V)) = list.list(V).
+:- pred contains(one_or_more_map.one_or_more_map(K, V), K).
+:- mode contains((builtin.in), (builtin.in)) is semidet.
+:- pred count(one_or_more_map.one_or_more_map(K, V), int).
+:- mode count((builtin.in), (builtin.out)) is det.
+:- func count(one_or_more_map.one_or_more_map(K, V)) = int.
+:- pred delete(K, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete(one_or_more_map.one_or_more_map(K, V), K) = one_or_more_map.one_or_more_map(K, V).
+:- pred delete(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete(one_or_more_map.one_or_more_map(K, V), K, V) = one_or_more_map.one_or_more_map(K, V).
+:- pred det_insert(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert(one_or_more_map.one_or_more_map(K, V), K, V) = one_or_more_map.one_or_more_map(K, V).
+:- pred det_remove(K, one_or_more.one_or_more(V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred det_replace(K, one_or_more.one_or_more(V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode det_replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_replace(one_or_more_map.one_or_more_map(K, V), K, one_or_more.one_or_more(V)) = one_or_more_map.one_or_more_map(K, V).
+:- pred det_update(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_update(one_or_more_map.one_or_more_map(K, V), K, V) = one_or_more_map.one_or_more_map(K, V).
+:- pred from_assoc_list(assoc_list.assoc_list(K, one_or_more.one_or_more(V)), one_or_more_map.one_or_more_map(K, V)).
+:- mode from_assoc_list((builtin.in), (builtin.out)) is det.
+:- func from_assoc_list(assoc_list.assoc_list(K, one_or_more.one_or_more(V))) = one_or_more_map.one_or_more_map(K, V).
+:- pred from_corresponding_list_lists(list.list(K), list.list(one_or_more.one_or_more(V)), one_or_more_map.one_or_more_map(K, V)).
+:- mode from_corresponding_list_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func from_corresponding_list_lists(list.list(K), list.list(one_or_more.one_or_more(V))) = one_or_more_map.one_or_more_map(K, V).
+:- pred from_corresponding_lists(list.list(K), list.list(V), one_or_more_map.one_or_more_map(K, V)).
+:- mode from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func from_corresponding_lists(list.list(K), list.list(V)) = one_or_more_map.one_or_more_map(K, V).
+:- pred from_flat_assoc_list(assoc_list.assoc_list(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode from_flat_assoc_list((builtin.in), (builtin.out)) is det.
+:- func from_flat_assoc_list(assoc_list.assoc_list(K, V)) = one_or_more_map.one_or_more_map(K, V).
+:- pred from_sorted_assoc_list(assoc_list.assoc_list(K, one_or_more.one_or_more(V)), one_or_more_map.one_or_more_map(K, V)).
+:- mode from_sorted_assoc_list((builtin.in), (builtin.out)) is det.
+:- func from_sorted_assoc_list(assoc_list.assoc_list(K, one_or_more.one_or_more(V))) = one_or_more_map.one_or_more_map(K, V).
+:- pred init(one_or_more_map.one_or_more_map(K, V)).
+:- mode init((builtin.uo)) is det.
+:- func init = one_or_more_map.one_or_more_map(K, V).
+:- pred insert(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred inverse_search(one_or_more_map.one_or_more_map(K, V), V, K).
+:- mode inverse_search((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred is_empty(one_or_more_map.one_or_more_map(K, V)).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred keys(one_or_more_map.one_or_more_map(K, V), list.list(K)).
+:- mode keys((builtin.in), (builtin.out)) is det.
+:- func keys(one_or_more_map.one_or_more_map(K, V)) = list.list(K).
+:- pred lookup(one_or_more_map.one_or_more_map(K, V), K, one_or_more.one_or_more(V)).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup(one_or_more_map.one_or_more_map(K, V), K) = one_or_more.one_or_more(V).
+:- pred member(one_or_more_map.one_or_more_map(K, V), K, V).
+:- mode member((builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- pred merge(one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode merge((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func merge(one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)) = one_or_more_map.one_or_more_map(K, V).
+:- pred nondet_lookup(one_or_more_map.one_or_more_map(K, V), K, V).
+:- mode nondet_lookup((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred nondet_search(one_or_more_map.one_or_more_map(K, V), K, V).
+:- mode nondet_search((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred optimize(one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode optimize((builtin.in), (builtin.out)) is det.
+:- func optimize(one_or_more_map.one_or_more_map(K, V)) = one_or_more_map.one_or_more_map(K, V).
+:- pred remove(K, one_or_more.one_or_more(V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_smallest(K, one_or_more.one_or_more(V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred replace(K, one_or_more.one_or_more(V), one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred reverse_set(V, K, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode reverse_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func reverse_set(one_or_more_map.one_or_more_map(K, V), V, K) = one_or_more_map.one_or_more_map(K, V).
+:- pred search(one_or_more_map.one_or_more_map(K, V), K, one_or_more.one_or_more(V)).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred select(one_or_more_map.one_or_more_map(K, V), set.set(K), one_or_more_map.one_or_more_map(K, V)).
+:- mode select((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func select(one_or_more_map.one_or_more_map(K, V), set.set(K)) = one_or_more_map.one_or_more_map(K, V).
+:- pred set(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func set(one_or_more_map.one_or_more_map(K, V), K, V) = one_or_more_map.one_or_more_map(K, V).
+:- pred to_assoc_list(one_or_more_map.one_or_more_map(K, V), assoc_list.assoc_list(K, one_or_more.one_or_more(V))).
+:- mode to_assoc_list((builtin.in), (builtin.out)) is det.
+:- func to_assoc_list(one_or_more_map.one_or_more_map(K, V)) = assoc_list.assoc_list(K, one_or_more.one_or_more(V)).
+:- pred to_flat_assoc_list(one_or_more_map.one_or_more_map(K, V), assoc_list.assoc_list(K, V)).
+:- mode to_flat_assoc_list((builtin.in), (builtin.out)) is det.
+:- func to_flat_assoc_list(one_or_more_map.one_or_more_map(K, V)) = assoc_list.assoc_list(K, V).
+:- pred update(K, V, one_or_more_map.one_or_more_map(K, V), one_or_more_map.one_or_more_map(K, V)).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred values(one_or_more_map.one_or_more_map(K, V), list.list(V)).
+:- mode values((builtin.in), (builtin.out)) is det.
+:- func values(one_or_more_map.one_or_more_map(K, V)) = list.list(V).

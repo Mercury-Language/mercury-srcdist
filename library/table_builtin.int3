@@ -1,0 +1,19 @@
+:- module table_builtin.
+:- interface.
+:- type loop_status
+	where	type_is_abstract_enum(1).
+:- type memo_det_status
+	where	type_is_abstract_enum(2).
+:- type memo_non_record.
+:- type memo_non_status
+	where	type_is_abstract_enum(2).
+:- type memo_semi_status
+	where	type_is_abstract_enum(2).
+:- type ml_answer_block.
+:- type ml_consumer.
+:- type ml_generator.
+:- type ml_proc_table_info.
+:- type ml_subgoal.
+:- type ml_trie_node.
+:- type mm_status
+	where	type_is_abstract_enum(2).
