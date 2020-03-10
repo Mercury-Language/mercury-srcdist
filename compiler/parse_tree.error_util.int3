@@ -1,0 +1,19 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- type actual_severity
+	where	type_is_abstract_enum(2).
+:- type error_msg.
+:- type error_msg_component.
+:- type error_phase.
+:- type error_severity.
+:- type error_spec.
+:- type error_spec_accumulator.
+:- type format_component.
+:- type maybe_error_specs(T).
+:- type maybe_treat_as_first
+	where	type_is_abstract_enum(1).
+:- type mode_report_control
+	where	type_is_abstract_enum(1).
+:- type verbose_always_or_once
+	where	type_is_abstract_enum(1).
+:- typeclass print_anything(T).

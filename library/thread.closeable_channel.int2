@@ -1,0 +1,10 @@
+:- module (thread.closeable_channel).
+:- interface.
+:- type closeable_channel(T).
+:- type take_result(T)
+    --->    ok(T)
+    ;       closed .
+:- type try_take_result(T)
+    --->    ok(T)
+    ;       closed 
+    ;       empty .
