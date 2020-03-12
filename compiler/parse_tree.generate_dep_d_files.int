@@ -1,0 +1,16 @@
+:- module (parse_tree.generate_dep_d_files).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- pred generate_d_file_for_file(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode generate_d_file_for_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_d_file_for_module(libs.globals.globals, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode generate_d_file_for_module((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_dep_file_for_file(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode generate_dep_file_for_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_dep_file_for_module(libs.globals.globals, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode generate_dep_file_for_module((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
