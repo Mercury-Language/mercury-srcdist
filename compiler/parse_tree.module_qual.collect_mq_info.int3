@@ -1,0 +1,6 @@
+:- module ((parse_tree.module_qual).collect_mq_info).
+:- interface.
+:- type int3_role.
+:- type mq_section.
+:- type section_mq_info(MS).
+:- abstract_inst((section_mq_info)).

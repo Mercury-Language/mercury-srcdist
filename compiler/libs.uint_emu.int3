@@ -1,0 +1,3 @@
+:- module (libs.uint_emu).
+:- interface.
+:- type bits_per_uint.

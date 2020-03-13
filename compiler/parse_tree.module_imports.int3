@@ -1,0 +1,9 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- type grabbed_file.
+:- type grabbed_file_map.
+:- type module_and_imports.
+:- type module_timestamp.
+:- type module_timestamp_map.
+:- type recomp_avail
+	where	type_is_abstract_enum(3).

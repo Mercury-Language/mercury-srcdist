@@ -1,0 +1,7 @@
+:- module (transform_hlds.pd_term).
+:- interface.
+:- type global_check_result.
+:- type global_term_info.
+:- type local_term_info.
+:- type pd_proc_term_info.
+:- type proc_pair.
