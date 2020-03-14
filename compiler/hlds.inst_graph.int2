@@ -1,0 +1,11 @@
+:- module (hlds.inst_graph).
+:- interface.
+:- use_module map.
+:- use_module (parse_tree.prog_data).
+:- type inst_graph == map.map(parse_tree.prog_data.prog_var, hlds.inst_graph.node).
+:- type inst_graph_info.
+:- type maybe_parent
+    --->    top_level 
+    ;       parent(parse_tree.prog_data.prog_var).
+:- type node
+    --->    node(map.map(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var)), hlds.inst_graph.maybe_parent).
