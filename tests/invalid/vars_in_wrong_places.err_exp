@@ -1,0 +1,25 @@
+vars_in_wrong_places.m:005: Warning: the interface of module
+vars_in_wrong_places.m:005:   `vars_in_wrong_places' does not export anything.
+vars_in_wrong_places.m:005:   To be useful, a module should export something. A
+vars_in_wrong_places.m:005:   file should contain at least one declaration
+vars_in_wrong_places.m:005:   other than `:- import_module' in its interface
+vars_in_wrong_places.m:005:   section(s). This would normally be a `:- pred',
+vars_in_wrong_places.m:005:   `:- func', `:- type', `:- inst' or `:- mode'
+vars_in_wrong_places.m:005:   declaration.
+vars_in_wrong_places.m:006: Error: module `vars_in_wrong_places' should start
+vars_in_wrong_places.m:006:   with either an `:- interface' or an
+vars_in_wrong_places.m:006:   `:- implementation' declaration.
+vars_in_wrong_places.m:006:   The following assumes that the missing
+vars_in_wrong_places.m:006:   declaration is an `:- implementation'
+vars_in_wrong_places.m:006:   declaration.
+vars_in_wrong_places.m:006: In clause head: error: atom expected at Oops1.
+vars_in_wrong_places.m:007: In equation head: error: atom expected at Oops2.
+vars_in_wrong_places.m:008: In equation head: error: atom expected at Oops3.
+vars_in_wrong_places.m:009: In `:- pred' declaration: error: atom expected at
+vars_in_wrong_places.m:009:   Oops4.
+vars_in_wrong_places.m:010: In `:- func' declaration:
+vars_in_wrong_places.m:010:   error: atom expected at Oops5.
+vars_in_wrong_places.m:011: In `:- mode' declaration error: atom expected at
+vars_in_wrong_places.m:011:   Oops6.
+vars_in_wrong_places.m:012: In function `:- mode' declaration error: atom
+vars_in_wrong_places.m:012:   expected at Oops7.
