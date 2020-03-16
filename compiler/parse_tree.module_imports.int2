@@ -1,0 +1,22 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- use_module map.
+:- use_module (mdbcomp.sym_name).
+:- type grabbed_file
+    --->    gf_src(parse_tree.prog_item.parse_tree_module_src)
+    ;       gf_int0(parse_tree.prog_item.parse_tree_int0, parse_tree.prog_item.read_why_int0)
+    ;       gf_int1(parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.read_why_int1)
+    ;       gf_int2(parse_tree.prog_item.parse_tree_int2, parse_tree.prog_item.read_why_int2)
+    ;       gf_int3(parse_tree.prog_item.parse_tree_int3, parse_tree.prog_item.read_why_int3).
+:- type grabbed_file_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.grabbed_file).
+:- type module_and_imports.
+:- type module_timestamp
+    --->    module_timestamp(((parse_tree.module_imports).mts_file_kind) :: parse_tree.file_kind.file_kind, ((parse_tree.module_imports).mts_timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).mts_avail_kind) :: parse_tree.module_imports.recomp_avail).
+:- type module_timestamp_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.module_timestamp).
+:- type recomp_avail
+    --->    recomp_avail_src 
+    ;       recomp_avail_int_import 
+    ;       recomp_avail_imp_import 
+    ;       recomp_avail_int_use 
+    ;       recomp_avail_imp_use 
+    ;       recomp_avail_int_use_imp_import .
