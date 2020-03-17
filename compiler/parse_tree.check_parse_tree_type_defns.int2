@@ -1,0 +1,46 @@
+:- module (parse_tree.check_parse_tree_type_defns).
+:- interface.
+:- use_module map.
+:- use_module maybe.
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- type abstract_solver_type_status
+    --->    abstract_solver_type_exported 
+    ;       abstract_solver_type_private .
+:- type c_j_cs_e_maybe_defn_or_enum == parse_tree.prog_item.c_java_csharp_erlang(maybe.maybe(parse_tree.check_parse_tree_type_defns.foreign_type_or_enum)).
+:- type checked_foreign_enum
+    --->    checked_foreign_enum(parse_tree.prog_item.item_foreign_enum_info, one_or_more.one_or_more(string)).
+:- type foreign_type_or_enum
+    --->    foreign_type_or_enum_type(parse_tree.prog_item.item_type_defn_info_foreign)
+    ;       foreign_type_or_enum_enum(parse_tree.check_parse_tree_type_defns.checked_foreign_enum).
+:- type maybe_insist_on_defn
+    --->    do_not_insist_on_defn 
+    ;       do_insist_on_defn .
+:- type maybe_only_constants
+    --->    not_only_plain_constants 
+    ;       only_plain_constants(((parse_tree.check_parse_tree_type_defns).opc_head_name) :: string, ((parse_tree.check_parse_tree_type_defns).opc_tail_names) :: list.list(string)).
+:- type solver_type_defn
+    --->    solver_type_abstract(parse_tree.check_parse_tree_type_defns.abstract_solver_type_status, parse_tree.prog_item.item_type_defn_info_abstract)
+    ;       solver_type_full(maybe.maybe(parse_tree.prog_item.item_type_defn_info_abstract), parse_tree.prog_item.item_type_defn_info_solver).
+:- type std_abs_type_status
+    --->    std_abs_type_ft_exported 
+    ;       std_abs_type_abstract_exported 
+    ;       std_abs_type_all_private .
+:- type std_du_type_status
+    --->    std_du_type_mer_ft_exported 
+    ;       std_du_type_mer_exported 
+    ;       std_du_type_abstract_exported 
+    ;       std_du_type_all_private .
+:- type std_eqv_type_status
+    --->    std_eqv_type_mer_exported 
+    ;       std_eqv_type_abstract_exported 
+    ;       std_eqv_type_all_private .
+:- type std_type_defn
+    --->    std_mer_type_eqv(parse_tree.check_parse_tree_type_defns.std_eqv_type_status, parse_tree.prog_item.item_type_defn_info_eqv)
+    ;       std_mer_type_du_all_plain_constants(parse_tree.check_parse_tree_type_defns.std_du_type_status, parse_tree.prog_item.item_type_defn_info_du, string, list.list(string), parse_tree.check_parse_tree_type_defns.c_j_cs_e_maybe_defn_or_enum)
+    ;       std_mer_type_du_not_all_plain_constants(parse_tree.check_parse_tree_type_defns.std_du_type_status, parse_tree.prog_item.item_type_defn_info_du, parse_tree.prog_item.c_j_cs_e_maybe_defn)
+    ;       std_mer_type_abstract(parse_tree.check_parse_tree_type_defns.std_abs_type_status, parse_tree.prog_item.item_type_defn_info_abstract, parse_tree.prog_item.c_j_cs_e_maybe_defn).
+:- type type_ctor_checked_defn
+    --->    checked_defn_solver(parse_tree.check_parse_tree_type_defns.solver_type_defn)
+    ;       checked_defn_std(parse_tree.check_parse_tree_type_defns.std_type_defn).
+:- type type_ctor_checked_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.check_parse_tree_type_defns.type_ctor_checked_defn).

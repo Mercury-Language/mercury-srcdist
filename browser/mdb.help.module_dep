@@ -1,0 +1,13 @@
+module(1, "help.m",
+	(mdb.help),
+	{mdb},
+	{builtin, io, list, private_builtin, type_desc},
+	{builtin, int, io, list, private_builtin, require, string, type_desc},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.help)},
+	contains_foreign_export,
+	no_main
+).

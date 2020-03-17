@@ -1,0 +1,4 @@
+:- module mtc_diff.
+:- implementation.
+:- type option
+    --->    output_filename .

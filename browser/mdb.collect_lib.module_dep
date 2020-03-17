@@ -1,0 +1,13 @@
+module(1, "collect_lib.m",
+	(mdb.collect_lib),
+	{mdb},
+	{builtin, private_builtin},
+	{builtin, char, io, private_builtin, (mdb.dl)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.collect_lib)},
+	contains_foreign_export,
+	no_main
+).
