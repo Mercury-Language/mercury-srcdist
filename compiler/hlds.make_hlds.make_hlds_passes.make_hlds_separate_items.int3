@@ -1,0 +1,4 @@
+:- module (((hlds.make_hlds).make_hlds_passes).make_hlds_separate_items).
+:- interface.
+:- type ims_tuple_item(T).
+:- type ims_tuple_list(T).

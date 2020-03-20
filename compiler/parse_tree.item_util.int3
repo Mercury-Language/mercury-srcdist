@@ -1,0 +1,5 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- type maybe_include_implicit
+	where	type_is_abstract_enum(1).
+:- abstract_inst((item_decl_or_impl_pragma)).

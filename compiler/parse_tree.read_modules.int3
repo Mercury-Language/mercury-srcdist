@@ -1,0 +1,18 @@
+:- module (parse_tree.read_modules).
+:- interface.
+:- type have_read_module(PT).
+:- type have_read_module_int0_map.
+:- type have_read_module_int1_map.
+:- type have_read_module_int2_map.
+:- type have_read_module_int3_map.
+:- type have_read_module_int_map.
+:- type have_read_module_key(Kind).
+:- type have_read_module_map(Key, PT).
+:- type have_read_module_maps.
+:- type have_read_module_opt_map.
+:- type have_read_module_plain_opt_map.
+:- type have_read_module_rcu_map.
+:- type have_read_module_src_map.
+:- type have_read_module_trans_opt_map.
+:- type maybe_ignore_errors
+	where	type_is_abstract_enum(1).
