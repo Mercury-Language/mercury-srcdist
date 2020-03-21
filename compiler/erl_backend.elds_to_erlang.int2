@@ -1,0 +1,2 @@
+:- module (erl_backend.elds_to_erlang).
+:- interface.

@@ -1,0 +1,2 @@
+:- module (mdb.sized_pretty).
+:- interface.

@@ -1,0 +1,12 @@
+:- module (make.dependencies).
+:- interface.
+:- type cached_direct_imports.
+:- type cached_foreign_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result
+	where	type_is_abstract_enum(2).
+:- type dependency_file.
+:- type find_module_deps(T).
+:- type find_module_deps_plain_set(T).
+:- abstract_inst((find_module_deps)).
+:- abstract_inst((find_module_deps_plain_set)).

@@ -1,0 +1,8 @@
+:- module exception.
+:- interface.
+:- type exception_result(T).
+:- type near_stack_limits.
+:- type software_error.
+:- abstract_inst(([])).
+:- abstract_inst((cannot_fail)).
+:- abstract_inst((nil_or_singleton_list)).
