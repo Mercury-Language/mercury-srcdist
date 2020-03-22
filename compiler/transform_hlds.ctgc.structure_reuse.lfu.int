@@ -1,0 +1,10 @@
+:- module (((transform_hlds.ctgc).structure_reuse).lfu).
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.set_of_var).
+:- pred add_vars_to_lfu(parse_tree.set_of_var.set_of_progvar, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode add_vars_to_lfu((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred forward_use_information(hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode forward_use_information((builtin.in), (builtin.out)) is det.

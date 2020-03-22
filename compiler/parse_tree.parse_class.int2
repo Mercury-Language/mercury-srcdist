@@ -1,0 +1,8 @@
+:- module (parse_tree.parse_class).
+:- interface.
+:- use_module list.
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- type maybe_class_and_inst_constraints == parse_tree.maybe_error.maybe2(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.inst_var_sub).
+:- type_representation((parse_tree.parse_class).arbitrary_constraints, is_eqv_to(one_or_more.one_or_more(parse_tree.parse_class.arbitrary_constraint))).
+:- type_representation((parse_tree.parse_class).maybe_class_and_inst_constraints, is_eqv_to(parse_tree.maybe_error.maybe2(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.inst_var_sub))).

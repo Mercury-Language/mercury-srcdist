@@ -1,0 +1,31 @@
+/*
+** Automatically generated from `goal_expr_to_goal.m'
+** by the Mercury compiler,
+** version rotd-2020-03-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef HLDS__MAKE_HLDS__GOAL_EXPR_TO_GOAL_MH
+#define HLDS__MAKE_HLDS__GOAL_EXPR_TO_GOAL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__MAKE_HLDS__GOAL_EXPR_TO_GOAL_MH */

@@ -1,0 +1,4 @@
+:- module (parse_tree.comp_unit_interface).
+:- interface.
+:- type_representation((parse_tree.comp_unit_interface).type_defn_map, is_eqv_to(one_or_more_map.one_or_more_map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.item_type_defn_info))).
+:- type_representation((parse_tree.comp_unit_interface).type_defn_pair, is_eqv_to(pair.pair(parse_tree.prog_data.type_ctor, parse_tree.prog_item.item_type_defn_info))).

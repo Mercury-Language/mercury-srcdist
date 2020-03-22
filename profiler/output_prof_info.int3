@@ -1,0 +1,9 @@
+:- module output_prof_info.
+:- interface.
+:- type child.
+:- type output_prof.
+:- type parent.
+:- type profiler_output.
+:- type_representation(output_prof_info.child, is_word_aligned_ptr).
+:- type_representation(output_prof_info.parent, is_word_aligned_ptr).
+:- type_representation(output_prof_info.profiler_output, is_word_aligned_ptr).

@@ -1,0 +1,8 @@
+:- module ((check_hlds.simplify).common).
+:- interface.
+:- type common_info.
+:- type_representation(((check_hlds.simplify).common).common_info, is_word_aligned_ptr).
+:- type_representation(((check_hlds.simplify).common).cons_id_map, is_eqv_to(map(cons_id, structures))).
+:- type_representation(((check_hlds.simplify).common).seen_calls, is_eqv_to(map(seen_call_id, list(call_args)))).
+:- type_representation(((check_hlds.simplify).common).struct_map, is_eqv_to(map(type_ctor, cons_id_map))).
+:- type_representation(((check_hlds.simplify).common).structures, is_eqv_to(list(structure))).

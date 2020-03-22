@@ -1,0 +1,7 @@
+:- module exclude.
+:- interface.
+:- type exclude_contents.
+:- type exclude_file.
+:- type excluded_modules.
+:- type_representation(exclude.exclude_file, is_word_aligned_ptr).
+:- type_representation(exclude.excluded_modules, is_eqv_to(set(exclude_spec))).
