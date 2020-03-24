@@ -1,0 +1,3 @@
+:- module ((check_hlds.simplify).simplify_goal_conj).
+:- interface.
+:- type_representation(((check_hlds.simplify).simplify_goal_conj).var_renaming, is_eqv_to(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var))).

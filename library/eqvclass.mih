@@ -1,0 +1,322 @@
+/*
+** Automatically generated from `eqvclass.m'
+** by the Mercury compiler,
+** version rotd-2020-03-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module eqvclass.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_eqvclass
+#define MR_HEADER_GUARD_eqvclass
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EQVCLASS_DECL_GUARD
+#define EQVCLASS_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__eqvclass__eqvclass__type_ctor_info_eqvclass_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__eqvclass__eqvclass__type_ctor_info_partition_id_0;
+
+void MR_CALL 
+mercury__eqvclass__add_element_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_2_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_3_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+mercury__eqvclass__ensure_corresponding_equivalences_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__eqvclass__ensure_element_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__eqvclass__ensure_element_partition_id_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__eqvclass__ensure_equivalence_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__eqvclass__init_1_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__eqvclass__is_member_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__eqvclass__new_element_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__eqvclass__new_equivalence_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__eqvclass__partition_id_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__eqvclass__partition_ids_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__eqvclass__partition_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__eqvclass__partition_list_to_eqvclass_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__eqvclass__partition_set_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__eqvclass__partition_set_to_eqvclass_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__eqvclass__partitions_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__eqvclass__remove_equivalent_elements_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__eqvclass__same_eqvclass_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_bool MR_CALL 
+mercury__eqvclass__same_eqvclass_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_corresponding_equivalences_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_element_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_equivalence_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__eqvclass__get_equivalent_elements_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Box MR_CALL 
+mercury__eqvclass__get_minimum_element_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__eqvclass__init_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__eqvclass__new_element_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__eqvclass__new_equivalence_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__eqvclass__partition_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__eqvclass__partition_list_to_eqvclass_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__eqvclass__partition_set_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__eqvclass__partition_set_to_eqvclass_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__eqvclass__remove_equivalent_elements_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__eqvclass____Compare____eqvclass_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__eqvclass____Compare____partition_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__eqvclass____Unify____eqvclass_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__eqvclass____Unify____partition_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__eqvclass__init(void);
+void mercury__eqvclass__init_type_tables(void);
+void mercury__eqvclass__init_debugger(void);
+const char *mercury__eqvclass__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_eqvclass
+
+// :- end_interface eqvclass.

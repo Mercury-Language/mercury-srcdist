@@ -1,0 +1,7 @@
+:- module ((ll_backend.llds_out).llds_out_code_addr).
+:- interface.
+:- type wrapper
+    --->    wrapper_entry 
+    ;       wrapper_label 
+    ;       wrapper_none .
+:- type_representation(((ll_backend.llds_out).llds_out_code_addr).wrapper, du_repn(enum("wrapper_entry", "wrapper_label", ["wrapper_none"], []))).

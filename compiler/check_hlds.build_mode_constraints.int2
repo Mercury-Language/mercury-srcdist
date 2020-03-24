@@ -1,0 +1,25 @@
+:- module (check_hlds.build_mode_constraints).
+:- interface.
+:- use_module bimap.
+:- use_module list.
+:- use_module (check_hlds.abstract_mode_constraints).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.set_of_var).
+:- type args == list.list(parse_tree.prog_data.prog_var).
+:- type mc_prog_var
+    --->    in(parse_tree.prog_data.prog_var, hlds.hlds_pred.pred_id).
+:- type mc_rep_var
+    --->    at(check_hlds.build_mode_constraints.mc_prog_var, mdbcomp.goal_path.goal_id).
+:- type mc_var_info
+    --->    mc_var_info(((check_hlds.build_mode_constraints).mc_varset) :: check_hlds.abstract_mode_constraints.mc_varset, ((check_hlds.build_mode_constraints).rep_var_map) :: check_hlds.build_mode_constraints.mc_var_map).
+:- type mc_var_map == bimap.bimap(check_hlds.build_mode_constraints.mc_rep_var, check_hlds.abstract_mode_constraints.mc_var).
+:- type mode_constraints == check_hlds.abstract_mode_constraints.pred_p_c_constraints.
+:- type nonlocals == parse_tree.set_of_var.set_of_progvar.
+:- type_representation((check_hlds.build_mode_constraints).args, is_eqv_to(list.list(parse_tree.prog_data.prog_var))).
+:- type_representation((check_hlds.build_mode_constraints).conjunct_production_map, is_eqv_to(multi_map.multi_map(parse_tree.prog_data.prog_var, check_hlds.abstract_mode_constraints.mc_var))).
+:- type_representation((check_hlds.build_mode_constraints).mc_prog_var, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_rep_var, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_var_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_var_map, is_eqv_to(bimap.bimap(check_hlds.build_mode_constraints.mc_rep_var, check_hlds.abstract_mode_constraints.mc_var))).
+:- type_representation((check_hlds.build_mode_constraints).mode_constraints, is_eqv_to(check_hlds.abstract_mode_constraints.pred_p_c_constraints)).
+:- type_representation((check_hlds.build_mode_constraints).nonlocals, is_eqv_to(parse_tree.set_of_var.set_of_progvar)).

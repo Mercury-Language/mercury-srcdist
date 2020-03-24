@@ -1,0 +1,16 @@
+:- module (mdb.interactive_query).
+:- interface.
+:- use_module list.
+:- type imports == list.list(string).
+:- type options_string == string.
+:- type query_type
+    --->    normal_query 
+    ;       cc_query 
+    ;       io_query .
+:- type_representation((mdb.interactive_query).bindings, is_eqv_to(map.map(string, univ.univ))).
+:- type_representation((mdb.interactive_query).imports, is_eqv_to(list.list(string))).
+:- type_representation((mdb.interactive_query).options_string, is_eqv_to(string)).
+:- type_representation((mdb.interactive_query).query_type, du_repn(enum("normal_query", "cc_query", ["io_query"], []))).
+:- type_representation((mdb.interactive_query).run_cc_pred, is_eqv_to(pred(mdb.interactive_query.bindings, mdb.interactive_query.bindings, bool.bool))).
+:- type_representation((mdb.interactive_query).run_io_pred, is_eqv_to(pred(mdb.interactive_query.bindings, mdb.interactive_query.bindings, bool.bool, io.io, io.io))).
+:- type_representation((mdb.interactive_query).run_normal_pred, is_eqv_to(pred(mdb.interactive_query.bindings, mdb.interactive_query.bindings, bool.bool))).
