@@ -1,0 +1,20 @@
+:- module (hlds.hlds_dependency_graph).
+:- interface.
+:- type hlds_bottom_up_dependency_sccs.
+:- type hlds_dependency_graph.
+:- type hlds_dependency_graph_key.
+:- type hlds_dependency_info.
+:- type include_imported
+	where	type_is_abstract_enum(1).
+:- type scc_with_entry_points.
+:- type what_dependency_edges
+	where	type_is_abstract_enum(2).
+:- type_representation((hlds.hlds_dependency_graph).dep_arcs(V_1), is_eqv_to(assoc_list(dependency_graph_key(V_1)))).
+:- type_representation((hlds.hlds_dependency_graph).hlds_bottom_up_dependency_sccs, is_eqv_to(bottom_up_dependency_sccs(pred_proc_id))).
+:- type_representation((hlds.hlds_dependency_graph).hlds_dependency_graph, is_eqv_to(dependency_graph(pred_proc_id))).
+:- type_representation((hlds.hlds_dependency_graph).hlds_dependency_graph_key, is_eqv_to(dependency_graph_key(pred_proc_id))).
+:- type_representation((hlds.hlds_dependency_graph).hlds_dependency_info, is_eqv_to(dependency_info(pred_proc_id))).
+:- type_representation((hlds.hlds_dependency_graph).include_imported, du_repn(enum("include_imported", "do_not_include_imported", [], []))).
+:- type_representation((hlds.hlds_dependency_graph).scc_id, is_eqv_to(int)).
+:- type_representation((hlds.hlds_dependency_graph).scc_with_entry_points, is_word_aligned_ptr).
+:- type_representation((hlds.hlds_dependency_graph).what_dependency_edges, du_repn(enum("only_tail_calls", "only_all_calls", ["all_calls_and_unifies"], []))).

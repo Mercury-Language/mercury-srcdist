@@ -1,0 +1,7 @@
+:- module (transform_hlds.term_traversal).
+:- interface.
+:- type term_path_info.
+:- type term_traversal_info.
+:- type term_traversal_params.
+:- type_representation((transform_hlds.term_traversal).term_path_info, is_word_aligned_ptr).
+:- type_representation((transform_hlds.term_traversal).term_traversal_params, is_word_aligned_ptr).

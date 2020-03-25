@@ -1,0 +1,5 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- type gen_pred.
+:- abstract_inst((gen_pred)).
+:- type_representation((ml_backend.ml_code_util).gen_pred, is_eqv_to(pred(list(mlds_local_var_defn), list(mlds_function_defn), list(mlds_stmt), ml_gen_info, ml_gen_info))).

@@ -1,0 +1,12 @@
+:- module erlang_rtti_implementation.
+:- interface.
+:- type type_ctor_info.
+:- type type_ctor_info_evaled.
+:- type type_info.
+:- type_representation(erlang_rtti_implementation.module_name, is_eqv_to(sym_name)).
+:- type_representation(erlang_rtti_implementation.pti_info(V_1), is_eqv_to(maybe({erlang_du_functor, V_1}))).
+:- type_representation(erlang_rtti_implementation.tc_type, is_eqv_to(maybe_pseudo_type_info)).
+:- type_representation(erlang_rtti_implementation.ti_info(V_1), is_eqv_to(maybe({erlang_rtti_implementation.type_info, pti_info(V_1)}))).
+:- type_representation(erlang_rtti_implementation.type_ctor_info, du_repn(direct_dummy("type_ctor_info", [foreign_type(erlang("", []))]))).
+:- type_representation(erlang_rtti_implementation.type_ctor_info_evaled, du_repn(direct_dummy("type_ctor_info_evaled", [foreign_type(erlang("", []))]))).
+:- type_representation(erlang_rtti_implementation.type_info, du_repn(direct_dummy("type_info", [foreign_type(erlang("", []))]))).

@@ -1,0 +1,5 @@
+:- module cliques.
+:- interface.
+:- type graph.
+:- type_representation(cliques.graph, is_word_aligned_ptr).
+:- type_representation(cliques.visit, is_eqv_to(dense_bitset.dense_bitset)).
