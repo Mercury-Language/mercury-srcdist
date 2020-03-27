@@ -1,0 +1,4 @@
+:- module backjump.
+:- interface.
+:- type choice_id.
+:- type_representation(backjump.choice_id, is_eqv_to(int)).

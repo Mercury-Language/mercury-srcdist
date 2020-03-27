@@ -1,0 +1,8 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- use_module list.
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- type gen_pred == pred(list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- inst (gen_pred) == (pred((builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- type_representation((ml_backend.ml_code_util).gen_pred, is_eqv_to(pred(list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info))).

@@ -1,0 +1,10 @@
+:- module (libs.polyhedron).
+:- interface.
+:- use_module list.
+:- type polyhedra == list.list(libs.polyhedron.polyhedron).
+:- type polyhedron.
+:- type_representation((libs.polyhedron).polyhedra, is_eqv_to(list.list(libs.polyhedron.polyhedron))).
+:- type_representation((libs.polyhedron).sigma_var, is_eqv_to(libs.lp_rational.lp_var)).
+:- type_representation((libs.polyhedron).sigma_vars, is_eqv_to(list.list(libs.polyhedron.sigma_var))).
+:- type_representation((libs.polyhedron).var_map, is_eqv_to(map.map(libs.lp_rational.lp_var, libs.lp_rational.lp_var))).
+:- type_representation((libs.polyhedron).var_maps, is_eqv_to(list.list(libs.polyhedron.var_map))).

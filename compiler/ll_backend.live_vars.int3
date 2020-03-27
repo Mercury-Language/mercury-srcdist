@@ -1,0 +1,5 @@
+:- module (ll_backend.live_vars).
+:- interface.
+:- type alloc_data.
+:- typeclass stack_alloc_info(T).
+:- type_representation((ll_backend.live_vars).alloc_data, is_word_aligned_ptr).

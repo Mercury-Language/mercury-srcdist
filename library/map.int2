@@ -1,0 +1,6 @@
+:- module map.
+:- interface.
+:- use_module tree234.
+:- type map(_K, _V).
+:- type map(K, V) == tree234.tree234(K, V).
+:- type_representation(map.map(V_1, V_2), is_eqv_to(tree234.tree234(V_1, V_2))).

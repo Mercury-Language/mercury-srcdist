@@ -1,0 +1,3 @@
+:- module mdprof_dump.
+:- interface.
+:- type_representation(mdprof_dump.option_table, is_eqv_to(getopt.option_table(mdprof_dump.option))).

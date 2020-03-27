@@ -1,0 +1,4 @@
+:- module (ll_backend.code_util).
+:- interface.
+:- type immed.
+:- type_representation((ll_backend.code_util).immed, is_eqv_to(maybe(pair(int, pred_proc_id)))).

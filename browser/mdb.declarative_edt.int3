@@ -1,0 +1,18 @@
+:- module (mdb.declarative_edt).
+:- interface.
+:- type find_origin_response.
+:- type maybe_found_descendant.
+:- type primitive_op_type
+	where	type_is_abstract_enum(2).
+:- type search_space(T).
+:- type subterm_mode
+	where	type_is_abstract_enum(1).
+:- type subterm_origin(T).
+:- type suspect_id.
+:- type weighting_heuristic
+	where	type_is_abstract_enum(1).
+:- typeclass mercury_edt(S, T).
+:- type_representation((mdb.declarative_edt).primitive_op_type, du_repn(enum("primop_foreign_proc", "primop_builtin_call", ["primop_untraced_call", "primop_unification"], []))).
+:- type_representation((mdb.declarative_edt).subterm_mode, du_repn(enum("subterm_in", "subterm_out", [], []))).
+:- type_representation((mdb.declarative_edt).suspect_id, is_eqv_to(int)).
+:- type_representation((mdb.declarative_edt).weighting_heuristic, du_repn(enum("number_of_events", "suspicion", [], []))).
