@@ -1,0 +1,13 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- use_module list.
+:- type args_type_assign
+    --->    args_type_assign(((check_hlds.type_assign).ata_caller_arg_assign) :: check_hlds.type_assign.type_assign, ((check_hlds.type_assign).ata_callee_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.type_assign).ata_callee_constraints) :: hlds.hlds_class.hlds_constraints).
+:- type args_type_assign_set == list.list(check_hlds.type_assign.args_type_assign).
+:- type type_assign
+    --->    type_assign(((check_hlds.type_assign).ta_var_types) :: hlds.vartypes.vartypes, ((check_hlds.type_assign).ta_type_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.type_assign).ta_external_type_params) :: hlds.hlds_pred.external_type_params, ((check_hlds.type_assign).ta_type_bindings) :: parse_tree.prog_data.tsubst, ((check_hlds.type_assign).ta_class_constraints) :: hlds.hlds_class.hlds_constraints, ((check_hlds.type_assign).ta_constraint_proof_map) :: hlds.hlds_class.constraint_proof_map, ((check_hlds.type_assign).ta_constraint_map) :: hlds.hlds_class.constraint_map).
+:- type type_assign_set == list.list(check_hlds.type_assign.type_assign).
+:- type_representation((check_hlds.type_assign).args_type_assign, is_word_aligned_ptr).
+:- type_representation((check_hlds.type_assign).args_type_assign_set, is_eqv_to(list.list(check_hlds.type_assign.args_type_assign))).
+:- type_representation((check_hlds.type_assign).type_assign, is_word_aligned_ptr).
+:- type_representation((check_hlds.type_assign).type_assign_set, is_eqv_to(list.list(check_hlds.type_assign.type_assign))).

@@ -1,0 +1,91 @@
+/*
+** Automatically generated from `module_deps_graph.m'
+** by the Mercury compiler,
+** version rotd-2020-03-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_deps_graph.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_deps_graph
+#define MR_HEADER_GUARD_parse_tree__module_deps_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_DEPS_GRAPH_DECL_GUARD
+#define PARSE_TREE__MODULE_DEPS_GRAPH_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_deps_graph__parse_tree__module_deps_graph__type_ctor_info_deps_graph_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_deps_graph__parse_tree__module_deps_graph__type_ctor_info_deps_graph_key_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_deps_graph__parse_tree__module_deps_graph__type_ctor_info_lookup_module_and_imports_0;
+
+void MR_CALL 
+parse_tree__module_deps_graph__add_module_and_imports_to_deps_graph_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__module_deps_graph____Compare____deps_graph_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_deps_graph____Compare____lookup_module_and_imports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__module_deps_graph____Unify____deps_graph_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_deps_graph____Unify____lookup_module_and_imports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__module_deps_graph__init(void);
+void mercury__parse_tree__module_deps_graph__init_type_tables(void);
+void mercury__parse_tree__module_deps_graph__init_debugger(void);
+const char *mercury__parse_tree__module_deps_graph__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_deps_graph
+
+// :- end_interface parse_tree.module_deps_graph.

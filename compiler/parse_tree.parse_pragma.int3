@@ -1,0 +1,3 @@
+:- module (parse_tree.parse_pragma).
+:- interface.
+:- type_representation((parse_tree.parse_pragma).maybe_pred_or_func_modes, is_eqv_to(maybe3(sym_name, pred_or_func, list(mer_mode)))).

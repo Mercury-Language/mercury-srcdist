@@ -1,0 +1,49 @@
+/*
+** Automatically generated from `browser_info.m'
+** by the Mercury compiler,
+** version rotd-2020-03-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDB__BROWSER_INFO_MH
+#define MDB__BROWSER_INFO_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_BROWSE_set_depth_from_mdb(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, MR_Word, MR_Word *);
+void ML_BROWSE_set_size_from_mdb(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, MR_Word, MR_Word *);
+void ML_BROWSE_set_width_from_mdb(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, MR_Word, MR_Word *);
+void ML_BROWSE_set_lines_from_mdb(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, MR_Word, MR_Word *);
+void ML_BROWSE_set_format_from_mdb(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word *);
+void ML_BROWSE_get_xml_browser_cmd_from_mdb(MR_Word, MR_String *);
+void ML_BROWSE_set_xml_browser_cmd_from_mdb(MR_String, MR_Word, MR_Word *);
+void ML_BROWSE_get_xml_tmp_filename_from_mdb(MR_Word, MR_String *);
+void ML_BROWSE_set_xml_tmp_filename_from_mdb(MR_String, MR_Word, MR_Word *);
+void ML_BROWSE_get_web_browser_cmd_from_mdb(MR_Word, MR_String *);
+void ML_BROWSE_set_web_browser_cmd_from_mdb(MR_String, MR_Word, MR_Word *);
+MR_Word ML_BROWSE_mercury_bool_yes(void);
+MR_Word ML_BROWSE_mercury_bool_no(void);
+void ML_BROWSE_init_persistent_state(MR_Word *);
+void ML_BROWSE_get_num_io_actions(MR_Word, MR_Integer *);
+void ML_BROWSE_set_num_io_actions(MR_Integer, MR_Word, MR_Word *);
+void ML_BROWSE_browser_params_to_string(MR_Word, MR_String *);
+void ML_BROWSE_browser_persistent_state_type(MR_Word *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__BROWSER_INFO_MH */

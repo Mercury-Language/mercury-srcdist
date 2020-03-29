@@ -1,0 +1,420 @@
+/*
+** Automatically generated from `pred_table.m'
+** by the Mercury compiler,
+** version rotd-2020-03-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.pred_table.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__pred_table
+#define MR_HEADER_GUARD_hlds__pred_table
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PRED_TABLE_DECL_GUARD
+#define HLDS__PRED_TABLE_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_accessibility_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_constraint_search_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_is_fully_qualified_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_mode_no_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_module_and_name_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_module_name_arity_index_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_name_accessibility_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_name_arity_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_name_arity_index_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_name_index_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_pred_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_table__hlds__pred_table__type_ctor_info_predicate_table_0;
+
+MR_bool MR_CALL 
+hlds__pred_table__find_matching_pred_id_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__pred_table__get_next_pred_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__pred_table__get_pred_id_and_proc_id_by_types_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Integer * param_11);
+
+MR_bool MR_CALL 
+hlds__pred_table__get_pred_id_by_types_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__pred_table__get_proc_id_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+hlds__pred_table__lookup_builtin_pred_proc_id_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Integer * param_8);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_get_preds_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_get_valid_pred_id_set_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_init_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_insert_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_insert_qual_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_func_m_n_a_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_func_name_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_func_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_func_sym_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_func_sym_arity_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_m_n_a_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_name_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pf_m_n_a_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Integer param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pf_name_arity_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pf_sym_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pf_sym_arity_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pred_m_n_a_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pred_name_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pred_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pred_sym_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_pred_sym_arity_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_sym_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_lookup_sym_arity_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_make_pred_id_invalid_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_make_pred_ids_invalid_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_optimize_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_remove_predicate_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_restrict_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__pred_table__predicate_table_set_preds_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__pred_table__resolve_pred_overloading_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__pred_table____Compare____constraint_search_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_table____Compare____is_fully_qualified_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_table____Compare____mode_no_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_table____Compare____pred_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_table____Compare____predicate_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__pred_table____Unify____constraint_search_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_table____Unify____is_fully_qualified_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_table____Unify____mode_no_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_table____Unify____pred_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_table____Unify____predicate_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__pred_table__init(void);
+void mercury__hlds__pred_table__init_type_tables(void);
+void mercury__hlds__pred_table__init_debugger(void);
+const char *mercury__hlds__pred_table__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.pred_table
+
+// :- end_interface hlds.pred_table.

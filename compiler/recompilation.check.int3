@@ -1,0 +1,10 @@
+:- module (recompilation.check).
+:- interface.
+:- type find_target_file_names.
+:- type find_timestamp_file_names.
+:- type modules_to_recompile.
+:- abstract_inst((find_target_file_names)).
+:- abstract_inst((find_timestamp_file_names)).
+:- type_representation((recompilation.check).find_target_file_names, is_eqv_to(pred(module_name, list(file_name), io, io))).
+:- type_representation((recompilation.check).find_timestamp_file_names, is_eqv_to(pred(module_name, list(file_name), io, io))).
+:- type_representation((recompilation.check).parse_resolved_item_matches(V_1), is_eqv_to(pred(recompilation_check_info, term, resolved_item_map(V_1), resolved_item_map(V_1)))).

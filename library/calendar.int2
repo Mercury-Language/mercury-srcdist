@@ -1,0 +1,57 @@
+:- module calendar.
+:- interface.
+:- type date.
+:- type date_time == calendar.date.
+:- type day_of_month == int.
+:- type day_of_week
+    --->    monday 
+    ;       tuesday 
+    ;       wednesday 
+    ;       thursday 
+    ;       friday 
+    ;       saturday 
+    ;       sunday .
+:- type days == int.
+:- type duration.
+:- type hour == int.
+:- type hours == int.
+:- type microsecond == int.
+:- type microseconds == int.
+:- type minute == int.
+:- type minutes == int.
+:- type month
+    --->    january 
+    ;       february 
+    ;       march 
+    ;       april 
+    ;       may 
+    ;       june 
+    ;       july 
+    ;       august 
+    ;       september 
+    ;       october 
+    ;       november 
+    ;       december .
+:- type months == int.
+:- type second == int.
+:- type seconds == int.
+:- type year == int.
+:- type years == int.
+:- type_representation(calendar.date, is_word_aligned_ptr).
+:- type_representation(calendar.date_time, is_eqv_to(calendar.date)).
+:- type_representation(calendar.day_of_month, is_eqv_to(int)).
+:- type_representation(calendar.day_of_week, du_repn(enum("monday", "tuesday", ["wednesday", "thursday", "friday", "saturday", "sunday"], []))).
+:- type_representation(calendar.days, is_eqv_to(int)).
+:- type_representation(calendar.duration, is_word_aligned_ptr).
+:- type_representation(calendar.hour, is_eqv_to(int)).
+:- type_representation(calendar.hours, is_eqv_to(int)).
+:- type_representation(calendar.microsecond, is_eqv_to(int)).
+:- type_representation(calendar.microseconds, is_eqv_to(int)).
+:- type_representation(calendar.minute, is_eqv_to(int)).
+:- type_representation(calendar.minutes, is_eqv_to(int)).
+:- type_representation(calendar.month, du_repn(enum("january", "february", ["march", "april", "may", "june", "july", "august", "september", "october", "november", "december"], []))).
+:- type_representation(calendar.months, is_eqv_to(int)).
+:- type_representation(calendar.second, is_eqv_to(int)).
+:- type_representation(calendar.seconds, is_eqv_to(int)).
+:- type_representation(calendar.year, is_eqv_to(int)).
+:- type_representation(calendar.years, is_eqv_to(int)).
