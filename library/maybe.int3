@@ -1,0 +1,15 @@
+:- module maybe.
+:- interface.
+:- type maybe(T).
+:- type maybe_error.
+:- type maybe_error(T).
+:- type maybe_error(T, E).
+:- type maybe_errors(T).
+:- type maybe_errors(T, E).
+:- abstract_inst((maybe(I))).
+:- abstract_inst((maybe_error(I))).
+:- abstract_inst((maybe_error_ok(I))).
+:- abstract_inst((maybe_errors_ok(I))).
+:- abstract_inst((maybe_yes(I))).
+:- type_representation(maybe.maybe_error(V_1), is_eqv_to(maybe.maybe_error(V_1, string))).
+:- type_representation(maybe.maybe_errors(V_1), is_eqv_to(maybe.maybe_errors(V_1, string))).

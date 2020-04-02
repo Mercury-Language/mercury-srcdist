@@ -1,0 +1,4 @@
+:- module (check_hlds.check_typeclass).
+:- interface.
+:- type_representation((check_hlds.check_typeclass).class_path, is_eqv_to(list.list(parse_tree.prog_data.class_id))).
+:- type_representation((check_hlds.check_typeclass).induced_fundeps, is_eqv_to(list.list(check_hlds.check_typeclass.induced_fundep))).

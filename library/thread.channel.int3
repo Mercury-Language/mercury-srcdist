@@ -1,0 +1,4 @@
+:- module (thread.channel).
+:- interface.
+:- type channel(T).
+:- type_representation((thread.channel).stream(V_1), is_eqv_to(mvar(item(V_1)))).

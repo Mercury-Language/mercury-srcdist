@@ -1,0 +1,16 @@
+:- module (mdbcomp.rtti_access).
+:- interface.
+:- type bytecode.
+:- type bytecode_bytes.
+:- pragma foreign_type(c, bytecode_bytes, "const MR_uint_least8_t *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, bytecode_bytes, "java.lang.Object").
+:- pragma foreign_type(csharp, bytecode_bytes, "object").
+:- pragma foreign_type(erlang, bytecode_bytes, "").
+:- type label_layout.
+:- type module_layout.
+:- type proc_layout.
+:- type string_table.
+:- type string_table_chars.
+:- type_representation((mdbcomp.rtti_access).bytecode, is_word_aligned_ptr).
+:- type_representation((mdbcomp.rtti_access).bytecode_bytes, du_repn(direct_dummy("dummy_bytecode_bytes", [foreign_type(c("const MR_uint_least8_t *", [can_pass_as_mercury_type, stable])), foreign_type(java("java.lang.Object", [])), foreign_type(csharp("object", [])), foreign_type(erlang("", []))]))).
+:- type_representation((mdbcomp.rtti_access).string_table, is_word_aligned_ptr).

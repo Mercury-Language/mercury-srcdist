@@ -1,0 +1,11 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- include_module ((mdbcomp.feedback).automatic_parallelism).
+:- type feedback_info.
+:- type feedback_info_candidate_parallel_conjunctions.
+:- type feedback_read_error.
+:- type feedback_read_result(T).
+:- type feedback_write_result.
+:- type_representation((mdbcomp.feedback).feedback_info, is_word_aligned_ptr).
+:- type_representation((mdbcomp.feedback).feedback_info_candidate_parallel_conjunctions, is_word_aligned_ptr).
+:- type_representation((mdbcomp.feedback).feedback_read_result(V_1), is_eqv_to(maybe_error(V_1, mdbcomp.feedback.feedback_read_error))).

@@ -1,0 +1,20 @@
+echo on
+context none
+register --quiet
+b consult
+c
+delete 0
+vars
+print *
+b database_assert_clause
+c
+delete 0
+finish
+print *
+finish -a
+print *
+
+finish -n
+
+
+continue

@@ -1,0 +1,29 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- interface.
+:- type candidate_par_conjunctions.
+:- type dependency_graphs.
+:- type dependent_conjunct_execution.
+:- type implicit_parallelism_info.
+:- type incomplete_parallelisation.
+:- type inst_map_info.
+:- type is_costly_goal
+	where	type_is_abstract_enum(1).
+:- type lazy_var_use_map.
+:- type parallel_execution_overlap.
+:- type parallelisation_cost_data.
+:- type pard_goal_detail.
+:- type pard_goal_detail_annotation.
+:- type pard_goal_type.
+:- type var_and_mode.
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).candidate_par_conjunctions, is_eqv_to(map(string_proc_label, candidate_par_conjunctions_proc(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail)))).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).dependency_graphs, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).dependent_conjunct_execution, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).implicit_parallelism_info, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).incomplete_parallelisation, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).inst_map_info, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).is_costly_goal, du_repn(enum("is_not_costly_goal", "is_costly_goal", [], []))).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).lazy_var_use_map, is_eqv_to(map(var_rep, lazy(var_use_info)))).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).parallelisation_cost_data, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).pard_goal_detail, is_eqv_to(goal_rep(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail_annotation))).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).pard_goal_detail_annotation, is_word_aligned_ptr).
+:- type_representation(((mdprof_fb.automatic_parallelism).autopar_types).var_and_mode, is_word_aligned_ptr).
