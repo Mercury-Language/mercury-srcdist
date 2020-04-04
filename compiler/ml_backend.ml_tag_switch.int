@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_tag_switch).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- pred ml_generate_tag_switch(list.list(hlds.hlds_goal.tagged_case), parse_tree.prog_data.prog_var, hlds.code_model.code_model, parse_tree.prog_data.can_fail, ml_backend.ml_gen_info.packed_word_map, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_tag_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,5 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- type lambda_info.
+:- type reg_wrapper_proc.
+:- type_representation((transform_hlds.lambda).lambda_info, is_word_aligned_ptr).

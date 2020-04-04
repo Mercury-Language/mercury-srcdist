@@ -1,0 +1,3 @@
+:- module (hlds.mark_static_terms).
+:- interface.
+:- type_representation((hlds.mark_static_terms).static_info, is_eqv_to(set_tree234.set_tree234(parse_tree.prog_data.prog_var))).

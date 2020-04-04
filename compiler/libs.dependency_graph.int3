@@ -1,0 +1,13 @@
+:- module (libs.dependency_graph).
+:- interface.
+:- type bottom_up_dependency_sccs(T).
+:- type dependency_arcs(T).
+:- type dependency_graph(T).
+:- type dependency_graph_key(T).
+:- type dependency_info(T).
+:- type scc_map(T).
+:- type_representation((libs.dependency_graph).bottom_up_dependency_sccs(V_1), is_eqv_to(list(set(V_1)))).
+:- type_representation((libs.dependency_graph).dependency_arcs(V_1), is_eqv_to(assoc_list(digraph_key(V_1), digraph_key(V_1)))).
+:- type_representation((libs.dependency_graph).dependency_graph(V_1), is_eqv_to(digraph(V_1))).
+:- type_representation((libs.dependency_graph).dependency_graph_key(V_1), is_eqv_to(digraph_key(V_1))).
+:- type_representation((libs.dependency_graph).scc_map(V_1), is_eqv_to(map(V_1, set(V_1)))).

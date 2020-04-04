@@ -1,0 +1,10 @@
+:- module (check_hlds.delay_info).
+:- interface.
+:- type delay_info.
+:- type_representation((check_hlds.delay_info).delay_goal_stack, is_eqv_to(stack.stack(map.map(check_hlds.delay_info.seq_num, check_hlds.mode_errors.delayed_goal)))).
+:- type_representation((check_hlds.delay_info).delay_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.delay_info).depth_num, is_eqv_to(int)).
+:- type_representation((check_hlds.delay_info).pending_goals_table, is_eqv_to(map.map(check_hlds.delay_info.depth_num, cord.cord(check_hlds.delay_info.seq_num)))).
+:- type_representation((check_hlds.delay_info).seq_num, is_eqv_to(int)).
+:- type_representation((check_hlds.delay_info).waiting_goals, is_eqv_to(map.map(check_hlds.delay_info.delay_goal_num, list.list(parse_tree.prog_data.prog_var)))).
+:- type_representation((check_hlds.delay_info).waiting_goals_table, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.delay_info.waiting_goals))).

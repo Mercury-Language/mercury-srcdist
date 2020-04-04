@@ -1,0 +1,32 @@
+:- module (ll_backend.rtti_out).
+:- interface.
+:- use_module backend_libs.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (backend_libs.rtti).
+:- use_module (ll_backend.llds_out).
+:- use_module (mdbcomp.prim_data).
+:- use_module ((ll_backend.llds_out).llds_out_util).
+:- pred init_rtti_data_if_nec(backend_libs.rtti.rtti_data, io.io, io.io).
+:- mode init_rtti_data_if_nec((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_addr_of_rtti_data(backend_libs.rtti.rtti_data, io.io, io.io).
+:- mode output_addr_of_rtti_data((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_cast_addr_of_rtti_data(string, backend_libs.rtti.rtti_data, io.io, io.io).
+:- mode output_cast_addr_of_rtti_data((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_decl(ll_backend.llds_out.llds_out_util.llds_out_info, backend_libs.rtti.rtti_data, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_rtti_data_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_decl_list(ll_backend.llds_out.llds_out_util.llds_out_info, list.list(backend_libs.rtti.rtti_data), ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_rtti_data_decl_list((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, backend_libs.rtti.rtti_data, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_rtti_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id(backend_libs.rtti.rtti_id, io.io, io.io).
+:- mode output_rtti_id((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id_storage_type_name(ll_backend.llds_out.llds_out_util.llds_out_info, backend_libs.rtti.rtti_id, bool.bool, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_rtti_id_storage_type_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id_storage_type_name_no_decl(ll_backend.llds_out.llds_out_util.llds_out_info, backend_libs.rtti.rtti_id, bool.bool, io.io, io.io).
+:- mode output_rtti_id_storage_type_name_no_decl((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred register_rtti_data_if_nec(backend_libs.rtti.rtti_data, io.io, io.io).
+:- mode register_rtti_data_if_nec((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func tabling_struct_data_addr_string(mdbcomp.prim_data.proc_label, backend_libs.rtti.proc_tabling_struct_id) = string.
