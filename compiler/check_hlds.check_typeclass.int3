@@ -1,0 +1,4 @@
+:- module (check_hlds.check_typeclass).
+:- interface.
+:- type_representation((check_hlds.check_typeclass).class_path, is_eqv_to(list(class_id))).
+:- type_representation((check_hlds.check_typeclass).induced_fundeps, is_eqv_to(list(induced_fundep))).

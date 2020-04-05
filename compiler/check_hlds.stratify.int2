@@ -1,0 +1,4 @@
+:- module (check_hlds.stratify).
+:- interface.
+:- type_representation((check_hlds.stratify).call_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, set.set(hlds.hlds_pred.pred_proc_id)))).
+:- type_representation((check_hlds.stratify).ho_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, check_hlds.stratify.strat_ho_info))).

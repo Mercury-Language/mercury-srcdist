@@ -1,0 +1,5 @@
+:- module (mdb.declarative_oracle).
+:- interface.
+:- type oracle_response(T).
+:- type oracle_state.
+:- type_representation((mdb.declarative_oracle).oracle_state, is_word_aligned_ptr).

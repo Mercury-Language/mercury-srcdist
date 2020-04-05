@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_unify_gen_deconstruct).
+:- interface.
+:- type take_addr_info.
+:- type_representation((ml_backend.ml_unify_gen_deconstruct).take_addr_info, is_word_aligned_ptr).
