@@ -1,0 +1,12 @@
+:- module (hlds.hlds_promise).
+:- interface.
+:- type assert_id.
+:- type assertion_table.
+:- type exclusive_id.
+:- type exclusive_ids.
+:- type exclusive_table.
+:- type_representation((hlds.hlds_promise).assert_id, du_repn(notag("assert_id", []))).
+:- type_representation((hlds.hlds_promise).assertion_table, is_word_aligned_ptr).
+:- type_representation((hlds.hlds_promise).exclusive_id, is_eqv_to(pred_id)).
+:- type_representation((hlds.hlds_promise).exclusive_ids, is_eqv_to(list(pred_id))).
+:- type_representation((hlds.hlds_promise).exclusive_table, is_eqv_to(multi_map(pred_id, hlds.hlds_promise.exclusive_id))).

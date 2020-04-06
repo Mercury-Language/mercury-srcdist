@@ -1,0 +1,7 @@
+:- module (mdb.debugger_interface).
+:- interface.
+:- type_representation((mdb.debugger_interface).arity, is_eqv_to(int)).
+:- type_representation((mdb.debugger_interface).call_number, is_eqv_to(int)).
+:- type_representation((mdb.debugger_interface).depth_number, is_eqv_to(int)).
+:- type_representation((mdb.debugger_interface).determinism, is_eqv_to(int)).
+:- type_representation((mdb.debugger_interface).event_number, is_eqv_to(int)).

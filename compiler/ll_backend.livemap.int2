@@ -1,0 +1,9 @@
+:- module (ll_backend.livemap).
+:- interface.
+:- use_module map.
+:- use_module set.
+:- use_module (ll_backend.llds).
+:- type livemap == map.map(ll_backend.llds.label, ll_backend.livemap.lvalset).
+:- type lvalset == set.set(ll_backend.llds.lval).
+:- type_representation((ll_backend.livemap).livemap, is_eqv_to(map.map(ll_backend.llds.label, ll_backend.livemap.lvalset))).
+:- type_representation((ll_backend.livemap).lvalset, is_eqv_to(set.set(ll_backend.llds.lval))).

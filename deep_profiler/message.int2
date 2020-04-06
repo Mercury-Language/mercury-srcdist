@@ -1,0 +1,33 @@
+:- module message.
+:- interface.
+:- type message
+    --->    message((message.message_location) :: message.program_location, (message.message_type) :: message.message_type).
+:- type message_level
+    --->    message_info 
+    ;       message_notice 
+    ;       message_warning 
+    ;       message_error .
+:- type message_type
+    --->    info_found_candidate_conjunction 
+    ;       info_found_conjs_above_callsite_threshold(int)
+    ;       info_found_pushed_conjs_above_callsite_threshold 
+    ;       info_split_conjunction_into_partitions(int)
+    ;       info_found_n_conjunctions_with_positive_speedup(int)
+    ;       notice_duplicate_instantiation(int)
+    ;       notice_callpair_has_more_than_one_dependant_var 
+    ;       notice_partition_does_not_have_costly_calls(int, int)
+    ;       notice_candidate_conjunction_not_det(mdbcomp.program_representation.detism_rep)
+    ;       warning_cannot_lookup_proc_defn 
+    ;       warning_cannot_compute_procrep_coverage_fallback(string)
+    ;       warning_cannot_compute_cost_of_recursive_calls(string)
+    ;       warning_cannot_compute_first_use_time(string)
+    ;       error_extra_proc_dynamics_in_clique_proc 
+    ;       error_cannot_lookup_coverage_points 
+    ;       error_exception_thrown(string).
+:- type program_location
+    --->    pl_proc(mdbcomp.program_representation.string_proc_label)
+    ;       pl_goal(mdbcomp.program_representation.string_proc_label, mdbcomp.goal_path.reverse_goal_path)
+    ;       pl_clique(profile.clique_ptr)
+    ;       pl_csd(profile.call_site_dynamic_ptr).
+:- type_representation(message.message, is_word_aligned_ptr).
+:- type_representation(message.message_level, du_repn(enum("message_info", "message_notice", ["message_warning", "message_error"], []))).

@@ -1,0 +1,7 @@
+:- module (check_hlds.det_analysis).
+:- interface.
+:- type pess_info.
+:- type soln_context
+	where	type_is_abstract_enum(1).
+:- type_representation((check_hlds.det_analysis).pess_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.det_analysis).soln_context, du_repn(enum("all_solns", "first_soln", [], []))).

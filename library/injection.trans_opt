@@ -1,0 +1,163 @@
+:- module injection.
+
+:- pragma termination_info(injection.apply_forward_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.apply_forward_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.apply_reverse_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.apply_reverse_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.contains_key((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(injection.contains_value((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(injection.delete_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_keys((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_value((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_value((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_values((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.filter_map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.forward_map((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.forward_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.forward_search((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(injection.forward_search((builtin.in), (builtin.in)) = (builtin.out), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(injection.init((builtin.out)), finite(2, [no, no, no]), cannot_loop).
+:- pragma termination_info((injection.init) = (builtin.out), finite(2, [no, no, no]), cannot_loop).
+:- pragma termination_info(injection.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(injection.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(injection.insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_key_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_key_p(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_value_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(injection.keys((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.keys((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(injection.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-6, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(injection.map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.map_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.maybe_set_transformed_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.maybe_transform_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.overlay((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.overlay((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.reverse_lookup((builtin.in), (builtin.out), (builtin.in)), finite(-6, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(injection.reverse_lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-6, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(injection.reverse_map((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.reverse_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.reverse_search((builtin.in), (builtin.out), (builtin.in)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(injection.reverse_search((builtin.in), (builtin.in)) = (builtin.out), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(injection.search((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(injection.search((builtin.in), (builtin.out), (builtin.in)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(injection.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.singleton((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(injection.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(injection.update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(injection.values((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.values((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (injection.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.contains_key), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.contains_value), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.filter_map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.forward_map), 2, 0, will_not_throw).
+:- pragma exceptions(function, (injection.forward_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.forward_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (injection.forward_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (injection.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (injection.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_transformed_key_f), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert_transformed_key_p), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_transformed_value_f), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (injection.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.maybe_set_transformed_key), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.maybe_transform_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.reverse_map), 2, 0, will_not_throw).
+:- pragma exceptions(function, (injection.reverse_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.reverse_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (injection.reverse_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.search), 3, 1, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.singleton), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (injection.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (injection.values), 2, 0, will_not_throw).
+:- pragma exceptions(function, (injection.values), 2, 0, will_not_throw).

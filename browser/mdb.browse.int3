@@ -1,0 +1,4 @@
+:- module (mdb.browse).
+:- interface.
+:- type unbound.
+:- type_representation((mdb.browse).unbound, du_repn(direct_dummy("_", []))).

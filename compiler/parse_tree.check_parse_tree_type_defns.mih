@@ -1,0 +1,239 @@
+/*
+** Automatically generated from `check_parse_tree_type_defns.m'
+** by the Mercury compiler,
+** version rotd-2020-04-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.check_parse_tree_type_defns.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__check_parse_tree_type_defns
+#define MR_HEADER_GUARD_parse_tree__check_parse_tree_type_defns
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__CHECK_PARSE_TREE_TYPE_DEFNS_DECL_GUARD
+#define PARSE_TREE__CHECK_PARSE_TREE_TYPE_DEFNS_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_abstract_solver_type_status_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_c_j_cs_e_maybe_defn_or_enum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_insist_on_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_only_constants_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_solver_type_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_abs_type_status_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_du_type_status_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_eqv_type_status_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_type_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_map_0;
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__check_parse_tree_type_defns__init(void);
+void mercury__parse_tree__check_parse_tree_type_defns__init_type_tables(void);
+void mercury__parse_tree__check_parse_tree_type_defns__init_debugger(void);
+const char *mercury__parse_tree__check_parse_tree_type_defns__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.check_parse_tree_type_defns
+
+// :- end_interface parse_tree.check_parse_tree_type_defns.

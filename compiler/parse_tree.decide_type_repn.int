@@ -1,0 +1,8 @@
+:- module (parse_tree.decide_type_repn).
+:- interface.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.check_parse_tree_type_defns).
+:- use_module (parse_tree.prog_item).
+:- pred decide_repns_for_simple_types_for_int3(mdbcomp.sym_name.module_name, parse_tree.check_parse_tree_type_defns.type_ctor_checked_map, parse_tree.prog_item.type_ctor_repn_map).
+:- mode decide_repns_for_simple_types_for_int3((builtin.in), (builtin.in), (builtin.out)) is det.

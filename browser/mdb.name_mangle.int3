@@ -1,0 +1,16 @@
+:- module (mdb.name_mangle).
+:- interface.
+:- type arity.
+:- type is_pred_or_func
+	where	type_is_abstract_enum(1).
+:- type mercury_proc.
+:- type mode_num.
+:- type module_name.
+:- type pred_name.
+:- type sym_name.
+:- type_representation((mdb.name_mangle).arity, is_eqv_to(int)).
+:- type_representation((mdb.name_mangle).is_pred_or_func, du_repn(enum("predicate", "function", [], []))).
+:- type_representation((mdb.name_mangle).mercury_proc, is_word_aligned_ptr).
+:- type_representation((mdb.name_mangle).mode_num, is_eqv_to(int)).
+:- type_representation((mdb.name_mangle).module_name, is_eqv_to(mdb.name_mangle.sym_name)).
+:- type_representation((mdb.name_mangle).pred_name, is_eqv_to(string)).

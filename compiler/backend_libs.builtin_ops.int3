@@ -1,0 +1,14 @@
+:- module (backend_libs.builtin_ops).
+:- interface.
+:- type array_elem_type.
+:- type binary_op.
+:- type scalar_array_elem_type
+	where	type_is_abstract_enum(2).
+:- type simple_code(T).
+:- type simple_expr(T).
+:- type unary_op.
+:- abstract_inst((simple_arg_expr)).
+:- abstract_inst((simple_assign_expr)).
+:- abstract_inst((simple_code)).
+:- abstract_inst((simple_test_expr)).
+:- type_representation((backend_libs.builtin_ops).scalar_array_elem_type, du_repn(enum("scalar_elem_string", "scalar_elem_int", ["scalar_elem_generic"], []))).

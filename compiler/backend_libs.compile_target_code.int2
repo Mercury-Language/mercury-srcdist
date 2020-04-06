@@ -1,0 +1,18 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- type linked_target_type
+    --->    executable 
+    ;       static_library 
+    ;       shared_library 
+    ;       csharp_executable 
+    ;       csharp_library 
+    ;       java_executable 
+    ;       java_archive 
+    ;       erlang_launcher 
+    ;       erlang_archive .
+:- type pic
+    --->    pic 
+    ;       non_pic .
+:- type_representation((backend_libs.compile_target_code).compile_init_file_pred, is_eqv_to(pred(libs.file_util.file_name, bool.bool, io.io, io.io))).
+:- type_representation((backend_libs.compile_target_code).linked_target_type, du_repn(enum("executable", "static_library", ["shared_library", "csharp_executable", "csharp_library", "java_executable", "java_archive", "erlang_launcher", "erlang_archive"], []))).
+:- type_representation((backend_libs.compile_target_code).pic, du_repn(enum("pic", "non_pic", [], []))).
