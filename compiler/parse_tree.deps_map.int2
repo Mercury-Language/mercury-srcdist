@@ -1,0 +1,18 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- use_module map.
+:- use_module (mdbcomp.sym_name).
+:- type deps
+    --->    deps(parse_tree.deps_map.have_processed, parse_tree.module_imports.module_and_imports).
+:- type deps_map == map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps).
+:- type have_processed
+    --->    not_yet_processed 
+    ;       already_processed .
+:- type submodule_kind
+    --->    toplevel 
+    ;       nested_submodule 
+    ;       separate_submodule .
+:- type_representation((parse_tree.deps_map).deps, is_word_aligned_ptr).
+:- type_representation((parse_tree.deps_map).deps_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps))).
+:- type_representation((parse_tree.deps_map).have_processed, du_repn(enum("not_yet_processed", "already_processed", [], []))).
+:- type_representation((parse_tree.deps_map).submodule_kind, du_repn(enum("toplevel", "nested_submodule", ["separate_submodule"], []))).

@@ -1,0 +1,4 @@
+:- module set.
+:- interface.
+:- type set(T).
+:- type_representation(set.set(V_1), is_eqv_to(set_ordlist(V_1))).

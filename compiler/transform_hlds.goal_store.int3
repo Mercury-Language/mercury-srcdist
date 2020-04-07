@@ -1,0 +1,6 @@
+:- module (transform_hlds.goal_store).
+:- interface.
+:- type goal_store(T).
+:- type stored_goal.
+:- type_representation((transform_hlds.goal_store).goal_store(V_1), is_eqv_to(map.map(V_1, transform_hlds.goal_store.stored_goal))).
+:- type_representation((transform_hlds.goal_store).stored_goal, is_word_aligned_ptr).

@@ -1,0 +1,13 @@
+:- module (mdb.io_action).
+:- interface.
+:- type io_action
+    --->    io_action(((mdb.io_action).io_action_proc_name) :: string, ((mdb.io_action).io_action_pf) :: mdbcomp.prim_data.pred_or_func, ((mdb.io_action).io_action_args) :: list.list(univ.univ)).
+:- type io_action_range
+    --->    io_action_range(((mdb.io_action).from_io_action) :: mdb.io_action.io_seq_num, ((mdb.io_action).to_io_action) :: mdb.io_action.io_seq_num).
+:- type io_seq_num == int.
+:- type maybe_tabled_io_action
+    --->    tabled(mdb.io_action.io_action)
+    ;       untabled .
+:- type_representation((mdb.io_action).io_action, is_word_aligned_ptr).
+:- type_representation((mdb.io_action).io_action_range, is_word_aligned_ptr).
+:- type_representation((mdb.io_action).io_seq_num, is_eqv_to(int)).

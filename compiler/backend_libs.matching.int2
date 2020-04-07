@@ -1,0 +1,10 @@
+:- module (backend_libs.matching).
+:- interface.
+:- type benefit_node.
+:- type cost_node.
+:- type matching_params
+    --->    matching_params(((backend_libs.matching).cell_var_store_cost) :: int, ((backend_libs.matching).cell_var_load_cost) :: int, ((backend_libs.matching).field_var_store_cost) :: int, ((backend_libs.matching).field_var_load_cost) :: int, ((backend_libs.matching).one_path_op_ratio) :: int, ((backend_libs.matching).one_path_node_ratio) :: int, ((backend_libs.matching).include_all_candidates) :: bool.bool).
+:- type_representation((backend_libs.matching).benefit_node, is_word_aligned_ptr).
+:- type_representation((backend_libs.matching).cost_node, is_word_aligned_ptr).
+:- type_representation((backend_libs.matching).edge_list, is_eqv_to(assoc_list.assoc_list(backend_libs.matching.benefit_node, backend_libs.matching.cost_node))).
+:- type_representation((backend_libs.matching).matching_params, is_word_aligned_ptr).

@@ -1,0 +1,9 @@
+:- module math.
+:- interface.
+:- type domain_error
+    --->    domain_error(string).
+:- type quadratic_roots
+    --->    no_roots 
+    ;       one_root(float)
+    ;       two_roots(float, float).
+:- type_representation(math.domain_error, du_repn(notag("domain_error", []))).
