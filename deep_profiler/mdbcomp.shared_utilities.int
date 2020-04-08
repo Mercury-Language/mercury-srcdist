@@ -1,0 +1,5 @@
+:- module (mdbcomp.shared_utilities).
+:- interface.
+:- use_module io.
+:- pred unlimit_stack(io.io, io.io).
+:- mode unlimit_stack((builtin.di), (builtin.uo)) is det.

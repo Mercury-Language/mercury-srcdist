@@ -1,0 +1,8 @@
+:- module pair.
+:- interface.
+:- type pair(T) == pair.pair(T, T).
+:- type pair(T1, T2)
+    --->    -(T1, T2).
+:- inst (pair(I)) == pair.pair(I, I).
+:- inst (pair(I1, I2)) for pair.pair/2 == bound(-(I1, I2)).
+:- type_representation(pair.pair(V_1), is_eqv_to(pair.pair(V_1, V_1))).

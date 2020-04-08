@@ -1,0 +1,5 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- type maybe_modes.
+:- type new_pred_id.
+:- type_representation((parse_tree.prog_util).maybe_modes, is_eqv_to(maybe(list(mer_mode)))).

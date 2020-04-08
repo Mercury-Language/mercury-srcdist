@@ -1,0 +1,7 @@
+:- module (((transform_hlds.ctgc).structure_sharing).domain).
+:- interface.
+:- type sharing_as.
+:- type sharing_as_and_status.
+:- type sharing_as_table.
+:- type_representation((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_and_status, is_word_aligned_ptr).
+:- type_representation((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table, is_eqv_to(map(pred_proc_id, transform_hlds.ctgc.structure_sharing.domain.sharing_as_and_status))).
