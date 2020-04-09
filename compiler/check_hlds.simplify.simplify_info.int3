@@ -1,0 +1,10 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- type innermost_proc.
+:- type maybe_allow_messages
+	where	type_is_abstract_enum(1).
+:- type simplify_info.
+:- type simplify_nested_context.
+:- type_representation(((check_hlds.simplify).simplify_info).maybe_allow_messages, du_repn(enum("do_not_allow_messages", "allow_messages", [], []))).
+:- type_representation(((check_hlds.simplify).simplify_info).simplify_info, is_word_aligned_ptr).
+:- type_representation(((check_hlds.simplify).simplify_info).simplify_nested_context, is_word_aligned_ptr).

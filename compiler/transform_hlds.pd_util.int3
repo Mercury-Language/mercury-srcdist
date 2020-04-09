@@ -1,0 +1,4 @@
+:- module (transform_hlds.pd_util).
+:- interface.
+:- type_representation((transform_hlds.pd_util).expansions, is_eqv_to(set(pair(mer_inst)))).
+:- type_representation((transform_hlds.pd_util).pd_var_info, is_eqv_to(branch_info_map(prog_var))).

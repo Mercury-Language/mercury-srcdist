@@ -1,0 +1,3 @@
+:- module (parse_tree.parse_pragma).
+:- interface.
+:- type_representation((parse_tree.parse_pragma).maybe_pred_or_func_modes, is_eqv_to(parse_tree.maybe_error.maybe3(mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_mode)))).

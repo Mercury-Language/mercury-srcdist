@@ -1,0 +1,18 @@
+:- module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- interface.
+:- type exec_path_region_set_table.
+:- type join_point_region_name_table.
+:- type proc_resurrection_path_table.
+:- type rbmm_renaming.
+:- type rbmm_renaming_annotation_proc.
+:- type rbmm_renaming_annotation_table.
+:- type rbmm_renaming_proc.
+:- type rbmm_renaming_table.
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).exec_path_region_set_table, is_eqv_to(map(execution_path, region_set))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).join_point_region_name_table, is_eqv_to(map(pred_proc_id, map(program_point, string)))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).proc_resurrection_path_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.exec_path_region_set_table))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).rbmm_renaming, is_eqv_to(multi_map(string, string))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).rbmm_renaming_annotation_proc, is_eqv_to(map(program_point, list(region_instr)))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).rbmm_renaming_annotation_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_proc))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).rbmm_renaming_proc, is_eqv_to(map(program_point, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming))).
+:- type_representation(((transform_hlds.rbmm).region_resurrection_renaming).rbmm_renaming_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_proc))).

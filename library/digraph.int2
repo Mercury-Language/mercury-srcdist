@@ -1,0 +1,13 @@
+:- module digraph.
+:- interface.
+:- use_module enum.
+:- use_module sparse_bitset.
+:- type digraph(T).
+:- type digraph_key(T).
+:- type digraph_key_set(T) == sparse_bitset.sparse_bitset(digraph.digraph_key(T)).
+:- instance (enum.enum(digraph.digraph_key(T))).
+:- type_representation(digraph.clique_map(V_1), is_eqv_to(map.map(digraph.digraph_key(V_1), digraph.digraph_key(set.set(V_1))))).
+:- type_representation(digraph.digraph_key(V_1), du_repn(notag("digraph_key", []))).
+:- type_representation(digraph.digraph_key_set(V_1), is_eqv_to(sparse_bitset.sparse_bitset(digraph.digraph_key(V_1)))).
+:- type_representation(digraph.key_map(V_1), is_eqv_to(map.map(int, digraph.digraph_key(V_1)))).
+:- type_representation(digraph.key_set_map(V_1), is_eqv_to(map.map(int, digraph.digraph_key_set(V_1)))).
