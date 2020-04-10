@@ -1,0 +1,8 @@
+:- module char.
+:- interface.
+:- import_module enum.
+:- import_module list.
+:- import_module pretty_printer.
+:- type char.
+:- instance (enum(character)).
+:- type_representation(char.char, is_eqv_to(character)).

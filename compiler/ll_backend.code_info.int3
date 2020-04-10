@@ -1,0 +1,4 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- type code_info.
+:- type_representation((ll_backend.code_info).code_info, is_word_aligned_ptr).

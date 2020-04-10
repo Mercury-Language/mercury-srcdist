@@ -1,0 +1,11 @@
+:- module (libs.trace_params).
+:- interface.
+:- type trace_level.
+:- type trace_suppress_items.
+:- type_representation((libs.trace_params).trace_level, du_repn(enum("none", "basic", ["basic_user", "shallow", "deep", "decl_rep"], []))).
+:- type_representation((libs.trace_params).trace_suppress_items, is_eqv_to(set.set(libs.trace_params.trace_suppress_item))).
+:- implementation.
+:- type trace_level
+	where	type_is_abstract_enum(3).
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).

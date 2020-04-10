@@ -1,0 +1,13 @@
+:- module (ml_backend.ml_args_util).
+:- interface.
+:- type copy_out_when
+	where	type_is_abstract_enum(2).
+:- type ml_call_arg.
+:- type var_mvar_type_mode.
+:- type what_params
+	where	type_is_abstract_enum(1).
+:- abstract_inst((fcw)).
+:- abstract_inst((not_fcw)).
+:- type_representation((ml_backend.ml_args_util).copy_out_when, du_repn(enum("copy_out_never", "copy_out_only_last_arg", ["copy_out_always"], []))).
+:- type_representation((ml_backend.ml_args_util).var_mvar_type_mode, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_args_util).what_params, du_repn(enum("input_params_only", "input_and_output_params", [], []))).

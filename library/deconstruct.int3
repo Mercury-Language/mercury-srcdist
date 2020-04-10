@@ -1,0 +1,11 @@
+:- module deconstruct.
+:- interface.
+:- type maybe_arg.
+:- type noncanon_handling
+	where	type_is_abstract_enum(2).
+:- abstract_inst((canonicalize)).
+:- abstract_inst((canonicalize_or_do_not_allow)).
+:- abstract_inst((do_not_allow)).
+:- abstract_inst((do_not_allow_or_include_details_cc)).
+:- abstract_inst((include_details_cc)).
+:- type_representation(deconstruct.noncanon_handling, du_repn(enum("do_not_allow", "canonicalize", ["include_details_cc"], []))).

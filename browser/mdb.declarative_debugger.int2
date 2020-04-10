@@ -1,0 +1,73 @@
+:- module (mdb.declarative_debugger).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module unit.
+:- use_module (mdb.browser_info).
+:- use_module (mdb.declarative_analyser).
+:- use_module (mdb.declarative_execution).
+:- use_module (mdb.declarative_tree).
+:- use_module (mdb.help).
+:- use_module (mdb.io_action).
+:- use_module (mdb.term_rep).
+:- use_module (mdbcomp.program_representation).
+:- type decl_answer(T)
+    --->    truth_value(T, mdb.declarative_debugger.decl_truth)
+    ;       suspicious_subterm(T, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path, mdb.browser_info.how_track_subterm, mdb.browser_info.should_assert_invalid)
+    ;       ignore(T)
+    ;       skip(T).
+:- type decl_bug
+    --->    e_bug(mdb.declarative_debugger.decl_e_bug)
+    ;       i_bug(mdb.declarative_debugger.decl_i_bug).
+:- type decl_confirmation
+    --->    confirm_bug 
+    ;       overrule_bug 
+    ;       abort_diagnosis .
+:- type decl_contour == list.list(mdb.declarative_debugger.final_decl_atom).
+:- type decl_e_bug
+    --->    incorrect_contour(mdb.declarative_debugger.init_decl_atom, mdb.declarative_debugger.final_decl_atom, mdb.declarative_debugger.decl_contour, mdb.declarative_execution.event_number)
+    ;       partially_uncovered_atom(mdb.declarative_debugger.init_decl_atom, mdb.declarative_execution.event_number)
+    ;       unhandled_exception(mdb.declarative_debugger.init_decl_atom, mdb.declarative_debugger.decl_exception, mdb.declarative_execution.event_number).
+:- type decl_evidence(T) == list.list(mdb.declarative_debugger.decl_question(T)).
+:- type decl_exception == mdb.term_rep.term_rep.
+:- type decl_i_bug
+    --->    inadmissible_call(mdb.declarative_debugger.init_decl_atom, mdb.declarative_debugger.decl_position, mdb.declarative_debugger.init_decl_atom, mdb.declarative_execution.event_number).
+:- type decl_position == unit.unit.
+:- type decl_question(T)
+    --->    wrong_answer(T, mdb.declarative_debugger.init_decl_atom, mdb.declarative_debugger.final_decl_atom)
+    ;       missing_answer(T, mdb.declarative_debugger.init_decl_atom, list.list(mdb.declarative_debugger.final_decl_atom))
+    ;       unexpected_exception(T, mdb.declarative_debugger.init_decl_atom, mdb.declarative_debugger.decl_exception).
+:- type decl_truth
+    --->    truth_correct 
+    ;       truth_erroneous 
+    ;       truth_inadmissible .
+:- type diagnoser_exception
+    --->    internal_error(string, string)
+    ;       io_error(string, string)
+    ;       unimplemented_feature(string).
+:- type diagnoser_response(R)
+    --->    bug_found(mdb.declarative_execution.event_number)
+    ;       symptom_found(mdb.declarative_execution.event_number)
+    ;       no_bug_found 
+    ;       require_subtree(((mdb.declarative_debugger).require_subtree_final_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_debugger).require_subtree_seqno) :: mdb.declarative_execution.sequence_number, ((mdb.declarative_debugger).require_subtree_call_preceding_node) :: R, ((mdb.declarative_debugger).require_subtree_max_depth) :: int)
+    ;       require_supertree(mdb.declarative_execution.event_number, mdb.declarative_execution.sequence_number).
+:- type diagnoser_state(R).
+:- type final_decl_atom
+    --->    final_decl_atom(((mdb.declarative_debugger).final_atom) :: mdb.declarative_execution.trace_atom, ((mdb.declarative_debugger).final_io_actions) :: maybe.maybe(mdb.io_action.io_action_range)).
+:- type init_decl_atom
+    --->    init_decl_atom(((mdb.declarative_debugger).init_atom) :: mdb.declarative_execution.trace_atom).
+:- type some_decl_atom
+    --->    init(mdb.declarative_debugger.init_decl_atom)
+    ;       final(mdb.declarative_debugger.final_decl_atom).
+:- inst (known_answer) for (mdb.declarative_debugger).decl_answer/1 == bound(ignore(ground) ; truth_value(ground, ground)).
+:- type_representation((mdb.declarative_debugger).decl_confirmation, du_repn(enum("confirm_bug", "overrule_bug", ["abort_diagnosis"], []))).
+:- type_representation((mdb.declarative_debugger).decl_contour, is_eqv_to(list.list(mdb.declarative_debugger.final_decl_atom))).
+:- type_representation((mdb.declarative_debugger).decl_evidence(V_1), is_eqv_to(list.list(mdb.declarative_debugger.decl_question(V_1)))).
+:- type_representation((mdb.declarative_debugger).decl_exception, is_eqv_to(mdb.term_rep.term_rep)).
+:- type_representation((mdb.declarative_debugger).decl_i_bug, is_word_aligned_ptr).
+:- type_representation((mdb.declarative_debugger).decl_position, is_eqv_to(unit.unit)).
+:- type_representation((mdb.declarative_debugger).decl_truth, du_repn(enum("truth_correct", "truth_erroneous", ["truth_inadmissible"], []))).
+:- type_representation((mdb.declarative_debugger).final_decl_atom, is_word_aligned_ptr).
+:- type_representation((mdb.declarative_debugger).init_decl_atom, du_repn(notag("init_decl_atom", []))).

@@ -1,0 +1,10 @@
+:- module (thread.barrier).
+:- interface.
+:- use_module io.
+:- type barrier.
+:- pred init(int, thread.barrier.barrier, io.io, io.io).
+:- mode init((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred release(thread.barrier.barrier, io.io, io.io).
+:- mode release((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred wait(thread.barrier.barrier, io.io, io.io).
+:- mode wait((builtin.in), (builtin.di), (builtin.uo)) is det.
