@@ -1,0 +1,7 @@
+:- module (parse_tree.canonicalize_interface).
+:- interface.
+:- type pred_or_mode_decl_item
+    --->    pomd_pred(parse_tree.prog_item.item_pred_decl_info)
+    ;       pomd_mode(parse_tree.prog_item.item_mode_decl_info).
+:- type_representation((parse_tree.canonicalize_interface).pred_related_items_map, is_eqv_to(map.map(mdbcomp.sym_name.sym_name, parse_tree.canonicalize_interface.pred_related_items))).
+:- type_representation((parse_tree.canonicalize_interface).sym_name_items_map, is_eqv_to(map.map(parse_tree.prog_data.sym_name_arity, cord.cord(parse_tree.prog_item.item)))).

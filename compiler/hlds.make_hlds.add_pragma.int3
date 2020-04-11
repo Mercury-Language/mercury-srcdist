@@ -1,0 +1,3 @@
+:- module ((hlds.make_hlds).add_pragma).
+:- interface.
+:- type_representation(((hlds.make_hlds).add_pragma).add_marker_pred_info, is_eqv_to(pred(pred_info, pred_info))).

@@ -1,0 +1,28 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- use_module list.
+:- type binop_category
+    --->    array_index_binop 
+    ;       string_index_binop 
+    ;       pointer_compare_binop 
+    ;       compound_compare_binop 
+    ;       offset_string_compare_binop(int)
+    ;       general_string_compare_binop 
+    ;       string_compare_binop 
+    ;       unsigned_compare_binop 
+    ;       float_compare_binop 
+    ;       float_arith_binop 
+    ;       int_or_bool_binary_infix_binop 
+    ;       int_macro_binop 
+    ;       float_macro_binop .
+:- type literal_language
+    --->    literal_c 
+    ;       literal_java 
+    ;       literal_csharp .
+:- type maybe_set_line_numbers
+    --->    dont_set_line_numbers 
+    ;       set_line_numbers .
+:- type multi_string == list.list(string).
+:- type_representation((backend_libs.c_util).literal_language, du_repn(enum("literal_c", "literal_java", ["literal_csharp"], []))).
+:- type_representation((backend_libs.c_util).maybe_set_line_numbers, du_repn(enum("dont_set_line_numbers", "set_line_numbers", [], []))).
+:- type_representation((backend_libs.c_util).multi_string, is_eqv_to(list.list(string))).

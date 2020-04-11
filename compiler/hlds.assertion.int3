@@ -1,0 +1,7 @@
+:- module (hlds.assertion).
+:- interface.
+:- type associative_vars_output_var.
+:- type state_update_vars.
+:- type_representation((hlds.assertion).associative_vars_output_var, is_word_aligned_ptr).
+:- type_representation((hlds.assertion).state_update_vars, is_word_aligned_ptr).
+:- type_representation((hlds.assertion).subst, is_eqv_to(map(prog_var, prog_var))).

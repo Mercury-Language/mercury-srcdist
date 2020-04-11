@@ -1,0 +1,6 @@
+:- module (ll_backend.basic_block).
+:- interface.
+:- type block_info.
+:- type block_map.
+:- type_representation((ll_backend.basic_block).block_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.basic_block).block_map, is_eqv_to(map(label, ll_backend.basic_block.block_info))).

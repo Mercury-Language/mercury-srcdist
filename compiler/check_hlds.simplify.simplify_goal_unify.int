@@ -1,0 +1,9 @@
+:- module ((check_hlds.simplify).simplify_goal_unify).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.instmap).
+:- use_module ((check_hlds.simplify).common).
+:- use_module ((check_hlds.simplify).simplify_info).
+:- pred simplify_goal_unify(hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, check_hlds.simplify.simplify_info.simplify_nested_context, hlds.instmap.instmap, check_hlds.simplify.common.common_info, check_hlds.simplify.common.common_info, check_hlds.simplify.simplify_info.simplify_info, check_hlds.simplify.simplify_info.simplify_info).
+:- mode simplify_goal_unify(builtin.in(((hlds.hlds_goal).goal_expr_unify)), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

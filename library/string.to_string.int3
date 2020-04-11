@@ -1,0 +1,3 @@
+:- module (string.to_string).
+:- interface.
+:- type_representation((string.to_string).revstrings, is_eqv_to(list(string))).
