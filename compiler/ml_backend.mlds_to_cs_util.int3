@@ -1,0 +1,4 @@
+:- module (ml_backend.mlds_to_cs_util).
+:- interface.
+:- type csharp_out_info.
+:- type_representation((ml_backend.mlds_to_cs_util).csharp_out_info, is_word_aligned_ptr).

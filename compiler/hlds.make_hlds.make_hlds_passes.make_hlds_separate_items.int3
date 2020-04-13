@@ -1,0 +1,6 @@
+:- module (((hlds.make_hlds).make_hlds_passes).make_hlds_separate_items).
+:- interface.
+:- type ims_tuple_item(T).
+:- type ims_tuple_list(T).
+:- type_representation((((hlds.make_hlds).make_hlds_passes).make_hlds_separate_items).ims_tuple_item(V_1), is_eqv_to({item_mercury_status, V_1})).
+:- type_representation((((hlds.make_hlds).make_hlds_passes).make_hlds_separate_items).ims_tuple_list(V_1), is_eqv_to(list(hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.ims_tuple_item(V_1)))).

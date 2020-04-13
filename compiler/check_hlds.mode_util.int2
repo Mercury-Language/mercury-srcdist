@@ -1,0 +1,6 @@
+:- module (check_hlds.mode_util).
+:- interface.
+:- type recompute_atomic_instmap_deltas
+    --->    recompute_atomic_instmap_deltas 
+    ;       do_not_recompute_atomic_instmap_deltas .
+:- type_representation((check_hlds.mode_util).recompute_atomic_instmap_deltas, du_repn(enum("recompute_atomic_instmap_deltas", "do_not_recompute_atomic_instmap_deltas", [], []))).

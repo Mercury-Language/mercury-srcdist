@@ -1,0 +1,41 @@
+:- module stream.
+:- interface.
+:- include_module (stream.string_writer).
+:- type maybe_partial_res(T, Error)
+    --->    ok(T)
+    ;       error(T, Error).
+:- type name == string.
+:- type res(Error)
+    --->    ok 
+    ;       error(Error).
+:- type res(T, Error)
+    --->    ok(T)
+    ;       error(Error).
+:- type result(Error)
+    --->    ok 
+    ;       eof 
+    ;       error(Error).
+:- type result(T, Error)
+    --->    ok(T)
+    ;       eof 
+    ;       error(Error).
+:- type whence
+    --->    set 
+    ;       cur 
+    ;       end .
+:- mode (bulk_get_di) == (builtin.in).
+:- mode (bulk_get_uo) == (builtin.out).
+:- typeclass bulk_reader(Stream, Index, Store, State, Error) <= ((Stream, Index, Store -> Error), stream.input(Stream, State), stream.error(Error)).
+:- typeclass duplex(Stream, State) <= (stream.input(Stream, State), stream.output(Stream, State)).
+:- typeclass error(Error).
+:- typeclass input(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass line_oriented(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass output(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass putback(Stream, Unit, State, Error) <= (stream.reader(Stream, Unit, State, Error)).
+:- typeclass reader(Stream, Unit, State, Error) <= ((Stream, Unit -> Error), stream.input(Stream, State), stream.error(Error)).
+:- typeclass seekable(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass stream(Stream, State) <= ((Stream -> State)).
+:- typeclass unbounded_putback(Stream, Unit, State, Error) <= (stream.putback(Stream, Unit, State, Error)).
+:- typeclass writer(Stream, Unit, State) <= (stream.output(Stream, State)).
+:- type_representation(stream.name, is_eqv_to(string)).
+:- type_representation(stream.whence, du_repn(enum("set", "cur", ["end"], []))).

@@ -1,0 +1,12 @@
+:- module (bit_buffer.read).
+:- interface.
+:- type io_read_buffer.
+:- type read_buffer.
+:- type read_buffer(Stream, State, Error).
+:- abstract_inst((uniq_read_buffer)).
+:- abstract_mode((read_buffer_di)).
+:- abstract_mode((read_buffer_ui)).
+:- abstract_mode((read_buffer_uo)).
+:- type_representation((bit_buffer.read).io_read_buffer, is_eqv_to(bit_buffer.read.read_buffer(io.binary_input_stream, io.state, io.error))).
+:- type_representation((bit_buffer.read).read_buffer, is_eqv_to(bit_buffer.read.read_buffer(error_stream, error_state, error_stream_error))).
+:- type_representation((bit_buffer.read).read_buffer(V_1, V_2, V_3), du_repn(notag("read_buffer", []))).

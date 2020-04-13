@@ -1,0 +1,8 @@
+:- module ((hlds.make_hlds).superhomogeneous).
+:- interface.
+:- type arg_context.
+:- type unify_var_term.
+:- type unify_var_term_num_context.
+:- type_representation(((hlds.make_hlds).superhomogeneous).ancestor_var_map, is_eqv_to(map(prog_var, prog_context))).
+:- type_representation(((hlds.make_hlds).superhomogeneous).unify_var_term, is_word_aligned_ptr).
+:- type_representation(((hlds.make_hlds).superhomogeneous).unify_var_term_num_context, is_word_aligned_ptr).

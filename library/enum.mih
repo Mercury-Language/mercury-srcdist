@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `enum.m'
+** by the Mercury compiler,
+** version rotd-2020-04-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module enum.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_enum
+#define MR_HEADER_GUARD_enum
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ENUM_DECL_GUARD
+#define ENUM_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeClassDeclStruct mercury__enum__enum__type_class_decl_enum_1;
+
+MR_Box MR_CALL 
+mercury__enum__det_from_int_1_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__enum__from_int_1_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+MR_Integer MR_CALL 
+mercury__enum__to_int_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void mercury__enum__init(void);
+void mercury__enum__init_type_tables(void);
+void mercury__enum__init_debugger(void);
+const char *mercury__enum__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_enum
+
+// :- end_interface enum.

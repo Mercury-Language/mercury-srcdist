@@ -1,0 +1,8 @@
+:- module rtti_implementation.
+:- interface.
+:- type pseudo_type_info.
+:- type type_ctor_info.
+:- type type_info.
+:- type_representation(rtti_implementation.pseudo_type_info, du_repn(notag("pseudo_type_info", [java("jmercury.runtime.PseudoTypeInfo", []), csharp("runtime.PseudoTypeInfo", [])]))).
+:- type_representation(rtti_implementation.type_ctor_info, du_repn(notag("type_ctor_info", [java("jmercury.runtime.TypeCtorInfo_Struct", []), csharp("runtime.TypeCtorInfo_Struct", [])]))).
+:- type_representation(rtti_implementation.type_info, du_repn(notag("type_info", [java("jmercury.runtime.TypeInfo_Struct", []), csharp("runtime.TypeInfo_Struct", [])]))).

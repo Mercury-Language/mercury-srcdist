@@ -1,0 +1,5 @@
+:- module create_report.
+:- interface.
+:- type_representation(create_report.raw_gs_ds_map, is_eqv_to(gs_ds_map(raw_gs_field_info))).
+:- type_representation(create_report.raw_gs_field_info, is_eqv_to(gs_field_info(gs_field_raw_data, unit))).
+:- type_representation(create_report.raw_gs_field_map, is_eqv_to(gs_field_map(raw_gs_field_info))).

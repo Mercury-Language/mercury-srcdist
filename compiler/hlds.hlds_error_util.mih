@@ -1,0 +1,153 @@
+/*
+** Automatically generated from `hlds_error_util.m'
+** by the Mercury compiler,
+** version rotd-2020-04-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_error_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_error_util
+#define MR_HEADER_GUARD_hlds__hlds_error_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_ERROR_UTIL_DECL_GUARD
+#define HLDS__HLDS_ERROR_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_error_util__hlds__hlds_error_util__type_ctor_info_should_module_qualify_0;
+
+void MR_CALL 
+hlds__hlds_error_util__definitely_write_out_errors_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__hlds_error_util__find_pred_arities_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_error_util__find_pred_arities_other_than_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_error_util__maybe_write_out_errors_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_call_site_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_pred_info_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_pred_name_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_pred_name_mode_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_proc_name_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_one_proc_name_mode_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_several_call_sites_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_several_pred_names_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_error_util__describe_several_proc_names_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_error_util____Compare____should_module_qualify_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_error_util____Unify____should_module_qualify_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_error_util__init(void);
+void mercury__hlds__hlds_error_util__init_type_tables(void);
+void mercury__hlds__hlds_error_util__init_debugger(void);
+const char *mercury__hlds__hlds_error_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_error_util
+
+// :- end_interface hlds.hlds_error_util.
