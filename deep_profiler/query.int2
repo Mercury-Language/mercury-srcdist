@@ -1,0 +1,141 @@
+:- module query.
+:- interface.
+:- use_module bool.
+:- use_module maybe.
+:- use_module measurement_units.
+:- use_module profile.
+:- type alloc_fields
+    --->    no_alloc 
+    ;       alloc 
+    ;       alloc_and_percall .
+:- type box_tables
+    --->    box_tables 
+    ;       do_not_box_tables .
+:- type caller_groups
+    --->    group_by_call_site 
+    ;       group_by_proc 
+    ;       group_by_module 
+    ;       group_by_clique .
+:- type callseqs_fields
+    --->    no_callseqs 
+    ;       callseqs 
+    ;       callseqs_and_percall .
+:- type cmd
+    --->    deep_cmd_quit 
+    ;       deep_cmd_restart 
+    ;       deep_cmd_timeout((query.cmd_timeout_minutes) :: int)
+    ;       deep_cmd_menu 
+    ;       deep_cmd_root((query.cmd_root_maybe_action) :: maybe.maybe(int))
+    ;       deep_cmd_clique((query.cmd_clique_clique_id) :: profile.clique_ptr)
+    ;       deep_cmd_clique_recursive_costs((query.cmd_crc_clique_id) :: profile.clique_ptr)
+    ;       deep_cmd_proc((query.cmd_proc_proc_id) :: profile.proc_static_ptr)
+    ;       deep_cmd_proc_callers((query.cmd_pc_proc_id) :: profile.proc_static_ptr, (query.cmd_pc_called_groups) :: query.caller_groups, (query.cmd_pc_bunch_number) :: int, (query.cmd_pc_callers_per_bunch) :: int, (query.cmd_pc_contour_exclusion) :: query.contour_exclusion)
+    ;       deep_cmd_static_procrep_coverage((query.cmd_static_coverage_ps) :: profile.proc_static_ptr)
+    ;       deep_cmd_dynamic_procrep_coverage((query.cmd_dynamic_coverage_pd) :: profile.proc_dynamic_ptr)
+    ;       deep_cmd_call_site_dynamic_var_use((query.cmd_csdvu_id) :: profile.call_site_dynamic_ptr)
+    ;       deep_cmd_recursion_types_frequency 
+    ;       deep_cmd_program_modules 
+    ;       deep_cmd_module((query.cmd_module_module_name) :: string)
+    ;       deep_cmd_module_getter_setters((query.cmd_mgs_module_name) :: string)
+    ;       deep_cmd_module_rep((query.cmd_mr_module_name) :: string)
+    ;       deep_cmd_top_procs((query.cmd_tp_display_limit) :: query.display_limit, (query.cmd_tp_sort_cost_kind) :: query.cost_kind, (query.cmd_tp_incl_desc) :: query.include_descendants, (query.cmd_tp_scope) :: query.measurement_scope)
+    ;       deep_cmd_dump_clique((query.cmd_dcl_id) :: profile.clique_ptr)
+    ;       deep_cmd_dump_proc_static((query.cmd_dps_id) :: profile.proc_static_ptr)
+    ;       deep_cmd_dump_proc_dynamic((query.cmd_dpd_id) :: profile.proc_dynamic_ptr)
+    ;       deep_cmd_dump_call_site_static((query.cmd_dcss_id) :: profile.call_site_static_ptr)
+    ;       deep_cmd_dump_call_site_dynamic((query.cmd_dcsd_id) :: profile.call_site_dynamic_ptr).
+:- type colour_column_groups
+    --->    colour_column_groups 
+    ;       do_not_colour_column_groups .
+:- type contour_exclusion
+    --->    apply_contour_exclusion 
+    ;       do_not_apply_contour_exclusion .
+:- type cost_kind
+    --->    cost_calls 
+    ;       cost_redos 
+    ;       cost_time 
+    ;       cost_callseqs 
+    ;       cost_allocs 
+    ;       cost_words .
+:- type deep_query
+    --->    deep_query((query.maybe_cmd) :: maybe.maybe(query.cmd), (query.deep_file_name) :: string, (query.maybe_prefs) :: maybe.maybe(query.preferences)).
+:- type descendants_meaningful
+    --->    descendants_meaningful 
+    ;       descendants_not_meaningful .
+:- type developer_mode
+    --->    developer_options_visible 
+    ;       developer_options_invisible .
+:- type display_limit
+    --->    rank_range(int, int)
+    ;       threshold_percent(float)
+    ;       threshold_value(float).
+:- type fields
+    --->    fields((query.port_fields) :: query.port_fields, (query.time_fields) :: query.time_fields, (query.callseqs_fields) :: query.callseqs_fields, (query.alloc_fields) :: query.alloc_fields, (query.memory_fields) :: query.memory_fields).
+:- type inactive_items
+    --->    inactive_items((query.inactive_call_sites) :: query.inactive_status, (query.inactive_procs) :: query.inactive_status, (query.inactive_modules) :: query.inactive_status).
+:- type inactive_status
+    --->    inactive_hide 
+    ;       inactive_show .
+:- type include_descendants
+    --->    self 
+    ;       self_and_desc .
+:- type measurement_scope
+    --->    per_call 
+    ;       overall .
+:- type memory_fields
+    --->    no_memory 
+    ;       memory(measurement_units.memory_units)
+    ;       memory_and_percall(measurement_units.memory_units).
+:- type module_qual
+    --->    module_qual_always 
+    ;       module_qual_when_diff 
+    ;       module_qual_never .
+:- type order_criteria
+    --->    by_context 
+    ;       by_name 
+    ;       by_cost(query.cost_kind, query.include_descendants, query.measurement_scope).
+:- type port_fields
+    --->    no_port 
+    ;       port .
+:- type preferences
+    --->    preferences((query.pref_fields) :: query.fields, (query.pref_box) :: query.box_tables, (query.pref_colour) :: query.colour_column_groups, (query.pref_anc) :: maybe.maybe(int), (query.pref_proc_statics_per_rec_type) :: int, (query.pref_summarize) :: query.summarize_ho_call_sites, (query.pref_criteria) :: query.order_criteria, (query.pref_contour) :: query.contour_exclusion, (query.pref_time) :: query.time_format, (query.pref_module_qual) :: query.module_qual, (query.pref_inactive) :: query.inactive_items, (query.pref_developer_mode) :: query.developer_mode).
+:- type preferences_indication
+    --->    given_pref(query.preferences)
+    ;       default_pref 
+    ;       all_pref .
+:- type summarize_ho_call_sites
+    --->    summarize_ho_call_sites 
+    ;       do_not_summarize_ho_call_sites .
+:- type time_fields
+    --->    no_time 
+    ;       ticks 
+    ;       time 
+    ;       ticks_and_time 
+    ;       time_and_percall 
+    ;       ticks_and_time_and_percall .
+:- type time_format
+    --->    no_scale 
+    ;       scale_by_millions 
+    ;       scale_by_thousands .
+:- inst (deep_query_with_cmd) for query.deep_query/0 == bound(deep_query(bound(yes(ground)), ground, ground)).
+:- type_representation(query.alloc_fields, du_repn(enum("no_alloc", "alloc", ["alloc_and_percall"], []))).
+:- type_representation(query.box_tables, du_repn(enum("box_tables", "do_not_box_tables", [], []))).
+:- type_representation(query.caller_groups, du_repn(enum("group_by_call_site", "group_by_proc", ["group_by_module", "group_by_clique"], []))).
+:- type_representation(query.callseqs_fields, du_repn(enum("no_callseqs", "callseqs", ["callseqs_and_percall"], []))).
+:- type_representation(query.colour_column_groups, du_repn(enum("colour_column_groups", "do_not_colour_column_groups", [], []))).
+:- type_representation(query.contour_exclusion, du_repn(enum("apply_contour_exclusion", "do_not_apply_contour_exclusion", [], []))).
+:- type_representation(query.cost_kind, du_repn(enum("cost_calls", "cost_redos", ["cost_time", "cost_callseqs", "cost_allocs", "cost_words"], []))).
+:- type_representation(query.deep_query, is_word_aligned_ptr).
+:- type_representation(query.descendants_meaningful, du_repn(enum("descendants_meaningful", "descendants_not_meaningful", [], []))).
+:- type_representation(query.developer_mode, du_repn(enum("developer_options_visible", "developer_options_invisible", [], []))).
+:- type_representation(query.fields, is_word_aligned_ptr).
+:- type_representation(query.inactive_items, is_word_aligned_ptr).
+:- type_representation(query.inactive_status, du_repn(enum("inactive_hide", "inactive_show", [], []))).
+:- type_representation(query.include_descendants, du_repn(enum("self", "self_and_desc", [], []))).
+:- type_representation(query.measurement_scope, du_repn(enum("per_call", "overall", [], []))).
+:- type_representation(query.module_qual, du_repn(enum("module_qual_always", "module_qual_when_diff", ["module_qual_never"], []))).
+:- type_representation(query.port_fields, du_repn(enum("no_port", "port", [], []))).
+:- type_representation(query.preferences, is_word_aligned_ptr).
+:- type_representation(query.summarize_ho_call_sites, du_repn(enum("summarize_ho_call_sites", "do_not_summarize_ho_call_sites", [], []))).
+:- type_representation(query.time_fields, du_repn(enum("no_time", "ticks", ["time", "ticks_and_time", "time_and_percall", "ticks_and_time_and_percall"], []))).
+:- type_representation(query.time_format, du_repn(enum("no_scale", "scale_by_millions", ["scale_by_thousands"], []))).

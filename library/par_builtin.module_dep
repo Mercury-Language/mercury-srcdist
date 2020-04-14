@@ -1,0 +1,13 @@
+module(1, "par_builtin.m",
+	par_builtin,
+	{},
+	{builtin, io, private_builtin},
+	{builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - par_builtin, "C#" - par_builtin, "Java" - par_builtin, "Erlang" - par_builtin},
+	no_foreign_export,
+	no_main
+).

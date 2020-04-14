@@ -1,0 +1,26 @@
+:- module (((transform_hlds.ctgc).structure_reuse).domain).
+:- interface.
+:- use_module list.
+:- type no_clobber_args == list.list(int).
+:- type ppid_no_clobbers
+    --->    ppid_no_clobbers(hlds.hlds_pred.pred_proc_id, transform_hlds.ctgc.structure_reuse.domain.no_clobber_args).
+:- type reuse_as.
+:- type reuse_as_and_status
+    --->    reuse_as_and_status(transform_hlds.ctgc.structure_reuse.domain.reuse_as, analysis.analysis_status).
+:- type reuse_as_table
+    --->    reuse_as_table(((((transform_hlds.ctgc).structure_reuse).domain).reuse_info_map) :: map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.ctgc.structure_reuse.domain.reuse_as_and_status), ((((transform_hlds.ctgc).structure_reuse).domain).reuse_version_map) :: bimap.bimap(transform_hlds.ctgc.structure_reuse.domain.ppid_no_clobbers, hlds.hlds_pred.pred_proc_id)).
+:- type reuse_condition.
+:- type reuse_conditions == list.list(transform_hlds.ctgc.structure_reuse.domain.reuse_condition).
+:- type reuse_not_possible_reason
+    --->    no_reuse 
+    ;       unknown_livedata 
+    ;       reuse_condition_violated(list.list(parse_tree.prog_data.prog_var))
+    ;       reuse_nodes_have_sharing(list.list(parse_tree.prog_data.prog_var)).
+:- type reuse_satisfied_result
+    --->    reuse_possible 
+    ;       reuse_not_possible(transform_hlds.ctgc.structure_reuse.domain.reuse_not_possible_reason).
+:- type_representation((((transform_hlds.ctgc).structure_reuse).domain).no_clobber_args, is_eqv_to(list.list(int))).
+:- type_representation((((transform_hlds.ctgc).structure_reuse).domain).ppid_no_clobbers, is_word_aligned_ptr).
+:- type_representation((((transform_hlds.ctgc).structure_reuse).domain).reuse_as_and_status, is_word_aligned_ptr).
+:- type_representation((((transform_hlds.ctgc).structure_reuse).domain).reuse_as_table, is_word_aligned_ptr).
+:- type_representation((((transform_hlds.ctgc).structure_reuse).domain).reuse_conditions, is_eqv_to(list.list(transform_hlds.ctgc.structure_reuse.domain.reuse_condition))).

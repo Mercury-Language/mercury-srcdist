@@ -1,0 +1,4 @@
+:- module (transform_hlds.term_norm).
+:- interface.
+:- type functor_info.
+:- type_representation((transform_hlds.term_norm).weight_table, is_eqv_to(map.map(pair.pair(parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id), transform_hlds.term_norm.weight_info))).

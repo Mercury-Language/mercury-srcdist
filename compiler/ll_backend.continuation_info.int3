@@ -1,0 +1,31 @@
+:- module (ll_backend.continuation_info).
+:- interface.
+:- type closure_arg_info.
+:- type closure_layout_info.
+:- type internal_layout_info.
+:- type layout_label_info.
+:- type layout_var_info.
+:- type proc_deep_prof_info.
+:- type proc_label_layout_info.
+:- type proc_layout_info.
+:- type proc_layout_table_info.
+:- type return_layout_info.
+:- type slot_contents.
+:- type trace_needs_body_rep
+	where	type_is_abstract_enum(1).
+:- type trace_port_layout_info.
+:- type user_attribute.
+:- type user_event_info.
+:- type_representation((ll_backend.continuation_info).closure_arg_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).closure_layout_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).internal_layout_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).layout_label_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).layout_var_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).proc_deep_prof_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).proc_label_layout_info, is_eqv_to(map(int, ll_backend.continuation_info.internal_layout_info))).
+:- type_representation((ll_backend.continuation_info).proc_layout_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).return_layout_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).trace_needs_body_rep, du_repn(enum("trace_needs_body_rep", "trace_does_not_need_body_rep", [], []))).
+:- type_representation((ll_backend.continuation_info).trace_port_layout_info, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).user_attribute, is_word_aligned_ptr).
+:- type_representation((ll_backend.continuation_info).user_event_info, is_word_aligned_ptr).

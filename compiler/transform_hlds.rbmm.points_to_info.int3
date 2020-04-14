@@ -1,0 +1,10 @@
+:- module ((transform_hlds.rbmm).points_to_info).
+:- interface.
+:- type rpt_alpha_mapping.
+:- type rpt_call_alpha_mapping.
+:- type rpta_info.
+:- type rpta_info_table.
+:- type_representation(((transform_hlds.rbmm).points_to_info).rpt_alpha_mapping, is_eqv_to(map(program_point, transform_hlds.rbmm.points_to_info.rpt_call_alpha_mapping))).
+:- type_representation(((transform_hlds.rbmm).points_to_info).rpt_call_alpha_mapping, is_eqv_to(map(rptg_node, rptg_node))).
+:- type_representation(((transform_hlds.rbmm).points_to_info).rpta_info, is_word_aligned_ptr).
+:- type_representation(((transform_hlds.rbmm).points_to_info).rpta_info_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.points_to_info.rpta_info))).

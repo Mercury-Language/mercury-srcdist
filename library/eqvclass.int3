@@ -1,0 +1,5 @@
+:- module eqvclass.
+:- interface.
+:- type eqvclass(T).
+:- type partition_id.
+:- type_representation(eqvclass.partition_id, is_eqv_to(int)).

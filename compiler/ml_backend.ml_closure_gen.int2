@@ -1,0 +1,7 @@
+:- module (ml_backend.ml_closure_gen).
+:- interface.
+:- type closure_kind
+    --->    higher_order_proc_closure 
+    ;       typeclass_info_closure 
+    ;       special_pred_closure .
+:- type_representation((ml_backend.ml_closure_gen).closure_kind, du_repn(enum("higher_order_proc_closure", "typeclass_info_closure", ["special_pred_closure"], []))).

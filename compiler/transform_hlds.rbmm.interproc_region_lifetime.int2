@@ -1,0 +1,3 @@
+:- module ((transform_hlds.rbmm).interproc_region_lifetime).
+:- interface.
+:- type_representation(((transform_hlds.rbmm).interproc_region_lifetime).rule_pred, is_eqv_to(pred(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.region_set, transform_hlds.rbmm.region_liveness_info.region_set, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.points_to_info.rpt_call_alpha_mapping, transform_hlds.rbmm.region_liveness_info.region_set))).

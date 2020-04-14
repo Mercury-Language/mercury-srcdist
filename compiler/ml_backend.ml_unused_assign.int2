@@ -1,0 +1,9 @@
+:- module (ml_backend.ml_unused_assign).
+:- interface.
+:- use_module map.
+:- use_module set.
+:- use_module (ml_backend.mlds).
+:- type seen_at_label_map == map.map(ml_backend.mlds.mlds_label, ml_backend.ml_unused_assign.seen_set).
+:- type seen_set == set.set(ml_backend.mlds.mlds_local_var_name).
+:- type_representation((ml_backend.ml_unused_assign).seen_at_label_map, is_eqv_to(map.map(ml_backend.mlds.mlds_label, ml_backend.ml_unused_assign.seen_set))).
+:- type_representation((ml_backend.ml_unused_assign).seen_set, is_eqv_to(set.set(ml_backend.mlds.mlds_local_var_name))).

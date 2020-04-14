@@ -1,0 +1,13 @@
+:- module (libs.process_util).
+:- interface.
+:- type build0(Info).
+:- type io_pred.
+:- type pid.
+:- type post_signal_cleanup(Info).
+:- abstract_inst((build0)).
+:- abstract_inst((io_pred)).
+:- abstract_inst((post_signal_cleanup)).
+:- type_representation((libs.process_util).build0(V_1), is_eqv_to(pred(bool, V_1, V_1, io, io))).
+:- type_representation((libs.process_util).io_pred, is_eqv_to(pred(bool, io, io))).
+:- type_representation((libs.process_util).pid, is_eqv_to(int)).
+:- type_representation((libs.process_util).post_signal_cleanup(V_1), is_eqv_to(pred(V_1, V_1, io, io))).
