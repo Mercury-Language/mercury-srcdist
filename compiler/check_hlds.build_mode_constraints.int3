@@ -1,0 +1,17 @@
+:- module (check_hlds.build_mode_constraints).
+:- interface.
+:- type args.
+:- type mc_prog_var.
+:- type mc_rep_var.
+:- type mc_var_info.
+:- type mc_var_map.
+:- type mode_constraints.
+:- type nonlocals.
+:- type_representation((check_hlds.build_mode_constraints).args, is_eqv_to(list(prog_var))).
+:- type_representation((check_hlds.build_mode_constraints).conjunct_production_map, is_eqv_to(multi_map(prog_var, mc_var))).
+:- type_representation((check_hlds.build_mode_constraints).mc_prog_var, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_rep_var, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_var_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.build_mode_constraints).mc_var_map, is_eqv_to(bimap(check_hlds.build_mode_constraints.mc_rep_var, mc_var))).
+:- type_representation((check_hlds.build_mode_constraints).mode_constraints, is_eqv_to(pred_p_c_constraints)).
+:- type_representation((check_hlds.build_mode_constraints).nonlocals, is_eqv_to(set_of_progvar)).

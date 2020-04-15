@@ -1,0 +1,3 @@
+:- module (transform_hlds.closure_analysis).
+:- interface.
+:- type_representation((transform_hlds.closure_analysis).closure_info, is_eqv_to(map.map(parse_tree.prog_data.prog_var, transform_hlds.closure_analysis.closure_values))).

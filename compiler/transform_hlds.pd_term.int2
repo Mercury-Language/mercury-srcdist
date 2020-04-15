@@ -1,0 +1,23 @@
+:- module (transform_hlds.pd_term).
+:- interface.
+:- use_module maybe.
+:- use_module pair.
+:- use_module (hlds.hlds_pred).
+:- type global_check_result
+    --->    ok(transform_hlds.pd_term.proc_pair, int)
+    ;       possible_loop(transform_hlds.pd_term.proc_pair, int, hlds.hlds_pred.pred_proc_id)
+    ;       loop .
+:- type global_term_info.
+:- type local_term_info.
+:- type pd_proc_term_info.
+:- type proc_pair == pair.pair(hlds.hlds_pred.pred_proc_id, maybe.maybe(hlds.hlds_pred.pred_proc_id)).
+:- type_representation((transform_hlds.pd_term).global_term_info, is_word_aligned_ptr).
+:- type_representation((transform_hlds.pd_term).local_term_info, is_eqv_to(transform_hlds.pd_term.single_covering_goals)).
+:- type_representation((transform_hlds.pd_term).multiple_covering_goals, is_eqv_to(map.map(transform_hlds.pd_term.proc_pair, pair.pair(int, maybe.maybe(hlds.hlds_pred.pred_proc_id))))).
+:- type_representation((transform_hlds.pd_term).pd_proc_term_info, is_eqv_to(assoc_list.assoc_list(int, int))).
+:- type_representation((transform_hlds.pd_term).proc_pair, is_eqv_to(pair.pair(hlds.hlds_pred.pred_proc_id, maybe.maybe(hlds.hlds_pred.pred_proc_id)))).
+:- type_representation((transform_hlds.pd_term).single_covering_goals, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_term.pd_proc_term_info))).
+:- implementation.
+:- type local_term_info == transform_hlds.pd_term.single_covering_goals.
+:- type pd_proc_term_info == assoc_list.assoc_list(int, int).
+:- type single_covering_goals == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_term.pd_proc_term_info).

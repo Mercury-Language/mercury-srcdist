@@ -1,0 +1,8 @@
+:- module read_profile.
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module profile.
+:- pragma foreign_import_module("C", read_profile).
+:- pred read_call_graph(string, maybe.maybe_error(profile.initial_deep), io.io, io.io).
+:- mode read_call_graph((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

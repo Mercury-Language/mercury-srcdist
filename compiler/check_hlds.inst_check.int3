@@ -1,0 +1,3 @@
+:- module (check_hlds.inst_check).
+:- interface.
+:- type_representation((check_hlds.inst_check).functors_to_types_map, is_eqv_to(multi_map(functor_name_and_arity, type_ctor_and_defn))).

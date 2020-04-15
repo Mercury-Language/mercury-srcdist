@@ -1,0 +1,3 @@
+:- module (transform_hlds.loop_inv).
+:- interface.
+:- type_representation((transform_hlds.loop_inv).rec_call, is_eqv_to(pair(hlds_goal, list(hlds_goal)))).

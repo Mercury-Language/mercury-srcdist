@@ -1,0 +1,53 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+THIS_DIR=tests
+PROGS=
+TESTS=
+
+# If you modify this, modify all_test_dirs in tools/bootcheck as well.
+SUBDIRS = \
+	accumulator \
+	analysis \
+	analysis_ctgc \
+	analysis_excp \
+	analysis_external \
+	analysis_sharing \
+	analysis_table \
+	analysis_trail \
+	analysis_unused_args \
+	benchmarks \
+	debugger \
+	declarative_debugger \
+	dppd \
+	exceptions \
+	feedback \
+	general \
+	grade_subdirs \
+	hard_coded \
+	invalid \
+	invalid_make_int \
+	invalid_purity \
+	invalid_submodules \
+	misc_tests \
+	mmc_make \
+	par_conj \
+	purity \
+	recompilation \
+	string_format \
+	structure_reuse \
+	submodules \
+	tabling \
+	term \
+	trailing \
+	typeclasses \
+	valid \
+	valid_make_int \
+	valid_seq \
+	warnings
+
+NOT_YET_READY_SUBDIRS = \
+	stm
+
+include Mmake.common
