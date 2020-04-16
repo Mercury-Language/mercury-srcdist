@@ -1,0 +1,5 @@
+:- module (mdbcomp.sym_name).
+:- interface.
+:- type module_name.
+:- type sym_name.
+:- type_representation((mdbcomp.sym_name).module_name, is_eqv_to(mdbcomp.sym_name.sym_name)).

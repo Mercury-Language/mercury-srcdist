@@ -1,0 +1,22 @@
+:- module (hlds.goal_form).
+:- interface.
+:- type goal_loop_or_throw_status
+    --->    can_loop_or_throw 
+    ;       cannot_loop_or_throw .
+:- type goal_loop_status
+    --->    can_loop 
+    ;       cannot_loop .
+:- type goal_throw_status
+    --->    can_throw 
+    ;       cannot_throw .
+:- type has_subgoals
+    --->    has_subgoals 
+    ;       does_not_have_subgoals .
+:- type is_termvar_needed
+    --->    termvar_is_not_needed 
+    ;       termvar_is_needed .
+:- type_representation((hlds.goal_form).goal_loop_or_throw_status, du_repn(enum("can_loop_or_throw", "cannot_loop_or_throw", [], []))).
+:- type_representation((hlds.goal_form).goal_loop_status, du_repn(enum("can_loop", "cannot_loop", [], []))).
+:- type_representation((hlds.goal_form).goal_throw_status, du_repn(enum("can_throw", "cannot_throw", [], []))).
+:- type_representation((hlds.goal_form).has_subgoals, du_repn(enum("has_subgoals", "does_not_have_subgoals", [], []))).
+:- type_representation((hlds.goal_form).is_termvar_needed, du_repn(enum("termvar_is_not_needed", "termvar_is_needed", [], []))).

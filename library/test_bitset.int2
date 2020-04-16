@@ -1,0 +1,10 @@
+:- module test_bitset.
+:- interface.
+:- type bitset_error(T)
+    --->    zero_argument(string, test_bitset.test_bitset(T))
+    ;       one_argument(string, test_bitset.test_bitset(T), test_bitset.test_bitset(T))
+    ;       two_arguments(string, test_bitset.test_bitset(T), test_bitset.test_bitset(T), test_bitset.test_bitset(T)).
+:- type test_bitset(T).
+:- type_representation(test_bitset.test_bitset(V_1), is_eqv_to(pair.pair(tree_bitset.tree_bitset(V_1), set_ordlist.set_ordlist(V_1)))).
+:- implementation.
+:- type test_bitset(T) == pair.pair(tree_bitset.tree_bitset(T), set_ordlist.set_ordlist(T)).

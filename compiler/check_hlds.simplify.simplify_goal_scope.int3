@@ -1,0 +1,3 @@
+:- module ((check_hlds.simplify).simplify_goal_scope).
+:- interface.
+:- type_representation(((check_hlds.simplify).simplify_goal_scope).var_to_arg_map, is_eqv_to(map(prog_var, const_struct_arg))).

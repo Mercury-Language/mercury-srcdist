@@ -1,0 +1,13 @@
+module(1, "one_or_more.m",
+	one_or_more,
+	{},
+	{builtin, list, pretty_printer, private_builtin},
+	{builtin, int, list, pretty_printer, private_builtin, require, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
