@@ -1,0 +1,116 @@
+/*
+** Automatically generated from `timestamp.m'
+** by the Mercury compiler,
+** version rotd-2020-04-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.timestamp.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__timestamp
+#define MR_HEADER_GUARD_libs__timestamp
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__TIMESTAMP_DECL_GUARD
+#define LIBS__TIMESTAMP_DECL_GUARD
+#include "libs.mih"
+
+    #include "mercury_string.h"
+    #include <time.h>
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__timestamp__libs__timestamp__type_ctor_info_maybe_return_timestamp_0;
+
+extern const MR_TypeCtorInfo_Struct libs__timestamp__libs__timestamp__type_ctor_info_read_module_and_timestamps_0;
+
+extern const MR_TypeCtorInfo_Struct libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0;
+
+MR_Word MR_CALL 
+libs__timestamp__newest_timestamp_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__timestamp__oldest_timestamp_0_f_0(void);
+
+MR_bool MR_CALL 
+libs__timestamp__string_to_timestamp_1_f_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+libs__timestamp__time_t_to_timestamp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+libs__timestamp__timestamp_to_string_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__timestamp____Compare____maybe_return_timestamp_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__timestamp____Compare____read_module_and_timestamps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__timestamp____Compare____timestamp_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__timestamp____Unify____maybe_return_timestamp_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__timestamp____Unify____read_module_and_timestamps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__timestamp____Unify____timestamp_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__timestamp__init(void);
+void mercury__libs__timestamp__init_type_tables(void);
+void mercury__libs__timestamp__init_debugger(void);
+const char *mercury__libs__timestamp__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.timestamp
+
+// :- end_interface libs.timestamp.

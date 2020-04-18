@@ -1,0 +1,13 @@
+:- module mutvar.
+:- interface.
+:- type mutvar(T).
+:- type_representation(mutvar.mutvar(V_1), du_repn(notag("mutvar", [java("mutvar.Mutvar", []), csharp("object[]", []), erlang("", [])]))).
+:- implementation.
+:- pragma foreign_import_module("C#", mutvar).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Erlang", mutvar).
+:- type mutvar(T)
+    --->    mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, mutvar(T), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, mutvar(T), "object[]").
+:- pragma foreign_type(erlang, mutvar(T), "").

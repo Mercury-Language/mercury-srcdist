@@ -1,0 +1,10 @@
+:- module (top_level.mercury_compile_front_end).
+:- interface.
+:- type simplify_pass
+    --->    simplify_pass_frontend 
+    ;       simplify_pass_post_untuple 
+    ;       simplify_pass_pre_prof_transforms 
+    ;       simplify_pass_pre_implicit_parallelism 
+    ;       simplify_pass_ml_backend 
+    ;       simplify_pass_ll_backend .
+:- type_representation((top_level.mercury_compile_front_end).simplify_pass, du_repn(enum("simplify_pass_frontend", "simplify_pass_post_untuple", ["simplify_pass_pre_prof_transforms", "simplify_pass_pre_implicit_parallelism", "simplify_pass_ml_backend", "simplify_pass_ll_backend"], []))).

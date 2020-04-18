@@ -1,0 +1,4 @@
+:- module (transform_hlds.lco).
+:- interface.
+:- type_representation((transform_hlds.lco).var_to_target, is_eqv_to(assoc_list(prog_var, store_target))).
+:- type_representation((transform_hlds.lco).variant_map, is_eqv_to(multi_map(pred_proc_id, variant_id))).

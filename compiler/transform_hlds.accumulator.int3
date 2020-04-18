@@ -1,0 +1,4 @@
+:- module (transform_hlds.accumulator).
+:- interface.
+:- type_representation((transform_hlds.accumulator).accu_goal_store, is_eqv_to(goal_store(accu_goal_id))).
+:- type_representation((transform_hlds.accumulator).accu_subst, is_eqv_to(map(prog_var, prog_var))).

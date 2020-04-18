@@ -1,0 +1,67 @@
+/*
+** Automatically generated from `structure_reuse.lbu.m'
+** by the Mercury compiler,
+** version rotd-2020-04-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.structure_reuse.lbu.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__lbu
+#define MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__lbu
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__LBU_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__LBU_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.ctgc.structure_reuse.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__lbu__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_98_97_99_107_119_97_114_100_95_117_115_101_95_105_110_102_111_114_109_97_116_105_111_110_95_95_91_49_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__lbu__backward_use_information_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__transform_hlds__ctgc__structure_reuse__lbu__init(void);
+void mercury__transform_hlds__ctgc__structure_reuse__lbu__init_type_tables(void);
+void mercury__transform_hlds__ctgc__structure_reuse__lbu__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__structure_reuse__lbu__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.structure_reuse.lbu
+
+// :- end_interface transform_hlds.ctgc.structure_reuse.lbu.

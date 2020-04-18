@@ -1,0 +1,7 @@
+:- module (parse_tree.prog_rename).
+:- interface.
+:- type must_rename
+	where	type_is_abstract_enum(1).
+:- abstract_inst((must_rename)).
+:- abstract_inst((need_not_rename)).
+:- type_representation((parse_tree.prog_rename).must_rename, du_repn(enum("must_rename", "need_not_rename", [], []))).
