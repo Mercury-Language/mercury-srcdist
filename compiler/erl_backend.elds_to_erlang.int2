@@ -1,0 +1,3 @@
+:- module (erl_backend.elds_to_erlang).
+:- interface.
+:- type_representation((erl_backend.elds_to_erlang).indent, is_eqv_to(int)).

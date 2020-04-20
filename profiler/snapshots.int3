@@ -1,0 +1,4 @@
+:- module snapshots.
+:- interface.
+:- type_representation(snapshots.alloc_site_map, is_eqv_to(map(alloc_id, alloc_site))).
+:- type_representation(snapshots.size_map, is_eqv_to(list(int))).

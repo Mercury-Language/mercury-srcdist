@@ -1,0 +1,72 @@
+:- module par_builtin.
+:- use_module builtin.
+:- use_module io.
+:- use_module private_builtin.
+
+:- type future(T).
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, future(T), "java.lang.Object").
+:- pragma foreign_type(csharp, future(T), "object").
+:- pragma foreign_type(erlang, future(T), "").
+:- type loop_control.
+:- pragma foreign_type(c, loop_control, "MR_LoopControl *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, loop_control, "java.lang.Object").
+:- pragma foreign_type(csharp, loop_control, "object").
+:- pragma foreign_type(erlang, loop_control, "").
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", par_builtin).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", par_builtin).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("Erlang", par_builtin).
+
+:- pragma foreign_proc("C", par_builtin.lc_create(NumWorkers :: (builtin.in), LC :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_throw_exception, may_modify_trail], "
+#if defined(MR_THREAD_SAFE) && defined(MR_LL_PARALLEL_CONJ)
+    LC = MR_lc_create(NumWorkers);
+#else
+    MR_fatal_error(\"lc_create is unavailable in this grade\");
+#endif
+").
+
+:- pragma foreign_proc("C", par_builtin.par_cond_close_stats_file(_IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail], "
+#if defined(MR_LL_PARALLEL_CONJ) &&         defined(MR_DEBUG_RUNTIME_GRANULARITY_CONTROL)
+    MR_write_out_conditional_parallelism_log();
+#else
+    MR_fatal_error(\"par_cond_close_stats_file is unavailable in this grade\");
+#endif
+").
+
+:- pragma termination_info((par_builtin.evaluate_parallelism_condition), finite(0, []), cannot_loop).
+:- pragma termination_info(par_builtin.get_future((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_create((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_default_num_contexts((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_free_slot((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_join_and_terminate((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(par_builtin.new_future((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.par_cond_close_stats_file((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.signal_future((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(par_builtin.wait_future((builtin.in), (builtin.out)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (par_builtin.evaluate_parallelism_condition), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.get_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_create), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_default_num_contexts), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_free_slot), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_join_and_terminate), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.new_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.par_cond_close_stats_file), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.signal_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.wait_future), 2, 0, will_not_throw).

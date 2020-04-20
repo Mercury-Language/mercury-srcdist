@@ -1,0 +1,25 @@
+:- module ((parse_tree.module_qual).id_set).
+:- interface.
+:- type class_id_set.
+:- type id_set.
+:- type id_type
+	where	type_is_abstract_enum(2).
+:- type inst_id_set.
+:- type mode_id_set.
+:- type module_id_set.
+:- type module_permissions.
+:- type mq_id.
+:- type perm_in_imp.
+:- type perm_in_int.
+:- type type_id_set.
+:- type_representation(((parse_tree.module_qual).id_set).class_id_set, is_eqv_to(parse_tree.module_qual.id_set.id_set)).
+:- type_representation(((parse_tree.module_qual).id_set).id_set, is_eqv_to(map(string, map(arity, permissions_map)))).
+:- type_representation(((parse_tree.module_qual).id_set).id_type, du_repn(enum("type_id", "mode_id", ["inst_id", "class_id"], []))).
+:- type_representation(((parse_tree.module_qual).id_set).inst_id_set, is_eqv_to(parse_tree.module_qual.id_set.id_set)).
+:- type_representation(((parse_tree.module_qual).id_set).mode_id_set, is_eqv_to(parse_tree.module_qual.id_set.id_set)).
+:- type_representation(((parse_tree.module_qual).id_set).module_id_set, is_eqv_to(parse_tree.module_qual.id_set.id_set)).
+:- type_representation(((parse_tree.module_qual).id_set).module_permissions, is_word_aligned_ptr).
+:- type_representation(((parse_tree.module_qual).id_set).mq_id, is_word_aligned_ptr).
+:- type_representation(((parse_tree.module_qual).id_set).perm_in_imp, du_repn(notag("may_use_in_imp", []))).
+:- type_representation(((parse_tree.module_qual).id_set).permissions_map, is_eqv_to(map(module_name, parse_tree.module_qual.id_set.module_permissions))).
+:- type_representation(((parse_tree.module_qual).id_set).type_id_set, is_eqv_to(parse_tree.module_qual.id_set.id_set)).

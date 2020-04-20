@@ -1,0 +1,20 @@
+:- module (check_hlds.abstract_mode_constraints).
+:- interface.
+:- type mc_ann_constraint.
+:- type mc_annotation.
+:- type mc_bindings.
+:- type mc_constraint.
+:- type mc_type.
+:- type mc_var.
+:- type mc_varset.
+:- type pred_p_c_constraints.
+:- type var_constraint.
+:- type var_constraint(T).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_ann_constraint, is_word_aligned_ptr).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_annotation, du_repn(notag("mc_annotation", []))).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_bindings, is_eqv_to(map(check_hlds.abstract_mode_constraints.mc_var, bool))).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_type, du_repn(direct_dummy("mc_type", []))).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_var, is_eqv_to(var(check_hlds.abstract_mode_constraints.mc_type))).
+:- type_representation((check_hlds.abstract_mode_constraints).mc_varset, is_eqv_to(varset(check_hlds.abstract_mode_constraints.mc_type))).
+:- type_representation((check_hlds.abstract_mode_constraints).pred_p_c_constraints, is_word_aligned_ptr).
+:- type_representation((check_hlds.abstract_mode_constraints).var_constraint, is_eqv_to(check_hlds.abstract_mode_constraints.var_constraint(check_hlds.abstract_mode_constraints.mc_type))).

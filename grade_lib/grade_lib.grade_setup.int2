@@ -1,0 +1,34 @@
+:- module (grade_lib.grade_setup).
+:- interface.
+:- type autoconf_gcc_gotos_avail
+    --->    autoconf_gcc_gotos_avail_no 
+    ;       autoconf_gcc_gotos_avail_yes .
+:- type autoconf_gcc_labels_avail
+    --->    autoconf_gcc_labels_avail_no 
+    ;       autoconf_gcc_labels_avail_yes .
+:- type autoconf_gcc_regs_avail
+    --->    autoconf_gcc_regs_avail_no 
+    ;       autoconf_gcc_regs_avail_yes .
+:- type autoconf_low_tag_bits_avail
+    --->    autoconf_low_tag_bits_avail_0 
+    ;       autoconf_low_tag_bits_avail_2 
+    ;       autoconf_low_tag_bits_avail_3 .
+:- type autoconf_merc_file
+    --->    autoconf_merc_file_no 
+    ;       autoconf_merc_file_yes .
+:- type autoconf_results
+    --->    autoconf_results(grade_lib.grade_setup.autoconf_gcc_regs_avail, grade_lib.grade_setup.autoconf_gcc_gotos_avail, grade_lib.grade_setup.autoconf_gcc_labels_avail, grade_lib.grade_setup.autoconf_low_tag_bits_avail, grade_lib.grade_setup.autoconf_size_of_double, grade_lib.grade_setup.autoconf_merc_file).
+:- type autoconf_size_of_double
+    --->    autoconf_size_of_double_eq_ptr 
+    ;       autoconf_size_of_double_ne_ptr .
+:- type solver_var_set_to
+    --->    set_to_false 
+    ;       set_to_true .
+:- type_representation((grade_lib.grade_setup).autoconf_gcc_gotos_avail, du_repn(enum("autoconf_gcc_gotos_avail_no", "autoconf_gcc_gotos_avail_yes", [], []))).
+:- type_representation((grade_lib.grade_setup).autoconf_gcc_labels_avail, du_repn(enum("autoconf_gcc_labels_avail_no", "autoconf_gcc_labels_avail_yes", [], []))).
+:- type_representation((grade_lib.grade_setup).autoconf_gcc_regs_avail, du_repn(enum("autoconf_gcc_regs_avail_no", "autoconf_gcc_regs_avail_yes", [], []))).
+:- type_representation((grade_lib.grade_setup).autoconf_low_tag_bits_avail, du_repn(enum("autoconf_low_tag_bits_avail_0", "autoconf_low_tag_bits_avail_2", ["autoconf_low_tag_bits_avail_3"], []))).
+:- type_representation((grade_lib.grade_setup).autoconf_merc_file, du_repn(enum("autoconf_merc_file_no", "autoconf_merc_file_yes", [], []))).
+:- type_representation((grade_lib.grade_setup).autoconf_results, is_word_aligned_ptr).
+:- type_representation((grade_lib.grade_setup).autoconf_size_of_double, du_repn(enum("autoconf_size_of_double_eq_ptr", "autoconf_size_of_double_ne_ptr", [], []))).
+:- type_representation((grade_lib.grade_setup).solver_var_set_to, du_repn(enum("set_to_false", "set_to_true", [], []))).

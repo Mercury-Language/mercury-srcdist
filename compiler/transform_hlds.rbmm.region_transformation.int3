@@ -1,0 +1,6 @@
+:- module ((transform_hlds.rbmm).region_transformation).
+:- interface.
+:- type name_to_prog_var.
+:- type name_to_prog_var_table.
+:- type_representation(((transform_hlds.rbmm).region_transformation).name_to_prog_var, is_eqv_to(map(string, prog_var))).
+:- type_representation(((transform_hlds.rbmm).region_transformation).name_to_prog_var_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_transformation.name_to_prog_var))).

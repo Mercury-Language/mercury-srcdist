@@ -1,0 +1,6 @@
+:- module (transform_hlds.tupling).
+:- interface.
+:- type_representation((transform_hlds.tupling).candidate_headvar_origins, is_eqv_to(map(pred_proc_id, prog_var))).
+:- type_representation((transform_hlds.tupling).candidate_headvars, is_eqv_to(assoc_list(string, candidate_headvar_origins))).
+:- type_representation((transform_hlds.tupling).transform_map, is_eqv_to(map(pred_proc_id, transformed_proc))).
+:- type_representation((transform_hlds.tupling).tupling_scheme, is_eqv_to(map(pred_proc_id, tupling_proposal))).

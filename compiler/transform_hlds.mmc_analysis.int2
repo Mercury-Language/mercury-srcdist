@@ -1,0 +1,7 @@
+:- module (transform_hlds.mmc_analysis).
+:- interface.
+:- use_module analysis.
+:- type mmc
+    --->    mmc .
+:- instance (analysis.compiler(transform_hlds.mmc_analysis.mmc)).
+:- type_representation((transform_hlds.mmc_analysis).mmc, du_repn(direct_dummy("mmc", []))).

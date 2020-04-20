@@ -1,0 +1,4 @@
+:- module version_bitmap.
+:- interface.
+:- type version_bitmap.
+:- type_representation(version_bitmap.version_bitmap, is_eqv_to(version_array(int))).
