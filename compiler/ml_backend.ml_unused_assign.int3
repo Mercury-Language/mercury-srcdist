@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_unused_assign).
+:- interface.
+:- type seen_at_label_map.
+:- type seen_set.
