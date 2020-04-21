@@ -1,0 +1,5 @@
+:- module kv_list.
+:- interface.
+:- type kv_list(K, V)
+    --->    kv_nil 
+    ;       kv_cons(K, V, kv_list.kv_list(K, V)).

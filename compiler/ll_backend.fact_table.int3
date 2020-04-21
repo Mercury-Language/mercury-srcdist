@@ -1,0 +1,5 @@
+:- module (ll_backend.fact_table).
+:- interface.
+:- type_representation((ll_backend.fact_table).error_report, is_eqv_to(pair(maybe(context), list(format_component)))).
+:- type_representation((ll_backend.fact_table).error_reports, is_eqv_to(list(error_report))).
+:- type_representation((ll_backend.fact_table).fact_arg, is_eqv_to(const)).

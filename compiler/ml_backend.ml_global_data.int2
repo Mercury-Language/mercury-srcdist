@@ -1,0 +1,40 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- use_module map.
+:- use_module (backend_libs.rtti).
+:- use_module (ml_backend.mlds).
+:- type have_unboxed_floats
+    --->    have_unboxed_floats 
+    ;       do_not_have_unboxed_floats .
+:- type have_unboxed_int64s
+    --->    have_unboxed_int64s 
+    ;       do_not_have_unboxed_int64s .
+:- type ml_alloc_site_data
+    --->    ml_alloc_site_data(((ml_backend.ml_global_data).masd_proc_label) :: ml_backend.mlds.mlds_function_name, ((ml_backend.ml_global_data).masd_context) :: parse_tree.prog_data.prog_context, ((ml_backend.ml_global_data).masd_type) :: string, ((ml_backend.ml_global_data).masd_size) :: int).
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map == map.map(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type).
+:- type ml_rval_and_type
+    --->    ml_rval_and_type(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type).
+:- type ml_scalar_cell_group
+    --->    ml_scalar_cell_group(((ml_backend.ml_global_data).mscg_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_global_data).mscg_array_size) :: ml_backend.mlds.initializer_array_size, ((ml_backend.ml_global_data).mscg_counter) :: counter.counter, ((ml_backend.ml_global_data).mscg_members) :: bimap.bimap(ml_backend.mlds.mlds_initializer, ml_backend.mlds.mlds_scalar_common), ((ml_backend.ml_global_data).mscg_rows) :: cord.cord(ml_backend.mlds.mlds_initializer)).
+:- type ml_scalar_cell_map == map.map(ml_backend.mlds.ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group).
+:- type ml_vector_cell_group
+    --->    ml_vector_cell_group(((ml_backend.ml_global_data).mvcg_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_global_data).mvcg_type_defn) :: ml_backend.mlds.mlds_class_defn, ((ml_backend.ml_global_data).mvcg_field_ids) :: list.list(ml_backend.mlds.mlds_field_id), ((ml_backend.ml_global_data).mvcg_next_row) :: int, ((ml_backend.ml_global_data).mvcg_rows) :: cord.cord(ml_backend.mlds.mlds_initializer)).
+:- type ml_vector_cell_map == map.map(ml_backend.mlds.ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group).
+:- type use_common_cells
+    --->    do_not_use_common_cells 
+    ;       use_common_cells .
+:- type_representation((ml_backend.ml_global_data).have_unboxed_floats, du_repn(enum("have_unboxed_floats", "do_not_have_unboxed_floats", [], []))).
+:- type_representation((ml_backend.ml_global_data).have_unboxed_int64s, du_repn(enum("have_unboxed_int64s", "do_not_have_unboxed_int64s", [], []))).
+:- type_representation((ml_backend.ml_global_data).ml_alloc_id_map, is_eqv_to(bimap.bimap(ml_backend.mlds.mlds_alloc_id, ml_backend.ml_global_data.ml_alloc_site_data))).
+:- type_representation((ml_backend.ml_global_data).ml_alloc_site_data, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_global_data).ml_global_data, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_global_data).ml_rtti_rval_type_map, is_eqv_to(map.map(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type))).
+:- type_representation((ml_backend.ml_global_data).ml_rval_and_type, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_global_data).ml_scalar_cell_group, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_global_data).ml_scalar_cell_map, is_eqv_to(map.map(ml_backend.mlds.ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group))).
+:- type_representation((ml_backend.ml_global_data).ml_scalar_cell_type_map, is_eqv_to(map.map(ml_backend.ml_global_data.ml_scalar_cell_type, ml_backend.mlds.ml_scalar_common_type_num))).
+:- type_representation((ml_backend.ml_global_data).ml_vector_cell_group, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_global_data).ml_vector_cell_map, is_eqv_to(map.map(ml_backend.mlds.ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group))).
+:- type_representation((ml_backend.ml_global_data).ml_vector_cell_type_map, is_eqv_to(map.map(list.list(ml_backend.mlds.mlds_type), ml_backend.mlds.ml_vector_common_type_num))).
+:- type_representation((ml_backend.ml_global_data).use_common_cells, du_repn(enum("do_not_use_common_cells", "use_common_cells", [], []))).
