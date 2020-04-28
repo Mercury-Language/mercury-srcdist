@@ -1,0 +1,8 @@
+:- module (parse_tree.module_deps_graph).
+:- interface.
+:- type deps_graph.
+:- type lookup_module_and_imports.
+:- abstract_mode((lookup_module_and_imports)).
+:- type_representation((parse_tree.module_deps_graph).deps_graph, is_eqv_to(digraph(module_name))).
+:- type_representation((parse_tree.module_deps_graph).deps_graph_key, is_eqv_to(digraph_key(module_name))).
+:- type_representation((parse_tree.module_deps_graph).lookup_module_and_imports, is_eqv_to(((func module_name) = module_and_imports))).

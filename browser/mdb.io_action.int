@@ -1,0 +1,19 @@
+:- module (mdb.io_action).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module univ.
+:- use_module (mdb.browser_term).
+:- use_module (mdbcomp.prim_data).
+:- type io_action
+    --->    io_action(((mdb.io_action).io_action_proc_name) :: string, ((mdb.io_action).io_action_pf) :: mdbcomp.prim_data.pred_or_func, ((mdb.io_action).io_action_args) :: list.list(univ.univ)).
+:- type io_action_range
+    --->    io_action_range(((mdb.io_action).from_io_action) :: mdb.io_action.io_seq_num, ((mdb.io_action).to_io_action) :: mdb.io_action.io_seq_num).
+:- type io_seq_num == int.
+:- type maybe_tabled_io_action
+    --->    tabled(mdb.io_action.io_action)
+    ;       untabled .
+:- pred get_maybe_io_action(mdb.io_action.io_seq_num, mdb.io_action.maybe_tabled_io_action, io.io, io.io).
+:- mode get_maybe_io_action((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func io_action_to_browser_term(mdb.io_action.io_action) = mdb.browser_term.browser_term.

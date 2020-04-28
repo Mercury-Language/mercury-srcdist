@@ -1,0 +1,4 @@
+:- module set_unordlist.
+:- interface.
+:- type set_unordlist(_T).
+:- type_representation(set_unordlist.set_unordlist(V_1), du_repn(notag("sul", []))).

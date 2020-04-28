@@ -1,0 +1,10 @@
+:- module term_conversion.
+:- interface.
+:- type term_to_type_arg_context.
+:- type term_to_type_context.
+:- type term_to_type_error(T).
+:- type term_to_type_result(T).
+:- type term_to_type_result(T, U).
+:- type_representation(term_conversion.term_to_type_arg_context, is_word_aligned_ptr).
+:- type_representation(term_conversion.term_to_type_context, is_eqv_to(list(term_conversion.term_to_type_arg_context))).
+:- type_representation(term_conversion.term_to_type_result(V_1), is_eqv_to(term_conversion.term_to_type_result(V_1, generic))).

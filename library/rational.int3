@@ -1,0 +1,4 @@
+:- module rational.
+:- interface.
+:- type rational.
+:- type_representation(rational.rational, is_word_aligned_ptr).

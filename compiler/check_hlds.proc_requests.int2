@@ -1,0 +1,12 @@
+:- module (check_hlds.proc_requests).
+:- interface.
+:- use_module queue.
+:- use_module (hlds.hlds_pred).
+:- type proc_requests.
+:- type req_queue == queue.queue(hlds.hlds_pred.pred_proc_id).
+:- type unify_proc_id
+    --->    unify_proc_id(parse_tree.prog_data.type_ctor, hlds.hlds_goal.unify_mode).
+:- type_representation((check_hlds.proc_requests).proc_requests, is_word_aligned_ptr).
+:- type_representation((check_hlds.proc_requests).req_queue, is_eqv_to(queue.queue(hlds.hlds_pred.pred_proc_id))).
+:- type_representation((check_hlds.proc_requests).unify_proc_id, is_word_aligned_ptr).
+:- type_representation((check_hlds.proc_requests).unify_req_map, is_eqv_to(map.map(check_hlds.proc_requests.unify_proc_id, hlds.hlds_pred.proc_id))).

@@ -1,0 +1,9 @@
+:- module (check_hlds.det_analysis).
+:- interface.
+:- type pess_info
+    --->    pess_info(parse_tree.prog_data.prog_vars, parse_tree.prog_data.prog_context).
+:- type soln_context
+    --->    all_solns 
+    ;       first_soln .
+:- type_representation((check_hlds.det_analysis).pess_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.det_analysis).soln_context, du_repn(enum("all_solns", "first_soln", [], []))).

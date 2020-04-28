@@ -1,0 +1,16 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units
+    --->    units_words 
+    ;       units_bytes .
+:- type percent.
+:- type probability.
+:- type time.
+:- type_representation(measurement_units.memory, is_word_aligned_ptr).
+:- type_representation(measurement_units.memory_units, du_repn(enum("units_words", "units_bytes", [], []))).
+:- type_representation(measurement_units.percent, du_repn(notag("percent_float", []))).
+:- type_representation(measurement_units.probability, is_eqv_to(float)).
+:- type_representation(measurement_units.time, du_repn(notag("time_sec", []))).
+:- implementation.
+:- type probability == float.

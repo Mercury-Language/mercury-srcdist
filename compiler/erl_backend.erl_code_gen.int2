@@ -1,0 +1,2 @@
+:- module (erl_backend.erl_code_gen).
+:- interface.

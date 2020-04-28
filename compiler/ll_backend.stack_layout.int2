@@ -1,0 +1,5 @@
+:- module (ll_backend.stack_layout).
+:- interface.
+:- type_representation((ll_backend.stack_layout).file_label_table, is_eqv_to(map.map(int, list.list(ll_backend.stack_layout.line_no_info)))).
+:- type_representation((ll_backend.stack_layout).label_tables, is_eqv_to(map.map(string, ll_backend.stack_layout.file_label_table))).
+:- type_representation((ll_backend.stack_layout).line_no_info, is_eqv_to(pair.pair(ll_backend.layout.layout_slot_name, ll_backend.stack_layout.is_label_return))).

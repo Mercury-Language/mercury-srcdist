@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_class).
+:- interface.
+:- type maybe_class_and_inst_constraints.
+:- type_representation((parse_tree.parse_class).arbitrary_constraints, is_eqv_to(one_or_more(arbitrary_constraint))).
+:- type_representation((parse_tree.parse_class).maybe_class_and_inst_constraints, is_eqv_to(maybe2(list(prog_constraint), inst_var_sub))).
