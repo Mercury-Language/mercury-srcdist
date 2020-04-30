@@ -1,0 +1,27 @@
+:- module options.
+:- interface.
+:- use_module getopt.
+:- type option
+    --->    verbose 
+    ;       very_verbose 
+    ;       dynamic_cg 
+    ;       call_graph 
+    ;       profile 
+    ;       profile_time 
+    ;       profile_memory_words 
+    ;       profile_memory_cells 
+    ;       demangle 
+    ;       countfile 
+    ;       pairfile 
+    ;       declfile 
+    ;       libraryfile 
+    ;       snapshots 
+    ;       snapshots_file 
+    ;       snapshots_by_type 
+    ;       snapshots_brief 
+    ;       snapshots_include_runtime 
+    ;       snapshots_recalc_size 
+    ;       help .
+:- type option_table == getopt.option_table(options.option).
+:- type_representation(options.option, du_repn(enum("verbose", "very_verbose", ["dynamic_cg", "call_graph", "profile", "profile_time", "profile_memory_words", "profile_memory_cells", "demangle", "countfile", "pairfile", "declfile", "libraryfile", "snapshots", "snapshots_file", "snapshots_by_type", "snapshots_brief", "snapshots_include_runtime", "snapshots_recalc_size", "help"], []))).
+:- type_representation(options.option_table, is_eqv_to(getopt.option_table(options.option))).

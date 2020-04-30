@@ -1,0 +1,4 @@
+:- module (transform_hlds.term_pass2).
+:- interface.
+:- type_representation((transform_hlds.term_pass2).call_weight_dst_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, pair.pair(parse_tree.prog_data.prog_context, int)))).
+:- type_representation((transform_hlds.term_pass2).call_weight_graph, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.term_pass2.call_weight_dst_map))).

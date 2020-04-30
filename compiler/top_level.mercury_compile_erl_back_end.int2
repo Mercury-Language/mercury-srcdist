@@ -1,0 +1,2 @@
+:- module (top_level.mercury_compile_erl_back_end).
+:- interface.

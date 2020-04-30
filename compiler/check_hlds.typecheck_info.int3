@@ -1,0 +1,12 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- type cons_type_info.
+:- type cons_type_info_source.
+:- type overloaded_symbol.
+:- type overloaded_symbol_map.
+:- type type_error_clause_context.
+:- type typecheck_info.
+:- type_representation((check_hlds.typecheck_info).cons_type_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.typecheck_info).overloaded_symbol_map, is_eqv_to(map(check_hlds.typecheck_info.overloaded_symbol, list(prog_context)))).
+:- type_representation((check_hlds.typecheck_info).type_error_clause_context, is_word_aligned_ptr).
+:- type_representation((check_hlds.typecheck_info).typecheck_info, is_word_aligned_ptr).

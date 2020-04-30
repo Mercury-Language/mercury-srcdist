@@ -1,0 +1,11 @@
+:- module (hlds.const_struct).
+:- interface.
+:- type const_instance_id.
+:- type const_instance_map.
+:- type const_struct.
+:- type const_struct_arg.
+:- type const_struct_db.
+:- type_representation((hlds.const_struct).const_instance_id, is_word_aligned_ptr).
+:- type_representation((hlds.const_struct).const_instance_map, is_eqv_to(map(hlds.const_struct.const_instance_id, int))).
+:- type_representation((hlds.const_struct).const_struct, is_word_aligned_ptr).
+:- type_representation((hlds.const_struct).const_struct_db, is_word_aligned_ptr).

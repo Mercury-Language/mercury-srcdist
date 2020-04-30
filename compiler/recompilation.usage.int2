@@ -1,0 +1,34 @@
+:- module (recompilation.usage).
+:- interface.
+:- use_module assoc_list.
+:- use_module map.
+:- use_module pair.
+:- use_module set.
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type resolved_functor
+    --->    resolved_functor_pred_or_func(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity)
+    ;       resolved_functor_constructor(recompilation.item_name)
+    ;       resolved_functor_field(recompilation.item_name, recompilation.item_name).
+:- type resolved_functor_map == recompilation.usage.resolved_item_map(set.set(recompilation.usage.resolved_functor)).
+:- type resolved_functor_set == recompilation.usage.resolved_item_set(set.set(recompilation.usage.resolved_functor)).
+:- type resolved_item_list(T) == assoc_list.assoc_list(parse_tree.prog_data.arity, recompilation.usage.resolved_item_map(T)).
+:- type resolved_item_map(T) == map.map(recompilation.module_qualifier, T).
+:- type resolved_item_set(T) == map.map(string, recompilation.usage.resolved_item_list(T)).
+:- type resolved_pred_or_func_map == recompilation.usage.resolved_item_map(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_pred_or_func_set == recompilation.usage.resolved_item_set(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_used_items == recompilation.item_id_set(recompilation.simple_item_set, recompilation.usage.resolved_pred_or_func_set, recompilation.usage.resolved_functor_set).
+:- type_representation((recompilation.usage).imported_item_set, is_eqv_to(set.set(pair.pair(string, parse_tree.prog_data.arity)))).
+:- type_representation((recompilation.usage).imported_items, is_eqv_to(map.map(mdbcomp.sym_name.module_name, recompilation.usage.module_imported_items))).
+:- type_representation((recompilation.usage).module_imported_items, is_eqv_to(recompilation.item_id_set(recompilation.usage.imported_item_set))).
+:- type_representation((recompilation.usage).record_resolved_item(V_1), is_eqv_to(pred(recompilation.module_qualifier, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, bool.bool, recompilation.usage.resolved_item_map(V_1), recompilation.usage.resolved_item_map(V_1), recompilation.usage.recompilation_usage_info, recompilation.usage.recompilation_usage_info))).
+:- type_representation((recompilation.usage).resolved_functor_map, is_eqv_to(recompilation.usage.resolved_item_map(set.set(recompilation.usage.resolved_functor)))).
+:- type_representation((recompilation.usage).resolved_functor_set, is_eqv_to(recompilation.usage.resolved_item_set(set.set(recompilation.usage.resolved_functor)))).
+:- type_representation((recompilation.usage).resolved_item_list(V_1), is_eqv_to(assoc_list.assoc_list(parse_tree.prog_data.arity, recompilation.usage.resolved_item_map(V_1)))).
+:- type_representation((recompilation.usage).resolved_item_map(V_1), is_eqv_to(map.map(recompilation.module_qualifier, V_1))).
+:- type_representation((recompilation.usage).resolved_item_set(V_1), is_eqv_to(map.map(string, recompilation.usage.resolved_item_list(V_1)))).
+:- type_representation((recompilation.usage).resolved_pred_or_func_map, is_eqv_to(recompilation.usage.resolved_item_map(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))))).
+:- type_representation((recompilation.usage).resolved_pred_or_func_set, is_eqv_to(recompilation.usage.resolved_item_set(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))))).
+:- type_representation((recompilation.usage).resolved_used_items, is_eqv_to(recompilation.item_id_set(recompilation.simple_item_set, recompilation.usage.resolved_pred_or_func_set, recompilation.usage.resolved_functor_set))).
+:- type_representation((recompilation.usage).write_resolved_item(V_1), is_eqv_to(pred(pair.pair(recompilation.module_qualifier, V_1), io.io, io.io))).

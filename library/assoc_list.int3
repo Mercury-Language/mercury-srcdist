@@ -1,0 +1,6 @@
+:- module assoc_list.
+:- interface.
+:- type assoc_list(T).
+:- type assoc_list(K, V).
+:- type_representation(assoc_list.assoc_list(V_1), is_eqv_to(list(pair(V_1, V_1)))).
+:- type_representation(assoc_list.assoc_list(V_1, V_2), is_eqv_to(list(pair(V_1, V_2)))).

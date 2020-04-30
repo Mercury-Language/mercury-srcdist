@@ -1,0 +1,5 @@
+:- module test_bitset.
+:- interface.
+:- type bitset_error(T).
+:- type test_bitset(T).
+:- type_representation(test_bitset.test_bitset(V_1), is_eqv_to(pair(tree_bitset(V_1), set_ordlist(V_1)))).

@@ -1,0 +1,31 @@
+:- module (check_hlds.mode_errors).
+:- interface.
+:- type delayed_goal.
+:- type final_inst_error
+	where	type_is_abstract_enum(2).
+:- type include_detism_on_modes
+	where	type_is_abstract_enum(1).
+:- type merge_context
+	where	type_is_abstract_enum(2).
+:- type merge_error.
+:- type merge_errors.
+:- type mode_error.
+:- type mode_error_info.
+:- type mode_error_unify_rhs.
+:- type mode_warning.
+:- type mode_warning_info.
+:- type negated_context_desc
+	where	type_is_abstract_enum(1).
+:- type pred_var_multimode_pred_error.
+:- type schedule_culprit.
+:- type var_multimode_pred_error.
+:- type_representation((check_hlds.mode_errors).delayed_goal, is_word_aligned_ptr).
+:- type_representation((check_hlds.mode_errors).final_inst_error, du_repn(enum("too_instantiated", "not_instantiated_enough", ["wrongly_instantiated"], []))).
+:- type_representation((check_hlds.mode_errors).include_detism_on_modes, du_repn(enum("include_detism_on_modes", "do_not_include_detism_on_modes", [], []))).
+:- type_representation((check_hlds.mode_errors).merge_context, du_repn(enum("merge_disj", "merge_if_then_else", ["merge_stm_atomic"], []))).
+:- type_representation((check_hlds.mode_errors).merge_error, is_word_aligned_ptr).
+:- type_representation((check_hlds.mode_errors).merge_errors, is_eqv_to(list(check_hlds.mode_errors.merge_error))).
+:- type_representation((check_hlds.mode_errors).mode_error_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.mode_errors).mode_warning_info, is_word_aligned_ptr).
+:- type_representation((check_hlds.mode_errors).negated_context_desc, du_repn(enum("if_then_else", "negation", [], []))).
+:- type_representation((check_hlds.mode_errors).pred_var_multimode_pred_error, is_word_aligned_ptr).
