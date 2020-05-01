@@ -1,0 +1,13 @@
+:- module exception.
+:- interface.
+:- type domain_error.
+:- type exception_result(T).
+:- type near_stack_limits.
+:- type software_error.
+:- abstract_inst(([])).
+:- abstract_inst((cannot_fail)).
+:- abstract_inst((nil_or_singleton_list)).
+:- type_representation(exception.domain_error, du_repn(notag("domain_error", []))).
+:- type_representation(exception.handler(V_1), is_eqv_to(pred(univ, V_1))).
+:- type_representation(exception.near_stack_limits, du_repn(direct_dummy("near_stack_limits", []))).
+:- type_representation(exception.software_error, du_repn(notag("software_error", []))).

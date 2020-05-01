@@ -1,0 +1,10 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- type literal_language
+	where	type_is_abstract_enum(2).
+:- type maybe_set_line_numbers
+	where	type_is_abstract_enum(1).
+:- type multi_string.
+:- type_representation((backend_libs.c_util).literal_language, du_repn(enum("literal_c", "literal_java", ["literal_csharp"], []))).
+:- type_representation((backend_libs.c_util).maybe_set_line_numbers, du_repn(enum("dont_set_line_numbers", "set_line_numbers", [], []))).
+:- type_representation((backend_libs.c_util).multi_string, is_eqv_to(list(string))).

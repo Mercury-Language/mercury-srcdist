@@ -1,0 +1,3 @@
+:- module (((transform_hlds.ctgc).structure_reuse).versions).
+:- interface.
+:- type_representation((((transform_hlds.ctgc).structure_reuse).versions).reuse_name, is_eqv_to(sym_name)).

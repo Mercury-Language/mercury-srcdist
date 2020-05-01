@@ -1,0 +1,5 @@
+:- module varset.
+:- interface.
+:- type varset.
+:- type varset(T).
+:- type_representation(varset.varset, is_eqv_to(varset.varset(generic))).

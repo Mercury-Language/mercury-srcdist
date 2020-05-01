@@ -1,0 +1,38 @@
+:- module (libs.lp_rational).
+:- interface.
+:- type constraint.
+:- type constraints.
+:- type direction
+	where	type_is_abstract_enum(1).
+:- type entailment_result
+	where	type_is_abstract_enum(2).
+:- type lp_coefficient.
+:- type lp_constant.
+:- type lp_operator
+	where	type_is_abstract_enum(2).
+:- type lp_result.
+:- type lp_term.
+:- type lp_terms.
+:- type lp_var.
+:- type lp_vars.
+:- type lp_varset.
+:- type objective.
+:- type output_var.
+:- type projection_result.
+:- abstract_inst((lp_op_lt_eq_or_eq)).
+:- type_representation((libs.lp_rational).cc_map, is_eqv_to(map(libs.lp_rational.lp_var, coeff_info))).
+:- type_representation((libs.lp_rational).constraints, is_eqv_to(list(libs.lp_rational.constraint))).
+:- type_representation((libs.lp_rational).direction, du_repn(enum("max", "min", [], []))).
+:- type_representation((libs.lp_rational).entailment_result, du_repn(enum("entailed", "not_entailed", ["inconsistent"], []))).
+:- type_representation((libs.lp_rational).lp_coefficient, is_eqv_to(rat)).
+:- type_representation((libs.lp_rational).lp_constant, is_eqv_to(rat)).
+:- type_representation((libs.lp_rational).lp_operator, du_repn(enum("lp_lt_eq", "lp_eq", ["lp_gt_eq"], []))).
+:- type_representation((libs.lp_rational).lp_term, is_eqv_to(pair(libs.lp_rational.lp_var, libs.lp_rational.lp_coefficient))).
+:- type_representation((libs.lp_rational).lp_terms, is_eqv_to(list(libs.lp_rational.lp_term))).
+:- type_representation((libs.lp_rational).lp_var, is_eqv_to(var)).
+:- type_representation((libs.lp_rational).lp_vars, is_eqv_to(list(libs.lp_rational.lp_var))).
+:- type_representation((libs.lp_rational).lp_varset, is_eqv_to(varset)).
+:- type_representation((libs.lp_rational).matrix, is_eqv_to(list(vector))).
+:- type_representation((libs.lp_rational).objective, is_eqv_to(libs.lp_rational.lp_terms)).
+:- type_representation((libs.lp_rational).output_var, is_eqv_to(((func libs.lp_rational.lp_var) = string))).
+:- type_representation((libs.lp_rational).var_num_map, is_eqv_to(map(libs.lp_rational.lp_var, int))).

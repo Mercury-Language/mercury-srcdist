@@ -1,0 +1,5 @@
+:- module (ll_backend.call_gen).
+:- interface.
+:- type known_call_variant
+	where	type_is_abstract_enum(1).
+:- type_representation((ll_backend.call_gen).known_call_variant, du_repn(enum("ho_call_known_num", "ho_call_unknown", [], []))).

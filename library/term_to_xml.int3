@@ -1,0 +1,23 @@
+:- module term_to_xml.
+:- interface.
+:- type attr.
+:- type attr_from_source.
+:- type attr_source
+	where	type_is_abstract_enum(2).
+:- type doctype.
+:- type dtd_generation_result.
+:- type element_mapping.
+:- type element_pred.
+:- type maybe_dtd.
+:- type maybe_functor_info.
+:- type maybe_stylesheet.
+:- type xml.
+:- abstract_inst((element_mapping)).
+:- abstract_inst((element_pred)).
+:- abstract_inst((non_embedded_dtd)).
+:- abstract_inst((xml_doc)).
+:- typeclass xmlable(T).
+:- type_representation(term_to_xml.attr, is_word_aligned_ptr).
+:- type_representation(term_to_xml.attr_from_source, is_word_aligned_ptr).
+:- type_representation(term_to_xml.attr_source, du_repn(enum("functor", "field_name", ["type_name", "arity"], []))).
+:- type_representation(term_to_xml.element_pred, is_eqv_to(pred(type_desc, term_to_xml.maybe_functor_info, string, list(term_to_xml.attr_from_source)))).

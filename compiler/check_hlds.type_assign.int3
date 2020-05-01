@@ -1,0 +1,10 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- type args_type_assign.
+:- type args_type_assign_set.
+:- type type_assign.
+:- type type_assign_set.
+:- type_representation((check_hlds.type_assign).args_type_assign, is_word_aligned_ptr).
+:- type_representation((check_hlds.type_assign).args_type_assign_set, is_eqv_to(list(check_hlds.type_assign.args_type_assign))).
+:- type_representation((check_hlds.type_assign).type_assign, is_word_aligned_ptr).
+:- type_representation((check_hlds.type_assign).type_assign_set, is_eqv_to(list(check_hlds.type_assign.type_assign))).

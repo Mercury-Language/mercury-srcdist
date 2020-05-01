@@ -1,0 +1,8 @@
+:- module unit.
+:- interface.
+:- type unit
+    --->    unit .
+:- type unit(T)
+    --->    unit1 .
+:- type_representation(unit.unit, du_repn(direct_dummy("unit", []))).
+:- type_representation(unit.unit(V_1), du_repn(direct_dummy("unit1", []))).

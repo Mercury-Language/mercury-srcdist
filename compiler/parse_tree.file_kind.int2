@@ -1,0 +1,22 @@
+:- module (parse_tree.file_kind).
+:- interface.
+:- type file_kind
+    --->    fk_src 
+    ;       fk_int(parse_tree.file_kind.int_file_kind)
+    ;       fk_opt(parse_tree.file_kind.opt_file_kind).
+:- type int_file_kind
+    --->    ifk_int0 
+    ;       ifk_int1 
+    ;       ifk_int2 
+    ;       ifk_int3 .
+:- type int_or_opt_file_kind
+    --->    iofk_int(parse_tree.file_kind.int_file_kind)
+    ;       iofk_opt(parse_tree.file_kind.opt_file_kind).
+:- type opt_file_kind
+    --->    ofk_opt 
+    ;       ofk_trans_opt .
+:- type src_file_kind
+    --->    sfk_src .
+:- type_representation((parse_tree.file_kind).int_file_kind, du_repn(enum("ifk_int0", "ifk_int1", ["ifk_int2", "ifk_int3"], []))).
+:- type_representation((parse_tree.file_kind).opt_file_kind, du_repn(enum("ofk_opt", "ofk_trans_opt", [], []))).
+:- type_representation((parse_tree.file_kind).src_file_kind, du_repn(direct_dummy("sfk_src", []))).
