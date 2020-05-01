@@ -1,0 +1,7 @@
+echo on
+context before
+context
+step
+print *
+stack
+c -S
