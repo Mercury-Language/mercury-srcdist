@@ -1,0 +1,4 @@
+:- module (hlds.hlds_code_util).
+:- interface.
+:- type_representation((hlds.hlds_code_util).inst_var_renaming, is_eqv_to(map.map(parse_tree.prog_data.inst_var, parse_tree.prog_data.inst_var))).
+:- type_representation((hlds.hlds_code_util).inst_var_renamings, is_eqv_to(list.list(hlds.hlds_code_util.inst_var_renaming))).
