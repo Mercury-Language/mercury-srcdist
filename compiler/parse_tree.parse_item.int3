@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_item).
+:- interface.
+:- type decl_in_class
+	where	type_is_abstract_enum(1).
+:- type var_term_kind.
