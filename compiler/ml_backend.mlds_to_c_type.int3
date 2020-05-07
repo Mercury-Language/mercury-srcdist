@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_type).
+:- interface.
+:- type output_type.
+:- abstract_inst((output_type)).
+:- type_representation((ml_backend.mlds_to_c_type).output_type, is_eqv_to(pred(mlds_to_c_opts, mlds_type, io, io))).

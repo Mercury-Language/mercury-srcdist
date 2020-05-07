@@ -1,0 +1,44 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.status).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.equiv_type).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.module_qual).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_used_modules).
+:- use_module (parse_tree.prog_item).
+:- type found_invalid_inst_or_mode
+    --->    did_not_find_invalid_inst_or_mode 
+    ;       found_invalid_inst_or_mode .
+:- type found_invalid_type
+    --->    did_not_find_invalid_type 
+    ;       found_invalid_type .
+:- type ims_item(T)
+    --->    ims_item(hlds.status.item_mercury_status, T).
+:- type ims_list(T) == list.list(hlds.make_hlds.ims_item(T)).
+:- type make_hlds_qual_info.
+:- type sec_info
+    --->    sec_info(hlds.status.item_mercury_status, parse_tree.prog_data.need_qualifier).
+:- type sec_item(T)
+    --->    sec_item(hlds.make_hlds.sec_info, T).
+:- type sec_list(T) == list.list(hlds.make_hlds.sec_item(T)).
+:- inst (ims_item(I)) for (hlds.make_hlds).ims_item/1 == bound(ims_item(ground, I)).
+:- inst (sec_item(I)) for (hlds.make_hlds).sec_item/1 == bound(sec_item(ground, I)).
+:- type_representation((hlds.make_hlds).found_invalid_inst_or_mode, du_repn(enum("did_not_find_invalid_inst_or_mode", "found_invalid_inst_or_mode", [], []))).
+:- type_representation((hlds.make_hlds).found_invalid_type, du_repn(enum("did_not_find_invalid_type", "found_invalid_type", [], []))).
+:- type_representation((hlds.make_hlds).ims_list(V_1), is_eqv_to(list.list(hlds.make_hlds.ims_item(V_1)))).
+:- type_representation((hlds.make_hlds).make_hlds_qual_info, is_eqv_to(hlds.make_hlds.qual_info.qual_info)).
+:- type_representation((hlds.make_hlds).sec_info, is_word_aligned_ptr).
+:- type_representation((hlds.make_hlds).sec_list(V_1), is_eqv_to(list.list(hlds.make_hlds.sec_item(V_1)))).
+:- implementation.
+:- type make_hlds_qual_info == hlds.make_hlds.qual_info.qual_info.

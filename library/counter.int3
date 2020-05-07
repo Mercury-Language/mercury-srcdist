@@ -1,0 +1,4 @@
+:- module counter.
+:- interface.
+:- type counter.
+:- type_representation(counter.counter, du_repn(notag("counter", []))).

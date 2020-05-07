@@ -1,0 +1,4 @@
+:- module (transform_hlds.term_constr_build).
+:- interface.
+:- type term_build_options.
+:- type_representation((transform_hlds.term_constr_build).term_build_options, is_word_aligned_ptr).

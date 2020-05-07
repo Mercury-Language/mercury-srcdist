@@ -1,0 +1,20 @@
+:- module (libs.process_util).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- type build0(Info) == pred(bool.bool, Info, Info, io.io, io.io).
+:- type io_pred == pred(bool.bool, io.io, io.io).
+:- type pid == int.
+:- type post_signal_cleanup(Info) == pred(Info, Info, io.io, io.io).
+:- inst (build0) == (pred((builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (io_pred) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (post_signal_cleanup) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- type_representation((libs.process_util).build0(V_1), is_eqv_to(pred(bool.bool, V_1, V_1, io.io, io.io))).
+:- type_representation((libs.process_util).io_pred, is_eqv_to(pred(bool.bool, io.io, io.io))).
+:- type_representation((libs.process_util).pid, is_eqv_to(int)).
+:- type_representation((libs.process_util).post_signal_cleanup(V_1), is_eqv_to(pred(V_1, V_1, io.io, io.io))).
+:- implementation.
+:- pragma foreign_import_module("C", (libs.process_util)).
+:- type signal_action
+    --->    signal_action .
+:- pragma foreign_type(c, signal_action, "MR_signal_action").

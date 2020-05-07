@@ -1,0 +1,4 @@
+:- module (check_hlds.delay_partial_inst).
+:- interface.
+:- type_representation((check_hlds.delay_partial_inst).canon_vars_map, is_eqv_to(map(cons_id, prog_vars))).
+:- type_representation((check_hlds.delay_partial_inst).construct_map, is_eqv_to(map(prog_var, canon_vars_map))).

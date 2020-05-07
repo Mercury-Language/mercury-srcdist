@@ -1,0 +1,6 @@
+:- module html_format.
+:- interface.
+:- type_representation(html_format.column_class_map, is_eqv_to(map(int, string))).
+:- type_representation(html_format.html, is_eqv_to(cord(string))).
+:- type_representation(html_format.style_control_map, is_eqv_to(map(style_control, style_element_map))).
+:- type_representation(html_format.style_element_map, is_eqv_to(map(style_element, string))).

@@ -1,0 +1,12 @@
+:- module (mdbcomp.prim_data).
+:- interface.
+:- type pred_or_func
+	where	type_is_abstract_enum(1).
+:- type proc_label.
+:- type special_pred_id
+	where	type_is_abstract_enum(2).
+:- type trace_port
+	where	type_is_abstract_enum(4).
+:- type_representation((mdbcomp.prim_data).pred_or_func, du_repn(enum("pf_predicate", "pf_function", [], []))).
+:- type_representation((mdbcomp.prim_data).special_pred_id, du_repn(enum("spec_pred_unify", "spec_pred_index", ["spec_pred_compare"], []))).
+:- type_representation((mdbcomp.prim_data).trace_port, du_repn(enum("port_call", "port_exit", ["port_redo", "port_fail", "port_tailrec_call", "port_exception", "port_ite_cond", "port_ite_then", "port_ite_else", "port_neg_enter", "port_neg_success", "port_neg_failure", "port_disj_first", "port_disj_later", "port_switch", "port_user"], []))).

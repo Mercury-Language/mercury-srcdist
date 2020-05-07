@@ -1,0 +1,24 @@
+:- module (parse_tree.module_qual).
+:- interface.
+:- type maybe_found_undef_inst
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_mode
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_type
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_typeclass
+	where	type_is_abstract_enum(1).
+:- type maybe_suppress_found_undef
+	where	type_is_abstract_enum(1).
+:- type mq_in_interface
+	where	type_is_abstract_enum(1).
+:- type mq_info.
+:- type partial_qualifier_info.
+:- type_representation((parse_tree.module_qual).maybe_found_undef_inst, du_repn(enum("did_not_find_undef_inst", "found_undef_inst", [], []))).
+:- type_representation((parse_tree.module_qual).maybe_found_undef_mode, du_repn(enum("did_not_find_undef_mode", "found_undef_mode", [], []))).
+:- type_representation((parse_tree.module_qual).maybe_found_undef_type, du_repn(enum("did_not_find_undef_type", "found_undef_type", [], []))).
+:- type_representation((parse_tree.module_qual).maybe_found_undef_typeclass, du_repn(enum("did_not_find_undef_typeclass", "found_undef_typeclass", [], []))).
+:- type_representation((parse_tree.module_qual).maybe_suppress_found_undef, du_repn(enum("do_not_suppress_found_undef", "suppress_found_undef", [], []))).
+:- type_representation((parse_tree.module_qual).mq_in_interface, du_repn(enum("mq_not_used_in_interface", "mq_used_in_interface", [], []))).
+:- type_representation((parse_tree.module_qual).mq_info, is_word_aligned_ptr).
+:- type_representation((parse_tree.module_qual).partial_qualifier_info, du_repn(notag("partial_qualifier_info", []))).
