@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_tag_switch).
+:- interface.
+:- type_representation((ml_backend.ml_tag_switch).code_map, is_eqv_to(map.map(hlds.hlds_goal.case_id, ml_backend.ml_tag_switch.maybe_code))).
+:- type_representation((ml_backend.ml_tag_switch).stag_rev_map, is_eqv_to(map.map(hlds.hlds_goal.case_id, ml_backend.ml_tag_switch.stags))).

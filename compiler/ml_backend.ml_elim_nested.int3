@@ -1,0 +1,8 @@
+:- module (ml_backend.ml_elim_nested).
+:- interface.
+:- type action
+	where	type_is_abstract_enum(1).
+:- abstract_inst((chain)).
+:- abstract_inst((hoist)).
+:- type_representation((ml_backend.ml_elim_nested).action, du_repn(enum("hoist_nested_funcs", "chain_gc_stack_frames", [], []))).
+:- type_representation((ml_backend.ml_elim_nested).outervars, is_eqv_to(list(list(mlds_local_var_defn)))).

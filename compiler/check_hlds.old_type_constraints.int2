@@ -1,0 +1,15 @@
+:- module (check_hlds.old_type_constraints).
+:- interface.
+:- type_representation((check_hlds.old_type_constraints).class_env, is_eqv_to(hlds.hlds_class.class_table)).
+:- type_representation((check_hlds.old_type_constraints).error_specs, is_eqv_to(list.list(parse_tree.error_util.error_spec))).
+:- type_representation((check_hlds.old_type_constraints).event_env, is_eqv_to(parse_tree.prog_data_event.event_spec_map)).
+:- type_representation((check_hlds.old_type_constraints).func_env, is_eqv_to(hlds.hlds_cons.cons_table)).
+:- type_representation((check_hlds.old_type_constraints).pred_env, is_eqv_to(hlds.pred_table.predicate_table)).
+:- type_representation((check_hlds.old_type_constraints).prog_var_map, is_eqv_to(bimap.bimap(parse_tree.prog_data.prog_var, parse_tree.prog_data.tvar))).
+:- type_representation((check_hlds.old_type_constraints).simple_prog_var_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.tvar))).
+:- type_representation((check_hlds.old_type_constraints).type_constraint_counter, is_eqv_to(counter.counter)).
+:- type_representation((check_hlds.old_type_constraints).type_constraint_id, is_eqv_to(int)).
+:- type_representation((check_hlds.old_type_constraints).type_constraint_map, is_eqv_to(map.map(check_hlds.old_type_constraints.type_constraint_id, check_hlds.old_type_constraints.type_constraint))).
+:- type_representation((check_hlds.old_type_constraints).type_constraint_set, is_eqv_to(set.set(check_hlds.old_type_constraints.type_constraint_id))).
+:- type_representation((check_hlds.old_type_constraints).type_domain_map, is_eqv_to(map.map(parse_tree.prog_data.tvar, check_hlds.old_type_constraints.type_domain))).
+:- type_representation((check_hlds.old_type_constraints).var_constraint_map, is_eqv_to(map.map(parse_tree.prog_data.tvar, list.list(check_hlds.old_type_constraints.type_constraint_id)))).

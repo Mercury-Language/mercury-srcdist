@@ -1,0 +1,27 @@
+:- module private_builtin.
+:- interface.
+:- type base_typeclass_info.
+:- type float_box
+    --->    float_box(float).
+:- type heap_pointer.
+:- type mutvar(T)
+    --->    mutvar(builtin.c_pointer).
+:- type ref(T).
+:- type sample_type_info
+    --->    sample_type_info(private_builtin.type_info).
+:- type sample_typeclass_info
+    --->    sample_typeclass_info(private_builtin.typeclass_info).
+:- type store_at_ref_type(T)
+    --->    store_at_ref_type(int).
+:- type ticket == builtin.c_pointer.
+:- type ticket_counter == builtin.c_pointer.
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+:- type_representation(private_builtin.float_box, du_repn(notag("float_box", []))).
+:- type_representation(private_builtin.mutvar(V_1), du_repn(notag("mutvar", []))).
+:- type_representation(private_builtin.sample_type_info, du_repn(notag("sample_type_info", []))).
+:- type_representation(private_builtin.sample_typeclass_info, du_repn(notag("sample_typeclass_info", []))).
+:- type_representation(private_builtin.store_at_ref_type(V_1), du_repn(notag("store_at_ref_type", []))).
+:- type_representation(private_builtin.ticket, is_eqv_to(builtin.c_pointer)).
+:- type_representation(private_builtin.ticket_counter, is_eqv_to(builtin.c_pointer)).

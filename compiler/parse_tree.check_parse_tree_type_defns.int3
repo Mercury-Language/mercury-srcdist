@@ -1,0 +1,29 @@
+:- module (parse_tree.check_parse_tree_type_defns).
+:- interface.
+:- type abstract_solver_type_status
+	where	type_is_abstract_enum(1).
+:- type c_j_cs_e_maybe_defn_or_enum.
+:- type checked_foreign_enum.
+:- type foreign_type_or_enum.
+:- type maybe_insist_on_defn
+	where	type_is_abstract_enum(1).
+:- type maybe_only_constants.
+:- type solver_type_defn.
+:- type std_abs_type_status
+	where	type_is_abstract_enum(2).
+:- type std_du_type_status
+	where	type_is_abstract_enum(2).
+:- type std_eqv_type_status
+	where	type_is_abstract_enum(2).
+:- type std_type_defn.
+:- type type_ctor_checked_defn.
+:- type type_ctor_checked_map.
+:- type_representation((parse_tree.check_parse_tree_type_defns).abstract_solver_type_status, du_repn(enum("abstract_solver_type_exported", "abstract_solver_type_private", [], []))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).c_j_cs_e_maybe_defn_or_enum, is_eqv_to(c_java_csharp_erlang(maybe(parse_tree.check_parse_tree_type_defns.foreign_type_or_enum)))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).checked_foreign_enum, is_word_aligned_ptr).
+:- type_representation((parse_tree.check_parse_tree_type_defns).field_name_map, is_eqv_to(map(string, one_or_more(field_name_locn)))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).maybe_insist_on_defn, du_repn(enum("do_not_insist_on_defn", "do_insist_on_defn", [], []))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).std_abs_type_status, du_repn(enum("std_abs_type_ft_exported", "std_abs_type_abstract_exported", ["std_abs_type_all_private"], []))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).std_du_type_status, du_repn(enum("std_du_type_mer_ft_exported", "std_du_type_mer_exported", ["std_du_type_abstract_exported", "std_du_type_all_private"], []))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).std_eqv_type_status, du_repn(enum("std_eqv_type_mer_exported", "std_eqv_type_abstract_exported", ["std_eqv_type_all_private"], []))).
+:- type_representation((parse_tree.check_parse_tree_type_defns).type_ctor_checked_map, is_eqv_to(map(type_ctor, parse_tree.check_parse_tree_type_defns.type_ctor_checked_defn))).
