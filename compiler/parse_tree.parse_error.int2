@@ -1,0 +1,17 @@
+:- module (parse_tree.parse_error).
+:- interface.
+:- use_module set.
+:- type read_module_error
+    --->    rme_could_not_open_file 
+    ;       rme_unexpected_module_name 
+    ;       rme_no_module_decl_at_start 
+    ;       rme_no_section_decl_at_start 
+    ;       rme_end_module_not_at_end_of_src 
+    ;       rme_unexpected_term_in_int_or_opt 
+    ;       rme_could_not_read_term 
+    ;       rme_could_not_parse_item 
+    ;       rme_bad_submodule_start 
+    ;       rme_bad_module_end .
+:- type read_module_errors == set.set(parse_tree.parse_error.read_module_error).
+:- type_representation((parse_tree.parse_error).read_module_error, du_repn(enum("rme_could_not_open_file", "rme_unexpected_module_name", ["rme_no_module_decl_at_start", "rme_no_section_decl_at_start", "rme_end_module_not_at_end_of_src", "rme_unexpected_term_in_int_or_opt", "rme_could_not_read_term", "rme_could_not_parse_item", "rme_bad_submodule_start", "rme_bad_module_end"], []))).
+:- type_representation((parse_tree.parse_error).read_module_errors, is_eqv_to(set.set(parse_tree.parse_error.read_module_error))).

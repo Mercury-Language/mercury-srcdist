@@ -1,0 +1,22 @@
+:- module (transform_hlds.unused_args).
+:- interface.
+:- use_module analysis.
+:- type unused_args_answer.
+:- type unused_args_call.
+:- type unused_args_func_info.
+:- instance (analysis.analysis(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call, transform_hlds.unused_args.unused_args_answer)).
+:- instance (analysis.answer_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance (analysis.call_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance (analysis.partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance (analysis.partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance (analysis.to_term(transform_hlds.unused_args.unused_args_answer)).
+:- instance (analysis.to_term(transform_hlds.unused_args.unused_args_call)).
+:- type_representation((transform_hlds.unused_args).proc_call_info, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args.new_proc_info))).
+:- type_representation((transform_hlds.unused_args).unused_args_answer, du_repn(notag("unused_args_answer", []))).
+:- type_representation((transform_hlds.unused_args).unused_args_call, du_repn(direct_dummy("unused_args_call", []))).
+:- type_representation((transform_hlds.unused_args).unused_args_func_info, du_repn(notag("unused_args_func_info", []))).
+:- type_representation((transform_hlds.unused_args).var_dep, is_eqv_to(map.map(parse_tree.prog_data.prog_var, transform_hlds.unused_args.usage_info))).
+:- type_representation((transform_hlds.unused_args).var_usage, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args.var_dep))).
+:- implementation.
+:- type unused_args_call
+    --->    unused_args_call .

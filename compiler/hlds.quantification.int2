@@ -1,0 +1,10 @@
+:- module (hlds.quantification).
+:- interface.
+:- type nonlocals_to_recompute
+    --->    ordinary_nonlocals_maybe_lambda 
+    ;       ordinary_nonlocals_no_lambda 
+    ;       code_gen_nonlocals_no_lambda .
+:- type quant_warning
+    --->    warn_overlap(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_context).
+:- type_representation((hlds.quantification).nonlocals_to_recompute, du_repn(enum("ordinary_nonlocals_maybe_lambda", "ordinary_nonlocals_no_lambda", ["code_gen_nonlocals_no_lambda"], []))).
+:- type_representation((hlds.quantification).quant_warning, is_word_aligned_ptr).

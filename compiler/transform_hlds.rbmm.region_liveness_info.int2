@@ -1,0 +1,29 @@
+:- module ((transform_hlds.rbmm).region_liveness_info).
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module map.
+:- use_module set.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module (transform_hlds.smm_common).
+:- use_module ((transform_hlds.rbmm).points_to_graph).
+:- type execution_path == assoc_list.assoc_list(transform_hlds.smm_common.program_point, hlds.hlds_goal.hlds_goal).
+:- type execution_path_table == map.map(hlds.hlds_pred.pred_proc_id, list.list(transform_hlds.rbmm.region_liveness_info.execution_path)).
+:- type pp_region_set_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.region_set).
+:- type pp_varset_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.variable_set).
+:- type proc_pp_region_set_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_region_set_table).
+:- type proc_pp_varset_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_varset_table).
+:- type proc_region_set_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.region_set).
+:- type region_set == set.set(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- type variable_set == set.set(parse_tree.prog_data.prog_var).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).execution_path, is_eqv_to(assoc_list.assoc_list(transform_hlds.smm_common.program_point, hlds.hlds_goal.hlds_goal))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).execution_path_table, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, list.list(transform_hlds.rbmm.region_liveness_info.execution_path)))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).pp_region_set_table, is_eqv_to(map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.region_set))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).pp_varset_table, is_eqv_to(map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.variable_set))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).proc_pp_region_set_table, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_region_set_table))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).proc_pp_varset_table, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_varset_table))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).proc_region_set_table, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_liveness_info.region_set))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).region_set, is_eqv_to(set.set(transform_hlds.rbmm.points_to_graph.rptg_node))).
+:- type_representation(((transform_hlds.rbmm).region_liveness_info).variable_set, is_eqv_to(set.set(parse_tree.prog_data.prog_var))).

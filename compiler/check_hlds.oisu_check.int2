@@ -1,0 +1,3 @@
+:- module (check_hlds.oisu_check).
+:- interface.
+:- type_representation((check_hlds.oisu_check).oisu_kind_map, is_eqv_to(map.map(hlds.hlds_pred.pred_id, list.list(hlds.hlds_pred.oisu_pred_kind_for)))).
