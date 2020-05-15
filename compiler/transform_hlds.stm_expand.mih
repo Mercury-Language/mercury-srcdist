@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `stm_expand.m'
+** by the Mercury compiler,
+** version rotd-2020-05-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.stm_expand.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__stm_expand
+#define MR_HEADER_GUARD_transform_hlds__stm_expand
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__STM_EXPAND_DECL_GUARD
+#define TRANSFORM_HLDS__STM_EXPAND_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__stm_expand__transform_hlds__stm_expand__type_ctor_info_stm_goal_vars_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__stm_expand__transform_hlds__stm_expand__type_ctor_info_stm_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__stm_expand__transform_hlds__stm_expand__type_ctor_info_stm_new_pred_info_0;
+
+void MR_CALL 
+transform_hlds__stm_expand__stm_process_module_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__transform_hlds__stm_expand__init(void);
+void mercury__transform_hlds__stm_expand__init_type_tables(void);
+void mercury__transform_hlds__stm_expand__init_debugger(void);
+const char *mercury__transform_hlds__stm_expand__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.stm_expand
+
+// :- end_interface transform_hlds.stm_expand.

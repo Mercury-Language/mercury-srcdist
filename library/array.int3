@@ -1,0 +1,17 @@
+:- module array.
+:- interface.
+:- type array(T).
+:- type index_out_of_bounds.
+:- abstract_inst((array)).
+:- abstract_inst((array(I))).
+:- abstract_inst((mostly_uniq_array)).
+:- abstract_inst((mostly_uniq_array(I))).
+:- abstract_inst((uniq_array)).
+:- abstract_inst((uniq_array(I))).
+:- abstract_mode((array_di)).
+:- abstract_mode((array_mdi)).
+:- abstract_mode((array_mui)).
+:- abstract_mode((array_muo)).
+:- abstract_mode((array_ui)).
+:- abstract_mode((array_uo)).
+:- type_representation(array.index_out_of_bounds, du_repn(notag("index_out_of_bounds", []))).

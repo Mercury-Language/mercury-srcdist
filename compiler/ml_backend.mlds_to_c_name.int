@@ -1,0 +1,27 @@
+:- module (ml_backend.mlds_to_c_name).
+:- interface.
+:- use_module backend_libs.
+:- use_module bool.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module (backend_libs.rtti).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- func global_var_name(ml_backend.mlds.global_var_ref) = string.
+:- pred mlds_output_class_name_arity(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity, io.io, io.io).
+:- mode mlds_output_class_name_arity((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_fully_qualified_field_var_name(ml_backend.mlds.qual_field_var_name, io.io, io.io).
+:- mode mlds_output_fully_qualified_field_var_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_fully_qualified_function_name(ml_backend.mlds.qual_function_name, io.io, io.io).
+:- mode mlds_output_fully_qualified_function_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_fully_qualified_proc_label(ml_backend.mlds.qual_proc_label, io.io, io.io).
+:- mode mlds_output_fully_qualified_proc_label((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_local_var_name(ml_backend.mlds.mlds_local_var_name, io.io, io.io).
+:- mode mlds_output_local_var_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_maybe_qualified_global_var_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_global_var_name, io.io, io.io).
+:- mode mlds_output_maybe_qualified_global_var_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mlds_tabling_data_name(ml_backend.mlds.mlds_proc_label, backend_libs.rtti.proc_tabling_struct_id) = string.
+:- pred output_qual_name_prefix_c(ml_backend.mlds.mlds_module_name, io.io, io.io).
+:- mode output_qual_name_prefix_c((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func qual_name_prefix_c(ml_backend.mlds.mlds_module_name) = string.
+:- func should_module_qualify_global_var_name(ml_backend.mlds.mlds_global_var_name) = bool.bool.

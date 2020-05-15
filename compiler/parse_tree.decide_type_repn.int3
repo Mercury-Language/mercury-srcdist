@@ -1,0 +1,4 @@
+:- module (parse_tree.decide_type_repn).
+:- interface.
+:- type_representation((parse_tree.decide_type_repn).eqv_map, is_eqv_to(map(type_ctor, item_type_defn_info_eqv))).
+:- type_representation((parse_tree.decide_type_repn).word_alignment_map, is_eqv_to(map(type_ctor, maybe_word_alignment))).

@@ -1,0 +1,17 @@
+:- module ops.
+:- interface.
+:- import_module list.
+:- type assoc
+	where	type_is_abstract_enum(1).
+:- type class.
+:- type mercury_op_table.
+:- type op_info.
+:- type priority.
+:- type table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- type_representation(ops.assoc, du_repn(enum("x", "y", [], []))).
+:- type_representation(ops.mercury_op_table, du_repn(direct_dummy("mercury_op_table", []))).
+:- type_representation(ops.op_info, is_word_aligned_ptr).
+:- type_representation(ops.priority, is_eqv_to(int)).
+:- type_representation(ops.table, is_eqv_to(ops.mercury_op_table)).

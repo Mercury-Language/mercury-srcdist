@@ -1,0 +1,5 @@
+:- module dense_bitset.
+:- interface.
+:- use_module array.
+:- type dense_bitset == array.array(int).
+:- type_representation(dense_bitset.dense_bitset, is_eqv_to(array.array(int))).

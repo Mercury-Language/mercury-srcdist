@@ -1,0 +1,37 @@
+:- module (transform_hlds.pd_term).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (transform_hlds.pd_info).
+:- type global_check_result
+    --->    ok(transform_hlds.pd_term.proc_pair, int)
+    ;       possible_loop(transform_hlds.pd_term.proc_pair, int, hlds.hlds_pred.pred_proc_id)
+    ;       loop .
+:- type global_term_info.
+:- type local_term_info.
+:- type pd_proc_term_info.
+:- type proc_pair == pair.pair(hlds.hlds_pred.pred_proc_id, maybe.maybe(hlds.hlds_pred.pred_proc_id)).
+:- pred get_proc_term_info(transform_hlds.pd_term.local_term_info, hlds.hlds_pred.pred_proc_id, transform_hlds.pd_term.pd_proc_term_info).
+:- mode get_proc_term_info((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred global_check(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), maybe.maybe(hlds.hlds_goal.hlds_goal), hlds.instmap.instmap, transform_hlds.pd_info.version_index, transform_hlds.pd_term.global_term_info, transform_hlds.pd_term.global_term_info, transform_hlds.pd_term.global_check_result).
+:- mode global_check((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred global_term_info_init(transform_hlds.pd_term.global_term_info).
+:- mode global_term_info_init((builtin.out)) is det.
+:- pred local_check(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, transform_hlds.pd_term.local_term_info, transform_hlds.pd_term.local_term_info).
+:- mode local_check((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred local_term_info_init(transform_hlds.pd_term.local_term_info).
+:- mode local_term_info_init((builtin.out)) is det.
+:- pred update_global_term_info(transform_hlds.pd_term.proc_pair, hlds.hlds_pred.pred_proc_id, int, transform_hlds.pd_term.global_term_info, transform_hlds.pd_term.global_term_info).
+:- mode update_global_term_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- use_module assoc_list.
+:- use_module map.
+:- type local_term_info == transform_hlds.pd_term.single_covering_goals.
+:- type pd_proc_term_info == assoc_list.assoc_list(int, int).
+:- type single_covering_goals == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_term.pd_proc_term_info).

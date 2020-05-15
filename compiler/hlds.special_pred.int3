@@ -1,0 +1,4 @@
+:- module (hlds.special_pred).
+:- interface.
+:- type special_pred_maps.
+:- type_representation((hlds.special_pred).special_pred_maps, is_word_aligned_ptr).

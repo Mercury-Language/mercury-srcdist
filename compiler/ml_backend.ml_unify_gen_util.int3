@@ -1,0 +1,21 @@
+:- module (ml_backend.ml_unify_gen_util).
+:- interface.
+:- type arg_const_type_and_width.
+:- type arg_to_type(Arg).
+:- type arg_type_and_width(Arg).
+:- type arg_var_type_and_width.
+:- type assign_dir
+	where	type_is_abstract_enum(2).
+:- type field_gen.
+:- type field_via.
+:- type may_have_extra_args
+	where	type_is_abstract_enum(1).
+:- type ml_maybe_zero_const
+	where	type_is_abstract_enum(1).
+:- type_representation((ml_backend.ml_unify_gen_util).arg_const_type_and_width, is_eqv_to(ml_backend.ml_unify_gen_util.arg_type_and_width(const_struct_arg))).
+:- type_representation((ml_backend.ml_unify_gen_util).arg_to_type(V_1), is_eqv_to(((func V_1) = mer_type))).
+:- type_representation((ml_backend.ml_unify_gen_util).arg_var_type_and_width, is_eqv_to(ml_backend.ml_unify_gen_util.arg_type_and_width(prog_var))).
+:- type_representation((ml_backend.ml_unify_gen_util).assign_dir, du_repn(enum("assign_nondummy_left", "assign_nondummy_right", ["assign_nondummy_unused", "assign_dummy"], []))).
+:- type_representation((ml_backend.ml_unify_gen_util).field_gen, is_word_aligned_ptr).
+:- type_representation((ml_backend.ml_unify_gen_util).may_have_extra_args, du_repn(enum("may_not_have_extra_args", "may_have_extra_args", [], []))).
+:- type_representation((ml_backend.ml_unify_gen_util).ml_maybe_zero_const, du_repn(enum("ml_is_not_zero_const", "ml_is_zero_const", [], []))).
