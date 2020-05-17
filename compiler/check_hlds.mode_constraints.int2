@@ -1,0 +1,7 @@
+:- module (check_hlds.mode_constraints).
+:- interface.
+:- type_representation(can_succeed, is_eqv_to(bool.bool)).
+:- type_representation(constrain_var, is_eqv_to(pred(parse_tree.prog_data.prog_var, check_hlds.mode_constraint_robdd.mode_constraint, check_hlds.mode_constraint_robdd.mode_constraint, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info))).
+:- type_representation(ho_calls, is_eqv_to(multi_map.multi_map(check_hlds.mode_constraint_robdd.prog_var_and_level, pair.pair(mdbcomp.goal_path.goal_id, list.list(parse_tree.prog_data.prog_var))))).
+:- type_representation(ho_modes, is_eqv_to(multi_map.multi_map(check_hlds.mode_constraint_robdd.prog_var_and_level, list.list(parse_tree.prog_data.mer_mode)))).
+:- type_representation(sccs, is_eqv_to(list.list(list.list(hlds.hlds_pred.pred_id)))).

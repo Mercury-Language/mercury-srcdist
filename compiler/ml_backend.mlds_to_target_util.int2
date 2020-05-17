@@ -1,0 +1,34 @@
+:- module (ml_backend.mlds_to_target_util).
+:- interface.
+:- use_module set.
+:- type break_context
+    --->    bc_none 
+    ;       bc_switch 
+    ;       bc_loop .
+:- type code_addrs_in_consts
+    --->    code_addrs_in_consts(set_tree234.set_tree234(ml_backend.mlds.mlds_code_addr), counter.counter, assoc_list.assoc_list(int, ml_backend.mlds.mlds_code_addr)).
+:- type exit_method
+    --->    can_break 
+    ;       can_continue 
+    ;       can_return 
+    ;       can_throw 
+    ;       can_fall_through .
+:- type exit_methods == set.set(ml_backend.mlds_to_target_util.exit_method).
+:- type func_info_csj
+    --->    func_info_csj(((ml_backend.mlds_to_target_util).func_info_params) :: ml_backend.mlds.mlds_func_params).
+:- type indent == int.
+:- type output_aux
+    --->    oa_none 
+    ;       oa_cname(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity)
+    ;       oa_alloc_only 
+    ;       oa_force_init .
+:- type output_generics
+    --->    do_output_generics 
+    ;       do_not_output_generics .
+:- type_representation(break_context, du_repn(enum("bc_none", "bc_switch", ["bc_loop"], []))).
+:- type_representation(code_addrs_in_consts, is_word_aligned_ptr).
+:- type_representation(exit_method, du_repn(enum("can_break", "can_continue", ["can_return", "can_throw", "can_fall_through"], []))).
+:- type_representation(exit_methods, is_eqv_to(set.set(ml_backend.mlds_to_target_util.exit_method))).
+:- type_representation(func_info_csj, du_repn(notag("func_info_csj", []))).
+:- type_representation(indent, is_eqv_to(int)).
+:- type_representation(output_generics, du_repn(enum("do_output_generics", "do_not_output_generics", [], []))).

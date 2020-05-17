@@ -1,0 +1,27 @@
+:- module (erl_backend.elds).
+:- interface.
+:- type elds.
+:- type elds_binop
+	where	type_is_abstract_enum(5).
+:- type elds_body.
+:- type elds_call_target.
+:- type elds_case.
+:- type elds_catch.
+:- type elds_clause.
+:- type elds_defn.
+:- type elds_expr.
+:- type elds_foreign_export_defn.
+:- type elds_rtti_defn.
+:- type elds_rtti_id.
+:- type elds_term.
+:- type elds_unop
+	where	type_is_abstract_enum(2).
+:- type_representation(elds, is_word_aligned_ptr).
+:- type_representation(elds_binop, du_repn(enum("mul", "float_div", ["int_div", "rem", "band", "add", "sub", "bor", "bxor", "bsl", "bsr", "=<", "<", ">=", ">", "=:=", "=/=", "andalso", "orelse"], []))).
+:- type_representation(elds_case, is_word_aligned_ptr).
+:- type_representation(elds_catch, is_word_aligned_ptr).
+:- type_representation(elds_clause, is_word_aligned_ptr).
+:- type_representation(elds_defn, is_word_aligned_ptr).
+:- type_representation(elds_foreign_export_defn, is_word_aligned_ptr).
+:- type_representation(elds_rtti_defn, is_word_aligned_ptr).
+:- type_representation(elds_unop, du_repn(enum("plus", "minus", ["bnot", "logical_not"], []))).

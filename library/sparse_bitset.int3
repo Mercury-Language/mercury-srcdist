@@ -1,0 +1,5 @@
+:- module sparse_bitset.
+:- interface.
+:- type sparse_bitset(T).
+:- type_representation(bitset_impl, is_eqv_to(list(bitset_elem))).
+:- type_representation(sparse_bitset(V_1), du_repn(notag("sparse_bitset", []))).

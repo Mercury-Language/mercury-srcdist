@@ -1,0 +1,90 @@
+:- module (backend_libs.rtti).
+:- interface.
+:- type base_typeclass_info.
+:- type builtin_ctor.
+:- type call_or_answer_table
+	where	type_is_abstract_enum(1).
+:- type ctor_rtti_name.
+:- type curr_or_prev_table
+	where	type_is_abstract_enum(1).
+:- type du_arg_info.
+:- type du_functor.
+:- type du_rep.
+:- type enum_functor.
+:- type enum_maybe_dummy
+	where	type_is_abstract_enum(1).
+:- type equality_axioms
+	where	type_is_abstract_enum(1).
+:- type exist_info.
+:- type exist_typeinfo_locn.
+:- type foreign_enum_functor.
+:- type functor_subtype_info
+	where	type_is_abstract_enum(1).
+:- type impl_ctor
+	where	type_is_abstract_enum(4).
+:- type is_array
+	where	type_is_abstract_enum(1).
+:- type is_stable
+	where	type_is_abstract_enum(1).
+:- type notag_functor.
+:- type proc_tabling_struct_id.
+:- type ptag_map.
+:- type rtti_data.
+:- type rtti_id.
+:- type rtti_id_maybe_element.
+:- type rtti_maybe_pseudo_type_info.
+:- type rtti_maybe_pseudo_type_info_or_self.
+:- type rtti_pseudo_type_info.
+:- type rtti_type_ctor.
+:- type rtti_type_info.
+:- type sectag_and_locn.
+:- type sectag_locn.
+:- type sectag_table.
+:- type stag_map.
+:- type target_prefixes.
+:- type tc_constraint.
+:- type tc_decl.
+:- type tc_dict.
+:- type tc_id.
+:- type tc_instance.
+:- type tc_method_id.
+:- type tc_name.
+:- type tc_rtti_name.
+:- type tc_type.
+:- type type_ctor_data.
+:- type type_ctor_details.
+:- type type_ctor_flag
+	where	type_is_abstract_enum(1).
+:- type var_arity_ctor_id
+	where	type_is_abstract_enum(2).
+:- type_representation(base_typeclass_info, is_word_aligned_ptr).
+:- type_representation(call_or_answer_table, du_repn(enum("call_table", "answer_table", [], []))).
+:- type_representation(curr_or_prev_table, du_repn(enum("curr_table", "prev_table", [], []))).
+:- type_representation(du_arg_info, is_word_aligned_ptr).
+:- type_representation(du_functor, is_word_aligned_ptr).
+:- type_representation(enum_functor, is_word_aligned_ptr).
+:- type_representation(enum_maybe_dummy, du_repn(enum("enum_is_not_dummy", "enum_is_dummy", [], []))).
+:- type_representation(equality_axioms, du_repn(enum("standard", "user_defined", [], []))).
+:- type_representation(exist_info, is_word_aligned_ptr).
+:- type_representation(foreign_enum_functor, is_word_aligned_ptr).
+:- type_representation(functor_subtype_info, du_repn(enum("functor_subtype_none", "functor_subtype_exists", [], []))).
+:- type_representation(impl_ctor, du_repn(enum("impl_ctor_hp", "impl_ctor_succip", ["impl_ctor_maxfr", "impl_ctor_curfr", "impl_ctor_redofr", "impl_ctor_redoip", "impl_ctor_ticket", "impl_ctor_trail_ptr", "impl_ctor_type_info", "impl_ctor_type_ctor_info", "impl_ctor_typeclass_info", "impl_ctor_base_typeclass_info", "impl_ctor_subgoal"], []))).
+:- type_representation(is_array, du_repn(enum("is_array", "not_array", [], []))).
+:- type_representation(is_stable, du_repn(enum("is_stable", "is_not_stable", [], []))).
+:- type_representation(notag_functor, is_word_aligned_ptr).
+:- type_representation(ptag_map, is_eqv_to(map(ptag, backend_libs.rtti.sectag_table))).
+:- type_representation(rtti_type_ctor, is_word_aligned_ptr).
+:- type_representation(sectag_table, is_word_aligned_ptr).
+:- type_representation(stag_map, is_eqv_to(map(uint, backend_libs.rtti.du_functor))).
+:- type_representation(target_prefixes, is_word_aligned_ptr).
+:- type_representation(tc_constraint, is_word_aligned_ptr).
+:- type_representation(tc_decl, is_word_aligned_ptr).
+:- type_representation(tc_dict, is_word_aligned_ptr).
+:- type_representation(tc_id, is_word_aligned_ptr).
+:- type_representation(tc_instance, is_word_aligned_ptr).
+:- type_representation(tc_method_id, is_word_aligned_ptr).
+:- type_representation(tc_name, is_word_aligned_ptr).
+:- type_representation(tc_type, is_eqv_to(backend_libs.rtti.rtti_maybe_pseudo_type_info)).
+:- type_representation(type_ctor_data, is_word_aligned_ptr).
+:- type_representation(type_ctor_flag, du_repn(enum("variable_arity_flag", "kind_of_du_flag", [], []))).
+:- type_representation(var_arity_ctor_id, du_repn(enum("pred_type_info", "func_type_info", ["tuple_type_info"], []))).

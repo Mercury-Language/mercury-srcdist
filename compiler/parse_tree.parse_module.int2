@@ -1,0 +1,8 @@
+:- module (parse_tree.parse_module).
+:- interface.
+:- type maybe_require_module_decl
+    --->    dont_require_module_decl 
+    ;       require_module_decl .
+:- type_representation(make_dummy_parse_tree(V_1), is_eqv_to(pred(mdbcomp.sym_name.module_name, V_1))).
+:- type_representation(maybe_require_module_decl, du_repn(enum("dont_require_module_decl", "require_module_decl", [], []))).
+:- type_representation(read_parse_tree(V_1), is_eqv_to(pred(libs.file_util.file_name, string, int, lexer.line_context, lexer.line_posn, libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), V_1, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors))).

@@ -1,0 +1,21 @@
+:- module (grade_lib.grade_state).
+:- interface.
+:- type not_possible_why.
+:- type req_dir
+	where	type_is_abstract_enum(1).
+:- type requirement.
+:- type requirement_application.
+:- type requirement_id.
+:- type solver_info.
+:- type solver_var.
+:- type solver_var_map.
+:- type solver_var_value.
+:- type solver_var_value_possible.
+:- type_representation(req_dir, du_repn(enum("narrow_then_values", "delete_if_value", [], []))).
+:- type_representation(requirement, is_word_aligned_ptr).
+:- type_representation(requirement_application, is_word_aligned_ptr).
+:- type_representation(requirement_id, du_repn(notag("requirement_id", []))).
+:- type_representation(solver_info, is_word_aligned_ptr).
+:- type_representation(solver_var, is_word_aligned_ptr).
+:- type_representation(solver_var_map, is_eqv_to(map(solver_var_id, grade_lib.grade_state.solver_var))).
+:- type_representation(solver_var_value, is_word_aligned_ptr).

@@ -1,0 +1,65 @@
+:- module table_builtin.
+:- interface.
+:- type loop_status
+    --->    loop_inactive 
+    ;       loop_active .
+:- type memo_det_status
+    --->    memo_det_inactive 
+    ;       memo_det_active 
+    ;       memo_det_succeeded .
+:- type memo_non_record.
+:- type memo_non_status
+    --->    memo_non_inactive 
+    ;       memo_non_active 
+    ;       memo_non_incomplete 
+    ;       memo_non_complete .
+:- type memo_semi_status
+    --->    memo_semi_inactive 
+    ;       memo_semi_active 
+    ;       memo_semi_succeeded 
+    ;       memo_semi_failed .
+:- type ml_answer_block.
+:- type ml_consumer.
+:- type ml_generator.
+:- type ml_proc_table_info.
+:- type ml_subgoal.
+:- type ml_trie_node.
+:- type mm_status
+    --->    mm_inactive 
+    ;       mm_active 
+    ;       mm_complete .
+:- type_representation(loop_status, du_repn(enum("loop_inactive", "loop_active", [], []))).
+:- type_representation(memo_det_status, du_repn(enum("memo_det_inactive", "memo_det_active", ["memo_det_succeeded"], []))).
+:- type_representation(memo_non_record, du_repn(notag("memo_non_record", [c("MR_MemoNonRecordPtr", [can_pass_as_mercury_type])]))).
+:- type_representation(memo_non_status, du_repn(enum("memo_non_inactive", "memo_non_active", ["memo_non_incomplete", "memo_non_complete"], []))).
+:- type_representation(memo_semi_status, du_repn(enum("memo_semi_inactive", "memo_semi_active", ["memo_semi_succeeded", "memo_semi_failed"], []))).
+:- type_representation(ml_answer_block, du_repn(notag("ml_answer_block", [c("MR_AnswerBlock", [can_pass_as_mercury_type])]))).
+:- type_representation(ml_consumer, du_repn(notag("ml_consumer", [c("MR_ConsumerPtr", [can_pass_as_mercury_type])]))).
+:- type_representation(ml_generator, du_repn(notag("ml_generator", [c("MR_GeneratorPtr", [can_pass_as_mercury_type])]))).
+:- type_representation(ml_proc_table_info, du_repn(notag("ml_proc_table_info", [c("MR_ProcTableInfoPtr", [can_pass_as_mercury_type])]))).
+:- type_representation(ml_subgoal, du_repn(notag("ml_subgoal", [c("MR_SubgoalPtr", [can_pass_as_mercury_type])]))).
+:- type_representation(ml_trie_node, du_repn(notag("ml_trie_node", [c("MR_TrieNode", [can_pass_as_mercury_type])]))).
+:- type_representation(mm_status, du_repn(enum("mm_inactive", "mm_active", ["mm_complete"], []))).
+:- implementation.
+:- pragma foreign_import_module("C", table_builtin).
+:- type memo_non_record
+    --->    memo_non_record(builtin.c_pointer).
+:- pragma foreign_type(c, memo_non_record, "MR_MemoNonRecordPtr", [can_pass_as_mercury_type]).
+:- type ml_answer_block
+    --->    ml_answer_block(builtin.c_pointer).
+:- pragma foreign_type(c, ml_answer_block, "MR_AnswerBlock", [can_pass_as_mercury_type]).
+:- type ml_consumer
+    --->    ml_consumer(builtin.c_pointer).
+:- pragma foreign_type(c, ml_consumer, "MR_ConsumerPtr", [can_pass_as_mercury_type]).
+:- type ml_generator
+    --->    ml_generator(builtin.c_pointer).
+:- pragma foreign_type(c, ml_generator, "MR_GeneratorPtr", [can_pass_as_mercury_type]).
+:- type ml_proc_table_info
+    --->    ml_proc_table_info(builtin.c_pointer).
+:- pragma foreign_type(c, ml_proc_table_info, "MR_ProcTableInfoPtr", [can_pass_as_mercury_type]).
+:- type ml_subgoal
+    --->    ml_subgoal(builtin.c_pointer).
+:- pragma foreign_type(c, ml_subgoal, "MR_SubgoalPtr", [can_pass_as_mercury_type]).
+:- type ml_trie_node
+    --->    ml_trie_node(builtin.c_pointer).
+:- pragma foreign_type(c, ml_trie_node, "MR_TrieNode", [can_pass_as_mercury_type]).
