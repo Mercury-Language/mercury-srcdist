@@ -1,0 +1,8 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type maybe_create_dirs
+	where	type_is_abstract_enum(1).
+:- type maybe_search
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_create_dirs, du_repn(enum("do_create_dirs", "do_not_create_dirs", [], []))).
+:- type_representation(maybe_search, du_repn(enum("do_search", "do_not_search", [], []))).

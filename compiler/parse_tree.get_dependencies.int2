@@ -1,0 +1,36 @@
+:- module (parse_tree.get_dependencies).
+:- interface.
+:- type implicit_avail_needs
+    --->    implicit_avail_needs(((parse_tree.get_dependencies).ian_tabling) :: parse_tree.get_dependencies.maybe_need_tabling, ((parse_tree.get_dependencies).ian_tabling_statistics) :: parse_tree.get_dependencies.maybe_need_tabling_statistics, ((parse_tree.get_dependencies).ian_stm) :: parse_tree.get_dependencies.maybe_need_stm, ((parse_tree.get_dependencies).ian_exception) :: parse_tree.get_dependencies.maybe_need_exception, ((parse_tree.get_dependencies).ian_string_format) :: parse_tree.get_dependencies.maybe_need_string_format, ((parse_tree.get_dependencies).ian_stream_format) :: parse_tree.get_dependencies.maybe_need_stream_format, ((parse_tree.get_dependencies).ian_io) :: parse_tree.get_dependencies.maybe_need_io).
+:- type item_contents
+    --->    item_contents(((parse_tree.get_dependencies).ic_fifos) :: cord.cord(parse_tree.prog_data_foreign.foreign_include_file_info), ((parse_tree.get_dependencies).ic_fact_tables) :: set.set(string), ((parse_tree.get_dependencies).ic_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.get_dependencies).ic_foreign_export_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.get_dependencies).ic_has_main) :: parse_tree.prog_data.has_main).
+:- type maybe_need_exception
+    --->    dont_need_exception 
+    ;       do_need_exception .
+:- type maybe_need_io
+    --->    dont_need_io 
+    ;       do_need_io .
+:- type maybe_need_stm
+    --->    dont_need_stm 
+    ;       do_need_stm .
+:- type maybe_need_stream_format
+    --->    dont_need_stream_format 
+    ;       do_need_stream_format .
+:- type maybe_need_string_format
+    --->    dont_need_string_format 
+    ;       do_need_string_format .
+:- type maybe_need_tabling
+    --->    dont_need_tabling 
+    ;       do_need_tabling .
+:- type maybe_need_tabling_statistics
+    --->    dont_need_tabling_statistics 
+    ;       do_need_tabling_statistics .
+:- type_representation(implicit_avail_needs, is_word_aligned_ptr).
+:- type_representation(item_contents, is_word_aligned_ptr).
+:- type_representation(maybe_need_exception, du_repn(enum("dont_need_exception", "do_need_exception", [], []))).
+:- type_representation(maybe_need_io, du_repn(enum("dont_need_io", "do_need_io", [], []))).
+:- type_representation(maybe_need_stm, du_repn(enum("dont_need_stm", "do_need_stm", [], []))).
+:- type_representation(maybe_need_stream_format, du_repn(enum("dont_need_stream_format", "do_need_stream_format", [], []))).
+:- type_representation(maybe_need_string_format, du_repn(enum("dont_need_string_format", "do_need_string_format", [], []))).
+:- type_representation(maybe_need_tabling, du_repn(enum("dont_need_tabling", "do_need_tabling", [], []))).
+:- type_representation(maybe_need_tabling_statistics, du_repn(enum("dont_need_tabling_statistics", "do_need_tabling_statistics", [], []))).

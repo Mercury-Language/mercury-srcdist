@@ -1,0 +1,23 @@
+:- module (transform_hlds.term_constr_main_types).
+:- interface.
+:- use_module list.
+:- use_module (libs.polyhedron).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module (transform_hlds.term_constr_errors).
+:- type constr_arg_size_info == libs.polyhedron.polyhedron.
+:- type constr_termination_info == parse_tree.prog_data_pragma.generic_termination_info(transform_hlds.term_constr_main_types.term_reason, list.list(transform_hlds.term_constr_errors.term2_error)).
+:- type intermod_status
+    --->    not_mutually_recursive 
+    ;       may_be_mutually_recursive .
+:- type term_reason
+    --->    term_reason_builtin 
+    ;       term_reason_pragma_supplied 
+    ;       term_reason_foreign_supplied 
+    ;       term_reason_import_supplied 
+    ;       term_reason_analysis .
+:- type termination2_info.
+:- type_representation(constr_arg_size_info, is_eqv_to(libs.polyhedron.polyhedron)).
+:- type_representation(constr_termination_info, is_eqv_to(parse_tree.prog_data_pragma.generic_termination_info(transform_hlds.term_constr_main_types.term_reason, list.list(transform_hlds.term_constr_errors.term2_error)))).
+:- type_representation(intermod_status, du_repn(enum("not_mutually_recursive", "may_be_mutually_recursive", [], []))).
+:- type_representation(term_reason, du_repn(enum("term_reason_builtin", "term_reason_pragma_supplied", ["term_reason_foreign_supplied", "term_reason_import_supplied", "term_reason_analysis"], []))).
+:- type_representation(termination2_info, is_word_aligned_ptr).

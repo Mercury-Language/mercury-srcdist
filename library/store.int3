@@ -1,0 +1,19 @@
+:- module store.
+:- interface.
+:- import_module io.
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_mutvar(T).
+:- type io_ref(T, S).
+:- type store(S).
+:- type store_mutvar(T, S).
+:- type store_ref(T, S).
+:- typeclass store(T).
+:- instance (store.store(io)).
+:- instance (store.store(store.store(S))).
+:- type_representation(generic_mutvar(V_1, V_2), du_repn(notag("mutvar", [java("mutvar.Mutvar", []), csharp("object[]", []), erlang("", [])]))).
+:- type_representation(generic_ref(V_1, V_2), du_repn(notag("ref", [java("store.Ref", []), csharp("store.Ref", [])]))).
+:- type_representation(io_mutvar(V_1), is_eqv_to(store.generic_mutvar(V_1, io))).
+:- type_representation(io_ref(V_1, V_2), is_eqv_to(store.generic_ref(V_1, io))).
+:- type_representation(store_mutvar(V_1, V_2), is_eqv_to(store.generic_mutvar(V_1, store.store(V_2)))).
+:- type_representation(store_ref(V_1, V_2), is_eqv_to(store.generic_ref(V_1, store.store(V_2)))).

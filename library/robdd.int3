@@ -1,0 +1,27 @@
+:- module robdd.
+:- interface.
+:- type entailment_result(T).
+:- type equiv_vars(T).
+:- type equivalent_result(T).
+:- type imp_map(T).
+:- type imp_vars(T).
+:- type leader_map(T).
+:- type literal(T).
+:- type robdd.
+:- type robdd(T).
+:- type vars(T).
+:- type vars_entailed_result(T).
+:- type write_var(T).
+:- abstract_inst((write_var)).
+:- type_representation(equiv_vars(V_1), du_repn(notag("equiv_vars", []))).
+:- type_representation(equivalent_result(V_1), is_eqv_to(robdd.entailment_result(robdd.equiv_vars(V_1)))).
+:- type_representation(imp_map(V_1), is_eqv_to(map(var(V_1), robdd.vars(V_1)))).
+:- type_representation(imp_res(V_1), is_eqv_to(robdd.entailment_result(imp_res_2(V_1)))).
+:- type_representation(leader_map(V_1), is_eqv_to(map(var(V_1), var(V_1)))).
+:- type_representation(robdd, is_eqv_to(robdd.robdd(generic))).
+:- type_representation(robdd(V_1), du_repn(notag("robdd", []))).
+:- type_representation(robdd_cache(V_1), is_eqv_to(map(robdd.robdd(V_1), robdd.robdd(V_1)))).
+:- type_representation(var_cache(V_1), is_eqv_to(map(var(V_1), bool))).
+:- type_representation(vars(V_1), is_eqv_to(sparse_bitset(var(V_1)))).
+:- type_representation(vars_entailed_result(V_1), is_eqv_to(robdd.entailment_result(robdd.vars(V_1)))).
+:- type_representation(write_var(V_1), is_eqv_to(pred(var(V_1), io, io))).

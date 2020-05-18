@@ -1,0 +1,14 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- type innermost_proc
+    --->    imp_whole_proc 
+    ;       imp_lambda(parse_tree.prog_data.prog_context).
+:- type maybe_allow_messages
+    --->    do_not_allow_messages 
+    ;       allow_messages .
+:- type simplify_info.
+:- type simplify_nested_context
+    --->    simplify_nested_context((((check_hlds.simplify).simplify_info).snc_inside_dupl_for_switch) :: bool.bool, (((check_hlds.simplify).simplify_info).snc_proc_is_model_non) :: maybe.maybe(check_hlds.simplify.simplify_info.innermost_proc), (((check_hlds.simplify).simplify_info).snc_num_enclosing_barriers) :: uint).
+:- type_representation(maybe_allow_messages, du_repn(enum("do_not_allow_messages", "allow_messages", [], []))).
+:- type_representation(simplify_info, is_word_aligned_ptr).
+:- type_representation(simplify_nested_context, is_word_aligned_ptr).

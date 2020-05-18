@@ -1,0 +1,3 @@
+:- module (ll_backend.dupelim).
+:- interface.
+:- type_representation(std_map, is_eqv_to(map.map(list.list(ll_backend.llds.instr), list.list(ll_backend.llds.label)))).

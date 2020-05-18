@@ -1,0 +1,25 @@
+:- module ops.
+:- interface.
+:- type assoc
+    --->    x 
+    ;       y .
+:- type class
+    --->    infix(ops.assoc, ops.assoc)
+    ;       prefix(ops.assoc)
+    ;       binary_prefix(ops.assoc, ops.assoc)
+    ;       postfix(ops.assoc).
+:- type mercury_op_table.
+:- type op_info
+    --->    op_info(ops.class, ops.priority).
+:- type priority == int.
+:- type table == ops.mercury_op_table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- type_representation(assoc, du_repn(enum("x", "y", [], []))).
+:- type_representation(mercury_op_table, du_repn(direct_dummy("mercury_op_table", []))).
+:- type_representation(op_info, is_word_aligned_ptr).
+:- type_representation(priority, is_eqv_to(int)).
+:- type_representation(table, is_eqv_to(ops.mercury_op_table)).
+:- implementation.
+:- type mercury_op_table
+    --->    mercury_op_table .
