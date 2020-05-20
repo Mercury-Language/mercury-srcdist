@@ -1,0 +1,14 @@
+:- module table_statistics.
+:- interface.
+:- type proc_table_statistics.
+:- type table_stats.
+:- type table_stats_curr_prev.
+:- type table_step_kind
+	where	type_is_abstract_enum(5).
+:- type table_step_stat_details.
+:- type table_step_stats.
+:- type_representation(proc_table_statistics, is_word_aligned_ptr).
+:- type_representation(table_stats, is_word_aligned_ptr).
+:- type_representation(table_stats_curr_prev, is_word_aligned_ptr).
+:- type_representation(table_step_kind, du_repn(enum("table_step_dummy", "table_step_int", ["table_step_char", "table_step_string", "table_step_float", "table_step_enum", "table_step_foreign_enum", "table_step_general", "table_step_general_addr", "table_step_general_poly", "table_step_general_poly_addr", "table_step_typeinfo", "table_step_typeclassinfo", "table_step_promise_implied", "table_step_int8", "table_step_uint8", "table_step_int16", "table_step_uint16", "table_step_int32", "table_step_uint32", "table_step_int64", "table_step_uint64"], []))).
+:- type_representation(table_step_stats, is_word_aligned_ptr).

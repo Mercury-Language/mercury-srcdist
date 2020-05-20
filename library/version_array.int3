@@ -1,0 +1,6 @@
+:- module version_array.
+:- interface.
+:- type index_out_of_bounds.
+:- type version_array(T).
+:- type_representation(index_out_of_bounds, du_repn(notag("index_out_of_bounds", []))).
+:- type_representation(version_array(V_1), du_repn(notag("version_array", [c("struct ML_va *", []), java("jmercury.version_array.ML_va", []), csharp("version_array.ML_va", [])]))).

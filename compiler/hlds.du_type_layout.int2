@@ -1,0 +1,4 @@
+:- module (hlds.du_type_layout).
+:- interface.
+:- type_representation(component_type_map, is_eqv_to(map.map(parse_tree.prog_data.type_ctor, hlds.du_type_layout.component_type_kind))).
+:- type_representation(type_repn_map, is_eqv_to(multi_map.multi_map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.item_type_repn_info))).

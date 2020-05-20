@@ -1,0 +1,7 @@
+:- module ((check_hlds.simplify).simplify_tasks).
+:- interface.
+:- type simplify_task
+	where	type_is_abstract_enum(5).
+:- type simplify_tasks.
+:- type_representation(simplify_task, du_repn(enum("simptask_warn_simple_code", "simptask_warn_duplicate_calls", ["simptask_warn_implicit_stream_calls", "simptask_format_calls", "simptask_warn_obsolete", "simptask_mark_code_model_changes", "simptask_after_front_end", "simptask_excess_assigns", "simptask_test_after_switch", "simptask_elim_removable_scopes", "simptask_opt_duplicate_calls", "simptask_constant_prop", "simptask_common_struct", "simptask_extra_common_struct", "simptask_ignore_par_conjs", "simptask_warn_suspicious_recursion", "simptask_warn_no_solution_disjunct"], []))).
+:- type_representation(simplify_tasks, is_word_aligned_ptr).

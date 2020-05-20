@@ -1,0 +1,11 @@
+:- module make.
+:- interface.
+:- include_module (make.build).
+:- include_module (make.options_file).
+:- type make_info.
+:- type rebuild_module_deps
+    --->    do_rebuild_module_deps 
+    ;       do_not_rebuild_module_deps .
+:- type_representation(file_timestamps, is_eqv_to(map.map(string, maybe.maybe_error(libs.timestamp.timestamp)))).
+:- type_representation(make_info, is_word_aligned_ptr).
+:- type_representation(rebuild_module_deps, du_repn(enum("do_rebuild_module_deps", "do_not_rebuild_module_deps", [], []))).

@@ -1,0 +1,8 @@
+:- module term_io.
+:- interface.
+:- type adjacent_to_graphic_token
+	where	type_is_abstract_enum(1).
+:- type read_term.
+:- type read_term(T).
+:- type_representation(adjacent_to_graphic_token, du_repn(enum("maybe_adjacent_to_graphic_token", "not_adjacent_to_graphic_token", [], []))).
+:- type_representation(read_term, is_eqv_to(term_io.read_term(generic))).

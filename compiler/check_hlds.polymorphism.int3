@@ -1,0 +1,12 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- type int_or_var.
+:- type poly_info.
+:- type type_info_kind
+	where	type_is_abstract_enum(1).
+:- type_representation(const_struct_var_map, is_eqv_to(map(const_struct_arg, prog_var))).
+:- type_representation(int_const_map, is_eqv_to(map(int, prog_var))).
+:- type_representation(poly_info, is_word_aligned_ptr).
+:- type_representation(type_info_kind, du_repn(enum("type_info", "type_ctor_info", [], []))).
+:- type_representation(type_info_var_map, is_eqv_to(map(type_ctor, map(list(mer_type), pair(prog_var, maybe(const_struct_arg)))))).
+:- type_representation(typeclass_info_map, is_eqv_to(map(class_name, map(list(mer_type), typeclass_info_map_entry)))).

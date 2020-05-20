@@ -1,0 +1,14 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- use_module list.
+:- type literal_language
+    --->    literal_c 
+    ;       literal_java 
+    ;       literal_csharp .
+:- type maybe_set_line_numbers
+    --->    dont_set_line_numbers 
+    ;       set_line_numbers .
+:- type multi_string == list.list(string).
+:- type_representation(literal_language, du_repn(enum("literal_c", "literal_java", ["literal_csharp"], []))).
+:- type_representation(maybe_set_line_numbers, du_repn(enum("dont_set_line_numbers", "set_line_numbers", [], []))).
+:- type_representation(multi_string, is_eqv_to(list.list(string))).
