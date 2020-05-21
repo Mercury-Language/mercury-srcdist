@@ -1,0 +1,5 @@
+:- module ((transform_hlds.implicit_parallelism).push_goals_together).
+:- interface.
+:- type push_result
+	where	type_is_abstract_enum(1).
+:- type_representation(push_result, du_repn(enum("push_failed", "push_succeeded", [], []))).

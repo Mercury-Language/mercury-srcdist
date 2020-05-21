@@ -1,0 +1,14 @@
+:- module (ll_backend.trace_gen).
+:- interface.
+:- type external_event_info.
+:- type external_trace_port
+	where	type_is_abstract_enum(2).
+:- type negation_end_port
+	where	type_is_abstract_enum(1).
+:- type trace_info.
+:- type trace_slot_info.
+:- type_representation(external_event_info, is_word_aligned_ptr).
+:- type_representation(external_trace_port, du_repn(enum("external_port_call", "external_port_exit", ["external_port_fail", "external_port_tailrec_call"], []))).
+:- type_representation(negation_end_port, du_repn(enum("neg_success", "neg_failure", [], []))).
+:- type_representation(trace_info, is_word_aligned_ptr).
+:- type_representation(trace_slot_info, is_word_aligned_ptr).

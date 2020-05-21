@@ -1,0 +1,43 @@
+:- module profiling_builtin.
+:- interface.
+:- type call_site_dynamic.
+:- type call_site_nums_2
+    --->    call_site_nums_2(int, int).
+:- type call_site_nums_3
+    --->    call_site_nums_3(int, int, int).
+:- type call_site_nums_4
+    --->    call_site_nums_4(int, int, int, int).
+:- type call_site_nums_5
+    --->    call_site_nums_5(int, int, int, int, int).
+:- type call_site_nums_6
+    --->    call_site_nums_6(int, int, int, int, int, int).
+:- type call_site_nums_7
+    --->    call_site_nums_7(int, int, int, int, int, int, int).
+:- type call_site_nums_8
+    --->    call_site_nums_8(int, int, int, int, int, int, int, int).
+:- type call_site_nums_9
+    --->    call_site_nums_9(int, int, int, int, int, int, int, int, int).
+:- type proc_dynamic.
+:- type proc_layout.
+:- type_representation(call_site_dynamic, du_repn(notag("call_site_dynamic", [c("MR_CallSiteDynamic *", [])]))).
+:- type_representation(call_site_nums_2, is_word_aligned_ptr).
+:- type_representation(call_site_nums_3, is_word_aligned_ptr).
+:- type_representation(call_site_nums_4, is_word_aligned_ptr).
+:- type_representation(call_site_nums_5, is_word_aligned_ptr).
+:- type_representation(call_site_nums_6, is_word_aligned_ptr).
+:- type_representation(call_site_nums_7, is_word_aligned_ptr).
+:- type_representation(call_site_nums_8, is_word_aligned_ptr).
+:- type_representation(call_site_nums_9, is_word_aligned_ptr).
+:- type_representation(proc_dynamic, du_repn(notag("proc_dynamic", [c("MR_ProcDynamic *", [])]))).
+:- type_representation(proc_layout, du_repn(notag("proc_layout", [c("MR_ProcLayout *", [])]))).
+:- implementation.
+:- pragma foreign_import_module("C", profiling_builtin).
+:- type call_site_dynamic
+    --->    call_site_dynamic(builtin.c_pointer).
+:- pragma foreign_type(c, call_site_dynamic, "MR_CallSiteDynamic *").
+:- type proc_dynamic
+    --->    proc_dynamic(builtin.c_pointer).
+:- pragma foreign_type(c, proc_dynamic, "MR_ProcDynamic *").
+:- type proc_layout
+    --->    proc_layout(builtin.c_pointer).
+:- pragma foreign_type(c, proc_layout, "MR_ProcLayout *").

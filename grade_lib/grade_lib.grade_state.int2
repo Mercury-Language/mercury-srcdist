@@ -1,0 +1,36 @@
+:- module (grade_lib.grade_state).
+:- interface.
+:- use_module map.
+:- use_module (grade_lib.grade_spec).
+:- type not_possible_why
+    --->    npw_config 
+    ;       npw_user 
+    ;       npw_requirement(grade_lib.grade_state.requirement_application)
+    ;       npw_labeling .
+:- type req_dir
+    --->    narrow_then_values 
+    ;       delete_if_value .
+:- type requirement
+    --->    requirement(((grade_lib.grade_state).req_id) :: grade_lib.grade_state.requirement_id, ((grade_lib.grade_state).req_desc) :: string, ((grade_lib.grade_state).req_if_solver_var) :: grade_lib.grade_spec.solver_var_id, ((grade_lib.grade_state).req_if_value) :: grade_lib.grade_spec.solver_var_value_id, ((grade_lib.grade_state).req_then_solver_var) :: grade_lib.grade_spec.solver_var_id, ((grade_lib.grade_state).req_then_values) :: list.list(grade_lib.grade_spec.solver_var_value_id)).
+:- type requirement_application
+    --->    requirement_application(((grade_lib.grade_state).ra_req_id) :: grade_lib.grade_state.requirement_id, ((grade_lib.grade_state).ra_req_desc) :: string, ((grade_lib.grade_state).ra_dir) :: grade_lib.grade_state.req_dir).
+:- type requirement_id
+    --->    requirement_id(int).
+:- type solver_info
+    --->    solver_info(((grade_lib.grade_state).si_reqs) :: list.list(grade_lib.grade_state.requirement), ((grade_lib.grade_state).si_vars_priority) :: list.list(grade_lib.grade_spec.solver_var_id), ((grade_lib.grade_state).si_solver_var_map) :: grade_lib.grade_state.solver_var_map).
+:- type solver_var
+    --->    solver_var(((grade_lib.grade_state).sv_cnt_all) :: int, ((grade_lib.grade_state).sv_cnt_possible) :: int, ((grade_lib.grade_state).sv_values) :: list.list(grade_lib.grade_state.solver_var_value)).
+:- type solver_var_map == map.map(grade_lib.grade_spec.solver_var_id, grade_lib.grade_state.solver_var).
+:- type solver_var_value
+    --->    solver_var_value(((grade_lib.grade_state).svv_id) :: grade_lib.grade_spec.solver_var_value_id, ((grade_lib.grade_state).svv_is_possible) :: grade_lib.grade_state.solver_var_value_possible).
+:- type solver_var_value_possible
+    --->    is_possible 
+    ;       not_possible(((grade_lib.grade_state).np_why) :: grade_lib.grade_state.not_possible_why).
+:- type_representation(req_dir, du_repn(enum("narrow_then_values", "delete_if_value", [], []))).
+:- type_representation(requirement, is_word_aligned_ptr).
+:- type_representation(requirement_application, is_word_aligned_ptr).
+:- type_representation(requirement_id, du_repn(notag("requirement_id", []))).
+:- type_representation(solver_info, is_word_aligned_ptr).
+:- type_representation(solver_var, is_word_aligned_ptr).
+:- type_representation(solver_var_map, is_eqv_to(map.map(grade_lib.grade_spec.solver_var_id, grade_lib.grade_state.solver_var))).
+:- type_representation(solver_var_value, is_word_aligned_ptr).

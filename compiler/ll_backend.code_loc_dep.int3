@@ -1,0 +1,31 @@
+:- module (ll_backend.code_loc_dep).
+:- interface.
+:- type branch_end.
+:- type branch_end_info.
+:- type call_direction
+	where	type_is_abstract_enum(1).
+:- type code_info_component
+	where	type_is_abstract_enum(2).
+:- type code_loc_dep.
+:- type det_commit_info.
+:- type disj_hijack_info.
+:- type ite_hijack_info.
+:- type position_info.
+:- type resume_map.
+:- type resume_point_info.
+:- type semi_commit_info.
+:- type simple_neg_info.
+:- type temp_slot_persistence
+	where	type_is_abstract_enum(1).
+:- type_representation(branch_end, is_eqv_to(maybe(ll_backend.code_loc_dep.branch_end_info))).
+:- type_representation(branch_end_info, du_repn(notag("branch_end_info", []))).
+:- type_representation(call_direction, du_repn(enum("caller", "callee", [], []))).
+:- type_representation(code_info_component, du_repn(enum("cic_forward_live_vars", "cic_zombies", ["cic_temps_in_use", "cic_par_conj_depth"], []))).
+:- type_representation(code_loc_dep, is_word_aligned_ptr).
+:- type_representation(det_commit_info, is_word_aligned_ptr).
+:- type_representation(ite_hijack_info, is_word_aligned_ptr).
+:- type_representation(position_info, du_repn(notag("position_info", []))).
+:- type_representation(resume_map, is_eqv_to(map(prog_var, set(lval)))).
+:- type_representation(semi_commit_info, is_word_aligned_ptr).
+:- type_representation(simple_neg_info, is_eqv_to(fail_info)).
+:- type_representation(temp_slot_persistence, du_repn(enum("persistent_temp_slot", "non_persistent_temp_slot", [], []))).

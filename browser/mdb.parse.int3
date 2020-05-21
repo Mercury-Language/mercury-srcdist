@@ -1,0 +1,15 @@
+:- module (mdb.parse).
+:- interface.
+:- type command.
+:- type external_request.
+:- type format_option
+	where	type_is_abstract_enum(2).
+:- type format_param_cmd
+	where	type_is_abstract_enum(2).
+:- type path.
+:- type setting_option
+	where	type_is_abstract_enum(3).
+:- type_representation(external_request, du_repn(notag("external_request", []))).
+:- type_representation(format_option, du_repn(enum("flat", "raw_pretty", ["verbose", "pretty"], []))).
+:- type_representation(format_param_cmd, du_repn(enum("param_depth", "param_size", ["param_width", "param_lines"], []))).
+:- type_representation(setting_option, du_repn(enum("set_print", "set_browse", ["set_print_all", "set_flat", "set_raw_pretty", "set_verbose", "set_pretty"], []))).

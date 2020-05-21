@@ -1,0 +1,9 @@
+:- module message.
+:- interface.
+:- type message.
+:- type message_level
+	where	type_is_abstract_enum(2).
+:- type message_type.
+:- type program_location.
+:- type_representation(message, is_word_aligned_ptr).
+:- type_representation(message_level, du_repn(enum("message_info", "message_notice", ["message_warning", "message_error"], []))).

@@ -1,0 +1,65 @@
+:- module (string.parse_util).
+:- interface.
+:- type gather_ended_by
+    --->    found_end_of_string 
+    ;       found_percent(list.list(char.char)).
+:- type poly_kind
+    --->    poly_kind_char 
+    ;       poly_kind_str 
+    ;       poly_kind_int 
+    ;       poly_kind_float .
+:- type string_format_error
+    --->    error_no_specifier(int, int)
+    ;       error_unknown_specifier(int, char.char)
+    ;       error_wrong_polytype(int, char.char, string.parse_util.poly_kind)
+    ;       error_no_polytype(int, char.char)
+    ;       error_nonint_star_width(int, string.parse_util.poly_kind)
+    ;       error_missing_star_width(int)
+    ;       error_nonint_star_prec(int, string.parse_util.poly_kind)
+    ;       error_missing_star_prec(int)
+    ;       error_extra_polytypes(int, int).
+:- type string_format_flag_hash
+    --->    flag_hash_clear 
+    ;       flag_hash_set .
+:- type string_format_flag_minus
+    --->    flag_minus_clear 
+    ;       flag_minus_set .
+:- type string_format_flag_plus
+    --->    flag_plus_clear 
+    ;       flag_plus_set .
+:- type string_format_flag_space
+    --->    flag_space_clear 
+    ;       flag_space_set .
+:- type string_format_flag_zero
+    --->    flag_zero_clear 
+    ;       flag_zero_set .
+:- type string_format_flags
+    --->    string_format_flags(((string.parse_util).flag_hash) :: string.parse_util.string_format_flag_hash, ((string.parse_util).flag_space) :: string.parse_util.string_format_flag_space, ((string.parse_util).flag_zero) :: string.parse_util.string_format_flag_zero, ((string.parse_util).flag_minus) :: string.parse_util.string_format_flag_minus, ((string.parse_util).flag_plus) :: string.parse_util.string_format_flag_plus).
+:- type string_format_float_kind
+    --->    kind_e_scientific_lc 
+    ;       kind_e_scientific_uc 
+    ;       kind_f_plain_lc 
+    ;       kind_f_plain_uc 
+    ;       kind_g_flexible_lc 
+    ;       kind_g_flexible_uc .
+:- type string_format_int_base
+    --->    base_octal 
+    ;       base_decimal 
+    ;       base_hex_lc 
+    ;       base_hex_uc 
+    ;       base_hex_p .
+:- type string_format_maybe_prec
+    --->    no_specified_prec 
+    ;       specified_prec(int).
+:- type string_format_maybe_width
+    --->    no_specified_width 
+    ;       specified_width(int).
+:- type_representation(poly_kind, du_repn(enum("poly_kind_char", "poly_kind_str", ["poly_kind_int", "poly_kind_float"], []))).
+:- type_representation(string_format_flag_hash, du_repn(enum("flag_hash_clear", "flag_hash_set", [], []))).
+:- type_representation(string_format_flag_minus, du_repn(enum("flag_minus_clear", "flag_minus_set", [], []))).
+:- type_representation(string_format_flag_plus, du_repn(enum("flag_plus_clear", "flag_plus_set", [], []))).
+:- type_representation(string_format_flag_space, du_repn(enum("flag_space_clear", "flag_space_set", [], []))).
+:- type_representation(string_format_flag_zero, du_repn(enum("flag_zero_clear", "flag_zero_set", [], []))).
+:- type_representation(string_format_flags, is_word_aligned_ptr).
+:- type_representation(string_format_float_kind, du_repn(enum("kind_e_scientific_lc", "kind_e_scientific_uc", ["kind_f_plain_lc", "kind_f_plain_uc", "kind_g_flexible_lc", "kind_g_flexible_uc"], []))).
+:- type_representation(string_format_int_base, du_repn(enum("base_octal", "base_decimal", ["base_hex_lc", "base_hex_uc", "base_hex_p"], []))).

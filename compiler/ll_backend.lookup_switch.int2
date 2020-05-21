@@ -1,0 +1,9 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- type case_kind
+    --->    kind_zero_solns 
+    ;       kind_one_soln 
+    ;       kind_several_solns .
+:- type lookup_switch_info(Key)
+    --->    lookup_switch_info(((ll_backend.lookup_switch).lsi_cases) :: backend_libs.switch_util.case_consts(Key, ll_backend.llds.rval, backend_libs.switch_util.case_consts_several_llds), ((ll_backend.lookup_switch).lsi_out_variables) :: list.list(parse_tree.prog_data.prog_var), ((ll_backend.lookup_switch).lsi_out_types) :: list.list(ll_backend.llds.llds_type), ((ll_backend.lookup_switch).lsi_liveness) :: parse_tree.set_of_var.set_of_progvar).
+:- type_representation(case_kind, du_repn(enum("kind_zero_solns", "kind_one_soln", ["kind_several_solns"], []))).

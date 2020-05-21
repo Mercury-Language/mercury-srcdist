@@ -1,0 +1,6 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- type case_kind
+	where	type_is_abstract_enum(2).
+:- type lookup_switch_info(Key).
+:- type_representation(case_kind, du_repn(enum("kind_zero_solns", "kind_one_soln", ["kind_several_solns"], []))).

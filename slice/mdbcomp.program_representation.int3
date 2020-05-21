@@ -1,0 +1,100 @@
+:- module (mdbcomp.program_representation).
+:- interface.
+:- type arg_pos.
+:- type atomic_goal_id.
+:- type atomic_goal_rep.
+:- type builtin_type_rep
+	where	type_is_abstract_enum(4).
+:- type bytecode_goal_type
+	where	type_is_abstract_enum(5).
+:- type call_site.
+:- type call_type_and_callee.
+:- type can_fail_rep
+	where	type_is_abstract_enum(1).
+:- type case_rep.
+:- type case_rep(GoalAnnotation).
+:- type committed_choice
+	where	type_is_abstract_enum(1).
+:- type cons_id_arity_rep.
+:- type cons_id_rep.
+:- type coverage_point_info.
+:- type cp_type
+	where	type_is_abstract_enum(1).
+:- type detism_rep
+	where	type_is_abstract_enum(3).
+:- type encoded_type_table.
+:- type goal_expr_rep(GoalAnnotation).
+:- type goal_rep.
+:- type goal_rep(GoalAnnotation).
+:- type head_var_rep.
+:- type inst_rep
+	where	type_is_abstract_enum(2).
+:- type maybe_include_var_name_table
+	where	type_is_abstract_enum(1).
+:- type maybe_include_var_types
+	where	type_is_abstract_enum(1).
+:- type module_map.
+:- type module_map(GoalAnnotation).
+:- type module_rep.
+:- type module_rep(GoalAnnotation).
+:- type oisu_type_procs.
+:- type proc_defn_rep.
+:- type proc_defn_rep(GoalAnnotation).
+:- type proc_map.
+:- type proc_map(GoalAnnotation).
+:- type proc_rep.
+:- type proc_rep(GoalAnnotation).
+:- type proclabel_kind_token
+	where	type_is_abstract_enum(2).
+:- type prog_rep.
+:- type prog_rep(GoalAnnotation).
+:- type solution_count_rep
+	where	type_is_abstract_enum(2).
+:- type string_proc_label.
+:- type switch_can_fail_rep
+	where	type_is_abstract_enum(1).
+:- type term_path.
+:- type type_rep.
+:- type var_mode_rep.
+:- type var_name_table.
+:- type var_num_rep
+	where	type_is_abstract_enum(2).
+:- type var_rep.
+:- type var_type_table.
+:- type_representation(atomic_goal_id, is_word_aligned_ptr).
+:- type_representation(builtin_type_rep, du_repn(enum("builtin_type_int_rep", "builtin_type_uint_rep", ["builtin_type_int8_rep", "builtin_type_uint8_rep", "builtin_type_int16_rep", "builtin_type_uint16_rep", "builtin_type_int32_rep", "builtin_type_uint32_rep", "builtin_type_int64_rep", "builtin_type_uint64_rep", "builtin_type_float_rep", "builtin_type_string_rep", "builtin_type_char_rep"], []))).
+:- type_representation(bytecode_goal_type, du_repn(enum("goal_conj", "goal_disj", ["goal_switch", "goal_ite", "goal_neg", "goal_scope", "goal_construct", "goal_deconstruct", "goal_partial_construct", "goal_partial_deconstruct", "goal_assign", "goal_cast", "goal_simple_test", "goal_foreign", "goal_ho_call", "goal_method_call", "goal_plain_call", "goal_builtin_call", "goal_event_call"], []))).
+:- type_representation(call_site, is_word_aligned_ptr).
+:- type_representation(can_fail_rep, du_repn(enum("can_fail_rep", "cannot_fail_rep", [], []))).
+:- type_representation(case_rep, is_eqv_to(mdbcomp.program_representation.case_rep(unit))).
+:- type_representation(committed_choice, du_repn(enum("committed_choice", "not_committed_choice", [], []))).
+:- type_representation(cons_id_arity_rep, is_word_aligned_ptr).
+:- type_representation(cons_id_rep, is_eqv_to(string)).
+:- type_representation(coverage_point_info, is_word_aligned_ptr).
+:- type_representation(cp_type, du_repn(enum("cp_type_coverage_after", "cp_type_branch_arm", [], [foreign_enum(c, ["MR_cp_type_coverage_after", "MR_cp_type_branch_arm"])]))).
+:- type_representation(detism_rep, du_repn(enum("det_rep", "semidet_rep", ["nondet_rep", "multidet_rep", "cc_nondet_rep", "cc_multidet_rep", "erroneous_rep", "failure_rep"], []))).
+:- type_representation(encoded_type_table, is_eqv_to(map(int, mdbcomp.program_representation.type_rep))).
+:- type_representation(goal_rep, is_eqv_to(mdbcomp.program_representation.goal_rep(unit))).
+:- type_representation(head_var_rep, is_word_aligned_ptr).
+:- type_representation(inst_rep, du_repn(enum("ir_free_rep", "ir_ground_rep", ["ir_other_rep"], []))).
+:- type_representation(maybe_include_var_name_table, du_repn(enum("do_not_include_var_name_table", "include_var_name_table", [], []))).
+:- type_representation(maybe_include_var_types, du_repn(enum("do_not_include_var_types", "include_var_types", [], []))).
+:- type_representation(module_map, is_eqv_to(mdbcomp.program_representation.module_map(unit))).
+:- type_representation(module_map(V_1), is_eqv_to(map(string, mdbcomp.program_representation.module_rep(V_1)))).
+:- type_representation(module_rep, is_eqv_to(mdbcomp.program_representation.module_rep(unit))).
+:- type_representation(oisu_type_procs, is_word_aligned_ptr).
+:- type_representation(proc_defn_rep, is_eqv_to(mdbcomp.program_representation.proc_defn_rep(unit))).
+:- type_representation(proc_map, is_eqv_to(mdbcomp.program_representation.proc_map(unit))).
+:- type_representation(proc_map(V_1), is_eqv_to(map(mdbcomp.program_representation.string_proc_label, mdbcomp.program_representation.proc_rep(V_1)))).
+:- type_representation(proc_rep, is_eqv_to(mdbcomp.program_representation.proc_rep(unit))).
+:- type_representation(proclabel_kind_token, du_repn(enum("proclabel_user_predicate", "proclabel_user_function", ["proclabel_special"], [foreign_enum(c, ["MR_proclabel_user_predicate", "MR_proclabel_user_function", "MR_proclabel_special"])]))).
+:- type_representation(prog_rep, is_eqv_to(mdbcomp.program_representation.prog_rep(unit))).
+:- type_representation(prog_rep(V_1), du_repn(notag("prog_rep", []))).
+:- type_representation(solution_count_rep, du_repn(enum("at_most_zero_rep", "at_most_one_rep", ["at_most_many_rep"], []))).
+:- type_representation(switch_can_fail_rep, du_repn(enum("switch_can_fail_rep", "switch_can_not_fail_rep", [], []))).
+:- type_representation(term_path, is_eqv_to(list(int))).
+:- type_representation(var_mode_rep, is_word_aligned_ptr).
+:- type_representation(var_name_table, is_eqv_to(map(mdbcomp.program_representation.var_rep, string))).
+:- type_representation(var_num_rep, du_repn(enum("var_num_1_byte", "var_num_2_bytes", ["var_num_4_bytes"], []))).
+:- type_representation(var_rep, is_eqv_to(int)).
+:- type_representation(var_type_table, is_eqv_to(map(mdbcomp.program_representation.var_rep, mdbcomp.program_representation.type_rep))).
