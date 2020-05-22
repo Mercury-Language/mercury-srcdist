@@ -1,0 +1,10 @@
+:- module (check_hlds.switch_detection).
+:- interface.
+:- type found_deconstruct
+	where	type_is_abstract_enum(1).
+:- type process_unify(Result, Info).
+:- type switch_detect_info.
+:- abstract_inst((process_unify)).
+:- type_representation(found_deconstruct, du_repn(enum("did_find_deconstruct", "did_not_find_deconstruct", [], []))).
+:- type_representation(process_unify(V_1, V_2), is_eqv_to(pred(prog_var, hlds_goal, list(hlds_goal), V_1, V_1, V_2, V_2))).
+:- type_representation(switch_detect_info, is_word_aligned_ptr).

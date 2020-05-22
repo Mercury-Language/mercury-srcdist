@@ -1,0 +1,8 @@
+:- module bool.
+:- interface.
+:- import_module enum.
+:- import_module list.
+:- type bool
+	where	type_is_abstract_enum(1).
+:- instance (enum(bool.bool)).
+:- type_representation(bool, du_repn(enum("no", "yes", [], []))).

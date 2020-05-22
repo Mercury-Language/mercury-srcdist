@@ -1,0 +1,11 @@
+:- module (erl_backend.elds_to_erlang).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module (erl_backend.elds).
+:- use_module (hlds.hlds_module).
+:- pred output_defn(hlds.hlds_module.module_info, erl_backend.elds.elds_defn, io.io, io.io).
+:- mode output_defn((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_elds(hlds.hlds_module.module_info, erl_backend.elds.elds, bool.bool, io.io, io.io).
+:- mode output_elds((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

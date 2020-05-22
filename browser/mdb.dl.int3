@@ -1,0 +1,12 @@
+:- module (mdb.dl).
+:- interface.
+:- type dl_result.
+:- type dl_result(T).
+:- type handle.
+:- type link_mode
+	where	type_is_abstract_enum(1).
+:- type scope
+	where	type_is_abstract_enum(1).
+:- type_representation(handle, du_repn(notag("handle", []))).
+:- type_representation(link_mode, du_repn(enum("lazy", "now", [], []))).
+:- type_representation(scope, du_repn(enum("scope_local", "scope_global", [], []))).

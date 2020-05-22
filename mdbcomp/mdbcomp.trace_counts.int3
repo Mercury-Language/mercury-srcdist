@@ -1,0 +1,19 @@
+:- module (mdbcomp.trace_counts).
+:- interface.
+:- type all_or_nonzero
+	where	type_is_abstract_enum(1).
+:- type base_count_file_type.
+:- type line_no_and_count.
+:- type path_port.
+:- type proc_label_in_context.
+:- type proc_trace_counts.
+:- type read_trace_counts_list_result.
+:- type read_trace_counts_result.
+:- type trace_count_file_type.
+:- type trace_counts.
+:- type_representation(all_or_nonzero, du_repn(enum("user_all", "user_nonzero", [], []))).
+:- type_representation(base_count_file_type, is_word_aligned_ptr).
+:- type_representation(line_no_and_count, is_word_aligned_ptr).
+:- type_representation(proc_label_in_context, is_word_aligned_ptr).
+:- type_representation(proc_trace_counts, is_eqv_to(map(mdbcomp.trace_counts.path_port, mdbcomp.trace_counts.line_no_and_count))).
+:- type_representation(trace_counts, is_eqv_to(map(mdbcomp.trace_counts.proc_label_in_context, mdbcomp.trace_counts.proc_trace_counts))).

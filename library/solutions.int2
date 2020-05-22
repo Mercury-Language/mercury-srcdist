@@ -1,0 +1,3 @@
+:- module solutions.
+:- interface.
+:- type_representation(heap_ptr, is_eqv_to(private_builtin.heap_pointer)).

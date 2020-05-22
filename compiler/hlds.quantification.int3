@@ -1,0 +1,7 @@
+:- module (hlds.quantification).
+:- interface.
+:- type nonlocals_to_recompute
+	where	type_is_abstract_enum(2).
+:- type quant_warning.
+:- type_representation(nonlocals_to_recompute, du_repn(enum("ordinary_nonlocals_maybe_lambda", "ordinary_nonlocals_no_lambda", ["code_gen_nonlocals_no_lambda"], []))).
+:- type_representation(quant_warning, is_word_aligned_ptr).

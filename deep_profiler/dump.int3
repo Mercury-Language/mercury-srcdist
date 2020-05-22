@@ -1,0 +1,22 @@
+:- module dump.
+:- interface.
+:- type dump_cliques
+	where	type_is_abstract_enum(1).
+:- type dump_options.
+:- type dump_prop_measurements
+	where	type_is_abstract_enum(1).
+:- type dump_rev_links
+	where	type_is_abstract_enum(1).
+:- type dumpable_array
+	where	type_is_abstract_enum(2).
+:- type show_restricted_dump
+	where	type_is_abstract_enum(1).
+:- type show_stats
+	where	type_is_abstract_enum(1).
+:- type_representation(dump_cliques, du_repn(enum("dump_cliques", "do_not_dump_cliques", [], []))).
+:- type_representation(dump_options, is_word_aligned_ptr).
+:- type_representation(dump_prop_measurements, du_repn(enum("dump_prop_measurements", "do_not_dump_prop_measurements", [], []))).
+:- type_representation(dump_rev_links, du_repn(enum("dump_rev_links", "do_not_dump_rev_links", [], []))).
+:- type_representation(dumpable_array, du_repn(enum("csd", "css", ["pd", "ps"], []))).
+:- type_representation(show_restricted_dump, du_repn(enum("show_restricted_dump", "show_complete_dump", [], []))).
+:- type_representation(show_stats, du_repn(enum("show_stats", "do_not_show_stats", [], []))).

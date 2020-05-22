@@ -1,0 +1,31 @@
+:- module (mdb.declarative_debugger).
+:- interface.
+:- type decl_answer(T).
+:- type decl_bug.
+:- type decl_confirmation
+	where	type_is_abstract_enum(2).
+:- type decl_contour.
+:- type decl_e_bug.
+:- type decl_evidence(T).
+:- type decl_exception.
+:- type decl_i_bug.
+:- type decl_position.
+:- type decl_question(T).
+:- type decl_truth
+	where	type_is_abstract_enum(2).
+:- type diagnoser_exception.
+:- type diagnoser_response(R).
+:- type diagnoser_state(R).
+:- type final_decl_atom.
+:- type init_decl_atom.
+:- type some_decl_atom.
+:- abstract_inst((known_answer)).
+:- type_representation(decl_confirmation, du_repn(enum("confirm_bug", "overrule_bug", ["abort_diagnosis"], []))).
+:- type_representation(decl_contour, is_eqv_to(list(mdb.declarative_debugger.final_decl_atom))).
+:- type_representation(decl_evidence(V_1), is_eqv_to(list(mdb.declarative_debugger.decl_question(V_1)))).
+:- type_representation(decl_exception, is_eqv_to(term_rep)).
+:- type_representation(decl_i_bug, is_word_aligned_ptr).
+:- type_representation(decl_position, is_eqv_to(unit)).
+:- type_representation(decl_truth, du_repn(enum("truth_correct", "truth_erroneous", ["truth_inadmissible"], []))).
+:- type_representation(final_decl_atom, is_word_aligned_ptr).
+:- type_representation(init_decl_atom, du_repn(notag("init_decl_atom", []))).

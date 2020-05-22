@@ -1,0 +1,13 @@
+:- module (hlds.instmap).
+:- interface.
+:- type arm_instmap.
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+	where	type_is_abstract_enum(2).
+:- type var_init_final_insts.
+:- type_representation(arm_instmap, is_word_aligned_ptr).
+:- type_representation(instmap_delta, is_eqv_to(hlds.instmap.instmap)).
+:- type_representation(instmapping, is_eqv_to(map(prog_var, mer_inst))).
+:- type_representation(overlay_how, du_repn(enum("large_base", "large_overlay", ["test_size"], []))).
+:- type_representation(var_init_final_insts, is_word_aligned_ptr).

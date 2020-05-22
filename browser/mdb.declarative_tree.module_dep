@@ -1,0 +1,13 @@
+module(1, "declarative_tree.m",
+	(mdb.declarative_tree),
+	{mdb},
+	{builtin, mdbcomp, private_builtin, (mdb.declarative_edt), (mdb.declarative_execution), (mdbcomp.program_representation)},
+	{assoc_list, bool, builtin, deconstruct, exception, int, list, maybe, mdbcomp, pair, private_builtin, string, unit, univ, (mdb.declarative_debugger), (mdb.declarative_edt), (mdb.declarative_execution), (mdb.io_action), (mdb.term_rep), (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), (mdbcomp.sym_name)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.declarative_tree)},
+	no_foreign_export,
+	no_main
+).

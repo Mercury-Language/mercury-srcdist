@@ -1,0 +1,9 @@
+:- module version_store.
+:- interface.
+:- type mutvar(T, S).
+:- type version_store(S).
+:- type_representation(mutvar(V_1, V_2), du_repn(notag("mutvar", []))).
+:- type_representation(version_store(V_1), du_repn(notag("version_store", []))).
+:- implementation.
+:- type some_version_store_type
+    --->    some_version_store_type .

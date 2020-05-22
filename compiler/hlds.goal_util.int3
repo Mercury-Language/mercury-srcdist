@@ -1,0 +1,12 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type attach_in_from_ground_term
+	where	type_is_abstract_enum(1).
+:- type goal_is_atomic
+	where	type_is_abstract_enum(1).
+:- type is_leaf
+	where	type_is_abstract_enum(1).
+:- type maybe_transformed_goal.
+:- type_representation(attach_in_from_ground_term, du_repn(enum("attach_in_from_ground_term", "do_not_attach_in_from_ground_term", [], []))).
+:- type_representation(goal_is_atomic, du_repn(enum("goal_is_atomic", "goal_is_nonatomic", [], []))).
+:- type_representation(is_leaf, du_repn(enum("is_leaf", "is_not_leaf", [], []))).

@@ -1,0 +1,12 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- type deps.
+:- type deps_map.
+:- type have_processed
+	where	type_is_abstract_enum(1).
+:- type submodule_kind
+	where	type_is_abstract_enum(2).
+:- type_representation(deps, is_word_aligned_ptr).
+:- type_representation(deps_map, is_eqv_to(map(module_name, parse_tree.deps_map.deps))).
+:- type_representation(have_processed, du_repn(enum("not_yet_processed", "already_processed", [], []))).
+:- type_representation(submodule_kind, du_repn(enum("toplevel", "nested_submodule", ["separate_submodule"], []))).
