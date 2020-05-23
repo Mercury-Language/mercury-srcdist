@@ -1,0 +1,2 @@
+:- module (make.module_dep_file).
+:- interface.

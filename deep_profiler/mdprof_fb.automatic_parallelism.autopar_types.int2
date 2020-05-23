@@ -1,0 +1,48 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- interface.
+:- use_module lazy.
+:- use_module map.
+:- use_module var_use_analysis.
+:- use_module (mdbcomp.program_representation).
+:- use_module ((mdbcomp.feedback).automatic_parallelism).
+:- type candidate_par_conjunctions == map.map(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail)).
+:- type dependency_graphs
+    --->    dependency_graphs((((mdprof_fb.automatic_parallelism).autopar_types).dm_forward) :: digraph.digraph(int), (((mdprof_fb.automatic_parallelism).autopar_types).dm_forward_tc) :: digraph.digraph(int)).
+:- type dependent_conjunct_execution
+    --->    dependent_conjunct_execution((((mdprof_fb.automatic_parallelism).autopar_types).dce_execution) :: assoc_list.assoc_list(float, float), (((mdprof_fb.automatic_parallelism).autopar_types).dce_productions) :: map.map(mdbcomp.program_representation.var_rep, float), (((mdprof_fb.automatic_parallelism).autopar_types).dce_consumptions) :: map.map(mdbcomp.program_representation.var_rep, float)).
+:- type implicit_parallelism_info
+    --->    implicit_parallelism_info((((mdprof_fb.automatic_parallelism).autopar_types).ipi_deep) :: profile.deep, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_progrep) :: mdbcomp.program_representation.prog_rep, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_opts) :: mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_clique) :: profile.clique_ptr, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_call_sites) :: map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees), (((mdprof_fb.automatic_parallelism).autopar_types).ipi_rec_call_sites) :: map.map(mdbcomp.goal_path.reverse_goal_path, measurements.cs_cost_csq), (((mdprof_fb.automatic_parallelism).autopar_types).ipi_containing_goal_map) :: mdbcomp.goal_path.containing_goal_map, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_coverage_array) :: mdbcomp.goal_path.goal_attr_array(coverage.coverage_info), (((mdprof_fb.automatic_parallelism).autopar_types).ipi_inst_map_array) :: mdbcomp.goal_path.goal_attr_array(mdprof_fb.automatic_parallelism.autopar_types.inst_map_info), (((mdprof_fb.automatic_parallelism).autopar_types).ipi_recursion_type) :: report.recursion_type, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_var_name_table) :: mdbcomp.program_representation.var_name_table, (((mdprof_fb.automatic_parallelism).autopar_types).ipi_proc_label) :: mdbcomp.program_representation.string_proc_label).
+:- type incomplete_parallelisation
+    --->    incomplete_parallelisation((((mdprof_fb.automatic_parallelism).autopar_types).ip_goals) :: array.array(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), (((mdprof_fb.automatic_parallelism).autopar_types).ip_first_par_goal) :: int, (((mdprof_fb.automatic_parallelism).autopar_types).ip_last_par_goal) :: int, (((mdprof_fb.automatic_parallelism).autopar_types).ip_last_scheduled_goal) :: int, (((mdprof_fb.automatic_parallelism).autopar_types).ip_par_conjs_rev_last_goal) :: list.list(int), (((mdprof_fb.automatic_parallelism).autopar_types).ip_num_calls) :: int, (((mdprof_fb.automatic_parallelism).autopar_types).ip_dependency_graphs) :: mdprof_fb.automatic_parallelism.autopar_types.dependency_graphs, (((mdprof_fb.automatic_parallelism).autopar_types).ip_maybe_goals_before_cost) :: maybe.maybe(measurements.goal_cost_csq), (((mdprof_fb.automatic_parallelism).autopar_types).ip_maybe_goals_after_cost) :: maybe.maybe(measurements.goal_cost_csq), (((mdprof_fb.automatic_parallelism).autopar_types).ip_maybe_par_cost_data) :: maybe.maybe(mdprof_fb.automatic_parallelism.autopar_types.parallelisation_cost_data)).
+:- type inst_map_info
+    --->    inst_map_info((((mdprof_fb.automatic_parallelism).autopar_types).im_before) :: program_representation_utils.inst_map, (((mdprof_fb.automatic_parallelism).autopar_types).im_after) :: program_representation_utils.inst_map, (((mdprof_fb.automatic_parallelism).autopar_types).im_consumed_vars) :: set.set(mdbcomp.program_representation.var_rep), (((mdprof_fb.automatic_parallelism).autopar_types).im_bound_vars) :: set.set(mdbcomp.program_representation.var_rep)).
+:- type is_costly_goal
+    --->    is_not_costly_goal 
+    ;       is_costly_goal .
+:- type lazy_var_use_map == map.map(mdbcomp.program_representation.var_rep, lazy.lazy(var_use_analysis.var_use_info)).
+:- type parallel_execution_overlap
+    --->    peo_empty_conjunct 
+    ;       peo_conjunction((((mdprof_fb.automatic_parallelism).autopar_types).poec_left_conjunct) :: mdprof_fb.automatic_parallelism.autopar_types.parallel_execution_overlap, (((mdprof_fb.automatic_parallelism).autopar_types).poec_right_conjunct) :: mdprof_fb.automatic_parallelism.autopar_types.dependent_conjunct_execution, (((mdprof_fb.automatic_parallelism).autopar_types).poec_dependent_vars) :: set.set(mdbcomp.program_representation.var_rep)).
+:- type parallelisation_cost_data
+    --->    parallelisation_cost_data((((mdprof_fb.automatic_parallelism).autopar_types).pcd_shared_vars) :: set.set(mdbcomp.program_representation.var_rep), (((mdprof_fb.automatic_parallelism).autopar_types).pcd_par_exec_overlap) :: mdprof_fb.automatic_parallelism.autopar_types.parallel_execution_overlap, (((mdprof_fb.automatic_parallelism).autopar_types).pcd_par_exec_metrics) :: measurements.parallel_exec_metrics_incomplete, (((mdprof_fb.automatic_parallelism).autopar_types).pcd_productions_map) :: map.map(mdbcomp.program_representation.var_rep, float)).
+:- type pard_goal_detail == mdbcomp.program_representation.goal_rep(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail_annotation).
+:- type pard_goal_detail_annotation
+    --->    pard_goal_detail((((mdprof_fb.automatic_parallelism).autopar_types).pgd_pg_type) :: mdprof_fb.automatic_parallelism.autopar_types.pard_goal_type, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_inst_map_info) :: mdprof_fb.automatic_parallelism.autopar_types.inst_map_info, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_original_path) :: mdbcomp.goal_path.reverse_goal_path, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_coverage) :: coverage.coverage_info, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_cost) :: measurements.goal_cost_csq, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_cost_above_threshold) :: mdbcomp.feedback.automatic_parallelism.cost_above_par_threshold, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_var_production_map) :: mdprof_fb.automatic_parallelism.autopar_types.lazy_var_use_map, (((mdprof_fb.automatic_parallelism).autopar_types).pgd_var_consumption_map) :: mdprof_fb.automatic_parallelism.autopar_types.lazy_var_use_map).
+:- type pard_goal_type
+    --->    pgt_call((((mdprof_fb.automatic_parallelism).autopar_types).pgtc_args) :: list.list(mdprof_fb.automatic_parallelism.autopar_types.var_and_mode), (((mdprof_fb.automatic_parallelism).autopar_types).pgtc_call_site) :: analysis_utils.cost_and_callees)
+    ;       pgt_other_atomic_goal 
+    ;       pgt_non_atomic_goal .
+:- type var_and_mode
+    --->    var_and_mode((((mdprof_fb.automatic_parallelism).autopar_types).vmu_var) :: mdbcomp.program_representation.var_rep, (((mdprof_fb.automatic_parallelism).autopar_types).vmu_mode) :: mdbcomp.program_representation.var_mode_rep).
+:- type_representation(candidate_par_conjunctions, is_eqv_to(map.map(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail)))).
+:- type_representation(dependency_graphs, is_word_aligned_ptr).
+:- type_representation(dependent_conjunct_execution, is_word_aligned_ptr).
+:- type_representation(implicit_parallelism_info, is_word_aligned_ptr).
+:- type_representation(incomplete_parallelisation, is_word_aligned_ptr).
+:- type_representation(inst_map_info, is_word_aligned_ptr).
+:- type_representation(is_costly_goal, du_repn(enum("is_not_costly_goal", "is_costly_goal", [], []))).
+:- type_representation(lazy_var_use_map, is_eqv_to(map.map(mdbcomp.program_representation.var_rep, lazy.lazy(var_use_analysis.var_use_info)))).
+:- type_representation(parallelisation_cost_data, is_word_aligned_ptr).
+:- type_representation(pard_goal_detail, is_eqv_to(mdbcomp.program_representation.goal_rep(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail_annotation))).
+:- type_representation(pard_goal_detail_annotation, is_word_aligned_ptr).
+:- type_representation(var_and_mode, is_word_aligned_ptr).

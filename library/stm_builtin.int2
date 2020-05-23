@@ -1,0 +1,25 @@
+:- module stm_builtin.
+:- interface.
+:- type rollback_exception
+    --->    rollback_invalid_transaction 
+    ;       rollback_retry .
+:- type stm.
+:- type stm_dummy_output
+    --->    stm_dummy_output .
+:- type stm_validation_result
+    --->    stm_transaction_valid 
+    ;       stm_transaction_invalid .
+:- type stm_var(T).
+:- type_representation(rollback_exception, du_repn(enum("rollback_invalid_transaction", "rollback_retry", [], []))).
+:- type_representation(stm, du_repn(notag("stm", [c("MR_STM_TransLog *", [can_pass_as_mercury_type])]))).
+:- type_representation(stm_dummy_output, du_repn(direct_dummy("stm_dummy_output", []))).
+:- type_representation(stm_validation_result, du_repn(enum("stm_transaction_valid", "stm_transaction_invalid", [], []))).
+:- type_representation(stm_var(V_1), du_repn(notag("tvar", [c("MR_STM_Var *", [can_pass_as_mercury_type, stable])]))).
+:- implementation.
+:- pragma foreign_import_module("C", stm_builtin).
+:- type stm
+    --->    stm(builtin.c_pointer).
+:- pragma foreign_type(c, stm, "MR_STM_TransLog *", [can_pass_as_mercury_type]).
+:- type stm_var(T)
+    --->    tvar(builtin.c_pointer).
+:- pragma foreign_type(c, stm_var(T), "MR_STM_Var *", [can_pass_as_mercury_type, stable]).

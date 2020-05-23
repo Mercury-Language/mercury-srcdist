@@ -1,0 +1,27 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- type actual_severity
+	where	type_is_abstract_enum(2).
+:- type error_msg.
+:- type error_msg_component.
+:- type error_phase.
+:- type error_severity.
+:- type error_spec.
+:- type error_spec_accumulator.
+:- type format_component.
+:- type maybe_error_specs(T).
+:- type maybe_treat_as_first
+	where	type_is_abstract_enum(1).
+:- type mode_report_control
+	where	type_is_abstract_enum(1).
+:- type verbose_always_or_once
+	where	type_is_abstract_enum(1).
+:- type warning_spec.
+:- typeclass print_anything(T).
+:- type_representation(actual_severity, du_repn(enum("actual_severity_error", "actual_severity_warning", ["actual_severity_informational"], []))).
+:- type_representation(already_printed_verbose, is_eqv_to(set(list(parse_tree.error_util.format_component)))).
+:- type_representation(error_spec_accumulator, is_eqv_to(maybe(pair(set(parse_tree.error_util.error_spec))))).
+:- type_representation(maybe_treat_as_first, du_repn(enum("treat_as_first", "do_not_treat_as_first", [], []))).
+:- type_representation(mode_report_control, du_repn(enum("report_in_any_mode", "report_only_if_in_all_modes", [], []))).
+:- type_representation(verbose_always_or_once, du_repn(enum("verbose_always", "verbose_once", [], []))).
+:- type_representation(warning_spec, is_eqv_to(parse_tree.error_util.error_spec)).

@@ -1,0 +1,2 @@
+:- module (backend_libs.pseudo_type_info).
+:- interface.

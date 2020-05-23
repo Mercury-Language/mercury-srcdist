@@ -1,0 +1,32 @@
+:- module (bytecode_backend.bytecode).
+:- interface.
+:- type byte_arg.
+:- type byte_code.
+:- type byte_cons_id.
+:- type byte_cons_tag.
+:- type byte_dir
+	where	type_is_abstract_enum(2).
+:- type byte_is_func.
+:- type byte_label_id.
+:- type byte_module_id.
+:- type byte_pred_id.
+:- type byte_proc_id.
+:- type byte_reg_type.
+:- type byte_temp.
+:- type byte_test_id
+	where	type_is_abstract_enum(3).
+:- type byte_tree.
+:- type byte_var.
+:- type byte_var_info.
+:- type_representation(byte_dir, du_repn(enum("to_arg", "to_var", ["to_none"], []))).
+:- type_representation(byte_is_func, is_eqv_to(int)).
+:- type_representation(byte_label_id, is_eqv_to(int)).
+:- type_representation(byte_module_id, is_eqv_to(module_name)).
+:- type_representation(byte_pred_id, is_eqv_to(string)).
+:- type_representation(byte_proc_id, is_eqv_to(int)).
+:- type_representation(byte_reg_type, du_repn(direct_dummy("byte_reg_r", []))).
+:- type_representation(byte_temp, is_eqv_to(int)).
+:- type_representation(byte_test_id, du_repn(enum("int_test", "char_test", ["string_test", "float_test", "enum_test", "dummy_test"], []))).
+:- type_representation(byte_tree, is_eqv_to(cord(bytecode_backend.bytecode.byte_code))).
+:- type_representation(byte_var, is_eqv_to(int)).
+:- type_representation(byte_var_info, is_word_aligned_ptr).

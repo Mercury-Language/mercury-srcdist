@@ -1,0 +1,15 @@
+:- module time.
+:- interface.
+:- type clock_t.
+:- type dst
+	where	type_is_abstract_enum(1).
+:- type time_error.
+:- type time_t.
+:- type tm.
+:- type tms.
+:- type_representation(clock_t, is_eqv_to(int)).
+:- type_representation(dst, du_repn(enum("standard_time", "daylight_time", [], []))).
+:- type_representation(time_error, du_repn(notag("time_error", []))).
+:- type_representation(time_t, du_repn(notag("time_t", []))).
+:- type_representation(tm, is_word_aligned_ptr).
+:- type_representation(tms, is_word_aligned_ptr).

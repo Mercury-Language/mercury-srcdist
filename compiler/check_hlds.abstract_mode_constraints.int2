@@ -1,0 +1,39 @@
+:- module (check_hlds.abstract_mode_constraints).
+:- interface.
+:- use_module bool.
+:- use_module map.
+:- use_module term.
+:- use_module varset.
+:- type mc_ann_constraint
+    --->    mc_ann_constraint(check_hlds.abstract_mode_constraints.mc_constraint, check_hlds.abstract_mode_constraints.mc_annotation).
+:- type mc_annotation
+    --->    mc_annotation(((check_hlds.abstract_mode_constraints).context) :: parse_tree.prog_data.prog_context).
+:- type mc_bindings == map.map(check_hlds.abstract_mode_constraints.mc_var, bool.bool).
+:- type mc_constraint
+    --->    mc_atomic(check_hlds.abstract_mode_constraints.var_constraint)
+    ;       mc_disj(list.list(check_hlds.abstract_mode_constraints.mc_constraint))
+    ;       mc_conj(list.list(check_hlds.abstract_mode_constraints.mc_constraint)).
+:- type mc_type.
+:- type mc_var == term.var(check_hlds.abstract_mode_constraints.mc_type).
+:- type mc_varset == varset.varset(check_hlds.abstract_mode_constraints.mc_type).
+:- type pred_p_c_constraints
+    --->    pred_p_c_constraints(((check_hlds.abstract_mode_constraints).ppcc_procspec_constraints) :: multi_map.multi_map(hlds.hlds_pred.proc_id, check_hlds.abstract_mode_constraints.mc_ann_constraint), ((check_hlds.abstract_mode_constraints).ppcc_allproc_constraints) :: list.list(check_hlds.abstract_mode_constraints.mc_ann_constraint), ((check_hlds.abstract_mode_constraints).ppcc_mode_infer_callees) :: set.set(hlds.hlds_pred.pred_id)).
+:- type var_constraint == check_hlds.abstract_mode_constraints.var_constraint(check_hlds.abstract_mode_constraints.mc_type).
+:- type var_constraint(T)
+    --->    equiv_bool(term.var(T), bool.bool)
+    ;       equivalent(list.list(term.var(T)))
+    ;       implies(term.var(T), term.var(T))
+    ;       equiv_disj(term.var(T), list.list(term.var(T)))
+    ;       at_most_one(list.list(term.var(T)))
+    ;       exactly_one(list.list(term.var(T))).
+:- type_representation(mc_ann_constraint, is_word_aligned_ptr).
+:- type_representation(mc_annotation, du_repn(notag("mc_annotation", []))).
+:- type_representation(mc_bindings, is_eqv_to(map.map(check_hlds.abstract_mode_constraints.mc_var, bool.bool))).
+:- type_representation(mc_type, du_repn(direct_dummy("mc_type", []))).
+:- type_representation(mc_var, is_eqv_to(term.var(check_hlds.abstract_mode_constraints.mc_type))).
+:- type_representation(mc_varset, is_eqv_to(varset.varset(check_hlds.abstract_mode_constraints.mc_type))).
+:- type_representation(pred_p_c_constraints, is_word_aligned_ptr).
+:- type_representation(var_constraint, is_eqv_to(check_hlds.abstract_mode_constraints.var_constraint(check_hlds.abstract_mode_constraints.mc_type))).
+:- implementation.
+:- type mc_type
+    --->    mc_type .
