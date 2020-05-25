@@ -1,0 +1,37 @@
+:- module robdd.
+:- interface.
+:- use_module io.
+:- use_module map.
+:- use_module sparse_bitset.
+:- use_module term.
+:- type entailment_result(T)
+    --->    all_vars 
+    ;       some_vars((robdd.vars) :: T).
+:- type equiv_vars(T)
+    --->    equiv_vars((robdd.leader_map) :: robdd.leader_map(T)).
+:- type equivalent_result(T) == robdd.entailment_result(robdd.equiv_vars(T)).
+:- type imp_map(T) == map.map(term.var(T), robdd.vars(T)).
+:- type imp_vars(T)
+    --->    imp_vars((robdd.imps) :: robdd.imp_map(T), (robdd.rev_imps) :: robdd.imp_map(T), (robdd.dis_imps) :: robdd.imp_map(T), (robdd.rev_dis_imps) :: robdd.imp_map(T)).
+:- type leader_map(T) == map.map(term.var(T), term.var(T)).
+:- type literal(T)
+    --->    pos(term.var(T))
+    ;       neg(term.var(T)).
+:- type robdd == robdd.robdd(term.generic).
+:- type robdd(T).
+:- type vars(T) == sparse_bitset.sparse_bitset(term.var(T)).
+:- type vars_entailed_result(T) == robdd.entailment_result(robdd.vars(T)).
+:- type write_var(T) == pred(term.var(T), io.io, io.io).
+:- inst (write_var) == (pred((builtin.in), (builtin.di), (builtin.uo)) is det).
+:- type_representation(equiv_vars(V_1), du_repn(notag("equiv_vars", []))).
+:- type_representation(equivalent_result(V_1), is_eqv_to(robdd.entailment_result(robdd.equiv_vars(V_1)))).
+:- type_representation(imp_map(V_1), is_eqv_to(map.map(term.var(V_1), robdd.vars(V_1)))).
+:- type_representation(imp_res(V_1), is_eqv_to(robdd.entailment_result(robdd.imp_res_2(V_1)))).
+:- type_representation(leader_map(V_1), is_eqv_to(map.map(term.var(V_1), term.var(V_1)))).
+:- type_representation(robdd, is_eqv_to(robdd.robdd(term.generic))).
+:- type_representation(robdd(V_1), du_repn(notag("robdd", []))).
+:- type_representation(robdd_cache(V_1), is_eqv_to(map.map(robdd.robdd(V_1), robdd.robdd(V_1)))).
+:- type_representation(var_cache(V_1), is_eqv_to(map.map(term.var(V_1), bool.bool))).
+:- type_representation(vars(V_1), is_eqv_to(sparse_bitset.sparse_bitset(term.var(V_1)))).
+:- type_representation(vars_entailed_result(V_1), is_eqv_to(robdd.entailment_result(robdd.vars(V_1)))).
+:- type_representation(write_var(V_1), is_eqv_to(pred(term.var(V_1), io.io, io.io))).

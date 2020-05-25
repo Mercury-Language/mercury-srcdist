@@ -1,0 +1,11 @@
+:- module (parse_tree.set_of_var).
+:- interface.
+:- use_module (parse_tree.prog_data).
+:- type set_of_progvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.prog_var_type).
+:- type set_of_tvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.tvar_type).
+:- type set_of_var(T).
+:- type_representation(set_of_progvar, is_eqv_to(parse_tree.set_of_var.set_of_var(parse_tree.prog_data.prog_var_type))).
+:- type_representation(set_of_tvar, is_eqv_to(parse_tree.set_of_var.set_of_var(parse_tree.prog_data.tvar_type))).
+:- type_representation(set_of_var(V_1), is_eqv_to(sparse_bitset.sparse_bitset(term.var(V_1)))).
+:- implementation.
+:- type set_of_var(T) == sparse_bitset.sparse_bitset(term.var(T)).

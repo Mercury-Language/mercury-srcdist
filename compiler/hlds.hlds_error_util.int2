@@ -1,0 +1,6 @@
+:- module (hlds.hlds_error_util).
+:- interface.
+:- type should_module_qualify
+    --->    should_module_qualify 
+    ;       should_not_module_qualify .
+:- type_representation(should_module_qualify, du_repn(enum("should_module_qualify", "should_not_module_qualify", [], []))).

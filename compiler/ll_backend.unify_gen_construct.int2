@@ -1,0 +1,3 @@
+:- module (ll_backend.unify_gen_construct).
+:- interface.
+:- type_representation(active_ground_term_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, ll_backend.llds.typed_rval))).

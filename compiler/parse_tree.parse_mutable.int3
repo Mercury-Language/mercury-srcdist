@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_mutable).
+:- interface.
+:- type mutable_locn
+	where	type_is_abstract_enum(1).
+:- type_representation(mutable_locn, du_repn(enum("mutable_locn_item", "mutable_locn_in_solver_type", [], []))).

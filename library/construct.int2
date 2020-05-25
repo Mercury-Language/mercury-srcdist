@@ -1,0 +1,6 @@
+:- module construct.
+:- interface.
+:- type functor_number_lex == int.
+:- type functor_number_ordinal == int.
+:- type_representation(functor_number_lex, is_eqv_to(int)).
+:- type_representation(functor_number_ordinal, is_eqv_to(int)).

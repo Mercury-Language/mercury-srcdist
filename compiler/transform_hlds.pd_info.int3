@@ -1,0 +1,25 @@
+:- module (transform_hlds.pd_info).
+:- interface.
+:- type branch_info_map(T).
+:- type goal_version_index.
+:- type maybe_version.
+:- type pd_arg_info.
+:- type pd_branch_info(T).
+:- type pd_info.
+:- type pd_proc_arg_info.
+:- type unfold_info.
+:- type useless_versions.
+:- type version_index.
+:- type version_info.
+:- type version_is_exact
+	where	type_is_abstract_enum(1).
+:- type_representation(branch_info_map(V_1), is_eqv_to(map(V_1, set(int)))).
+:- type_representation(goal_version_index, is_eqv_to(map(list(pred_proc_id), list(pred_proc_id)))).
+:- type_representation(pd_arg_info, is_eqv_to(map(pred_proc_id, transform_hlds.pd_info.pd_proc_arg_info))).
+:- type_representation(pd_info, is_word_aligned_ptr).
+:- type_representation(pd_proc_arg_info, is_eqv_to(transform_hlds.pd_info.pd_branch_info(int))).
+:- type_representation(unfold_info, is_word_aligned_ptr).
+:- type_representation(useless_versions, is_eqv_to(set(pair(pred_proc_id)))).
+:- type_representation(version_index, is_eqv_to(map(pred_proc_id, transform_hlds.pd_info.version_info))).
+:- type_representation(version_info, is_word_aligned_ptr).
+:- type_representation(version_is_exact, du_repn(enum("exact", "more_general", [], []))).

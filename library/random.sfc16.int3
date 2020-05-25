@@ -1,0 +1,5 @@
+:- module (random.sfc16).
+:- interface.
+:- type random.
+:- instance (random(random.sfc16.random)).
+:- type_representation(random, du_repn(notag("random", []))).
