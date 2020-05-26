@@ -1,0 +1,5 @@
+:- module (backend_libs.foreign).
+:- interface.
+:- type foreign_type_and_assertions
+    --->    foreign_type_and_assertions(mdbcomp.sym_name.sym_name, parse_tree.prog_data.foreign_type_assertions).
+:- type_representation(foreign_type_and_assertions, is_word_aligned_ptr).

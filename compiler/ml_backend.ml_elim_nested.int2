@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_elim_nested).
+:- interface.
+:- use_module libs.
+:- use_module (libs.globals).
+:- use_module (ml_backend.mlds).
+:- type action
+    --->    hoist_nested_funcs 
+    ;       chain_gc_stack_frames .
+:- inst (chain) for (ml_backend.ml_elim_nested).action/0 == bound(chain_gc_stack_frames).
+:- inst (hoist) for (ml_backend.ml_elim_nested).action/0 == bound(hoist_nested_funcs).
+:- type_representation(action, du_repn(enum("hoist_nested_funcs", "chain_gc_stack_frames", [], []))).
+:- type_representation(outervars, is_eqv_to(list.list(list.list(ml_backend.mlds.mlds_local_var_defn)))).

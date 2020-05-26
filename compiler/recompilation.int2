@@ -1,0 +1,73 @@
+:- module recompilation.
+:- interface.
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.version).
+:- use_module io.
+:- use_module libs.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module term.
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type eqv_expanded_info == maybe.maybe(recompilation.eqv_expanded_item_set).
+:- type eqv_expanded_item_set
+    --->    eqv_expanded_item_set(mdbcomp.sym_name.module_name, set.set(recompilation.item_id)).
+:- type functor_set == recompilation.simple_item_set.
+:- type instance_version_numbers == map.map(recompilation.item_name, recompilation.version_number).
+:- type item_id
+    --->    item_id(recompilation.item_type, recompilation.item_name).
+:- type item_id_set(T) == recompilation.item_id_set(T, T, T).
+:- type item_id_set(Map, Set, Cons)
+    --->    item_id_set((recompilation.types) :: Map, (recompilation.type_bodies) :: Map, (recompilation.modes) :: Map, (recompilation.insts) :: Map, (recompilation.typeclasses) :: Map, (recompilation.functors) :: Cons, (recompilation.predicates) :: Set, (recompilation.functions) :: Set, (recompilation.mutables) :: Set, (recompilation.foreign_procs) :: Set).
+:- type item_name
+    --->    item_name(mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity).
+:- type item_type
+    --->    type_abstract_item 
+    ;       type_body_item 
+    ;       mode_item 
+    ;       inst_item 
+    ;       typeclass_item 
+    ;       functor_item 
+    ;       predicate_item 
+    ;       function_item 
+    ;       mutable_item 
+    ;       foreign_proc_item .
+:- type item_version_numbers == recompilation.item_id_set(recompilation.version_number_map).
+:- type module_qualifier == mdbcomp.sym_name.module_name.
+:- type module_version_numbers_map == map.map(mdbcomp.sym_name.module_name, recompilation.version_numbers).
+:- type pred_or_func_set == recompilation.simple_item_set.
+:- type recompilation_info
+    --->    recompilation_info((recompilation.recomp_module_name) :: mdbcomp.sym_name.module_name, (recompilation.recomp_used_items) :: recompilation.used_items, (recompilation.recomp_dependencies) :: map.map(recompilation.item_id, set.set(recompilation.item_id)), (recompilation.recomp_version_numbers) :: map.map(mdbcomp.sym_name.module_name, recompilation.version_numbers)).
+:- type simple_item_set == map.map(pair.pair(string, parse_tree.prog_data.arity), map.map(recompilation.module_qualifier, mdbcomp.sym_name.module_name)).
+:- type used_items == recompilation.item_id_set(recompilation.simple_item_set, recompilation.pred_or_func_set, recompilation.functor_set).
+:- type version_number == libs.timestamp.timestamp.
+:- type version_number_map == map.map(pair.pair(string, parse_tree.prog_data.arity), recompilation.version_number).
+:- type version_numbers
+    --->    version_numbers(recompilation.item_version_numbers, recompilation.instance_version_numbers).
+:- inst (pred_or_func_item) for recompilation.item_type/0 == bound(function_item ; predicate_item).
+:- inst (simple_item) for recompilation.item_type/0 == bound(inst_item ; mode_item ; type_abstract_item ; type_body_item ; typeclass_item).
+:- type_representation(eqv_expanded_info, is_eqv_to(maybe.maybe(recompilation.eqv_expanded_item_set))).
+:- type_representation(eqv_expanded_item_set, is_word_aligned_ptr).
+:- type_representation(functor_set, is_eqv_to(recompilation.simple_item_set)).
+:- type_representation(instance_version_numbers, is_eqv_to(map.map(recompilation.item_name, recompilation.version_number))).
+:- type_representation(item_id, is_word_aligned_ptr).
+:- type_representation(item_id_set(V_1), is_eqv_to(recompilation.item_id_set(V_1, V_1, V_1))).
+:- type_representation(item_name, is_word_aligned_ptr).
+:- type_representation(item_type, du_repn(enum("type_abstract_item", "type_body_item", ["mode_item", "inst_item", "typeclass_item", "functor_item", "predicate_item", "function_item", "mutable_item", "foreign_proc_item"], []))).
+:- type_representation(item_version_numbers, is_eqv_to(recompilation.item_id_set(recompilation.version_number_map))).
+:- type_representation(module_qualifier, is_eqv_to(mdbcomp.sym_name.module_name)).
+:- type_representation(module_version_numbers_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, recompilation.version_numbers))).
+:- type_representation(pred_or_func_set, is_eqv_to(recompilation.simple_item_set)).
+:- type_representation(recompilation_info, is_word_aligned_ptr).
+:- type_representation(simple_item_set, is_eqv_to(map.map(pair.pair(string, parse_tree.prog_data.arity), map.map(recompilation.module_qualifier, mdbcomp.sym_name.module_name)))).
+:- type_representation(used_items, is_eqv_to(recompilation.item_id_set(recompilation.simple_item_set, recompilation.pred_or_func_set, recompilation.functor_set))).
+:- type_representation(version_number, is_eqv_to(libs.timestamp.timestamp)).
+:- type_representation(version_number_map, is_eqv_to(map.map(pair.pair(string, parse_tree.prog_data.arity), recompilation.version_number))).
+:- type_representation(version_numbers, is_word_aligned_ptr).

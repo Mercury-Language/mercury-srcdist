@@ -1,0 +1,20 @@
+:- module ((transform_hlds.rbmm).points_to_graph).
+:- interface.
+:- type rpt_graph.
+:- type rptg_edge.
+:- type rptg_edge_content.
+:- type rptg_edge_info.
+:- type rptg_edges.
+:- type rptg_node.
+:- type rptg_node_content.
+:- type rptg_nodes.
+:- type rptg_outedges.
+:- type_representation(rpt_graph, is_word_aligned_ptr).
+:- type_representation(rptg_edge, du_repn(notag("rptg_edge", []))).
+:- type_representation(rptg_edge_content, du_repn(notag("rptg_edge_content", []))).
+:- type_representation(rptg_edge_info, is_word_aligned_ptr).
+:- type_representation(rptg_edges, is_eqv_to(map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_edge_info))).
+:- type_representation(rptg_node, du_repn(notag("rptg_node", []))).
+:- type_representation(rptg_node_content, is_word_aligned_ptr).
+:- type_representation(rptg_nodes, is_eqv_to(map(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node_content))).
+:- type_representation(rptg_outedges, is_eqv_to(map(transform_hlds.rbmm.points_to_graph.rptg_node, map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_node)))).

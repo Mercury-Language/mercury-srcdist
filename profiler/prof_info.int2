@@ -1,0 +1,18 @@
+:- module prof_info.
+:- interface.
+:- use_module map.
+:- type addrdecl == map.map(string, int).
+:- type cycle_map == map.map(string, int).
+:- type pred_info.
+:- type prof.
+:- type prof_node.
+:- type prof_node_map == map.map(int, prof_info.prof_node).
+:- type prof_node_type
+    --->    predicate 
+    ;       cycle .
+:- type_representation(addrdecl, is_eqv_to(map.map(string, int))).
+:- type_representation(cycle_map, is_eqv_to(map.map(string, int))).
+:- type_representation(pred_info, is_word_aligned_ptr).
+:- type_representation(prof, is_word_aligned_ptr).
+:- type_representation(prof_node_map, is_eqv_to(map.map(int, prof_info.prof_node))).
+:- type_representation(prof_node_type, du_repn(enum("predicate", "cycle", [], []))).

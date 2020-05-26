@@ -1,0 +1,4 @@
+:- module mutvar.
+:- interface.
+:- type mutvar(T).
+:- type_representation(mutvar(V_1), du_repn(notag("mutvar", [java("mutvar.Mutvar", []), csharp("object[]", []), erlang("", [])]))).
