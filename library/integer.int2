@@ -1,0 +1,6 @@
+:- module integer.
+:- interface.
+:- type integer.
+:- type_representation(digit, is_eqv_to(int)).
+:- type_representation(integer, is_word_aligned_ptr).
+:- type_representation(sign, is_eqv_to(int)).
