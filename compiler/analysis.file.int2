@@ -1,0 +1,7 @@
+:- module (analysis.file).
+:- interface.
+:- type_representation(parse_entry(V_1), is_eqv_to(pred(term.term, V_1, V_1))).
+:- type_representation(write_entry(V_1), is_eqv_to(pred(analysis.analysis_name, analysis.func_id, V_1, io.io, io.io))).
+:- implementation.
+:- type dummy_answer
+    --->    dummy_answer .

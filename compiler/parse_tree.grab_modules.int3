@@ -1,0 +1,5 @@
+:- module (parse_tree.grab_modules).
+:- interface.
+:- type_representation(missing_ancestor_map, is_eqv_to(map(module_name, missing_ancestor_info))).
+:- type_representation(module_import_or_use_map, is_eqv_to(map(module_name, one_or_more(import_or_use_context)))).
+:- type_representation(module_inclusion_map, is_eqv_to(map(module_name, one_or_more(include_context)))).

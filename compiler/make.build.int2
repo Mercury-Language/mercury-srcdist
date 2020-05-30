@@ -1,0 +1,32 @@
+:- module (make.build).
+:- interface.
+:- use_module (libs.globals).
+:- type build(T) == make.build.build(T, make.make_info).
+:- type build(T, Info) == make.build.build(T, Info, Info).
+:- type build(T, Info1, Info2) == pred(libs.globals.globals, T, bool.bool, Info1, Info2, io.io, io.io).
+:- type build2(T, U) == pred(libs.globals.globals, T, U, bool.bool, make.make_info, make.make_info, io.io, io.io).
+:- type foldl2_pred_with_status(T, Info, IO) == pred(libs.globals.globals, T, bool.bool, Info, Info, IO, IO).
+:- type foldl3_pred_with_status(T, Acc, Info, IO) == pred(libs.globals.globals, T, bool.bool, Acc, Acc, Info, Info, IO, IO).
+:- type stdout_lock.
+:- inst (build) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (build2) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl2_pred_with_status) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl3_pred_with_status) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- type_representation(build(V_1), is_eqv_to(make.build.build(V_1, make.make_info))).
+:- type_representation(build(V_1, V_2), is_eqv_to(make.build.build(V_1, V_2, V_2))).
+:- type_representation(build(V_1, V_2, V_3), is_eqv_to(pred(libs.globals.globals, V_1, bool.bool, V_2, V_3, io.io, io.io))).
+:- type_representation(build2(V_1, V_2), is_eqv_to(pred(libs.globals.globals, V_1, V_2, bool.bool, make.make_info, make.make_info, io.io, io.io))).
+:- type_representation(foldl2_pred_with_status(V_1, V_2, V_3), is_eqv_to(pred(libs.globals.globals, V_1, bool.bool, V_2, V_2, V_3, V_3))).
+:- type_representation(foldl3_pred_with_status(V_1, V_2, V_3, V_4), is_eqv_to(pred(libs.globals.globals, V_1, bool.bool, V_2, V_2, V_3, V_3, V_4, V_4))).
+:- type_representation(stdout_lock, is_eqv_to(make.build.job_ctl)).
+:- implementation.
+:- pragma foreign_import_module("C", (make.build)).
+:- pragma foreign_import_module("C#", (make.build)).
+:- pragma foreign_import_module("Java", (make.build)).
+:- pragma foreign_import_module("Erlang", (make.build)).
+:- type job_ctl.
+:- pragma foreign_type(c, job_ctl, "MC_JobCtl *").
+:- pragma foreign_type(java, job_ctl, "java.lang.Object").
+:- pragma foreign_type(csharp, job_ctl, "object").
+:- pragma foreign_type(erlang, job_ctl, "").
+:- type stdout_lock == make.build.job_ctl.
