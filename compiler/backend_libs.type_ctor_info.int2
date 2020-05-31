@@ -1,0 +1,5 @@
+:- module (backend_libs.type_ctor_info).
+:- interface.
+:- type_representation(name_sort_info, is_eqv_to(assoc_list.assoc_list(pair.pair(string, int), backend_libs.rtti.ctor_rtti_name))).
+:- type_representation(tag_list, is_eqv_to(assoc_list.assoc_list(int, pair.pair(backend_libs.rtti.sectag_locn, map.map(int, backend_libs.rtti.ctor_rtti_name))))).
+:- type_representation(tag_map, is_eqv_to(map.map(int, pair.pair(backend_libs.rtti.sectag_locn, map.map(int, backend_libs.rtti.ctor_rtti_name))))).

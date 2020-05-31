@@ -1,0 +1,23 @@
+:- module ssdb.
+:- interface.
+:- type debugging_paused.
+:- type list_var_value.
+:- type pos.
+:- type ssdb_event_type
+	where	type_is_abstract_enum(3).
+:- type ssdb_proc_id.
+:- type ssdb_retry
+	where	type_is_abstract_enum(1).
+:- type ssdb_tracing_level
+	where	type_is_abstract_enum(1).
+:- type var_name.
+:- type var_value.
+:- type_representation(breakpoints_map, is_eqv_to(map(ssdb.ssdb_proc_id, breakpoint))).
+:- type_representation(debugging_paused, is_eqv_to(debugger_state)).
+:- type_representation(list_var_value, is_eqv_to(list(ssdb.var_value))).
+:- type_representation(pos, is_eqv_to(int)).
+:- type_representation(ssdb_event_type, du_repn(enum("ssdb_call", "ssdb_exit", ["ssdb_fail", "ssdb_call_nondet", "ssdb_exit_nondet", "ssdb_redo_nondet", "ssdb_fail_nondet", "ssdb_excp"],  no_c_j_cs_e))).
+:- type_representation(ssdb_proc_id, is_word_aligned_ptr).
+:- type_representation(ssdb_retry, du_repn(enum("do_retry", "do_not_retry", [],  no_c_j_cs_e))).
+:- type_representation(ssdb_tracing_level, du_repn(enum("deep", "shallow", [],  no_c_j_cs_e))).
+:- type_representation(var_name, is_eqv_to(string)).

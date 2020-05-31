@@ -1,0 +1,33 @@
+:- module (grade_lib.grade_structure).
+:- interface.
+:- type c_gc
+	where	type_is_abstract_enum(3).
+:- type c_trail
+	where	type_is_abstract_enum(1).
+:- type grade_structure.
+:- type llds_gcc_conf
+	where	type_is_abstract_enum(3).
+:- type llds_minmodel_gc
+	where	type_is_abstract_enum(1).
+:- type llds_minmodel_kind
+	where	type_is_abstract_enum(2).
+:- type llds_perf_prof.
+:- type llds_rbmm.
+:- type llds_thread_safe_minmodel.
+:- type mlds_c_dararep
+	where	type_is_abstract_enum(1).
+:- type mlds_c_perf_prof.
+:- type mlds_c_thread_safe.
+:- type mlds_target.
+:- type pregen_kind
+	where	type_is_abstract_enum(2).
+:- type thread_safe_c_gc
+	where	type_is_abstract_enum(2).
+:- type_representation(c_gc, du_repn(enum("c_gc_none", "c_gc_bdw", ["c_gc_bdw_debug", "c_gc_accurate", "c_gc_history"],  no_c_j_cs_e))).
+:- type_representation(c_trail, du_repn(enum("c_trail_no", "c_trail_yes", [],  no_c_j_cs_e))).
+:- type_representation(llds_gcc_conf, du_repn(enum("llds_gcc_conf_none", "llds_gcc_conf_reg", ["llds_gcc_conf_jump", "llds_gcc_conf_fast", "llds_gcc_conf_asm_jump", "llds_gcc_conf_asm_fast"],  no_c_j_cs_e))).
+:- type_representation(llds_minmodel_gc, du_repn(enum("llds_mm_gc_bdw", "llds_mm_gc_bdw_debug", [],  no_c_j_cs_e))).
+:- type_representation(llds_minmodel_kind, du_repn(enum("lmk_stack_copy", "lmk_stack_copy_debug", ["lmk_own_stack", "lmk_own_stack_debug"],  no_c_j_cs_e))).
+:- type_representation(mlds_c_dararep, du_repn(enum("mlds_c_datarep_heap_cells", "mlds_c_datarep_classes", [],  no_c_j_cs_e))).
+:- type_representation(pregen_kind, du_repn(enum("pregen_mlds_hlc", "pregen_llds_none", ["pregen_llds_reg", "pregen_llds_asm_fast"],  no_c_j_cs_e))).
+:- type_representation(thread_safe_c_gc, du_repn(enum("thread_safe_c_gc_none", "thread_safe_c_gc_bdw", ["thread_safe_c_gc_bdw_debug"],  no_c_j_cs_e))).
