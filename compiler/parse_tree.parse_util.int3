@@ -1,0 +1,8 @@
+:- module (parse_tree.parse_util).
+:- interface.
+:- type conflict(T).
+:- type maybe_pred_or_func(T).
+:- type parser(T).
+:- abstract_mode((parser)).
+:- type_representation(maybe_pred_or_func(V_1), is_eqv_to(maybe2(sym_name, pair(list(V_1), maybe(V_1))))).
+:- type_representation(parser(V_1), is_eqv_to(pred(term, maybe1(V_1)))).

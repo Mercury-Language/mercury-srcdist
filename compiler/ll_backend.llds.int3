@@ -1,0 +1,157 @@
+:- module (ll_backend.llds).
+:- interface.
+:- type add_region_ops
+	where	type_is_abstract_enum(1).
+:- type add_trail_ops
+	where	type_is_abstract_enum(1).
+:- type alloc_site_id.
+:- type allow_lco
+	where	type_is_abstract_enum(1).
+:- type c_code_live_lvals.
+:- type c_file.
+:- type c_global_var_ref.
+:- type c_procedure.
+:- type call_model.
+:- type can_branch_away
+	where	type_is_abstract_enum(1).
+:- type cell_arg.
+:- type code_addr.
+:- type common_cell_arg_group.
+:- type common_cell_type.
+:- type common_cell_value.
+:- type comp_gen_c_module.
+:- type completeness
+	where	type_is_abstract_enum(1).
+:- type const_struct_map.
+:- type data_id.
+:- type double_stack_type
+	where	type_is_abstract_enum(1).
+:- type embedded_stack_frame_id.
+:- type entry_label_type
+	where	type_is_abstract_enum(2).
+:- type exprn_opts.
+:- type foreign_proc_component.
+:- type foreign_proc_decl.
+:- type foreign_proc_input.
+:- type foreign_proc_output.
+:- type foreign_proc_type.
+:- type have_asm_labels
+	where	type_is_abstract_enum(1).
+:- type have_non_local_gotos
+	where	type_is_abstract_enum(1).
+:- type have_static_code_addresses
+	where	type_is_abstract_enum(1).
+:- type have_static_ground_cells
+	where	type_is_abstract_enum(1).
+:- type have_static_ground_floats
+	where	type_is_abstract_enum(1).
+:- type have_static_ground_int64s
+	where	type_is_abstract_enum(1).
+:- type have_unboxed_floats
+	where	type_is_abstract_enum(1).
+:- type have_unboxed_int64s
+	where	type_is_abstract_enum(1).
+:- type ho_call_variant.
+:- type instr.
+:- type instruction.
+:- type int_least_type
+	where	type_is_abstract_enum(3).
+:- type label.
+:- type layout_locn.
+:- type layout_slot_id_kind.
+:- type live_value_type.
+:- type liveinfo.
+:- type llds_code.
+:- type llds_inst.
+:- type llds_proc_id.
+:- type llds_reuse.
+:- type llds_type.
+:- type lval.
+:- type lval_or_any_reg.
+:- type main_stack
+	where	type_is_abstract_enum(1).
+:- type may_alter_rtti
+	where	type_is_abstract_enum(1).
+:- type mem_ref.
+:- type nondet_frame_info.
+:- type nondet_tail_call
+	where	type_is_abstract_enum(2).
+:- type region_fill_frame_op.
+:- type region_ite_kind
+	where	type_is_abstract_enum(1).
+:- type region_set_fixed_op
+	where	type_is_abstract_enum(3).
+:- type region_stack_id
+	where	type_is_abstract_enum(2).
+:- type region_use_frame_op.
+:- type removed_at_start_of_else
+	where	type_is_abstract_enum(1).
+:- type reset_trail_reason
+	where	type_is_abstract_enum(3).
+:- type rval.
+:- type rval_const.
+:- type scalar_common_data_array.
+:- type stack_incr_kind
+	where	type_is_abstract_enum(1).
+:- type tabling_info_struct.
+:- type temp_frame_type
+	where	type_is_abstract_enum(1).
+:- type type_num.
+:- type typed_rval.
+:- type use_float_registers
+	where	type_is_abstract_enum(1).
+:- type vector_common_data_array.
+:- abstract_inst((instr_foreign_proc_code)).
+:- abstract_inst((instr_goto)).
+:- abstract_inst((instr_if_val)).
+:- abstract_inst((instr_llcall)).
+:- type_representation(add_region_ops, du_repn(enum("add_region_ops", "do_not_add_region_ops", [],  no_c_j_cs_e))).
+:- type_representation(add_trail_ops, du_repn(enum("add_trail_ops", "do_not_add_trail_ops", [],  no_c_j_cs_e))).
+:- type_representation(alloc_site_id, du_repn(notag("alloc_site_id", alloc_site_info,  no_c_j_cs_e))).
+:- type_representation(allow_lco, du_repn(enum("do_not_allow_lco", "allow_lco", [],  no_c_j_cs_e))).
+:- type_representation(c_file, is_word_aligned_ptr).
+:- type_representation(c_global_var_ref, du_repn(notag("env_var_ref", string,  no_c_j_cs_e))).
+:- type_representation(c_procedure, is_word_aligned_ptr).
+:- type_representation(can_branch_away, du_repn(enum("can_branch_away", "cannot_branch_away", [],  no_c_j_cs_e))).
+:- type_representation(comp_gen_c_module, is_word_aligned_ptr).
+:- type_representation(completeness, du_repn(enum("complete", "incomplete", [],  no_c_j_cs_e))).
+:- type_representation(const_struct_map, is_eqv_to(map(int, ll_backend.llds.typed_rval))).
+:- type_representation(double_stack_type, du_repn(enum("double_stackvar", "double_parent_stackvar", [],  no_c_j_cs_e))).
+:- type_representation(embedded_stack_frame_id, is_word_aligned_ptr).
+:- type_representation(entry_label_type, du_repn(enum("entry_label_c_local", "entry_label_local", ["entry_label_exported"],  no_c_j_cs_e))).
+:- type_representation(exprn_opts, is_word_aligned_ptr).
+:- type_representation(foreign_proc_decl, is_word_aligned_ptr).
+:- type_representation(foreign_proc_input, is_word_aligned_ptr).
+:- type_representation(foreign_proc_output, is_word_aligned_ptr).
+:- type_representation(foreign_proc_type, is_word_aligned_ptr).
+:- type_representation(have_asm_labels, du_repn(enum("have_asm_labels", "do_not_have_asm_labels", [],  no_c_j_cs_e))).
+:- type_representation(have_non_local_gotos, du_repn(enum("have_non_local_gotos", "do_not_have_non_local_gotos", [],  no_c_j_cs_e))).
+:- type_representation(have_static_code_addresses, du_repn(enum("have_static_code_addresses", "do_not_have_static_code_addresses", [],  no_c_j_cs_e))).
+:- type_representation(have_static_ground_cells, du_repn(enum("have_static_ground_cells", "do_not_have_static_ground_cells", [],  no_c_j_cs_e))).
+:- type_representation(have_static_ground_floats, du_repn(enum("have_static_ground_floats", "do_not_have_static_ground_floats", [],  no_c_j_cs_e))).
+:- type_representation(have_static_ground_int64s, du_repn(enum("have_static_ground_int64s", "do_not_have_static_ground_int64s", [],  no_c_j_cs_e))).
+:- type_representation(have_unboxed_floats, du_repn(enum("have_unboxed_floats", "do_not_have_unboxed_floats", [],  no_c_j_cs_e))).
+:- type_representation(have_unboxed_int64s, du_repn(enum("have_unboxed_int64s", "do_not_have_unboxed_int64s", [],  no_c_j_cs_e))).
+:- type_representation(instruction, is_word_aligned_ptr).
+:- type_representation(int_least_type, du_repn(enum("int_least8", "uint_least8", ["int_least16", "uint_least16", "int_least32", "uint_least32"],  no_c_j_cs_e))).
+:- type_representation(layout_slot_id_kind, du_repn(direct_dummy("table_io_entry_id",  no_c_j_cs_e))).
+:- type_representation(liveinfo, is_word_aligned_ptr).
+:- type_representation(llds_code, is_eqv_to(cord(ll_backend.llds.instruction))).
+:- type_representation(llds_inst, du_repn(direct_dummy("llds_inst_better_be_ground",  no_c_j_cs_e))).
+:- type_representation(llds_proc_id, is_eqv_to(int)).
+:- type_representation(main_stack, du_repn(enum("det_stack", "nondet_stack", [],  no_c_j_cs_e))).
+:- type_representation(may_alter_rtti, du_repn(enum("may_alter_rtti", "must_not_alter_rtti", [],  no_c_j_cs_e))).
+:- type_representation(nondet_tail_call, du_repn(enum("no_tail_call", "checked_tail_call", ["unchecked_tail_call"],  no_c_j_cs_e))).
+:- type_representation(region_ite_kind, du_repn(enum("region_ite_semidet_cond", "region_ite_nondet_cond", [],  no_c_j_cs_e))).
+:- type_representation(region_set_fixed_op, du_repn(enum("region_set_ite_num_protects", "region_set_ite_num_snapshots", ["region_set_disj_num_protects", "region_set_disj_num_snapshots", "region_set_commit_num_entries"],  no_c_j_cs_e))).
+:- type_representation(region_stack_id, du_repn(enum("region_stack_ite", "region_stack_disj", ["region_stack_commit"],  no_c_j_cs_e))).
+:- type_representation(removed_at_start_of_else, du_repn(enum("removed_at_start_of_else", "not_removed_at_start_of_else", [],  no_c_j_cs_e))).
+:- type_representation(reset_trail_reason, du_repn(enum("reset_reason_undo", "reset_reason_commit", ["reset_reason_solve", "reset_reason_exception", "reset_reason_retry", "reset_reason_gc"],  no_c_j_cs_e))).
+:- type_representation(scalar_common_data_array, is_word_aligned_ptr).
+:- type_representation(stack_incr_kind, du_repn(enum("stack_incr_leaf", "stack_incr_nonleaf", [],  no_c_j_cs_e))).
+:- type_representation(tabling_info_struct, is_word_aligned_ptr).
+:- type_representation(temp_frame_type, du_repn(enum("det_stack_proc", "nondet_stack_proc", [],  no_c_j_cs_e))).
+:- type_representation(type_num, du_repn(notag("type_num", int,  no_c_j_cs_e))).
+:- type_representation(typed_rval, is_word_aligned_ptr).
+:- type_representation(use_float_registers, du_repn(enum("use_float_registers", "do_not_use_float_registers", [],  no_c_j_cs_e))).
+:- type_representation(vector_common_data_array, is_word_aligned_ptr).
