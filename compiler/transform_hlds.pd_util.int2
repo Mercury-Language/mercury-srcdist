@@ -1,0 +1,4 @@
+:- module (transform_hlds.pd_util).
+:- interface.
+:- type_representation(expansions, is_eqv_to(set.set(pair.pair(parse_tree.prog_data.mer_inst)))).
+:- type_representation(pd_var_info, is_eqv_to(transform_hlds.pd_info.branch_info_map(parse_tree.prog_data.prog_var))).

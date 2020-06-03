@@ -1,0 +1,74 @@
+:- module (make.util).
+:- interface.
+:- use_module libs.
+:- use_module (libs.globals).
+:- pred debug_file_msg(libs.globals.globals, make.target_file, string, io.io, io.io).
+:- mode debug_file_msg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred debug_make_msg(libs.globals.globals, pred(io.io, io.io), io.io, io.io).
+:- mode debug_make_msg((builtin.in), (pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred dependency_file_hash(make.dependencies.dependency_file, int).
+:- mode dependency_file_hash((builtin.in), (builtin.out)) is det.
+:- pred file_error(make.make_info, libs.file_util.file_name, io.io, io.io).
+:- mode file_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func find_oldest_timestamp(maybe.maybe_error(libs.timestamp.timestamp), maybe.maybe_error(libs.timestamp.timestamp)) = maybe.maybe_error(libs.timestamp.timestamp).
+:- pred get_dependency_timestamp(libs.globals.globals, make.dependencies.dependency_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info, make.make_info, io.io, io.io).
+:- mode get_dependency_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_name(libs.globals.globals, parse_tree.file_names.maybe_search, make.target_file, libs.file_util.file_name, make.make_info, make.make_info, io.io, io.io).
+:- mode get_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_timestamp(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), make.make_info, make.make_info, io.io, io.io).
+:- mode get_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_real_milliseconds(int, io.io, io.io).
+:- mode get_real_milliseconds((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_target_timestamp(libs.globals.globals, parse_tree.file_names.maybe_search, make.target_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info, make.make_info, io.io, io.io).
+:- mode get_target_timestamp((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_timestamp_file_timestamp(libs.globals.globals, make.target_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info, make.make_info, io.io, io.io).
+:- mode get_timestamp_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred linked_target_file_name(libs.globals.globals, mdbcomp.sym_name.module_name, backend_libs.compile_target_code.linked_target_type, libs.file_util.file_name, io.io, io.io).
+:- mode linked_target_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_dependency_list(list.list(mdbcomp.sym_name.module_name), make.module_target_type) = list.list(make.dependencies.dependency_file).
+:- pred make_remove_file(libs.globals.globals, libs.options.option, libs.file_util.file_name, make.make_info, make.make_info, io.io, io.io).
+:- mode make_remove_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_module_file(libs.globals.globals, libs.options.option, mdbcomp.sym_name.module_name, string, make.make_info, make.make_info, io.io, io.io).
+:- mode make_remove_module_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_target_file(libs.globals.globals, libs.options.option, make.target_file, make.make_info, make.make_info, io.io, io.io).
+:- mode make_remove_target_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_target_file_by_name(libs.globals.globals, libs.options.option, mdbcomp.sym_name.module_name, make.module_target_type, make.make_info, make.make_info, io.io, io.io).
+:- mode make_remove_target_file_by_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_target_file_list(list.list(mdbcomp.sym_name.module_name), make.module_target_type) = list.list(make.target_file).
+:- pred make_write_dependency_file(libs.globals.globals, make.dependencies.dependency_file, io.io, io.io).
+:- mode make_write_dependency_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred make_write_dependency_file_list(libs.globals.globals, list.list(make.dependencies.dependency_file), io.io, io.io).
+:- mode make_write_dependency_file_list((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred make_write_target_file(libs.globals.globals, make.target_file, io.io, io.io).
+:- mode make_write_target_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred make_write_target_file_wrapped(libs.globals.globals, string, make.target_file, string, io.io, io.io).
+:- mode make_write_target_file_wrapped((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_linked_target_message(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode maybe_make_linked_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message(libs.globals.globals, make.target_file, io.io, io.io).
+:- mode maybe_make_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message_to_stream(libs.globals.globals, io.output_stream, make.target_file, io.io, io.io).
+:- mode maybe_make_target_message_to_stream((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_reanalyse_modules_message(libs.globals.globals, io.io, io.io).
+:- mode maybe_reanalyse_modules_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_symlink_or_copy_linked_target_message(libs.globals.globals, pair.pair(mdbcomp.sym_name.module_name, make.target_type), io.io, io.io).
+:- mode maybe_symlink_or_copy_linked_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_warn_up_to_date_target(libs.globals.globals, pair.pair(mdbcomp.sym_name.module_name, make.target_type), make.make_info, make.make_info, io.io, io.io).
+:- mode maybe_warn_up_to_date_target((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_hash(mdbcomp.sym_name.module_name, int).
+:- mode module_name_hash((builtin.in), (builtin.out)) is det.
+:- func target_extension(libs.globals.globals, make.module_target_type) = maybe.maybe(string).
+:- mode target_extension((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode target_extension((builtin.in), (builtin.out)) = builtin.in(bound(yes(ground))) is nondet.
+:- pred target_extension_synonym(string, make.module_target_type).
+:- mode target_extension_synonym((builtin.in), (builtin.out)) is semidet.
+:- pred target_file_error(make.make_info, libs.globals.globals, make.target_file, io.io, io.io).
+:- mode target_file_error((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred target_is_grade_or_arch_dependent(make.module_target_type).
+:- mode target_is_grade_or_arch_dependent((builtin.in)) is semidet.
+:- pred timestamp_extension(make.module_target_type, string).
+:- mode timestamp_extension((builtin.in), (builtin.out)) is semidet.
+:- pred verbose_make_msg(libs.globals.globals, pred(io.io, io.io), io.io, io.io).
+:- mode verbose_make_msg((builtin.in), (pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred verbose_make_msg_option(libs.globals.globals, libs.options.option, pred(io.io, io.io), io.io, io.io).
+:- mode verbose_make_msg_option((builtin.in), (builtin.in), (pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,9 @@
+:- module (transform_hlds.transform).
+:- interface.
+:- use_module check_hlds.
+:- use_module hlds.
+:- use_module list.
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_goal).
+:- pred reschedule_conj(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode reschedule_conj((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
