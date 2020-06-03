@@ -1,0 +1,69 @@
+/*
+** Automatically generated from `mlds_to_cs_stmt.m'
+** by the Mercury compiler,
+** version 20.06-beta-2020-06-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_cs_stmt.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_cs_stmt
+#define MR_HEADER_GUARD_ml_backend__mlds_to_cs_stmt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_CS_STMT_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_CS_STMT_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_cs_stmt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_115_116_109_116_95_102_111_114_95_99_115_104_97_114_112_95_95_91_51_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_stmt__output_stmt_for_csharp_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__ml_backend__mlds_to_cs_stmt__init(void);
+void mercury__ml_backend__mlds_to_cs_stmt__init_type_tables(void);
+void mercury__ml_backend__mlds_to_cs_stmt__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_cs_stmt__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_cs_stmt
+
+// :- end_interface ml_backend.mlds_to_cs_stmt.

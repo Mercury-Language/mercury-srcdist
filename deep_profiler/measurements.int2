@@ -1,0 +1,24 @@
+:- module measurements.
+:- interface.
+:- type cs_cost_csq.
+:- type goal_cost_csq.
+:- type inherit_prof_info.
+:- type is_active
+    --->    is_active 
+    ;       is_not_active .
+:- type own_prof_info.
+:- type parallel_exec_metrics_incomplete.
+:- type parallelism_amount.
+:- type proc_cost_csq.
+:- type recursion_depth.
+:- type static_coverage_info.
+:- type_representation(cs_cost_csq, is_word_aligned_ptr).
+:- type_representation(inherit_prof_info, is_word_aligned_ptr).
+:- type_representation(is_active, du_repn(enum("is_active", "is_not_active", [],  no_c_j_cs_e))).
+:- type_representation(parallel_exec_metrics_incomplete, is_word_aligned_ptr).
+:- type_representation(parallelism_amount, du_repn(notag("parallelism_amount", float,  no_c_j_cs_e))).
+:- type_representation(proc_cost_csq, is_word_aligned_ptr).
+:- type_representation(recursion_depth, du_repn(notag("recursion_depth", float,  no_c_j_cs_e))).
+:- type_representation(static_coverage_info, is_eqv_to(maybe.maybe(array.array(int)))).
+:- implementation.
+:- type static_coverage_info == maybe.maybe(array.array(int)).

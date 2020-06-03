@@ -1,0 +1,3 @@
+:- module mfilterjavac.
+:- interface.
+:- type_representation(line_info_cache, is_eqv_to(map.map(string, maybe.maybe(list.list(mfilterjavac.line_info))))).

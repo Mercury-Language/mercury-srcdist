@@ -1,0 +1,17 @@
+:- module std_util.
+:- interface.
+:- use_module maybe.
+:- func compose(((func T2) = T3), ((func T1) = T2), T1) = T3.
+:- func converse((func(T1, T2) = T3), T2, T1) = T3.
+:- func id(T) = T.
+:- pred isnt((pred T), T).
+:- mode isnt(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- func maybe_func(((func T1) = T2), T1) = maybe.maybe(T2).
+:- mode maybe_func((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out) is det.
+:- pred maybe_pred(pred(T1, T2), T1, maybe.maybe(T2)).
+:- mode maybe_pred((pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)) is det.
+:- pred negate((pred)).
+:- mode negate(builtin.in(((pred) is semidet))) is semidet.
+:- func pow(((func T) = T), int, T) = T.
+:- pragma obsolete((std_util.maybe_func)/2, []).
+:- pragma obsolete((std_util.maybe_pred)/3, []).

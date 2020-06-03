@@ -1,0 +1,11 @@
+:- module (make.options_file).
+:- interface.
+:- type options_variables.
+:- type_representation(options_variable, is_eqv_to(string)).
+:- type_representation(options_variables, is_eqv_to(map.map(make.options_file.options_variable, make.options_file.options_variable_value))).
+:- implementation.
+:- type found_options_file_error
+    --->    found_options_file_error .
+:- type options_variable == string.
+:- type options_variable_value.
+:- type options_variables == map.map(make.options_file.options_variable, make.options_file.options_variable_value).

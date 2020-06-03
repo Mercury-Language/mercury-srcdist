@@ -1,0 +1,121 @@
+/*
+** Automatically generated from `structure_reuse.analysis.m'
+** by the Mercury compiler,
+** version 20.06-beta-2020-06-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.structure_reuse.analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__analysis
+#define MR_HEADER_GUARD_transform_hlds__ctgc__structure_reuse__analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__ANALYSIS_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__ANALYSIS_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.ctgc.structure_reuse.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_answer_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_call_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__analysis__arity3__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__[11];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__[5];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__[5];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__[7];
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis__perform_structure_reuse_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer_harsher_than_in_analysis_registry_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Compare____structure_reuse_answer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Compare____structure_reuse_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Compare____structure_reuse_func_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Unify____structure_reuse_answer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Unify____structure_reuse_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_reuse__analysis____Unify____structure_reuse_func_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__ctgc__structure_reuse__analysis__init(void);
+void mercury__transform_hlds__ctgc__structure_reuse__analysis__init_type_tables(void);
+void mercury__transform_hlds__ctgc__structure_reuse__analysis__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__structure_reuse__analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.structure_reuse.analysis
+
+// :- end_interface transform_hlds.ctgc.structure_reuse.analysis.
