@@ -1,0 +1,13 @@
+:- module analysis_utils.
+:- interface.
+:- type callee
+    --->    callee((analysis_utils.c_clique) :: profile.clique_ptr, (analysis_utils.c_csd) :: profile.call_site_dynamic_ptr).
+:- type cost_and_callees == analysis_utils.cost_and_callees(analysis_utils.callee).
+:- type cost_and_callees(Callee)
+    --->    cost_and_callees((analysis_utils.cac_cost) :: measurements.cs_cost_csq, (analysis_utils.cac_exits) :: int, (analysis_utils.cac_callees) :: set.set(Callee), (analysis_utils.cac_call_site_is_ho) :: analysis_utils.higher_order).
+:- type higher_order
+    --->    first_order_call 
+    ;       higher_order_call .
+:- type_representation(callee, is_word_aligned_ptr).
+:- type_representation(cost_and_callees, is_eqv_to(analysis_utils.cost_and_callees(analysis_utils.callee))).
+:- type_representation(higher_order, du_repn(enum("first_order_call", "higher_order_call", [],  no_c_j_cs_e))).
