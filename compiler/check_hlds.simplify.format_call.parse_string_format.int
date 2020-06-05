@@ -1,0 +1,32 @@
+:- module (((check_hlds.simplify).format_call).parse_string_format).
+:- interface.
+:- use_module char.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module string.
+:- use_module (parse_tree.prog_data).
+:- use_module (string.parse_util).
+:- type abstract_poly_type
+    --->    apt_f(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context)
+    ;       apt_i(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context)
+    ;       apt_u(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context)
+    ;       apt_s(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context)
+    ;       apt_c(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context).
+:- type compiler_format_maybe_prec
+    --->    compiler_no_specified_prec 
+    ;       compiler_manifest_prec(int)
+    ;       compiler_var_prec(parse_tree.prog_data.prog_var).
+:- type compiler_format_maybe_width
+    --->    compiler_no_specified_width 
+    ;       compiler_manifest_width(int)
+    ;       compiler_var_width(parse_tree.prog_data.prog_var).
+:- type compiler_format_spec
+    --->    compiler_const_string(parse_tree.prog_data.prog_context, string)
+    ;       compiler_spec_char(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, parse_tree.prog_data.prog_var)
+    ;       compiler_spec_string(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, parse_tree.prog_data.prog_var)
+    ;       compiler_spec_signed_int(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, parse_tree.prog_data.prog_var)
+    ;       compiler_spec_unsigned_int(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, string.parse_util.string_format_int_base, parse_tree.prog_data.prog_var)
+    ;       compiler_spec_uint(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, string.parse_util.string_format_int_base, parse_tree.prog_data.prog_var)
+    ;       compiler_spec_float(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, string.parse_util.string_format_float_kind, parse_tree.prog_data.prog_var).
+:- pred parse_and_optimize_format_string(list.list(char.char), list.list(check_hlds.simplify.format_call.parse_string_format.abstract_poly_type), parse_tree.prog_data.prog_context, maybe.maybe_errors(list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), string.parse_util.string_format_error)).
+:- mode parse_and_optimize_format_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
