@@ -1,0 +1,11 @@
+:- module (ll_backend.switch_case).
+:- interface.
+:- type case_code_included
+	where	type_is_abstract_enum(1).
+:- type case_label_info.
+:- type case_label_map.
+:- type represent_params.
+:- type_representation(case_code_included, du_repn(enum("case_code_not_yet_included", "case_code_already_included", [],  no_c_j_cs_e))).
+:- type_representation(case_label_info, is_word_aligned_ptr).
+:- type_representation(case_label_map, is_eqv_to(map(label, ll_backend.switch_case.case_label_info))).
+:- type_representation(represent_params, is_word_aligned_ptr).
