@@ -1,0 +1,27 @@
+:- module (mdb.help).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module type_desc.
+:- type help_res
+    --->    help_ok 
+    ;       help_error(string).
+:- type path == list.list(string).
+:- type system.
+:- pred add_help_node(mdb.help.system, mdb.help.path, int, string, string, mdb.help.help_res, mdb.help.system).
+:- mode add_help_node((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred help(mdb.help.system, io.output_stream, io.io, io.io).
+:- mode help((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred help_system_type(type_desc.type_desc).
+:- mode help_system_type((builtin.out)) is det.
+:- pred init(mdb.help.system).
+:- mode init((builtin.out)) is det.
+:- pred name(mdb.help.system, string, io.output_stream, io.io, io.io).
+:- mode name((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred path(mdb.help.system, mdb.help.path, io.output_stream, mdb.help.help_res, io.io, io.io).
+:- mode path((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred result_is_error(mdb.help.help_res, string).
+:- mode result_is_error((builtin.in), (builtin.out)) is semidet.
+:- implementation.
+:- type entry.
+:- type system == list.list(mdb.help.entry).

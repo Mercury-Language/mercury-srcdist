@@ -1,0 +1,6 @@
+:- module (recompilation.version).
+:- interface.
+:- type_representation(gathered_item_map, is_eqv_to(map.map(pair.pair(string, parse_tree.prog_data.arity), assoc_list.assoc_list(parse_tree.prog_item.module_section, parse_tree.prog_item.item)))).
+:- type_representation(gathered_items, is_eqv_to(recompilation.item_id_set(recompilation.version.gathered_item_map))).
+:- type_representation(instance_item_map, is_eqv_to(map.map(recompilation.item_name, assoc_list.assoc_list(parse_tree.prog_item.module_section, parse_tree.prog_item.item)))).
+:- type_representation(maybe_pred_or_func_id, is_eqv_to(pair.pair(maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.prog_data.sym_name_arity))).

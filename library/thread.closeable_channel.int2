@@ -1,0 +1,11 @@
+:- module (thread.closeable_channel).
+:- interface.
+:- type closeable_channel(T).
+:- type take_result(T)
+    --->    ok(T)
+    ;       closed .
+:- type try_take_result(T)
+    --->    ok(T)
+    ;       closed 
+    ;       would_block .
+:- type_representation(stream(V_1), is_eqv_to(thread.mvar.mvar(thread.closeable_channel.item(V_1)))).
