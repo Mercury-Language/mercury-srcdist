@@ -1,0 +1,4 @@
+:- module test_grades.
+:- interface.
+:- type_representation(test_set_spec, is_eqv_to(list.list(test_grades.test_set_component))).
+:- type_representation(test_spec, is_eqv_to(cord.cord(test_grades.test_component))).

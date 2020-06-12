@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `mlds_to_java_class.m'
+** by the Mercury compiler,
+** version rotd-2020-06-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_java_class.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_java_class
+#define MR_HEADER_GUARD_ml_backend__mlds_to_java_class
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_JAVA_CLASS_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_JAVA_CLASS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_java_class__interface_is_special_for_java_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_java_class__maybe_shorten_long_class_name_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_java_class__output_class_defn_for_java_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+void mercury__ml_backend__mlds_to_java_class__init(void);
+void mercury__ml_backend__mlds_to_java_class__init_type_tables(void);
+void mercury__ml_backend__mlds_to_java_class__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_java_class__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_java_class
+
+// :- end_interface ml_backend.mlds_to_java_class.

@@ -1,0 +1,21 @@
+:- module (ml_backend.mlds_to_c_data).
+:- interface.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_c_util).
+:- use_module (parse_tree.prog_data).
+:- pred mlds_output_boxed_rval(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode mlds_output_boxed_rval((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_bracketed_rval(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode mlds_output_bracketed_rval((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_initializer(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_initializer, io.io, io.io).
+:- mode mlds_output_initializer((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_initializer_body(ml_backend.mlds_to_c_util.mlds_to_c_opts, int, ml_backend.mlds.mlds_initializer, io.io, io.io).
+:- mode mlds_output_initializer_body((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_lval(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_lval, io.io, io.io).
+:- mode mlds_output_lval((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_ptag(parse_tree.prog_data.ptag, io.io, io.io).
+:- mode mlds_output_ptag((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_rval(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode mlds_output_rval((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

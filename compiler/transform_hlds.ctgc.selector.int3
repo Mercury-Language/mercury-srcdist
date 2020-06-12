@@ -1,0 +1,8 @@
+:- module ((transform_hlds.ctgc).selector).
+:- interface.
+:- type encounter_existential_subtype.
+:- type normalization
+	where	type_is_abstract_enum(1).
+:- type_representation(branch_map, is_eqv_to(assoc_list(mer_type, selector))).
+:- type_representation(encounter_existential_subtype, du_repn(direct_dummy("encounter_existential_subtype",  no_c_j_cs_e))).
+:- type_representation(normalization, du_repn(enum("need_normalization", "already_normalized", [],  no_c_j_cs_e))).
