@@ -1,0 +1,25 @@
+:- module (mdbcomp.slice_and_dice).
+:- interface.
+:- use_module map.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.trace_counts).
+:- type dice
+    --->    dice(((mdbcomp.slice_and_dice).num_pass_tests) :: int, ((mdbcomp.slice_and_dice).num_fail_tests) :: int, ((mdbcomp.slice_and_dice).dice_proc_map) :: map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_dice)).
+:- type dice_exec_count
+    --->    dice_exec_count(((mdbcomp.slice_and_dice).dice_filename) :: string, ((mdbcomp.slice_and_dice).dice_linenumber) :: int, ((mdbcomp.slice_and_dice).pass_count) :: int, ((mdbcomp.slice_and_dice).pass_tests) :: int, ((mdbcomp.slice_and_dice).fail_count) :: int, ((mdbcomp.slice_and_dice).fail_tests) :: int).
+:- type dice_proc_map == map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_dice).
+:- type proc_dice == map.map(mdbcomp.trace_counts.path_port, mdbcomp.slice_and_dice.dice_exec_count).
+:- type proc_slice == map.map(mdbcomp.trace_counts.path_port, mdbcomp.slice_and_dice.slice_exec_count).
+:- type slice
+    --->    slice(((mdbcomp.slice_and_dice).num_tests) :: int, ((mdbcomp.slice_and_dice).slice_proc_map) :: map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_slice)).
+:- type slice_exec_count
+    --->    slice_exec_count(((mdbcomp.slice_and_dice).slice_filename) :: string, ((mdbcomp.slice_and_dice).slice_linenumber) :: int, ((mdbcomp.slice_and_dice).slice_count) :: int, ((mdbcomp.slice_and_dice).slice_tests) :: int).
+:- type slice_proc_map == map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_slice).
+:- type_representation(dice, is_word_aligned_ptr).
+:- type_representation(dice_exec_count, is_word_aligned_ptr).
+:- type_representation(dice_proc_map, is_eqv_to(map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_dice))).
+:- type_representation(proc_dice, is_eqv_to(map.map(mdbcomp.trace_counts.path_port, mdbcomp.slice_and_dice.dice_exec_count))).
+:- type_representation(proc_slice, is_eqv_to(map.map(mdbcomp.trace_counts.path_port, mdbcomp.slice_and_dice.slice_exec_count))).
+:- type_representation(slice, is_word_aligned_ptr).
+:- type_representation(slice_exec_count, is_word_aligned_ptr).
+:- type_representation(slice_proc_map, is_eqv_to(map.map(mdbcomp.prim_data.proc_label, mdbcomp.slice_and_dice.proc_slice))).

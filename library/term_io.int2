@@ -1,0 +1,13 @@
+:- module term_io.
+:- interface.
+:- use_module term.
+:- type adjacent_to_graphic_token
+    --->    maybe_adjacent_to_graphic_token 
+    ;       not_adjacent_to_graphic_token .
+:- type read_term == term_io.read_term(term.generic).
+:- type read_term(T)
+    --->    eof 
+    ;       error(string, int)
+    ;       term(varset.varset(T), term.term(T)).
+:- type_representation(adjacent_to_graphic_token, du_repn(enum("maybe_adjacent_to_graphic_token", "not_adjacent_to_graphic_token", [],  no_c_j_cs_e))).
+:- type_representation(read_term, is_eqv_to(term_io.read_term(term.generic))).

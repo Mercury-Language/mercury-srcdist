@@ -1,0 +1,36 @@
+:- module (check_hlds.mode_constraint_robdd).
+:- interface.
+:- use_module map.
+:- use_module mode_robdd.
+:- use_module robdd.
+:- use_module stack.
+:- use_module term.
+:- use_module (mdbcomp.goal_path).
+:- use_module (parse_tree.set_of_var).
+:- type lambda_path == stack.stack(mdbcomp.goal_path.goal_id).
+:- type mc_type.
+:- type mode_constraint == mode_robdd.mode_robdd(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_info.
+:- type mode_constraint_var == term.var(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_vars == robdd.vars(check_hlds.mode_constraint_robdd.mc_type).
+:- type prodvars_map == map.map(check_hlds.mode_constraint_robdd.lambda_path, parse_tree.set_of_var.set_of_progvar).
+:- type prog_var_and_level.
+:- type rep_var
+    --->    in(parse_tree.prog_data.prog_var)
+    ;       out(parse_tree.prog_data.prog_var)
+    ;       at(parse_tree.prog_data.prog_var, mdbcomp.goal_path.goal_id).
+:- type threshold.
+:- type_representation(lambda_path, is_eqv_to(stack.stack(mdbcomp.goal_path.goal_id))).
+:- type_representation(mc_type, du_repn(direct_dummy("mc_type",  no_c_j_cs_e))).
+:- type_representation(mode_constraint, is_eqv_to(mode_robdd.mode_robdd(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(mode_constraint_info, is_word_aligned_ptr).
+:- type_representation(mode_constraint_var, is_eqv_to(term.var(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(mode_constraint_varmap, is_eqv_to(bimap.bimap(check_hlds.mode_constraint_robdd.varmap_key, check_hlds.mode_constraint_robdd.robdd_var))).
+:- type_representation(mode_constraint_vars, is_eqv_to(robdd.vars(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(prodvars_map, is_eqv_to(map.map(check_hlds.mode_constraint_robdd.lambda_path, parse_tree.set_of_var.set_of_progvar))).
+:- type_representation(prog_var_and_level, is_word_aligned_ptr).
+:- type_representation(robdd_var, is_eqv_to(term.var(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(threshold, du_repn(notag("threshold", check_hlds.mode_constraint_robdd.mode_constraint_var,  no_c_j_cs_e))).
+:- implementation.
+:- type mc_type
+    --->    mc_type .
