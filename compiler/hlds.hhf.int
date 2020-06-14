@@ -1,0 +1,12 @@
+:- module (hlds.hhf).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.inst_graph).
+:- pred convert_clauses_info_to_hhf(bool.bool, hlds.hlds_module.module_info, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info, hlds.inst_graph.inst_graph).
+:- mode convert_clauses_info_to_hhf((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred convert_pred_to_hhf(bool.bool, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode convert_pred_to_hhf((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

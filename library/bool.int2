@@ -1,0 +1,8 @@
+:- module bool.
+:- interface.
+:- use_module enum.
+:- type bool
+    --->    no 
+    ;       yes .
+:- instance (enum.enum(bool.bool)).
+:- type_representation(bool, du_repn(enum("no", "yes", [],  no_c_j_cs_e))).
