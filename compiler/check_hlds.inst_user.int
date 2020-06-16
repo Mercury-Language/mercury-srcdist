@@ -1,0 +1,6 @@
+:- module (check_hlds.inst_user).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.hlds_module).
+:- pred pretest_user_inst_table(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode pretest_user_inst_table((builtin.in), (builtin.out)) is det.

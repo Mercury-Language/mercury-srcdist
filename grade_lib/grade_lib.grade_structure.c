@@ -1,0 +1,10544 @@
+/*
+** Automatically generated from `grade_structure.m'
+** by the Mercury compiler,
+** version 20.06-beta-2020-06-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.grade_structure.
+// :- implementation.
+
+/*
+INIT mercury__grade_lib__grade_structure__init
+ENDINIT
+*/
+
+#include "grade_lib.grade_structure.mih"
+
+
+#include "assoc_list.mih"
+#include "builtin.mih"
+#include "enum.mih"
+#include "grade_lib.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "require.mih"
+#include "term.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "univ.mih"
+#include "grade_lib.grade_solver.mih"
+#include "grade_lib.grade_spec.mih"
+#include "grade_lib.grade_vars.mih"
+
+
+
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_1;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_2;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_3;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_4;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_gc_0[5];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_gc_0[5];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_gc_0[5];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_1;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_trail_0[2];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_trail_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_trail_0[2];
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_0[1];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_0[1];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_1[7];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_1[7];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_1;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_2[2];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_2[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_2;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_3[2];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_3[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_3;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_1[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_2[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_3[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_grade_structure_0[4];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_grade_structure_0[4];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_grade_structure_0[4];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_1;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_2;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_3;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_4;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_5;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_gcc_conf_0[6];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_gcc_conf_0[6];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_gcc_conf_0[6];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_1;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_gc_0[2];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_gc_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_gc_0[2];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_1;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_2;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_3;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_kind_0[4];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_kind_0[4];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_kind_0[4];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_0;
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_1;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_perf_prof_0_2[2];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_perf_prof_0_2[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_2;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_0[2];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_1[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_perf_prof_0[2];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_perf_prof_0[3];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_perf_prof_0[3];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_rbmm_0_1[2];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_rbmm_0_1[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_1;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_1[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_rbmm_0[2];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_rbmm_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_rbmm_0[2];
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_0[6];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_0[6];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_1[3];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_1[3];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_1;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_2[3];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_2[3];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_2;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_1[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_2[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_thread_safe_minmodel_0[3];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_thread_safe_minmodel_0[3];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_thread_safe_minmodel_0[3];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_1;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_mlds_c_dararep_0[2];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_mlds_c_dararep_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_dararep_0[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_perf_prof_0_1[2];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_perf_prof_0_1[2];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_1;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_1[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_perf_prof_0[2];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_perf_prof_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_perf_prof_0[2];
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_0[3];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_0[3];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_1[1];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_1[1];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_1;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_1[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_thread_safe_0[2];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_thread_safe_0[2];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_thread_safe_0[2];
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_0[5];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_0[5];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_0;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_1[1];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_1[1];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_1;
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_2[1];
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_2[1];
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_2;
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_0[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_1[1];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_2[1];
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_target_0[3];
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_target_0[3];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_target_0[3];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_1;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_2;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_3;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_pregen_kind_0[4];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_pregen_kind_0[4];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_pregen_kind_0[4];
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_0;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_1;
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_2;
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_thread_safe_c_gc_0[3];
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_thread_safe_c_gc_0[3];
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_thread_safe_c_gc_0[3];
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__289__1_2_p_0(
+  MR_Word HeadVar__1_28,
+  MR_Word HeadVar__2_441);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__287__1_2_p_0(
+  MR_Word HeadVar__1_27,
+  MR_Word HeadVar__2_437);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__285__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_433);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__283__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_429);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__281__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_425);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__279__1_2_p_0(
+  MR_Word HeadVar__1_23,
+  MR_Word HeadVar__2_421);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__277__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_417);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__275__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_413);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__273__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_409);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__271__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_405);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__269__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_401);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__267__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_397);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__265__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_393);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__263__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_389);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__261__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_385);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__259__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_381);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__257__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_377);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__255__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_373);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__253__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_369);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__249__1_2_p_0(
+  MR_Word HeadVar__1_9,
+  MR_Word HeadVar__2_365);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__247__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_361);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__576__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_203);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__574__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_199);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__572__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_195);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__570__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_191);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__568__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_187);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__565__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_183);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__544__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_223);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__541__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_219);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__539__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_215);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__537__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_211);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__523__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_231);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__520__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_227);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__511__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_177);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__509__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_173);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__507__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_169);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__505__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_165);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__503__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_161);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__501__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_157);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__499__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_153);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__497__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_149);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__495__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_145);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__493__1_2_p_0(
+  MR_Word HeadVar__1_8,
+  MR_Word HeadVar__2_141);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__475__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_279);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__473__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_275);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__471__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_271);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__469__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_267);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__467__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_263);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__465__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_259);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__463__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_255);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__461__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_251);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__459__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_247);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__454__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_243);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__4_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_934);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__4_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_930);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__4_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_926);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__4_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_922);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__4_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_918);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__4_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_914);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__4_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_910);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__4_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_906);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__4_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_902);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__3_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_845);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__3_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_841);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__3_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_837);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__3_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_833);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__3_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_829);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__3_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_825);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__3_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_821);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__3_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_817);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__3_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_813);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__2_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_756);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__2_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_752);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__2_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_748);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__2_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_744);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__2_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_740);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__2_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_736);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__2_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_732);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__2_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_728);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__2_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_724);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_323);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_319);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_315);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_311);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_307);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_303);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_299);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_295);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_291);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__392__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_355);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__384__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_351);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__381__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_347);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__374__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_335);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__371__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_331);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__368__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_327);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__357__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_343);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__354__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_339);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__339__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_239);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__337__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_235);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__652__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_135);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__650__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_131);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__648__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_127);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__646__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_123);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__644__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_119);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__642__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_115);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__640__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_111);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__638__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_107);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__636__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_103);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__634__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_99);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__632__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_95);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__630__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_91);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__628__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_87);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__626__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_83);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__624__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_79);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__622__1_2_p_0(
+  MR_Word HeadVar__1_8,
+  MR_Word HeadVar__2_75);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__620__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_71);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_116(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_115(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_114(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_113(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_112(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_111(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_110(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_109(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_108(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_107(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_106(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_105(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_104(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_103(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_102(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_101(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_100(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_99(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_98(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_97(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_96(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_95(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_94(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_93(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_92(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_91(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_90(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_89(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_88(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_87(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_86(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_85(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_84(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_83(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_82(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_81(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_80(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_79(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_78(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_77(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_76(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_75(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_74(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_73(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_72(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_71(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_70(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_69(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_68(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_67(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_66(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_65(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_64(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_63(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_62(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_61(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_60(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_59(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_58(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_57(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_56(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_55(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_54(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_53(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_52(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_51(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_50(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_49(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_48(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_47(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_46(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_45(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_44(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_43(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_42(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_41(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_40(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_39(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_38(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_37(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_36(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_35(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_34(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_33(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_32(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_31(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_30(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_29(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_28(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_27(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_26(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_25(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_24(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_23(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_22(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_21(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_20(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_19(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_18(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_17(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_16(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_15(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_14(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_13(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_12(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_11(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_10(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_9(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_8(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_7(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_6(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_5(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_4(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_3(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_2(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_c_trail_2_p_0(
+  MR_Word Trail_3,
+  MR_Word * CTrail_4);
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_thread_safe_c_gc_2_p_0(
+  MR_Word Gc_3,
+  MR_Word * ThreadSafeCGc_4);
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_c_gc_2_p_0(
+  MR_Word Gc_3,
+  MR_Word * CGc_4);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____c_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_trail_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____c_trail_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____grade_structure_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____grade_structure_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_gcc_conf_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_gcc_conf_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_perf_prof_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_perf_prof_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_rbmm_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_rbmm_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_dararep_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_dararep_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_target_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_target_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____pregen_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____pregen_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box grade_lib__grade_structure_scalar_common_1[22][5];
+
+
+
+
+static /* final */ const MR_Box grade_lib__grade_structure_scalar_common_1[22][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_gcc_conf_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_gcc_conf_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_stack_len_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_stack_len_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_trail_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_trail_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_minmodel_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_minmodel_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_thread_safe_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_thread_safe_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_gc_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_gc_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_deep_prof_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_deep_prof_0))
+  },
+  /* row 8 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_call_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_call_0))
+  },
+  /* row 9 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_time_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_time_0))
+  },
+  /* row 10 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_memory_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_memory_0))
+  },
+  /* row 11 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_tscope_prof_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_tscope_prof_0))
+  },
+  /* row 12 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_term_size_prof_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_term_size_prof_0))
+  },
+  /* row 13 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_debug_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_debug_0))
+  },
+  /* row 14 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_0))
+  },
+  /* row 15 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_debug_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_debug_0))
+  },
+  /* row 16 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_prof_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_prof_0))
+  },
+  /* row 17 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0))
+  },
+  /* row 18 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_low_tag_bits_use_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_low_tag_bits_use_0))
+  },
+  /* row 19 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_debug_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_debug_0))
+  },
+  /* row 20 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_file_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_file_0))
+  },
+  /* row 21 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_float_0)),
+    ((MR_Box) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_float_0))
+  },
+};
+
+
+
+
+
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_0 = {
+  (MR_String) "c_gc_none",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_1 = {
+  (MR_String) "c_gc_bdw",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_2 = {
+  (MR_String) "c_gc_bdw_debug",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_3 = {
+  (MR_String) "c_gc_accurate",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_4 = {
+  (MR_String) "c_gc_history",
+  INT32_C(4)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_gc_0[5] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_4
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_gc_0[5] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_4,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_gc_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_gc_0[5] = {
+  (MR_Integer) 4,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 3
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_gc_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____c_gc_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____c_gc_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "c_gc",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_gc_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_gc_0 },
+  (MR_Integer) 5,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_gc_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_0 = {
+  (MR_String) "c_trail_no",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_1 = {
+  (MR_String) "c_trail_yes",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_trail_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_1
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_trail_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_c_trail_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_trail_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_trail_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____c_trail_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____c_trail_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "c_trail",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_c_trail_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_c_trail_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_c_trail_0
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_0[1] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_pregen_kind_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_0[1] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_0 = {
+  (MR_String) "grade_pregen",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_0,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_1[7] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_gcc_conf_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_stack_len_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_thread_safe_minmodel_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_file_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_low_tag_bits_use_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_float_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_debug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_1[7] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 3
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 5,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 3,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 1,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_1 = {
+  (MR_String) "grade_llds",
+  INT16_C(7),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_2[2] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_target_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_debug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_2[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_2 = {
+  (MR_String) "grade_mlds",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_2,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_2,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_3[2] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_target_debug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_3[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_3 = {
+  (MR_String) "grade_elds",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(3),
+  (MR_Integer) -1,
+  INT32_C(3),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_grade_structure_0_3,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_grade_structure_0_3,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_1
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_2[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_2
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_3[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_3
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_grade_structure_0[4] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_1,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_2,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_grade_structure_0_3,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_grade_structure_0[4] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_grade_structure_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_grade_structure_0[4] = {
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_grade_structure_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____grade_structure_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____grade_structure_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "grade_structure",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_grade_structure_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_grade_structure_0 },
+  (MR_Integer) 4,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_grade_structure_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_0 = {
+  (MR_String) "llds_gcc_conf_none",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_1 = {
+  (MR_String) "llds_gcc_conf_reg",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_2 = {
+  (MR_String) "llds_gcc_conf_jump",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_3 = {
+  (MR_String) "llds_gcc_conf_fast",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_4 = {
+  (MR_String) "llds_gcc_conf_asm_jump",
+  INT32_C(4)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_5 = {
+  (MR_String) "llds_gcc_conf_asm_fast",
+  INT32_C(5)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_gcc_conf_0[6] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_4,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_5
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_gcc_conf_0[6] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_5,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_4,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_gcc_conf_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_gcc_conf_0[6] = {
+  (MR_Integer) 4,
+  (MR_Integer) 5,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_gcc_conf_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_gcc_conf_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_gcc_conf_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_gcc_conf",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_gcc_conf_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_gcc_conf_0 },
+  (MR_Integer) 6,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_gcc_conf_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_0 = {
+  (MR_String) "llds_mm_gc_bdw",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_1 = {
+  (MR_String) "llds_mm_gc_bdw_debug",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_gc_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_1
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_gc_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_gc_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_gc_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_gc_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_minmodel_gc",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_gc_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_gc_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_gc_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_0 = {
+  (MR_String) "lmk_stack_copy",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_1 = {
+  (MR_String) "lmk_stack_copy_debug",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_2 = {
+  (MR_String) "lmk_own_stack",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_3 = {
+  (MR_String) "lmk_own_stack_debug",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_kind_0[4] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_3
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_kind_0[4] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_llds_minmodel_kind_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_kind_0[4] = {
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_kind_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_minmodel_kind",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_llds_minmodel_kind_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_llds_minmodel_kind_0 },
+  (MR_Integer) 4,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_minmodel_kind_0
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_0 = {
+  (MR_String) "llds_perf_prof_none",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_1 = {
+  (MR_String) "llds_perf_prof_deep",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 1,
+  INT32_C(1),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_perf_prof_0_2[2] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_time_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_memory_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_perf_prof_0_2[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_2 = {
+  (MR_String) "llds_perf_prof_mprof",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(2),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_perf_prof_0_2,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_perf_prof_0_2,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_1
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_2
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_perf_prof_0[2] = {
+  {
+    UINT32_C(2),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_perf_prof_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_perf_prof_0[3] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_perf_prof_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_perf_prof_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_perf_prof_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_perf_prof_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_perf_prof_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_perf_prof",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_perf_prof_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_perf_prof_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_perf_prof_0
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_0 = {
+  (MR_String) "llds_rbmm_no",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_rbmm_0_1[2] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_debug_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_rbmm_prof_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_rbmm_0_1[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_1 = {
+  (MR_String) "llds_rbmm_yes",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_rbmm_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_rbmm_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_1
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_rbmm_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_rbmm_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_rbmm_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_rbmm_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_rbmm_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_rbmm_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_rbmm_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_rbmm_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_rbmm",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_rbmm_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_rbmm_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_rbmm_0
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_0[6] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_gc_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_trail_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_perf_prof_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_term_size_prof_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_debug_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_rbmm_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_0[6] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 3
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 2,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_0 = {
+  (MR_String) "llds_thread_safe_no_minmodel_no",
+  INT16_C(6),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_0,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_1[3] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_kind_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_gc_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_debug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_1[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 3,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_1 = {
+  (MR_String) "llds_thread_safe_no_minmodel_yes",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_2[3] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_thread_safe_c_gc_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_trail_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_tscope_prof_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_2[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_2 = {
+  (MR_String) "llds_thread_safe_yes_minmodel_no",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_llds_thread_safe_minmodel_0_2,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_llds_thread_safe_minmodel_0_2,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_1
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_2[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_2
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_thread_safe_minmodel_0[3] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_1,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_llds_thread_safe_minmodel_0_2,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_thread_safe_minmodel_0[3] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_llds_thread_safe_minmodel_0_2
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_thread_safe_minmodel_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_thread_safe_minmodel_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(3),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "llds_thread_safe_minmodel",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_llds_thread_safe_minmodel_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_llds_thread_safe_minmodel_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_llds_thread_safe_minmodel_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_0 = {
+  (MR_String) "mlds_c_datarep_heap_cells",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_1 = {
+  (MR_String) "mlds_c_datarep_classes",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_mlds_c_dararep_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_1
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_mlds_c_dararep_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_mlds_c_dararep_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_dararep_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_dararep_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____mlds_c_dararep_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____mlds_c_dararep_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "mlds_c_dararep",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_mlds_c_dararep_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_mlds_c_dararep_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_dararep_0
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_0 = {
+  (MR_String) "mlds_c_perf_prof_none",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_perf_prof_0_1[2] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_time_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_mprof_memory_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_perf_prof_0_1[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_1 = {
+  (MR_String) "mlds_c_perf_prof_mprof",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_perf_prof_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_perf_prof_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_1
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_perf_prof_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_perf_prof_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_perf_prof_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_perf_prof_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_perf_prof_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_perf_prof_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "mlds_c_perf_prof",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_perf_prof_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_perf_prof_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_perf_prof_0
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_0[3] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_gc_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_perf_prof_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_0[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 3
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_0 = {
+  (MR_String) "mlds_c_thread_safe_no",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_0,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_1[1] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_thread_safe_c_gc_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_1[1] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_1 = {
+  (MR_String) "mlds_c_thread_safe_yes",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_c_thread_safe_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_c_thread_safe_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_1
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_thread_safe_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_c_thread_safe_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_thread_safe_0[2] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_c_thread_safe_0_1
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_thread_safe_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_thread_safe_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "mlds_c_thread_safe",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_c_thread_safe_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_c_thread_safe_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_c_thread_safe_0
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_0[5] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_thread_safe_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_trail_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_file_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_low_tag_bits_use_0),
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_merc_float_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_0[5] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 5,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 4,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 2,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_0 = {
+  (MR_String) "mlds_target_c",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_0,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_1[1] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_1[1] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_1 = {
+  (MR_String) "mlds_target_csharp",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_1,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_2[1] = {
+  (MR_PseudoTypeInfo) (&grade_lib__grade_vars__grade_lib__grade_vars__type_ctor_info_grade_var_ssdebug_0)
+};
+
+static const MR_DuArgLocn grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_2[1] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_2 = {
+  (MR_String) "mlds_target_java",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  grade_lib__grade_structure__grade_lib__grade_structure__field_types_mlds_target_0_2,
+  NULL,
+  grade_lib__grade_structure__grade_lib__grade_structure__field_locns_mlds_target_0_2,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_0[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_0
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_1[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_1
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_2[1] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_2
+};
+
+static const MR_DuPtagLayout grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_target_0[3] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_1,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    grade_lib__grade_structure__grade_lib__grade_structure__du_stag_ordered_mlds_target_0_2,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_target_0[3] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__du_functor_desc_mlds_target_0_2
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_target_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_target_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(3),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (grade_lib__grade_structure____Unify____mlds_target_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____mlds_target_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "mlds_target",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_name_ordered_mlds_target_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__du_ptag_ordered_mlds_target_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_mlds_target_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_0 = {
+  (MR_String) "pregen_mlds_hlc",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_1 = {
+  (MR_String) "pregen_llds_none",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_2 = {
+  (MR_String) "pregen_llds_reg",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_3 = {
+  (MR_String) "pregen_llds_asm_fast",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_pregen_kind_0[4] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_3
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_pregen_kind_0[4] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_3,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_pregen_kind_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_pregen_kind_0[4] = {
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_pregen_kind_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____pregen_kind_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____pregen_kind_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "pregen_kind",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_pregen_kind_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_pregen_kind_0 },
+  (MR_Integer) 4,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_pregen_kind_0
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_0 = {
+  (MR_String) "thread_safe_c_gc_none",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_1 = {
+  (MR_String) "thread_safe_c_gc_bdw",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_2 = {
+  (MR_String) "thread_safe_c_gc_bdw_debug",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_thread_safe_c_gc_0[3] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_0,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_2
+};
+
+static const MR_EnumFunctorDescPtr grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_thread_safe_c_gc_0[3] = {
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_1,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_2,
+  &grade_lib__grade_structure__grade_lib__grade_structure__enum_functor_desc_thread_safe_c_gc_0_0
+};
+
+static const MR_Integer grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_thread_safe_c_gc_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_thread_safe_c_gc_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0_10001)),
+  ((MR_Box) (grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0_10001)),
+  (MR_String) "grade_lib.grade_structure",
+  (MR_String) "thread_safe_c_gc",
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_name_ordered_thread_safe_c_gc_0 },
+  {     grade_lib__grade_structure__grade_lib__grade_structure__enum_value_ordered_thread_safe_c_gc_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  grade_lib__grade_structure__grade_lib__grade_structure__functor_number_map_thread_safe_c_gc_0
+};
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__289__1_2_p_0(
+  MR_Word HeadVar__1_28,
+  MR_Word HeadVar__2_441)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_28 == HeadVar__2_441);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__287__1_2_p_0(
+  MR_Word HeadVar__1_27,
+  MR_Word HeadVar__2_437)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_27 == HeadVar__2_437);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__285__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_433)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_433);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__283__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_429)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_429);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__281__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_425)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_425);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__279__1_2_p_0(
+  MR_Word HeadVar__1_23,
+  MR_Word HeadVar__2_421)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_23 == HeadVar__2_421);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__277__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_417)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_22 == HeadVar__2_417);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__275__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_413)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_21 == HeadVar__2_413);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__273__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_409)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_409);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__271__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_405)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_19 == HeadVar__2_405);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__269__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_401)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_401);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__267__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_397)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_397);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__265__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_393)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_393);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__263__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_389)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_389);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__261__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_385)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_14 == HeadVar__2_385);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__259__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_381)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_13 == HeadVar__2_381);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__257__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_377)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_12 == HeadVar__2_377);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__255__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_373)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_373);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__253__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_369)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_10 == HeadVar__2_369);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__249__1_2_p_0(
+  MR_Word HeadVar__1_9,
+  MR_Word HeadVar__2_365)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_9 == HeadVar__2_365);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__247__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_361)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_7 == HeadVar__2_361);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__576__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_203)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_203);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__574__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_199)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_199);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__572__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_195)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_195);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__570__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_191)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_191);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__568__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_187)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_14 == HeadVar__2_187);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__565__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_183)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_13 == HeadVar__2_183);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__544__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_223)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_22 == HeadVar__2_223);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__541__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_219)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_219);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__539__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_215)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_215);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__537__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_211)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_211);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__523__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_231)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_231);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__520__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_227)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_227);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__511__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_177)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_177);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__509__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_173)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_173);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__507__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_169)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_169);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__505__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_165)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_21 == HeadVar__2_165);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__503__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_161)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_161);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__501__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_157)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_19 == HeadVar__2_157);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__499__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_153)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_153);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__497__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_149)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_12 == HeadVar__2_149);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__495__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_145)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_10 == HeadVar__2_145);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__493__1_2_p_0(
+  MR_Word HeadVar__1_8,
+  MR_Word HeadVar__2_141)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_8 == HeadVar__2_141);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__475__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_279)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_279);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__473__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_275)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_275);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__471__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_271)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_271);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__469__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_267)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_21 == HeadVar__2_267);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__467__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_263)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_263);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__465__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_259)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_259);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__463__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_255)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_255);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__461__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_251)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_251);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__459__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_247)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_247);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__454__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_243)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_12 == HeadVar__2_243);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__4_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_934)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_934);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__4_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_930)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_930);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__4_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_926)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_926);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__4_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_922)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_922);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__4_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_918)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_918);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__4_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_914)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_914);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__4_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_910)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_910);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__4_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_906)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_906);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__4_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_902)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_902);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__3_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_845)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_845);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__3_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_841)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_841);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__3_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_837)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_837);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__3_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_833)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_833);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__3_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_829)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_829);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__3_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_825)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_825);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__3_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_821)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_821);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__3_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_817)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_817);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__3_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_813)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_813);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__2_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_756)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_756);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__2_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_752)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_752);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__2_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_748)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_748);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__2_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_744)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_744);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__2_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_740)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_740);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__2_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_736)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_736);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__2_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_732)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_732);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__2_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_728)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_728);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__2_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_724)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_724);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_323)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_323);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_319)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_319);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_315)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_315);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_311)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_311);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_307)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_307);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_303)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_303);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_299)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_299);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_295)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_295);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_291)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_291);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__392__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_355)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_19 == HeadVar__2_355);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__384__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_351)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_351);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__381__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_347)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_347);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__374__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_335)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_335);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__371__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_331)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_331);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__368__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_327)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_327);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__357__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_343)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_343);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__354__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_339)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_339);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__339__1_2_p_0(
+  MR_Word HeadVar__1_22,
+  MR_Word HeadVar__2_239)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_22 == HeadVar__2_239);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__337__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_235)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_7 == HeadVar__2_235);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__652__1_2_p_0(
+  MR_Word HeadVar__1_26,
+  MR_Word HeadVar__2_135)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_26 == HeadVar__2_135);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__650__1_2_p_0(
+  MR_Word HeadVar__1_25,
+  MR_Word HeadVar__2_131)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_25 == HeadVar__2_131);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__648__1_2_p_0(
+  MR_Word HeadVar__1_24,
+  MR_Word HeadVar__2_127)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_24 == HeadVar__2_127);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__646__1_2_p_0(
+  MR_Word HeadVar__1_21,
+  MR_Word HeadVar__2_123)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_21 == HeadVar__2_123);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__644__1_2_p_0(
+  MR_Word HeadVar__1_20,
+  MR_Word HeadVar__2_119)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_20 == HeadVar__2_119);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__642__1_2_p_0(
+  MR_Word HeadVar__1_19,
+  MR_Word HeadVar__2_115)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_19 == HeadVar__2_115);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__640__1_2_p_0(
+  MR_Word HeadVar__1_18,
+  MR_Word HeadVar__2_111)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_18 == HeadVar__2_111);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__638__1_2_p_0(
+  MR_Word HeadVar__1_17,
+  MR_Word HeadVar__2_107)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_17 == HeadVar__2_107);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__636__1_2_p_0(
+  MR_Word HeadVar__1_16,
+  MR_Word HeadVar__2_103)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_16 == HeadVar__2_103);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__634__1_2_p_0(
+  MR_Word HeadVar__1_15,
+  MR_Word HeadVar__2_99)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_15 == HeadVar__2_99);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__632__1_2_p_0(
+  MR_Word HeadVar__1_14,
+  MR_Word HeadVar__2_95)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_14 == HeadVar__2_95);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__630__1_2_p_0(
+  MR_Word HeadVar__1_13,
+  MR_Word HeadVar__2_91)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_13 == HeadVar__2_91);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__628__1_2_p_0(
+  MR_Word HeadVar__1_12,
+  MR_Word HeadVar__2_87)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_12 == HeadVar__2_87);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__626__1_2_p_0(
+  MR_Word HeadVar__1_11,
+  MR_Word HeadVar__2_83)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_11 == HeadVar__2_83);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__624__1_2_p_0(
+  MR_Word HeadVar__1_10,
+  MR_Word HeadVar__2_79)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_10 == HeadVar__2_79);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__622__1_2_p_0(
+  MR_Word HeadVar__1_8,
+  MR_Word HeadVar__2_75)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_8 == HeadVar__2_75);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__620__1_2_p_0(
+  MR_Word HeadVar__1_7,
+  MR_Word HeadVar__2_71)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_7 == HeadVar__2_71);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____pregen_kind_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____pregen_kind_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_dararep_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_dararep_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_gcc_conf_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_gcc_conf_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____grade_structure_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_108 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_109 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_108 == CastY_109);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_133 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Integer Var_152 = (MR_Integer) (Var_133);
+                  MR_Integer Var_153 = (MR_Integer) (ArgY1_5);
+
+                  succeeded = (Var_152 < Var_153);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                  {
+                    succeeded = (Var_152 > Var_153);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                    else
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_124 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 1);
+            MR_Word Var_125 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 1)) & (MR_Integer) 3);
+            MR_Word Var_126 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 3)) & (MR_Integer) 3);
+            MR_Word Var_127 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 5)) & (MR_Integer) 1);
+            MR_Word Var_128 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_129 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word Var_130 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 7);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_29 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 7);
+                  MR_Word ArgY2_32 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word ArgY3_35 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_Word ArgY4_38 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2))) >> 5)) & (MR_Integer) 1);
+                  MR_Word ArgY5_41 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2))) >> 3)) & (MR_Integer) 3);
+                  MR_Word ArgY6_44 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2))) >> 1)) & (MR_Integer) 3);
+                  MR_Word ArgY7_47 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2))) & (MR_Integer) 1);
+                  MR_Word SubResult1_30;
+                  MR_Integer Var_138 = (MR_Integer) (Var_130);
+                  MR_Integer Var_139 = (MR_Integer) (ArgY1_29);
+
+                  succeeded = (Var_138 < Var_139);
+                  if (succeeded)
+                  {
+                    SubResult1_30 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_138 > Var_139);
+                    if (succeeded)
+                    {
+                      SubResult1_30 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_30 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_30;
+                  else
+                  {
+                    MR_Word SubResult2_33;
+                    MR_Integer Var_140 = (MR_Integer) (Var_129);
+                    MR_Integer Var_141 = (MR_Integer) (ArgY2_32);
+
+                    succeeded = (Var_140 < Var_141);
+                    if (succeeded)
+                    {
+                      SubResult2_33 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_140 > Var_141);
+                      if (succeeded)
+                      {
+                        SubResult2_33 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult2_33 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_33;
+                    else
+                    {
+                      MR_Word SubResult3_36;
+
+                      grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0(&SubResult3_36, Var_128, ArgY3_35);
+                      succeeded = (SubResult3_36 != (MR_Integer) 0);
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult3_36;
+                      else
+                      {
+                        MR_Word SubResult4_39;
+                        MR_Integer Var_142 = (MR_Integer) (Var_127);
+                        MR_Integer Var_143 = (MR_Integer) (ArgY4_38);
+
+                        succeeded = (Var_142 < Var_143);
+                        if (succeeded)
+                        {
+                          SubResult4_39 = (MR_Integer) 1;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = (Var_142 > Var_143);
+                          if (succeeded)
+                          {
+                            SubResult4_39 = (MR_Integer) 2;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = MR_TRUE;
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                            {
+                              SubResult4_39 = (MR_Integer) 0;
+                              succeeded = MR_TRUE;
+                            }
+                          }
+                        }
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult4_39;
+                        else
+                        {
+                          MR_Word SubResult5_42;
+                          MR_Integer Var_144 = (MR_Integer) (Var_126);
+                          MR_Integer Var_145 = (MR_Integer) (ArgY5_41);
+
+                          succeeded = (Var_144 < Var_145);
+                          if (succeeded)
+                          {
+                            SubResult5_42 = (MR_Integer) 1;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = (Var_144 > Var_145);
+                            if (succeeded)
+                            {
+                              SubResult5_42 = (MR_Integer) 2;
+                              succeeded = MR_TRUE;
+                            }
+                            else
+                            {
+                              succeeded = MR_TRUE;
+                              succeeded = !(succeeded);
+                              if (succeeded)
+                              {
+                                SubResult5_42 = (MR_Integer) 0;
+                                succeeded = MR_TRUE;
+                              }
+                            }
+                          }
+                          if (succeeded)
+                            *HeadVar__1_1 = SubResult5_42;
+                          else
+                          {
+                            MR_Word SubResult6_45;
+                            MR_Integer Var_146 = (MR_Integer) (Var_125);
+                            MR_Integer Var_147 = (MR_Integer) (ArgY6_44);
+
+                            succeeded = (Var_146 < Var_147);
+                            if (succeeded)
+                            {
+                              SubResult6_45 = (MR_Integer) 1;
+                              succeeded = MR_TRUE;
+                            }
+                            else
+                            {
+                              succeeded = (Var_146 > Var_147);
+                              if (succeeded)
+                              {
+                                SubResult6_45 = (MR_Integer) 2;
+                                succeeded = MR_TRUE;
+                              }
+                              else
+                              {
+                                succeeded = MR_TRUE;
+                                succeeded = !(succeeded);
+                                if (succeeded)
+                                {
+                                  SubResult6_45 = (MR_Integer) 0;
+                                  succeeded = MR_TRUE;
+                                }
+                              }
+                            }
+                            if (succeeded)
+                              *HeadVar__1_1 = SubResult6_45;
+                            else
+                            {
+                              MR_Integer Var_148 = (MR_Integer) (Var_124);
+                              MR_Integer Var_149 = (MR_Integer) (ArgY7_47);
+
+                              succeeded = (Var_148 < Var_149);
+                              if (succeeded)
+                                *HeadVar__1_1 = (MR_Integer) 1;
+                              else
+                              {
+                                succeeded = (Var_148 > Var_149);
+                                if (succeeded)
+                                  *HeadVar__1_1 = (MR_Integer) 2;
+                                else
+                                  *HeadVar__1_1 = (MR_Integer) 0;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_131 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 1);
+            MR_Word Var_132 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_79 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))));
+                  MR_Word ArgY2_82 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1))) & (MR_Integer) 1);
+                  MR_Word SubResult1_80;
+
+                  grade_lib__grade_structure____Compare____mlds_target_0_0(&SubResult1_80, Var_132, ArgY1_79);
+                  succeeded = (SubResult1_80 != (MR_Integer) 0);
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_80;
+                  else
+                  {
+                    MR_Integer Var_150 = (MR_Integer) (Var_131);
+                    MR_Integer Var_151 = (MR_Integer) (ArgY2_82);
+
+                    succeeded = (Var_150 < Var_151);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (Var_150 > Var_151);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                      else
+                        *HeadVar__1_1 = (MR_Integer) 0;
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Var_122 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word Var_123 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word ArgY1_104 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+                  MR_Word ArgY2_107 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Word SubResult1_105;
+                  MR_Integer Var_134 = (MR_Integer) (Var_123);
+                  MR_Integer Var_135 = (MR_Integer) (ArgY1_104);
+
+                  succeeded = (Var_134 < Var_135);
+                  if (succeeded)
+                  {
+                    SubResult1_105 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_134 > Var_135);
+                    if (succeeded)
+                    {
+                      SubResult1_105 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_105 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_105;
+                  else
+                  {
+                    MR_Integer Var_136 = (MR_Integer) (Var_122);
+                    MR_Integer Var_137 = (MR_Integer) (ArgY2_107);
+
+                    succeeded = (Var_136 < Var_137);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (Var_136 > Var_137);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                      else
+                        *HeadVar__1_1 = (MR_Integer) 0;
+                    }
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_target_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_50 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_51 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_50 == CastY_51);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_59 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 3);
+            MR_Word Var_60 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 2)) & (MR_Integer) 3);
+            MR_Word Var_61 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 4)) & (MR_Integer) 1);
+            MR_Word Var_62 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 5)) & (MR_Integer) 1);
+            MR_Word Var_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))));
+                  MR_Word ArgY2_8 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))) >> 5)) & (MR_Integer) 1);
+                  MR_Word ArgY3_11 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))) >> 4)) & (MR_Integer) 1);
+                  MR_Word ArgY4_14 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))) >> 2)) & (MR_Integer) 3);
+                  MR_Word ArgY5_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))) & (MR_Integer) 3);
+                  MR_Word SubResult1_6;
+
+                  grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0(&SubResult1_6, Var_63, ArgY1_5);
+                  succeeded = (SubResult1_6 != (MR_Integer) 0);
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_6;
+                  else
+                  {
+                    MR_Word SubResult2_9;
+                    MR_Integer Var_66 = (MR_Integer) (Var_62);
+                    MR_Integer Var_67 = (MR_Integer) (ArgY2_8);
+
+                    succeeded = (Var_66 < Var_67);
+                    if (succeeded)
+                    {
+                      SubResult2_9 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_66 > Var_67);
+                      if (succeeded)
+                      {
+                        SubResult2_9 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult2_9 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_9;
+                    else
+                    {
+                      MR_Word SubResult3_12;
+                      MR_Integer Var_68 = (MR_Integer) (Var_61);
+                      MR_Integer Var_69 = (MR_Integer) (ArgY3_11);
+
+                      succeeded = (Var_68 < Var_69);
+                      if (succeeded)
+                      {
+                        SubResult3_12 = (MR_Integer) 1;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = (Var_68 > Var_69);
+                        if (succeeded)
+                        {
+                          SubResult3_12 = (MR_Integer) 2;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = MR_TRUE;
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                          {
+                            SubResult3_12 = (MR_Integer) 0;
+                            succeeded = MR_TRUE;
+                          }
+                        }
+                      }
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult3_12;
+                      else
+                      {
+                        MR_Word SubResult4_15;
+                        MR_Integer Var_70 = (MR_Integer) (Var_60);
+                        MR_Integer Var_71 = (MR_Integer) (ArgY4_14);
+
+                        succeeded = (Var_70 < Var_71);
+                        if (succeeded)
+                        {
+                          SubResult4_15 = (MR_Integer) 1;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = (Var_70 > Var_71);
+                          if (succeeded)
+                          {
+                            SubResult4_15 = (MR_Integer) 2;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = MR_TRUE;
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                            {
+                              SubResult4_15 = (MR_Integer) 0;
+                              succeeded = MR_TRUE;
+                            }
+                          }
+                        }
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult4_15;
+                        else
+                        {
+                          MR_Integer Var_72 = (MR_Integer) (Var_59);
+                          MR_Integer Var_73 = (MR_Integer) (ArgY5_17);
+
+                          succeeded = (Var_72 < Var_73);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 1;
+                          else
+                          {
+                            succeeded = (Var_72 > Var_73);
+                            if (succeeded)
+                              *HeadVar__1_1 = (MR_Integer) 2;
+                            else
+                              *HeadVar__1_1 = (MR_Integer) 0;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_64 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_37 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Integer Var_74 = (MR_Integer) (Var_64);
+                  MR_Integer Var_75 = (MR_Integer) (ArgY1_37);
+
+                  succeeded = (Var_74 < Var_75);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                  {
+                    succeeded = (Var_74 > Var_75);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                    else
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_65 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_49 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Integer Var_76 = (MR_Integer) (Var_65);
+                  MR_Integer Var_77 = (MR_Integer) (ArgY1_49);
+
+                  succeeded = (Var_76 < Var_77);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                  {
+                    succeeded = (Var_76 > Var_77);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                    else
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_22 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_23 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_22 == CastY_23);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0))
+    {
+      MR_Word Var_28 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 1);
+      MR_Word Var_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word Var_30 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 7);
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+      {
+        MR_Word ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 7);
+        MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+        MR_Word ArgY3_11 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2))) & (MR_Integer) 1);
+        MR_Word SubResult1_6;
+        MR_Integer Var_32 = (MR_Integer) (Var_30);
+        MR_Integer Var_33 = (MR_Integer) (ArgY1_5);
+
+        succeeded = (Var_32 < Var_33);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (Var_32 > Var_33);
+          if (succeeded)
+          {
+            SubResult1_6 = (MR_Integer) 2;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = MR_TRUE;
+            succeeded = !(succeeded);
+            if (succeeded)
+            {
+              SubResult1_6 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_6;
+        else
+        {
+          MR_Word SubResult2_9;
+
+          grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0(&SubResult2_9, Var_29, ArgY2_8);
+          succeeded = (SubResult2_9 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult2_9;
+          else
+          {
+            MR_Integer Var_34 = (MR_Integer) (Var_28);
+            MR_Integer Var_35 = (MR_Integer) (ArgY3_11);
+
+            succeeded = (Var_34 < Var_35);
+            if (succeeded)
+              *HeadVar__1_1 = (MR_Integer) 1;
+            else
+            {
+              succeeded = (Var_34 > Var_35);
+              if (succeeded)
+                *HeadVar__1_1 = (MR_Integer) 2;
+              else
+                *HeadVar__1_1 = (MR_Integer) 0;
+            }
+          }
+        }
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    }
+    else
+    {
+      MR_Word Var_31 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_21 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+        MR_Integer Var_36 = (MR_Integer) (Var_31);
+        MR_Integer Var_37 = (MR_Integer) (ArgY1_21);
+
+        succeeded = (Var_36 < Var_37);
+        if (succeeded)
+          *HeadVar__1_1 = (MR_Integer) 1;
+        else
+        {
+          succeeded = (Var_36 > Var_37);
+          if (succeeded)
+            *HeadVar__1_1 = (MR_Integer) 2;
+          else
+            *HeadVar__1_1 = (MR_Integer) 0;
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_13 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_14 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_13 == CastY_14);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      MR_Word Var_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+      MR_Word Var_18 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_9 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+        MR_Word ArgY2_12 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+        MR_Word SubResult1_10;
+        MR_Integer Var_19 = (MR_Integer) (Var_18);
+        MR_Integer Var_20 = (MR_Integer) (ArgY1_9);
+
+        succeeded = (Var_19 < Var_20);
+        if (succeeded)
+        {
+          SubResult1_10 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (Var_19 > Var_20);
+          if (succeeded)
+          {
+            SubResult1_10 = (MR_Integer) 2;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = MR_TRUE;
+            succeeded = !(succeeded);
+            if (succeeded)
+            {
+              SubResult1_10 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_10;
+        else
+        {
+          MR_Integer Var_21 = (MR_Integer) (Var_17);
+          MR_Integer Var_22 = (MR_Integer) (ArgY2_12);
+
+          succeeded = (Var_21 < Var_22);
+          if (succeeded)
+            *HeadVar__1_1 = (MR_Integer) 1;
+          else
+          {
+            succeeded = (Var_21 > Var_22);
+            if (succeeded)
+              *HeadVar__1_1 = (MR_Integer) 2;
+            else
+              *HeadVar__1_1 = (MR_Integer) 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_85 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_86 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_85 == CastY_86);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_99 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3))));
+            MR_Word Var_100 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 3);
+            MR_Word Var_101 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) >> 2)) & (MR_Integer) 3);
+            MR_Word Var_102 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_103 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word Var_104 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 7);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 7);
+                  MR_Word ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_Word ArgY4_14 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2))) >> 2)) & (MR_Integer) 3);
+                  MR_Word ArgY5_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2))) & (MR_Integer) 3);
+                  MR_Word ArgY6_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3))));
+                  MR_Word SubResult1_6;
+                  MR_Integer Var_111 = (MR_Integer) (Var_104);
+                  MR_Integer Var_112 = (MR_Integer) (ArgY1_5);
+
+                  succeeded = (Var_111 < Var_112);
+                  if (succeeded)
+                  {
+                    SubResult1_6 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_111 > Var_112);
+                    if (succeeded)
+                    {
+                      SubResult1_6 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_6 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_6;
+                  else
+                  {
+                    MR_Word SubResult2_9;
+                    MR_Integer Var_113 = (MR_Integer) (Var_103);
+                    MR_Integer Var_114 = (MR_Integer) (ArgY2_8);
+
+                    succeeded = (Var_113 < Var_114);
+                    if (succeeded)
+                    {
+                      SubResult2_9 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_113 > Var_114);
+                      if (succeeded)
+                      {
+                        SubResult2_9 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult2_9 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_9;
+                    else
+                    {
+                      MR_Word SubResult3_12;
+
+                      grade_lib__grade_structure____Compare____llds_perf_prof_0_0(&SubResult3_12, Var_102, ArgY3_11);
+                      succeeded = (SubResult3_12 != (MR_Integer) 0);
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult3_12;
+                      else
+                      {
+                        MR_Word SubResult4_15;
+                        MR_Integer Var_115 = (MR_Integer) (Var_101);
+                        MR_Integer Var_116 = (MR_Integer) (ArgY4_14);
+
+                        succeeded = (Var_115 < Var_116);
+                        if (succeeded)
+                        {
+                          SubResult4_15 = (MR_Integer) 1;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = (Var_115 > Var_116);
+                          if (succeeded)
+                          {
+                            SubResult4_15 = (MR_Integer) 2;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = MR_TRUE;
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                            {
+                              SubResult4_15 = (MR_Integer) 0;
+                              succeeded = MR_TRUE;
+                            }
+                          }
+                        }
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult4_15;
+                        else
+                        {
+                          MR_Word SubResult5_18;
+                          MR_Integer Var_117 = (MR_Integer) (Var_100);
+                          MR_Integer Var_118 = (MR_Integer) (ArgY5_17);
+
+                          succeeded = (Var_117 < Var_118);
+                          if (succeeded)
+                          {
+                            SubResult5_18 = (MR_Integer) 1;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = (Var_117 > Var_118);
+                            if (succeeded)
+                            {
+                              SubResult5_18 = (MR_Integer) 2;
+                              succeeded = MR_TRUE;
+                            }
+                            else
+                            {
+                              succeeded = MR_TRUE;
+                              succeeded = !(succeeded);
+                              if (succeeded)
+                              {
+                                SubResult5_18 = (MR_Integer) 0;
+                                succeeded = MR_TRUE;
+                              }
+                            }
+                          }
+                          if (succeeded)
+                            *HeadVar__1_1 = SubResult5_18;
+                          else
+                            grade_lib__grade_structure____Compare____llds_rbmm_0_0(HeadVar__1_1, Var_99, ArgY6_20);
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_105 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word Var_106 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+            MR_Word Var_107 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 3)) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_49 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 3)) & (MR_Integer) 3);
+                  MR_Word ArgY2_52 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+                  MR_Word ArgY3_55 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word SubResult1_50;
+                  MR_Integer Var_119 = (MR_Integer) (Var_107);
+                  MR_Integer Var_120 = (MR_Integer) (ArgY1_49);
+
+                  succeeded = (Var_119 < Var_120);
+                  if (succeeded)
+                  {
+                    SubResult1_50 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_119 > Var_120);
+                    if (succeeded)
+                    {
+                      SubResult1_50 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_50 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_50;
+                  else
+                  {
+                    MR_Word SubResult2_53;
+                    MR_Integer Var_121 = (MR_Integer) (Var_106);
+                    MR_Integer Var_122 = (MR_Integer) (ArgY2_52);
+
+                    succeeded = (Var_121 < Var_122);
+                    if (succeeded)
+                    {
+                      SubResult2_53 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_121 > Var_122);
+                      if (succeeded)
+                      {
+                        SubResult2_53 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult2_53 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_53;
+                    else
+                    {
+                      MR_Integer Var_123 = (MR_Integer) (Var_105);
+                      MR_Integer Var_124 = (MR_Integer) (ArgY3_55);
+
+                      succeeded = (Var_123 < Var_124);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (Var_123 > Var_124);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 2;
+                        else
+                          *HeadVar__1_1 = (MR_Integer) 0;
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_108 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word Var_109 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+            MR_Word Var_110 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_78 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 3);
+                  MR_Word ArgY2_81 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+                  MR_Word ArgY3_84 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Word SubResult1_79;
+                  MR_Integer Var_125 = (MR_Integer) (Var_110);
+                  MR_Integer Var_126 = (MR_Integer) (ArgY1_78);
+
+                  succeeded = (Var_125 < Var_126);
+                  if (succeeded)
+                  {
+                    SubResult1_79 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_125 > Var_126);
+                    if (succeeded)
+                    {
+                      SubResult1_79 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_79 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_79;
+                  else
+                  {
+                    MR_Word SubResult2_82;
+                    MR_Integer Var_127 = (MR_Integer) (Var_109);
+                    MR_Integer Var_128 = (MR_Integer) (ArgY2_81);
+
+                    succeeded = (Var_127 < Var_128);
+                    if (succeeded)
+                    {
+                      SubResult2_82 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_127 > Var_128);
+                      if (succeeded)
+                      {
+                        SubResult2_82 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult2_82 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_82;
+                    else
+                    {
+                      MR_Integer Var_129 = (MR_Integer) (Var_108);
+                      MR_Integer Var_130 = (MR_Integer) (ArgY3_84);
+
+                      succeeded = (Var_129 < Var_130);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (Var_129 > Var_130);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 2;
+                        else
+                          *HeadVar__1_1 = (MR_Integer) 0;
+                      }
+                    }
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_rbmm_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_13 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_14 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_13 == CastY_14);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      MR_Word Var_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+      MR_Word Var_18 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_9 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+        MR_Word ArgY2_12 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+        MR_Word SubResult1_10;
+        MR_Integer Var_19 = (MR_Integer) (Var_18);
+        MR_Integer Var_20 = (MR_Integer) (ArgY1_9);
+
+        succeeded = (Var_19 < Var_20);
+        if (succeeded)
+        {
+          SubResult1_10 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (Var_19 > Var_20);
+          if (succeeded)
+          {
+            SubResult1_10 = (MR_Integer) 2;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = MR_TRUE;
+            succeeded = !(succeeded);
+            if (succeeded)
+            {
+              SubResult1_10 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_10;
+        else
+        {
+          MR_Integer Var_21 = (MR_Integer) (Var_17);
+          MR_Integer Var_22 = (MR_Integer) (ArgY2_12);
+
+          succeeded = (Var_21 < Var_22);
+          if (succeeded)
+            *HeadVar__1_1 = (MR_Integer) 1;
+          else
+          {
+            succeeded = (Var_21 > Var_22);
+            if (succeeded)
+              *HeadVar__1_1 = (MR_Integer) 2;
+            else
+              *HeadVar__1_1 = (MR_Integer) 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_perf_prof_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_17 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_18 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_17 == CastY_18);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_21 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word Var_22 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_13 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+                  MR_Word ArgY2_16 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+                  MR_Word SubResult1_14;
+                  MR_Integer Var_23 = (MR_Integer) (Var_22);
+                  MR_Integer Var_24 = (MR_Integer) (ArgY1_13);
+
+                  succeeded = (Var_23 < Var_24);
+                  if (succeeded)
+                  {
+                    SubResult1_14 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_23 > Var_24);
+                    if (succeeded)
+                    {
+                      SubResult1_14 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_14 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_14;
+                  else
+                  {
+                    MR_Integer Var_25 = (MR_Integer) (Var_21);
+                    MR_Integer Var_26 = (MR_Integer) (ArgY2_16);
+
+                    succeeded = (Var_25 < Var_26);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (Var_25 > Var_26);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                      else
+                        *HeadVar__1_1 = (MR_Integer) 0;
+                    }
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____grade_structure_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_27 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_28 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_27 == CastY_28);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              succeeded = (ArgX1_3 == ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 2)) & (MR_Integer) 7);
+            MR_Word ArgY1_6;
+            MR_Word ArgX2_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY2_8;
+            MR_Word ArgX3_9 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY3_10;
+            MR_Word ArgX4_11 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2))) >> 5)) & (MR_Integer) 1);
+            MR_Word ArgY4_12;
+            MR_Word ArgX5_13 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2))) >> 3)) & (MR_Integer) 3);
+            MR_Word ArgY5_14;
+            MR_Word ArgX6_15 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2))) >> 1)) & (MR_Integer) 3);
+            MR_Word ArgY6_16;
+            MR_Word ArgX7_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2))) & (MR_Integer) 1);
+            MR_Word ArgY7_18;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_6 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 7);
+              ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              ArgY3_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+              ArgY4_12 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 5)) & (MR_Integer) 1);
+              ArgY5_14 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 3)) & (MR_Integer) 3);
+              ArgY6_16 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) >> 1)) & (MR_Integer) 3);
+              ArgY7_18 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 1);
+              succeeded = (ArgX1_5 == ArgY1_6);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_7 == ArgY2_8);
+                if (succeeded)
+                {
+                  succeeded = grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0(ArgX3_9, ArgY3_10);
+                  if (succeeded)
+                  {
+                    succeeded = (ArgX4_11 == ArgY4_12);
+                    if (succeeded)
+                    {
+                      succeeded = (ArgX5_13 == ArgY5_14);
+                      if (succeeded)
+                      {
+                        succeeded = (ArgX6_15 == ArgY6_16);
+                        if (succeeded)
+                          succeeded = (ArgX7_17 == ArgY7_18);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_19 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))));
+            MR_Word ArgY1_20;
+            MR_Word ArgX2_21 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1))) & (MR_Integer) 1);
+            MR_Word ArgY2_22;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              ArgY1_20 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))));
+              ArgY2_22 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 1);
+              succeeded = grade_lib__grade_structure____Unify____mlds_target_0_0(ArgX1_19, ArgY1_20);
+              if (succeeded)
+                succeeded = (ArgX2_21 == ArgY2_22);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word ArgX1_23 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+            MR_Word ArgY1_24;
+            MR_Word ArgX2_25 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY2_26;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3);
+            if (succeeded)
+            {
+              ArgY1_24 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+              ArgY2_26 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              succeeded = (ArgX1_23 == ArgY1_24);
+              if (succeeded)
+                succeeded = (ArgX2_25 == ArgY2_26);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_target_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_17 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_18 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_17 == CastY_18);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+            MR_Word ArgY1_4;
+            MR_Word ArgX2_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))) >> 5)) & (MR_Integer) 1);
+            MR_Word ArgY2_6;
+            MR_Word ArgX3_7 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))) >> 4)) & (MR_Integer) 1);
+            MR_Word ArgY3_8;
+            MR_Word ArgX4_9 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))) >> 2)) & (MR_Integer) 3);
+            MR_Word ArgY4_10;
+            MR_Word ArgX5_11 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))) & (MR_Integer) 3);
+            MR_Word ArgY5_12;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+              ArgY2_6 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 5)) & (MR_Integer) 1);
+              ArgY3_8 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 4)) & (MR_Integer) 1);
+              ArgY4_10 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) >> 2)) & (MR_Integer) 3);
+              ArgY5_12 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 3);
+              succeeded = grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0(ArgX1_3, ArgY1_4);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_5 == ArgY2_6);
+                if (succeeded)
+                {
+                  succeeded = (ArgX3_7 == ArgY3_8);
+                  if (succeeded)
+                  {
+                    succeeded = (ArgX4_9 == ArgY4_10);
+                    if (succeeded)
+                      succeeded = (ArgX5_11 == ArgY5_12);
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_13 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY1_14;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_14 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              succeeded = (ArgX1_13 == ArgY1_14);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_15 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY1_16;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              ArgY1_16 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              succeeded = (ArgX1_15 == ArgY1_16);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_12 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_Integer) 0))
+    {
+      MR_Word ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 7);
+      MR_Word ArgY1_4;
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6;
+      MR_Word ArgX3_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2))) & (MR_Integer) 1);
+      MR_Word ArgY3_8;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 7);
+        ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+        ArgY3_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 1);
+        succeeded = (ArgX1_3 == ArgY1_4);
+        if (succeeded)
+        {
+          succeeded = grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0(ArgX2_5, ArgY2_6);
+          if (succeeded)
+            succeeded = (ArgX3_7 == ArgY3_8);
+        }
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_9 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Word ArgY1_10;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+      if (succeeded)
+      {
+        ArgY1_10 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+        succeeded = (ArgX1_9 == ArgY1_10);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+      MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+      succeeded = (CastY_4 == CastX_3);
+    }
+    else
+    {
+      MR_Word ArgX1_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+      MR_Word ArgY1_6;
+      MR_Word ArgX2_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+      MR_Word ArgY2_8;
+
+      succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        ArgY1_6 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+        ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+        succeeded = (ArgX1_5 == ArgY1_6);
+        if (succeeded)
+          succeeded = (ArgX2_7 == ArgY2_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_27 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_28 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_27 == CastY_28);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 7);
+            MR_Word ArgY1_4;
+            MR_Word ArgX2_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY2_6;
+            MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY3_8;
+            MR_Word ArgX4_9 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2))) >> 2)) & (MR_Integer) 3);
+            MR_Word ArgY4_10;
+            MR_Word ArgX5_11 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2))) & (MR_Integer) 3);
+            MR_Word ArgY5_12;
+            MR_Word ArgX6_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3))));
+            MR_Word ArgY6_14;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              ArgY1_4 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 7);
+              ArgY2_6 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              ArgY3_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+              ArgY4_10 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) >> 2)) & (MR_Integer) 3);
+              ArgY5_12 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))) & (MR_Integer) 3);
+              ArgY6_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3))));
+              succeeded = (ArgX1_3 == ArgY1_4);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_5 == ArgY2_6);
+                if (succeeded)
+                {
+                  succeeded = grade_lib__grade_structure____Unify____llds_perf_prof_0_0(ArgX3_7, ArgY3_8);
+                  if (succeeded)
+                  {
+                    succeeded = (ArgX4_9 == ArgY4_10);
+                    if (succeeded)
+                    {
+                      succeeded = (ArgX5_11 == ArgY5_12);
+                      if (succeeded)
+                        succeeded = grade_lib__grade_structure____Unify____llds_rbmm_0_0(ArgX6_13, ArgY6_14);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_15 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 3)) & (MR_Integer) 3);
+            MR_Word ArgY1_16;
+            MR_Word ArgX2_17 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+            MR_Word ArgY2_18;
+            MR_Word ArgX3_19 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY3_20;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_16 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 3)) & (MR_Integer) 3);
+              ArgY2_18 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+              ArgY3_20 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              succeeded = (ArgX1_15 == ArgY1_16);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_17 == ArgY2_18);
+                if (succeeded)
+                  succeeded = (ArgX3_19 == ArgY3_20);
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_21 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))) >> 2)) & (MR_Integer) 3);
+            MR_Word ArgY1_22;
+            MR_Word ArgX2_23 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+            MR_Word ArgY2_24;
+            MR_Word ArgX3_25 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY3_26;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              ArgY1_22 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 3);
+              ArgY2_24 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+              ArgY3_26 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              succeeded = (ArgX1_21 == ArgY1_22);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_23 == ArgY2_24);
+                if (succeeded)
+                  succeeded = (ArgX3_25 == ArgY3_26);
+              }
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_rbmm_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+      MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+      succeeded = (CastY_4 == CastX_3);
+    }
+    else
+    {
+      MR_Word ArgX1_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+      MR_Word ArgY1_6;
+      MR_Word ArgX2_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+      MR_Word ArgY2_8;
+
+      succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        ArgY1_6 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+        ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+        succeeded = (ArgX1_5 == ArgY1_6);
+        if (succeeded)
+          succeeded = (ArgX2_7 == ArgY2_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_perf_prof_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_12 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+                MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+                succeeded = (CastY_4 == CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_5 = (MR_Integer) (HeadVar__1_1);
+                MR_Integer CastY_6 = (MR_Integer) (HeadVar__2_2);
+
+                succeeded = (CastY_6 == CastX_5);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_7 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+            MR_Word ArgY1_8;
+            MR_Word ArgX2_9 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+            MR_Word ArgY2_10;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_8 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+              ArgY2_10 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+              succeeded = (ArgX1_7 == ArgY1_8);
+              if (succeeded)
+                succeeded = (ArgX2_9 == ArgY2_10);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____c_trail_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_trail_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____c_gc_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_gc_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_116(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__289__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_115(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__287__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_114(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__285__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_113(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__283__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_112(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__281__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_111(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__279__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_110(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__277__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_109(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__275__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_108(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__273__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_107(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__271__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_106(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__269__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_105(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__267__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_104(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__265__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_103(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__263__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_102(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__261__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_101(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__259__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_100(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__257__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_99(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__255__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_98(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__253__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_97(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__249__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_96(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__247__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_95(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__576__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_94(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__574__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_93(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__572__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_92(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__570__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_91(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__568__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_90(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__565__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_89(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__544__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_88(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__541__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_87(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__539__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_86(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__537__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_85(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__523__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_84(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__520__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_83(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__511__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_82(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__509__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_81(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__507__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_80(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__505__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_79(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__503__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_78(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__501__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_77(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__499__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_76(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__497__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_75(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__495__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_74(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__493__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_73(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__475__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_72(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__473__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_71(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__471__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_70(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__469__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_69(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__467__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_68(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__465__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_67(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__463__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_66(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__461__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_65(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__459__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_64(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__454__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_63(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_62(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_61(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_60(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_59(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_58(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_57(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_56(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_55(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__4_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_54(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_53(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_52(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_51(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_50(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_49(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_48(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_47(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_46(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__3_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_45(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_44(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_43(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_42(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_41(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_40(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_39(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_38(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_37(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__2_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_36(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__447__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_35(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__445__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_34(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__443__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_33(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__440__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_32(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__437__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_31(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__435__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_30(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__433__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_29(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__431__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_28(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__429__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_27(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__392__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_26(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__384__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_25(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__381__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_24(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__374__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_23(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__371__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_22(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__368__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_21(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__357__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_20(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__354__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_19(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__339__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_18(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__337__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_17(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__652__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_16(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__650__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_15(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__648__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_14(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__646__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_13(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__644__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_12(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__642__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_11(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__640__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_10(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__638__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_9(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__636__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_8(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__634__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_7(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__632__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_6(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__630__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_5(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__628__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_4(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__626__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_3(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__624__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_2(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__622__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = grade_lib__grade_structure__IntroducedFrom__pred__grade_vars_to_grade_structure__620__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0(
+  MR_Word GradeVars_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GradeStructure_4;
+    MR_Word Pregen_5 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 31)) & (MR_Integer) 1);
+    MR_Word Backend_6 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 29)) & (MR_Integer) 3);
+    MR_Word Var_7 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 27)) & (MR_Integer) 3);
+    MR_Word Var_8 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 24)) & (MR_Integer) 7);
+    MR_Word Var_9 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 22)) & (MR_Integer) 3);
+    MR_Word Var_10 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 20)) & (MR_Integer) 3);
+    MR_Word Var_11 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+    MR_Word Var_12 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 16)) & (MR_Integer) 7);
+    MR_Word Var_13 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 14)) & (MR_Integer) 3);
+    MR_Word Var_14 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 11)) & (MR_Integer) 7);
+    MR_Word Var_15 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+    MR_Word Var_16 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+    MR_Word Var_17 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+    MR_Word Var_18 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+    MR_Word Var_19 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+    MR_Word Var_20 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 4)) & (MR_Integer) 3);
+    MR_Word Var_21 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 3);
+    MR_Word Var_22 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+    MR_Word Var_23 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 0))) & (MR_Integer) 1);
+    MR_Word Var_24 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 1))) >> 5)) & (MR_Integer) 1);
+    MR_Word Var_25 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 1))) >> 4)) & (MR_Integer) 1);
+    MR_Word Var_26 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 1))) >> 3)) & (MR_Integer) 1);
+    MR_Word Var_27 = ((((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 1))) >> 2)) & (MR_Integer) 1);
+    MR_Word Var_28 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), GradeVars_3, (MR_Integer) 1))) & (MR_Integer) 3);
+
+    switch (Pregen_5) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (Backend_6) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 2:
+            {
+              MR_Word Var_68;
+              MR_Word Var_72;
+              MR_Word Var_76;
+              MR_Word Var_80;
+              MR_Word Var_84;
+              MR_Word Var_88;
+              MR_Word Var_92;
+              MR_Word Var_96;
+              MR_Word Var_100;
+              MR_Word Var_104;
+              MR_Word Var_108;
+              MR_Word Var_112;
+              MR_Word Var_116;
+              MR_Word Var_120;
+              MR_Word Var_124;
+              MR_Word Var_128;
+              MR_Word Var_132;
+
+              {
+                Var_68 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_68, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[0]));
+                MR_hl_field(MR_mktag(0), Var_68, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_1));
+                MR_hl_field(MR_mktag(0), Var_68, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_68, 3) = ((MR_Box) (Var_7));
+                MR_hl_field(MR_mktag(0), Var_68, 4) = ((MR_Box) ((MR_Integer) 3));
+              }
+              mercury__require__expect_3_p_0(Var_68, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target != grade_var_target_erlang");
+              {
+                Var_72 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_72, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[1]));
+                MR_hl_field(MR_mktag(0), Var_72, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_2));
+                MR_hl_field(MR_mktag(0), Var_72, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_72, 3) = ((MR_Box) (Var_8));
+                MR_hl_field(MR_mktag(0), Var_72, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_72, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "GccConf != grade_var_gcc_conf_none");
+              {
+                Var_76 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_76, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[2]));
+                MR_hl_field(MR_mktag(0), Var_76, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_3));
+                MR_hl_field(MR_mktag(0), Var_76, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_76, 3) = ((MR_Box) (Var_10));
+                MR_hl_field(MR_mktag(0), Var_76, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_76, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "StackLen != grade_var_stack_len_std");
+              {
+                Var_80 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_80, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                MR_hl_field(MR_mktag(0), Var_80, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_4));
+                MR_hl_field(MR_mktag(0), Var_80, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_80, 3) = ((MR_Box) (Var_11));
+                MR_hl_field(MR_mktag(0), Var_80, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_80, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+              {
+                Var_84 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_84, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[4]));
+                MR_hl_field(MR_mktag(0), Var_84, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_5));
+                MR_hl_field(MR_mktag(0), Var_84, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_84, 3) = ((MR_Box) (Var_12));
+                MR_hl_field(MR_mktag(0), Var_84, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_84, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MinimalModel != grade_var_minmodel_no");
+              {
+                Var_88 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_88, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[5]));
+                MR_hl_field(MR_mktag(0), Var_88, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_6));
+                MR_hl_field(MR_mktag(0), Var_88, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_88, 3) = ((MR_Box) (Var_13));
+                MR_hl_field(MR_mktag(0), Var_88, 4) = ((MR_Box) ((MR_Integer) 2));
+              }
+              mercury__require__expect_3_p_0(Var_88, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "ThreadSafe != grade_var_thread_safe_target_native");
+              {
+                Var_92 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_92, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[6]));
+                MR_hl_field(MR_mktag(0), Var_92, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_7));
+                MR_hl_field(MR_mktag(0), Var_92, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_92, 3) = ((MR_Box) (Var_14));
+                MR_hl_field(MR_mktag(0), Var_92, 4) = ((MR_Box) ((MR_Integer) 3));
+              }
+              mercury__require__expect_3_p_0(Var_92, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Gc != grade_var_gc_target_native");
+              {
+                Var_96 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_96, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                MR_hl_field(MR_mktag(0), Var_96, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_8));
+                MR_hl_field(MR_mktag(0), Var_96, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_96, 3) = ((MR_Box) (Var_15));
+                MR_hl_field(MR_mktag(0), Var_96, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_96, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+              {
+                Var_100 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_100, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                MR_hl_field(MR_mktag(0), Var_100, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_9));
+                MR_hl_field(MR_mktag(0), Var_100, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_100, 3) = ((MR_Box) (Var_16));
+                MR_hl_field(MR_mktag(0), Var_100, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_100, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+              {
+                Var_104 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_104, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                MR_hl_field(MR_mktag(0), Var_104, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_10));
+                MR_hl_field(MR_mktag(0), Var_104, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_104, 3) = ((MR_Box) (Var_17));
+                MR_hl_field(MR_mktag(0), Var_104, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_104, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+              {
+                Var_108 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_108, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                MR_hl_field(MR_mktag(0), Var_108, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_11));
+                MR_hl_field(MR_mktag(0), Var_108, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_108, 3) = ((MR_Box) (Var_18));
+                MR_hl_field(MR_mktag(0), Var_108, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_108, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+              {
+                Var_112 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_112, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[11]));
+                MR_hl_field(MR_mktag(0), Var_112, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_12));
+                MR_hl_field(MR_mktag(0), Var_112, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_112, 3) = ((MR_Box) (Var_19));
+                MR_hl_field(MR_mktag(0), Var_112, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_112, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TScopeProf != grade_var_tscope_prof_no");
+              {
+                Var_116 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_116, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                MR_hl_field(MR_mktag(0), Var_116, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_13));
+                MR_hl_field(MR_mktag(0), Var_116, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_116, 3) = ((MR_Box) (Var_20));
+                MR_hl_field(MR_mktag(0), Var_116, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_116, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+              {
+                Var_120 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_120, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[13]));
+                MR_hl_field(MR_mktag(0), Var_120, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_14));
+                MR_hl_field(MR_mktag(0), Var_120, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_120, 3) = ((MR_Box) (Var_21));
+                MR_hl_field(MR_mktag(0), Var_120, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_120, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Debug != grade_var_debug_none");
+              {
+                Var_124 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_124, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                MR_hl_field(MR_mktag(0), Var_124, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_15));
+                MR_hl_field(MR_mktag(0), Var_124, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_124, 3) = ((MR_Box) (Var_24));
+                MR_hl_field(MR_mktag(0), Var_124, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_124, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+              {
+                Var_128 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_128, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                MR_hl_field(MR_mktag(0), Var_128, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_16));
+                MR_hl_field(MR_mktag(0), Var_128, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_128, 3) = ((MR_Box) (Var_25));
+                MR_hl_field(MR_mktag(0), Var_128, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_128, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+              {
+                Var_132 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_132, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                MR_hl_field(MR_mktag(0), Var_132, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_17));
+                MR_hl_field(MR_mktag(0), Var_132, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_132, 3) = ((MR_Box) (Var_26));
+                MR_hl_field(MR_mktag(0), Var_132, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_132, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+              switch (Var_28) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MercFloat = grade_var_merc_float_is_unboxed_c_float");
+                  break;
+              }
+              {
+                GradeStructure_4 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), GradeStructure_4, 0) = (MR_Box) (((((MR_Unsigned) (Var_22) << 1)) | (MR_Unsigned) (Var_23)));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word LLDSTSMinModel_58;
+              MR_Word Var_232;
+              MR_Word Var_236;
+
+              {
+                Var_232 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_232, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[0]));
+                MR_hl_field(MR_mktag(0), Var_232, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_18));
+                MR_hl_field(MR_mktag(0), Var_232, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_232, 3) = ((MR_Box) (Var_7));
+                MR_hl_field(MR_mktag(0), Var_232, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_232, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target != grade_var_target_c");
+              {
+                Var_236 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_236, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[17]));
+                MR_hl_field(MR_mktag(0), Var_236, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_19));
+                MR_hl_field(MR_mktag(0), Var_236, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_236, 3) = ((MR_Box) (Var_22));
+                MR_hl_field(MR_mktag(0), Var_236, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_236, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "SSDebug != grade_var_ssdebug_no");
+              switch (Var_13) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (Var_12) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word CGc_54;
+                        MR_Word CTrail_55;
+                        MR_Word LLDSPerfProf_56;
+                        MR_Word LLDSRBMM_57;
+                        MR_Word Var_352;
+
+                        grade_lib__grade_structure__encode_c_gc_2_p_0(Var_14, &CGc_54);
+                        grade_lib__grade_structure__encode_c_trail_2_p_0(Var_11, &CTrail_55);
+                        switch (Var_15) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 0:
+                            switch (Var_16) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 0:
+                                {
+                                  MR_Word Var_336;
+                                  MR_Word Var_340;
+
+                                  {
+                                    Var_336 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                    MR_hl_field(MR_mktag(0), Var_336, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                                    MR_hl_field(MR_mktag(0), Var_336, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_20));
+                                    MR_hl_field(MR_mktag(0), Var_336, 2) = ((MR_Box) ((MR_Integer) 2));
+                                    MR_hl_field(MR_mktag(0), Var_336, 3) = ((MR_Box) (Var_17));
+                                    MR_hl_field(MR_mktag(0), Var_336, 4) = ((MR_Box) ((MR_Integer) 0));
+                                  }
+                                  mercury__require__expect_3_p_0(Var_336, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                                  {
+                                    Var_340 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                    MR_hl_field(MR_mktag(0), Var_340, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                                    MR_hl_field(MR_mktag(0), Var_340, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_21));
+                                    MR_hl_field(MR_mktag(0), Var_340, 2) = ((MR_Box) ((MR_Integer) 2));
+                                    MR_hl_field(MR_mktag(0), Var_340, 3) = ((MR_Box) (Var_18));
+                                    MR_hl_field(MR_mktag(0), Var_340, 4) = ((MR_Box) ((MR_Integer) 0));
+                                  }
+                                  mercury__require__expect_3_p_0(Var_340, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                                  LLDSPerfProf_56 = (MR_Word) ((MR_Unsigned) 0U);
+                                }
+                                break;
+                              case (MR_Integer) 1:
+                                {
+                                  LLDSPerfProf_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(1), LLDSPerfProf_56, 0) = (MR_Box) (((((MR_Unsigned) (Var_17) << 1)) | (MR_Unsigned) (Var_18)));
+                                }
+                                break;
+                            }
+                            break;
+                          case (MR_Integer) 1:
+                            {
+                              MR_Word Var_324;
+                              MR_Word Var_328;
+                              MR_Word Var_332;
+
+                              {
+                                Var_324 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                MR_hl_field(MR_mktag(0), Var_324, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                                MR_hl_field(MR_mktag(0), Var_324, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_22));
+                                MR_hl_field(MR_mktag(0), Var_324, 2) = ((MR_Box) ((MR_Integer) 2));
+                                MR_hl_field(MR_mktag(0), Var_324, 3) = ((MR_Box) (Var_16));
+                                MR_hl_field(MR_mktag(0), Var_324, 4) = ((MR_Box) ((MR_Integer) 0));
+                              }
+                              mercury__require__expect_3_p_0(Var_324, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                              {
+                                Var_328 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                MR_hl_field(MR_mktag(0), Var_328, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                                MR_hl_field(MR_mktag(0), Var_328, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_23));
+                                MR_hl_field(MR_mktag(0), Var_328, 2) = ((MR_Box) ((MR_Integer) 2));
+                                MR_hl_field(MR_mktag(0), Var_328, 3) = ((MR_Box) (Var_17));
+                                MR_hl_field(MR_mktag(0), Var_328, 4) = ((MR_Box) ((MR_Integer) 0));
+                              }
+                              mercury__require__expect_3_p_0(Var_328, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                              {
+                                Var_332 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                MR_hl_field(MR_mktag(0), Var_332, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                                MR_hl_field(MR_mktag(0), Var_332, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_24));
+                                MR_hl_field(MR_mktag(0), Var_332, 2) = ((MR_Box) ((MR_Integer) 2));
+                                MR_hl_field(MR_mktag(0), Var_332, 3) = ((MR_Box) (Var_18));
+                                MR_hl_field(MR_mktag(0), Var_332, 4) = ((MR_Box) ((MR_Integer) 0));
+                              }
+                              mercury__require__expect_3_p_0(Var_332, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                              LLDSPerfProf_56 = (MR_Word) ((MR_Unsigned) 4U);
+                            }
+                            break;
+                        }
+                        switch (Var_24) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 0:
+                            {
+                              MR_Word Var_344;
+                              MR_Word Var_348;
+
+                              {
+                                Var_344 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                MR_hl_field(MR_mktag(0), Var_344, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                                MR_hl_field(MR_mktag(0), Var_344, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_25));
+                                MR_hl_field(MR_mktag(0), Var_344, 2) = ((MR_Box) ((MR_Integer) 2));
+                                MR_hl_field(MR_mktag(0), Var_344, 3) = ((MR_Box) (Var_25));
+                                MR_hl_field(MR_mktag(0), Var_344, 4) = ((MR_Box) ((MR_Integer) 0));
+                              }
+                              mercury__require__expect_3_p_0(Var_344, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                              {
+                                Var_348 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                MR_hl_field(MR_mktag(0), Var_348, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                                MR_hl_field(MR_mktag(0), Var_348, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_26));
+                                MR_hl_field(MR_mktag(0), Var_348, 2) = ((MR_Box) ((MR_Integer) 2));
+                                MR_hl_field(MR_mktag(0), Var_348, 3) = ((MR_Box) (Var_26));
+                                MR_hl_field(MR_mktag(0), Var_348, 4) = ((MR_Box) ((MR_Integer) 0));
+                              }
+                              mercury__require__expect_3_p_0(Var_348, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                              LLDSRBMM_57 = (MR_Word) ((MR_Unsigned) 0U);
+                            }
+                            break;
+                          case (MR_Integer) 1:
+                            {
+                              LLDSRBMM_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(1), LLDSRBMM_57, 0) = (MR_Box) (((((MR_Unsigned) (Var_25) << 1)) | (MR_Unsigned) (Var_26)));
+                            }
+                            break;
+                        }
+                        {
+                          Var_352 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_352, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[11]));
+                          MR_hl_field(MR_mktag(0), Var_352, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_27));
+                          MR_hl_field(MR_mktag(0), Var_352, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_352, 3) = ((MR_Box) (Var_19));
+                          MR_hl_field(MR_mktag(0), Var_352, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_352, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TScopeProf != grade_var_tscope_prof_no");
+                        {
+                          LLDSTSMinModel_58 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) (CGc_54) << 1)) | (MR_Unsigned) (CTrail_55)));
+                          MR_hl_field(MR_mktag(0), LLDSTSMinModel_58, 1) = ((MR_Box) (LLDSPerfProf_56));
+                          MR_hl_field(MR_mktag(0), LLDSTSMinModel_58, 2) = (MR_Box) (((((MR_Unsigned) (Var_20) << 2)) | (MR_Unsigned) (Var_21)));
+                          MR_hl_field(MR_mktag(0), LLDSTSMinModel_58, 3) = ((MR_Box) (LLDSRBMM_57));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      {
+                        MR_Word MinModelGc_60;
+                        MR_Word Var_288;
+                        MR_Word Var_292;
+                        MR_Word Var_296;
+                        MR_Word Var_300;
+                        MR_Word Var_304;
+                        MR_Word Var_308;
+                        MR_Word Var_312;
+                        MR_Word Var_316;
+                        MR_Word Var_320;
+
+                        switch (Var_14) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 4:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = accurate");
+                            break;
+                          case (MR_Integer) 1:
+                            MinModelGc_60 = (MR_Integer) 0;
+                            break;
+                          case (MR_Integer) 2:
+                            MinModelGc_60 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = history");
+                            break;
+                          case (MR_Integer) 0:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = none");
+                            break;
+                          case (MR_Integer) 3:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target = c, Gc = target_native");
+                            break;
+                        }
+                        {
+                          Var_288 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_288, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                          MR_hl_field(MR_mktag(0), Var_288, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_28));
+                          MR_hl_field(MR_mktag(0), Var_288, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_288, 3) = ((MR_Box) (Var_11));
+                          MR_hl_field(MR_mktag(0), Var_288, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_288, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+                        {
+                          Var_292 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_292, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                          MR_hl_field(MR_mktag(0), Var_292, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_29));
+                          MR_hl_field(MR_mktag(0), Var_292, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_292, 3) = ((MR_Box) (Var_15));
+                          MR_hl_field(MR_mktag(0), Var_292, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_292, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+                        {
+                          Var_296 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_296, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                          MR_hl_field(MR_mktag(0), Var_296, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_30));
+                          MR_hl_field(MR_mktag(0), Var_296, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_296, 3) = ((MR_Box) (Var_16));
+                          MR_hl_field(MR_mktag(0), Var_296, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_296, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                        {
+                          Var_300 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_300, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                          MR_hl_field(MR_mktag(0), Var_300, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_31));
+                          MR_hl_field(MR_mktag(0), Var_300, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_300, 3) = ((MR_Box) (Var_17));
+                          MR_hl_field(MR_mktag(0), Var_300, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_300, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                        {
+                          Var_304 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_304, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                          MR_hl_field(MR_mktag(0), Var_304, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_32));
+                          MR_hl_field(MR_mktag(0), Var_304, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_304, 3) = ((MR_Box) (Var_18));
+                          MR_hl_field(MR_mktag(0), Var_304, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_304, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                        {
+                          Var_308 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_308, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                          MR_hl_field(MR_mktag(0), Var_308, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_33));
+                          MR_hl_field(MR_mktag(0), Var_308, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_308, 3) = ((MR_Box) (Var_20));
+                          MR_hl_field(MR_mktag(0), Var_308, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_308, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+                        {
+                          Var_312 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_312, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                          MR_hl_field(MR_mktag(0), Var_312, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_34));
+                          MR_hl_field(MR_mktag(0), Var_312, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_312, 3) = ((MR_Box) (Var_24));
+                          MR_hl_field(MR_mktag(0), Var_312, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_312, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+                        {
+                          Var_316 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_316, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                          MR_hl_field(MR_mktag(0), Var_316, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_35));
+                          MR_hl_field(MR_mktag(0), Var_316, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_316, 3) = ((MR_Box) (Var_25));
+                          MR_hl_field(MR_mktag(0), Var_316, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_316, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                        {
+                          Var_320 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_320, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                          MR_hl_field(MR_mktag(0), Var_320, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_36));
+                          MR_hl_field(MR_mktag(0), Var_320, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_320, 3) = ((MR_Box) (Var_26));
+                          MR_hl_field(MR_mktag(0), Var_320, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_320, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                        {
+                          LLDSTSMinModel_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 2) << 3)) | (((((MR_Unsigned) (MinModelGc_60) << 2)) | (MR_Unsigned) (Var_21)))));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 4:
+                      {
+                        MR_Word MinModelGc_712;
+                        MR_Word Var_721;
+                        MR_Word Var_725;
+                        MR_Word Var_729;
+                        MR_Word Var_733;
+                        MR_Word Var_737;
+                        MR_Word Var_741;
+                        MR_Word Var_745;
+                        MR_Word Var_749;
+                        MR_Word Var_753;
+
+                        switch (Var_14) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 4:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = accurate");
+                            break;
+                          case (MR_Integer) 1:
+                            MinModelGc_712 = (MR_Integer) 0;
+                            break;
+                          case (MR_Integer) 2:
+                            MinModelGc_712 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = history");
+                            break;
+                          case (MR_Integer) 0:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = none");
+                            break;
+                          case (MR_Integer) 3:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target = c, Gc = target_native");
+                            break;
+                        }
+                        {
+                          Var_721 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_721, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                          MR_hl_field(MR_mktag(0), Var_721, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_37));
+                          MR_hl_field(MR_mktag(0), Var_721, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_721, 3) = ((MR_Box) (Var_11));
+                          MR_hl_field(MR_mktag(0), Var_721, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_721, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+                        {
+                          Var_725 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_725, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                          MR_hl_field(MR_mktag(0), Var_725, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_38));
+                          MR_hl_field(MR_mktag(0), Var_725, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_725, 3) = ((MR_Box) (Var_15));
+                          MR_hl_field(MR_mktag(0), Var_725, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_725, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+                        {
+                          Var_729 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_729, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                          MR_hl_field(MR_mktag(0), Var_729, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_39));
+                          MR_hl_field(MR_mktag(0), Var_729, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_729, 3) = ((MR_Box) (Var_16));
+                          MR_hl_field(MR_mktag(0), Var_729, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_729, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                        {
+                          Var_733 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_733, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                          MR_hl_field(MR_mktag(0), Var_733, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_40));
+                          MR_hl_field(MR_mktag(0), Var_733, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_733, 3) = ((MR_Box) (Var_17));
+                          MR_hl_field(MR_mktag(0), Var_733, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_733, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                        {
+                          Var_737 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_737, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                          MR_hl_field(MR_mktag(0), Var_737, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_41));
+                          MR_hl_field(MR_mktag(0), Var_737, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_737, 3) = ((MR_Box) (Var_18));
+                          MR_hl_field(MR_mktag(0), Var_737, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_737, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                        {
+                          Var_741 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_741, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                          MR_hl_field(MR_mktag(0), Var_741, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_42));
+                          MR_hl_field(MR_mktag(0), Var_741, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_741, 3) = ((MR_Box) (Var_20));
+                          MR_hl_field(MR_mktag(0), Var_741, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_741, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+                        {
+                          Var_745 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_745, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                          MR_hl_field(MR_mktag(0), Var_745, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_43));
+                          MR_hl_field(MR_mktag(0), Var_745, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_745, 3) = ((MR_Box) (Var_24));
+                          MR_hl_field(MR_mktag(0), Var_745, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_745, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+                        {
+                          Var_749 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_749, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                          MR_hl_field(MR_mktag(0), Var_749, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_44));
+                          MR_hl_field(MR_mktag(0), Var_749, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_749, 3) = ((MR_Box) (Var_25));
+                          MR_hl_field(MR_mktag(0), Var_749, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_749, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                        {
+                          Var_753 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_753, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                          MR_hl_field(MR_mktag(0), Var_753, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_45));
+                          MR_hl_field(MR_mktag(0), Var_753, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_753, 3) = ((MR_Box) (Var_26));
+                          MR_hl_field(MR_mktag(0), Var_753, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_753, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                        {
+                          LLDSTSMinModel_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 3) << 3)) | (((((MR_Unsigned) (MinModelGc_712) << 2)) | (MR_Unsigned) (Var_21)))));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word MinModelGc_801;
+                        MR_Word Var_810;
+                        MR_Word Var_814;
+                        MR_Word Var_818;
+                        MR_Word Var_822;
+                        MR_Word Var_826;
+                        MR_Word Var_830;
+                        MR_Word Var_834;
+                        MR_Word Var_838;
+                        MR_Word Var_842;
+
+                        switch (Var_14) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 4:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = accurate");
+                            break;
+                          case (MR_Integer) 1:
+                            MinModelGc_801 = (MR_Integer) 0;
+                            break;
+                          case (MR_Integer) 2:
+                            MinModelGc_801 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = history");
+                            break;
+                          case (MR_Integer) 0:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = none");
+                            break;
+                          case (MR_Integer) 3:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target = c, Gc = target_native");
+                            break;
+                        }
+                        {
+                          Var_810 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_810, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                          MR_hl_field(MR_mktag(0), Var_810, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_46));
+                          MR_hl_field(MR_mktag(0), Var_810, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_810, 3) = ((MR_Box) (Var_11));
+                          MR_hl_field(MR_mktag(0), Var_810, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_810, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+                        {
+                          Var_814 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_814, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                          MR_hl_field(MR_mktag(0), Var_814, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_47));
+                          MR_hl_field(MR_mktag(0), Var_814, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_814, 3) = ((MR_Box) (Var_15));
+                          MR_hl_field(MR_mktag(0), Var_814, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_814, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+                        {
+                          Var_818 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_818, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                          MR_hl_field(MR_mktag(0), Var_818, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_48));
+                          MR_hl_field(MR_mktag(0), Var_818, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_818, 3) = ((MR_Box) (Var_16));
+                          MR_hl_field(MR_mktag(0), Var_818, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_818, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                        {
+                          Var_822 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_822, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                          MR_hl_field(MR_mktag(0), Var_822, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_49));
+                          MR_hl_field(MR_mktag(0), Var_822, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_822, 3) = ((MR_Box) (Var_17));
+                          MR_hl_field(MR_mktag(0), Var_822, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_822, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                        {
+                          Var_826 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_826, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                          MR_hl_field(MR_mktag(0), Var_826, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_50));
+                          MR_hl_field(MR_mktag(0), Var_826, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_826, 3) = ((MR_Box) (Var_18));
+                          MR_hl_field(MR_mktag(0), Var_826, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_826, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                        {
+                          Var_830 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_830, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                          MR_hl_field(MR_mktag(0), Var_830, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_51));
+                          MR_hl_field(MR_mktag(0), Var_830, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_830, 3) = ((MR_Box) (Var_20));
+                          MR_hl_field(MR_mktag(0), Var_830, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_830, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+                        {
+                          Var_834 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_834, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                          MR_hl_field(MR_mktag(0), Var_834, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_52));
+                          MR_hl_field(MR_mktag(0), Var_834, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_834, 3) = ((MR_Box) (Var_24));
+                          MR_hl_field(MR_mktag(0), Var_834, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_834, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+                        {
+                          Var_838 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_838, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                          MR_hl_field(MR_mktag(0), Var_838, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_53));
+                          MR_hl_field(MR_mktag(0), Var_838, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_838, 3) = ((MR_Box) (Var_25));
+                          MR_hl_field(MR_mktag(0), Var_838, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_838, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                        {
+                          Var_842 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_842, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                          MR_hl_field(MR_mktag(0), Var_842, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_54));
+                          MR_hl_field(MR_mktag(0), Var_842, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_842, 3) = ((MR_Box) (Var_26));
+                          MR_hl_field(MR_mktag(0), Var_842, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_842, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                        {
+                          LLDSTSMinModel_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 0) << 3)) | (((((MR_Unsigned) (MinModelGc_801) << 2)) | (MR_Unsigned) (Var_21)))));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_Word MinModelGc_890;
+                        MR_Word Var_899;
+                        MR_Word Var_903;
+                        MR_Word Var_907;
+                        MR_Word Var_911;
+                        MR_Word Var_915;
+                        MR_Word Var_919;
+                        MR_Word Var_923;
+                        MR_Word Var_927;
+                        MR_Word Var_931;
+
+                        switch (Var_14) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 4:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = accurate");
+                            break;
+                          case (MR_Integer) 1:
+                            MinModelGc_890 = (MR_Integer) 0;
+                            break;
+                          case (MR_Integer) 2:
+                            MinModelGc_890 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = history");
+                            break;
+                          case (MR_Integer) 0:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "minimal model, Gc = none");
+                            break;
+                          case (MR_Integer) 3:
+                            mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target = c, Gc = target_native");
+                            break;
+                        }
+                        {
+                          Var_899 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_899, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                          MR_hl_field(MR_mktag(0), Var_899, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_55));
+                          MR_hl_field(MR_mktag(0), Var_899, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_899, 3) = ((MR_Box) (Var_11));
+                          MR_hl_field(MR_mktag(0), Var_899, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_899, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+                        {
+                          Var_903 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_903, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                          MR_hl_field(MR_mktag(0), Var_903, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_56));
+                          MR_hl_field(MR_mktag(0), Var_903, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_903, 3) = ((MR_Box) (Var_15));
+                          MR_hl_field(MR_mktag(0), Var_903, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_903, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+                        {
+                          Var_907 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_907, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                          MR_hl_field(MR_mktag(0), Var_907, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_57));
+                          MR_hl_field(MR_mktag(0), Var_907, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_907, 3) = ((MR_Box) (Var_16));
+                          MR_hl_field(MR_mktag(0), Var_907, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_907, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                        {
+                          Var_911 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_911, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                          MR_hl_field(MR_mktag(0), Var_911, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_58));
+                          MR_hl_field(MR_mktag(0), Var_911, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_911, 3) = ((MR_Box) (Var_17));
+                          MR_hl_field(MR_mktag(0), Var_911, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_911, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                        {
+                          Var_915 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_915, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                          MR_hl_field(MR_mktag(0), Var_915, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_59));
+                          MR_hl_field(MR_mktag(0), Var_915, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_915, 3) = ((MR_Box) (Var_18));
+                          MR_hl_field(MR_mktag(0), Var_915, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_915, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                        {
+                          Var_919 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_919, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                          MR_hl_field(MR_mktag(0), Var_919, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_60));
+                          MR_hl_field(MR_mktag(0), Var_919, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_919, 3) = ((MR_Box) (Var_20));
+                          MR_hl_field(MR_mktag(0), Var_919, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_919, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+                        {
+                          Var_923 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_923, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                          MR_hl_field(MR_mktag(0), Var_923, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_61));
+                          MR_hl_field(MR_mktag(0), Var_923, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_923, 3) = ((MR_Box) (Var_24));
+                          MR_hl_field(MR_mktag(0), Var_923, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_923, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+                        {
+                          Var_927 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_927, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                          MR_hl_field(MR_mktag(0), Var_927, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_62));
+                          MR_hl_field(MR_mktag(0), Var_927, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_927, 3) = ((MR_Box) (Var_25));
+                          MR_hl_field(MR_mktag(0), Var_927, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_927, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                        {
+                          Var_931 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), Var_931, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                          MR_hl_field(MR_mktag(0), Var_931, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_63));
+                          MR_hl_field(MR_mktag(0), Var_931, 2) = ((MR_Box) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(0), Var_931, 3) = ((MR_Box) (Var_26));
+                          MR_hl_field(MR_mktag(0), Var_931, 4) = ((MR_Box) ((MR_Integer) 0));
+                        }
+                        mercury__require__expect_3_p_0(Var_931, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                        {
+                          LLDSTSMinModel_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 1) << 3)) | (((((MR_Unsigned) (MinModelGc_890) << 2)) | (MR_Unsigned) (Var_21)))));
+                        }
+                      }
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word ThreadSafeCGc_61;
+                    MR_Word Var_240;
+                    MR_Word Var_244;
+                    MR_Word Var_248;
+                    MR_Word Var_252;
+                    MR_Word Var_256;
+                    MR_Word Var_260;
+                    MR_Word Var_264;
+                    MR_Word Var_268;
+                    MR_Word Var_272;
+                    MR_Word Var_276;
+                    MR_Word CTrail_452;
+
+                    {
+                      Var_240 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_240, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[4]));
+                      MR_hl_field(MR_mktag(0), Var_240, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_64));
+                      MR_hl_field(MR_mktag(0), Var_240, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_240, 3) = ((MR_Box) (Var_12));
+                      MR_hl_field(MR_mktag(0), Var_240, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_240, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MinModel != grade_var_minmodel_no");
+                    grade_lib__grade_structure__encode_thread_safe_c_gc_2_p_0(Var_14, &ThreadSafeCGc_61);
+                    grade_lib__grade_structure__encode_c_trail_2_p_0(Var_11, &CTrail_452);
+                    {
+                      Var_244 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_244, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                      MR_hl_field(MR_mktag(0), Var_244, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_65));
+                      MR_hl_field(MR_mktag(0), Var_244, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_244, 3) = ((MR_Box) (Var_15));
+                      MR_hl_field(MR_mktag(0), Var_244, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_244, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+                    {
+                      Var_248 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_248, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                      MR_hl_field(MR_mktag(0), Var_248, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_66));
+                      MR_hl_field(MR_mktag(0), Var_248, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_248, 3) = ((MR_Box) (Var_16));
+                      MR_hl_field(MR_mktag(0), Var_248, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_248, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                    {
+                      Var_252 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_252, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                      MR_hl_field(MR_mktag(0), Var_252, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_67));
+                      MR_hl_field(MR_mktag(0), Var_252, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_252, 3) = ((MR_Box) (Var_17));
+                      MR_hl_field(MR_mktag(0), Var_252, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_252, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                    {
+                      Var_256 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_256, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                      MR_hl_field(MR_mktag(0), Var_256, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_68));
+                      MR_hl_field(MR_mktag(0), Var_256, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_256, 3) = ((MR_Box) (Var_18));
+                      MR_hl_field(MR_mktag(0), Var_256, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_256, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                    {
+                      Var_260 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_260, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                      MR_hl_field(MR_mktag(0), Var_260, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_69));
+                      MR_hl_field(MR_mktag(0), Var_260, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_260, 3) = ((MR_Box) (Var_20));
+                      MR_hl_field(MR_mktag(0), Var_260, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_260, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+                    {
+                      Var_264 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_264, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[13]));
+                      MR_hl_field(MR_mktag(0), Var_264, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_70));
+                      MR_hl_field(MR_mktag(0), Var_264, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_264, 3) = ((MR_Box) (Var_21));
+                      MR_hl_field(MR_mktag(0), Var_264, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_264, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Debug != grade_var_debug_none");
+                    {
+                      Var_268 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_268, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                      MR_hl_field(MR_mktag(0), Var_268, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_71));
+                      MR_hl_field(MR_mktag(0), Var_268, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_268, 3) = ((MR_Box) (Var_24));
+                      MR_hl_field(MR_mktag(0), Var_268, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_268, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+                    {
+                      Var_272 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_272, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                      MR_hl_field(MR_mktag(0), Var_272, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_72));
+                      MR_hl_field(MR_mktag(0), Var_272, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_272, 3) = ((MR_Box) (Var_25));
+                      MR_hl_field(MR_mktag(0), Var_272, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_272, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+                    {
+                      Var_276 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_276, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                      MR_hl_field(MR_mktag(0), Var_276, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_73));
+                      MR_hl_field(MR_mktag(0), Var_276, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_276, 3) = ((MR_Box) (Var_26));
+                      MR_hl_field(MR_mktag(0), Var_276, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_276, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+                    {
+                      LLDSTSMinModel_58 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), LLDSTSMinModel_58, 0) = (MR_Box) (((((MR_Unsigned) (ThreadSafeCGc_61) << 2)) | (((((MR_Unsigned) (CTrail_452) << 1)) | (MR_Unsigned) (Var_19)))));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "llds but thread_safe_target_native");
+                  break;
+              }
+              {
+                GradeStructure_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), GradeStructure_4, 0) = (MR_Box) (((((MR_Unsigned) (Var_8) << 2)) | (MR_Unsigned) (Var_10)));
+                MR_hl_field(MR_mktag(1), GradeStructure_4, 1) = ((MR_Box) (LLDSTSMinModel_58));
+                MR_hl_field(MR_mktag(1), GradeStructure_4, 2) = (MR_Box) (((((MR_Unsigned) (Var_27) << 5)) | (((((MR_Unsigned) (Var_9) << 3)) | (((((MR_Unsigned) (Var_28) << 1)) | (MR_Unsigned) (Var_23)))))));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              MR_Word Var_138;
+              MR_Word Var_142;
+              MR_Word Var_146;
+              MR_Word Var_150;
+              MR_Word Var_154;
+              MR_Word Var_158;
+              MR_Word Var_162;
+              MR_Word Var_166;
+              MR_Word Var_170;
+              MR_Word Var_174;
+
+              {
+                Var_138 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_138, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[1]));
+                MR_hl_field(MR_mktag(0), Var_138, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_74));
+                MR_hl_field(MR_mktag(0), Var_138, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_138, 3) = ((MR_Box) (Var_8));
+                MR_hl_field(MR_mktag(0), Var_138, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_138, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "GccConf != grade_var_gcc_conf_none");
+              {
+                Var_142 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_142, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[2]));
+                MR_hl_field(MR_mktag(0), Var_142, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_75));
+                MR_hl_field(MR_mktag(0), Var_142, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_142, 3) = ((MR_Box) (Var_10));
+                MR_hl_field(MR_mktag(0), Var_142, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_142, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "StackLen != grade_var_stack_len_std");
+              {
+                Var_146 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_146, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[4]));
+                MR_hl_field(MR_mktag(0), Var_146, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_76));
+                MR_hl_field(MR_mktag(0), Var_146, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_146, 3) = ((MR_Box) (Var_12));
+                MR_hl_field(MR_mktag(0), Var_146, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_146, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MinimalModel != grade_var_minmodel_no");
+              {
+                Var_150 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_150, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+                MR_hl_field(MR_mktag(0), Var_150, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_77));
+                MR_hl_field(MR_mktag(0), Var_150, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_150, 3) = ((MR_Box) (Var_15));
+                MR_hl_field(MR_mktag(0), Var_150, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_150, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "DeepProf != grade_var_deep_prof_no");
+              {
+                Var_154 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_154, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[11]));
+                MR_hl_field(MR_mktag(0), Var_154, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_78));
+                MR_hl_field(MR_mktag(0), Var_154, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_154, 3) = ((MR_Box) (Var_19));
+                MR_hl_field(MR_mktag(0), Var_154, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_154, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TScopeProf != grade_var_tscope_prof_no");
+              {
+                Var_158 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_158, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+                MR_hl_field(MR_mktag(0), Var_158, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_79));
+                MR_hl_field(MR_mktag(0), Var_158, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_158, 3) = ((MR_Box) (Var_20));
+                MR_hl_field(MR_mktag(0), Var_158, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_158, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "TermSizeProf != grade_var_term_size_prof_no");
+              {
+                Var_162 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_162, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[13]));
+                MR_hl_field(MR_mktag(0), Var_162, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_80));
+                MR_hl_field(MR_mktag(0), Var_162, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_162, 3) = ((MR_Box) (Var_21));
+                MR_hl_field(MR_mktag(0), Var_162, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_162, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Debug != grade_var_debug_none");
+              {
+                Var_166 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_166, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+                MR_hl_field(MR_mktag(0), Var_166, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_81));
+                MR_hl_field(MR_mktag(0), Var_166, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_166, 3) = ((MR_Box) (Var_24));
+                MR_hl_field(MR_mktag(0), Var_166, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_166, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMM != grade_var_rbmm_no");
+              {
+                Var_170 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_170, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+                MR_hl_field(MR_mktag(0), Var_170, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_82));
+                MR_hl_field(MR_mktag(0), Var_170, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_170, 3) = ((MR_Box) (Var_25));
+                MR_hl_field(MR_mktag(0), Var_170, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_170, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMDebug != grade_var_rbmm_debug_no");
+              {
+                Var_174 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_174, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+                MR_hl_field(MR_mktag(0), Var_174, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_83));
+                MR_hl_field(MR_mktag(0), Var_174, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_174, 3) = ((MR_Box) (Var_26));
+                MR_hl_field(MR_mktag(0), Var_174, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              mercury__require__expect_3_p_0(Var_174, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "RBMMProf != grade_var_rbmm_prof_no");
+              switch (Var_7) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word MLDSCThreadSafe_63;
+                    MR_Word TargetC_64;
+                    MR_Word CTrail_484;
+
+                    switch (Var_13) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word MLDSPerfProf_62;
+                          MR_Word CGc_479;
+
+                          grade_lib__grade_structure__encode_c_gc_2_p_0(Var_14, &CGc_479);
+                          switch (Var_16) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              {
+                                MR_Word Var_224;
+                                MR_Word Var_228;
+
+                                {
+                                  Var_224 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), Var_224, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                                  MR_hl_field(MR_mktag(0), Var_224, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_84));
+                                  MR_hl_field(MR_mktag(0), Var_224, 2) = ((MR_Box) ((MR_Integer) 2));
+                                  MR_hl_field(MR_mktag(0), Var_224, 3) = ((MR_Box) (Var_17));
+                                  MR_hl_field(MR_mktag(0), Var_224, 4) = ((MR_Box) ((MR_Integer) 0));
+                                }
+                                mercury__require__expect_3_p_0(Var_224, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "mprof_call = no but mprof_time != no");
+                                {
+                                  Var_228 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), Var_228, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                                  MR_hl_field(MR_mktag(0), Var_228, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_85));
+                                  MR_hl_field(MR_mktag(0), Var_228, 2) = ((MR_Box) ((MR_Integer) 2));
+                                  MR_hl_field(MR_mktag(0), Var_228, 3) = ((MR_Box) (Var_18));
+                                  MR_hl_field(MR_mktag(0), Var_228, 4) = ((MR_Box) ((MR_Integer) 0));
+                                }
+                                mercury__require__expect_3_p_0(Var_228, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "mprof_call = no but mprof_memory != no");
+                                MLDSPerfProf_62 = (MR_Word) ((MR_Unsigned) 0U);
+                              }
+                              break;
+                            case (MR_Integer) 1:
+                              {
+                                MLDSPerfProf_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), MLDSPerfProf_62, 0) = (MR_Box) (((((MR_Unsigned) (Var_17) << 1)) | (MR_Unsigned) (Var_18)));
+                              }
+                              break;
+                          }
+                          {
+                            MLDSCThreadSafe_63 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), MLDSCThreadSafe_63, 0) = (MR_Box) ((MR_Unsigned) (CGc_479));
+                            MR_hl_field(MR_mktag(0), MLDSCThreadSafe_63, 1) = ((MR_Box) (MLDSPerfProf_62));
+                            MR_hl_field(MR_mktag(0), MLDSCThreadSafe_63, 2) = (MR_Box) ((MR_Unsigned) (Var_22));
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word Var_208;
+                          MR_Word Var_212;
+                          MR_Word Var_216;
+                          MR_Word Var_220;
+                          MR_Word ThreadSafeCGc_480;
+
+                          grade_lib__grade_structure__encode_thread_safe_c_gc_2_p_0(Var_14, &ThreadSafeCGc_480);
+                          {
+                            Var_208 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), Var_208, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                            MR_hl_field(MR_mktag(0), Var_208, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_86));
+                            MR_hl_field(MR_mktag(0), Var_208, 2) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), Var_208, 3) = ((MR_Box) (Var_16));
+                            MR_hl_field(MR_mktag(0), Var_208, 4) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                          mercury__require__expect_3_p_0(Var_208, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "thread_safe = yes but mprof_call != no");
+                          {
+                            Var_212 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), Var_212, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                            MR_hl_field(MR_mktag(0), Var_212, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_87));
+                            MR_hl_field(MR_mktag(0), Var_212, 2) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), Var_212, 3) = ((MR_Box) (Var_17));
+                            MR_hl_field(MR_mktag(0), Var_212, 4) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                          mercury__require__expect_3_p_0(Var_212, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "thread_safe = yes but mprof_time != no");
+                          {
+                            Var_216 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), Var_216, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                            MR_hl_field(MR_mktag(0), Var_216, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_88));
+                            MR_hl_field(MR_mktag(0), Var_216, 2) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), Var_216, 3) = ((MR_Box) (Var_18));
+                            MR_hl_field(MR_mktag(0), Var_216, 4) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                          mercury__require__expect_3_p_0(Var_216, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "thread_safe = yes but mprof_memory != no");
+                          {
+                            Var_220 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), Var_220, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[17]));
+                            MR_hl_field(MR_mktag(0), Var_220, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_89));
+                            MR_hl_field(MR_mktag(0), Var_220, 2) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), Var_220, 3) = ((MR_Box) (Var_22));
+                            MR_hl_field(MR_mktag(0), Var_220, 4) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                          mercury__require__expect_3_p_0(Var_220, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "thread_safe = yes but ssdebug != no");
+                          {
+                            MLDSCThreadSafe_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), MLDSCThreadSafe_63, 0) = (MR_Box) ((MR_Unsigned) (ThreadSafeCGc_480));
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "mlds c but thread_safe_target_native");
+                        break;
+                    }
+                    switch (Var_11) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        CTrail_484 = (MR_Integer) 0;
+                        break;
+                      case (MR_Integer) 1:
+                        CTrail_484 = (MR_Integer) 1;
+                        break;
+                    }
+                    {
+                      TargetC_64 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), TargetC_64, 0) = ((MR_Box) (MLDSCThreadSafe_63));
+                      MR_hl_field(MR_mktag(0), TargetC_64, 1) = (MR_Box) (((((MR_Unsigned) (CTrail_484) << 5)) | (((((MR_Unsigned) (Var_27) << 4)) | (((((MR_Unsigned) (Var_9) << 2)) | (MR_Unsigned) (Var_28)))))));
+                    }
+                    {
+                      GradeStructure_4 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), GradeStructure_4, 0) = ((MR_Box) (TargetC_64));
+                      MR_hl_field(MR_mktag(2), GradeStructure_4, 1) = (MR_Box) ((MR_Unsigned) (Var_23));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                  {
+                    MR_Word MLDSTarget_65;
+                    MR_Word Var_180;
+                    MR_Word Var_184;
+                    MR_Word Var_188;
+                    MR_Word Var_192;
+                    MR_Word Var_196;
+                    MR_Word Var_200;
+
+                    {
+                      Var_180 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_180, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[5]));
+                      MR_hl_field(MR_mktag(0), Var_180, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_90));
+                      MR_hl_field(MR_mktag(0), Var_180, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_180, 3) = ((MR_Box) (Var_13));
+                      MR_hl_field(MR_mktag(0), Var_180, 4) = ((MR_Box) ((MR_Integer) 2));
+                    }
+                    mercury__require__expect_3_p_0(Var_180, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "ThreadSafe != grade_var_thread_safe_target_native");
+                    {
+                      Var_184 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_184, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[6]));
+                      MR_hl_field(MR_mktag(0), Var_184, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_91));
+                      MR_hl_field(MR_mktag(0), Var_184, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_184, 3) = ((MR_Box) (Var_14));
+                      MR_hl_field(MR_mktag(0), Var_184, 4) = ((MR_Box) ((MR_Integer) 3));
+                    }
+                    mercury__require__expect_3_p_0(Var_184, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Gc != grade_var_gc_target_native");
+                    {
+                      Var_188 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_188, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+                      MR_hl_field(MR_mktag(0), Var_188, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_92));
+                      MR_hl_field(MR_mktag(0), Var_188, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_188, 3) = ((MR_Box) (Var_11));
+                      MR_hl_field(MR_mktag(0), Var_188, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_188, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Trail != grade_var_trail_no");
+                    {
+                      Var_192 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_192, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+                      MR_hl_field(MR_mktag(0), Var_192, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_93));
+                      MR_hl_field(MR_mktag(0), Var_192, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_192, 3) = ((MR_Box) (Var_16));
+                      MR_hl_field(MR_mktag(0), Var_192, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_192, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofCall != grade_var_mprof_call_no");
+                    {
+                      Var_196 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_196, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+                      MR_hl_field(MR_mktag(0), Var_196, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_94));
+                      MR_hl_field(MR_mktag(0), Var_196, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_196, 3) = ((MR_Box) (Var_17));
+                      MR_hl_field(MR_mktag(0), Var_196, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_196, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofTime != grade_var_mprof_time_no");
+                    {
+                      Var_200 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), Var_200, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+                      MR_hl_field(MR_mktag(0), Var_200, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_95));
+                      MR_hl_field(MR_mktag(0), Var_200, 2) = ((MR_Box) ((MR_Integer) 2));
+                      MR_hl_field(MR_mktag(0), Var_200, 3) = ((MR_Box) (Var_18));
+                      MR_hl_field(MR_mktag(0), Var_200, 4) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    mercury__require__expect_3_p_0(Var_200, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MprofMemory != grade_var_mprof_memory_no");
+                    switch (Var_28) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "MercFloat = grade_var_merc_float_is_unboxed_c_float");
+                        break;
+                    }
+                    switch (Var_7) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 1:
+                        {
+                          MLDSTarget_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), MLDSTarget_65, 0) = (MR_Box) ((MR_Unsigned) (Var_22));
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MLDSTarget_65 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(2), MLDSTarget_65, 0) = (MR_Box) ((MR_Unsigned) (Var_22));
+                        }
+                        break;
+                    }
+                    {
+                      GradeStructure_4 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), GradeStructure_4, 0) = ((MR_Box) (MLDSTarget_65));
+                      MR_hl_field(MR_mktag(2), GradeStructure_4, 1) = (MR_Box) ((MR_Unsigned) (Var_23));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Backend = mlds but Target = erlang");
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word PregenKind_53;
+          MR_Word Var_358;
+          MR_Word Var_362;
+          MR_Word Var_366;
+          MR_Word Var_370;
+          MR_Word Var_374;
+          MR_Word Var_378;
+          MR_Word Var_382;
+          MR_Word Var_386;
+          MR_Word Var_390;
+          MR_Word Var_394;
+          MR_Word Var_398;
+          MR_Word Var_402;
+          MR_Word Var_406;
+          MR_Word Var_410;
+          MR_Word Var_414;
+          MR_Word Var_418;
+          MR_Word Var_422;
+          MR_Word Var_426;
+          MR_Word Var_430;
+          MR_Word Var_434;
+          MR_Word Var_438;
+
+          {
+            Var_358 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_358, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[0]));
+            MR_hl_field(MR_mktag(0), Var_358, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_96));
+            MR_hl_field(MR_mktag(0), Var_358, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_358, 3) = ((MR_Box) (Var_7));
+            MR_hl_field(MR_mktag(0), Var_358, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_358, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "Target != grade_var_target_c");
+          {
+            Var_362 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_362, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[18]));
+            MR_hl_field(MR_mktag(0), Var_362, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_97));
+            MR_hl_field(MR_mktag(0), Var_362, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_362, 3) = ((MR_Box) (Var_9));
+            MR_hl_field(MR_mktag(0), Var_362, 4) = ((MR_Box) ((MR_Integer) 1));
+          }
+          mercury__require__expect_3_p_0(Var_362, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but LowTagBitsUse != grade_var_low_tag_bits_use_2");
+          {
+            Var_366 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_366, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[2]));
+            MR_hl_field(MR_mktag(0), Var_366, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_98));
+            MR_hl_field(MR_mktag(0), Var_366, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_366, 3) = ((MR_Box) (Var_10));
+            MR_hl_field(MR_mktag(0), Var_366, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_366, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but StackLen != grade_var_stack_len_std");
+          {
+            Var_370 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_370, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[3]));
+            MR_hl_field(MR_mktag(0), Var_370, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_99));
+            MR_hl_field(MR_mktag(0), Var_370, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_370, 3) = ((MR_Box) (Var_11));
+            MR_hl_field(MR_mktag(0), Var_370, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_370, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but Trail != grade_var_trail_no");
+          {
+            Var_374 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_374, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[4]));
+            MR_hl_field(MR_mktag(0), Var_374, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_100));
+            MR_hl_field(MR_mktag(0), Var_374, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_374, 3) = ((MR_Box) (Var_12));
+            MR_hl_field(MR_mktag(0), Var_374, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_374, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MinimalModel != grade_var_minmodel_no");
+          {
+            Var_378 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_378, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[5]));
+            MR_hl_field(MR_mktag(0), Var_378, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_101));
+            MR_hl_field(MR_mktag(0), Var_378, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_378, 3) = ((MR_Box) (Var_13));
+            MR_hl_field(MR_mktag(0), Var_378, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_378, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but ThreadSafe != grade_var_thread_safe_c_no");
+          {
+            Var_382 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_382, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[6]));
+            MR_hl_field(MR_mktag(0), Var_382, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_102));
+            MR_hl_field(MR_mktag(0), Var_382, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_382, 3) = ((MR_Box) (Var_14));
+            MR_hl_field(MR_mktag(0), Var_382, 4) = ((MR_Box) ((MR_Integer) 1));
+          }
+          mercury__require__expect_3_p_0(Var_382, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but Gc != grade_var_gc_bdw");
+          {
+            Var_386 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_386, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[7]));
+            MR_hl_field(MR_mktag(0), Var_386, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_103));
+            MR_hl_field(MR_mktag(0), Var_386, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_386, 3) = ((MR_Box) (Var_15));
+            MR_hl_field(MR_mktag(0), Var_386, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_386, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but DeepProf != grade_var_deep_prof_no");
+          {
+            Var_390 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_390, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[8]));
+            MR_hl_field(MR_mktag(0), Var_390, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_104));
+            MR_hl_field(MR_mktag(0), Var_390, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_390, 3) = ((MR_Box) (Var_16));
+            MR_hl_field(MR_mktag(0), Var_390, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_390, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MprofCall != grade_var_mprof_call_no");
+          {
+            Var_394 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_394, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[9]));
+            MR_hl_field(MR_mktag(0), Var_394, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_105));
+            MR_hl_field(MR_mktag(0), Var_394, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_394, 3) = ((MR_Box) (Var_17));
+            MR_hl_field(MR_mktag(0), Var_394, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_394, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MprofTime != grade_var_mprof_time_no");
+          {
+            Var_398 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_398, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[10]));
+            MR_hl_field(MR_mktag(0), Var_398, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_106));
+            MR_hl_field(MR_mktag(0), Var_398, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_398, 3) = ((MR_Box) (Var_18));
+            MR_hl_field(MR_mktag(0), Var_398, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_398, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MprofMemory != grade_var_mprof_memory_no");
+          {
+            Var_402 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_402, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[11]));
+            MR_hl_field(MR_mktag(0), Var_402, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_107));
+            MR_hl_field(MR_mktag(0), Var_402, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_402, 3) = ((MR_Box) (Var_19));
+            MR_hl_field(MR_mktag(0), Var_402, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_402, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but TScopeProf != grade_var_tscope_prof_no");
+          {
+            Var_406 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_406, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[12]));
+            MR_hl_field(MR_mktag(0), Var_406, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_108));
+            MR_hl_field(MR_mktag(0), Var_406, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_406, 3) = ((MR_Box) (Var_20));
+            MR_hl_field(MR_mktag(0), Var_406, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_406, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but TermSizeProf != grade_var_term_size_prof_no");
+          {
+            Var_410 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_410, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[13]));
+            MR_hl_field(MR_mktag(0), Var_410, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_109));
+            MR_hl_field(MR_mktag(0), Var_410, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_410, 3) = ((MR_Box) (Var_21));
+            MR_hl_field(MR_mktag(0), Var_410, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_410, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but Debug != grade_var_debug_none");
+          {
+            Var_414 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_414, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[17]));
+            MR_hl_field(MR_mktag(0), Var_414, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_110));
+            MR_hl_field(MR_mktag(0), Var_414, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_414, 3) = ((MR_Box) (Var_22));
+            MR_hl_field(MR_mktag(0), Var_414, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_414, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but SSDebug != grade_var_ssdebug_no");
+          {
+            Var_418 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_418, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[19]));
+            MR_hl_field(MR_mktag(0), Var_418, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_111));
+            MR_hl_field(MR_mktag(0), Var_418, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_418, 3) = ((MR_Box) (Var_23));
+            MR_hl_field(MR_mktag(0), Var_418, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_418, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but TargetDebug != grade_var_target_debug_no");
+          {
+            Var_422 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_422, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[14]));
+            MR_hl_field(MR_mktag(0), Var_422, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_112));
+            MR_hl_field(MR_mktag(0), Var_422, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_422, 3) = ((MR_Box) (Var_24));
+            MR_hl_field(MR_mktag(0), Var_422, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_422, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but RBMM != grade_var_rbmm_no");
+          {
+            Var_426 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_426, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[15]));
+            MR_hl_field(MR_mktag(0), Var_426, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_113));
+            MR_hl_field(MR_mktag(0), Var_426, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_426, 3) = ((MR_Box) (Var_25));
+            MR_hl_field(MR_mktag(0), Var_426, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_426, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but RBMMDebug != grade_var_rbmm_debug_no");
+          {
+            Var_430 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_430, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[16]));
+            MR_hl_field(MR_mktag(0), Var_430, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_114));
+            MR_hl_field(MR_mktag(0), Var_430, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_430, 3) = ((MR_Box) (Var_26));
+            MR_hl_field(MR_mktag(0), Var_430, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_430, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but RBMMProf != grade_var_rbmm_prof_no");
+          {
+            Var_434 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_434, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[20]));
+            MR_hl_field(MR_mktag(0), Var_434, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_115));
+            MR_hl_field(MR_mktag(0), Var_434, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_434, 3) = ((MR_Box) (Var_27));
+            MR_hl_field(MR_mktag(0), Var_434, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_434, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MercFile != grade_var_merc_file_no");
+          {
+            Var_438 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_438, 0) = ((MR_Box) (&grade_lib__grade_structure_scalar_common_1[21]));
+            MR_hl_field(MR_mktag(0), Var_438, 1) = ((MR_Box) (grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0_116));
+            MR_hl_field(MR_mktag(0), Var_438, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_438, 3) = ((MR_Box) (Var_28));
+            MR_hl_field(MR_mktag(0), Var_438, 4) = ((MR_Box) ((MR_Integer) 0));
+          }
+          mercury__require__expect_3_p_0(Var_438, (MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but MercFloat != grade_var_merc_float_is_boxed_c_double");
+          switch (Backend_6) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 2:
+              mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but elds");
+              break;
+            case (MR_Integer) 1:
+              switch (Var_8) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 5:
+                  PregenKind_53 = (MR_Integer) 3;
+                  break;
+                case (MR_Integer) 4:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but asm_jump");
+                  break;
+                case (MR_Integer) 3:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but fast");
+                  break;
+                case (MR_Integer) 2:
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140grade_lib.grade_structure.grade_vars_to_grade_structure\'/1", (MR_String) "pregen but jump");
+                  break;
+                case (MR_Integer) 0:
+                  PregenKind_53 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  PregenKind_53 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 0:
+              PregenKind_53 = (MR_Integer) 0;
+              break;
+          }
+          {
+            GradeStructure_4 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), GradeStructure_4, 0) = (MR_Box) ((MR_Unsigned) (PregenKind_53));
+          }
+        }
+        break;
+    }
+    return GradeStructure_4;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_c_trail_2_p_0(
+  MR_Word Trail_3,
+  MR_Word * CTrail_4)
+{
+  switch (Trail_3) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *CTrail_4 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 1:
+      *CTrail_4 = (MR_Integer) 1;
+      break;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_thread_safe_c_gc_2_p_0(
+  MR_Word Gc_3,
+  MR_Word * ThreadSafeCGc_4)
+{
+  switch (Gc_3) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 4:
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140grade_lib.grade_structure.encode_thread_safe_c_gc\'/2", (MR_String) "thread safe, Gc = accurate");
+        return;
+      }
+      break;
+    case (MR_Integer) 1:
+      *ThreadSafeCGc_4 = (MR_Integer) 1;
+      break;
+    case (MR_Integer) 2:
+      *ThreadSafeCGc_4 = (MR_Integer) 2;
+      break;
+    case (MR_Integer) 5:
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140grade_lib.grade_structure.encode_thread_safe_c_gc\'/2", (MR_String) "thread safe, Gc = history");
+        return;
+      }
+      break;
+    case (MR_Integer) 0:
+      *ThreadSafeCGc_4 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 3:
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140grade_lib.grade_structure.encode_thread_safe_c_gc\'/2", (MR_String) "Target = c, Gc = target_native");
+        return;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure__encode_c_gc_2_p_0(
+  MR_Word Gc_3,
+  MR_Word * CGc_4)
+{
+  switch (Gc_3) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 4:
+      *CGc_4 = (MR_Integer) 3;
+      break;
+    case (MR_Integer) 1:
+      *CGc_4 = (MR_Integer) 1;
+      break;
+    case (MR_Integer) 2:
+      *CGc_4 = (MR_Integer) 2;
+      break;
+    case (MR_Integer) 5:
+      *CGc_4 = (MR_Integer) 4;
+      break;
+    case (MR_Integer) 0:
+      *CGc_4 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 3:
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140grade_lib.grade_structure.encode_c_gc\'/2", (MR_String) "Target = c, Gc = target_native");
+        return;
+      }
+      break;
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____c_gc_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____c_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____c_gc_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_trail_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____c_trail_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____c_trail_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____c_trail_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____grade_structure_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____grade_structure_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____grade_structure_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____grade_structure_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_gcc_conf_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_gcc_conf_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_gcc_conf_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_gcc_conf_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_perf_prof_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_perf_prof_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_perf_prof_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_perf_prof_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_rbmm_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_rbmm_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_rbmm_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_rbmm_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_dararep_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____mlds_c_dararep_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_dararep_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____mlds_c_dararep_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_target_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____mlds_target_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_target_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____mlds_target_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____pregen_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____pregen_kind_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____pregen_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____pregen_kind_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__grade_lib__grade_structure__init(void)
+{
+}
+
+void mercury__grade_lib__grade_structure__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_gc_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_trail_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_grade_structure_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_gcc_conf_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_gc_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_kind_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_perf_prof_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_rbmm_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_thread_safe_minmodel_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_dararep_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_perf_prof_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_thread_safe_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_target_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_pregen_kind_0);
+	MR_register_type_ctor_info(&grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_thread_safe_c_gc_0);
+}
+
+void mercury__grade_lib__grade_structure__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__grade_lib__grade_structure__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module grade_lib.grade_structure.

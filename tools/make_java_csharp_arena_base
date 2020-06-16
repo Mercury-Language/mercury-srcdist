@@ -1,0 +1,85 @@
+#!/bin/sh
+# vim: ft=sh ts=4 sw=4 et
+#
+# This script is intended to be used to check whether a new version
+# of the Mercury compiler generates bit-identical output to an old version
+# when generating Java and C# code. We need this ability to avoid introducing
+# regressions on machines that don't have Java and/or C# compilers installed,
+# but it can be useful even on machines that do have them installed.
+#
+# The job of this script is to set up the basis for comparison using
+# the output from an old, known good compiler; the companion script
+# make_java_csharp_diff will then compare this to the output of the new,
+# compiler being tested. The two scripts are separate because during
+# a typical development effort, the second part typically needs to be done
+# significantly more times than the first :-(
+#
+# The user should set the environment variable named BASE_MMC to contain
+# the invocation of the known-good compiler (typically either "mmc" or
+# an instance of tools/lmc) and the environment variable named TEST_MMC
+# to contain the invocation of the compiler under test (typically
+# an instance of tools/lmc). The latter is used by make_java_csharp_diff.
+#
+# This script creates a directory named arena.base that contains
+# all the Mercury source files and interface files from all of the
+# Mercury modules in main Mercury directories of the workspace,
+# and then it puts the known good outputs for the Java and C# grades 
+# in arena.base.java and arena.base.csharp respectively.
+# The companion script make_java_csharp_diff then puts the output
+# of the compiler under test in those grades in arena.java and arena.csharp
+# respectively, and compares them to their respective bases.
+#
+# The environment variable PARALLEL controls the maximum number of compiler
+# processes to run at a time.
+
+if test "${BASE_MMC}" = ""
+then
+    echo "make_java_csharp_base: you need to set BASE_MMC in the environment"
+    exit 1
+fi
+
+PARALLEL=${PARALLEL:-`nproc 2>/dev/null`}
+PARALLEL=${PARALLEL:-1}
+
+dirs="library mdbcomp browser compiler slice profiler deep_profiler"
+
+root=`/bin/pwd`
+
+cd ${root}
+/bin/rm -fr arena.base arena.base.java arena.base.csharp > /dev/null 2>&1
+
+mkdir arena.base
+for d in ${dirs}
+do
+    cp ${d}/*.m    arena.base
+    cp ${d}/*.int* arena.base
+    cp ${d}/*.d*   arena.base
+done
+cd ${root}/arena.base
+# These modules do not compile cleanly, so there is no point in trying.
+MODULES_TO_DELETE='
+    mode_robdd.check.m
+    mode_robdd.tfeir.m
+    mode_robdd.tfer.m
+    mode_robdd.tfern.m
+    atsort_callgraph.m
+'
+/bin/rm ${MODULES_TO_DELETE}
+
+${BASE_MMC} -f *.m
+
+cd ${root}
+cp -rp arena.base arena.base.java
+cd ${root}/arena.base.java
+echo === JAVA ===
+echo *.m | xargs -P${PARALLEL} -n1 -t \
+    ${BASE_MMC} --grade java --target-code-only
+
+cd ${root}
+cp -rp arena.base arena.base.csharp
+cd ${root}/arena.base.csharp
+echo === CSHARP ===
+echo *.m | xargs -P${PARALLEL} -n1 -t \
+    ${BASE_MMC} --grade csharp --target-code-only
+
+exit 0

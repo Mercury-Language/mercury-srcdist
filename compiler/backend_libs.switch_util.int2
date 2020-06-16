@@ -1,0 +1,79 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module map.
+:- use_module pair.
+:- use_module set.
+:- use_module (backend_libs.rtti).
+:- use_module (hlds.hlds_goal).
+:- use_module (parse_tree.prog_data).
+:- type case_consts(Key, Rval, SeveralInfo)
+    --->    all_one_soln(map.map(Key, list.list(Rval)))
+    ;       some_several_solns(map.map(Key, backend_libs.switch_util.soln_consts(Rval)), SeveralInfo).
+:- type case_consts_several_llds
+    --->    case_consts_several_llds(parse_tree.set_of_var.set_of_progvar, bool.bool).
+:- type case_id_ptags_map == map.map(hlds.hlds_goal.case_id, set.set(parse_tree.prog_data.ptag)).
+:- type int_switch_info(T)
+    --->    int_switch_info(((backend_libs.switch_util).lower_limt) :: T, ((backend_libs.switch_util).upper_limit) :: T, ((backend_libs.switch_util).num_values) :: int).
+:- type may_use_smart_indexing
+    --->    may_not_use_smart_indexing 
+    ;       may_use_smart_indexing .
+:- type maybe_int_switch_info
+    --->    int_switch(backend_libs.switch_util.int_switch_info(int))
+    ;       uint_switch(backend_libs.switch_util.int_switch_info(uint))
+    ;       int8_switch(backend_libs.switch_util.int_switch_info(int8))
+    ;       uint8_switch(backend_libs.switch_util.int_switch_info(uint8))
+    ;       int16_switch(backend_libs.switch_util.int_switch_info(int16))
+    ;       uint16_switch(backend_libs.switch_util.int_switch_info(uint16))
+    ;       int32_switch(backend_libs.switch_util.int_switch_info(int32))
+    ;       uint32_switch(backend_libs.switch_util.int_switch_info(uint32))
+    ;       int64_switch(backend_libs.switch_util.int_switch_info(int64))
+    ;       uint64_switch(backend_libs.switch_util.int_switch_info(uint64))
+    ;       not_int_switch .
+:- type need_bit_vec_check
+    --->    need_bit_vec_check 
+    ;       dont_need_bit_vec_check .
+:- type need_range_check
+    --->    need_range_check 
+    ;       dont_need_range_check .
+:- type ptag_case(CaseRep)
+    --->    ptag_case(backend_libs.rtti.sectag_locn, backend_libs.switch_util.stag_goal_map(CaseRep)).
+:- type ptag_case_entry(CaseRep)
+    --->    ptag_case_entry(parse_tree.prog_data.ptag, backend_libs.switch_util.ptag_case(CaseRep)).
+:- type ptag_case_group_entry(CaseRep)
+    --->    ptag_case_group_entry(parse_tree.prog_data.ptag, list.list(parse_tree.prog_data.ptag), backend_libs.switch_util.ptag_case(CaseRep)).
+:- type ptag_case_group_list(CaseRep) == list.list(backend_libs.switch_util.ptag_case_group_entry(CaseRep)).
+:- type ptag_case_list(CaseRep) == list.list(backend_libs.switch_util.ptag_case_entry(CaseRep)).
+:- type ptag_case_map(CaseRep) == map.map(parse_tree.prog_data.ptag, backend_libs.switch_util.ptag_case(CaseRep)).
+:- type ptag_count_map == map.map(parse_tree.prog_data.ptag, pair.pair(backend_libs.rtti.sectag_locn, int)).
+:- type soln_consts(Rval)
+    --->    one_soln(list.list(Rval))
+    ;       several_solns(list.list(Rval), list.list(list.list(Rval))).
+:- type stag_goal_list(CaseRep) == assoc_list.assoc_list(int, CaseRep).
+:- type stag_goal_map(CaseRep) == map.map(int, CaseRep).
+:- type string_hash_slot(CaseRep)
+    --->    string_hash_slot(string, int, CaseRep).
+:- type switch_category
+    --->    atomic_switch 
+    ;       int64_switch 
+    ;       string_switch 
+    ;       tag_switch 
+    ;       float_switch .
+:- type table_size_upgrade
+    --->    keep_first_size 
+    ;       allow_doubling .
+:- type_representation(case_consts_several_llds, is_word_aligned_ptr).
+:- type_representation(case_id_ptags_map, is_eqv_to(map.map(hlds.hlds_goal.case_id, set.set(parse_tree.prog_data.ptag)))).
+:- type_representation(may_use_smart_indexing, du_repn(enum("may_not_use_smart_indexing", "may_use_smart_indexing", [],  no_c_j_cs_e))).
+:- type_representation(need_bit_vec_check, du_repn(enum("need_bit_vec_check", "dont_need_bit_vec_check", [],  no_c_j_cs_e))).
+:- type_representation(need_range_check, du_repn(enum("need_range_check", "dont_need_range_check", [],  no_c_j_cs_e))).
+:- type_representation(ptag_case_group_list(V_1), is_eqv_to(list.list(backend_libs.switch_util.ptag_case_group_entry(V_1)))).
+:- type_representation(ptag_case_list(V_1), is_eqv_to(list.list(backend_libs.switch_util.ptag_case_entry(V_1)))).
+:- type_representation(ptag_case_map(V_1), is_eqv_to(map.map(parse_tree.prog_data.ptag, backend_libs.switch_util.ptag_case(V_1)))).
+:- type_representation(ptag_case_rev_map(V_1), is_eqv_to(map.map(backend_libs.switch_util.ptag_case(V_1), backend_libs.switch_util.ptag_case_rev_map_entry(V_1)))).
+:- type_representation(ptag_count_map, is_eqv_to(map.map(parse_tree.prog_data.ptag, pair.pair(backend_libs.rtti.sectag_locn, int)))).
+:- type_representation(stag_goal_list(V_1), is_eqv_to(assoc_list.assoc_list(int, V_1))).
+:- type_representation(stag_goal_map(V_1), is_eqv_to(map.map(int, V_1))).
+:- type_representation(switch_category, du_repn(enum("atomic_switch", "int64_switch", ["string_switch", "tag_switch", "float_switch"],  no_c_j_cs_e))).
+:- type_representation(table_size_upgrade, du_repn(enum("keep_first_size", "allow_doubling", [],  no_c_j_cs_e))).
