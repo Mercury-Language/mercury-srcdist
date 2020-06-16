@@ -1,0 +1,11 @@
+:- module (check_hlds.mode_comparison).
+:- interface.
+:- type match
+    --->    better 
+    ;       worse 
+    ;       same 
+    ;       incomparable .
+:- type proc_mode
+    --->    proc_mode(hlds.hlds_pred.proc_id, parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_mode)).
+:- type_representation(match, du_repn(enum("better", "worse", ["same", "incomparable"],  no_c_j_cs_e))).
+:- type_representation(proc_mode, is_word_aligned_ptr).

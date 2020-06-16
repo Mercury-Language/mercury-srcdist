@@ -1,0 +1,4 @@
+:- module tree_bitset.
+:- interface.
+:- type tree_bitset(T).
+:- type_representation(tree_bitset(V_1), du_repn(notag("tree_bitset", node_list,  no_c_j_cs_e))).
