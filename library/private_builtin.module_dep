@@ -1,0 +1,13 @@
+module(1, "private_builtin.m",
+	private_builtin,
+	{},
+	{builtin, private_builtin},
+	{builtin, char, float, int, int16, int32, int64, int8, private_builtin, require, string, type_desc, uint, uint16, uint32, uint64, uint8},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - private_builtin, "C#" - private_builtin, "Java" - private_builtin, "Erlang" - private_builtin},
+	no_foreign_export,
+	no_main
+).

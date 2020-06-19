@@ -1,0 +1,7 @@
+foreign_type_visibility.m:013: Error: the definition of the foreign type
+foreign_type_visibility.m:013:   `foreign'/0 must have the same visibility as
+foreign_type_visibility.m:013:   its declaration.
+foreign_type_visibility.m:024: Error: all definitions of the foreign type
+foreign_type_visibility.m:024:   `foreign2'/0 must have the same visibility.
+foreign_type_visibility.m:026: Error: all definitions of the foreign type
+foreign_type_visibility.m:026:   `foreign3'/0 must have the same visibility.

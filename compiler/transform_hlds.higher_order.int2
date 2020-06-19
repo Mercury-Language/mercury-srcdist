@@ -1,0 +1,5 @@
+:- module (transform_hlds.higher_order).
+:- interface.
+:- type_representation(goal_sizes, is_eqv_to(map.map(hlds.hlds_pred.pred_id, int))).
+:- type_representation(known_var_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, transform_hlds.higher_order.known_const))).
+:- type_representation(new_pred_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, set.set(transform_hlds.higher_order.new_pred)))).

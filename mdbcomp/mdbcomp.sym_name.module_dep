@@ -1,0 +1,13 @@
+module(1, "sym_name.m",
+	(mdbcomp.sym_name),
+	{mdbcomp},
+	{builtin, list, private_builtin, set, term},
+	{builtin, int, list, private_builtin, require, set, string, term},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
