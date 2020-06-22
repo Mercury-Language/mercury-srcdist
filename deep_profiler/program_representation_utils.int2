@@ -1,0 +1,18 @@
+:- module program_representation_utils.
+:- interface.
+:- use_module unit.
+:- type atomic_goal_is_call
+    --->    atomic_goal_is_call(list.list(mdbcomp.program_representation.var_rep))
+    ;       atomic_goal_is_trivial .
+:- type inst_map.
+:- type inst_map_delta.
+:- type print_goal_info(Key, GoalAnn)
+    --->    print_goal_info((program_representation_utils.pgi_lookup_annotation) :: ((func Key) = GoalAnn), (program_representation_utils.pgi_var_name_table) :: mdbcomp.program_representation.var_name_table).
+:- type seen_duplicate_instantiation
+    --->    seen_duplicate_instantiation 
+    ;       have_not_seen_duplicate_instantiation .
+:- typeclass goal_annotation(T).
+:- instance (program_representation_utils.goal_annotation(unit.unit)).
+:- type_representation(inst_map, is_word_aligned_ptr).
+:- type_representation(inst_map_delta, du_repn(notag("inst_map_delta", set.set(mdbcomp.program_representation.var_rep),  no_c_j_cs_e))).
+:- type_representation(seen_duplicate_instantiation, du_repn(enum("seen_duplicate_instantiation", "have_not_seen_duplicate_instantiation", [],  no_c_j_cs_e))).

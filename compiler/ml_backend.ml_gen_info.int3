@@ -1,0 +1,57 @@
+:- module (ml_backend.ml_gen_info).
+:- interface.
+:- type bitfield.
+:- type bitfield_value.
+:- type cond_seq.
+:- type conv_seq.
+:- type filled_bitfield.
+:- type filled_packed_word.
+:- type in_scc_info.
+:- type in_scc_map.
+:- type label_num.
+:- type maybe_in_tscc_target_info.
+:- type ml_const_struct_map.
+:- type ml_gen_info.
+:- type ml_gen_tscc_info.
+:- type ml_ground_term.
+:- type ml_ground_term_map.
+:- type nontail_rec_call.
+:- type nontail_rec_call_warn_status
+	where	type_is_abstract_enum(1).
+:- type packed_word.
+:- type packed_word_instance.
+:- type packed_word_map.
+:- type success_cont.
+:- type tail_rec_info.
+:- type tail_rec_loop_kind
+	where	type_is_abstract_enum(1).
+:- type target_of_mutual_tail_rec_call
+	where	type_is_abstract_enum(1).
+:- type target_of_self_tail_rec_call
+	where	type_is_abstract_enum(1).
+:- type tscc_kind
+	where	type_is_abstract_enum(1).
+:- type_representation(bitfield, is_word_aligned_ptr).
+:- type_representation(cond_seq, du_repn(notag("cond_seq", int,  no_c_j_cs_e))).
+:- type_representation(conv_seq, du_repn(notag("conv_seq", int,  no_c_j_cs_e))).
+:- type_representation(filled_bitfield, is_word_aligned_ptr).
+:- type_representation(filled_packed_word, is_eqv_to(one_or_more(ml_backend.ml_gen_info.filled_bitfield))).
+:- type_representation(in_scc_info, is_word_aligned_ptr).
+:- type_representation(in_scc_map, is_eqv_to(map(pred_proc_id, ml_backend.ml_gen_info.in_scc_info))).
+:- type_representation(label_num, is_eqv_to(int)).
+:- type_representation(ml_const_struct_map, is_eqv_to(map(int, ml_backend.ml_gen_info.ml_ground_term))).
+:- type_representation(ml_gen_info, is_word_aligned_ptr).
+:- type_representation(ml_gen_tscc_info, is_word_aligned_ptr).
+:- type_representation(ml_ground_term, is_word_aligned_ptr).
+:- type_representation(ml_ground_term_map, is_eqv_to(map(prog_var, ml_backend.ml_gen_info.ml_ground_term))).
+:- type_representation(nontail_rec_call, is_word_aligned_ptr).
+:- type_representation(nontail_rec_call_warn_status, du_repn(enum("nontail_rec_call_warn_disabled", "nontail_rec_call_warn_enabled", [],  no_c_j_cs_e))).
+:- type_representation(packed_word, is_eqv_to(one_or_more(ml_backend.ml_gen_info.bitfield))).
+:- type_representation(packed_word_instance, is_word_aligned_ptr).
+:- type_representation(packed_word_map, is_eqv_to(map(ml_backend.ml_gen_info.packed_word, one_or_more(ml_backend.ml_gen_info.packed_word_instance)))).
+:- type_representation(success_cont, is_word_aligned_ptr).
+:- type_representation(tail_rec_info, is_word_aligned_ptr).
+:- type_representation(tail_rec_loop_kind, du_repn(enum("tail_rec_loop_while_continue", "tail_rec_loop_label_goto", [],  no_c_j_cs_e))).
+:- type_representation(target_of_mutual_tail_rec_call, du_repn(enum("is_not_target_of_mutual_trcall", "is_target_of_mutual_trcall", [],  no_c_j_cs_e))).
+:- type_representation(target_of_self_tail_rec_call, du_repn(enum("is_not_target_of_self_trcall", "is_target_of_self_trcall", [],  no_c_j_cs_e))).
+:- type_representation(tscc_kind, du_repn(enum("tscc_self_rec_only", "tscc_self_and_mutual_rec", [],  no_c_j_cs_e))).

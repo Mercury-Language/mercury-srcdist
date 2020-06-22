@@ -1,0 +1,15 @@
+:- module (erl_backend.erl_call_gen).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (erl_backend.elds).
+:- use_module (erl_backend.erl_code_util).
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- inst (ground_class_method) for (hlds.hlds_goal).generic_call/0 == bound(class_method(ground, ground, ground, ground)).
+:- inst (ground_higher_order) for (hlds.hlds_goal).generic_call/0 == bound(higher_order(ground, ground, ground, ground)).

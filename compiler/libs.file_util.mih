@@ -1,0 +1,197 @@
+/*
+** Automatically generated from `file_util.m'
+** by the Mercury compiler,
+** version rotd-2020-06-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.file_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__file_util
+#define MR_HEADER_GUARD_libs__file_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__FILE_UTIL_DECL_GUARD
+#define LIBS__FILE_UTIL_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__file_util__libs__file_util__type_ctor_info_dir_name_0;
+
+extern const MR_TypeCtorInfo_Struct libs__file_util__libs__file_util__type_ctor_info_file_name_0;
+
+extern const MR_TypeCtorInfo_Struct libs__file_util__libs__file_util__type_ctor_info_path_name_and_stream_0;
+
+void MR_CALL 
+libs__file_util__get_install_name_option_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+libs__file_util__maybe_flush_output_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__file_util__maybe_report_stats_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__file_util__maybe_write_string_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+libs__file_util__open_temp_input_4_p_0(
+  MR_Word * param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__file_util__open_temp_output_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__file_util__open_temp_output_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__file_util__output_to_file_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__file_util__report_error_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+libs__file_util__report_error_to_stream_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+libs__file_util__search_for_file_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__search_for_file_and_stream_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__search_for_file_mod_time_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__search_for_file_returning_dir_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__search_for_file_returning_dir_and_stream_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__write_include_file_contents_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__file_util__write_include_file_contents_cur_stream_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_String MR_CALL 
+libs__file_util__make_install_dir_command_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+libs__file_util__make_install_file_command_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__file_util____Compare____dir_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__file_util____Compare____file_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__file_util____Compare____path_name_and_stream_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__file_util____Unify____dir_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+libs__file_util____Unify____file_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+libs__file_util____Unify____path_name_and_stream_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__file_util__init(void);
+void mercury__libs__file_util__init_type_tables(void);
+void mercury__libs__file_util__init_debugger(void);
+const char *mercury__libs__file_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.file_util
+
+// :- end_interface libs.file_util.
