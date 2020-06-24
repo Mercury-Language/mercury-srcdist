@@ -1,0 +1,100 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- type actual_severity
+    --->    actual_severity_error 
+    ;       actual_severity_warning 
+    ;       actual_severity_informational .
+:- type error_msg
+    --->    simplest_msg(((parse_tree.error_util).simplest_context) :: parse_tree.prog_data.prog_context, ((parse_tree.error_util).simple_pieces) :: list.list(parse_tree.error_util.format_component))
+    ;       simple_msg(((parse_tree.error_util).simple_context) :: parse_tree.prog_data.prog_context, ((parse_tree.error_util).simple_components) :: list.list(parse_tree.error_util.error_msg_component))
+    ;       error_msg(((parse_tree.error_util).error_context) :: maybe.maybe(parse_tree.prog_data.prog_context), ((parse_tree.error_util).error_treat_as_first) :: parse_tree.error_util.maybe_treat_as_first, ((parse_tree.error_util).error_extra_indent) :: int, ((parse_tree.error_util).error_components) :: list.list(parse_tree.error_util.error_msg_component)).
+:- type error_msg_component
+    --->    always(list.list(parse_tree.error_util.format_component))
+    ;       option_is_set(libs.options.option, bool.bool, list.list(parse_tree.error_util.error_msg_component))
+    ;       verbose_only(parse_tree.error_util.verbose_always_or_once, list.list(parse_tree.error_util.format_component))
+    ;       verbose_and_nonverbose(list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.format_component))
+    ;       some [T] (print_anything(T) => ((parse_tree.error_util).print_anything(T))).
+:- type error_phase
+    --->    phase_options 
+    ;       phase_read_files 
+    ;       phase_module_name 
+    ;       phase_term_to_parse_tree 
+    ;       phase_parse_tree_to_hlds 
+    ;       phase_expand_types 
+    ;       phase_type_check 
+    ;       phase_inst_check 
+    ;       phase_polymorphism 
+    ;       phase_mode_check(parse_tree.error_util.mode_report_control)
+    ;       phase_purity_check 
+    ;       phase_detism_check 
+    ;       phase_oisu_check 
+    ;       phase_simplify(parse_tree.error_util.mode_report_control)
+    ;       phase_style 
+    ;       phase_dead_code 
+    ;       phase_termination_analysis 
+    ;       phase_accumulator_intro 
+    ;       phase_auto_parallelism 
+    ;       phase_interface_gen 
+    ;       phase_code_gen .
+:- type error_severity
+    --->    severity_error 
+    ;       severity_warning 
+    ;       severity_informational 
+    ;       severity_conditional(((parse_tree.error_util).cond_option) :: libs.options.option, ((parse_tree.error_util).cond_option_value) :: bool.bool, ((parse_tree.error_util).cond_if_match) :: parse_tree.error_util.error_severity, ((parse_tree.error_util).cond_if_no_match) :: maybe.maybe(parse_tree.error_util.error_severity)).
+:- type error_spec
+    --->    error_spec(((parse_tree.error_util).error_id) :: string, ((parse_tree.error_util).error_severity) :: parse_tree.error_util.error_severity, ((parse_tree.error_util).error_phase) :: parse_tree.error_util.error_phase, ((parse_tree.error_util).error_msgs) :: list.list(parse_tree.error_util.error_msg))
+    ;       simplest_spec(((parse_tree.error_util).simp_id) :: string, ((parse_tree.error_util).simp_spec_severity) :: parse_tree.error_util.error_severity, ((parse_tree.error_util).simp_spec_phase) :: parse_tree.error_util.error_phase, ((parse_tree.error_util).simp_spec_context) :: parse_tree.prog_data.prog_context, ((parse_tree.error_util).simp_spec_pieces) :: list.list(parse_tree.error_util.format_component))
+    ;       conditional_spec(((parse_tree.error_util).cond_id) :: string, ((parse_tree.error_util).cond_spec_option) :: libs.options.option, ((parse_tree.error_util).cond_spec_value) :: bool.bool, ((parse_tree.error_util).cond_spec_severity) :: parse_tree.error_util.error_severity, ((parse_tree.error_util).cond_spec_phase) :: parse_tree.error_util.error_phase, ((parse_tree.error_util).cond_spec_msgs) :: list.list(parse_tree.error_util.error_msg)).
+:- type error_spec_accumulator.
+:- type format_component
+    --->    invis_order_default_start(int)
+    ;       fixed(string)
+    ;       quote(string)
+    ;       int_fixed(int)
+    ;       nth_fixed(int)
+    ;       lower_case_next_if_not_first 
+    ;       prefix(string)
+    ;       suffix(string)
+    ;       words(string)
+    ;       words_quote(string)
+    ;       qual_sym_name(mdbcomp.sym_name.sym_name)
+    ;       unqual_sym_name(mdbcomp.sym_name.sym_name)
+    ;       qual_sym_name_arity(parse_tree.prog_data.sym_name_arity)
+    ;       unqual_sym_name_arity(parse_tree.prog_data.sym_name_arity)
+    ;       qual_pf_sym_name_orig_arity(parse_tree.prog_data.pf_sym_name_arity)
+    ;       unqual_pf_sym_name_orig_arity(parse_tree.prog_data.pf_sym_name_arity)
+    ;       qual_type_ctor(parse_tree.prog_data.type_ctor)
+    ;       unqual_type_ctor(parse_tree.prog_data.type_ctor)
+    ;       qual_cons_id_and_maybe_arity(parse_tree.prog_data.cons_id)
+    ;       unqual_cons_id_and_maybe_arity(parse_tree.prog_data.cons_id)
+    ;       qual_top_ctor_of_type(parse_tree.prog_data.mer_type)
+    ;       p_or_f(mdbcomp.prim_data.pred_or_func)
+    ;       decl(string)
+    ;       pragma_decl(string)
+    ;       nl 
+    ;       nl_indent_delta(int)
+    ;       blank_line 
+    ;       invis_order_default_end(int).
+:- type maybe_error_specs(T)
+    --->    ok_no_spec(T)
+    ;       error_specs(parse_tree.error_util.error_spec, list.list(parse_tree.error_util.error_spec)).
+:- type maybe_treat_as_first
+    --->    treat_as_first 
+    ;       do_not_treat_as_first .
+:- type mode_report_control
+    --->    report_in_any_mode 
+    ;       report_only_if_in_all_modes .
+:- type verbose_always_or_once
+    --->    verbose_always 
+    ;       verbose_once .
+:- type warning_spec == parse_tree.error_util.error_spec.
+:- typeclass print_anything(T).
+:- type_representation(actual_severity, du_repn(enum("actual_severity_error", "actual_severity_warning", ["actual_severity_informational"],  no_c_j_cs_e))).
+:- type_representation(already_printed_verbose, is_eqv_to(set.set(list.list(parse_tree.error_util.format_component)))).
+:- type_representation(error_spec_accumulator, is_eqv_to(maybe.maybe(pair.pair(set.set(parse_tree.error_util.error_spec))))).
+:- type_representation(maybe_treat_as_first, du_repn(enum("treat_as_first", "do_not_treat_as_first", [],  no_c_j_cs_e))).
+:- type_representation(mode_report_control, du_repn(enum("report_in_any_mode", "report_only_if_in_all_modes", [],  no_c_j_cs_e))).
+:- type_representation(verbose_always_or_once, du_repn(enum("verbose_always", "verbose_once", [],  no_c_j_cs_e))).
+:- type_representation(warning_spec, is_eqv_to(parse_tree.error_util.error_spec)).
+:- implementation.
+:- type error_spec_accumulator == maybe.maybe(pair.pair(set.set(parse_tree.error_util.error_spec))).
