@@ -1,0 +1,4 @@
+:- module (libs.uint_emu).
+:- interface.
+:- type bits_per_uint.
+:- type_representation(bits_per_uint, du_repn(notag("bits_per_uint", int,  no_c_j_cs_e))).

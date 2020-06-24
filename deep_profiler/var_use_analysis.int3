@@ -1,0 +1,11 @@
+:- module var_use_analysis.
+:- interface.
+:- type intermodule_var_use.
+:- type var_use_info.
+:- type var_use_options.
+:- type var_use_type
+	where	type_is_abstract_enum(2).
+:- type_representation(recursive_calls_list, is_eqv_to(assoc_list(forward_goal_path, float))).
+:- type_representation(var_use_info, is_word_aligned_ptr).
+:- type_representation(var_use_options, is_word_aligned_ptr).
+:- type_representation(var_use_type, du_repn(enum("var_use_production", "var_use_consumption", ["var_use_other"],  no_c_j_cs_e))).

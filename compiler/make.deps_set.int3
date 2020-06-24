@@ -1,0 +1,15 @@
+:- module (make.deps_set).
+:- interface.
+:- import_module bool.
+:- import_module enum.
+:- import_module io.
+:- import_module set.
+:- import_module sparse_bitset.
+:- type dependency_file_index.
+:- type deps_set(T).
+:- type module_index.
+:- instance (enum(make.deps_set.dependency_file_index)).
+:- instance (enum(make.deps_set.module_index)).
+:- type_representation(dependency_file_index, du_repn(notag("dependency_file_index", int,  no_c_j_cs_e))).
+:- type_representation(deps_set(V_1), is_eqv_to(sparse_bitset(V_1))).
+:- type_representation(module_index, du_repn(notag("module_index", int,  no_c_j_cs_e))).
