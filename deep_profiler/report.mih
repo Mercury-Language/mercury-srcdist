@@ -1,0 +1,808 @@
+/*
+** Automatically generated from `report.m'
+** by the Mercury compiler,
+** version rotd-2020-06-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module report.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_report
+#define MR_HEADER_GUARD_report
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef REPORT_DECL_GUARD
+#define REPORT_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_ancestor_desc_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_desc_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_dynamic_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_dynamic_var_use_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_perf_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_static_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_callers_counts_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_call_site_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_desc_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_proc_dynamic_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_proc_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_recursion_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_data_struct_name_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_deep_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_field_name_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_getter_or_setter_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_ds_map_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_ds_map_1;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_info_2;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_map_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_map_1;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_inheritable_perf_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_maybe_have_module_rep_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_menu_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_message_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_active_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_getter_setters_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_is_active_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_rep_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_normal_callee_id_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_perf_row_data_1;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_active_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_callers_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_callers_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_desc_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_dynamic_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_is_active_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_static_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_procrep_coverage_info_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_program_modules_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_level_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_freq_data_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_histogram_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_proc_freq_data_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_simple_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_types_frequency_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_report_ordering_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_top_procs_report_0;
+
+extern const MR_TypeCtorInfo_Struct report__report__type_ctor_info_var_use_and_name_0;
+
+void MR_CALL 
+report__add_call_site_report_to_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+report__proc_label_from_proc_desc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+report____Compare____ancestor_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____call_site_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____call_site_dynamic_dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____call_site_dynamic_var_use_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____call_site_perf_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____call_site_static_dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____callers_counts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_call_site_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_proc_dynamic_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_proc_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_recursion_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____clique_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____data_struct_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____deep_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____field_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____getter_or_setter_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____gs_ds_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____gs_ds_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+report____Compare____gs_field_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____gs_field_info_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+report____Compare____gs_field_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____gs_field_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+report____Compare____inheritable_perf_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____maybe_have_module_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____menu_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____message_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____module_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____module_getter_setters_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____module_is_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____module_rep_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____module_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____normal_callee_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____perf_row_data_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+report____Compare____proc_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_callers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_callers_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_dynamic_dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_is_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____proc_static_dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____procrep_coverage_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____program_modules_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_level_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_freq_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_histogram_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_proc_freq_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_proc_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_type_simple_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____recursion_types_frequency_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____report_ordering_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____top_procs_report_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Compare____var_use_and_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+report____Index____deep_report_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+report____Unify____ancestor_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____call_site_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____call_site_dynamic_dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____call_site_dynamic_var_use_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____call_site_perf_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____call_site_static_dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____callers_counts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_call_site_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_proc_dynamic_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_proc_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_recursion_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____clique_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____data_struct_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____deep_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____field_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____getter_or_setter_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____gs_ds_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____gs_ds_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+report____Unify____gs_field_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____gs_field_info_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+report____Unify____gs_field_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____gs_field_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+report____Unify____inheritable_perf_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____maybe_have_module_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____menu_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____message_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____module_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____module_getter_setters_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____module_is_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____module_rep_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____module_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____normal_callee_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____perf_row_data_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+report____Unify____proc_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_callers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_callers_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_dynamic_dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_is_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____proc_static_dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____procrep_coverage_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____program_modules_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_level_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_freq_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_histogram_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_proc_freq_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_proc_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_simple_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____recursion_types_frequency_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____report_ordering_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____top_procs_report_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+report____Unify____var_use_and_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__report__init(void);
+void mercury__report__init_type_tables(void);
+void mercury__report__init_debugger(void);
+const char *mercury__report__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_report
+
+// :- end_interface report.

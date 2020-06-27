@@ -1,0 +1,9 @@
+:- module (transform_hlds.exception_analysis).
+:- interface.
+:- use_module analysis.
+:- type exception_analysis_answer.
+:- instance (analysis.analysis(analysis.no_func_info, analysis.any_call, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.answer_pattern(analysis.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.partial_order(analysis.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.to_term(transform_hlds.exception_analysis.exception_analysis_answer)).
+:- type_representation(exception_analysis_answer, du_repn(notag("exception_analysis_answer", parse_tree.prog_data_pragma.exception_status,  no_c_j_cs_e))).

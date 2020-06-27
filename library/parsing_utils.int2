@@ -1,0 +1,23 @@
+:- module parsing_utils.
+:- interface.
+:- use_module unit.
+:- type line_numbers.
+:- type parse_result(T)
+    --->    ok(T)
+    ;       error((parsing_utils.error_message) :: maybe.maybe(string), (parsing_utils.error_line) :: int, (parsing_utils.error_col) :: int).
+:- type parser(T) == pred(parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- type parser_with_state(T, S) == pred(parsing_utils.src, T, S, S, parsing_utils.ps, parsing_utils.ps).
+:- type ps.
+:- type skip_whitespace_pred == parsing_utils.parser(unit.unit).
+:- type src.
+:- inst (parser) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- inst (parser_with_state) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- type_representation(line_numbers, is_eqv_to(array.array(int))).
+:- type_representation(parser(V_1), is_eqv_to(pred(parsing_utils.src, V_1, parsing_utils.ps, parsing_utils.ps))).
+:- type_representation(parser_with_state(V_1, V_2), is_eqv_to(pred(parsing_utils.src, V_1, V_2, V_2, parsing_utils.ps, parsing_utils.ps))).
+:- type_representation(ps, is_eqv_to(int)).
+:- type_representation(skip_whitespace_pred, is_eqv_to(parsing_utils.parser(unit.unit))).
+:- type_representation(src, is_word_aligned_ptr).
+:- implementation.
+:- type line_numbers == array.array(int).
+:- type ps == int.
