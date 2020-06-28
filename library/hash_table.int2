@@ -1,0 +1,17 @@
+:- module hash_table.
+:- interface.
+:- use_module array.
+:- use_module assoc_list.
+:- use_module char.
+:- type hash_bucket(K, V).
+:- type hash_pred(K) == pred(K, int).
+:- type hash_table(K, V).
+:- type hash_table(K, V)
+    --->    ht((hash_table.num_occupants) :: int, (hash_table.max_occupants) :: int, (hash_table.hash_pred) :: hash_table.hash_pred(K), (hash_table.buckets) :: array.array(hash_table.hash_bucket(K, V))).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out)) is det).
+:- inst (hash_table) for hash_table.hash_table/2 == bound(ht(ground, ground, (hash_table.hash_pred), (array.array))).
+:- mode (hash_table_di) == builtin.di((hash_table.hash_table)).
+:- mode (hash_table_ui) == builtin.in((hash_table.hash_table)).
+:- mode (hash_table_uo) == builtin.out((hash_table.hash_table)).
+:- type_representation(hash_bucket_array(V_1, V_2), is_eqv_to(array.array(hash_table.hash_bucket(V_1, V_2)))).
+:- type_representation(hash_pred(V_1), is_eqv_to(pred(V_1, int))).

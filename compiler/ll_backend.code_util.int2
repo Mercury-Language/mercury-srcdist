@@ -1,0 +1,7 @@
+:- module (ll_backend.code_util).
+:- interface.
+:- use_module maybe.
+:- use_module pair.
+:- use_module (hlds.hlds_pred).
+:- type immed == maybe.maybe(pair.pair(int, hlds.hlds_pred.pred_proc_id)).
+:- type_representation(immed, is_eqv_to(maybe.maybe(pair.pair(int, hlds.hlds_pred.pred_proc_id)))).
