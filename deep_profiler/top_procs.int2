@@ -1,0 +1,6 @@
+:- module top_procs.
+:- interface.
+:- type line_group(FL, LL)
+    --->    line_group((top_procs.group_filename) :: string, (top_procs.group_linenumber) :: int, (top_procs.group_name) :: string, (top_procs.group_own) :: measurements.own_prof_info, (top_procs.group_desc) :: measurements.inherit_prof_info, (top_procs.group_first_line_id) :: string, (top_procs.group_later_lines) :: LL).
+:- type_representation(compare_line_groups_func(V_1, V_2), is_eqv_to((func(top_procs.line_group(V_1, V_2), top_procs.line_group(V_1, V_2)) = builtin.comparison_result))).
+:- type_representation(compare_proc_statics, is_eqv_to((func(profile.deep, int, int) = builtin.comparison_result))).
