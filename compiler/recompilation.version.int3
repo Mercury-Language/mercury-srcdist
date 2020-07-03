@@ -1,0 +1,6 @@
+:- module (recompilation.version).
+:- interface.
+:- type_representation(gathered_item_map, is_eqv_to(map(pair(string, arity), assoc_list(module_section, item)))).
+:- type_representation(gathered_items, is_eqv_to(item_id_set(gathered_item_map))).
+:- type_representation(instance_item_map, is_eqv_to(map(item_name, assoc_list(module_section, item)))).
+:- type_representation(maybe_pred_or_func_id, is_eqv_to(pair(maybe(pred_or_func), sym_name_arity))).

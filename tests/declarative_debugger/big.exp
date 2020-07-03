@@ -1,0 +1,189 @@
+      E1:     C1 CALL pred big.main/2-0 (det) big.m:17
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> break p
+ 0: + stop  interface pred big.p/1-0 (nondet)
+mdb> continue
+      E2:     C2 CALL pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+      E3:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+p(-12)
+Valid? no
+a(0)
+Valid? yes
+b(0, 0)
+Valid? yes
+c(0, 2)
+Valid? yes
+Call d(2, _)
+Unsatisfiable? yes
+c(2, 6)
+Valid? yes
+f(6, -12)
+Valid? yes
+Found incorrect contour:
+a(0)
+b(0, 0)
+c(0, 2)
+c(2, 6)
+f(6, -12)
+p(-12)
+Is this a bug? yes
+      E3:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+      E4:     C2 REDO pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+      E5:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+p(-14)
+Valid? no
+c(2, 7)
+Valid? yes
+f(7, -14)
+Valid? yes
+Found incorrect contour:
+a(0)
+b(0, 0)
+c(0, 2)
+c(2, 7)
+f(7, -14)
+p(-14)
+Is this a bug? yes
+      E5:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+      E6:     C2 REDO pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+      E7:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+p(-20)
+Valid? no
+b(0, 1)
+Valid? yes
+c(1, 15)
+Valid? yes
+d(15, 45)
+Valid? yes
+>(45, 5)
+Valid? yes
+Call c(1, _)
+Solutions:
+	c(1, 15)
+Complete? yes
+e(1, 10)
+Valid? yes
+f(10, -20)
+Valid? yes
+Found incorrect contour:
+a(0)
+b(0, 1)
+e(1, 10)
+f(10, -20)
+p(-20)
+Is this a bug? yes
+      E7:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+      E8:     C2 REDO pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+      E9:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+p(-22)
+Valid? no
+e(1, 11)
+Valid? yes
+f(11, -22)
+Valid? yes
+Found incorrect contour:
+a(0)
+b(0, 1)
+e(1, 11)
+f(11, -22)
+p(-22)
+Is this a bug? yes
+      E9:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+     E10:     C2 REDO pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+     E11:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+p(2)
+Valid? no
+f(0, 0)
+Valid? yes
+g(1, -1)
+Valid? yes
+f(-1, 2)
+Valid? yes
+g(6, -10)
+Valid? yes
+Call >(-10, 0)
+Unsatisfiable? yes
+g(7, -11)
+Valid? yes
+Call >(-11, 0)
+Unsatisfiable? yes
+Call c(2, _)
+Solutions:
+	c(2, 6)
+	c(2, 7)
+Complete? yes
+Found incorrect contour:
+a(0)
+f(0, 0)
+b(0, 0)
+g(1, -1)
+f(-1, 2)
+p(2)
+Is this a bug? yes
+     E11:     C2 EXIT pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+     E12:     C2 REDO pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> finish
+     E13:     C2 FAIL pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> dd -d 3 -n 7
+Call p(_)
+Solutions:
+	p(-12)
+	p(-14)
+	p(-20)
+	p(-22)
+	p(2)
+Complete? no
+c(0, 3)
+Valid? yes
+d(3, 9)
+Valid? yes
+>(9, 5)
+Valid? yes
+Call c(0, _)
+Solutions:
+	c(0, 2)
+	c(0, 3)
+Complete? yes
+Call e(1, _)
+Solutions:
+	e(1, 10)
+	e(1, 11)
+Complete? yes
+Call b(0, _)
+Solutions:
+	b(0, 0)
+	b(0, 1)
+Complete? yes
+g(10, -2)
+Valid? yes
+f(-2, 4)
+Valid? yes
+c(4, 9)
+Valid? yes
+g(9, 99)
+Valid? yes
+>(99, 0)
+Valid? yes
+Found partially uncovered atom:
+p(_)
+Is this a bug? yes
+     E13:     C2 FAIL pred big.p/1-0 (nondet) big.m:30 (big.m:19)
+mdb> continue
+no.
