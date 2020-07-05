@@ -1,0 +1,16 @@
+:- module (mdb.cterm).
+:- interface.
+:- type cargs.
+:- type cterm.
+:- type_representation(cargs, du_repn(direct_dummy("cargs",  c_j_cs_e(foreign_type("MR_CArgs", [can_pass_as_mercury_type]
+), no_foreign, no_foreign, no_foreign)))).
+:- type_representation(cterm, du_repn(direct_dummy("cterm",  c_j_cs_e(foreign_type("MR_CTerm", [can_pass_as_mercury_type]
+), no_foreign, no_foreign, no_foreign)))).
+:- implementation.
+:- pragma foreign_import_module("C", (mdb.cterm)).
+:- type cargs
+    --->    cargs .
+:- pragma foreign_type(c, cargs, "MR_CArgs", [can_pass_as_mercury_type]).
+:- type cterm
+    --->    cterm .
+:- pragma foreign_type(c, cterm, "MR_CTerm", [can_pass_as_mercury_type]).

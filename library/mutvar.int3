@@ -1,0 +1,7 @@
+:- module mutvar.
+:- interface.
+:- type mutvar(T).
+:- type_representation(mutvar(V_1), du_repn(notag("mutvar", private_builtin.ref(V_1),  c_j_cs_e(no_foreign, foreign_type("mutvar.Mutvar", []
+), foreign_type("object[]", []
+), foreign_type("", []
+))))).
