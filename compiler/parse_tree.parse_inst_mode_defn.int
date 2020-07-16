@@ -1,0 +1,18 @@
+:- module (parse_tree.parse_inst_mode_defn).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.parse_types).
+:- use_module (parse_tree.prog_data).
+:- pred parse_abstract_inst_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_abstract_inst_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_abstract_mode_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_abstract_mode_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_inst_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_inst_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_mode_defn(mdbcomp.sym_name.module_name, varset.varset, term.term, term.term, parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_mode_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

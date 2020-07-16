@@ -1,0 +1,7 @@
+:- module (ll_backend.var_locn).
+:- interface.
+:- type var_locn_info.
+:- type_representation(dummy_map, is_eqv_to(map(prog_var, is_dummy_type))).
+:- type_representation(loc_var_map, is_eqv_to(map(lval, set_of_progvar))).
+:- type_representation(var_locn_info, is_word_aligned_ptr).
+:- type_representation(var_state_map, is_eqv_to(map(prog_var, var_state))).

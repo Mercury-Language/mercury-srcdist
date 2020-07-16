@@ -1,0 +1,39 @@
+:- module display.
+:- interface.
+:- type attr_string.
+:- type deep_link.
+:- type display.
+:- type display_item.
+:- type link_class
+	where	type_is_abstract_enum(1).
+:- type list_class
+	where	type_is_abstract_enum(2).
+:- type pseudo_link.
+:- type str_attr
+	where	type_is_abstract_enum(2).
+:- type table.
+:- type table_cell.
+:- type table_class
+	where	type_is_abstract_enum(2).
+:- type table_column_class
+	where	type_is_abstract_enum(4).
+:- type table_column_colour
+	where	type_is_abstract_enum(2).
+:- type table_data.
+:- type table_header.
+:- type table_header_group.
+:- type table_header_group_columns.
+:- type table_row.
+:- type_representation(attr_string, is_word_aligned_ptr).
+:- type_representation(deep_link, is_word_aligned_ptr).
+:- type_representation(display, is_word_aligned_ptr).
+:- type_representation(link_class, du_repn(enum("link_class_link", "link_class_control", [],  no_c_j_cs_e))).
+:- type_representation(list_class, du_repn(enum("list_class_vertical_no_bullets", "list_class_vertical_bullets", ["list_class_horizontal", "list_class_horizontal_except_title"],  no_c_j_cs_e))).
+:- type_representation(pseudo_link, is_word_aligned_ptr).
+:- type_representation(str_attr, du_repn(enum("attr_bold", "attr_italic", ["attr_underline"],  no_c_j_cs_e))).
+:- type_representation(table, is_word_aligned_ptr).
+:- type_representation(table_class, du_repn(enum("table_class_do_not_box", "table_class_box", ["table_class_box_if_pref"],  no_c_j_cs_e))).
+:- type_representation(table_column_class, du_repn(enum("table_column_class_allocations", "table_column_class_callseqs", ["table_column_class_clique", "table_column_class_field_name", "table_column_class_memory", "table_column_class_module_name", "table_column_class_no_class", "table_column_class_number", "table_column_class_ordinal_rank", "table_column_class_port_counts", "table_column_class_proc", "table_column_class_source_context", "table_column_class_ticks_and_times"],  no_c_j_cs_e))).
+:- type_representation(table_column_colour, du_repn(enum("column_do_not_colour", "column_colour", ["column_colour_if_pref"],  no_c_j_cs_e))).
+:- type_representation(table_header, du_repn(notag("table_header", list(table_header_group),  no_c_j_cs_e))).
+:- type_representation(table_header_group, is_word_aligned_ptr).
