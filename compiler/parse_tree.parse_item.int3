@@ -1,0 +1,6 @@
+:- module (parse_tree.parse_item).
+:- interface.
+:- type decl_in_class
+	where	type_is_abstract_enum(1).
+:- type var_term_kind.
+:- type_representation(decl_in_class, du_repn(enum("decl_is_in_class", "decl_is_not_in_class", [],  no_c_j_cs_e))).

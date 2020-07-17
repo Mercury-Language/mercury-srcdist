@@ -1,0 +1,30 @@
+:- module (hlds.hlds_promise).
+:- interface.
+:- use_module list.
+:- use_module (hlds.hlds_pred).
+:- type assert_id.
+:- type assertion_table.
+:- type exclusive_id == hlds.hlds_pred.pred_id.
+:- type exclusive_ids == list.list(hlds.hlds_pred.pred_id).
+:- type exclusive_table.
+:- pred assertion_table_add_assertion(hlds.hlds_pred.pred_id, hlds.hlds_promise.assert_id, hlds.hlds_promise.assertion_table, hlds.hlds_promise.assertion_table).
+:- mode assertion_table_add_assertion((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred assertion_table_init(hlds.hlds_promise.assertion_table).
+:- mode assertion_table_init((builtin.out)) is det.
+:- pred assertion_table_lookup(hlds.hlds_promise.assertion_table, hlds.hlds_promise.assert_id, hlds.hlds_pred.pred_id).
+:- mode assertion_table_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred assertion_table_pred_ids(hlds.hlds_promise.assertion_table, list.list(hlds.hlds_pred.pred_id)).
+:- mode assertion_table_pred_ids((builtin.in), (builtin.out)) is det.
+:- pred exclusive_table_add(hlds.hlds_pred.pred_id, hlds.hlds_promise.exclusive_id, hlds.hlds_promise.exclusive_table, hlds.hlds_promise.exclusive_table).
+:- mode exclusive_table_add((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred exclusive_table_init(hlds.hlds_promise.exclusive_table).
+:- mode exclusive_table_init((builtin.out)) is det.
+:- pred exclusive_table_lookup(hlds.hlds_promise.exclusive_table, hlds.hlds_pred.pred_id, hlds.hlds_promise.exclusive_ids).
+:- mode exclusive_table_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred exclusive_table_optimize(hlds.hlds_promise.exclusive_table, hlds.hlds_promise.exclusive_table).
+:- mode exclusive_table_optimize((builtin.in), (builtin.out)) is det.
+:- pred exclusive_table_search(hlds.hlds_promise.exclusive_table, hlds.hlds_pred.pred_id, hlds.hlds_promise.exclusive_ids).
+:- mode exclusive_table_search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- implementation.
+:- use_module multi_map.
+:- type exclusive_table == multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_promise.exclusive_id).
