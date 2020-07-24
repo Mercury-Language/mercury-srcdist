@@ -1,0 +1,52 @@
+:- module bt_array.
+:- interface.
+:- use_module list.
+:- type bt_array(T).
+:- pred bounds(bt_array.bt_array(_T), int, int).
+:- mode bounds((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred bsearch(bt_array.bt_array(T), T, builtin.comparison_pred(T), int).
+:- mode bsearch((builtin.in), (builtin.in), builtin.in((builtin.comparison_pred)), (builtin.out)) is semidet.
+:- func elem(int, bt_array.bt_array(T)) = T.
+:- func 'elem :='(int, bt_array.bt_array(T), T) = bt_array.bt_array(T).
+:- pred fetch_items(bt_array.bt_array(T), int, int, list.list(T)).
+:- mode fetch_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func fetch_items(bt_array.bt_array(T), int, int) = list.list(T).
+:- pred from_list(int, list.list(T), bt_array.bt_array(T)).
+:- mode from_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func from_list(int, list.list(T)) = bt_array.bt_array(T).
+:- pred in_bounds(bt_array.bt_array(_T), int).
+:- mode in_bounds((builtin.in), (builtin.in)) is semidet.
+:- pred init(int, int, T, bt_array.bt_array(T)).
+:- mode init((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func init(int, int, T) = bt_array.bt_array(T).
+:- pred lookup(bt_array.bt_array(T), int, T).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup(bt_array.bt_array(T), int) = T.
+:- pred make_empty_array(int, bt_array.bt_array(T)).
+:- mode make_empty_array((builtin.in), (builtin.out)) is det.
+:- func make_empty_array(int) = bt_array.bt_array(T).
+:- pred max(bt_array.bt_array(_T), int).
+:- mode max((builtin.in), (builtin.out)) is det.
+:- func max(bt_array.bt_array(_T)) = int.
+:- pred min(bt_array.bt_array(_T), int).
+:- mode min((builtin.in), (builtin.out)) is det.
+:- func min(bt_array.bt_array(_T)) = int.
+:- pred resize(bt_array.bt_array(T), int, int, T, bt_array.bt_array(T)).
+:- mode resize((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func resize(bt_array.bt_array(T), int, int, T) = bt_array.bt_array(T).
+:- pred semidet_lookup(bt_array.bt_array(T), int, T).
+:- mode semidet_lookup((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred semidet_set(bt_array.bt_array(T), int, T, bt_array.bt_array(T)).
+:- mode semidet_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred set(bt_array.bt_array(T), int, T, bt_array.bt_array(T)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func set(bt_array.bt_array(T), int, T) = bt_array.bt_array(T).
+:- pred shrink(bt_array.bt_array(T), int, int, bt_array.bt_array(T)).
+:- mode shrink((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func shrink(bt_array.bt_array(T), int, int) = bt_array.bt_array(T).
+:- pred size(bt_array.bt_array(_T), int).
+:- mode size((builtin.in), (builtin.out)) is det.
+:- func size(bt_array.bt_array(_T)) = int.
+:- pred to_list(bt_array.bt_array(T), list.list(T)).
+:- mode to_list((builtin.in), (builtin.out)) is det.
+:- func to_list(bt_array.bt_array(T)) = list.list(T).

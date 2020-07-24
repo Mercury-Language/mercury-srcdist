@@ -1,0 +1,145 @@
+:- module (hlds.hlds_goal).
+:- interface.
+:- type atomic_goal_type
+	where	type_is_abstract_enum(2).
+:- type atomic_interface_vars.
+:- type builtin_state
+	where	type_is_abstract_enum(1).
+:- type call_unify_context.
+:- type can_cgc
+	where	type_is_abstract_enum(1).
+:- type case.
+:- type case_id.
+:- type cast_kind
+	where	type_is_abstract_enum(2).
+:- type catch_part.
+:- type cell_is_unique
+	where	type_is_abstract_enum(1).
+:- type cell_to_reuse.
+:- type conj_type
+	where	type_is_abstract_enum(1).
+:- type construct_sub_info.
+:- type contains_trace_goal
+	where	type_is_abstract_enum(1).
+:- type ctgc_goal_info.
+:- type dp_coverage_goal_info.
+:- type dp_goal_info.
+:- type force_pruning
+	where	type_is_abstract_enum(1).
+:- type foreign_arg.
+:- type from_ground_term_kind
+	where	type_is_abstract_enum(2).
+:- type generic_call.
+:- type goal_feature
+	where	type_is_abstract_enum(5).
+:- type goal_is_mdprof_inst
+	where	type_is_abstract_enum(1).
+:- type goal_trivial
+	where	type_is_abstract_enum(1).
+:- type hlds_goal.
+:- type hlds_goal_code_gen_info.
+:- type hlds_goal_expr.
+:- type hlds_goal_info.
+:- type hlds_goals.
+:- type ho_values.
+:- type how_to_construct.
+:- type incremental_rename_map.
+:- type is_conditional
+	where	type_is_abstract_enum(1).
+:- type is_exist_constr
+	where	type_is_abstract_enum(1).
+:- type is_first_disjunct
+	where	type_is_abstract_enum(1).
+:- type lc_use_parent_stack
+	where	type_is_abstract_enum(1).
+:- type missed_message.
+:- type mode_constr_goal_info.
+:- type needs_update
+	where	type_is_abstract_enum(1).
+:- type port_counts_give_coverage_after
+	where	type_is_abstract_enum(1).
+:- type promise_solutions_kind
+	where	type_is_abstract_enum(2).
+:- type rbmm_goal_info.
+:- type removable
+	where	type_is_abstract_enum(1).
+:- type reuse_description.
+:- type scope_reason.
+:- type short_reuse_description.
+:- type shorthand_goal_expr.
+:- type tagged_case.
+:- type term_size_value.
+:- type trace_mutable_var_hlds.
+:- type try_io_state_vars.
+:- type unification.
+:- type unify_context.
+:- type unify_main_context.
+:- type unify_mode.
+:- type unify_rhs.
+:- type unify_sub_context.
+:- type unify_sub_contexts.
+:- abstract_inst((goal_expr_conj)).
+:- abstract_inst((goal_expr_disj)).
+:- abstract_inst((goal_expr_foreign_proc)).
+:- abstract_inst((goal_expr_generic_call)).
+:- abstract_inst((goal_expr_ite)).
+:- abstract_inst((goal_expr_neg)).
+:- abstract_inst((goal_expr_parallel_conj)).
+:- abstract_inst((goal_expr_plain_call)).
+:- abstract_inst((goal_expr_plain_conj)).
+:- abstract_inst((goal_expr_scope)).
+:- abstract_inst((goal_expr_shorthand)).
+:- abstract_inst((goal_expr_switch)).
+:- abstract_inst((goal_expr_unify)).
+:- abstract_inst((goal_plain_call)).
+:- abstract_inst((rhs_lambda_goal)).
+:- abstract_inst((unification_assign)).
+:- abstract_inst((unification_complicated_unify)).
+:- abstract_inst((unification_construct)).
+:- abstract_inst((unification_deconstruct)).
+:- abstract_inst((unification_simple_test)).
+:- type_representation(atomic_goal_type, du_repn(enum("unknown_atomic_goal_type", "top_level_atomic_goal", ["nested_atomic_goal"],  no_c_j_cs_e))).
+:- type_representation(atomic_interface_vars, is_word_aligned_ptr).
+:- type_representation(builtin_state, du_repn(enum("inline_builtin", "not_builtin", [],  no_c_j_cs_e))).
+:- type_representation(call_unify_context, is_word_aligned_ptr).
+:- type_representation(can_cgc, du_repn(enum("can_cgc", "cannot_cgc", [],  no_c_j_cs_e))).
+:- type_representation(case, is_word_aligned_ptr).
+:- type_representation(case_id, du_repn(notag("case_id", int,  no_c_j_cs_e))).
+:- type_representation(cast_kind, du_repn(enum("unsafe_type_cast", "unsafe_type_inst_cast", ["equiv_type_cast", "exists_cast"],  no_c_j_cs_e))).
+:- type_representation(catch_part, is_word_aligned_ptr).
+:- type_representation(cell_is_unique, du_repn(enum("cell_is_unique", "cell_is_shared", [],  no_c_j_cs_e))).
+:- type_representation(cell_to_reuse, is_word_aligned_ptr).
+:- type_representation(conj_type, du_repn(enum("plain_conj", "parallel_conj", [],  no_c_j_cs_e))).
+:- type_representation(contains_trace_goal, du_repn(enum("contains_trace_goal", "contains_no_trace_goal", [],  no_c_j_cs_e))).
+:- type_representation(ctgc_goal_info, is_word_aligned_ptr).
+:- type_representation(dp_coverage_goal_info, is_word_aligned_ptr).
+:- type_representation(dp_goal_info, is_word_aligned_ptr).
+:- type_representation(force_pruning, du_repn(enum("force_pruning", "dont_force_pruning", [],  no_c_j_cs_e))).
+:- type_representation(foreign_arg, is_word_aligned_ptr).
+:- type_representation(from_ground_term_kind, du_repn(enum("from_ground_term_initial", "from_ground_term_construct", ["from_ground_term_deconstruct", "from_ground_term_other"],  no_c_j_cs_e))).
+:- type_representation(goal_feature, du_repn(enum("feature_constraint", "feature_from_head", ["feature_not_impure_for_determinism", "feature_stack_opt", "feature_tuple_opt", "feature_call_table_gen", "feature_preserve_backtrack_into", "feature_save_deep_excp_vars", "feature_hide_debug_event", "feature_deep_self_tail_rec_call", "feature_debug_self_tail_rec_call", "feature_self_or_mutual_tail_rec_call", "feature_obvious_nontail_rec_call", "feature_keep_constant_binding", "feature_dont_warn_singleton", "feature_state_var_copy", "feature_duplicated_for_switch", "feature_mode_check_clauses_goal", "feature_will_not_modify_trail", "feature_will_not_call_mm_tabled", "feature_contains_trace", "feature_pretest_equality", "feature_pretest_equality_condition", "feature_lambda_undetermined_mode", "feature_contains_stm_inner_outer", "feature_do_not_tailcall", "feature_do_not_warn_implicit_stream", "feature_lifted_by_cse", "feature_lambda_from_try"],  no_c_j_cs_e))).
+:- type_representation(goal_is_mdprof_inst, du_repn(enum("goal_is_mdprof_inst", "goal_is_not_mdprof_inst", [],  no_c_j_cs_e))).
+:- type_representation(goal_trivial, du_repn(enum("goal_is_trivial", "goal_is_nontrivial", [],  no_c_j_cs_e))).
+:- type_representation(hlds_goal, is_word_aligned_ptr).
+:- type_representation(hlds_goal_info, is_word_aligned_ptr).
+:- type_representation(hlds_goals, is_eqv_to(list(hlds.hlds_goal.hlds_goal))).
+:- type_representation(ho_values, is_eqv_to(map(prog_var, set(pred_proc_id)))).
+:- type_representation(incremental_rename_map, is_eqv_to(map(goal_id, assoc_list(prog_var, prog_var)))).
+:- type_representation(is_conditional, du_repn(enum("conditional_reuse", "unconditional_reuse", [],  no_c_j_cs_e))).
+:- type_representation(is_exist_constr, du_repn(enum("is_not_exist_constr", "is_exist_constr", [],  no_c_j_cs_e))).
+:- type_representation(is_first_disjunct, du_repn(enum("is_first_disjunct", "is_not_first_disjunct", [],  no_c_j_cs_e))).
+:- type_representation(lc_use_parent_stack, du_repn(enum("lc_use_parent_stack_frame", "lc_create_frame_on_child_stack", [],  no_c_j_cs_e))).
+:- type_representation(missed_message, is_eqv_to(string)).
+:- type_representation(mode_constr_goal_info, is_word_aligned_ptr).
+:- type_representation(needs_update, du_repn(enum("needs_update", "does_not_need_update", [],  no_c_j_cs_e))).
+:- type_representation(port_counts_give_coverage_after, du_repn(enum("port_counts_give_coverage_after", "no_port_counts_give_coverage_after", [],  no_c_j_cs_e))).
+:- type_representation(promise_solutions_kind, du_repn(enum("equivalent_solutions", "equivalent_solution_sets", ["equivalent_solution_sets_arbitrary"],  no_c_j_cs_e))).
+:- type_representation(rbmm_goal_info, is_word_aligned_ptr).
+:- type_representation(removable, du_repn(enum("removable", "not_removable", [],  no_c_j_cs_e))).
+:- type_representation(tagged_case, is_word_aligned_ptr).
+:- type_representation(trace_mutable_var_hlds, is_word_aligned_ptr).
+:- type_representation(try_io_state_vars, is_word_aligned_ptr).
+:- type_representation(unify_context, is_word_aligned_ptr).
+:- type_representation(unify_mode, is_word_aligned_ptr).
+:- type_representation(unify_sub_context, is_word_aligned_ptr).
+:- type_representation(unify_sub_contexts, is_eqv_to(list(hlds.hlds_goal.unify_sub_context))).
