@@ -1,0 +1,5 @@
+:- module (ml_backend.ml_unify_gen_construct).
+:- interface.
+:- type mlds_rval_type_and_width
+    --->    rval_type_and_width(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, parse_tree.prog_data.arg_pos_width).
+:- type_representation(mlds_rval_type_and_width, is_word_aligned_ptr).

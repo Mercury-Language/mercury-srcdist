@@ -1,0 +1,11 @@
+:- module (libs.timestamp).
+:- interface.
+:- type maybe_return_timestamp
+    --->    do_return_timestamp 
+    ;       dont_return_timestamp .
+:- type read_module_and_timestamps
+    --->    always_read_module(libs.timestamp.maybe_return_timestamp)
+    ;       dont_read_module_if_match(libs.timestamp.timestamp).
+:- type timestamp.
+:- type_representation(maybe_return_timestamp, du_repn(enum("do_return_timestamp", "dont_return_timestamp", [],  no_c_j_cs_e))).
+:- type_representation(timestamp, du_repn(notag("timestamp", string,  no_c_j_cs_e))).

@@ -1,0 +1,13 @@
+module(1, "random.sfc32.m",
+	(random.sfc32),
+	{random},
+	{builtin, private_builtin},
+	{array, builtin, int, list, private_builtin, uint16, uint32, uint64, uint8},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,7 @@
+:- module options.
+:- interface.
+:- type option
+	where	type_is_abstract_enum(5).
+:- type option_table.
+:- type_representation(option, du_repn(enum("verbose", "very_verbose", ["dynamic_cg", "call_graph", "profile", "profile_time", "profile_memory_words", "profile_memory_cells", "demangle", "countfile", "pairfile", "declfile", "libraryfile", "snapshots", "snapshots_file", "snapshots_by_type", "snapshots_brief", "snapshots_include_runtime", "snapshots_recalc_size", "help"],  no_c_j_cs_e))).
+:- type_representation(option_table, is_eqv_to(option_table(options.option))).
