@@ -1,0 +1,2 @@
+:- module uint8.
+:- interface.

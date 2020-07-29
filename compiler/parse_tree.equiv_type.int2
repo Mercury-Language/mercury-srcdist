@@ -1,0 +1,15 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- use_module map.
+:- use_module (parse_tree.prog_data).
+:- type eqv_type_body
+    --->    eqv_type_body(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.mer_type).
+:- type maybe_changed
+    --->    no_change 
+    ;       changed .
+:- type type_eqv_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.equiv_type.eqv_type_body).
+:- type_representation(circ_types, is_eqv_to(set.set(parse_tree.prog_data.type_ctor))).
+:- type_representation(eqv_type_body, is_word_aligned_ptr).
+:- type_representation(inst_eqv_map, is_eqv_to(map.map(parse_tree.prog_data.inst_ctor, parse_tree.equiv_type.eqv_inst_body))).
+:- type_representation(maybe_changed, du_repn(enum("no_change", "changed", [],  no_c_j_cs_e))).
+:- type_representation(type_eqv_map, is_eqv_to(map.map(parse_tree.prog_data.type_ctor, parse_tree.equiv_type.eqv_type_body))).

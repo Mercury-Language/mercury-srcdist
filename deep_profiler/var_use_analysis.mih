@@ -1,0 +1,215 @@
+/*
+** Automatically generated from `var_use_analysis.m'
+** by the Mercury compiler,
+** version rotd-2020-07-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module var_use_analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_var_use_analysis
+#define MR_HEADER_GUARD_var_use_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VAR_USE_ANALYSIS_DECL_GUARD
+#define VAR_USE_ANALYSIS_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_first_use_rec_info_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_found_first_use_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_intermodule_var_use_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_proc_var_first_use_prepared_info_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_recursive_calls_list_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_recursive_case_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_var_first_use_static_info_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_var_use_options_0;
+
+extern const MR_TypeCtorInfo_Struct var_use_analysis__var_use_analysis__type_ctor_info_var_use_type_0;
+
+void MR_CALL 
+var_use_analysis__clique_var_use_info_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+var_use_analysis__get_call_site_dynamic_var_use_info_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Float param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+var_use_analysis__get_call_site_dynamic_var_use_info_6_p_1(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Float param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+var_use_analysis__get_call_site_dynamic_var_use_info_rec_level_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Float param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+var_use_analysis__get_call_site_dynamic_var_use_info_rec_level_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Float param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+var_use_analysis__pessimistic_var_use_info_3_p_0(
+  MR_Word param_1,
+  MR_Float param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+var_use_analysis__pessimistic_var_use_time_3_p_0(
+  MR_Word param_1,
+  MR_Float param_2,
+  MR_Float * param_3);
+
+void MR_CALL 
+var_use_analysis__proc_dynamic_var_use_info_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Float param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+var_use_analysis__var_first_use_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Float param_10,
+  MR_Integer param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+var_use_analysis__var_mode_to_var_use_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+var_use_analysis__average_var_use_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+var_use_analysis____Compare____intermodule_var_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+var_use_analysis____Compare____var_use_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+var_use_analysis____Compare____var_use_options_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+var_use_analysis____Compare____var_use_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+var_use_analysis____Unify____intermodule_var_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+var_use_analysis____Unify____var_use_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+var_use_analysis____Unify____var_use_options_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+var_use_analysis____Unify____var_use_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__var_use_analysis__init(void);
+void mercury__var_use_analysis__init_type_tables(void);
+void mercury__var_use_analysis__init_debugger(void);
+const char *mercury__var_use_analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_var_use_analysis
+
+// :- end_interface var_use_analysis.

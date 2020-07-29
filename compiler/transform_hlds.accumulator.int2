@@ -1,0 +1,4 @@
+:- module (transform_hlds.accumulator).
+:- interface.
+:- type_representation(accu_goal_store, is_eqv_to(transform_hlds.goal_store.goal_store(transform_hlds.accumulator.accu_goal_id))).
+:- type_representation(accu_subst, is_eqv_to(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var))).
