@@ -1,0 +1,45 @@
+:- module recompilation.
+:- interface.
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.version).
+:- type eqv_expanded_info.
+:- type eqv_expanded_item_set.
+:- type functor_set.
+:- type instance_version_numbers.
+:- type item_id.
+:- type item_id_set(T).
+:- type item_id_set(Map, Set, Cons).
+:- type item_name.
+:- type item_type
+	where	type_is_abstract_enum(4).
+:- type item_version_numbers.
+:- type module_qualifier.
+:- type module_version_numbers_map.
+:- type pred_or_func_set.
+:- type recompilation_info.
+:- type simple_item_set.
+:- type used_items.
+:- type version_number.
+:- type version_number_map.
+:- type version_numbers.
+:- abstract_inst((pred_or_func_item)).
+:- abstract_inst((simple_item)).
+:- type_representation(eqv_expanded_info, is_eqv_to(maybe(recompilation.eqv_expanded_item_set))).
+:- type_representation(eqv_expanded_item_set, is_word_aligned_ptr).
+:- type_representation(functor_set, is_eqv_to(recompilation.simple_item_set)).
+:- type_representation(instance_version_numbers, is_eqv_to(map(recompilation.item_name, recompilation.version_number))).
+:- type_representation(item_id, is_word_aligned_ptr).
+:- type_representation(item_id_set(V_1), is_eqv_to(recompilation.item_id_set(V_1, V_1, V_1))).
+:- type_representation(item_name, is_word_aligned_ptr).
+:- type_representation(item_type, du_repn(enum("type_abstract_item", "type_body_item", ["mode_item", "inst_item", "typeclass_item", "functor_item", "predicate_item", "function_item", "mutable_item", "foreign_proc_item"],  no_c_j_cs_e))).
+:- type_representation(item_version_numbers, is_eqv_to(recompilation.item_id_set(recompilation.version_number_map))).
+:- type_representation(module_qualifier, is_eqv_to(module_name)).
+:- type_representation(module_version_numbers_map, is_eqv_to(map(module_name, recompilation.version_numbers))).
+:- type_representation(pred_or_func_set, is_eqv_to(recompilation.simple_item_set)).
+:- type_representation(recompilation_info, is_word_aligned_ptr).
+:- type_representation(simple_item_set, is_eqv_to(map(pair(string, arity), map(recompilation.module_qualifier, module_name)))).
+:- type_representation(used_items, is_eqv_to(recompilation.item_id_set(recompilation.simple_item_set, recompilation.pred_or_func_set, recompilation.functor_set))).
+:- type_representation(version_number, is_eqv_to(timestamp)).
+:- type_representation(version_number_map, is_eqv_to(map(pair(string, arity), recompilation.version_number))).
+:- type_representation(version_numbers, is_word_aligned_ptr).

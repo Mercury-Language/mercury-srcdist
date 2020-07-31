@@ -1,0 +1,55 @@
+:- module (hlds.passes_aux).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module univ.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- type dump_info
+    --->    no_prev_dump 
+    ;       prev_dumped_hlds(string, hlds.hlds_module.module_info).
+:- type module_cookie_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ).
+:- type module_pred_cookie_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ).
+:- type module_pred_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- type module_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- type pred_error_task == pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- type proc_ids_pred_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type proc_ids_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type proc_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type update_pred_task
+    --->    update_pred_error(hlds.passes_aux.pred_error_task).
+:- type update_proc_task
+    --->    update_proc(hlds.passes_aux.proc_task)
+    ;       update_proc_ids(hlds.passes_aux.proc_ids_task)
+    ;       update_proc_ids_pred(hlds.passes_aux.proc_ids_pred_task)
+    ;       update_module(hlds.passes_aux.module_task)
+    ;       update_module_pred(hlds.passes_aux.module_pred_task)
+    ;       update_module_cookie(hlds.passes_aux.module_cookie_task, univ.univ)
+    ;       update_module_pred_cookie(hlds.passes_aux.module_pred_cookie_task, univ.univ).
+:- inst (module_cookie_task) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (module_pred_cookie_task) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (module_pred_task) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (module_task) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (pred_error_task) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (proc_ids_pred_task) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst (proc_ids_task) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst (proc_task) == (pred((builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst (update_pred_task) for (hlds.passes_aux).update_pred_task/0 == bound(update_pred_error(((hlds.passes_aux).pred_error_task))).
+:- inst (update_proc_task) for (hlds.passes_aux).update_proc_task/0 == bound(update_module(((hlds.passes_aux).module_task)) ; update_module_cookie(((hlds.passes_aux).module_cookie_task), ground) ; update_module_pred(((hlds.passes_aux).module_pred_task)) ; update_module_pred_cookie(((hlds.passes_aux).module_pred_cookie_task), ground) ; update_proc(((hlds.passes_aux).proc_task)) ; update_proc_ids(((hlds.passes_aux).proc_ids_task)) ; update_proc_ids_pred(((hlds.passes_aux).proc_ids_pred_task))).
+:- mode (update_pred_task) == (((hlds.passes_aux).update_pred_task) >> ((hlds.passes_aux).update_pred_task)).
+:- mode (update_proc_task) == (((hlds.passes_aux).update_proc_task) >> ((hlds.passes_aux).update_proc_task)).
+:- type_representation(module_cookie_task, is_eqv_to(pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ))).
+:- type_representation(module_pred_cookie_task, is_eqv_to(pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ))).
+:- type_representation(module_pred_task, is_eqv_to(pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info))).
+:- type_representation(module_task, is_eqv_to(pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info))).
+:- type_representation(pred_error_task, is_eqv_to(pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)))).
+:- type_representation(proc_ids_pred_task, is_eqv_to(pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))).
+:- type_representation(proc_ids_task, is_eqv_to(pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))).
+:- type_representation(proc_task, is_eqv_to(pred(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))).
+:- type_representation(update_pred_task, du_repn(notag("update_pred_error", hlds.passes_aux.pred_error_task,  no_c_j_cs_e))).
