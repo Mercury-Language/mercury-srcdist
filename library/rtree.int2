@@ -1,0 +1,17 @@
+:- module rtree.
+:- interface.
+:- type box
+    --->    box(float, float, float, float).
+:- type box3d
+    --->    box3d(float, float, float, float, float, float).
+:- type interval
+    --->    interval(float, float).
+:- type rtree(K, V).
+:- typeclass region(K).
+:- instance (rtree.region(rtree.box)).
+:- instance (rtree.region(rtree.box3d)).
+:- instance (rtree.region(rtree.interval)).
+:- type_representation(box, is_word_aligned_ptr).
+:- type_representation(box3d, is_word_aligned_ptr).
+:- type_representation(interval, is_word_aligned_ptr).
+:- type_representation(orphans(V_1, V_2), is_eqv_to(list.list(rtree.orphan(V_1, V_2)))).
