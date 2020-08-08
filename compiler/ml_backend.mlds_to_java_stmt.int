@@ -1,0 +1,11 @@
+:- module (ml_backend.mlds_to_java_stmt).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_java_util).
+:- use_module (ml_backend.mlds_to_target_util).
+:- pred output_statement_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds_to_target_util.indent, ml_backend.mlds_to_target_util.func_info_csj, ml_backend.mlds.mlds_stmt, ml_backend.mlds_to_target_util.exit_methods, io.io, io.io).
+:- mode output_statement_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_statements_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds_to_target_util.indent, ml_backend.mlds_to_target_util.func_info_csj, list.list(ml_backend.mlds.mlds_stmt), ml_backend.mlds_to_target_util.exit_methods, io.io, io.io).
+:- mode output_statements_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

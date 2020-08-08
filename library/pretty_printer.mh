@@ -1,0 +1,49 @@
+/*
+** Automatically generated from `pretty_printer.m'
+** by the Mercury compiler,
+** version rotd-2020-08-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PRETTY_PRINTER_MH
+#define PRETTY_PRINTER_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PRETTY_PRINTER_DECL_GUARD
+#define PRETTY_PRINTER_DECL_GUARD
+
+    extern MR_Bool ML_pretty_printer_is_initialised;
+    extern MR_Word ML_pretty_printer_default_formatter_map;
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word mercury__pretty_printer__mutable_variable_io_pp_params;
+#else
+    extern MR_Word mercury__pretty_printer__mutable_variable_io_pp_params;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock mercury__pretty_printer__mutable_variable_io_pp_params_lock;
+#endif
+
+
+#endif
+void mercury__pretty_printer__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PRETTY_PRINTER_MH */
