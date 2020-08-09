@@ -1,0 +1,82 @@
+:- module uint16.
+:- interface.
+:- use_module pretty_printer.
+:- func *(uint16, uint16) = uint16.
+:- mode *((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func +(uint16, uint16) = uint16.
+:- mode +((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode +((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode +((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func -(uint16, uint16) = uint16.
+:- mode -((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode -((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode -((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func /(uint16, uint16) = uint16.
+:- mode /((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func //(uint16, uint16) = uint16.
+:- mode //((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func /\(uint16, uint16) = uint16.
+:- mode /\((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred <(uint16, uint16).
+:- mode <((builtin.in), (builtin.in)) is semidet.
+:- func <<(uint16, int) = uint16.
+:- mode <<((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred =<(uint16, uint16).
+:- mode =<((builtin.in), (builtin.in)) is semidet.
+:- pred >(uint16, uint16).
+:- mode >((builtin.in), (builtin.in)) is semidet.
+:- pred >=(uint16, uint16).
+:- mode >=((builtin.in), (builtin.in)) is semidet.
+:- func >>(uint16, int) = uint16.
+:- mode >>((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func \(uint16) = uint16.
+:- mode \((builtin.in)) = (builtin.uo) is det.
+:- func \/(uint16, uint16) = uint16.
+:- mode \/((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func cast_from_int(int) = uint16.
+:- func cast_from_int16(int16) = uint16.
+:- func cast_from_uint64(uint64) = uint16.
+:- func cast_to_int(uint16) = int.
+:- func cast_to_uint(uint16) = uint.
+:- func cast_to_uint64(uint16) = uint64.
+:- func det_from_int(int) = uint16.
+:- func div(uint16, uint16) = uint16.
+:- mode div((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred even(uint16).
+:- mode even((builtin.in)) is semidet.
+:- func from_bytes_be(uint8, uint8) = uint16.
+:- func from_bytes_le(uint8, uint8) = uint16.
+:- pred from_int(int, uint16).
+:- mode from_int((builtin.in), (builtin.out)) is semidet.
+:- func max(uint16, uint16) = uint16.
+:- func max_uint16 = uint16.
+:- func min(uint16, uint16) = uint16.
+:- func minus(uint16, uint16) = uint16.
+:- func mod(uint16, uint16) = uint16.
+:- mode mod((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func num_leading_zeros(uint16) = int.
+:- func num_ones(uint16) = int.
+:- func num_trailing_zeros(uint16) = int.
+:- func num_zeros(uint16) = int.
+:- pred odd(uint16).
+:- mode odd((builtin.in)) is semidet.
+:- func plus(uint16, uint16) = uint16.
+:- func rem(uint16, uint16) = uint16.
+:- mode rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func reverse_bits(uint16) = uint16.
+:- func reverse_bytes(uint16) = uint16.
+:- func times(uint16, uint16) = uint16.
+:- func to_int(uint16) = int.
+:- func uint16_to_doc(uint16) = pretty_printer.doc.
+:- func unchecked_left_shift(uint16, int) = uint16.
+:- mode unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_quotient(uint16, uint16) = uint16.
+:- mode unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_rem(uint16, uint16) = uint16.
+:- mode unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_right_shift(uint16, int) = uint16.
+:- mode unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func xor(uint16, uint16) = uint16.
+:- mode xor((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode xor((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- mode xor((builtin.uo), (builtin.in)) = (builtin.in) is det.
