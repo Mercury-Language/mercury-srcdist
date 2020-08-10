@@ -1,0 +1,17 @@
+:- module (check_hlds.mcsolver).
+:- interface.
+:- use_module list.
+:- use_module (check_hlds.abstract_mode_constraints).
+:- type mcvar == check_hlds.abstract_mode_constraints.mc_var.
+:- type mcvars == list.list(check_hlds.mcsolver.mcvar).
+:- type prep_cstrts.
+:- type solver_cstrts.
+:- type_representation(assgts, is_eqv_to(list.list(check_hlds.mcsolver.assgt))).
+:- type_representation(complex_cstrt_map, is_eqv_to(multi_map.multi_map(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.complex_cstrt))).
+:- type_representation(complex_cstrts, is_eqv_to(list.list(check_hlds.mcsolver.complex_cstrt))).
+:- type_representation(eqv_vars, is_eqv_to(eqvclass.eqvclass(check_hlds.mcsolver.mcvar))).
+:- type_representation(impls, is_eqv_to(list.list(check_hlds.mcsolver.impl))).
+:- type_representation(mcvar, is_eqv_to(check_hlds.abstract_mode_constraints.mc_var)).
+:- type_representation(mcvars, is_eqv_to(list.list(check_hlds.mcsolver.mcvar))).
+:- type_representation(prep_cstrts, is_word_aligned_ptr).
+:- type_representation(solver_cstrts, is_word_aligned_ptr).

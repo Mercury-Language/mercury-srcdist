@@ -1,0 +1,5 @@
+:- module dir.
+:- interface.
+:- type foldl_pred(T).
+:- abstract_inst((foldl_pred)).
+:- type_representation(foldl_pred(V_1), is_eqv_to(pred(string, string, io.file_type, bool, V_1, V_1, io, io))).
