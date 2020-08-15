@@ -1,0 +1,13 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type ext
+    --->    ext(string).
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_search
+    --->    do_search 
+    ;       do_not_search .
+:- type_representation(ext, du_repn(notag("ext", string,  no_c_j_cs_e))).
+:- type_representation(maybe_create_dirs, du_repn(enum("do_create_dirs", "do_not_create_dirs", [],  no_c_j_cs_e))).
+:- type_representation(maybe_search, du_repn(enum("do_search", "do_not_search", [],  no_c_j_cs_e))).

@@ -1,0 +1,44 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- type ext
+    --->    ext(string).
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_search
+    --->    do_search 
+    ;       do_not_search .
+:- func extension_to_string(parse_tree.file_names.ext) = string.
+:- pred extra_link_obj_file_name(libs.globals.globals, parse_tree.file_names.maybe_create_dirs, parse_tree.file_names.ext, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode extra_link_obj_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred fact_table_file_name(libs.globals.globals, parse_tree.file_names.maybe_create_dirs, parse_tree.file_names.ext, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode fact_table_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred file_name_to_module_name(libs.file_util.file_name, mdbcomp.sym_name.module_name).
+:- mode file_name_to_module_name((builtin.in), (builtin.out)) is det.
+:- pred get_class_dir_name(libs.globals.globals, string).
+:- mode get_class_dir_name((builtin.in), (builtin.out)) is det.
+:- pred make_include_file_path(string, string, string).
+:- mode make_include_file_path((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mercury_std_library_module_name(mdbcomp.sym_name.module_name).
+:- mode mercury_std_library_module_name((builtin.in)) is semidet.
+:- pred module_name_to_file_name(libs.globals.globals, parse_tree.file_names.maybe_create_dirs, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_to_file_name_stem(mdbcomp.sym_name.module_name, libs.file_util.file_name).
+:- mode module_name_to_file_name_stem((builtin.in), (builtin.out)) is det.
+:- pred module_name_to_lib_file_name(libs.globals.globals, parse_tree.file_names.maybe_create_dirs, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_lib_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_to_make_var_name(mdbcomp.sym_name.module_name, string).
+:- mode module_name_to_make_var_name((builtin.in), (builtin.out)) is det.
+:- pred module_name_to_search_file_name(libs.globals.globals, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_search_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_source_filename(libs.globals.globals, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_source_filename((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func qualify_mercury_std_library_module_name(mdbcomp.sym_name.module_name) = mdbcomp.sym_name.module_name.
+:- pred write_translations_record_if_any(io.io, io.io).
+:- mode write_translations_record_if_any((builtin.di), (builtin.uo)) is det.

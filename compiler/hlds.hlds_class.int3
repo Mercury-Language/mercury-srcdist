@@ -1,0 +1,41 @@
+:- module (hlds.hlds_class).
+:- interface.
+:- type ancestor_constraints.
+:- type class_table.
+:- type constraint_id.
+:- type constraint_map.
+:- type constraint_proof.
+:- type constraint_proof_map.
+:- type constraint_type
+	where	type_is_abstract_enum(1).
+:- type hlds_class_argpos.
+:- type hlds_class_defn.
+:- type hlds_class_fundep.
+:- type hlds_class_fundeps.
+:- type hlds_class_interface.
+:- type hlds_constraint.
+:- type hlds_constraints.
+:- type hlds_instance_defn.
+:- type instance_id.
+:- type instance_table.
+:- type maybe_bad_class_defn
+	where	type_is_abstract_enum(1).
+:- type redundant_constraints.
+:- type_representation(ancestor_constraints, is_eqv_to(map(prog_constraint, list(prog_constraint)))).
+:- type_representation(class_table, is_eqv_to(map(class_id, hlds.hlds_class.hlds_class_defn))).
+:- type_representation(constraint_id, is_word_aligned_ptr).
+:- type_representation(constraint_map, is_eqv_to(map(hlds.hlds_class.constraint_id, prog_constraint))).
+:- type_representation(constraint_proof_map, is_eqv_to(map(prog_constraint, hlds.hlds_class.constraint_proof))).
+:- type_representation(constraint_type, du_repn(enum("unproven", "assumed", [],  no_c_j_cs_e))).
+:- type_representation(hlds_class_argpos, is_eqv_to(int)).
+:- type_representation(hlds_class_defn, is_word_aligned_ptr).
+:- type_representation(hlds_class_fundep, is_word_aligned_ptr).
+:- type_representation(hlds_class_fundeps, is_eqv_to(list(hlds.hlds_class.hlds_class_fundep))).
+:- type_representation(hlds_class_interface, is_eqv_to(list(pred_proc_id))).
+:- type_representation(hlds_constraint, is_word_aligned_ptr).
+:- type_representation(hlds_constraints, is_word_aligned_ptr).
+:- type_representation(hlds_instance_defn, is_word_aligned_ptr).
+:- type_representation(instance_id, is_eqv_to(int)).
+:- type_representation(instance_table, is_eqv_to(map(class_id, list(hlds.hlds_class.hlds_instance_defn)))).
+:- type_representation(maybe_bad_class_defn, du_repn(enum("has_no_bad_class_defn", "has_bad_class_defn", [],  no_c_j_cs_e))).
+:- type_representation(redundant_constraints, is_eqv_to(map(class_id, set(hlds.hlds_class.hlds_constraint)))).

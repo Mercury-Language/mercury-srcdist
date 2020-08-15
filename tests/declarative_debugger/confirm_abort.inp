@@ -1,0 +1,19 @@
+echo on
+register --quiet
+break p
+continue
+finish
+dd -d 3 -n 7
+no
+no
+help
+h
+?
+quit
+dd -d 3 -n 7
+n
+q
+dd -d 3 -n 7
+n
+y
+quit -y

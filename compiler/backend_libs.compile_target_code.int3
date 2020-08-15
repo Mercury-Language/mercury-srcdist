@@ -1,0 +1,9 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- type linked_target_type
+	where	type_is_abstract_enum(4).
+:- type pic
+	where	type_is_abstract_enum(1).
+:- type_representation(compile_init_file_pred, is_eqv_to(pred(file_name, bool, io, io))).
+:- type_representation(linked_target_type, du_repn(enum("executable", "static_library", ["shared_library", "csharp_executable", "csharp_library", "java_executable", "java_archive", "erlang_launcher", "erlang_archive"],  no_c_j_cs_e))).
+:- type_representation(pic, du_repn(enum("pic", "non_pic", [],  no_c_j_cs_e))).
