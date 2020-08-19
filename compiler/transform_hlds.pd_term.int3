@@ -1,0 +1,13 @@
+:- module (transform_hlds.pd_term).
+:- interface.
+:- type global_check_result.
+:- type global_term_info.
+:- type local_term_info.
+:- type pd_proc_term_info.
+:- type proc_pair.
+:- type_representation(global_term_info, is_word_aligned_ptr).
+:- type_representation(local_term_info, is_eqv_to(single_covering_goals)).
+:- type_representation(multiple_covering_goals, is_eqv_to(map(transform_hlds.pd_term.proc_pair, pair(int, maybe(pred_proc_id))))).
+:- type_representation(pd_proc_term_info, is_eqv_to(assoc_list(int, int))).
+:- type_representation(proc_pair, is_eqv_to(pair(pred_proc_id, maybe(pred_proc_id)))).
+:- type_representation(single_covering_goals, is_eqv_to(map(pred_proc_id, transform_hlds.pd_term.pd_proc_term_info))).

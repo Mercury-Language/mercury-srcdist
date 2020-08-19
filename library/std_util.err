@@ -1,0 +1,3 @@
+std_util.m:022: In module `std_util':
+std_util.m:022:   warning: module `maybe' has a `:- import_module' declaration,
+std_util.m:022:   but is not used anywhere in the module.

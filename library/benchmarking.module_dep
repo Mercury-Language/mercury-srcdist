@@ -1,0 +1,13 @@
+module(1, "benchmarking.m",
+	benchmarking,
+	{},
+	{bool, builtin, io, maybe, private_builtin},
+	{bool, builtin, int, io, maybe, mutvar, private_builtin, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - benchmarking, "C#" - benchmarking, "Java" - benchmarking, "Erlang" - benchmarking},
+	no_foreign_export,
+	no_main
+).
