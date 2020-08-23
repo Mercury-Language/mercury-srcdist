@@ -1,0 +1,212 @@
+/*
+** Automatically generated from `term_constr_main_types.m'
+** by the Mercury compiler,
+** version rotd-2020-08-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.term_constr_main_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__term_constr_main_types
+#define MR_HEADER_GUARD_transform_hlds__term_constr_main_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__TERM_CONSTR_MAIN_TYPES_DECL_GUARD
+#define TRANSFORM_HLDS__TERM_CONSTR_MAIN_TYPES_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_constr_main_types__transform_hlds__term_constr_main_types__type_ctor_info_constr_arg_size_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_constr_main_types__transform_hlds__term_constr_main_types__type_ctor_info_constr_termination_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_constr_main_types__transform_hlds__term_constr_main_types__type_ctor_info_intermod_status_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_constr_main_types__transform_hlds__term_constr_main_types__type_ctor_info_term_reason_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_constr_main_types__transform_hlds__term_constr_main_types__type_ctor_info_termination2_info_0;
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_abstract_rep_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_failure_constrs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_head_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_import_failure_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_import_success_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_intermod_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_size_var_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_success_constrs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_set_term_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_abstract_rep_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_failure_constrs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_head_vars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_import_failure_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_import_success_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_intermod_status_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_size_var_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_success_constrs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_get_term_status_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__term_constr_main_types__term2_info_init_0_f_0(void);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types____Compare____constr_arg_size_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types____Compare____constr_termination_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types____Compare____intermod_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types____Compare____term_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__term_constr_main_types____Compare____termination2_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__term_constr_main_types____Unify____constr_arg_size_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__term_constr_main_types____Unify____constr_termination_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__term_constr_main_types____Unify____intermod_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__term_constr_main_types____Unify____term_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__term_constr_main_types____Unify____termination2_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__term_constr_main_types__init(void);
+void mercury__transform_hlds__term_constr_main_types__init_type_tables(void);
+void mercury__transform_hlds__term_constr_main_types__init_debugger(void);
+const char *mercury__transform_hlds__term_constr_main_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.term_constr_main_types
+
+// :- end_interface transform_hlds.term_constr_main_types.

@@ -1,0 +1,19 @@
+:- module version_array.
+:- interface.
+:- type index_out_of_bounds
+    --->    index_out_of_bounds(string).
+:- type version_array(T).
+:- type_representation(index_out_of_bounds, du_repn(notag("index_out_of_bounds", string,  no_c_j_cs_e))).
+:- type_representation(version_array(V_1), du_repn(notag("version_array", V_1,  c_j_cs_e(foreign_type("struct ML_va *", []), foreign_type("jmercury.version_array.ML_va", []), foreign_type("version_array.ML_va", []), no_foreign)))).
+:- implementation.
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("Java", version_array).
+:- type version_array(T)
+    --->    version_array(T).
+:- pragma foreign_type(c, version_array(T), "struct ML_va *")
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(java, version_array(T), "jmercury.version_array.ML_va")
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, version_array(T), "version_array.ML_va")
+    where   type_is_abstract_noncanonical.
