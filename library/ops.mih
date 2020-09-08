@@ -1,0 +1,408 @@
+/*
+** Automatically generated from `ops.m'
+** by the Mercury compiler,
+** version rotd-2020-09-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ops.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ops
+#define MR_HEADER_GUARD_ops
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef OPS_DECL_GUARD
+#define OPS_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_assoc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_class_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_mercury_op_table_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_op_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_priority_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_table_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_ops__op_table__arity1__ops__mercury_op_table__arity0__[14];
+
+extern const MR_TypeClassDeclStruct mercury__ops__ops__type_class_decl_op_table_1;
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0(
+  MR_Integer * param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_105_110_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_50_95_95_91_49_93_95_48_2_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_105_110_102_111_115_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer * param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_111_115_116_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_114_101_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_105_110_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_95_91_49_93_95_48_2_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_105_110_102_111_115_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer * param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_111_115_116_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ops__adjust_priority_for_assoc_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_binary_prefix_op_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_infix_op_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_binary_prefix_op_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_infix_op_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_op_2_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_op_infos_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ops__lookup_mercury_operator_term_4_p_0(
+  MR_Integer * param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_postfix_op_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_prefix_op_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_op_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_op_infos_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_operator_term_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_postfix_op_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__ops__lookup_prefix_op_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+MR_Integer MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_97_114_103_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_97_114_103_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_109_97_120_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__arg_priority_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__ops__init_mercury_op_table_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__max_priority_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Integer MR_CALL 
+mercury__ops__mercury_arg_priority_1_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__ops__mercury_max_priority_1_f_0(void);
+
+void MR_CALL 
+mercury__ops____Compare____assoc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__ops____Compare____class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__ops____Compare____mercury_op_table_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__ops____Compare____op_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__ops____Compare____priority_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__ops____Compare____table_0_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____assoc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____mercury_op_table_0_0(void);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____op_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____priority_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__ops____Unify____table_0_0(void);
+
+void mercury__ops__init(void);
+void mercury__ops__init_type_tables(void);
+void mercury__ops__init_debugger(void);
+const char *mercury__ops__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ops
+
+// :- end_interface ops.

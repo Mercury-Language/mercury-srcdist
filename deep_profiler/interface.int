@@ -1,0 +1,20 @@
+:- module interface.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- func from_server_pipe_name(string) = string.
+:- func mutex_file_name(string) = string.
+:- pred recv_string(string, bool.bool, string, io.io, io.io).
+:- mode recv_string((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred recv_term(string, bool.bool, T, io.io, io.io).
+:- mode recv_term((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func response_file_name(string, int) = string.
+:- pred send_string(string, bool.bool, string, io.io, io.io).
+:- mode send_string((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred send_term(string, bool.bool, T, io.io, io.io).
+:- mode send_term((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func server_startup_name(string) = string.
+:- func to_server_pipe_name(string) = string.
+:- func want_dir = string.
+:- func want_file_name = string.
+:- func want_prefix = string.

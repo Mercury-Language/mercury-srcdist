@@ -1,0 +1,28 @@
+This directory contains the package `mercury_opengl', which is a Mercury
+binding for OpenGL.
+
+For `mercury_opengl', you will need:
+	- the Mercury system
+	- an OpenGL implementation such as Mesa.
+
+In order to use it you will also need some way for your program to
+create and manage rendering contexts.  The Mercury GLUT binding provides
+one such way and Mercury Allegro binding provides another; both of these
+bindings are available as part of the Mercury extras distribution.
+
+This directory contains the following files:
+	
+	mglu.m	- provides Mercury bindings to (some of) the GLU library.
+	mogl.m	- provides Mercury bindings to (some of) Open GL 1.1
+
+See the file Mmakefile for instructions on how to build the OpenGL binding.
+The file Mmakefile.MacOSX contains instructions on how to build the binding
+on systems with MacOS X.
+
+See HOWTO for details on how to link the package in with your own
+Mercury programs.
+
+	The mercury_opengl package is free software, but is Copyright
+	(C) 1997-2007 The University of Melbourne. It is distributed
+	under the terms of the GNU Library General Public License.
+	See the file COPYING.LIB for copying permission.
