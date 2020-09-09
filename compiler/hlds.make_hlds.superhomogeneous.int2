@@ -1,0 +1,13 @@
+:- module ((hlds.make_hlds).superhomogeneous).
+:- interface.
+:- type arg_context
+    --->    ac_head(mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity)
+    ;       ac_call(hlds.hlds_pred.call_id)
+    ;       ac_functor(parse_tree.prog_data.cons_id, hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts).
+:- type unify_var_term
+    --->    unify_var_term(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_term).
+:- type unify_var_term_num_context
+    --->    unify_var_term_num_context(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_term, int, hlds.make_hlds.superhomogeneous.arg_context).
+:- type_representation(ancestor_var_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context))).
+:- type_representation(unify_var_term, is_word_aligned_ptr).
+:- type_representation(unify_var_term_num_context, is_word_aligned_ptr).

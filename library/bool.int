@@ -1,0 +1,26 @@
+:- module bool.
+:- interface.
+:- use_module enum.
+:- use_module list.
+:- type bool
+    --->    no 
+    ;       yes .
+:- instance (enum.enum(bool.bool)).
+:- pred and(bool.bool, bool.bool, bool.bool).
+:- mode and((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func and(bool.bool, bool.bool) = bool.bool.
+:- pred and_list(list.list(bool.bool), bool.bool).
+:- mode and_list((builtin.in), (builtin.out)) is det.
+:- func and_list(list.list(bool.bool)) = bool.bool.
+:- pred not(bool.bool, bool.bool).
+:- mode not((builtin.in), (builtin.out)) is det.
+:- func not(bool.bool) = bool.bool.
+:- pred or(bool.bool, bool.bool, bool.bool).
+:- mode or((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func or(bool.bool, bool.bool) = bool.bool.
+:- pred or_list(list.list(bool.bool), bool.bool).
+:- mode or_list((builtin.in), (builtin.out)) is det.
+:- func or_list(list.list(bool.bool)) = bool.bool.
+:- func pred_to_bool((pred)) = bool.bool.
+:- mode pred_to_bool(((pred) is semidet)) = (builtin.out) is det.
+:- func xor(bool.bool, bool.bool) = bool.bool.

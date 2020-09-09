@@ -1,0 +1,98 @@
+:- module (parse_tree.set_of_var).
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module set.
+:- use_module term.
+:- use_module (parse_tree.prog_data).
+:- type set_of_progvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.prog_var_type).
+:- type set_of_tvar == parse_tree.set_of_var.set_of_var(parse_tree.prog_data.tvar_type).
+:- type set_of_var(T).
+:- pred all_true((pred term.var(T)), parse_tree.set_of_var.set_of_var(T)).
+:- mode all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- func bitset_to_set(parse_tree.set_of_var.set_of_var(T)) = set.set(term.var(T)).
+:- pred cartesian_product(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), list.list(parse_tree.set_of_var.set_of_var(T))).
+:- mode cartesian_product((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred cartesian_product_list(list.list(parse_tree.set_of_var.set_of_var(T)), list.list(parse_tree.set_of_var.set_of_var(T))).
+:- mode cartesian_product_list((builtin.in), (builtin.out)) is det.
+:- pred contains(parse_tree.set_of_var.set_of_var(T), term.var(T)).
+:- mode contains((builtin.in), (builtin.in)) is semidet.
+:- func count(parse_tree.set_of_var.set_of_var(T)) = int.
+:- pred delete(term.var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_list(list.list(term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred difference(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode difference((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func difference(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)) = parse_tree.set_of_var.set_of_var(T).
+:- pred divide((pred term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred divide_by_set(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode divide_by_set((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred equal(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- pred filter((pred term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- func filter((pred term.var(T)), parse_tree.set_of_var.set_of_var(T)) = parse_tree.set_of_var.set_of_var(T).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred filter((pred term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred fold(pred(term.var(T), Acc, Acc), parse_tree.set_of_var.set_of_var(T), Acc, Acc).
+:- mode fold((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fold((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred fold_func((func(term.var(T), Acc) = Acc), parse_tree.set_of_var.set_of_var(T), Acc, Acc).
+:- mode fold_func(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred graph_colour_group_elements(set.set(parse_tree.set_of_var.set_of_var(T)), set.set(parse_tree.set_of_var.set_of_var(T))).
+:- mode graph_colour_group_elements((builtin.in), (builtin.out)) is det.
+:- pred init(parse_tree.set_of_var.set_of_var(T)).
+:- mode init((builtin.out)) is det.
+:- func init = parse_tree.set_of_var.set_of_var(T).
+:- pred insert(term.var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_list(list.list(term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred intersect(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode intersect((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func intersect(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)) = parse_tree.set_of_var.set_of_var(T).
+:- pred intersect_list(list.list(parse_tree.set_of_var.set_of_var(T)), parse_tree.set_of_var.set_of_var(T)).
+:- mode intersect_list((builtin.in), (builtin.out)) is det.
+:- func intersect_list(list.list(parse_tree.set_of_var.set_of_var(T))) = parse_tree.set_of_var.set_of_var(T).
+:- pred is_empty(parse_tree.set_of_var.set_of_var(T)).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_member(parse_tree.set_of_var.set_of_var(T), term.var(T), bool.bool).
+:- mode is_member((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is_non_empty(parse_tree.set_of_var.set_of_var(T)).
+:- mode is_non_empty((builtin.in)) is semidet.
+:- pred is_singleton(parse_tree.set_of_var.set_of_var(T), term.var(T)).
+:- mode is_singleton((builtin.in), (builtin.out)) is semidet.
+:- pred list_to_set(list.list(term.var(T)), parse_tree.set_of_var.set_of_var(T)).
+:- mode list_to_set((builtin.in), (builtin.out)) is det.
+:- func list_to_set(list.list(term.var(T))) = parse_tree.set_of_var.set_of_var(T).
+:- pred make_singleton(term.var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode make_singleton((builtin.in), (builtin.out)) is det.
+:- func make_singleton(term.var(T)) = parse_tree.set_of_var.set_of_var(T).
+:- pred member(parse_tree.set_of_var.set_of_var(T), term.var(T)).
+:- mode member((builtin.in), (builtin.in)) is semidet.
+:- mode member((builtin.in), (builtin.out)) is nondet.
+:- pred remove(term.var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_least(term.var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode remove_least((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_list(list.list(term.var(T)), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func set_to_bitset(set.set(term.var(T))) = parse_tree.set_of_var.set_of_var(T).
+:- pred sorted_list_to_set(list.list(term.var(T)), parse_tree.set_of_var.set_of_var(T)).
+:- mode sorted_list_to_set((builtin.in), (builtin.out)) is det.
+:- func sorted_list_to_set(list.list(term.var(T))) = parse_tree.set_of_var.set_of_var(T).
+:- pred to_sorted_list(parse_tree.set_of_var.set_of_var(T), list.list(term.var(T))).
+:- mode to_sorted_list((builtin.in), (builtin.out)) is det.
+:- func to_sorted_list(parse_tree.set_of_var.set_of_var(T)) = list.list(term.var(T)).
+:- pred union(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)).
+:- mode union((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func union(parse_tree.set_of_var.set_of_var(T), parse_tree.set_of_var.set_of_var(T)) = parse_tree.set_of_var.set_of_var(T).
+:- pred union_list(list.list(parse_tree.set_of_var.set_of_var(T)), parse_tree.set_of_var.set_of_var(T)).
+:- mode union_list((builtin.in), (builtin.out)) is det.
+:- func union_list(list.list(parse_tree.set_of_var.set_of_var(T))) = parse_tree.set_of_var.set_of_var(T).
+:- implementation.
+:- use_module sparse_bitset.
+:- type set_of_var(T) == sparse_bitset.sparse_bitset(term.var(T)).

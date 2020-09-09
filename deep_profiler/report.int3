@@ -1,0 +1,114 @@
+:- module report.
+:- interface.
+:- type ancestor_desc.
+:- type call_site_desc.
+:- type call_site_dynamic_dump_info.
+:- type call_site_dynamic_var_use_info.
+:- type call_site_perf.
+:- type call_site_static_dump_info.
+:- type callers_counts.
+:- type clique_call_site_report.
+:- type clique_desc.
+:- type clique_dump_info.
+:- type clique_proc_dynamic_report.
+:- type clique_proc_report.
+:- type clique_recursion_report.
+:- type clique_report.
+:- type data_struct_name.
+:- type deep_report.
+:- type field_name.
+:- type getter_or_setter
+	where	type_is_abstract_enum(1).
+:- type gs_ds_map.
+:- type gs_ds_map(T).
+:- type gs_field_info.
+:- type gs_field_info(I, S).
+:- type gs_field_map.
+:- type gs_field_map(T).
+:- type inheritable_perf.
+:- type maybe_have_module_rep
+	where	type_is_abstract_enum(1).
+:- type menu_report.
+:- type message_report.
+:- type module_active.
+:- type module_getter_setters_report.
+:- type module_is_active
+	where	type_is_abstract_enum(1).
+:- type module_rep_report.
+:- type module_report.
+:- type normal_callee_id.
+:- type perf_row_data(T).
+:- type proc_active.
+:- type proc_callers.
+:- type proc_callers_report.
+:- type proc_desc.
+:- type proc_dynamic_dump_info.
+:- type proc_is_active
+	where	type_is_abstract_enum(1).
+:- type proc_report.
+:- type proc_static_dump_info.
+:- type procrep_coverage_info.
+:- type program_modules_report.
+:- type recursion_level_report.
+:- type recursion_type.
+:- type recursion_type_freq_data.
+:- type recursion_type_histogram.
+:- type recursion_type_proc_freq_data.
+:- type recursion_type_proc_map.
+:- type recursion_type_simple.
+:- type recursion_types_frequency_report.
+:- type report_ordering.
+:- type top_procs_report.
+:- type var_use_and_name.
+:- abstract_inst((recursion_type_known_costs)).
+:- abstract_inst((recursion_type_unknown_costs)).
+:- type_representation(ancestor_desc, is_word_aligned_ptr).
+:- type_representation(call_site_desc, is_word_aligned_ptr).
+:- type_representation(call_site_dynamic_dump_info, is_word_aligned_ptr).
+:- type_representation(call_site_dynamic_var_use_info, is_word_aligned_ptr).
+:- type_representation(call_site_perf, is_word_aligned_ptr).
+:- type_representation(call_site_static_dump_info, is_word_aligned_ptr).
+:- type_representation(callers_counts, is_word_aligned_ptr).
+:- type_representation(clique_call_site_report, is_word_aligned_ptr).
+:- type_representation(clique_desc, is_word_aligned_ptr).
+:- type_representation(clique_dump_info, is_word_aligned_ptr).
+:- type_representation(clique_proc_dynamic_report, is_word_aligned_ptr).
+:- type_representation(clique_proc_report, is_word_aligned_ptr).
+:- type_representation(clique_recursion_report, is_word_aligned_ptr).
+:- type_representation(clique_report, is_word_aligned_ptr).
+:- type_representation(data_struct_name, du_repn(notag("data_struct_name", string,  no_c_j_cs_e))).
+:- type_representation(field_name, du_repn(notag("field_name", string,  no_c_j_cs_e))).
+:- type_representation(getter_or_setter, du_repn(enum("getter", "setter", [],  no_c_j_cs_e))).
+:- type_representation(gs_ds_map, is_eqv_to(report.gs_ds_map(report.gs_field_info))).
+:- type_representation(gs_ds_map(V_1), is_eqv_to(map(report.data_struct_name, report.gs_field_map(V_1)))).
+:- type_representation(gs_field_info, is_eqv_to(report.gs_field_info(report.perf_row_data(report.proc_desc), report.perf_row_data(unit)))).
+:- type_representation(gs_field_map, is_eqv_to(report.gs_field_map(report.gs_field_info))).
+:- type_representation(gs_field_map(V_1), is_eqv_to(map(report.field_name, V_1))).
+:- type_representation(inheritable_perf, is_word_aligned_ptr).
+:- type_representation(maybe_have_module_rep, du_repn(enum("do_not_have_module_rep", "have_module_rep", [],  no_c_j_cs_e))).
+:- type_representation(menu_report, is_word_aligned_ptr).
+:- type_representation(message_report, du_repn(notag("message_report", string,  no_c_j_cs_e))).
+:- type_representation(module_active, is_word_aligned_ptr).
+:- type_representation(module_getter_setters_report, is_word_aligned_ptr).
+:- type_representation(module_is_active, du_repn(enum("module_is_active", "module_is_not_active", [],  no_c_j_cs_e))).
+:- type_representation(module_rep_report, is_word_aligned_ptr).
+:- type_representation(module_report, is_word_aligned_ptr).
+:- type_representation(normal_callee_id, is_word_aligned_ptr).
+:- type_representation(proc_active, is_word_aligned_ptr).
+:- type_representation(proc_callers_report, is_word_aligned_ptr).
+:- type_representation(proc_desc, is_word_aligned_ptr).
+:- type_representation(proc_dynamic_dump_info, is_word_aligned_ptr).
+:- type_representation(proc_is_active, du_repn(enum("proc_is_active", "proc_is_not_active", [],  no_c_j_cs_e))).
+:- type_representation(proc_report, is_word_aligned_ptr).
+:- type_representation(proc_static_dump_info, is_word_aligned_ptr).
+:- type_representation(procrep_coverage_info, is_word_aligned_ptr).
+:- type_representation(program_modules_report, du_repn(notag("program_modules_report", list(perf_row_data(module_active)),  no_c_j_cs_e))).
+:- type_representation(recursion_level_report, is_word_aligned_ptr).
+:- type_representation(recursion_type_freq_data, is_word_aligned_ptr).
+:- type_representation(recursion_type_histogram, is_eqv_to(map(report.recursion_type_simple, report.recursion_type_freq_data))).
+:- type_representation(recursion_type_proc_freq_data, is_word_aligned_ptr).
+:- type_representation(recursion_type_proc_map, is_eqv_to(map(proc_static_ptr, report.recursion_type_proc_freq_data))).
+:- type_representation(recursion_types_frequency_report, du_repn(notag("recursion_types_frequency_report", recursion_type_histogram,  no_c_j_cs_e))).
+:- type_representation(report_ordering, is_word_aligned_ptr).
+:- type_representation(top_procs_report, is_word_aligned_ptr).
+:- type_representation(var_use_and_name, is_word_aligned_ptr).
