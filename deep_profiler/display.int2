@@ -1,0 +1,94 @@
+:- module display.
+:- interface.
+:- type attr_string
+    --->    attr_str(list.list(display.str_attr), string).
+:- type deep_link
+    --->    deep_link(query.cmd, maybe.maybe(query.preferences), display.attr_string, display.link_class).
+:- type display
+    --->    display((display.display_title) :: maybe.maybe(string), (display.display_content) :: list.list(display.display_item)).
+:- type display_item
+    --->    display_heading(string)
+    ;       display_text(string)
+    ;       display_paragraph_break 
+    ;       display_link(display.deep_link)
+    ;       display_pseudo_link(display.pseudo_link)
+    ;       display_list(display.list_class, maybe.maybe(string), list.list(display.display_item))
+    ;       display_table(display.table)
+    ;       display_verbatim(string)
+    ;       display_developer(display.display_item).
+:- type link_class
+    --->    link_class_link 
+    ;       link_class_control .
+:- type list_class
+    --->    list_class_vertical_no_bullets 
+    ;       list_class_vertical_bullets 
+    ;       list_class_horizontal 
+    ;       list_class_horizontal_except_title .
+:- type pseudo_link
+    --->    pseudo_link(string, display.link_class).
+:- type str_attr
+    --->    attr_bold 
+    ;       attr_italic 
+    ;       attr_underline .
+:- type table
+    --->    table((display.table_class) :: display.table_class, (display.table_num_cols) :: int, (display.table_header) :: maybe.maybe(display.table_header), (display.table_rows) :: list.list(display.table_row)).
+:- type table_cell
+    --->    table_cell((display.tc_text) :: display.table_data)
+    ;       table_multi_cell((display.tcs_text) :: display.table_data, (display.tcs_span) :: int)
+    ;       table_empty_cell .
+:- type table_class
+    --->    table_class_do_not_box 
+    ;       table_class_box 
+    ;       table_class_box_if_pref .
+:- type table_column_class
+    --->    table_column_class_allocations 
+    ;       table_column_class_callseqs 
+    ;       table_column_class_clique 
+    ;       table_column_class_field_name 
+    ;       table_column_class_memory 
+    ;       table_column_class_module_name 
+    ;       table_column_class_no_class 
+    ;       table_column_class_number 
+    ;       table_column_class_ordinal_rank 
+    ;       table_column_class_port_counts 
+    ;       table_column_class_proc 
+    ;       table_column_class_source_context 
+    ;       table_column_class_ticks_and_times .
+:- type table_column_colour
+    --->    column_do_not_colour 
+    ;       column_colour 
+    ;       column_colour_if_pref .
+:- type table_data
+    --->    td_f(float)
+    ;       td_i(int)
+    ;       td_l(display.deep_link)
+    ;       td_m(measurement_units.memory, measurement_units.memory_units, int)
+    ;       td_p(measurement_units.percent)
+    ;       td_s(string)
+    ;       td_as(display.attr_string)
+    ;       td_t(measurement_units.time).
+:- type table_header
+    --->    table_header((display.th_groups) :: list.list(display.table_header_group)).
+:- type table_header_group
+    --->    table_header_group((display.thg_titles) :: display.table_header_group_columns, (display.thg_class) :: display.table_column_class, (display.thg_colour) :: display.table_column_colour).
+:- type table_header_group_columns
+    --->    table_header_group_single((display.thsc_title) :: display.table_data)
+    ;       table_header_group_multi((display.thmc_title) :: string, (display.thmc_subtitles) :: list.list(display.table_data)).
+:- type table_row
+    --->    table_row((display.tr_cells) :: list.list(display.table_cell))
+    ;       table_separator_row 
+    ;       table_section_header((display.tsh_text) :: display.table_data)
+    ;       table_developer_row((display.tdr_row) :: display.table_row).
+:- type_representation(attr_string, is_word_aligned_ptr).
+:- type_representation(deep_link, is_word_aligned_ptr).
+:- type_representation(display, is_word_aligned_ptr).
+:- type_representation(link_class, du_repn(enum("link_class_link", "link_class_control", [],  no_c_j_cs_e))).
+:- type_representation(list_class, du_repn(enum("list_class_vertical_no_bullets", "list_class_vertical_bullets", ["list_class_horizontal", "list_class_horizontal_except_title"],  no_c_j_cs_e))).
+:- type_representation(pseudo_link, is_word_aligned_ptr).
+:- type_representation(str_attr, du_repn(enum("attr_bold", "attr_italic", ["attr_underline"],  no_c_j_cs_e))).
+:- type_representation(table, is_word_aligned_ptr).
+:- type_representation(table_class, du_repn(enum("table_class_do_not_box", "table_class_box", ["table_class_box_if_pref"],  no_c_j_cs_e))).
+:- type_representation(table_column_class, du_repn(enum("table_column_class_allocations", "table_column_class_callseqs", ["table_column_class_clique", "table_column_class_field_name", "table_column_class_memory", "table_column_class_module_name", "table_column_class_no_class", "table_column_class_number", "table_column_class_ordinal_rank", "table_column_class_port_counts", "table_column_class_proc", "table_column_class_source_context", "table_column_class_ticks_and_times"],  no_c_j_cs_e))).
+:- type_representation(table_column_colour, du_repn(enum("column_do_not_colour", "column_colour", ["column_colour_if_pref"],  no_c_j_cs_e))).
+:- type_representation(table_header, du_repn(notag("table_header", list.list(display.table_header_group),  no_c_j_cs_e))).
+:- type_representation(table_header_group, is_word_aligned_ptr).

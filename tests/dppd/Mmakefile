@@ -1,0 +1,27 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = dppd
+MAYBE_J1 = -j1
+
+# For this directory, rather than having a separate main for each test,
+# there is a single Mercury test harness which invokes all of the
+# different tests.
+PROGS = run
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+run.runtest: run.res
+
+# MCFLAGS += --pd --no-inlining -d 35 -D petdr #-d 99
+# GRADE=asm_fast.gc.prof
+# MLFLAGS += --static
+
+depend:	run.depend

@@ -1,0 +1,61 @@
+/*
+** Automatically generated from `bytecode_gen.m'
+** by the Mercury compiler,
+** version rotd-2020-09-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module bytecode_backend.bytecode_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_bytecode_backend__bytecode_gen
+#define MR_HEADER_GUARD_bytecode_backend__bytecode_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BYTECODE_BACKEND__BYTECODE_GEN_DECL_GUARD
+#define BYTECODE_BACKEND__BYTECODE_GEN_DECL_GUARD
+#include "bytecode_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode_gen__bytecode_backend__bytecode_gen__type_ctor_info_byte_info_0;
+
+void MR_CALL 
+bytecode_backend__bytecode_gen__gen_module_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__bytecode_backend__bytecode_gen__init(void);
+void mercury__bytecode_backend__bytecode_gen__init_type_tables(void);
+void mercury__bytecode_backend__bytecode_gen__init_debugger(void);
+const char *mercury__bytecode_backend__bytecode_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_bytecode_backend.bytecode_gen
+
+// :- end_interface bytecode_backend.bytecode_gen.
