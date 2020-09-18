@@ -1,0 +1,20 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- type found_invalid_inst_or_mode
+	where	type_is_abstract_enum(1).
+:- type found_invalid_type
+	where	type_is_abstract_enum(1).
+:- type ims_item(T).
+:- type ims_list(T).
+:- type make_hlds_qual_info.
+:- type sec_info.
+:- type sec_item(T).
+:- type sec_list(T).
+:- abstract_inst((ims_item(I))).
+:- abstract_inst((sec_item(I))).
+:- type_representation(found_invalid_inst_or_mode, du_repn(enum("did_not_find_invalid_inst_or_mode", "found_invalid_inst_or_mode", [],  no_c_j_cs_e))).
+:- type_representation(found_invalid_type, du_repn(enum("did_not_find_invalid_type", "found_invalid_type", [],  no_c_j_cs_e))).
+:- type_representation(ims_list(V_1), is_eqv_to(list(hlds.make_hlds.ims_item(V_1)))).
+:- type_representation(make_hlds_qual_info, is_eqv_to(hlds.make_hlds.qual_info.qual_info)).
+:- type_representation(sec_info, is_word_aligned_ptr).
+:- type_representation(sec_list(V_1), is_eqv_to(list(hlds.make_hlds.sec_item(V_1)))).

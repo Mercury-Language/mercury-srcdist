@@ -1,0 +1,5 @@
+:- module (check_hlds.mode_debug).
+:- interface.
+:- type port
+	where	type_is_abstract_enum(2).
+:- type_representation(port, du_repn(enum("enter", "exit", ["wakeup"],  no_c_j_cs_e))).

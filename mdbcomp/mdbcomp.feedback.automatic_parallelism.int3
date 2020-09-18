@@ -1,0 +1,31 @@
+:- module ((mdbcomp.feedback).automatic_parallelism).
+:- interface.
+:- type alg_for_finding_best_par.
+:- type callee_rep.
+:- type candidate_par_conjunction(GoalType).
+:- type candidate_par_conjunctions_params.
+:- type candidate_par_conjunctions_proc.
+:- type candidate_par_conjunctions_proc(GoalType).
+:- type conjuncts_are_dependent.
+:- type cost_above_par_threshold
+	where	type_is_abstract_enum(1).
+:- type parallel_exec_metrics.
+:- type parallelise_dep_conjs.
+:- type pard_goal.
+:- type pard_goal_annotation.
+:- type push_goal.
+:- type seq_conj(GoalType).
+:- type speedup_estimate_alg
+	where	type_is_abstract_enum(1).
+:- type stat_measure
+	where	type_is_abstract_enum(1).
+:- type_representation(candidate_par_conjunctions_params, is_word_aligned_ptr).
+:- type_representation(candidate_par_conjunctions_proc, is_eqv_to(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(mdbcomp.feedback.automatic_parallelism.pard_goal))).
+:- type_representation(cost_above_par_threshold, du_repn(enum("cost_above_par_threshold", "cost_not_above_par_threshold", [],  no_c_j_cs_e))).
+:- type_representation(parallel_exec_metrics, is_word_aligned_ptr).
+:- type_representation(pard_goal, is_eqv_to(goal_rep(mdbcomp.feedback.automatic_parallelism.pard_goal_annotation))).
+:- type_representation(pard_goal_annotation, is_word_aligned_ptr).
+:- type_representation(push_goal, is_word_aligned_ptr).
+:- type_representation(seq_conj(V_1), du_repn(notag("seq_conj", list(V_1),  no_c_j_cs_e))).
+:- type_representation(speedup_estimate_alg, du_repn(enum("estimate_speedup_naively", "estimate_speedup_by_overlap", [],  no_c_j_cs_e))).
+:- type_representation(stat_measure, du_repn(enum("stat_mean", "stat_median", [],  no_c_j_cs_e))).

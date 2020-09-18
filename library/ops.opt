@@ -1,0 +1,98 @@
+:- module ops.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+
+:- type mercury_op_table
+    --->    mercury_op_table .
+
+:- instance (ops.op_table(ops.mercury_op_table)) where [
+	pred((ops.lookup_infix_op)/5) is (ops.lookup_mercury_infix_op),
+	pred((ops.lookup_prefix_op)/4) is (ops.lookup_mercury_prefix_op),
+	pred((ops.lookup_binary_prefix_op)/5) is (ops.lookup_mercury_binary_prefix_op),
+	pred((ops.lookup_postfix_op)/4) is (ops.lookup_mercury_postfix_op),
+	pred((ops.lookup_op)/2) is (ops.lookup_mercury_op),
+	pred((ops.lookup_op_infos)/4) is (ops.lookup_mercury_op_infos),
+	pred((ops.lookup_operator_term)/4) is (ops.lookup_mercury_operator_term),
+	func((ops.max_priority)/1) is (ops.mercury_max_priority),
+	func((ops.arg_priority)/1) is (ops.mercury_arg_priority)
+].
+
+:- pred ops.lookup_mercury_binary_prefix_op(ops.mercury_op_table, string, int, ops.assoc, ops.assoc).
+:- mode ops.lookup_mercury_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred ops.lookup_mercury_infix_op(ops.mercury_op_table, string, int, ops.assoc, ops.assoc).
+:- mode ops.lookup_mercury_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred ops.lookup_mercury_op(ops.mercury_op_table, string).
+:- mode ops.lookup_mercury_op((builtin.in), (builtin.in)) is semidet.
+:- pred ops.lookup_mercury_op_infos(ops.mercury_op_table, string, ops.op_info, list.list(ops.op_info)).
+:- mode ops.lookup_mercury_op_infos((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred ops.lookup_mercury_operator_term(ops.mercury_op_table, int, ops.assoc, ops.assoc).
+:- mode ops.lookup_mercury_operator_term((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred ops.lookup_mercury_postfix_op(ops.mercury_op_table, string, int, ops.assoc).
+:- mode ops.lookup_mercury_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred ops.lookup_mercury_prefix_op(ops.mercury_op_table, string, int, ops.assoc).
+:- mode ops.lookup_mercury_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func ops.mercury_arg_priority(ops.mercury_op_table) = int.
+:- mode ops.mercury_arg_priority((builtin.in)) = (builtin.out) is det.
+
+:- pragma inline((ops.adjust_priority_for_assoc)/3).
+ops.adjust_priority_for_assoc(V_4, ops.y, V_4).
+ops.adjust_priority_for_assoc(V_5, ops.x, V_3) :-
+    V_3 = int.(V_5 - V_6),
+    V_6 = 1 : int.
+
+ops.init_mercury_op_table = ops.mercury_op_table.
+
+ops.mercury_max_priority(V_3) = 1200.
+
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5'((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(5, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5'((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(5, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4'((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(9, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4'((builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4'((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(6, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4'((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(6, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.'ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ops.adjust_priority_for_assoc((builtin.in), (builtin.in), (builtin.out)), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(ops.arg_priority((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((ops.init_mercury_op_table) = (builtin.uo), finite(0, [no]), cannot_loop).
+:- pragma termination_info(ops.lookup_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_mercury_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(5, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(5, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_op((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_op_infos((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(9, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_operator_term((builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(6, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_mercury_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(6, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(ops.lookup_op((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_op_infos((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_operator_term((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.lookup_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ops.max_priority((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ops.mercury_arg_priority((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ops.mercury_max_priority((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (ops.adjust_priority_for_assoc), 3, 0, will_not_throw).
+:- pragma exceptions(function, (ops.arg_priority), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ops.init_mercury_op_table), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_binary_prefix_op), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_infix_op), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_mercury_binary_prefix_op), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_infix_op), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_op), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_op_infos), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_operator_term), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_postfix_op), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_mercury_prefix_op), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (ops.lookup_op), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_op_infos), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_operator_term), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_postfix_op), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ops.lookup_prefix_op), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ops.max_priority), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ops.mercury_arg_priority), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ops.mercury_max_priority), 2, 0, will_not_throw).
