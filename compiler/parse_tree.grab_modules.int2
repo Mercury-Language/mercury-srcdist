@@ -1,0 +1,5 @@
+:- module (parse_tree.grab_modules).
+:- interface.
+:- type_representation(missing_ancestor_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, parse_tree.grab_modules.missing_ancestor_info))).
+:- type_representation(module_import_or_use_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, one_or_more.one_or_more(parse_tree.grab_modules.import_or_use_context)))).
+:- type_representation(module_inclusion_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, one_or_more.one_or_more(parse_tree.grab_modules.include_context)))).

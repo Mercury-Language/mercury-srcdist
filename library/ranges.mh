@@ -1,0 +1,47 @@
+/*
+** Automatically generated from `ranges.m'
+** by the Mercury compiler,
+** version rotd-2020-09-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef RANGES_MH
+#define RANGES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef RANGES_DECL_GUARD
+#define RANGES_DECL_GUARD
+
+
+typedef MR_Word ML_Ranges;
+
+
+
+#endif
+MR_Word ML_ranges_empty(void);
+MR_bool ML_ranges_is_empty(MR_Word);
+MR_Word ML_ranges_universe(void);
+MR_Word ML_ranges_range(MR_Integer, MR_Integer);
+MR_bool ML_ranges_split(MR_Word, MR_Integer *, MR_Integer *, MR_Word *);
+MR_Word ML_ranges_insert(MR_Integer, MR_Word);
+MR_Integer ML_ranges_size(MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* RANGES_MH */
