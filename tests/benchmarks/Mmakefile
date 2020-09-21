@@ -1,0 +1,59 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = benchmarks
+MAYBE_J1 =
+
+# To test the performance of the benchmarks (with I/O suppressed),
+# uncomment one the following two lines.  The `.hlc' version should be
+# used for --high-level-code grades, the other version for LLDS grades.
+#
+# MLFLAGS += -w "`extract $(*:_init=) '' BenchEntry.hlc`"
+# MLFLAGS += -w "`extract $(*:_init=) '' BenchEntry`"
+
+#-----------------------------------------------------------------------------#
+
+PROGS = \
+	cqueens \
+	crypt \
+	deriv \
+	deriv2 \
+	nrev \
+	poly \
+	primes \
+	qsort \
+	queens \
+	query \
+	tak
+
+TESTS = $(PROGS)
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+#-----------------------------------------------------------------------------#
+
+%.runtest: %.res ;
+
+CS =	$(PROGS:%=%.c)
+TIMES =	$(PROGS:%=%.time)
+
+cs:	$(CS)
+
+times:	$(TIMES)
+
+dir.%:	$(PROGS)
+	-mkdir $@
+	cp $(PROGS) $@
+	cp BenchEntry $@
+
+%.time: %
+	{ count=`awk '/$*/ { print $$2; exit; }' < BenchRepeatCounts`; \
+	echo "$$count	"; \
+	MERCURY_OPTIONS="-t -r$$count" ./repeat_time 3 ./$*; } 2>&1 | tee $@
+
+#-----------------------------------------------------------------------------#

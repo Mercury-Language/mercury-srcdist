@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `construct.m'
+** by the Mercury compiler,
+** version rotd-2020-09-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef CONSTRUCT_MH
+#define CONSTRUCT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CONSTRUCT_DECL_GUARD
+#define CONSTRUCT_DECL_GUARD
+
+
+#include "mercury_type_desc.h"
+#include "mercury_construct.h"
+
+
+
+// This function exists to allow us to handle both the MR_SECTAG_REMOTE_*
+// and the MR_SECTAG_NONE cases of constructing values of discriminated
+// union types without code duplication.
+//
+// Using a macro would be faster, but a function is easier to get right
+// in terms of issues such as scopes, and it is easier to debug.
+//
+// XXX ARG_PACK
+// Once this code has been operation for a while without problems,
+// we should consider turning it into a macro.
+
+extern void         ML_copy_memory_cell_args(MR_Word *arg_list_ptr,
+                        MR_Word *new_data_ptr, const MR_Word ptag,
+                        const MR_DuFunctorDesc *functor_desc,
+                        const MR_bool has_sectag,
+                        const MR_AllocSiteInfoPtr alloc_id);
+
+// This is a version of ML_copy_memory_cell_args that puts arguments
+// not into a memory cell, but next to the primary and secondary tag.
+extern MR_Unsigned  ML_copy_tagword_args(MR_Word *arg_list_ptr,
+                        const MR_Word ptag,
+                        const MR_DuFunctorDesc *functor_desc);
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CONSTRUCT_MH */

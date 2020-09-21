@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_stmt).
+:- interface.
+:- type func_info_c
+    --->    func_info_c(ml_backend.mlds.qual_function_name, ml_backend.mlds.mlds_func_signature).
+:- type_representation(func_info_c, is_word_aligned_ptr).

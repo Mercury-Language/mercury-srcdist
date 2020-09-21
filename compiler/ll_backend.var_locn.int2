@@ -1,0 +1,7 @@
+:- module (ll_backend.var_locn).
+:- interface.
+:- type var_locn_info.
+:- type_representation(dummy_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.type_util.is_dummy_type))).
+:- type_representation(loc_var_map, is_eqv_to(map.map(ll_backend.llds.lval, parse_tree.set_of_var.set_of_progvar))).
+:- type_representation(var_locn_info, is_word_aligned_ptr).
+:- type_representation(var_state_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, ll_backend.var_locn.var_state))).
