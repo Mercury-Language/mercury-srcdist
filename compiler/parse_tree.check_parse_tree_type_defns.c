@@ -1,0 +1,10361 @@
+/*
+** Automatically generated from `check_parse_tree_type_defns.m'
+** by the Mercury compiler,
+** version rotd-2020-09-21
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.check_parse_tree_type_defns.
+// :- implementation.
+
+/*
+INIT mercury__parse_tree__check_parse_tree_type_defns__init
+ENDINIT
+*/
+
+#include "parse_tree.check_parse_tree_type_defns.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "hlds.add_foreign_enum.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.status.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__pti_one_or_more_1__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_du_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_abstract_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__cord__pti_cord_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_builtin__type_ctor_info_string_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__set_tree234__pti_set_tree234_1__plain_builtin__type_ctor_info_string_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_VA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns____vpti_tuple_2__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0__plain_list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_term__type_ctor_info_context_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_1;
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_abstract_solver_type_status_0[2];
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_abstract_solver_type_status_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_abstract_solver_type_status_0[2];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_checked_foreign_enum_0_0[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_checked_foreign_enum_0_0;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_checked_foreign_enum_0_0[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_checked_foreign_enum_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_checked_foreign_enum_0[1];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_checked_foreign_enum_0[1];
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_field_name_locn_0_0[3];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_field_name_locn_0_0;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_field_name_locn_0_0[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_field_name_locn_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_field_name_locn_0[1];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_field_name_locn_0[1];
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_0[1];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_1[1];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_1;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_1[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_foreign_type_or_enum_0[2];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_foreign_type_or_enum_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_foreign_type_or_enum_0[2];
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_1;
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_maybe_insist_on_defn_0[2];
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_maybe_insist_on_defn_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_insist_on_defn_0[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_maybe_only_constants_0_1[2];
+
+static const MR_ConstString parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_names_maybe_only_constants_0_1[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_1;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_1[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_maybe_only_constants_0[2];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_maybe_only_constants_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_only_constants_0[2];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_0[2];
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_solver_type_defn_0_0[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_solver_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_1[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_1;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_1[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_solver_type_defn_0[2];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_solver_type_defn_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_solver_type_defn_0[2];
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_1;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_2;
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_abs_type_status_0[3];
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_abs_type_status_0[3];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_abs_type_status_0[3];
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_1;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_2;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_3;
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_du_type_status_0[4];
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_du_type_status_0[4];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_du_type_status_0[4];
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_1;
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_2;
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_eqv_type_status_0[3];
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_eqv_type_status_0[3];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_eqv_type_status_0[3];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_eqv_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_0[2];
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_0[2];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_du_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_1[5];
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_1[5];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_1;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_2[3];
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_2[3];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_2;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_3[3];
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_3[3];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_3;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_1[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_2[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_3[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_std_type_defn_0[4];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_std_type_defn_0[4];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_type_defn_0[4];
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_0[1];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_0;
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_1[1];
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_1;
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_1[1];
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_type_ctor_checked_defn_0[2];
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_type_ctor_checked_defn_0[2];
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_type_ctor_checked_defn_0[2];
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0;
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__at_most_one_foreign_type_for_lang__1466__1_3_p_0(
+  MR_Word HeadVar__1_30,
+  MR_Word HeadVar__2_31,
+  MR_Word * HeadVar__3_32);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__build_mercury_foreign_enum_map__1002__1_1_p_0(
+  MR_Word BadQualCtorNamesCord_30);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_repn_foreign_only_constants_lang__911__1_2_p_0(
+  MR_Word LeftOverEnums_15,
+  MR_Word HeadVar__2_32);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_only_foreign_type_section__822__1_5_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word AbstractStdDefn_17,
+  MR_Word HeadVar__3_90,
+  MR_Word HeadVar__4_91,
+  MR_Word * HeadVar__5_92);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_foreign_type_section__771__1_5_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word DuDefn_12,
+  MR_Word HeadVar__3_58,
+  MR_Word HeadVar__4_59,
+  MR_Word * HeadVar__5_60);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_117_95_105_109_112_95_114_101_112_111_114_116_95_97_110_121_95_102_111_114_101_105_103_110_95_100_101_102_110_95_105_110_95_105_110_116_95_95_91_49_93_95_48_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DuDefn_7,
+  MR_Word MaybeForeignDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_14,
+  MR_Word * STATE_VARIABLE_Specs_15);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_field_name_5_p_0(
+  MR_String FieldName_6,
+  MR_Word FirstFNLocn_7,
+  MR_Word FNLocn_8,
+  MR_Word STATE_VARIABLE_Specs_0_20,
+  MR_Word * STATE_VARIABLE_Specs_21);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0(
+  MR_String FieldName_5,
+  MR_Word OoMFNLocns_6,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_arg_to_field_name_map_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String CtorName_7,
+  MR_Word CtorArg_8,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_22,
+  MR_Word * STATE_VARIABLE_FieldNameMap_23);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word Ctor_6,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_15,
+  MR_Word * STATE_VARIABLE_FieldNameMap_16);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word CheckedDefn_6,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_29,
+  MR_Word * STATE_VARIABLE_FieldNameMap_30);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(
+  MR_String TypeOrEnum_8,
+  MR_Word TypeCtor_9,
+  MR_Word Lang_10,
+  MR_Word LeastContext_11,
+  MR_Word Context_12,
+  MR_Word STATE_VARIABLE_Specs_0_17,
+  MR_Word * STATE_VARIABLE_Specs_18);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__accumulate_type_defn_contexts_3_p_0(
+  MR_Word TypeInfo_for_T_10,
+  MR_Word TypeDefn_4,
+  MR_Word STATE_VARIABLE_Contexts_0_6,
+  MR_Word * STATE_VARIABLE_Contexts_7);
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__project_foreign_enum_context_1_f_0(
+  MR_Word ForeignEnum_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__compare_foreign_enum_infos_by_context_3_p_0(
+  MR_Word ForeignEnumA_4,
+  MR_Word ForeignEnumB_5,
+  MR_Word * Cmp_6);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_type_defn_6_p_0(
+  MR_String Kind_7,
+  MR_Word TypeCtor_8,
+  MR_Word LeastContext_9,
+  MR_Word Context_10,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_type_ctor_enum_in_int_5_p_0(
+  MR_Word ModuleName_6,
+  MR_Word TypeCtor_7,
+  MR_Word ForeignEnum_8,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_foreign_enum_for_undefined_type_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String UndefOrUndecl_7,
+  MR_Word Enum_8,
+  MR_Word STATE_VARIABLE_Specs_0_12,
+  MR_Word * STATE_VARIABLE_Specs_13);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word UsedContext_9,
+  MR_String Kind_10,
+  MR_String Section_11,
+  MR_Word Enum_12,
+  MR_Word STATE_VARIABLE_Specs_0_17,
+  MR_Word * STATE_VARIABLE_Specs_18);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word UsedContext_9,
+  MR_String Kind_10,
+  MR_String Section_11,
+  MR_Word MaybeDefnContext_12,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__foreign_int_report_any_foreign_defn_in_imp_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word IntForeignContext_7,
+  MR_Word MaybeImpForeignDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_14,
+  MR_Word * STATE_VARIABLE_Specs_15);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_foreign_type_without_declaration_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word MaybeForeignDefn_6,
+  MR_Word STATE_VARIABLE_Specs_0_11,
+  MR_Word * STATE_VARIABLE_Specs_12);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__non_enum_du_report_any_foreign_enum_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DuDefn_7,
+  MR_Word Enum_8,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_13(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_12(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_11(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_10(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0(
+  MR_Word InsistOnDefn_12,
+  MR_Word ModuleName_13,
+  MR_Word IntTypeDefnMap_14,
+  MR_Word ImpTypeDefnMap_15,
+  MR_Word IntForeignEnumMap_16,
+  MR_Word ImpForeignEnumMap_17,
+  MR_Word TypeCtor_18,
+  MR_Word STATE_VARIABLE_TypeCtorCheckedMap_0_129,
+  MR_Word * STATE_VARIABLE_TypeCtorCheckedMap_130,
+  MR_Word STATE_VARIABLE_Specs_0_131,
+  MR_Word * STATE_VARIABLE_Specs_132);
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(
+  MR_Word HeadVar__1_1);
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__get_maybe_type_defn_contexts_1_f_0(
+  MR_Word HeadVar__1_1);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0(
+  MR_Word ForeignEnumMap_7,
+  MR_Word TypeCtor_8,
+  MR_Word * MaybeEnumCJCsE_9,
+  MR_Word * LeftOverEnumCJCse_10,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word Lang_9,
+  MR_Word ForeignEnums_10,
+  MR_Word * MaybeForeignEnum_11,
+  MR_Word * LeftOverForeignEnums_12,
+  MR_Word STATE_VARIABLE_Specs_0_20,
+  MR_Word * STATE_VARIABLE_Specs_21);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_defns_for_duplicates_5_p_0(
+  MR_Word TypeDefnMap_6,
+  MR_Word TypeCtor_7,
+  MR_Word * MaybeDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_23,
+  MR_Word * STATE_VARIABLE_Specs_24);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DefnsCJCsE_7,
+  MR_Word * MaybeDefnCJCsE_8,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0(
+  MR_Word TypeCtor_7,
+  MR_Word Lang_8,
+  MR_Word TypeDefns_9,
+  MR_Word * MaybeTypeDefn_10,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0(
+  MR_Word TypeInfo_for_T_29,
+  MR_String Kind_7,
+  MR_Word TypeCtor_8,
+  MR_Word TypeDefns_9,
+  MR_Word * MaybeTypeDefn_10,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__maybe_report_declared_but_undefined_type_5_p_0(
+  MR_Word InsistOnDefn_6,
+  MR_Word TypeCtor_7,
+  MR_Word AbsTypeDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_16,
+  MR_Word * STATE_VARIABLE_Specs_17);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_redundant_abstract_type_in_imp_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String Section_7,
+  MR_Word MaybeImpAbstractDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_nonabstract_solver_type_in_int_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word MaybeDefn_6,
+  MR_Word STATE_VARIABLE_Specs_0_11,
+  MR_Word * STATE_VARIABLE_Specs_12);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_8_p_0(
+  MR_Word TypeCtor_9,
+  MR_Word CtorNames_10,
+  MR_Word MaybeDefnCJCsE_11,
+  MR_Word MaybeEnumCJCsE_12,
+  MR_Word LeftOverEnumsCJCsE_13,
+  MR_Word * MaybeDefnOrEnumCJCsE_14,
+  MR_Word STATE_VARIABLE_Specs_0_33,
+  MR_Word * STATE_VARIABLE_Specs_34);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(
+  MR_Word TypeCtor_10,
+  MR_Word CtorNames_11,
+  MR_Word CtorNamesSet_12,
+  MR_Word MaybeDefn_13,
+  MR_Word MaybeEnum_14,
+  MR_Word LeftOverEnums_15,
+  MR_Word * MaybeDefnOrEnum_16,
+  MR_Word STATE_VARIABLE_Specs_0_25,
+  MR_Word * STATE_VARIABLE_Specs_26);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word CtorNames_7,
+  MR_Word CtorNamesSet_8,
+  MR_Word ForeignEnum_9,
+  MR_Tuple * HeadVar__5_5);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_117_112_95_100_117_109_109_121_95_102_111_114_101_105_103_110_95_110_97_109_101_115_95_95_91_49_93_95_48_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer CtorNum_2,
+  MR_Word * HeadVar__3_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__pick_up_all_errors_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Specs_0_2,
+  MR_Word * STATE_VARIABLE_Specs_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__pick_first_error_free_enum_if_any_2_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word IntAbstractStdMaybeDefn_12,
+  MR_Word ImpAbstractStdMaybeDefn_13,
+  MR_Word IntMaybeDefnCJCsE_14,
+  MR_Word ImpMaybeDefnCJCsE_15,
+  MR_Word * Status_16,
+  MR_Word * AbstractStdDefn_17,
+  MR_Word * ChosenMaybeDefnCJCsE_18,
+  MR_Word STATE_VARIABLE_Specs_0_36,
+  MR_Word * STATE_VARIABLE_Specs_37);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word DuDefn_12,
+  MR_Word DuSection_13,
+  MR_Word IntAbstractStdMaybeDefn_14,
+  MR_Word IntMaybeDefnCJCsE_15,
+  MR_Word ImpMaybeDefnCJCsE_16,
+  MR_Word * Status_17,
+  MR_Word * ChosenMaybeDefnCJCsE_18,
+  MR_Word STATE_VARIABLE_Specs_0_32,
+  MR_Word * STATE_VARIABLE_Specs_33);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_1[135][2];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_2[11][3];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_3[5][4];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_4[2][1];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_5[3][6];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_6[1][14];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_7[5][7];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_8[9][8];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_9[2][5];
+
+static /* final */ const MR_Integer parse_tree__check_parse_tree_type_defns_scalar_common_10[1][2];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_11[1][9];
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_12[3][10];
+
+
+
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_1[135][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[4]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[9]))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[13]))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_solver_0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_du_0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_eqv_0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[20]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is inconsistent."))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[22]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "and the corresponding foreign values"))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[24]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[23])))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "the names of Mercury constructors"))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[26]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[25])))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "the specified mapping between"))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[28]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[27])))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "error: "))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[30]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[29])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_4[0]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[31])))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 21U)),
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[33]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "repeated:"))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[35]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[34])))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 21U)),
+    ((MR_Box) ((MR_Integer) -2))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[37]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[39]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[38])))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "declarations for it."))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[41]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 20U)),
+    ((MR_Box) ((MR_String) "foreign_enum"))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[43]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[42])))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "so there must not be any"))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[45]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[44])))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is not an enumeration type,"))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[47]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[46])))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "That Mercury definition is here."))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[49]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "must be in the implementation section as well."))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[51]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "any foreign type definitions for it"))
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[53]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[52])))
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is in the implementation section,"))
+  },
+  /* row 56 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[55]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[54])))
+  },
+  /* row 57 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[39]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "must be in the interface section as well."))
+  },
+  /* row 59 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[58]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 60 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "all other foreign language definitions for it"))
+  },
+  /* row 61 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[60]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[59])))
+  },
+  /* row 62 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is in the interface section,"))
+  },
+  /* row 63 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[62]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[61])))
+  },
+  /* row 64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is here."))
+  },
+  /* row 65 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 66 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "That foreign definition in the interface"))
+  },
+  /* row 67 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[66]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[65])))
+  },
+  /* row 68 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "only in the implementation section."))
+  },
+  /* row 69 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[68]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 70 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "(as opposed to declared)"))
+  },
+  /* row 71 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[70]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[69])))
+  },
+  /* row 72 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "may be defined"))
+  },
+  /* row 73 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[72]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[71])))
+  },
+  /* row 74 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "section."))
+  },
+  /* row 75 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[74]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 76 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "That definition is here."))
+  },
+  /* row 77 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[76]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 78 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "has this declaration, but it has no definition."))
+  },
+  /* row 79 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[78]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 80 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the implementation section."))
+  },
+  /* row 81 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[80]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 82 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Such declarations must be"))
+  },
+  /* row 83 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[82]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[81])))
+  },
+  /* row 84 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the interface section of its defining module."))
+  },
+  /* row 85 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[84]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[83])))
+  },
+  /* row 86 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "of the module that defines the type they are for."))
+  },
+  /* row 87 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[86]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 88 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Such declarations must be in the implementation section"))
+  },
+  /* row 89 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[88]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[87])))
+  },
+  /* row 90 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the wrong module."))
+  },
+  /* row 91 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[90]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[89])))
+  },
+  /* row 92 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "The original definition is here."))
+  },
+  /* row 93 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[92]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[19])))
+  },
+  /* row 94 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "The first occurrence of this field name"))
+  },
+  /* row 95 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[94]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[65])))
+  },
+  /* row 96 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "In"))
+  },
+  /* row 97 */
+  {
+    ((MR_Box) ((MR_Unsigned) 20U)),
+    ((MR_Box) ((MR_String) "foreign_export_enum"))
+  },
+  /* row 98 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "declaration for type"))
+  },
+  /* row 99 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "The following Mercury constructor"))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "The following foreign"))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: a solver type such as"))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: this declaration of"))
+  },
+  /* row 103 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is redundant,"))
+  },
+  /* row 104 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "since the type has a definition in the"))
+  },
+  /* row 105 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: the type"))
+  },
+  /* row 106 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: the Mercury definition of"))
+  },
+  /* row 107 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: a"))
+  },
+  /* row 108 */
+  {
+    ((MR_Box) ((MR_Unsigned) 20U)),
+    ((MR_Box) ((MR_String) "foreign_type"))
+  },
+  /* row 109 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "declaration for"))
+  },
+  /* row 110 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "without either"))
+  },
+  /* row 111 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "a Mercury definition or a Mercury declaration for"))
+  },
+  /* row 112 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: since some foreign language definition"))
+  },
+  /* row 113 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "of"))
+  },
+  /* row 114 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: this definition of"))
+  },
+  /* row 115 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is incompatible"))
+  },
+  /* row 116 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "with the"))
+  },
+  /* row 117 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "definition"))
+  },
+  /* row 118 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the"))
+  },
+  /* row 119 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: this"))
+  },
+  /* row 120 */
+  {
+    ((MR_Box) ((MR_Unsigned) 20U)),
+    ((MR_Box) ((MR_String) "foreign_enum"))
+  },
+  /* row 121 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "is incompatible with the"))
+  },
+  /* row 122 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "definition in the"))
+  },
+  /* row 123 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row 124 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "declaration for the"))
+  },
+  /* row 125 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "type"))
+  },
+  /* row 126 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: duplicate"))
+  },
+  /* row 127 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "definition for"))
+  },
+  /* row 128 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: duplicate foreign"))
+  },
+  /* row 129 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "definition in"))
+  },
+  /* row 130 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "for"))
+  },
+  /* row 131 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: duplicate occurrence of the field name"))
+  },
+  /* row 132 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the function symbol"))
+  },
+  /* row 133 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "in the definition of"))
+  },
+  /* row 134 */
+  {
+    ((MR_Box) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "Error: since the Mercury definition of"))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_2[11][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_7[0])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_7[1])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_5[1])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_5[1])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_5[2])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_9[1])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_5[2])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_9[1])),
+    ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_3[5][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__cord__pti_cord_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_4[2][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 3))
+  },
+  /* row 1 */
+  {
+    (MR_Box) (((((MR_Unsigned) 0U << 4)) | (((((MR_Unsigned) 0U << 3)) | (((((MR_Unsigned) 0U << 2)) | (((MR_Unsigned) 0U << 1))))))))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_5[3][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[2]))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_comparison_result_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_6[1][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 11)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_insist_on_defn_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_7[5][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__one_or_more__pti_one_or_more_1__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_10[0])),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__pseudo_1)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_8[9][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_du_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_abstract_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__set_tree234__pti_set_tree234_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns____vpti_tuple_2__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0__plain_list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_du_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_arg_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0))
+  },
+  /* row 8 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_9[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0))
+  },
+};
+
+static /* final */ const MR_Integer parse_tree__check_parse_tree_type_defns_scalar_common_10[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_11[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 6)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__check_parse_tree_type_defns_scalar_common_12[3][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_foreign_language_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_term__type_ctor_info_context_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1list__ti_list_1parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__pti_one_or_more_1__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_du_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_du_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__type_ctor_info_type_details_abstract_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__cord__pti_cord_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__pti_list_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__set_tree234__pti_set_tree234_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct2 parse_tree__check_parse_tree_type_defns____vpti_tuple_2__plain_parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0__plain_list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0),
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__pseudo_1 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_PseudoTypeInfo) ((MR_Integer) 1)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__set_ordlist__pti_set_ordlist_1__plain_term__type_ctor_info_context_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) (&mercury__term__term__type_ctor_info_context_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__pti_item_type_defn_info_general_1__plain_parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__pti_maybe_1__plain_term__type_ctor_info_context_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) (&mercury__term__term__type_ctor_info_context_0)
+  }
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_0 = {
+  (MR_String) "abstract_solver_type_exported",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_1 = {
+  (MR_String) "abstract_solver_type_private",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_abstract_solver_type_status_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_1
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_abstract_solver_type_status_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_abstract_solver_type_status_0_1
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_abstract_solver_type_status_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_abstract_solver_type_status_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "abstract_solver_type_status",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_abstract_solver_type_status_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_abstract_solver_type_status_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_abstract_solver_type_status_0
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_c_j_cs_e_maybe_defn_or_enum_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "c_j_cs_e_maybe_defn_or_enum",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1builtin__type_ctor_info_string_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_checked_foreign_enum_0_0[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1builtin__type_ctor_info_string_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_checked_foreign_enum_0_0 = {
+  (MR_String) "checked_foreign_enum",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_checked_foreign_enum_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_checked_foreign_enum_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_checked_foreign_enum_0_0
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_checked_foreign_enum_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_checked_foreign_enum_0_0,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_checked_foreign_enum_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_checked_foreign_enum_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_checked_foreign_enum_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "checked_foreign_enum",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_checked_foreign_enum_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_checked_foreign_enum_0 },
+  (MR_Integer) 1,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_checked_foreign_enum_0
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_field_name_locn_0_0[3] = {
+  (MR_PseudoTypeInfo) (&mercury__term__term__type_ctor_info_context_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_field_name_locn_0_0 = {
+  (MR_String) "field_name_locn",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_field_name_locn_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_field_name_locn_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_field_name_locn_0_0
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_field_name_locn_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_field_name_locn_0_0,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_field_name_locn_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_field_name_locn_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_field_name_locn_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "field_name_locn",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_field_name_locn_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_field_name_locn_0 },
+  (MR_Integer) 1,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_field_name_locn_0
+};
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_map_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "field_name_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_0[1] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_0 = {
+  (MR_String) "foreign_type_or_enum_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_1[1] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_1 = {
+  (MR_String) "foreign_type_or_enum_enum",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE_DIRECT_ARG,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_foreign_type_or_enum_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_1
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_1[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_0
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_foreign_type_or_enum_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE_DIRECT_ARG,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_foreign_type_or_enum_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_foreign_type_or_enum_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_foreign_type_or_enum_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_foreign_type_or_enum_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "foreign_type_or_enum",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_foreign_type_or_enum_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_foreign_type_or_enum_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_foreign_type_or_enum_0
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_0 = {
+  (MR_String) "do_not_insist_on_defn",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_1 = {
+  (MR_String) "do_insist_on_defn",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_maybe_insist_on_defn_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_1
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_maybe_insist_on_defn_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_maybe_insist_on_defn_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_insist_on_defn_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_insist_on_defn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "maybe_insist_on_defn",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_maybe_insist_on_defn_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_maybe_insist_on_defn_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_insist_on_defn_0
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_0 = {
+  (MR_String) "not_only_plain_constants",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_maybe_only_constants_0_1[2] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__list__ti_list_1builtin__type_ctor_info_string_0)
+};
+
+static const MR_ConstString parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_names_maybe_only_constants_0_1[2] = {
+  (MR_String) "opc_head_name",
+  (MR_String) "opc_tail_names"
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_1 = {
+  (MR_String) "only_plain_constants",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_maybe_only_constants_0_1,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_names_maybe_only_constants_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_0
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_1[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_1
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_maybe_only_constants_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_maybe_only_constants_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_maybe_only_constants_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_maybe_only_constants_0_1
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_only_constants_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_only_constants_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "maybe_only_constants",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_maybe_only_constants_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_maybe_only_constants_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_maybe_only_constants_0
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_0[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_abstract_solver_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0)
+};
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_solver_type_defn_0_0[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_0 = {
+  (MR_String) "solver_type_abstract",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_0,
+  NULL,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_solver_type_defn_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_solver_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_solver_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_1[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_solver_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_1 = {
+  (MR_String) "solver_type_full",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_solver_type_defn_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_0
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_1[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_1
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_solver_type_defn_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_solver_type_defn_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_solver_type_defn_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_solver_type_defn_0_1
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_solver_type_defn_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_solver_type_defn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "solver_type_defn",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_solver_type_defn_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_solver_type_defn_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_solver_type_defn_0
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_0 = {
+  (MR_String) "std_abs_type_ft_exported",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_1 = {
+  (MR_String) "std_abs_type_abstract_exported",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_2 = {
+  (MR_String) "std_abs_type_all_private",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_abs_type_status_0[3] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_2
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_abs_type_status_0[3] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_2,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_abs_type_status_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_abs_type_status_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_abs_type_status_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "std_abs_type_status",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_abs_type_status_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_abs_type_status_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_abs_type_status_0
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_0 = {
+  (MR_String) "std_du_type_mer_ft_exported",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_1 = {
+  (MR_String) "std_du_type_mer_exported",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_2 = {
+  (MR_String) "std_du_type_abstract_exported",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_3 = {
+  (MR_String) "std_du_type_all_private",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_du_type_status_0[4] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_2,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_3
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_du_type_status_0[4] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_2,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_3,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_du_type_status_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_du_type_status_0[4] = {
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_du_type_status_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "std_du_type_status",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_du_type_status_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_du_type_status_0 },
+  (MR_Integer) 4,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_du_type_status_0
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_0 = {
+  (MR_String) "std_eqv_type_mer_exported",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_1 = {
+  (MR_String) "std_eqv_type_abstract_exported",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_2 = {
+  (MR_String) "std_eqv_type_all_private",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_eqv_type_status_0[3] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_2
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_eqv_type_status_0[3] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_2,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_functor_desc_std_eqv_type_status_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_eqv_type_status_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_eqv_type_status_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "std_eqv_type_status",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_name_ordered_std_eqv_type_status_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__enum_value_ordered_std_eqv_type_status_0 },
+  (MR_Integer) 3,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_eqv_type_status_0
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_eqv_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_eqv_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_0[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_eqv_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_eqv_0)
+};
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_0[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_0 = {
+  (MR_String) "std_mer_type_eqv",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_0,
+  NULL,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_du_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_du_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_1[5] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_du_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_du_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__list__ti_list_1builtin__type_ctor_info_string_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0)
+};
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_1[5] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 4,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_1 = {
+  (MR_String) "std_mer_type_du_all_plain_constants",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_1,
+  NULL,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_erlang_1,
+  {
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_2[3] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_du_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_du_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+};
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_2[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_2 = {
+  (MR_String) "std_mer_type_du_not_all_plain_constants",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_2,
+  NULL,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_2,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_3[3] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_abs_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_details_abstract_0),
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__prog_item__ti_c_java_csharp_erlang_1maybe__ti_maybe_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_generic_language_foreign_type_0)
+};
+
+static const MR_DuArgLocn parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_3[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_3 = {
+  (MR_String) "std_mer_type_abstract",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(3),
+  (MR_Integer) -1,
+  INT32_C(3),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_std_type_defn_0_3,
+  NULL,
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_locns_std_type_defn_0_3,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_0
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_1[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_1
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_2[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_2
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_3[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_3
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_std_type_defn_0[4] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_1,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_2,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_std_type_defn_0_3,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_std_type_defn_0[4] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_3,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_1,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_2,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_std_type_defn_0_0
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_type_defn_0[4] = {
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_type_defn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "std_type_defn",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_std_type_defn_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_std_type_defn_0 },
+  (MR_Integer) 4,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_std_type_defn_0
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_0[1] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_solver_type_defn_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_0 = {
+  (MR_String) "checked_defn_solver",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_1[1] = {
+  (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_type_defn_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_1 = {
+  (MR_String) "checked_defn_std",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__field_types_type_ctor_checked_defn_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_0[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_0
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_1[1] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_1
+};
+
+static const MR_DuPtagLayout parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_type_ctor_checked_defn_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_0,
+    INT8_C(-1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_stag_ordered_type_ctor_checked_defn_0_1,
+    INT8_C(-1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_type_ctor_checked_defn_0[2] = {
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_0,
+  &parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_functor_desc_type_ctor_checked_defn_0_1
+};
+
+static const MR_Integer parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_type_ctor_checked_defn_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "type_ctor_checked_defn",
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_name_ordered_type_ctor_checked_defn_0 },
+  {     parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__du_ptag_ordered_type_ctor_checked_defn_0 },
+  (MR_Integer) 2,
+  UINT16_C(4),
+  parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__functor_number_map_type_ctor_checked_defn_0
+};
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_map_0 = {
+  (MR_Integer) 0,
+  UINT8_C(17),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0_10001)),
+  ((MR_Box) (parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0_10001)),
+  (MR_String) "parse_tree.check_parse_tree_type_defns",
+  (MR_String) "type_ctor_checked_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&parse_tree__check_parse_tree_type_defns__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL
+};
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__at_most_one_foreign_type_for_lang__1466__1_3_p_0(
+  MR_Word HeadVar__1_30,
+  MR_Word HeadVar__2_31,
+  MR_Word * HeadVar__3_32)
+{
+  {
+    MR_Word Var_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_30, (MR_Integer) 4))));
+
+    mercury__set__insert_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), ((MR_Box) (Var_47)), HeadVar__2_31, HeadVar__3_32);
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__build_mercury_foreign_enum_map__1002__1_1_p_0(
+  MR_Word BadQualCtorNamesCord_30)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = mercury__cord__is_empty_1_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), BadQualCtorNamesCord_30);
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_repn_foreign_only_constants_lang__911__1_2_p_0(
+  MR_Word LeftOverEnums_15,
+  MR_Word HeadVar__2_32)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[0]), ((MR_Box) (LeftOverEnums_15)), ((MR_Box) (HeadVar__2_32)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_only_foreign_type_section__822__1_5_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word AbstractStdDefn_17,
+  MR_Word HeadVar__3_90,
+  MR_Word HeadVar__4_91,
+  MR_Word * HeadVar__5_92)
+{
+  parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_117_95_105_109_112_95_114_101_112_111_114_116_95_97_110_121_95_102_111_114_101_105_103_110_95_100_101_102_110_95_105_110_95_105_110_116_95_95_91_49_93_95_48_5_p_0(TypeCtor_11, AbstractStdDefn_17, HeadVar__3_90, HeadVar__4_91, HeadVar__5_92);
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_foreign_type_section__771__1_5_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word DuDefn_12,
+  MR_Word HeadVar__3_58,
+  MR_Word HeadVar__4_59,
+  MR_Word * HeadVar__5_60)
+{
+  parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_117_95_105_109_112_95_114_101_112_111_114_116_95_97_110_121_95_102_111_114_101_105_103_110_95_100_101_102_110_95_105_110_95_105_110_116_95_95_91_49_93_95_48_5_p_0(TypeCtor_11, DuDefn_12, HeadVar__3_58, HeadVar__4_59, HeadVar__5_60);
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_117_95_105_109_112_95_114_101_112_111_114_116_95_97_110_121_95_102_111_114_101_105_103_110_95_100_101_102_110_95_105_110_95_105_110_116_95_95_91_49_93_95_48_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DuDefn_7,
+  MR_Word MaybeForeignDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_14,
+  MR_Word * STATE_VARIABLE_Specs_15)
+{
+  if ((MaybeForeignDefn_8 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_15 = STATE_VARIABLE_Specs_0_14;
+  else
+  {
+    MR_Word ForeignDefn_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeForeignDefn_8, (MR_Integer) 0))));
+    MR_Word ForeignPieces_11;
+    MR_Word Spec_13;
+    MR_Word Var_18;
+    MR_Word Var_19;
+    MR_Word Var_40;
+    MR_Word Var_41;
+    MR_Word Var_42;
+    MR_Word Var_43;
+    MR_Word Var_44;
+    MR_Word Var_45;
+
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_19, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_19, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_18, 0) = ((MR_Box) (Var_19));
+      MR_hl_field(MR_mktag(1), Var_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[56])));
+    }
+    {
+      ForeignPieces_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ForeignPieces_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[134])));
+      MR_hl_field(MR_mktag(1), ForeignPieces_11, 1) = ((MR_Box) (Var_18));
+    }
+    Var_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignDefn_10, (MR_Integer) 4))));
+    {
+      Var_41 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_41, 0) = ((MR_Box) (Var_42));
+      MR_hl_field(MR_mktag(0), Var_41, 1) = ((MR_Box) (ForeignPieces_11));
+    }
+    Var_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DuDefn_7, (MR_Integer) 4))));
+    {
+      Var_44 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_44, 0) = ((MR_Box) (Var_45));
+      MR_hl_field(MR_mktag(0), Var_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[50])));
+    }
+    {
+      Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_43, 0) = ((MR_Box) (Var_44));
+      MR_hl_field(MR_mktag(1), Var_43, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_40, 0) = ((MR_Box) (Var_41));
+      MR_hl_field(MR_mktag(1), Var_40, 1) = ((MR_Box) (Var_43));
+    }
+    {
+      Spec_13 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_13, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.du_imp_report_any_foreign_defn_in_int\'/5"));
+      MR_hl_field(MR_mktag(0), Spec_13, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_13, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_13, 3) = ((MR_Box) (Var_40));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_15 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_13));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_14));
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[0]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[0]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0))
+    {
+      MR_Word Var_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+      {
+        MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))));
+
+        parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0(HeadVar__1_1, Var_16, ArgY1_5);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    }
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_11 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))));
+
+        parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0(HeadVar__1_1, Var_17, ArgY1_11);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_Integer) 0))
+    {
+      MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+        succeeded = parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0(ArgX1_3, ArgY1_4);
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+        succeeded = parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0(ArgX1_5, ArgY1_6);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_117 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_118 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_117 == CastY_118);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_143 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_144 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_Word SubResult1_6;
+                  MR_Integer Var_151 = (MR_Integer) (Var_144);
+                  MR_Integer Var_152 = (MR_Integer) (ArgY1_5);
+
+                  succeeded = (Var_151 < Var_152);
+                  if (succeeded)
+                  {
+                    SubResult1_6 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_151 > Var_152);
+                    if (succeeded)
+                    {
+                      SubResult1_6 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_6 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_6;
+                  else
+                    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[18]), HeadVar__1_1, ((MR_Box) (Var_143)), ((MR_Box) (ArgY2_8)));
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_135 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 4))));
+            MR_Word Var_136 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 3))));
+            MR_String Var_137 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))));
+            MR_Word Var_138 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_139 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_34 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word ArgY2_37 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_String ArgY3_40 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2))));
+                  MR_Word ArgY4_43 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 3))));
+                  MR_Word ArgY5_46 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 4))));
+                  MR_Word SubResult1_35;
+                  MR_Integer Var_147 = (MR_Integer) (Var_139);
+                  MR_Integer Var_148 = (MR_Integer) (ArgY1_34);
+
+                  succeeded = (Var_147 < Var_148);
+                  if (succeeded)
+                  {
+                    SubResult1_35 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_147 > Var_148);
+                    if (succeeded)
+                    {
+                      SubResult1_35 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_35 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_35;
+                  else
+                  {
+                    MR_Word SubResult2_38;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[17]), &SubResult2_38, ((MR_Box) (Var_138)), ((MR_Box) (ArgY2_37)));
+                    succeeded = (SubResult2_38 != (MR_Integer) 0);
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_38;
+                    else
+                    {
+                      MR_Word SubResult3_41;
+
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&SubResult3_41, Var_137, ArgY3_40);
+                      succeeded = (SubResult3_41 != (MR_Integer) 0);
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult3_41;
+                      else
+                      {
+                        MR_Word SubResult4_44;
+
+                        mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[12]), &SubResult4_44, ((MR_Box) (Var_136)), ((MR_Box) (ArgY4_43)));
+                        succeeded = (SubResult4_44 != (MR_Integer) 0);
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult4_44;
+                        else
+                          mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[10]), HeadVar__1_1, ((MR_Box) (Var_135)), ((MR_Box) (ArgY5_46)));
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_140 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2))));
+            MR_Word Var_141 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_142 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_77 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word ArgY2_80 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_Word ArgY3_83 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 2))));
+                  MR_Word SubResult1_78;
+                  MR_Integer Var_149 = (MR_Integer) (Var_142);
+                  MR_Integer Var_150 = (MR_Integer) (ArgY1_77);
+
+                  succeeded = (Var_149 < Var_150);
+                  if (succeeded)
+                  {
+                    SubResult1_78 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_149 > Var_150);
+                    if (succeeded)
+                    {
+                      SubResult1_78 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_78 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_78;
+                  else
+                  {
+                    MR_Word SubResult2_81;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[17]), &SubResult2_81, ((MR_Box) (Var_141)), ((MR_Box) (ArgY2_80)));
+                    succeeded = (SubResult2_81 != (MR_Integer) 0);
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_81;
+                    else
+                      mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[16]), HeadVar__1_1, ((MR_Box) (Var_140)), ((MR_Box) (ArgY3_83)));
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Var_132 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2))));
+            MR_Word Var_133 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1))));
+            MR_Word Var_134 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word ArgY1_110 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                  MR_Word ArgY2_113 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1))));
+                  MR_Word ArgY3_116 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 2))));
+                  MR_Word SubResult1_111;
+                  MR_Integer Var_145 = (MR_Integer) (Var_134);
+                  MR_Integer Var_146 = (MR_Integer) (ArgY1_110);
+
+                  succeeded = (Var_145 < Var_146);
+                  if (succeeded)
+                  {
+                    SubResult1_111 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_145 > Var_146);
+                    if (succeeded)
+                    {
+                      SubResult1_111 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult1_111 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult1_111;
+                  else
+                  {
+                    MR_Word SubResult2_114;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[13]), &SubResult2_114, ((MR_Box) (Var_133)), ((MR_Box) (ArgY2_113)));
+                    succeeded = (SubResult2_114 != (MR_Integer) 0);
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult2_114;
+                    else
+                      mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[16]), HeadVar__1_1, ((MR_Box) (Var_132)), ((MR_Box) (ArgY3_116)));
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_29 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_30 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_29 == CastY_30);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word TypeInfo_38_38;
+            MR_Word ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY1_4;
+            MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY2_6;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+              succeeded = (ArgX1_3 == ArgY1_4);
+              if (succeeded)
+              {
+                TypeInfo_38_38 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[18]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_38_38, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeInfo_33_33;
+            MR_Word TypeInfo_34_34;
+            MR_Word TypeInfo_35_35;
+            MR_Word ArgX1_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY1_8;
+            MR_Word ArgX2_9 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY2_10;
+            MR_String ArgX3_11 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2))));
+            MR_String ArgY3_12;
+            MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 3))));
+            MR_Word ArgY4_14;
+            MR_Word ArgX5_15 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 4))));
+            MR_Word ArgY5_16;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_8 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              ArgY2_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+              ArgY3_12 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2))));
+              ArgY4_14 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 3))));
+              ArgY5_16 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 4))));
+              succeeded = (ArgX1_7 == ArgY1_8);
+              if (succeeded)
+              {
+                TypeInfo_33_33 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[17]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_33_33, ((MR_Box) (ArgX2_9)), ((MR_Box) (ArgY2_10)));
+                if (succeeded)
+                {
+                  succeeded = (strcmp(ArgX3_11, ArgY3_12) == 0);
+                  if (succeeded)
+                  {
+                    TypeInfo_34_34 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[12]);
+                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_34_34, ((MR_Box) (ArgX4_13)), ((MR_Box) (ArgY4_14)));
+                    if (succeeded)
+                    {
+                      TypeInfo_35_35 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[10]);
+                      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_35_35, ((MR_Box) (ArgX5_15)), ((MR_Box) (ArgY5_16)));
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TypeInfo_36_36;
+            MR_Word TypeInfo_37_37;
+            MR_Word ArgX1_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY1_18;
+            MR_Word ArgX2_19 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY2_20;
+            MR_Word ArgX3_21 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 2))));
+            MR_Word ArgY3_22;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              ArgY1_18 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              ArgY2_20 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1))));
+              ArgY3_22 = ((MR_Word) ((MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2))));
+              succeeded = (ArgX1_17 == ArgY1_18);
+              if (succeeded)
+              {
+                TypeInfo_36_36 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[17]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_36_36, ((MR_Box) (ArgX2_19)), ((MR_Box) (ArgY2_20)));
+                if (succeeded)
+                {
+                  TypeInfo_37_37 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[16]);
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_37_37, ((MR_Box) (ArgX3_21)), ((MR_Box) (ArgY3_22)));
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word TypeInfo_31_31;
+            MR_Word TypeInfo_32_32;
+            MR_Word ArgX1_23 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+            MR_Word ArgY1_24;
+            MR_Word ArgX2_25 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1))));
+            MR_Word ArgY2_26;
+            MR_Word ArgX3_27 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 2))));
+            MR_Word ArgY3_28;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3);
+            if (succeeded)
+            {
+              ArgY1_24 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+              ArgY2_26 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1))));
+              ArgY3_28 = ((MR_Word) ((MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2))));
+              succeeded = (ArgX1_23 == ArgY1_24);
+              if (succeeded)
+              {
+                TypeInfo_31_31 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[13]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_31_31, ((MR_Box) (ArgX2_25)), ((MR_Box) (ArgY2_26)));
+                if (succeeded)
+                {
+                  TypeInfo_32_32 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[16]);
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_32_32, ((MR_Box) (ArgX3_27)), ((MR_Box) (ArgY3_28)));
+                }
+              }
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_22 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_23 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_22 == CastY_23);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0))
+    {
+      MR_Word Var_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word Var_29 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+      {
+        MR_Word ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+        MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+        MR_Word SubResult1_6;
+        MR_Integer Var_32 = (MR_Integer) (Var_29);
+        MR_Integer Var_33 = (MR_Integer) (ArgY1_5);
+
+        succeeded = (Var_32 < Var_33);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (Var_32 > Var_33);
+          if (succeeded)
+          {
+            SubResult1_6 = (MR_Integer) 2;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = MR_TRUE;
+            succeeded = !(succeeded);
+            if (succeeded)
+            {
+              SubResult1_6 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_6;
+        else
+          mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[13]), HeadVar__1_1, ((MR_Box) (Var_28)), ((MR_Box) (ArgY2_8)));
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    }
+    else
+    {
+      MR_Word Var_30 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word Var_31 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_18 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))));
+        MR_Word ArgY2_21 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1))));
+        MR_Word SubResult1_19;
+
+        mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[14]), &SubResult1_19, ((MR_Box) (Var_31)), ((MR_Box) (ArgY1_18)));
+        succeeded = (SubResult1_19 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_19;
+        else
+          mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[15]), HeadVar__1_1, ((MR_Box) (Var_30)), ((MR_Box) (ArgY2_21)));
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_12 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_Integer) 0))
+    {
+      MR_Word TypeInfo_13_13;
+      MR_Word ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+      MR_Word ArgY1_4;
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+        ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+        succeeded = (ArgX1_3 == ArgY1_4);
+        if (succeeded)
+        {
+          TypeInfo_13_13 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[13]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_13_13, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        }
+      }
+    }
+    else
+    {
+      MR_Word TypeInfo_14_14;
+      MR_Word TypeInfo_15_15;
+      MR_Word ArgX1_7 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_8;
+      MR_Word ArgX2_9 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_10;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+      if (succeeded)
+      {
+        ArgY1_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+        ArgY2_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+        TypeInfo_14_14 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[14]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_14_14, ((MR_Box) (ArgX1_7)), ((MR_Box) (ArgY1_8)));
+        if (succeeded)
+        {
+          TypeInfo_15_15 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[15]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_15_15, ((MR_Box) (ArgX2_9)), ((MR_Box) (ArgY2_10)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_13 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_14 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_13 == CastY_14);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+      MR_String Var_18 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_String ArgY1_9 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))));
+        MR_Word ArgY2_12 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1))));
+        MR_Word SubResult1_10;
+
+        mercury__private_builtin__builtin_compare_string_3_p_0(&SubResult1_10, Var_18, ArgY1_9);
+        succeeded = (SubResult1_10 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult1_10;
+        else
+          mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[12]), HeadVar__1_1, ((MR_Box) (Var_17)), ((MR_Box) (ArgY2_12)));
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+      MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+      succeeded = (CastY_4 == CastX_3);
+    }
+    else
+    {
+      MR_Word TypeInfo_11_11;
+      MR_String ArgX1_5 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_String ArgY1_6;
+      MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_8;
+
+      succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_String) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+        ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+        succeeded = (strcmp(ArgX1_5, ArgY1_6) == 0);
+        if (succeeded)
+        {
+          TypeInfo_11_11 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[12]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_11_11, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0))
+    {
+      MR_Word Var_16 = (MR_Word) ((MR_Word) (HeadVar__2_2));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+      {
+        MR_Word ArgY1_11 = (MR_Word) ((MR_Word) (HeadVar__3_3));
+
+        parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0(HeadVar__1_1, Var_16, ArgY1_11);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 2;
+    }
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 0))
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0))));
+
+        mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]), HeadVar__1_1, ((MR_Box) (Var_17)), ((MR_Box) (ArgY1_5)));
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_Integer) 0))
+    {
+      MR_Word ArgX1_5 = (MR_Word) ((MR_Word) (HeadVar__1_1));
+      MR_Word ArgY1_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        ArgY1_6 = (MR_Word) ((MR_Word) (HeadVar__2_2));
+        succeeded = parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0(ArgX1_5, ArgY1_6);
+      }
+    }
+    else
+    {
+      MR_Word TypeInfo_9_9;
+      MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0))));
+        TypeInfo_9_9 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_9_9, ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+      }
+    }
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[1]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[1]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))));
+      MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+      MR_String ArgX3_10 = ((MR_String) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))));
+      MR_String ArgY3_11 = ((MR_String) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2))));
+      MR_Word SubResult1_6;
+
+      mercury__term____Compare____context_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+      succeeded = (SubResult1_6 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_6;
+      else
+      {
+        MR_Word SubResult2_9;
+
+        parse_tree__prog_data____Compare____type_ctor_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+        succeeded = (SubResult2_9 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult2_9;
+        else
+          mercury__private_builtin__builtin_compare_string_3_p_0(HeadVar__1_1, ArgX3_10, ArgY3_11);
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_String ArgX3_7 = ((MR_String) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2))));
+      MR_String ArgY3_8 = ((MR_String) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))));
+
+      succeeded = mercury__term____Unify____context_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(ArgX2_5, ArgY2_6);
+        if (succeeded)
+          succeeded = (strcmp(ArgX3_7, ArgY3_8) == 0);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))));
+      MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+      MR_Word SubResult1_6;
+
+      parse_tree__prog_item____Compare____item_foreign_enum_info_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+      succeeded = (SubResult1_6 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_6;
+      else
+        mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[11]), HeadVar__1_1, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_10_10;
+      MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+
+      succeeded = parse_tree__prog_item____Unify____item_foreign_enum_info_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_10_10 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[11]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_10_10, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[10]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[10]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_field_name_5_p_0(
+  MR_String FieldName_6,
+  MR_Word FirstFNLocn_7,
+  MR_Word FNLocn_8,
+  MR_Word STATE_VARIABLE_Specs_0_20,
+  MR_Word * STATE_VARIABLE_Specs_21)
+{
+  {
+    MR_bool succeeded;
+    MR_Word FirstContext_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstFNLocn_7, (MR_Integer) 0))));
+    MR_Word FirstTypeCtor_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstFNLocn_7, (MR_Integer) 1))));
+    MR_String FirstCtorName_12 = ((MR_String) ((MR_hl_field(MR_mktag(0), FirstFNLocn_7, (MR_Integer) 2))));
+    MR_Word Context_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FNLocn_8, (MR_Integer) 0))));
+    MR_Word TypeCtor_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FNLocn_8, (MR_Integer) 1))));
+    MR_String CtorName_15 = ((MR_String) ((MR_hl_field(MR_mktag(0), FNLocn_8, (MR_Integer) 2))));
+    MR_Word InitPieces_16;
+    MR_Word MainPieces_17;
+    MR_Word Spec_19;
+    MR_Word Var_24;
+    MR_Word Var_25;
+    MR_Word Var_66;
+    MR_Word Var_67;
+    MR_Word Var_68;
+    MR_Word Var_69;
+
+    {
+      Var_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_25, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(3), Var_25, 1) = ((MR_Box) (FieldName_6));
+    }
+    {
+      Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (Var_25));
+      MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      InitPieces_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), InitPieces_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[131])));
+      MR_hl_field(MR_mktag(1), InitPieces_16, 1) = ((MR_Box) (Var_24));
+    }
+    succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(TypeCtor_14, FirstTypeCtor_11);
+    if (succeeded)
+    {
+      succeeded = (strcmp(CtorName_15, FirstCtorName_12) == 0);
+      if (succeeded)
+      {
+        MR_Word Var_27;
+        MR_Word Var_30;
+        MR_Word Var_31;
+
+        {
+          Var_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_31, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(MR_mktag(3), Var_31, 1) = ((MR_Box) (CtorName_15));
+        }
+        {
+          Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (Var_31));
+          MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+        }
+        {
+          Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[132])));
+          MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_30));
+        }
+        MainPieces_17 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), InitPieces_16, Var_27);
+      }
+      else
+      {
+        MR_Word Var_38;
+        MR_Word Var_41;
+        MR_Word Var_42;
+
+        {
+          Var_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_42, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+          MR_hl_field(MR_mktag(3), Var_42, 1) = ((MR_Box) (TypeCtor_14));
+        }
+        {
+          Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (Var_42));
+          MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+        }
+        {
+          Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[133])));
+          MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_41));
+        }
+        MainPieces_17 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), InitPieces_16, Var_38);
+      }
+    }
+    else
+      MainPieces_17 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), InitPieces_16, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+    {
+      Var_67 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_67, 0) = ((MR_Box) (Context_13));
+      MR_hl_field(MR_mktag(0), Var_67, 1) = ((MR_Box) (MainPieces_17));
+    }
+    {
+      Var_69 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_69, 0) = ((MR_Box) (FirstContext_10));
+      MR_hl_field(MR_mktag(0), Var_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[95])));
+    }
+    {
+      Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_68, 0) = ((MR_Box) (Var_69));
+      MR_hl_field(MR_mktag(1), Var_68, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_66, 0) = ((MR_Box) (Var_67));
+      MR_hl_field(MR_mktag(1), Var_66, 1) = ((MR_Box) (Var_68));
+    }
+    {
+      Spec_19 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_19, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_duplicate_field_name\'/5"));
+      MR_hl_field(MR_mktag(0), Spec_19, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_19, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_19, 3) = ((MR_Box) (Var_66));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_21 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_19));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_20));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_Specs_21;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_field_name_5_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_Specs_21);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_Specs_21));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0(
+  MR_String FieldName_5,
+  MR_Word OoMFNLocns_6,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16)
+{
+  {
+    MR_Word FNLocns_8;
+    MR_Word SortedFNLocns_9;
+
+    FNLocns_8 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0), OoMFNLocns_6);
+    mercury__list__sort_2_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0), FNLocns_8, &SortedFNLocns_9);
+    if ((SortedFNLocns_9 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_any_duplicate_field_names\'/4", (MR_String) "SortedFNLocns = []");
+        return;
+      }
+    else
+    {
+      MR_Word Var_27 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedFNLocns_9, (MR_Integer) 1))));
+      MR_Word Var_28 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedFNLocns_9, (MR_Integer) 0))));
+
+      if ((Var_27 == (MR_Word) ((MR_Unsigned) 0U)))
+        *STATE_VARIABLE_Specs_16 = STATE_VARIABLE_Specs_0_15;
+      else
+      {
+        MR_Word Var_17;
+        MR_Box conv1_STATE_VARIABLE_Specs_16;
+
+        {
+          Var_17 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_17, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[8]));
+          MR_hl_field(MR_mktag(0), Var_17, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0_1));
+          MR_hl_field(MR_mktag(0), Var_17, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), Var_17, 3) = ((MR_Box) (FieldName_5));
+          MR_hl_field(MR_mktag(0), Var_17, 4) = ((MR_Box) (Var_28));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_17, Var_27, ((MR_Box) (STATE_VARIABLE_Specs_0_15)), &conv1_STATE_VARIABLE_Specs_16);
+        *STATE_VARIABLE_Specs_16 = ((MR_Word) (conv1_STATE_VARIABLE_Specs_16));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_arg_to_field_name_map_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String CtorName_7,
+  MR_Word CtorArg_8,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_22,
+  MR_Word * STATE_VARIABLE_FieldNameMap_23)
+{
+  {
+    MR_bool succeeded;
+    MR_Word MaybeCtorFieldName_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CtorArg_8, (MR_Integer) 0))));
+
+    if ((MaybeCtorFieldName_10 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_FieldNameMap_23 = STATE_VARIABLE_FieldNameMap_0_22;
+    else
+    {
+      MR_Word CtorFieldName_13 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeCtorFieldName_10, (MR_Integer) 0))));
+      MR_Word FieldSymName_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CtorFieldName_13, (MR_Integer) 0))));
+      MR_Word FieldNameContext_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CtorFieldName_13, (MR_Integer) 1))));
+      MR_String FieldName_16;
+      MR_Word FNLocn_17;
+      MR_Word OoMFNLocns0_18;
+      MR_Box conv0_OoMFNLocns0_18;
+
+      FieldName_16 = mdbcomp__sym_name__unqualify_name_1_f_0(FieldSymName_14);
+      {
+        FNLocn_17 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), FNLocn_17, 0) = ((MR_Box) (FieldNameContext_15));
+        MR_hl_field(MR_mktag(0), FNLocn_17, 1) = ((MR_Box) (TypeCtor_6));
+        MR_hl_field(MR_mktag(0), FNLocn_17, 2) = ((MR_Box) (CtorName_7));
+      }
+      succeeded = mercury__map__search_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]), STATE_VARIABLE_FieldNameMap_0_22, ((MR_Box) (FieldName_16)), &conv0_OoMFNLocns0_18);
+      if (succeeded)
+      {
+        OoMFNLocns0_18 = ((MR_Word) (conv0_OoMFNLocns0_18));
+        succeeded = MR_TRUE;
+      }
+      if (succeeded)
+      {
+        MR_Word HeadFNLocn_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMFNLocns0_18, (MR_Integer) 0))));
+        MR_Word TailFNLocns_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMFNLocns0_18, (MR_Integer) 1))));
+        MR_Word OoMFNLocns_21;
+        MR_Word Var_24;
+
+        {
+          Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (HeadFNLocn_19));
+          MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) (TailFNLocns_20));
+        }
+        {
+          OoMFNLocns_21 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), OoMFNLocns_21, 0) = ((MR_Box) (FNLocn_17));
+          MR_hl_field(MR_mktag(0), OoMFNLocns_21, 1) = ((MR_Box) (Var_24));
+        }
+        mercury__map__det_update_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]), ((MR_Box) (FieldName_16)), ((MR_Box) (OoMFNLocns_21)), STATE_VARIABLE_FieldNameMap_0_22, STATE_VARIABLE_FieldNameMap_23);
+      }
+      else
+      {
+        MR_Word OoMFNLocns_28;
+
+        {
+          OoMFNLocns_28 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), OoMFNLocns_28, 0) = ((MR_Box) (FNLocn_17));
+          MR_hl_field(MR_mktag(0), OoMFNLocns_28, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        mercury__map__det_insert_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]), ((MR_Box) (FieldName_16)), ((MR_Box) (OoMFNLocns_28)), STATE_VARIABLE_FieldNameMap_0_22, STATE_VARIABLE_FieldNameMap_23);
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_FieldNameMap_23;
+
+    parse_tree__check_parse_tree_type_defns__add_data_ctor_arg_to_field_name_map_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_FieldNameMap_23);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_FieldNameMap_23));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word Ctor_6,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_15,
+  MR_Word * STATE_VARIABLE_FieldNameMap_16)
+{
+  {
+    MR_Word CtorSymName_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Ctor_6, (MR_Integer) 2))));
+    MR_Word CtorArgs_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Ctor_6, (MR_Integer) 3))));
+    MR_String CtorName_14;
+    MR_Word Var_17;
+    MR_Box conv1_STATE_VARIABLE_FieldNameMap_16;
+
+    CtorName_14 = mdbcomp__sym_name__unqualify_name_1_f_0(CtorSymName_10);
+    {
+      Var_17 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_17, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[7]));
+      MR_hl_field(MR_mktag(0), Var_17, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_17, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), Var_17, 3) = ((MR_Box) (TypeCtor_5));
+      MR_hl_field(MR_mktag(0), Var_17, 4) = ((MR_Box) (CtorName_14));
+    }
+    mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_arg_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[1]), Var_17, CtorArgs_11, ((MR_Box) (STATE_VARIABLE_FieldNameMap_0_15)), &conv1_STATE_VARIABLE_FieldNameMap_16);
+    *STATE_VARIABLE_FieldNameMap_16 = ((MR_Word) (conv1_STATE_VARIABLE_FieldNameMap_16));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_FieldNameMap_16;
+
+    parse_tree__check_parse_tree_type_defns__add_data_ctor_to_field_name_map_4_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_FieldNameMap_16);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_FieldNameMap_16));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word CheckedDefn_6,
+  MR_Word STATE_VARIABLE_FieldNameMap_0_29,
+  MR_Word * STATE_VARIABLE_FieldNameMap_30)
+{
+  if (((MR_tag((MR_Word) CheckedDefn_6)) == (MR_Integer) 0))
+    *STATE_VARIABLE_FieldNameMap_30 = STATE_VARIABLE_FieldNameMap_0_29;
+  else
+  {
+    MR_Word CheckedStdDefn_9 = ((MR_Word) ((MR_hl_field(MR_mktag(1), CheckedDefn_6, (MR_Integer) 0))));
+
+    switch (MR_tag((MR_Word) CheckedStdDefn_9)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *STATE_VARIABLE_FieldNameMap_30 = STATE_VARIABLE_FieldNameMap_0_29;
+        break;
+      case (MR_Integer) 1:
+        *STATE_VARIABLE_FieldNameMap_30 = STATE_VARIABLE_FieldNameMap_0_29;
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word DuDefn_21 = ((MR_Word) ((MR_hl_field(MR_mktag(2), CheckedStdDefn_9, (MR_Integer) 1))));
+          MR_Word DetailsDu_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DuDefn_21, (MR_Integer) 2))));
+          MR_Word OoMCtors_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DetailsDu_23, (MR_Integer) 0))));
+          MR_Word HeadCtor_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMCtors_24, (MR_Integer) 0))));
+          MR_Word TailCtors_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMCtors_24, (MR_Integer) 1))));
+          MR_Word Var_31;
+          MR_Word Var_32;
+          MR_Box conv1_STATE_VARIABLE_FieldNameMap_30;
+
+          {
+            Var_31 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_31, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_7[4]));
+            MR_hl_field(MR_mktag(0), Var_31, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0_1));
+            MR_hl_field(MR_mktag(0), Var_31, 2) = ((MR_Box) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), Var_31, 3) = ((MR_Box) (TypeCtor_5));
+          }
+          {
+            Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_32, 0) = ((MR_Box) (HeadCtor_27));
+            MR_hl_field(MR_mktag(1), Var_32, 1) = ((MR_Box) (TailCtors_28));
+          }
+          mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[1]), Var_31, Var_32, ((MR_Box) (STATE_VARIABLE_FieldNameMap_0_29)), &conv1_STATE_VARIABLE_FieldNameMap_30);
+          *STATE_VARIABLE_FieldNameMap_30 = ((MR_Word) (conv1_STATE_VARIABLE_FieldNameMap_30));
+        }
+        break;
+      case (MR_Integer) 3:
+        *STATE_VARIABLE_FieldNameMap_30 = STATE_VARIABLE_FieldNameMap_0_29;
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(
+  MR_String TypeOrEnum_8,
+  MR_Word TypeCtor_9,
+  MR_Word Lang_10,
+  MR_Word LeastContext_11,
+  MR_Word Context_12,
+  MR_Word STATE_VARIABLE_Specs_0_17,
+  MR_Word * STATE_VARIABLE_Specs_18)
+{
+  {
+    MR_Word MainPieces_14;
+    MR_Word Spec_16;
+    MR_Word Var_21;
+    MR_Word Var_22;
+    MR_Word Var_23;
+    MR_Word Var_26;
+    MR_Word Var_27;
+    MR_String Var_28;
+    MR_Word Var_29;
+    MR_Word Var_32;
+    MR_Word Var_33;
+    MR_Word Var_48;
+    MR_Word Var_49;
+    MR_Word Var_50;
+    MR_Word Var_51;
+
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_22, 0) = ((MR_Box) (TypeOrEnum_8));
+    }
+    Var_28 = libs__globals__foreign_language_string_1_f_0(Lang_10);
+    {
+      Var_27 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), Var_27, 0) = ((MR_Box) (Var_28));
+    }
+    {
+      Var_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_33, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_33, 1) = ((MR_Box) (TypeCtor_9));
+    }
+    {
+      Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_32, 0) = ((MR_Box) (Var_33));
+      MR_hl_field(MR_mktag(1), Var_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[130])));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = ((MR_Box) (Var_32));
+    }
+    {
+      Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_26, 0) = ((MR_Box) (Var_27));
+      MR_hl_field(MR_mktag(1), Var_26, 1) = ((MR_Box) (Var_29));
+    }
+    {
+      Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[129])));
+      MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (Var_26));
+    }
+    {
+      Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (Var_22));
+      MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (Var_23));
+    }
+    {
+      MainPieces_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), MainPieces_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[128])));
+      MR_hl_field(MR_mktag(1), MainPieces_14, 1) = ((MR_Box) (Var_21));
+    }
+    {
+      Var_49 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_49, 0) = ((MR_Box) (Context_12));
+      MR_hl_field(MR_mktag(0), Var_49, 1) = ((MR_Box) (MainPieces_14));
+    }
+    {
+      Var_51 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_51, 0) = ((MR_Box) (LeastContext_11));
+      MR_hl_field(MR_mktag(0), Var_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[93])));
+    }
+    {
+      Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_50, 0) = ((MR_Box) (Var_51));
+      MR_hl_field(MR_mktag(1), Var_50, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_48, 0) = ((MR_Box) (Var_49));
+      MR_hl_field(MR_mktag(1), Var_48, 1) = ((MR_Box) (Var_50));
+    }
+    {
+      Spec_16 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_16, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_duplicate_foreign_defn\'/7"));
+      MR_hl_field(MR_mktag(0), Spec_16, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(0), Spec_16, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_16, 3) = ((MR_Box) (Var_48));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_18 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_16));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_17));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__accumulate_type_defn_contexts_3_p_0(
+  MR_Word TypeInfo_for_T_10,
+  MR_Word TypeDefn_4,
+  MR_Word STATE_VARIABLE_Contexts_0_6,
+  MR_Word * STATE_VARIABLE_Contexts_7)
+{
+  {
+    MR_Word Var_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_4, (MR_Integer) 4))));
+
+    mercury__set__insert_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), ((MR_Box) (Var_8)), STATE_VARIABLE_Contexts_0_6, STATE_VARIABLE_Contexts_7);
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__project_foreign_enum_context_1_f_0(
+  MR_Word ForeignEnum_3)
+{
+  {
+    MR_Word HeadVar__2_2 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnum_3, (MR_Integer) 3))));
+
+    return HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__compare_foreign_enum_infos_by_context_3_p_0(
+  MR_Word ForeignEnumA_4,
+  MR_Word ForeignEnumB_5,
+  MR_Word * Cmp_6)
+{
+  {
+    MR_Word ContextA_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnumA_4, (MR_Integer) 3))));
+    MR_Word ContextB_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnumB_5, (MR_Integer) 3))));
+
+    mercury__term____Compare____context_0_0(Cmp_6, ContextA_7, ContextB_8);
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_duplicate_type_defn_6_p_0(
+  MR_String Kind_7,
+  MR_Word TypeCtor_8,
+  MR_Word LeastContext_9,
+  MR_Word Context_10,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16)
+{
+  {
+    MR_Word MainPieces_12;
+    MR_Word Spec_14;
+    MR_Word Var_19;
+    MR_Word Var_20;
+    MR_Word Var_21;
+    MR_Word Var_24;
+    MR_Word Var_25;
+    MR_Word Var_40;
+    MR_Word Var_41;
+    MR_Word Var_42;
+    MR_Word Var_43;
+
+    {
+      Var_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_20, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_20, 1) = ((MR_Box) (Kind_7));
+    }
+    {
+      Var_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_25, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_25, 1) = ((MR_Box) (TypeCtor_8));
+    }
+    {
+      Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (Var_25));
+      MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+    }
+    {
+      Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[127])));
+      MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (Var_24));
+    }
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (Var_20));
+      MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_21));
+    }
+    {
+      MainPieces_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), MainPieces_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[126])));
+      MR_hl_field(MR_mktag(1), MainPieces_12, 1) = ((MR_Box) (Var_19));
+    }
+    {
+      Var_41 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_41, 0) = ((MR_Box) (Context_10));
+      MR_hl_field(MR_mktag(0), Var_41, 1) = ((MR_Box) (MainPieces_12));
+    }
+    {
+      Var_43 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_43, 0) = ((MR_Box) (LeastContext_9));
+      MR_hl_field(MR_mktag(0), Var_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[93])));
+    }
+    {
+      Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_42, 0) = ((MR_Box) (Var_43));
+      MR_hl_field(MR_mktag(1), Var_42, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_40, 0) = ((MR_Box) (Var_41));
+      MR_hl_field(MR_mktag(1), Var_40, 1) = ((MR_Box) (Var_42));
+    }
+    {
+      Spec_14 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_14, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_duplicate_type_defn\'/6"));
+      MR_hl_field(MR_mktag(0), Spec_14, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(0), Spec_14, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_14, 3) = ((MR_Box) (Var_40));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_16 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_14));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_15));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_type_ctor_enum_in_int_5_p_0(
+  MR_Word ModuleName_6,
+  MR_Word TypeCtor_7,
+  MR_Word ForeignEnum_8,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeCtorSymName_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeCtor_7, (MR_Integer) 0))));
+    MR_Word TypeCtorModuleName_12;
+    MR_Word Var_82;
+
+    mdbcomp__sym_name__sym_name_get_module_name_default_3_p_0(TypeCtorSymName_10, ModuleName_6, &TypeCtorModuleName_12);
+    Var_82 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnum_8, (MR_Integer) 3))));
+    succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(TypeCtorModuleName_12, ModuleName_6);
+    if (succeeded)
+    {
+      MR_Word Pieces_13;
+      MR_Word Spec_14;
+      MR_Word Var_19;
+      MR_Word Var_22;
+      MR_Word Var_25;
+      MR_Word Var_26;
+
+      {
+        Var_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_26, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+        MR_hl_field(MR_mktag(3), Var_26, 1) = ((MR_Box) (TypeCtor_7));
+      }
+      {
+        Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_25, 0) = ((MR_Box) (Var_26));
+        MR_hl_field(MR_mktag(1), Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[85])));
+      }
+      {
+        Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[109])));
+        MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_25));
+      }
+      {
+        Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[120])));
+        MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_22));
+      }
+      {
+        Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[123])));
+        MR_hl_field(MR_mktag(1), Pieces_13, 1) = ((MR_Box) (Var_19));
+      }
+      {
+        Spec_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Spec_14, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_type_ctor_enum_in_int\'/5"));
+        MR_hl_field(MR_mktag(1), Spec_14, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(1), Spec_14, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+        MR_hl_field(MR_mktag(1), Spec_14, 3) = ((MR_Box) (Var_82));
+        MR_hl_field(MR_mktag(1), Spec_14, 4) = ((MR_Box) (Pieces_13));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_Specs_16 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_14));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_15));
+      }
+    }
+    else
+    {
+      MR_Word Var_46;
+      MR_Word Var_49;
+      MR_Word Var_52;
+      MR_Word Var_53;
+      MR_Word Pieces_71;
+      MR_Word Spec_72;
+
+      {
+        Var_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_53, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+        MR_hl_field(MR_mktag(3), Var_53, 1) = ((MR_Box) (TypeCtor_7));
+      }
+      {
+        Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_52, 0) = ((MR_Box) (Var_53));
+        MR_hl_field(MR_mktag(1), Var_52, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[91])));
+      }
+      {
+        Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[109])));
+        MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (Var_52));
+      }
+      {
+        Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[120])));
+        MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_49));
+      }
+      {
+        Pieces_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Pieces_71, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[123])));
+        MR_hl_field(MR_mktag(1), Pieces_71, 1) = ((MR_Box) (Var_46));
+      }
+      {
+        Spec_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Spec_72, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_type_ctor_enum_in_int\'/5"));
+        MR_hl_field(MR_mktag(1), Spec_72, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(1), Spec_72, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+        MR_hl_field(MR_mktag(1), Spec_72, 3) = ((MR_Box) (Var_82));
+        MR_hl_field(MR_mktag(1), Spec_72, 4) = ((MR_Box) (Pieces_71));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_Specs_16 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_72));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_15));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_foreign_enum_for_undefined_type_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String UndefOrUndecl_7,
+  MR_Word Enum_8,
+  MR_Word STATE_VARIABLE_Specs_0_12,
+  MR_Word * STATE_VARIABLE_Specs_13)
+{
+  {
+    MR_Word Pieces_10;
+    MR_Word Spec_11;
+    MR_Word Var_16;
+    MR_Word Var_19;
+    MR_Word Var_22;
+    MR_Word Var_23;
+    MR_Word Var_24;
+    MR_Word Var_27;
+    MR_Word Var_28;
+    MR_Word Var_38;
+
+    {
+      Var_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_23, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_23, 1) = ((MR_Box) (UndefOrUndecl_7));
+    }
+    {
+      Var_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_28, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_28, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (Var_28));
+      MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+    }
+    {
+      Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[125])));
+      MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) (Var_27));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (Var_23));
+      MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_24));
+    }
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[124])));
+      MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_22));
+    }
+    {
+      Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[120])));
+      MR_hl_field(MR_mktag(1), Var_16, 1) = ((MR_Box) (Var_19));
+    }
+    {
+      Pieces_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Pieces_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[123])));
+      MR_hl_field(MR_mktag(1), Pieces_10, 1) = ((MR_Box) (Var_16));
+    }
+    Var_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Enum_8, (MR_Integer) 3))));
+    {
+      Spec_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Spec_11, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_foreign_enum_for_undefined_type\'/5"));
+      MR_hl_field(MR_mktag(1), Spec_11, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(1), Spec_11, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(1), Spec_11, 3) = ((MR_Box) (Var_38));
+      MR_hl_field(MR_mktag(1), Spec_11, 4) = ((MR_Box) (Pieces_10));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_13 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_11));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_12));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word UsedContext_9,
+  MR_String Kind_10,
+  MR_String Section_11,
+  MR_Word Enum_12,
+  MR_Word STATE_VARIABLE_Specs_0_17,
+  MR_Word * STATE_VARIABLE_Specs_18)
+{
+  {
+    MR_Word MainPieces_14;
+    MR_Word Spec_16;
+    MR_Word Var_21;
+    MR_Word Var_24;
+    MR_Word Var_27;
+    MR_Word Var_28;
+    MR_Word Var_29;
+    MR_Word Var_32;
+    MR_Word Var_33;
+    MR_Word Var_34;
+    MR_Word Var_37;
+    MR_Word Var_38;
+    MR_Word Var_53;
+    MR_Word Var_54;
+    MR_Word Var_55;
+    MR_Word Var_56;
+    MR_Word Var_57;
+
+    {
+      Var_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_28, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_28, 1) = ((MR_Box) (TypeCtor_8));
+    }
+    {
+      Var_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_33, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_33, 1) = ((MR_Box) (Kind_10));
+    }
+    {
+      Var_38 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_38, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_38, 1) = ((MR_Box) (Section_11));
+    }
+    {
+      Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_37, 0) = ((MR_Box) (Var_38));
+      MR_hl_field(MR_mktag(1), Var_37, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[75])));
+    }
+    {
+      Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_34, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[122])));
+      MR_hl_field(MR_mktag(1), Var_34, 1) = ((MR_Box) (Var_37));
+    }
+    {
+      Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_32, 0) = ((MR_Box) (Var_33));
+      MR_hl_field(MR_mktag(1), Var_32, 1) = ((MR_Box) (Var_34));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[121])));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = ((MR_Box) (Var_32));
+    }
+    {
+      Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (Var_28));
+      MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_29));
+    }
+    {
+      Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[109])));
+      MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) (Var_27));
+    }
+    {
+      Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[120])));
+      MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (Var_24));
+    }
+    {
+      MainPieces_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), MainPieces_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[119])));
+      MR_hl_field(MR_mktag(1), MainPieces_14, 1) = ((MR_Box) (Var_21));
+    }
+    Var_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Enum_12, (MR_Integer) 3))));
+    {
+      Var_54 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_54, 0) = ((MR_Box) (Var_55));
+      MR_hl_field(MR_mktag(0), Var_54, 1) = ((MR_Box) (MainPieces_14));
+    }
+    {
+      Var_57 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_57, 0) = ((MR_Box) (UsedContext_9));
+      MR_hl_field(MR_mktag(0), Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[77])));
+    }
+    {
+      Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_56, 0) = ((MR_Box) (Var_57));
+      MR_hl_field(MR_mktag(1), Var_56, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_53, 0) = ((MR_Box) (Var_54));
+      MR_hl_field(MR_mktag(1), Var_53, 1) = ((MR_Box) (Var_56));
+    }
+    {
+      Spec_16 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_16, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_incompatible_foreign_enum\'/7"));
+      MR_hl_field(MR_mktag(0), Spec_16, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_16, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_16, 3) = ((MR_Box) (Var_53));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_18 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_16));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_17));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word UsedContext_9,
+  MR_String Kind_10,
+  MR_String Section_11,
+  MR_Word MaybeDefnContext_12,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19)
+{
+  if ((MaybeDefnContext_12 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_19 = STATE_VARIABLE_Specs_0_18;
+  else
+  {
+    MR_Word DefnContext_14 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeDefnContext_12, (MR_Integer) 0))));
+    MR_Word MainPieces_15;
+    MR_Word Spec_17;
+    MR_Word Var_22;
+    MR_Word Var_23;
+    MR_Word Var_24;
+    MR_Word Var_27;
+    MR_Word Var_30;
+    MR_Word Var_31;
+    MR_Word Var_32;
+    MR_Word Var_35;
+    MR_Word Var_38;
+    MR_Word Var_39;
+    MR_Word Var_54;
+    MR_Word Var_55;
+    MR_Word Var_56;
+    MR_Word Var_57;
+
+    {
+      Var_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_23, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_23, 1) = ((MR_Box) (TypeCtor_8));
+    }
+    {
+      Var_31 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_31, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_31, 1) = ((MR_Box) (Kind_10));
+    }
+    {
+      Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_39, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_39, 1) = ((MR_Box) (Section_11));
+    }
+    {
+      Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (Var_39));
+      MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[75])));
+    }
+    {
+      Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[118])));
+      MR_hl_field(MR_mktag(1), Var_35, 1) = ((MR_Box) (Var_38));
+    }
+    {
+      Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_32, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[117])));
+      MR_hl_field(MR_mktag(1), Var_32, 1) = ((MR_Box) (Var_35));
+    }
+    {
+      Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (Var_31));
+      MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) (Var_32));
+    }
+    {
+      Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[116])));
+      MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_30));
+    }
+    {
+      Var_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[115])));
+      MR_hl_field(MR_mktag(1), Var_24, 1) = ((MR_Box) (Var_27));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (Var_23));
+      MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_24));
+    }
+    {
+      MainPieces_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), MainPieces_15, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[114])));
+      MR_hl_field(MR_mktag(1), MainPieces_15, 1) = ((MR_Box) (Var_22));
+    }
+    {
+      Var_55 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_55, 0) = ((MR_Box) (DefnContext_14));
+      MR_hl_field(MR_mktag(0), Var_55, 1) = ((MR_Box) (MainPieces_15));
+    }
+    {
+      Var_57 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_57, 0) = ((MR_Box) (UsedContext_9));
+      MR_hl_field(MR_mktag(0), Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[77])));
+    }
+    {
+      Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_56, 0) = ((MR_Box) (Var_57));
+      MR_hl_field(MR_mktag(1), Var_56, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_54, 0) = ((MR_Box) (Var_55));
+      MR_hl_field(MR_mktag(1), Var_54, 1) = ((MR_Box) (Var_56));
+    }
+    {
+      Spec_17 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_17, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_any_incompatible_type_definition\'/7"));
+      MR_hl_field(MR_mktag(0), Spec_17, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_17, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_17, 3) = ((MR_Box) (Var_54));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_19 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_17));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_18));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__foreign_int_report_any_foreign_defn_in_imp_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word IntForeignContext_7,
+  MR_Word MaybeImpForeignDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_14,
+  MR_Word * STATE_VARIABLE_Specs_15)
+{
+  if ((MaybeImpForeignDefn_8 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_15 = STATE_VARIABLE_Specs_0_14;
+  else
+  {
+    MR_Word ImpForeignDefn_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeImpForeignDefn_8, (MR_Integer) 0))));
+    MR_Word ImpPieces_11;
+    MR_Word Spec_13;
+    MR_Word Var_18;
+    MR_Word Var_21;
+    MR_Word Var_22;
+    MR_Word Var_46;
+    MR_Word Var_47;
+    MR_Word Var_48;
+    MR_Word Var_49;
+    MR_Word Var_50;
+
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_22, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_22, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (Var_22));
+      MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[63])));
+    }
+    {
+      Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[113])));
+      MR_hl_field(MR_mktag(1), Var_18, 1) = ((MR_Box) (Var_21));
+    }
+    {
+      ImpPieces_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ImpPieces_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[112])));
+      MR_hl_field(MR_mktag(1), ImpPieces_11, 1) = ((MR_Box) (Var_18));
+    }
+    Var_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpForeignDefn_10, (MR_Integer) 4))));
+    {
+      Var_47 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_47, 0) = ((MR_Box) (Var_48));
+      MR_hl_field(MR_mktag(0), Var_47, 1) = ((MR_Box) (ImpPieces_11));
+    }
+    {
+      Var_50 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_50, 0) = ((MR_Box) (IntForeignContext_7));
+      MR_hl_field(MR_mktag(0), Var_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[67])));
+    }
+    {
+      Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (Var_50));
+      MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (Var_47));
+      MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_49));
+    }
+    {
+      Spec_13 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_13, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.foreign_int_report_any_foreign_defn_in_imp\'/5"));
+      MR_hl_field(MR_mktag(0), Spec_13, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_13, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_13, 3) = ((MR_Box) (Var_46));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_15 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_13));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_14));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_foreign_type_without_declaration_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word MaybeForeignDefn_6,
+  MR_Word STATE_VARIABLE_Specs_0_11,
+  MR_Word * STATE_VARIABLE_Specs_12)
+{
+  if ((MaybeForeignDefn_6 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_12 = STATE_VARIABLE_Specs_0_11;
+  else
+  {
+    MR_Word ForeignDefn_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeForeignDefn_6, (MR_Integer) 0))));
+    MR_Word Pieces_9;
+    MR_Word Spec_10;
+    MR_Word Var_15;
+    MR_Word Var_18;
+    MR_Word Var_21;
+    MR_Word Var_22;
+    MR_Word Var_23;
+    MR_Word Var_26;
+    MR_Word Var_29;
+    MR_Word Var_40;
+
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_22, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_22, 1) = ((MR_Box) (TypeCtor_5));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (Var_22));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[57])));
+    }
+    {
+      Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[111])));
+      MR_hl_field(MR_mktag(1), Var_26, 1) = ((MR_Box) (Var_29));
+    }
+    {
+      Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[110])));
+      MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (Var_26));
+    }
+    {
+      Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (Var_22));
+      MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (Var_23));
+    }
+    {
+      Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[109])));
+      MR_hl_field(MR_mktag(1), Var_18, 1) = ((MR_Box) (Var_21));
+    }
+    {
+      Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_15, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[108])));
+      MR_hl_field(MR_mktag(1), Var_15, 1) = ((MR_Box) (Var_18));
+    }
+    {
+      Pieces_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Pieces_9, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[107])));
+      MR_hl_field(MR_mktag(1), Pieces_9, 1) = ((MR_Box) (Var_15));
+    }
+    Var_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignDefn_8, (MR_Integer) 4))));
+    {
+      Spec_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Spec_10, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_any_foreign_type_without_declaration\'/4"));
+      MR_hl_field(MR_mktag(1), Spec_10, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(1), Spec_10, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(1), Spec_10, 3) = ((MR_Box) (Var_40));
+      MR_hl_field(MR_mktag(1), Spec_10, 4) = ((MR_Box) (Pieces_9));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_12 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_10));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_11));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__non_enum_du_report_any_foreign_enum_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DuDefn_7,
+  MR_Word Enum_8,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14)
+{
+  {
+    MR_Word EnumPieces_10;
+    MR_Word Spec_12;
+    MR_Word Var_17;
+    MR_Word Var_18;
+    MR_Word Var_42;
+    MR_Word Var_43;
+    MR_Word Var_44;
+    MR_Word Var_45;
+    MR_Word Var_46;
+    MR_Word Var_47;
+
+    {
+      Var_18 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_18, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_18, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_17, 0) = ((MR_Box) (Var_18));
+      MR_hl_field(MR_mktag(1), Var_17, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[48])));
+    }
+    {
+      EnumPieces_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), EnumPieces_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[106])));
+      MR_hl_field(MR_mktag(1), EnumPieces_10, 1) = ((MR_Box) (Var_17));
+    }
+    Var_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Enum_8, (MR_Integer) 3))));
+    {
+      Var_43 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_43, 0) = ((MR_Box) (Var_44));
+      MR_hl_field(MR_mktag(0), Var_43, 1) = ((MR_Box) (EnumPieces_10));
+    }
+    Var_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DuDefn_7, (MR_Integer) 4))));
+    {
+      Var_46 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_46, 0) = ((MR_Box) (Var_47));
+      MR_hl_field(MR_mktag(0), Var_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[50])));
+    }
+    {
+      Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_45, 0) = ((MR_Box) (Var_46));
+      MR_hl_field(MR_mktag(1), Var_45, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_42, 0) = ((MR_Box) (Var_43));
+      MR_hl_field(MR_mktag(1), Var_42, 1) = ((MR_Box) (Var_45));
+    }
+    {
+      Spec_12 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Spec_12, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.non_enum_du_report_any_foreign_enum\'/5"));
+      MR_hl_field(MR_mktag(0), Spec_12, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), Spec_12, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(0), Spec_12, 3) = ((MR_Box) (Var_42));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_14 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_12));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_13));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_13(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv27_STATE_VARIABLE_Specs_13;
+
+    parse_tree__check_parse_tree_type_defns__report_foreign_enum_for_undefined_type_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv27_STATE_VARIABLE_Specs_13);
+    *wrapper_arg_3 = ((MR_Box) (conv27_STATE_VARIABLE_Specs_13));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_12(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv25_STATE_VARIABLE_Specs_13;
+
+    parse_tree__check_parse_tree_type_defns__report_foreign_enum_for_undefined_type_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv25_STATE_VARIABLE_Specs_13);
+    *wrapper_arg_3 = ((MR_Box) (conv25_STATE_VARIABLE_Specs_13));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_11(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv23_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv23_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv23_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_10(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv21_STATE_VARIABLE_Specs_19;
+
+    parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv21_STATE_VARIABLE_Specs_19);
+    *wrapper_arg_3 = ((MR_Box) (conv21_STATE_VARIABLE_Specs_19));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv19_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv19_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv19_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv17_STATE_VARIABLE_Specs_19;
+
+    parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv17_STATE_VARIABLE_Specs_19);
+    *wrapper_arg_3 = ((MR_Box) (conv17_STATE_VARIABLE_Specs_19));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv14_STATE_VARIABLE_Specs_14;
+
+    parse_tree__check_parse_tree_type_defns__non_enum_du_report_any_foreign_enum_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv14_STATE_VARIABLE_Specs_14);
+    *wrapper_arg_3 = ((MR_Box) (conv14_STATE_VARIABLE_Specs_14));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv12_STATE_VARIABLE_Specs_19;
+
+    parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv12_STATE_VARIABLE_Specs_19);
+    *wrapper_arg_3 = ((MR_Box) (conv12_STATE_VARIABLE_Specs_19));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv10_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv10_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv10_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv8_STATE_VARIABLE_Specs_19;
+
+    parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv8_STATE_VARIABLE_Specs_19);
+    *wrapper_arg_3 = ((MR_Box) (conv8_STATE_VARIABLE_Specs_19));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv6_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_incompatible_foreign_enum_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv6_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv6_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv4_STATE_VARIABLE_Specs_19;
+
+    parse_tree__check_parse_tree_type_defns__report_any_incompatible_type_definition_7_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_Specs_19);
+    *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_Specs_19));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv1_STATE_VARIABLE_Specs_16;
+
+    parse_tree__check_parse_tree_type_defns__report_type_ctor_enum_in_int_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_STATE_VARIABLE_Specs_16);
+    *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_Specs_16));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0(
+  MR_Word InsistOnDefn_12,
+  MR_Word ModuleName_13,
+  MR_Word IntTypeDefnMap_14,
+  MR_Word ImpTypeDefnMap_15,
+  MR_Word IntForeignEnumMap_16,
+  MR_Word ImpForeignEnumMap_17,
+  MR_Word TypeCtor_18,
+  MR_Word STATE_VARIABLE_TypeCtorCheckedMap_0_129,
+  MR_Word * STATE_VARIABLE_TypeCtorCheckedMap_130,
+  MR_Word STATE_VARIABLE_Specs_0_131,
+  MR_Word * STATE_VARIABLE_Specs_132)
+{
+  {
+    MR_bool succeeded;
+    MR_Word IntMaybeDefn_21;
+    MR_Word ImpMaybeDefn_22;
+    MR_Word ImpMaybeEnumCJCsE_23;
+    MR_Word ImpLeftOverEnumsCJCsE_24;
+    MR_Word ImpEnumsCJCsE_32;
+    MR_Word ImpEnumsC_33;
+    MR_Word ImpEnumsJava_34;
+    MR_Word ImpEnumsCsharp_35;
+    MR_Word ImpEnumsErlang_36;
+    MR_Word ImpEnums_37;
+    MR_Word IntAbstractSolverMaybeDefn_38;
+    MR_Word IntSolverMaybeDefn_39;
+    MR_Word IntAbstractStdMaybeDefn_40;
+    MR_Word IntEqvMaybeDefn_41;
+    MR_Word IntDuMaybeDefn_42;
+    MR_Word IntMaybeDefnCJCsE_43;
+    MR_Word ImpAbstractSolverMaybeDefn_44;
+    MR_Word ImpSolverMaybeDefn_45;
+    MR_Word ImpAbstractStdMaybeDefn_46;
+    MR_Word ImpEqvMaybeDefn_47;
+    MR_Word ImpDuMaybeDefn_48;
+    MR_Word ImpMaybeDefnCJCsE_49;
+    MR_Word IntMaybeDefnC_50;
+    MR_Word IntMaybeDefnJava_51;
+    MR_Word IntMaybeDefnCsharp_52;
+    MR_Word IntMaybeDefnErlang_53;
+    MR_Word ImpMaybeDefnC_54;
+    MR_Word ImpMaybeDefnJava_55;
+    MR_Word ImpMaybeDefnCsharp_56;
+    MR_Word ImpMaybeDefnErlang_57;
+    MR_Word IntContextAbstractSolver_58;
+    MR_Word IntContextAbstractStd_59;
+    MR_Word IntContextEqv_60;
+    MR_Word IntContextDu_61;
+    MR_Word ImpContextAbstractSolver_62;
+    MR_Word ImpContextAbstractStd_63;
+    MR_Word ImpContextEqv_64;
+    MR_Word ImpContextDu_65;
+    MR_Word IntContextC_66;
+    MR_Word IntContextJava_67;
+    MR_Word IntContextCsharp_68;
+    MR_Word IntContextErlang_69;
+    MR_Word ImpContextC_70;
+    MR_Word ImpContextJava_71;
+    MR_Word ImpContextCsharp_72;
+    MR_Word ImpContextErlang_73;
+    MR_Word STATE_VARIABLE_Specs_133_133;
+    MR_Word STATE_VARIABLE_Specs_134_134;
+    MR_Word STATE_VARIABLE_Specs_135_135;
+    MR_Word STATE_VARIABLE_Specs_139_139;
+    MR_Word Var_144;
+    MR_Word Var_145;
+    MR_Word STATE_VARIABLE_Specs_146_146;
+    MR_Word IntEnumsCJCsE_25;
+    MR_Box conv0_IntEnumsCJCsE_25;
+    MR_Word ImpEnumsCJCsEPrime_31;
+    MR_Box conv3_ImpEnumsCJCsEPrime_31;
+    MR_Word ImpSolverDefn_74;
+
+    parse_tree__check_parse_tree_type_defns__check_any_type_ctor_defns_for_duplicates_5_p_0(IntTypeDefnMap_14, TypeCtor_18, &IntMaybeDefn_21, STATE_VARIABLE_Specs_0_131, &STATE_VARIABLE_Specs_133_133);
+    parse_tree__check_parse_tree_type_defns__check_any_type_ctor_defns_for_duplicates_5_p_0(ImpTypeDefnMap_15, TypeCtor_18, &ImpMaybeDefn_22, STATE_VARIABLE_Specs_133_133, &STATE_VARIABLE_Specs_134_134);
+    parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0(ImpForeignEnumMap_17, TypeCtor_18, &ImpMaybeEnumCJCsE_23, &ImpLeftOverEnumsCJCsE_24, STATE_VARIABLE_Specs_134_134, &STATE_VARIABLE_Specs_135_135);
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[1]), IntForeignEnumMap_16, ((MR_Box) (TypeCtor_18)), &conv0_IntEnumsCJCsE_25);
+    if (succeeded)
+    {
+      IntEnumsCJCsE_25 = ((MR_Word) (conv0_IntEnumsCJCsE_25));
+      succeeded = MR_TRUE;
+    }
+    if (succeeded)
+    {
+      MR_Word IntEnumsC_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntEnumsCJCsE_25, (MR_Integer) 0))));
+      MR_Word IntEnumsJava_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntEnumsCJCsE_25, (MR_Integer) 1))));
+      MR_Word IntEnumsCsharp_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntEnumsCJCsE_25, (MR_Integer) 2))));
+      MR_Word IntEnumsErlang_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntEnumsCJCsE_25, (MR_Integer) 3))));
+      MR_Word IntEnums_30;
+      MR_Word Var_136;
+      MR_Word Var_137;
+      MR_Word Var_138;
+      MR_Box conv2_STATE_VARIABLE_Specs_139_139;
+
+      Var_137 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), IntEnumsCsharp_28, IntEnumsErlang_29);
+      Var_136 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), IntEnumsJava_27, Var_137);
+      IntEnums_30 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), IntEnumsC_26, Var_136);
+      {
+        Var_138 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), Var_138, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[4]));
+        MR_hl_field(MR_mktag(0), Var_138, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_1));
+        MR_hl_field(MR_mktag(0), Var_138, 2) = ((MR_Box) ((MR_Integer) 2));
+        MR_hl_field(MR_mktag(0), Var_138, 3) = ((MR_Box) (ModuleName_13));
+        MR_hl_field(MR_mktag(0), Var_138, 4) = ((MR_Box) (TypeCtor_18));
+      }
+      mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_138, IntEnums_30, ((MR_Box) (STATE_VARIABLE_Specs_135_135)), &conv2_STATE_VARIABLE_Specs_139_139);
+      STATE_VARIABLE_Specs_139_139 = ((MR_Word) (conv2_STATE_VARIABLE_Specs_139_139));
+    }
+    else
+      STATE_VARIABLE_Specs_139_139 = STATE_VARIABLE_Specs_135_135;
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[1]), ImpForeignEnumMap_17, ((MR_Box) (TypeCtor_18)), &conv3_ImpEnumsCJCsEPrime_31);
+    if (succeeded)
+    {
+      ImpEnumsCJCsEPrime_31 = ((MR_Word) (conv3_ImpEnumsCJCsEPrime_31));
+      succeeded = MR_TRUE;
+    }
+    if (succeeded)
+      ImpEnumsCJCsE_32 = ImpEnumsCJCsEPrime_31;
+    else
+      ImpEnumsCJCsE_32 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[1]);
+    ImpEnumsC_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpEnumsCJCsE_32, (MR_Integer) 0))));
+    ImpEnumsJava_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpEnumsCJCsE_32, (MR_Integer) 1))));
+    ImpEnumsCsharp_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpEnumsCJCsE_32, (MR_Integer) 2))));
+    ImpEnumsErlang_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpEnumsCJCsE_32, (MR_Integer) 3))));
+    Var_145 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpEnumsCsharp_35, ImpEnumsErlang_36);
+    Var_144 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpEnumsJava_34, Var_145);
+    ImpEnums_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpEnumsC_33, Var_144);
+    IntAbstractSolverMaybeDefn_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 0))));
+    IntSolverMaybeDefn_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 1))));
+    IntAbstractStdMaybeDefn_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 2))));
+    IntEqvMaybeDefn_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 3))));
+    IntDuMaybeDefn_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 4))));
+    IntMaybeDefnCJCsE_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefn_21, (MR_Integer) 5))));
+    ImpAbstractSolverMaybeDefn_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 0))));
+    ImpSolverMaybeDefn_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 1))));
+    ImpAbstractStdMaybeDefn_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 2))));
+    ImpEqvMaybeDefn_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 3))));
+    ImpDuMaybeDefn_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 4))));
+    ImpMaybeDefnCJCsE_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefn_22, (MR_Integer) 5))));
+    IntMaybeDefnC_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_43, (MR_Integer) 0))));
+    IntMaybeDefnJava_51 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_43, (MR_Integer) 1))));
+    IntMaybeDefnCsharp_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_43, (MR_Integer) 2))));
+    IntMaybeDefnErlang_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_43, (MR_Integer) 3))));
+    ImpMaybeDefnC_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_49, (MR_Integer) 0))));
+    ImpMaybeDefnJava_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_49, (MR_Integer) 1))));
+    ImpMaybeDefnCsharp_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_49, (MR_Integer) 2))));
+    ImpMaybeDefnErlang_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_49, (MR_Integer) 3))));
+    IntContextAbstractSolver_58 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntAbstractSolverMaybeDefn_38);
+    IntContextAbstractStd_59 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntAbstractStdMaybeDefn_40);
+    IntContextEqv_60 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntEqvMaybeDefn_41);
+    IntContextDu_61 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntDuMaybeDefn_42);
+    ImpContextAbstractSolver_62 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpAbstractSolverMaybeDefn_44);
+    ImpContextAbstractStd_63 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpAbstractStdMaybeDefn_46);
+    ImpContextEqv_64 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpEqvMaybeDefn_47);
+    ImpContextDu_65 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpDuMaybeDefn_48);
+    IntContextC_66 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntMaybeDefnC_50);
+    IntContextJava_67 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntMaybeDefnJava_51);
+    IntContextCsharp_68 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntMaybeDefnCsharp_52);
+    IntContextErlang_69 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(IntMaybeDefnErlang_53);
+    ImpContextC_70 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpMaybeDefnC_54);
+    ImpContextJava_71 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpMaybeDefnJava_55);
+    ImpContextCsharp_72 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpMaybeDefnCsharp_56);
+    ImpContextErlang_73 = parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(ImpMaybeDefnErlang_57);
+    parse_tree__check_parse_tree_type_defns__report_any_nonabstract_solver_type_in_int_4_p_0(TypeCtor_18, IntSolverMaybeDefn_39, STATE_VARIABLE_Specs_139_139, &STATE_VARIABLE_Specs_146_146);
+    succeeded = (ImpSolverMaybeDefn_45 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      ImpSolverDefn_74 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpSolverMaybeDefn_45, (MR_Integer) 0))));
+      {
+        MR_Word CheckedSolverDefn_75;
+        MR_Word CheckedDefn_76;
+        MR_Word STATE_VARIABLE_Specs_148_148;
+        MR_Word Var_149;
+        MR_Word Var_150;
+        MR_Word STATE_VARIABLE_Specs_151_151;
+        MR_Word Var_152;
+        MR_Word Var_155;
+        MR_Word Var_156;
+        MR_Word Var_157;
+        MR_Word Var_158;
+        MR_Word Var_159;
+        MR_Word Var_160;
+        MR_Word Var_161;
+        MR_Word Var_162;
+        MR_Word Var_163;
+        MR_Word Var_164;
+        MR_Word Var_165;
+        MR_Word Var_166;
+        MR_Word Var_167;
+        MR_Word Var_169;
+        MR_Word Var_171;
+        MR_Box conv5_STATE_VARIABLE_Specs_151_151;
+        MR_Box conv7_STATE_VARIABLE_Specs_132;
+
+        parse_tree__check_parse_tree_type_defns__report_any_redundant_abstract_type_in_imp_5_p_0(TypeCtor_18, (MR_String) "implementation", ImpAbstractSolverMaybeDefn_44, STATE_VARIABLE_Specs_146_146, &STATE_VARIABLE_Specs_148_148);
+        Var_152 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpSolverDefn_74, (MR_Integer) 4))));
+        {
+          Var_149 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_149, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[1]));
+          MR_hl_field(MR_mktag(0), Var_149, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_2));
+          MR_hl_field(MR_mktag(0), Var_149, 2) = ((MR_Box) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), Var_149, 3) = ((MR_Box) (TypeCtor_18));
+          MR_hl_field(MR_mktag(0), Var_149, 4) = ((MR_Box) (Var_152));
+          MR_hl_field(MR_mktag(0), Var_149, 5) = ((MR_Box) ((MR_String) "solver type"));
+          MR_hl_field(MR_mktag(0), Var_149, 6) = ((MR_Box) ((MR_String) "implementation"));
+        }
+        {
+          Var_167 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_167, 0) = ((MR_Box) (ImpContextErlang_73));
+          MR_hl_field(MR_mktag(1), Var_167, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_166 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_166, 0) = ((MR_Box) (ImpContextCsharp_72));
+          MR_hl_field(MR_mktag(1), Var_166, 1) = ((MR_Box) (Var_167));
+        }
+        {
+          Var_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_165, 0) = ((MR_Box) (ImpContextJava_71));
+          MR_hl_field(MR_mktag(1), Var_165, 1) = ((MR_Box) (Var_166));
+        }
+        {
+          Var_164 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_164, 0) = ((MR_Box) (ImpContextC_70));
+          MR_hl_field(MR_mktag(1), Var_164, 1) = ((MR_Box) (Var_165));
+        }
+        {
+          Var_163 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_163, 0) = ((MR_Box) (ImpContextDu_65));
+          MR_hl_field(MR_mktag(1), Var_163, 1) = ((MR_Box) (Var_164));
+        }
+        {
+          Var_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_162, 0) = ((MR_Box) (ImpContextEqv_64));
+          MR_hl_field(MR_mktag(1), Var_162, 1) = ((MR_Box) (Var_163));
+        }
+        {
+          Var_161 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_161, 0) = ((MR_Box) (ImpContextAbstractStd_63));
+          MR_hl_field(MR_mktag(1), Var_161, 1) = ((MR_Box) (Var_162));
+        }
+        {
+          Var_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_160, 0) = ((MR_Box) (IntContextErlang_69));
+          MR_hl_field(MR_mktag(1), Var_160, 1) = ((MR_Box) (Var_161));
+        }
+        {
+          Var_159 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_159, 0) = ((MR_Box) (IntContextCsharp_68));
+          MR_hl_field(MR_mktag(1), Var_159, 1) = ((MR_Box) (Var_160));
+        }
+        {
+          Var_158 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_158, 0) = ((MR_Box) (IntContextJava_67));
+          MR_hl_field(MR_mktag(1), Var_158, 1) = ((MR_Box) (Var_159));
+        }
+        {
+          Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_157, 0) = ((MR_Box) (IntContextC_66));
+          MR_hl_field(MR_mktag(1), Var_157, 1) = ((MR_Box) (Var_158));
+        }
+        {
+          Var_156 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_156, 0) = ((MR_Box) (IntContextDu_61));
+          MR_hl_field(MR_mktag(1), Var_156, 1) = ((MR_Box) (Var_157));
+        }
+        {
+          Var_155 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_155, 0) = ((MR_Box) (IntContextEqv_60));
+          MR_hl_field(MR_mktag(1), Var_155, 1) = ((MR_Box) (Var_156));
+        }
+        {
+          Var_150 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_150, 0) = ((MR_Box) (IntContextAbstractStd_59));
+          MR_hl_field(MR_mktag(1), Var_150, 1) = ((MR_Box) (Var_155));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[5]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_149, Var_150, ((MR_Box) (STATE_VARIABLE_Specs_148_148)), &conv5_STATE_VARIABLE_Specs_151_151);
+        STATE_VARIABLE_Specs_151_151 = ((MR_Word) (conv5_STATE_VARIABLE_Specs_151_151));
+        Var_171 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpSolverDefn_74, (MR_Integer) 4))));
+        {
+          Var_169 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_169, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[2]));
+          MR_hl_field(MR_mktag(0), Var_169, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_3));
+          MR_hl_field(MR_mktag(0), Var_169, 2) = ((MR_Box) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), Var_169, 3) = ((MR_Box) (TypeCtor_18));
+          MR_hl_field(MR_mktag(0), Var_169, 4) = ((MR_Box) (Var_171));
+          MR_hl_field(MR_mktag(0), Var_169, 5) = ((MR_Box) ((MR_String) "solver type"));
+          MR_hl_field(MR_mktag(0), Var_169, 6) = ((MR_Box) ((MR_String) "implementation"));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_169, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_151_151)), &conv7_STATE_VARIABLE_Specs_132);
+        *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv7_STATE_VARIABLE_Specs_132));
+        {
+          CheckedSolverDefn_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), CheckedSolverDefn_75, 0) = ((MR_Box) (IntAbstractSolverMaybeDefn_38));
+          MR_hl_field(MR_mktag(1), CheckedSolverDefn_75, 1) = ((MR_Box) (ImpSolverDefn_74));
+        }
+        {
+          CheckedDefn_76 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), CheckedDefn_76, 0) = ((MR_Box) (CheckedSolverDefn_75));
+        }
+        mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_76)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+      }
+    }
+    else
+    {
+      MR_Word EqvDefn_78;
+      MR_String EqvWhere_79;
+      MR_Word Status_80;
+      MR_Word IntEqvDefn_77;
+
+      succeeded = (IntEqvMaybeDefn_41 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        IntEqvDefn_77 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntEqvMaybeDefn_41, (MR_Integer) 0))));
+        EqvDefn_78 = IntEqvDefn_77;
+        EqvWhere_79 = (MR_String) "interface";
+        Status_80 = (MR_Integer) 0;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = (ImpEqvMaybeDefn_47 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          EqvDefn_78 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpEqvMaybeDefn_47, (MR_Integer) 0))));
+          EqvWhere_79 = (MR_String) "implementation";
+          if ((IntAbstractStdMaybeDefn_40 == (MR_Word) ((MR_Unsigned) 0U)))
+            Status_80 = (MR_Integer) 2;
+          else
+            Status_80 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+      }
+      if (succeeded)
+      {
+        MR_Word CheckedStdDefn_83;
+        MR_Word STATE_VARIABLE_Specs_175_175;
+        MR_Word Var_176;
+        MR_Word Var_177;
+        MR_Word STATE_VARIABLE_Specs_178_178;
+        MR_Word Var_179;
+        MR_Word Var_181;
+        MR_Word Var_182;
+        MR_Word Var_183;
+        MR_Word Var_184;
+        MR_Word Var_185;
+        MR_Word Var_186;
+        MR_Word Var_187;
+        MR_Word Var_188;
+        MR_Word Var_189;
+        MR_Word Var_190;
+        MR_Word Var_191;
+        MR_Word Var_193;
+        MR_Word Var_195;
+        MR_Word CheckedDefn_259;
+        MR_Box conv9_STATE_VARIABLE_Specs_178_178;
+        MR_Box conv11_STATE_VARIABLE_Specs_132;
+
+        parse_tree__check_parse_tree_type_defns__report_any_redundant_abstract_type_in_imp_5_p_0(TypeCtor_18, EqvWhere_79, ImpAbstractStdMaybeDefn_46, STATE_VARIABLE_Specs_146_146, &STATE_VARIABLE_Specs_175_175);
+        Var_179 = ((MR_Word) ((MR_hl_field(MR_mktag(0), EqvDefn_78, (MR_Integer) 4))));
+        {
+          Var_176 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_176, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[1]));
+          MR_hl_field(MR_mktag(0), Var_176, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_4));
+          MR_hl_field(MR_mktag(0), Var_176, 2) = ((MR_Box) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), Var_176, 3) = ((MR_Box) (TypeCtor_18));
+          MR_hl_field(MR_mktag(0), Var_176, 4) = ((MR_Box) (Var_179));
+          MR_hl_field(MR_mktag(0), Var_176, 5) = ((MR_Box) ((MR_String) "equivalence type"));
+          MR_hl_field(MR_mktag(0), Var_176, 6) = ((MR_Box) (EqvWhere_79));
+        }
+        {
+          Var_191 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_191, 0) = ((MR_Box) (ImpContextErlang_73));
+          MR_hl_field(MR_mktag(1), Var_191, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_190, 0) = ((MR_Box) (ImpContextCsharp_72));
+          MR_hl_field(MR_mktag(1), Var_190, 1) = ((MR_Box) (Var_191));
+        }
+        {
+          Var_189 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_189, 0) = ((MR_Box) (ImpContextJava_71));
+          MR_hl_field(MR_mktag(1), Var_189, 1) = ((MR_Box) (Var_190));
+        }
+        {
+          Var_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_188, 0) = ((MR_Box) (ImpContextC_70));
+          MR_hl_field(MR_mktag(1), Var_188, 1) = ((MR_Box) (Var_189));
+        }
+        {
+          Var_187 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_187, 0) = ((MR_Box) (ImpContextDu_65));
+          MR_hl_field(MR_mktag(1), Var_187, 1) = ((MR_Box) (Var_188));
+        }
+        {
+          Var_186 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_186, 0) = ((MR_Box) (ImpContextAbstractSolver_62));
+          MR_hl_field(MR_mktag(1), Var_186, 1) = ((MR_Box) (Var_187));
+        }
+        {
+          Var_185 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_185, 0) = ((MR_Box) (IntContextErlang_69));
+          MR_hl_field(MR_mktag(1), Var_185, 1) = ((MR_Box) (Var_186));
+        }
+        {
+          Var_184 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_184, 0) = ((MR_Box) (IntContextCsharp_68));
+          MR_hl_field(MR_mktag(1), Var_184, 1) = ((MR_Box) (Var_185));
+        }
+        {
+          Var_183 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_183, 0) = ((MR_Box) (IntContextJava_67));
+          MR_hl_field(MR_mktag(1), Var_183, 1) = ((MR_Box) (Var_184));
+        }
+        {
+          Var_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_182, 0) = ((MR_Box) (IntContextC_66));
+          MR_hl_field(MR_mktag(1), Var_182, 1) = ((MR_Box) (Var_183));
+        }
+        {
+          Var_181 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_181, 0) = ((MR_Box) (IntContextDu_61));
+          MR_hl_field(MR_mktag(1), Var_181, 1) = ((MR_Box) (Var_182));
+        }
+        {
+          Var_177 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_177, 0) = ((MR_Box) (IntContextAbstractSolver_58));
+          MR_hl_field(MR_mktag(1), Var_177, 1) = ((MR_Box) (Var_181));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[5]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_176, Var_177, ((MR_Box) (STATE_VARIABLE_Specs_175_175)), &conv9_STATE_VARIABLE_Specs_178_178);
+        STATE_VARIABLE_Specs_178_178 = ((MR_Word) (conv9_STATE_VARIABLE_Specs_178_178));
+        Var_195 = ((MR_Word) ((MR_hl_field(MR_mktag(0), EqvDefn_78, (MR_Integer) 4))));
+        {
+          Var_193 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_193, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[2]));
+          MR_hl_field(MR_mktag(0), Var_193, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_5));
+          MR_hl_field(MR_mktag(0), Var_193, 2) = ((MR_Box) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), Var_193, 3) = ((MR_Box) (TypeCtor_18));
+          MR_hl_field(MR_mktag(0), Var_193, 4) = ((MR_Box) (Var_195));
+          MR_hl_field(MR_mktag(0), Var_193, 5) = ((MR_Box) ((MR_String) "equivalence type"));
+          MR_hl_field(MR_mktag(0), Var_193, 6) = ((MR_Box) (EqvWhere_79));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_193, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_178_178)), &conv11_STATE_VARIABLE_Specs_132);
+        *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv11_STATE_VARIABLE_Specs_132));
+        {
+          CheckedStdDefn_83 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), CheckedStdDefn_83, 0) = (MR_Box) ((MR_Unsigned) (Status_80));
+          MR_hl_field(MR_mktag(0), CheckedStdDefn_83, 1) = ((MR_Box) (EqvDefn_78));
+        }
+        {
+          CheckedDefn_259 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), CheckedDefn_259, 0) = ((MR_Box) (CheckedStdDefn_83));
+        }
+        mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_259)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+      }
+      else
+      {
+        MR_Word DuDefn_85;
+        MR_Word DuSection_86;
+        MR_String DuWhere_87;
+        MR_Word IntDuDefn_84;
+
+        succeeded = (IntDuMaybeDefn_42 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          IntDuDefn_84 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntDuMaybeDefn_42, (MR_Integer) 0))));
+          DuDefn_85 = IntDuDefn_84;
+          DuSection_86 = (MR_Integer) 0;
+          DuWhere_87 = (MR_String) "interface";
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (ImpDuMaybeDefn_48 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            DuDefn_85 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpDuMaybeDefn_48, (MR_Integer) 0))));
+            DuSection_86 = (MR_Integer) 1;
+            DuWhere_87 = (MR_String) "implementation";
+            succeeded = MR_TRUE;
+          }
+        }
+        if (succeeded)
+        {
+          MR_Word ChosenMaybeDefnCJCsE_89;
+          MR_Word DetailsDu_90;
+          MR_Word OoMCtors_91;
+          MR_Word HeadCtor_94;
+          MR_Word TailCtors_95;
+          MR_Word MaybeOnlyConstants_98;
+          MR_Word STATE_VARIABLE_Specs_198_198;
+          MR_Word Var_199;
+          MR_Word Var_200;
+          MR_Word STATE_VARIABLE_Specs_201_201;
+          MR_Word Var_202;
+          MR_Word Var_204;
+          MR_Word STATE_VARIABLE_Specs_206_206;
+          MR_Word CheckedDefn_260;
+          MR_Word Status_261;
+          MR_Word CheckedStdDefn_262;
+          MR_Box conv13_STATE_VARIABLE_Specs_201_201;
+          MR_String HeadName0_96;
+          MR_Word TailNames0_97;
+
+          parse_tree__check_parse_tree_type_defns__report_any_redundant_abstract_type_in_imp_5_p_0(TypeCtor_18, DuWhere_87, ImpAbstractStdMaybeDefn_46, STATE_VARIABLE_Specs_146_146, &STATE_VARIABLE_Specs_198_198);
+          Var_202 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DuDefn_85, (MR_Integer) 4))));
+          {
+            Var_199 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_199, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[1]));
+            MR_hl_field(MR_mktag(0), Var_199, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_6));
+            MR_hl_field(MR_mktag(0), Var_199, 2) = ((MR_Box) ((MR_Integer) 4));
+            MR_hl_field(MR_mktag(0), Var_199, 3) = ((MR_Box) (TypeCtor_18));
+            MR_hl_field(MR_mktag(0), Var_199, 4) = ((MR_Box) (Var_202));
+            MR_hl_field(MR_mktag(0), Var_199, 5) = ((MR_Box) ((MR_String) "discriminated union type"));
+            MR_hl_field(MR_mktag(0), Var_199, 6) = ((MR_Box) (DuWhere_87));
+          }
+          {
+            Var_204 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_204, 0) = ((MR_Box) (ImpContextAbstractSolver_62));
+            MR_hl_field(MR_mktag(1), Var_204, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_200 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_200, 0) = ((MR_Box) (IntContextAbstractSolver_58));
+            MR_hl_field(MR_mktag(1), Var_200, 1) = ((MR_Box) (Var_204));
+          }
+          mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[5]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_199, Var_200, ((MR_Box) (STATE_VARIABLE_Specs_198_198)), &conv13_STATE_VARIABLE_Specs_201_201);
+          STATE_VARIABLE_Specs_201_201 = ((MR_Word) (conv13_STATE_VARIABLE_Specs_201_201));
+          parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0(TypeCtor_18, DuDefn_85, DuSection_86, IntAbstractStdMaybeDefn_40, IntMaybeDefnCJCsE_43, ImpMaybeDefnCJCsE_49, &Status_261, &ChosenMaybeDefnCJCsE_89, STATE_VARIABLE_Specs_201_201, &STATE_VARIABLE_Specs_206_206);
+          DetailsDu_90 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DuDefn_85, (MR_Integer) 2))));
+          OoMCtors_91 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DetailsDu_90, (MR_Integer) 0))));
+          HeadCtor_94 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMCtors_91, (MR_Integer) 0))));
+          TailCtors_95 = ((MR_Word) ((MR_hl_field(MR_mktag(0), OoMCtors_91, (MR_Integer) 1))));
+          succeeded = parse_tree__prog_data__ctor_is_constant_2_p_0(HeadCtor_94, &HeadName0_96);
+          if (succeeded)
+            succeeded = parse_tree__prog_data__ctors_are_all_constants_2_p_0(TailCtors_95, &TailNames0_97);
+          if (succeeded)
+            if ((TailNames0_97 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              succeeded = parse_tree__prog_type__du_type_is_dummy_1_p_0(DetailsDu_90);
+              if (succeeded)
+                {
+                  MaybeOnlyConstants_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, 0) = ((MR_Box) (HeadName0_96));
+                  MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                }
+              else
+                MaybeOnlyConstants_98 = (MR_Word) ((MR_Unsigned) 0U);
+            }
+            else
+            {
+              MR_Integer _NumFunctors_101;
+
+              succeeded = parse_tree__prog_type__du_type_is_enum_2_p_0(DetailsDu_90, &_NumFunctors_101);
+              if (succeeded)
+                {
+                  MaybeOnlyConstants_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, 0) = ((MR_Box) (HeadName0_96));
+                  MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, 1) = ((MR_Box) (TailNames0_97));
+                }
+              else
+                MaybeOnlyConstants_98 = (MR_Word) ((MR_Unsigned) 0U);
+            }
+          else
+            MaybeOnlyConstants_98 = (MR_Word) ((MR_Unsigned) 0U);
+          if ((MaybeOnlyConstants_98 == (MR_Word) ((MR_Unsigned) 0U)))
+          {
+            MR_Word Var_210;
+            MR_Box conv15_STATE_VARIABLE_Specs_132;
+
+            {
+              Var_210 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), Var_210, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[5]));
+              MR_hl_field(MR_mktag(0), Var_210, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_7));
+              MR_hl_field(MR_mktag(0), Var_210, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), Var_210, 3) = ((MR_Box) (TypeCtor_18));
+              MR_hl_field(MR_mktag(0), Var_210, 4) = ((MR_Box) (DuDefn_85));
+            }
+            mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_210, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_206_206)), &conv15_STATE_VARIABLE_Specs_132);
+            *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv15_STATE_VARIABLE_Specs_132));
+            {
+              CheckedStdDefn_262 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), CheckedStdDefn_262, 0) = (MR_Box) ((MR_Unsigned) (Status_261));
+              MR_hl_field(MR_mktag(2), CheckedStdDefn_262, 1) = ((MR_Box) (DuDefn_85));
+              MR_hl_field(MR_mktag(2), CheckedStdDefn_262, 2) = ((MR_Box) (ChosenMaybeDefnCJCsE_89));
+            }
+          }
+          else
+          {
+            MR_String HeadName_102 = ((MR_String) ((MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, (MR_Integer) 0))));
+            MR_Word TailNames_103 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeOnlyConstants_98, (MR_Integer) 1))));
+            MR_Word MaybeDefnOrEnumCJCsE_104;
+            MR_Word Var_208;
+
+            {
+              Var_208 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_208, 0) = ((MR_Box) (HeadName_102));
+              MR_hl_field(MR_mktag(1), Var_208, 1) = ((MR_Box) (TailNames_103));
+            }
+            parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_8_p_0(TypeCtor_18, Var_208, ChosenMaybeDefnCJCsE_89, ImpMaybeEnumCJCsE_23, ImpLeftOverEnumsCJCsE_24, &MaybeDefnOrEnumCJCsE_104, STATE_VARIABLE_Specs_206_206, STATE_VARIABLE_Specs_132);
+            {
+              CheckedStdDefn_262 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), CheckedStdDefn_262, 0) = (MR_Box) ((MR_Unsigned) (Status_261));
+              MR_hl_field(MR_mktag(1), CheckedStdDefn_262, 1) = ((MR_Box) (DuDefn_85));
+              MR_hl_field(MR_mktag(1), CheckedStdDefn_262, 2) = ((MR_Box) (HeadName_102));
+              MR_hl_field(MR_mktag(1), CheckedStdDefn_262, 3) = ((MR_Box) (TailNames_103));
+              MR_hl_field(MR_mktag(1), CheckedStdDefn_262, 4) = ((MR_Box) (MaybeDefnOrEnumCJCsE_104));
+            }
+          }
+          {
+            CheckedDefn_260 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), CheckedDefn_260, 0) = ((MR_Box) (CheckedStdDefn_262));
+          }
+          mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_260)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+        }
+        else
+        {
+          succeeded = (IntMaybeDefnC_50 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+          }
+          if (!(succeeded))
+          {
+            succeeded = (IntMaybeDefnJava_51 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+            }
+            if (!(succeeded))
+            {
+              succeeded = (IntMaybeDefnCsharp_52 != (MR_Word) ((MR_Unsigned) 0U));
+              if (succeeded)
+              {
+              }
+              if (!(succeeded))
+              {
+                succeeded = (IntMaybeDefnErlang_53 != (MR_Word) ((MR_Unsigned) 0U));
+                if (succeeded)
+                {
+                }
+                if (!(succeeded))
+                {
+                  succeeded = (ImpMaybeDefnC_54 != (MR_Word) ((MR_Unsigned) 0U));
+                  if (succeeded)
+                  {
+                  }
+                  if (!(succeeded))
+                  {
+                    succeeded = (ImpMaybeDefnJava_55 != (MR_Word) ((MR_Unsigned) 0U));
+                    if (succeeded)
+                    {
+                    }
+                    if (!(succeeded))
+                    {
+                      succeeded = (ImpMaybeDefnCsharp_56 != (MR_Word) ((MR_Unsigned) 0U));
+                      if (succeeded)
+                      {
+                      }
+                      if (!(succeeded))
+                      {
+                        succeeded = (ImpMaybeDefnErlang_57 != (MR_Word) ((MR_Unsigned) 0U));
+                        if (succeeded)
+                        {
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (succeeded)
+          {
+            MR_Word IntForeignContexts_113;
+            MR_Word SortedIntForeignContexts_114;
+            MR_Word FirstForeignContext_115;
+            MR_String ForeignWhere_117;
+            MR_Word ChosenAbstractStdDefn_120;
+            MR_Word Var_213;
+            MR_Word Var_214;
+            MR_Word Var_215;
+            MR_Word Var_216;
+            MR_Word Var_223;
+            MR_Word Var_224;
+            MR_Word STATE_VARIABLE_Specs_225_225;
+            MR_Word Var_227;
+            MR_Word Var_229;
+            MR_Word STATE_VARIABLE_Specs_230_230;
+            MR_Word CheckedDefn_263;
+            MR_Word Status_264;
+            MR_Word CheckedStdDefn_265;
+            MR_Word ChosenMaybeDefnCJCsE_266;
+            MR_Box conv18_STATE_VARIABLE_Specs_225_225;
+            MR_Box conv20_STATE_VARIABLE_Specs_230_230;
+
+            {
+              Var_216 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_216, 0) = ((MR_Box) (IntMaybeDefnErlang_53));
+              MR_hl_field(MR_mktag(1), Var_216, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            {
+              Var_215 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_215, 0) = ((MR_Box) (IntMaybeDefnCsharp_52));
+              MR_hl_field(MR_mktag(1), Var_215, 1) = ((MR_Box) (Var_216));
+            }
+            {
+              Var_214 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_214, 0) = ((MR_Box) (IntMaybeDefnJava_51));
+              MR_hl_field(MR_mktag(1), Var_214, 1) = ((MR_Box) (Var_215));
+            }
+            {
+              Var_213 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_213, 0) = ((MR_Box) (IntMaybeDefnC_50));
+              MR_hl_field(MR_mktag(1), Var_213, 1) = ((MR_Box) (Var_214));
+            }
+            IntForeignContexts_113 = parse_tree__check_parse_tree_type_defns__get_maybe_type_defn_contexts_1_f_0(Var_213);
+            mercury__list__sort_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), IntForeignContexts_113, &SortedIntForeignContexts_114);
+            if ((SortedIntForeignContexts_114 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              MR_Word ImpForeignContexts_118;
+              MR_Word SortedImpForeignContexts_119;
+              MR_Word Var_218;
+              MR_Word Var_219;
+              MR_Word Var_220;
+              MR_Word Var_221;
+              MR_Box conv16_FirstForeignContext_115;
+
+              {
+                Var_221 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_221, 0) = ((MR_Box) (ImpMaybeDefnErlang_57));
+                MR_hl_field(MR_mktag(1), Var_221, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              {
+                Var_220 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_220, 0) = ((MR_Box) (ImpMaybeDefnCsharp_56));
+                MR_hl_field(MR_mktag(1), Var_220, 1) = ((MR_Box) (Var_221));
+              }
+              {
+                Var_219 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_219, 0) = ((MR_Box) (ImpMaybeDefnJava_55));
+                MR_hl_field(MR_mktag(1), Var_219, 1) = ((MR_Box) (Var_220));
+              }
+              {
+                Var_218 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_218, 0) = ((MR_Box) (ImpMaybeDefnC_54));
+                MR_hl_field(MR_mktag(1), Var_218, 1) = ((MR_Box) (Var_219));
+              }
+              ImpForeignContexts_118 = parse_tree__check_parse_tree_type_defns__get_maybe_type_defn_contexts_1_f_0(Var_218);
+              mercury__list__sort_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), ImpForeignContexts_118, &SortedImpForeignContexts_119);
+              conv16_FirstForeignContext_115 = mercury__list__det_head_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), SortedImpForeignContexts_119);
+              FirstForeignContext_115 = ((MR_Word) (conv16_FirstForeignContext_115));
+              ForeignWhere_117 = (MR_String) "implementation";
+            }
+            else
+            {
+              FirstForeignContext_115 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedIntForeignContexts_114, (MR_Integer) 0))));
+              ForeignWhere_117 = (MR_String) "interface";
+            }
+            {
+              Var_223 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), Var_223, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[1]));
+              MR_hl_field(MR_mktag(0), Var_223, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_8));
+              MR_hl_field(MR_mktag(0), Var_223, 2) = ((MR_Box) ((MR_Integer) 4));
+              MR_hl_field(MR_mktag(0), Var_223, 3) = ((MR_Box) (TypeCtor_18));
+              MR_hl_field(MR_mktag(0), Var_223, 4) = ((MR_Box) (FirstForeignContext_115));
+              MR_hl_field(MR_mktag(0), Var_223, 5) = ((MR_Box) ((MR_String) "foreign type"));
+              MR_hl_field(MR_mktag(0), Var_223, 6) = ((MR_Box) (ForeignWhere_117));
+            }
+            {
+              Var_227 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_227, 0) = ((MR_Box) (ImpContextAbstractSolver_62));
+              MR_hl_field(MR_mktag(1), Var_227, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            {
+              Var_224 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_224, 0) = ((MR_Box) (IntContextAbstractSolver_58));
+              MR_hl_field(MR_mktag(1), Var_224, 1) = ((MR_Box) (Var_227));
+            }
+            mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[5]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_223, Var_224, ((MR_Box) (STATE_VARIABLE_Specs_146_146)), &conv18_STATE_VARIABLE_Specs_225_225);
+            STATE_VARIABLE_Specs_225_225 = ((MR_Word) (conv18_STATE_VARIABLE_Specs_225_225));
+            {
+              Var_229 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), Var_229, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[2]));
+              MR_hl_field(MR_mktag(0), Var_229, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_9));
+              MR_hl_field(MR_mktag(0), Var_229, 2) = ((MR_Box) ((MR_Integer) 4));
+              MR_hl_field(MR_mktag(0), Var_229, 3) = ((MR_Box) (TypeCtor_18));
+              MR_hl_field(MR_mktag(0), Var_229, 4) = ((MR_Box) (FirstForeignContext_115));
+              MR_hl_field(MR_mktag(0), Var_229, 5) = ((MR_Box) ((MR_String) "foreign type"));
+              MR_hl_field(MR_mktag(0), Var_229, 6) = ((MR_Box) (ForeignWhere_117));
+            }
+            mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_229, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_225_225)), &conv20_STATE_VARIABLE_Specs_230_230);
+            STATE_VARIABLE_Specs_230_230 = ((MR_Word) (conv20_STATE_VARIABLE_Specs_230_230));
+            parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0(TypeCtor_18, IntAbstractStdMaybeDefn_40, ImpAbstractStdMaybeDefn_46, IntMaybeDefnCJCsE_43, ImpMaybeDefnCJCsE_49, &Status_264, &ChosenAbstractStdDefn_120, &ChosenMaybeDefnCJCsE_266, STATE_VARIABLE_Specs_230_230, STATE_VARIABLE_Specs_132);
+            {
+              CheckedStdDefn_265 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), CheckedStdDefn_265, 0) = (MR_Box) ((MR_Unsigned) (Status_264));
+              MR_hl_field(MR_mktag(3), CheckedStdDefn_265, 1) = ((MR_Box) (ChosenAbstractStdDefn_120));
+              MR_hl_field(MR_mktag(3), CheckedStdDefn_265, 2) = ((MR_Box) (ChosenMaybeDefnCJCsE_266));
+            }
+            {
+              CheckedDefn_263 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), CheckedDefn_263, 0) = ((MR_Box) (CheckedStdDefn_265));
+            }
+            mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_263)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+          }
+          else
+          {
+            MR_Word AbstractSolverDefn_122;
+            MR_String AbstractSolverWhere_123;
+            MR_Word Status_276;
+            MR_Word IntAbstractSolverDefn_121;
+
+            succeeded = (IntAbstractSolverMaybeDefn_38 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              IntAbstractSolverDefn_121 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntAbstractSolverMaybeDefn_38, (MR_Integer) 0))));
+              AbstractSolverDefn_122 = IntAbstractSolverDefn_121;
+              AbstractSolverWhere_123 = (MR_String) "interface";
+              Status_276 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+            else
+            {
+              succeeded = (ImpAbstractSolverMaybeDefn_44 != (MR_Word) ((MR_Unsigned) 0U));
+              if (succeeded)
+              {
+                AbstractSolverDefn_122 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpAbstractSolverMaybeDefn_44, (MR_Integer) 0))));
+                AbstractSolverWhere_123 = (MR_String) "implementation";
+                Status_276 = (MR_Integer) 1;
+                succeeded = MR_TRUE;
+              }
+            }
+            if (succeeded)
+            {
+              MR_Word STATE_VARIABLE_Specs_234_234;
+              MR_Word Var_235;
+              MR_Word Var_236;
+              MR_Word STATE_VARIABLE_Specs_237_237;
+              MR_Word Var_238;
+              MR_Word Var_240;
+              MR_Word Var_242;
+              MR_Word Var_244;
+              MR_Word CheckedSolverDefn_267;
+              MR_Word CheckedDefn_268;
+              MR_Box conv22_STATE_VARIABLE_Specs_237_237;
+              MR_Box conv24_STATE_VARIABLE_Specs_132;
+
+              parse_tree__check_parse_tree_type_defns__maybe_report_declared_but_undefined_type_5_p_0(InsistOnDefn_12, TypeCtor_18, AbstractSolverDefn_122, STATE_VARIABLE_Specs_146_146, &STATE_VARIABLE_Specs_234_234);
+              Var_238 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AbstractSolverDefn_122, (MR_Integer) 4))));
+              {
+                Var_235 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_235, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[1]));
+                MR_hl_field(MR_mktag(0), Var_235, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_10));
+                MR_hl_field(MR_mktag(0), Var_235, 2) = ((MR_Box) ((MR_Integer) 4));
+                MR_hl_field(MR_mktag(0), Var_235, 3) = ((MR_Box) (TypeCtor_18));
+                MR_hl_field(MR_mktag(0), Var_235, 4) = ((MR_Box) (Var_238));
+                MR_hl_field(MR_mktag(0), Var_235, 5) = ((MR_Box) ((MR_String) "solver type"));
+                MR_hl_field(MR_mktag(0), Var_235, 6) = ((MR_Box) (AbstractSolverWhere_123));
+              }
+              {
+                Var_240 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_240, 0) = ((MR_Box) (ImpContextAbstractStd_63));
+                MR_hl_field(MR_mktag(1), Var_240, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              {
+                Var_236 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_236, 0) = ((MR_Box) (IntContextAbstractStd_59));
+                MR_hl_field(MR_mktag(1), Var_236, 1) = ((MR_Box) (Var_240));
+              }
+              mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[5]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_235, Var_236, ((MR_Box) (STATE_VARIABLE_Specs_234_234)), &conv22_STATE_VARIABLE_Specs_237_237);
+              STATE_VARIABLE_Specs_237_237 = ((MR_Word) (conv22_STATE_VARIABLE_Specs_237_237));
+              Var_244 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AbstractSolverDefn_122, (MR_Integer) 4))));
+              {
+                Var_242 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_242, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[2]));
+                MR_hl_field(MR_mktag(0), Var_242, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_11));
+                MR_hl_field(MR_mktag(0), Var_242, 2) = ((MR_Box) ((MR_Integer) 4));
+                MR_hl_field(MR_mktag(0), Var_242, 3) = ((MR_Box) (TypeCtor_18));
+                MR_hl_field(MR_mktag(0), Var_242, 4) = ((MR_Box) (Var_244));
+                MR_hl_field(MR_mktag(0), Var_242, 5) = ((MR_Box) ((MR_String) "solver type"));
+                MR_hl_field(MR_mktag(0), Var_242, 6) = ((MR_Box) (AbstractSolverWhere_123));
+              }
+              mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_242, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_237_237)), &conv24_STATE_VARIABLE_Specs_132);
+              *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv24_STATE_VARIABLE_Specs_132));
+              {
+                CheckedSolverDefn_267 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), CheckedSolverDefn_267, 0) = (MR_Box) ((MR_Unsigned) (Status_276));
+                MR_hl_field(MR_mktag(0), CheckedSolverDefn_267, 1) = ((MR_Box) (AbstractSolverDefn_122));
+              }
+              {
+                CheckedDefn_268 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), CheckedDefn_268, 0) = ((MR_Box) (CheckedSolverDefn_267));
+              }
+              mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_268)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+            }
+            else
+            {
+              MR_Word AbstractStdDefn_126;
+              MR_Word Status_272;
+              MR_Word IntAbstractStdDefn_125;
+
+              succeeded = (IntAbstractStdMaybeDefn_40 != (MR_Word) ((MR_Unsigned) 0U));
+              if (succeeded)
+              {
+                IntAbstractStdDefn_125 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntAbstractStdMaybeDefn_40, (MR_Integer) 0))));
+                AbstractStdDefn_126 = IntAbstractStdDefn_125;
+                Status_272 = (MR_Integer) 1;
+                succeeded = MR_TRUE;
+              }
+              else
+              {
+                succeeded = (ImpAbstractStdMaybeDefn_46 != (MR_Word) ((MR_Unsigned) 0U));
+                if (succeeded)
+                {
+                  AbstractStdDefn_126 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpAbstractStdMaybeDefn_46, (MR_Integer) 0))));
+                  Status_272 = (MR_Integer) 2;
+                  succeeded = MR_TRUE;
+                }
+              }
+              if (succeeded)
+              {
+                MR_Word STATE_VARIABLE_Specs_247_247;
+                MR_Word Var_248;
+                MR_Word CheckedDefn_269;
+                MR_Word CheckedStdDefn_270;
+                MR_Box conv26_STATE_VARIABLE_Specs_132;
+
+                parse_tree__check_parse_tree_type_defns__maybe_report_declared_but_undefined_type_5_p_0(InsistOnDefn_12, TypeCtor_18, AbstractStdDefn_126, STATE_VARIABLE_Specs_146_146, &STATE_VARIABLE_Specs_247_247);
+                {
+                  Var_248 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), Var_248, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[6]));
+                  MR_hl_field(MR_mktag(0), Var_248, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_12));
+                  MR_hl_field(MR_mktag(0), Var_248, 2) = ((MR_Box) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), Var_248, 3) = ((MR_Box) (TypeCtor_18));
+                  MR_hl_field(MR_mktag(0), Var_248, 4) = ((MR_Box) ((MR_String) "undefined"));
+                }
+                mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_248, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_247_247)), &conv26_STATE_VARIABLE_Specs_132);
+                *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv26_STATE_VARIABLE_Specs_132));
+                {
+                  CheckedStdDefn_270 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), CheckedStdDefn_270, 0) = (MR_Box) ((MR_Unsigned) (Status_272));
+                  MR_hl_field(MR_mktag(3), CheckedStdDefn_270, 1) = ((MR_Box) (AbstractStdDefn_126));
+                  MR_hl_field(MR_mktag(3), CheckedStdDefn_270, 2) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[2]));
+                }
+                {
+                  CheckedDefn_269 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), CheckedDefn_269, 0) = ((MR_Box) (CheckedStdDefn_270));
+                }
+                mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), ((MR_Box) (TypeCtor_18)), ((MR_Box) (CheckedDefn_269)), STATE_VARIABLE_TypeCtorCheckedMap_0_129, STATE_VARIABLE_TypeCtorCheckedMap_130);
+              }
+              else
+              {
+                MR_Word Var_256;
+                MR_Box conv28_STATE_VARIABLE_Specs_132;
+
+                {
+                  Var_256 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), Var_256, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[6]));
+                  MR_hl_field(MR_mktag(0), Var_256, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0_13));
+                  MR_hl_field(MR_mktag(0), Var_256, 2) = ((MR_Box) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), Var_256, 3) = ((MR_Box) (TypeCtor_18));
+                  MR_hl_field(MR_mktag(0), Var_256, 4) = ((MR_Box) ((MR_String) "undeclared"));
+                }
+                mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_256, ImpEnums_37, ((MR_Box) (STATE_VARIABLE_Specs_146_146)), &conv28_STATE_VARIABLE_Specs_132);
+                *STATE_VARIABLE_Specs_132 = ((MR_Word) (conv28_STATE_VARIABLE_Specs_132));
+                *STATE_VARIABLE_TypeCtorCheckedMap_130 = STATE_VARIABLE_TypeCtorCheckedMap_0_129;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_109_97_121_98_101_95_99_111_110_116_101_120_116_95_95_91_49_93_95_48_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+    else
+    {
+      MR_Word TypeDefnInfo_3 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word Var_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefnInfo_3, (MR_Integer) 4))));
+
+      {
+        HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), HeadVar__2_2, 0) = ((MR_Box) (Var_4));
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__check_parse_tree_type_defns__get_maybe_type_defn_contexts_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+    else
+    {
+      MR_Word MaybeTypeDefn_3 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word MaybeTypeDefns_4 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word TailContexts_6;
+
+      TailContexts_6 = parse_tree__check_parse_tree_type_defns__get_maybe_type_defn_contexts_1_f_0(MaybeTypeDefns_4);
+      if ((MaybeTypeDefn_3 == (MR_Word) ((MR_Unsigned) 0U)))
+        HeadVar__2_2 = TailContexts_6;
+      else
+      {
+        MR_Word TypeDefn_7 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_3, (MR_Integer) 0))));
+        MR_Word Var_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_7, (MR_Integer) 4))));
+
+        {
+          HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), HeadVar__2_2, 0) = ((MR_Box) (Var_8));
+          MR_hl_field(MR_mktag(1), HeadVar__2_2, 1) = ((MR_Box) (TailContexts_6));
+        }
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv3_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv3_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv3_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv2_HeadVar__2_2;
+
+    conv2_HeadVar__2_2 = parse_tree__check_parse_tree_type_defns__project_foreign_enum_context_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv2_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv1_Cmp_6;
+
+    parse_tree__check_parse_tree_type_defns__compare_foreign_enum_infos_by_context_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_Cmp_6);
+    *wrapper_arg_3 = ((MR_Box) (conv1_Cmp_6));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0(
+  MR_Word ForeignEnumMap_7,
+  MR_Word TypeCtor_8,
+  MR_Word * MaybeEnumCJCsE_9,
+  MR_Word * LeftOverEnumCJCse_10,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14)
+{
+  {
+    MR_bool succeeded;
+    MR_Word AllEnums_12;
+    MR_Box conv0_AllEnums_12;
+
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[1]), ForeignEnumMap_7, ((MR_Box) (TypeCtor_8)), &conv0_AllEnums_12);
+    if (succeeded)
+    {
+      AllEnums_12 = ((MR_Word) (conv0_AllEnums_12));
+      succeeded = MR_TRUE;
+    }
+    if (succeeded)
+    {
+      MR_Word EnumsC_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllEnums_12, (MR_Integer) 0))));
+      MR_Word EnumsJava_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllEnums_12, (MR_Integer) 1))));
+      MR_Word EnumsCsharp_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllEnums_12, (MR_Integer) 2))));
+      MR_Word EnumsErlang_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllEnums_12, (MR_Integer) 3))));
+      MR_Word MaybeEnumC_37;
+      MR_Word LeftOverEnumsC_38;
+      MR_Word MaybeEnumJava_39;
+      MR_Word LeftOverEnumsJava_40;
+      MR_Word MaybeEnumCsharp_41;
+      MR_Word LeftOverEnumsCsharp_42;
+      MR_Word MaybeEnumErlang_43;
+      MR_Word LeftOverEnumsErlang_44;
+      MR_Word STATE_VARIABLE_Specs_27_46;
+      MR_Word STATE_VARIABLE_Specs_29_48;
+      MR_Word STATE_VARIABLE_Specs_31_50;
+      MR_Word SortedForeignEnums_61;
+
+      mercury__list__sort_3_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[9]), EnumsC_33, &SortedForeignEnums_61);
+      if ((SortedForeignEnums_61 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MaybeEnumC_37 = (MR_Word) ((MR_Unsigned) 0U);
+        LeftOverEnumsC_38 = (MR_Word) ((MR_Unsigned) 0U);
+        STATE_VARIABLE_Specs_27_46 = STATE_VARIABLE_Specs_0_13;
+      }
+      else
+      {
+        MR_Word Var_89 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedForeignEnums_61, (MR_Integer) 1))));
+        MR_Word Var_90 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedForeignEnums_61, (MR_Integer) 0))));
+
+        if ((Var_89 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          {
+            MaybeEnumC_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeEnumC_37, 0) = ((MR_Box) (Var_90));
+          }
+          LeftOverEnumsC_38 = (MR_Word) ((MR_Unsigned) 0U);
+          STATE_VARIABLE_Specs_27_46 = STATE_VARIABLE_Specs_0_13;
+        }
+        else
+        {
+          MR_Word LeastContext_65;
+          MR_Word LeftOverContexts_66;
+          MR_Word Var_69;
+          MR_Box conv4_STATE_VARIABLE_Specs_27_46;
+
+          LeftOverEnumsC_38 = Var_89;
+          {
+            MaybeEnumC_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeEnumC_37, 0) = ((MR_Box) (Var_90));
+          }
+          LeastContext_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_90, (MR_Integer) 3))));
+          LeftOverContexts_66 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[10]), LeftOverEnumsC_38);
+          {
+            Var_69 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_69, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[0]));
+            MR_hl_field(MR_mktag(0), Var_69, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__check_any_type_ctor_enums_for_duplicates_6_p_0_3));
+            MR_hl_field(MR_mktag(0), Var_69, 2) = ((MR_Box) ((MR_Integer) 4));
+            MR_hl_field(MR_mktag(0), Var_69, 3) = ((MR_Box) ((MR_String) "enum"));
+            MR_hl_field(MR_mktag(0), Var_69, 4) = ((MR_Box) (TypeCtor_8));
+            MR_hl_field(MR_mktag(0), Var_69, 5) = ((MR_Box) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(0), Var_69, 6) = ((MR_Box) (LeastContext_65));
+          }
+          mercury__list__foldl_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_69, LeftOverContexts_66, ((MR_Box) (STATE_VARIABLE_Specs_0_13)), &conv4_STATE_VARIABLE_Specs_27_46);
+          STATE_VARIABLE_Specs_27_46 = ((MR_Word) (conv4_STATE_VARIABLE_Specs_27_46));
+        }
+      }
+      parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0(TypeCtor_8, (MR_Integer) 2, EnumsJava_34, &MaybeEnumJava_39, &LeftOverEnumsJava_40, STATE_VARIABLE_Specs_27_46, &STATE_VARIABLE_Specs_29_48);
+      parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0(TypeCtor_8, (MR_Integer) 1, EnumsCsharp_35, &MaybeEnumCsharp_41, &LeftOverEnumsCsharp_42, STATE_VARIABLE_Specs_29_48, &STATE_VARIABLE_Specs_31_50);
+      parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0(TypeCtor_8, (MR_Integer) 3, EnumsErlang_36, &MaybeEnumErlang_43, &LeftOverEnumsErlang_44, STATE_VARIABLE_Specs_31_50, STATE_VARIABLE_Specs_14);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeEnumCJCsE_9 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MaybeEnumC_37));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MaybeEnumJava_39));
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (MaybeEnumCsharp_41));
+        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (MaybeEnumErlang_43));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        *LeftOverEnumCJCse_10 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (LeftOverEnumsC_38));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (LeftOverEnumsJava_40));
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (LeftOverEnumsCsharp_42));
+        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (LeftOverEnumsErlang_44));
+      }
+    }
+    else
+    {
+      *MaybeEnumCJCsE_9 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[3]);
+      *LeftOverEnumCJCse_10 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[1]);
+      *STATE_VARIABLE_Specs_14 = STATE_VARIABLE_Specs_0_13;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv2_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_HeadVar__2_2;
+
+    conv1_HeadVar__2_2 = parse_tree__check_parse_tree_type_defns__project_foreign_enum_context_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_Cmp_6;
+
+    parse_tree__check_parse_tree_type_defns__compare_foreign_enum_infos_by_context_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_Cmp_6);
+    *wrapper_arg_3 = ((MR_Box) (conv0_Cmp_6));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0(
+  MR_Word TypeCtor_8,
+  MR_Word Lang_9,
+  MR_Word ForeignEnums_10,
+  MR_Word * MaybeForeignEnum_11,
+  MR_Word * LeftOverForeignEnums_12,
+  MR_Word STATE_VARIABLE_Specs_0_20,
+  MR_Word * STATE_VARIABLE_Specs_21)
+{
+  {
+    MR_Word SortedForeignEnums_14;
+
+    mercury__list__sort_3_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[7]), ForeignEnums_10, &SortedForeignEnums_14);
+    if ((SortedForeignEnums_14 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *MaybeForeignEnum_11 = (MR_Word) ((MR_Unsigned) 0U);
+      *LeftOverForeignEnums_12 = (MR_Word) ((MR_Unsigned) 0U);
+      *STATE_VARIABLE_Specs_21 = STATE_VARIABLE_Specs_0_20;
+    }
+    else
+    {
+      MR_Word Var_44 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedForeignEnums_14, (MR_Integer) 1))));
+      MR_Word Var_45 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedForeignEnums_14, (MR_Integer) 0))));
+
+      if ((Var_44 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeForeignEnum_11 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_45));
+        }
+        *LeftOverForeignEnums_12 = (MR_Word) ((MR_Unsigned) 0U);
+        *STATE_VARIABLE_Specs_21 = STATE_VARIABLE_Specs_0_20;
+      }
+      else
+      {
+        MR_Word LeastContext_18;
+        MR_Word LeftOverContexts_19;
+        MR_Word Var_24;
+        MR_Box conv3_STATE_VARIABLE_Specs_21;
+
+        *LeftOverForeignEnums_12 = Var_44;
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeForeignEnum_11 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_45));
+        }
+        LeastContext_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Var_45, (MR_Integer) 3))));
+        LeftOverContexts_19 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[8]), *LeftOverForeignEnums_12);
+        {
+          Var_24 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_24, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[0]));
+          MR_hl_field(MR_mktag(0), Var_24, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_enum_for_lang_7_p_0_3));
+          MR_hl_field(MR_mktag(0), Var_24, 2) = ((MR_Box) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(0), Var_24, 3) = ((MR_Box) ((MR_String) "enum"));
+          MR_hl_field(MR_mktag(0), Var_24, 4) = ((MR_Box) (TypeCtor_8));
+          MR_hl_field(MR_mktag(0), Var_24, 5) = ((MR_Box) (Lang_9));
+          MR_hl_field(MR_mktag(0), Var_24, 6) = ((MR_Box) (LeastContext_18));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_24, LeftOverContexts_19, ((MR_Box) (STATE_VARIABLE_Specs_0_20)), &conv3_STATE_VARIABLE_Specs_21);
+        *STATE_VARIABLE_Specs_21 = ((MR_Word) (conv3_STATE_VARIABLE_Specs_21));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__check_any_type_ctor_defns_for_duplicates_5_p_0(
+  MR_Word TypeDefnMap_6,
+  MR_Word TypeCtor_7,
+  MR_Word * MaybeDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_23,
+  MR_Word * STATE_VARIABLE_Specs_24)
+{
+  {
+    MR_bool succeeded;
+    MR_Word AllDefns_10;
+    MR_Box conv0_AllDefns_10;
+
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0), TypeDefnMap_6, ((MR_Box) (TypeCtor_7)), &conv0_AllDefns_10);
+    if (succeeded)
+    {
+      AllDefns_10 = ((MR_Word) (conv0_AllDefns_10));
+      succeeded = MR_TRUE;
+    }
+    if (succeeded)
+    {
+      MR_Word AbstractSolverDefns_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 0))));
+      MR_Word SolverDefns_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 1))));
+      MR_Word AbstractNonSolverDefns_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 2))));
+      MR_Word EqvDefns_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 3))));
+      MR_Word DuDefns_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 4))));
+      MR_Word ForeignDefns_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AllDefns_10, (MR_Integer) 5))));
+      MR_Word AbstractSolverMaybeDefn_17;
+      MR_Word SolverMaybeDefn_18;
+      MR_Word AbstractNonSolverMaybeDefn_19;
+      MR_Word EqvMaybeDefn_20;
+      MR_Word DuMaybeDefn_21;
+      MR_Word ForeignMaybeDefn_22;
+      MR_Word STATE_VARIABLE_Specs_26_26;
+      MR_Word STATE_VARIABLE_Specs_28_28;
+      MR_Word STATE_VARIABLE_Specs_30_30;
+      MR_Word STATE_VARIABLE_Specs_32_32;
+      MR_Word STATE_VARIABLE_Specs_34_34;
+
+      parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0), (MR_String) "abstract solver type", TypeCtor_7, AbstractSolverDefns_11, &AbstractSolverMaybeDefn_17, STATE_VARIABLE_Specs_0_23, &STATE_VARIABLE_Specs_26_26);
+      parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_solver_0), (MR_String) "solver type", TypeCtor_7, SolverDefns_12, &SolverMaybeDefn_18, STATE_VARIABLE_Specs_26_26, &STATE_VARIABLE_Specs_28_28);
+      parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0), (MR_String) "abstract type", TypeCtor_7, AbstractNonSolverDefns_13, &AbstractNonSolverMaybeDefn_19, STATE_VARIABLE_Specs_28_28, &STATE_VARIABLE_Specs_30_30);
+      parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_eqv_0), (MR_String) "equivalence type", TypeCtor_7, EqvDefns_14, &EqvMaybeDefn_20, STATE_VARIABLE_Specs_30_30, &STATE_VARIABLE_Specs_32_32);
+      parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_du_0), (MR_String) "discriminated union type", TypeCtor_7, DuDefns_15, &DuMaybeDefn_21, STATE_VARIABLE_Specs_32_32, &STATE_VARIABLE_Specs_34_34);
+      parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0(TypeCtor_7, ForeignDefns_16, &ForeignMaybeDefn_22, STATE_VARIABLE_Specs_34_34, STATE_VARIABLE_Specs_24);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeDefn_8 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AbstractSolverMaybeDefn_17));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (SolverMaybeDefn_18));
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AbstractNonSolverMaybeDefn_19));
+        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (EqvMaybeDefn_20));
+        MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (DuMaybeDefn_21));
+        MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (ForeignMaybeDefn_22));
+      }
+    }
+    else
+    {
+      *MaybeDefn_8 = (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_5[0]);
+      *STATE_VARIABLE_Specs_24 = STATE_VARIABLE_Specs_0_23;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv3_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv3_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv3_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__3_32;
+
+    parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__at_most_one_foreign_type_for_lang__1466__1_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_HeadVar__3_32);
+    *wrapper_arg_3 = ((MR_Box) (conv0_HeadVar__3_32));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word DefnsCJCsE_7,
+  MR_Word * MaybeDefnCJCsE_8,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19)
+{
+  {
+    MR_bool succeeded;
+    MR_Word DefnsC_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DefnsCJCsE_7, (MR_Integer) 0))));
+    MR_Word DefnsJava_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DefnsCJCsE_7, (MR_Integer) 1))));
+    MR_Word DefnsCsharp_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DefnsCJCsE_7, (MR_Integer) 2))));
+    MR_Word DefnsErlang_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DefnsCJCsE_7, (MR_Integer) 3))));
+    MR_Word MaybeDefnC_14;
+    MR_Word MaybeDefnJava_15;
+    MR_Word MaybeDefnCsharp_16;
+    MR_Word MaybeDefnErlang_17;
+    MR_Word STATE_VARIABLE_Specs_21_21;
+    MR_Word STATE_VARIABLE_Specs_23_23;
+    MR_Word STATE_VARIABLE_Specs_25_25;
+
+    if ((DefnsC_10 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MaybeDefnC_14 = (MR_Word) ((MR_Unsigned) 0U);
+      STATE_VARIABLE_Specs_21_21 = STATE_VARIABLE_Specs_0_18;
+    }
+    else
+    {
+      MR_Word Var_62 = ((MR_Word) ((MR_hl_field(MR_mktag(1), DefnsC_10, (MR_Integer) 1))));
+      MR_Word Var_63 = ((MR_Word) ((MR_hl_field(MR_mktag(1), DefnsC_10, (MR_Integer) 0))));
+
+      if ((Var_62 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        {
+          MaybeDefnC_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeDefnC_14, 0) = ((MR_Box) (Var_63));
+        }
+        STATE_VARIABLE_Specs_21_21 = STATE_VARIABLE_Specs_0_18;
+      }
+      else
+      {
+        MR_Word Contexts_38;
+        MR_Word Var_43;
+        MR_Box conv1_Contexts_38;
+        MR_Word LeastContext_39;
+        MR_Word OtherContexts_40;
+        MR_Box conv2_LeastContext_39;
+
+        {
+          MaybeDefnC_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeDefnC_14, 0) = ((MR_Box) (Var_63));
+        }
+        Var_43 = mercury__set__init_0_f_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0));
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[8]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[6]), DefnsC_10, ((MR_Box) (Var_43)), &conv1_Contexts_38);
+        Contexts_38 = ((MR_Word) (conv1_Contexts_38));
+        succeeded = mercury__set__remove_least_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), &conv2_LeastContext_39, Contexts_38, &OtherContexts_40);
+        if (succeeded)
+        {
+          LeastContext_39 = ((MR_Word) (conv2_LeastContext_39));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          MR_Word Var_44;
+          MR_Box conv4_STATE_VARIABLE_Specs_21_21;
+
+          {
+            Var_44 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_44, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[0]));
+            MR_hl_field(MR_mktag(0), Var_44, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_all_langs_5_p_0_2));
+            MR_hl_field(MR_mktag(0), Var_44, 2) = ((MR_Box) ((MR_Integer) 4));
+            MR_hl_field(MR_mktag(0), Var_44, 3) = ((MR_Box) ((MR_String) "type"));
+            MR_hl_field(MR_mktag(0), Var_44, 4) = ((MR_Box) (TypeCtor_6));
+            MR_hl_field(MR_mktag(0), Var_44, 5) = ((MR_Box) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(0), Var_44, 6) = ((MR_Box) (LeastContext_39));
+          }
+          mercury__set__foldl_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_44, OtherContexts_40, ((MR_Box) (STATE_VARIABLE_Specs_0_18)), &conv4_STATE_VARIABLE_Specs_21_21);
+          STATE_VARIABLE_Specs_21_21 = ((MR_Word) (conv4_STATE_VARIABLE_Specs_21_21));
+        }
+        else
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.at_most_one_foreign_type_for_lang\'/6", (MR_String) "nonempty set doesn\'t have least element");
+            return;
+          }
+      }
+    }
+    parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0(TypeCtor_6, (MR_Integer) 2, DefnsJava_11, &MaybeDefnJava_15, STATE_VARIABLE_Specs_21_21, &STATE_VARIABLE_Specs_23_23);
+    parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0(TypeCtor_6, (MR_Integer) 1, DefnsCsharp_12, &MaybeDefnCsharp_16, STATE_VARIABLE_Specs_23_23, &STATE_VARIABLE_Specs_25_25);
+    parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0(TypeCtor_6, (MR_Integer) 3, DefnsErlang_13, &MaybeDefnErlang_17, STATE_VARIABLE_Specs_25_25, STATE_VARIABLE_Specs_19);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeDefnCJCsE_8 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MaybeDefnC_14));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MaybeDefnJava_15));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (MaybeDefnCsharp_16));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (MaybeDefnErlang_17));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv3_STATE_VARIABLE_Specs_18;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_foreign_defn_7_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv3_STATE_VARIABLE_Specs_18);
+    *wrapper_arg_3 = ((MR_Box) (conv3_STATE_VARIABLE_Specs_18));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__3_32;
+
+    parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__at_most_one_foreign_type_for_lang__1466__1_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_HeadVar__3_32);
+    *wrapper_arg_3 = ((MR_Box) (conv0_HeadVar__3_32));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0(
+  MR_Word TypeCtor_7,
+  MR_Word Lang_8,
+  MR_Word TypeDefns_9,
+  MR_Word * MaybeTypeDefn_10,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19)
+{
+  {
+    MR_bool succeeded;
+
+    if ((TypeDefns_9 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *MaybeTypeDefn_10 = (MR_Word) ((MR_Unsigned) 0U);
+      *STATE_VARIABLE_Specs_19 = STATE_VARIABLE_Specs_0_18;
+    }
+    else
+    {
+      MR_Word Var_41 = ((MR_Word) ((MR_hl_field(MR_mktag(1), TypeDefns_9, (MR_Integer) 1))));
+      MR_Word Var_42 = ((MR_Word) ((MR_hl_field(MR_mktag(1), TypeDefns_9, (MR_Integer) 0))));
+
+      if ((Var_41 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeTypeDefn_10 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_42));
+        }
+        *STATE_VARIABLE_Specs_19 = STATE_VARIABLE_Specs_0_18;
+      }
+      else
+      {
+        MR_Word Contexts_15;
+        MR_Word Var_22;
+        MR_Box conv1_Contexts_15;
+        MR_Word LeastContext_16;
+        MR_Word OtherContexts_17;
+        MR_Box conv2_LeastContext_16;
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeTypeDefn_10 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_42));
+        }
+        Var_22 = mercury__set__init_0_f_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0));
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[8]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[5]), TypeDefns_9, ((MR_Box) (Var_22)), &conv1_Contexts_15);
+        Contexts_15 = ((MR_Word) (conv1_Contexts_15));
+        succeeded = mercury__set__remove_least_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), &conv2_LeastContext_16, Contexts_15, &OtherContexts_17);
+        if (succeeded)
+        {
+          LeastContext_16 = ((MR_Word) (conv2_LeastContext_16));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          MR_Word Var_23;
+          MR_Box conv4_STATE_VARIABLE_Specs_19;
+
+          {
+            Var_23 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_23, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_12[0]));
+            MR_hl_field(MR_mktag(0), Var_23, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_foreign_type_for_lang_6_p_0_2));
+            MR_hl_field(MR_mktag(0), Var_23, 2) = ((MR_Box) ((MR_Integer) 4));
+            MR_hl_field(MR_mktag(0), Var_23, 3) = ((MR_Box) ((MR_String) "type"));
+            MR_hl_field(MR_mktag(0), Var_23, 4) = ((MR_Box) (TypeCtor_7));
+            MR_hl_field(MR_mktag(0), Var_23, 5) = ((MR_Box) (Lang_8));
+            MR_hl_field(MR_mktag(0), Var_23, 6) = ((MR_Box) (LeastContext_16));
+          }
+          mercury__set__foldl_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_23, OtherContexts_17, ((MR_Box) (STATE_VARIABLE_Specs_0_18)), &conv4_STATE_VARIABLE_Specs_19);
+          *STATE_VARIABLE_Specs_19 = ((MR_Word) (conv4_STATE_VARIABLE_Specs_19));
+        }
+        else
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.at_most_one_foreign_type_for_lang\'/6", (MR_String) "nonempty set doesn\'t have least element");
+            return;
+          }
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv3_STATE_VARIABLE_Specs_16;
+
+    parse_tree__check_parse_tree_type_defns__report_duplicate_type_defn_6_p_0(((MR_String) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv3_STATE_VARIABLE_Specs_16);
+    *wrapper_arg_3 = ((MR_Box) (conv3_STATE_VARIABLE_Specs_16));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_Contexts_7;
+
+    parse_tree__check_parse_tree_type_defns__accumulate_type_defn_contexts_3_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_Contexts_7);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_Contexts_7));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0(
+  MR_Word TypeInfo_for_T_29,
+  MR_String Kind_7,
+  MR_Word TypeCtor_8,
+  MR_Word TypeDefns_9,
+  MR_Word * MaybeTypeDefn_10,
+  MR_Word STATE_VARIABLE_Specs_0_18,
+  MR_Word * STATE_VARIABLE_Specs_19)
+{
+  {
+    MR_bool succeeded;
+
+    if ((TypeDefns_9 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *MaybeTypeDefn_10 = (MR_Word) ((MR_Unsigned) 0U);
+      *STATE_VARIABLE_Specs_19 = STATE_VARIABLE_Specs_0_18;
+    }
+    else
+    {
+      MR_Word Var_41 = ((MR_Word) ((MR_hl_field(MR_mktag(1), TypeDefns_9, (MR_Integer) 1))));
+      MR_Word Var_42 = ((MR_Word) ((MR_hl_field(MR_mktag(1), TypeDefns_9, (MR_Integer) 0))));
+
+      if ((Var_41 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeTypeDefn_10 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_42));
+        }
+        *STATE_VARIABLE_Specs_19 = STATE_VARIABLE_Specs_0_18;
+      }
+      else
+      {
+        MR_Word TypeInfo_35_35;
+        MR_Word Contexts_15;
+        MR_Word Var_21;
+        MR_Word Var_22;
+        MR_Box conv1_Contexts_15;
+        MR_Word LeastContext_16;
+        MR_Word OtherContexts_17;
+        MR_Box conv2_LeastContext_16;
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeTypeDefn_10 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_42));
+        }
+        {
+          Var_21 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_21, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_7[3]));
+          MR_hl_field(MR_mktag(0), Var_21, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_1));
+          MR_hl_field(MR_mktag(0), Var_21, 2) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), Var_21, 3) = ((MR_Box) (TypeInfo_for_T_29));
+        }
+        Var_22 = mercury__set__init_0_f_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0));
+        {
+          TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), TypeInfo_35_35, 0) = ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1));
+          MR_hl_field(MR_mktag(0), TypeInfo_35_35, 1) = ((MR_Box) (TypeInfo_for_T_29));
+        }
+        mercury__list__foldl_4_p_0(TypeInfo_35_35, (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[8]), (MR_Word) (Var_21), (MR_Word) (TypeDefns_9), ((MR_Box) (Var_22)), &conv1_Contexts_15);
+        Contexts_15 = ((MR_Word) (conv1_Contexts_15));
+        succeeded = mercury__set__remove_least_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), &conv2_LeastContext_16, Contexts_15, &OtherContexts_17);
+        if (succeeded)
+        {
+          LeastContext_16 = ((MR_Word) (conv2_LeastContext_16));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          MR_Word Var_23;
+          MR_Box conv4_STATE_VARIABLE_Specs_19;
+
+          {
+            Var_23 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_23, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_11[0]));
+            MR_hl_field(MR_mktag(0), Var_23, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__at_most_one_type_defn_6_p_0_2));
+            MR_hl_field(MR_mktag(0), Var_23, 2) = ((MR_Box) ((MR_Integer) 3));
+            MR_hl_field(MR_mktag(0), Var_23, 3) = ((MR_Box) (Kind_7));
+            MR_hl_field(MR_mktag(0), Var_23, 4) = ((MR_Box) (TypeCtor_8));
+            MR_hl_field(MR_mktag(0), Var_23, 5) = ((MR_Box) (LeastContext_16));
+          }
+          mercury__set__foldl_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_23, OtherContexts_17, ((MR_Box) (STATE_VARIABLE_Specs_0_18)), &conv4_STATE_VARIABLE_Specs_19);
+          *STATE_VARIABLE_Specs_19 = ((MR_Word) (conv4_STATE_VARIABLE_Specs_19));
+        }
+        else
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.at_most_one_type_defn\'/6", (MR_String) "nonempty set doesn\'t have least element");
+            return;
+          }
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__maybe_report_declared_but_undefined_type_5_p_0(
+  MR_Word InsistOnDefn_6,
+  MR_Word TypeCtor_7,
+  MR_Word AbsTypeDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_16,
+  MR_Word * STATE_VARIABLE_Specs_17)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeCtorSymName_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeCtor_7, (MR_Integer) 0))));
+    MR_Word TypeCtorModuleName_12;
+    MR_Word BuiltinTypeCtors_13;
+    MR_String Var_18;
+    MR_Word TypeCtorInfo_39_39;
+
+    mdbcomp__sym_name__det_sym_name_get_module_name_2_p_0(TypeCtorSymName_10, &TypeCtorModuleName_12);
+    BuiltinTypeCtors_13 = parse_tree__prog_type__builtin_type_ctors_with_no_hlds_type_defn_0_f_0();
+    succeeded = (InsistOnDefn_6 == (MR_Integer) 1);
+    if (succeeded)
+    {
+      succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(TypeCtorModuleName_12);
+      succeeded = !(succeeded);
+      if (succeeded)
+      {
+        succeeded = ((MR_tag((MR_Word) TypeCtorModuleName_12)) == (MR_Integer) 0);
+        if (succeeded)
+        {
+          Var_18 = ((MR_String) ((MR_hl_field(MR_mktag(0), TypeCtorModuleName_12, (MR_Integer) 0))));
+          succeeded = (strcmp(Var_18, (MR_String) "type_desc") == 0);
+        }
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          TypeCtorInfo_39_39 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0);
+          succeeded = mercury__list__member_2_p_0(TypeCtorInfo_39_39, ((MR_Box) (TypeCtor_7)), BuiltinTypeCtors_13);
+          succeeded = !(succeeded);
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word Pieces_14;
+      MR_Word Spec_15;
+      MR_Word Var_21;
+      MR_Word Var_22;
+      MR_Word Var_32;
+
+      {
+        Var_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_22, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+        MR_hl_field(MR_mktag(3), Var_22, 1) = ((MR_Box) (TypeCtor_7));
+      }
+      {
+        Var_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_21, 0) = ((MR_Box) (Var_22));
+        MR_hl_field(MR_mktag(1), Var_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[79])));
+      }
+      {
+        Pieces_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Pieces_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[105])));
+        MR_hl_field(MR_mktag(1), Pieces_14, 1) = ((MR_Box) (Var_21));
+      }
+      Var_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AbsTypeDefn_8, (MR_Integer) 4))));
+      {
+        Spec_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Spec_15, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.maybe_report_declared_but_undefined_type\'/5"));
+        MR_hl_field(MR_mktag(1), Spec_15, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(1), Spec_15, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+        MR_hl_field(MR_mktag(1), Spec_15, 3) = ((MR_Box) (Var_32));
+        MR_hl_field(MR_mktag(1), Spec_15, 4) = ((MR_Box) (Pieces_14));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_Specs_17 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_15));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_16));
+      }
+    }
+    else
+      *STATE_VARIABLE_Specs_17 = STATE_VARIABLE_Specs_0_16;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_redundant_abstract_type_in_imp_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_String Section_7,
+  MR_Word MaybeImpAbstractDefn_8,
+  MR_Word STATE_VARIABLE_Specs_0_13,
+  MR_Word * STATE_VARIABLE_Specs_14)
+{
+  if ((MaybeImpAbstractDefn_8 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_14 = STATE_VARIABLE_Specs_0_13;
+  else
+  {
+    MR_Word ImpAbstractDefn_10 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeImpAbstractDefn_8, (MR_Integer) 0))));
+    MR_Word Pieces_11;
+    MR_Word Spec_12;
+    MR_Word Var_17;
+    MR_Word Var_18;
+    MR_Word Var_19;
+    MR_Word Var_22;
+    MR_Word Var_25;
+    MR_Word Var_26;
+    MR_Word Var_36;
+
+    {
+      Var_18 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_18, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_18, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_26, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_26, 1) = ((MR_Box) (Section_7));
+    }
+    {
+      Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_25, 0) = ((MR_Box) (Var_26));
+      MR_hl_field(MR_mktag(1), Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[75])));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[104])));
+      MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_25));
+    }
+    {
+      Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[103])));
+      MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_22));
+    }
+    {
+      Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_17, 0) = ((MR_Box) (Var_18));
+      MR_hl_field(MR_mktag(1), Var_17, 1) = ((MR_Box) (Var_19));
+    }
+    {
+      Pieces_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Pieces_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[102])));
+      MR_hl_field(MR_mktag(1), Pieces_11, 1) = ((MR_Box) (Var_17));
+    }
+    Var_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpAbstractDefn_10, (MR_Integer) 4))));
+    {
+      Spec_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Spec_12, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_any_redundant_abstract_type_in_imp\'/5"));
+      MR_hl_field(MR_mktag(1), Spec_12, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(1), Spec_12, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(1), Spec_12, 3) = ((MR_Box) (Var_36));
+      MR_hl_field(MR_mktag(1), Spec_12, 4) = ((MR_Box) (Pieces_11));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_14 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_12));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_13));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__report_any_nonabstract_solver_type_in_int_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word MaybeDefn_6,
+  MR_Word STATE_VARIABLE_Specs_0_11,
+  MR_Word * STATE_VARIABLE_Specs_12)
+{
+  if ((MaybeDefn_6 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_12 = STATE_VARIABLE_Specs_0_11;
+  else
+  {
+    MR_Word Defn_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeDefn_6, (MR_Integer) 0))));
+    MR_Word Pieces_9;
+    MR_Word Spec_10;
+    MR_Word Var_15;
+    MR_Word Var_16;
+    MR_Word Var_32;
+
+    {
+      Var_16 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_16, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_16, 1) = ((MR_Box) (TypeCtor_5));
+    }
+    {
+      Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_15, 0) = ((MR_Box) (Var_16));
+      MR_hl_field(MR_mktag(1), Var_15, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[73])));
+    }
+    {
+      Pieces_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Pieces_9, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[101])));
+      MR_hl_field(MR_mktag(1), Pieces_9, 1) = ((MR_Box) (Var_15));
+    }
+    Var_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Defn_8, (MR_Integer) 4))));
+    {
+      Spec_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Spec_10, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.report_any_nonabstract_solver_type_in_int\'/4"));
+      MR_hl_field(MR_mktag(1), Spec_10, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(1), Spec_10, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+      MR_hl_field(MR_mktag(1), Spec_10, 3) = ((MR_Box) (Var_32));
+      MR_hl_field(MR_mktag(1), Spec_10, 4) = ((MR_Box) (Pieces_9));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_12 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Spec_10));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_11));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_8_p_0(
+  MR_Word TypeCtor_9,
+  MR_Word CtorNames_10,
+  MR_Word MaybeDefnCJCsE_11,
+  MR_Word MaybeEnumCJCsE_12,
+  MR_Word LeftOverEnumsCJCsE_13,
+  MR_Word * MaybeDefnOrEnumCJCsE_14,
+  MR_Word STATE_VARIABLE_Specs_0_33,
+  MR_Word * STATE_VARIABLE_Specs_34)
+{
+  {
+    MR_Word CtorNamesSet_16;
+    MR_Word MaybeDefnC_17;
+    MR_Word MaybeDefnJava_18;
+    MR_Word MaybeDefnCsharp_19;
+    MR_Word MaybeDefnErlang_20;
+    MR_Word MaybeEnumC_21;
+    MR_Word MaybeEnumJava_22;
+    MR_Word MaybeEnumCsharp_23;
+    MR_Word MaybeEnumErlang_24;
+    MR_Word LeftOverEnumsC_25;
+    MR_Word LeftOverEnumsJava_26;
+    MR_Word LeftOverEnumsCsharp_27;
+    MR_Word LeftOverEnumsErlang_28;
+    MR_Word MaybeDefnOrEnumC_29;
+    MR_Word MaybeDefnOrEnumJava_30;
+    MR_Word MaybeDefnOrEnumCsharp_31;
+    MR_Word MaybeDefnOrEnumErlang_32;
+    MR_Word STATE_VARIABLE_Specs_35_35;
+    MR_Word STATE_VARIABLE_Specs_36_36;
+    MR_Word STATE_VARIABLE_Specs_37_37;
+
+    mercury__set_tree234__list_to_set_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), CtorNames_10, &CtorNamesSet_16);
+    MaybeDefnC_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeDefnCJCsE_11, (MR_Integer) 0))));
+    MaybeDefnJava_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeDefnCJCsE_11, (MR_Integer) 1))));
+    MaybeDefnCsharp_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeDefnCJCsE_11, (MR_Integer) 2))));
+    MaybeDefnErlang_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeDefnCJCsE_11, (MR_Integer) 3))));
+    MaybeEnumC_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeEnumCJCsE_12, (MR_Integer) 0))));
+    MaybeEnumJava_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeEnumCJCsE_12, (MR_Integer) 1))));
+    MaybeEnumCsharp_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeEnumCJCsE_12, (MR_Integer) 2))));
+    MaybeEnumErlang_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), MaybeEnumCJCsE_12, (MR_Integer) 3))));
+    LeftOverEnumsC_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), LeftOverEnumsCJCsE_13, (MR_Integer) 0))));
+    LeftOverEnumsJava_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), LeftOverEnumsCJCsE_13, (MR_Integer) 1))));
+    LeftOverEnumsCsharp_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), LeftOverEnumsCJCsE_13, (MR_Integer) 2))));
+    LeftOverEnumsErlang_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), LeftOverEnumsCJCsE_13, (MR_Integer) 3))));
+    parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(TypeCtor_9, CtorNames_10, CtorNamesSet_16, MaybeDefnC_17, MaybeEnumC_21, LeftOverEnumsC_25, &MaybeDefnOrEnumC_29, STATE_VARIABLE_Specs_0_33, &STATE_VARIABLE_Specs_35_35);
+    parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(TypeCtor_9, CtorNames_10, CtorNamesSet_16, MaybeDefnJava_18, MaybeEnumJava_22, LeftOverEnumsJava_26, &MaybeDefnOrEnumJava_30, STATE_VARIABLE_Specs_35_35, &STATE_VARIABLE_Specs_36_36);
+    parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(TypeCtor_9, CtorNames_10, CtorNamesSet_16, MaybeDefnCsharp_19, MaybeEnumCsharp_23, LeftOverEnumsCsharp_27, &MaybeDefnOrEnumCsharp_31, STATE_VARIABLE_Specs_36_36, &STATE_VARIABLE_Specs_37_37);
+    parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(TypeCtor_9, CtorNames_10, CtorNamesSet_16, MaybeDefnErlang_20, MaybeEnumErlang_24, LeftOverEnumsErlang_28, &MaybeDefnOrEnumErlang_32, STATE_VARIABLE_Specs_37_37, STATE_VARIABLE_Specs_34);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeDefnOrEnumCJCsE_14 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MaybeDefnOrEnumC_29));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MaybeDefnOrEnumJava_30));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (MaybeDefnOrEnumCsharp_31));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (MaybeDefnOrEnumErlang_32));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Tuple conv0_HeadVar__5_5;
+
+    parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__5_5);
+    *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__5_5));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_repn_foreign_only_constants_lang__911__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0(
+  MR_Word TypeCtor_10,
+  MR_Word CtorNames_11,
+  MR_Word CtorNamesSet_12,
+  MR_Word MaybeDefn_13,
+  MR_Word MaybeEnum_14,
+  MR_Word LeftOverEnums_15,
+  MR_Word * MaybeDefnOrEnum_16,
+  MR_Word STATE_VARIABLE_Specs_0_25,
+  MR_Word * STATE_VARIABLE_Specs_26)
+{
+  {
+    MR_bool succeeded;
+    MR_Word MaybeCheckedForeignEnum_18;
+
+    if ((MaybeEnum_14 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_29;
+
+      {
+        Var_29 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), Var_29, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_9[0]));
+        MR_hl_field(MR_mktag(0), Var_29, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_1));
+        MR_hl_field(MR_mktag(0), Var_29, 2) = ((MR_Box) ((MR_Integer) 2));
+        MR_hl_field(MR_mktag(0), Var_29, 3) = ((MR_Box) (LeftOverEnums_15));
+        MR_hl_field(MR_mktag(0), Var_29, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      mercury__require__expect_3_p_0(Var_29, (MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.decide_du_repn_foreign_only_constants_lang\'/9", (MR_String) "MaybeEnum = no but LeftOverEnums != []");
+      MaybeCheckedForeignEnum_18 = (MR_Word) ((MR_Unsigned) 0U);
+      *STATE_VARIABLE_Specs_26 = STATE_VARIABLE_Specs_0_25;
+    }
+    else
+    {
+      MR_Word Enum_19 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeEnum_14, (MR_Integer) 0))));
+      MR_Word Var_27;
+      MR_Tuple HeadFETuple_50;
+      MR_Word TailFETuples_51;
+      MR_Word _HeadCheckedForeignEnum_53;
+      MR_Word HeadSpecs_54;
+      MR_Word STATE_VARIABLE_Specs_14_57;
+
+      parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0(TypeCtor_10, CtorNames_11, CtorNamesSet_12, Enum_19, &HeadFETuple_50);
+      {
+        Var_27 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), Var_27, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[3]));
+        MR_hl_field(MR_mktag(0), Var_27, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_du_repn_foreign_only_constants_lang_9_p_0_2));
+        MR_hl_field(MR_mktag(0), Var_27, 2) = ((MR_Box) ((MR_Integer) 3));
+        MR_hl_field(MR_mktag(0), Var_27, 3) = ((MR_Box) (TypeCtor_10));
+        MR_hl_field(MR_mktag(0), Var_27, 4) = ((MR_Box) (CtorNames_11));
+        MR_hl_field(MR_mktag(0), Var_27, 5) = ((MR_Box) (CtorNamesSet_12));
+      }
+      mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[0]), Var_27, LeftOverEnums_15, &TailFETuples_51);
+      _HeadCheckedForeignEnum_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadFETuple_50, (MR_Integer) 0))));
+      HeadSpecs_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadFETuple_50, (MR_Integer) 1))));
+      if ((HeadSpecs_54 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          MaybeCheckedForeignEnum_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeCheckedForeignEnum_18, 0) = ((MR_Box) (_HeadCheckedForeignEnum_53));
+        }
+      else
+        parse_tree__check_parse_tree_type_defns__pick_first_error_free_enum_if_any_2_p_0(TailFETuples_51, &MaybeCheckedForeignEnum_18);
+      STATE_VARIABLE_Specs_14_57 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), HeadSpecs_54, STATE_VARIABLE_Specs_0_25);
+      parse_tree__check_parse_tree_type_defns__pick_up_all_errors_3_p_0(TailFETuples_51, STATE_VARIABLE_Specs_14_57, STATE_VARIABLE_Specs_26);
+    }
+    if ((MaybeDefn_13 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((MaybeCheckedForeignEnum_18 == (MR_Word) ((MR_Unsigned) 0U)))
+        *MaybeDefnOrEnum_16 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Word CheckedForeignEnum_24 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeCheckedForeignEnum_18, (MR_Integer) 0))));
+        MR_Word Var_33 = (MR_Word) ((MR_Word) (CheckedForeignEnum_24));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeDefnOrEnum_16 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_33));
+        }
+      }
+    else
+    {
+      MR_Word Defn_23 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeDefn_13, (MR_Integer) 0))));
+      MR_Word Var_34;
+
+      {
+        Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_34, 0) = ((MR_Box) (Defn_23));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeDefnOrEnum_16 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Var_34));
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__build_mercury_foreign_enum_map__1002__1_1_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0(
+  MR_Word TypeCtor_6,
+  MR_Word CtorNames_7,
+  MR_Word CtorNamesSet_8,
+  MR_Word ForeignEnum_9,
+  MR_Tuple * HeadVar__5_5)
+{
+  {
+    MR_bool succeeded;
+    MR_Word CheckedForeignEnum_10;
+    MR_Word MercuryForeignOoM_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnum_9, (MR_Integer) 2))));
+    MR_Word Context_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ForeignEnum_9, (MR_Integer) 3))));
+    MR_Word MercuryForeignAL_17;
+    MR_Word ContextPieces_18;
+    MR_Word TypeCtorSymName_19;
+    MR_Word TypeCtorModuleName_21;
+    MR_Word SeenCtorNames0_22;
+    MR_Word SeenForeignNames0_23;
+    MR_Word BadQualCtorNamesCord0_24;
+    MR_Word InvalidCtorSymNamesCord0_25;
+    MR_Word RepeatedCtorNamesCord0_26;
+    MR_Word RepeatedForeignNamesCord0_27;
+    MR_Word MercuryForeignBiMap_28;
+    MR_Word SeenCtorNames_29;
+    MR_Word BadQualCtorNamesCord_30;
+    MR_Word InvalidCtorSymNamesCord_31;
+    MR_Word RepeatedCtorNamesCord_32;
+    MR_Word RepeatedForeignNamesCord_33;
+    MR_Word RepeatedCtorNames_34;
+    MR_Word RepeatedForeignNames_35;
+    MR_Word UnseenCtorNames_45;
+    MR_Word UnseenCtorNamesList_46;
+    MR_Word ForeignNames_49;
+    MR_Word ForeignNameOoM_54;
+    MR_Word STATE_VARIABLE_Specs_55;
+    MR_Word Var_58;
+    MR_Word Var_61;
+    MR_Word Var_64;
+    MR_Word Var_65;
+    MR_Word Var_72;
+    MR_Word Var_73;
+    MR_Word STATE_VARIABLE_Specs_78_78;
+    MR_Word STATE_VARIABLE_Specs_152_152;
+
+    MercuryForeignAL_17 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[2]), MercuryForeignOoM_14);
+    {
+      Var_65 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_65, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(MR_mktag(3), Var_65, 1) = ((MR_Box) (TypeCtor_6));
+    }
+    {
+      Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_64, 0) = ((MR_Box) (Var_65));
+      MR_hl_field(MR_mktag(1), Var_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[21])));
+    }
+    {
+      Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_61, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[98])));
+      MR_hl_field(MR_mktag(1), Var_61, 1) = ((MR_Box) (Var_64));
+    }
+    {
+      Var_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_58, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[97])));
+      MR_hl_field(MR_mktag(1), Var_58, 1) = ((MR_Box) (Var_61));
+    }
+    {
+      ContextPieces_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ContextPieces_18, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[96])));
+      MR_hl_field(MR_mktag(1), ContextPieces_18, 1) = ((MR_Box) (Var_58));
+    }
+    TypeCtorSymName_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeCtor_6, (MR_Integer) 0))));
+    mdbcomp__sym_name__det_sym_name_get_module_name_2_p_0(TypeCtorSymName_19, &TypeCtorModuleName_21);
+    SeenCtorNames0_22 = mercury__set_tree234__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0));
+    SeenForeignNames0_23 = mercury__set_tree234__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0));
+    BadQualCtorNamesCord0_24 = mercury__cord__init_0_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0));
+    InvalidCtorSymNamesCord0_25 = mercury__cord__init_0_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0));
+    RepeatedCtorNamesCord0_26 = mercury__cord__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0));
+    RepeatedForeignNamesCord0_27 = mercury__cord__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0));
+    Var_72 = mercury__bimap__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0));
+    hlds__add_foreign_enum__build_ctor_name_to_foreign_name_map_loop_16_p_0(TypeCtorModuleName_21, CtorNamesSet_8, MercuryForeignAL_17, Var_72, &MercuryForeignBiMap_28, SeenCtorNames0_22, &SeenCtorNames_29, SeenForeignNames0_23, BadQualCtorNamesCord0_24, &BadQualCtorNamesCord_30, InvalidCtorSymNamesCord0_25, &InvalidCtorSymNamesCord_31, RepeatedCtorNamesCord0_26, &RepeatedCtorNamesCord_32, RepeatedForeignNamesCord0_27, &RepeatedForeignNamesCord_33);
+    {
+      Var_73 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_73, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_3[4]));
+      MR_hl_field(MR_mktag(0), Var_73, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__build_mercury_foreign_enum_map_5_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_73, 2) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), Var_73, 3) = ((MR_Box) (BadQualCtorNamesCord_30));
+    }
+    mercury__require__expect_3_p_0(Var_73, (MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.build_mercury_foreign_enum_map\'/5", (MR_String) "BadQualCtorNames");
+    succeeded = mercury__cord__is_empty_1_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), InvalidCtorSymNamesCord_31);
+    if (succeeded)
+      STATE_VARIABLE_Specs_78_78 = (MR_Word) ((MR_Unsigned) 0U);
+    else
+    {
+      MR_Word Var_77;
+
+      Var_77 = mercury__cord__to_list_1_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), InvalidCtorSymNamesCord_31);
+      hlds__add_foreign_enum__add_unknown_ctors_error_5_p_0(Context_15, ContextPieces_18, Var_77, (MR_Word) ((MR_Unsigned) 0U), &STATE_VARIABLE_Specs_78_78);
+    }
+    RepeatedCtorNames_34 = mercury__cord__to_list_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), RepeatedCtorNamesCord_32);
+    RepeatedForeignNames_35 = mercury__cord__to_list_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), RepeatedForeignNamesCord_33);
+    succeeded = (RepeatedCtorNames_34 == (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+      succeeded = (RepeatedForeignNames_35 == (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+      STATE_VARIABLE_Specs_152_152 = STATE_VARIABLE_Specs_78_78;
+    else
+    {
+      MR_Word MainPieces_36;
+      MR_Word CtorNamePieces_37;
+      MR_Word ForeignNamePieces_40;
+      MR_Word Pieces_43;
+      MR_Word Spec_44;
+      MR_Word Var_148;
+
+      MainPieces_36 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), ContextPieces_18, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[32])));
+      if ((RepeatedCtorNames_34 == (MR_Word) ((MR_Unsigned) 0U)))
+        CtorNamePieces_37 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Word Var_100;
+        MR_Word Var_103;
+        MR_Word Var_104;
+        MR_String Var_105;
+        MR_Word Var_115;
+        MR_Word Var_116;
+        MR_Box conv0_Var_105;
+
+        conv0_Var_105 = parse_tree__error_util__choose_number_3_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), RepeatedCtorNames_34, ((MR_Box) ((MR_String) "name is")), ((MR_Box) ((MR_String) "names are")));
+        Var_105 = ((MR_String) (conv0_Var_105));
+        {
+          Var_104 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_104, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+          MR_hl_field(MR_mktag(3), Var_104, 1) = ((MR_Box) (Var_105));
+        }
+        {
+          Var_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_103, 0) = ((MR_Box) (Var_104));
+          MR_hl_field(MR_mktag(1), Var_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[36])));
+        }
+        {
+          Var_100 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_100, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[99])));
+          MR_hl_field(MR_mktag(1), Var_100, 1) = ((MR_Box) (Var_103));
+        }
+        Var_116 = parse_tree__error_util__list_to_quoted_pieces_1_f_0(RepeatedCtorNames_34);
+        Var_115 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), Var_116, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[40])));
+        CtorNamePieces_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), Var_100, Var_115);
+      }
+      if ((RepeatedForeignNames_35 == (MR_Word) ((MR_Unsigned) 0U)))
+        ForeignNamePieces_40 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Word Var_124;
+        MR_Word Var_127;
+        MR_Word Var_128;
+        MR_String Var_129;
+        MR_Word Var_139;
+        MR_Word Var_140;
+        MR_Box conv1_Var_129;
+
+        conv1_Var_129 = parse_tree__error_util__choose_number_3_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), RepeatedForeignNames_35, ((MR_Box) ((MR_String) "value is")), ((MR_Box) ((MR_String) "values are")));
+        Var_129 = ((MR_String) (conv1_Var_129));
+        {
+          Var_128 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_128, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+          MR_hl_field(MR_mktag(3), Var_128, 1) = ((MR_Box) (Var_129));
+        }
+        {
+          Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_127, 0) = ((MR_Box) (Var_128));
+          MR_hl_field(MR_mktag(1), Var_127, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[36])));
+        }
+        {
+          Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_124, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__check_parse_tree_type_defns_scalar_common_1[100])));
+          MR_hl_field(MR_mktag(1), Var_124, 1) = ((MR_Box) (Var_127));
+        }
+        Var_140 = parse_tree__error_util__list_to_quoted_pieces_1_f_0(RepeatedForeignNames_35);
+        Var_139 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), Var_140, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__check_parse_tree_type_defns_scalar_common_1[40])));
+        ForeignNamePieces_40 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), Var_124, Var_139);
+      }
+      Var_148 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), CtorNamePieces_37, ForeignNamePieces_40);
+      Pieces_43 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0), MainPieces_36, Var_148);
+      {
+        Spec_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Spec_44, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.build_mercury_foreign_enum_map\'/5"));
+        MR_hl_field(MR_mktag(1), Spec_44, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(1), Spec_44, 2) = ((MR_Box) ((MR_Unsigned) 16U));
+        MR_hl_field(MR_mktag(1), Spec_44, 3) = ((MR_Box) (Context_15));
+        MR_hl_field(MR_mktag(1), Spec_44, 4) = ((MR_Box) (Pieces_43));
+      }
+      {
+        STATE_VARIABLE_Specs_152_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), STATE_VARIABLE_Specs_152_152, 0) = ((MR_Box) (Spec_44));
+        MR_hl_field(MR_mktag(1), STATE_VARIABLE_Specs_152_152, 1) = ((MR_Box) (STATE_VARIABLE_Specs_78_78));
+      }
+    }
+    mercury__set_tree234__difference_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), CtorNamesSet_8, SeenCtorNames_29, &UnseenCtorNames_45);
+    mercury__set_tree234__to_sorted_list_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), UnseenCtorNames_45, &UnseenCtorNamesList_46);
+    if ((UnseenCtorNamesList_46 == (MR_Word) ((MR_Unsigned) 0U)))
+      STATE_VARIABLE_Specs_55 = STATE_VARIABLE_Specs_152_152;
+    else
+      hlds__add_foreign_enum__add_foreign_enum_unmapped_ctors_error_5_p_0(Context_15, ContextPieces_18, UnseenCtorNamesList_46, STATE_VARIABLE_Specs_152_152, &STATE_VARIABLE_Specs_55);
+    if ((STATE_VARIABLE_Specs_55 == (MR_Word) ((MR_Unsigned) 0U)))
+      mercury__bimap__apply_forward_map_to_list_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), MercuryForeignBiMap_28, CtorNames_7, &ForeignNames_49);
+    else
+      parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_117_112_95_100_117_109_109_121_95_102_111_114_101_105_103_110_95_110_97_109_101_115_95_95_91_49_93_95_48_3_p_0(CtorNames_7, (MR_Integer) 1, &ForeignNames_49);
+    if ((ForeignNames_49 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.check_parse_tree_type_defns.build_mercury_foreign_enum_map\'/5", (MR_String) "enum type with no constructors");
+        return;
+      }
+    else
+    {
+      MR_String HeadForeignName_52 = ((MR_String) ((MR_hl_field(MR_mktag(1), ForeignNames_49, (MR_Integer) 0))));
+      MR_Word TailForeignNames_53 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ForeignNames_49, (MR_Integer) 1))));
+
+      {
+        ForeignNameOoM_54 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ForeignNameOoM_54, 0) = ((MR_Box) (HeadForeignName_52));
+        MR_hl_field(MR_mktag(0), ForeignNameOoM_54, 1) = ((MR_Box) (TailForeignNames_53));
+      }
+    }
+    {
+      CheckedForeignEnum_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), CheckedForeignEnum_10, 0) = ((MR_Box) (ForeignEnum_9));
+      MR_hl_field(MR_mktag(0), CheckedForeignEnum_10, 1) = ((MR_Box) (ForeignNameOoM_54));
+    }
+    {
+      MR_Tuple base;
+      base = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      *HeadVar__5_5 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (CheckedForeignEnum_10));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_55));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_117_112_95_100_117_109_109_121_95_102_111_114_101_105_103_110_95_110_97_109_101_115_95_95_91_49_93_95_48_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer CtorNum_2,
+  MR_Word * HeadVar__3_3)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Ctors_6 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+    MR_String ForeignName_8;
+    MR_Word ForeignNames_9;
+    MR_Integer Var_14;
+    MR_String Var_17;
+
+    mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_4[1]), CtorNum_2, &Var_17);
+    ForeignName_8 = mercury__string__f_43_43_2_f_0((MR_String) "dummy_foreign_name_", Var_17);
+    Var_14 = (MR_Integer) ((MR_Unsigned) CtorNum_2 + (MR_Unsigned) 1);
+    parse_tree__check_parse_tree_type_defns__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_117_112_95_100_117_109_109_121_95_102_111_114_101_105_103_110_95_110_97_109_101_115_95_95_91_49_93_95_48_3_p_0(Ctors_6, Var_14, &ForeignNames_9);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__3_3 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ForeignName_8));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ForeignNames_9));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__pick_up_all_errors_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Specs_0_2,
+  MR_Word * STATE_VARIABLE_Specs_3)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Specs_3 = STATE_VARIABLE_Specs_0_2;
+    else
+    {
+      MR_Tuple HeadFETuple_7 = ((MR_Tuple) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word TailFETuples_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word HeadSpecs_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadFETuple_7, (MR_Integer) 1))));
+      MR_Word STATE_VARIABLE_Specs_14_14;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_STATE_VARIABLE_Specs_0_2;
+
+      STATE_VARIABLE_Specs_14_14 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), HeadSpecs_11, STATE_VARIABLE_Specs_0_2);
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = TailFETuples_8;
+      next_value_of_STATE_VARIABLE_Specs_0_2 = STATE_VARIABLE_Specs_14_14;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      STATE_VARIABLE_Specs_0_2 = next_value_of_STATE_VARIABLE_Specs_0_2;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__pick_first_error_free_enum_if_any_2_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+    else
+    {
+      MR_Tuple HeadFETuple_3 = ((MR_Tuple) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word TailFETuples_4 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word HeadCheckedForeignEnum_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadFETuple_3, (MR_Integer) 0))));
+      MR_Word HeadSpecs_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadFETuple_3, (MR_Integer) 1))));
+
+      if ((HeadSpecs_7 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__2_2 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (HeadCheckedForeignEnum_6));
+        }
+      else
+      {
+        MR_Word next_value_of_HeadVar__1_1 = TailFETuples_4;
+
+        // direct tailcall eliminated
+        ;
+        HeadVar__1_1 = next_value_of_HeadVar__1_1;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv5_STATE_VARIABLE_Specs_15;
+
+    parse_tree__check_parse_tree_type_defns__foreign_int_report_any_foreign_defn_in_imp_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv5_STATE_VARIABLE_Specs_15);
+    *wrapper_arg_3 = ((MR_Box) (conv5_STATE_VARIABLE_Specs_15));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv3_HeadVar__5_92;
+
+    parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_only_foreign_type_section__822__1_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv3_HeadVar__5_92);
+    *wrapper_arg_3 = ((MR_Box) (conv3_HeadVar__5_92));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_Specs_12;
+
+    parse_tree__check_parse_tree_type_defns__report_any_foreign_type_without_declaration_4_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_Specs_12);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_Specs_12));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word IntAbstractStdMaybeDefn_12,
+  MR_Word ImpAbstractStdMaybeDefn_13,
+  MR_Word IntMaybeDefnCJCsE_14,
+  MR_Word ImpMaybeDefnCJCsE_15,
+  MR_Word * Status_16,
+  MR_Word * AbstractStdDefn_17,
+  MR_Word * ChosenMaybeDefnCJCsE_18,
+  MR_Word STATE_VARIABLE_Specs_0_36,
+  MR_Word * STATE_VARIABLE_Specs_37)
+{
+  {
+    MR_Word IntMaybeDefnC_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_14, (MR_Integer) 0))));
+    MR_Word IntMaybeDefnJava_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_14, (MR_Integer) 1))));
+    MR_Word IntMaybeDefnCsharp_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_14, (MR_Integer) 2))));
+    MR_Word IntMaybeDefnErlang_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_14, (MR_Integer) 3))));
+    MR_Word ImpMaybeDefnC_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_15, (MR_Integer) 0))));
+    MR_Word ImpMaybeDefnJava_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_15, (MR_Integer) 1))));
+    MR_Word ImpMaybeDefnCsharp_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_15, (MR_Integer) 2))));
+    MR_Word ImpMaybeDefnErlang_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_15, (MR_Integer) 3))));
+
+    if ((IntAbstractStdMaybeDefn_12 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *Status_16 = (MR_Integer) 2;
+      if ((ImpAbstractStdMaybeDefn_13 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word Defns_34;
+        MR_Word FirstDefn_35;
+        MR_Word Var_38;
+        MR_Word Var_39;
+        MR_Word Var_41;
+        MR_Word Var_42;
+        MR_Word Var_43;
+        MR_Word Var_44;
+        MR_Word Var_45;
+        MR_Word Var_46;
+        MR_Word Var_47;
+        MR_Word MaybeTypeDefn_103;
+        MR_Word MaybeTypeDefns_104;
+        MR_Word TailDefns_106;
+        MR_Word MaybeTypeDefn_108;
+        MR_Word MaybeTypeDefns_109;
+        MR_Word TailDefns_111;
+        MR_Word MaybeTypeDefn_113;
+        MR_Word MaybeTypeDefns_114;
+        MR_Word TailDefns_116;
+        MR_Word MaybeTypeDefn_118;
+        MR_Word MaybeTypeDefns_119;
+        MR_Word TailDefns_121;
+        MR_Word MaybeTypeDefn_123;
+        MR_Word MaybeTypeDefns_124;
+        MR_Word TailDefns_126;
+        MR_Word MaybeTypeDefn_128;
+        MR_Word MaybeTypeDefns_129;
+        MR_Word TailDefns_131;
+        MR_Word MaybeTypeDefn_133;
+        MR_Word MaybeTypeDefns_134;
+        MR_Word TailDefns_136;
+        MR_Word MaybeTypeDefn_138;
+        MR_Box conv1_STATE_VARIABLE_Specs_37;
+        MR_Box conv2_FirstDefn_35;
+        MR_Word Var_78;
+        MR_Word Var_79;
+        MR_Word Var_81;
+        MR_Word Var_82;
+        MR_Integer Var_83;
+
+        {
+          Var_38 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_38, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_7[2]));
+          MR_hl_field(MR_mktag(0), Var_38, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_1));
+          MR_hl_field(MR_mktag(0), Var_38, 2) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), Var_38, 3) = ((MR_Box) (TypeCtor_11));
+        }
+        {
+          Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) (ImpMaybeDefnErlang_27));
+          MR_hl_field(MR_mktag(1), Var_47, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (ImpMaybeDefnCsharp_26));
+          MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_47));
+        }
+        {
+          Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_45, 0) = ((MR_Box) (ImpMaybeDefnJava_25));
+          MR_hl_field(MR_mktag(1), Var_45, 1) = ((MR_Box) (Var_46));
+        }
+        {
+          Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_44, 0) = ((MR_Box) (ImpMaybeDefnC_24));
+          MR_hl_field(MR_mktag(1), Var_44, 1) = ((MR_Box) (Var_45));
+        }
+        {
+          Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_43, 0) = ((MR_Box) (IntMaybeDefnErlang_23));
+          MR_hl_field(MR_mktag(1), Var_43, 1) = ((MR_Box) (Var_44));
+        }
+        {
+          Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_42, 0) = ((MR_Box) (IntMaybeDefnCsharp_22));
+          MR_hl_field(MR_mktag(1), Var_42, 1) = ((MR_Box) (Var_43));
+        }
+        {
+          Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (IntMaybeDefnJava_21));
+          MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (Var_42));
+        }
+        {
+          Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_39, 0) = ((MR_Box) (IntMaybeDefnC_20));
+          MR_hl_field(MR_mktag(1), Var_39, 1) = ((MR_Box) (Var_41));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_38, Var_39, ((MR_Box) (STATE_VARIABLE_Specs_0_36)), &conv1_STATE_VARIABLE_Specs_37);
+        *STATE_VARIABLE_Specs_37 = ((MR_Word) (conv1_STATE_VARIABLE_Specs_37));
+        MaybeTypeDefn_103 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_39, (MR_Integer) 0))));
+        MaybeTypeDefns_104 = ((MR_Word) ((MR_hl_field(MR_mktag(1), Var_39, (MR_Integer) 1))));
+        MaybeTypeDefn_108 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_104, (MR_Integer) 0))));
+        MaybeTypeDefns_109 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_104, (MR_Integer) 1))));
+        MaybeTypeDefn_113 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_109, (MR_Integer) 0))));
+        MaybeTypeDefns_114 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_109, (MR_Integer) 1))));
+        MaybeTypeDefn_118 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_114, (MR_Integer) 0))));
+        MaybeTypeDefns_119 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_114, (MR_Integer) 1))));
+        MaybeTypeDefn_123 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_119, (MR_Integer) 0))));
+        MaybeTypeDefns_124 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_119, (MR_Integer) 1))));
+        MaybeTypeDefn_128 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_124, (MR_Integer) 0))));
+        MaybeTypeDefns_129 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_124, (MR_Integer) 1))));
+        MaybeTypeDefn_133 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_129, (MR_Integer) 0))));
+        MaybeTypeDefns_134 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_129, (MR_Integer) 1))));
+        MaybeTypeDefn_138 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefns_134, (MR_Integer) 0))));
+        if ((MaybeTypeDefn_138 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_136 = (MR_Word) ((MR_Unsigned) 0U);
+        else
+        {
+          MR_Word TypeDefn_142 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_138, (MR_Integer) 0))));
+
+          {
+            TailDefns_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_136, 0) = ((MR_Box) (TypeDefn_142));
+            MR_hl_field(MR_mktag(1), TailDefns_136, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+        }
+        if ((MaybeTypeDefn_133 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_131 = TailDefns_136;
+        else
+        {
+          MR_Word TypeDefn_137 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_133, (MR_Integer) 0))));
+
+          {
+            TailDefns_131 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_131, 0) = ((MR_Box) (TypeDefn_137));
+            MR_hl_field(MR_mktag(1), TailDefns_131, 1) = ((MR_Box) (TailDefns_136));
+          }
+        }
+        if ((MaybeTypeDefn_128 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_126 = TailDefns_131;
+        else
+        {
+          MR_Word TypeDefn_132 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_128, (MR_Integer) 0))));
+
+          {
+            TailDefns_126 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_126, 0) = ((MR_Box) (TypeDefn_132));
+            MR_hl_field(MR_mktag(1), TailDefns_126, 1) = ((MR_Box) (TailDefns_131));
+          }
+        }
+        if ((MaybeTypeDefn_123 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_121 = TailDefns_126;
+        else
+        {
+          MR_Word TypeDefn_127 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_123, (MR_Integer) 0))));
+
+          {
+            TailDefns_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_121, 0) = ((MR_Box) (TypeDefn_127));
+            MR_hl_field(MR_mktag(1), TailDefns_121, 1) = ((MR_Box) (TailDefns_126));
+          }
+        }
+        if ((MaybeTypeDefn_118 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_116 = TailDefns_121;
+        else
+        {
+          MR_Word TypeDefn_122 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_118, (MR_Integer) 0))));
+
+          {
+            TailDefns_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_116, 0) = ((MR_Box) (TypeDefn_122));
+            MR_hl_field(MR_mktag(1), TailDefns_116, 1) = ((MR_Box) (TailDefns_121));
+          }
+        }
+        if ((MaybeTypeDefn_113 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_111 = TailDefns_116;
+        else
+        {
+          MR_Word TypeDefn_117 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_113, (MR_Integer) 0))));
+
+          {
+            TailDefns_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_111, 0) = ((MR_Box) (TypeDefn_117));
+            MR_hl_field(MR_mktag(1), TailDefns_111, 1) = ((MR_Box) (TailDefns_116));
+          }
+        }
+        if ((MaybeTypeDefn_108 == (MR_Word) ((MR_Unsigned) 0U)))
+          TailDefns_106 = TailDefns_111;
+        else
+        {
+          MR_Word TypeDefn_112 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_108, (MR_Integer) 0))));
+
+          {
+            TailDefns_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), TailDefns_106, 0) = ((MR_Box) (TypeDefn_112));
+            MR_hl_field(MR_mktag(1), TailDefns_106, 1) = ((MR_Box) (TailDefns_111));
+          }
+        }
+        if ((MaybeTypeDefn_103 == (MR_Word) ((MR_Unsigned) 0U)))
+          Defns_34 = TailDefns_106;
+        else
+        {
+          MR_Word TypeDefn_107 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTypeDefn_103, (MR_Integer) 0))));
+
+          {
+            Defns_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Defns_34, 0) = ((MR_Box) (TypeDefn_107));
+            MR_hl_field(MR_mktag(1), Defns_34, 1) = ((MR_Box) (TailDefns_106));
+          }
+        }
+        conv2_FirstDefn_35 = mercury__list__det_head_1_f_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[6]), Defns_34);
+        FirstDefn_35 = ((MR_Word) (conv2_FirstDefn_35));
+        Var_78 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstDefn_35, (MR_Integer) 0))));
+        Var_79 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstDefn_35, (MR_Integer) 1))));
+        Var_81 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstDefn_35, (MR_Integer) 3))));
+        Var_82 = ((MR_Word) ((MR_hl_field(MR_mktag(0), FirstDefn_35, (MR_Integer) 4))));
+        Var_83 = ((MR_Integer) ((MR_hl_field(MR_mktag(0), FirstDefn_35, (MR_Integer) 5))));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+          *AbstractStdDefn_17 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_78));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_79));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (Var_81));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (Var_82));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (Var_83));
+        }
+      }
+      else
+      {
+        MR_Word Var_59;
+        MR_Word Var_60;
+        MR_Word Var_62;
+        MR_Word Var_63;
+        MR_Word Var_64;
+        MR_Box conv4_STATE_VARIABLE_Specs_37;
+
+        *AbstractStdDefn_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), ImpAbstractStdMaybeDefn_13, (MR_Integer) 0))));
+        {
+          Var_59 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_59, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[2]));
+          MR_hl_field(MR_mktag(0), Var_59, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_2));
+          MR_hl_field(MR_mktag(0), Var_59, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), Var_59, 3) = ((MR_Box) (TypeCtor_11));
+          MR_hl_field(MR_mktag(0), Var_59, 4) = ((MR_Box) (*AbstractStdDefn_17));
+        }
+        {
+          Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_64, 0) = ((MR_Box) (IntMaybeDefnErlang_23));
+          MR_hl_field(MR_mktag(1), Var_64, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_63, 0) = ((MR_Box) (IntMaybeDefnCsharp_22));
+          MR_hl_field(MR_mktag(1), Var_63, 1) = ((MR_Box) (Var_64));
+        }
+        {
+          Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_62, 0) = ((MR_Box) (IntMaybeDefnJava_21));
+          MR_hl_field(MR_mktag(1), Var_62, 1) = ((MR_Box) (Var_63));
+        }
+        {
+          Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_60, 0) = ((MR_Box) (IntMaybeDefnC_20));
+          MR_hl_field(MR_mktag(1), Var_60, 1) = ((MR_Box) (Var_62));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_59, Var_60, ((MR_Box) (STATE_VARIABLE_Specs_0_36)), &conv4_STATE_VARIABLE_Specs_37);
+        *STATE_VARIABLE_Specs_37 = ((MR_Word) (conv4_STATE_VARIABLE_Specs_37));
+      }
+      *ChosenMaybeDefnCJCsE_18 = ImpMaybeDefnCJCsE_15;
+    }
+    else
+    {
+      MR_Word IntContexts_29;
+      MR_Word SortedIntContexts_30;
+      MR_Word TailContexts_151;
+      MR_Word MaybeTypeDefns_160;
+      MR_Word TailContexts_162;
+      MR_Word MaybeTypeDefns_171;
+      MR_Word TailContexts_173;
+      MR_Word MaybeTypeDefns_149;
+
+      *AbstractStdDefn_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntAbstractStdMaybeDefn_12, (MR_Integer) 0))));
+      {
+        MaybeTypeDefns_171 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_171, 0) = ((MR_Box) (IntMaybeDefnErlang_23));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_171, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MaybeTypeDefns_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_160, 0) = ((MR_Box) (IntMaybeDefnCsharp_22));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_160, 1) = ((MR_Box) (MaybeTypeDefns_171));
+      }
+      {
+        MaybeTypeDefns_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_149, 0) = ((MR_Box) (IntMaybeDefnJava_21));
+        MR_hl_field(MR_mktag(1), MaybeTypeDefns_149, 1) = ((MR_Box) (MaybeTypeDefns_160));
+      }
+      if ((IntMaybeDefnErlang_23 == (MR_Word) ((MR_Unsigned) 0U)))
+        TailContexts_173 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Word TypeDefn_185 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnErlang_23, (MR_Integer) 0))));
+        MR_Word Var_186 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_185, (MR_Integer) 4))));
+
+        {
+          TailContexts_173 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), TailContexts_173, 0) = ((MR_Box) (Var_186));
+          MR_hl_field(MR_mktag(1), TailContexts_173, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+      }
+      if ((IntMaybeDefnCsharp_22 == (MR_Word) ((MR_Unsigned) 0U)))
+        TailContexts_162 = TailContexts_173;
+      else
+      {
+        MR_Word TypeDefn_174 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnCsharp_22, (MR_Integer) 0))));
+        MR_Word Var_175 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_174, (MR_Integer) 4))));
+
+        {
+          TailContexts_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), TailContexts_162, 0) = ((MR_Box) (Var_175));
+          MR_hl_field(MR_mktag(1), TailContexts_162, 1) = ((MR_Box) (TailContexts_173));
+        }
+      }
+      if ((IntMaybeDefnJava_21 == (MR_Word) ((MR_Unsigned) 0U)))
+        TailContexts_151 = TailContexts_162;
+      else
+      {
+        MR_Word TypeDefn_163 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnJava_21, (MR_Integer) 0))));
+        MR_Word Var_164 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_163, (MR_Integer) 4))));
+
+        {
+          TailContexts_151 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), TailContexts_151, 0) = ((MR_Box) (Var_164));
+          MR_hl_field(MR_mktag(1), TailContexts_151, 1) = ((MR_Box) (TailContexts_162));
+        }
+      }
+      if ((IntMaybeDefnC_20 == (MR_Word) ((MR_Unsigned) 0U)))
+        IntContexts_29 = TailContexts_151;
+      else
+      {
+        MR_Word TypeDefn_152 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnC_20, (MR_Integer) 0))));
+        MR_Word Var_153 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_152, (MR_Integer) 4))));
+
+        {
+          IntContexts_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), IntContexts_29, 0) = ((MR_Box) (Var_153));
+          MR_hl_field(MR_mktag(1), IntContexts_29, 1) = ((MR_Box) (TailContexts_151));
+        }
+      }
+      mercury__list__sort_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_context_0), IntContexts_29, &SortedIntContexts_30);
+      if ((SortedIntContexts_30 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        *Status_16 = (MR_Integer) 1;
+        *ChosenMaybeDefnCJCsE_18 = ImpMaybeDefnCJCsE_15;
+        *STATE_VARIABLE_Specs_37 = STATE_VARIABLE_Specs_0_36;
+      }
+      else
+      {
+        MR_Word FirstIntContext_31 = ((MR_Word) ((MR_hl_field(MR_mktag(1), SortedIntContexts_30, (MR_Integer) 0))));
+        MR_Word Var_71;
+        MR_Word Var_72;
+        MR_Word Var_74;
+        MR_Word Var_75;
+        MR_Word Var_76;
+        MR_Box conv6_STATE_VARIABLE_Specs_37;
+
+        *Status_16 = (MR_Integer) 0;
+        {
+          Var_71 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), Var_71, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[1]));
+          MR_hl_field(MR_mktag(0), Var_71, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_only_foreign_type_section_10_p_0_3));
+          MR_hl_field(MR_mktag(0), Var_71, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), Var_71, 3) = ((MR_Box) (TypeCtor_11));
+          MR_hl_field(MR_mktag(0), Var_71, 4) = ((MR_Box) (FirstIntContext_31));
+        }
+        {
+          Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_76, 0) = ((MR_Box) (ImpMaybeDefnErlang_27));
+          MR_hl_field(MR_mktag(1), Var_76, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_75, 0) = ((MR_Box) (ImpMaybeDefnCsharp_26));
+          MR_hl_field(MR_mktag(1), Var_75, 1) = ((MR_Box) (Var_76));
+        }
+        {
+          Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_74, 0) = ((MR_Box) (ImpMaybeDefnJava_25));
+          MR_hl_field(MR_mktag(1), Var_74, 1) = ((MR_Box) (Var_75));
+        }
+        {
+          Var_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), Var_72, 0) = ((MR_Box) (ImpMaybeDefnC_24));
+          MR_hl_field(MR_mktag(1), Var_72, 1) = ((MR_Box) (Var_74));
+        }
+        mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_71, Var_72, ((MR_Box) (STATE_VARIABLE_Specs_0_36)), &conv6_STATE_VARIABLE_Specs_37);
+        *STATE_VARIABLE_Specs_37 = ((MR_Word) (conv6_STATE_VARIABLE_Specs_37));
+        *ChosenMaybeDefnCJCsE_18 = IntMaybeDefnCJCsE_14;
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv4_STATE_VARIABLE_Specs_15;
+
+    parse_tree__check_parse_tree_type_defns__foreign_int_report_any_foreign_defn_in_imp_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_Specs_15);
+    *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_Specs_15));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv2_STATE_VARIABLE_Specs_15;
+
+    parse_tree__check_parse_tree_type_defns__foreign_int_report_any_foreign_defn_in_imp_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_Specs_15);
+    *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_Specs_15));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__5_60;
+
+    parse_tree__check_parse_tree_type_defns__IntroducedFrom__pred__decide_du_foreign_type_section__771__1_5_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_HeadVar__5_60);
+    *wrapper_arg_3 = ((MR_Box) (conv0_HeadVar__5_60));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0(
+  MR_Word TypeCtor_11,
+  MR_Word DuDefn_12,
+  MR_Word DuSection_13,
+  MR_Word IntAbstractStdMaybeDefn_14,
+  MR_Word IntMaybeDefnCJCsE_15,
+  MR_Word ImpMaybeDefnCJCsE_16,
+  MR_Word * Status_17,
+  MR_Word * ChosenMaybeDefnCJCsE_18,
+  MR_Word STATE_VARIABLE_Specs_0_32,
+  MR_Word * STATE_VARIABLE_Specs_33)
+{
+  {
+    MR_Word IntMaybeDefnC_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_15, (MR_Integer) 0))));
+    MR_Word IntMaybeDefnJava_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_15, (MR_Integer) 1))));
+    MR_Word IntMaybeDefnCsharp_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_15, (MR_Integer) 2))));
+    MR_Word IntMaybeDefnErlang_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntMaybeDefnCJCsE_15, (MR_Integer) 3))));
+    MR_Word ImpMaybeDefnC_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_16, (MR_Integer) 0))));
+    MR_Word ImpMaybeDefnJava_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_16, (MR_Integer) 1))));
+    MR_Word ImpMaybeDefnCsharp_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_16, (MR_Integer) 2))));
+    MR_Word ImpMaybeDefnErlang_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ImpMaybeDefnCJCsE_16, (MR_Integer) 3))));
+
+    switch (DuSection_13) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_34;
+          MR_Word Var_35;
+          MR_Word Var_37;
+          MR_Word Var_38;
+          MR_Word Var_39;
+          MR_Box conv1_STATE_VARIABLE_Specs_33;
+
+          if ((IntAbstractStdMaybeDefn_14 == (MR_Word) ((MR_Unsigned) 0U)))
+            *Status_17 = (MR_Integer) 3;
+          else
+            *Status_17 = (MR_Integer) 2;
+          {
+            Var_34 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Var_34, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[0]));
+            MR_hl_field(MR_mktag(0), Var_34, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_1));
+            MR_hl_field(MR_mktag(0), Var_34, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), Var_34, 3) = ((MR_Box) (TypeCtor_11));
+            MR_hl_field(MR_mktag(0), Var_34, 4) = ((MR_Box) (DuDefn_12));
+          }
+          {
+            Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_39, 0) = ((MR_Box) (IntMaybeDefnErlang_23));
+            MR_hl_field(MR_mktag(1), Var_39, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (IntMaybeDefnCsharp_22));
+            MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_39));
+          }
+          {
+            Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_37, 0) = ((MR_Box) (IntMaybeDefnJava_21));
+            MR_hl_field(MR_mktag(1), Var_37, 1) = ((MR_Box) (Var_38));
+          }
+          {
+            Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (IntMaybeDefnC_20));
+            MR_hl_field(MR_mktag(1), Var_35, 1) = ((MR_Box) (Var_37));
+          }
+          mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_34, Var_35, ((MR_Box) (STATE_VARIABLE_Specs_0_32)), &conv1_STATE_VARIABLE_Specs_33);
+          *STATE_VARIABLE_Specs_33 = ((MR_Word) (conv1_STATE_VARIABLE_Specs_33));
+          *ChosenMaybeDefnCJCsE_18 = ImpMaybeDefnCJCsE_16;
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Word TailContexts_67;
+          MR_Word MaybeTypeDefns_76;
+          MR_Word TailContexts_78;
+          MR_Word MaybeTypeDefns_87;
+          MR_Word TailContexts_89;
+          MR_Word MaybeTypeDefns_65;
+
+          {
+            MaybeTypeDefns_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_87, 0) = ((MR_Box) (IntMaybeDefnErlang_23));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_87, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            MaybeTypeDefns_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_76, 0) = ((MR_Box) (IntMaybeDefnCsharp_22));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_76, 1) = ((MR_Box) (MaybeTypeDefns_87));
+          }
+          {
+            MaybeTypeDefns_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_65, 0) = ((MR_Box) (IntMaybeDefnJava_21));
+            MR_hl_field(MR_mktag(1), MaybeTypeDefns_65, 1) = ((MR_Box) (MaybeTypeDefns_76));
+          }
+          if ((IntMaybeDefnErlang_23 == (MR_Word) ((MR_Unsigned) 0U)))
+            TailContexts_89 = (MR_Word) ((MR_Unsigned) 0U);
+          else
+          {
+            MR_Word TypeDefn_101 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnErlang_23, (MR_Integer) 0))));
+            MR_Word Var_102 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_101, (MR_Integer) 4))));
+
+            {
+              TailContexts_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), TailContexts_89, 0) = ((MR_Box) (Var_102));
+              MR_hl_field(MR_mktag(1), TailContexts_89, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+          }
+          if ((IntMaybeDefnCsharp_22 == (MR_Word) ((MR_Unsigned) 0U)))
+            TailContexts_78 = TailContexts_89;
+          else
+          {
+            MR_Word TypeDefn_90 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnCsharp_22, (MR_Integer) 0))));
+            MR_Word Var_91 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_90, (MR_Integer) 4))));
+
+            {
+              TailContexts_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), TailContexts_78, 0) = ((MR_Box) (Var_91));
+              MR_hl_field(MR_mktag(1), TailContexts_78, 1) = ((MR_Box) (TailContexts_89));
+            }
+          }
+          if ((IntMaybeDefnJava_21 == (MR_Word) ((MR_Unsigned) 0U)))
+            TailContexts_67 = TailContexts_78;
+          else
+          {
+            MR_Word TypeDefn_79 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnJava_21, (MR_Integer) 0))));
+            MR_Word Var_80 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_79, (MR_Integer) 4))));
+
+            {
+              TailContexts_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), TailContexts_67, 0) = ((MR_Box) (Var_80));
+              MR_hl_field(MR_mktag(1), TailContexts_67, 1) = ((MR_Box) (TailContexts_78));
+            }
+          }
+          if ((IntMaybeDefnC_20 == (MR_Word) ((MR_Unsigned) 0U)))
+            if ((TailContexts_67 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              *Status_17 = (MR_Integer) 1;
+              *ChosenMaybeDefnCJCsE_18 = ImpMaybeDefnCJCsE_16;
+              *STATE_VARIABLE_Specs_33 = STATE_VARIABLE_Specs_0_32;
+            }
+            else
+            {
+              MR_Word FirstIntContext_29 = ((MR_Word) ((MR_hl_field(MR_mktag(1), TailContexts_67, (MR_Integer) 0))));
+              MR_Word Var_46;
+              MR_Word Var_47;
+              MR_Word Var_49;
+              MR_Word Var_50;
+              MR_Word Var_51;
+              MR_Box conv3_STATE_VARIABLE_Specs_33;
+
+              *Status_17 = (MR_Integer) 0;
+              {
+                Var_46 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), Var_46, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[1]));
+                MR_hl_field(MR_mktag(0), Var_46, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_2));
+                MR_hl_field(MR_mktag(0), Var_46, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), Var_46, 3) = ((MR_Box) (TypeCtor_11));
+                MR_hl_field(MR_mktag(0), Var_46, 4) = ((MR_Box) (FirstIntContext_29));
+              }
+              {
+                Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_51, 0) = ((MR_Box) (ImpMaybeDefnErlang_27));
+                MR_hl_field(MR_mktag(1), Var_51, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              {
+                Var_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_50, 0) = ((MR_Box) (ImpMaybeDefnCsharp_26));
+                MR_hl_field(MR_mktag(1), Var_50, 1) = ((MR_Box) (Var_51));
+              }
+              {
+                Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (ImpMaybeDefnJava_25));
+                MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (Var_50));
+              }
+              {
+                Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) (ImpMaybeDefnC_24));
+                MR_hl_field(MR_mktag(1), Var_47, 1) = ((MR_Box) (Var_49));
+              }
+              mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_46, Var_47, ((MR_Box) (STATE_VARIABLE_Specs_0_32)), &conv3_STATE_VARIABLE_Specs_33);
+              *STATE_VARIABLE_Specs_33 = ((MR_Word) (conv3_STATE_VARIABLE_Specs_33));
+              *ChosenMaybeDefnCJCsE_18 = IntMaybeDefnCJCsE_15;
+            }
+          else
+          {
+            MR_Word TypeDefn_68 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntMaybeDefnC_20, (MR_Integer) 0))));
+            MR_Word FirstIntContext_122 = ((MR_Word) ((MR_hl_field(MR_mktag(0), TypeDefn_68, (MR_Integer) 4))));
+            MR_Word Var_124;
+            MR_Word Var_125;
+            MR_Word Var_126;
+            MR_Word Var_127;
+            MR_Word Var_128;
+            MR_Box conv5_STATE_VARIABLE_Specs_33;
+
+            *Status_17 = (MR_Integer) 0;
+            {
+              Var_124 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), Var_124, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_8[1]));
+              MR_hl_field(MR_mktag(0), Var_124, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__decide_du_foreign_type_section_10_p_0_3));
+              MR_hl_field(MR_mktag(0), Var_124, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), Var_124, 3) = ((MR_Box) (TypeCtor_11));
+              MR_hl_field(MR_mktag(0), Var_124, 4) = ((MR_Box) (FirstIntContext_122));
+            }
+            {
+              Var_128 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_128, 0) = ((MR_Box) (ImpMaybeDefnErlang_27));
+              MR_hl_field(MR_mktag(1), Var_128, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            {
+              Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_127, 0) = ((MR_Box) (ImpMaybeDefnCsharp_26));
+              MR_hl_field(MR_mktag(1), Var_127, 1) = ((MR_Box) (Var_128));
+            }
+            {
+              Var_126 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_126, 0) = ((MR_Box) (ImpMaybeDefnJava_25));
+              MR_hl_field(MR_mktag(1), Var_126, 1) = ((MR_Box) (Var_127));
+            }
+            {
+              Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_125, 0) = ((MR_Box) (ImpMaybeDefnC_24));
+              MR_hl_field(MR_mktag(1), Var_125, 1) = ((MR_Box) (Var_126));
+            }
+            mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[7]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_124, Var_125, ((MR_Box) (STATE_VARIABLE_Specs_0_32)), &conv5_STATE_VARIABLE_Specs_33);
+            *STATE_VARIABLE_Specs_33 = ((MR_Word) (conv5_STATE_VARIABLE_Specs_33));
+            *ChosenMaybeDefnCJCsE_18 = IntMaybeDefnCJCsE_15;
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv6_STATE_VARIABLE_Specs_16;
+
+    parse_tree__check_parse_tree_type_defns__report_any_duplicate_field_names_4_p_0(((MR_String) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)), &conv6_STATE_VARIABLE_Specs_16);
+    *wrapper_arg_4 = ((MR_Box) (conv6_STATE_VARIABLE_Specs_16));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv4_STATE_VARIABLE_FieldNameMap_30;
+
+    parse_tree__check_parse_tree_type_defns__add_type_ctor_to_field_name_map_4_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)), &conv4_STATE_VARIABLE_FieldNameMap_30);
+    *wrapper_arg_4 = ((MR_Box) (conv4_STATE_VARIABLE_FieldNameMap_30));
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv1_STATE_VARIABLE_TypeCtorCheckedMap_130;
+    MR_Word conv0_STATE_VARIABLE_Specs_132;
+
+    parse_tree__check_parse_tree_type_defns__check_type_ctor_defns_11_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 6)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 7)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 8)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_STATE_VARIABLE_TypeCtorCheckedMap_130, ((MR_Word) (wrapper_arg_4)), &conv0_STATE_VARIABLE_Specs_132);
+    *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_TypeCtorCheckedMap_130));
+    *wrapper_arg_5 = ((MR_Box) (conv0_STATE_VARIABLE_Specs_132));
+  }
+}
+
+void MR_CALL 
+parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0(
+  MR_Word InsistOnDefn_10,
+  MR_Word ModuleName_11,
+  MR_Word IntTypeDefnMap_12,
+  MR_Word ImpTypeDefnMap_13,
+  MR_Word IntForeignEnumMap_14,
+  MR_Word ImpForeignEnumMap_15,
+  MR_Word * CheckedMap_16,
+  MR_Word STATE_VARIABLE_Specs_0_24,
+  MR_Word * STATE_VARIABLE_Specs_25)
+{
+  {
+    MR_Word IntDefnTypeCtors_18;
+    MR_Word ImpDefnTypeCtors_19;
+    MR_Word IntEnumTypeCtors_20;
+    MR_Word ImpEnumTypeCtors_21;
+    MR_Word TypeCtors_22;
+    MR_Word FieldNameMap_23;
+    MR_Word Var_26;
+    MR_Word Var_27;
+    MR_Word Var_28;
+    MR_Word Var_29;
+    MR_Word Var_30;
+    MR_Word Var_32;
+    MR_Word Var_33;
+    MR_Word STATE_VARIABLE_Specs_34_34;
+    MR_Word Var_36;
+    MR_Box conv3_CheckedMap_16;
+    MR_Box conv2_STATE_VARIABLE_Specs_34_34;
+    MR_Box conv5_FieldNameMap_23;
+    MR_Box conv7_STATE_VARIABLE_Specs_25;
+
+    mercury__map__keys_as_set_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0), IntTypeDefnMap_12, &IntDefnTypeCtors_18);
+    mercury__map__keys_as_set_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_all_defns_0), ImpTypeDefnMap_13, &ImpDefnTypeCtors_19);
+    mercury__map__keys_as_set_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[1]), IntForeignEnumMap_14, &IntEnumTypeCtors_20);
+    mercury__map__keys_as_set_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[1]), ImpForeignEnumMap_15, &ImpEnumTypeCtors_21);
+    {
+      Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (ImpEnumTypeCtors_21));
+      MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_29, 0) = ((MR_Box) (IntEnumTypeCtors_20));
+      MR_hl_field(MR_mktag(1), Var_29, 1) = ((MR_Box) (Var_30));
+    }
+    {
+      Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_28, 0) = ((MR_Box) (ImpDefnTypeCtors_19));
+      MR_hl_field(MR_mktag(1), Var_28, 1) = ((MR_Box) (Var_29));
+    }
+    {
+      Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (IntDefnTypeCtors_18));
+      MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_28));
+    }
+    Var_26 = mercury__set__union_list_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), Var_27);
+    TypeCtors_22 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), Var_26);
+    {
+      Var_32 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_32, 0) = ((MR_Box) (&parse_tree__check_parse_tree_type_defns_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), Var_32, 1) = ((MR_Box) (parse_tree__check_parse_tree_type_defns__create_type_ctor_checked_map_9_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_32, 2) = ((MR_Box) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(0), Var_32, 3) = ((MR_Box) (InsistOnDefn_10));
+      MR_hl_field(MR_mktag(0), Var_32, 4) = ((MR_Box) (ModuleName_11));
+      MR_hl_field(MR_mktag(0), Var_32, 5) = ((MR_Box) (IntTypeDefnMap_12));
+      MR_hl_field(MR_mktag(0), Var_32, 6) = ((MR_Box) (ImpTypeDefnMap_13));
+      MR_hl_field(MR_mktag(0), Var_32, 7) = ((MR_Box) (IntForeignEnumMap_14));
+      MR_hl_field(MR_mktag(0), Var_32, 8) = ((MR_Box) (ImpForeignEnumMap_15));
+    }
+    Var_33 = mercury__map__init_0_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0));
+    mercury__list__foldl2_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[0]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), Var_32, TypeCtors_22, ((MR_Box) (Var_33)), &conv3_CheckedMap_16, ((MR_Box) (STATE_VARIABLE_Specs_0_24)), &conv2_STATE_VARIABLE_Specs_34_34);
+    *CheckedMap_16 = ((MR_Word) (conv3_CheckedMap_16));
+    STATE_VARIABLE_Specs_34_34 = ((MR_Word) (conv2_STATE_VARIABLE_Specs_34_34));
+    Var_36 = mercury__map__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]));
+    mercury__map__foldl_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[1]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[3]), *CheckedMap_16, ((MR_Box) (Var_36)), &conv5_FieldNameMap_23);
+    FieldNameMap_23 = ((MR_Word) (conv5_FieldNameMap_23));
+    mercury__map__foldl_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[3]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_1[2]), (MR_Word) (&parse_tree__check_parse_tree_type_defns_scalar_common_2[4]), FieldNameMap_23, ((MR_Box) (STATE_VARIABLE_Specs_34_34)), &conv7_STATE_VARIABLE_Specs_25);
+    *STATE_VARIABLE_Specs_25 = ((MR_Word) (conv7_STATE_VARIABLE_Specs_25));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____abstract_solver_type_status_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____abstract_solver_type_status_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____c_j_cs_e_maybe_defn_or_enum_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____c_j_cs_e_maybe_defn_or_enum_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____checked_foreign_enum_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____checked_foreign_enum_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____field_name_locn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____field_name_locn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____field_name_map_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____field_name_map_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____foreign_type_or_enum_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____foreign_type_or_enum_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____maybe_insist_on_defn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____maybe_insist_on_defn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____maybe_only_constants_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____maybe_only_constants_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____solver_type_defn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____solver_type_defn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____std_abs_type_status_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____std_abs_type_status_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____std_du_type_status_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____std_du_type_status_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____std_eqv_type_status_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____std_eqv_type_status_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____std_type_defn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____std_type_defn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_defn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_defn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__check_parse_tree_type_defns____Unify____type_ctor_checked_map_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__check_parse_tree_type_defns____Compare____type_ctor_checked_map_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__parse_tree__check_parse_tree_type_defns__init(void)
+{
+}
+
+void mercury__parse_tree__check_parse_tree_type_defns__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_abstract_solver_type_status_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_c_j_cs_e_maybe_defn_or_enum_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_checked_foreign_enum_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_locn_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_field_name_map_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_foreign_type_or_enum_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_insist_on_defn_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_maybe_only_constants_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_solver_type_defn_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_abs_type_status_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_du_type_status_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_eqv_type_status_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_std_type_defn_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_defn_0);
+	MR_register_type_ctor_info(&parse_tree__check_parse_tree_type_defns__parse_tree__check_parse_tree_type_defns__type_ctor_info_type_ctor_checked_map_0);
+}
+
+void mercury__parse_tree__check_parse_tree_type_defns__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__parse_tree__check_parse_tree_type_defns__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module parse_tree.check_parse_tree_type_defns.

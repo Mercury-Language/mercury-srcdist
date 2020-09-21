@@ -1,0 +1,120 @@
+:- module char.
+:- interface.
+:- use_module enum.
+:- use_module list.
+:- use_module pretty_printer.
+:- type char == character.
+:- instance (enum.enum(character)).
+:- pred base_digit_to_int(int, char.char, int).
+:- mode base_digit_to_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred base_int_to_digit(int, int, char.char).
+:- mode base_int_to_digit((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred binary_digit_to_int(char.char, int).
+:- mode binary_digit_to_int((builtin.in), (builtin.out)) is semidet.
+:- func char_to_doc(char.char) = pretty_printer.doc.
+:- pred decimal_digit_to_int(char.char, int).
+:- mode decimal_digit_to_int((builtin.in), (builtin.out)) is semidet.
+:- func det_base_digit_to_int(int, char.char) = int.
+:- func det_base_int_to_digit(int, int) = char.char.
+:- func det_binary_digit_to_int(char.char) = int.
+:- func det_decimal_digit_to_int(char.char) = int.
+:- pred det_from_int(int, char.char).
+:- mode det_from_int((builtin.in), (builtin.out)) is det.
+:- func det_from_int(int) = char.char.
+:- func det_hex_digit_to_int(char.char) = int.
+:- func det_int_to_binary_digit(int) = char.char.
+:- func det_int_to_decimal_digit(int) = char.char.
+:- func det_int_to_hex_digit(int) = char.char.
+:- func det_int_to_octal_digit(int) = char.char.
+:- func det_octal_digit_to_int(char.char) = int.
+:- pred from_int(int, char.char).
+:- mode from_int((builtin.in), (builtin.out)) is semidet.
+:- pred hash(char.char, int).
+:- mode hash((builtin.in), (builtin.out)) is det.
+:- func hash(char.char) = int.
+:- pred hex_digit_to_int(char.char, int).
+:- mode hex_digit_to_int((builtin.in), (builtin.out)) is semidet.
+:- pred int_to_binary_digit(int, char.char).
+:- mode int_to_binary_digit((builtin.in), (builtin.out)) is semidet.
+:- pred int_to_decimal_digit(int, char.char).
+:- mode int_to_decimal_digit((builtin.in), (builtin.out)) is semidet.
+:- pred int_to_hex_char(int, char.char).
+:- mode int_to_hex_char((builtin.in), (builtin.out)) is semidet.
+:- pred int_to_hex_digit(int, char.char).
+:- mode int_to_hex_digit((builtin.in), (builtin.out)) is semidet.
+:- pred int_to_octal_digit(int, char.char).
+:- mode int_to_octal_digit((builtin.in), (builtin.out)) is semidet.
+:- pred is_alnum(char.char).
+:- mode is_alnum((builtin.in)) is semidet.
+:- pred is_alnum_or_underscore(char.char).
+:- mode is_alnum_or_underscore((builtin.in)) is semidet.
+:- pred is_alpha(char.char).
+:- mode is_alpha((builtin.in)) is semidet.
+:- pred is_alpha_or_underscore(char.char).
+:- mode is_alpha_or_underscore((builtin.in)) is semidet.
+:- pred is_ascii(char.char).
+:- mode is_ascii((builtin.in)) is semidet.
+:- pred is_base_digit(int, char.char).
+:- mode is_base_digit((builtin.in), (builtin.in)) is semidet.
+:- pred is_binary_digit(char.char).
+:- mode is_binary_digit((builtin.in)) is semidet.
+:- pred is_control(char.char).
+:- mode is_control((builtin.in)) is semidet.
+:- pred is_decimal_digit(char.char).
+:- mode is_decimal_digit((builtin.in)) is semidet.
+:- pred is_digit(char.char).
+:- mode is_digit((builtin.in)) is semidet.
+:- pred is_hex_digit(char.char).
+:- mode is_hex_digit((builtin.in)) is semidet.
+:- pred is_hex_digit(char.char, int).
+:- mode is_hex_digit((builtin.in), (builtin.out)) is semidet.
+:- pred is_leading_surrogate(char.char).
+:- mode is_leading_surrogate((builtin.in)) is semidet.
+:- pred is_line_separator(char.char).
+:- mode is_line_separator((builtin.in)) is semidet.
+:- pred is_lower(char.char).
+:- mode is_lower((builtin.in)) is semidet.
+:- pred is_noncharacter(char.char).
+:- mode is_noncharacter((builtin.in)) is semidet.
+:- pred is_octal_digit(char.char).
+:- mode is_octal_digit((builtin.in)) is semidet.
+:- pred is_paragraph_separator(char.char).
+:- mode is_paragraph_separator((builtin.in)) is semidet.
+:- pred is_private_use(char.char).
+:- mode is_private_use((builtin.in)) is semidet.
+:- pred is_space_separator(char.char).
+:- mode is_space_separator((builtin.in)) is semidet.
+:- pred is_surrogate(char.char).
+:- mode is_surrogate((builtin.in)) is semidet.
+:- pred is_trailing_surrogate(char.char).
+:- mode is_trailing_surrogate((builtin.in)) is semidet.
+:- pred is_upper(char.char).
+:- mode is_upper((builtin.in)) is semidet.
+:- pred is_whitespace(char.char).
+:- mode is_whitespace((builtin.in)) is semidet.
+:- pred lower_upper(char.char, char.char).
+:- mode lower_upper((builtin.in), (builtin.out)) is semidet.
+:- mode lower_upper((builtin.out), (builtin.in)) is semidet.
+:- pred max_char_value(int).
+:- mode max_char_value((builtin.out)) is det.
+:- func max_char_value = int.
+:- pred min_char_value(int).
+:- mode min_char_value((builtin.out)) is det.
+:- func min_char_value = int.
+:- pred octal_digit_to_int(char.char, int).
+:- mode octal_digit_to_int((builtin.in), (builtin.out)) is semidet.
+:- pred to_int(char.char, int).
+:- mode to_int((builtin.in), (builtin.out)) is det.
+:- mode to_int((builtin.in), (builtin.in)) is semidet.
+:- mode to_int((builtin.out), (builtin.in)) is semidet.
+:- func to_int(char.char) = int.
+:- pred to_lower(char.char, char.char).
+:- mode to_lower((builtin.in), (builtin.out)) is det.
+:- func to_lower(char.char) = char.char.
+:- pred to_upper(char.char, char.char).
+:- mode to_upper((builtin.in), (builtin.out)) is det.
+:- func to_upper(char.char) = char.char.
+:- pred to_utf16(char.char, list.list(int)).
+:- mode to_utf16((builtin.in), (builtin.out)) is semidet.
+:- pred to_utf8(char.char, list.list(int)).
+:- mode to_utf8((builtin.in), (builtin.out)) is semidet.

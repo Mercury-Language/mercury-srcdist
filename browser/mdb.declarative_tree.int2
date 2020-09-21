@@ -1,0 +1,12 @@
+:- module (mdb.declarative_tree).
+:- interface.
+:- use_module (mdb.declarative_edt).
+:- use_module (mdb.declarative_execution).
+:- type edt_node(R)
+    --->    dynamic(R).
+:- type wrap(S)
+    --->    wrap(S).
+:- instance ((mdb.declarative_edt).mercury_edt(mdb.declarative_tree.wrap(S), mdb.declarative_tree.edt_node(R))) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- type_representation(edt_node(V_1), du_repn(notag("dynamic", V_1,  no_c_j_cs_e))).
+:- type_representation(goal_and_path_list, is_eqv_to(list.list(mdb.declarative_tree.goal_and_path))).
+:- type_representation(wrap(V_1), du_repn(notag("wrap", V_1,  no_c_j_cs_e))).
