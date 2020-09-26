@@ -1,0 +1,7 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- type lambda_info.
+:- type reg_wrapper_proc
+    --->    reg_wrapper_proc(parse_tree.set_of_var.set_of_progvar)
+    ;       not_reg_wrapper_proc .
+:- type_representation(lambda_info, is_word_aligned_ptr).

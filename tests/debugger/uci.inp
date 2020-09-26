@@ -1,0 +1,47 @@
+echo on
+context none
+register --quiet
+break -A unif*uci.
+break -A comp*uci.
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+c
+print goal
+disable *
+continue

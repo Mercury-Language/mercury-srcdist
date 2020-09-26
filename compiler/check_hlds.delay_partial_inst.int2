@@ -1,0 +1,4 @@
+:- module (check_hlds.delay_partial_inst).
+:- interface.
+:- type_representation(canon_vars_map, is_eqv_to(map.map(parse_tree.prog_data.cons_id, parse_tree.prog_data.prog_vars))).
+:- type_representation(construct_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.delay_partial_inst.canon_vars_map))).

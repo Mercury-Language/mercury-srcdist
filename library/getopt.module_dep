@@ -1,0 +1,13 @@
+module(1, "getopt.m",
+	getopt,
+	{},
+	{bool, builtin, char, list, map, maybe, private_builtin, set},
+	{bool, builtin, char, list, map, maybe, pair, private_builtin, require, set, solutions, string, unit, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

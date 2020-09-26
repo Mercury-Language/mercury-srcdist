@@ -1,0 +1,33 @@
+:- module (parse_tree.parse_type_name).
+:- interface.
+:- use_module cord.
+:- use_module (parse_tree.error_util).
+:- type allow_ho_inst_info
+    --->    allow_ho_inst_info 
+    ;       no_allow_ho_inst_info(parse_tree.parse_type_name.why_no_ho_inst_info).
+:- type arg_context_func == ((func int) = cord.cord(parse_tree.error_util.format_component)).
+:- type maybe_constrain_inst_vars
+    --->    dont_constrain_inst_vars 
+    ;       constrain_some_inst_vars(parse_tree.prog_data.inst_var_sub).
+:- type maybe_require_tm_mode
+    --->    dont_require_tm_mode 
+    ;       require_tm_mode .
+:- type why_no_ho_inst_info
+    --->    wnhii_type_ctor_arg 
+    ;       wnhii_tuple_arg 
+    ;       wnhii_pred_arg 
+    ;       wnhii_func_arg 
+    ;       wnhii_func_return_arg 
+    ;       wnhii_type_qual 
+    ;       wnhii_eqv_type_defn_body 
+    ;       wnhii_solver_type_defn 
+    ;       wnhii_class_constraint 
+    ;       wnhii_mutable_decl 
+    ;       wnhii_user_struct_sharing 
+    ;       wnhii_ctgc_type_selector 
+    ;       wnhii_pragma_struct_sharing 
+    ;       wnhii_pragma_struct_reuse 
+    ;       wnhii_pragma_type_spec .
+:- type_representation(arg_context_func, is_eqv_to(((func int) = cord.cord(parse_tree.error_util.format_component)))).
+:- type_representation(maybe_require_tm_mode, du_repn(enum("dont_require_tm_mode", "require_tm_mode", [],  no_c_j_cs_e))).
+:- type_representation(why_no_ho_inst_info, du_repn(enum("wnhii_type_ctor_arg", "wnhii_tuple_arg", ["wnhii_pred_arg", "wnhii_func_arg", "wnhii_func_return_arg", "wnhii_type_qual", "wnhii_eqv_type_defn_body", "wnhii_solver_type_defn", "wnhii_class_constraint", "wnhii_mutable_decl", "wnhii_user_struct_sharing", "wnhii_ctgc_type_selector", "wnhii_pragma_struct_sharing", "wnhii_pragma_struct_reuse", "wnhii_pragma_type_spec"],  no_c_j_cs_e))).
