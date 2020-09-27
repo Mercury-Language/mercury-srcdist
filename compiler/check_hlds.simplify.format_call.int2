@@ -1,0 +1,13 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .
+:- type_representation(conj_maps, is_eqv_to(map.map(check_hlds.simplify.format_call.conj_id, check_hlds.simplify.format_call.conj_map))).
+:- type_representation(conj_pred_map, is_eqv_to(map.map(check_hlds.simplify.format_call.conj_id, check_hlds.simplify.format_call.conj_id))).
+:- type_representation(fc_eqv_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var))).
+:- type_representation(fc_goal_id_map, is_eqv_to(map.map(mdbcomp.goal_path.goal_id, check_hlds.simplify.format_call.fc_opt_goal_info))).
+:- type_representation(list_element_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.parse_string_format.abstract_poly_type))).
+:- type_representation(list_skeleton_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.list_skeleton_state))).
+:- type_representation(maybe_generate_implicit_stream_warnings, du_repn(enum("do_not_generate_implicit_stream_warnings", "generate_implicit_stream_warnings", [],  no_c_j_cs_e))).
+:- type_representation(string_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.string_state))).

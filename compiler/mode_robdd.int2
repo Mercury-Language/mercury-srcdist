@@ -1,0 +1,8 @@
+:- module mode_robdd.
+:- interface.
+:- include_module (mode_robdd.equiv_vars).
+:- include_module (mode_robdd.implications).
+:- include_module (mode_robdd.tfeirn).
+:- use_module (mode_robdd.tfeirn).
+:- type mode_robdd(T) == mode_robdd.tfeirn.tfeirn(T).
+:- type_representation(mode_robdd(V_1), is_eqv_to(mode_robdd.tfeirn.tfeirn(V_1))).
