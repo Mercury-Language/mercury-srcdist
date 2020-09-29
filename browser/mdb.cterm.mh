@@ -1,0 +1,39 @@
+/*
+** Automatically generated from `cterm.m'
+** by the Mercury compiler,
+** version rotd-2020-09-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDB__CTERM_MH
+#define MDB__CTERM_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__CTERM_DECL_GUARD
+#define MDB__CTERM_DECL_GUARD
+
+#include "mercury_trace_term.h"
+
+
+#endif
+void ML_BROWSE_match_with_cterm(MR_Word, MR_Word, MR_CTerm, MR_Word *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__CTERM_MH */

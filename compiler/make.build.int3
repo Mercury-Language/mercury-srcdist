@@ -1,0 +1,20 @@
+:- module (make.build).
+:- interface.
+:- type build(T).
+:- type build(T, Info).
+:- type build(T, Info1, Info2).
+:- type build2(T, U).
+:- type foldl2_pred_with_status(T, Info, IO).
+:- type foldl3_pred_with_status(T, Acc, Info, IO).
+:- type stdout_lock.
+:- abstract_inst((build)).
+:- abstract_inst((build2)).
+:- abstract_inst((foldl2_pred_with_status)).
+:- abstract_inst((foldl3_pred_with_status)).
+:- type_representation(build(V_1), is_eqv_to(make.build.build(V_1, make_info))).
+:- type_representation(build(V_1, V_2), is_eqv_to(make.build.build(V_1, V_2, V_2))).
+:- type_representation(build(V_1, V_2, V_3), is_eqv_to(pred(globals, V_1, bool, V_2, V_3, io, io))).
+:- type_representation(build2(V_1, V_2), is_eqv_to(pred(globals, V_1, V_2, bool, make_info, make_info, io, io))).
+:- type_representation(foldl2_pred_with_status(V_1, V_2, V_3), is_eqv_to(pred(globals, V_1, bool, V_2, V_2, V_3, V_3))).
+:- type_representation(foldl3_pred_with_status(V_1, V_2, V_3, V_4), is_eqv_to(pred(globals, V_1, bool, V_2, V_2, V_3, V_3, V_4, V_4))).
+:- type_representation(stdout_lock, is_eqv_to(job_ctl)).

@@ -1,0 +1,13 @@
+:- module (backend_libs.erlang_rtti).
+:- interface.
+:- type erlang_atom_raw.
+:- type erlang_du_functor.
+:- type erlang_impl_ctor
+	where	type_is_abstract_enum(3).
+:- type erlang_rtti_data.
+:- type erlang_type_ctor_data.
+:- type erlang_type_ctor_details.
+:- type_representation(erlang_atom_raw, du_repn(notag("erlang_atom_raw", string,  no_c_j_cs_e))).
+:- type_representation(erlang_du_functor, is_word_aligned_ptr).
+:- type_representation(erlang_impl_ctor, du_repn(enum("erlang_impl_ctor_type_info", "erlang_impl_ctor_type_ctor_info", ["erlang_impl_ctor_typeclass_info", "erlang_impl_ctor_base_typeclass_info", "erlang_impl_ctor_hp", "erlang_impl_ctor_subgoal", "erlang_impl_ctor_ticket"],  no_c_j_cs_e))).
+:- type_representation(erlang_type_ctor_data, is_word_aligned_ptr).

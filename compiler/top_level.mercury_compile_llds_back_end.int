@@ -1,0 +1,21 @@
+:- module (top_level.mercury_compile_llds_back_end).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module ll_backend.
+:- use_module mdbcomp.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.passes_aux).
+:- use_module (libs.op_mode).
+:- use_module (ll_backend.global_data).
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.sym_name).
+:- pred llds_backend_pass(hlds.hlds_module.module_info, hlds.hlds_module.module_info, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode llds_backend_pass((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred llds_output_pass(libs.op_mode.op_mode_codegen, hlds.hlds_module.module_info, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), mdbcomp.sym_name.module_name, bool.bool, list.list(string), io.io, io.io).
+:- mode llds_output_pass((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred map_args_to_regs(bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode map_args_to_regs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

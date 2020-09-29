@@ -1,0 +1,246 @@
+/*
+** Automatically generated from `prog_util.m'
+** by the Mercury compiler,
+** version rotd-2020-09-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_util
+#define MR_HEADER_GUARD_parse_tree__prog_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_UTIL_DECL_GUARD
+#define PARSE_TREE__PROG_UTIL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_util__parse_tree__prog_util__type_ctor_info_maybe_modes_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_util__parse_tree__prog_util__type_ctor_info_new_pred_id_0;
+
+void MR_CALL 
+parse_tree__prog_util__adjust_func_arity_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__adjust_func_arity_3_p_1(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_util__cons_id_and_args_to_term_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_util__construct_qualified_term_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_util__construct_qualified_term_with_context_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__prog_util__det_make_functor_cons_id_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__get_new_tvars_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+MR_bool MR_CALL 
+parse_tree__prog_util__get_state_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__prog_util__get_state_args_det_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+parse_tree__prog_util__make_functor_cons_id_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__make_n_fresh_vars_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__prog_util__make_pred_name_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__prog_util__make_pred_name_with_context_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__prog_util__pred_args_to_func_args_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+parse_tree__prog_util__rename_in_goal_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__prog_util__source_integer_to_int_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__split_type_and_mode_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__split_types_and_modes_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_util__strip_builtin_qualifier_from_cons_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_util__strip_builtin_qualifier_from_sym_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_util__strip_module_qualifier_from_cons_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_util__strip_module_qualifier_from_sym_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+parse_tree__prog_util__cons_id_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_util__cons_id_maybe_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_util__goal_list_to_conj_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_util____Compare____maybe_modes_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_util____Compare____new_pred_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_util____Unify____maybe_modes_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_util____Unify____new_pred_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_util__init(void);
+void mercury__parse_tree__prog_util__init_type_tables(void);
+void mercury__parse_tree__prog_util__init_debugger(void);
+const char *mercury__parse_tree__prog_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_util
+
+// :- end_interface parse_tree.prog_util.
