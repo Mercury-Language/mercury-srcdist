@@ -1,0 +1,8 @@
+:- module term_size_prof_builtin.
+:- interface.
+:- type complexity_is_active
+    --->    is_inactive 
+    ;       is_active .
+:- type complexity_slot == int.
+:- type_representation(complexity_is_active, du_repn(enum("is_inactive", "is_active", [],  no_c_j_cs_e))).
+:- type_representation(complexity_slot, is_eqv_to(int)).

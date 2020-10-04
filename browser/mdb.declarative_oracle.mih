@@ -1,0 +1,197 @@
+/*
+** Automatically generated from `declarative_oracle.m'
+** by the Mercury compiler,
+** version rotd-2020-10-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.declarative_oracle.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_oracle
+#define MR_HEADER_GUARD_mdb__declarative_oracle
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_ORACLE_DECL_GUARD
+#define MDB__DECLARATIVE_ORACLE_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_oracle__mdb__declarative_oracle__type_ctor_info_known_exceptions_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_oracle__mdb__declarative_oracle__type_ctor_info_oracle_kb_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_oracle__mdb__declarative_oracle__type_ctor_info_oracle_response_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_oracle__mdb__declarative_oracle__type_ctor_info_oracle_state_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_oracle__mdb__declarative_oracle__type_ctor_info_trusted_object_0;
+
+void MR_CALL 
+mdb__declarative_oracle__add_trusted_module_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__declarative_oracle__add_trusted_pred_or_func_3_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_oracle__answer_known_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_oracle__get_trusted_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mdb__declarative_oracle__oracle_confirm_bug_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mdb__declarative_oracle__oracle_response_undoable_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mdb__declarative_oracle__oracle_state_init_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_oracle__query_oracle_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mdb__declarative_oracle__remove_trusted_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__declarative_oracle__reset_oracle_knowledge_base_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__declarative_oracle__revise_oracle_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_oracle__set_browser_state_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__declarative_oracle__set_oracle_testing_flag_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__declarative_oracle__trust_standard_library_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__declarative_oracle__update_revised_knowledge_base_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mdb__declarative_oracle__get_browser_state_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__declarative_oracle__get_user_input_stream_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__declarative_oracle__get_user_output_stream_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdb__declarative_oracle____Compare____oracle_response_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_oracle____Compare____oracle_state_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_oracle____Unify____oracle_response_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_oracle____Unify____oracle_state_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__declarative_oracle__init(void);
+void mercury__mdb__declarative_oracle__init_type_tables(void);
+void mercury__mdb__declarative_oracle__init_debugger(void);
+const char *mercury__mdb__declarative_oracle__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.declarative_oracle
+
+// :- end_interface mdb.declarative_oracle.
