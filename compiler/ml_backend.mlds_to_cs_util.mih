@@ -1,0 +1,99 @@
+/*
+** Automatically generated from `mlds_to_cs_util.m'
+** by the Mercury compiler,
+** version 20.06.1-beta-2020-10-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_cs_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_cs_util
+#define MR_HEADER_GUARD_ml_backend__mlds_to_cs_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_CS_UTIL_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_CS_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs_util__ml_backend__mlds_to_cs_util__type_ctor_info_csharp_out_info_0;
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__cs_output_context_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__cs_output_default_context_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__indent_line_after_context_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__maybe_output_comment_for_csharp_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__output_pragma_warning_disable_2_p_0(void);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util__output_pragma_warning_restore_2_p_0(void);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_cs_util__init_csharp_out_info_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_cs_util____Compare____csharp_out_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_cs_util____Unify____csharp_out_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__mlds_to_cs_util__init(void);
+void mercury__ml_backend__mlds_to_cs_util__init_type_tables(void);
+void mercury__ml_backend__mlds_to_cs_util__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_cs_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_cs_util
+
+// :- end_interface ml_backend.mlds_to_cs_util.

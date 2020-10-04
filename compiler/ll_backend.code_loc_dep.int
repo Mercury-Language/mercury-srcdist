@@ -1,0 +1,285 @@
+:- module (ll_backend.code_loc_dep).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.code_model).
+:- use_module (hlds.goal_form).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (libs.options).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.continuation_info).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.set_of_var).
+:- type branch_end == maybe.maybe(ll_backend.code_loc_dep.branch_end_info).
+:- type branch_end_info.
+:- type call_direction
+    --->    caller 
+    ;       callee .
+:- type code_info_component
+    --->    cic_forward_live_vars 
+    ;       cic_zombies 
+    ;       cic_temps_in_use 
+    ;       cic_par_conj_depth .
+:- type code_loc_dep.
+:- type det_commit_info.
+:- type disj_hijack_info.
+:- type ite_hijack_info.
+:- type position_info.
+:- type resume_map.
+:- type resume_point_info.
+:- type semi_commit_info.
+:- type simple_neg_info.
+:- type temp_slot_persistence
+    --->    persistent_temp_slot 
+    ;       non_persistent_temp_slot .
+:- pred acquire_reg(hlds.hlds_llds.reg_type, ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_reg((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred acquire_reg_for_var(parse_tree.prog_data.prog_var, hlds.hlds_llds.reg_type, ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_reg_for_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred acquire_reg_not_in_storemap(hlds.hlds_llds.abs_store_map, hlds.hlds_llds.reg_type, ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_reg_not_in_storemap((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred acquire_several_temp_slots(list.list(ll_backend.continuation_info.slot_contents), ll_backend.code_loc_dep.temp_slot_persistence, list.list(ll_backend.llds.lval), ll_backend.llds.main_stack, int, int, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_several_temp_slots((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred acquire_temp_slot(ll_backend.continuation_info.slot_contents, ll_backend.code_loc_dep.temp_slot_persistence, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_temp_slot((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_forward_live_vars(parse_tree.set_of_var.set_of_progvar, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode add_forward_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred after_all_branches(hlds.hlds_llds.abs_store_map, ll_backend.code_loc_dep.branch_end, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode after_all_branches((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred assign_cell_to_var(parse_tree.prog_data.prog_var, bool.bool, parse_tree.prog_data.ptag, list.list(ll_backend.llds.cell_arg), hlds.hlds_goal.how_to_construct, maybe.maybe(hlds.hlds_goal.term_size_value), maybe.maybe(ll_backend.llds.alloc_site_id), hlds.hlds_data.may_use_atomic_alloc, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_cell_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred assign_const_to_var(parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_const_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred assign_expr_to_var(parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_expr_to_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred assign_field_lval_expr_to_var(parse_tree.prog_data.prog_var, list.list(ll_backend.llds.lval), ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_field_lval_expr_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred assign_lval_to_var(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_lval_to_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred assign_var_to_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode assign_var_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clear_all_registers(bool.bool, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode clear_all_registers((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clear_r1(ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode clear_r1((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred clobber_reg(ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode clobber_reg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clobber_regs(list.list(ll_backend.llds.lval), ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode clobber_regs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred code_loc_dep_init(hlds.hlds_llds.abs_follow_vars, ll_backend.code_loc_dep.resume_point_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode code_loc_dep_init((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func current_resume_point_vars(ll_backend.code_loc_dep.code_loc_dep) = parse_tree.set_of_var.set_of_progvar.
+:- pred discard_and_release_ticket(ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode discard_and_release_ticket((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred effect_resume_point(ll_backend.code_loc_dep.resume_point_info, hlds.code_model.code_model, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode effect_resume_point((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred enter_simple_neg(list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, ll_backend.code_loc_dep.simple_neg_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode enter_simple_neg((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred fail_if_rval_is_false(ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode fail_if_rval_is_false((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred failure_is_direct_branch(ll_backend.code_loc_dep.code_loc_dep, ll_backend.llds.code_addr).
+:- mode failure_is_direct_branch((builtin.in), (builtin.out)) is semidet.
+:- pred flush_resume_vars_to_stack(ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode flush_resume_vars_to_stack((builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_branch_end(hlds.hlds_llds.abs_store_map, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_branch_end((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred generate_call_vn_livevals(ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, list.list(hlds.hlds_pred.arg_loc), parse_tree.set_of_var.set_of_progvar, set.set(ll_backend.llds.lval)).
+:- mode generate_call_vn_livevals((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_det_commit(ll_backend.code_loc_dep.det_commit_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_det_commit((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_failure(ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_failure((builtin.out), (builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred generate_resume_point(ll_backend.code_loc_dep.resume_point_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_resume_point((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_return_live_lvalues(ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_loc), hlds.instmap.instmap, bool.bool, list.list(ll_backend.llds.liveinfo)).
+:- mode generate_return_live_lvalues((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_semi_commit(ll_backend.code_loc_dep.semi_commit_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_semi_commit((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_follow_var_map(ll_backend.code_loc_dep.code_loc_dep, hlds.hlds_llds.abs_follow_vars_map).
+:- mode get_follow_var_map((builtin.in), (builtin.out)) is det.
+:- pred get_forward_live_vars(ll_backend.code_loc_dep.code_loc_dep, parse_tree.set_of_var.set_of_progvar).
+:- mode get_forward_live_vars((builtin.in), (builtin.out)) is det.
+:- pred get_instmap(ll_backend.code_loc_dep.code_loc_dep, hlds.instmap.instmap).
+:- mode get_instmap((builtin.in), (builtin.out)) is det.
+:- pred get_known_variables(ll_backend.code_loc_dep.code_loc_dep, list.list(parse_tree.prog_data.prog_var)).
+:- mode get_known_variables((builtin.in), (builtin.out)) is det.
+:- pred get_next_non_reserved(ll_backend.code_loc_dep.code_loc_dep, hlds.hlds_llds.reg_type, int).
+:- mode get_next_non_reserved((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_par_conj_depth(ll_backend.code_loc_dep.code_loc_dep, int).
+:- mode get_par_conj_depth((builtin.in), (builtin.out)) is det.
+:- pred ite_enter_then(ll_backend.code_loc_dep.ite_hijack_info, ll_backend.code_loc_dep.resume_point_info, ll_backend.llds.llds_code, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode ite_enter_then((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ite_maybe_save_hp(libs.options.option, hlds.hlds_goal.hlds_goal, ll_backend.llds.llds_code, maybe.maybe(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode ite_maybe_save_hp((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred leave_simple_neg(hlds.hlds_goal.hlds_goal_info, ll_backend.code_loc_dep.simple_neg_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode leave_simple_neg((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lock_regs(int, int, assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval), ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode lock_regs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred magically_put_var_in_unused_reg(parse_tree.prog_data.prog_var, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode magically_put_var_in_unused_reg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_resume_point(parse_tree.set_of_var.set_of_progvar, hlds.hlds_llds.resume_locs, ll_backend.code_loc_dep.resume_map, ll_backend.code_loc_dep.resume_point_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode make_resume_point((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_vars_forward_dead(parse_tree.set_of_var.set_of_progvar, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode make_vars_forward_dead((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred materialize_vars_in_lval(ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode materialize_vars_in_lval((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred materialize_vars_in_rval(ll_backend.llds.rval, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode materialize_vars_in_rval((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred max_reg_in_use(ll_backend.code_loc_dep.code_loc_dep, int, int).
+:- mode max_reg_in_use((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred may_use_nondet_tailcall(ll_backend.code_loc_dep.code_loc_dep, ll_backend.llds.nondet_tail_call).
+:- mode may_use_nondet_tailcall((builtin.in), (builtin.out)) is det.
+:- pred maybe_discard_and_release_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_discard_and_release_ticket((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_make_vars_forward_dead(parse_tree.set_of_var.set_of_progvar, bool.bool, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_make_vars_forward_dead((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_release_hp(maybe.maybe(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_release_hp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_release_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_reset_and_discard_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode maybe_reset_and_discard_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_reset_and_prune_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode maybe_reset_and_prune_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_reset_discard_and_release_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_reset_discard_and_release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_reset_prune_and_release_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_reset_prune_and_release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_reset_ticket(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode maybe_reset_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_restore_and_release_hp(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_restore_and_release_hp((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_restore_hp(maybe.maybe(ll_backend.llds.lval), ll_backend.llds.llds_code).
+:- mode maybe_restore_hp((builtin.in), (builtin.out)) is det.
+:- pred maybe_save_hp(bool.bool, ll_backend.llds.llds_code, maybe.maybe(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_save_hp((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_save_ticket(ll_backend.llds.add_trail_ops, ll_backend.llds.llds_code, maybe.maybe(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_save_ticket((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred output_code_info(list.list(ll_backend.code_loc_dep.code_info_component), ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, io.io, io.io).
+:- mode output_code_info((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pickup_zombies(parse_tree.set_of_var.set_of_progvar, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode pickup_zombies((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred place_var(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode place_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pop_resume_point(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode pop_resume_point((builtin.in), (builtin.out)) is det.
+:- pred post_goal_update(hlds.hlds_goal.hlds_goal_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode post_goal_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pre_goal_update(hlds.hlds_goal.hlds_goal_info, hlds.goal_form.has_subgoals, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode pre_goal_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prepare_for_det_commit(ll_backend.llds.add_trail_ops, ll_backend.llds.add_region_ops, parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, ll_backend.code_loc_dep.det_commit_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode prepare_for_det_commit((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred prepare_for_disj_hijack(hlds.code_model.code_model, ll_backend.code_loc_dep.disj_hijack_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode prepare_for_disj_hijack((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred prepare_for_ite_hijack(hlds.code_model.code_model, maybe.maybe(ll_backend.llds.embedded_stack_frame_id), ll_backend.code_loc_dep.ite_hijack_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode prepare_for_ite_hijack((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred prepare_for_semi_commit(ll_backend.llds.add_trail_ops, ll_backend.llds.add_region_ops, parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, ll_backend.code_loc_dep.semi_commit_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode prepare_for_semi_commit((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred produce_variable(parse_tree.prog_data.prog_var, ll_backend.llds.llds_code, ll_backend.llds.rval, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode produce_variable((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred produce_variable_in_reg(parse_tree.prog_data.prog_var, ll_backend.llds.llds_code, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode produce_variable_in_reg((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred produce_variable_in_reg_or_stack(parse_tree.prog_data.prog_var, ll_backend.llds.llds_code, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode produce_variable_in_reg_or_stack((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred produce_vars(list.list(parse_tree.prog_data.prog_var), ll_backend.code_loc_dep.resume_map, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode produce_vars((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reassign_mkword_hole_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.ptag, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reassign_mkword_hole_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred reassign_tagword_var(parse_tree.prog_data.prog_var, uint, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reassign_tagword_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred release_hp(ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode release_hp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred release_reg(ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode release_reg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred release_several_temp_slots(list.list(ll_backend.llds.lval), ll_backend.code_loc_dep.temp_slot_persistence, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode release_several_temp_slots((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred release_temp_slot(ll_backend.llds.lval, ll_backend.code_loc_dep.temp_slot_persistence, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode release_temp_slot((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred release_ticket(ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred remember_position(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.position_info).
+:- mode remember_position((builtin.in), (builtin.out)) is det.
+:- pred reserve_r1(ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reserve_r1((builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reset_and_discard_ticket(ll_backend.llds.lval, ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode reset_and_discard_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reset_and_prune_ticket(ll_backend.llds.lval, ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode reset_and_prune_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reset_discard_and_release_ticket(ll_backend.llds.lval, ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reset_discard_and_release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred reset_prune_and_release_ticket(ll_backend.llds.lval, ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reset_prune_and_release_ticket((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred reset_resume_known(ll_backend.code_loc_dep.position_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reset_resume_known((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reset_ticket(ll_backend.llds.lval, ll_backend.llds.reset_trail_reason, ll_backend.llds.llds_code).
+:- mode reset_ticket((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reset_to_position(ll_backend.code_loc_dep.position_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode reset_to_position((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred restore_and_release_hp(ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode restore_and_release_hp((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred restore_hp(ll_backend.llds.lval, ll_backend.llds.llds_code).
+:- mode restore_hp((builtin.in), (builtin.out)) is det.
+:- pred resume_point_stack_addr(ll_backend.code_loc_dep.resume_point_info, ll_backend.llds.code_addr).
+:- mode resume_point_stack_addr((builtin.in), (builtin.out)) is det.
+:- pred resume_point_vars(ll_backend.code_loc_dep.resume_point_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode resume_point_vars((builtin.in), (builtin.out)) is det.
+:- pred save_hp(ll_backend.llds.llds_code, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode save_hp((builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred save_hp_in_branch(ll_backend.llds.llds_code, ll_backend.llds.lval, ll_backend.code_loc_dep.position_info, ll_backend.code_loc_dep.position_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode save_hp_in_branch((builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred save_reused_cell_fields(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, list.list(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode save_reused_cell_fields((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred save_ticket(ll_backend.llds.llds_code, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode save_ticket((builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred save_variables(parse_tree.set_of_var.set_of_progvar, set.set(ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode save_variables((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred save_variables_on_stack(list.list(parse_tree.prog_data.prog_var), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode save_variables_on_stack((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_follow_vars(hlds.hlds_llds.abs_follow_vars, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_follow_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_forward_live_vars(parse_tree.set_of_var.set_of_progvar, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_forward_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_instmap(hlds.instmap.instmap, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_instmap((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_par_conj_depth(int, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_par_conj_depth((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_resume_point_and_frame_to_unknown(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_resume_point_and_frame_to_unknown((builtin.in), (builtin.out)) is det.
+:- pred set_resume_point_to_unknown(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_resume_point_to_unknown((builtin.in), (builtin.out)) is det.
+:- pred set_var_location(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_var_location((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred setup_call(hlds.hlds_goal.hlds_goal_info, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), set.set(ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode setup_call((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred setup_return(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), set.set(ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode setup_return((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_trace_code_gen(ll_backend.code_info.code_info).
+:- mode should_trace_code_gen((builtin.in)) is semidet.
+:- pred top_resume_point(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.resume_point_info).
+:- mode top_resume_point((builtin.in), (builtin.out)) is det.
+:- pred undo_disj_hijack(ll_backend.code_loc_dep.disj_hijack_info, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode undo_disj_hijack((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred unlock_regs(ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode unlock_regs((builtin.in), (builtin.out)) is det.
+:- pred variable_is_forward_live(ll_backend.code_loc_dep.code_loc_dep, parse_tree.prog_data.prog_var).
+:- mode variable_is_forward_live((builtin.in), (builtin.in)) is semidet.
+:- pred variable_locations(ll_backend.code_loc_dep.code_loc_dep, map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval))).
+:- mode variable_locations((builtin.in), (builtin.out)) is det.
+:- implementation.
+:- use_module stack.
+:- type fail_info.
+:- type resume_map == map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)).
+:- type simple_neg_info == ll_backend.code_loc_dep.fail_info.

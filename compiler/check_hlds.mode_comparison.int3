@@ -1,0 +1,7 @@
+:- module (check_hlds.mode_comparison).
+:- interface.
+:- type match
+	where	type_is_abstract_enum(2).
+:- type proc_mode.
+:- type_representation(match, du_repn(enum("better", "worse", ["same", "incomparable"],  no_c_j_cs_e))).
+:- type_representation(proc_mode, is_word_aligned_ptr).

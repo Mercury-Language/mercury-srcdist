@@ -1,0 +1,24 @@
+:- module (hlds.pred_table).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- type constraint_search == pred(int, list.list(parse_tree.prog_data.prog_constraint)).
+:- type is_fully_qualified
+    --->    is_fully_qualified 
+    ;       may_be_partially_qualified .
+:- type mode_no
+    --->    only_mode 
+    ;       mode_no(int).
+:- type pred_table == map.map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info).
+:- type predicate_table.
+:- inst (constraint_search) == (pred((builtin.in), (builtin.out)) is semidet).
+:- type_representation(accessibility_table, is_eqv_to(map.map(hlds.hlds_pred.pred_id, hlds.pred_table.name_accessibility))).
+:- type_representation(constraint_search, is_eqv_to(pred(int, list.list(parse_tree.prog_data.prog_constraint)))).
+:- type_representation(is_fully_qualified, du_repn(enum("is_fully_qualified", "may_be_partially_qualified", [],  no_c_j_cs_e))).
+:- type_representation(module_name_arity_index, is_eqv_to(map.map(hlds.pred_table.module_and_name, map.map(parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id))))).
+:- type_representation(name_arity_index, is_eqv_to(map.map(hlds.pred_table.name_arity, list.list(hlds.hlds_pred.pred_id)))).
+:- type_representation(name_index, is_eqv_to(map.map(string, list.list(hlds.hlds_pred.pred_id)))).
+:- type_representation(pred_table, is_eqv_to(map.map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info))).
+:- type_representation(predicate_table, is_word_aligned_ptr).

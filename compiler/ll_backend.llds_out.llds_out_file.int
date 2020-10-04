@@ -1,0 +1,14 @@
+:- module ((ll_backend.llds_out).llds_out_file).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module (libs.globals).
+:- use_module (ll_backend.llds).
+:- type linkage
+    --->    extern 
+    ;       static .
+:- func c_data_const_string(libs.globals.globals, bool.bool) = string.
+:- func c_data_linkage_string(ll_backend.llds_out.llds_out_file.linkage, bool.bool) = string.
+:- pred output_llds(libs.globals.globals, ll_backend.llds.c_file, bool.bool, io.io, io.io).
+:- mode output_llds((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
