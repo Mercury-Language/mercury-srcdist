@@ -1,0 +1,8 @@
+:- module ((hlds.make_hlds).field_access).
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type field_list == assoc_list.assoc_list(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_term)).
+:- type_representation(field_list, is_eqv_to(assoc_list.assoc_list(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_term)))).

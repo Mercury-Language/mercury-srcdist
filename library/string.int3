@@ -1,0 +1,13 @@
+:- module string.
+:- interface.
+:- include_module (string.builder).
+:- include_module (string.format).
+:- include_module (string.parse_util).
+:- type justified_column.
+:- type line.
+:- type maybe_replaced.
+:- type poly_type.
+:- type string_piece.
+:- type text_file.
+:- type_representation(line, du_repn(notag("line", string,  no_c_j_cs_e))).
+:- type_representation(text_file, du_repn(notag("text_file", string,  no_c_j_cs_e))).

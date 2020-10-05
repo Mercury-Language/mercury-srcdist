@@ -1,0 +1,2 @@
+:- module ((hlds.make_hlds).add_clause).
+:- interface.

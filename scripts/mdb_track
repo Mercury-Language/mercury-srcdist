@@ -1,0 +1,10 @@
+# This script invokes the declarative debugger's track command.
+# $1 is the argument the term to track is in.
+# $2 is the path to the term in the argument.
+#
+dd
+browse $1
+cd $2
+track
+info
+pd
