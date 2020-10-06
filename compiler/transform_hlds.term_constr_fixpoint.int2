@@ -1,0 +1,5 @@
+:- module (transform_hlds.term_constr_fixpoint).
+:- interface.
+:- type fixpoint_options.
+:- type_representation(fixpoint_options, is_word_aligned_ptr).
+:- type_representation(iteration_infos, is_eqv_to(list.list(transform_hlds.term_constr_fixpoint.iteration_info))).

@@ -1,0 +1,266 @@
+:- module table_builtin.
+:- interface.
+:- use_module io.
+:- pragma foreign_import_module("C", table_builtin).
+:- type loop_status
+    --->    loop_inactive 
+    ;       loop_active .
+:- type memo_det_status
+    --->    memo_det_inactive 
+    ;       memo_det_active 
+    ;       memo_det_succeeded .
+:- type memo_non_record.
+:- type memo_non_status
+    --->    memo_non_inactive 
+    ;       memo_non_active 
+    ;       memo_non_incomplete 
+    ;       memo_non_complete .
+:- type memo_semi_status
+    --->    memo_semi_inactive 
+    ;       memo_semi_active 
+    ;       memo_semi_succeeded 
+    ;       memo_semi_failed .
+:- type ml_answer_block.
+:- type ml_consumer.
+:- type ml_generator.
+:- type ml_proc_table_info.
+:- type ml_subgoal.
+:- type ml_trie_node.
+:- type mm_status
+    --->    mm_inactive 
+    ;       mm_active 
+    ;       mm_complete .
+:- pred table_error(string).
+:- mode table_error((builtin.in)) is erroneous.
+:- pred table_io_copy_io_state(io.state, io.state).
+:- mode table_io_copy_io_state((builtin.di), (builtin.uo)) is det.
+:- impure pred table_io_has_occurred(table_builtin.ml_trie_node).
+:- mode table_io_has_occurred((builtin.in)) is semidet.
+:- impure pred table_io_in_range(table_builtin.ml_trie_node, int, int).
+:- mode table_io_in_range((builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- impure pred table_io_left_bracket_unitized_goal(int).
+:- mode table_io_left_bracket_unitized_goal((builtin.out)) is det.
+:- impure pred table_io_right_bracket_unitized_goal(int).
+:- mode table_io_right_bracket_unitized_goal((builtin.in)) is det.
+:- impure pred table_lookup_insert_char(table_builtin.ml_trie_node, character, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_char((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_enum(table_builtin.ml_trie_node, int, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_enum((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_float(table_builtin.ml_trie_node, float, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_float((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_foreign_enum(table_builtin.ml_trie_node, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_foreign_enum((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_gen(table_builtin.ml_trie_node, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_gen((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_gen_addr(table_builtin.ml_trie_node, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_gen_addr((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_gen_poly(table_builtin.ml_trie_node, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_gen_poly((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_gen_poly_addr(table_builtin.ml_trie_node, T, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_gen_poly_addr((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_int(table_builtin.ml_trie_node, int, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_int((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_int16(table_builtin.ml_trie_node, int16, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_int16((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_int32(table_builtin.ml_trie_node, int32, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_int32((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_int64(table_builtin.ml_trie_node, int64, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_int64((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_int8(table_builtin.ml_trie_node, int8, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_int8((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_start_int(table_builtin.ml_trie_node, int, int, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_start_int((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_string(table_builtin.ml_trie_node, string, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_typeclassinfo(table_builtin.ml_trie_node, private_builtin.typeclass_info, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_typeclassinfo((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_typeinfo(table_builtin.ml_trie_node, private_builtin.type_info, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_typeinfo((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_uint(table_builtin.ml_trie_node, uint, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_uint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_uint16(table_builtin.ml_trie_node, uint16, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_uint16((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_uint32(table_builtin.ml_trie_node, uint32, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_uint32((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_uint64(table_builtin.ml_trie_node, uint64, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_uint64((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_lookup_insert_uint8(table_builtin.ml_trie_node, uint8, table_builtin.ml_trie_node).
+:- mode table_lookup_insert_uint8((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_loop_mark_as_active_and_fail(table_builtin.ml_trie_node).
+:- mode table_loop_mark_as_active_and_fail((builtin.in)) is failure.
+:- impure pred table_loop_mark_as_inactive(table_builtin.ml_trie_node).
+:- mode table_loop_mark_as_inactive((builtin.in)) is det.
+:- impure pred table_loop_mark_as_inactive_and_fail(table_builtin.ml_trie_node).
+:- mode table_loop_mark_as_inactive_and_fail((builtin.in)) is failure.
+:- impure pred table_loop_setup(table_builtin.ml_trie_node, table_builtin.loop_status).
+:- mode table_loop_setup((builtin.in), (builtin.out)) is det.
+:- impure pred table_loop_setup_shortcut(table_builtin.ml_trie_node, table_builtin.ml_trie_node, table_builtin.loop_status).
+:- mode table_loop_setup_shortcut((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred table_memo_create_answer_block(table_builtin.ml_trie_node, int, table_builtin.ml_answer_block).
+:- mode table_memo_create_answer_block((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_memo_det_setup(table_builtin.ml_trie_node, table_builtin.memo_det_status).
+:- mode table_memo_det_setup((builtin.in), (builtin.out)) is det.
+:- impure pred table_memo_det_setup_shortcut(table_builtin.ml_trie_node, table_builtin.ml_trie_node, table_builtin.memo_det_status).
+:- mode table_memo_det_setup_shortcut((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred table_memo_fill_answer_block_shortcut(table_builtin.ml_trie_node).
+:- mode table_memo_fill_answer_block_shortcut((builtin.in)) is det.
+:- semipure pred table_memo_get_answer_block(table_builtin.ml_trie_node, table_builtin.ml_answer_block).
+:- mode table_memo_get_answer_block((builtin.in), (builtin.out)) is det.
+:- semipure pred table_memo_get_answer_block_shortcut(table_builtin.ml_trie_node).
+:- mode table_memo_get_answer_block_shortcut((builtin.in)) is det.
+:- impure pred table_memo_mark_as_active_and_fail(table_builtin.memo_non_record).
+:- mode table_memo_mark_as_active_and_fail((builtin.in)) is failure.
+:- impure pred table_memo_mark_as_complete_and_fail(table_builtin.memo_non_record).
+:- mode table_memo_mark_as_complete_and_fail((builtin.in)) is failure.
+:- impure pred table_memo_mark_as_failed(table_builtin.ml_trie_node).
+:- mode table_memo_mark_as_failed((builtin.in)) is failure.
+:- impure pred table_memo_mark_as_incomplete(table_builtin.memo_non_record).
+:- mode table_memo_mark_as_incomplete((builtin.in)) is det.
+:- impure pred table_memo_mark_as_succeeded(table_builtin.ml_trie_node).
+:- mode table_memo_mark_as_succeeded((builtin.in)) is det.
+:- impure pred table_memo_non_answer_is_not_duplicate(table_builtin.ml_trie_node).
+:- mode table_memo_non_answer_is_not_duplicate((builtin.in)) is semidet.
+:- impure pred table_memo_non_answer_is_not_duplicate_shortcut(table_builtin.memo_non_record).
+:- mode table_memo_non_answer_is_not_duplicate_shortcut((builtin.in)) is semidet.
+:- impure pred table_memo_non_create_answer_block_shortcut(table_builtin.memo_non_record).
+:- mode table_memo_non_create_answer_block_shortcut((builtin.in)) is det.
+:- semipure pred table_memo_non_get_answer_table(table_builtin.memo_non_record, table_builtin.ml_trie_node).
+:- mode table_memo_non_get_answer_table((builtin.in), (builtin.out)) is det.
+:- semipure pred table_memo_non_return_all_shortcut(table_builtin.memo_non_record).
+:- mode table_memo_non_return_all_shortcut((builtin.in)) is det.
+:- impure pred table_memo_non_setup(table_builtin.ml_trie_node, table_builtin.memo_non_record, table_builtin.memo_non_status).
+:- mode table_memo_non_setup((builtin.in), (builtin.out), (builtin.out)) is det.
+:- semipure pred table_memo_return_all_answers_multi(table_builtin.memo_non_record, table_builtin.ml_answer_block).
+:- mode table_memo_return_all_answers_multi((builtin.in), (builtin.out)) is multi.
+:- semipure pred table_memo_return_all_answers_nondet(table_builtin.memo_non_record, table_builtin.ml_answer_block).
+:- mode table_memo_return_all_answers_nondet((builtin.in), (builtin.out)) is nondet.
+:- impure pred table_memo_semi_setup(table_builtin.ml_trie_node, table_builtin.memo_semi_status).
+:- mode table_memo_semi_setup((builtin.in), (builtin.out)) is det.
+:- impure pred table_memo_semi_setup_shortcut(table_builtin.ml_trie_node, table_builtin.ml_trie_node, table_builtin.memo_semi_status).
+:- mode table_memo_semi_setup_shortcut((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred table_mm_answer_is_not_duplicate(table_builtin.ml_trie_node).
+:- mode table_mm_answer_is_not_duplicate((builtin.in)) is semidet.
+:- impure pred table_mm_answer_is_not_duplicate_shortcut(table_builtin.ml_subgoal).
+:- mode table_mm_answer_is_not_duplicate_shortcut((builtin.in)) is semidet.
+:- impure pred table_mm_completion(table_builtin.ml_subgoal).
+:- mode table_mm_completion((builtin.in)) is det.
+:- impure pred table_mm_create_answer_block(table_builtin.ml_subgoal, int, table_builtin.ml_answer_block).
+:- mode table_mm_create_answer_block((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_mm_fill_answer_block_shortcut(table_builtin.ml_subgoal).
+:- mode table_mm_fill_answer_block_shortcut((builtin.in)) is det.
+:- semipure pred table_mm_get_answer_table(table_builtin.ml_subgoal, table_builtin.ml_trie_node).
+:- mode table_mm_get_answer_table((builtin.in), (builtin.out)) is det.
+:- semipure pred table_mm_return_all_multi(table_builtin.ml_subgoal, table_builtin.ml_answer_block).
+:- mode table_mm_return_all_multi((builtin.in), (builtin.out)) is multi.
+:- semipure pred table_mm_return_all_nondet(table_builtin.ml_subgoal, table_builtin.ml_answer_block).
+:- mode table_mm_return_all_nondet((builtin.in), (builtin.out)) is nondet.
+:- semipure pred table_mm_return_all_shortcut(table_builtin.ml_answer_block).
+:- mode table_mm_return_all_shortcut((builtin.in)) is det.
+:- impure pred table_mm_setup(table_builtin.ml_trie_node, table_builtin.ml_subgoal, table_builtin.mm_status).
+:- mode table_mm_setup((builtin.in), (builtin.out), (builtin.out)) is det.
+:- impure pred table_mm_suspend_consumer(table_builtin.ml_subgoal, table_builtin.ml_answer_block).
+:- mode table_mm_suspend_consumer((builtin.in), (builtin.out)) is nondet.
+:- impure pred table_mmos_answer_is_not_duplicate(table_builtin.ml_trie_node).
+:- mode table_mmos_answer_is_not_duplicate((builtin.in)) is semidet.
+:- impure pred table_mmos_answer_is_not_duplicate_shortcut(table_builtin.ml_generator).
+:- mode table_mmos_answer_is_not_duplicate_shortcut((builtin.in)) is semidet.
+:- impure pred table_mmos_completion(table_builtin.ml_generator).
+:- mode table_mmos_completion((builtin.in)) is failure.
+:- impure pred table_mmos_consume_next_answer_multi(table_builtin.ml_consumer, table_builtin.ml_answer_block).
+:- mode table_mmos_consume_next_answer_multi((builtin.in), (builtin.out)) is multi.
+:- impure pred table_mmos_consume_next_answer_nondet(table_builtin.ml_consumer, table_builtin.ml_answer_block).
+:- mode table_mmos_consume_next_answer_nondet((builtin.in), (builtin.out)) is nondet.
+:- impure pred table_mmos_create_answer_block(table_builtin.ml_generator, int, table_builtin.ml_answer_block).
+:- mode table_mmos_create_answer_block((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_mmos_pickup_inputs(table_builtin.ml_generator).
+:- mode table_mmos_pickup_inputs((builtin.out)) is det.
+:- semipure pred table_mmos_restore_answers(table_builtin.ml_answer_block).
+:- mode table_mmos_restore_answers((builtin.in)) is det.
+:- impure pred table_mmos_return_answer(table_builtin.ml_generator, table_builtin.ml_answer_block).
+:- mode table_mmos_return_answer((builtin.in), (builtin.in)) is det.
+:- impure pred table_mmos_save_inputs is det.
+:- impure pred table_mmos_setup_consumer(table_builtin.ml_trie_node, builtin.c_pointer, table_builtin.ml_consumer).
+:- mode table_mmos_setup_consumer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_report_statistics is det.
+:- semipure pred table_restore_any_answer(table_builtin.ml_answer_block, int, T).
+:- mode table_restore_any_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_char_answer(table_builtin.ml_answer_block, int, character).
+:- mode table_restore_char_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_float_answer(table_builtin.ml_answer_block, int, float).
+:- mode table_restore_float_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_int16_answer(table_builtin.ml_answer_block, int, int16).
+:- mode table_restore_int16_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_int32_answer(table_builtin.ml_answer_block, int, int32).
+:- mode table_restore_int32_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_int64_answer(table_builtin.ml_answer_block, int, int64).
+:- mode table_restore_int64_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_int8_answer(table_builtin.ml_answer_block, int, int8).
+:- mode table_restore_int8_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_int_answer(table_builtin.ml_answer_block, int, int).
+:- mode table_restore_int_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_io_state_answer(table_builtin.ml_answer_block, int, io.state).
+:- mode table_restore_io_state_answer((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- semipure pred table_restore_string_answer(table_builtin.ml_answer_block, int, string).
+:- mode table_restore_string_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_uint16_answer(table_builtin.ml_answer_block, int, uint16).
+:- mode table_restore_uint16_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_uint32_answer(table_builtin.ml_answer_block, int, uint32).
+:- mode table_restore_uint32_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_uint64_answer(table_builtin.ml_answer_block, int, uint64).
+:- mode table_restore_uint64_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_uint8_answer(table_builtin.ml_answer_block, int, uint8).
+:- mode table_restore_uint8_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred table_restore_uint_answer(table_builtin.ml_answer_block, int, uint).
+:- mode table_restore_uint_answer((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred table_save_any_answer(table_builtin.ml_answer_block, int, T).
+:- mode table_save_any_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_char_answer(table_builtin.ml_answer_block, int, character).
+:- mode table_save_char_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_float_answer(table_builtin.ml_answer_block, int, float).
+:- mode table_save_float_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_int16_answer(table_builtin.ml_answer_block, int, int16).
+:- mode table_save_int16_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_int32_answer(table_builtin.ml_answer_block, int, int32).
+:- mode table_save_int32_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_int64_answer(table_builtin.ml_answer_block, int, int64).
+:- mode table_save_int64_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_int8_answer(table_builtin.ml_answer_block, int, int8).
+:- mode table_save_int8_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_int_answer(table_builtin.ml_answer_block, int, int).
+:- mode table_save_int_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_io_state_answer(table_builtin.ml_answer_block, int, io.state).
+:- mode table_save_io_state_answer((builtin.in), (builtin.in), (builtin.ui)) is det.
+:- impure pred table_save_string_answer(table_builtin.ml_answer_block, int, string).
+:- mode table_save_string_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_uint16_answer(table_builtin.ml_answer_block, int, uint16).
+:- mode table_save_uint16_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_uint32_answer(table_builtin.ml_answer_block, int, uint32).
+:- mode table_save_uint32_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_uint64_answer(table_builtin.ml_answer_block, int, uint64).
+:- mode table_save_uint64_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_uint8_answer(table_builtin.ml_answer_block, int, uint8).
+:- mode table_save_uint8_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred table_save_uint_answer(table_builtin.ml_answer_block, int, uint).
+:- mode table_save_uint_answer((builtin.in), (builtin.in), (builtin.in)) is det.
+:- implementation.
+:- type memo_non_record
+    --->    memo_non_record(builtin.c_pointer).
+:- pragma foreign_type(c, memo_non_record, "MR_MemoNonRecordPtr", [can_pass_as_mercury_type]).
+:- type ml_answer_block
+    --->    ml_answer_block(builtin.c_pointer).
+:- pragma foreign_type(c, ml_answer_block, "MR_AnswerBlock", [can_pass_as_mercury_type]).
+:- type ml_consumer
+    --->    ml_consumer(builtin.c_pointer).
+:- pragma foreign_type(c, ml_consumer, "MR_ConsumerPtr", [can_pass_as_mercury_type]).
+:- type ml_generator
+    --->    ml_generator(builtin.c_pointer).
+:- pragma foreign_type(c, ml_generator, "MR_GeneratorPtr", [can_pass_as_mercury_type]).
+:- type ml_proc_table_info
+    --->    ml_proc_table_info(builtin.c_pointer).
+:- pragma foreign_type(c, ml_proc_table_info, "MR_ProcTableInfoPtr", [can_pass_as_mercury_type]).
+:- type ml_subgoal
+    --->    ml_subgoal(builtin.c_pointer).
+:- pragma foreign_type(c, ml_subgoal, "MR_SubgoalPtr", [can_pass_as_mercury_type]).
+:- type ml_trie_node
+    --->    ml_trie_node(builtin.c_pointer).
+:- pragma foreign_type(c, ml_trie_node, "MR_TrieNode", [can_pass_as_mercury_type]).
