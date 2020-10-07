@@ -1,0 +1,44 @@
+:- module (parse_tree.prog_foreign).
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.file_names).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- type foreign_body_code
+    --->    foreign_body_code(((parse_tree.prog_foreign).fbody_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fbody_code) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_foreign).fbody_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_decl_code
+    --->    foreign_decl_code(((parse_tree.prog_foreign).fdecl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fdecl_is_local) :: parse_tree.prog_data_foreign.foreign_decl_is_local, ((parse_tree.prog_foreign).fdecl_code) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_foreign).fdecl_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_export_decl
+    --->    foreign_export_decl(((parse_tree.prog_foreign).fexp_decl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fexp_decl_ret_type) :: string, ((parse_tree.prog_foreign).fexp_decl_func_name) :: string, ((parse_tree.prog_foreign).fexp_decl_arg_decls) :: string).
+:- type foreign_export_decls
+    --->    foreign_export_decls(((parse_tree.prog_foreign).fexp_decls_codes) :: list.list(parse_tree.prog_foreign.foreign_decl_code), ((parse_tree.prog_foreign).fexp_decls_list) :: list.list(parse_tree.prog_foreign.foreign_export_decl)).
+:- type foreign_export_defn
+    --->    foreign_export_defn(string).
+:- type foreign_export_defns == list.list(parse_tree.prog_foreign.foreign_export_defn).
+:- inst (lang_gen_ext_file) for (libs.globals).foreign_language/0 == bound(lang_c ; lang_csharp).
+:- func all_foreign_languages = list.list(libs.globals.foreign_language).
+:- func convert_to_valid_c_identifier(string) = string.
+:- func fim_spec_module_name(parse_tree.prog_data_foreign.fim_spec) = mdbcomp.sym_name.module_name.
+:- func fim_spec_module_name_from_module(parse_tree.prog_data_foreign.fim_spec, mdbcomp.sym_name.module_name) = mdbcomp.sym_name.module_name.
+:- pred foreign_body_code_is_for_lang(libs.globals.foreign_language, parse_tree.prog_foreign.foreign_body_code).
+:- mode foreign_body_code_is_for_lang((builtin.in), (builtin.in)) is semidet.
+:- pred foreign_decl_code_is_for_lang(libs.globals.foreign_language, parse_tree.prog_foreign.foreign_decl_code).
+:- mode foreign_decl_code_is_for_lang((builtin.in), (builtin.in)) is semidet.
+:- func foreign_language_file_extension(libs.globals.foreign_language) = parse_tree.file_names.other_ext.
+:- mode foreign_language_file_extension((builtin.in)) = (builtin.out) is semidet.
+:- mode foreign_language_file_extension(builtin.in(((parse_tree.prog_foreign).lang_gen_ext_file))) = (builtin.out) is det.
+:- func foreign_language_module_name(mdbcomp.sym_name.module_name, libs.globals.foreign_language) = mdbcomp.sym_name.module_name.
+:- mode foreign_language_module_name((builtin.in), builtin.in(((parse_tree.prog_foreign).lang_gen_ext_file))) = (builtin.out) is det.
+:- mode foreign_language_module_name((builtin.in), (builtin.in)) = (builtin.out) is semidet.
+:- func foreign_type_language(parse_tree.prog_data.generic_language_foreign_type) = libs.globals.foreign_language.
+:- func make_init_name(mdbcomp.sym_name.module_name) = string.
+:- func name_mangle(string) = string.
+:- func name_mangle_no_leading_digit(string) = string.
+:- func prefer_foreign_language(libs.globals.globals, libs.globals.compilation_target, libs.globals.foreign_language, libs.globals.foreign_language) = bool.bool.
+:- func qualify_name(string, string) = string.
+:- func sym_name_mangle(mdbcomp.sym_name.sym_name) = string.

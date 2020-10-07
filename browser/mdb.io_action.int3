@@ -1,0 +1,9 @@
+:- module (mdb.io_action).
+:- interface.
+:- type io_action.
+:- type io_action_range.
+:- type io_seq_num.
+:- type maybe_tabled_io_action.
+:- type_representation(io_action, is_word_aligned_ptr).
+:- type_representation(io_action_range, is_word_aligned_ptr).
+:- type_representation(io_seq_num, is_eqv_to(int)).

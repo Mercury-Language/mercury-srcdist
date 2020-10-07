@@ -1,0 +1,63 @@
+:- module getopt_io.
+:- interface.
+:- use_module bool.
+:- use_module char.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module set.
+:- type maybe_option_table(OptionType)
+    --->    ok(getopt_io.option_table(OptionType))
+    ;       error(string).
+:- type maybe_option_table_se(OptionType)
+    --->    ok(getopt_io.option_table(OptionType))
+    ;       error(getopt_io.option_error(OptionType)).
+:- type option_data
+    --->    bool(bool.bool)
+    ;       int(int)
+    ;       string(string)
+    ;       maybe_int(maybe.maybe(int))
+    ;       maybe_string(maybe.maybe(string))
+    ;       accumulating(list.list(string))
+    ;       special 
+    ;       bool_special 
+    ;       int_special 
+    ;       string_special 
+    ;       maybe_string_special 
+    ;       file_special .
+:- type option_error(OptionType)
+    --->    unrecognized_option(string)
+    ;       option_error(OptionType, string, getopt_io.option_error_reason).
+:- type option_error_reason
+    --->    unknown_type 
+    ;       requires_argument 
+    ;       does_not_allow_argument(string)
+    ;       cannot_negate 
+    ;       special_handler_failed 
+    ;       special_handler_missing 
+    ;       special_handler_error(string)
+    ;       requires_numeric_argument(string)
+    ;       file_special_cannot_open(string, io.error)
+    ;       file_special_cannot_read(string, io.error)
+    ;       file_special_contains_non_option_args(string).
+:- type option_ops(OptionType)
+    --->    option_ops(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.option_data))
+    ;       option_ops(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.option_data), pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType)))
+    ;       option_ops_multi(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.option_data))
+    ;       option_ops_multi(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.option_data), pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType))).
+:- type option_ops_track(OptionType)
+    --->    option_ops_track(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType), set.set(OptionType))).
+:- type option_ops_userdata(OptionType, UserDataType)
+    --->    option_ops_userdata(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType), UserDataType, UserDataType)).
+:- type option_table(OptionType) == map.map(OptionType, getopt_io.option_data).
+:- type special_data
+    --->    none 
+    ;       bool(bool.bool)
+    ;       int(int)
+    ;       string(string)
+    ;       maybe_string(maybe.maybe(string)).
+:- inst (option_ops) for getopt_io.option_ops/1 == bound(option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet)) ; option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet))).
+:- inst (option_ops_track) for getopt_io.option_ops_track/1 == bound(option_ops_track((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet))).
+:- inst (option_ops_userdata) for getopt_io.option_ops_userdata/2 == bound(option_ops_userdata((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet))).
+:- type_representation(option_table(V_1), is_eqv_to(map.map(V_1, getopt_io.option_data))).

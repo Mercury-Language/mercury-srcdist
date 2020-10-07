@@ -1,0 +1,36 @@
+:- module (mdb.listing).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- pragma foreign_import_module("C", (mdb.listing)).
+:- pragma foreign_import_module("C#", (mdb.listing)).
+:- pragma foreign_import_module("Java", (mdb.listing)).
+:- pragma foreign_import_module("Erlang", (mdb.listing)).
+:- type c_file_ptr.
+:- type file_name == string.
+:- type line_no == int.
+:- type path_name == string.
+:- type search_path.
+:- pred clear_list_path(mdb.listing.search_path, mdb.listing.search_path).
+:- mode clear_list_path((builtin.in), (builtin.out)) is det.
+:- func get_list_path(mdb.listing.search_path) = list.list(mdb.listing.path_name).
+:- mode get_list_path((builtin.in)) = (builtin.out) is det.
+:- pred list_file(mdb.listing.c_file_ptr, mdb.listing.c_file_ptr, mdb.listing.file_name, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.search_path, io.io, io.io).
+:- mode list_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred list_file_portable(io.output_stream, io.output_stream, mdb.listing.file_name, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.search_path, io.io, io.io).
+:- mode list_file_portable((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred list_file_with_command(mdb.listing.c_file_ptr, mdb.listing.c_file_ptr, string, mdb.listing.file_name, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.line_no, mdb.listing.search_path, io.io, io.io).
+:- mode list_file_with_command((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func new_list_path = mdb.listing.search_path.
+:- pred pop_list_path(mdb.listing.search_path, mdb.listing.search_path).
+:- mode pop_list_path((builtin.in), (builtin.out)) is det.
+:- pred push_list_path(mdb.listing.path_name, mdb.listing.search_path, mdb.listing.search_path).
+:- mode push_list_path((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_list_path(list.list(mdb.listing.path_name), mdb.listing.search_path, mdb.listing.search_path).
+:- mode set_list_path((builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- pragma foreign_type(c, c_file_ptr, "FILE *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, c_file_ptr, "java.lang.Object").
+:- pragma foreign_type(csharp, c_file_ptr, "object").
+:- pragma foreign_type(erlang, c_file_ptr, "").
+:- type search_path == list.list(mdb.listing.path_name).

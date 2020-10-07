@@ -1,0 +1,13 @@
+:- module (mdb.interactive_query).
+:- interface.
+:- type imports.
+:- type options_string.
+:- type query_type
+	where	type_is_abstract_enum(2).
+:- type_representation(bindings, is_eqv_to(map(string, univ))).
+:- type_representation(imports, is_eqv_to(list(string))).
+:- type_representation(options_string, is_eqv_to(string)).
+:- type_representation(query_type, du_repn(enum("normal_query", "cc_query", ["io_query"],  no_c_j_cs_e))).
+:- type_representation(run_cc_pred, is_eqv_to(pred(bindings, bindings, bool))).
+:- type_representation(run_io_pred, is_eqv_to(pred(bindings, bindings, bool, io, io))).
+:- type_representation(run_normal_pred, is_eqv_to(pred(bindings, bindings, bool))).
