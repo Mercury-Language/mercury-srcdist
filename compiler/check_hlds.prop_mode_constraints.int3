@@ -1,0 +1,4 @@
+:- module (check_hlds.prop_mode_constraints).
+:- interface.
+:- type pred_constraints_map.
+:- type_representation(pred_constraints_map, is_eqv_to(map(pred_id, {containing_goal_map, mode_constraints}))).

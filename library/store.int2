@@ -1,0 +1,41 @@
+:- module store.
+:- interface.
+:- use_module io.
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_mutvar(T) == store.generic_mutvar(T, io.io).
+:- type io_ref(T, S) == store.generic_ref(T, io.io).
+:- type store(S).
+:- type store_mutvar(T, S) == store.generic_mutvar(T, store.store(S)).
+:- type store_ref(T, S) == store.generic_ref(T, store.store(S)).
+:- typeclass store(T).
+:- instance (store.store(io.io)).
+:- instance (store.store(store.store(S))).
+:- type_representation(generic_mutvar(V_1, V_2), du_repn(notag("mutvar", private_builtin.ref(V_1),  c_j_cs_e(no_foreign, foreign_type("mutvar.Mutvar", []), foreign_type("object[]", []), foreign_type("", []))))).
+:- type_representation(generic_ref(V_1, V_2), du_repn(notag("ref", private_builtin.ref(V_1),  c_j_cs_e(no_foreign, foreign_type("store.Ref", []), foreign_type("store.Ref", []), no_foreign)))).
+:- type_representation(io_mutvar(V_1), is_eqv_to(store.generic_mutvar(V_1, io.io))).
+:- type_representation(io_ref(V_1, V_2), is_eqv_to(store.generic_ref(V_1, io.io))).
+:- type_representation(store_mutvar(V_1, V_2), is_eqv_to(store.generic_mutvar(V_1, store.store(V_2)))).
+:- type_representation(store_ref(V_1, V_2), is_eqv_to(store.generic_ref(V_1, store.store(V_2)))).
+:- implementation.
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- type generic_mutvar(T, S)
+    --->    mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_mutvar(T, S), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, generic_mutvar(T, S), "object[]").
+:- pragma foreign_type(erlang, generic_mutvar(T, S), "").
+:- type generic_ref(T, S)
+    --->    ref(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_ref(T, S), "store.Ref").
+:- pragma foreign_type(csharp, generic_ref(T, S), "store.Ref").
+:- pragma foreign_type(c, store(S), "MR_Word", [can_pass_as_mercury_type])
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(java, store(S), "int", [can_pass_as_mercury_type])
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, store(S), "int", [can_pass_as_mercury_type])
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, store(S), "", [can_pass_as_mercury_type])
+    where   type_is_abstract_noncanonical.
