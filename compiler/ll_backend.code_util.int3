@@ -1,0 +1,3 @@
+:- module (ll_backend.code_util).
+:- interface.
+:- type for_from_where.

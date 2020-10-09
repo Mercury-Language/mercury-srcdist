@@ -1,0 +1,5 @@
+:- module ((transform_hlds.implicit_parallelism).introduce_parallelism).
+:- interface.
+:- type_representation(candidate_par_conjunction, is_eqv_to(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(mdbcomp.feedback.automatic_parallelism.pard_goal))).
+:- type_representation(module_candidate_par_conjs_map, is_eqv_to(map.map(transform_hlds.implicit_parallelism.introduce_parallelism.intra_module_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc))).
+:- type_representation(seq_conj, is_eqv_to(mdbcomp.feedback.automatic_parallelism.seq_conj(mdbcomp.feedback.automatic_parallelism.pard_goal))).

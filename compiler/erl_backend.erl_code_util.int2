@@ -1,0 +1,8 @@
+:- module (erl_backend.erl_code_util).
+:- interface.
+:- type erl_gen_info.
+:- type opt_dummy_args
+    --->    opt_dummy_args 
+    ;       no_opt_dummy_args .
+:- type_representation(erl_gen_info, is_word_aligned_ptr).
+:- type_representation(opt_dummy_args, du_repn(enum("opt_dummy_args", "no_opt_dummy_args", [],  no_c_j_cs_e))).
