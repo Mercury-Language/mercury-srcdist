@@ -1,0 +1,6 @@
+:- module (mdb.sized_pretty).
+:- interface.
+:- type_representation(size_annotated_args(V_1), is_eqv_to(list.list(maybe.maybe(pair.pair(V_1, mdb.sized_pretty.size_annotated_term(V_1)))))).
+:- implementation.
+:- type no_measure_params
+    --->    no_measure_params .
