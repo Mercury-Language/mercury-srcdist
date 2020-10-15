@@ -1,0 +1,33 @@
+:- module (bit_buffer.read).
+:- interface.
+:- use_module bitmap.
+:- use_module io.
+:- type io_read_buffer == bit_buffer.read.read_buffer(io.binary_input_stream, io.state, io.error).
+:- type read_buffer == bit_buffer.read.read_buffer(bit_buffer.error_stream, bit_buffer.error_state, bit_buffer.error_stream_error).
+:- type read_buffer(Stream, State, Error).
+:- inst (uniq_read_buffer) == ground.
+:- mode (read_buffer_di) == builtin.in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_ui) == builtin.in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_uo) == builtin.out(((bit_buffer.read).uniq_read_buffer)).
+:- pred buffer_status(stream.result(Error), bit_buffer.read.read_buffer(Stream, State, Error), bit_buffer.read.read_buffer(Stream, State, Error)) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode buffer_status((builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)) is det.
+:- pred finalize(bit_buffer.read.read_buffer(Stream, State, Error), Stream, State, bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode finalize(((bit_buffer.read).read_buffer_di), (builtin.out), (builtin.uo), (bitmap.bitmap_uo), (builtin.out), (builtin.out)) is det.
+:- pred get_bit(stream.result(bool.bool, Error), bit_buffer.read.read_buffer(Stream, State, Error), bit_buffer.read.read_buffer(Stream, State, Error)) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode get_bit((builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)) is det.
+:- pred get_bitmap(bitmap.bitmap, bitmap.bitmap, bitmap.num_bits, stream.res(Error), bit_buffer.read.read_buffer(Stream, State, Error), bit_buffer.read.read_buffer(Stream, State, Error)) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode get_bitmap((bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)) is det.
+:- pred get_bitmap(bitmap.bit_index, bitmap.num_bits, bitmap.bitmap, bitmap.bitmap, bitmap.num_bits, stream.res(Error), bit_buffer.read.read_buffer(Stream, State, Error), bit_buffer.read.read_buffer(Stream, State, Error)) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode get_bitmap((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)) is det.
+:- pred get_bits(bitmap.bit_index, bitmap.num_bits, bitmap.word, bitmap.word, bitmap.num_bits, stream.res(Error), bit_buffer.read.read_buffer(Stream, State, Error), bit_buffer.read.read_buffer(Stream, State, Error)) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode get_bits((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)) is det.
+:- func new(bitmap.num_bytes, Stream, State) = bit_buffer.read.read_buffer(Stream, State, Error) <= (stream.bulk_reader(Stream, bitmap.byte_index, bitmap.bitmap, State, Error)).
+:- mode new((builtin.in), (builtin.in), (builtin.di)) = ((bit_buffer.read).read_buffer_uo) is det.
+:- func new_bitmap_reader(bitmap.bitmap) = bit_buffer.read.read_buffer.
+:- mode new_bitmap_reader((builtin.in)) = ((bit_buffer.read).read_buffer_uo) is det.
+:- func new_bitmap_reader(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) = bit_buffer.read.read_buffer.
+:- mode new_bitmap_reader((builtin.in), (builtin.in), (builtin.in)) = ((bit_buffer.read).read_buffer_uo) is det.
+:- func num_bits_to_byte_boundary(bit_buffer.read.read_buffer(V_1, V_2, V_3)) = bitmap.num_bits.
+:- mode num_bits_to_byte_boundary(((bit_buffer.read).read_buffer_ui)) = (builtin.out) is det.
+:- func num_buffered_bits(bit_buffer.read.read_buffer(V_1, V_2, V_3)) = bitmap.num_bits.
+:- mode num_buffered_bits(((bit_buffer.read).read_buffer_ui)) = (builtin.out) is det.

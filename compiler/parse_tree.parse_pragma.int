@@ -1,0 +1,21 @@
+:- module (parse_tree.parse_pragma).
+:- interface.
+:- use_module cord.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module term.
+:- use_module varset.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.parse_types).
+:- use_module (parse_tree.prog_data).
+:- pred parse_foreign_type_assertions(cord.cord(parse_tree.error_util.format_component), varset.varset, term.term, set.set(parse_tree.prog_data.foreign_type_assertion), set.set(parse_tree.prog_data.foreign_type_assertion), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode parse_foreign_type_assertions((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_to_foreign_language(term.term, libs.globals.foreign_language).
+:- mode term_to_foreign_language((builtin.in), (builtin.out)) is semidet.

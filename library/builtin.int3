@@ -1,0 +1,39 @@
+:- module builtin.
+:- interface.
+:- type c_pointer.
+:- type compare(T).
+:- type comparison_func(T).
+:- type comparison_pred(T).
+:- type comparison_result
+	where	type_is_abstract_enum(2).
+:- type unify(T).
+:- abstract_inst((compare)).
+:- abstract_inst((comparison_func)).
+:- abstract_inst((comparison_func(I))).
+:- abstract_inst((comparison_pred)).
+:- abstract_inst((comparison_pred(I))).
+:- abstract_inst((dead)).
+:- abstract_inst((mostly_dead)).
+:- abstract_inst((unify)).
+:- abstract_mode((di)).
+:- abstract_mode((di(Inst))).
+:- abstract_mode((ia)).
+:- abstract_mode((in)).
+:- abstract_mode((in(Inst))).
+:- abstract_mode((input)).
+:- abstract_mode((mdi)).
+:- abstract_mode((mdi(Inst))).
+:- abstract_mode((mui)).
+:- abstract_mode((muo)).
+:- abstract_mode((oa)).
+:- abstract_mode((out)).
+:- abstract_mode((out(Inst))).
+:- abstract_mode((output)).
+:- abstract_mode((ui)).
+:- abstract_mode((unused)).
+:- abstract_mode((uo)).
+:- type_representation(compare(V_1), is_eqv_to(pred(builtin.comparison_result, V_1, V_1))).
+:- type_representation(comparison_func(V_1), is_eqv_to((func(V_1, V_1) = builtin.comparison_result))).
+:- type_representation(comparison_pred(V_1), is_eqv_to(pred(V_1, V_1, builtin.comparison_result))).
+:- type_representation(comparison_result, du_repn(enum("=", "<", [">"],  no_c_j_cs_e))).
+:- type_representation(unify(V_1), is_eqv_to(pred(V_1, V_1))).

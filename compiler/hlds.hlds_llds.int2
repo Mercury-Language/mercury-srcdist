@@ -1,0 +1,54 @@
+:- module (hlds.hlds_llds).
+:- interface.
+:- use_module map.
+:- use_module (parse_tree.prog_data).
+:- type abs_follow_vars
+    --->    abs_follow_vars(((hlds.hlds_llds).afv_map) :: hlds.hlds_llds.abs_follow_vars_map, ((hlds.hlds_llds).afv_next_non_res_reg_r) :: int, ((hlds.hlds_llds).afv_next_non_res_reg_f) :: int).
+:- type abs_follow_vars_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type abs_locn
+    --->    any_reg 
+    ;       abs_reg(hlds.hlds_llds.reg_type, int)
+    ;       abs_stackvar(int, hlds.hlds_llds.stack_slot_width)
+    ;       abs_parent_stackvar(int, hlds.hlds_llds.stack_slot_width)
+    ;       abs_framevar(int).
+:- type abs_store_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type llds_code_gen_details.
+:- type need_across_call
+    --->    need_across_call(((hlds.hlds_llds).call_forward_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_llds).call_resume_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_llds).call_nondet_vars) :: parse_tree.set_of_var.set_of_progvar).
+:- type need_for_loop_control
+    --->    need_for_loop_control(((hlds.hlds_llds).loop_control_distinct_stackvars) :: list.list(parse_tree.set_of_var.set_of_progvar)).
+:- type need_in_par_conj
+    --->    need_in_par_conj(((hlds.hlds_llds).par_conj_engine_vars) :: parse_tree.set_of_var.set_of_progvar).
+:- type need_in_resume
+    --->    need_in_resume(((hlds.hlds_llds).resume_vars_on_stack) :: bool.bool, ((hlds.hlds_llds).resume_resume_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_llds).resume_nondet_vars) :: parse_tree.set_of_var.set_of_progvar).
+:- type reg_type
+    --->    reg_r 
+    ;       reg_f .
+:- type resume_locs
+    --->    resume_locs_orig_only 
+    ;       resume_locs_stack_only 
+    ;       resume_locs_orig_then_stack 
+    ;       resume_locs_stack_then_orig .
+:- type resume_point
+    --->    resume_point(parse_tree.set_of_var.set_of_progvar, hlds.hlds_llds.resume_locs)
+    ;       no_resume_point .
+:- type stack_slot
+    --->    det_slot(int, hlds.hlds_llds.stack_slot_width)
+    ;       parent_det_slot(int, hlds.hlds_llds.stack_slot_width)
+    ;       nondet_slot(int).
+:- type stack_slot_width
+    --->    single_width 
+    ;       double_width .
+:- type stack_slots == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.stack_slot).
+:- type_representation(abs_follow_vars, is_word_aligned_ptr).
+:- type_representation(abs_follow_vars_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn))).
+:- type_representation(abs_store_map, is_eqv_to(map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn))).
+:- type_representation(llds_code_gen_details, is_word_aligned_ptr).
+:- type_representation(need_across_call, is_word_aligned_ptr).
+:- type_representation(need_for_loop_control, du_repn(notag("need_for_loop_control", list.list(parse_tree.set_of_var.set_of_progvar),  no_c_j_cs_e))).
+:- type_representation(need_in_par_conj, du_repn(notag("need_in_par_conj", parse_tree.set_of_var.set_of_progvar,  no_c_j_cs_e))).
+:- type_representation(need_in_resume, is_word_aligned_ptr).
+:- type_representation(reg_type, du_repn(enum("reg_r", "reg_f", [],  no_c_j_cs_e))).
+:- type_representation(resume_locs, du_repn(enum("resume_locs_orig_only", "resume_locs_stack_only", ["resume_locs_orig_then_stack", "resume_locs_stack_then_orig"],  no_c_j_cs_e))).
+:- type_representation(stack_slot_width, du_repn(enum("single_width", "double_width", [],  no_c_j_cs_e))).
+:- type_representation(stack_slots, is_eqv_to(map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.stack_slot))).
