@@ -1,0 +1,50 @@
+:- module (string.format).
+:- interface.
+:- use_module list.
+:- use_module (string.parse_util).
+:- pred format_char_component_nowidth(string.parse_util.string_format_flags, char.char, string).
+:- mode format_char_component_nowidth((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_char_component_width(string.parse_util.string_format_flags, int, char.char, string).
+:- mode format_char_component_width((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_float_component_nowidth_noprec(string.parse_util.string_format_flags, string.parse_util.string_format_float_kind, float, string).
+:- mode format_float_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_float_component_nowidth_prec(string.parse_util.string_format_flags, int, string.parse_util.string_format_float_kind, float, string).
+:- mode format_float_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_float_component_width_noprec(string.parse_util.string_format_flags, int, string.parse_util.string_format_float_kind, float, string).
+:- mode format_float_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_float_component_width_prec(string.parse_util.string_format_flags, int, int, string.parse_util.string_format_float_kind, float, string).
+:- mode format_float_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_impl(string, list.list(string.poly_type), string).
+:- mode format_impl((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_signed_int_component_nowidth_noprec(string.parse_util.string_format_flags, int, string).
+:- mode format_signed_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_signed_int_component_nowidth_prec(string.parse_util.string_format_flags, int, int, string).
+:- mode format_signed_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_signed_int_component_width_noprec(string.parse_util.string_format_flags, int, int, string).
+:- mode format_signed_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_signed_int_component_width_prec(string.parse_util.string_format_flags, int, int, int, string).
+:- mode format_signed_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_string_component_nowidth_noprec(string.parse_util.string_format_flags, string, string).
+:- mode format_string_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_string_component_nowidth_prec(string.parse_util.string_format_flags, int, string, string).
+:- mode format_string_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_string_component_width_noprec(string.parse_util.string_format_flags, int, string, string).
+:- mode format_string_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_string_component_width_prec(string.parse_util.string_format_flags, int, int, string, string).
+:- mode format_string_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_uint_component_nowidth_noprec(string.parse_util.string_format_flags, string.parse_util.string_format_int_base, uint, string).
+:- mode format_uint_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_uint_component_nowidth_prec(string.parse_util.string_format_flags, int, string.parse_util.string_format_int_base, uint, string).
+:- mode format_uint_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_uint_component_width_noprec(string.parse_util.string_format_flags, int, string.parse_util.string_format_int_base, uint, string).
+:- mode format_uint_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_uint_component_width_prec(string.parse_util.string_format_flags, int, int, string.parse_util.string_format_int_base, uint, string).
+:- mode format_uint_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_unsigned_int_component_nowidth_noprec(string.parse_util.string_format_flags, string.parse_util.string_format_int_base, int, string).
+:- mode format_unsigned_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_unsigned_int_component_nowidth_prec(string.parse_util.string_format_flags, int, string.parse_util.string_format_int_base, int, string).
+:- mode format_unsigned_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_unsigned_int_component_width_noprec(string.parse_util.string_format_flags, int, string.parse_util.string_format_int_base, int, string).
+:- mode format_unsigned_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_unsigned_int_component_width_prec(string.parse_util.string_format_flags, int, int, string.parse_util.string_format_int_base, int, string).
+:- mode format_unsigned_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

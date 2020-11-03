@@ -1,0 +1,10 @@
+:- module (ll_backend.opt_util).
+:- interface.
+:- type instrmap.
+:- type lvalmap.
+:- type succmap.
+:- type tailmap.
+:- type_representation(instrmap, is_eqv_to(map(label, instruction))).
+:- type_representation(lvalmap, is_eqv_to(map(label, maybe(instruction)))).
+:- type_representation(succmap, is_eqv_to(map(label, bool))).
+:- type_representation(tailmap, is_eqv_to(map(label, list(instruction)))).
