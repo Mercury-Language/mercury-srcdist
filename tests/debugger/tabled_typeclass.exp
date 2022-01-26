@@ -1,0 +1,53 @@
+      E1:     C1 CALL pred tabled_typeclass.main/2-0 (det) tabled_typeclass.m:27
+mdb> echo on
+Command echo enabled.
+mdb> context none
+Contexts will not be printed.
+mdb> register --quiet
+mdb> table_io allow
+mdb> table_io start
+I/O tabling started.
+mdb> finish
+1
+2
+3
+4
+5
+6
+      E2:     C1 EXIT pred tabled_typeclass.main/2-0 (det)
+mdb> print io limits
+I/O tabling has recorded actions 0 to 29.
+mdb> print -m 100 io *
+action 0: tc_action("the arguments are not available due to the presence of one or more type class constraints")
+action 1: output_stream_2(stream(1, output, preopen, stdout))
+action 2: do_write_int(<<foreign(stream, 0xXXXX)>>, 1, <<foreign(system_error, 0xXXXX)>>)
+action 3: output_stream_2(stream(1, output, preopen, stdout))
+action 4: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+action 5: notc_action(status, status_success, 2)
+action 6: output_stream_2(stream(1, output, preopen, stdout))
+action 7: do_write_int(<<foreign(stream, 0xXXXX)>>, 2, <<foreign(system_error, 0xXXXX)>>)
+action 8: output_stream_2(stream(1, output, preopen, stdout))
+action 9: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+action 10: tc_action("the arguments are not available due to the presence of one or more type class constraints")
+action 11: output_stream_2(stream(1, output, preopen, stdout))
+action 12: do_write_int(<<foreign(stream, 0xXXXX)>>, 3, <<foreign(system_error, 0xXXXX)>>)
+action 13: output_stream_2(stream(1, output, preopen, stdout))
+action 14: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+action 15: notc_action(status, status_no_memory, 4)
+action 16: output_stream_2(stream(1, output, preopen, stdout))
+action 17: do_write_int(<<foreign(stream, 0xXXXX)>>, 4, <<foreign(system_error, 0xXXXX)>>)
+action 18: output_stream_2(stream(1, output, preopen, stdout))
+action 19: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+action 20: tc_action("the arguments are not available due to the presence of one or more type class constraints")
+action 21: output_stream_2(stream(1, output, preopen, stdout))
+action 22: do_write_int(<<foreign(stream, 0xXXXX)>>, 5, <<foreign(system_error, 0xXXXX)>>)
+action 23: output_stream_2(stream(1, output, preopen, stdout))
+action 24: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+action 25: notc_action(status, status_null_pointer, 6)
+action 26: output_stream_2(stream(1, output, preopen, stdout))
+action 27: do_write_int(<<foreign(stream, 0xXXXX)>>, 6, <<foreign(system_error, 0xXXXX)>>)
+action 28: output_stream_2(stream(1, output, preopen, stdout))
+action 29: do_write_char(<<foreign(stream, 0xXXXX)>>, '\n', <<foreign(system_error, 0xXXXX)>>)
+mdb> retry -f
+      E1:     C1 CALL pred tabled_typeclass.main/2-0 (det)
+mdb> continue
