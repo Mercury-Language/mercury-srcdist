@@ -1,0 +1,2 @@
+:- module ((transform_hlds.rbmm).points_to_analysis).
+:- interface.
