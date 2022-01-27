@@ -1,0 +1,2 @@
+:- module (check_hlds.inst_mode_type_prop).
+:- interface.

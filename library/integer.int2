@@ -1,0 +1,3 @@
+:- module integer.
+:- interface.
+:- type integer.

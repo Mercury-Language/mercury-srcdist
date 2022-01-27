@@ -1,0 +1,77 @@
+:- module (check_hlds.inst_test).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.prog_data).
+:- pred bound_inst_list_is_free(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.bound_inst)).
+:- mode bound_inst_list_is_free((builtin.in), (builtin.in)) is semidet.
+:- pred bound_inst_list_is_mostly_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.bound_inst)).
+:- mode bound_inst_list_is_mostly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred bound_inst_list_is_not_fully_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.bound_inst)).
+:- mode bound_inst_list_is_not_fully_unique((builtin.in), (builtin.in)) is semidet.
+:- pred bound_inst_list_is_not_partly_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.bound_inst)).
+:- mode bound_inst_list_is_not_partly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred bound_inst_list_is_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.bound_inst)).
+:- mode bound_inst_list_is_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_contains_any(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_any((builtin.in), (builtin.in)) is semidet.
+:- pred inst_contains_higher_order(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_higher_order((builtin.in), (builtin.in)) is semidet.
+:- pred inst_contains_inst_name(hlds.hlds_module.module_info, parse_tree.prog_data.inst_name, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_inst_name((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_any(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_any((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_bound(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_bound((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_bound_to_functors(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, list.list(parse_tree.prog_data.bound_inst)).
+:- mode inst_is_bound_to_functors((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred inst_is_clobbered(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_clobbered((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_free(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_free((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_ground(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_ground((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_ground_or_any(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_ground_or_any((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_mostly_unique(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_mostly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_not_fully_unique(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_not_fully_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_not_partly_unique(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_not_partly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_is_unique(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_is_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_free(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_free((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_ground(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_ground((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_ground_or_any(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_ground_or_any((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_ground_or_any_or_dead(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.is_live), list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_ground_or_any_or_dead((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_ground_or_dead(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.is_live), list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_ground_or_dead((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_mostly_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_mostly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_not_fully_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_not_fully_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_not_partly_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_not_partly_unique((builtin.in), (builtin.in)) is semidet.
+:- pred inst_list_is_unique(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_is_unique((builtin.in), (builtin.in)) is semidet.
+:- func inst_may_restrict_cons_ids(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst) = bool.bool.
+:- pred inst_results_bound_inst_list_is_ground(hlds.hlds_module.module_info, parse_tree.prog_data.inst_test_results, list.list(parse_tree.prog_data.bound_inst)).
+:- mode inst_results_bound_inst_list_is_ground((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred inst_results_bound_inst_list_is_ground_mt(hlds.hlds_module.module_info, maybe.maybe(parse_tree.prog_data.mer_type), parse_tree.prog_data.inst_test_results, list.list(parse_tree.prog_data.bound_inst)).
+:- mode inst_results_bound_inst_list_is_ground_mt((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred inst_results_bound_inst_list_is_ground_or_any(hlds.hlds_module.module_info, parse_tree.prog_data.inst_test_results, list.list(parse_tree.prog_data.bound_inst)).
+:- mode inst_results_bound_inst_list_is_ground_or_any((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred maybe_any_to_bound(hlds.hlds_module.module_info, maybe.maybe(parse_tree.prog_data.mer_type), parse_tree.prog_data.uniqueness, parse_tree.prog_data.ho_inst_info, parse_tree.prog_data.mer_inst).
+:- mode maybe_any_to_bound((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred var_inst_contains_any(hlds.hlds_module.module_info, hlds.instmap.instmap, parse_tree.prog_data.prog_var).
+:- mode var_inst_contains_any((builtin.in), (builtin.in), (builtin.in)) is semidet.

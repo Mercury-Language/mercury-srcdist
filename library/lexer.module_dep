@@ -1,0 +1,14 @@
+module(2, "lexer.m",
+	lexer,
+	{},
+	{builtin, char, integer, io, private_builtin},
+	{int, list, require, string, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - lexer, "C#" - lexer, "Java" - lexer},
+	no_foreign_export,
+	no_main,
+	{}
+).
