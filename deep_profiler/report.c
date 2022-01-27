@@ -1,0 +1,15265 @@
+/*
+** Automatically generated from `report.m'
+** by the Mercury compiler,
+** version rotd-2016-06-09
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module report. */
+/* :- implementation. */
+
+/*
+INIT mercury__report__init
+ENDINIT
+*/
+
+#include "report.mih"
+
+
+#include "analysis_utils.mih"
+#include "coverage.mih"
+#include "exclude.mih"
+#include "mdbcomp.mih"
+#include "measurement_units.mih"
+#include "measurements.mih"
+#include "profile.mih"
+#include "query.mih"
+#include "var_use_analysis.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_PseudoTypeInfo report__report__field_types_ancestor_desc_0_0[4];
+
+static const MR_ConstString report__report__field_names_ancestor_desc_0_0[4];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_ancestor_desc_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_ancestor_desc_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_ancestor_desc_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_ancestor_desc_0[1];
+
+static const MR_Integer report__report__functor_number_map_ancestor_desc_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__type_ctor_info_proc_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_desc_0_0[10];
+
+static const MR_ConstString report__report__field_names_call_site_desc_0_0[10];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_desc_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_desc_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_desc_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_desc_0[1];
+
+static const MR_Integer report__report__functor_number_map_call_site_desc_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_dynamic_dump_info_0_0[4];
+
+static const MR_ConstString report__report__field_names_call_site_dynamic_dump_info_0_0[4];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_dynamic_dump_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_dynamic_dump_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_dynamic_dump_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_dynamic_dump_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_call_site_dynamic_dump_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_var_use_and_name_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_dynamic_var_use_info_0_0[2];
+
+static const MR_ConstString report__report__field_names_call_site_dynamic_var_use_info_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_dynamic_var_use_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_dynamic_var_use_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_dynamic_var_use_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_dynamic_var_use_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_call_site_dynamic_var_use_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_info_1report__type_ctor_info_normal_callee_id_0;
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_perf_0_0[3];
+
+static const MR_ConstString report__report__field_names_call_site_perf_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_perf_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_perf_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_perf_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_perf_0[1];
+
+static const MR_Integer report__report__functor_number_map_call_site_perf_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_callee_1profile__type_ctor_info_proc_static_ptr_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_static_dump_info_0_0[6];
+
+static const MR_ConstString report__report__field_names_call_site_static_dump_info_0_0[6];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_static_dump_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_static_dump_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_static_dump_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_static_dump_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_call_site_static_dump_info_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_callers_counts_0_0[2];
+
+static const MR_ConstString report__report__field_names_callers_counts_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_callers_counts_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_callers_counts_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_callers_counts_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_callers_counts_0[1];
+
+static const MR_Integer report__report__functor_number_map_callers_counts_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_callee_1report__type_ctor_info_proc_desc_0;
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_call_site_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_call_site_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_call_site_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_call_site_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_call_site_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_call_site_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_call_site_report_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_proc_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_desc_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_desc_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_desc_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_desc_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_desc_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_desc_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_desc_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1profile__type_ctor_info_proc_dynamic_ptr_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_dump_info_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_dump_info_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_dump_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_dump_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_dump_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_dump_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_dump_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_call_site_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_proc_dynamic_report_0_0[2];
+
+static const MR_ConstString report__report__field_names_clique_proc_dynamic_report_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_proc_dynamic_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_proc_dynamic_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_proc_dynamic_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_proc_dynamic_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_proc_dynamic_report_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_proc_dynamic_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_proc_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_proc_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_proc_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_proc_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_proc_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_proc_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_proc_report_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_recursion_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_recursion_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_recursion_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_recursion_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_recursion_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_recursion_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_recursion_report_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_proc_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_clique_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_clique_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_data_struct_name_0[1];
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_data_struct_name_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_0[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_0;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_menu_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_1[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_1;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_2[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_2;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_recursion_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_3[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_3;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_recursion_types_frequency_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_4[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_4;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_program_modules_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_5[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_5;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_6[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_6;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_getter_setters_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_7[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_7;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_rep_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_8[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_8;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_top_procs_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_9[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_9;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_10[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_10;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_procrep_coverage_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_11[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_11;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_callers_report_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_12[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_12;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_static_dump_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_13[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_13;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_dynamic_dump_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_14[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_14;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_static_dump_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_15[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_15;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_dump_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_16[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_16;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_dump_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_17[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_17;
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_var_use_info_0builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_18[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_18;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_2[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_3[16];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_deep_report_0[4];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_deep_report_0[19];
+
+static const MR_Integer report__report__functor_number_map_deep_report_0[19];
+
+static const MR_Integer report__report__functor_number_map_field_name_0[1];
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_field_name_0;
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_getter_or_setter_0_0;
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_getter_or_setter_0_1;
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_getter_or_setter_0[2];
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_getter_or_setter_0[2];
+
+static const MR_Integer report__report__functor_number_map_getter_or_setter_0[2];
+
+static const MR_FA_PseudoTypeInfo_Struct2 report__tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 report__tree234__pti_tree234_2__plain_report__type_ctor_info_data_struct_name_0__pseudo_tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1;
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1unit__type_ctor_info_unit_0;
+
+static const MR_FA_TypeInfo_Struct2 report__report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0;
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0;
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_data_struct_name_0tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_0[3];
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_1[1];
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_1[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_1;
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_2[1];
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_2[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_2;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_2[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_gs_field_info_2[3];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_gs_field_info_2[3];
+
+static const MR_Integer report__report__functor_number_map_gs_field_info_2[3];
+
+static const MR_PseudoTypeInfo report__report__field_types_inheritable_perf_0_0[13];
+
+static const MR_ConstString report__report__field_names_inheritable_perf_0_0[13];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_inheritable_perf_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_inheritable_perf_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_inheritable_perf_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_inheritable_perf_0[1];
+
+static const MR_Integer report__report__functor_number_map_inheritable_perf_0[1];
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_maybe_have_module_rep_0_0;
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_maybe_have_module_rep_0_1;
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_maybe_have_module_rep_0[2];
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_maybe_have_module_rep_0[2];
+
+static const MR_Integer report__report__functor_number_map_maybe_have_module_rep_0[2];
+
+static const MR_PseudoTypeInfo report__report__field_types_menu_report_0_0[10];
+
+static const MR_ConstString report__report__field_names_menu_report_0_0[10];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_menu_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_menu_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_menu_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_menu_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_menu_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_message_report_0[1];
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_message_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_module_active_0_0[2];
+
+static const MR_ConstString report__report__field_names_module_active_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_active_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_active_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_active_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_active_0[1];
+
+static const MR_Integer report__report__functor_number_map_module_active_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_module_getter_setters_report_0_0[2];
+
+static const MR_ConstString report__report__field_names_module_getter_setters_report_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_getter_setters_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_getter_setters_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_getter_setters_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_getter_setters_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_module_getter_setters_report_0[1];
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_module_is_active_0_0;
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_module_is_active_0_1;
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_module_is_active_0[2];
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_module_is_active_0[2];
+
+static const MR_Integer report__report__functor_number_map_module_is_active_0[2];
+
+static const MR_PseudoTypeInfo report__report__field_types_module_rep_report_0_0[2];
+
+static const MR_ConstString report__report__field_names_module_rep_report_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_rep_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_rep_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_rep_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_rep_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_module_rep_report_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_proc_active_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_active_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_module_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_module_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_module_report_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_normal_callee_id_0_0[2];
+
+static const MR_ConstString report__report__field_names_normal_callee_id_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_normal_callee_id_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_normal_callee_id_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_normal_callee_id_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_normal_callee_id_0[1];
+
+static const MR_Integer report__report__functor_number_map_normal_callee_id_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__type_ctor_info_inheritable_perf_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_perf_row_data_1_0[9];
+
+static const MR_ConstString report__report__field_names_perf_row_data_1_0[9];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_perf_row_data_1_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_perf_row_data_1_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_perf_row_data_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_perf_row_data_1[1];
+
+static const MR_Integer report__report__functor_number_map_perf_row_data_1[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_active_0_0[2];
+
+static const MR_ConstString report__report__field_names_proc_active_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_active_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_active_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_active_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_active_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_active_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_0[1];
+
+static const MR_ConstString report__report__field_names_proc_callers_0_0[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_1[1];
+
+static const MR_ConstString report__report__field_names_proc_callers_0_1[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_1;
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1builtin__type_ctor_info_string_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_2[1];
+
+static const MR_ConstString report__report__field_names_proc_callers_0_2[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_2;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_3[1];
+
+static const MR_ConstString report__report__field_names_proc_callers_0_3[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_3;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_2[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_3[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_callers_0[4];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_callers_0[4];
+
+static const MR_Integer report__report__functor_number_map_proc_callers_0[4];
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_report_0_0[6];
+
+static const MR_ConstString report__report__field_names_proc_callers_report_0_0[6];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_callers_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_callers_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_callers_report_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_desc_0_0[6];
+
+static const MR_ConstString report__report__field_names_proc_desc_0_0[6];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_desc_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_desc_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_desc_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_desc_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_desc_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1profile__type_ctor_info_call_site_array_slot_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1coverage__type_ctor_info_coverage_point_0;
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1list__ti_list_1coverage__type_ctor_info_coverage_point_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_dynamic_dump_info_0_0[8];
+
+static const MR_ConstString report__report__field_names_proc_dynamic_dump_info_0_0[8];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_dynamic_dump_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_dynamic_dump_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_dynamic_dump_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_dynamic_dump_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_dynamic_dump_info_0[1];
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_proc_is_active_0_0;
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_proc_is_active_0_1;
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_proc_is_active_0[2];
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_proc_is_active_0[2];
+
+static const MR_Integer report__report__functor_number_map_proc_is_active_0[2];
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_callers_counts_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_call_site_perf_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_report_0_0[3];
+
+static const MR_ConstString report__report__field_names_proc_report_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_report_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_static_dump_info_0_0[8];
+
+static const MR_ConstString report__report__field_names_proc_static_dump_info_0_0[8];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_static_dump_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_static_dump_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_static_dump_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_static_dump_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_proc_static_dump_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__mdbcomp__program_representation__ti_proc_rep_1mdbcomp__goal_path__type_ctor_info_goal_id_0;
+
+static const MR_FA_TypeInfo_Struct1 report__mdbcomp__goal_path__ti_goal_attr_array_1coverage__type_ctor_info_coverage_info_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_procrep_coverage_info_0_0[3];
+
+static const MR_ConstString report__report__field_names_procrep_coverage_info_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_procrep_coverage_info_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_procrep_coverage_info_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_procrep_coverage_info_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_procrep_coverage_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_procrep_coverage_info_0[1];
+
+static const MR_Integer report__report__functor_number_map_program_modules_report_0[1];
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_module_active_0;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_module_active_0;
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_program_modules_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_level_report_0_0[5];
+
+static const MR_ConstString report__report__field_names_recursion_level_report_0_0[5];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_level_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_level_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_level_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_level_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_recursion_level_report_0[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_0;
+
+static const MR_VA_TypeInfo_Struct2 report____vti_func_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_1[5];
+
+static const MR_ConstString report__report__field_names_recursion_type_0_1[5];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_1;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_2[2];
+
+static const MR_ConstString report__report__field_names_recursion_type_0_2[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_2;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_3[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_0_3[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_3;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_recursion_level_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_4[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_0_4[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_4;
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_5[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_0_5[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_5;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_2[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_3[3];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_0[4];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_0[6];
+
+static const MR_Integer report__report__functor_number_map_recursion_type_0[6];
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__ti_perf_row_data_1unit__type_ctor_info_unit_0;
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2profile__type_ctor_info_proc_static_ptr_0report__type_ctor_info_recursion_type_proc_freq_data_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_freq_data_0_0[4];
+
+static const MR_ConstString report__report__field_names_recursion_type_freq_data_0_0[4];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_freq_data_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_freq_data_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_freq_data_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_freq_data_0[1];
+
+static const MR_Integer report__report__functor_number_map_recursion_type_freq_data_0[1];
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_recursion_type_simple_0report__type_ctor_info_recursion_type_freq_data_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_proc_freq_data_0_0[3];
+
+static const MR_ConstString report__report__field_names_recursion_type_proc_freq_data_0_0[3];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_proc_freq_data_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_proc_freq_data_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_proc_freq_data_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_proc_freq_data_0[1];
+
+static const MR_Integer report__report__functor_number_map_recursion_type_proc_freq_data_0[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_0;
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_1;
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_2;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_3[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_3[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_3;
+
+static const MR_FA_TypeInfo_Struct1 report__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_4[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_4[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_4;
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_5[1];
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_5[1];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_5;
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_6;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_0[4];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_1[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_2[1];
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_3[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_simple_0[4];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_simple_0[7];
+
+static const MR_Integer report__report__functor_number_map_recursion_type_simple_0[7];
+
+static const MR_Integer report__report__functor_number_map_recursion_types_frequency_report_0[1];
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_recursion_types_frequency_report_0;
+
+static const MR_PseudoTypeInfo report__report__field_types_report_ordering_0_0[4];
+
+static const MR_ConstString report__report__field_names_report_ordering_0_0[4];
+
+static const MR_DuArgLocn report__report__field_locns_report_ordering_0_0[4];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_report_ordering_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_report_ordering_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_report_ordering_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_report_ordering_0[1];
+
+static const MR_Integer report__report__functor_number_map_report_ordering_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_top_procs_report_0_0[2];
+
+static const MR_ConstString report__report__field_names_top_procs_report_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_top_procs_report_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_top_procs_report_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_top_procs_report_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_top_procs_report_0[1];
+
+static const MR_Integer report__report__functor_number_map_top_procs_report_0[1];
+
+static const MR_PseudoTypeInfo report__report__field_types_var_use_and_name_0_0[2];
+
+static const MR_ConstString report__report__field_names_var_use_and_name_0_0[2];
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_var_use_and_name_0_0;
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_var_use_and_name_0_0[1];
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_var_use_and_name_0[1];
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_var_use_and_name_0[1];
+
+static const MR_Integer report__report__functor_number_map_var_use_and_name_0[1];
+
+static MR_bool MR_CALL 
+report____Unify____ancestor_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____ancestor_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____call_site_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____call_site_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____call_site_dynamic_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____call_site_dynamic_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____call_site_dynamic_var_use_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____call_site_dynamic_var_use_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____call_site_perf_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____call_site_perf_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____call_site_static_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____call_site_static_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____callers_counts_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____callers_counts_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_call_site_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_call_site_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_proc_dynamic_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_proc_dynamic_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_proc_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_proc_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_recursion_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_recursion_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____clique_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____clique_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____data_struct_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____data_struct_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____deep_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____deep_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____field_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____field_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____getter_or_setter_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____getter_or_setter_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____gs_ds_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static void MR_CALL 
+report____Compare____gs_ds_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+report____Unify____gs_ds_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____gs_ds_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_info_2_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4);
+
+static void MR_CALL 
+report____Compare____gs_field_info_2_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box * report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4,
+  MR_Box report__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____gs_field_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static void MR_CALL 
+report____Compare____gs_field_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____gs_field_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____inheritable_perf_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____inheritable_perf_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____maybe_have_module_rep_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____maybe_have_module_rep_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____menu_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____menu_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____message_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____message_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____module_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____module_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____module_getter_setters_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____module_getter_setters_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____module_is_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____module_is_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____module_rep_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____module_rep_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____module_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____module_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____normal_callee_id_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____normal_callee_id_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____perf_row_data_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static void MR_CALL 
+report____Compare____perf_row_data_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+report____Unify____proc_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_callers_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_callers_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_callers_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_callers_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_dynamic_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_dynamic_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_is_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_is_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____proc_static_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____proc_static_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____procrep_coverage_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____procrep_coverage_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____program_modules_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____program_modules_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_level_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_level_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_freq_data_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_freq_data_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_histogram_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_histogram_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_proc_freq_data_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_proc_freq_data_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_proc_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_proc_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_simple_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_type_simple_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____recursion_types_frequency_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____recursion_types_frequency_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____report_ordering_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____report_ordering_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____top_procs_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____top_procs_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+report____Unify____var_use_and_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2);
+
+static void MR_CALL 
+report____Compare____var_use_and_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3);
+
+
+static /* final */ const MR_Box report_scalar_common_1[38][2];
+
+static /* final */ const MR_Box report_scalar_common_2[23][3];
+
+static /* final */ const MR_Box report_scalar_common_3[1][4];
+
+
+
+
+static /* final */ const MR_Box report_scalar_common_1[38][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_desc_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_call_site_desc_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_var_use_and_name_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_kind_and_info_1)),
+    ((MR_Box) (&report__report__type_ctor_info_normal_callee_id_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_desc_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[4]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_kind_and_callee_1)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_static_ptr_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_kind_and_callee_1)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_desc_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_desc_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[8]))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_desc_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_dynamic_ptr_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_call_site_report_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_proc_dynamic_report_0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_ancestor_desc_0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[14]))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_proc_report_0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_active_0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[18]))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&report__report__type_ctor_info_inheritable_perf_0))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[21]))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[1]))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_array_slot_0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&coverage__coverage__type_ctor_info_coverage_point_0))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&report_scalar_common_1[26]))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_callers_counts_0))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_call_site_perf_0))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_rep_1)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_attr_array_1)),
+    ((MR_Box) (&coverage__coverage__type_ctor_info_coverage_info_0))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_perf_row_data_1)),
+    ((MR_Box) (&report__report__type_ctor_info_module_active_0))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report_scalar_common_1[32]))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_level_report_0))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&report_scalar_common_1[17]))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+static /* final */ const MR_Box report_scalar_common_2[23][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_menu_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_recursion_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_types_frequency_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_program_modules_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_module_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_module_getter_setters_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_module_rep_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_top_procs_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_procrep_coverage_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_callers_report_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_static_dump_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_proc_dynamic_dump_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_call_site_static_dump_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_call_site_dynamic_dump_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_clique_dump_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&report__report__type_ctor_info_call_site_dynamic_var_use_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&report__report__type_ctor_info_gs_field_info_2)),
+    ((MR_Box) (&report_scalar_common_1[4])),
+    ((MR_Box) (&report_scalar_common_1[17]))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&report__report__type_ctor_info_field_name_0)),
+    ((MR_Box) (&report_scalar_common_2[18]))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&report__report__type_ctor_info_data_struct_name_0)),
+    ((MR_Box) (&report_scalar_common_2[19]))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_static_ptr_0)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_type_proc_freq_data_0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_type_simple_0)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_type_freq_data_0))
+  },
+};
+
+static /* final */ const MR_Box report_scalar_common_3[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_func_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "profile.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_PseudoTypeInfo report__report__field_types_ancestor_desc_0_0[4] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_call_site_desc_0
+};
+
+static const MR_ConstString report__report__field_names_ancestor_desc_0_0[4] = {
+  (MR_String) "ad_caller_clique_ptr",
+  (MR_String) "ad_callee_clique_ptr",
+  (MR_String) "ad_callee_pdesc",
+  (MR_String) "ad_call_site_desc"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_ancestor_desc_0_0 = {
+  (MR_String) "ancestor_desc",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_ancestor_desc_0_0,
+  report__report__field_names_ancestor_desc_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_ancestor_desc_0_0[1] = {
+  &report__report__du_functor_desc_ancestor_desc_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_ancestor_desc_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_ancestor_desc_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_ancestor_desc_0[1] = {
+  &report__report__du_functor_desc_ancestor_desc_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_ancestor_desc_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_ancestor_desc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____ancestor_desc_0_0_10001)),
+  ((MR_Box) (report____Compare____ancestor_desc_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "ancestor_desc",
+  {     report__report__du_name_ordered_ancestor_desc_0 },
+  {     report__report__du_ptag_ordered_ancestor_desc_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_ancestor_desc_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__type_ctor_info_proc_desc_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_desc_0_0[10] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_static_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_call_site_desc_0_0[10] = {
+  (MR_String) "csdesc_css_ptr",
+  (MR_String) "csdesc_container",
+  (MR_String) "csdesc_file_name",
+  (MR_String) "csdesc_line_number",
+  (MR_String) "csdesc_caller_module_name",
+  (MR_String) "csdesc_caller_uq_refined_name",
+  (MR_String) "csdesc_caller_q_refined_name",
+  (MR_String) "csdesc_slot_number",
+  (MR_String) "csdesc_goal_path",
+  (MR_String) "csdesc_maybe_callee"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_desc_0_0 = {
+  (MR_String) "call_site_desc",
+  (MR_Integer) 10,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_call_site_desc_0_0,
+  report__report__field_names_call_site_desc_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_desc_0_0[1] = {
+  &report__report__du_functor_desc_call_site_desc_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_desc_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_call_site_desc_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_desc_0[1] = {
+  &report__report__du_functor_desc_call_site_desc_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_call_site_desc_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_desc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____call_site_desc_0_0_10001)),
+  ((MR_Box) (report____Compare____call_site_desc_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "call_site_desc",
+  {     report__report__du_name_ordered_call_site_desc_0 },
+  {     report__report__du_ptag_ordered_call_site_desc_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_call_site_desc_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_call_site_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_dynamic_dump_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_dynamic_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_dynamic_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_dynamic_ptr_0,
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0
+};
+
+static const MR_ConstString report__report__field_names_call_site_dynamic_dump_info_0_0[4] = {
+  (MR_String) "csddi_csdptr",
+  (MR_String) "csddi_caller_pdptr",
+  (MR_String) "csddi_callee_pdptr",
+  (MR_String) "csddi_own_perf"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_dynamic_dump_info_0_0 = {
+  (MR_String) "call_site_dynamic_dump_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_call_site_dynamic_dump_info_0_0,
+  report__report__field_names_call_site_dynamic_dump_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_dynamic_dump_info_0_0[1] = {
+  &report__report__du_functor_desc_call_site_dynamic_dump_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_dynamic_dump_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_call_site_dynamic_dump_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_dynamic_dump_info_0[1] = {
+  &report__report__du_functor_desc_call_site_dynamic_dump_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_call_site_dynamic_dump_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_dynamic_dump_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____call_site_dynamic_dump_info_0_0_10001)),
+  ((MR_Box) (report____Compare____call_site_dynamic_dump_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "call_site_dynamic_dump_info",
+  {     report__report__du_name_ordered_call_site_dynamic_dump_info_0 },
+  {     report__report__du_ptag_ordered_call_site_dynamic_dump_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_call_site_dynamic_dump_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_var_use_and_name_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_var_use_and_name_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_dynamic_var_use_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_var_use_and_name_0
+};
+
+static const MR_ConstString report__report__field_names_call_site_dynamic_var_use_info_0_0[2] = {
+  (MR_String) "csdvui_total_cost",
+  (MR_String) "csdvui_var_uses"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_dynamic_var_use_info_0_0 = {
+  (MR_String) "call_site_dynamic_var_use_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_call_site_dynamic_var_use_info_0_0,
+  report__report__field_names_call_site_dynamic_var_use_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_dynamic_var_use_info_0_0[1] = {
+  &report__report__du_functor_desc_call_site_dynamic_var_use_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_dynamic_var_use_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_call_site_dynamic_var_use_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_dynamic_var_use_info_0[1] = {
+  &report__report__du_functor_desc_call_site_dynamic_var_use_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_call_site_dynamic_var_use_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_dynamic_var_use_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____call_site_dynamic_var_use_info_0_0_10001)),
+  ((MR_Box) (report____Compare____call_site_dynamic_var_use_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "call_site_dynamic_var_use_info",
+  {     report__report__du_name_ordered_call_site_dynamic_var_use_info_0 },
+  {     report__report__du_ptag_ordered_call_site_dynamic_var_use_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_call_site_dynamic_var_use_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_info_1report__type_ctor_info_normal_callee_id_0 = {
+  &profile__profile__type_ctor_info_call_site_kind_and_info_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_normal_callee_id_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_desc_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_perf_0_0[3] = {
+  (MR_PseudoTypeInfo) &report__profile__ti_call_site_kind_and_info_1report__type_ctor_info_normal_callee_id_0,
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_call_site_perf_0_0[3] = {
+  (MR_String) "csf_kind",
+  (MR_String) "csf_summary_perf",
+  (MR_String) "csf_sub_callees"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_perf_0_0 = {
+  (MR_String) "call_site_perf",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_call_site_perf_0_0,
+  report__report__field_names_call_site_perf_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_perf_0_0[1] = {
+  &report__report__du_functor_desc_call_site_perf_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_perf_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_call_site_perf_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_perf_0[1] = {
+  &report__report__du_functor_desc_call_site_perf_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_call_site_perf_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_perf_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____call_site_perf_0_0_10001)),
+  ((MR_Box) (report____Compare____call_site_perf_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "call_site_perf",
+  {     report__report__du_name_ordered_call_site_perf_0 },
+  {     report__report__du_ptag_ordered_call_site_perf_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_call_site_perf_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_callee_1profile__type_ctor_info_proc_static_ptr_0 = {
+  &profile__profile__type_ctor_info_call_site_kind_and_callee_1,
+  {
+    (MR_TypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_call_site_static_dump_info_0_0[6] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_static_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+  (MR_PseudoTypeInfo) &report__profile__ti_call_site_kind_and_callee_1profile__type_ctor_info_proc_static_ptr_0
+};
+
+static const MR_ConstString report__report__field_names_call_site_static_dump_info_0_0[6] = {
+  (MR_String) "cssdi_cssptr",
+  (MR_String) "cssdi_containing_psptr",
+  (MR_String) "cssdi_slot_number",
+  (MR_String) "cssdi_line_number",
+  (MR_String) "cssdi_goal_path",
+  (MR_String) "cssdi_callee"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_call_site_static_dump_info_0_0 = {
+  (MR_String) "call_site_static_dump_info",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_call_site_static_dump_info_0_0,
+  report__report__field_names_call_site_static_dump_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_call_site_static_dump_info_0_0[1] = {
+  &report__report__du_functor_desc_call_site_static_dump_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_call_site_static_dump_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_call_site_static_dump_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_call_site_static_dump_info_0[1] = {
+  &report__report__du_functor_desc_call_site_static_dump_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_call_site_static_dump_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_call_site_static_dump_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____call_site_static_dump_info_0_0_10001)),
+  ((MR_Box) (report____Compare____call_site_static_dump_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "call_site_static_dump_info",
+  {     report__report__du_name_ordered_call_site_static_dump_info_0 },
+  {     report__report__du_ptag_ordered_call_site_static_dump_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_call_site_static_dump_info_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_callers_counts_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_callers_counts_0_0[2] = {
+  (MR_String) "cc_static",
+  (MR_String) "cc_dynamic"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_callers_counts_0_0 = {
+  (MR_String) "callers_counts",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_callers_counts_0_0,
+  report__report__field_names_callers_counts_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_callers_counts_0_0[1] = {
+  &report__report__du_functor_desc_callers_counts_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_callers_counts_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_callers_counts_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_callers_counts_0[1] = {
+  &report__report__du_functor_desc_callers_counts_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_callers_counts_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_callers_counts_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____callers_counts_0_0_10001)),
+  ((MR_Box) (report____Compare____callers_counts_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "callers_counts",
+  {     report__report__du_name_ordered_callers_counts_0 },
+  {     report__report__du_ptag_ordered_callers_counts_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_callers_counts_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__profile__ti_call_site_kind_and_callee_1report__type_ctor_info_proc_desc_0 = {
+  &profile__profile__type_ctor_info_call_site_kind_and_callee_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_desc_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_desc_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_call_site_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0,
+  (MR_PseudoTypeInfo) &report__profile__ti_call_site_kind_and_callee_1report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0
+};
+
+static const MR_ConstString report__report__field_names_clique_call_site_report_0_0[3] = {
+  (MR_String) "ccsr_call_site_summary",
+  (MR_String) "ccsr_kind_and_callee",
+  (MR_String) "ccsr_callee_perfs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_call_site_report_0_0 = {
+  (MR_String) "clique_call_site_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_call_site_report_0_0,
+  report__report__field_names_clique_call_site_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_call_site_report_0_0[1] = {
+  &report__report__du_functor_desc_clique_call_site_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_call_site_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_call_site_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_call_site_report_0[1] = {
+  &report__report__du_functor_desc_clique_call_site_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_call_site_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_call_site_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_call_site_report_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_call_site_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_call_site_report",
+  {     report__report__du_name_ordered_clique_call_site_report_0 },
+  {     report__report__du_ptag_ordered_clique_call_site_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_call_site_report_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_proc_desc_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_desc_0_0[3] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_clique_desc_0_0[3] = {
+  (MR_String) "cdesc_clique_ptr",
+  (MR_String) "cdesc_entry_member",
+  (MR_String) "cdesc_other_members"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_desc_0_0 = {
+  (MR_String) "clique_desc",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_desc_0_0,
+  report__report__field_names_clique_desc_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_desc_0_0[1] = {
+  &report__report__du_functor_desc_clique_desc_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_desc_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_desc_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_desc_0[1] = {
+  &report__report__du_functor_desc_clique_desc_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_desc_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_desc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_desc_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_desc_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_desc",
+  {     report__report__du_name_ordered_clique_desc_0 },
+  {     report__report__du_ptag_ordered_clique_desc_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_desc_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1profile__type_ctor_info_proc_dynamic_ptr_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &profile__profile__type_ctor_info_proc_dynamic_ptr_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_dump_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_clique_desc_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_dynamic_ptr_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1profile__type_ctor_info_proc_dynamic_ptr_0
+};
+
+static const MR_ConstString report__report__field_names_clique_dump_info_0_0[3] = {
+  (MR_String) "cdi_clique_desc",
+  (MR_String) "cdi_caller_csd_ptr",
+  (MR_String) "cdi_member_pdptrs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_dump_info_0_0 = {
+  (MR_String) "clique_dump_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_dump_info_0_0,
+  report__report__field_names_clique_dump_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_dump_info_0_0[1] = {
+  &report__report__du_functor_desc_clique_dump_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_dump_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_dump_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_dump_info_0[1] = {
+  &report__report__du_functor_desc_clique_dump_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_dump_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_dump_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_dump_info_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_dump_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_dump_info",
+  {     report__report__du_name_ordered_clique_dump_info_0 },
+  {     report__report__du_ptag_ordered_clique_dump_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_dump_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_call_site_report_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_call_site_report_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_proc_dynamic_report_0_0[2] = {
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_clique_call_site_report_0
+};
+
+static const MR_ConstString report__report__field_names_clique_proc_dynamic_report_0_0[2] = {
+  (MR_String) "cpdr_proc_summary",
+  (MR_String) "cpdr_call_sites"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_proc_dynamic_report_0_0 = {
+  (MR_String) "clique_proc_dynamic_report",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_proc_dynamic_report_0_0,
+  report__report__field_names_clique_proc_dynamic_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_proc_dynamic_report_0_0[1] = {
+  &report__report__du_functor_desc_clique_proc_dynamic_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_proc_dynamic_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_proc_dynamic_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_proc_dynamic_report_0[1] = {
+  &report__report__du_functor_desc_clique_proc_dynamic_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_proc_dynamic_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_proc_dynamic_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_proc_dynamic_report_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_proc_dynamic_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_proc_dynamic_report",
+  {     report__report__du_name_ordered_clique_proc_dynamic_report_0 },
+  {     report__report__du_ptag_ordered_clique_proc_dynamic_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_proc_dynamic_report_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_proc_dynamic_report_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_proc_dynamic_report_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_proc_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_clique_proc_dynamic_report_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_clique_proc_dynamic_report_0
+};
+
+static const MR_ConstString report__report__field_names_clique_proc_report_0_0[3] = {
+  (MR_String) "cpr_proc_summary",
+  (MR_String) "cpr_first_proc_dynamic",
+  (MR_String) "cpr_other_proc_dynamics"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_proc_report_0_0 = {
+  (MR_String) "clique_proc_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_proc_report_0_0,
+  report__report__field_names_clique_proc_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_proc_report_0_0[1] = {
+  &report__report__du_functor_desc_clique_proc_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_proc_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_proc_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_proc_report_0[1] = {
+  &report__report__du_functor_desc_clique_proc_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_proc_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_proc_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_proc_report_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_proc_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_proc_report",
+  {     report__report__du_name_ordered_clique_proc_report_0 },
+  {     report__report__du_ptag_ordered_clique_proc_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_proc_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_recursion_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_recursion_type_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_clique_recursion_report_0_0[3] = {
+  (MR_String) "crr_clique_ptr",
+  (MR_String) "crr_recursion_type",
+  (MR_String) "crr_num_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_recursion_report_0_0 = {
+  (MR_String) "clique_recursion_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_recursion_report_0_0,
+  report__report__field_names_clique_recursion_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_recursion_report_0_0[1] = {
+  &report__report__du_functor_desc_clique_recursion_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_recursion_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_recursion_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_recursion_report_0[1] = {
+  &report__report__du_functor_desc_clique_recursion_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_recursion_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_recursion_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_recursion_report_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_recursion_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_recursion_report",
+  {     report__report__du_name_ordered_clique_recursion_report_0 },
+  {     report__report__du_ptag_ordered_clique_recursion_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_recursion_report_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_ancestor_desc_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_clique_proc_report_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_proc_report_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_clique_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_ancestor_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_clique_proc_report_0
+};
+
+static const MR_ConstString report__report__field_names_clique_report_0_0[3] = {
+  (MR_String) "cr_clique_ptr",
+  (MR_String) "cr_ancestor_call_sites",
+  (MR_String) "cr_clique_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_clique_report_0_0 = {
+  (MR_String) "clique_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_clique_report_0_0,
+  report__report__field_names_clique_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_clique_report_0_0[1] = {
+  &report__report__du_functor_desc_clique_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_clique_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_clique_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_clique_report_0[1] = {
+  &report__report__du_functor_desc_clique_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_clique_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_clique_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____clique_report_0_0_10001)),
+  ((MR_Box) (report____Compare____clique_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "clique_report",
+  {     report__report__du_name_ordered_clique_report_0 },
+  {     report__report__du_ptag_ordered_clique_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_clique_report_0
+};
+
+static const MR_Integer report__report__functor_number_map_data_struct_name_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_data_struct_name_0 = {
+  (MR_String) "data_struct_name",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_data_struct_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (report____Unify____data_struct_name_0_0_10001)),
+  ((MR_Box) (report____Compare____data_struct_name_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "data_struct_name",
+  {     &report__report__notag_functor_desc_data_struct_name_0 },
+  {     &report__report__notag_functor_desc_data_struct_name_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_data_struct_name_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_0[1] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_message_report_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_0 = {
+  (MR_String) "report_message",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_deep_report_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_menu_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_menu_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_1[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_menu_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_1 = {
+  (MR_String) "report_menu",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  report__report__field_types_deep_report_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_2[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_clique_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_2 = {
+  (MR_String) "report_clique",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  report__report__field_types_deep_report_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_recursion_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_recursion_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_3[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_clique_recursion_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_3 = {
+  (MR_String) "report_clique_recursion_costs",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  report__report__field_types_deep_report_0_3,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_recursion_types_frequency_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_recursion_types_frequency_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_4[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_recursion_types_frequency_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_4 = {
+  (MR_String) "report_recursion_types_frequency",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__field_types_deep_report_0_4,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_program_modules_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_program_modules_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_5[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_program_modules_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_5 = {
+  (MR_String) "report_program_modules",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  report__report__field_types_deep_report_0_5,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_module_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_6[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_module_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_6 = {
+  (MR_String) "report_module",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  report__report__field_types_deep_report_0_6,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_getter_setters_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_module_getter_setters_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_7[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_module_getter_setters_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_7 = {
+  (MR_String) "report_module_getter_setters",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 7,
+  report__report__field_types_deep_report_0_7,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_module_rep_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_module_rep_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_8[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_module_rep_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_8 = {
+  (MR_String) "report_module_rep",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 8,
+  report__report__field_types_deep_report_0_8,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_top_procs_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_top_procs_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_9[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_top_procs_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_9 = {
+  (MR_String) "report_top_procs",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  (MR_Integer) 9,
+  report__report__field_types_deep_report_0_9,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_10[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_proc_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_10 = {
+  (MR_String) "report_proc",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 10,
+  report__report__field_types_deep_report_0_10,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_procrep_coverage_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_procrep_coverage_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_11[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_procrep_coverage_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_11 = {
+  (MR_String) "report_procrep_coverage",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 8,
+  (MR_Integer) 11,
+  report__report__field_types_deep_report_0_11,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_callers_report_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_callers_report_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_12[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_proc_callers_report_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_12 = {
+  (MR_String) "report_proc_callers",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 9,
+  (MR_Integer) 12,
+  report__report__field_types_deep_report_0_12,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_static_dump_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_static_dump_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_13[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_proc_static_dump_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_13 = {
+  (MR_String) "report_proc_static_dump",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  (MR_Integer) 13,
+  report__report__field_types_deep_report_0_13,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_proc_dynamic_dump_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_dynamic_dump_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_14[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_proc_dynamic_dump_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_14 = {
+  (MR_String) "report_proc_dynamic_dump",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 11,
+  (MR_Integer) 14,
+  report__report__field_types_deep_report_0_14,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_static_dump_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_call_site_static_dump_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_15[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_static_dump_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_15 = {
+  (MR_String) "report_call_site_static_dump",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 12,
+  (MR_Integer) 15,
+  report__report__field_types_deep_report_0_15,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_dump_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_call_site_dynamic_dump_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_16[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_dump_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_16 = {
+  (MR_String) "report_call_site_dynamic_dump",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 13,
+  (MR_Integer) 16,
+  report__report__field_types_deep_report_0_16,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_clique_dump_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_clique_dump_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_17[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_clique_dump_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_17 = {
+  (MR_String) "report_clique_dump",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 14,
+  (MR_Integer) 17,
+  report__report__field_types_deep_report_0_17,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct2 report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_var_use_info_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_call_site_dynamic_var_use_info_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_deep_report_0_18[1] = {
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_error_2report__type_ctor_info_call_site_dynamic_var_use_info_0builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_deep_report_0_18 = {
+  (MR_String) "report_call_site_dynamic_var_use",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 15,
+  (MR_Integer) 18,
+  report__report__field_types_deep_report_0_18,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_0[1] = {
+  &report__report__du_functor_desc_deep_report_0_0
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_1[1] = {
+  &report__report__du_functor_desc_deep_report_0_1
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_2[1] = {
+  &report__report__du_functor_desc_deep_report_0_2
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_deep_report_0_3[16] = {
+  &report__report__du_functor_desc_deep_report_0_3,
+  &report__report__du_functor_desc_deep_report_0_4,
+  &report__report__du_functor_desc_deep_report_0_5,
+  &report__report__du_functor_desc_deep_report_0_6,
+  &report__report__du_functor_desc_deep_report_0_7,
+  &report__report__du_functor_desc_deep_report_0_8,
+  &report__report__du_functor_desc_deep_report_0_9,
+  &report__report__du_functor_desc_deep_report_0_10,
+  &report__report__du_functor_desc_deep_report_0_11,
+  &report__report__du_functor_desc_deep_report_0_12,
+  &report__report__du_functor_desc_deep_report_0_13,
+  &report__report__du_functor_desc_deep_report_0_14,
+  &report__report__du_functor_desc_deep_report_0_15,
+  &report__report__du_functor_desc_deep_report_0_16,
+  &report__report__du_functor_desc_deep_report_0_17,
+  &report__report__du_functor_desc_deep_report_0_18
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_deep_report_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_deep_report_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_deep_report_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_deep_report_0_2
+  },
+  {
+    (MR_Integer) 16,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    report__report__du_stag_ordered_deep_report_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_deep_report_0[19] = {
+  &report__report__du_functor_desc_deep_report_0_16,
+  &report__report__du_functor_desc_deep_report_0_18,
+  &report__report__du_functor_desc_deep_report_0_15,
+  &report__report__du_functor_desc_deep_report_0_2,
+  &report__report__du_functor_desc_deep_report_0_17,
+  &report__report__du_functor_desc_deep_report_0_3,
+  &report__report__du_functor_desc_deep_report_0_1,
+  &report__report__du_functor_desc_deep_report_0_0,
+  &report__report__du_functor_desc_deep_report_0_6,
+  &report__report__du_functor_desc_deep_report_0_7,
+  &report__report__du_functor_desc_deep_report_0_8,
+  &report__report__du_functor_desc_deep_report_0_10,
+  &report__report__du_functor_desc_deep_report_0_12,
+  &report__report__du_functor_desc_deep_report_0_14,
+  &report__report__du_functor_desc_deep_report_0_13,
+  &report__report__du_functor_desc_deep_report_0_11,
+  &report__report__du_functor_desc_deep_report_0_5,
+  &report__report__du_functor_desc_deep_report_0_4,
+  &report__report__du_functor_desc_deep_report_0_9
+};
+
+static const MR_Integer report__report__functor_number_map_deep_report_0[19] = {
+  (MR_Integer) 7,
+  (MR_Integer) 6,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 17,
+  (MR_Integer) 16,
+  (MR_Integer) 8,
+  (MR_Integer) 9,
+  (MR_Integer) 10,
+  (MR_Integer) 18,
+  (MR_Integer) 11,
+  (MR_Integer) 15,
+  (MR_Integer) 12,
+  (MR_Integer) 14,
+  (MR_Integer) 13,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_deep_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____deep_report_0_0_10001)),
+  ((MR_Box) (report____Compare____deep_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "deep_report",
+  {     report__report__du_name_ordered_deep_report_0 },
+  {     report__report__du_ptag_ordered_deep_report_0 },
+  (MR_Integer) 19,
+  (MR_Integer) 4,
+  report__report__functor_number_map_deep_report_0
+};
+
+static const MR_Integer report__report__functor_number_map_field_name_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_field_name_0 = {
+  (MR_String) "field_name",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_field_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (report____Unify____field_name_0_0_10001)),
+  ((MR_Box) (report____Compare____field_name_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "field_name",
+  {     &report__report__notag_functor_desc_field_name_0 },
+  {     &report__report__notag_functor_desc_field_name_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_field_name_0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_getter_or_setter_0_0 = {
+  (MR_String) "getter",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_getter_or_setter_0_1 = {
+  (MR_String) "setter",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_getter_or_setter_0[2] = {
+  &report__report__enum_functor_desc_getter_or_setter_0_0,
+  &report__report__enum_functor_desc_getter_or_setter_0_1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_getter_or_setter_0[2] = {
+  &report__report__enum_functor_desc_getter_or_setter_0_0,
+  &report__report__enum_functor_desc_getter_or_setter_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_getter_or_setter_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_getter_or_setter_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (report____Unify____getter_or_setter_0_0_10001)),
+  ((MR_Box) (report____Compare____getter_or_setter_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "getter_or_setter",
+  {     report__report__enum_name_ordered_getter_or_setter_0 },
+  {     report__report__enum_value_ordered_getter_or_setter_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  report__report__functor_number_map_getter_or_setter_0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 report__tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &report__report__type_ctor_info_field_name_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 report__tree234__pti_tree234_2__plain_report__type_ctor_info_data_struct_name_0__pseudo_tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &report__report__type_ctor_info_data_struct_name_0,
+    (MR_PseudoTypeInfo) &report__tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_ds_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (report____Unify____gs_ds_map_1_0_10001)),
+  ((MR_Box) (report____Compare____gs_ds_map_1_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_ds_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__pti_tree234_2__plain_report__type_ctor_info_data_struct_name_0__pseudo_tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1unit__type_ctor_info_unit_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &mercury__unit__unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 report__report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 = {
+  &report__report__type_ctor_info_gs_field_info_2,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0,
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_field_name_0,
+    (MR_TypeInfo) &report__report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_data_struct_name_0tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_data_struct_name_0,
+    (MR_TypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_ds_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (report____Unify____gs_ds_map_0_0_10001)),
+  ((MR_Box) (report____Compare____gs_ds_map_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_ds_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_data_struct_name_0tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_0[3] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  (MR_PseudoTypeInfo) (MR_Integer) 2
+};
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_0[3] = {
+  (MR_String) "gsf_both_getter",
+  (MR_String) "gsf_both_setter",
+  (MR_String) "gsf_both_summary"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_0 = {
+  (MR_String) "gs_field_both",
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_gs_field_info_2_0,
+  report__report__field_names_gs_field_info_2_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_1[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_1[1] = {
+  (MR_String) "gsf_getter"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_1 = {
+  (MR_String) "gs_field_getter",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  report__report__field_types_gs_field_info_2_1,
+  report__report__field_names_gs_field_info_2_1,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_gs_field_info_2_2[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+static const MR_ConstString report__report__field_names_gs_field_info_2_2[1] = {
+  (MR_String) "gsf_setter"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_gs_field_info_2_2 = {
+  (MR_String) "gs_field_setter",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  report__report__field_types_gs_field_info_2_2,
+  report__report__field_names_gs_field_info_2_2,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_0[1] = {
+  &report__report__du_functor_desc_gs_field_info_2_0
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_1[1] = {
+  &report__report__du_functor_desc_gs_field_info_2_1
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_gs_field_info_2_2[1] = {
+  &report__report__du_functor_desc_gs_field_info_2_2
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_gs_field_info_2[3] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_gs_field_info_2_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_gs_field_info_2_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_gs_field_info_2_2
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_gs_field_info_2[3] = {
+  &report__report__du_functor_desc_gs_field_info_2_0,
+  &report__report__du_functor_desc_gs_field_info_2_1,
+  &report__report__du_functor_desc_gs_field_info_2_2
+};
+
+static const MR_Integer report__report__functor_number_map_gs_field_info_2[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_info_2 = {
+  (MR_Integer) 2,
+  (MR_Integer) 16,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____gs_field_info_2_0_10001)),
+  ((MR_Box) (report____Compare____gs_field_info_2_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_field_info",
+  {     report__report__du_name_ordered_gs_field_info_2 },
+  {     report__report__du_ptag_ordered_gs_field_info_2 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  report__report__functor_number_map_gs_field_info_2
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (report____Unify____gs_field_info_0_0_10001)),
+  ((MR_Box) (report____Compare____gs_field_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_field_info",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (report____Unify____gs_field_map_1_0_10001)),
+  ((MR_Box) (report____Compare____gs_field_map_1_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_field_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__pti_tree234_2__plain_report__type_ctor_info_field_name_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_gs_field_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (report____Unify____gs_field_map_0_0_10001)),
+  ((MR_Box) (report____Compare____gs_field_map_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "gs_field_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_inheritable_perf_0_0[13] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_time_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_time_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_memory_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_memory_0
+};
+
+static const MR_ConstString report__report__field_names_inheritable_perf_0_0[13] = {
+  (MR_String) "perf_row_ticks",
+  (MR_String) "perf_row_time",
+  (MR_String) "perf_row_time_percent",
+  (MR_String) "perf_row_time_percall",
+  (MR_String) "perf_row_callseqs",
+  (MR_String) "perf_row_callseqs_percent",
+  (MR_String) "perf_row_callseqs_percall",
+  (MR_String) "perf_row_allocs",
+  (MR_String) "perf_row_allocs_percent",
+  (MR_String) "perf_row_allocs_percall",
+  (MR_String) "perf_row_mem",
+  (MR_String) "perf_row_mem_percent",
+  (MR_String) "perf_row_mem_percall"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_inheritable_perf_0_0 = {
+  (MR_String) "inheritable_perf",
+  (MR_Integer) 13,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_inheritable_perf_0_0,
+  report__report__field_names_inheritable_perf_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_inheritable_perf_0_0[1] = {
+  &report__report__du_functor_desc_inheritable_perf_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_inheritable_perf_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_inheritable_perf_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_inheritable_perf_0[1] = {
+  &report__report__du_functor_desc_inheritable_perf_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_inheritable_perf_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_inheritable_perf_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____inheritable_perf_0_0_10001)),
+  ((MR_Box) (report____Compare____inheritable_perf_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "inheritable_perf",
+  {     report__report__du_name_ordered_inheritable_perf_0 },
+  {     report__report__du_ptag_ordered_inheritable_perf_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_inheritable_perf_0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_maybe_have_module_rep_0_0 = {
+  (MR_String) "do_not_have_module_rep",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_maybe_have_module_rep_0_1 = {
+  (MR_String) "have_module_rep",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_maybe_have_module_rep_0[2] = {
+  &report__report__enum_functor_desc_maybe_have_module_rep_0_0,
+  &report__report__enum_functor_desc_maybe_have_module_rep_0_1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_maybe_have_module_rep_0[2] = {
+  &report__report__enum_functor_desc_maybe_have_module_rep_0_0,
+  &report__report__enum_functor_desc_maybe_have_module_rep_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_maybe_have_module_rep_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_maybe_have_module_rep_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (report____Unify____maybe_have_module_rep_0_0_10001)),
+  ((MR_Box) (report____Compare____maybe_have_module_rep_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "maybe_have_module_rep",
+  {     report__report__enum_name_ordered_maybe_have_module_rep_0 },
+  {     report__report__enum_value_ordered_maybe_have_module_rep_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  report__report__functor_number_map_maybe_have_module_rep_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_menu_report_0_0[10] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_menu_report_0_0[10] = {
+  (MR_String) "menu_program_name",
+  (MR_String) "menu_quanta_per_sec",
+  (MR_String) "menu_user_quanta",
+  (MR_String) "menu_inst_quanta",
+  (MR_String) "menu_num_callseqs",
+  (MR_String) "menu_num_csd",
+  (MR_String) "menu_num_css",
+  (MR_String) "menu_num_pd",
+  (MR_String) "menu_num_ps",
+  (MR_String) "menu_num_clique"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_menu_report_0_0 = {
+  (MR_String) "menu_report",
+  (MR_Integer) 10,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_menu_report_0_0,
+  report__report__field_names_menu_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_menu_report_0_0[1] = {
+  &report__report__du_functor_desc_menu_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_menu_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_menu_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_menu_report_0[1] = {
+  &report__report__du_functor_desc_menu_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_menu_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_menu_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____menu_report_0_0_10001)),
+  ((MR_Box) (report____Compare____menu_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "menu_report",
+  {     report__report__du_name_ordered_menu_report_0 },
+  {     report__report__du_ptag_ordered_menu_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_menu_report_0
+};
+
+static const MR_Integer report__report__functor_number_map_message_report_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_message_report_0 = {
+  (MR_String) "message_report",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_message_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (report____Unify____message_report_0_0_10001)),
+  ((MR_Box) (report____Compare____message_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "message_report",
+  {     &report__report__notag_functor_desc_message_report_0 },
+  {     &report__report__notag_functor_desc_message_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_message_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_module_active_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_module_is_active_0
+};
+
+static const MR_ConstString report__report__field_names_module_active_0_0[2] = {
+  (MR_String) "ma_module_name",
+  (MR_String) "ma_is_active"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_active_0_0 = {
+  (MR_String) "module_active",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_module_active_0_0,
+  report__report__field_names_module_active_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_active_0_0[1] = {
+  &report__report__du_functor_desc_module_active_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_active_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_module_active_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_active_0[1] = {
+  &report__report__du_functor_desc_module_active_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_module_active_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_active_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____module_active_0_0_10001)),
+  ((MR_Box) (report____Compare____module_active_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "module_active",
+  {     report__report__du_name_ordered_module_active_0 },
+  {     report__report__du_ptag_ordered_module_active_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_module_active_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_module_getter_setters_report_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_data_struct_name_0tree234__ti_tree234_2report__type_ctor_info_field_name_0report__ti_gs_field_info_2report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0report__ti_perf_row_data_1unit__type_ctor_info_unit_0
+};
+
+static const MR_ConstString report__report__field_names_module_getter_setters_report_0_0[2] = {
+  (MR_String) "mgsr_module_name",
+  (MR_String) "mgsr_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_getter_setters_report_0_0 = {
+  (MR_String) "module_getter_setters_report",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_module_getter_setters_report_0_0,
+  report__report__field_names_module_getter_setters_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_getter_setters_report_0_0[1] = {
+  &report__report__du_functor_desc_module_getter_setters_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_getter_setters_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_module_getter_setters_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_getter_setters_report_0[1] = {
+  &report__report__du_functor_desc_module_getter_setters_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_module_getter_setters_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_getter_setters_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____module_getter_setters_report_0_0_10001)),
+  ((MR_Box) (report____Compare____module_getter_setters_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "module_getter_setters_report",
+  {     report__report__du_name_ordered_module_getter_setters_report_0 },
+  {     report__report__du_ptag_ordered_module_getter_setters_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_module_getter_setters_report_0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_module_is_active_0_0 = {
+  (MR_String) "module_is_active",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_module_is_active_0_1 = {
+  (MR_String) "module_is_not_active",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_module_is_active_0[2] = {
+  &report__report__enum_functor_desc_module_is_active_0_0,
+  &report__report__enum_functor_desc_module_is_active_0_1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_module_is_active_0[2] = {
+  &report__report__enum_functor_desc_module_is_active_0_0,
+  &report__report__enum_functor_desc_module_is_active_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_module_is_active_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_is_active_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (report____Unify____module_is_active_0_0_10001)),
+  ((MR_Box) (report____Compare____module_is_active_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "module_is_active",
+  {     report__report__enum_name_ordered_module_is_active_0 },
+  {     report__report__enum_value_ordered_module_is_active_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  report__report__functor_number_map_module_is_active_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_module_rep_report_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_module_rep_report_0_0[2] = {
+  (MR_String) "mrr_module_name",
+  (MR_String) "mrr_report"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_rep_report_0_0 = {
+  (MR_String) "module_rep_report",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_module_rep_report_0_0,
+  report__report__field_names_module_rep_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_rep_report_0_0[1] = {
+  &report__report__du_functor_desc_module_rep_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_rep_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_module_rep_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_rep_report_0[1] = {
+  &report__report__du_functor_desc_module_rep_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_module_rep_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_rep_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____module_rep_report_0_0_10001)),
+  ((MR_Box) (report____Compare____module_rep_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "module_rep_report",
+  {     report__report__du_name_ordered_module_rep_report_0 },
+  {     report__report__du_ptag_ordered_module_rep_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_module_rep_report_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_proc_active_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_proc_active_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_active_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_active_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_module_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_maybe_have_module_rep_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_active_0
+};
+
+static const MR_ConstString report__report__field_names_module_report_0_0[3] = {
+  (MR_String) "mr_module_name",
+  (MR_String) "mr_have_module_rep",
+  (MR_String) "mr_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_module_report_0_0 = {
+  (MR_String) "module_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_module_report_0_0,
+  report__report__field_names_module_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_module_report_0_0[1] = {
+  &report__report__du_functor_desc_module_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_module_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_module_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_module_report_0[1] = {
+  &report__report__du_functor_desc_module_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_module_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_module_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____module_report_0_0_10001)),
+  ((MR_Box) (report____Compare____module_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "module_report",
+  {     report__report__du_name_ordered_module_report_0 },
+  {     report__report__du_ptag_ordered_module_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_module_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_normal_callee_id_0_0[2] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_normal_callee_id_0_0[2] = {
+  (MR_String) "nci_callee_desc",
+  (MR_String) "nci_type_subst"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_normal_callee_id_0_0 = {
+  (MR_String) "normal_callee_id",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_normal_callee_id_0_0,
+  report__report__field_names_normal_callee_id_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_normal_callee_id_0_0[1] = {
+  &report__report__du_functor_desc_normal_callee_id_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_normal_callee_id_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_normal_callee_id_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_normal_callee_id_0[1] = {
+  &report__report__du_functor_desc_normal_callee_id_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_normal_callee_id_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_normal_callee_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____normal_callee_id_0_0_10001)),
+  ((MR_Box) (report____Compare____normal_callee_id_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "normal_callee_id",
+  {     report__report__du_name_ordered_normal_callee_id_0 },
+  {     report__report__du_ptag_ordered_normal_callee_id_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_normal_callee_id_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__type_ctor_info_inheritable_perf_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_inheritable_perf_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_perf_row_data_1_0[9] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_inheritable_perf_0,
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_1report__type_ctor_info_inheritable_perf_0
+};
+
+static const MR_ConstString report__report__field_names_perf_row_data_1_0[9] = {
+  (MR_String) "perf_row_subject",
+  (MR_String) "perf_row_calls",
+  (MR_String) "perf_row_exits",
+  (MR_String) "perf_row_fails",
+  (MR_String) "perf_row_redos",
+  (MR_String) "perf_row_excps",
+  (MR_String) "perf_row_bytes_per_word",
+  (MR_String) "perf_row_self",
+  (MR_String) "perf_row_maybe_total"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_perf_row_data_1_0 = {
+  (MR_String) "perf_row_data",
+  (MR_Integer) 9,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_perf_row_data_1_0,
+  report__report__field_names_perf_row_data_1_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_perf_row_data_1_0[1] = {
+  &report__report__du_functor_desc_perf_row_data_1_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_perf_row_data_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_perf_row_data_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_perf_row_data_1[1] = {
+  &report__report__du_functor_desc_perf_row_data_1_0
+};
+
+static const MR_Integer report__report__functor_number_map_perf_row_data_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_perf_row_data_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____perf_row_data_1_0_10001)),
+  ((MR_Box) (report____Compare____perf_row_data_1_0_10001)),
+  (MR_String) "report",
+  (MR_String) "perf_row_data",
+  {     report__report__du_name_ordered_perf_row_data_1 },
+  {     report__report__du_ptag_ordered_perf_row_data_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_perf_row_data_1
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_active_0_0[2] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_is_active_0
+};
+
+static const MR_ConstString report__report__field_names_proc_active_0_0[2] = {
+  (MR_String) "pa_proc_desc",
+  (MR_String) "pa_is_active"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_active_0_0 = {
+  (MR_String) "proc_active",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_active_0_0,
+  report__report__field_names_proc_active_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_active_0_0[1] = {
+  &report__report__du_functor_desc_proc_active_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_active_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_active_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_active_0[1] = {
+  &report__report__du_functor_desc_proc_active_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_active_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_active_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_active_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_active_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_active",
+  {     report__report__du_name_ordered_proc_active_0 },
+  {     report__report__du_ptag_ordered_proc_active_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_active_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_0[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_call_site_desc_0
+};
+
+static const MR_ConstString report__report__field_names_proc_callers_0_0[1] = {
+  (MR_String) "pc_caller_call_sites"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_0 = {
+  (MR_String) "proc_caller_call_sites",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_callers_0_0,
+  report__report__field_names_proc_callers_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_1[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_proc_callers_0_1[1] = {
+  (MR_String) "pc_caller_procedures"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_1 = {
+  (MR_String) "proc_caller_procedures",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  report__report__field_types_proc_callers_0_1,
+  report__report__field_names_proc_callers_0_1,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1builtin__type_ctor_info_string_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_2[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_proc_callers_0_2[1] = {
+  (MR_String) "pc_caller_modules"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_2 = {
+  (MR_String) "proc_caller_modules",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  report__report__field_types_proc_callers_0_2,
+  report__report__field_names_proc_callers_0_2,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_0_3[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_clique_desc_0
+};
+
+static const MR_ConstString report__report__field_names_proc_callers_0_3[1] = {
+  (MR_String) "pc_caller_cliques"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_0_3 = {
+  (MR_String) "proc_caller_cliques",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  report__report__field_types_proc_callers_0_3,
+  report__report__field_names_proc_callers_0_3,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_0[1] = {
+  &report__report__du_functor_desc_proc_callers_0_0
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_1[1] = {
+  &report__report__du_functor_desc_proc_callers_0_1
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_2[1] = {
+  &report__report__du_functor_desc_proc_callers_0_2
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_0_3[1] = {
+  &report__report__du_functor_desc_proc_callers_0_3
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_callers_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_callers_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_callers_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_callers_0_2
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_callers_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_callers_0[4] = {
+  &report__report__du_functor_desc_proc_callers_0_0,
+  &report__report__du_functor_desc_proc_callers_0_3,
+  &report__report__du_functor_desc_proc_callers_0_2,
+  &report__report__du_functor_desc_proc_callers_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_proc_callers_0[4] = {
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_callers_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_callers_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_callers_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_callers",
+  {     report__report__du_name_ordered_proc_callers_0 },
+  {     report__report__du_ptag_ordered_proc_callers_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_callers_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_callers_report_0_0[6] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_proc_callers_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &query__query__type_ctor_info_contour_exclusion_0,
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_1builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_proc_callers_report_0_0[6] = {
+  (MR_String) "pc_proc_desc",
+  (MR_String) "pc_callers",
+  (MR_String) "pc_batch_number",
+  (MR_String) "pc_callers_per_batch",
+  (MR_String) "pc_contour_exclusion",
+  (MR_String) "pc_contour_warn_message"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_callers_report_0_0 = {
+  (MR_String) "proc_callers_report",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_callers_report_0_0,
+  report__report__field_names_proc_callers_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_callers_report_0_0[1] = {
+  &report__report__du_functor_desc_proc_callers_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_callers_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_callers_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_callers_report_0[1] = {
+  &report__report__du_functor_desc_proc_callers_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_callers_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_callers_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_callers_report_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_callers_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_callers_report",
+  {     report__report__du_name_ordered_proc_callers_report_0 },
+  {     report__report__du_ptag_ordered_proc_callers_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_callers_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_desc_0_0[6] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_proc_desc_0_0[6] = {
+  (MR_String) "pdesc_ps_ptr",
+  (MR_String) "pdesc_file_name",
+  (MR_String) "pdesc_line_number",
+  (MR_String) "pdesc_module_name",
+  (MR_String) "pdesc_uq_refined_name",
+  (MR_String) "pdesc_q_refined_name"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_desc_0_0 = {
+  (MR_String) "proc_desc",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_desc_0_0,
+  report__report__field_names_proc_desc_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_desc_0_0[1] = {
+  &report__report__du_functor_desc_proc_desc_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_desc_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_desc_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_desc_0[1] = {
+  &report__report__du_functor_desc_proc_desc_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_desc_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_desc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_desc_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_desc_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_desc",
+  {     report__report__du_name_ordered_proc_desc_0 },
+  {     report__report__du_ptag_ordered_proc_desc_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_desc_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1profile__type_ctor_info_call_site_array_slot_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &profile__profile__type_ctor_info_call_site_array_slot_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1coverage__type_ctor_info_coverage_point_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &coverage__coverage__type_ctor_info_coverage_point_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1list__ti_list_1coverage__type_ctor_info_coverage_point_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &report__list__ti_list_1coverage__type_ctor_info_coverage_point_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_dynamic_dump_info_0_0[8] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_dynamic_ptr_0,
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1profile__type_ctor_info_call_site_array_slot_0,
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_1list__ti_list_1coverage__type_ctor_info_coverage_point_0
+};
+
+static const MR_ConstString report__report__field_names_proc_dynamic_dump_info_0_0[8] = {
+  (MR_String) "pddi_pdptr",
+  (MR_String) "pddi_psptr",
+  (MR_String) "pddi_ps_raw_name",
+  (MR_String) "pddi_ps_module_name",
+  (MR_String) "pddi_ps_uq_refined_name",
+  (MR_String) "pddi_ps_q_refined_name",
+  (MR_String) "pddi_call_sites",
+  (MR_String) "pddi_coverage_points"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_dynamic_dump_info_0_0 = {
+  (MR_String) "proc_dynamic_dump_info",
+  (MR_Integer) 8,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_dynamic_dump_info_0_0,
+  report__report__field_names_proc_dynamic_dump_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_dynamic_dump_info_0_0[1] = {
+  &report__report__du_functor_desc_proc_dynamic_dump_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_dynamic_dump_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_dynamic_dump_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_dynamic_dump_info_0[1] = {
+  &report__report__du_functor_desc_proc_dynamic_dump_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_dynamic_dump_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_dynamic_dump_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_dynamic_dump_info_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_dynamic_dump_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_dynamic_dump_info",
+  {     report__report__du_name_ordered_proc_dynamic_dump_info_0 },
+  {     report__report__du_ptag_ordered_proc_dynamic_dump_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_dynamic_dump_info_0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_proc_is_active_0_0 = {
+  (MR_String) "proc_is_active",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc report__report__enum_functor_desc_proc_is_active_0_1 = {
+  (MR_String) "proc_is_not_active",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_value_ordered_proc_is_active_0[2] = {
+  &report__report__enum_functor_desc_proc_is_active_0_0,
+  &report__report__enum_functor_desc_proc_is_active_0_1
+};
+
+static const MR_EnumFunctorDescPtr report__report__enum_name_ordered_proc_is_active_0[2] = {
+  &report__report__enum_functor_desc_proc_is_active_0_0,
+  &report__report__enum_functor_desc_proc_is_active_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_proc_is_active_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_is_active_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (report____Unify____proc_is_active_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_is_active_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_is_active",
+  {     report__report__enum_name_ordered_proc_is_active_0 },
+  {     report__report__enum_value_ordered_proc_is_active_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_is_active_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_callers_counts_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_callers_counts_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_call_site_perf_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_call_site_perf_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_report_0_0[3] = {
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_callers_counts_0,
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_call_site_perf_0
+};
+
+static const MR_ConstString report__report__field_names_proc_report_0_0[3] = {
+  (MR_String) "proc_callers_summary",
+  (MR_String) "proc_summary",
+  (MR_String) "proc_call_site_summaries"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_report_0_0 = {
+  (MR_String) "proc_report",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_report_0_0,
+  report__report__field_names_proc_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_report_0_0[1] = {
+  &report__report__du_functor_desc_proc_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_report_0[1] = {
+  &report__report__du_functor_desc_proc_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_report_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_report",
+  {     report__report__du_name_ordered_proc_report_0 },
+  {     report__report__du_ptag_ordered_proc_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_proc_static_dump_info_0_0[8] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_proc_static_dump_info_0_0[8] = {
+  (MR_String) "psdi_psptr",
+  (MR_String) "psdi_raw_name",
+  (MR_String) "psdi_uq_refined_name",
+  (MR_String) "psdi_q_refined_name",
+  (MR_String) "psdi_filename",
+  (MR_String) "psdi_linenumber",
+  (MR_String) "psdi_num_call_sites",
+  (MR_String) "psdi_num_coverage_points"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_proc_static_dump_info_0_0 = {
+  (MR_String) "proc_static_dump_info",
+  (MR_Integer) 8,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_proc_static_dump_info_0_0,
+  report__report__field_names_proc_static_dump_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_proc_static_dump_info_0_0[1] = {
+  &report__report__du_functor_desc_proc_static_dump_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_proc_static_dump_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_proc_static_dump_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_proc_static_dump_info_0[1] = {
+  &report__report__du_functor_desc_proc_static_dump_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_proc_static_dump_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_proc_static_dump_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____proc_static_dump_info_0_0_10001)),
+  ((MR_Box) (report____Compare____proc_static_dump_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "proc_static_dump_info",
+  {     report__report__du_name_ordered_proc_static_dump_info_0 },
+  {     report__report__du_ptag_ordered_proc_static_dump_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_proc_static_dump_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__mdbcomp__program_representation__ti_proc_rep_1mdbcomp__goal_path__type_ctor_info_goal_id_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_rep_1,
+  {
+    (MR_TypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__mdbcomp__goal_path__ti_goal_attr_array_1coverage__type_ctor_info_coverage_info_0 = {
+  &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_attr_array_1,
+  {
+    (MR_TypeInfo) &coverage__coverage__type_ctor_info_coverage_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_procrep_coverage_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+  (MR_PseudoTypeInfo) &report__mdbcomp__program_representation__ti_proc_rep_1mdbcomp__goal_path__type_ctor_info_goal_id_0,
+  (MR_PseudoTypeInfo) &report__mdbcomp__goal_path__ti_goal_attr_array_1coverage__type_ctor_info_coverage_info_0
+};
+
+static const MR_ConstString report__report__field_names_procrep_coverage_info_0_0[3] = {
+  (MR_String) "prci_proc",
+  (MR_String) "prci_proc_rep",
+  (MR_String) "prci_coverage_array"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_procrep_coverage_info_0_0 = {
+  (MR_String) "procrep_coverage_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_procrep_coverage_info_0_0,
+  report__report__field_names_procrep_coverage_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_procrep_coverage_info_0_0[1] = {
+  &report__report__du_functor_desc_procrep_coverage_info_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_procrep_coverage_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_procrep_coverage_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_procrep_coverage_info_0[1] = {
+  &report__report__du_functor_desc_procrep_coverage_info_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_procrep_coverage_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_procrep_coverage_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____procrep_coverage_info_0_0_10001)),
+  ((MR_Box) (report____Compare____procrep_coverage_info_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "procrep_coverage_info",
+  {     report__report__du_name_ordered_procrep_coverage_info_0 },
+  {     report__report__du_ptag_ordered_procrep_coverage_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_procrep_coverage_info_0
+};
+
+static const MR_Integer report__report__functor_number_map_program_modules_report_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__report__ti_perf_row_data_1report__type_ctor_info_module_active_0 = {
+  &report__report__type_ctor_info_perf_row_data_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_module_active_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_module_active_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_module_active_0
+  }
+};
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_program_modules_report_0 = {
+  (MR_String) "program_modules_report",
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_module_active_0,
+  (MR_String) "program_modules",
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_program_modules_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (report____Unify____program_modules_report_0_0_10001)),
+  ((MR_Box) (report____Compare____program_modules_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "program_modules_report",
+  {     &report__report__notag_functor_desc_program_modules_report_0 },
+  {     &report__report__notag_functor_desc_program_modules_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_program_modules_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_level_report_0_0[5] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_level_report_0_0[5] = {
+  (MR_String) "rlr_level",
+  (MR_String) "rlr_calls",
+  (MR_String) "rlr_prob",
+  (MR_String) "rlr_non_rec_calls_cost",
+  (MR_String) "rlr_rec_calls_ex_chld_cost"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_level_report_0_0 = {
+  (MR_String) "recursion_level_report",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_recursion_level_report_0_0,
+  report__report__field_names_recursion_level_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_level_report_0_0[1] = {
+  &report__report__du_functor_desc_recursion_level_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_level_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_level_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_level_report_0[1] = {
+  &report__report__du_functor_desc_recursion_level_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_level_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_level_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____recursion_level_report_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_level_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_level_report",
+  {     report__report__du_name_ordered_recursion_level_report_0 },
+  {     report__report__du_ptag_ordered_recursion_level_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_level_report_0
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_0 = {
+  (MR_String) "rt_not_recursive",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_VA_TypeInfo_Struct2 report____vti_func_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0 = {
+  &mercury__builtin__builtin__type_ctor_info_func_0,
+  (MR_Integer) 2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_1[5] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_recursion_level_report_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_recursion_level_report_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &report____vti_func_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_0_1[5] = {
+  (MR_String) "rts_base",
+  (MR_String) "rts_recursive",
+  (MR_String) "rts_avg_max_depth",
+  (MR_String) "rts_avg_rec_cost",
+  (MR_String) "rts_any_rec_cost"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_1 = {
+  (MR_String) "rt_single",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  report__report__field_types_recursion_type_0_1,
+  report__report__field_names_recursion_type_0_1,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_2[2] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_recursion_level_report_0,
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_recursion_level_report_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_0_2[2] = {
+  (MR_String) "rtdsc_base",
+  (MR_String) "rtdsc_recursive"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_2 = {
+  (MR_String) "rt_divide_and_conquer",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  report__report__field_types_recursion_type_0_2,
+  report__report__field_names_recursion_type_0_2,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_0_3[1] = {
+  (MR_String) "rtml_num_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_3 = {
+  (MR_String) "rt_mutual_recursion",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  report__report__field_types_recursion_type_0_3,
+  report__report__field_names_recursion_type_0_3,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1report__type_ctor_info_recursion_level_report_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_recursion_level_report_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_4[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__type_ctor_info_recursion_level_report_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_0_4[1] = {
+  (MR_String) "rto_all_levels"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_4 = {
+  (MR_String) "rt_other",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__field_types_recursion_type_0_4,
+  report__report__field_names_recursion_type_0_4,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 report__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_0_5[1] = {
+  (MR_PseudoTypeInfo) &report__list__ti_list_1builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_0_5[1] = {
+  (MR_String) "rte_errors"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_0_5 = {
+  (MR_String) "rt_errors",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  report__report__field_types_recursion_type_0_5,
+  report__report__field_names_recursion_type_0_5,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_0[1] = {
+  &report__report__du_functor_desc_recursion_type_0_0
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_1[1] = {
+  &report__report__du_functor_desc_recursion_type_0_1
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_2[1] = {
+  &report__report__du_functor_desc_recursion_type_0_2
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_0_3[3] = {
+  &report__report__du_functor_desc_recursion_type_0_3,
+  &report__report__du_functor_desc_recursion_type_0_4,
+  &report__report__du_functor_desc_recursion_type_0_5
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    report__report__du_stag_ordered_recursion_type_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_0_2
+  },
+  {
+    (MR_Integer) 3,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    report__report__du_stag_ordered_recursion_type_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_0[6] = {
+  &report__report__du_functor_desc_recursion_type_0_2,
+  &report__report__du_functor_desc_recursion_type_0_5,
+  &report__report__du_functor_desc_recursion_type_0_3,
+  &report__report__du_functor_desc_recursion_type_0_0,
+  &report__report__du_functor_desc_recursion_type_0_4,
+  &report__report__du_functor_desc_recursion_type_0_1
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_type_0[6] = {
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____recursion_type_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type",
+  {     report__report__du_name_ordered_recursion_type_0 },
+  {     report__report__du_ptag_ordered_recursion_type_0 },
+  (MR_Integer) 6,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_type_0
+};
+
+static const MR_FA_TypeInfo_Struct1 report__maybe__ti_maybe_1report__ti_perf_row_data_1unit__type_ctor_info_unit_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &report__report__ti_perf_row_data_1unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2profile__type_ctor_info_proc_static_ptr_0report__type_ctor_info_recursion_type_proc_freq_data_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &profile__profile__type_ctor_info_proc_static_ptr_0,
+    (MR_TypeInfo) &report__report__type_ctor_info_recursion_type_proc_freq_data_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_freq_data_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &report__maybe__ti_maybe_1report__ti_perf_row_data_1unit__type_ctor_info_unit_0,
+  (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2profile__type_ctor_info_proc_static_ptr_0report__type_ctor_info_recursion_type_proc_freq_data_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_freq_data_0_0[4] = {
+  (MR_String) "rtfd_freq",
+  (MR_String) "rtfd_percent",
+  (MR_String) "rtfd_maybe_summary",
+  (MR_String) "rtfd_entry_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_freq_data_0_0 = {
+  (MR_String) "recursion_type_freq_data",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_recursion_type_freq_data_0_0,
+  report__report__field_names_recursion_type_freq_data_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_freq_data_0_0[1] = {
+  &report__report__du_functor_desc_recursion_type_freq_data_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_freq_data_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_freq_data_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_freq_data_0[1] = {
+  &report__report__du_functor_desc_recursion_type_freq_data_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_type_freq_data_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_freq_data_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____recursion_type_freq_data_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_freq_data_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type_freq_data",
+  {     report__report__du_name_ordered_recursion_type_freq_data_0 },
+  {     report__report__du_ptag_ordered_recursion_type_freq_data_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_type_freq_data_0
+};
+
+static const MR_FA_TypeInfo_Struct2 report__tree234__ti_tree234_2report__type_ctor_info_recursion_type_simple_0report__type_ctor_info_recursion_type_freq_data_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &report__report__type_ctor_info_recursion_type_simple_0,
+    (MR_TypeInfo) &report__report__type_ctor_info_recursion_type_freq_data_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_histogram_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (report____Unify____recursion_type_histogram_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_histogram_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type_histogram",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_recursion_type_simple_0report__type_ctor_info_recursion_type_freq_data_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_proc_freq_data_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &measurement_units__measurement_units__type_ctor_info_percent_0,
+  (MR_PseudoTypeInfo) &report__report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_proc_freq_data_0_0[3] = {
+  (MR_String) "rtpfd_freq",
+  (MR_String) "rtpfd_percent",
+  (MR_String) "rtpfd_summary"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_proc_freq_data_0_0 = {
+  (MR_String) "recursion_type_proc_freq_data",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_recursion_type_proc_freq_data_0_0,
+  report__report__field_names_recursion_type_proc_freq_data_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_proc_freq_data_0_0[1] = {
+  &report__report__du_functor_desc_recursion_type_proc_freq_data_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_proc_freq_data_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_proc_freq_data_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_proc_freq_data_0[1] = {
+  &report__report__du_functor_desc_recursion_type_proc_freq_data_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_type_proc_freq_data_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_proc_freq_data_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____recursion_type_proc_freq_data_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_proc_freq_data_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type_proc_freq_data",
+  {     report__report__du_name_ordered_recursion_type_proc_freq_data_0 },
+  {     report__report__du_ptag_ordered_recursion_type_proc_freq_data_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_type_proc_freq_data_0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_proc_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (report____Unify____recursion_type_proc_map_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_proc_map_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type_proc_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2profile__type_ctor_info_proc_static_ptr_0report__type_ctor_info_recursion_type_proc_freq_data_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_0 = {
+  (MR_String) "rts_not_recursive",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_1 = {
+  (MR_String) "rts_single",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_2 = {
+  (MR_String) "rts_divide_and_conquer",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_3[1] = {
+  (MR_String) "rtsmr_num_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_3 = {
+  (MR_String) "rts_mutual_recursion",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  report__report__field_types_recursion_type_simple_0_3,
+  report__report__field_names_recursion_type_simple_0_3,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 report__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_4[1] = {
+  (MR_PseudoTypeInfo) &report__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_4[1] = {
+  (MR_String) "rtso_levels"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_4 = {
+  (MR_String) "rts_other",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 4,
+  report__report__field_types_recursion_type_simple_0_4,
+  report__report__field_names_recursion_type_simple_0_4,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_recursion_type_simple_0_5[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString report__report__field_names_recursion_type_simple_0_5[1] = {
+  (MR_String) "rtse_error"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_5 = {
+  (MR_String) "rts_error",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 5,
+  report__report__field_types_recursion_type_simple_0_5,
+  report__report__field_names_recursion_type_simple_0_5,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_recursion_type_simple_0_6 = {
+  (MR_String) "rts_total_error_instances",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_0[4] = {
+  &report__report__du_functor_desc_recursion_type_simple_0_0,
+  &report__report__du_functor_desc_recursion_type_simple_0_1,
+  &report__report__du_functor_desc_recursion_type_simple_0_2,
+  &report__report__du_functor_desc_recursion_type_simple_0_6
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_1[1] = {
+  &report__report__du_functor_desc_recursion_type_simple_0_3
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_2[1] = {
+  &report__report__du_functor_desc_recursion_type_simple_0_4
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_recursion_type_simple_0_3[1] = {
+  &report__report__du_functor_desc_recursion_type_simple_0_5
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_recursion_type_simple_0[4] = {
+  {
+    (MR_Integer) 4,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    report__report__du_stag_ordered_recursion_type_simple_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_simple_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_simple_0_2
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_recursion_type_simple_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_recursion_type_simple_0[7] = {
+  &report__report__du_functor_desc_recursion_type_simple_0_2,
+  &report__report__du_functor_desc_recursion_type_simple_0_5,
+  &report__report__du_functor_desc_recursion_type_simple_0_3,
+  &report__report__du_functor_desc_recursion_type_simple_0_0,
+  &report__report__du_functor_desc_recursion_type_simple_0_4,
+  &report__report__du_functor_desc_recursion_type_simple_0_1,
+  &report__report__du_functor_desc_recursion_type_simple_0_6
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_type_simple_0[7] = {
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  (MR_Integer) 1,
+  (MR_Integer) 6
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_type_simple_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____recursion_type_simple_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_type_simple_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_type_simple",
+  {     report__report__du_name_ordered_recursion_type_simple_0 },
+  {     report__report__du_ptag_ordered_recursion_type_simple_0 },
+  (MR_Integer) 7,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_type_simple_0
+};
+
+static const MR_Integer report__report__functor_number_map_recursion_types_frequency_report_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc report__report__notag_functor_desc_recursion_types_frequency_report_0 = {
+  (MR_String) "recursion_types_frequency_report",
+  (MR_PseudoTypeInfo) &report__tree234__ti_tree234_2report__type_ctor_info_recursion_type_simple_0report__type_ctor_info_recursion_type_freq_data_0,
+  (MR_String) "rtfr_histogram",
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_recursion_types_frequency_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (report____Unify____recursion_types_frequency_report_0_0_10001)),
+  ((MR_Box) (report____Compare____recursion_types_frequency_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "recursion_types_frequency_report",
+  {     &report__report__notag_functor_desc_recursion_types_frequency_report_0 },
+  {     &report__report__notag_functor_desc_recursion_types_frequency_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_recursion_types_frequency_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_report_ordering_0_0[4] = {
+  (MR_PseudoTypeInfo) &query__query__type_ctor_info_display_limit_0,
+  (MR_PseudoTypeInfo) &query__query__type_ctor_info_cost_kind_0,
+  (MR_PseudoTypeInfo) &query__query__type_ctor_info_include_descendants_0,
+  (MR_PseudoTypeInfo) &query__query__type_ctor_info_measurement_scope_0
+};
+
+static const MR_ConstString report__report__field_names_report_ordering_0_0[4] = {
+  (MR_String) "display_limit",
+  (MR_String) "cost_kind",
+  (MR_String) "incl_desc",
+  (MR_String) "scope"
+};
+
+static const MR_DuArgLocn report__report__field_locns_report_ordering_0_0[4] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 3
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 3,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 4,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_report_ordering_0_0 = {
+  (MR_String) "report_ordering",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_report_ordering_0_0,
+  report__report__field_names_report_ordering_0_0,
+  report__report__field_locns_report_ordering_0_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_report_ordering_0_0[1] = {
+  &report__report__du_functor_desc_report_ordering_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_report_ordering_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_report_ordering_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_report_ordering_0[1] = {
+  &report__report__du_functor_desc_report_ordering_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_report_ordering_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_report_ordering_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____report_ordering_0_0_10001)),
+  ((MR_Box) (report____Compare____report_ordering_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "report_ordering",
+  {     report__report__du_name_ordered_report_ordering_0 },
+  {     report__report__du_ptag_ordered_report_ordering_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_report_ordering_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_top_procs_report_0_0[2] = {
+  (MR_PseudoTypeInfo) &report__report__type_ctor_info_report_ordering_0,
+  (MR_PseudoTypeInfo) &report__list__ti_list_1report__ti_perf_row_data_1report__type_ctor_info_proc_desc_0
+};
+
+static const MR_ConstString report__report__field_names_top_procs_report_0_0[2] = {
+  (MR_String) "tp_ordering",
+  (MR_String) "tp_top_procs"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_top_procs_report_0_0 = {
+  (MR_String) "top_procs_report",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_top_procs_report_0_0,
+  report__report__field_names_top_procs_report_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_top_procs_report_0_0[1] = {
+  &report__report__du_functor_desc_top_procs_report_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_top_procs_report_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_top_procs_report_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_top_procs_report_0[1] = {
+  &report__report__du_functor_desc_top_procs_report_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_top_procs_report_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_top_procs_report_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____top_procs_report_0_0_10001)),
+  ((MR_Box) (report____Compare____top_procs_report_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "top_procs_report",
+  {     report__report__du_name_ordered_top_procs_report_0 },
+  {     report__report__du_ptag_ordered_top_procs_report_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_top_procs_report_0
+};
+
+static const MR_PseudoTypeInfo report__report__field_types_var_use_and_name_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &var_use_analysis__var_use_analysis__type_ctor_info_var_use_info_0
+};
+
+static const MR_ConstString report__report__field_names_var_use_and_name_0_0[2] = {
+  (MR_String) "vun_var_name",
+  (MR_String) "vun_use"
+};
+
+static const MR_DuFunctorDesc report__report__du_functor_desc_var_use_and_name_0_0 = {
+  (MR_String) "var_use_and_name",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  report__report__field_types_var_use_and_name_0_0,
+  report__report__field_names_var_use_and_name_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr report__report__du_stag_ordered_var_use_and_name_0_0[1] = {
+  &report__report__du_functor_desc_var_use_and_name_0_0
+};
+
+static const MR_DuPtagLayout report__report__du_ptag_ordered_var_use_and_name_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    report__report__du_stag_ordered_var_use_and_name_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr report__report__du_name_ordered_var_use_and_name_0[1] = {
+  &report__report__du_functor_desc_var_use_and_name_0_0
+};
+
+static const MR_Integer report__report__functor_number_map_var_use_and_name_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct report__report__type_ctor_info_var_use_and_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (report____Unify____var_use_and_name_0_0_10001)),
+  ((MR_Box) (report____Compare____var_use_and_name_0_0_10001)),
+  (MR_String) "report",
+  (MR_String) "var_use_and_name",
+  {     report__report__du_name_ordered_var_use_and_name_0 },
+  {     report__report__du_ptag_ordered_var_use_and_name_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  report__report__functor_number_map_var_use_and_name_0
+};
+
+static MR_bool MR_CALL 
+report____Unify____ancestor_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____ancestor_desc_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____ancestor_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____ancestor_desc_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____call_site_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____call_site_desc_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____call_site_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____call_site_desc_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____call_site_dynamic_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____call_site_dynamic_dump_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____call_site_dynamic_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____call_site_dynamic_dump_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____call_site_dynamic_var_use_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____call_site_dynamic_var_use_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____call_site_dynamic_var_use_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____call_site_dynamic_var_use_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____call_site_perf_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____call_site_perf_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____call_site_perf_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____call_site_perf_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____call_site_static_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____call_site_static_dump_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____call_site_static_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____call_site_static_dump_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____callers_counts_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____callers_counts_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____callers_counts_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____callers_counts_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_call_site_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_call_site_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_call_site_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_call_site_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_desc_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_desc_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_dump_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_dump_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_proc_dynamic_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_proc_dynamic_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_proc_dynamic_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_proc_dynamic_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_proc_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_proc_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_proc_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_proc_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_recursion_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_recursion_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_recursion_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_recursion_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____clique_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____clique_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____clique_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____clique_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____data_struct_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____data_struct_name_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____data_struct_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____data_struct_name_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____deep_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____deep_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____deep_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____deep_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____field_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____field_name_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____field_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____field_name_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____getter_or_setter_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____getter_or_setter_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____getter_or_setter_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____getter_or_setter_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_ds_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_ds_map_1_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_ds_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_ds_map_1_0(((MR_Word) report__wrapper_arg_1), &report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_3), ((MR_Word) report__wrapper_arg_4));
+    }
+    *report__wrapper_arg_2 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_ds_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_ds_map_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_ds_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_ds_map_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_info_2_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_field_info_2_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3), ((MR_Word) report__wrapper_arg_4));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_field_info_2_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box * report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4,
+  MR_Box report__wrapper_arg_5)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_field_info_2_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2), &report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_4), ((MR_Word) report__wrapper_arg_5));
+    }
+    *report__wrapper_arg_3 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_field_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_field_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_field_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_field_map_1_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_field_map_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_field_map_1_0(((MR_Word) report__wrapper_arg_1), &report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_3), ((MR_Word) report__wrapper_arg_4));
+    }
+    *report__wrapper_arg_2 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____gs_field_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____gs_field_map_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____gs_field_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____gs_field_map_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____inheritable_perf_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____inheritable_perf_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____inheritable_perf_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____inheritable_perf_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____maybe_have_module_rep_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____maybe_have_module_rep_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____maybe_have_module_rep_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____maybe_have_module_rep_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____menu_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____menu_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____menu_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____menu_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____message_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____message_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____message_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____message_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____module_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____module_active_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____module_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____module_active_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____module_getter_setters_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____module_getter_setters_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____module_getter_setters_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____module_getter_setters_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____module_is_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____module_is_active_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____module_is_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____module_is_active_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____module_rep_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____module_rep_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____module_rep_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____module_rep_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____module_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____module_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____module_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____module_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____normal_callee_id_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____normal_callee_id_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____normal_callee_id_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____normal_callee_id_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____perf_row_data_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____perf_row_data_1_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____perf_row_data_1_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box * report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3,
+  MR_Box report__wrapper_arg_4)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____perf_row_data_1_0(((MR_Word) report__wrapper_arg_1), &report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_3), ((MR_Word) report__wrapper_arg_4));
+    }
+    *report__wrapper_arg_2 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_active_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_active_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_callers_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_callers_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_callers_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_callers_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_callers_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_callers_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_callers_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_callers_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_desc_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_desc_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_desc_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_desc_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_dynamic_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_dynamic_dump_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_dynamic_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_dynamic_dump_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_is_active_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_is_active_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_is_active_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_is_active_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____proc_static_dump_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____proc_static_dump_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____proc_static_dump_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____proc_static_dump_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____procrep_coverage_info_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____procrep_coverage_info_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____procrep_coverage_info_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____procrep_coverage_info_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____program_modules_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____program_modules_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____program_modules_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____program_modules_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_level_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_level_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_level_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_level_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_freq_data_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_freq_data_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_freq_data_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_freq_data_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_histogram_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_histogram_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_histogram_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_histogram_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_proc_freq_data_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_proc_freq_data_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_proc_freq_data_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_proc_freq_data_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_proc_map_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_proc_map_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_proc_map_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_proc_map_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_type_simple_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_type_simple_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_type_simple_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_type_simple_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____recursion_types_frequency_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____recursion_types_frequency_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____recursion_types_frequency_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____recursion_types_frequency_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____report_ordering_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____report_ordering_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____report_ordering_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____report_ordering_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____top_procs_report_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____top_procs_report_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____top_procs_report_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____top_procs_report_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+report____Unify____var_use_and_name_0_0_10001(
+  MR_Box report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    {
+      report__succeeded = report____Unify____var_use_and_name_0_0(((MR_Word) report__wrapper_arg_1), ((MR_Word) report__wrapper_arg_2));
+    }
+    return report__succeeded;
+  }
+}
+
+static void MR_CALL 
+report____Compare____var_use_and_name_0_0_10001(
+  MR_Box * report__wrapper_arg_1,
+  MR_Box report__wrapper_arg_2,
+  MR_Box report__wrapper_arg_3)
+{
+  {
+    MR_Word report__conv0_HeadVar__1_1;
+
+    {
+      report____Compare____var_use_and_name_0_0(&report__conv0_HeadVar__1_1, ((MR_Word) report__wrapper_arg_2), ((MR_Word) report__wrapper_arg_3));
+    }
+    *report__wrapper_arg_1 = ((MR_Box) (report__conv0_HeadVar__1_1));
+  }
+}
+
+void MR_CALL 
+report____Compare____var_use_and_name_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            var_use_analysis____Compare____var_use_info_0_0(report__HeadVar__1_1, report__V_5_5, report__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____var_use_and_name_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_5_5) == 0);
+        if (report__succeeded)
+          {
+            report__succeeded = var_use_analysis____Unify____var_use_info_0_0(report__V_4_4, report__V_6_6);
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____top_procs_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          report____Compare____report_ordering_0_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[5], report__HeadVar__1_1, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____top_procs_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_9_9;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          report__succeeded = report____Unify____report_ordering_0_0(report__V_3_3, report__V_5_5);
+        }
+        if (report__succeeded)
+          {
+            report__TypeInfo_9_9 = (MR_Word) &report_scalar_common_1[5];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_9_9, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_6_6)));
+            }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____report_ordering_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) & (MR_Integer) 7);
+        MR_Word report__V_6_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word report__V_7_7 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 4)) & (MR_Integer) 1);
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_9_9 = ((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)))) & (MR_Integer) 7);
+        MR_Word report__V_10_10 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word report__V_11_11 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)))) >> (MR_Integer) 4)) & (MR_Integer) 1);
+        MR_Word report__V_12_12;
+
+        {
+          query____Compare____display_limit_0_0(&report__V_12_12, report__V_4_4, report__V_8_8);
+        }
+        report__succeeded = (report__V_12_12 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_12_12;
+        else
+          {
+            MR_Word report__V_13_13;
+            MR_Integer report__V_21_21 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_22_22 = (MR_Integer) report__V_9_9;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_13_13, report__V_21_21, report__V_22_22);
+            }
+            report__succeeded = (report__V_13_13 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_13_13;
+            else
+              {
+                MR_Word report__V_14_14;
+                MR_Integer report__V_23_23 = (MR_Integer) report__V_6_6;
+                MR_Integer report__V_24_24 = (MR_Integer) report__V_10_10;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_14_14, report__V_23_23, report__V_24_24);
+                }
+                report__succeeded = (report__V_14_14 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_14_14;
+                else
+                  {
+                    MR_Integer report__V_25_25 = (MR_Integer) report__V_7_7;
+                    MR_Integer report__V_26_26 = (MR_Integer) report__V_11_11;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_25_25, report__V_26_26);
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____report_ordering_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_11 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_12 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_11 == report__CastY_12);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)))) & (MR_Integer) 7);
+        MR_Word report__V_5_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word report__V_6_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)))) >> (MR_Integer) 4)) & (MR_Integer) 1);
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) & (MR_Integer) 7);
+        MR_Word report__V_9_9 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word report__V_10_10 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 4)) & (MR_Integer) 1);
+
+        {
+          report__succeeded = query____Unify____display_limit_0_0(report__V_3_3, report__V_7_7);
+        }
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_4_4 == report__V_8_8);
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_9_9);
+                if (report__succeeded)
+                  report__succeeded = (report__V_6_6 == report__V_10_10);
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_types_frequency_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_6 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_7 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_6 == report__CastY_7);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = (MR_Word) report__HeadVar__2_2;
+        MR_Word report__V_5_5 = (MR_Word) report__HeadVar__3_3;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[22], report__HeadVar__1_1, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_5_5)));
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_types_frequency_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_5 == report__CastY_6);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = (MR_Word) report__HeadVar__1_1;
+        MR_Word report__V_4_4 = (MR_Word) report__HeadVar__2_2;
+
+        {
+          report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_2[22], ((MR_Box) (report__V_3_3)), ((MR_Box) (report__V_4_4)));
+        }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_simple_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_46 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_47 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_46 == report__CastY_47);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(report__HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 2:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 2:
+              switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 3:
+                      *report__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(report__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *report__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *report__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  *report__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer report__V_52_52 = ((MR_Integer) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_52_52, report__V_17_17);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word report__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[37], report__HeadVar__1_1, ((MR_Box) (report__V_53_53)), ((MR_Box) (report__V_29_29)));
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_String report__V_51_51 = ((MR_String) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_String report__V_41_41 = ((MR_String) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_51_51, report__V_41_41);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_simple_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_17 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_18 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_17 == report__CastY_18);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(report__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer report__CastX_3 = (MR_Integer) report__HeadVar__1_1;
+                MR_Integer report__CastY_4 = (MR_Integer) report__HeadVar__2_2;
+
+                report__succeeded = (report__CastY_4 == report__CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+                MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+                report__succeeded = (report__CastY_6 == report__CastX_5);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+                MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+                report__succeeded = (report__CastY_8 == report__CastX_7);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__1_1;
+                MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__2_2;
+
+                report__succeeded = (report__CastY_16 == report__CastX_15);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer report__V_10_10;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (report__succeeded)
+              {
+                report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__succeeded = (report__V_9_9 == report__V_10_10);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__TypeInfo_19_19;
+            MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_12_12;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (report__succeeded)
+              {
+                report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_19_19 = (MR_Word) &report_scalar_common_1[37];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_19_19, ((MR_Box) (report__V_11_11)), ((MR_Box) (report__V_12_12)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String report__V_14_14;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (report__succeeded)
+              {
+                report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__succeeded = (strcmp(report__V_13_13, report__V_14_14) == 0);
+              }
+          }
+          break;
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_proc_map_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[21], report__HeadVar__1_1, ((MR_Box) (report__Cast_HeadVar1_4)), ((MR_Box) (report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_proc_map_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_2[21], ((MR_Box) (report__Cast_HeadVar1_3)), ((MR_Box) (report__Cast_HeadVar2_4)));
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_proc_freq_data_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_10_10, report__V_4_4, report__V_7_7);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              measurement_units____Compare____percent_0_0(&report__V_11_11, report__V_5_5, report__V_8_8);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[4], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_proc_freq_data_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeCtorInfo_12_12;
+        MR_Integer report__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        report__succeeded = (report__V_3_3 == report__V_6_6);
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = measurement_units____Unify____percent_0_0(report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              {
+                report__TypeCtorInfo_12_12 = (MR_Word) &report__report__type_ctor_info_proc_desc_0;
+                {
+                  report__succeeded = report____Unify____perf_row_data_1_0(report__TypeCtorInfo_12_12, report__V_5_5, report__V_8_8);
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_histogram_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[22], report__HeadVar__1_1, ((MR_Box) (report__Cast_HeadVar1_4)), ((MR_Box) (report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_histogram_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_2[22], ((MR_Box) (report__Cast_HeadVar1_3)), ((MR_Box) (report__Cast_HeadVar2_4)));
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_freq_data_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word report__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_12_12, report__V_4_4, report__V_8_8);
+        }
+        report__succeeded = (report__V_12_12 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_12_12;
+        else
+          {
+            MR_Word report__V_13_13;
+
+            {
+              measurement_units____Compare____percent_0_0(&report__V_13_13, report__V_5_5, report__V_9_9);
+            }
+            report__succeeded = (report__V_13_13 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_13_13;
+            else
+              {
+                MR_Word report__V_14_14;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[36], &report__V_14_14, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_10_10)));
+                }
+                report__succeeded = (report__V_14_14 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_14_14;
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[21], report__HeadVar__1_1, ((MR_Box) (report__V_7_7)), ((MR_Box) (report__V_11_11)));
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_freq_data_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_11 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_12 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_11 == report__CastY_12);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_14_14;
+        MR_Word report__TypeInfo_15_15;
+        MR_Integer report__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+
+        report__succeeded = (report__V_3_3 == report__V_7_7);
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = measurement_units____Unify____percent_0_0(report__V_4_4, report__V_8_8);
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_14_14 = (MR_Word) &report_scalar_common_1[36];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_14_14, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_9_9)));
+                }
+                if (report__succeeded)
+                  {
+                    report__TypeInfo_15_15 = (MR_Word) &report_scalar_common_2[21];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_15_15, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_10_10)));
+                    }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_type_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_129 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_130 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_129 == report__CastY_130);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *report__HeadVar__1_1 = (MR_Integer) 0;
+              break;
+            case (MR_Integer) 1:
+              *report__HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 2:
+              *report__HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *report__HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word report__V_146_146 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 4)));
+            MR_Float report__V_147_147 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 3)));
+            MR_Float report__V_148_148 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word report__V_149_149 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word report__V_150_150 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word report__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Float report__V_26_26 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Float report__V_27_27 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word report__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 4)));
+                  MR_Word report__V_29_29;
+
+                  {
+                    report____Compare____recursion_level_report_0_0(&report__V_29_29, report__V_150_150, report__V_24_24);
+                  }
+                  report__succeeded = (report__V_29_29 == (MR_Integer) 0);
+                  report__succeeded = !(report__succeeded);
+                  if (report__succeeded)
+                    *report__HeadVar__1_1 = report__V_29_29;
+                  else
+                    {
+                      MR_Word report__V_30_30;
+
+                      {
+                        report____Compare____recursion_level_report_0_0(&report__V_30_30, report__V_149_149, report__V_25_25);
+                      }
+                      report__succeeded = (report__V_30_30 == (MR_Integer) 0);
+                      report__succeeded = !(report__succeeded);
+                      if (report__succeeded)
+                        *report__HeadVar__1_1 = report__V_30_30;
+                      else
+                        {
+                          MR_Word report__V_31_31;
+
+                          {
+                            mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_31_31, report__V_148_148, report__V_26_26);
+                          }
+                          report__succeeded = (report__V_31_31 == (MR_Integer) 0);
+                          report__succeeded = !(report__succeeded);
+                          if (report__succeeded)
+                            *report__HeadVar__1_1 = report__V_31_31;
+                          else
+                            {
+                              MR_Word report__V_32_32;
+
+                              {
+                                mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_32_32, report__V_147_147, report__V_27_27);
+                              }
+                              report__succeeded = (report__V_32_32 == (MR_Integer) 0);
+                              report__succeeded = !(report__succeeded);
+                              if (report__succeeded)
+                                *report__HeadVar__1_1 = report__V_32_32;
+                              else
+                                {
+                                  {
+                                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_3[0], report__HeadVar__1_1, ((MR_Box) (report__V_146_146)), ((MR_Box) (report__V_28_28)));
+                                  }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__V_141_141 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word report__V_142_142 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word report__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word report__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word report__V_71_71;
+
+                  {
+                    report____Compare____recursion_level_report_0_0(&report__V_71_71, report__V_142_142, report__V_69_69);
+                  }
+                  report__succeeded = (report__V_71_71 == (MR_Integer) 0);
+                  report__succeeded = !(report__succeeded);
+                  if (report__succeeded)
+                    *report__HeadVar__1_1 = report__V_71_71;
+                  else
+                    {
+                      report____Compare____recursion_level_report_0_0(report__HeadVar__1_1, report__V_141_141, report__V_70_70);
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer report__V_144_144 = ((MR_Integer) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer report__V_92_92 = ((MR_Integer) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_144_144, report__V_92_92);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word report__V_145_145 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word report__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[35], report__HeadVar__1_1, ((MR_Box) (report__V_145_145)), ((MR_Box) (report__V_110_110)));
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *report__HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word report__V_143_143 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *report__HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *report__HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word report__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[34], report__HeadVar__1_1, ((MR_Box) (report__V_143_143)), ((MR_Box) (report__V_128_128)));
+                          }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_type_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_25 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_26 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_25 == report__CastY_26);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer report__CastX_3 = (MR_Integer) report__HeadVar__1_1;
+            MR_Integer report__CastY_4 = (MR_Integer) report__HeadVar__2_2;
+
+            report__succeeded = (report__CastY_4 == report__CastX_3);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Float report__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Float report__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 4)));
+            MR_Word report__V_10_10;
+            MR_Word report__V_11_11;
+            MR_Float report__V_12_12;
+            MR_Float report__V_13_13;
+            MR_Word report__V_14_14;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (report__succeeded)
+              {
+                report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 1)));
+                report__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 2)));
+                report__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 3)));
+                report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 4)));
+                {
+                  report__succeeded = report____Unify____recursion_level_report_0_0(report__V_5_5, report__V_10_10);
+                }
+                if (report__succeeded)
+                  {
+                    {
+                      report__succeeded = report____Unify____recursion_level_report_0_0(report__V_6_6, report__V_11_11);
+                    }
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (report__V_7_7 == report__V_12_12);
+                        if (report__succeeded)
+                          {
+                            report__succeeded = (report__V_8_8 == report__V_13_13);
+                            if (report__succeeded)
+                              {
+                                report__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) report__V_9_9, (MR_Word) report__V_14_14);
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word report__V_17_17;
+            MR_Word report__V_18_18;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (report__succeeded)
+              {
+                report__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 1)));
+                {
+                  report__succeeded = report____Unify____recursion_level_report_0_0(report__V_15_15, report__V_17_17);
+                }
+                if (report__succeeded)
+                  {
+                    report__succeeded = report____Unify____recursion_level_report_0_0(report__V_16_16, report__V_18_18);
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer report__V_20_20;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (report__succeeded)
+                  {
+                    report__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__succeeded = (report__V_19_19 == report__V_20_20);
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word report__TypeInfo_28_28;
+                MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_22_22;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (report__succeeded)
+                  {
+                    report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_28_28 = (MR_Word) &report_scalar_common_1[35];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_28_28, ((MR_Box) (report__V_21_21)), ((MR_Box) (report__V_22_22)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word report__TypeInfo_27_27;
+                MR_Word report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_24_24;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (report__succeeded)
+                  {
+                    report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_27_27 = (MR_Word) &report_scalar_common_1[34];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_27_27, ((MR_Box) (report__V_23_23)), ((MR_Box) (report__V_24_24)));
+                    }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____recursion_level_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_18 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_19 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_18 == report__CastY_19);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Float report__V_6_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Float report__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Float report__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Float report__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Float report__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Float report__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word report__V_14_14;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_14_14, report__V_4_4, report__V_9_9);
+        }
+        report__succeeded = (report__V_14_14 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_14_14;
+        else
+          {
+            MR_Word report__V_15_15;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_15_15, report__V_5_5, report__V_10_10);
+            }
+            report__succeeded = (report__V_15_15 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_15_15;
+            else
+              {
+                MR_Word report__V_16_16;
+
+                {
+                  mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_16_16, report__V_6_6, report__V_11_11);
+                }
+                report__succeeded = (report__V_16_16 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_16_16;
+                else
+                  {
+                    MR_Word report__V_17_17;
+
+                    {
+                      mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_17_17, report__V_7_7, report__V_12_12);
+                    }
+                    report__succeeded = (report__V_17_17 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_17_17;
+                    else
+                      {
+                        mercury__private_builtin__builtin_compare_float_3_p_0(report__HeadVar__1_1, report__V_8_8, report__V_13_13);
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____recursion_level_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_13 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_14 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_13 == report__CastY_14);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer report__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Float report__V_5_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Float report__V_6_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Float report__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Float report__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Float report__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Float report__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+
+        report__succeeded = (report__V_3_3 == report__V_8_8);
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_4_4 == report__V_9_9);
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_10_10);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (report__V_6_6 == report__V_11_11);
+                    if (report__succeeded)
+                      report__succeeded = (report__V_7_7 == report__V_12_12);
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____program_modules_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_6 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_7 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_6 == report__CastY_7);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = (MR_Word) report__HeadVar__2_2;
+        MR_Word report__V_5_5 = (MR_Word) report__HeadVar__3_3;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[33], report__HeadVar__1_1, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_5_5)));
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____program_modules_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_5 == report__CastY_6);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = (MR_Word) report__HeadVar__1_1;
+        MR_Word report__V_4_4 = (MR_Word) report__HeadVar__2_2;
+
+        {
+          report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_1[33], ((MR_Box) (report__V_3_3)), ((MR_Box) (report__V_4_4)));
+        }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____procrep_coverage_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+        MR_Integer report__V_17_17 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_7_7;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_10_10, report__V_17_17, report__V_18_18);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[30], &report__V_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[31], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____procrep_coverage_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__TypeInfo_13_13;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_14_14 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_15_15 = (MR_Integer) report__V_6_6;
+
+        report__succeeded = (report__V_14_14 == report__V_15_15);
+        if (report__succeeded)
+          {
+            report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[30];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[31];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_static_dump_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_27 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_28 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_27 == report__CastY_28);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_String report__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word report__V_20_20;
+        MR_Integer report__V_37_37 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_38_38 = (MR_Integer) report__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_20_20, report__V_37_37, report__V_38_38);
+        }
+        report__succeeded = (report__V_20_20 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_20_20;
+        else
+          {
+            MR_Word report__V_21_21;
+
+            {
+              mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_21_21, report__V_5_5, report__V_13_13);
+            }
+            report__succeeded = (report__V_21_21 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_21_21;
+            else
+              {
+                MR_Word report__V_22_22;
+
+                {
+                  mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_22_22, report__V_6_6, report__V_14_14);
+                }
+                report__succeeded = (report__V_22_22 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_22_22;
+                else
+                  {
+                    MR_Word report__V_23_23;
+
+                    {
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_23_23, report__V_7_7, report__V_15_15);
+                    }
+                    report__succeeded = (report__V_23_23 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_23_23;
+                    else
+                      {
+                        MR_Word report__V_24_24;
+
+                        {
+                          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_24_24, report__V_8_8, report__V_16_16);
+                        }
+                        report__succeeded = (report__V_24_24 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_24_24;
+                        else
+                          {
+                            MR_Word report__V_25_25;
+
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_25_25, report__V_9_9, report__V_17_17);
+                            }
+                            report__succeeded = (report__V_25_25 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_25_25;
+                            else
+                              {
+                                MR_Word report__V_26_26;
+
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_26_26, report__V_10_10, report__V_18_18);
+                                }
+                                report__succeeded = (report__V_26_26 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_26_26;
+                                else
+                                  {
+                                    mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_11_11, report__V_19_19);
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_static_dump_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_19 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_20 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_19 == report__CastY_20);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_12_12 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Integer report__V_22_22 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_23_23 = (MR_Integer) report__V_11_11;
+
+        report__succeeded = (report__V_22_22 == report__V_23_23);
+        if (report__succeeded)
+          {
+            report__succeeded = (strcmp(report__V_4_4, report__V_12_12) == 0);
+            if (report__succeeded)
+              {
+                report__succeeded = (strcmp(report__V_5_5, report__V_13_13) == 0);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (strcmp(report__V_6_6, report__V_14_14) == 0);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (strcmp(report__V_7_7, report__V_15_15) == 0);
+                        if (report__succeeded)
+                          {
+                            report__succeeded = (report__V_8_8 == report__V_16_16);
+                            if (report__succeeded)
+                              {
+                                report__succeeded = (report__V_9_9 == report__V_17_17);
+                                if (report__succeeded)
+                                  report__succeeded = (report__V_10_10 == report__V_18_18);
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[28], &report__V_10_10, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[4], &report__V_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[29], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeCtorInfo_12_12;
+        MR_Word report__TypeInfo_13_13;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          report__succeeded = report____Unify____perf_row_data_1_0((MR_Word) &report__report__type_ctor_info_callers_counts_0, report__V_3_3, report__V_6_6);
+        }
+        if (report__succeeded)
+          {
+            report__TypeCtorInfo_12_12 = (MR_Word) &report__report__type_ctor_info_proc_desc_0;
+            {
+              report__succeeded = report____Unify____perf_row_data_1_0(report__TypeCtorInfo_12_12, report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[29];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_is_active_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__Cast_HeadVar1_4 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__Cast_HeadVar2_5 = (MR_Integer) report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_is_active_0_0(
+  MR_Word report__HeadVar__2_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded = (report__HeadVar__2_1 == report__HeadVar__2_2);
+
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_dynamic_dump_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_27 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_28 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_27 == report__CastY_28);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_String report__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_String report__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word report__V_20_20;
+        MR_Integer report__V_37_37 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_38_38 = (MR_Integer) report__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_20_20, report__V_37_37, report__V_38_38);
+        }
+        report__succeeded = (report__V_20_20 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_20_20;
+        else
+          {
+            MR_Word report__V_21_21;
+            MR_Integer report__V_39_39 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_40_40 = (MR_Integer) report__V_13_13;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_21_21, report__V_39_39, report__V_40_40);
+            }
+            report__succeeded = (report__V_21_21 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_21_21;
+            else
+              {
+                MR_Word report__V_22_22;
+
+                {
+                  mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_22_22, report__V_6_6, report__V_14_14);
+                }
+                report__succeeded = (report__V_22_22 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_22_22;
+                else
+                  {
+                    MR_Word report__V_23_23;
+
+                    {
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_23_23, report__V_7_7, report__V_15_15);
+                    }
+                    report__succeeded = (report__V_23_23 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_23_23;
+                    else
+                      {
+                        MR_Word report__V_24_24;
+
+                        {
+                          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_24_24, report__V_8_8, report__V_16_16);
+                        }
+                        report__succeeded = (report__V_24_24 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_24_24;
+                        else
+                          {
+                            MR_Word report__V_25_25;
+
+                            {
+                              mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_25_25, report__V_9_9, report__V_17_17);
+                            }
+                            report__succeeded = (report__V_25_25 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_25_25;
+                            else
+                              {
+                                MR_Word report__V_26_26;
+
+                                {
+                                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[25], &report__V_26_26, ((MR_Box) (report__V_10_10)), ((MR_Box) (report__V_18_18)));
+                                }
+                                report__succeeded = (report__V_26_26 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_26_26;
+                                else
+                                  {
+                                    {
+                                      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[27], report__HeadVar__1_1, ((MR_Box) (report__V_11_11)), ((MR_Box) (report__V_19_19)));
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_dynamic_dump_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_19 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_20 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_19 == report__CastY_20);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_23_23;
+        MR_Word report__TypeInfo_24_24;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word report__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Integer report__V_25_25;
+        MR_Integer report__V_26_26;
+        MR_Integer report__V_27_27;
+        MR_Integer report__V_28_28;
+
+        report__succeeded = (strcmp(report__V_5_5, report__V_13_13) == 0);
+        if (report__succeeded)
+          {
+            report__succeeded = (strcmp(report__V_6_6, report__V_14_14) == 0);
+            if (report__succeeded)
+              {
+                report__succeeded = (strcmp(report__V_7_7, report__V_15_15) == 0);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (strcmp(report__V_8_8, report__V_16_16) == 0);
+                    if (report__succeeded)
+                      {
+                        report__V_25_25 = (MR_Integer) report__V_3_3;
+                        report__V_26_26 = (MR_Integer) report__V_11_11;
+                        report__succeeded = (report__V_25_25 == report__V_26_26);
+                        if (report__succeeded)
+                          {
+                            report__V_27_27 = (MR_Integer) report__V_4_4;
+                            report__V_28_28 = (MR_Integer) report__V_12_12;
+                            report__succeeded = (report__V_27_27 == report__V_28_28);
+                            if (report__succeeded)
+                              {
+                                report__TypeInfo_23_23 = (MR_Word) &report_scalar_common_1[25];
+                                {
+                                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_23_23, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_17_17)));
+                                }
+                                if (report__succeeded)
+                                  {
+                                    report__TypeInfo_24_24 = (MR_Word) &report_scalar_common_1[27];
+                                    {
+                                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_24_24, ((MR_Box) (report__V_10_10)), ((MR_Box) (report__V_18_18)));
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_desc_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_21 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_22 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_21 == report__CastY_22);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_String report__V_11_11 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word report__V_16_16;
+        MR_Integer report__V_29_29 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_30_30 = (MR_Integer) report__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_16_16, report__V_29_29, report__V_30_30);
+        }
+        report__succeeded = (report__V_16_16 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_16_16;
+        else
+          {
+            MR_Word report__V_17_17;
+
+            {
+              mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_17_17, report__V_5_5, report__V_11_11);
+            }
+            report__succeeded = (report__V_17_17 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_17_17;
+            else
+              {
+                MR_Word report__V_18_18;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_18_18, report__V_6_6, report__V_12_12);
+                }
+                report__succeeded = (report__V_18_18 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_18_18;
+                else
+                  {
+                    MR_Word report__V_19_19;
+
+                    {
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_19_19, report__V_7_7, report__V_13_13);
+                    }
+                    report__succeeded = (report__V_19_19 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_19_19;
+                    else
+                      {
+                        MR_Word report__V_20_20;
+
+                        {
+                          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_20_20, report__V_8_8, report__V_14_14);
+                        }
+                        report__succeeded = (report__V_20_20 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_20_20;
+                        else
+                          {
+                            mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_9_9, report__V_15_15);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_desc_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_12_12 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_19_19 = (MR_Integer) report__V_9_9;
+
+        report__succeeded = (report__V_18_18 == report__V_19_19);
+        if (report__succeeded)
+          {
+            report__succeeded = (strcmp(report__V_4_4, report__V_10_10) == 0);
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_11_11);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (strcmp(report__V_6_6, report__V_12_12) == 0);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (strcmp(report__V_7_7, report__V_13_13) == 0);
+                        if (report__succeeded)
+                          report__succeeded = (strcmp(report__V_8_8, report__V_14_14) == 0);
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_callers_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_21 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_22 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_21 == report__CastY_22);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Integer report__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word report__V_16_16;
+
+        {
+          report____Compare____proc_desc_0_0(&report__V_16_16, report__V_4_4, report__V_10_10);
+        }
+        report__succeeded = (report__V_16_16 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_16_16;
+        else
+          {
+            MR_Word report__V_17_17;
+
+            {
+              report____Compare____proc_callers_0_0(&report__V_17_17, report__V_5_5, report__V_11_11);
+            }
+            report__succeeded = (report__V_17_17 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_17_17;
+            else
+              {
+                MR_Word report__V_18_18;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_18_18, report__V_6_6, report__V_12_12);
+                }
+                report__succeeded = (report__V_18_18 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_18_18;
+                else
+                  {
+                    MR_Word report__V_19_19;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_19_19, report__V_7_7, report__V_13_13);
+                    }
+                    report__succeeded = (report__V_19_19 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_19_19;
+                    else
+                      {
+                        MR_Word report__V_20_20;
+                        MR_Integer report__V_29_29 = (MR_Integer) report__V_8_8;
+                        MR_Integer report__V_30_30 = (MR_Integer) report__V_14_14;
+
+                        {
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_20_20, report__V_29_29, report__V_30_30);
+                        }
+                        report__succeeded = (report__V_20_20 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_20_20;
+                        else
+                          {
+                            {
+                              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[24], report__HeadVar__1_1, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_15_15)));
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_callers_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_17_17;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+
+        {
+          report__succeeded = report____Unify____proc_desc_0_0(report__V_3_3, report__V_9_9);
+        }
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = report____Unify____proc_callers_0_0(report__V_4_4, report__V_10_10);
+            }
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_11_11);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (report__V_6_6 == report__V_12_12);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (report__V_7_7 == report__V_13_13);
+                        if (report__succeeded)
+                          {
+                            report__TypeInfo_17_17 = (MR_Word) &report_scalar_common_1[24];
+                            {
+                              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_17_17, ((MR_Box) (report__V_8_8)), ((MR_Box) (report__V_14_14)));
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_callers_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_36 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_37 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_36 == report__CastY_37);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word report__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[23], report__HeadVar__1_1, ((MR_Box) (report__V_42_42)), ((MR_Box) (report__V_5_5)));
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word report__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[5], report__HeadVar__1_1, ((MR_Box) (report__V_45_45)), ((MR_Box) (report__V_15_15)));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word report__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[22], report__HeadVar__1_1, ((MR_Box) (report__V_44_44)), ((MR_Box) (report__V_25_25)));
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word report__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word report__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[9], report__HeadVar__1_1, ((MR_Box) (report__V_43_43)), ((MR_Box) (report__V_35_35)));
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_callers_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_11 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_12 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_11 == report__CastY_12);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word report__TypeInfo_13_13;
+            MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_4_4;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (report__succeeded)
+              {
+                report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[23];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_3_3)), ((MR_Box) (report__V_4_4)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word report__TypeInfo_16_16;
+            MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_6_6;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (report__succeeded)
+              {
+                report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_16_16 = (MR_Word) &report_scalar_common_1[5];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_16_16, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_6_6)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__TypeInfo_15_15;
+            MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_8_8;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (report__succeeded)
+              {
+                report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_15_15 = (MR_Word) &report_scalar_common_1[22];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_15_15, ((MR_Box) (report__V_7_7)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word report__TypeInfo_14_14;
+            MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_10_10;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (report__succeeded)
+              {
+                report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_14_14 = (MR_Word) &report_scalar_common_1[9];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_14_14, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_10_10)));
+                }
+              }
+          }
+          break;
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____proc_active_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          report____Compare____proc_desc_0_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            MR_Integer report__V_13_13 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_14_14 = (MR_Integer) report__V_7_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_13_13, report__V_14_14);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____proc_active_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          report__succeeded = report____Unify____proc_desc_0_0(report__V_3_3, report__V_5_5);
+        }
+        if (report__succeeded)
+          report__succeeded = (report__V_4_4 == report__V_6_6);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____perf_row_data_1_0(
+  MR_Word report__TypeInfo_for_T_32,
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_30 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_31 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_30 == report__CastY_31);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Box report__V_4_4 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Box report__V_13_13 = (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0));
+        MR_Integer report__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Word report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 8)));
+        MR_Word report__V_22_22;
+
+        {
+          mercury__builtin__compare_3_p_0(report__TypeInfo_for_T_32, &report__V_22_22, report__V_4_4, report__V_13_13);
+        }
+        report__succeeded = (report__V_22_22 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_22_22;
+        else
+          {
+            MR_Word report__V_23_23;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_23_23, report__V_5_5, report__V_14_14);
+            }
+            report__succeeded = (report__V_23_23 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_23_23;
+            else
+              {
+                MR_Word report__V_24_24;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_24_24, report__V_6_6, report__V_15_15);
+                }
+                report__succeeded = (report__V_24_24 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_24_24;
+                else
+                  {
+                    MR_Word report__V_25_25;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_25_25, report__V_7_7, report__V_16_16);
+                    }
+                    report__succeeded = (report__V_25_25 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_25_25;
+                    else
+                      {
+                        MR_Word report__V_26_26;
+
+                        {
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_26_26, report__V_8_8, report__V_17_17);
+                        }
+                        report__succeeded = (report__V_26_26 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_26_26;
+                        else
+                          {
+                            MR_Word report__V_27_27;
+
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_27_27, report__V_9_9, report__V_18_18);
+                            }
+                            report__succeeded = (report__V_27_27 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_27_27;
+                            else
+                              {
+                                MR_Word report__V_28_28;
+
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_28_28, report__V_10_10, report__V_19_19);
+                                }
+                                report__succeeded = (report__V_28_28 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_28_28;
+                                else
+                                  {
+                                    MR_Word report__V_29_29;
+
+                                    {
+                                      report____Compare____inheritable_perf_0_0(&report__V_29_29, report__V_11_11, report__V_20_20);
+                                    }
+                                    report__succeeded = (report__V_29_29 == (MR_Integer) 0);
+                                    report__succeeded = !(report__succeeded);
+                                    if (report__succeeded)
+                                      *report__HeadVar__1_1 = report__V_29_29;
+                                    else
+                                      {
+                                        {
+                                          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[20], report__HeadVar__1_1, ((MR_Box) (report__V_12_12)), ((MR_Box) (report__V_21_21)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____perf_row_data_1_0(
+  MR_Word report__TypeInfo_for_T_23,
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_21 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_22 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_21 == report__CastY_22);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_24_24;
+        MR_Box report__V_3_3 = (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0));
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 8)));
+        MR_Box report__V_12_12 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0));
+        MR_Integer report__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+
+        {
+          report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_T_23, report__V_3_3, report__V_12_12);
+        }
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_4_4 == report__V_13_13);
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_14_14);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (report__V_6_6 == report__V_15_15);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (report__V_7_7 == report__V_16_16);
+                        if (report__succeeded)
+                          {
+                            report__succeeded = (report__V_8_8 == report__V_17_17);
+                            if (report__succeeded)
+                              {
+                                report__succeeded = (report__V_9_9 == report__V_18_18);
+                                if (report__succeeded)
+                                  {
+                                    {
+                                      report__succeeded = report____Unify____inheritable_perf_0_0(report__V_10_10, report__V_19_19);
+                                    }
+                                    if (report__succeeded)
+                                      {
+                                        report__TypeInfo_24_24 = (MR_Word) &report_scalar_common_1[20];
+                                        {
+                                          report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_24_24, ((MR_Box) (report__V_11_11)), ((MR_Box) (report__V_20_20)));
+                                        }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____normal_callee_id_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          report____Compare____proc_desc_0_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_5_5, report__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____normal_callee_id_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          report__succeeded = report____Unify____proc_desc_0_0(report__V_3_3, report__V_5_5);
+        }
+        if (report__succeeded)
+          report__succeeded = (strcmp(report__V_4_4, report__V_6_6) == 0);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____module_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_10_10, report__V_4_4, report__V_7_7);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+            MR_Integer report__V_17_17 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_18_18 = (MR_Integer) report__V_8_8;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_11_11, report__V_17_17, report__V_18_18);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[19], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____module_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_11_11;
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_6_6) == 0);
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_4_4 == report__V_7_7);
+            if (report__succeeded)
+              {
+                report__TypeInfo_11_11 = (MR_Word) &report_scalar_common_1[19];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____module_rep_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_5_5, report__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____module_rep_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_5_5) == 0);
+        if (report__succeeded)
+          report__succeeded = (strcmp(report__V_4_4, report__V_6_6) == 0);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____module_is_active_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__Cast_HeadVar1_4 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__Cast_HeadVar2_5 = (MR_Integer) report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____module_is_active_0_0(
+  MR_Word report__HeadVar__2_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded = (report__HeadVar__2_1 == report__HeadVar__2_2);
+
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____module_getter_setters_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[20], report__HeadVar__1_1, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____module_getter_setters_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_9_9;
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_5_5) == 0);
+        if (report__succeeded)
+          {
+            report__TypeInfo_9_9 = (MR_Word) &report_scalar_common_2[20];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_9_9, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_6_6)));
+            }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____module_active_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            MR_Integer report__V_13_13 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_14_14 = (MR_Integer) report__V_7_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_13_13, report__V_14_14);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____module_active_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_5_5) == 0);
+        if (report__succeeded)
+          report__succeeded = (report__V_4_4 == report__V_6_6);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____message_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_6 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_7 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_6 == report__CastY_7);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+        MR_String report__V_5_5 = (MR_String) report__HeadVar__3_3;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_4_4, report__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____message_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_5 == report__CastY_6);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = (MR_String) report__HeadVar__1_1;
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_4_4) == 0);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____menu_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_33 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_34 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_33 == report__CastY_34);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Integer report__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+        MR_String report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer report__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Integer report__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Integer report__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Integer report__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 8)));
+        MR_Integer report__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 9)));
+        MR_Word report__V_24_24;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_24_24, report__V_4_4, report__V_14_14);
+        }
+        report__succeeded = (report__V_24_24 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_24_24;
+        else
+          {
+            MR_Word report__V_25_25;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_25_25, report__V_5_5, report__V_15_15);
+            }
+            report__succeeded = (report__V_25_25 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_25_25;
+            else
+              {
+                MR_Word report__V_26_26;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_26_26, report__V_6_6, report__V_16_16);
+                }
+                report__succeeded = (report__V_26_26 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_26_26;
+                else
+                  {
+                    MR_Word report__V_27_27;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_27_27, report__V_7_7, report__V_17_17);
+                    }
+                    report__succeeded = (report__V_27_27 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_27_27;
+                    else
+                      {
+                        MR_Word report__V_28_28;
+
+                        {
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_28_28, report__V_8_8, report__V_18_18);
+                        }
+                        report__succeeded = (report__V_28_28 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_28_28;
+                        else
+                          {
+                            MR_Word report__V_29_29;
+
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_29_29, report__V_9_9, report__V_19_19);
+                            }
+                            report__succeeded = (report__V_29_29 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_29_29;
+                            else
+                              {
+                                MR_Word report__V_30_30;
+
+                                {
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_30_30, report__V_10_10, report__V_20_20);
+                                }
+                                report__succeeded = (report__V_30_30 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_30_30;
+                                else
+                                  {
+                                    MR_Word report__V_31_31;
+
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_31_31, report__V_11_11, report__V_21_21);
+                                    }
+                                    report__succeeded = (report__V_31_31 == (MR_Integer) 0);
+                                    report__succeeded = !(report__succeeded);
+                                    if (report__succeeded)
+                                      *report__HeadVar__1_1 = report__V_31_31;
+                                    else
+                                      {
+                                        MR_Word report__V_32_32;
+
+                                        {
+                                          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_32_32, report__V_12_12, report__V_22_22);
+                                        }
+                                        report__succeeded = (report__V_32_32 == (MR_Integer) 0);
+                                        report__succeeded = !(report__succeeded);
+                                        if (report__succeeded)
+                                          *report__HeadVar__1_1 = report__V_32_32;
+                                        else
+                                          {
+                                            mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_13_13, report__V_23_23);
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____menu_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_23 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_24 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_23 == report__CastY_24);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 8)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 9)));
+        MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Integer report__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Integer report__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_13_13) == 0);
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_4_4 == report__V_14_14);
+            if (report__succeeded)
+              {
+                report__succeeded = (report__V_5_5 == report__V_15_15);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (report__V_6_6 == report__V_16_16);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (report__V_7_7 == report__V_17_17);
+                        if (report__succeeded)
+                          {
+                            report__succeeded = (report__V_8_8 == report__V_18_18);
+                            if (report__succeeded)
+                              {
+                                report__succeeded = (report__V_9_9 == report__V_19_19);
+                                if (report__succeeded)
+                                  {
+                                    report__succeeded = (report__V_10_10 == report__V_20_20);
+                                    if (report__succeeded)
+                                      {
+                                        report__succeeded = (report__V_11_11 == report__V_21_21);
+                                        if (report__succeeded)
+                                          report__succeeded = (report__V_12_12 == report__V_22_22);
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____maybe_have_module_rep_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__Cast_HeadVar1_4 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__Cast_HeadVar2_5 = (MR_Integer) report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____maybe_have_module_rep_0_0(
+  MR_Word report__HeadVar__2_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded = (report__HeadVar__2_1 == report__HeadVar__2_2);
+
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____inheritable_perf_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_42 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_43 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_42 == report__CastY_43);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Float report__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Float report__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 10)));
+        MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 11)));
+        MR_Word report__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 12)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Integer report__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Float report__V_23_23 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Integer report__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word report__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 8)));
+        MR_Float report__V_26_26 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 9)));
+        MR_Word report__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 10)));
+        MR_Word report__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 11)));
+        MR_Word report__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 12)));
+        MR_Word report__V_30_30;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_30_30, report__V_4_4, report__V_17_17);
+        }
+        report__succeeded = (report__V_30_30 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_30_30;
+        else
+          {
+            MR_Word report__V_31_31;
+
+            {
+              measurement_units____Compare____time_0_0(&report__V_31_31, report__V_5_5, report__V_18_18);
+            }
+            report__succeeded = (report__V_31_31 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_31_31;
+            else
+              {
+                MR_Word report__V_32_32;
+
+                {
+                  measurement_units____Compare____percent_0_0(&report__V_32_32, report__V_6_6, report__V_19_19);
+                }
+                report__succeeded = (report__V_32_32 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_32_32;
+                else
+                  {
+                    MR_Word report__V_33_33;
+
+                    {
+                      measurement_units____Compare____time_0_0(&report__V_33_33, report__V_7_7, report__V_20_20);
+                    }
+                    report__succeeded = (report__V_33_33 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_33_33;
+                    else
+                      {
+                        MR_Word report__V_34_34;
+
+                        {
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_34_34, report__V_8_8, report__V_21_21);
+                        }
+                        report__succeeded = (report__V_34_34 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_34_34;
+                        else
+                          {
+                            MR_Word report__V_35_35;
+
+                            {
+                              measurement_units____Compare____percent_0_0(&report__V_35_35, report__V_9_9, report__V_22_22);
+                            }
+                            report__succeeded = (report__V_35_35 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_35_35;
+                            else
+                              {
+                                MR_Word report__V_36_36;
+
+                                {
+                                  mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_36_36, report__V_10_10, report__V_23_23);
+                                }
+                                report__succeeded = (report__V_36_36 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_36_36;
+                                else
+                                  {
+                                    MR_Word report__V_37_37;
+
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_37_37, report__V_11_11, report__V_24_24);
+                                    }
+                                    report__succeeded = (report__V_37_37 == (MR_Integer) 0);
+                                    report__succeeded = !(report__succeeded);
+                                    if (report__succeeded)
+                                      *report__HeadVar__1_1 = report__V_37_37;
+                                    else
+                                      {
+                                        MR_Word report__V_38_38;
+
+                                        {
+                                          measurement_units____Compare____percent_0_0(&report__V_38_38, report__V_12_12, report__V_25_25);
+                                        }
+                                        report__succeeded = (report__V_38_38 == (MR_Integer) 0);
+                                        report__succeeded = !(report__succeeded);
+                                        if (report__succeeded)
+                                          *report__HeadVar__1_1 = report__V_38_38;
+                                        else
+                                          {
+                                            MR_Word report__V_39_39;
+
+                                            {
+                                              mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_39_39, report__V_13_13, report__V_26_26);
+                                            }
+                                            report__succeeded = (report__V_39_39 == (MR_Integer) 0);
+                                            report__succeeded = !(report__succeeded);
+                                            if (report__succeeded)
+                                              *report__HeadVar__1_1 = report__V_39_39;
+                                            else
+                                              {
+                                                MR_Word report__V_40_40;
+
+                                                {
+                                                  measurement_units____Compare____memory_0_0(&report__V_40_40, report__V_14_14, report__V_27_27);
+                                                }
+                                                report__succeeded = (report__V_40_40 == (MR_Integer) 0);
+                                                report__succeeded = !(report__succeeded);
+                                                if (report__succeeded)
+                                                  *report__HeadVar__1_1 = report__V_40_40;
+                                                else
+                                                  {
+                                                    MR_Word report__V_41_41;
+
+                                                    {
+                                                      measurement_units____Compare____percent_0_0(&report__V_41_41, report__V_15_15, report__V_28_28);
+                                                    }
+                                                    report__succeeded = (report__V_41_41 == (MR_Integer) 0);
+                                                    report__succeeded = !(report__succeeded);
+                                                    if (report__succeeded)
+                                                      *report__HeadVar__1_1 = report__V_41_41;
+                                                    else
+                                                      {
+                                                        measurement_units____Compare____memory_0_0(report__HeadVar__1_1, report__V_16_16, report__V_29_29);
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____inheritable_perf_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_29 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_30 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_29 == report__CastY_30);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer report__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Float report__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 8)));
+        MR_Float report__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 9)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 10)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 11)));
+        MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 12)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Float report__V_22_22 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Float report__V_25_25 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+        MR_Word report__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 10)));
+        MR_Word report__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 11)));
+        MR_Word report__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 12)));
+
+        report__succeeded = (report__V_3_3 == report__V_16_16);
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = measurement_units____Unify____time_0_0(report__V_4_4, report__V_17_17);
+            }
+            if (report__succeeded)
+              {
+                {
+                  report__succeeded = measurement_units____Unify____percent_0_0(report__V_5_5, report__V_18_18);
+                }
+                if (report__succeeded)
+                  {
+                    {
+                      report__succeeded = measurement_units____Unify____time_0_0(report__V_6_6, report__V_19_19);
+                    }
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (report__V_7_7 == report__V_20_20);
+                        if (report__succeeded)
+                          {
+                            {
+                              report__succeeded = measurement_units____Unify____percent_0_0(report__V_8_8, report__V_21_21);
+                            }
+                            if (report__succeeded)
+                              {
+                                report__succeeded = (report__V_9_9 == report__V_22_22);
+                                if (report__succeeded)
+                                  {
+                                    report__succeeded = (report__V_10_10 == report__V_23_23);
+                                    if (report__succeeded)
+                                      {
+                                        {
+                                          report__succeeded = measurement_units____Unify____percent_0_0(report__V_11_11, report__V_24_24);
+                                        }
+                                        if (report__succeeded)
+                                          {
+                                            report__succeeded = (report__V_12_12 == report__V_25_25);
+                                            if (report__succeeded)
+                                              {
+                                                {
+                                                  report__succeeded = measurement_units____Unify____memory_0_0(report__V_13_13, report__V_26_26);
+                                                }
+                                                if (report__succeeded)
+                                                  {
+                                                    {
+                                                      report__succeeded = measurement_units____Unify____percent_0_0(report__V_14_14, report__V_27_27);
+                                                    }
+                                                    if (report__succeeded)
+                                                      {
+                                                        report__succeeded = measurement_units____Unify____memory_0_0(report__V_15_15, report__V_28_28);
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_field_map_1_0(
+  MR_Word report__TypeInfo_for_T_6,
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &report__report__type_ctor_info_field_name_0, report__TypeInfo_for_T_6, report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_field_map_1_0(
+  MR_Word report__TypeInfo_for_T_5,
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &report__report__type_ctor_info_field_name_0, report__TypeInfo_for_T_5, report__Cast_HeadVar1_3, report__Cast_HeadVar2_4);
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_field_map_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[19], report__HeadVar__1_1, ((MR_Box) (report__Cast_HeadVar1_4)), ((MR_Box) (report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_field_map_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_2[19], ((MR_Box) (report__Cast_HeadVar1_3)), ((MR_Box) (report__Cast_HeadVar2_4)));
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_field_info_2_0(
+  MR_Word report__TypeInfo_for_I_38,
+  MR_Word report__TypeInfo_for_S_39,
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_36 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_37 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_36 == report__CastY_37);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Box report__V_40_40 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2));
+            MR_Box report__V_41_41 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1));
+            MR_Box report__V_42_42 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Box report__V_7_7 = (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0));
+                  MR_Box report__V_8_8 = (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1));
+                  MR_Box report__V_9_9 = (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2));
+                  MR_Word report__V_10_10;
+
+                  {
+                    mercury__builtin__compare_3_p_0(report__TypeInfo_for_I_38, &report__V_10_10, report__V_42_42, report__V_7_7);
+                  }
+                  report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+                  report__succeeded = !(report__succeeded);
+                  if (report__succeeded)
+                    *report__HeadVar__1_1 = report__V_10_10;
+                  else
+                    {
+                      MR_Word report__V_11_11;
+
+                      {
+                        mercury__builtin__compare_3_p_0(report__TypeInfo_for_I_38, &report__V_11_11, report__V_41_41, report__V_8_8);
+                      }
+                      report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+                      report__succeeded = !(report__succeeded);
+                      if (report__succeeded)
+                        *report__HeadVar__1_1 = report__V_11_11;
+                      else
+                        {
+                          mercury__builtin__compare_3_p_0(report__TypeInfo_for_S_39, report__HeadVar__1_1, report__V_40_40, report__V_9_9);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box report__V_43_43 = (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Box report__V_25_25 = (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 0));
+
+                  {
+                    mercury__builtin__compare_3_p_0(report__TypeInfo_for_I_38, report__HeadVar__1_1, report__V_43_43, report__V_25_25);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *report__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Box report__V_44_44 = (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0));
+
+            switch (MR_tag((MR_Word) report__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *report__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Box report__V_35_35 = (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 0));
+
+                  {
+                    mercury__builtin__compare_3_p_0(report__TypeInfo_for_I_38, report__HeadVar__1_1, report__V_44_44, report__V_35_35);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_field_info_2_0(
+  MR_Word report__TypeInfo_for_I_15,
+  MR_Word report__TypeInfo_for_S_16,
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_13 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_14 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_13 == report__CastY_14);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Box report__V_3_3 = (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0));
+            MR_Box report__V_4_4 = (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1));
+            MR_Box report__V_5_5 = (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2));
+            MR_Box report__V_6_6;
+            MR_Box report__V_7_7;
+            MR_Box report__V_8_8;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (report__succeeded)
+              {
+                report__V_6_6 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0));
+                report__V_7_7 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1));
+                report__V_8_8 = (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2));
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_I_15, report__V_3_3, report__V_6_6);
+                }
+                if (report__succeeded)
+                  {
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_I_15, report__V_4_4, report__V_7_7);
+                    }
+                    if (report__succeeded)
+                      {
+                        report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_S_16, report__V_5_5, report__V_8_8);
+                      }
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box report__V_9_9 = (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 0));
+            MR_Box report__V_10_10;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (report__succeeded)
+              {
+                report__V_10_10 = (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0));
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_I_15, report__V_9_9, report__V_10_10);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Box report__V_11_11 = (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 0));
+            MR_Box report__V_12_12;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (report__succeeded)
+              {
+                report__V_12_12 = (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0));
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_for_I_15, report__V_11_11, report__V_12_12);
+                }
+              }
+          }
+          break;
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_field_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[18], report__HeadVar__1_1, ((MR_Box) (report__Cast_HeadVar1_4)), ((MR_Box) (report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_field_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = report____Unify____gs_field_info_2_0((MR_Word) &report_scalar_common_1[4], (MR_Word) &report_scalar_common_1[17], report__Cast_HeadVar1_3, report__Cast_HeadVar2_4);
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_ds_map_1_0(
+  MR_Word report__TypeInfo_for_T_6,
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__TypeInfo_10_10;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      report__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), report__TypeInfo_10_10, 0) = ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2));
+      MR_hl_field(MR_mktag(0), report__TypeInfo_10_10, 1) = ((MR_Box) (&report__report__type_ctor_info_field_name_0));
+      MR_hl_field(MR_mktag(0), report__TypeInfo_10_10, 2) = ((MR_Box) (report__TypeInfo_for_T_6));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &report__report__type_ctor_info_data_struct_name_0, report__TypeInfo_10_10, report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_ds_map_1_0(
+  MR_Word report__TypeInfo_for_T_5,
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__TypeInfo_9_9;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), report__TypeInfo_9_9, 0) = ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2));
+      MR_hl_field(MR_mktag(0), report__TypeInfo_9_9, 1) = ((MR_Box) (&report__report__type_ctor_info_field_name_0));
+      MR_hl_field(MR_mktag(0), report__TypeInfo_9_9, 2) = ((MR_Box) (report__TypeInfo_for_T_5));
+    }
+    {
+      report__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &report__report__type_ctor_info_data_struct_name_0, report__TypeInfo_9_9, report__Cast_HeadVar1_3, report__Cast_HeadVar2_4);
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____gs_ds_map_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_4 = report__HeadVar__2_2;
+    MR_Word report__Cast_HeadVar2_5 = report__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_2[20], report__HeadVar__1_1, ((MR_Box) (report__Cast_HeadVar1_4)), ((MR_Box) (report__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____gs_ds_map_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__Cast_HeadVar1_3 = report__HeadVar__1_1;
+    MR_Word report__Cast_HeadVar2_4 = report__HeadVar__2_2;
+
+    {
+      report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_2[20], ((MR_Box) (report__Cast_HeadVar1_3)), ((MR_Box) (report__Cast_HeadVar2_4)));
+    }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____getter_or_setter_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__Cast_HeadVar1_4 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__Cast_HeadVar2_5 = (MR_Integer) report__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__Cast_HeadVar1_4, report__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____getter_or_setter_0_0(
+  MR_Word report__HeadVar__2_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded = (report__HeadVar__2_1 == report__HeadVar__2_2);
+
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____field_name_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_6 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_7 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_6 == report__CastY_7);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+        MR_String report__V_5_5 = (MR_String) report__HeadVar__3_3;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_4_4, report__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____field_name_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_5 == report__CastY_6);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = (MR_String) report__HeadVar__1_1;
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_4_4) == 0);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____deep_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_45 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_46 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_45 == report__CastY_46);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4;
+        MR_Integer report__V_5_5;
+
+        {
+          report____Index____deep_report_0_0(report__HeadVar__2_2, &report__V_4_4);
+        }
+        {
+          report____Index____deep_report_0_0(report__HeadVar__3_3, &report__V_5_5);
+        }
+        report__succeeded = (report__V_4_4 < report__V_5_5);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            report__succeeded = (report__V_4_4 > report__V_5_5);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = (MR_Integer) 2;
+            else
+              {
+                MR_Word report__V_6_6;
+
+                switch (MR_tag((MR_Word) report__HeadVar__2_2)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Word report__V_8_8;
+                      MR_String report__V_66_66;
+                      MR_String report__V_67_67;
+
+                      report__succeeded = ((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0)));
+                      if (report__succeeded)
+                        {
+                          report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+                          report__V_66_66 = (MR_String) report__V_7_7;
+                          report__V_67_67 = (MR_String) report__V_8_8;
+                          {
+                            mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_6_6, report__V_66_66, report__V_67_67);
+                          }
+                          report__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word report__TypeInfo_48_48;
+                      MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Word report__V_10_10;
+
+                      report__succeeded = ((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                      if (report__succeeded)
+                        {
+                          report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__3_3, (MR_Integer) 0)));
+                          report__TypeInfo_48_48 = (MR_Word) &report_scalar_common_2[0];
+                          {
+                            mercury__builtin__compare_3_p_0(report__TypeInfo_48_48, &report__V_6_6, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_10_10)));
+                          }
+                          report__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_Word report__TypeInfo_49_49;
+                      MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_Word report__V_12_12;
+
+                      report__succeeded = ((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 2)));
+                      if (report__succeeded)
+                        {
+                          report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__3_3, (MR_Integer) 0)));
+                          report__TypeInfo_49_49 = (MR_Word) &report_scalar_common_2[1];
+                          {
+                            mercury__builtin__compare_3_p_0(report__TypeInfo_49_49, &report__V_6_6, ((MR_Box) (report__V_11_11)), ((MR_Box) (report__V_12_12)));
+                          }
+                          report__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word report__TypeInfo_50_50;
+                          MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_14_14;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (report__succeeded)
+                            {
+                              report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_50_50 = (MR_Word) &report_scalar_common_2[2];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_50_50, &report__V_6_6, ((MR_Box) (report__V_13_13)), ((MR_Box) (report__V_14_14)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word report__TypeInfo_51_51;
+                          MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_16_16;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                          if (report__succeeded)
+                            {
+                              report__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_51_51 = (MR_Word) &report_scalar_common_2[3];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_51_51, &report__V_6_6, ((MR_Box) (report__V_15_15)), ((MR_Box) (report__V_16_16)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word report__TypeInfo_52_52;
+                          MR_Word report__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_18_18;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                          if (report__succeeded)
+                            {
+                              report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_52_52 = (MR_Word) &report_scalar_common_2[4];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_52_52, &report__V_6_6, ((MR_Box) (report__V_17_17)), ((MR_Box) (report__V_18_18)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Word report__TypeInfo_53_53;
+                          MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_20_20;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                          if (report__succeeded)
+                            {
+                              report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_53_53 = (MR_Word) &report_scalar_common_2[5];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_53_53, &report__V_6_6, ((MR_Box) (report__V_19_19)), ((MR_Box) (report__V_20_20)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Word report__TypeInfo_54_54;
+                          MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_22_22;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                          if (report__succeeded)
+                            {
+                              report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_54_54 = (MR_Word) &report_scalar_common_2[6];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_54_54, &report__V_6_6, ((MR_Box) (report__V_21_21)), ((MR_Box) (report__V_22_22)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_Word report__TypeInfo_55_55;
+                          MR_Word report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_24_24;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                          if (report__succeeded)
+                            {
+                              report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_55_55 = (MR_Word) &report_scalar_common_2[7];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_55_55, &report__V_6_6, ((MR_Box) (report__V_23_23)), ((MR_Box) (report__V_24_24)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          MR_Word report__TypeInfo_56_56;
+                          MR_Word report__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_26_26;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                          if (report__succeeded)
+                            {
+                              report__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_56_56 = (MR_Word) &report_scalar_common_2[8];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_56_56, &report__V_6_6, ((MR_Box) (report__V_25_25)), ((MR_Box) (report__V_26_26)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          MR_Word report__TypeInfo_57_57;
+                          MR_Word report__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_28_28;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                          if (report__succeeded)
+                            {
+                              report__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_57_57 = (MR_Word) &report_scalar_common_2[9];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_57_57, &report__V_6_6, ((MR_Box) (report__V_27_27)), ((MR_Box) (report__V_28_28)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 8:
+                        {
+                          MR_Word report__TypeInfo_58_58;
+                          MR_Word report__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_30_30;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                          if (report__succeeded)
+                            {
+                              report__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_58_58 = (MR_Word) &report_scalar_common_2[10];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_58_58, &report__V_6_6, ((MR_Box) (report__V_29_29)), ((MR_Box) (report__V_30_30)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 9:
+                        {
+                          MR_Word report__TypeInfo_59_59;
+                          MR_Word report__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_32_32;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                          if (report__succeeded)
+                            {
+                              report__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_59_59 = (MR_Word) &report_scalar_common_2[11];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_59_59, &report__V_6_6, ((MR_Box) (report__V_31_31)), ((MR_Box) (report__V_32_32)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 10:
+                        {
+                          MR_Word report__TypeInfo_60_60;
+                          MR_Word report__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_34_34;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                          if (report__succeeded)
+                            {
+                              report__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_60_60 = (MR_Word) &report_scalar_common_2[12];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_60_60, &report__V_6_6, ((MR_Box) (report__V_33_33)), ((MR_Box) (report__V_34_34)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 11:
+                        {
+                          MR_Word report__TypeInfo_61_61;
+                          MR_Word report__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_36_36;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                          if (report__succeeded)
+                            {
+                              report__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_61_61 = (MR_Word) &report_scalar_common_2[13];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_61_61, &report__V_6_6, ((MR_Box) (report__V_35_35)), ((MR_Box) (report__V_36_36)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 12:
+                        {
+                          MR_Word report__TypeInfo_62_62;
+                          MR_Word report__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_38_38;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                          if (report__succeeded)
+                            {
+                              report__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_62_62 = (MR_Word) &report_scalar_common_2[14];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_62_62, &report__V_6_6, ((MR_Box) (report__V_37_37)), ((MR_Box) (report__V_38_38)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 13:
+                        {
+                          MR_Word report__TypeInfo_63_63;
+                          MR_Word report__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_40_40;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                          if (report__succeeded)
+                            {
+                              report__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_63_63 = (MR_Word) &report_scalar_common_2[15];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_63_63, &report__V_6_6, ((MR_Box) (report__V_39_39)), ((MR_Box) (report__V_40_40)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 14:
+                        {
+                          MR_Word report__TypeInfo_64_64;
+                          MR_Word report__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_42_42;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                          if (report__succeeded)
+                            {
+                              report__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_64_64 = (MR_Word) &report_scalar_common_2[16];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_64_64, &report__V_6_6, ((MR_Box) (report__V_41_41)), ((MR_Box) (report__V_42_42)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 15:
+                        {
+                          MR_Word report__TypeInfo_65_65;
+                          MR_Word report__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word report__V_44_44;
+
+                          report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                          if (report__succeeded)
+                            {
+                              report__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__3_3, (MR_Integer) 1)));
+                              report__TypeInfo_65_65 = (MR_Word) &report_scalar_common_2[17];
+                              {
+                                mercury__builtin__compare_3_p_0(report__TypeInfo_65_65, &report__V_6_6, ((MR_Box) (report__V_43_43)), ((MR_Box) (report__V_44_44)));
+                              }
+                              report__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_6_6;
+                else
+                  {
+                    mercury__private_builtin__compare_error_0_p_0();
+                    return;
+                  }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+report____Index____deep_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Integer * report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+
+    switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *report__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        *report__HeadVar__2_2 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 2:
+        *report__HeadVar__2_2 = (MR_Integer) 2;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *report__HeadVar__2_2 = (MR_Integer) 3;
+            break;
+          case (MR_Integer) 1:
+            *report__HeadVar__2_2 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 2:
+            *report__HeadVar__2_2 = (MR_Integer) 5;
+            break;
+          case (MR_Integer) 3:
+            *report__HeadVar__2_2 = (MR_Integer) 6;
+            break;
+          case (MR_Integer) 4:
+            *report__HeadVar__2_2 = (MR_Integer) 7;
+            break;
+          case (MR_Integer) 5:
+            *report__HeadVar__2_2 = (MR_Integer) 8;
+            break;
+          case (MR_Integer) 6:
+            *report__HeadVar__2_2 = (MR_Integer) 9;
+            break;
+          case (MR_Integer) 7:
+            *report__HeadVar__2_2 = (MR_Integer) 10;
+            break;
+          case (MR_Integer) 8:
+            *report__HeadVar__2_2 = (MR_Integer) 11;
+            break;
+          case (MR_Integer) 9:
+            *report__HeadVar__2_2 = (MR_Integer) 12;
+            break;
+          case (MR_Integer) 10:
+            *report__HeadVar__2_2 = (MR_Integer) 13;
+            break;
+          case (MR_Integer) 11:
+            *report__HeadVar__2_2 = (MR_Integer) 14;
+            break;
+          case (MR_Integer) 12:
+            *report__HeadVar__2_2 = (MR_Integer) 15;
+            break;
+          case (MR_Integer) 13:
+            *report__HeadVar__2_2 = (MR_Integer) 16;
+            break;
+          case (MR_Integer) 14:
+            *report__HeadVar__2_2 = (MR_Integer) 17;
+            break;
+          case (MR_Integer) 15:
+            *report__HeadVar__2_2 = (MR_Integer) 18;
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____deep_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_41 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_42 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_41 == report__CastY_42);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) report__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_4_4;
+            MR_Integer report__CastX_63;
+            MR_Integer report__CastY_64;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (report__succeeded)
+              {
+                report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__CastX_63 = (MR_Integer) report__V_3_3;
+                report__CastY_64 = (MR_Integer) report__V_4_4;
+                report__succeeded = (report__CastX_63 == report__CastY_64);
+                if (report__succeeded)
+                  report__succeeded = MR_TRUE;
+                else
+                  {
+                    MR_String report__V_61_61 = (MR_String) report__V_3_3;
+                    MR_String report__V_62_62 = (MR_String) report__V_4_4;
+
+                    report__succeeded = (strcmp(report__V_61_61, report__V_62_62) == 0);
+                  }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word report__TypeInfo_49_49;
+            MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_6_6;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (report__succeeded)
+              {
+                report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_49_49 = (MR_Word) &report_scalar_common_2[0];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_49_49, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_6_6)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word report__TypeInfo_46_46;
+            MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word report__V_8_8;
+
+            report__succeeded = ((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (report__succeeded)
+              {
+                report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), report__HeadVar__2_2, (MR_Integer) 0)));
+                report__TypeInfo_46_46 = (MR_Word) &report_scalar_common_2[1];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_46_46, ((MR_Box) (report__V_7_7)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word report__TypeInfo_48_48;
+                MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_10_10;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (report__succeeded)
+                  {
+                    report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_48_48 = (MR_Word) &report_scalar_common_2[2];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_48_48, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_10_10)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word report__TypeInfo_59_59;
+                MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_12_12;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (report__succeeded)
+                  {
+                    report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_59_59 = (MR_Word) &report_scalar_common_2[3];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_59_59, ((MR_Box) (report__V_11_11)), ((MR_Box) (report__V_12_12)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word report__TypeInfo_58_58;
+                MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_14_14;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (report__succeeded)
+                  {
+                    report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_58_58 = (MR_Word) &report_scalar_common_2[4];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_58_58, ((MR_Box) (report__V_13_13)), ((MR_Box) (report__V_14_14)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word report__TypeInfo_50_50;
+                MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_16_16;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (report__succeeded)
+                  {
+                    report__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_50_50 = (MR_Word) &report_scalar_common_2[5];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_50_50, ((MR_Box) (report__V_15_15)), ((MR_Box) (report__V_16_16)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word report__TypeInfo_51_51;
+                MR_Word report__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_18_18;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (report__succeeded)
+                  {
+                    report__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_51_51 = (MR_Word) &report_scalar_common_2[6];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_51_51, ((MR_Box) (report__V_17_17)), ((MR_Box) (report__V_18_18)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word report__TypeInfo_52_52;
+                MR_Word report__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_20_20;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (report__succeeded)
+                  {
+                    report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_52_52 = (MR_Word) &report_scalar_common_2[7];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_52_52, ((MR_Box) (report__V_19_19)), ((MR_Box) (report__V_20_20)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word report__TypeInfo_60_60;
+                MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_22_22;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (report__succeeded)
+                  {
+                    report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_60_60 = (MR_Word) &report_scalar_common_2[8];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_60_60, ((MR_Box) (report__V_21_21)), ((MR_Box) (report__V_22_22)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word report__TypeInfo_53_53;
+                MR_Word report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_24_24;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (report__succeeded)
+                  {
+                    report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_53_53 = (MR_Word) &report_scalar_common_2[9];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_53_53, ((MR_Box) (report__V_23_23)), ((MR_Box) (report__V_24_24)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word report__TypeInfo_57_57;
+                MR_Word report__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_26_26;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (report__succeeded)
+                  {
+                    report__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_57_57 = (MR_Word) &report_scalar_common_2[10];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_57_57, ((MR_Box) (report__V_25_25)), ((MR_Box) (report__V_26_26)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word report__TypeInfo_54_54;
+                MR_Word report__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_28_28;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                if (report__succeeded)
+                  {
+                    report__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_54_54 = (MR_Word) &report_scalar_common_2[11];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_54_54, ((MR_Box) (report__V_27_27)), ((MR_Box) (report__V_28_28)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word report__TypeInfo_56_56;
+                MR_Word report__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_30_30;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                if (report__succeeded)
+                  {
+                    report__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_56_56 = (MR_Word) &report_scalar_common_2[12];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_56_56, ((MR_Box) (report__V_29_29)), ((MR_Box) (report__V_30_30)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word report__TypeInfo_55_55;
+                MR_Word report__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_32_32;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                if (report__succeeded)
+                  {
+                    report__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_55_55 = (MR_Word) &report_scalar_common_2[13];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_55_55, ((MR_Box) (report__V_31_31)), ((MR_Box) (report__V_32_32)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word report__TypeInfo_45_45;
+                MR_Word report__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_34_34;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                if (report__succeeded)
+                  {
+                    report__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_45_45 = (MR_Word) &report_scalar_common_2[14];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_45_45, ((MR_Box) (report__V_33_33)), ((MR_Box) (report__V_34_34)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                MR_Word report__TypeInfo_43_43;
+                MR_Word report__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_36_36;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                if (report__succeeded)
+                  {
+                    report__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_43_43 = (MR_Word) &report_scalar_common_2[15];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_43_43, ((MR_Box) (report__V_35_35)), ((MR_Box) (report__V_36_36)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 14:
+              {
+                MR_Word report__TypeInfo_47_47;
+                MR_Word report__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_38_38;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                if (report__succeeded)
+                  {
+                    report__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_47_47 = (MR_Word) &report_scalar_common_2[16];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_47_47, ((MR_Box) (report__V_37_37)), ((MR_Box) (report__V_38_38)));
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 15:
+              {
+                MR_Word report__TypeInfo_44_44;
+                MR_Word report__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word report__V_40_40;
+
+                report__succeeded = ((((MR_tag((MR_Word) report__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 15)));
+                if (report__succeeded)
+                  {
+                    report__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), report__HeadVar__2_2, (MR_Integer) 1)));
+                    report__TypeInfo_44_44 = (MR_Word) &report_scalar_common_2[17];
+                    {
+                      report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_44_44, ((MR_Box) (report__V_39_39)), ((MR_Box) (report__V_40_40)));
+                    }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____data_struct_name_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_6 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_7 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_6 == report__CastY_7);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+        MR_String report__V_5_5 = (MR_String) report__HeadVar__3_3;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(report__HeadVar__1_1, report__V_4_4, report__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____data_struct_name_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_5 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_6 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_5 == report__CastY_6);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_String report__V_3_3 = (MR_String) report__HeadVar__1_1;
+        MR_String report__V_4_4 = (MR_String) report__HeadVar__2_2;
+
+        report__succeeded = (strcmp(report__V_3_3, report__V_4_4) == 0);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+        MR_Integer report__V_17_17 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_7_7;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_10_10, report__V_17_17, report__V_18_18);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[15], &report__V_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[16], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__TypeInfo_13_13;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_14_14 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_15_15 = (MR_Integer) report__V_6_6;
+
+        report__succeeded = (report__V_14_14 == report__V_15_15);
+        if (report__succeeded)
+          {
+            report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[15];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[16];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_recursion_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+        MR_Integer report__V_17_17 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_7_7;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_10_10, report__V_17_17, report__V_18_18);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              report____Compare____recursion_type_0_0(&report__V_11_11, report__V_5_5, report__V_8_8);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_6_6, report__V_9_9);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_recursion_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_12_12 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_13_13 = (MR_Integer) report__V_6_6;
+
+        report__succeeded = (report__V_12_12 == report__V_13_13);
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = report____Unify____recursion_type_0_0(report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              report__succeeded = (report__V_5_5 == report__V_8_8);
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_proc_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[4], &report__V_10_10, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              report____Compare____clique_proc_dynamic_report_0_0(&report__V_11_11, report__V_5_5, report__V_8_8);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[13], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_proc_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          report__succeeded = report____Unify____perf_row_data_1_0((MR_Word) &report__report__type_ctor_info_proc_desc_0, report__V_3_3, report__V_6_6);
+        }
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = report____Unify____clique_proc_dynamic_report_0_0(report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[13];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_proc_dynamic_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[4], &report__V_8_8, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_6_6)));
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[12], report__HeadVar__1_1, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_proc_dynamic_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_10_10;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          report__succeeded = report____Unify____perf_row_data_1_0((MR_Word) &report__report__type_ctor_info_proc_desc_0, report__V_3_3, report__V_5_5);
+        }
+        if (report__succeeded)
+          {
+            report__TypeInfo_10_10 = (MR_Word) &report_scalar_common_1[12];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_10_10, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_6_6)));
+            }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_dump_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          report____Compare____clique_desc_0_0(&report__V_10_10, report__V_4_4, report__V_7_7);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+            MR_Integer report__V_17_17 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_18_18 = (MR_Integer) report__V_8_8;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_11_11, report__V_17_17, report__V_18_18);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[11], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_dump_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_13_13;
+        MR_Integer report__V_14_14;
+
+        {
+          report__succeeded = report____Unify____clique_desc_0_0(report__V_3_3, report__V_6_6);
+        }
+        if (report__succeeded)
+          {
+            report__V_13_13 = (MR_Integer) report__V_4_4;
+            report__V_14_14 = (MR_Integer) report__V_7_7;
+            report__succeeded = (report__V_13_13 == report__V_14_14);
+            if (report__succeeded)
+              {
+                report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[11];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_desc_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+        MR_Integer report__V_17_17 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_7_7;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_10_10, report__V_17_17, report__V_18_18);
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              report____Compare____proc_desc_0_0(&report__V_11_11, report__V_5_5, report__V_8_8);
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[10], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_desc_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_13_13 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_14_14 = (MR_Integer) report__V_6_6;
+
+        report__succeeded = (report__V_13_13 == report__V_14_14);
+        if (report__succeeded)
+          {
+            {
+              report__succeeded = report____Unify____proc_desc_0_0(report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[10];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____clique_call_site_report_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[1], &report__V_10_10, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[7], &report__V_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[9], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____clique_call_site_report_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_12_12;
+        MR_Word report__TypeInfo_13_13;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          report__succeeded = report____Unify____perf_row_data_1_0((MR_Word) &report__report__type_ctor_info_call_site_desc_0, report__V_3_3, report__V_6_6);
+        }
+        if (report__succeeded)
+          {
+            report__TypeInfo_12_12 = (MR_Word) &report_scalar_common_1[7];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_12_12, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[9];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____callers_counts_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            mercury__private_builtin__builtin_compare_int_3_p_0(report__HeadVar__1_1, report__V_5_5, report__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____callers_counts_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer report__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer report__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (report__V_3_3 == report__V_5_5);
+        if (report__succeeded)
+          report__succeeded = (report__V_4_4 == report__V_6_6);
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____call_site_static_dump_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_21 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_22 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_21 == report__CastY_22);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Integer report__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word report__V_16_16;
+        MR_Integer report__V_29_29 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_30_30 = (MR_Integer) report__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_16_16, report__V_29_29, report__V_30_30);
+        }
+        report__succeeded = (report__V_16_16 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_16_16;
+        else
+          {
+            MR_Word report__V_17_17;
+            MR_Integer report__V_31_31 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_32_32 = (MR_Integer) report__V_11_11;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_17_17, report__V_31_31, report__V_32_32);
+            }
+            report__succeeded = (report__V_17_17 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_17_17;
+            else
+              {
+                MR_Word report__V_18_18;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_18_18, report__V_6_6, report__V_12_12);
+                }
+                report__succeeded = (report__V_18_18 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_18_18;
+                else
+                  {
+                    MR_Word report__V_19_19;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_19_19, report__V_7_7, report__V_13_13);
+                    }
+                    report__succeeded = (report__V_19_19 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_19_19;
+                    else
+                      {
+                        MR_Word report__V_20_20;
+
+                        {
+                          mdbcomp__goal_path____Compare____reverse_goal_path_0_0(&report__V_20_20, report__V_8_8, report__V_14_14);
+                        }
+                        report__succeeded = (report__V_20_20 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_20_20;
+                        else
+                          {
+                            {
+                              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[6], report__HeadVar__1_1, ((MR_Box) (report__V_9_9)), ((MR_Box) (report__V_15_15)));
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____call_site_static_dump_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_20_20;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer report__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Integer report__V_21_21;
+        MR_Integer report__V_22_22;
+        MR_Integer report__V_23_23;
+        MR_Integer report__V_24_24;
+
+        report__succeeded = (report__V_5_5 == report__V_11_11);
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_6_6 == report__V_12_12);
+            if (report__succeeded)
+              {
+                report__V_21_21 = (MR_Integer) report__V_3_3;
+                report__V_22_22 = (MR_Integer) report__V_9_9;
+                report__succeeded = (report__V_21_21 == report__V_22_22);
+                if (report__succeeded)
+                  {
+                    report__V_23_23 = (MR_Integer) report__V_4_4;
+                    report__V_24_24 = (MR_Integer) report__V_10_10;
+                    report__succeeded = (report__V_23_23 == report__V_24_24);
+                    if (report__succeeded)
+                      {
+                        {
+                          report__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(report__V_7_7, report__V_13_13);
+                        }
+                        if (report__succeeded)
+                          {
+                            report__TypeInfo_20_20 = (MR_Word) &report_scalar_common_1[6];
+                            {
+                              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_20_20, ((MR_Box) (report__V_8_8)), ((MR_Box) (report__V_14_14)));
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____call_site_perf_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_12 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_13 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_12 == report__CastY_13);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_10_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[3], &report__V_10_10, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_7_7)));
+        }
+        report__succeeded = (report__V_10_10 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_10_10;
+        else
+          {
+            MR_Word report__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[1], &report__V_11_11, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+            }
+            report__succeeded = (report__V_11_11 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_11_11;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[5], report__HeadVar__1_1, ((MR_Box) (report__V_6_6)), ((MR_Box) (report__V_9_9)));
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____call_site_perf_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeCtorInfo_12_12;
+        MR_Word report__TypeInfo_13_13;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          report__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &report_scalar_common_1[3], ((MR_Box) (report__V_3_3)), ((MR_Box) (report__V_6_6)));
+        }
+        if (report__succeeded)
+          {
+            report__TypeCtorInfo_12_12 = (MR_Word) &report__report__type_ctor_info_call_site_desc_0;
+            {
+              report__succeeded = report____Unify____perf_row_data_1_0(report__TypeCtorInfo_12_12, report__V_4_4, report__V_7_7);
+            }
+            if (report__succeeded)
+              {
+                report__TypeInfo_13_13 = (MR_Word) &report_scalar_common_1[5];
+                {
+                  report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_13_13, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_8_8)));
+                }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____call_site_dynamic_var_use_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_9 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_10 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_9 == report__CastY_10);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Float report__V_4_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Float report__V_6_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_float_3_p_0(&report__V_8_8, report__V_4_4, report__V_6_6);
+        }
+        report__succeeded = (report__V_8_8 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[2], report__HeadVar__1_1, ((MR_Box) (report__V_5_5)), ((MR_Box) (report__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____call_site_dynamic_var_use_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_7 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_8 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_7 == report__CastY_8);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_9_9;
+        MR_Float report__V_3_3 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Float report__V_5_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+
+        report__succeeded = (report__V_3_3 == report__V_5_5);
+        if (report__succeeded)
+          {
+            report__TypeInfo_9_9 = (MR_Word) &report_scalar_common_1[2];
+            {
+              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_9_9, ((MR_Box) (report__V_4_4)), ((MR_Box) (report__V_6_6)));
+            }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____call_site_dynamic_dump_info_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word report__V_12_12;
+        MR_Integer report__V_21_21 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_22_22 = (MR_Integer) report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_12_12, report__V_21_21, report__V_22_22);
+        }
+        report__succeeded = (report__V_12_12 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_12_12;
+        else
+          {
+            MR_Word report__V_13_13;
+            MR_Integer report__V_23_23 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_24_24 = (MR_Integer) report__V_9_9;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_13_13, report__V_23_23, report__V_24_24);
+            }
+            report__succeeded = (report__V_13_13 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_13_13;
+            else
+              {
+                MR_Word report__V_14_14;
+                MR_Integer report__V_25_25 = (MR_Integer) report__V_6_6;
+                MR_Integer report__V_26_26 = (MR_Integer) report__V_10_10;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_14_14, report__V_25_25, report__V_26_26);
+                }
+                report__succeeded = (report__V_14_14 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_14_14;
+                else
+                  {
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[1], report__HeadVar__1_1, ((MR_Box) (report__V_7_7)), ((MR_Box) (report__V_11_11)));
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____call_site_dynamic_dump_info_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_11 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_12 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_11 == report__CastY_12);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeCtorInfo_16_16;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_17_17 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_18_18 = (MR_Integer) report__V_7_7;
+        MR_Integer report__V_19_19;
+        MR_Integer report__V_20_20;
+        MR_Integer report__V_21_21;
+        MR_Integer report__V_22_22;
+
+        report__succeeded = (report__V_17_17 == report__V_18_18);
+        if (report__succeeded)
+          {
+            report__V_19_19 = (MR_Integer) report__V_4_4;
+            report__V_20_20 = (MR_Integer) report__V_8_8;
+            report__succeeded = (report__V_19_19 == report__V_20_20);
+            if (report__succeeded)
+              {
+                report__V_21_21 = (MR_Integer) report__V_5_5;
+                report__V_22_22 = (MR_Integer) report__V_9_9;
+                report__succeeded = (report__V_21_21 == report__V_22_22);
+                if (report__succeeded)
+                  {
+                    report__TypeCtorInfo_16_16 = (MR_Word) &report__report__type_ctor_info_call_site_desc_0;
+                    {
+                      report__succeeded = report____Unify____perf_row_data_1_0(report__TypeCtorInfo_16_16, report__V_6_6, report__V_10_10);
+                    }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____call_site_desc_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_33 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_34 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_33 == report__CastY_34);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_String report__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_String report__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_String report__V_18_18 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 4)));
+        MR_String report__V_19_19 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 5)));
+        MR_String report__V_20_20 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Integer report__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 7)));
+        MR_Word report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 8)));
+        MR_Word report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 9)));
+        MR_Word report__V_24_24;
+        MR_Integer report__V_45_45 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_46_46 = (MR_Integer) report__V_14_14;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_24_24, report__V_45_45, report__V_46_46);
+        }
+        report__succeeded = (report__V_24_24 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_24_24;
+        else
+          {
+            MR_Word report__V_25_25;
+            MR_Integer report__V_47_47 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_48_48 = (MR_Integer) report__V_15_15;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_25_25, report__V_47_47, report__V_48_48);
+            }
+            report__succeeded = (report__V_25_25 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_25_25;
+            else
+              {
+                MR_Word report__V_26_26;
+
+                {
+                  mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_26_26, report__V_6_6, report__V_16_16);
+                }
+                report__succeeded = (report__V_26_26 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_26_26;
+                else
+                  {
+                    MR_Word report__V_27_27;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_27_27, report__V_7_7, report__V_17_17);
+                    }
+                    report__succeeded = (report__V_27_27 == (MR_Integer) 0);
+                    report__succeeded = !(report__succeeded);
+                    if (report__succeeded)
+                      *report__HeadVar__1_1 = report__V_27_27;
+                    else
+                      {
+                        MR_Word report__V_28_28;
+
+                        {
+                          mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_28_28, report__V_8_8, report__V_18_18);
+                        }
+                        report__succeeded = (report__V_28_28 == (MR_Integer) 0);
+                        report__succeeded = !(report__succeeded);
+                        if (report__succeeded)
+                          *report__HeadVar__1_1 = report__V_28_28;
+                        else
+                          {
+                            MR_Word report__V_29_29;
+
+                            {
+                              mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_29_29, report__V_9_9, report__V_19_19);
+                            }
+                            report__succeeded = (report__V_29_29 == (MR_Integer) 0);
+                            report__succeeded = !(report__succeeded);
+                            if (report__succeeded)
+                              *report__HeadVar__1_1 = report__V_29_29;
+                            else
+                              {
+                                MR_Word report__V_30_30;
+
+                                {
+                                  mercury__private_builtin__builtin_compare_string_3_p_0(&report__V_30_30, report__V_10_10, report__V_20_20);
+                                }
+                                report__succeeded = (report__V_30_30 == (MR_Integer) 0);
+                                report__succeeded = !(report__succeeded);
+                                if (report__succeeded)
+                                  *report__HeadVar__1_1 = report__V_30_30;
+                                else
+                                  {
+                                    MR_Word report__V_31_31;
+
+                                    {
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_31_31, report__V_11_11, report__V_21_21);
+                                    }
+                                    report__succeeded = (report__V_31_31 == (MR_Integer) 0);
+                                    report__succeeded = !(report__succeeded);
+                                    if (report__succeeded)
+                                      *report__HeadVar__1_1 = report__V_31_31;
+                                    else
+                                      {
+                                        MR_Word report__V_32_32;
+
+                                        {
+                                          mdbcomp__goal_path____Compare____reverse_goal_path_0_0(&report__V_32_32, report__V_12_12, report__V_22_22);
+                                        }
+                                        report__succeeded = (report__V_32_32 == (MR_Integer) 0);
+                                        report__succeeded = !(report__succeeded);
+                                        if (report__succeeded)
+                                          *report__HeadVar__1_1 = report__V_32_32;
+                                        else
+                                          {
+                                            {
+                                              mercury__builtin__compare_3_p_0((MR_Word) &report_scalar_common_1[0], report__HeadVar__1_1, ((MR_Box) (report__V_13_13)), ((MR_Box) (report__V_23_23)));
+                                            }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____call_site_desc_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_23 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_24 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_23 == report__CastY_24);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__TypeInfo_28_28;
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String report__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer report__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_String report__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 4)));
+        MR_String report__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 5)));
+        MR_String report__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 7)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 8)));
+        MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 9)));
+        MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String report__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String report__V_18_18 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 5)));
+        MR_String report__V_19_19 = ((MR_String) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer report__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 7)));
+        MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 8)));
+        MR_Word report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 9)));
+        MR_Integer report__V_29_29;
+        MR_Integer report__V_30_30;
+        MR_Integer report__V_31_31;
+        MR_Integer report__V_32_32;
+
+        report__succeeded = (strcmp(report__V_5_5, report__V_15_15) == 0);
+        if (report__succeeded)
+          {
+            report__succeeded = (report__V_6_6 == report__V_16_16);
+            if (report__succeeded)
+              {
+                report__succeeded = (strcmp(report__V_7_7, report__V_17_17) == 0);
+                if (report__succeeded)
+                  {
+                    report__succeeded = (strcmp(report__V_8_8, report__V_18_18) == 0);
+                    if (report__succeeded)
+                      {
+                        report__succeeded = (strcmp(report__V_9_9, report__V_19_19) == 0);
+                        if (report__succeeded)
+                          {
+                            report__succeeded = (report__V_10_10 == report__V_20_20);
+                            if (report__succeeded)
+                              {
+                                report__V_29_29 = (MR_Integer) report__V_3_3;
+                                report__V_30_30 = (MR_Integer) report__V_13_13;
+                                report__succeeded = (report__V_29_29 == report__V_30_30);
+                                if (report__succeeded)
+                                  {
+                                    report__V_31_31 = (MR_Integer) report__V_4_4;
+                                    report__V_32_32 = (MR_Integer) report__V_14_14;
+                                    report__succeeded = (report__V_31_31 == report__V_32_32);
+                                    if (report__succeeded)
+                                      {
+                                        {
+                                          report__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(report__V_11_11, report__V_21_21);
+                                        }
+                                        if (report__succeeded)
+                                          {
+                                            report__TypeInfo_28_28 = (MR_Word) &report_scalar_common_1[0];
+                                            {
+                                              report__succeeded = mercury__builtin__unify_2_p_0(report__TypeInfo_28_28, ((MR_Box) (report__V_12_12)), ((MR_Box) (report__V_22_22)));
+                                            }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report____Compare____ancestor_desc_0_0(
+  MR_Word * report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2,
+  MR_Word report__HeadVar__3_3)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_15 = (MR_Integer) report__HeadVar__2_2;
+    MR_Integer report__CastY_16 = (MR_Integer) report__HeadVar__3_3;
+
+    report__succeeded = (report__CastX_15 == report__CastY_16);
+    if (report__succeeded)
+      *report__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word report__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word report__V_12_12;
+        MR_Integer report__V_21_21 = (MR_Integer) report__V_4_4;
+        MR_Integer report__V_22_22 = (MR_Integer) report__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_12_12, report__V_21_21, report__V_22_22);
+        }
+        report__succeeded = (report__V_12_12 == (MR_Integer) 0);
+        report__succeeded = !(report__succeeded);
+        if (report__succeeded)
+          *report__HeadVar__1_1 = report__V_12_12;
+        else
+          {
+            MR_Word report__V_13_13;
+            MR_Integer report__V_23_23 = (MR_Integer) report__V_5_5;
+            MR_Integer report__V_24_24 = (MR_Integer) report__V_9_9;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&report__V_13_13, report__V_23_23, report__V_24_24);
+            }
+            report__succeeded = (report__V_13_13 == (MR_Integer) 0);
+            report__succeeded = !(report__succeeded);
+            if (report__succeeded)
+              *report__HeadVar__1_1 = report__V_13_13;
+            else
+              {
+                MR_Word report__V_14_14;
+
+                {
+                  report____Compare____proc_desc_0_0(&report__V_14_14, report__V_6_6, report__V_10_10);
+                }
+                report__succeeded = (report__V_14_14 == (MR_Integer) 0);
+                report__succeeded = !(report__succeeded);
+                if (report__succeeded)
+                  *report__HeadVar__1_1 = report__V_14_14;
+                else
+                  {
+                    report____Compare____call_site_desc_0_0(report__HeadVar__1_1, report__V_7_7, report__V_11_11);
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+report____Unify____ancestor_desc_0_0(
+  MR_Word report__HeadVar__1_1,
+  MR_Word report__HeadVar__2_2)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Integer report__CastX_11 = (MR_Integer) report__HeadVar__1_1;
+    MR_Integer report__CastY_12 = (MR_Integer) report__HeadVar__2_2;
+
+    report__succeeded = (report__CastX_11 == report__CastY_12);
+    if (report__succeeded)
+      report__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word report__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word report__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word report__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word report__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word report__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word report__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer report__V_15_15 = (MR_Integer) report__V_3_3;
+        MR_Integer report__V_16_16 = (MR_Integer) report__V_7_7;
+        MR_Integer report__V_17_17;
+        MR_Integer report__V_18_18;
+
+        report__succeeded = (report__V_15_15 == report__V_16_16);
+        if (report__succeeded)
+          {
+            report__V_17_17 = (MR_Integer) report__V_4_4;
+            report__V_18_18 = (MR_Integer) report__V_8_8;
+            report__succeeded = (report__V_17_17 == report__V_18_18);
+            if (report__succeeded)
+              {
+                {
+                  report__succeeded = report____Unify____proc_desc_0_0(report__V_5_5, report__V_9_9);
+                }
+                if (report__succeeded)
+                  {
+                    report__succeeded = report____Unify____call_site_desc_0_0(report__V_6_6, report__V_10_10);
+                  }
+              }
+          }
+      }
+    return report__succeeded;
+  }
+}
+
+void MR_CALL 
+report__add_call_site_report_to_map_3_p_0(
+  MR_Word report__CallSite_4,
+  MR_Word report__STATE_VARIABLE_Map_0_7,
+  MR_Word * report__STATE_VARIABLE_Map_8)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__GoalPath_6;
+    MR_Word report__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__CallSite_4, (MR_Integer) 0)));
+    MR_Word report__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 0)));
+    MR_Word report__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__CallSite_4, (MR_Integer) 1)));
+    MR_Word report__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__CallSite_4, (MR_Integer) 2)));
+    MR_Integer report__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 1)));
+    MR_Integer report__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 2)));
+    MR_Integer report__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 3)));
+    MR_Integer report__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 4)));
+    MR_Integer report__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 5)));
+    MR_Integer report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 6)));
+    MR_Word report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 7)));
+    MR_Word report__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_9_9, (MR_Integer) 8)));
+    MR_Word report__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 0)));
+    MR_Word report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 1)));
+    MR_String report__V_24_24 = ((MR_String) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 2)));
+    MR_Integer report__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 3)));
+    MR_String report__V_26_26 = ((MR_String) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 4)));
+    MR_String report__V_27_27 = ((MR_String) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 5)));
+    MR_String report__V_28_28 = ((MR_String) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 6)));
+    MR_Integer report__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 7)));
+    MR_Word report__V_30_30;
+
+    report__GoalPath_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 8)));
+    report__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__V_10_10, (MR_Integer) 9)));
+    {
+      mercury__map__det_insert_4_p_0((MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0, (MR_Word) &report__report__type_ctor_info_clique_call_site_report_0, ((MR_Box) (report__GoalPath_6)), ((MR_Box) (report__CallSite_4)), report__STATE_VARIABLE_Map_0_7, report__STATE_VARIABLE_Map_8);
+    }
+  }
+}
+
+void MR_CALL 
+report__proc_label_from_proc_desc_3_p_0(
+  MR_Word report__Deep_4,
+  MR_Word report__ProcDesc_5,
+  MR_Word * report__ProcLabel_6)
+{
+  {
+    MR_bool report__succeeded;
+    MR_Word report__PSPtr_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 0)));
+    MR_Word report__ProcStatic_8;
+    MR_String report__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 1)));
+    MR_Integer report__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 2)));
+    MR_String report__V_11_11 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 3)));
+    MR_String report__V_12_12 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 4)));
+    MR_String report__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcDesc_5, (MR_Integer) 5)));
+    MR_String report__V_14_14;
+    MR_String report__V_15_15;
+    MR_String report__V_16_16;
+    MR_String report__V_17_17;
+    MR_String report__V_18_18;
+    MR_Integer report__V_19_19;
+    MR_Word report__V_20_20;
+    MR_ArrayPtr report__V_21_21;
+    MR_ArrayPtr report__V_22_22;
+    MR_Word report__V_23_23;
+    MR_Word report__V_24_24;
+
+    {
+      profile__deep_lookup_proc_statics_3_p_0(report__Deep_4, report__PSPtr_7, &report__ProcStatic_8);
+    }
+    *report__ProcLabel_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 0)));
+    report__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 1)));
+    report__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 2)));
+    report__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 3)));
+    report__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 4)));
+    report__V_18_18 = ((MR_String) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 5)));
+    report__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 6)));
+    report__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 7)));
+    report__V_21_21 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 8)));
+    report__V_22_22 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 9)));
+    report__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 10)));
+    report__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), report__ProcStatic_8, (MR_Integer) 11)));
+  }
+}
+
+void mercury__report__init(void)
+{
+}
+
+void mercury__report__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&report__report__type_ctor_info_ancestor_desc_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_call_site_desc_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_call_site_dynamic_dump_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_call_site_dynamic_var_use_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_call_site_perf_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_call_site_static_dump_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_callers_counts_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_call_site_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_desc_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_dump_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_proc_dynamic_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_proc_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_recursion_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_clique_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_data_struct_name_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_deep_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_field_name_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_getter_or_setter_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_ds_map_1);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_ds_map_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_field_info_2);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_field_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_field_map_1);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_gs_field_map_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_inheritable_perf_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_maybe_have_module_rep_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_menu_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_message_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_module_active_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_module_getter_setters_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_module_is_active_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_module_rep_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_module_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_normal_callee_id_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_perf_row_data_1);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_active_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_callers_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_callers_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_desc_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_dynamic_dump_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_is_active_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_proc_static_dump_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_procrep_coverage_info_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_program_modules_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_level_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_freq_data_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_histogram_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_proc_freq_data_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_proc_map_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_type_simple_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_recursion_types_frequency_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_report_ordering_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_top_procs_report_0);
+	MR_register_type_ctor_info(&report__report__type_ctor_info_var_use_and_name_0);
+}
+
+void mercury__report__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module report. */
