@@ -1,0 +1,6 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- type needs_quotes
+    --->    next_to_graphic_token 
+    ;       not_next_to_graphic_token .
+:- type_representation(needs_quotes, du_repn(enum("next_to_graphic_token", "not_next_to_graphic_token", [],  no_c_j_cs))).

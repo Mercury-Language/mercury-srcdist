@@ -1,0 +1,3 @@
+:- module (check_hlds.modecheck_coerce).
+:- interface.
+:- type_representation(expanded_insts, is_eqv_to(set(pair(inst_name, mer_type)))).

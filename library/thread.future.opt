@@ -1,0 +1,43 @@
+:- module (thread.future).
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module io.
+:- use_module maybe.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module (thread.semaphore).
+
+:- type future(T)
+    --->    future(thread.future.future_io(thread.future.ok_or_exception(T))).
+:- type future_io(T)
+    --->    future_io(((thread.future).f_ready) :: mutvar.mutvar(thread.future.ready), ((thread.future).f_wait) :: thread.semaphore.semaphore, ((thread.future).f_value) :: mutvar.mutvar(T)).
+:- type ok_or_exception(T)
+    --->    ok(T)
+    ;       some [E] (exception(E)).
+:- type ready
+    --->    ready 
+    ;       not_ready .
+
+:- pred (thread.future).wait(thread.future.future_io(T_1), T_1).
+:- mode (thread.future).wait((builtin.in), (builtin.out)) is det.
+:- pragma promise_pure(((thread.future).wait)/2).
+
+(thread.future).wait(V_5, V_6, V_8, V_9) :-
+    (thread.future).wait(V_5, V_6),
+    V_9 = V_8.
+
+:- pragma termination_info((thread.future).future((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((thread.future).init((builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.future).signal((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, no, no, yes, no]), can_loop).
+:- pragma termination_info((thread.future).wait((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((thread.future).wait((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((thread.future).wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, ((thread.future).future), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.future).init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.future).signal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.future).wait), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((thread.future).wait), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.future).wait), 4, 0, may_throw(user_exception)).
