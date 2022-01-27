@@ -1,0 +1,43 @@
+:- module thread.
+:- interface.
+:- include_module (thread.barrier).
+:- include_module (thread.channel).
+:- include_module (thread.closeable_channel).
+:- include_module (thread.future).
+:- include_module (thread.mvar).
+:- include_module (thread.semaphore).
+:- import_module io.
+:- import_module maybe.
+:- type thread.
+:- pred can_spawn is semidet.
+:- pred can_spawn_native is semidet.
+:- pred num_processors(maybe.maybe(int), io.io, io.io).
+:- mode num_processors((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred spawn(pred(io.io, io.io), io.io, io.io).
+:- mode spawn(((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred spawn(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred spawn_native(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn_native(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred yield(io.io, io.io).
+:- mode yield((builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module bool.
+:- import_module require.
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("Java", thread).
+:- type thread
+    --->    thread(thread.thread_id).
+:- type thread_id == string.
+:- pred call_back_to_mercury(pred(thread.thread, io.io, io.io), thread.thread_id, io.io, io.io).
+:- mode call_back_to_mercury(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred can_spawn_context is semidet.
+:- pred num_processors(int, bool.bool, io.io, io.io).
+:- mode num_processors((builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred spawn_context(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn_context(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred spawn_context_2(pred(thread.thread, io.io, io.io), bool.bool, string, io.io, io.io).
+:- mode spawn_context_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred spawn_native_2(pred(thread.thread, io.io, io.io), bool.bool, thread.thread_id, string, io.io, io.io).
+:- mode spawn_native_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.

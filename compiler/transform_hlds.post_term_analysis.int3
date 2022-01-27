@@ -1,0 +1,2 @@
+:- module (transform_hlds.post_term_analysis).
+:- interface.

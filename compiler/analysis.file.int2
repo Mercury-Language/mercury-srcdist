@@ -1,0 +1,5 @@
+:- module (analysis.file).
+:- interface.
+:- implementation.
+:- type dummy_answer
+    --->    dummy_answer .
