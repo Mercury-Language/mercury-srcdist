@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `size_prof.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.size_prof. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__size_prof
+#define MR_HEADER_GUARD_transform_hlds__size_prof
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__SIZE_PROF_DECL_GUARD
+#define TRANSFORM_HLDS__SIZE_PROF_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_construct_transform_0;
+
+#line 45 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_info_0;
+
+#line 48 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_known_size_map_0;
+
+#line 51 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_rev_type_ctor_map_0;
+
+#line 54 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_rev_type_info_map_0;
+
+#line 57 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_type_ctor_map_0;
+
+#line 60 "transform_hlds.size_prof.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_type_info_map_0;
+
+#line 93 "size_prof.m"
+void MR_CALL 
+transform_hlds__size_prof____Compare____construct_transform_0_0(
+#line 93 "size_prof.m"
+  MR_Word * transform_hlds__size_prof__param_1,
+#line 93 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_2,
+#line 93 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_3);
+
+#line 93 "size_prof.m"
+MR_bool MR_CALL 
+transform_hlds__size_prof____Unify____construct_transform_0_0(
+#line 93 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_1,
+#line 93 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_2);
+
+#line 99 "size_prof.m"
+void MR_CALL 
+transform_hlds__size_prof__size_prof_process_proc_msg_6_p_0(
+#line 99 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_1,
+#line 99 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_2,
+#line 99 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_3,
+#line 99 "size_prof.m"
+  MR_Word * transform_hlds__size_prof__param_4,
+#line 99 "size_prof.m"
+  MR_Word transform_hlds__size_prof__param_5,
+#line 99 "size_prof.m"
+  MR_Word * transform_hlds__size_prof__param_6);
+
+void mercury__transform_hlds__size_prof__init(void);
+void mercury__transform_hlds__size_prof__init_type_tables(void);
+void mercury__transform_hlds__size_prof__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.size_prof */
+
+/* :- end_interface transform_hlds.size_prof. */

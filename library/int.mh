@@ -1,0 +1,41 @@
+/*
+** Automatically generated from `int.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+*/
+#ifndef INT_MH
+#define INT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef INT_DECL_GUARD
+#define INT_DECL_GUARD
+#line 656 "int.m"
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_INT     (sizeof(MR_Integer) * CHAR_BIT)
+
+#line 34 "int.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INT_MH */

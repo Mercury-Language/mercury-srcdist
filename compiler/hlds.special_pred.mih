@@ -1,0 +1,223 @@
+/*
+** Automatically generated from `special_pred.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.special_pred. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__special_pred
+#define MR_HEADER_GUARD_hlds__special_pred
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__SPECIAL_PRED_DECL_GUARD
+#define HLDS__SPECIAL_PRED_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.special_pred.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__special_pred__hlds__special_pred__type_ctor_info_special_pred_0;
+
+#line 45 "hlds.special_pred.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__special_pred__hlds__special_pred__type_ctor_info_special_pred_map_0;
+
+#line 48 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_101_99_105_97_108_95_112_114_101_100_95_109_111_100_101_95_110_117_109_95_95_91_49_93_95_48_2_p_0(
+#line 48 "special_pred.m"
+  MR_Integer * hlds__special_pred__param_1);
+
+#line 38 "special_pred.m"
+MR_String MR_CALL 
+hlds__special_pred__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_112_101_99_105_97_108_95_112_114_101_100_95_110_97_109_101_95_95_91_50_93_95_48_2_f_0(
+#line 38 "special_pred.m"
+  MR_Word hlds__special_pred__param_1);
+
+#line 31 "special_pred.m"
+void MR_CALL 
+hlds__special_pred____Compare____special_pred_map_0_0(
+#line 31 "special_pred.m"
+  MR_Word * hlds__special_pred__param_1,
+#line 31 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 31 "special_pred.m"
+  MR_Word hlds__special_pred__param_3);
+
+#line 31 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred____Unify____special_pred_map_0_0(
+#line 31 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 31 "special_pred.m"
+  MR_Word hlds__special_pred__param_2);
+
+#line 33 "special_pred.m"
+void MR_CALL 
+hlds__special_pred____Compare____special_pred_0_0(
+#line 33 "special_pred.m"
+  MR_Word * hlds__special_pred__param_1,
+#line 33 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 33 "special_pred.m"
+  MR_Word hlds__special_pred__param_3);
+
+#line 33 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred____Unify____special_pred_0_0(
+#line 33 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 33 "special_pred.m"
+  MR_Word hlds__special_pred__param_2);
+
+#line 106 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__compiler_generated_rtti_for_builtins_1_p_0(
+#line 106 "special_pred.m"
+  MR_Word hlds__special_pred__param_1);
+
+#line 100 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__is_builtin_type_special_preds_defined_in_mercury_2_p_0(
+#line 100 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 100 "special_pred.m"
+  MR_String * hlds__special_pred__param_2);
+
+#line 94 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__can_generate_special_pred_clauses_for_type_3_p_0(
+#line 94 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 94 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 94 "special_pred.m"
+  MR_Word hlds__special_pred__param_3);
+
+#line 87 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_for_type_needs_typecheck_3_p_0(
+#line 87 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 87 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 87 "special_pred.m"
+  MR_Word hlds__special_pred__param_3);
+
+#line 78 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_is_generated_lazily_4_p_0(
+#line 78 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 78 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 78 "special_pred.m"
+  MR_Word hlds__special_pred__param_3,
+#line 78 "special_pred.m"
+  MR_Word hlds__special_pred__param_4);
+
+#line 75 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_is_generated_lazily_2_p_0(
+#line 75 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 75 "special_pred.m"
+  MR_Word hlds__special_pred__param_2);
+
+#line 68 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__special_pred_description_2_p_0(
+#line 68 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 68 "special_pred.m"
+  MR_String * hlds__special_pred__param_2);
+
+#line 65 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__special_pred_get_type_det_3_p_0(
+#line 65 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 65 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 65 "special_pred.m"
+  MR_Word * hlds__special_pred__param_3);
+
+#line 62 "special_pred.m"
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_get_type_3_p_0(
+#line 62 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 62 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 62 "special_pred.m"
+  MR_Word * hlds__special_pred__param_3);
+
+#line 50 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__special_pred_list_1_p_0(
+#line 50 "special_pred.m"
+  MR_Word * hlds__special_pred__param_1);
+
+#line 48 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__special_pred_mode_num_2_p_0(
+#line 48 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 48 "special_pred.m"
+  MR_Integer * hlds__special_pred__param_2);
+
+#line 45 "special_pred.m"
+void MR_CALL 
+hlds__special_pred__special_pred_interface_5_p_0(
+#line 45 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 45 "special_pred.m"
+  MR_Word hlds__special_pred__param_2,
+#line 45 "special_pred.m"
+  MR_Word * hlds__special_pred__param_3,
+#line 45 "special_pred.m"
+  MR_Word * hlds__special_pred__param_4,
+#line 45 "special_pred.m"
+  MR_Word * hlds__special_pred__param_5);
+
+#line 38 "special_pred.m"
+MR_String MR_CALL 
+hlds__special_pred__special_pred_name_2_f_0(
+#line 38 "special_pred.m"
+  MR_Word hlds__special_pred__param_1,
+#line 38 "special_pred.m"
+  MR_Word hlds__special_pred__param_2);
+
+void mercury__hlds__special_pred__init(void);
+void mercury__hlds__special_pred__init_type_tables(void);
+void mercury__hlds__special_pred__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.special_pred */
+
+/* :- end_interface hlds.special_pred. */

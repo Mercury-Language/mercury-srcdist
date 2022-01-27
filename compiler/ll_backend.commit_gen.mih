@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `commit_gen.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.commit_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__commit_gen
+#define MR_HEADER_GUARD_ll_backend__commit_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__COMMIT_GEN_DECL_GUARD
+#define LL_BACKEND__COMMIT_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 27 "commit_gen.m"
+void MR_CALL 
+ll_backend__commit_gen__generate_scope_8_p_0(
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_1,
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_2,
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_3,
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_4,
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_5,
+#line 27 "commit_gen.m"
+  MR_Word * ll_backend__commit_gen__param_6,
+#line 27 "commit_gen.m"
+  MR_Word ll_backend__commit_gen__param_7,
+#line 27 "commit_gen.m"
+  MR_Word * ll_backend__commit_gen__param_8);
+
+void mercury__ll_backend__commit_gen__init(void);
+void mercury__ll_backend__commit_gen__init_type_tables(void);
+void mercury__ll_backend__commit_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.commit_gen */
+
+/* :- end_interface ll_backend.commit_gen. */

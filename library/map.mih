@@ -1,0 +1,5155 @@
+/*
+** Automatically generated from `map.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module map. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_map
+#define MR_HEADER_GUARD_map
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAP_DECL_GUARD
+#define MAP_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "map.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__map__map__type_ctor_info_map_2;
+
+#line 78 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 78 "map.m"
+  MR_Word mercury__map__param_1,
+#line 78 "map.m"
+  MR_Word mercury__map__param_2,
+#line 78 "map.m"
+  MR_Word mercury__map__param_3,
+#line 78 "map.m"
+  MR_Word mercury__map__param_4,
+#line 78 "map.m"
+  MR_Word mercury__map__param_5,
+#line 78 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 78 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+#line 78 "map.m"
+  MR_Word mercury__map__param_1,
+#line 78 "map.m"
+  MR_Word mercury__map__param_2,
+#line 78 "map.m"
+  MR_Integer mercury__map__param_3,
+#line 78 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 77 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 77 "map.m"
+  MR_Word mercury__map__param_1,
+#line 77 "map.m"
+  MR_Word mercury__map__param_2,
+#line 77 "map.m"
+  MR_Word mercury__map__param_3,
+#line 77 "map.m"
+  MR_Word mercury__map__param_4,
+#line 77 "map.m"
+  MR_Word mercury__map__param_5,
+#line 77 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 77 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+#line 77 "map.m"
+  MR_Word mercury__map__param_1,
+#line 77 "map.m"
+  MR_Word mercury__map__param_2,
+#line 77 "map.m"
+  MR_Integer mercury__map__param_3,
+#line 77 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 83 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 83 "map.m"
+  MR_Word mercury__map__param_1,
+#line 83 "map.m"
+  MR_Word mercury__map__param_2,
+#line 83 "map.m"
+  MR_Word mercury__map__param_3,
+#line 83 "map.m"
+  MR_Word mercury__map__param_4,
+#line 83 "map.m"
+  MR_Word mercury__map__param_5,
+#line 83 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 83 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+#line 83 "map.m"
+  MR_Word mercury__map__param_1,
+#line 83 "map.m"
+  MR_Word mercury__map__param_2,
+#line 83 "map.m"
+  MR_Integer mercury__map__param_3,
+#line 83 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 82 "map.m"
+MR_Box MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 82 "map.m"
+  MR_Word mercury__map__param_1,
+#line 82 "map.m"
+  MR_Word mercury__map__param_2,
+#line 82 "map.m"
+  MR_Word mercury__map__param_3,
+#line 82 "map.m"
+  MR_Word mercury__map__param_4,
+#line 82 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 82 "map.m"
+MR_Box MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+#line 82 "map.m"
+  MR_Word mercury__map__param_1,
+#line 82 "map.m"
+  MR_Word mercury__map__param_2,
+#line 82 "map.m"
+  MR_Integer mercury__map__param_3);
+
+#line 127 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 127 "map.m"
+  MR_Word mercury__map__param_1,
+#line 127 "map.m"
+  MR_Word mercury__map__param_2,
+#line 127 "map.m"
+  MR_Word mercury__map__param_3,
+#line 127 "map.m"
+  MR_Word mercury__map__param_4,
+#line 127 "map.m"
+  MR_Box mercury__map__param_5,
+#line 127 "map.m"
+  MR_Word mercury__map__param_6,
+#line 127 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 127 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+#line 127 "map.m"
+  MR_Word mercury__map__param_1,
+#line 127 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 127 "map.m"
+  MR_Box mercury__map__param_3,
+#line 127 "map.m"
+  MR_Word mercury__map__param_4,
+#line 127 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 133 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 133 "map.m"
+  MR_Word mercury__map__param_1,
+#line 133 "map.m"
+  MR_Word mercury__map__param_2,
+#line 133 "map.m"
+  MR_Word mercury__map__param_3,
+#line 133 "map.m"
+  MR_Word mercury__map__param_4,
+#line 133 "map.m"
+  MR_Box mercury__map__param_5,
+#line 133 "map.m"
+  MR_Word mercury__map__param_6,
+#line 133 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 133 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+#line 133 "map.m"
+  MR_Word mercury__map__param_1,
+#line 133 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 133 "map.m"
+  MR_Box mercury__map__param_3,
+#line 133 "map.m"
+  MR_Word mercury__map__param_4,
+#line 133 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 199 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 199 "map.m"
+  MR_Word mercury__map__param_1,
+#line 199 "map.m"
+  MR_Word mercury__map__param_2,
+#line 199 "map.m"
+  MR_Word mercury__map__param_3,
+#line 199 "map.m"
+  MR_Word mercury__map__param_4,
+#line 199 "map.m"
+  MR_Box mercury__map__param_5,
+#line 199 "map.m"
+  MR_Word mercury__map__param_6,
+#line 199 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 199 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+#line 199 "map.m"
+  MR_Word mercury__map__param_1,
+#line 199 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 199 "map.m"
+  MR_Box mercury__map__param_3,
+#line 199 "map.m"
+  MR_Word mercury__map__param_4,
+#line 199 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 164 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_117_112_100_97_116_101_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 164 "map.m"
+  MR_Word mercury__map__param_1,
+#line 164 "map.m"
+  MR_Word mercury__map__param_2,
+#line 164 "map.m"
+  MR_Word mercury__map__param_3,
+#line 164 "map.m"
+  MR_Word mercury__map__param_4,
+#line 164 "map.m"
+  MR_Box mercury__map__param_5,
+#line 164 "map.m"
+  MR_Word mercury__map__param_6,
+#line 164 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 164 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+#line 164 "map.m"
+  MR_Word mercury__map__param_1,
+#line 164 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 164 "map.m"
+  MR_Box mercury__map__param_3,
+#line 164 "map.m"
+  MR_Word mercury__map__param_4,
+#line 164 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 170 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 170 "map.m"
+  MR_Word mercury__map__param_1,
+#line 170 "map.m"
+  MR_Word mercury__map__param_2,
+#line 170 "map.m"
+  MR_Word mercury__map__param_3,
+#line 170 "map.m"
+  MR_Word mercury__map__param_4,
+#line 170 "map.m"
+  MR_Box mercury__map__param_5,
+#line 170 "map.m"
+  MR_Word mercury__map__param_6,
+#line 170 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 170 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+#line 170 "map.m"
+  MR_Word mercury__map__param_1,
+#line 170 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 170 "map.m"
+  MR_Box mercury__map__param_3,
+#line 170 "map.m"
+  MR_Word mercury__map__param_4,
+#line 170 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 178 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_5_p_0(
+#line 178 "map.m"
+  MR_Word mercury__map__param_1,
+#line 178 "map.m"
+  MR_Word mercury__map__param_2,
+#line 178 "map.m"
+  MR_Word mercury__map__param_3,
+#line 178 "map.m"
+  MR_Word mercury__map__param_4,
+#line 178 "map.m"
+  MR_Box mercury__map__param_5,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_6,
+#line 178 "map.m"
+  MR_Word mercury__map__param_7,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_8);
+
+#line 178 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_5_p_0(
+#line 178 "map.m"
+  MR_Word mercury__map__param_1,
+#line 178 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 178 "map.m"
+  MR_Box mercury__map__param_3,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_4,
+#line 178 "map.m"
+  MR_Word mercury__map__param_5,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 301 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_111_118_101_114_108_97_121_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 301 "map.m"
+  MR_Word mercury__map__param_1,
+#line 301 "map.m"
+  MR_Word mercury__map__param_2,
+#line 301 "map.m"
+  MR_Word mercury__map__param_3,
+#line 301 "map.m"
+  MR_Word mercury__map__param_4,
+#line 301 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 302 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_111_118_101_114_108_97_121_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 302 "map.m"
+  MR_Word mercury__map__param_1,
+#line 302 "map.m"
+  MR_Word mercury__map__param_2,
+#line 302 "map.m"
+  MR_Word mercury__map__param_3,
+#line 302 "map.m"
+  MR_Word mercury__map__param_4,
+#line 302 "map.m"
+  MR_Word mercury__map__param_5,
+#line 302 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 317 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_108_101_99_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 317 "map.m"
+  MR_Word mercury__map__param_1,
+#line 317 "map.m"
+  MR_Word mercury__map__param_2,
+#line 317 "map.m"
+  MR_Word mercury__map__param_3,
+#line 317 "map.m"
+  MR_Word mercury__map__param_4,
+#line 317 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 318 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_108_101_99_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 318 "map.m"
+  MR_Word mercury__map__param_1,
+#line 318 "map.m"
+  MR_Word mercury__map__param_2,
+#line 318 "map.m"
+  MR_Word mercury__map__param_3,
+#line 318 "map.m"
+  MR_Word mercury__map__param_4,
+#line 318 "map.m"
+  MR_Word mercury__map__param_5,
+#line 318 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 323 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_108_101_99_116_95_115_111_114_116_101_100_95_108_105_115_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 323 "map.m"
+  MR_Word mercury__map__param_1,
+#line 323 "map.m"
+  MR_Word mercury__map__param_2,
+#line 323 "map.m"
+  MR_Word mercury__map__param_3,
+#line 323 "map.m"
+  MR_Word mercury__map__param_4,
+#line 323 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 324 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_108_101_99_116_95_115_111_114_116_101_100_95_108_105_115_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 324 "map.m"
+  MR_Word mercury__map__param_1,
+#line 324 "map.m"
+  MR_Word mercury__map__param_2,
+#line 324 "map.m"
+  MR_Word mercury__map__param_3,
+#line 324 "map.m"
+  MR_Word mercury__map__param_4,
+#line 324 "map.m"
+  MR_Word mercury__map__param_5,
+#line 324 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 696 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_101_108_101_109_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+#line 696 "map.m"
+  MR_Word mercury__map__param_1,
+#line 696 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 696 "map.m"
+  MR_Word mercury__map__param_3,
+#line 696 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 696 "map.m"
+MR_bool MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_101_108_101_109_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 696 "map.m"
+  MR_Word mercury__map__param_1,
+#line 696 "map.m"
+  MR_Word mercury__map__param_2,
+#line 696 "map.m"
+  MR_Word mercury__map__param_3,
+#line 696 "map.m"
+  MR_Word mercury__map__param_4,
+#line 696 "map.m"
+  MR_Word mercury__map__param_5,
+#line 696 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 700 "map.m"
+MR_Box MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_101_108_101_109_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+#line 700 "map.m"
+  MR_Word mercury__map__param_1,
+#line 700 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 700 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 700 "map.m"
+MR_Box MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_101_108_101_109_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 700 "map.m"
+  MR_Word mercury__map__param_1,
+#line 700 "map.m"
+  MR_Word mercury__map__param_2,
+#line 700 "map.m"
+  MR_Word mercury__map__param_3,
+#line 700 "map.m"
+  MR_Word mercury__map__param_4,
+#line 700 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 706 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_101_108_101_109_32_58_61_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_f_0(
+#line 706 "map.m"
+  MR_Word mercury__map__param_1,
+#line 706 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 706 "map.m"
+  MR_Word mercury__map__param_3,
+#line 706 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 706 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_101_108_101_109_32_58_61_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_f_0(
+#line 706 "map.m"
+  MR_Word mercury__map__param_1,
+#line 706 "map.m"
+  MR_Word mercury__map__param_2,
+#line 706 "map.m"
+  MR_Word mercury__map__param_3,
+#line 706 "map.m"
+  MR_Word mercury__map__param_4,
+#line 706 "map.m"
+  MR_Word mercury__map__param_5,
+#line 706 "map.m"
+  MR_Box mercury__map__param_6);
+
+#line 710 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_101_108_101_109_32_58_61_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_f_0(
+#line 710 "map.m"
+  MR_Word mercury__map__param_1,
+#line 710 "map.m"
+  MR_Integer mercury__map__param_2,
+#line 710 "map.m"
+  MR_Word mercury__map__param_3,
+#line 710 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 710 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_101_108_101_109_32_58_61_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_f_0(
+#line 710 "map.m"
+  MR_Word mercury__map__param_1,
+#line 710 "map.m"
+  MR_Word mercury__map__param_2,
+#line 710 "map.m"
+  MR_Word mercury__map__param_3,
+#line 710 "map.m"
+  MR_Word mercury__map__param_4,
+#line 710 "map.m"
+  MR_Word mercury__map__param_5,
+#line 710 "map.m"
+  MR_Box mercury__map__param_6);
+
+#line 1149 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_111_118_101_114_108_97_121_95_50_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 1149 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1149 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 1165 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_111_118_101_114_108_97_121_95_108_97_114_103_101_95_109_97_112_95_50_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 1165 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1165 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 1195 "map.m"
+void MR_CALL 
+mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_108_101_99_116_95_108_111_111_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(
+#line 1195 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_6,
+#line 1195 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 725 "map.m"
+void MR_CALL 
+mercury__map____Compare____map_2_0(
+#line 725 "map.m"
+  MR_Word mercury__map__param_1,
+#line 725 "map.m"
+  MR_Word mercury__map__param_2,
+#line 725 "map.m"
+  MR_Word * mercury__map__param_3,
+#line 725 "map.m"
+  MR_Word mercury__map__param_4,
+#line 725 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 725 "map.m"
+MR_bool MR_CALL 
+mercury__map____Unify____map_2_0(
+#line 725 "map.m"
+  MR_Word mercury__map__param_1,
+#line 725 "map.m"
+  MR_Word mercury__map__param_2,
+#line 725 "map.m"
+  MR_Word mercury__map__param_3,
+#line 725 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 1457 "map.m"
+void MR_CALL 
+mercury__map__reverse_map_2_4_p_0(
+#line 1457 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1457 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1457 "map.m"
+  MR_Box mercury__map__param_3,
+#line 1457 "map.m"
+  MR_Box mercury__map__param_4,
+#line 1457 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1457 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 1413 "map.m"
+void MR_CALL 
+mercury__map__union_2_5_p_1(
+#line 1413 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1413 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1413 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1413 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1413 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1413 "map.m"
+  MR_Word mercury__map__param_6,
+#line 1413 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 1412 "map.m"
+MR_bool MR_CALL 
+mercury__map__union_2_5_p_0(
+#line 1412 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1412 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1412 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1412 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1412 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1412 "map.m"
+  MR_Word mercury__map__param_6,
+#line 1412 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 1360 "map.m"
+MR_Word MR_CALL 
+mercury__map__common_subset_2_3_f_0(
+#line 1360 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1360 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1360 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1360 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1360 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 1314 "map.m"
+void MR_CALL 
+mercury__map__intersect_2_5_p_1(
+#line 1314 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1314 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1314 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1314 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1314 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1314 "map.m"
+  MR_Word mercury__map__param_6,
+#line 1314 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 1312 "map.m"
+MR_bool MR_CALL 
+mercury__map__intersect_2_5_p_0(
+#line 1312 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1312 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1312 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1312 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1312 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1312 "map.m"
+  MR_Word mercury__map__param_6,
+#line 1312 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 1195 "map.m"
+void MR_CALL 
+mercury__map__select_loop_4_p_0(
+#line 1195 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1195 "map.m"
+  MR_Word mercury__map__param_5,
+#line 1195 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 1165 "map.m"
+void MR_CALL 
+mercury__map__overlay_large_map_2_3_p_0(
+#line 1165 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1165 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1165 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 1149 "map.m"
+void MR_CALL 
+mercury__map__overlay_2_3_p_0(
+#line 1149 "map.m"
+  MR_Word mercury__map__param_1,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_2,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_3,
+#line 1149 "map.m"
+  MR_Word mercury__map__param_4,
+#line 1149 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 739 "map.m"
+void MR_CALL 
+mercury__map__old_merge_3_p_0(
+#line 739 "map.m"
+  MR_Word mercury__map__param_1,
+#line 739 "map.m"
+  MR_Word mercury__map__param_2,
+#line 739 "map.m"
+  MR_Word mercury__map__param_3,
+#line 739 "map.m"
+  MR_Word mercury__map__param_4,
+#line 739 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 738 "map.m"
+MR_Word MR_CALL 
+mercury__map__old_merge_2_f_0(
+#line 738 "map.m"
+  MR_Word mercury__map__param_1,
+#line 738 "map.m"
+  MR_Word mercury__map__param_2,
+#line 738 "map.m"
+  MR_Word mercury__map__param_3,
+#line 738 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 710 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_100_101_116_95_101_108_101_109_32_58_61_3_f_0(
+#line 710 "map.m"
+  MR_Word mercury__map__param_1,
+#line 710 "map.m"
+  MR_Word mercury__map__param_2,
+#line 710 "map.m"
+  MR_Box mercury__map__param_3,
+#line 710 "map.m"
+  MR_Word mercury__map__param_4,
+#line 710 "map.m"
+  MR_Box mercury__map__param_5);
+
+#line 706 "map.m"
+MR_Word MR_CALL 
+mercury__map__f_101_108_101_109_32_58_61_3_f_0(
+#line 706 "map.m"
+  MR_Word mercury__map__param_1,
+#line 706 "map.m"
+  MR_Word mercury__map__param_2,
+#line 706 "map.m"
+  MR_Box mercury__map__param_3,
+#line 706 "map.m"
+  MR_Word mercury__map__param_4,
+#line 706 "map.m"
+  MR_Box mercury__map__param_5);
+
+#line 700 "map.m"
+MR_Box MR_CALL 
+mercury__map__det_elem_2_f_0(
+#line 700 "map.m"
+  MR_Word mercury__map__param_1,
+#line 700 "map.m"
+  MR_Word mercury__map__param_2,
+#line 700 "map.m"
+  MR_Box mercury__map__param_3,
+#line 700 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 696 "map.m"
+MR_bool MR_CALL 
+mercury__map__elem_2_f_0(
+#line 696 "map.m"
+  MR_Word mercury__map__param_1,
+#line 696 "map.m"
+  MR_Word mercury__map__param_2,
+#line 696 "map.m"
+  MR_Box mercury__map__param_3,
+#line 696 "map.m"
+  MR_Word mercury__map__param_4,
+#line 696 "map.m"
+  MR_Box * mercury__map__param_5);
+
+#line 690 "map.m"
+MR_Word MR_CALL 
+mercury__map__reverse_map_1_f_0(
+#line 690 "map.m"
+  MR_Word mercury__map__param_1,
+#line 690 "map.m"
+  MR_Word mercury__map__param_2,
+#line 690 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 684 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_union_3_f_0(
+#line 684 "map.m"
+  MR_Word mercury__map__param_1,
+#line 684 "map.m"
+  MR_Word mercury__map__param_2,
+#line 684 "map.m"
+  MR_Word mercury__map__param_3,
+#line 684 "map.m"
+  MR_Word mercury__map__param_4,
+#line 684 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 681 "map.m"
+void MR_CALL 
+mercury__map__det_union_4_p_0(
+#line 681 "map.m"
+  MR_Word mercury__map__param_1,
+#line 681 "map.m"
+  MR_Word mercury__map__param_2,
+#line 681 "map.m"
+  MR_Word mercury__map__param_3,
+#line 681 "map.m"
+  MR_Word mercury__map__param_4,
+#line 681 "map.m"
+  MR_Word mercury__map__param_5,
+#line 681 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 676 "map.m"
+void MR_CALL 
+mercury__map__union_4_p_1(
+#line 676 "map.m"
+  MR_Word mercury__map__param_1,
+#line 676 "map.m"
+  MR_Word mercury__map__param_2,
+#line 676 "map.m"
+  MR_Word mercury__map__param_3,
+#line 676 "map.m"
+  MR_Word mercury__map__param_4,
+#line 676 "map.m"
+  MR_Word mercury__map__param_5,
+#line 676 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 675 "map.m"
+MR_bool MR_CALL 
+mercury__map__union_4_p_0(
+#line 675 "map.m"
+  MR_Word mercury__map__param_1,
+#line 675 "map.m"
+  MR_Word mercury__map__param_2,
+#line 675 "map.m"
+  MR_Word mercury__map__param_3,
+#line 675 "map.m"
+  MR_Word mercury__map__param_4,
+#line 675 "map.m"
+  MR_Word mercury__map__param_5,
+#line 675 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 673 "map.m"
+MR_Word MR_CALL 
+mercury__map__union_3_f_0(
+#line 673 "map.m"
+  MR_Word mercury__map__param_1,
+#line 673 "map.m"
+  MR_Word mercury__map__param_2,
+#line 673 "map.m"
+  MR_Word mercury__map__param_3,
+#line 673 "map.m"
+  MR_Word mercury__map__param_4,
+#line 673 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 664 "map.m"
+MR_Word MR_CALL 
+mercury__map__common_subset_2_f_0(
+#line 664 "map.m"
+  MR_Word mercury__map__param_1,
+#line 664 "map.m"
+  MR_Word mercury__map__param_2,
+#line 664 "map.m"
+  MR_Word mercury__map__param_3,
+#line 664 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 648 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_intersect_3_f_0(
+#line 648 "map.m"
+  MR_Word mercury__map__param_1,
+#line 648 "map.m"
+  MR_Word mercury__map__param_2,
+#line 648 "map.m"
+  MR_Word mercury__map__param_3,
+#line 648 "map.m"
+  MR_Word mercury__map__param_4,
+#line 648 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 645 "map.m"
+void MR_CALL 
+mercury__map__det_intersect_4_p_0(
+#line 645 "map.m"
+  MR_Word mercury__map__param_1,
+#line 645 "map.m"
+  MR_Word mercury__map__param_2,
+#line 645 "map.m"
+  MR_Word mercury__map__param_3,
+#line 645 "map.m"
+  MR_Word mercury__map__param_4,
+#line 645 "map.m"
+  MR_Word mercury__map__param_5,
+#line 645 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 640 "map.m"
+MR_Word MR_CALL 
+mercury__map__intersect_3_f_0(
+#line 640 "map.m"
+  MR_Word mercury__map__param_1,
+#line 640 "map.m"
+  MR_Word mercury__map__param_2,
+#line 640 "map.m"
+  MR_Word mercury__map__param_3,
+#line 640 "map.m"
+  MR_Word mercury__map__param_4,
+#line 640 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 638 "map.m"
+void MR_CALL 
+mercury__map__intersect_4_p_1(
+#line 638 "map.m"
+  MR_Word mercury__map__param_1,
+#line 638 "map.m"
+  MR_Word mercury__map__param_2,
+#line 638 "map.m"
+  MR_Word mercury__map__param_3,
+#line 638 "map.m"
+  MR_Word mercury__map__param_4,
+#line 638 "map.m"
+  MR_Word mercury__map__param_5,
+#line 638 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 637 "map.m"
+MR_bool MR_CALL 
+mercury__map__intersect_4_p_0(
+#line 637 "map.m"
+  MR_Word mercury__map__param_1,
+#line 637 "map.m"
+  MR_Word mercury__map__param_2,
+#line 637 "map.m"
+  MR_Word mercury__map__param_3,
+#line 637 "map.m"
+  MR_Word mercury__map__param_4,
+#line 637 "map.m"
+  MR_Word mercury__map__param_5,
+#line 637 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 625 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_values_foldl3_9_p_4(
+#line 625 "map.m"
+  MR_Word mercury__map__param_1,
+#line 625 "map.m"
+  MR_Word mercury__map__param_2,
+#line 625 "map.m"
+  MR_Word mercury__map__param_3,
+#line 625 "map.m"
+  MR_Word mercury__map__param_4,
+#line 625 "map.m"
+  MR_Word mercury__map__param_5,
+#line 625 "map.m"
+  MR_Word mercury__map__param_6,
+#line 625 "map.m"
+  MR_Word mercury__map__param_7,
+#line 625 "map.m"
+  MR_Word mercury__map__param_8,
+#line 625 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 625 "map.m"
+  MR_Box mercury__map__param_10,
+#line 625 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 625 "map.m"
+  MR_Box mercury__map__param_12,
+#line 625 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 625 "map.m"
+  MR_Box mercury__map__param_14,
+#line 625 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 623 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl3_9_p_3(
+#line 623 "map.m"
+  MR_Word mercury__map__param_1,
+#line 623 "map.m"
+  MR_Word mercury__map__param_2,
+#line 623 "map.m"
+  MR_Word mercury__map__param_3,
+#line 623 "map.m"
+  MR_Word mercury__map__param_4,
+#line 623 "map.m"
+  MR_Word mercury__map__param_5,
+#line 623 "map.m"
+  MR_Word mercury__map__param_6,
+#line 623 "map.m"
+  MR_Word mercury__map__param_7,
+#line 623 "map.m"
+  MR_Word mercury__map__param_8,
+#line 623 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 623 "map.m"
+  MR_Box mercury__map__param_10,
+#line 623 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 623 "map.m"
+  MR_Box mercury__map__param_12,
+#line 623 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 623 "map.m"
+  MR_Box mercury__map__param_14,
+#line 623 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 621 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl3_9_p_2(
+#line 621 "map.m"
+  MR_Word mercury__map__param_1,
+#line 621 "map.m"
+  MR_Word mercury__map__param_2,
+#line 621 "map.m"
+  MR_Word mercury__map__param_3,
+#line 621 "map.m"
+  MR_Word mercury__map__param_4,
+#line 621 "map.m"
+  MR_Word mercury__map__param_5,
+#line 621 "map.m"
+  MR_Word mercury__map__param_6,
+#line 621 "map.m"
+  MR_Word mercury__map__param_7,
+#line 621 "map.m"
+  MR_Word mercury__map__param_8,
+#line 621 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 621 "map.m"
+  MR_Box mercury__map__param_10,
+#line 621 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 621 "map.m"
+  MR_Box mercury__map__param_12,
+#line 621 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 621 "map.m"
+  MR_Box mercury__map__param_14,
+#line 621 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 619 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl3_9_p_1(
+#line 619 "map.m"
+  MR_Word mercury__map__param_1,
+#line 619 "map.m"
+  MR_Word mercury__map__param_2,
+#line 619 "map.m"
+  MR_Word mercury__map__param_3,
+#line 619 "map.m"
+  MR_Word mercury__map__param_4,
+#line 619 "map.m"
+  MR_Word mercury__map__param_5,
+#line 619 "map.m"
+  MR_Word mercury__map__param_6,
+#line 619 "map.m"
+  MR_Word mercury__map__param_7,
+#line 619 "map.m"
+  MR_Word mercury__map__param_8,
+#line 619 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 619 "map.m"
+  MR_Box mercury__map__param_10,
+#line 619 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 619 "map.m"
+  MR_Box mercury__map__param_12,
+#line 619 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 619 "map.m"
+  MR_Box mercury__map__param_14,
+#line 619 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 617 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl3_9_p_0(
+#line 617 "map.m"
+  MR_Word mercury__map__param_1,
+#line 617 "map.m"
+  MR_Word mercury__map__param_2,
+#line 617 "map.m"
+  MR_Word mercury__map__param_3,
+#line 617 "map.m"
+  MR_Word mercury__map__param_4,
+#line 617 "map.m"
+  MR_Word mercury__map__param_5,
+#line 617 "map.m"
+  MR_Word mercury__map__param_6,
+#line 617 "map.m"
+  MR_Word mercury__map__param_7,
+#line 617 "map.m"
+  MR_Word mercury__map__param_8,
+#line 617 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 617 "map.m"
+  MR_Box mercury__map__param_10,
+#line 617 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 617 "map.m"
+  MR_Box mercury__map__param_12,
+#line 617 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 617 "map.m"
+  MR_Box mercury__map__param_14,
+#line 617 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 610 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_values_foldl2_7_p_3(
+#line 610 "map.m"
+  MR_Word mercury__map__param_1,
+#line 610 "map.m"
+  MR_Word mercury__map__param_2,
+#line 610 "map.m"
+  MR_Word mercury__map__param_3,
+#line 610 "map.m"
+  MR_Word mercury__map__param_4,
+#line 610 "map.m"
+  MR_Word mercury__map__param_5,
+#line 610 "map.m"
+  MR_Word mercury__map__param_6,
+#line 610 "map.m"
+  MR_Word mercury__map__param_7,
+#line 610 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 610 "map.m"
+  MR_Box mercury__map__param_9,
+#line 610 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 610 "map.m"
+  MR_Box mercury__map__param_11,
+#line 610 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 608 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl2_7_p_2(
+#line 608 "map.m"
+  MR_Word mercury__map__param_1,
+#line 608 "map.m"
+  MR_Word mercury__map__param_2,
+#line 608 "map.m"
+  MR_Word mercury__map__param_3,
+#line 608 "map.m"
+  MR_Word mercury__map__param_4,
+#line 608 "map.m"
+  MR_Word mercury__map__param_5,
+#line 608 "map.m"
+  MR_Word mercury__map__param_6,
+#line 608 "map.m"
+  MR_Word mercury__map__param_7,
+#line 608 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 608 "map.m"
+  MR_Box mercury__map__param_9,
+#line 608 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 608 "map.m"
+  MR_Box mercury__map__param_11,
+#line 608 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 606 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl2_7_p_1(
+#line 606 "map.m"
+  MR_Word mercury__map__param_1,
+#line 606 "map.m"
+  MR_Word mercury__map__param_2,
+#line 606 "map.m"
+  MR_Word mercury__map__param_3,
+#line 606 "map.m"
+  MR_Word mercury__map__param_4,
+#line 606 "map.m"
+  MR_Word mercury__map__param_5,
+#line 606 "map.m"
+  MR_Word mercury__map__param_6,
+#line 606 "map.m"
+  MR_Word mercury__map__param_7,
+#line 606 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 606 "map.m"
+  MR_Box mercury__map__param_9,
+#line 606 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 606 "map.m"
+  MR_Box mercury__map__param_11,
+#line 606 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 604 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl2_7_p_0(
+#line 604 "map.m"
+  MR_Word mercury__map__param_1,
+#line 604 "map.m"
+  MR_Word mercury__map__param_2,
+#line 604 "map.m"
+  MR_Word mercury__map__param_3,
+#line 604 "map.m"
+  MR_Word mercury__map__param_4,
+#line 604 "map.m"
+  MR_Word mercury__map__param_5,
+#line 604 "map.m"
+  MR_Word mercury__map__param_6,
+#line 604 "map.m"
+  MR_Word mercury__map__param_7,
+#line 604 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 604 "map.m"
+  MR_Box mercury__map__param_9,
+#line 604 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 604 "map.m"
+  MR_Box mercury__map__param_11,
+#line 604 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 597 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_values_foldl_5_p_2(
+#line 597 "map.m"
+  MR_Word mercury__map__param_1,
+#line 597 "map.m"
+  MR_Word mercury__map__param_2,
+#line 597 "map.m"
+  MR_Word mercury__map__param_3,
+#line 597 "map.m"
+  MR_Word mercury__map__param_4,
+#line 597 "map.m"
+  MR_Word mercury__map__param_5,
+#line 597 "map.m"
+  MR_Word mercury__map__param_6,
+#line 597 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 597 "map.m"
+  MR_Box mercury__map__param_8,
+#line 597 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 595 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl_5_p_1(
+#line 595 "map.m"
+  MR_Word mercury__map__param_1,
+#line 595 "map.m"
+  MR_Word mercury__map__param_2,
+#line 595 "map.m"
+  MR_Word mercury__map__param_3,
+#line 595 "map.m"
+  MR_Word mercury__map__param_4,
+#line 595 "map.m"
+  MR_Word mercury__map__param_5,
+#line 595 "map.m"
+  MR_Word mercury__map__param_6,
+#line 595 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 595 "map.m"
+  MR_Box mercury__map__param_8,
+#line 595 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 593 "map.m"
+void MR_CALL 
+mercury__map__map_values_foldl_5_p_0(
+#line 593 "map.m"
+  MR_Word mercury__map__param_1,
+#line 593 "map.m"
+  MR_Word mercury__map__param_2,
+#line 593 "map.m"
+  MR_Word mercury__map__param_3,
+#line 593 "map.m"
+  MR_Word mercury__map__param_4,
+#line 593 "map.m"
+  MR_Word mercury__map__param_5,
+#line 593 "map.m"
+  MR_Word mercury__map__param_6,
+#line 593 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 593 "map.m"
+  MR_Box mercury__map__param_8,
+#line 593 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 587 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl3_9_p_7(
+#line 587 "map.m"
+  MR_Word mercury__map__param_1,
+#line 587 "map.m"
+  MR_Word mercury__map__param_2,
+#line 587 "map.m"
+  MR_Word mercury__map__param_3,
+#line 587 "map.m"
+  MR_Word mercury__map__param_4,
+#line 587 "map.m"
+  MR_Word mercury__map__param_5,
+#line 587 "map.m"
+  MR_Word mercury__map__param_6,
+#line 587 "map.m"
+  MR_Word mercury__map__param_7,
+#line 587 "map.m"
+  MR_Word mercury__map__param_8,
+#line 587 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 587 "map.m"
+  MR_Box mercury__map__param_10,
+#line 587 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 587 "map.m"
+  MR_Box mercury__map__param_12,
+#line 587 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 587 "map.m"
+  MR_Box mercury__map__param_14,
+#line 587 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 585 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl3_9_p_6(
+#line 585 "map.m"
+  MR_Word mercury__map__param_1,
+#line 585 "map.m"
+  MR_Word mercury__map__param_2,
+#line 585 "map.m"
+  MR_Word mercury__map__param_3,
+#line 585 "map.m"
+  MR_Word mercury__map__param_4,
+#line 585 "map.m"
+  MR_Word mercury__map__param_5,
+#line 585 "map.m"
+  MR_Word mercury__map__param_6,
+#line 585 "map.m"
+  MR_Word mercury__map__param_7,
+#line 585 "map.m"
+  MR_Word mercury__map__param_8,
+#line 585 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 585 "map.m"
+  MR_Box mercury__map__param_10,
+#line 585 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 585 "map.m"
+  MR_Box mercury__map__param_12,
+#line 585 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 585 "map.m"
+  MR_Box mercury__map__param_14,
+#line 585 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 583 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl3_9_p_5(
+#line 583 "map.m"
+  MR_Word mercury__map__param_1,
+#line 583 "map.m"
+  MR_Word mercury__map__param_2,
+#line 583 "map.m"
+  MR_Word mercury__map__param_3,
+#line 583 "map.m"
+  MR_Word mercury__map__param_4,
+#line 583 "map.m"
+  MR_Word mercury__map__param_5,
+#line 583 "map.m"
+  MR_Word mercury__map__param_6,
+#line 583 "map.m"
+  MR_Word mercury__map__param_7,
+#line 583 "map.m"
+  MR_Word mercury__map__param_8,
+#line 583 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 583 "map.m"
+  MR_Box mercury__map__param_10,
+#line 583 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 583 "map.m"
+  MR_Box mercury__map__param_12,
+#line 583 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 583 "map.m"
+  MR_Box mercury__map__param_14,
+#line 583 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 581 "map.m"
+void MR_CALL 
+mercury__map__map_foldl3_9_p_4(
+#line 581 "map.m"
+  MR_Word mercury__map__param_1,
+#line 581 "map.m"
+  MR_Word mercury__map__param_2,
+#line 581 "map.m"
+  MR_Word mercury__map__param_3,
+#line 581 "map.m"
+  MR_Word mercury__map__param_4,
+#line 581 "map.m"
+  MR_Word mercury__map__param_5,
+#line 581 "map.m"
+  MR_Word mercury__map__param_6,
+#line 581 "map.m"
+  MR_Word mercury__map__param_7,
+#line 581 "map.m"
+  MR_Word mercury__map__param_8,
+#line 581 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 581 "map.m"
+  MR_Box mercury__map__param_10,
+#line 581 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 581 "map.m"
+  MR_Box mercury__map__param_12,
+#line 581 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 581 "map.m"
+  MR_Box mercury__map__param_14,
+#line 581 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 579 "map.m"
+void MR_CALL 
+mercury__map__map_foldl3_9_p_3(
+#line 579 "map.m"
+  MR_Word mercury__map__param_1,
+#line 579 "map.m"
+  MR_Word mercury__map__param_2,
+#line 579 "map.m"
+  MR_Word mercury__map__param_3,
+#line 579 "map.m"
+  MR_Word mercury__map__param_4,
+#line 579 "map.m"
+  MR_Word mercury__map__param_5,
+#line 579 "map.m"
+  MR_Word mercury__map__param_6,
+#line 579 "map.m"
+  MR_Word mercury__map__param_7,
+#line 579 "map.m"
+  MR_Word mercury__map__param_8,
+#line 579 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 579 "map.m"
+  MR_Box mercury__map__param_10,
+#line 579 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 579 "map.m"
+  MR_Box mercury__map__param_12,
+#line 579 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 579 "map.m"
+  MR_Box mercury__map__param_14,
+#line 579 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 577 "map.m"
+void MR_CALL 
+mercury__map__map_foldl3_9_p_2(
+#line 577 "map.m"
+  MR_Word mercury__map__param_1,
+#line 577 "map.m"
+  MR_Word mercury__map__param_2,
+#line 577 "map.m"
+  MR_Word mercury__map__param_3,
+#line 577 "map.m"
+  MR_Word mercury__map__param_4,
+#line 577 "map.m"
+  MR_Word mercury__map__param_5,
+#line 577 "map.m"
+  MR_Word mercury__map__param_6,
+#line 577 "map.m"
+  MR_Word mercury__map__param_7,
+#line 577 "map.m"
+  MR_Word mercury__map__param_8,
+#line 577 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 577 "map.m"
+  MR_Box mercury__map__param_10,
+#line 577 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 577 "map.m"
+  MR_Box mercury__map__param_12,
+#line 577 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 577 "map.m"
+  MR_Box mercury__map__param_14,
+#line 577 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 575 "map.m"
+void MR_CALL 
+mercury__map__map_foldl3_9_p_1(
+#line 575 "map.m"
+  MR_Word mercury__map__param_1,
+#line 575 "map.m"
+  MR_Word mercury__map__param_2,
+#line 575 "map.m"
+  MR_Word mercury__map__param_3,
+#line 575 "map.m"
+  MR_Word mercury__map__param_4,
+#line 575 "map.m"
+  MR_Word mercury__map__param_5,
+#line 575 "map.m"
+  MR_Word mercury__map__param_6,
+#line 575 "map.m"
+  MR_Word mercury__map__param_7,
+#line 575 "map.m"
+  MR_Word mercury__map__param_8,
+#line 575 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 575 "map.m"
+  MR_Box mercury__map__param_10,
+#line 575 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 575 "map.m"
+  MR_Box mercury__map__param_12,
+#line 575 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 575 "map.m"
+  MR_Box mercury__map__param_14,
+#line 575 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 573 "map.m"
+void MR_CALL 
+mercury__map__map_foldl3_9_p_0(
+#line 573 "map.m"
+  MR_Word mercury__map__param_1,
+#line 573 "map.m"
+  MR_Word mercury__map__param_2,
+#line 573 "map.m"
+  MR_Word mercury__map__param_3,
+#line 573 "map.m"
+  MR_Word mercury__map__param_4,
+#line 573 "map.m"
+  MR_Word mercury__map__param_5,
+#line 573 "map.m"
+  MR_Word mercury__map__param_6,
+#line 573 "map.m"
+  MR_Word mercury__map__param_7,
+#line 573 "map.m"
+  MR_Word mercury__map__param_8,
+#line 573 "map.m"
+  MR_Word * mercury__map__param_9,
+#line 573 "map.m"
+  MR_Box mercury__map__param_10,
+#line 573 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 573 "map.m"
+  MR_Box mercury__map__param_12,
+#line 573 "map.m"
+  MR_Box * mercury__map__param_13,
+#line 573 "map.m"
+  MR_Box mercury__map__param_14,
+#line 573 "map.m"
+  MR_Box * mercury__map__param_15);
+
+#line 566 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl2_7_p_6(
+#line 566 "map.m"
+  MR_Word mercury__map__param_1,
+#line 566 "map.m"
+  MR_Word mercury__map__param_2,
+#line 566 "map.m"
+  MR_Word mercury__map__param_3,
+#line 566 "map.m"
+  MR_Word mercury__map__param_4,
+#line 566 "map.m"
+  MR_Word mercury__map__param_5,
+#line 566 "map.m"
+  MR_Word mercury__map__param_6,
+#line 566 "map.m"
+  MR_Word mercury__map__param_7,
+#line 566 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 566 "map.m"
+  MR_Box mercury__map__param_9,
+#line 566 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 566 "map.m"
+  MR_Box mercury__map__param_11,
+#line 566 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 564 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl2_7_p_5(
+#line 564 "map.m"
+  MR_Word mercury__map__param_1,
+#line 564 "map.m"
+  MR_Word mercury__map__param_2,
+#line 564 "map.m"
+  MR_Word mercury__map__param_3,
+#line 564 "map.m"
+  MR_Word mercury__map__param_4,
+#line 564 "map.m"
+  MR_Word mercury__map__param_5,
+#line 564 "map.m"
+  MR_Word mercury__map__param_6,
+#line 564 "map.m"
+  MR_Word mercury__map__param_7,
+#line 564 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 564 "map.m"
+  MR_Box mercury__map__param_9,
+#line 564 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 564 "map.m"
+  MR_Box mercury__map__param_11,
+#line 564 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 562 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl2_7_p_4(
+#line 562 "map.m"
+  MR_Word mercury__map__param_1,
+#line 562 "map.m"
+  MR_Word mercury__map__param_2,
+#line 562 "map.m"
+  MR_Word mercury__map__param_3,
+#line 562 "map.m"
+  MR_Word mercury__map__param_4,
+#line 562 "map.m"
+  MR_Word mercury__map__param_5,
+#line 562 "map.m"
+  MR_Word mercury__map__param_6,
+#line 562 "map.m"
+  MR_Word mercury__map__param_7,
+#line 562 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 562 "map.m"
+  MR_Box mercury__map__param_9,
+#line 562 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 562 "map.m"
+  MR_Box mercury__map__param_11,
+#line 562 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 560 "map.m"
+void MR_CALL 
+mercury__map__map_foldl2_7_p_3(
+#line 560 "map.m"
+  MR_Word mercury__map__param_1,
+#line 560 "map.m"
+  MR_Word mercury__map__param_2,
+#line 560 "map.m"
+  MR_Word mercury__map__param_3,
+#line 560 "map.m"
+  MR_Word mercury__map__param_4,
+#line 560 "map.m"
+  MR_Word mercury__map__param_5,
+#line 560 "map.m"
+  MR_Word mercury__map__param_6,
+#line 560 "map.m"
+  MR_Word mercury__map__param_7,
+#line 560 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 560 "map.m"
+  MR_Box mercury__map__param_9,
+#line 560 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 560 "map.m"
+  MR_Box mercury__map__param_11,
+#line 560 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 558 "map.m"
+void MR_CALL 
+mercury__map__map_foldl2_7_p_2(
+#line 558 "map.m"
+  MR_Word mercury__map__param_1,
+#line 558 "map.m"
+  MR_Word mercury__map__param_2,
+#line 558 "map.m"
+  MR_Word mercury__map__param_3,
+#line 558 "map.m"
+  MR_Word mercury__map__param_4,
+#line 558 "map.m"
+  MR_Word mercury__map__param_5,
+#line 558 "map.m"
+  MR_Word mercury__map__param_6,
+#line 558 "map.m"
+  MR_Word mercury__map__param_7,
+#line 558 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 558 "map.m"
+  MR_Box mercury__map__param_9,
+#line 558 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 558 "map.m"
+  MR_Box mercury__map__param_11,
+#line 558 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 556 "map.m"
+void MR_CALL 
+mercury__map__map_foldl2_7_p_1(
+#line 556 "map.m"
+  MR_Word mercury__map__param_1,
+#line 556 "map.m"
+  MR_Word mercury__map__param_2,
+#line 556 "map.m"
+  MR_Word mercury__map__param_3,
+#line 556 "map.m"
+  MR_Word mercury__map__param_4,
+#line 556 "map.m"
+  MR_Word mercury__map__param_5,
+#line 556 "map.m"
+  MR_Word mercury__map__param_6,
+#line 556 "map.m"
+  MR_Word mercury__map__param_7,
+#line 556 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 556 "map.m"
+  MR_Box mercury__map__param_9,
+#line 556 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 556 "map.m"
+  MR_Box mercury__map__param_11,
+#line 556 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 554 "map.m"
+void MR_CALL 
+mercury__map__map_foldl2_7_p_0(
+#line 554 "map.m"
+  MR_Word mercury__map__param_1,
+#line 554 "map.m"
+  MR_Word mercury__map__param_2,
+#line 554 "map.m"
+  MR_Word mercury__map__param_3,
+#line 554 "map.m"
+  MR_Word mercury__map__param_4,
+#line 554 "map.m"
+  MR_Word mercury__map__param_5,
+#line 554 "map.m"
+  MR_Word mercury__map__param_6,
+#line 554 "map.m"
+  MR_Word mercury__map__param_7,
+#line 554 "map.m"
+  MR_Word * mercury__map__param_8,
+#line 554 "map.m"
+  MR_Box mercury__map__param_9,
+#line 554 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 554 "map.m"
+  MR_Box mercury__map__param_11,
+#line 554 "map.m"
+  MR_Box * mercury__map__param_12);
+
+#line 547 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl_5_p_5(
+#line 547 "map.m"
+  MR_Word mercury__map__param_1,
+#line 547 "map.m"
+  MR_Word mercury__map__param_2,
+#line 547 "map.m"
+  MR_Word mercury__map__param_3,
+#line 547 "map.m"
+  MR_Word mercury__map__param_4,
+#line 547 "map.m"
+  MR_Word mercury__map__param_5,
+#line 547 "map.m"
+  MR_Word mercury__map__param_6,
+#line 547 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 547 "map.m"
+  MR_Box mercury__map__param_8,
+#line 547 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 545 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl_5_p_4(
+#line 545 "map.m"
+  MR_Word mercury__map__param_1,
+#line 545 "map.m"
+  MR_Word mercury__map__param_2,
+#line 545 "map.m"
+  MR_Word mercury__map__param_3,
+#line 545 "map.m"
+  MR_Word mercury__map__param_4,
+#line 545 "map.m"
+  MR_Word mercury__map__param_5,
+#line 545 "map.m"
+  MR_Word mercury__map__param_6,
+#line 545 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 545 "map.m"
+  MR_Box mercury__map__param_8,
+#line 545 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 543 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_foldl_5_p_3(
+#line 543 "map.m"
+  MR_Word mercury__map__param_1,
+#line 543 "map.m"
+  MR_Word mercury__map__param_2,
+#line 543 "map.m"
+  MR_Word mercury__map__param_3,
+#line 543 "map.m"
+  MR_Word mercury__map__param_4,
+#line 543 "map.m"
+  MR_Word mercury__map__param_5,
+#line 543 "map.m"
+  MR_Word mercury__map__param_6,
+#line 543 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 543 "map.m"
+  MR_Box mercury__map__param_8,
+#line 543 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 541 "map.m"
+void MR_CALL 
+mercury__map__map_foldl_5_p_2(
+#line 541 "map.m"
+  MR_Word mercury__map__param_1,
+#line 541 "map.m"
+  MR_Word mercury__map__param_2,
+#line 541 "map.m"
+  MR_Word mercury__map__param_3,
+#line 541 "map.m"
+  MR_Word mercury__map__param_4,
+#line 541 "map.m"
+  MR_Word mercury__map__param_5,
+#line 541 "map.m"
+  MR_Word mercury__map__param_6,
+#line 541 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 541 "map.m"
+  MR_Box mercury__map__param_8,
+#line 541 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 539 "map.m"
+void MR_CALL 
+mercury__map__map_foldl_5_p_1(
+#line 539 "map.m"
+  MR_Word mercury__map__param_1,
+#line 539 "map.m"
+  MR_Word mercury__map__param_2,
+#line 539 "map.m"
+  MR_Word mercury__map__param_3,
+#line 539 "map.m"
+  MR_Word mercury__map__param_4,
+#line 539 "map.m"
+  MR_Word mercury__map__param_5,
+#line 539 "map.m"
+  MR_Word mercury__map__param_6,
+#line 539 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 539 "map.m"
+  MR_Box mercury__map__param_8,
+#line 539 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 537 "map.m"
+void MR_CALL 
+mercury__map__map_foldl_5_p_0(
+#line 537 "map.m"
+  MR_Word mercury__map__param_1,
+#line 537 "map.m"
+  MR_Word mercury__map__param_2,
+#line 537 "map.m"
+  MR_Word mercury__map__param_3,
+#line 537 "map.m"
+  MR_Word mercury__map__param_4,
+#line 537 "map.m"
+  MR_Word mercury__map__param_5,
+#line 537 "map.m"
+  MR_Word mercury__map__param_6,
+#line 537 "map.m"
+  MR_Word * mercury__map__param_7,
+#line 537 "map.m"
+  MR_Box mercury__map__param_8,
+#line 537 "map.m"
+  MR_Box * mercury__map__param_9);
+
+#line 531 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_values_only_3_p_1(
+#line 531 "map.m"
+  MR_Word mercury__map__param_1,
+#line 531 "map.m"
+  MR_Word mercury__map__param_2,
+#line 531 "map.m"
+  MR_Word mercury__map__param_3,
+#line 531 "map.m"
+  MR_Word mercury__map__param_4,
+#line 531 "map.m"
+  MR_Word mercury__map__param_5,
+#line 531 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 530 "map.m"
+void MR_CALL 
+mercury__map__map_values_only_3_p_0(
+#line 530 "map.m"
+  MR_Word mercury__map__param_1,
+#line 530 "map.m"
+  MR_Word mercury__map__param_2,
+#line 530 "map.m"
+  MR_Word mercury__map__param_3,
+#line 530 "map.m"
+  MR_Word mercury__map__param_4,
+#line 530 "map.m"
+  MR_Word mercury__map__param_5,
+#line 530 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 528 "map.m"
+MR_Word MR_CALL 
+mercury__map__map_values_only_2_f_0(
+#line 528 "map.m"
+  MR_Word mercury__map__param_1,
+#line 528 "map.m"
+  MR_Word mercury__map__param_2,
+#line 528 "map.m"
+  MR_Word mercury__map__param_3,
+#line 528 "map.m"
+  MR_Word mercury__map__param_4,
+#line 528 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 524 "map.m"
+MR_bool MR_CALL 
+mercury__map__map_values_3_p_1(
+#line 524 "map.m"
+  MR_Word mercury__map__param_1,
+#line 524 "map.m"
+  MR_Word mercury__map__param_2,
+#line 524 "map.m"
+  MR_Word mercury__map__param_3,
+#line 524 "map.m"
+  MR_Word mercury__map__param_4,
+#line 524 "map.m"
+  MR_Word mercury__map__param_5,
+#line 524 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 523 "map.m"
+void MR_CALL 
+mercury__map__map_values_3_p_0(
+#line 523 "map.m"
+  MR_Word mercury__map__param_1,
+#line 523 "map.m"
+  MR_Word mercury__map__param_2,
+#line 523 "map.m"
+  MR_Word mercury__map__param_3,
+#line 523 "map.m"
+  MR_Word mercury__map__param_4,
+#line 523 "map.m"
+  MR_Word mercury__map__param_5,
+#line 523 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 521 "map.m"
+MR_Word MR_CALL 
+mercury__map__map_values_2_f_0(
+#line 521 "map.m"
+  MR_Word mercury__map__param_1,
+#line 521 "map.m"
+  MR_Word mercury__map__param_2,
+#line 521 "map.m"
+  MR_Word mercury__map__param_3,
+#line 521 "map.m"
+  MR_Word mercury__map__param_4,
+#line 521 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 516 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr4_10_p_8(
+#line 516 "map.m"
+  MR_Word mercury__map__param_1,
+#line 516 "map.m"
+  MR_Word mercury__map__param_2,
+#line 516 "map.m"
+  MR_Word mercury__map__param_3,
+#line 516 "map.m"
+  MR_Word mercury__map__param_4,
+#line 516 "map.m"
+  MR_Word mercury__map__param_5,
+#line 516 "map.m"
+  MR_Word mercury__map__param_6,
+#line 516 "map.m"
+  MR_Word mercury__map__param_7,
+#line 516 "map.m"
+  MR_Word mercury__map__param_8,
+#line 516 "map.m"
+  MR_Box mercury__map__param_9,
+#line 516 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 516 "map.m"
+  MR_Box mercury__map__param_11,
+#line 516 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 516 "map.m"
+  MR_Box mercury__map__param_13,
+#line 516 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 516 "map.m"
+  MR_Box mercury__map__param_15,
+#line 516 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 514 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr4_10_p_7(
+#line 514 "map.m"
+  MR_Word mercury__map__param_1,
+#line 514 "map.m"
+  MR_Word mercury__map__param_2,
+#line 514 "map.m"
+  MR_Word mercury__map__param_3,
+#line 514 "map.m"
+  MR_Word mercury__map__param_4,
+#line 514 "map.m"
+  MR_Word mercury__map__param_5,
+#line 514 "map.m"
+  MR_Word mercury__map__param_6,
+#line 514 "map.m"
+  MR_Word mercury__map__param_7,
+#line 514 "map.m"
+  MR_Word mercury__map__param_8,
+#line 514 "map.m"
+  MR_Box mercury__map__param_9,
+#line 514 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 514 "map.m"
+  MR_Box mercury__map__param_11,
+#line 514 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 514 "map.m"
+  MR_Box mercury__map__param_13,
+#line 514 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 514 "map.m"
+  MR_Box mercury__map__param_15,
+#line 514 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 512 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr4_10_p_6(
+#line 512 "map.m"
+  MR_Word mercury__map__param_1,
+#line 512 "map.m"
+  MR_Word mercury__map__param_2,
+#line 512 "map.m"
+  MR_Word mercury__map__param_3,
+#line 512 "map.m"
+  MR_Word mercury__map__param_4,
+#line 512 "map.m"
+  MR_Word mercury__map__param_5,
+#line 512 "map.m"
+  MR_Word mercury__map__param_6,
+#line 512 "map.m"
+  MR_Word mercury__map__param_7,
+#line 512 "map.m"
+  MR_Word mercury__map__param_8,
+#line 512 "map.m"
+  MR_Box mercury__map__param_9,
+#line 512 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 512 "map.m"
+  MR_Box mercury__map__param_11,
+#line 512 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 512 "map.m"
+  MR_Box mercury__map__param_13,
+#line 512 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 512 "map.m"
+  MR_Box mercury__map__param_15,
+#line 512 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 510 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_5(
+#line 510 "map.m"
+  MR_Word mercury__map__param_1,
+#line 510 "map.m"
+  MR_Word mercury__map__param_2,
+#line 510 "map.m"
+  MR_Word mercury__map__param_3,
+#line 510 "map.m"
+  MR_Word mercury__map__param_4,
+#line 510 "map.m"
+  MR_Word mercury__map__param_5,
+#line 510 "map.m"
+  MR_Word mercury__map__param_6,
+#line 510 "map.m"
+  MR_Word mercury__map__param_7,
+#line 510 "map.m"
+  MR_Word mercury__map__param_8,
+#line 510 "map.m"
+  MR_Box mercury__map__param_9,
+#line 510 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 510 "map.m"
+  MR_Box mercury__map__param_11,
+#line 510 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 510 "map.m"
+  MR_Box mercury__map__param_13,
+#line 510 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 510 "map.m"
+  MR_Box mercury__map__param_15,
+#line 510 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 508 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_4(
+#line 508 "map.m"
+  MR_Word mercury__map__param_1,
+#line 508 "map.m"
+  MR_Word mercury__map__param_2,
+#line 508 "map.m"
+  MR_Word mercury__map__param_3,
+#line 508 "map.m"
+  MR_Word mercury__map__param_4,
+#line 508 "map.m"
+  MR_Word mercury__map__param_5,
+#line 508 "map.m"
+  MR_Word mercury__map__param_6,
+#line 508 "map.m"
+  MR_Word mercury__map__param_7,
+#line 508 "map.m"
+  MR_Word mercury__map__param_8,
+#line 508 "map.m"
+  MR_Box mercury__map__param_9,
+#line 508 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 508 "map.m"
+  MR_Box mercury__map__param_11,
+#line 508 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 508 "map.m"
+  MR_Box mercury__map__param_13,
+#line 508 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 508 "map.m"
+  MR_Box mercury__map__param_15,
+#line 508 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 506 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_3(
+#line 506 "map.m"
+  MR_Word mercury__map__param_1,
+#line 506 "map.m"
+  MR_Word mercury__map__param_2,
+#line 506 "map.m"
+  MR_Word mercury__map__param_3,
+#line 506 "map.m"
+  MR_Word mercury__map__param_4,
+#line 506 "map.m"
+  MR_Word mercury__map__param_5,
+#line 506 "map.m"
+  MR_Word mercury__map__param_6,
+#line 506 "map.m"
+  MR_Word mercury__map__param_7,
+#line 506 "map.m"
+  MR_Word mercury__map__param_8,
+#line 506 "map.m"
+  MR_Box mercury__map__param_9,
+#line 506 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 506 "map.m"
+  MR_Box mercury__map__param_11,
+#line 506 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 506 "map.m"
+  MR_Box mercury__map__param_13,
+#line 506 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 506 "map.m"
+  MR_Box mercury__map__param_15,
+#line 506 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 504 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_2(
+#line 504 "map.m"
+  MR_Word mercury__map__param_1,
+#line 504 "map.m"
+  MR_Word mercury__map__param_2,
+#line 504 "map.m"
+  MR_Word mercury__map__param_3,
+#line 504 "map.m"
+  MR_Word mercury__map__param_4,
+#line 504 "map.m"
+  MR_Word mercury__map__param_5,
+#line 504 "map.m"
+  MR_Word mercury__map__param_6,
+#line 504 "map.m"
+  MR_Word mercury__map__param_7,
+#line 504 "map.m"
+  MR_Word mercury__map__param_8,
+#line 504 "map.m"
+  MR_Box mercury__map__param_9,
+#line 504 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 504 "map.m"
+  MR_Box mercury__map__param_11,
+#line 504 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 504 "map.m"
+  MR_Box mercury__map__param_13,
+#line 504 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 504 "map.m"
+  MR_Box mercury__map__param_15,
+#line 504 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 502 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_1(
+#line 502 "map.m"
+  MR_Word mercury__map__param_1,
+#line 502 "map.m"
+  MR_Word mercury__map__param_2,
+#line 502 "map.m"
+  MR_Word mercury__map__param_3,
+#line 502 "map.m"
+  MR_Word mercury__map__param_4,
+#line 502 "map.m"
+  MR_Word mercury__map__param_5,
+#line 502 "map.m"
+  MR_Word mercury__map__param_6,
+#line 502 "map.m"
+  MR_Word mercury__map__param_7,
+#line 502 "map.m"
+  MR_Word mercury__map__param_8,
+#line 502 "map.m"
+  MR_Box mercury__map__param_9,
+#line 502 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 502 "map.m"
+  MR_Box mercury__map__param_11,
+#line 502 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 502 "map.m"
+  MR_Box mercury__map__param_13,
+#line 502 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 502 "map.m"
+  MR_Box mercury__map__param_15,
+#line 502 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 500 "map.m"
+void MR_CALL 
+mercury__map__foldr4_10_p_0(
+#line 500 "map.m"
+  MR_Word mercury__map__param_1,
+#line 500 "map.m"
+  MR_Word mercury__map__param_2,
+#line 500 "map.m"
+  MR_Word mercury__map__param_3,
+#line 500 "map.m"
+  MR_Word mercury__map__param_4,
+#line 500 "map.m"
+  MR_Word mercury__map__param_5,
+#line 500 "map.m"
+  MR_Word mercury__map__param_6,
+#line 500 "map.m"
+  MR_Word mercury__map__param_7,
+#line 500 "map.m"
+  MR_Word mercury__map__param_8,
+#line 500 "map.m"
+  MR_Box mercury__map__param_9,
+#line 500 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 500 "map.m"
+  MR_Box mercury__map__param_11,
+#line 500 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 500 "map.m"
+  MR_Box mercury__map__param_13,
+#line 500 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 500 "map.m"
+  MR_Box mercury__map__param_15,
+#line 500 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 495 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr3_8_p_7(
+#line 495 "map.m"
+  MR_Word mercury__map__param_1,
+#line 495 "map.m"
+  MR_Word mercury__map__param_2,
+#line 495 "map.m"
+  MR_Word mercury__map__param_3,
+#line 495 "map.m"
+  MR_Word mercury__map__param_4,
+#line 495 "map.m"
+  MR_Word mercury__map__param_5,
+#line 495 "map.m"
+  MR_Word mercury__map__param_6,
+#line 495 "map.m"
+  MR_Word mercury__map__param_7,
+#line 495 "map.m"
+  MR_Box mercury__map__param_8,
+#line 495 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 495 "map.m"
+  MR_Box mercury__map__param_10,
+#line 495 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 495 "map.m"
+  MR_Box mercury__map__param_12,
+#line 495 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 493 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr3_8_p_6(
+#line 493 "map.m"
+  MR_Word mercury__map__param_1,
+#line 493 "map.m"
+  MR_Word mercury__map__param_2,
+#line 493 "map.m"
+  MR_Word mercury__map__param_3,
+#line 493 "map.m"
+  MR_Word mercury__map__param_4,
+#line 493 "map.m"
+  MR_Word mercury__map__param_5,
+#line 493 "map.m"
+  MR_Word mercury__map__param_6,
+#line 493 "map.m"
+  MR_Word mercury__map__param_7,
+#line 493 "map.m"
+  MR_Box mercury__map__param_8,
+#line 493 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 493 "map.m"
+  MR_Box mercury__map__param_10,
+#line 493 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 493 "map.m"
+  MR_Box mercury__map__param_12,
+#line 493 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 491 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr3_8_p_5(
+#line 491 "map.m"
+  MR_Word mercury__map__param_1,
+#line 491 "map.m"
+  MR_Word mercury__map__param_2,
+#line 491 "map.m"
+  MR_Word mercury__map__param_3,
+#line 491 "map.m"
+  MR_Word mercury__map__param_4,
+#line 491 "map.m"
+  MR_Word mercury__map__param_5,
+#line 491 "map.m"
+  MR_Word mercury__map__param_6,
+#line 491 "map.m"
+  MR_Word mercury__map__param_7,
+#line 491 "map.m"
+  MR_Box mercury__map__param_8,
+#line 491 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 491 "map.m"
+  MR_Box mercury__map__param_10,
+#line 491 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 491 "map.m"
+  MR_Box mercury__map__param_12,
+#line 491 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 489 "map.m"
+void MR_CALL 
+mercury__map__foldr3_8_p_4(
+#line 489 "map.m"
+  MR_Word mercury__map__param_1,
+#line 489 "map.m"
+  MR_Word mercury__map__param_2,
+#line 489 "map.m"
+  MR_Word mercury__map__param_3,
+#line 489 "map.m"
+  MR_Word mercury__map__param_4,
+#line 489 "map.m"
+  MR_Word mercury__map__param_5,
+#line 489 "map.m"
+  MR_Word mercury__map__param_6,
+#line 489 "map.m"
+  MR_Word mercury__map__param_7,
+#line 489 "map.m"
+  MR_Box mercury__map__param_8,
+#line 489 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 489 "map.m"
+  MR_Box mercury__map__param_10,
+#line 489 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 489 "map.m"
+  MR_Box mercury__map__param_12,
+#line 489 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 487 "map.m"
+void MR_CALL 
+mercury__map__foldr3_8_p_3(
+#line 487 "map.m"
+  MR_Word mercury__map__param_1,
+#line 487 "map.m"
+  MR_Word mercury__map__param_2,
+#line 487 "map.m"
+  MR_Word mercury__map__param_3,
+#line 487 "map.m"
+  MR_Word mercury__map__param_4,
+#line 487 "map.m"
+  MR_Word mercury__map__param_5,
+#line 487 "map.m"
+  MR_Word mercury__map__param_6,
+#line 487 "map.m"
+  MR_Word mercury__map__param_7,
+#line 487 "map.m"
+  MR_Box mercury__map__param_8,
+#line 487 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 487 "map.m"
+  MR_Box mercury__map__param_10,
+#line 487 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 487 "map.m"
+  MR_Box mercury__map__param_12,
+#line 487 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 485 "map.m"
+void MR_CALL 
+mercury__map__foldr3_8_p_2(
+#line 485 "map.m"
+  MR_Word mercury__map__param_1,
+#line 485 "map.m"
+  MR_Word mercury__map__param_2,
+#line 485 "map.m"
+  MR_Word mercury__map__param_3,
+#line 485 "map.m"
+  MR_Word mercury__map__param_4,
+#line 485 "map.m"
+  MR_Word mercury__map__param_5,
+#line 485 "map.m"
+  MR_Word mercury__map__param_6,
+#line 485 "map.m"
+  MR_Word mercury__map__param_7,
+#line 485 "map.m"
+  MR_Box mercury__map__param_8,
+#line 485 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 485 "map.m"
+  MR_Box mercury__map__param_10,
+#line 485 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 485 "map.m"
+  MR_Box mercury__map__param_12,
+#line 485 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 483 "map.m"
+void MR_CALL 
+mercury__map__foldr3_8_p_1(
+#line 483 "map.m"
+  MR_Word mercury__map__param_1,
+#line 483 "map.m"
+  MR_Word mercury__map__param_2,
+#line 483 "map.m"
+  MR_Word mercury__map__param_3,
+#line 483 "map.m"
+  MR_Word mercury__map__param_4,
+#line 483 "map.m"
+  MR_Word mercury__map__param_5,
+#line 483 "map.m"
+  MR_Word mercury__map__param_6,
+#line 483 "map.m"
+  MR_Word mercury__map__param_7,
+#line 483 "map.m"
+  MR_Box mercury__map__param_8,
+#line 483 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 483 "map.m"
+  MR_Box mercury__map__param_10,
+#line 483 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 483 "map.m"
+  MR_Box mercury__map__param_12,
+#line 483 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 481 "map.m"
+void MR_CALL 
+mercury__map__foldr3_8_p_0(
+#line 481 "map.m"
+  MR_Word mercury__map__param_1,
+#line 481 "map.m"
+  MR_Word mercury__map__param_2,
+#line 481 "map.m"
+  MR_Word mercury__map__param_3,
+#line 481 "map.m"
+  MR_Word mercury__map__param_4,
+#line 481 "map.m"
+  MR_Word mercury__map__param_5,
+#line 481 "map.m"
+  MR_Word mercury__map__param_6,
+#line 481 "map.m"
+  MR_Word mercury__map__param_7,
+#line 481 "map.m"
+  MR_Box mercury__map__param_8,
+#line 481 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 481 "map.m"
+  MR_Box mercury__map__param_10,
+#line 481 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 481 "map.m"
+  MR_Box mercury__map__param_12,
+#line 481 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 477 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr2_6_p_6(
+#line 477 "map.m"
+  MR_Word mercury__map__param_1,
+#line 477 "map.m"
+  MR_Word mercury__map__param_2,
+#line 477 "map.m"
+  MR_Word mercury__map__param_3,
+#line 477 "map.m"
+  MR_Word mercury__map__param_4,
+#line 477 "map.m"
+  MR_Word mercury__map__param_5,
+#line 477 "map.m"
+  MR_Word mercury__map__param_6,
+#line 477 "map.m"
+  MR_Box mercury__map__param_7,
+#line 477 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 477 "map.m"
+  MR_Box mercury__map__param_9,
+#line 477 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 475 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr2_6_p_5(
+#line 475 "map.m"
+  MR_Word mercury__map__param_1,
+#line 475 "map.m"
+  MR_Word mercury__map__param_2,
+#line 475 "map.m"
+  MR_Word mercury__map__param_3,
+#line 475 "map.m"
+  MR_Word mercury__map__param_4,
+#line 475 "map.m"
+  MR_Word mercury__map__param_5,
+#line 475 "map.m"
+  MR_Word mercury__map__param_6,
+#line 475 "map.m"
+  MR_Box mercury__map__param_7,
+#line 475 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 475 "map.m"
+  MR_Box mercury__map__param_9,
+#line 475 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 473 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr2_6_p_4(
+#line 473 "map.m"
+  MR_Word mercury__map__param_1,
+#line 473 "map.m"
+  MR_Word mercury__map__param_2,
+#line 473 "map.m"
+  MR_Word mercury__map__param_3,
+#line 473 "map.m"
+  MR_Word mercury__map__param_4,
+#line 473 "map.m"
+  MR_Word mercury__map__param_5,
+#line 473 "map.m"
+  MR_Word mercury__map__param_6,
+#line 473 "map.m"
+  MR_Box mercury__map__param_7,
+#line 473 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 473 "map.m"
+  MR_Box mercury__map__param_9,
+#line 473 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 471 "map.m"
+void MR_CALL 
+mercury__map__foldr2_6_p_3(
+#line 471 "map.m"
+  MR_Word mercury__map__param_1,
+#line 471 "map.m"
+  MR_Word mercury__map__param_2,
+#line 471 "map.m"
+  MR_Word mercury__map__param_3,
+#line 471 "map.m"
+  MR_Word mercury__map__param_4,
+#line 471 "map.m"
+  MR_Word mercury__map__param_5,
+#line 471 "map.m"
+  MR_Word mercury__map__param_6,
+#line 471 "map.m"
+  MR_Box mercury__map__param_7,
+#line 471 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 471 "map.m"
+  MR_Box mercury__map__param_9,
+#line 471 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 469 "map.m"
+void MR_CALL 
+mercury__map__foldr2_6_p_2(
+#line 469 "map.m"
+  MR_Word mercury__map__param_1,
+#line 469 "map.m"
+  MR_Word mercury__map__param_2,
+#line 469 "map.m"
+  MR_Word mercury__map__param_3,
+#line 469 "map.m"
+  MR_Word mercury__map__param_4,
+#line 469 "map.m"
+  MR_Word mercury__map__param_5,
+#line 469 "map.m"
+  MR_Word mercury__map__param_6,
+#line 469 "map.m"
+  MR_Box mercury__map__param_7,
+#line 469 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 469 "map.m"
+  MR_Box mercury__map__param_9,
+#line 469 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 467 "map.m"
+void MR_CALL 
+mercury__map__foldr2_6_p_1(
+#line 467 "map.m"
+  MR_Word mercury__map__param_1,
+#line 467 "map.m"
+  MR_Word mercury__map__param_2,
+#line 467 "map.m"
+  MR_Word mercury__map__param_3,
+#line 467 "map.m"
+  MR_Word mercury__map__param_4,
+#line 467 "map.m"
+  MR_Word mercury__map__param_5,
+#line 467 "map.m"
+  MR_Word mercury__map__param_6,
+#line 467 "map.m"
+  MR_Box mercury__map__param_7,
+#line 467 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 467 "map.m"
+  MR_Box mercury__map__param_9,
+#line 467 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 465 "map.m"
+void MR_CALL 
+mercury__map__foldr2_6_p_0(
+#line 465 "map.m"
+  MR_Word mercury__map__param_1,
+#line 465 "map.m"
+  MR_Word mercury__map__param_2,
+#line 465 "map.m"
+  MR_Word mercury__map__param_3,
+#line 465 "map.m"
+  MR_Word mercury__map__param_4,
+#line 465 "map.m"
+  MR_Word mercury__map__param_5,
+#line 465 "map.m"
+  MR_Word mercury__map__param_6,
+#line 465 "map.m"
+  MR_Box mercury__map__param_7,
+#line 465 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 465 "map.m"
+  MR_Box mercury__map__param_9,
+#line 465 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 462 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_8(
+#line 462 "map.m"
+  MR_Word mercury__map__param_1,
+#line 462 "map.m"
+  MR_Word mercury__map__param_2,
+#line 462 "map.m"
+  MR_Word mercury__map__param_3,
+#line 462 "map.m"
+  MR_Word mercury__map__param_4,
+#line 462 "map.m"
+  MR_Word mercury__map__param_5,
+#line 462 "map.m"
+  MR_Box mercury__map__param_6,
+#line 462 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 460 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_7(
+#line 460 "map.m"
+  MR_Word mercury__map__param_1,
+#line 460 "map.m"
+  MR_Word mercury__map__param_2,
+#line 460 "map.m"
+  MR_Word mercury__map__param_3,
+#line 460 "map.m"
+  MR_Word mercury__map__param_4,
+#line 460 "map.m"
+  MR_Word mercury__map__param_5,
+#line 460 "map.m"
+  MR_Box mercury__map__param_6,
+#line 460 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 459 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_6(
+#line 459 "map.m"
+  MR_Word mercury__map__param_1,
+#line 459 "map.m"
+  MR_Word mercury__map__param_2,
+#line 459 "map.m"
+  MR_Word mercury__map__param_3,
+#line 459 "map.m"
+  MR_Word mercury__map__param_4,
+#line 459 "map.m"
+  MR_Word mercury__map__param_5,
+#line 459 "map.m"
+  MR_Box mercury__map__param_6,
+#line 459 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 458 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr_4_p_5(
+#line 458 "map.m"
+  MR_Word mercury__map__param_1,
+#line 458 "map.m"
+  MR_Word mercury__map__param_2,
+#line 458 "map.m"
+  MR_Word mercury__map__param_3,
+#line 458 "map.m"
+  MR_Word mercury__map__param_4,
+#line 458 "map.m"
+  MR_Word mercury__map__param_5,
+#line 458 "map.m"
+  MR_Box mercury__map__param_6,
+#line 458 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 457 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr_4_p_4(
+#line 457 "map.m"
+  MR_Word mercury__map__param_1,
+#line 457 "map.m"
+  MR_Word mercury__map__param_2,
+#line 457 "map.m"
+  MR_Word mercury__map__param_3,
+#line 457 "map.m"
+  MR_Word mercury__map__param_4,
+#line 457 "map.m"
+  MR_Word mercury__map__param_5,
+#line 457 "map.m"
+  MR_Box mercury__map__param_6,
+#line 457 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 456 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldr_4_p_3(
+#line 456 "map.m"
+  MR_Word mercury__map__param_1,
+#line 456 "map.m"
+  MR_Word mercury__map__param_2,
+#line 456 "map.m"
+  MR_Word mercury__map__param_3,
+#line 456 "map.m"
+  MR_Word mercury__map__param_4,
+#line 456 "map.m"
+  MR_Word mercury__map__param_5,
+#line 456 "map.m"
+  MR_Box mercury__map__param_6,
+#line 456 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 455 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_2(
+#line 455 "map.m"
+  MR_Word mercury__map__param_1,
+#line 455 "map.m"
+  MR_Word mercury__map__param_2,
+#line 455 "map.m"
+  MR_Word mercury__map__param_3,
+#line 455 "map.m"
+  MR_Word mercury__map__param_4,
+#line 455 "map.m"
+  MR_Word mercury__map__param_5,
+#line 455 "map.m"
+  MR_Box mercury__map__param_6,
+#line 455 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 454 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_1(
+#line 454 "map.m"
+  MR_Word mercury__map__param_1,
+#line 454 "map.m"
+  MR_Word mercury__map__param_2,
+#line 454 "map.m"
+  MR_Word mercury__map__param_3,
+#line 454 "map.m"
+  MR_Word mercury__map__param_4,
+#line 454 "map.m"
+  MR_Word mercury__map__param_5,
+#line 454 "map.m"
+  MR_Box mercury__map__param_6,
+#line 454 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 453 "map.m"
+void MR_CALL 
+mercury__map__foldr_4_p_0(
+#line 453 "map.m"
+  MR_Word mercury__map__param_1,
+#line 453 "map.m"
+  MR_Word mercury__map__param_2,
+#line 453 "map.m"
+  MR_Word mercury__map__param_3,
+#line 453 "map.m"
+  MR_Word mercury__map__param_4,
+#line 453 "map.m"
+  MR_Word mercury__map__param_5,
+#line 453 "map.m"
+  MR_Box mercury__map__param_6,
+#line 453 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 451 "map.m"
+MR_Box MR_CALL 
+mercury__map__foldr_3_f_0(
+#line 451 "map.m"
+  MR_Word mercury__map__param_1,
+#line 451 "map.m"
+  MR_Word mercury__map__param_2,
+#line 451 "map.m"
+  MR_Word mercury__map__param_3,
+#line 451 "map.m"
+  MR_Word mercury__map__param_4,
+#line 451 "map.m"
+  MR_Word mercury__map__param_5,
+#line 451 "map.m"
+  MR_Box mercury__map__param_6);
+
+#line 448 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_8(
+#line 448 "map.m"
+  MR_Word mercury__map__param_1,
+#line 448 "map.m"
+  MR_Word mercury__map__param_2,
+#line 448 "map.m"
+  MR_Word mercury__map__param_3,
+#line 448 "map.m"
+  MR_Word mercury__map__param_4,
+#line 448 "map.m"
+  MR_Word mercury__map__param_5,
+#line 448 "map.m"
+  MR_Box mercury__map__param_6,
+#line 448 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 447 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_7(
+#line 447 "map.m"
+  MR_Word mercury__map__param_1,
+#line 447 "map.m"
+  MR_Word mercury__map__param_2,
+#line 447 "map.m"
+  MR_Word mercury__map__param_3,
+#line 447 "map.m"
+  MR_Word mercury__map__param_4,
+#line 447 "map.m"
+  MR_Word mercury__map__param_5,
+#line 447 "map.m"
+  MR_Box mercury__map__param_6,
+#line 447 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 445 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_6(
+#line 445 "map.m"
+  MR_Word mercury__map__param_1,
+#line 445 "map.m"
+  MR_Word mercury__map__param_2,
+#line 445 "map.m"
+  MR_Word mercury__map__param_3,
+#line 445 "map.m"
+  MR_Word mercury__map__param_4,
+#line 445 "map.m"
+  MR_Word mercury__map__param_5,
+#line 445 "map.m"
+  MR_Box mercury__map__param_6,
+#line 445 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 444 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_values_4_p_5(
+#line 444 "map.m"
+  MR_Word mercury__map__param_1,
+#line 444 "map.m"
+  MR_Word mercury__map__param_2,
+#line 444 "map.m"
+  MR_Word mercury__map__param_3,
+#line 444 "map.m"
+  MR_Word mercury__map__param_4,
+#line 444 "map.m"
+  MR_Word mercury__map__param_5,
+#line 444 "map.m"
+  MR_Box mercury__map__param_6,
+#line 444 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 442 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_values_4_p_4(
+#line 442 "map.m"
+  MR_Word mercury__map__param_1,
+#line 442 "map.m"
+  MR_Word mercury__map__param_2,
+#line 442 "map.m"
+  MR_Word mercury__map__param_3,
+#line 442 "map.m"
+  MR_Word mercury__map__param_4,
+#line 442 "map.m"
+  MR_Word mercury__map__param_5,
+#line 442 "map.m"
+  MR_Box mercury__map__param_6,
+#line 442 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 441 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_values_4_p_3(
+#line 441 "map.m"
+  MR_Word mercury__map__param_1,
+#line 441 "map.m"
+  MR_Word mercury__map__param_2,
+#line 441 "map.m"
+  MR_Word mercury__map__param_3,
+#line 441 "map.m"
+  MR_Word mercury__map__param_4,
+#line 441 "map.m"
+  MR_Word mercury__map__param_5,
+#line 441 "map.m"
+  MR_Box mercury__map__param_6,
+#line 441 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 440 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_2(
+#line 440 "map.m"
+  MR_Word mercury__map__param_1,
+#line 440 "map.m"
+  MR_Word mercury__map__param_2,
+#line 440 "map.m"
+  MR_Word mercury__map__param_3,
+#line 440 "map.m"
+  MR_Word mercury__map__param_4,
+#line 440 "map.m"
+  MR_Word mercury__map__param_5,
+#line 440 "map.m"
+  MR_Box mercury__map__param_6,
+#line 440 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 439 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_1(
+#line 439 "map.m"
+  MR_Word mercury__map__param_1,
+#line 439 "map.m"
+  MR_Word mercury__map__param_2,
+#line 439 "map.m"
+  MR_Word mercury__map__param_3,
+#line 439 "map.m"
+  MR_Word mercury__map__param_4,
+#line 439 "map.m"
+  MR_Word mercury__map__param_5,
+#line 439 "map.m"
+  MR_Box mercury__map__param_6,
+#line 439 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 438 "map.m"
+void MR_CALL 
+mercury__map__foldl_values_4_p_0(
+#line 438 "map.m"
+  MR_Word mercury__map__param_1,
+#line 438 "map.m"
+  MR_Word mercury__map__param_2,
+#line 438 "map.m"
+  MR_Word mercury__map__param_3,
+#line 438 "map.m"
+  MR_Word mercury__map__param_4,
+#line 438 "map.m"
+  MR_Word mercury__map__param_5,
+#line 438 "map.m"
+  MR_Box mercury__map__param_6,
+#line 438 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 431 "map.m"
+void MR_CALL 
+mercury__map__foldl4_10_p_5(
+#line 431 "map.m"
+  MR_Word mercury__map__param_1,
+#line 431 "map.m"
+  MR_Word mercury__map__param_2,
+#line 431 "map.m"
+  MR_Word mercury__map__param_3,
+#line 431 "map.m"
+  MR_Word mercury__map__param_4,
+#line 431 "map.m"
+  MR_Word mercury__map__param_5,
+#line 431 "map.m"
+  MR_Word mercury__map__param_6,
+#line 431 "map.m"
+  MR_Word mercury__map__param_7,
+#line 431 "map.m"
+  MR_Word mercury__map__param_8,
+#line 431 "map.m"
+  MR_Box mercury__map__param_9,
+#line 431 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 431 "map.m"
+  MR_Box mercury__map__param_11,
+#line 431 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 431 "map.m"
+  MR_Box mercury__map__param_13,
+#line 431 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 431 "map.m"
+  MR_Box mercury__map__param_15,
+#line 431 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 429 "map.m"
+void MR_CALL 
+mercury__map__foldl4_10_p_4(
+#line 429 "map.m"
+  MR_Word mercury__map__param_1,
+#line 429 "map.m"
+  MR_Word mercury__map__param_2,
+#line 429 "map.m"
+  MR_Word mercury__map__param_3,
+#line 429 "map.m"
+  MR_Word mercury__map__param_4,
+#line 429 "map.m"
+  MR_Word mercury__map__param_5,
+#line 429 "map.m"
+  MR_Word mercury__map__param_6,
+#line 429 "map.m"
+  MR_Word mercury__map__param_7,
+#line 429 "map.m"
+  MR_Word mercury__map__param_8,
+#line 429 "map.m"
+  MR_Box mercury__map__param_9,
+#line 429 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 429 "map.m"
+  MR_Box mercury__map__param_11,
+#line 429 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 429 "map.m"
+  MR_Box mercury__map__param_13,
+#line 429 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 429 "map.m"
+  MR_Box mercury__map__param_15,
+#line 429 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 427 "map.m"
+void MR_CALL 
+mercury__map__foldl4_10_p_3(
+#line 427 "map.m"
+  MR_Word mercury__map__param_1,
+#line 427 "map.m"
+  MR_Word mercury__map__param_2,
+#line 427 "map.m"
+  MR_Word mercury__map__param_3,
+#line 427 "map.m"
+  MR_Word mercury__map__param_4,
+#line 427 "map.m"
+  MR_Word mercury__map__param_5,
+#line 427 "map.m"
+  MR_Word mercury__map__param_6,
+#line 427 "map.m"
+  MR_Word mercury__map__param_7,
+#line 427 "map.m"
+  MR_Word mercury__map__param_8,
+#line 427 "map.m"
+  MR_Box mercury__map__param_9,
+#line 427 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 427 "map.m"
+  MR_Box mercury__map__param_11,
+#line 427 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 427 "map.m"
+  MR_Box mercury__map__param_13,
+#line 427 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 427 "map.m"
+  MR_Box mercury__map__param_15,
+#line 427 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 425 "map.m"
+void MR_CALL 
+mercury__map__foldl4_10_p_2(
+#line 425 "map.m"
+  MR_Word mercury__map__param_1,
+#line 425 "map.m"
+  MR_Word mercury__map__param_2,
+#line 425 "map.m"
+  MR_Word mercury__map__param_3,
+#line 425 "map.m"
+  MR_Word mercury__map__param_4,
+#line 425 "map.m"
+  MR_Word mercury__map__param_5,
+#line 425 "map.m"
+  MR_Word mercury__map__param_6,
+#line 425 "map.m"
+  MR_Word mercury__map__param_7,
+#line 425 "map.m"
+  MR_Word mercury__map__param_8,
+#line 425 "map.m"
+  MR_Box mercury__map__param_9,
+#line 425 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 425 "map.m"
+  MR_Box mercury__map__param_11,
+#line 425 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 425 "map.m"
+  MR_Box mercury__map__param_13,
+#line 425 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 425 "map.m"
+  MR_Box mercury__map__param_15,
+#line 425 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 423 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl4_10_p_1(
+#line 423 "map.m"
+  MR_Word mercury__map__param_1,
+#line 423 "map.m"
+  MR_Word mercury__map__param_2,
+#line 423 "map.m"
+  MR_Word mercury__map__param_3,
+#line 423 "map.m"
+  MR_Word mercury__map__param_4,
+#line 423 "map.m"
+  MR_Word mercury__map__param_5,
+#line 423 "map.m"
+  MR_Word mercury__map__param_6,
+#line 423 "map.m"
+  MR_Word mercury__map__param_7,
+#line 423 "map.m"
+  MR_Word mercury__map__param_8,
+#line 423 "map.m"
+  MR_Box mercury__map__param_9,
+#line 423 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 423 "map.m"
+  MR_Box mercury__map__param_11,
+#line 423 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 423 "map.m"
+  MR_Box mercury__map__param_13,
+#line 423 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 423 "map.m"
+  MR_Box mercury__map__param_15,
+#line 423 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 421 "map.m"
+void MR_CALL 
+mercury__map__foldl4_10_p_0(
+#line 421 "map.m"
+  MR_Word mercury__map__param_1,
+#line 421 "map.m"
+  MR_Word mercury__map__param_2,
+#line 421 "map.m"
+  MR_Word mercury__map__param_3,
+#line 421 "map.m"
+  MR_Word mercury__map__param_4,
+#line 421 "map.m"
+  MR_Word mercury__map__param_5,
+#line 421 "map.m"
+  MR_Word mercury__map__param_6,
+#line 421 "map.m"
+  MR_Word mercury__map__param_7,
+#line 421 "map.m"
+  MR_Word mercury__map__param_8,
+#line 421 "map.m"
+  MR_Box mercury__map__param_9,
+#line 421 "map.m"
+  MR_Box * mercury__map__param_10,
+#line 421 "map.m"
+  MR_Box mercury__map__param_11,
+#line 421 "map.m"
+  MR_Box * mercury__map__param_12,
+#line 421 "map.m"
+  MR_Box mercury__map__param_13,
+#line 421 "map.m"
+  MR_Box * mercury__map__param_14,
+#line 421 "map.m"
+  MR_Box mercury__map__param_15,
+#line 421 "map.m"
+  MR_Box * mercury__map__param_16);
+
+#line 411 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl3_8_p_7(
+#line 411 "map.m"
+  MR_Word mercury__map__param_1,
+#line 411 "map.m"
+  MR_Word mercury__map__param_2,
+#line 411 "map.m"
+  MR_Word mercury__map__param_3,
+#line 411 "map.m"
+  MR_Word mercury__map__param_4,
+#line 411 "map.m"
+  MR_Word mercury__map__param_5,
+#line 411 "map.m"
+  MR_Word mercury__map__param_6,
+#line 411 "map.m"
+  MR_Word mercury__map__param_7,
+#line 411 "map.m"
+  MR_Box mercury__map__param_8,
+#line 411 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 411 "map.m"
+  MR_Box mercury__map__param_10,
+#line 411 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 411 "map.m"
+  MR_Box mercury__map__param_12,
+#line 411 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 409 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl3_8_p_6(
+#line 409 "map.m"
+  MR_Word mercury__map__param_1,
+#line 409 "map.m"
+  MR_Word mercury__map__param_2,
+#line 409 "map.m"
+  MR_Word mercury__map__param_3,
+#line 409 "map.m"
+  MR_Word mercury__map__param_4,
+#line 409 "map.m"
+  MR_Word mercury__map__param_5,
+#line 409 "map.m"
+  MR_Word mercury__map__param_6,
+#line 409 "map.m"
+  MR_Word mercury__map__param_7,
+#line 409 "map.m"
+  MR_Box mercury__map__param_8,
+#line 409 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 409 "map.m"
+  MR_Box mercury__map__param_10,
+#line 409 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 409 "map.m"
+  MR_Box mercury__map__param_12,
+#line 409 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 407 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl3_8_p_5(
+#line 407 "map.m"
+  MR_Word mercury__map__param_1,
+#line 407 "map.m"
+  MR_Word mercury__map__param_2,
+#line 407 "map.m"
+  MR_Word mercury__map__param_3,
+#line 407 "map.m"
+  MR_Word mercury__map__param_4,
+#line 407 "map.m"
+  MR_Word mercury__map__param_5,
+#line 407 "map.m"
+  MR_Word mercury__map__param_6,
+#line 407 "map.m"
+  MR_Word mercury__map__param_7,
+#line 407 "map.m"
+  MR_Box mercury__map__param_8,
+#line 407 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 407 "map.m"
+  MR_Box mercury__map__param_10,
+#line 407 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 407 "map.m"
+  MR_Box mercury__map__param_12,
+#line 407 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 405 "map.m"
+void MR_CALL 
+mercury__map__foldl3_8_p_4(
+#line 405 "map.m"
+  MR_Word mercury__map__param_1,
+#line 405 "map.m"
+  MR_Word mercury__map__param_2,
+#line 405 "map.m"
+  MR_Word mercury__map__param_3,
+#line 405 "map.m"
+  MR_Word mercury__map__param_4,
+#line 405 "map.m"
+  MR_Word mercury__map__param_5,
+#line 405 "map.m"
+  MR_Word mercury__map__param_6,
+#line 405 "map.m"
+  MR_Word mercury__map__param_7,
+#line 405 "map.m"
+  MR_Box mercury__map__param_8,
+#line 405 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 405 "map.m"
+  MR_Box mercury__map__param_10,
+#line 405 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 405 "map.m"
+  MR_Box mercury__map__param_12,
+#line 405 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 403 "map.m"
+void MR_CALL 
+mercury__map__foldl3_8_p_3(
+#line 403 "map.m"
+  MR_Word mercury__map__param_1,
+#line 403 "map.m"
+  MR_Word mercury__map__param_2,
+#line 403 "map.m"
+  MR_Word mercury__map__param_3,
+#line 403 "map.m"
+  MR_Word mercury__map__param_4,
+#line 403 "map.m"
+  MR_Word mercury__map__param_5,
+#line 403 "map.m"
+  MR_Word mercury__map__param_6,
+#line 403 "map.m"
+  MR_Word mercury__map__param_7,
+#line 403 "map.m"
+  MR_Box mercury__map__param_8,
+#line 403 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 403 "map.m"
+  MR_Box mercury__map__param_10,
+#line 403 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 403 "map.m"
+  MR_Box mercury__map__param_12,
+#line 403 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 401 "map.m"
+void MR_CALL 
+mercury__map__foldl3_8_p_2(
+#line 401 "map.m"
+  MR_Word mercury__map__param_1,
+#line 401 "map.m"
+  MR_Word mercury__map__param_2,
+#line 401 "map.m"
+  MR_Word mercury__map__param_3,
+#line 401 "map.m"
+  MR_Word mercury__map__param_4,
+#line 401 "map.m"
+  MR_Word mercury__map__param_5,
+#line 401 "map.m"
+  MR_Word mercury__map__param_6,
+#line 401 "map.m"
+  MR_Word mercury__map__param_7,
+#line 401 "map.m"
+  MR_Box mercury__map__param_8,
+#line 401 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 401 "map.m"
+  MR_Box mercury__map__param_10,
+#line 401 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 401 "map.m"
+  MR_Box mercury__map__param_12,
+#line 401 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 399 "map.m"
+void MR_CALL 
+mercury__map__foldl3_8_p_1(
+#line 399 "map.m"
+  MR_Word mercury__map__param_1,
+#line 399 "map.m"
+  MR_Word mercury__map__param_2,
+#line 399 "map.m"
+  MR_Word mercury__map__param_3,
+#line 399 "map.m"
+  MR_Word mercury__map__param_4,
+#line 399 "map.m"
+  MR_Word mercury__map__param_5,
+#line 399 "map.m"
+  MR_Word mercury__map__param_6,
+#line 399 "map.m"
+  MR_Word mercury__map__param_7,
+#line 399 "map.m"
+  MR_Box mercury__map__param_8,
+#line 399 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 399 "map.m"
+  MR_Box mercury__map__param_10,
+#line 399 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 399 "map.m"
+  MR_Box mercury__map__param_12,
+#line 399 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 397 "map.m"
+void MR_CALL 
+mercury__map__foldl3_8_p_0(
+#line 397 "map.m"
+  MR_Word mercury__map__param_1,
+#line 397 "map.m"
+  MR_Word mercury__map__param_2,
+#line 397 "map.m"
+  MR_Word mercury__map__param_3,
+#line 397 "map.m"
+  MR_Word mercury__map__param_4,
+#line 397 "map.m"
+  MR_Word mercury__map__param_5,
+#line 397 "map.m"
+  MR_Word mercury__map__param_6,
+#line 397 "map.m"
+  MR_Word mercury__map__param_7,
+#line 397 "map.m"
+  MR_Box mercury__map__param_8,
+#line 397 "map.m"
+  MR_Box * mercury__map__param_9,
+#line 397 "map.m"
+  MR_Box mercury__map__param_10,
+#line 397 "map.m"
+  MR_Box * mercury__map__param_11,
+#line 397 "map.m"
+  MR_Box mercury__map__param_12,
+#line 397 "map.m"
+  MR_Box * mercury__map__param_13);
+
+#line 388 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_10(
+#line 388 "map.m"
+  MR_Word mercury__map__param_1,
+#line 388 "map.m"
+  MR_Word mercury__map__param_2,
+#line 388 "map.m"
+  MR_Word mercury__map__param_3,
+#line 388 "map.m"
+  MR_Word mercury__map__param_4,
+#line 388 "map.m"
+  MR_Word mercury__map__param_5,
+#line 388 "map.m"
+  MR_Word mercury__map__param_6,
+#line 388 "map.m"
+  MR_Box mercury__map__param_7,
+#line 388 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 388 "map.m"
+  MR_Box mercury__map__param_9,
+#line 388 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 386 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_9(
+#line 386 "map.m"
+  MR_Word mercury__map__param_1,
+#line 386 "map.m"
+  MR_Word mercury__map__param_2,
+#line 386 "map.m"
+  MR_Word mercury__map__param_3,
+#line 386 "map.m"
+  MR_Word mercury__map__param_4,
+#line 386 "map.m"
+  MR_Word mercury__map__param_5,
+#line 386 "map.m"
+  MR_Word mercury__map__param_6,
+#line 386 "map.m"
+  MR_Box mercury__map__param_7,
+#line 386 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 386 "map.m"
+  MR_Box mercury__map__param_9,
+#line 386 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 384 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_8(
+#line 384 "map.m"
+  MR_Word mercury__map__param_1,
+#line 384 "map.m"
+  MR_Word mercury__map__param_2,
+#line 384 "map.m"
+  MR_Word mercury__map__param_3,
+#line 384 "map.m"
+  MR_Word mercury__map__param_4,
+#line 384 "map.m"
+  MR_Word mercury__map__param_5,
+#line 384 "map.m"
+  MR_Word mercury__map__param_6,
+#line 384 "map.m"
+  MR_Box mercury__map__param_7,
+#line 384 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 384 "map.m"
+  MR_Box mercury__map__param_9,
+#line 384 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 382 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_7(
+#line 382 "map.m"
+  MR_Word mercury__map__param_1,
+#line 382 "map.m"
+  MR_Word mercury__map__param_2,
+#line 382 "map.m"
+  MR_Word mercury__map__param_3,
+#line 382 "map.m"
+  MR_Word mercury__map__param_4,
+#line 382 "map.m"
+  MR_Word mercury__map__param_5,
+#line 382 "map.m"
+  MR_Word mercury__map__param_6,
+#line 382 "map.m"
+  MR_Box mercury__map__param_7,
+#line 382 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 382 "map.m"
+  MR_Box mercury__map__param_9,
+#line 382 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 380 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl2_6_p_6(
+#line 380 "map.m"
+  MR_Word mercury__map__param_1,
+#line 380 "map.m"
+  MR_Word mercury__map__param_2,
+#line 380 "map.m"
+  MR_Word mercury__map__param_3,
+#line 380 "map.m"
+  MR_Word mercury__map__param_4,
+#line 380 "map.m"
+  MR_Word mercury__map__param_5,
+#line 380 "map.m"
+  MR_Word mercury__map__param_6,
+#line 380 "map.m"
+  MR_Box mercury__map__param_7,
+#line 380 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 380 "map.m"
+  MR_Box mercury__map__param_9,
+#line 380 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 378 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl2_6_p_5(
+#line 378 "map.m"
+  MR_Word mercury__map__param_1,
+#line 378 "map.m"
+  MR_Word mercury__map__param_2,
+#line 378 "map.m"
+  MR_Word mercury__map__param_3,
+#line 378 "map.m"
+  MR_Word mercury__map__param_4,
+#line 378 "map.m"
+  MR_Word mercury__map__param_5,
+#line 378 "map.m"
+  MR_Word mercury__map__param_6,
+#line 378 "map.m"
+  MR_Box mercury__map__param_7,
+#line 378 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 378 "map.m"
+  MR_Box mercury__map__param_9,
+#line 378 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 376 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl2_6_p_4(
+#line 376 "map.m"
+  MR_Word mercury__map__param_1,
+#line 376 "map.m"
+  MR_Word mercury__map__param_2,
+#line 376 "map.m"
+  MR_Word mercury__map__param_3,
+#line 376 "map.m"
+  MR_Word mercury__map__param_4,
+#line 376 "map.m"
+  MR_Word mercury__map__param_5,
+#line 376 "map.m"
+  MR_Word mercury__map__param_6,
+#line 376 "map.m"
+  MR_Box mercury__map__param_7,
+#line 376 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 376 "map.m"
+  MR_Box mercury__map__param_9,
+#line 376 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 374 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_3(
+#line 374 "map.m"
+  MR_Word mercury__map__param_1,
+#line 374 "map.m"
+  MR_Word mercury__map__param_2,
+#line 374 "map.m"
+  MR_Word mercury__map__param_3,
+#line 374 "map.m"
+  MR_Word mercury__map__param_4,
+#line 374 "map.m"
+  MR_Word mercury__map__param_5,
+#line 374 "map.m"
+  MR_Word mercury__map__param_6,
+#line 374 "map.m"
+  MR_Box mercury__map__param_7,
+#line 374 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 374 "map.m"
+  MR_Box mercury__map__param_9,
+#line 374 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 372 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_2(
+#line 372 "map.m"
+  MR_Word mercury__map__param_1,
+#line 372 "map.m"
+  MR_Word mercury__map__param_2,
+#line 372 "map.m"
+  MR_Word mercury__map__param_3,
+#line 372 "map.m"
+  MR_Word mercury__map__param_4,
+#line 372 "map.m"
+  MR_Word mercury__map__param_5,
+#line 372 "map.m"
+  MR_Word mercury__map__param_6,
+#line 372 "map.m"
+  MR_Box mercury__map__param_7,
+#line 372 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 372 "map.m"
+  MR_Box mercury__map__param_9,
+#line 372 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 370 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_1(
+#line 370 "map.m"
+  MR_Word mercury__map__param_1,
+#line 370 "map.m"
+  MR_Word mercury__map__param_2,
+#line 370 "map.m"
+  MR_Word mercury__map__param_3,
+#line 370 "map.m"
+  MR_Word mercury__map__param_4,
+#line 370 "map.m"
+  MR_Word mercury__map__param_5,
+#line 370 "map.m"
+  MR_Word mercury__map__param_6,
+#line 370 "map.m"
+  MR_Box mercury__map__param_7,
+#line 370 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 370 "map.m"
+  MR_Box mercury__map__param_9,
+#line 370 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 368 "map.m"
+void MR_CALL 
+mercury__map__foldl2_6_p_0(
+#line 368 "map.m"
+  MR_Word mercury__map__param_1,
+#line 368 "map.m"
+  MR_Word mercury__map__param_2,
+#line 368 "map.m"
+  MR_Word mercury__map__param_3,
+#line 368 "map.m"
+  MR_Word mercury__map__param_4,
+#line 368 "map.m"
+  MR_Word mercury__map__param_5,
+#line 368 "map.m"
+  MR_Word mercury__map__param_6,
+#line 368 "map.m"
+  MR_Box mercury__map__param_7,
+#line 368 "map.m"
+  MR_Box * mercury__map__param_8,
+#line 368 "map.m"
+  MR_Box mercury__map__param_9,
+#line 368 "map.m"
+  MR_Box * mercury__map__param_10);
+
+#line 359 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_8(
+#line 359 "map.m"
+  MR_Word mercury__map__param_1,
+#line 359 "map.m"
+  MR_Word mercury__map__param_2,
+#line 359 "map.m"
+  MR_Word mercury__map__param_3,
+#line 359 "map.m"
+  MR_Word mercury__map__param_4,
+#line 359 "map.m"
+  MR_Word mercury__map__param_5,
+#line 359 "map.m"
+  MR_Box mercury__map__param_6,
+#line 359 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 358 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_7(
+#line 358 "map.m"
+  MR_Word mercury__map__param_1,
+#line 358 "map.m"
+  MR_Word mercury__map__param_2,
+#line 358 "map.m"
+  MR_Word mercury__map__param_3,
+#line 358 "map.m"
+  MR_Word mercury__map__param_4,
+#line 358 "map.m"
+  MR_Word mercury__map__param_5,
+#line 358 "map.m"
+  MR_Box mercury__map__param_6,
+#line 358 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 357 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_6(
+#line 357 "map.m"
+  MR_Word mercury__map__param_1,
+#line 357 "map.m"
+  MR_Word mercury__map__param_2,
+#line 357 "map.m"
+  MR_Word mercury__map__param_3,
+#line 357 "map.m"
+  MR_Word mercury__map__param_4,
+#line 357 "map.m"
+  MR_Word mercury__map__param_5,
+#line 357 "map.m"
+  MR_Box mercury__map__param_6,
+#line 357 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 356 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_4_p_5(
+#line 356 "map.m"
+  MR_Word mercury__map__param_1,
+#line 356 "map.m"
+  MR_Word mercury__map__param_2,
+#line 356 "map.m"
+  MR_Word mercury__map__param_3,
+#line 356 "map.m"
+  MR_Word mercury__map__param_4,
+#line 356 "map.m"
+  MR_Word mercury__map__param_5,
+#line 356 "map.m"
+  MR_Box mercury__map__param_6,
+#line 356 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 355 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_4_p_4(
+#line 355 "map.m"
+  MR_Word mercury__map__param_1,
+#line 355 "map.m"
+  MR_Word mercury__map__param_2,
+#line 355 "map.m"
+  MR_Word mercury__map__param_3,
+#line 355 "map.m"
+  MR_Word mercury__map__param_4,
+#line 355 "map.m"
+  MR_Word mercury__map__param_5,
+#line 355 "map.m"
+  MR_Box mercury__map__param_6,
+#line 355 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 354 "map.m"
+MR_bool MR_CALL 
+mercury__map__foldl_4_p_3(
+#line 354 "map.m"
+  MR_Word mercury__map__param_1,
+#line 354 "map.m"
+  MR_Word mercury__map__param_2,
+#line 354 "map.m"
+  MR_Word mercury__map__param_3,
+#line 354 "map.m"
+  MR_Word mercury__map__param_4,
+#line 354 "map.m"
+  MR_Word mercury__map__param_5,
+#line 354 "map.m"
+  MR_Box mercury__map__param_6,
+#line 354 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 353 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_2(
+#line 353 "map.m"
+  MR_Word mercury__map__param_1,
+#line 353 "map.m"
+  MR_Word mercury__map__param_2,
+#line 353 "map.m"
+  MR_Word mercury__map__param_3,
+#line 353 "map.m"
+  MR_Word mercury__map__param_4,
+#line 353 "map.m"
+  MR_Word mercury__map__param_5,
+#line 353 "map.m"
+  MR_Box mercury__map__param_6,
+#line 353 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 352 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_1(
+#line 352 "map.m"
+  MR_Word mercury__map__param_1,
+#line 352 "map.m"
+  MR_Word mercury__map__param_2,
+#line 352 "map.m"
+  MR_Word mercury__map__param_3,
+#line 352 "map.m"
+  MR_Word mercury__map__param_4,
+#line 352 "map.m"
+  MR_Word mercury__map__param_5,
+#line 352 "map.m"
+  MR_Box mercury__map__param_6,
+#line 352 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 351 "map.m"
+void MR_CALL 
+mercury__map__foldl_4_p_0(
+#line 351 "map.m"
+  MR_Word mercury__map__param_1,
+#line 351 "map.m"
+  MR_Word mercury__map__param_2,
+#line 351 "map.m"
+  MR_Word mercury__map__param_3,
+#line 351 "map.m"
+  MR_Word mercury__map__param_4,
+#line 351 "map.m"
+  MR_Word mercury__map__param_5,
+#line 351 "map.m"
+  MR_Box mercury__map__param_6,
+#line 351 "map.m"
+  MR_Box * mercury__map__param_7);
+
+#line 349 "map.m"
+MR_Box MR_CALL 
+mercury__map__foldl_3_f_0(
+#line 349 "map.m"
+  MR_Word mercury__map__param_1,
+#line 349 "map.m"
+  MR_Word mercury__map__param_2,
+#line 349 "map.m"
+  MR_Word mercury__map__param_3,
+#line 349 "map.m"
+  MR_Word mercury__map__param_4,
+#line 349 "map.m"
+  MR_Word mercury__map__param_5,
+#line 349 "map.m"
+  MR_Box mercury__map__param_6);
+
+#line 343 "map.m"
+MR_bool MR_CALL 
+mercury__map__remove_smallest_4_p_0(
+#line 343 "map.m"
+  MR_Word mercury__map__param_1,
+#line 343 "map.m"
+  MR_Word mercury__map__param_2,
+#line 343 "map.m"
+  MR_Box * mercury__map__param_3,
+#line 343 "map.m"
+  MR_Box * mercury__map__param_4,
+#line 343 "map.m"
+  MR_Word mercury__map__param_5,
+#line 343 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 339 "map.m"
+void MR_CALL 
+mercury__map__optimize_2_p_0(
+#line 339 "map.m"
+  MR_Word mercury__map__param_1,
+#line 339 "map.m"
+  MR_Word mercury__map__param_2,
+#line 339 "map.m"
+  MR_Word mercury__map__param_3,
+#line 339 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 338 "map.m"
+MR_Word MR_CALL 
+mercury__map__optimize_1_f_0(
+#line 338 "map.m"
+  MR_Word mercury__map__param_1,
+#line 338 "map.m"
+  MR_Word mercury__map__param_2,
+#line 338 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 331 "map.m"
+void MR_CALL 
+mercury__map__apply_to_list_3_p_0(
+#line 331 "map.m"
+  MR_Word mercury__map__param_1,
+#line 331 "map.m"
+  MR_Word mercury__map__param_2,
+#line 331 "map.m"
+  MR_Word mercury__map__param_3,
+#line 331 "map.m"
+  MR_Word mercury__map__param_4,
+#line 331 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 330 "map.m"
+MR_Word MR_CALL 
+mercury__map__apply_to_list_2_f_0(
+#line 330 "map.m"
+  MR_Word mercury__map__param_1,
+#line 330 "map.m"
+  MR_Word mercury__map__param_2,
+#line 330 "map.m"
+  MR_Word mercury__map__param_3,
+#line 330 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 324 "map.m"
+void MR_CALL 
+mercury__map__select_sorted_list_3_p_0(
+#line 324 "map.m"
+  MR_Word mercury__map__param_1,
+#line 324 "map.m"
+  MR_Word mercury__map__param_2,
+#line 324 "map.m"
+  MR_Word mercury__map__param_3,
+#line 324 "map.m"
+  MR_Word mercury__map__param_4,
+#line 324 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 323 "map.m"
+MR_Word MR_CALL 
+mercury__map__select_sorted_list_2_f_0(
+#line 323 "map.m"
+  MR_Word mercury__map__param_1,
+#line 323 "map.m"
+  MR_Word mercury__map__param_2,
+#line 323 "map.m"
+  MR_Word mercury__map__param_3,
+#line 323 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 318 "map.m"
+void MR_CALL 
+mercury__map__select_3_p_0(
+#line 318 "map.m"
+  MR_Word mercury__map__param_1,
+#line 318 "map.m"
+  MR_Word mercury__map__param_2,
+#line 318 "map.m"
+  MR_Word mercury__map__param_3,
+#line 318 "map.m"
+  MR_Word mercury__map__param_4,
+#line 318 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 317 "map.m"
+MR_Word MR_CALL 
+mercury__map__select_2_f_0(
+#line 317 "map.m"
+  MR_Word mercury__map__param_1,
+#line 317 "map.m"
+  MR_Word mercury__map__param_2,
+#line 317 "map.m"
+  MR_Word mercury__map__param_3,
+#line 317 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 311 "map.m"
+void MR_CALL 
+mercury__map__overlay_large_map_3_p_0(
+#line 311 "map.m"
+  MR_Word mercury__map__param_1,
+#line 311 "map.m"
+  MR_Word mercury__map__param_2,
+#line 311 "map.m"
+  MR_Word mercury__map__param_3,
+#line 311 "map.m"
+  MR_Word mercury__map__param_4,
+#line 311 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 310 "map.m"
+MR_Word MR_CALL 
+mercury__map__overlay_large_map_2_f_0(
+#line 310 "map.m"
+  MR_Word mercury__map__param_1,
+#line 310 "map.m"
+  MR_Word mercury__map__param_2,
+#line 310 "map.m"
+  MR_Word mercury__map__param_3,
+#line 310 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 302 "map.m"
+void MR_CALL 
+mercury__map__overlay_3_p_0(
+#line 302 "map.m"
+  MR_Word mercury__map__param_1,
+#line 302 "map.m"
+  MR_Word mercury__map__param_2,
+#line 302 "map.m"
+  MR_Word mercury__map__param_3,
+#line 302 "map.m"
+  MR_Word mercury__map__param_4,
+#line 302 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 301 "map.m"
+MR_Word MR_CALL 
+mercury__map__overlay_2_f_0(
+#line 301 "map.m"
+  MR_Word mercury__map__param_1,
+#line 301 "map.m"
+  MR_Word mercury__map__param_2,
+#line 301 "map.m"
+  MR_Word mercury__map__param_3,
+#line 301 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 295 "map.m"
+void MR_CALL 
+mercury__map__merge_3_p_0(
+#line 295 "map.m"
+  MR_Word mercury__map__param_1,
+#line 295 "map.m"
+  MR_Word mercury__map__param_2,
+#line 295 "map.m"
+  MR_Word mercury__map__param_3,
+#line 295 "map.m"
+  MR_Word mercury__map__param_4,
+#line 295 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 294 "map.m"
+MR_Word MR_CALL 
+mercury__map__merge_2_f_0(
+#line 294 "map.m"
+  MR_Word mercury__map__param_1,
+#line 294 "map.m"
+  MR_Word mercury__map__param_2,
+#line 294 "map.m"
+  MR_Word mercury__map__param_3,
+#line 294 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 284 "map.m"
+void MR_CALL 
+mercury__map__from_corresponding_lists_3_p_0(
+#line 284 "map.m"
+  MR_Word mercury__map__param_1,
+#line 284 "map.m"
+  MR_Word mercury__map__param_2,
+#line 284 "map.m"
+  MR_Word mercury__map__param_3,
+#line 284 "map.m"
+  MR_Word mercury__map__param_4,
+#line 284 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 283 "map.m"
+MR_Word MR_CALL 
+mercury__map__from_corresponding_lists_2_f_0(
+#line 283 "map.m"
+  MR_Word mercury__map__param_1,
+#line 283 "map.m"
+  MR_Word mercury__map__param_2,
+#line 283 "map.m"
+  MR_Word mercury__map__param_3,
+#line 283 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 279 "map.m"
+void MR_CALL 
+mercury__map__count_2_p_0(
+#line 279 "map.m"
+  MR_Word mercury__map__param_1,
+#line 279 "map.m"
+  MR_Word mercury__map__param_2,
+#line 279 "map.m"
+  MR_Word mercury__map__param_3,
+#line 279 "map.m"
+  MR_Integer * mercury__map__param_4);
+
+#line 278 "map.m"
+MR_Integer MR_CALL 
+mercury__map__count_1_f_0(
+#line 278 "map.m"
+  MR_Word mercury__map__param_1,
+#line 278 "map.m"
+  MR_Word mercury__map__param_2,
+#line 278 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 274 "map.m"
+void MR_CALL 
+mercury__map__det_remove_4_p_0(
+#line 274 "map.m"
+  MR_Word mercury__map__param_1,
+#line 274 "map.m"
+  MR_Word mercury__map__param_2,
+#line 274 "map.m"
+  MR_Box mercury__map__param_3,
+#line 274 "map.m"
+  MR_Box * mercury__map__param_4,
+#line 274 "map.m"
+  MR_Word mercury__map__param_5,
+#line 274 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 269 "map.m"
+MR_bool MR_CALL 
+mercury__map__remove_4_p_0(
+#line 269 "map.m"
+  MR_Word mercury__map__param_1,
+#line 269 "map.m"
+  MR_Word mercury__map__param_2,
+#line 269 "map.m"
+  MR_Box mercury__map__param_3,
+#line 269 "map.m"
+  MR_Box * mercury__map__param_4,
+#line 269 "map.m"
+  MR_Word mercury__map__param_5,
+#line 269 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 263 "map.m"
+void MR_CALL 
+mercury__map__delete_sorted_list_3_p_0(
+#line 263 "map.m"
+  MR_Word mercury__map__param_1,
+#line 263 "map.m"
+  MR_Word mercury__map__param_2,
+#line 263 "map.m"
+  MR_Word mercury__map__param_3,
+#line 263 "map.m"
+  MR_Word mercury__map__param_4,
+#line 263 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 262 "map.m"
+MR_Word MR_CALL 
+mercury__map__delete_sorted_list_2_f_0(
+#line 262 "map.m"
+  MR_Word mercury__map__param_1,
+#line 262 "map.m"
+  MR_Word mercury__map__param_2,
+#line 262 "map.m"
+  MR_Word mercury__map__param_3,
+#line 262 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 256 "map.m"
+void MR_CALL 
+mercury__map__delete_list_3_p_0(
+#line 256 "map.m"
+  MR_Word mercury__map__param_1,
+#line 256 "map.m"
+  MR_Word mercury__map__param_2,
+#line 256 "map.m"
+  MR_Word mercury__map__param_3,
+#line 256 "map.m"
+  MR_Word mercury__map__param_4,
+#line 256 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 255 "map.m"
+MR_Word MR_CALL 
+mercury__map__delete_list_2_f_0(
+#line 255 "map.m"
+  MR_Word mercury__map__param_1,
+#line 255 "map.m"
+  MR_Word mercury__map__param_2,
+#line 255 "map.m"
+  MR_Word mercury__map__param_3,
+#line 255 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 251 "map.m"
+void MR_CALL 
+mercury__map__delete_3_p_0(
+#line 251 "map.m"
+  MR_Word mercury__map__param_1,
+#line 251 "map.m"
+  MR_Word mercury__map__param_2,
+#line 251 "map.m"
+  MR_Box mercury__map__param_3,
+#line 251 "map.m"
+  MR_Word mercury__map__param_4,
+#line 251 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 250 "map.m"
+MR_Word MR_CALL 
+mercury__map__delete_2_f_0(
+#line 250 "map.m"
+  MR_Word mercury__map__param_1,
+#line 250 "map.m"
+  MR_Word mercury__map__param_2,
+#line 250 "map.m"
+  MR_Word mercury__map__param_3,
+#line 250 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 244 "map.m"
+void MR_CALL 
+mercury__map__from_rev_sorted_assoc_list_2_p_0(
+#line 244 "map.m"
+  MR_Word mercury__map__param_1,
+#line 244 "map.m"
+  MR_Word mercury__map__param_2,
+#line 244 "map.m"
+  MR_Word mercury__map__param_3,
+#line 244 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 243 "map.m"
+MR_Word MR_CALL 
+mercury__map__from_rev_sorted_assoc_list_1_f_0(
+#line 243 "map.m"
+  MR_Word mercury__map__param_1,
+#line 243 "map.m"
+  MR_Word mercury__map__param_2,
+#line 243 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 237 "map.m"
+void MR_CALL 
+mercury__map__from_sorted_assoc_list_2_p_0(
+#line 237 "map.m"
+  MR_Word mercury__map__param_1,
+#line 237 "map.m"
+  MR_Word mercury__map__param_2,
+#line 237 "map.m"
+  MR_Word mercury__map__param_3,
+#line 237 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 236 "map.m"
+MR_Word MR_CALL 
+mercury__map__from_sorted_assoc_list_1_f_0(
+#line 236 "map.m"
+  MR_Word mercury__map__param_1,
+#line 236 "map.m"
+  MR_Word mercury__map__param_2,
+#line 236 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 232 "map.m"
+void MR_CALL 
+mercury__map__from_assoc_list_2_p_0(
+#line 232 "map.m"
+  MR_Word mercury__map__param_1,
+#line 232 "map.m"
+  MR_Word mercury__map__param_2,
+#line 232 "map.m"
+  MR_Word mercury__map__param_3,
+#line 232 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 231 "map.m"
+MR_Word MR_CALL 
+mercury__map__from_assoc_list_1_f_0(
+#line 231 "map.m"
+  MR_Word mercury__map__param_1,
+#line 231 "map.m"
+  MR_Word mercury__map__param_2,
+#line 231 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 227 "map.m"
+void MR_CALL 
+mercury__map__to_sorted_assoc_list_2_p_0(
+#line 227 "map.m"
+  MR_Word mercury__map__param_1,
+#line 227 "map.m"
+  MR_Word mercury__map__param_2,
+#line 227 "map.m"
+  MR_Word mercury__map__param_3,
+#line 227 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 226 "map.m"
+MR_Word MR_CALL 
+mercury__map__to_sorted_assoc_list_1_f_0(
+#line 226 "map.m"
+  MR_Word mercury__map__param_1,
+#line 226 "map.m"
+  MR_Word mercury__map__param_2,
+#line 226 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 222 "map.m"
+void MR_CALL 
+mercury__map__to_assoc_list_2_p_0(
+#line 222 "map.m"
+  MR_Word mercury__map__param_1,
+#line 222 "map.m"
+  MR_Word mercury__map__param_2,
+#line 222 "map.m"
+  MR_Word mercury__map__param_3,
+#line 222 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 221 "map.m"
+MR_Word MR_CALL 
+mercury__map__to_assoc_list_1_f_0(
+#line 221 "map.m"
+  MR_Word mercury__map__param_1,
+#line 221 "map.m"
+  MR_Word mercury__map__param_2,
+#line 221 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 217 "map.m"
+void MR_CALL 
+mercury__map__keys_and_values_3_p_0(
+#line 217 "map.m"
+  MR_Word mercury__map__param_1,
+#line 217 "map.m"
+  MR_Word mercury__map__param_2,
+#line 217 "map.m"
+  MR_Word mercury__map__param_3,
+#line 217 "map.m"
+  MR_Word * mercury__map__param_4,
+#line 217 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 215 "map.m"
+void MR_CALL 
+mercury__map__values_2_p_0(
+#line 215 "map.m"
+  MR_Word mercury__map__param_1,
+#line 215 "map.m"
+  MR_Word mercury__map__param_2,
+#line 215 "map.m"
+  MR_Word mercury__map__param_3,
+#line 215 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 214 "map.m"
+MR_Word MR_CALL 
+mercury__map__values_1_f_0(
+#line 214 "map.m"
+  MR_Word mercury__map__param_1,
+#line 214 "map.m"
+  MR_Word mercury__map__param_2,
+#line 214 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 210 "map.m"
+void MR_CALL 
+mercury__map__sorted_keys_2_p_0(
+#line 210 "map.m"
+  MR_Word mercury__map__param_1,
+#line 210 "map.m"
+  MR_Word mercury__map__param_2,
+#line 210 "map.m"
+  MR_Word mercury__map__param_3,
+#line 210 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 209 "map.m"
+MR_Word MR_CALL 
+mercury__map__sorted_keys_1_f_0(
+#line 209 "map.m"
+  MR_Word mercury__map__param_1,
+#line 209 "map.m"
+  MR_Word mercury__map__param_2,
+#line 209 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 204 "map.m"
+void MR_CALL 
+mercury__map__keys_2_p_0(
+#line 204 "map.m"
+  MR_Word mercury__map__param_1,
+#line 204 "map.m"
+  MR_Word mercury__map__param_2,
+#line 204 "map.m"
+  MR_Word mercury__map__param_3,
+#line 204 "map.m"
+  MR_Word * mercury__map__param_4);
+
+#line 203 "map.m"
+MR_Word MR_CALL 
+mercury__map__keys_1_f_0(
+#line 203 "map.m"
+  MR_Word mercury__map__param_1,
+#line 203 "map.m"
+  MR_Word mercury__map__param_2,
+#line 203 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 199 "map.m"
+void MR_CALL 
+mercury__map__set_4_p_0(
+#line 199 "map.m"
+  MR_Word mercury__map__param_1,
+#line 199 "map.m"
+  MR_Word mercury__map__param_2,
+#line 199 "map.m"
+  MR_Box mercury__map__param_3,
+#line 199 "map.m"
+  MR_Box mercury__map__param_4,
+#line 199 "map.m"
+  MR_Word mercury__map__param_5,
+#line 199 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 198 "map.m"
+MR_Word MR_CALL 
+mercury__map__set_3_f_0(
+#line 198 "map.m"
+  MR_Word mercury__map__param_1,
+#line 198 "map.m"
+  MR_Word mercury__map__param_2,
+#line 198 "map.m"
+  MR_Word mercury__map__param_3,
+#line 198 "map.m"
+  MR_Box mercury__map__param_4,
+#line 198 "map.m"
+  MR_Box mercury__map__param_5);
+
+#line 192 "map.m"
+void MR_CALL 
+mercury__map__det_transform_value_4_p_0(
+#line 192 "map.m"
+  MR_Word mercury__map__param_1,
+#line 192 "map.m"
+  MR_Word mercury__map__param_2,
+#line 192 "map.m"
+  MR_Word mercury__map__param_3,
+#line 192 "map.m"
+  MR_Box mercury__map__param_4,
+#line 192 "map.m"
+  MR_Word mercury__map__param_5,
+#line 192 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 191 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_transform_value_3_f_0(
+#line 191 "map.m"
+  MR_Word mercury__map__param_1,
+#line 191 "map.m"
+  MR_Word mercury__map__param_2,
+#line 191 "map.m"
+  MR_Word mercury__map__param_3,
+#line 191 "map.m"
+  MR_Box mercury__map__param_4,
+#line 191 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 185 "map.m"
+MR_bool MR_CALL 
+mercury__map__transform_value_4_p_0(
+#line 185 "map.m"
+  MR_Word mercury__map__param_1,
+#line 185 "map.m"
+  MR_Word mercury__map__param_2,
+#line 185 "map.m"
+  MR_Word mercury__map__param_3,
+#line 185 "map.m"
+  MR_Box mercury__map__param_4,
+#line 185 "map.m"
+  MR_Word mercury__map__param_5,
+#line 185 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 178 "map.m"
+void MR_CALL 
+mercury__map__search_insert_5_p_0(
+#line 178 "map.m"
+  MR_Word mercury__map__param_1,
+#line 178 "map.m"
+  MR_Word mercury__map__param_2,
+#line 178 "map.m"
+  MR_Box mercury__map__param_3,
+#line 178 "map.m"
+  MR_Box mercury__map__param_4,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_5,
+#line 178 "map.m"
+  MR_Word mercury__map__param_6,
+#line 178 "map.m"
+  MR_Word * mercury__map__param_7);
+
+#line 170 "map.m"
+void MR_CALL 
+mercury__map__det_update_4_p_0(
+#line 170 "map.m"
+  MR_Word mercury__map__param_1,
+#line 170 "map.m"
+  MR_Word mercury__map__param_2,
+#line 170 "map.m"
+  MR_Box mercury__map__param_3,
+#line 170 "map.m"
+  MR_Box mercury__map__param_4,
+#line 170 "map.m"
+  MR_Word mercury__map__param_5,
+#line 170 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 169 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_update_3_f_0(
+#line 169 "map.m"
+  MR_Word mercury__map__param_1,
+#line 169 "map.m"
+  MR_Word mercury__map__param_2,
+#line 169 "map.m"
+  MR_Word mercury__map__param_3,
+#line 169 "map.m"
+  MR_Box mercury__map__param_4,
+#line 169 "map.m"
+  MR_Box mercury__map__param_5);
+
+#line 164 "map.m"
+MR_bool MR_CALL 
+mercury__map__update_4_p_0(
+#line 164 "map.m"
+  MR_Word mercury__map__param_1,
+#line 164 "map.m"
+  MR_Word mercury__map__param_2,
+#line 164 "map.m"
+  MR_Box mercury__map__param_3,
+#line 164 "map.m"
+  MR_Box mercury__map__param_4,
+#line 164 "map.m"
+  MR_Word mercury__map__param_5,
+#line 164 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 163 "map.m"
+MR_bool MR_CALL 
+mercury__map__update_3_f_0(
+#line 163 "map.m"
+  MR_Word mercury__map__param_1,
+#line 163 "map.m"
+  MR_Word mercury__map__param_2,
+#line 163 "map.m"
+  MR_Word mercury__map__param_3,
+#line 163 "map.m"
+  MR_Box mercury__map__param_4,
+#line 163 "map.m"
+  MR_Box mercury__map__param_5,
+#line 163 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 157 "map.m"
+void MR_CALL 
+mercury__map__set_from_assoc_list_3_p_0(
+#line 157 "map.m"
+  MR_Word mercury__map__param_1,
+#line 157 "map.m"
+  MR_Word mercury__map__param_2,
+#line 157 "map.m"
+  MR_Word mercury__map__param_3,
+#line 157 "map.m"
+  MR_Word mercury__map__param_4,
+#line 157 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 156 "map.m"
+MR_Word MR_CALL 
+mercury__map__set_from_assoc_list_2_f_0(
+#line 156 "map.m"
+  MR_Word mercury__map__param_1,
+#line 156 "map.m"
+  MR_Word mercury__map__param_2,
+#line 156 "map.m"
+  MR_Word mercury__map__param_3,
+#line 156 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 153 "map.m"
+void MR_CALL 
+mercury__map__set_from_corresponding_lists_4_p_0(
+#line 153 "map.m"
+  MR_Word mercury__map__param_1,
+#line 153 "map.m"
+  MR_Word mercury__map__param_2,
+#line 153 "map.m"
+  MR_Word mercury__map__param_3,
+#line 153 "map.m"
+  MR_Word mercury__map__param_4,
+#line 153 "map.m"
+  MR_Word mercury__map__param_5,
+#line 153 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 151 "map.m"
+MR_Word MR_CALL 
+mercury__map__set_from_corresponding_lists_3_f_0(
+#line 151 "map.m"
+  MR_Word mercury__map__param_1,
+#line 151 "map.m"
+  MR_Word mercury__map__param_2,
+#line 151 "map.m"
+  MR_Word mercury__map__param_3,
+#line 151 "map.m"
+  MR_Word mercury__map__param_4,
+#line 151 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 146 "map.m"
+void MR_CALL 
+mercury__map__det_insert_from_assoc_list_3_p_0(
+#line 146 "map.m"
+  MR_Word mercury__map__param_1,
+#line 146 "map.m"
+  MR_Word mercury__map__param_2,
+#line 146 "map.m"
+  MR_Word mercury__map__param_3,
+#line 146 "map.m"
+  MR_Word mercury__map__param_4,
+#line 146 "map.m"
+  MR_Word * mercury__map__param_5);
+
+#line 144 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_insert_from_assoc_list_2_f_0(
+#line 144 "map.m"
+  MR_Word mercury__map__param_1,
+#line 144 "map.m"
+  MR_Word mercury__map__param_2,
+#line 144 "map.m"
+  MR_Word mercury__map__param_3,
+#line 144 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 139 "map.m"
+void MR_CALL 
+mercury__map__det_insert_from_corresponding_lists_4_p_0(
+#line 139 "map.m"
+  MR_Word mercury__map__param_1,
+#line 139 "map.m"
+  MR_Word mercury__map__param_2,
+#line 139 "map.m"
+  MR_Word mercury__map__param_3,
+#line 139 "map.m"
+  MR_Word mercury__map__param_4,
+#line 139 "map.m"
+  MR_Word mercury__map__param_5,
+#line 139 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 137 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_insert_from_corresponding_lists_3_f_0(
+#line 137 "map.m"
+  MR_Word mercury__map__param_1,
+#line 137 "map.m"
+  MR_Word mercury__map__param_2,
+#line 137 "map.m"
+  MR_Word mercury__map__param_3,
+#line 137 "map.m"
+  MR_Word mercury__map__param_4,
+#line 137 "map.m"
+  MR_Word mercury__map__param_5);
+
+#line 133 "map.m"
+void MR_CALL 
+mercury__map__det_insert_4_p_0(
+#line 133 "map.m"
+  MR_Word mercury__map__param_1,
+#line 133 "map.m"
+  MR_Word mercury__map__param_2,
+#line 133 "map.m"
+  MR_Box mercury__map__param_3,
+#line 133 "map.m"
+  MR_Box mercury__map__param_4,
+#line 133 "map.m"
+  MR_Word mercury__map__param_5,
+#line 133 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 132 "map.m"
+MR_Word MR_CALL 
+mercury__map__det_insert_3_f_0(
+#line 132 "map.m"
+  MR_Word mercury__map__param_1,
+#line 132 "map.m"
+  MR_Word mercury__map__param_2,
+#line 132 "map.m"
+  MR_Word mercury__map__param_3,
+#line 132 "map.m"
+  MR_Box mercury__map__param_4,
+#line 132 "map.m"
+  MR_Box mercury__map__param_5);
+
+#line 127 "map.m"
+MR_bool MR_CALL 
+mercury__map__insert_4_p_0(
+#line 127 "map.m"
+  MR_Word mercury__map__param_1,
+#line 127 "map.m"
+  MR_Word mercury__map__param_2,
+#line 127 "map.m"
+  MR_Box mercury__map__param_3,
+#line 127 "map.m"
+  MR_Box mercury__map__param_4,
+#line 127 "map.m"
+  MR_Word mercury__map__param_5,
+#line 127 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 126 "map.m"
+MR_bool MR_CALL 
+mercury__map__insert_3_f_0(
+#line 126 "map.m"
+  MR_Word mercury__map__param_1,
+#line 126 "map.m"
+  MR_Word mercury__map__param_2,
+#line 126 "map.m"
+  MR_Word mercury__map__param_3,
+#line 126 "map.m"
+  MR_Box mercury__map__param_4,
+#line 126 "map.m"
+  MR_Box mercury__map__param_5,
+#line 126 "map.m"
+  MR_Word * mercury__map__param_6);
+
+#line 121 "map.m"
+void MR_CALL 
+mercury__map__inverse_search_3_p_0(
+#line 121 "map.m"
+  MR_Word mercury__map__param_1,
+#line 121 "map.m"
+  MR_Word mercury__map__param_2,
+#line 121 "map.m"
+  MR_Word mercury__map__param_3,
+#line 121 "map.m"
+  MR_Box mercury__map__param_4,
+#line 121 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 121 "map.m"
+  MR_Cont mercury__map__param_6,
+#line 121 "map.m"
+  void * mercury__map__param_7);
+
+#line 117 "map.m"
+MR_bool MR_CALL 
+mercury__map__min_key_1_f_0(
+#line 117 "map.m"
+  MR_Word mercury__map__param_1,
+#line 117 "map.m"
+  MR_Word mercury__map__param_2,
+#line 117 "map.m"
+  MR_Word mercury__map__param_3,
+#line 117 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 113 "map.m"
+MR_bool MR_CALL 
+mercury__map__max_key_1_f_0(
+#line 113 "map.m"
+  MR_Word mercury__map__param_1,
+#line 113 "map.m"
+  MR_Word mercury__map__param_2,
+#line 113 "map.m"
+  MR_Word mercury__map__param_3,
+#line 113 "map.m"
+  MR_Box * mercury__map__param_4);
+
+#line 109 "map.m"
+void MR_CALL 
+mercury__map__upper_bound_lookup_4_p_0(
+#line 109 "map.m"
+  MR_Word mercury__map__param_1,
+#line 109 "map.m"
+  MR_Word mercury__map__param_2,
+#line 109 "map.m"
+  MR_Word mercury__map__param_3,
+#line 109 "map.m"
+  MR_Box mercury__map__param_4,
+#line 109 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 109 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 102 "map.m"
+MR_bool MR_CALL 
+mercury__map__upper_bound_search_4_p_0(
+#line 102 "map.m"
+  MR_Word mercury__map__param_1,
+#line 102 "map.m"
+  MR_Word mercury__map__param_2,
+#line 102 "map.m"
+  MR_Word mercury__map__param_3,
+#line 102 "map.m"
+  MR_Box mercury__map__param_4,
+#line 102 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 102 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 96 "map.m"
+void MR_CALL 
+mercury__map__lower_bound_lookup_4_p_0(
+#line 96 "map.m"
+  MR_Word mercury__map__param_1,
+#line 96 "map.m"
+  MR_Word mercury__map__param_2,
+#line 96 "map.m"
+  MR_Word mercury__map__param_3,
+#line 96 "map.m"
+  MR_Box mercury__map__param_4,
+#line 96 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 96 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 89 "map.m"
+MR_bool MR_CALL 
+mercury__map__lower_bound_search_4_p_0(
+#line 89 "map.m"
+  MR_Word mercury__map__param_1,
+#line 89 "map.m"
+  MR_Word mercury__map__param_2,
+#line 89 "map.m"
+  MR_Word mercury__map__param_3,
+#line 89 "map.m"
+  MR_Box mercury__map__param_4,
+#line 89 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 89 "map.m"
+  MR_Box * mercury__map__param_6);
+
+#line 83 "map.m"
+void MR_CALL 
+mercury__map__lookup_3_p_0(
+#line 83 "map.m"
+  MR_Word mercury__map__param_1,
+#line 83 "map.m"
+  MR_Word mercury__map__param_2,
+#line 83 "map.m"
+  MR_Word mercury__map__param_3,
+#line 83 "map.m"
+  MR_Box mercury__map__param_4,
+#line 83 "map.m"
+  MR_Box * mercury__map__param_5);
+
+#line 82 "map.m"
+MR_Box MR_CALL 
+mercury__map__lookup_2_f_0(
+#line 82 "map.m"
+  MR_Word mercury__map__param_1,
+#line 82 "map.m"
+  MR_Word mercury__map__param_2,
+#line 82 "map.m"
+  MR_Word mercury__map__param_3,
+#line 82 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 78 "map.m"
+MR_bool MR_CALL 
+mercury__map__search_3_p_0(
+#line 78 "map.m"
+  MR_Word mercury__map__param_1,
+#line 78 "map.m"
+  MR_Word mercury__map__param_2,
+#line 78 "map.m"
+  MR_Word mercury__map__param_3,
+#line 78 "map.m"
+  MR_Box mercury__map__param_4,
+#line 78 "map.m"
+  MR_Box * mercury__map__param_5);
+
+#line 77 "map.m"
+MR_bool MR_CALL 
+mercury__map__search_2_f_0(
+#line 77 "map.m"
+  MR_Word mercury__map__param_1,
+#line 77 "map.m"
+  MR_Word mercury__map__param_2,
+#line 77 "map.m"
+  MR_Word mercury__map__param_3,
+#line 77 "map.m"
+  MR_Box mercury__map__param_4,
+#line 77 "map.m"
+  MR_Box * mercury__map__param_5);
+
+#line 73 "map.m"
+void MR_CALL 
+mercury__map__member_3_p_0(
+#line 73 "map.m"
+  MR_Word mercury__map__param_1,
+#line 73 "map.m"
+  MR_Word mercury__map__param_2,
+#line 73 "map.m"
+  MR_Word mercury__map__param_3,
+#line 73 "map.m"
+  MR_Box * mercury__map__param_4,
+#line 73 "map.m"
+  MR_Box * mercury__map__param_5,
+#line 73 "map.m"
+  MR_Cont mercury__map__param_6,
+#line 73 "map.m"
+  void * mercury__map__param_7);
+
+#line 71 "map.m"
+MR_bool MR_CALL 
+mercury__map__contains_2_p_0(
+#line 71 "map.m"
+  MR_Word mercury__map__param_1,
+#line 71 "map.m"
+  MR_Word mercury__map__param_2,
+#line 71 "map.m"
+  MR_Word mercury__map__param_3,
+#line 71 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 67 "map.m"
+MR_bool MR_CALL 
+mercury__map__equal_2_p_0(
+#line 67 "map.m"
+  MR_Word mercury__map__param_1,
+#line 67 "map.m"
+  MR_Word mercury__map__param_2,
+#line 67 "map.m"
+  MR_Word mercury__map__param_3,
+#line 67 "map.m"
+  MR_Word mercury__map__param_4);
+
+#line 58 "map.m"
+MR_bool MR_CALL 
+mercury__map__is_empty_1_p_0(
+#line 58 "map.m"
+  MR_Word mercury__map__param_1,
+#line 58 "map.m"
+  MR_Word mercury__map__param_2,
+#line 58 "map.m"
+  MR_Word mercury__map__param_3);
+
+#line 54 "map.m"
+MR_Word MR_CALL 
+mercury__map__singleton_2_f_0(
+#line 54 "map.m"
+  MR_Word mercury__map__param_1,
+#line 54 "map.m"
+  MR_Word mercury__map__param_2,
+#line 54 "map.m"
+  MR_Box mercury__map__param_3,
+#line 54 "map.m"
+  MR_Box mercury__map__param_4);
+
+#line 50 "map.m"
+MR_Word MR_CALL 
+mercury__map__init_0_f_0(
+#line 50 "map.m"
+  MR_Word mercury__map__param_1,
+#line 50 "map.m"
+  MR_Word mercury__map__param_2);
+
+#line 49 "map.m"
+void MR_CALL 
+mercury__map__init_1_p_0(
+#line 49 "map.m"
+  MR_Word mercury__map__param_1,
+#line 49 "map.m"
+  MR_Word mercury__map__param_2,
+#line 49 "map.m"
+  MR_Word * mercury__map__param_3);
+
+void mercury__map__init(void);
+void mercury__map__init_type_tables(void);
+void mercury__map__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_map */
+
+/* :- end_interface map. */

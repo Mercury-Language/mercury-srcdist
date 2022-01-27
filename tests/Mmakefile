@@ -1,0 +1,25 @@
+THIS_DIR=tests
+PROGS=
+TESTS=
+SUBDIRS = \
+	analysis \
+	benchmarks \
+	debugger \
+	dppd \
+	feedback \
+	general \
+	grade_subdirs \
+	hard_coded \
+	invalid \
+	misc_tests \
+	mmc_make \
+	par_conj \
+	recompilation \
+	tabling \
+	term \
+	trailing \
+	valid \
+	warnings
+
+TESTS_DIR=.
+include $(TESTS_DIR)/Mmake.common

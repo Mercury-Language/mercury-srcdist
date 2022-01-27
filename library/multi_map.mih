@@ -1,0 +1,925 @@
+/*
+** Automatically generated from `multi_map.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module multi_map. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_multi_map
+#define MR_HEADER_GUARD_multi_map
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MULTI_MAP_DECL_GUARD
+#define MULTI_MAP_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "multi_map.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__multi_map__multi_map__type_ctor_info_multi_map_2;
+
+#line 34 "multi_map.m"
+void MR_CALL 
+mercury__multi_map____Compare____multi_map_2_0(
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 34 "multi_map.m"
+  MR_Word * mercury__multi_map__param_3,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_5);
+
+#line 34 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map____Unify____multi_map_2_0(
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 34 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 445 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__assoc_list_merge_3_p_0(
+#line 445 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 445 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 445 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 445 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 445 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 426 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__from_corresponding_lists_2_4_p_0(
+#line 426 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 426 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 426 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 426 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 426 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 426 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 398 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__count_list_3_p_0(
+#line 398 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 398 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 398 "multi_map.m"
+  MR_Integer mercury__multi_map__param_3,
+#line 398 "multi_map.m"
+  MR_Integer * mercury__multi_map__param_4);
+
+#line 258 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__remove_smallest_4_p_0(
+#line 258 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 258 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 258 "multi_map.m"
+  MR_Box * mercury__multi_map__param_3,
+#line 258 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4,
+#line 258 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 258 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 253 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__optimize_2_p_0(
+#line 253 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 253 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 253 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 253 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 252 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__optimize_1_f_0(
+#line 252 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 252 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 252 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 244 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__apply_to_list_3_p_0(
+#line 244 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 244 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 244 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 244 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 244 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 243 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__apply_to_list_2_f_0(
+#line 243 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 243 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 243 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 243 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 237 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__select_3_p_0(
+#line 237 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 237 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 237 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 237 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 237 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 236 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__select_2_f_0(
+#line 236 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 236 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 236 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 236 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 229 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__merge_3_p_0(
+#line 229 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 229 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 229 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 229 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 229 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 227 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__merge_2_f_0(
+#line 227 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 227 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 227 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 227 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 217 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__from_corresponding_list_lists_3_p_0(
+#line 217 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 217 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 217 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 217 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 217 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 215 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__from_corresponding_list_lists_2_f_0(
+#line 215 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 215 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 215 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 215 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 209 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__from_corresponding_lists_3_p_0(
+#line 209 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 209 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 209 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 209 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 209 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 207 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__from_corresponding_lists_2_f_0(
+#line 207 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 207 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 207 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 207 "multi_map.m"
+  MR_Word mercury__multi_map__param_4);
+
+#line 202 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__all_count_2_p_0(
+#line 202 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 202 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 202 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 202 "multi_map.m"
+  MR_Integer * mercury__multi_map__param_4);
+
+#line 201 "multi_map.m"
+MR_Integer MR_CALL 
+mercury__multi_map__all_count_1_f_0(
+#line 201 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 201 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 201 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 197 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__count_2_p_0(
+#line 197 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 197 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 197 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 197 "multi_map.m"
+  MR_Integer * mercury__multi_map__param_4);
+
+#line 196 "multi_map.m"
+MR_Integer MR_CALL 
+mercury__multi_map__count_1_f_0(
+#line 196 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 196 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 196 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 191 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__det_remove_4_p_0(
+#line 191 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 191 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 191 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 191 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4,
+#line 191 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 191 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 185 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__remove_4_p_0(
+#line 185 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 185 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 185 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 185 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4,
+#line 185 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 185 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 179 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__delete_4_p_0(
+#line 179 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 179 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 179 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 179 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 179 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 179 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 178 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__delete_3_f_0(
+#line 178 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 178 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 178 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 178 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 178 "multi_map.m"
+  MR_Box mercury__multi_map__param_5);
+
+#line 172 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__delete_3_p_0(
+#line 172 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 172 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 172 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 172 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 172 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 171 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__delete_2_f_0(
+#line 171 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 171 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 171 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 171 "multi_map.m"
+  MR_Box mercury__multi_map__param_4);
+
+#line 165 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__from_sorted_assoc_list_2_p_0(
+#line 165 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 165 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 165 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 165 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 163 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__from_sorted_assoc_list_1_f_0(
+#line 163 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 163 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 163 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 158 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__from_assoc_list_2_p_0(
+#line 158 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 158 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 158 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 158 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 157 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__from_assoc_list_1_f_0(
+#line 157 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 157 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 157 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 151 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__to_assoc_list_2_p_0(
+#line 151 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 151 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 151 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 151 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 150 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__to_assoc_list_1_f_0(
+#line 150 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 150 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 150 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 144 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__from_flat_assoc_list_2_p_0(
+#line 144 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 144 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 144 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 144 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 143 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__from_flat_assoc_list_1_f_0(
+#line 143 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 143 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 143 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 138 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__to_flat_assoc_list_2_p_0(
+#line 138 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 138 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 138 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 138 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 137 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__to_flat_assoc_list_1_f_0(
+#line 137 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 137 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 137 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 133 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__values_2_p_0(
+#line 133 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 133 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 133 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 133 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 132 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__values_1_f_0(
+#line 132 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 132 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 132 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 127 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__keys_2_p_0(
+#line 127 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 127 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 127 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 127 "multi_map.m"
+  MR_Word * mercury__multi_map__param_4);
+
+#line 126 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__keys_1_f_0(
+#line 126 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 126 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 126 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 121 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__add_4_p_0(
+#line 121 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 121 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 121 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 121 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 121 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 121 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 120 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__add_3_f_0(
+#line 120 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 120 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 120 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 120 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 120 "multi_map.m"
+  MR_Box mercury__multi_map__param_5);
+
+#line 117 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__set_4_p_0(
+#line 117 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 117 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 117 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 117 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 117 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 117 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 116 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__set_3_f_0(
+#line 116 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 116 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 116 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 116 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 116 "multi_map.m"
+  MR_Box mercury__multi_map__param_5);
+
+#line 110 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__det_replace_4_p_0(
+#line 110 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 110 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 110 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 110 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 110 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 110 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 109 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__det_replace_3_f_0(
+#line 109 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 109 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 109 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 109 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 109 "multi_map.m"
+  MR_Word mercury__multi_map__param_5);
+
+#line 103 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__replace_4_p_0(
+#line 103 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 103 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 103 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 103 "multi_map.m"
+  MR_Word mercury__multi_map__param_4,
+#line 103 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 103 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 97 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__det_update_4_p_0(
+#line 97 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 97 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 97 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 97 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 97 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 97 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 96 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__det_update_3_f_0(
+#line 96 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 96 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 96 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 96 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 96 "multi_map.m"
+  MR_Box mercury__multi_map__param_5);
+
+#line 90 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__update_4_p_0(
+#line 90 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 90 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 90 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 90 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 90 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 90 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 84 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__det_insert_4_p_0(
+#line 84 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 84 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 84 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 84 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 84 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 84 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 83 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__det_insert_3_f_0(
+#line 83 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 83 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 83 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 83 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 83 "multi_map.m"
+  MR_Box mercury__multi_map__param_5);
+
+#line 77 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__insert_4_p_0(
+#line 77 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 77 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 77 "multi_map.m"
+  MR_Box mercury__multi_map__param_3,
+#line 77 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 77 "multi_map.m"
+  MR_Word mercury__multi_map__param_5,
+#line 77 "multi_map.m"
+  MR_Word * mercury__multi_map__param_6);
+
+#line 72 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__inverse_search_3_p_0(
+#line 72 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 72 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 72 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 72 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 72 "multi_map.m"
+  MR_Box * mercury__multi_map__param_5,
+#line 72 "multi_map.m"
+  MR_Cont mercury__multi_map__param_6,
+#line 72 "multi_map.m"
+  void * mercury__multi_map__param_7);
+
+#line 68 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__nondet_lookup_3_p_0(
+#line 68 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 68 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 68 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 68 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 68 "multi_map.m"
+  MR_Box * mercury__multi_map__param_5,
+#line 68 "multi_map.m"
+  MR_Cont mercury__multi_map__param_6,
+#line 68 "multi_map.m"
+  void * mercury__multi_map__param_7);
+
+#line 64 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__lookup_3_p_0(
+#line 64 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 64 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 64 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 64 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 64 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 63 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__lookup_2_f_0(
+#line 63 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 63 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 63 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 63 "multi_map.m"
+  MR_Box mercury__multi_map__param_4);
+
+#line 59 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__nondet_search_3_p_0(
+#line 59 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 59 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 59 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 59 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 59 "multi_map.m"
+  MR_Box * mercury__multi_map__param_5,
+#line 59 "multi_map.m"
+  MR_Cont mercury__multi_map__param_6,
+#line 59 "multi_map.m"
+  void * mercury__multi_map__param_7);
+
+#line 55 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__search_3_p_0(
+#line 55 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 55 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 55 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 55 "multi_map.m"
+  MR_Box mercury__multi_map__param_4,
+#line 55 "multi_map.m"
+  MR_Word * mercury__multi_map__param_5);
+
+#line 51 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__member_3_p_0(
+#line 51 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 51 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 51 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 51 "multi_map.m"
+  MR_Box * mercury__multi_map__param_4,
+#line 51 "multi_map.m"
+  MR_Box * mercury__multi_map__param_5,
+#line 51 "multi_map.m"
+  MR_Cont mercury__multi_map__param_6,
+#line 51 "multi_map.m"
+  void * mercury__multi_map__param_7);
+
+#line 49 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__contains_2_p_0(
+#line 49 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 49 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 49 "multi_map.m"
+  MR_Word mercury__multi_map__param_3,
+#line 49 "multi_map.m"
+  MR_Box mercury__multi_map__param_4);
+
+#line 45 "multi_map.m"
+MR_bool MR_CALL 
+mercury__multi_map__is_empty_1_p_0(
+#line 45 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 45 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 45 "multi_map.m"
+  MR_Word mercury__multi_map__param_3);
+
+#line 41 "multi_map.m"
+void MR_CALL 
+mercury__multi_map__init_1_p_0(
+#line 41 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 41 "multi_map.m"
+  MR_Word mercury__multi_map__param_2,
+#line 41 "multi_map.m"
+  MR_Word * mercury__multi_map__param_3);
+
+#line 40 "multi_map.m"
+MR_Word MR_CALL 
+mercury__multi_map__init_0_f_0(
+#line 40 "multi_map.m"
+  MR_Word mercury__multi_map__param_1,
+#line 40 "multi_map.m"
+  MR_Word mercury__multi_map__param_2);
+
+void mercury__multi_map__init(void);
+void mercury__multi_map__init_type_tables(void);
+void mercury__multi_map__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_multi_map */
+
+/* :- end_interface multi_map. */

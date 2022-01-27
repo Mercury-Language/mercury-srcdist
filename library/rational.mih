@@ -1,0 +1,223 @@
+/*
+** Automatically generated from `rational.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module rational. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_rational
+#define MR_HEADER_GUARD_rational
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RATIONAL_DECL_GUARD
+#define RATIONAL_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "rational.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__rational__rational__type_ctor_info_rational_0;
+
+#line 93 "rational.m"
+void MR_CALL 
+mercury__rational____Compare____rational_0_0(
+#line 93 "rational.m"
+  MR_Word * mercury__rational__param_1,
+#line 93 "rational.m"
+  MR_Word mercury__rational__param_2,
+#line 93 "rational.m"
+  MR_Word mercury__rational__param_3);
+
+#line 93 "rational.m"
+MR_bool MR_CALL 
+mercury__rational____Unify____rational_0_0(
+#line 93 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 93 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 201 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__cmp_2_f_0(
+#line 201 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 201 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 163 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__rational_norm_2_f_0(
+#line 163 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 163 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 68 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__zero_0_f_0(void);
+
+#line 66 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__one_0_f_0(void);
+
+#line 64 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__reciprocal_1_f_0(
+#line 64 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 62 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__abs_1_f_0(
+#line 62 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 60 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__denom_1_f_0(
+#line 60 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 58 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__numer_1_f_0(
+#line 58 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 56 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_slash_2_f_0(
+#line 56 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 56 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 54 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_times_2_f_0(
+#line 54 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 54 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 52 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_minus_2_f_0(
+#line 52 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 52 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 50 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_plus_2_f_0(
+#line 50 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 50 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 48 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_minus_1_f_0(
+#line 48 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 46 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__f_plus_1_f_0(
+#line 46 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 42 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__from_integers_2_f_0(
+#line 42 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 42 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 40 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__from_integer_1_f_0(
+#line 40 "rational.m"
+  MR_Word mercury__rational__param_1);
+
+#line 38 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__rational_2_f_0(
+#line 38 "rational.m"
+  MR_Integer mercury__rational__param_1,
+#line 38 "rational.m"
+  MR_Integer mercury__rational__param_2);
+
+#line 36 "rational.m"
+MR_Word MR_CALL 
+mercury__rational__rational_1_f_0(
+#line 36 "rational.m"
+  MR_Integer mercury__rational__param_1);
+
+#line 34 "rational.m"
+MR_bool MR_CALL 
+mercury__rational__f_greater_or_equal_2_p_0(
+#line 34 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 34 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 32 "rational.m"
+MR_bool MR_CALL 
+mercury__rational__f_less_or_equal_2_p_0(
+#line 32 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 32 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 30 "rational.m"
+MR_bool MR_CALL 
+mercury__rational__f_greater_than_2_p_0(
+#line 30 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 30 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+#line 28 "rational.m"
+MR_bool MR_CALL 
+mercury__rational__f_less_than_2_p_0(
+#line 28 "rational.m"
+  MR_Word mercury__rational__param_1,
+#line 28 "rational.m"
+  MR_Word mercury__rational__param_2);
+
+void mercury__rational__init(void);
+void mercury__rational__init_type_tables(void);
+void mercury__rational__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_rational */
+
+/* :- end_interface rational. */

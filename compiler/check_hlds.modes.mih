@@ -1,0 +1,151 @@
+/*
+** Automatically generated from `modes.m'
+** by the Mercury compiler,
+** version 13.05.2, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.modes. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__modes
+#define MR_HEADER_GUARD_check_hlds__modes
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODES_DECL_GUARD
+#define CHECK_HLDS__MODES_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.modes.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_clause_form_0;
+
+#line 45 "check_hlds.modes.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_modes_safe_to_continue_0;
+
+#line 79 "modes.m"
+void MR_CALL 
+check_hlds__modes____Compare____modes_safe_to_continue_0_0(
+#line 79 "modes.m"
+  MR_Word * check_hlds__modes__param_1,
+#line 79 "modes.m"
+  MR_Word check_hlds__modes__param_2,
+#line 79 "modes.m"
+  MR_Word check_hlds__modes__param_3);
+
+#line 79 "modes.m"
+MR_bool MR_CALL 
+check_hlds__modes____Unify____modes_safe_to_continue_0_0(
+#line 79 "modes.m"
+  MR_Word check_hlds__modes__param_1,
+#line 79 "modes.m"
+  MR_Word check_hlds__modes__param_2);
+
+#line 125 "modes.m"
+void MR_CALL 
+check_hlds__modes__modecheck_lambda_final_insts_6_p_0(
+#line 125 "modes.m"
+  MR_Word check_hlds__modes__param_1,
+#line 125 "modes.m"
+  MR_Word check_hlds__modes__param_2,
+#line 125 "modes.m"
+  MR_Word check_hlds__modes__param_3,
+#line 125 "modes.m"
+  MR_Word * check_hlds__modes__param_4,
+#line 125 "modes.m"
+  MR_Word check_hlds__modes__param_5,
+#line 125 "modes.m"
+  MR_Word * check_hlds__modes__param_6);
+
+#line 118 "modes.m"
+void MR_CALL 
+check_hlds__modes__modecheck_proc_general_8_p_0(
+#line 118 "modes.m"
+  MR_Integer check_hlds__modes__param_1,
+#line 118 "modes.m"
+  MR_Word check_hlds__modes__param_2,
+#line 118 "modes.m"
+  MR_Word check_hlds__modes__param_3,
+#line 118 "modes.m"
+  MR_Word check_hlds__modes__param_4,
+#line 118 "modes.m"
+  MR_Word check_hlds__modes__param_5,
+#line 118 "modes.m"
+  MR_Word * check_hlds__modes__param_6,
+#line 118 "modes.m"
+  MR_Word * check_hlds__modes__param_7,
+#line 118 "modes.m"
+  MR_Word * check_hlds__modes__param_8);
+
+#line 109 "modes.m"
+void MR_CALL 
+check_hlds__modes__modecheck_proc_6_p_0(
+#line 109 "modes.m"
+  MR_Integer check_hlds__modes__param_1,
+#line 109 "modes.m"
+  MR_Word check_hlds__modes__param_2,
+#line 109 "modes.m"
+  MR_Word check_hlds__modes__param_3,
+#line 109 "modes.m"
+  MR_Word * check_hlds__modes__param_4,
+#line 109 "modes.m"
+  MR_Word * check_hlds__modes__param_5,
+#line 109 "modes.m"
+  MR_Word * check_hlds__modes__param_6);
+
+#line 101 "modes.m"
+void MR_CALL 
+check_hlds__modes__check_pred_modes_6_p_0(
+#line 101 "modes.m"
+  MR_Word check_hlds__modes__param_1,
+#line 101 "modes.m"
+  MR_Word check_hlds__modes__param_2,
+#line 101 "modes.m"
+  MR_Word check_hlds__modes__param_3,
+#line 101 "modes.m"
+  MR_Word * check_hlds__modes__param_4,
+#line 101 "modes.m"
+  MR_Word * check_hlds__modes__param_5,
+#line 101 "modes.m"
+  MR_Word * check_hlds__modes__param_6);
+
+#line 95 "modes.m"
+void MR_CALL 
+check_hlds__modes__modecheck_module_2_p_0(
+#line 95 "modes.m"
+  MR_Word check_hlds__modes__param_1,
+#line 95 "modes.m"
+  MR_Tuple * check_hlds__modes__param_2);
+
+void mercury__check_hlds__modes__init(void);
+void mercury__check_hlds__modes__init_type_tables(void);
+void mercury__check_hlds__modes__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.modes */
+
+/* :- end_interface check_hlds.modes. */

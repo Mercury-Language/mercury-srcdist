@@ -1,0 +1,12 @@
+:- module (make.module_target).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (backend_libs.compile_target_code).
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (make.dependencies).
+:- import_module (parse_tree.module_imports).
+:- type foreign_code_file
+	--->	foreign_code_file(((make.module_target).foreign_language) :: libs.globals.foreign_language, ((make.module_target).target_file) :: libs.file_util.file_name, ((make.module_target).object_file) :: libs.file_util.file_name).
