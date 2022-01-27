@@ -1,0 +1,10679 @@
+/*
+** Automatically generated from `declarative_tree.m'
+** by the Mercury compiler,
+** version rotd-2017-01-21
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.declarative_tree. */
+/* :- implementation. */
+
+/*
+INIT mercury__mdb__declarative_tree__init
+ENDINIT
+*/
+
+#include "mdb.declarative_tree.mih"
+
+
+#include "mdb.mih"
+#include "mdbcomp.mih"
+#include "mdb.browser_info.mih"
+#include "mdb.browser_term.mih"
+#include "mdb.declarative_analyser.mih"
+#include "mdb.declarative_debugger.mih"
+#include "mdb.declarative_edt.mih"
+#include "mdb.declarative_execution.mih"
+#include "mdb.declarative_oracle.mih"
+#include "mdb.declarative_user.mih"
+#include "mdb.help.mih"
+#include "mdb.io_action.mih"
+#include "mdb.parse.mih"
+#include "mdb.term_rep.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "exception.mih"
+#include "getopt.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+
+
+
+struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s {
+  MR_bool mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded;
+  MR_Word mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Args_6;
+  jmp_buf mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__commit_0;
+  MR_Word mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Arg_7;
+  MR_Box mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__conv0_Arg_7;
+};
+
+struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s {
+  MR_Word mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__Atom_2;
+  MR_bool mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded;
+  jmp_buf mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__commit_0;
+  MR_Word mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule1_4;
+  MR_Word mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule2_5;
+  MR_String mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_16_16;
+  MR_Word mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_18_18;
+  MR_Word mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_19_19;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdb__declarative_tree__pair__pti_pair_2__pseudo_2__pseudo_mdb__declarative_execution__pti_trace_node_1__pseudo_2;
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__list__ti_list_1builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__maybe__pti_maybe_1__pseudo_1;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_annotated_primitive_1_0[6];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_annotated_primitive_1_0;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_annotated_primitive_1_0[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_annotated_primitive_1[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_annotated_primitive_1[1];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_annotated_primitive_1[1];
+
+static const MR_EnumFunctorDesc mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_0;
+
+static const MR_EnumFunctorDesc mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_1;
+
+static const MR_EnumFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__enum_value_ordered_contour_type_0[2];
+
+static const MR_EnumFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__enum_name_ordered_contour_type_0[2];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_contour_type_0[2];
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_tree__pti_start_loc_1__pseudo_1;
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0;
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0;
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_dependency_chain_start_1_0[6];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_0;
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_1;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_0[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_1[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_dependency_chain_start_1[2];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_dependency_chain_start_1[2];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_dependency_chain_start_1[2];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_edt_node_1[1];
+
+static const MR_NotagFunctorDesc mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_edt_node_1;
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__mdbcomp__program_representation__ti_goal_rep_1unit__type_ctor_info_unit_0;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_goal_and_path_0_0[2];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_goal_and_path_0_0;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_goal_and_path_0_0[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_goal_and_path_0[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_goal_and_path_0[1];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_goal_and_path_0[1];
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__list__ti_list_1mdb__declarative_tree__type_ctor_info_goal_and_path_0;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_plain_call_info_0_0[4];
+
+static const MR_ConstString mdb__declarative_tree__mdb__declarative_tree__field_names_plain_call_info_0_0[4];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_plain_call_info_0_0;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_plain_call_info_0_0[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_plain_call_info_0[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_plain_call_info_0[1];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_plain_call_info_0[1];
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__list__pti_list_1__pseudo_mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_primitive_list_and_var_1_0[3];
+
+static const MR_ConstString mdb__declarative_tree__mdb__declarative_tree__field_names_primitive_list_and_var_1_0[3];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_primitive_list_and_var_1_0;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_primitive_list_and_var_1_0[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_primitive_list_and_var_1[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_primitive_list_and_var_1[1];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_primitive_list_and_var_1[1];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_1;
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_start_loc_1_1[2];
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_1;
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_0[1];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_1[1];
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_start_loc_1[2];
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_start_loc_1[2];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_start_loc_1[2];
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_wrap_1[1];
+
+static const MR_NotagFunctorDesc mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_wrap_1;
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____annotated_primitive_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____annotated_primitive_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____contour_type_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____contour_type_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____dependency_chain_start_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____dependency_chain_start_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____edt_node_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____edt_node_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_list_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_list_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____plain_call_info_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____plain_call_info_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____primitive_list_and_var_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____primitive_list_and_var_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____start_loc_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____start_loc_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____wrap_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____wrap_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4,
+  MR_Box * mdb__declarative_tree__wrapper_arg_5,
+  MR_Box * mdb__declarative_tree__wrapper_arg_6);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4,
+  MR_Box * mdb__declarative_tree__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4);
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_51_95_95_91_51_93_95_48_3_p_0(
+  MR_Word mdb__declarative_tree__V_9_9,
+  MR_Word mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_50_95_95_91_51_93_95_48_3_p_0(
+  MR_Integer mdb__declarative_tree__V_9_9,
+  MR_Integer mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_49_95_95_91_51_93_95_48_3_p_0(
+  MR_Integer mdb__declarative_tree__V_9_9,
+  MR_Integer mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_109_101_114_99_117_114_121_95_101_100_116_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_119_114_97_112_95_95_97_114_105_116_121_49_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_101_100_116_95_110_111_100_101_95_95_97_114_105_116_121_49_95_95_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_101_100_116_95_115_117_98_116_101_114_109_95_109_111_100_101_95_53_95_95_91_53_93_95_48_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_99_97_108_108_95_95_91_49_44_32_49_48_93_95_48_11_p_0(
+  MR_Word mdb__declarative_tree__BoundVars_12,
+  MR_String mdb__declarative_tree__File_13,
+  MR_Integer mdb__declarative_tree__Line_14,
+  MR_Word mdb__declarative_tree__Args_15,
+  MR_Word mdb__declarative_tree__MaybeNodeId_16,
+  MR_Word mdb__declarative_tree__Prims_17,
+  MR_Integer mdb__declarative_tree__Var_18,
+  MR_Word mdb__declarative_tree__TermPath_19,
+  MR_Word mdb__declarative_tree__ProcDefnRep_21,
+  MR_Word * mdb__declarative_tree__Origin_22);
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Word mdb__declarative_tree__TermPath0_3,
+  MR_Word mdb__declarative_tree__ProcDefnRep_5,
+  MR_Word * mdb__declarative_tree__Origin_6);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_108_101_97_100_105_110_103_95_101_120_105_116_95_102_97_105_108_95_101_118_101_110_116_115_95_95_91_49_93_95_48_2_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word * mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_99_104_97_105_110_95_115_116_97_114_116_95_95_91_53_93_95_48_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__Ref_7,
+  MR_Word mdb__declarative_tree__ArgPos_8,
+  MR_Word * mdb__declarative_tree__ChainStart_10);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1650__1_2_p_0(
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Integer mdb__declarative_tree__ToVar_43);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1662__1_2_p_0(
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Integer mdb__declarative_tree__ToVar_114);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__make_primitive_list__1184__1_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37,
+  MR_Word mdb__declarative_tree__AdjustedContour_21,
+  MR_Word mdb__declarative_tree__HeadVar__3_29);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____mdb__declarative_execution__trace_node_1_1(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_127,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static MR_Integer MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Integer * mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer * mdb__declarative_tree__HeadVar__4_4);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Integer * mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer * mdb__declarative_tree__HeadVar__4_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word mdb__declarative_tree__HeadVar__4_4,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5);
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word mdb__declarative_tree__HeadVar__4_4,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5,
+  MR_Word * mdb__declarative_tree__HeadVar__6_6);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3);
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____start_loc_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_15,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____start_loc_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_11,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____primitive_list_and_var_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_14,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____primitive_list_and_var_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_11,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____plain_call_info_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____plain_call_info_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_list_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_list_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____dependency_chain_start_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_35,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____dependency_chain_start_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_19,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____contour_type_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____contour_type_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__2_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____annotated_primitive_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_23,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____annotated_primitive_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_17,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2);
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_1(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_3(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_2(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_4(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_21,
+  MR_Box mdb__declarative_tree__Store_3,
+  MR_Box mdb__declarative_tree__CallId_4);
+
+static void MR_CALL 
+mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_32,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__Ref_5,
+  MR_Word * mdb__declarative_tree__Node_6);
+
+static void MR_CALL 
+mdb__declarative_tree__find_arg_pos_from_back_4_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Integer mdb__declarative_tree__Var_2,
+  MR_Integer mdb__declarative_tree__Pos_3,
+  MR_Word * mdb__declarative_tree__ArgPos_4);
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__find_arg_pos_2_f_0(
+  MR_Word mdb__declarative_tree__HeadVars_4,
+  MR_Integer mdb__declarative_tree__Var_5);
+
+static void MR_CALL 
+mdb__declarative_tree__is_traced_grade_1_p_0(
+  MR_Word * mdb__declarative_tree__TracingOn_1);
+
+static void MR_CALL 
+mdb__declarative_tree__add_paths_to_conjuncts_4_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__ParentPath_2,
+  MR_Integer mdb__declarative_tree__N_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__plain_call_is_special_case_4_p_0(
+  MR_String mdb__declarative_tree__Module_5,
+  MR_String mdb__declarative_tree__Name_6,
+  MR_Word mdb__declarative_tree__Args_7,
+  MR_Integer * mdb__declarative_tree__NewVar_8);
+
+static void MR_CALL 
+mdb__declarative_tree__find_variable_in_args_4_p_0(
+  MR_Word mdb__declarative_tree__Args_5,
+  MR_Integer mdb__declarative_tree__ArgNum_6,
+  MR_Integer mdb__declarative_tree__TotalArgs_7,
+  MR_Integer * mdb__declarative_tree__Var_8);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__atomic_goal_matches_atom_2_p_0(
+  MR_Word mdb__declarative_tree__AtomicGoalId_3,
+  MR_Word mdb__declarative_tree__Atom_4);
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__match_atomic_goal_to_contour_event_15_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145,
+  MR_Box mdb__declarative_tree__Store_17,
+  MR_String mdb__declarative_tree__File_18,
+  MR_Integer mdb__declarative_tree__Line_19,
+  MR_Word mdb__declarative_tree__BoundVars_20,
+  MR_Word mdb__declarative_tree__AtomicGoal_21,
+  MR_Word mdb__declarative_tree__AtomicGoalArgs_22,
+  MR_Word mdb__declarative_tree__Path_23,
+  MR_Word mdb__declarative_tree__GoalPaths_24,
+  MR_Word mdb__declarative_tree__Contour_25,
+  MR_Word mdb__declarative_tree__MaybeEnd_26,
+  MR_Integer mdb__declarative_tree__ArgNum_27,
+  MR_Integer mdb__declarative_tree__TotalArgs_28,
+  MR_Word mdb__declarative_tree__HeadVars_29,
+  MR_Word mdb__declarative_tree__AllTraced_30,
+  MR_Word mdb__declarative_tree__Primitives0_31);
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__match_goal_to_contour_event_11_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177,
+  MR_Box mdb__declarative_tree__Store_13,
+  MR_Word mdb__declarative_tree__Goal_14,
+  MR_Word mdb__declarative_tree__Path_15,
+  MR_Word mdb__declarative_tree__GoalPaths_16,
+  MR_Word mdb__declarative_tree__Contour_17,
+  MR_Word mdb__declarative_tree__MaybeEnd_18,
+  MR_Integer mdb__declarative_tree__ArgNum_19,
+  MR_Integer mdb__declarative_tree__TotalArgs_20,
+  MR_Word mdb__declarative_tree__HeadVars_21,
+  MR_Word mdb__declarative_tree__AllTraced_22,
+  MR_Word mdb__declarative_tree__Primitives0_23);
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__make_primitive_list_9_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37,
+  MR_Box mdb__declarative_tree__Store_11,
+  MR_Word mdb__declarative_tree__GoalPaths_12,
+  MR_Word mdb__declarative_tree__Contour_13,
+  MR_Word mdb__declarative_tree__MaybeEnd_14,
+  MR_Integer mdb__declarative_tree__ArgNum_15,
+  MR_Integer mdb__declarative_tree__TotalArgs_16,
+  MR_Word mdb__declarative_tree__HeadVars_17,
+  MR_Word mdb__declarative_tree__AllTraced_18,
+  MR_Word mdb__declarative_tree__Primitives0_19);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__get_exit_atom_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__FinalAtom_7);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2);
+
+static void MR_CALL 
+mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Word mdb__declarative_tree__ExitNode_5,
+  MR_Word * mdb__declarative_tree__ExitAtoms_6);
+
+static void MR_CALL 
+mdb__declarative_tree__materialize_contour_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_34,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Word mdb__declarative_tree__Node_8,
+  MR_Word mdb__declarative_tree__Nodes0_9,
+  MR_Word * mdb__declarative_tree__Nodes_10);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__step_left_to_call_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_25,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__NodeId_5,
+  MR_Word * mdb__declarative_tree__ParentCallNode_6);
+
+static void MR_CALL 
+mdb__declarative_tree__find_chain_start_outside_4_p_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_25,
+  MR_Word mdb__declarative_tree__CallNode_5,
+  MR_Word mdb__declarative_tree__ExitNode_6,
+  MR_Word mdb__declarative_tree__ArgPos_7,
+  MR_Word * mdb__declarative_tree__ChainStart_8);
+
+static void MR_CALL 
+mdb__declarative_tree__find_chain_start_inside_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__CallId_7,
+  MR_Word mdb__declarative_tree__CallNode_8,
+  MR_Word mdb__declarative_tree__ArgPos_9,
+  MR_Word * mdb__declarative_tree__ChainStart_10);
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__trace_dependency_special_case_8_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__trace_dependency_special_case_8_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_43,
+  MR_Box mdb__declarative_tree__Store_9,
+  MR_Word mdb__declarative_tree__ProcDefnRep_10,
+  MR_Box mdb__declarative_tree__Ref_11,
+  MR_Word mdb__declarative_tree__StartLoc_12,
+  MR_Integer mdb__declarative_tree__ArgNum_13,
+  MR_Word mdb__declarative_tree__TermPath_14,
+  MR_Box mdb__declarative_tree__NodeId_15,
+  MR_Word * mdb__declarative_tree__Origin_16);
+
+static void MR_CALL 
+mdb__declarative_tree__stratum_children_2_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Box mdb__declarative_tree__StartId_8,
+  MR_Word mdb__declarative_tree__Ns0_9,
+  MR_Word * mdb__declarative_tree__Ns_10);
+
+static void MR_CALL 
+mdb__declarative_tree__stratum_children_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_11,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Box mdb__declarative_tree__StartId_8,
+  MR_Word mdb__declarative_tree__Ns0_9,
+  MR_Word * mdb__declarative_tree__Ns_10);
+
+static void MR_CALL 
+mdb__declarative_tree__contour_children_2_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115,
+  MR_Word mdb__declarative_tree__ContourType_7,
+  MR_Box mdb__declarative_tree__Store_8,
+  MR_Box mdb__declarative_tree__NodeId_9,
+  MR_Box mdb__declarative_tree__StartId_10,
+  MR_Word mdb__declarative_tree__Ns0_11,
+  MR_Word * mdb__declarative_tree__Ns_12);
+
+static void MR_CALL 
+mdb__declarative_tree__contour_children_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_13,
+  MR_Word mdb__declarative_tree__ContourType_7,
+  MR_Box mdb__declarative_tree__Store_8,
+  MR_Box mdb__declarative_tree__NodeId_9,
+  MR_Box mdb__declarative_tree__StartId_10,
+  MR_Word mdb__declarative_tree__Ns0_11,
+  MR_Word * mdb__declarative_tree__Ns_12);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__not_at_depth_limit_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16,
+  MR_Box mdb__declarative_tree__Store_3,
+  MR_Box mdb__declarative_tree__Ref_4);
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_1(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_3(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_2(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_4(
+  void * mdb__declarative_tree__env_ptr_arg);
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0(
+  MR_Word mdb__declarative_tree__Atom_2);
+
+static void MR_CALL 
+mdb__declarative_tree__trace_weight_9_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_90,
+  MR_Word mdb__declarative_tree__Weighting_10,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer mdb__declarative_tree__PrevWeight_13,
+  MR_Integer * mdb__declarative_tree__Weight_14,
+  MR_Word mdb__declarative_tree__RecordDups_15,
+  MR_Integer mdb__declarative_tree__DupFactor_16,
+  MR_Integer mdb__declarative_tree__PrevDupWeight_17,
+  MR_Integer * mdb__declarative_tree__Excess_18);
+
+static void MR_CALL 
+mdb__declarative_tree__get_answers_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26,
+  MR_Box mdb__declarative_tree__Store_5,
+  MR_Box mdb__declarative_tree__RedoId_6,
+  MR_Word mdb__declarative_tree__DeclAtoms0_7,
+  MR_Word * mdb__declarative_tree__DeclAtoms_8);
+
+static void MR_CALL 
+mdb__declarative_tree__get_edt_node_initial_atom_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__Ref_5,
+  MR_Word * mdb__declarative_tree__Atom_6);
+
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_1[34][2];
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_2[3][1];
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_3[1][5];
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_4[4][3];
+
+static /* final */ const MR_Integer mdb__declarative_tree_scalar_common_5[1][3];
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_6[1][7];
+
+
+
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_1[34][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_case_rep_1)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_defn_rep_1)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_1[5]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.get_edt_call_node\'/3")),
+    ((MR_Box) ((MR_String) "not a return node"))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.trace_weight\'/9")),
+    ((MR_Box) ((MR_String) "not a final event"))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_2[1])),
+    ((MR_Box) ((MR_String) "solutions"))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.contour_children_2\'/6")),
+    ((MR_Box) ((MR_String) "unexpected start of contour"))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.stratum_children_2\'/5")),
+    ((MR_Box) ((MR_String) "unexpected start of contour"))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_String) "make_primitive_list")),
+    ((MR_Box) ((MR_String) "nonempty contour at end"))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_goal_to_contour_event\'/11")),
+    ((MR_Box) ((MR_String) "mismatch on disj"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_goal_to_contour_event\'/11")),
+    ((MR_Box) ((MR_String) "mismatch on if-then-else"))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_goal_to_contour_event\'/11")),
+    ((MR_Box) ((MR_String) "mismatch on negation"))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_goal_to_contour_event\'/11")),
+    ((MR_Box) ((MR_String) "mismatch on switch"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "argument number mismatch"))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "name mismatch on call"))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "goalpath mismatch on call"))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "premature contour end"))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "atomic goal doesn\'t match exit event\n"))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) ((MR_String) "function \140mdb.declarative_tree.match_atomic_goal_to_contour_event\'/15")),
+    ((MR_Box) ((MR_String) "atomic goal with no exit event when assuming all traced"))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.find_variable_in_args\'/4")),
+    ((MR_Box) ((MR_String) "arg not found"))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.find_arg_pos_from_back\'/4")),
+    ((MR_Box) ((MR_String) "empty list"))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.det_edt_return_node_from_id\'/3")),
+    ((MR_Box) ((MR_String) "not a return node"))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.find_chain_start\'/5")),
+    ((MR_Box) ((MR_String) "unbound exception term"))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.find_chain_start\'/5")),
+    ((MR_Box) ((MR_String) "unbound wrong answer term"))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.find_chain_start\'/5")),
+    ((MR_Box) ((MR_String) "unbound missing answer term"))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.traverse_primitives\'/6")),
+    ((MR_Box) ((MR_String) "bad event"))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.traverse_primitives\'/6")),
+    ((MR_Box) ((MR_String) "input argument not found"))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.traverse_primitives\'/6")),
+    ((MR_Box) ((MR_String) "bad deconstruct"))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) ((MR_String) "predicate \140mdb.declarative_tree.traverse_primitives\'/6")),
+    ((MR_Box) ((MR_String) "bad test"))
+  },
+};
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_2[3][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "solutions"))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "library"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_3[1][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_head_var_rep_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_4[4][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_3[0])),
+    ((MR_Box) (mdb__declarative_tree__trace_dependency_special_case_8_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "exception.m")),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_3[0])),
+    ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_3[0])),
+    ((MR_Box) (mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Integer mdb__declarative_tree_scalar_common_5[1][3] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 67631,
+    (MR_Integer) 67663
+  },
+};
+
+static /* final */ const MR_Box mdb__declarative_tree_scalar_common_6[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&mdb__declarative_tree_scalar_common_5[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_typeclass_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mdb__declarative_tree__pair__pti_pair_2__pseudo_2__pseudo_mdb__declarative_execution__pti_trace_node_1__pseudo_2)),
+    ((MR_Box) (&mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_final_decl_atom_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "mdb.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdb.declarative_tree.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_2 = {
+  &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_node_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mdb__declarative_tree__pair__pti_pair_2__pseudo_2__pseudo_mdb__declarative_execution__pti_trace_node_1__pseudo_2 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2,
+    (MR_PseudoTypeInfo) &mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_2
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__maybe__pti_maybe_1__pseudo_1 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_annotated_primitive_1_0[6] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_atomic_goal_rep_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__maybe__pti_maybe_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_annotated_primitive_1_0 = {
+  (MR_String) "primitive",
+  (MR_Integer) 6,
+  (MR_Integer) 32,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_annotated_primitive_1_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_annotated_primitive_1_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_annotated_primitive_1_0
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_annotated_primitive_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_annotated_primitive_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_annotated_primitive_1[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_annotated_primitive_1_0
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_annotated_primitive_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____annotated_primitive_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____annotated_primitive_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "annotated_primitive",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_annotated_primitive_1 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_annotated_primitive_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_annotated_primitive_1
+};
+
+static const MR_EnumFunctorDesc mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_0 = {
+  (MR_String) "normal",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_1 = {
+  (MR_String) "exception",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__enum_value_ordered_contour_type_0[2] = {
+  &mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_0,
+  &mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_1
+};
+
+static const MR_EnumFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__enum_name_ordered_contour_type_0[2] = {
+  &mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_1,
+  &mdb__declarative_tree__mdb__declarative_tree__enum_functor_desc_contour_type_0_0
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_contour_type_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_contour_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdb__declarative_tree____Unify____contour_type_0_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____contour_type_0_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "contour_type",
+  {     mdb__declarative_tree__mdb__declarative_tree__enum_name_ordered_contour_type_0 },
+  {     mdb__declarative_tree__mdb__declarative_tree__enum_value_ordered_contour_type_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_contour_type_0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_tree__pti_start_loc_1__pseudo_1 = {
+  &mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_start_loc_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_proc_defn_rep_1,
+  {
+    (MR_TypeInfo) &mercury__unit__unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mdb__declarative_tree__mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_dependency_chain_start_1_0[6] = {
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__mdb__declarative_tree__pti_start_loc_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__maybe__ti_maybe_1mdbcomp__program_representation__ti_proc_defn_rep_1unit__type_ctor_info_unit_0
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_0 = {
+  (MR_String) "chain_start",
+  (MR_Integer) 6,
+  (MR_Integer) 9,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_dependency_chain_start_1_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_1 = {
+  (MR_String) "require_explicit_subtree",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_1
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_1[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_0
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_dependency_chain_start_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_dependency_chain_start_1_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_dependency_chain_start_1[2] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_0,
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_dependency_chain_start_1_1
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_dependency_chain_start_1[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_dependency_chain_start_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____dependency_chain_start_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____dependency_chain_start_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "dependency_chain_start",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_dependency_chain_start_1 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_dependency_chain_start_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_dependency_chain_start_1
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_edt_node_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_edt_node_1 = {
+  (MR_String) "dynamic",
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_edt_node_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mdb__declarative_tree____Unify____edt_node_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____edt_node_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "edt_node",
+  {     &mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_edt_node_1 },
+  {     &mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_edt_node_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_edt_node_1
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__mdbcomp__program_representation__ti_goal_rep_1unit__type_ctor_info_unit_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mercury__unit__unit__type_ctor_info_unit_0
+  }
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_goal_and_path_0_0[2] = {
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__mdbcomp__program_representation__ti_goal_rep_1unit__type_ctor_info_unit_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_goal_and_path_0_0 = {
+  (MR_String) "goal_and_path",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_goal_and_path_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_goal_and_path_0_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_goal_and_path_0_0
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_goal_and_path_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_goal_and_path_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_goal_and_path_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_goal_and_path_0_0
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_goal_and_path_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____goal_and_path_0_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____goal_and_path_0_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "goal_and_path",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_goal_and_path_0 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_goal_and_path_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_goal_and_path_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mdb__declarative_tree__list__ti_list_1mdb__declarative_tree__type_ctor_info_goal_and_path_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_list_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mdb__declarative_tree____Unify____goal_and_path_list_0_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____goal_and_path_list_0_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "goal_and_path_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mdb__declarative_tree__list__ti_list_1mdb__declarative_tree__type_ctor_info_goal_and_path_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_plain_call_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString mdb__declarative_tree__mdb__declarative_tree__field_names_plain_call_info_0_0[4] = {
+  (MR_String) "file_name",
+  (MR_String) "line_number",
+  (MR_String) "flat_module_name",
+  (MR_String) "pred_name"
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_plain_call_info_0_0 = {
+  (MR_String) "plain_call_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_plain_call_info_0_0,
+  mdb__declarative_tree__mdb__declarative_tree__field_names_plain_call_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_plain_call_info_0_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_plain_call_info_0_0
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_plain_call_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_plain_call_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_plain_call_info_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_plain_call_info_0_0
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_plain_call_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_plain_call_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____plain_call_info_0_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____plain_call_info_0_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "plain_call_info",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_plain_call_info_0 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_plain_call_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_plain_call_info_0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1 = {
+  &mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__list__pti_list_1__pseudo_mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdb__declarative_tree__mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1
+  }
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_primitive_list_and_var_1_0[3] = {
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__list__pti_list_1__pseudo_mdb__declarative_tree__pti_annotated_primitive_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+};
+
+static const MR_ConstString mdb__declarative_tree__mdb__declarative_tree__field_names_primitive_list_and_var_1_0[3] = {
+  (MR_String) "primitives",
+  (MR_String) "var",
+  (MR_String) "closure"
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_primitive_list_and_var_1_0 = {
+  (MR_String) "primitive_list_and_var",
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_primitive_list_and_var_1_0,
+  mdb__declarative_tree__mdb__declarative_tree__field_names_primitive_list_and_var_1_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_primitive_list_and_var_1_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_primitive_list_and_var_1_0
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_primitive_list_and_var_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_primitive_list_and_var_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_primitive_list_and_var_1[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_primitive_list_and_var_1_0
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_primitive_list_and_var_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_primitive_list_and_var_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____primitive_list_and_var_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____primitive_list_and_var_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "primitive_list_and_var",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_primitive_list_and_var_1 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_primitive_list_and_var_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_primitive_list_and_var_1
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_0 = {
+  (MR_String) "cur_goal",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_1 = {
+  &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_node_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_PseudoTypeInfo mdb__declarative_tree__mdb__declarative_tree__field_types_start_loc_1_1[2] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  (MR_PseudoTypeInfo) &mdb__declarative_tree__mdb__declarative_execution__pti_trace_node_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_1 = {
+  (MR_String) "parent_goal",
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdb__declarative_tree__mdb__declarative_tree__field_types_start_loc_1_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_0[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_0
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_1[1] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_1
+};
+
+static const MR_DuPtagLayout mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_start_loc_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__declarative_tree__mdb__declarative_tree__du_stag_ordered_start_loc_1_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_start_loc_1[2] = {
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_0,
+  &mdb__declarative_tree__mdb__declarative_tree__du_functor_desc_start_loc_1_1
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_start_loc_1[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_start_loc_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__declarative_tree____Unify____start_loc_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____start_loc_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "start_loc",
+  {     mdb__declarative_tree__mdb__declarative_tree__du_name_ordered_start_loc_1 },
+  {     mdb__declarative_tree__mdb__declarative_tree__du_ptag_ordered_start_loc_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_start_loc_1
+};
+
+static const MR_Integer mdb__declarative_tree__mdb__declarative_tree__functor_number_map_wrap_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_wrap_1 = {
+  (MR_String) "wrap",
+  (MR_PseudoTypeInfo) (MR_Integer) 1,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_wrap_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mdb__declarative_tree____Unify____wrap_1_0_10001)),
+  ((MR_Box) (mdb__declarative_tree____Compare____wrap_1_0_10001)),
+  (MR_String) "mdb.declarative_tree",
+  (MR_String) "wrap",
+  {     &mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_wrap_1 },
+  {     &mdb__declarative_tree__mdb__declarative_tree__notag_functor_desc_wrap_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__declarative_tree__mdb__declarative_tree__functor_number_map_wrap_1
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_mdb__declarative_edt__mercury_edt__arity2__mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1__[20] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 15)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0_10001)),
+  ((MR_Box) (mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0_10001))
+};
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____annotated_primitive_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____annotated_primitive_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____annotated_primitive_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____annotated_primitive_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____contour_type_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____contour_type_0_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____contour_type_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____contour_type_0_0(&mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    *mdb__declarative_tree__wrapper_arg_1 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____dependency_chain_start_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____dependency_chain_start_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____dependency_chain_start_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____dependency_chain_start_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____edt_node_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____edt_node_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____edt_node_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____edt_node_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____goal_and_path_0_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____goal_and_path_0_0(&mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    *mdb__declarative_tree__wrapper_arg_1 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_list_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____goal_and_path_list_0_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_list_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____goal_and_path_list_0_0(&mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    *mdb__declarative_tree__wrapper_arg_1 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____plain_call_info_0_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____plain_call_info_0_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____plain_call_info_0_0_10001(
+  MR_Box * mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____plain_call_info_0_0(&mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    *mdb__declarative_tree__wrapper_arg_1 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____primitive_list_and_var_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____primitive_list_and_var_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____primitive_list_and_var_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____primitive_list_and_var_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____start_loc_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____start_loc_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____start_loc_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____start_loc_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____wrap_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____wrap_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____wrap_1_0_10001(
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Word mdb__declarative_tree__conv0_HeadVar__1_1;
+
+    {
+      mdb__declarative_tree____Compare____wrap_1_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_HeadVar__1_1, ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4));
+    }
+    *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__3_3;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv0_HeadVar__3_3);
+    }
+    *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__3_3));
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__3_3;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv0_HeadVar__3_3);
+    }
+    *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__3_3));
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__4_4;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3), &mdb__declarative_tree__conv0_HeadVar__4_4);
+    }
+    *mdb__declarative_tree__wrapper_arg_4 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__4_4));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__3_3;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv0_HeadVar__3_3);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__3_3));
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__3_3;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv0_HeadVar__3_3);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__3_3));
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4,
+  MR_Box * mdb__declarative_tree__wrapper_arg_5,
+  MR_Box * mdb__declarative_tree__wrapper_arg_6)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv1_HeadVar__5_5;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__6_6;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4), &mdb__declarative_tree__conv1_HeadVar__5_5, &mdb__declarative_tree__conv0_HeadVar__6_6);
+    }
+    *mdb__declarative_tree__wrapper_arg_5 = ((MR_Box) (mdb__declarative_tree__conv1_HeadVar__5_5));
+    *mdb__declarative_tree__wrapper_arg_6 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__6_6));
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3,
+  MR_Box mdb__declarative_tree__wrapper_arg_4,
+  MR_Box * mdb__declarative_tree__wrapper_arg_5)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__5_5;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3), ((MR_Word) mdb__declarative_tree__wrapper_arg_4), &mdb__declarative_tree__conv0_HeadVar__5_5);
+    }
+    *mdb__declarative_tree__wrapper_arg_5 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__5_5));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Integer mdb__declarative_tree__conv1_HeadVar__3_3;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__4_4;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv1_HeadVar__3_3, &mdb__declarative_tree__conv0_HeadVar__4_4);
+    }
+    *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv1_HeadVar__3_3));
+    *mdb__declarative_tree__wrapper_arg_4 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__4_4));
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_Box mdb__declarative_tree__closure;
+    MR_Integer mdb__declarative_tree__conv1_HeadVar__3_3;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__4_4;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv1_HeadVar__3_3, &mdb__declarative_tree__conv0_HeadVar__4_4);
+    }
+    *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv1_HeadVar__3_3));
+    *mdb__declarative_tree__wrapper_arg_4 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__4_4));
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box * mdb__declarative_tree__wrapper_arg_3,
+  MR_Box * mdb__declarative_tree__wrapper_arg_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv1_HeadVar__3_3;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__4_4;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), &mdb__declarative_tree__conv1_HeadVar__3_3, &mdb__declarative_tree__conv0_HeadVar__4_4);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        *mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv1_HeadVar__3_3));
+        *mdb__declarative_tree__wrapper_arg_4 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__4_4));
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_Box mdb__declarative_tree__wrapper_arg_3;
+    MR_Box mdb__declarative_tree__closure;
+    MR_Word mdb__declarative_tree__conv0_HeadVar__3_3;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__conv0_HeadVar__3_3 = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2));
+    }
+    mdb__declarative_tree__wrapper_arg_3 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__3_3));
+    return mdb__declarative_tree__wrapper_arg_3;
+  }
+}
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0_10001(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box mdb__declarative_tree__wrapper_arg_2,
+  MR_Box mdb__declarative_tree__wrapper_arg_3)
+{
+  {
+    MR_Box mdb__declarative_tree__wrapper_arg_4;
+    MR_Box mdb__declarative_tree__closure;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__4_4;
+
+    mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    {
+      mdb__declarative_tree__conv0_HeadVar__4_4 = mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 1))), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), ((MR_Word) mdb__declarative_tree__wrapper_arg_2), ((MR_Word) mdb__declarative_tree__wrapper_arg_3));
+    }
+    mdb__declarative_tree__wrapper_arg_4 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__4_4));
+    return mdb__declarative_tree__wrapper_arg_4;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_51_95_95_91_51_93_95_48_3_p_0(
+  MR_Word mdb__declarative_tree__V_9_9,
+  MR_Word mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[0], ((MR_Box) (mdb__declarative_tree__V_9_9)), ((MR_Box) (mdb__declarative_tree__V_10_10)));
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__V_7_7;
+
+        {
+          mdb__declarative_tree__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 0) = ((MR_Box) (mdb__declarative_tree__Loc_5));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 1) = ((MR_Box) (mdb__declarative_tree__Msg_6));
+        }
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (mdb__declarative_tree__V_7_7)));
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_50_95_95_91_51_93_95_48_3_p_0(
+  MR_Integer mdb__declarative_tree__V_9_9,
+  MR_Integer mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1662__1_2_p_0(mdb__declarative_tree__V_9_9, mdb__declarative_tree__V_10_10);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__V_7_7;
+
+        {
+          mdb__declarative_tree__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 0) = ((MR_Box) (mdb__declarative_tree__Loc_5));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 1) = ((MR_Box) (mdb__declarative_tree__Msg_6));
+        }
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (mdb__declarative_tree__V_7_7)));
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_49_95_95_91_51_93_95_48_3_p_0(
+  MR_Integer mdb__declarative_tree__V_9_9,
+  MR_Integer mdb__declarative_tree__V_10_10,
+  MR_String mdb__declarative_tree__Loc_5,
+  MR_String mdb__declarative_tree__Msg_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1650__1_2_p_0(mdb__declarative_tree__V_9_9, mdb__declarative_tree__V_10_10);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__V_7_7;
+
+        {
+          mdb__declarative_tree__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 0) = ((MR_Box) (mdb__declarative_tree__Loc_5));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_7_7, 1) = ((MR_Box) (mdb__declarative_tree__Msg_6));
+        }
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (mdb__declarative_tree__V_7_7)));
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_109_101_114_99_117_114_121_95_101_100_116_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_119_114_97_112_95_95_97_114_105_116_121_49_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_101_100_116_95_110_111_100_101_95_95_97_114_105_116_121_49_95_95_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_101_100_116_95_115_117_98_116_101_114_109_95_109_111_100_101_95_53_95_95_91_53_93_95_48_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_10 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_11 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__ChainStart_12;
+
+    {
+      mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_99_104_97_105_110_95_115_116_97_114_116_95_95_91_53_93_95_48_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6, mdb__declarative_tree__Store_10, mdb__declarative_tree__Ref_11, mdb__declarative_tree__HeadVar__3_3, &mdb__declarative_tree__ChainStart_12);
+    }
+    if ((mdb__declarative_tree__ChainStart_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 1;
+    else
+      {
+        MR_Word mdb__declarative_tree__StartLoc_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 1)));
+        MR_Integer mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 2)));
+        MR_Box mdb__declarative_tree__V_16_16 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 3));
+        MR_Word mdb__declarative_tree__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_12, (MR_Integer) 5)));
+        MR_Word mdb__declarative_tree__TypeInfo_20_20;
+
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_20_20);
+        }
+        if ((mdb__declarative_tree__StartLoc_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 1;
+        else
+          *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 0;
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_99_97_108_108_95_95_91_49_44_32_49_48_93_95_48_11_p_0(
+  MR_Word mdb__declarative_tree__BoundVars_12,
+  MR_String mdb__declarative_tree__File_13,
+  MR_Integer mdb__declarative_tree__Line_14,
+  MR_Word mdb__declarative_tree__Args_15,
+  MR_Word mdb__declarative_tree__MaybeNodeId_16,
+  MR_Word mdb__declarative_tree__Prims_17,
+  MR_Integer mdb__declarative_tree__Var_18,
+  MR_Word mdb__declarative_tree__TermPath_19,
+  MR_Word mdb__declarative_tree__ProcDefnRep_21,
+  MR_Word * mdb__declarative_tree__Origin_22)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var_18)), mdb__declarative_tree__BoundVars_12);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        MR_Word mdb__declarative_tree__Pos_23;
+        MR_Integer mdb__declarative_tree__V_32_32;
+
+        {
+          mdb__declarative_tree__V_32_32 = mercury__list__length_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, mdb__declarative_tree__Args_15);
+        }
+        {
+          mdb__declarative_tree__find_arg_pos_from_back_4_p_0(mdb__declarative_tree__Args_15, mdb__declarative_tree__Var_18, mdb__declarative_tree__V_32_32, &mdb__declarative_tree__Pos_23);
+        }
+        if ((mdb__declarative_tree__MaybeNodeId_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              *mdb__declarative_tree__Origin_22 = base;
+              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (mdb__declarative_tree__File_13));
+              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mdb__declarative_tree__Line_14));
+              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((MR_Integer) 2));
+            }
+          }
+        else
+          {
+            MR_Box mdb__declarative_tree__NodeId_24 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeNodeId_16, (MR_Integer) 0));
+            MR_Word mdb__declarative_tree__V_26_26 = ((MR_Word) mdb__declarative_tree__NodeId_24);
+
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              *mdb__declarative_tree__Origin_22 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__V_26_26));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__Pos_23));
+              MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdb__declarative_tree__TermPath_19));
+            }
+          }
+      }
+    else
+      {
+        mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0(mdb__declarative_tree__Prims_17, mdb__declarative_tree__Var_18, mdb__declarative_tree__TermPath_19, mdb__declarative_tree__ProcDefnRep_21, mdb__declarative_tree__Origin_22);
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1)
+{
+  {
+    MR_Box mdb__declarative_tree__wrapper_arg_2;
+    MR_Box mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__2_2;
+
+    {
+      mdb__declarative_tree__conv0_HeadVar__2_2 = mdbcomp__program_representation__head_var_to_var_1_f_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1));
+    }
+    mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__2_2));
+    return mdb__declarative_tree__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Word mdb__declarative_tree__TermPath0_3,
+  MR_Word mdb__declarative_tree__ProcDefnRep_5,
+  MR_Word * mdb__declarative_tree__Origin_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+
+        if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word mdb__declarative_tree__HeadVars_12;
+            MR_Word mdb__declarative_tree__ArgPos_13;
+            MR_Word mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_5, (MR_Integer) 0)));
+            MR_Word mdb__declarative_tree__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_5, (MR_Integer) 1)));
+            MR_Word mdb__declarative_tree__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_5, (MR_Integer) 2)));
+            MR_Word mdb__declarative_tree__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_5, (MR_Integer) 3)));
+            MR_Word mdb__declarative_tree__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_5, (MR_Integer) 4)));
+
+            {
+              mdb__declarative_tree__HeadVars_12 = mercury__list__map_2_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_head_var_rep_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &mdb__declarative_tree_scalar_common_4[3], mdb__declarative_tree__V_15_15);
+            }
+            {
+              mdb__declarative_tree__ArgPos_13 = mdb__declarative_tree__find_arg_pos_2_f_0(mdb__declarative_tree__HeadVars_12, mdb__declarative_tree__Var0_2);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *mdb__declarative_tree__Origin_6 = base;
+              MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mdb__declarative_tree__ArgPos_13));
+              MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (mdb__declarative_tree__TermPath0_3));
+            }
+          }
+        else
+          {
+            MR_Word mdb__declarative_tree__Prim_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mdb__declarative_tree__Prims_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String mdb__declarative_tree__File_23 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 0)));
+            MR_Integer mdb__declarative_tree__Line_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 1)));
+            MR_Word mdb__declarative_tree__BoundVars_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 2)));
+            MR_Word mdb__declarative_tree__AtomicGoal_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 3)));
+            MR_Word mdb__declarative_tree__MaybeNodeId_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 5)));
+            MR_Word mdb__declarative_tree___GoalPath_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Prim_16, (MR_Integer) 4)));
+
+            switch (MR_tag((MR_Word) mdb__declarative_tree__AtomicGoal_26)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word mdb__declarative_tree__FieldVars_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+                  MR_Integer mdb__declarative_tree___CellVar_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 0)));
+                  MR_String mdb__declarative_tree___Cons_30 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+
+                  {
+                    mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    if ((mdb__declarative_tree__TermPath0_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                      {
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                          *mdb__declarative_tree__Origin_6 = base;
+                          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (mdb__declarative_tree__File_23));
+                          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mdb__declarative_tree__Line_24));
+                          MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((MR_Integer) 3));
+                        }
+                      }
+                    else
+                      {
+                        MR_Integer mdb__declarative_tree__TermPathStep0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 0)));
+                        MR_Word mdb__declarative_tree__TermPath_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 1)));
+                        MR_Integer mdb__declarative_tree__Var_34;
+                        MR_Box mdb__declarative_tree__conv3_Var_34;
+
+                        {
+                          mercury__list__det_index1_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, mdb__declarative_tree__FieldVars_31, mdb__declarative_tree__TermPathStep0_32, &mdb__declarative_tree__conv3_Var_34);
+                        }
+                        mdb__declarative_tree__Var_34 = ((MR_Integer) mdb__declarative_tree__conv3_Var_34);
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                          MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__Var_34;
+                          MR_Word mdb__declarative_tree__TermPath0__tmp_copy_3 = mdb__declarative_tree__TermPath_33;
+
+                          mdb__declarative_tree__TermPath0_3 = mdb__declarative_tree__TermPath0__tmp_copy_3;
+                          mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                          mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                        }
+                        continue;
+                      }
+                  else
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                        mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer mdb__declarative_tree__CellVar_35 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 0)));
+                  MR_Word mdb__declarative_tree__FieldVars_85 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+                  MR_String mdb__declarative_tree___Cons_83 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+
+                  {
+                    mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      MR_Integer mdb__declarative_tree__Pos_36;
+
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__index1_of_first_occurrence_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, mdb__declarative_tree__FieldVars_85, ((MR_Box) (mdb__declarative_tree__Var0_2)), &mdb__declarative_tree__Pos_36);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          MR_Word mdb__declarative_tree__V_78_78;
+
+                          {
+                            mdb__declarative_tree__V_78_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_78_78, 0) = ((MR_Box) (mdb__declarative_tree__Pos_36));
+                            MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_78_78, 1) = ((MR_Box) (mdb__declarative_tree__TermPath0_3));
+                          }
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                            MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__CellVar_35;
+                            MR_Word mdb__declarative_tree__TermPath0__tmp_copy_3 = mdb__declarative_tree__V_78_78;
+
+                            mdb__declarative_tree__TermPath0_3 = mdb__declarative_tree__TermPath0__tmp_copy_3;
+                            mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          {
+                            mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[32])));
+                            return;
+                          }
+                        }
+                    }
+                  else
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                        mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word mdb__declarative_tree__MaybeFieldVars_39 = ((MR_Word) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+                  MR_Integer mdb__declarative_tree__V_37_37 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 0)));
+                  MR_String mdb__declarative_tree__V_38_38 = ((MR_String) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                  MR_Integer mdb__declarative_tree__TermPathStep0_89;
+                  MR_Word mdb__declarative_tree__TermPath_90;
+
+                  {
+                    mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__TermPath0_3)) == (MR_mktag((MR_Integer) 1)));
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__TermPathStep0_89 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 0)));
+                          mdb__declarative_tree__TermPath_90 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 1)));
+                        }
+                    }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      MR_Word mdb__declarative_tree__MaybeVar_40;
+                      MR_Box mdb__declarative_tree__conv2_MaybeVar_40;
+
+                      {
+                        mercury__list__det_index1_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[3], mdb__declarative_tree__MaybeFieldVars_39, mdb__declarative_tree__TermPathStep0_89, &mdb__declarative_tree__conv2_MaybeVar_40);
+                      }
+                      mdb__declarative_tree__MaybeVar_40 = ((MR_Word) mdb__declarative_tree__conv2_MaybeVar_40);
+                      if ((mdb__declarative_tree__MaybeVar_40 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          MR_Integer mdb__declarative_tree__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeVar_40, (MR_Integer) 0)));
+
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                            MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__Var_86;
+                            MR_Word mdb__declarative_tree__TermPath0__tmp_copy_3 = mdb__declarative_tree__TermPath_90;
+
+                            mdb__declarative_tree__TermPath0_3 = mdb__declarative_tree__TermPath0__tmp_copy_3;
+                            mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                  else
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                        mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mdb__declarative_tree__MaybeFieldVars_112 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 3)));
+                      MR_Integer mdb__declarative_tree__V_41_41 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                      MR_String mdb__declarative_tree__V_42_42 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        if ((mdb__declarative_tree__TermPath0_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                          {
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                              *mdb__declarative_tree__Origin_6 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (mdb__declarative_tree__File_23));
+                              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mdb__declarative_tree__Line_24));
+                              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((MR_Integer) 3));
+                            }
+                          }
+                        else
+                          {
+                            MR_Integer mdb__declarative_tree__TermPathStep0_97 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 0)));
+                            MR_Word mdb__declarative_tree__TermPath_98 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__TermPath0_3, (MR_Integer) 1)));
+                            MR_Word mdb__declarative_tree__MaybeVar_100;
+                            MR_Box mdb__declarative_tree__conv1_MaybeVar_100;
+
+                            {
+                              mercury__list__det_index1_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[3], mdb__declarative_tree__MaybeFieldVars_112, mdb__declarative_tree__TermPathStep0_97, &mdb__declarative_tree__conv1_MaybeVar_100);
+                            }
+                            mdb__declarative_tree__MaybeVar_100 = ((MR_Word) mdb__declarative_tree__conv1_MaybeVar_100);
+                            if ((mdb__declarative_tree__MaybeVar_100 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                              {
+                                {
+                                  mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[31])));
+                                  return;
+                                }
+                              }
+                            else
+                              {
+                                MR_Integer mdb__declarative_tree__Var_95 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeVar_100, (MR_Integer) 0)));
+
+                                /* direct tailcall eliminated */
+                                {
+                                  MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                                  MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__Var_95;
+                                  MR_Word mdb__declarative_tree__TermPath0__tmp_copy_3 = mdb__declarative_tree__TermPath_98;
+
+                                  mdb__declarative_tree__TermPath0_3 = mdb__declarative_tree__TermPath0__tmp_copy_3;
+                                  mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                                  mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                                }
+                                continue;
+                              }
+                          }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mdb__declarative_tree__ToVar_43 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                      MR_Integer mdb__declarative_tree__FromVar_44 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_49_95_95_91_51_93_95_48_3_p_0(mdb__declarative_tree__Var0_2, mdb__declarative_tree__ToVar_43, (MR_String) "traverse_primitives", (MR_String) "bad assign");
+                          }
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                            MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__FromVar_44;
+
+                            mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_Integer mdb__declarative_tree__ToVar_114 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                      MR_Integer mdb__declarative_tree__FromVar_115 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_50_95_95_91_51_93_95_48_3_p_0(mdb__declarative_tree__Var0_2, mdb__declarative_tree__ToVar_114, (MR_String) "predicate \140mdb.declarative_tree.traverse_primitives\'/6", (MR_String) "bad unsafe_cast");
+                          }
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                            MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__FromVar_115;
+
+                            mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[33])));
+                            return;
+                          }
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 4:
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            MR_Word base;
+                            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                            *mdb__declarative_tree__Origin_6 = base;
+                            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (mdb__declarative_tree__File_23));
+                            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mdb__declarative_tree__Line_24));
+                            MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 5:
+                    {
+                      MR_Word mdb__declarative_tree__Args_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+                      MR_Integer mdb__declarative_tree__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+
+                      {
+                        mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_99_97_108_108_95_95_91_49_44_32_49_48_93_95_48_11_p_0(mdb__declarative_tree__BoundVars_25, mdb__declarative_tree__File_23, mdb__declarative_tree__Line_24, mdb__declarative_tree__Args_49, mdb__declarative_tree__MaybeNodeId_28, mdb__declarative_tree__Prims_17, mdb__declarative_tree__Var0_2, mdb__declarative_tree__TermPath0_3, mdb__declarative_tree__ProcDefnRep_5, mdb__declarative_tree__Origin_6);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 6:
+                    {
+                      MR_Word mdb__declarative_tree__Args_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 3)));
+                      MR_Integer mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                      MR_Integer mdb__declarative_tree__V_51_51 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+
+                      {
+                        mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_99_97_108_108_95_95_91_49_44_32_49_48_93_95_48_11_p_0(mdb__declarative_tree__BoundVars_25, mdb__declarative_tree__File_23, mdb__declarative_tree__Line_24, mdb__declarative_tree__Args_116, mdb__declarative_tree__MaybeNodeId_28, mdb__declarative_tree__Prims_17, mdb__declarative_tree__Var0_2, mdb__declarative_tree__TermPath0_3, mdb__declarative_tree__ProcDefnRep_5, mdb__declarative_tree__Origin_6);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 7:
+                    {
+                      MR_String mdb__declarative_tree__Module_52 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 1)));
+                      MR_String mdb__declarative_tree__Name_53 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 2)));
+                      MR_Word mdb__declarative_tree__Args_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_26, (MR_Integer) 3)));
+                      MR_Integer mdb__declarative_tree__NewVar_54;
+
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__succeeded = mdb__declarative_tree__plain_call_is_special_case_4_p_0(mdb__declarative_tree__Module_52, mdb__declarative_tree__Name_53, mdb__declarative_tree__Args_117, &mdb__declarative_tree__NewVar_54);
+                        }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+                            MR_Integer mdb__declarative_tree__Var0__tmp_copy_2 = mdb__declarative_tree__NewVar_54;
+
+                            mdb__declarative_tree__Var0_2 = mdb__declarative_tree__Var0__tmp_copy_2;
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_99_97_108_108_95_95_91_49_44_32_49_48_93_95_48_11_p_0(mdb__declarative_tree__BoundVars_25, mdb__declarative_tree__File_23, mdb__declarative_tree__Line_24, mdb__declarative_tree__Args_117, mdb__declarative_tree__MaybeNodeId_28, mdb__declarative_tree__Prims_17, mdb__declarative_tree__Var0_2, mdb__declarative_tree__TermPath0_3, mdb__declarative_tree__ProcDefnRep_5, mdb__declarative_tree__Origin_6);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 8:
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            MR_Word base;
+                            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                            *mdb__declarative_tree__Origin_6 = base;
+                            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (mdb__declarative_tree__File_23));
+                            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mdb__declarative_tree__Line_24));
+                            MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) ((MR_Integer) 1));
+                          }
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 9:
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (mdb__declarative_tree__Var0_2)), mdb__declarative_tree__BoundVars_25);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[30])));
+                            return;
+                          }
+                        }
+                      else
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__Prims_17;
+
+                            mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                }
+                break;
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_108_101_97_100_105_110_103_95_101_120_105_116_95_102_97_105_108_95_101_118_101_110_116_115_95_95_91_49_93_95_48_2_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word * mdb__declarative_tree__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+
+        if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word mdb__declarative_tree__ContourHeadNode_6;
+            MR_Word mdb__declarative_tree__ContourTail_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mdb__declarative_tree__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Box mdb__declarative_tree__V_5_5 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_22_22, (MR_Integer) 0));
+
+            mdb__declarative_tree__ContourHeadNode_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_22_22, (MR_Integer) 1)));
+            if (((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_6)) == (MR_mktag((MR_Integer) 1))))
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            else
+            if (((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_6, (MR_Integer) 0)))) == (MR_Integer) 0))))
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            else
+              mdb__declarative_tree__succeeded = MR_FALSE;
+            if (mdb__declarative_tree__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__ContourTail_7;
+
+                  mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+            else
+              *mdb__declarative_tree__HeadVar__2_2 = mdb__declarative_tree__HeadVar__1_1;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_99_104_97_105_110_95_115_116_97_114_116_95_95_91_53_93_95_48_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__Ref_7,
+  MR_Word mdb__declarative_tree__ArgPos_8,
+  MR_Word * mdb__declarative_tree__ChainStart_10)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Node_11;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_11);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_11)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_51_51;
+          MR_Word mdb__declarative_tree__TypeInfo_52_52;
+          MR_Box mdb__declarative_tree__CallId_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+          MR_Word mdb__declarative_tree__ExitAtom_20;
+          MR_Word mdb__declarative_tree__CallNode_21;
+          MR_Word mdb__declarative_tree__CallAtom_22;
+          MR_Box mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_14_14 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_17_17 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 7)));
+          MR_Word mdb__declarative_tree__Args_73;
+          MR_Word mdb__declarative_tree__ArgInfo_74;
+          MR_Word mdb__declarative_tree__MaybeArg_77;
+          MR_Box mdb__declarative_tree__V_72_72;
+          MR_Word mdb__declarative_tree__V_75_75;
+          MR_Integer mdb__declarative_tree__V_76_76;
+          MR_Word mdb__declarative_tree__V_78_78;
+
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_51_51);
+          }
+          {
+            mdb__declarative_tree__ExitAtom_20 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_51_51, mdb__declarative_tree__Node_11);
+          }
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_13, &mdb__declarative_tree__CallNode_21);
+          }
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_52_52);
+          }
+          {
+            mdb__declarative_tree__CallAtom_22 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_52_52, mdb__declarative_tree__CallNode_21);
+          }
+          mdb__declarative_tree__V_72_72 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_22, (MR_Integer) 0)));
+          mdb__declarative_tree__Args_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_22, (MR_Integer) 1)));
+          {
+            mdb__declarative_execution__select_arg_at_pos_3_p_0(mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__Args_73, &mdb__declarative_tree__ArgInfo_74);
+          }
+          mdb__declarative_tree__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_74, (MR_Integer) 0)));
+          mdb__declarative_tree__V_76_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_74, (MR_Integer) 1)));
+          mdb__declarative_tree__MaybeArg_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_74, (MR_Integer) 2)));
+          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeArg_77)) == (MR_mktag((MR_Integer) 1)));
+          if (mdb__declarative_tree__succeeded)
+            {
+              mdb__declarative_tree__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeArg_77, (MR_Integer) 0)));
+              {
+                mdb__declarative_tree__find_chain_start_inside_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_13, mdb__declarative_tree__CallNode_21, mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__ChainStart_10);
+              }
+            }
+          else
+            {
+              MR_Word mdb__declarative_tree__Args_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_20, (MR_Integer) 1)));
+              MR_Word mdb__declarative_tree__ArgInfo_83;
+              MR_Word mdb__declarative_tree__MaybeArg_86;
+              MR_Box mdb__declarative_tree__V_81_81 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_20, (MR_Integer) 0)));
+              MR_Word mdb__declarative_tree__V_84_84;
+              MR_Integer mdb__declarative_tree__V_85_85;
+              MR_Word mdb__declarative_tree__V_87_87;
+
+              {
+                mdb__declarative_execution__select_arg_at_pos_3_p_0(mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__Args_82, &mdb__declarative_tree__ArgInfo_83);
+              }
+              mdb__declarative_tree__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_83, (MR_Integer) 0)));
+              mdb__declarative_tree__V_85_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_83, (MR_Integer) 1)));
+              mdb__declarative_tree__MaybeArg_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_83, (MR_Integer) 2)));
+              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeArg_86)) == (MR_mktag((MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeArg_86, (MR_Integer) 0)));
+                  {
+                    mdb__declarative_tree__succeeded = mdb__declarative_tree__not_at_depth_limit_2_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_13);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      MR_Word mdb__declarative_tree__TypeInfo_53_53;
+
+                      {
+                        mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_53_53);
+                      }
+                      {
+                        mdb__declarative_tree__find_chain_start_outside_4_p_0(mdb__declarative_tree__TypeInfo_53_53, mdb__declarative_tree__CallNode_21, mdb__declarative_tree__Node_11, mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__ChainStart_10);
+                      }
+                    }
+                  else
+                    *mdb__declarative_tree__ChainStart_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+              else
+                {
+                  {
+                    mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[28])));
+                    return;
+                  }
+                }
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_56_56;
+              MR_Box mdb__declarative_tree__CallId_43 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_44;
+              MR_Word mdb__declarative_tree__CallAtom_45;
+              MR_Box mdb__declarative_tree__V_23_23 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_26_26 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+              MR_Word mdb__declarative_tree__Args_91;
+              MR_Word mdb__declarative_tree__ArgInfo_92;
+              MR_Word mdb__declarative_tree__MaybeArg_95;
+              MR_Box mdb__declarative_tree__V_90_90;
+              MR_Word mdb__declarative_tree__V_93_93;
+              MR_Integer mdb__declarative_tree__V_94_94;
+              MR_Word mdb__declarative_tree__V_96_96;
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_43, &mdb__declarative_tree__CallNode_44);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_56_56);
+              }
+              {
+                mdb__declarative_tree__CallAtom_45 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_56_56, mdb__declarative_tree__CallNode_44);
+              }
+              mdb__declarative_tree__V_90_90 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_45, (MR_Integer) 0)));
+              mdb__declarative_tree__Args_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_45, (MR_Integer) 1)));
+              {
+                mdb__declarative_execution__select_arg_at_pos_3_p_0(mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__Args_91, &mdb__declarative_tree__ArgInfo_92);
+              }
+              mdb__declarative_tree__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_92, (MR_Integer) 0)));
+              mdb__declarative_tree__V_94_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_92, (MR_Integer) 1)));
+              mdb__declarative_tree__MaybeArg_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_92, (MR_Integer) 2)));
+              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeArg_95)) == (MR_mktag((MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeArg_95, (MR_Integer) 0)));
+                  {
+                    mdb__declarative_tree__find_chain_start_inside_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_43, mdb__declarative_tree__CallNode_44, mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__ChainStart_10);
+                  }
+                }
+              else
+                {
+                  {
+                    mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[29])));
+                    return;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_59_59;
+              MR_Box mdb__declarative_tree__CallId_46 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_47;
+              MR_Word mdb__declarative_tree__CallAtom_48;
+              MR_Box mdb__declarative_tree__V_28_28 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_29_29 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_32_32 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 7)));
+              MR_Word mdb__declarative_tree__Args_64;
+              MR_Word mdb__declarative_tree__ArgInfo_65;
+              MR_Word mdb__declarative_tree__MaybeArg_68;
+              MR_Box mdb__declarative_tree__V_63_63;
+              MR_Word mdb__declarative_tree__V_66_66;
+              MR_Integer mdb__declarative_tree__V_67_67;
+              MR_Word mdb__declarative_tree__V_69_69;
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_46, &mdb__declarative_tree__CallNode_47);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_59_59);
+              }
+              {
+                mdb__declarative_tree__CallAtom_48 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_59_59, mdb__declarative_tree__CallNode_47);
+              }
+              mdb__declarative_tree__V_63_63 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_48, (MR_Integer) 0)));
+              mdb__declarative_tree__Args_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_48, (MR_Integer) 1)));
+              {
+                mdb__declarative_execution__select_arg_at_pos_3_p_0(mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__Args_64, &mdb__declarative_tree__ArgInfo_65);
+              }
+              mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_65, (MR_Integer) 0)));
+              mdb__declarative_tree__V_67_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_65, (MR_Integer) 1)));
+              mdb__declarative_tree__MaybeArg_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_65, (MR_Integer) 2)));
+              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeArg_68)) == (MR_mktag((MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeArg_68, (MR_Integer) 0)));
+                  {
+                    mdb__declarative_tree__find_chain_start_inside_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_49, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_46, mdb__declarative_tree__CallNode_47, mdb__declarative_tree__ArgPos_8, mdb__declarative_tree__ChainStart_10);
+                  }
+                }
+              else
+                {
+                  {
+                    mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[27])));
+                    return;
+                  }
+                }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_99_101_95_97_116_111_109_95_115_117_98_116_101_114_109_95_105_115_95_103_114_111_117_110_100_95_95_91_51_93_95_48_3_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__ArgPos_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Args_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word mdb__declarative_tree__ArgInfo_8;
+    MR_Word mdb__declarative_tree__MaybeArg_11;
+    MR_Box mdb__declarative_tree__V_4_4 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word mdb__declarative_tree__V_9_9;
+    MR_Integer mdb__declarative_tree__V_10_10;
+    MR_Word mdb__declarative_tree__V_12_12;
+
+    {
+      mdb__declarative_execution__select_arg_at_pos_3_p_0(mdb__declarative_tree__ArgPos_6, mdb__declarative_tree__Args_5, &mdb__declarative_tree__ArgInfo_8);
+    }
+    mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_8, (MR_Integer) 0)));
+    mdb__declarative_tree__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_8, (MR_Integer) 1)));
+    mdb__declarative_tree__MaybeArg_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArgInfo_8, (MR_Integer) 2)));
+    mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeArg_11)) == (MR_mktag((MR_Integer) 1)));
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeArg_11, (MR_Integer) 0)));
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1650__1_2_p_0(
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Integer mdb__declarative_tree__ToVar_43)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = (mdb__declarative_tree__Var0_2 == mdb__declarative_tree__ToVar_43);
+
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__traverse_primitives__1662__1_2_p_0(
+  MR_Integer mdb__declarative_tree__Var0_2,
+  MR_Integer mdb__declarative_tree__ToVar_114)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = (mdb__declarative_tree__Var0_2 == mdb__declarative_tree__ToVar_114);
+
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__IntroducedFrom__pred__make_primitive_list__1184__1_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37,
+  MR_Word mdb__declarative_tree__AdjustedContour_21,
+  MR_Word mdb__declarative_tree__HeadVar__3_29)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_43_43;
+    MR_Word mdb__declarative_tree__TypeInfo_44_44;
+    MR_Word mdb__declarative_tree__TypeInfo_46_46;
+    MR_Word mdb__declarative_tree__TypeInfo_48_48;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_43_43);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_44_44);
+    }
+    {
+      mdb__declarative_tree__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_46_46, 0) = ((MR_Box) (&mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_node_1));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_46_46, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_44_44));
+    }
+    {
+      mdb__declarative_tree__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_48_48, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_48_48, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_43_43));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_48_48, 2) = ((MR_Box) (mdb__declarative_tree__TypeInfo_46_46));
+    }
+    {
+      mdb__declarative_tree__succeeded = mercury__list____Unify____list_1_0(mdb__declarative_tree__TypeInfo_48_48, mdb__declarative_tree__AdjustedContour_21, mdb__declarative_tree__HeadVar__3_29);
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____mdb__declarative_execution__trace_node_1_1(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_127,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__V_13_13 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0));
+    MR_Box mdb__declarative_tree__V_14_14 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1));
+    MR_Word mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+    MR_Integer mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3)));
+    MR_Integer mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 4)));
+    MR_Word mdb__declarative_tree__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 5)));
+    MR_Word mdb__declarative_tree__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 6)));
+    MR_Box mdb__declarative_tree__V_20_20 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 7)));
+    MR_Integer mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 8)));
+    MR_Integer mdb__declarative_tree__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 9)));
+    MR_Integer mdb__declarative_tree__V_128_128;
+
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)) = mdb__declarative_tree__V_13_13;
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)) = mdb__declarative_tree__V_14_14;
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 2)) = ((MR_Box) (mdb__declarative_tree__V_15_15));
+    mdb__declarative_tree__V_128_128 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 3)));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 4)) = ((MR_Box) (mdb__declarative_tree__V_17_17));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 5)) = ((MR_Box) (mdb__declarative_tree__V_18_18));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 6)) = ((MR_Box) (mdb__declarative_tree__V_19_19));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 7)) = ((MR_Box) (mdb__declarative_tree__V_20_20));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 8)) = ((MR_Box) (mdb__declarative_tree__V_21_21));
+    (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 9)) = ((MR_Box) (mdb__declarative_tree__V_22_22));
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_16_16 == mdb__declarative_tree__V_128_128);
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_Integer MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_3_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__HeadVar__4_4;
+    MR_Word mdb__declarative_tree__TypeInfo_14_14;
+    MR_Box mdb__declarative_tree__Store_8 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_9 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__CallId_10;
+    MR_Word mdb__declarative_tree__Call_11;
+    MR_Word mdb__declarative_tree__Atom_12;
+    MR_Box mdb__declarative_tree__CallId0_20;
+    MR_Word mdb__declarative_tree__Node0_18;
+    MR_bool MR_CALL (* mdb__declarative_tree__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box mdb__declarative_tree__conv1_Node0_18;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__func_0(((MR_Box) mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5), mdb__declarative_tree__Store_8, mdb__declarative_tree__Ref_9, &mdb__declarative_tree__conv1_Node0_18);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__Node0_18 = ((MR_Word) mdb__declarative_tree__conv1_Node0_18);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    if (mdb__declarative_tree__succeeded)
+      switch (MR_tag((MR_Word) mdb__declarative_tree__Node0_18)) {
+        default:
+          mdb__declarative_tree__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 0));
+            MR_Box mdb__declarative_tree__V_21_21;
+            MR_Word mdb__declarative_tree__V_22_22;
+            MR_Integer mdb__declarative_tree__V_23_23;
+            MR_Box mdb__declarative_tree__V_24_24;
+            MR_Integer mdb__declarative_tree__V_25_25;
+            MR_Integer mdb__declarative_tree__V_26_26;
+
+            mdb__declarative_tree__CallId0_20 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 1));
+            mdb__declarative_tree__V_21_21 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 2));
+            mdb__declarative_tree__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 3)));
+            mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 4)));
+            mdb__declarative_tree__V_24_24 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 5)));
+            mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 6)));
+            mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_18, (MR_Integer) 7)));
+            mdb__declarative_tree__succeeded = MR_TRUE;
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 0)))) {
+            default:
+              mdb__declarative_tree__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 0:
+              {
+                MR_Box mdb__declarative_tree__V_27_27 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_28_28;
+                MR_Integer mdb__declarative_tree__V_29_29;
+                MR_Box mdb__declarative_tree__V_30_30;
+                MR_Integer mdb__declarative_tree__V_31_31;
+
+                mdb__declarative_tree__CallId0_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 2));
+                mdb__declarative_tree__V_28_28 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 3));
+                mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 4)));
+                mdb__declarative_tree__V_30_30 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 5)));
+                mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 6)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Box mdb__declarative_tree__V_32_32 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_33_33;
+                MR_Word mdb__declarative_tree__V_34_34;
+                MR_Integer mdb__declarative_tree__V_35_35;
+                MR_Box mdb__declarative_tree__V_36_36;
+                MR_Integer mdb__declarative_tree__V_37_37;
+
+                mdb__declarative_tree__CallId0_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 2));
+                mdb__declarative_tree__V_33_33 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 3));
+                mdb__declarative_tree__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 4)));
+                mdb__declarative_tree__V_35_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 5)));
+                mdb__declarative_tree__V_36_36 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 6)));
+                mdb__declarative_tree__V_37_37 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_18, (MR_Integer) 7)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+          }
+          break;
+      }
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__CallId_10 = mdb__declarative_tree__CallId0_20;
+    else
+      {
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[8])));
+        }
+      }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_8, mdb__declarative_tree__CallId_10, &mdb__declarative_tree__Call_11);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_14_14);
+    }
+    {
+      mdb__declarative_tree__Atom_12 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_14_14, mdb__declarative_tree__Call_11);
+    }
+    {
+      mdb__declarative_execution__user_arg_num_3_p_0(mdb__declarative_tree__HeadVar__3_3, mdb__declarative_tree__Atom_12, &mdb__declarative_tree__HeadVar__4_4);
+    }
+    return mdb__declarative_tree__HeadVar__4_4;
+  }
+}
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_proc_label_2_2_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__HeadVar__3_3;
+    MR_Box mdb__declarative_tree__Store_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_8;
+    MR_Box mdb__declarative_tree__Label_13;
+    MR_Box mdb__declarative_tree__ProcLayout_28;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_8);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_15_15 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_16_16 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          MR_Box mdb__declarative_tree__V_17_17 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          MR_Integer mdb__declarative_tree__V_20_20;
+          MR_Integer mdb__declarative_tree__V_21_21;
+
+          mdb__declarative_tree__Label_13 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_14_14;
+
+              mdb__declarative_tree__Label_13 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_22_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_23_23 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_27_27;
+
+              mdb__declarative_tree__Label_13 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_tree__ProcLayout_28 = mdbcomp__rtti_access__get_proc_layout_from_label_layout_1_f_0(mdb__declarative_tree__Label_13);
+    }
+    {
+      mdb__declarative_tree__HeadVar__3_3 = mdbcomp__rtti_access__get_proc_label_from_layout_1_f_0(mdb__declarative_tree__ProcLayout_28);
+    }
+    return mdb__declarative_tree__HeadVar__3_3;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_context_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_8 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_String mdb__declarative_tree__FileName_9;
+    MR_Integer mdb__declarative_tree__LineNo_10;
+    MR_Word mdb__declarative_tree__Final_11;
+    MR_Box mdb__declarative_tree__CallId_13;
+    MR_Box mdb__declarative_tree__Label_17;
+    MR_Word mdb__declarative_tree__Call_29;
+    MR_Word mdb__declarative_tree__V_57_57;
+    MR_Integer mdb__declarative_tree__V_54_54;
+    MR_Integer mdb__declarative_tree__V_55_55;
+    MR_Box mdb__declarative_tree__V_56_56;
+    MR_Word mdb__declarative_tree__V_58_58;
+    MR_Integer mdb__declarative_tree__V_59_59;
+    MR_Integer mdb__declarative_tree__V_60_60;
+    MR_Word mdb__declarative_tree__V_61_61;
+    MR_Box mdb__declarative_tree__V_62_62;
+    MR_Box mdb__declarative_tree__V_63_63;
+
+    {
+      mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_7, mdb__declarative_tree__Ref_8, &mdb__declarative_tree__Final_11);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Final_11)) {
+      default:
+        mdb__declarative_tree__succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_14_14;
+          MR_Word mdb__declarative_tree__V_15_15;
+          MR_Integer mdb__declarative_tree__V_16_16;
+          MR_Integer mdb__declarative_tree__V_18_18;
+          MR_Integer mdb__declarative_tree__V_19_19;
+
+          mdb__declarative_tree__CallId_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 1));
+          mdb__declarative_tree__V_14_14 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 2));
+          mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 3)));
+          mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 4)));
+          mdb__declarative_tree__Label_17 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 5)));
+          mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 6)));
+          mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_11, (MR_Integer) 7)));
+          mdb__declarative_tree__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 0)))) {
+          default:
+            mdb__declarative_tree__succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_21_21;
+              MR_Integer mdb__declarative_tree__V_22_22;
+              MR_Integer mdb__declarative_tree__V_23_23;
+
+              mdb__declarative_tree__CallId_13 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 2));
+              mdb__declarative_tree__V_21_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 3));
+              mdb__declarative_tree__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 4)));
+              mdb__declarative_tree__Label_17 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 5)));
+              mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 6)));
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_25_25;
+              MR_Word mdb__declarative_tree__V_26_26;
+              MR_Integer mdb__declarative_tree__V_27_27;
+              MR_Integer mdb__declarative_tree__V_28_28;
+
+              mdb__declarative_tree__CallId_13 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 2));
+              mdb__declarative_tree__V_25_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 3));
+              mdb__declarative_tree__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 4)));
+              mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 5)));
+              mdb__declarative_tree__Label_17 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 6)));
+              mdb__declarative_tree__V_28_28 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_11, (MR_Integer) 7)));
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            }
+            break;
+        }
+        break;
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        {
+          mdb__declarative_tree__succeeded = mdbcomp__rtti_access__get_context_from_label_layout_3_p_0(mdb__declarative_tree__Label_17, &mdb__declarative_tree__FileName_9, &mdb__declarative_tree__LineNo_10);
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *mdb__declarative_tree__HeadVar__3_3 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__FileName_9));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__declarative_tree__LineNo_10));
+            }
+            {
+              mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_7, mdb__declarative_tree__CallId_13, &mdb__declarative_tree__Call_29);
+            }
+            mdb__declarative_tree__V_63_63 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 0));
+            mdb__declarative_tree__V_62_62 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 1));
+            mdb__declarative_tree__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 2)));
+            mdb__declarative_tree__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 3)));
+            mdb__declarative_tree__V_59_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 4)));
+            mdb__declarative_tree__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 5)));
+            mdb__declarative_tree__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 6)));
+            mdb__declarative_tree__V_56_56 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 7)));
+            mdb__declarative_tree__V_55_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 8)));
+            mdb__declarative_tree__V_54_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_29, (MR_Integer) 9)));
+            if ((mdb__declarative_tree__V_57_57 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                *mdb__declarative_tree__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+            else
+              {
+                MR_Box mdb__declarative_tree__ReturnLabel_30 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_57_57, (MR_Integer) 0)));
+                MR_String mdb__declarative_tree__ReturnFileName_31;
+                MR_Integer mdb__declarative_tree__ReturnLineNo_32;
+                MR_Word mdb__declarative_tree__V_35_35;
+
+                {
+                  mdb__declarative_tree__succeeded = mdbcomp__rtti_access__get_context_from_label_layout_3_p_0(mdb__declarative_tree__ReturnLabel_30, &mdb__declarative_tree__ReturnFileName_31, &mdb__declarative_tree__ReturnLineNo_32);
+                }
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    {
+                      mdb__declarative_tree__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 0) = ((MR_Box) (mdb__declarative_tree__ReturnFileName_31));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 1) = ((MR_Box) (mdb__declarative_tree__ReturnLineNo_32));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *mdb__declarative_tree__HeadVar__4_4 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__V_35_35));
+                    }
+                    mdb__declarative_tree__succeeded = MR_TRUE;
+                  }
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subtree_suspicion_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Integer * mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer * mdb__declarative_tree__HeadVar__4_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__trace_weight_9_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 1, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0, mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mdb__declarative_tree__HeadVar__4_4);
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_number_of_events_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Integer * mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer * mdb__declarative_tree__HeadVar__4_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__trace_weight_9_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 0, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0, mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mdb__declarative_tree__HeadVar__4_4);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_topmost_node_2_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_39_39;
+    MR_Box mdb__declarative_tree__Store_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_6;
+    MR_Box mdb__declarative_tree__CallId_8;
+    MR_Word mdb__declarative_tree__V_35_35;
+    MR_Word mdb__declarative_tree__V_37_37;
+    MR_Box mdb__declarative_tree__V_26_26;
+    MR_Box mdb__declarative_tree__V_27_27;
+    MR_Word mdb__declarative_tree__V_28_28;
+    MR_Integer mdb__declarative_tree__V_29_29;
+    MR_Word mdb__declarative_tree__V_30_30;
+    MR_Word mdb__declarative_tree__V_31_31;
+    MR_Box mdb__declarative_tree__V_32_32;
+    MR_Integer mdb__declarative_tree__V_33_33;
+    MR_Integer mdb__declarative_tree__V_34_34;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3, mdb__declarative_tree__Store_4, mdb__declarative_tree__Ref_5, &mdb__declarative_tree__Node_6);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_6)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_7_7 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_9_9;
+          MR_Word mdb__declarative_tree__V_10_10;
+          MR_Integer mdb__declarative_tree__V_11_11;
+          MR_Box mdb__declarative_tree__V_12_12;
+          MR_Integer mdb__declarative_tree__V_13_13;
+          MR_Integer mdb__declarative_tree__V_14_14;
+
+          mdb__declarative_tree__CallId_8 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 1));
+          mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 2));
+          mdb__declarative_tree__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 3)));
+          mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 4)));
+          mdb__declarative_tree__V_12_12 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 5)));
+          mdb__declarative_tree__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 6)));
+          mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_6, (MR_Integer) 7)));
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_15_15 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_16_16;
+              MR_Integer mdb__declarative_tree__V_17_17;
+              MR_Box mdb__declarative_tree__V_18_18;
+              MR_Integer mdb__declarative_tree__V_19_19;
+
+              mdb__declarative_tree__CallId_8 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 2));
+              mdb__declarative_tree__V_16_16 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 3));
+              mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 4)));
+              mdb__declarative_tree__V_18_18 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 5)));
+              mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 6)));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_21_21;
+              MR_Word mdb__declarative_tree__V_22_22;
+              MR_Integer mdb__declarative_tree__V_23_23;
+              MR_Box mdb__declarative_tree__V_24_24;
+              MR_Integer mdb__declarative_tree__V_25_25;
+
+              mdb__declarative_tree__CallId_8 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 2));
+              mdb__declarative_tree__V_21_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 3));
+              mdb__declarative_tree__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 4)));
+              mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 5)));
+              mdb__declarative_tree__V_24_24 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 6)));
+              mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_6, (MR_Integer) 7)));
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_tree__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 0) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 1) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 2) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 3) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 4) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 5) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 6) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 7) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 8) = NULL;
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_35_35, 9) = NULL;
+    }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_8, &mdb__declarative_tree__V_37_37);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_39_39);
+    }
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____mdb__declarative_execution__trace_node_1_1(mdb__declarative_tree__TypeInfo_39_39, mdb__declarative_tree__V_35_35, mdb__declarative_tree__V_37_37);
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_same_nodes_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref1_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__Ref2_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__3_3));
+    MR_Word mdb__declarative_tree__Node1_8;
+    MR_Word mdb__declarative_tree__Node2_9;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_5, mdb__declarative_tree__Ref1_6, &mdb__declarative_tree__Node1_8);
+    }
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_5, mdb__declarative_tree__Ref2_7, &mdb__declarative_tree__Node2_9);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node1_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Integer mdb__declarative_tree__Event_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 4)));
+          MR_Integer mdb__declarative_tree__V_49_49;
+          MR_Box mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 1));
+          MR_Box mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 3)));
+          MR_Box mdb__declarative_tree__V_15_15 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node1_8, (MR_Integer) 7)));
+          MR_Box mdb__declarative_tree__V_18_18;
+          MR_Box mdb__declarative_tree__V_19_19;
+          MR_Box mdb__declarative_tree__V_20_20;
+          MR_Word mdb__declarative_tree__V_21_21;
+          MR_Box mdb__declarative_tree__V_22_22;
+          MR_Integer mdb__declarative_tree__V_23_23;
+          MR_Integer mdb__declarative_tree__V_24_24;
+
+          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Node2_9)) == (MR_mktag((MR_Integer) 1)));
+          if (mdb__declarative_tree__succeeded)
+            {
+              mdb__declarative_tree__V_18_18 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 0));
+              mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 1));
+              mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 2));
+              mdb__declarative_tree__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 3)));
+              mdb__declarative_tree__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 4)));
+              mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 5)));
+              mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 6)));
+              mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node2_9, (MR_Integer) 7)));
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__Event_14 == mdb__declarative_tree__V_49_49);
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer mdb__declarative_tree__Event_47 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_50_50;
+              MR_Box mdb__declarative_tree__V_25_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_26_26 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_27_27 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 3));
+              MR_Box mdb__declarative_tree__V_28_28 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 6)));
+              MR_Box mdb__declarative_tree__V_30_30;
+              MR_Box mdb__declarative_tree__V_31_31;
+              MR_Box mdb__declarative_tree__V_32_32;
+              MR_Box mdb__declarative_tree__V_33_33;
+              MR_Integer mdb__declarative_tree__V_34_34;
+
+              mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node2_9)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 0)))) == (MR_Integer) 0)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_30_30 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 1));
+                  mdb__declarative_tree__V_31_31 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 2));
+                  mdb__declarative_tree__V_32_32 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 3));
+                  mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 4)));
+                  mdb__declarative_tree__V_33_33 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 5)));
+                  mdb__declarative_tree__V_34_34 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 6)));
+                  mdb__declarative_tree__succeeded = (mdb__declarative_tree__Event_47 == mdb__declarative_tree__V_50_50);
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer mdb__declarative_tree__Event_48 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_51_51;
+              MR_Box mdb__declarative_tree__V_35_35 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_36_36 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_37_37 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_39_39 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_40_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node1_8, (MR_Integer) 7)));
+              MR_Box mdb__declarative_tree__V_41_41;
+              MR_Box mdb__declarative_tree__V_42_42;
+              MR_Box mdb__declarative_tree__V_43_43;
+              MR_Word mdb__declarative_tree__V_44_44;
+              MR_Box mdb__declarative_tree__V_45_45;
+              MR_Integer mdb__declarative_tree__V_46_46;
+
+              mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node2_9)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 0)))) == (MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_41_41 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 1));
+                  mdb__declarative_tree__V_42_42 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 2));
+                  mdb__declarative_tree__V_43_43 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 3));
+                  mdb__declarative_tree__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 4)));
+                  mdb__declarative_tree__V_51_51 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 5)));
+                  mdb__declarative_tree__V_45_45 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 6)));
+                  mdb__declarative_tree__V_46_46 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node2_9, (MR_Integer) 7)));
+                  mdb__declarative_tree__succeeded = (mdb__declarative_tree__Event_48 == mdb__declarative_tree__V_51_51);
+                }
+            }
+            break;
+        }
+        break;
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_is_implicit_root_2_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__CallId_6;
+    MR_Box mdb__declarative_tree__CallId0_12;
+    MR_Word mdb__declarative_tree__Node0_10;
+    MR_bool MR_CALL (* mdb__declarative_tree__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box mdb__declarative_tree__conv1_Node0_10;
+    MR_Word mdb__declarative_tree__CallNode_36;
+    MR_Word mdb__declarative_tree__V_37_37;
+    MR_Box mdb__declarative_tree__V_38_38;
+    MR_Box mdb__declarative_tree__V_39_39;
+    MR_Word mdb__declarative_tree__V_40_40;
+    MR_Integer mdb__declarative_tree__V_41_41;
+    MR_Integer mdb__declarative_tree__V_42_42;
+    MR_Word mdb__declarative_tree__V_43_43;
+    MR_Box mdb__declarative_tree__V_44_44;
+    MR_Integer mdb__declarative_tree__V_45_45;
+    MR_Integer mdb__declarative_tree__V_46_46;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__func_0(((MR_Box) mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3), mdb__declarative_tree__Store_4, mdb__declarative_tree__Ref_5, &mdb__declarative_tree__conv1_Node0_10);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__Node0_10 = ((MR_Word) mdb__declarative_tree__conv1_Node0_10);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    if (mdb__declarative_tree__succeeded)
+      switch (MR_tag((MR_Word) mdb__declarative_tree__Node0_10)) {
+        default:
+          mdb__declarative_tree__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 0));
+            MR_Box mdb__declarative_tree__V_13_13;
+            MR_Word mdb__declarative_tree__V_14_14;
+            MR_Integer mdb__declarative_tree__V_15_15;
+            MR_Box mdb__declarative_tree__V_16_16;
+            MR_Integer mdb__declarative_tree__V_17_17;
+            MR_Integer mdb__declarative_tree__V_18_18;
+
+            mdb__declarative_tree__CallId0_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 1));
+            mdb__declarative_tree__V_13_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 2));
+            mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 3)));
+            mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 4)));
+            mdb__declarative_tree__V_16_16 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 5)));
+            mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 6)));
+            mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_10, (MR_Integer) 7)));
+            mdb__declarative_tree__succeeded = MR_TRUE;
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 0)))) {
+            default:
+              mdb__declarative_tree__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 0:
+              {
+                MR_Box mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_20_20;
+                MR_Integer mdb__declarative_tree__V_21_21;
+                MR_Box mdb__declarative_tree__V_22_22;
+                MR_Integer mdb__declarative_tree__V_23_23;
+
+                mdb__declarative_tree__CallId0_12 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 2));
+                mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 3));
+                mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 4)));
+                mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 5)));
+                mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 6)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Box mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_25_25;
+                MR_Word mdb__declarative_tree__V_26_26;
+                MR_Integer mdb__declarative_tree__V_27_27;
+                MR_Box mdb__declarative_tree__V_28_28;
+                MR_Integer mdb__declarative_tree__V_29_29;
+
+                mdb__declarative_tree__CallId0_12 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 2));
+                mdb__declarative_tree__V_25_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 3));
+                mdb__declarative_tree__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 4)));
+                mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 5)));
+                mdb__declarative_tree__V_28_28 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 6)));
+                mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_10, (MR_Integer) 7)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+          }
+          break;
+      }
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__CallId_6 = mdb__declarative_tree__CallId0_12;
+    else
+      {
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[8])));
+        }
+      }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_3, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_6, &mdb__declarative_tree__CallNode_36);
+    }
+    mdb__declarative_tree__V_38_38 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 0));
+    mdb__declarative_tree__V_39_39 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 1));
+    mdb__declarative_tree__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 2)));
+    mdb__declarative_tree__V_41_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 3)));
+    mdb__declarative_tree__V_42_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 4)));
+    mdb__declarative_tree__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 5)));
+    mdb__declarative_tree__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 6)));
+    mdb__declarative_tree__V_44_44 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 7)));
+    mdb__declarative_tree__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 8)));
+    mdb__declarative_tree__V_46_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_36, (MR_Integer) 9)));
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_37_37 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_subterm_mode_5_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word mdb__declarative_tree__HeadVar__4_4,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_109_101_114_99_117_114_121_95_101_100_116_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_119_114_97_112_95_95_97_114_105_116_121_49_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_116_114_101_101_95_95_101_100_116_95_110_111_100_101_95_95_97_114_105_116_121_49_95_95_95_95_95_95_109_100_98_95_95_100_101_99_108_97_114_97_116_105_118_101_95_101_100_116_95_95_101_100_116_95_115_117_98_116_101_114_109_95_109_111_100_101_95_53_95_95_91_53_93_95_48_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_6, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__HeadVar__2_2, mdb__declarative_tree__HeadVar__3_3, mdb__declarative_tree__HeadVar__5_5);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1)
+{
+  {
+    MR_Box mdb__declarative_tree__wrapper_arg_2;
+    MR_Box mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__2_2;
+
+    {
+      mdb__declarative_tree__conv0_HeadVar__2_2 = mdbcomp__program_representation__head_var_to_var_1_f_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1));
+    }
+    mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__2_2));
+    return mdb__declarative_tree__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word mdb__declarative_tree__HeadVar__4_4,
+  MR_Word * mdb__declarative_tree__HeadVar__5_5,
+  MR_Word * mdb__declarative_tree__HeadVar__6_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_12 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_13 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__ChainStart_14;
+
+    {
+      mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_99_104_97_105_110_95_115_116_97_114_116_95_95_91_53_93_95_48_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, mdb__declarative_tree__Store_12, mdb__declarative_tree__Ref_13, mdb__declarative_tree__HeadVar__3_3, &mdb__declarative_tree__ChainStart_14);
+    }
+    if ((mdb__declarative_tree__ChainStart_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *mdb__declarative_tree__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__StartLoc_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__ArgNum_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 1)));
+        MR_Integer mdb__declarative_tree__TotalArgs_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 2)));
+        MR_Box mdb__declarative_tree__NodeId_18 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 3));
+        MR_Word mdb__declarative_tree__StartPath_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__MaybeProcDefnRep_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ChainStart_14, (MR_Integer) 5)));
+        MR_Word mdb__declarative_tree__TypeInfo_24_24;
+
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_24_24);
+        }
+        if ((mdb__declarative_tree__StartLoc_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 1;
+        else
+          *mdb__declarative_tree__HeadVar__5_5 = (MR_Integer) 0;
+        if ((mdb__declarative_tree__MaybeProcDefnRep_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word mdb__declarative_tree__ProcDefnRep_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeProcDefnRep_20, (MR_Integer) 0)));
+            MR_Word mdb__declarative_tree__Origin0_22;
+
+            {
+              mdb__declarative_tree__succeeded = mdb__declarative_tree__trace_dependency_special_case_8_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, mdb__declarative_tree__Store_12, mdb__declarative_tree__ProcDefnRep_21, mdb__declarative_tree__Ref_13, mdb__declarative_tree__StartLoc_15, mdb__declarative_tree__ArgNum_16, mdb__declarative_tree__HeadVar__4_4, mdb__declarative_tree__NodeId_18, &mdb__declarative_tree__Origin0_22);
+            }
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__6_6 = mdb__declarative_tree__Origin0_22;
+            else
+              {
+                MR_Word mdb__declarative_tree__Node_36;
+                MR_Word mdb__declarative_tree__Contour0_37;
+                MR_Word mdb__declarative_tree__Contour_40;
+                MR_Word mdb__declarative_tree__HeadVars_41;
+                MR_Word mdb__declarative_tree__GoalRep_42;
+                MR_Word mdb__declarative_tree__AllTraced_43;
+                MR_Word mdb__declarative_tree__MaybePrims_44;
+                MR_Word mdb__declarative_tree__V_54_54;
+                MR_Word mdb__declarative_tree__V_55_55;
+                MR_Word mdb__declarative_tree__V_56_56;
+                MR_Word mdb__declarative_tree__V_61_61;
+                MR_Word mdb__declarative_tree__V_62_62;
+                MR_Word mdb__declarative_tree__V_63_63;
+                MR_Word mdb__declarative_tree__V_64_64;
+                MR_Word mdb__declarative_tree__V_65_65;
+                MR_Word mdb__declarative_tree__V_66_66;
+                MR_Word mdb__declarative_tree__V_67_67;
+                MR_Word mdb__declarative_tree__V_68_68;
+
+                {
+                  mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, mdb__declarative_tree__Store_12, mdb__declarative_tree__NodeId_18, &mdb__declarative_tree__Node_36);
+                }
+                {
+                  mdb__declarative_tree__materialize_contour_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, mdb__declarative_tree__Store_12, mdb__declarative_tree__NodeId_18, mdb__declarative_tree__Node_36, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__declarative_tree__Contour0_37);
+                }
+                if ((mdb__declarative_tree__StartLoc_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  mdb__declarative_tree__Contour_40 = mdb__declarative_tree__Contour0_37;
+                else
+                  {
+                    MR_Word mdb__declarative_tree__TypeInfo_54_70;
+                    MR_Word mdb__declarative_tree__TypeInfo_55_71;
+                    MR_Word mdb__declarative_tree__TypeInfo_57_73;
+                    MR_Word mdb__declarative_tree__TypeInfo_59_75;
+                    MR_Box mdb__declarative_tree__CallId_38 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__StartLoc_15, (MR_Integer) 0));
+                    MR_Word mdb__declarative_tree__CallNode_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__StartLoc_15, (MR_Integer) 1)));
+                    MR_Word mdb__declarative_tree__V_50_50;
+                    MR_Word mdb__declarative_tree__V_51_51;
+
+                    {
+                      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_54_70);
+                    }
+                    {
+                      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_55_71);
+                    }
+                    {
+                      mdb__declarative_tree__TypeInfo_57_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_57_73, 0) = ((MR_Box) (&mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_node_1));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_57_73, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_55_71));
+                    }
+                    {
+                      mdb__declarative_tree__TypeInfo_59_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_59_75, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_59_75, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_54_70));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_59_75, 2) = ((MR_Box) (mdb__declarative_tree__TypeInfo_57_73));
+                    }
+                    {
+                      mdb__declarative_tree__V_51_51 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_51_51, 0) = mdb__declarative_tree__CallId_38;
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_51_51, 1) = ((MR_Box) (mdb__declarative_tree__CallNode_39));
+                    }
+                    {
+                      mdb__declarative_tree__V_50_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_50_50, 0) = ((MR_Box) (mdb__declarative_tree__V_51_51));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_50_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      mdb__declarative_tree__Contour_40 = mercury__list__append_2_f_0(mdb__declarative_tree__TypeInfo_59_75, mdb__declarative_tree__Contour0_37, mdb__declarative_tree__V_50_50);
+                    }
+                  }
+                mdb__declarative_tree__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 0)));
+                mdb__declarative_tree__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 1)));
+                mdb__declarative_tree__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 2)));
+                mdb__declarative_tree__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 3)));
+                mdb__declarative_tree__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 4)));
+                {
+                  mdb__declarative_tree__HeadVars_41 = mercury__list__map_2_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_head_var_rep_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &mdb__declarative_tree_scalar_common_4[2], mdb__declarative_tree__V_54_54);
+                }
+                mdb__declarative_tree__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 0)));
+                mdb__declarative_tree__GoalRep_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 1)));
+                mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 2)));
+                mdb__declarative_tree__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 3)));
+                mdb__declarative_tree__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_21, (MR_Integer) 4)));
+{
+#define MR_PROC_LABEL mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_dependency_6_6_p_0
+
+	MR_Word TracingOn;
+
+		{
+
+    #ifdef MR_EXEC_TRACE
+        TracingOn = MR_YES;
+    #else
+        TracingOn = MR_NO;
+    #endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mdb__declarative_tree__AllTraced_43  = TracingOn;
+}
+                {
+                  mdb__declarative_tree__V_56_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_56_56, 0) = ((MR_Box) (mdb__declarative_tree__GoalRep_42));
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_56_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  mdb__declarative_tree__V_55_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_55_55, 0) = ((MR_Box) (mdb__declarative_tree__V_56_56));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_55_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  mdb__declarative_tree__MaybePrims_44 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_7, mdb__declarative_tree__Store_12, mdb__declarative_tree__V_55_55, mdb__declarative_tree__Contour_40, mdb__declarative_tree__StartPath_19, mdb__declarative_tree__ArgNum_16, mdb__declarative_tree__TotalArgs_17, mdb__declarative_tree__HeadVars_41, mdb__declarative_tree__AllTraced_43, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+                }
+                if ((mdb__declarative_tree__MaybePrims_44 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  *mdb__declarative_tree__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                else
+                  {
+                    MR_Word mdb__declarative_tree__Primitives_45;
+                    MR_Integer mdb__declarative_tree__Var_46;
+                    MR_Word mdb__declarative_tree__MaybeClosure_47;
+                    MR_Word mdb__declarative_tree__AdjustedTermPath_48;
+                    MR_Word mdb__declarative_tree__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybePrims_44, (MR_Integer) 0)));
+
+                    mdb__declarative_tree__Primitives_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_60_60, (MR_Integer) 0)));
+                    mdb__declarative_tree__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_60_60, (MR_Integer) 1)));
+                    mdb__declarative_tree__MaybeClosure_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_60_60, (MR_Integer) 2)));
+                    switch (mdb__declarative_tree__MaybeClosure_47) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        mdb__declarative_tree__AdjustedTermPath_48 = mdb__declarative_tree__HeadVar__4_4;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          mdb__declarative_tree__AdjustedTermPath_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mdb__declarative_tree__AdjustedTermPath_48, 0) = ((MR_Box) (mdb__declarative_tree__ArgNum_16));
+                          MR_hl_field(MR_mktag(1), mdb__declarative_tree__AdjustedTermPath_48, 1) = ((MR_Box) (mdb__declarative_tree__HeadVar__4_4));
+                        }
+                        break;
+                    }
+                    {
+                      mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_118_101_114_115_101_95_112_114_105_109_105_116_105_118_101_115_95_95_91_49_44_32_53_93_95_48_6_p_0(mdb__declarative_tree__Primitives_45, mdb__declarative_tree__Var_46, mdb__declarative_tree__AdjustedTermPath_48, mdb__declarative_tree__ProcDefnRep_21, mdb__declarative_tree__HeadVar__6_6);
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_parent_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__Parent_7;
+    MR_Word mdb__declarative_tree__Node_8;
+    MR_Box mdb__declarative_tree__CallId_10;
+    MR_Word mdb__declarative_tree__Call_28;
+    MR_Box mdb__declarative_tree__CallPrecId_29;
+    MR_Word mdb__declarative_tree__ParentCallNode_30;
+    MR_Box mdb__declarative_tree__V_31_31;
+    MR_Word mdb__declarative_tree__V_32_32;
+    MR_Integer mdb__declarative_tree__V_33_33;
+    MR_Integer mdb__declarative_tree__V_34_34;
+    MR_Word mdb__declarative_tree__V_35_35;
+    MR_Word mdb__declarative_tree__V_36_36;
+    MR_Box mdb__declarative_tree__V_37_37;
+    MR_Integer mdb__declarative_tree__V_38_38;
+    MR_Integer mdb__declarative_tree__V_39_39;
+    MR_Box mdb__declarative_tree__V_40_40;
+    MR_Word mdb__declarative_tree__V_41_41;
+    MR_Integer mdb__declarative_tree__V_42_42;
+    MR_Integer mdb__declarative_tree__V_43_43;
+    MR_Word mdb__declarative_tree__V_44_44;
+    MR_Word mdb__declarative_tree__V_45_45;
+    MR_Box mdb__declarative_tree__V_46_46;
+    MR_Integer mdb__declarative_tree__V_47_47;
+    MR_Integer mdb__declarative_tree__V_48_48;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_5, mdb__declarative_tree__Ref_6, &mdb__declarative_tree__Node_8);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_15_15 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_16_16;
+          MR_Word mdb__declarative_tree__V_17_17;
+          MR_Integer mdb__declarative_tree__V_18_18;
+          MR_Box mdb__declarative_tree__V_19_19;
+          MR_Integer mdb__declarative_tree__V_20_20;
+          MR_Integer mdb__declarative_tree__V_21_21;
+
+          mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          mdb__declarative_tree__V_16_16 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          mdb__declarative_tree__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          mdb__declarative_tree__V_19_19 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_11_11;
+              MR_Integer mdb__declarative_tree__V_12_12;
+              MR_Box mdb__declarative_tree__V_13_13;
+              MR_Integer mdb__declarative_tree__V_14_14;
+
+              mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_22_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_23_23;
+              MR_Word mdb__declarative_tree__V_24_24;
+              MR_Integer mdb__declarative_tree__V_25_25;
+              MR_Box mdb__declarative_tree__V_26_26;
+              MR_Integer mdb__declarative_tree__V_27_27;
+
+              mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              mdb__declarative_tree__V_23_23 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              mdb__declarative_tree__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              mdb__declarative_tree__V_26_26 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_5, mdb__declarative_tree__CallId_10, &mdb__declarative_tree__Call_28);
+    }
+    mdb__declarative_tree__CallPrecId_29 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 0));
+    mdb__declarative_tree__V_31_31 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 1));
+    mdb__declarative_tree__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 2)));
+    mdb__declarative_tree__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 3)));
+    mdb__declarative_tree__V_34_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 4)));
+    mdb__declarative_tree__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 5)));
+    mdb__declarative_tree__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 6)));
+    mdb__declarative_tree__V_37_37 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 7)));
+    mdb__declarative_tree__V_38_38 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 8)));
+    mdb__declarative_tree__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_28, (MR_Integer) 9)));
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__step_left_to_call_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_5, mdb__declarative_tree__CallPrecId_29, &mdb__declarative_tree__ParentCallNode_30);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__V_40_40 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 0));
+        mdb__declarative_tree__Parent_7 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 1));
+        mdb__declarative_tree__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 2)));
+        mdb__declarative_tree__V_42_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 3)));
+        mdb__declarative_tree__V_43_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 4)));
+        mdb__declarative_tree__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 5)));
+        mdb__declarative_tree__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 6)));
+        mdb__declarative_tree__V_46_46 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 7)));
+        mdb__declarative_tree__V_47_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 8)));
+        mdb__declarative_tree__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ParentCallNode_30, (MR_Integer) 9)));
+        *mdb__declarative_tree__HeadVar__3_3 = ((MR_Word) mdb__declarative_tree__Parent_7);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_children_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_8;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_8);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_38_38;
+          MR_Word mdb__declarative_tree__Atom_21;
+          MR_Box mdb__declarative_tree__PrecId_33 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__CallId_34 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          MR_Word mdb__declarative_tree__CallNode_62;
+          MR_Word mdb__declarative_tree__V_63_63;
+          MR_Box mdb__declarative_tree__V_15_15 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_18_18 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          MR_Box mdb__declarative_tree__V_64_64;
+          MR_Box mdb__declarative_tree__V_65_65;
+          MR_Word mdb__declarative_tree__V_66_66;
+          MR_Integer mdb__declarative_tree__V_67_67;
+          MR_Integer mdb__declarative_tree__V_68_68;
+          MR_Word mdb__declarative_tree__V_69_69;
+          MR_Box mdb__declarative_tree__V_70_70;
+          MR_Integer mdb__declarative_tree__V_71_71;
+          MR_Integer mdb__declarative_tree__V_72_72;
+
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_38_38);
+          }
+          {
+            mdb__declarative_tree__Atom_21 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_38_38, mdb__declarative_tree__Node_8);
+          }
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_34, &mdb__declarative_tree__CallNode_62);
+          }
+          mdb__declarative_tree__V_64_64 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 0));
+          mdb__declarative_tree__V_65_65 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 1));
+          mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 2)));
+          mdb__declarative_tree__V_67_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 3)));
+          mdb__declarative_tree__V_68_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 4)));
+          mdb__declarative_tree__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 5)));
+          mdb__declarative_tree__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 6)));
+          mdb__declarative_tree__V_70_70 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 7)));
+          mdb__declarative_tree__V_71_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 8)));
+          mdb__declarative_tree__V_72_72 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_62, (MR_Integer) 9)));
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_63_63 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          if (mdb__declarative_tree__succeeded)
+            {
+              {
+                mdb__declarative_tree__succeeded = mdb__declarative_tree__missing_answer_special_case_1_p_0(mdb__declarative_tree__Atom_21);
+              }
+              if (mdb__declarative_tree__succeeded)
+                {
+                  MR_Word mdb__declarative_tree__V_29_29 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mdb__declarative_tree__TypeInfo_13_79;
+
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_13_79);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_13_79, mdb__declarative_tree__PrecId_33, mdb__declarative_tree__CallId_34);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    *mdb__declarative_tree__HeadVar__3_3 = mdb__declarative_tree__V_29_29;
+                  else
+                    {
+                      mdb__declarative_tree__stratum_children_2_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__PrecId_33, mdb__declarative_tree__CallId_34, mdb__declarative_tree__V_29_29, mdb__declarative_tree__HeadVar__3_3);
+                    }
+                }
+              else
+                {
+                  MR_Word mdb__declarative_tree__V_31_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mdb__declarative_tree__TypeInfo_15_87;
+
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_15_87);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_15_87, mdb__declarative_tree__PrecId_33, mdb__declarative_tree__CallId_34);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    *mdb__declarative_tree__HeadVar__3_3 = mdb__declarative_tree__V_31_31;
+                  else
+                    {
+                      mdb__declarative_tree__contour_children_2_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 0, mdb__declarative_tree__Store_6, mdb__declarative_tree__PrecId_33, mdb__declarative_tree__CallId_34, mdb__declarative_tree__V_31_31, mdb__declarative_tree__HeadVar__3_3);
+                    }
+                }
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__PrecId_9 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__V_32_32;
+              MR_Box mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              MR_Word mdb__declarative_tree__TypeInfo_13_94;
+              MR_Integer mdb__declarative_tree__TypeInfoIndex_93;
+
+              {
+                mdb__declarative_tree__succeeded = mdb__declarative_tree__not_at_depth_limit_2_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_10);
+              }
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_32_32 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  mdb__declarative_tree__TypeInfoIndex_93 = (MR_Integer) 2;
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__TypeInfoIndex_93, &mdb__declarative_tree__TypeInfo_13_94);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_13_94, mdb__declarative_tree__PrecId_9, mdb__declarative_tree__CallId_10);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    *mdb__declarative_tree__HeadVar__3_3 = mdb__declarative_tree__V_32_32;
+                  else
+                    {
+                      mdb__declarative_tree__stratum_children_2_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__PrecId_9, mdb__declarative_tree__CallId_10, mdb__declarative_tree__V_32_32, mdb__declarative_tree__HeadVar__3_3);
+                    }
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__V_27_27;
+              MR_Word mdb__declarative_tree__V_28_28;
+              MR_Box mdb__declarative_tree__PrecId_35 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__CallId_36 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_41;
+              MR_Word mdb__declarative_tree__V_42_42;
+              MR_Box mdb__declarative_tree__V_22_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_25_25 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+              MR_Box mdb__declarative_tree__V_43_43;
+              MR_Box mdb__declarative_tree__V_44_44;
+              MR_Word mdb__declarative_tree__V_45_45;
+              MR_Integer mdb__declarative_tree__V_46_46;
+              MR_Integer mdb__declarative_tree__V_47_47;
+              MR_Word mdb__declarative_tree__V_48_48;
+              MR_Box mdb__declarative_tree__V_49_49;
+              MR_Integer mdb__declarative_tree__V_50_50;
+              MR_Integer mdb__declarative_tree__V_51_51;
+              MR_Word mdb__declarative_tree__TypeInfo_15_59;
+              MR_Integer mdb__declarative_tree__TypeInfoIndex_58;
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_36, &mdb__declarative_tree__CallNode_41);
+              }
+              mdb__declarative_tree__V_43_43 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 0));
+              mdb__declarative_tree__V_44_44 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 1));
+              mdb__declarative_tree__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 2)));
+              mdb__declarative_tree__V_46_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 3)));
+              mdb__declarative_tree__V_47_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 4)));
+              mdb__declarative_tree__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 5)));
+              mdb__declarative_tree__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 6)));
+              mdb__declarative_tree__V_49_49 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 7)));
+              mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 8)));
+              mdb__declarative_tree__V_51_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_41, (MR_Integer) 9)));
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_42_42 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_27_27 = (MR_Integer) 1;
+                  mdb__declarative_tree__V_28_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  mdb__declarative_tree__TypeInfoIndex_58 = (MR_Integer) 2;
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__TypeInfoIndex_58, &mdb__declarative_tree__TypeInfo_15_59);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_15_59, mdb__declarative_tree__PrecId_35, mdb__declarative_tree__CallId_36);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    *mdb__declarative_tree__HeadVar__3_3 = mdb__declarative_tree__V_28_28;
+                  else
+                    {
+                      mdb__declarative_tree__contour_children_2_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__V_27_27, mdb__declarative_tree__Store_6, mdb__declarative_tree__PrecId_35, mdb__declarative_tree__CallId_36, mdb__declarative_tree__V_28_28, mdb__declarative_tree__HeadVar__3_3);
+                    }
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+            }
+            break;
+        }
+        break;
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_i_bug_4_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__BugRef_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__InadmissibleRef_8 = ((MR_Box) (mdb__declarative_tree__HeadVar__3_3));
+    MR_Word mdb__declarative_tree__BugAtom_9;
+    MR_Word mdb__declarative_tree__InadmissibleAtom_10;
+    MR_Integer mdb__declarative_tree__Event_11;
+    MR_Word mdb__declarative_tree__Node_16;
+    MR_Word mdb__declarative_tree__Node_62;
+
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__BugRef_7, &mdb__declarative_tree__Node_16);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_16)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_11_51;
+          MR_Box mdb__declarative_tree__CallId_18 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 1));
+          MR_Word mdb__declarative_tree__CallNode_48;
+          MR_Word mdb__declarative_tree__CallAtom_49;
+          MR_Box mdb__declarative_tree__V_17_17 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_16, (MR_Integer) 7)));
+
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_18, &mdb__declarative_tree__CallNode_48);
+          }
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_51);
+          }
+          {
+            mdb__declarative_tree__CallAtom_49 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_51, mdb__declarative_tree__CallNode_48);
+          }
+          mdb__declarative_tree__BugAtom_9 = (MR_Word) mdb__declarative_tree__CallAtom_49;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_58;
+              MR_Box mdb__declarative_tree__CallId_36 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_55;
+              MR_Word mdb__declarative_tree__CallAtom_56;
+              MR_Box mdb__declarative_tree__V_25_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_26_26 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_28_28 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 6)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_36, &mdb__declarative_tree__CallNode_55);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_58);
+              }
+              {
+                mdb__declarative_tree__CallAtom_56 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_58, mdb__declarative_tree__CallNode_55);
+              }
+              mdb__declarative_tree__BugAtom_9 = (MR_Word) mdb__declarative_tree__CallAtom_56;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_44;
+              MR_Box mdb__declarative_tree__CallId_37 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_41;
+              MR_Word mdb__declarative_tree__CallAtom_42;
+              MR_Box mdb__declarative_tree__V_30_30 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_31_31 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_34_34 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_35_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_16, (MR_Integer) 7)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_37, &mdb__declarative_tree__CallNode_41);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_44);
+              }
+              {
+                mdb__declarative_tree__CallAtom_42 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_44, mdb__declarative_tree__CallNode_41);
+              }
+              mdb__declarative_tree__BugAtom_9 = (MR_Word) mdb__declarative_tree__CallAtom_42;
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_tree__get_edt_node_initial_atom_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__InadmissibleRef_8, &mdb__declarative_tree__InadmissibleAtom_10);
+    }
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_5, mdb__declarative_tree__Store_6, mdb__declarative_tree__BugRef_7, &mdb__declarative_tree__Node_62);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_62)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_63_63 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_64_64 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 1));
+          MR_Box mdb__declarative_tree__V_65_65 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 3)));
+          MR_Box mdb__declarative_tree__V_67_67;
+          MR_Integer mdb__declarative_tree__V_68_68;
+          MR_Integer mdb__declarative_tree__V_69_69;
+
+          mdb__declarative_tree__Event_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 4)));
+          mdb__declarative_tree__V_67_67 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 5)));
+          mdb__declarative_tree__V_68_68 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 6)));
+          mdb__declarative_tree__V_69_69 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_62, (MR_Integer) 7)));
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_70_70 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_71_71 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_72_72 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 3));
+              MR_Box mdb__declarative_tree__V_73_73;
+              MR_Integer mdb__declarative_tree__V_74_74;
+
+              mdb__declarative_tree__Event_11 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 4)));
+              mdb__declarative_tree__V_73_73 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 5)));
+              mdb__declarative_tree__V_74_74 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 6)));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_75_75 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_76_76 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_77_77 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_79_79;
+              MR_Integer mdb__declarative_tree__V_80_80;
+
+              mdb__declarative_tree__Event_11 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 5)));
+              mdb__declarative_tree__V_79_79 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 6)));
+              mdb__declarative_tree__V_80_80 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_62, (MR_Integer) 7)));
+            }
+            break;
+        }
+        break;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      *mdb__declarative_tree__HeadVar__4_4 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__BugAtom_9));
+      MR_hl_field(MR_mktag(0), base, 1) = NULL;
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__declarative_tree__InadmissibleAtom_10));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__declarative_tree__Event_11));
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_get_e_bug_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_8;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_8);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_11_48;
+          MR_Word mdb__declarative_tree__TypeInfo_40_84;
+          MR_Box mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          MR_Integer mdb__declarative_tree__Event_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          MR_Word mdb__declarative_tree__InitDeclAtom_17;
+          MR_Word mdb__declarative_tree__FinalDeclAtom_18;
+          MR_Word mdb__declarative_tree__Contour_19;
+          MR_Word mdb__declarative_tree__CallNode_45;
+          MR_Word mdb__declarative_tree__CallAtom_46;
+          MR_Word mdb__declarative_tree__ExitAtom_52;
+          MR_Box mdb__declarative_tree__CallId_53;
+          MR_Word mdb__declarative_tree__Call_54;
+          MR_Integer mdb__declarative_tree__CallIoSeq_55;
+          MR_Integer mdb__declarative_tree__ExitIoSeq_56;
+          MR_Box mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          MR_Box mdb__declarative_tree__V_14_14 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          MR_Box mdb__declarative_tree__V_60_60;
+          MR_Box mdb__declarative_tree__V_61_61;
+          MR_Word mdb__declarative_tree__V_62_62;
+          MR_Integer mdb__declarative_tree__V_63_63;
+          MR_Box mdb__declarative_tree__V_64_64;
+          MR_Integer mdb__declarative_tree__V_65_65;
+          MR_Integer mdb__declarative_tree__V_66_66;
+          MR_Box mdb__declarative_tree__V_67_67;
+          MR_Box mdb__declarative_tree__V_68_68;
+          MR_Word mdb__declarative_tree__V_69_69;
+          MR_Integer mdb__declarative_tree__V_70_70;
+          MR_Integer mdb__declarative_tree__V_71_71;
+          MR_Word mdb__declarative_tree__V_72_72;
+          MR_Word mdb__declarative_tree__V_73_73;
+          MR_Box mdb__declarative_tree__V_74_74;
+          MR_Integer mdb__declarative_tree__V_75_75;
+          MR_Box mdb__declarative_tree__V_76_76;
+          MR_Box mdb__declarative_tree__V_77_77;
+          MR_Box mdb__declarative_tree__V_78_78;
+          MR_Word mdb__declarative_tree__V_79_79;
+          MR_Integer mdb__declarative_tree__V_80_80;
+          MR_Box mdb__declarative_tree__V_81_81;
+          MR_Integer mdb__declarative_tree__V_82_82;
+
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_10, &mdb__declarative_tree__CallNode_45);
+          }
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_48);
+          }
+          {
+            mdb__declarative_tree__CallAtom_46 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_48, mdb__declarative_tree__CallNode_45);
+          }
+          mdb__declarative_tree__InitDeclAtom_17 = (MR_Word) mdb__declarative_tree__CallAtom_46;
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_40_84);
+          }
+          {
+            mdb__declarative_tree__ExitAtom_52 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_40_84, mdb__declarative_tree__Node_8);
+          }
+          mdb__declarative_tree__V_60_60 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          mdb__declarative_tree__CallId_53 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          mdb__declarative_tree__V_61_61 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          mdb__declarative_tree__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          mdb__declarative_tree__V_63_63 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          mdb__declarative_tree__V_64_64 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_66_66 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_53, &mdb__declarative_tree__Call_54);
+          }
+          mdb__declarative_tree__V_67_67 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 0));
+          mdb__declarative_tree__V_68_68 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 1));
+          mdb__declarative_tree__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 2)));
+          mdb__declarative_tree__V_70_70 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 3)));
+          mdb__declarative_tree__V_71_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 4)));
+          mdb__declarative_tree__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 5)));
+          mdb__declarative_tree__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 6)));
+          mdb__declarative_tree__V_74_74 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 7)));
+          mdb__declarative_tree__CallIoSeq_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 8)));
+          mdb__declarative_tree__V_75_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_54, (MR_Integer) 9)));
+          mdb__declarative_tree__V_76_76 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          mdb__declarative_tree__V_77_77 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          mdb__declarative_tree__V_78_78 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          mdb__declarative_tree__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          mdb__declarative_tree__V_80_80 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          mdb__declarative_tree__V_81_81 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__ExitIoSeq_56 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_82_82 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__CallIoSeq_55 == mdb__declarative_tree__ExitIoSeq_56);
+          if (mdb__declarative_tree__succeeded)
+            {
+              {
+                mdb__declarative_tree__FinalDeclAtom_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_18, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_52));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+          else
+            {
+              MR_Word mdb__declarative_tree__V_58_58;
+              MR_Word mdb__declarative_tree__V_59_59;
+
+              {
+                mdb__declarative_tree__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_59_59, 0) = ((MR_Box) (mdb__declarative_tree__CallIoSeq_55));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_59_59, 1) = ((MR_Box) (mdb__declarative_tree__ExitIoSeq_56));
+              }
+              {
+                mdb__declarative_tree__V_58_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_58_58, 0) = ((MR_Box) (mdb__declarative_tree__V_59_59));
+              }
+              {
+                mdb__declarative_tree__FinalDeclAtom_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_18, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_52));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_18, 1) = ((MR_Box) (mdb__declarative_tree__V_58_58));
+              }
+            }
+          {
+            mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__Node_8, &mdb__declarative_tree__Contour_19);
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            *mdb__declarative_tree__HeadVar__3_3 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__InitDeclAtom_17));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__declarative_tree__FinalDeclAtom_18));
+            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__declarative_tree__Contour_19));
+            MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__declarative_tree__Event_13));
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_91;
+              MR_Word mdb__declarative_tree__DeclAtom_24;
+              MR_Box mdb__declarative_tree__CallId_30 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Integer mdb__declarative_tree__Event_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Word mdb__declarative_tree__CallNode_88;
+              MR_Word mdb__declarative_tree__CallAtom_89;
+              MR_Box mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_21_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Box mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_30, &mdb__declarative_tree__CallNode_88);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_91);
+              }
+              {
+                mdb__declarative_tree__CallAtom_89 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_91, mdb__declarative_tree__CallNode_88);
+              }
+              mdb__declarative_tree__DeclAtom_24 = (MR_Word) mdb__declarative_tree__CallAtom_89;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mdb__declarative_tree__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__DeclAtom_24));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__Event_31));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_41;
+              MR_Word mdb__declarative_tree__Exception_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__CallId_32 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Integer mdb__declarative_tree__Event_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Word mdb__declarative_tree__DeclAtom_34;
+              MR_Word mdb__declarative_tree__CallNode_38;
+              MR_Word mdb__declarative_tree__CallAtom_39;
+              MR_Box mdb__declarative_tree__V_25_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_26_26 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Box mdb__declarative_tree__V_28_28 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_32, &mdb__declarative_tree__CallNode_38);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_41);
+              }
+              {
+                mdb__declarative_tree__CallAtom_39 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_41, mdb__declarative_tree__CallNode_38);
+              }
+              mdb__declarative_tree__DeclAtom_34 = (MR_Word) mdb__declarative_tree__CallAtom_39;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mdb__declarative_tree__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mdb__declarative_tree__DeclAtom_34));
+                MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (mdb__declarative_tree__Exception_27));
+                MR_hl_field(MR_mktag(2), base, 2) = ((MR_Box) (mdb__declarative_tree__Event_33));
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__ClassMethod_for_mdb__declarative_edt__mercury_edt____mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1______mdb__declarative_edt__edt_question_3_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_6 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_8;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_8);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_11_52;
+          MR_Word mdb__declarative_tree__TypeInfo_40_88;
+          MR_Word mdb__declarative_tree__InitDeclAtom_24;
+          MR_Word mdb__declarative_tree__FinalDeclAtom_25;
+          MR_Box mdb__declarative_tree__CallId_36 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          MR_Word mdb__declarative_tree__CallNode_49;
+          MR_Word mdb__declarative_tree__CallAtom_50;
+          MR_Word mdb__declarative_tree__ExitAtom_56;
+          MR_Box mdb__declarative_tree__CallId_57;
+          MR_Word mdb__declarative_tree__Call_58;
+          MR_Integer mdb__declarative_tree__CallIoSeq_59;
+          MR_Integer mdb__declarative_tree__ExitIoSeq_60;
+          MR_Box mdb__declarative_tree__V_17_17 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_18_18 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_21_21 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          MR_Box mdb__declarative_tree__V_64_64;
+          MR_Box mdb__declarative_tree__V_65_65;
+          MR_Word mdb__declarative_tree__V_66_66;
+          MR_Integer mdb__declarative_tree__V_67_67;
+          MR_Box mdb__declarative_tree__V_68_68;
+          MR_Integer mdb__declarative_tree__V_69_69;
+          MR_Integer mdb__declarative_tree__V_70_70;
+          MR_Box mdb__declarative_tree__V_71_71;
+          MR_Box mdb__declarative_tree__V_72_72;
+          MR_Word mdb__declarative_tree__V_73_73;
+          MR_Integer mdb__declarative_tree__V_74_74;
+          MR_Integer mdb__declarative_tree__V_75_75;
+          MR_Word mdb__declarative_tree__V_76_76;
+          MR_Word mdb__declarative_tree__V_77_77;
+          MR_Box mdb__declarative_tree__V_78_78;
+          MR_Integer mdb__declarative_tree__V_79_79;
+          MR_Box mdb__declarative_tree__V_80_80;
+          MR_Box mdb__declarative_tree__V_81_81;
+          MR_Box mdb__declarative_tree__V_82_82;
+          MR_Word mdb__declarative_tree__V_83_83;
+          MR_Integer mdb__declarative_tree__V_84_84;
+          MR_Box mdb__declarative_tree__V_85_85;
+          MR_Integer mdb__declarative_tree__V_86_86;
+
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_36, &mdb__declarative_tree__CallNode_49);
+          }
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_52);
+          }
+          {
+            mdb__declarative_tree__CallAtom_50 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_52, mdb__declarative_tree__CallNode_49);
+          }
+          mdb__declarative_tree__InitDeclAtom_24 = (MR_Word) mdb__declarative_tree__CallAtom_50;
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_40_88);
+          }
+          {
+            mdb__declarative_tree__ExitAtom_56 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_40_88, mdb__declarative_tree__Node_8);
+          }
+          mdb__declarative_tree__V_64_64 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          mdb__declarative_tree__CallId_57 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          mdb__declarative_tree__V_65_65 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          mdb__declarative_tree__V_67_67 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          mdb__declarative_tree__V_68_68 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__V_69_69 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_70_70 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_57, &mdb__declarative_tree__Call_58);
+          }
+          mdb__declarative_tree__V_71_71 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 0));
+          mdb__declarative_tree__V_72_72 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 1));
+          mdb__declarative_tree__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 2)));
+          mdb__declarative_tree__V_74_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 3)));
+          mdb__declarative_tree__V_75_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 4)));
+          mdb__declarative_tree__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 5)));
+          mdb__declarative_tree__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 6)));
+          mdb__declarative_tree__V_78_78 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 7)));
+          mdb__declarative_tree__CallIoSeq_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 8)));
+          mdb__declarative_tree__V_79_79 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_58, (MR_Integer) 9)));
+          mdb__declarative_tree__V_80_80 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+          mdb__declarative_tree__V_81_81 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+          mdb__declarative_tree__V_82_82 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+          mdb__declarative_tree__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+          mdb__declarative_tree__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+          mdb__declarative_tree__V_85_85 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+          mdb__declarative_tree__ExitIoSeq_60 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+          mdb__declarative_tree__V_86_86 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__CallIoSeq_59 == mdb__declarative_tree__ExitIoSeq_60);
+          if (mdb__declarative_tree__succeeded)
+            {
+              {
+                mdb__declarative_tree__FinalDeclAtom_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_25, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_56));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            }
+          else
+            {
+              MR_Word mdb__declarative_tree__V_62_62;
+              MR_Word mdb__declarative_tree__V_63_63;
+
+              {
+                mdb__declarative_tree__V_63_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_63_63, 0) = ((MR_Box) (mdb__declarative_tree__CallIoSeq_59));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_63_63, 1) = ((MR_Box) (mdb__declarative_tree__ExitIoSeq_60));
+              }
+              {
+                mdb__declarative_tree__V_62_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_62_62, 0) = ((MR_Box) (mdb__declarative_tree__V_63_63));
+              }
+              {
+                mdb__declarative_tree__FinalDeclAtom_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_25, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_56));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__FinalDeclAtom_25, 1) = ((MR_Box) (mdb__declarative_tree__V_62_62));
+              }
+            }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            *mdb__declarative_tree__HeadVar__3_3 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__declarative_tree__InitDeclAtom_24));
+            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__declarative_tree__FinalDeclAtom_25));
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_95;
+              MR_Box mdb__declarative_tree__CallId_10 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__RedoId_11 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__DeclAtom_15;
+              MR_Word mdb__declarative_tree__Answers_16;
+              MR_Word mdb__declarative_tree__CallNode_92;
+              MR_Word mdb__declarative_tree__CallAtom_93;
+              MR_Box mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Integer mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_10, &mdb__declarative_tree__CallNode_92);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_95);
+              }
+              {
+                mdb__declarative_tree__CallAtom_93 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_95, mdb__declarative_tree__CallNode_92);
+              }
+              mdb__declarative_tree__DeclAtom_15 = (MR_Word) mdb__declarative_tree__CallAtom_93;
+              {
+                mdb__declarative_tree__get_answers_4_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__RedoId_11, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__declarative_tree__Answers_16);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mdb__declarative_tree__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__DeclAtom_15));
+                MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdb__declarative_tree__Answers_16));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_45;
+              MR_Word mdb__declarative_tree__Exception_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__CallId_37 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__DeclAtom_38;
+              MR_Word mdb__declarative_tree__CallNode_42;
+              MR_Word mdb__declarative_tree__CallAtom_43;
+              MR_Box mdb__declarative_tree__V_26_26 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_27_27 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_30_30 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_37, &mdb__declarative_tree__CallNode_42);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_4, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_45);
+              }
+              {
+                mdb__declarative_tree__CallAtom_43 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_45, mdb__declarative_tree__CallNode_42);
+              }
+              mdb__declarative_tree__DeclAtom_38 = (MR_Word) mdb__declarative_tree__CallAtom_43;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mdb__declarative_tree__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+                MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (mdb__declarative_tree__DeclAtom_38));
+                MR_hl_field(MR_mktag(2), base, 2) = ((MR_Box) (mdb__declarative_tree__Exception_28));
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+mdb__declarative_tree____Compare____wrap_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_S_8,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_6 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_7 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_6 == mdb__declarative_tree__CastY_7);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Box mdb__declarative_tree__V_4_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+        MR_Box mdb__declarative_tree__V_5_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__3_3));
+
+        {
+          mercury__builtin__compare_3_p_0(mdb__declarative_tree__TypeInfo_for_S_8, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_4_4, mdb__declarative_tree__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mdb__declarative_tree____Unify____wrap_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_S_7,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_5 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_6 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_5 == mdb__declarative_tree__CastY_6);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_Box mdb__declarative_tree__V_3_3 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+        MR_Box mdb__declarative_tree__V_4_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+
+        {
+          mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_for_S_7, mdb__declarative_tree__V_3_3, mdb__declarative_tree__V_4_4);
+        }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____start_loc_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_15,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_13 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_14 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_13 == mdb__declarative_tree__CastY_14);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((mdb__declarative_tree__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((mdb__declarative_tree__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        MR_Word mdb__declarative_tree__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Box mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0));
+
+        if ((mdb__declarative_tree__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Box mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0));
+            MR_Word mdb__declarative_tree__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word mdb__declarative_tree__V_12_12;
+
+            {
+              mercury__builtin__compare_3_p_0(mdb__declarative_tree__TypeInfo_for_R_15, &mdb__declarative_tree__V_12_12, mdb__declarative_tree__V_19_19, mdb__declarative_tree__V_10_10);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_12_12 == (MR_Integer) 0);
+            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_12_12;
+            else
+              {
+                mdb__declarative_execution____Compare____trace_node_1_0(mdb__declarative_tree__TypeInfo_for_R_15, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_18_18, mdb__declarative_tree__V_11_11);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____start_loc_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_11,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_9 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_10 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_9 == mdb__declarative_tree__CastY_10);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+    if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer mdb__declarative_tree__CastX_3 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+        MR_Integer mdb__declarative_tree__CastY_4 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastY_4 == mdb__declarative_tree__CastX_3);
+      }
+    else
+      {
+        MR_Box mdb__declarative_tree__V_5_5 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Box mdb__declarative_tree__V_7_7;
+        MR_Word mdb__declarative_tree__V_8_8;
+
+        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_7_7 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0));
+            mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+            {
+              mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_for_R_11, mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_7_7);
+            }
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__succeeded = mdb__declarative_execution____Unify____trace_node_1_0(mdb__declarative_tree__TypeInfo_for_R_11, mdb__declarative_tree__V_6_6, mdb__declarative_tree__V_8_8);
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____primitive_list_and_var_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_14,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_12 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_13 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_12 == mdb__declarative_tree__CastY_13);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mdb__declarative_tree__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_10_10;
+        MR_Word mdb__declarative_tree__TypeInfo_16_16;
+
+        {
+          mdb__declarative_tree__TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_16_16, 0) = ((MR_Box) (&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_16_16, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_for_R_14));
+        }
+        {
+          mercury__list____Compare____list_1_0(mdb__declarative_tree__TypeInfo_16_16, &mdb__declarative_tree__V_10_10, (MR_Word) mdb__declarative_tree__V_4_4, (MR_Word) mdb__declarative_tree__V_7_7);
+        }
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_10_10 == (MR_Integer) 0);
+        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+        if (mdb__declarative_tree__succeeded)
+          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_10_10;
+        else
+          {
+            MR_Word mdb__declarative_tree__V_11_11;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdb__declarative_tree__V_11_11, mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_8_8);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_11_11 == (MR_Integer) 0);
+            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_11_11;
+            else
+              {
+                MR_Integer mdb__declarative_tree__V_21_21 = (MR_Integer) mdb__declarative_tree__V_6_6;
+                MR_Integer mdb__declarative_tree__V_22_22 = (MR_Integer) mdb__declarative_tree__V_9_9;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_21_21, mdb__declarative_tree__V_22_22);
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____primitive_list_and_var_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_11,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_9 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_10 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_9 == mdb__declarative_tree__CastY_10);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mdb__declarative_tree__TypeInfo_13_13;
+        MR_Word mdb__declarative_tree__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          mdb__declarative_tree__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_13_13, 0) = ((MR_Box) (&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_13_13, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_for_R_11));
+        }
+        {
+          mdb__declarative_tree__succeeded = mercury__list____Unify____list_1_0(mdb__declarative_tree__TypeInfo_13_13, (MR_Word) mdb__declarative_tree__V_3_3, (MR_Word) mdb__declarative_tree__V_6_6);
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_4_4 == mdb__declarative_tree__V_7_7);
+            if (mdb__declarative_tree__succeeded)
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_5_5 == mdb__declarative_tree__V_8_8);
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____plain_call_info_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_15 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_16 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_15 == mdb__declarative_tree__CastY_16);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String mdb__declarative_tree__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String mdb__declarative_tree__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String mdb__declarative_tree__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3)));
+        MR_String mdb__declarative_tree__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+        MR_String mdb__declarative_tree__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 2)));
+        MR_String mdb__declarative_tree__V_11_11 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word mdb__declarative_tree__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdb__declarative_tree__V_12_12, mdb__declarative_tree__V_4_4, mdb__declarative_tree__V_8_8);
+        }
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_12_12 == (MR_Integer) 0);
+        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+        if (mdb__declarative_tree__succeeded)
+          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_12_12;
+        else
+          {
+            MR_Word mdb__declarative_tree__V_13_13;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdb__declarative_tree__V_13_13, mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_9_9);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_13_13 == (MR_Integer) 0);
+            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_13_13;
+            else
+              {
+                MR_Word mdb__declarative_tree__V_14_14;
+
+                {
+                  mercury__private_builtin__builtin_compare_string_3_p_0(&mdb__declarative_tree__V_14_14, mdb__declarative_tree__V_6_6, mdb__declarative_tree__V_10_10);
+                }
+                mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_14_14 == (MR_Integer) 0);
+                mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                if (mdb__declarative_tree__succeeded)
+                  *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_14_14;
+                else
+                  {
+                    mercury__private_builtin__builtin_compare_string_3_p_0(mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_7_7, mdb__declarative_tree__V_11_11);
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____plain_call_info_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_11 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_12 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_11 == mdb__declarative_tree__CastY_12);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_String mdb__declarative_tree__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String mdb__declarative_tree__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 2)));
+        MR_String mdb__declarative_tree__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 3)));
+        MR_String mdb__declarative_tree__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String mdb__declarative_tree__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_String mdb__declarative_tree__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3)));
+
+        mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_3_3, mdb__declarative_tree__V_7_7) == 0);
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_4_4 == mdb__declarative_tree__V_8_8);
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_9_9) == 0);
+                if (mdb__declarative_tree__succeeded)
+                  mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_6_6, mdb__declarative_tree__V_10_10) == 0);
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_list_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Cast_HeadVar1_4 = mdb__declarative_tree__HeadVar__2_2;
+    MR_Word mdb__declarative_tree__Cast_HeadVar2_5 = mdb__declarative_tree__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[7], mdb__declarative_tree__HeadVar__1_1, ((MR_Box) (mdb__declarative_tree__Cast_HeadVar1_4)), ((MR_Box) (mdb__declarative_tree__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_list_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Cast_HeadVar1_3 = mdb__declarative_tree__HeadVar__1_1;
+    MR_Word mdb__declarative_tree__Cast_HeadVar2_4 = mdb__declarative_tree__HeadVar__2_2;
+
+    {
+      mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[7], ((MR_Box) (mdb__declarative_tree__Cast_HeadVar1_3)), ((MR_Box) (mdb__declarative_tree__Cast_HeadVar2_4)));
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____goal_and_path_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_9 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_10 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_9 == mdb__declarative_tree__CastY_10);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mdb__declarative_tree__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_8_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[1], &mdb__declarative_tree__V_8_8, ((MR_Box) (mdb__declarative_tree__V_4_4)), ((MR_Box) (mdb__declarative_tree__V_6_6)));
+        }
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_8_8 == (MR_Integer) 0);
+        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+        if (mdb__declarative_tree__succeeded)
+          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_8_8;
+        else
+          {
+            mdbcomp__goal_path____Compare____reverse_goal_path_0_0(mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_7_7);
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____goal_and_path_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_7 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_8 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_7 == mdb__declarative_tree__CastY_8);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mdb__declarative_tree__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[1], ((MR_Box) (mdb__declarative_tree__V_3_3)), ((MR_Box) (mdb__declarative_tree__V_5_5)));
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__V_4_4, mdb__declarative_tree__V_6_6);
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+void MR_CALL 
+mdb__declarative_tree____Compare____edt_node_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_8,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_6 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_7 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_6 == mdb__declarative_tree__CastY_7);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Box mdb__declarative_tree__V_4_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+        MR_Box mdb__declarative_tree__V_5_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__3_3));
+
+        {
+          mercury__builtin__compare_3_p_0(mdb__declarative_tree__TypeInfo_for_R_8, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_4_4, mdb__declarative_tree__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mdb__declarative_tree____Unify____edt_node_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_7,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_5 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_6 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_5 == mdb__declarative_tree__CastY_6);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_Box mdb__declarative_tree__V_3_3 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+        MR_Box mdb__declarative_tree__V_4_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+
+        {
+          mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_for_R_7, mdb__declarative_tree__V_3_3, mdb__declarative_tree__V_4_4);
+        }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____dependency_chain_start_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_35,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_33 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_34 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_33 == mdb__declarative_tree__CastY_34);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((mdb__declarative_tree__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((mdb__declarative_tree__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 2;
+    else
+      {
+        MR_Word mdb__declarative_tree__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word mdb__declarative_tree__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Box mdb__declarative_tree__V_44_44 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3));
+        MR_Integer mdb__declarative_tree__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer mdb__declarative_tree__V_46_46 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((mdb__declarative_tree__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word mdb__declarative_tree__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Integer mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Box mdb__declarative_tree__V_13_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 3));
+            MR_Word mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 4)));
+            MR_Word mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 5)));
+            MR_Word mdb__declarative_tree__V_16_16;
+
+            {
+              mdb__declarative_tree____Compare____start_loc_1_0(mdb__declarative_tree__TypeInfo_for_R_35, &mdb__declarative_tree__V_16_16, mdb__declarative_tree__V_47_47, mdb__declarative_tree__V_10_10);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_16_16 == (MR_Integer) 0);
+            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_16_16;
+            else
+              {
+                MR_Word mdb__declarative_tree__V_17_17;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&mdb__declarative_tree__V_17_17, mdb__declarative_tree__V_46_46, mdb__declarative_tree__V_11_11);
+                }
+                mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_17_17 == (MR_Integer) 0);
+                mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                if (mdb__declarative_tree__succeeded)
+                  *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_17_17;
+                else
+                  {
+                    MR_Word mdb__declarative_tree__V_18_18;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&mdb__declarative_tree__V_18_18, mdb__declarative_tree__V_45_45, mdb__declarative_tree__V_12_12);
+                    }
+                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_18_18 == (MR_Integer) 0);
+                    mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                    if (mdb__declarative_tree__succeeded)
+                      *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_18_18;
+                    else
+                      {
+                        MR_Word mdb__declarative_tree__V_19_19;
+
+                        {
+                          mercury__builtin__compare_3_p_0(mdb__declarative_tree__TypeInfo_for_R_35, &mdb__declarative_tree__V_19_19, mdb__declarative_tree__V_44_44, mdb__declarative_tree__V_13_13);
+                        }
+                        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_19_19 == (MR_Integer) 0);
+                        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                        if (mdb__declarative_tree__succeeded)
+                          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_19_19;
+                        else
+                          {
+                            MR_Word mdb__declarative_tree__V_20_20;
+
+                            {
+                              mercury__builtin__compare_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[0], &mdb__declarative_tree__V_20_20, ((MR_Box) (mdb__declarative_tree__V_43_43)), ((MR_Box) (mdb__declarative_tree__V_14_14)));
+                            }
+                            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_20_20 == (MR_Integer) 0);
+                            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                            if (mdb__declarative_tree__succeeded)
+                              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_20_20;
+                            else
+                              {
+                                {
+                                  mercury__builtin__compare_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[6], mdb__declarative_tree__HeadVar__1_1, ((MR_Box) (mdb__declarative_tree__V_42_42)), ((MR_Box) (mdb__declarative_tree__V_15_15)));
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____dependency_chain_start_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_19,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_17 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_18 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_17 == mdb__declarative_tree__CastY_18);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+    if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer mdb__declarative_tree__CastX_15 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+        MR_Integer mdb__declarative_tree__CastY_16 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastY_16 == mdb__declarative_tree__CastX_15);
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__TypeInfo_20_20;
+        MR_Word mdb__declarative_tree__TypeInfo_21_21;
+        MR_Word mdb__declarative_tree__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer mdb__declarative_tree__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Box mdb__declarative_tree__V_6_6 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 3));
+        MR_Word mdb__declarative_tree__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word mdb__declarative_tree__V_9_9;
+        MR_Integer mdb__declarative_tree__V_10_10;
+        MR_Integer mdb__declarative_tree__V_11_11;
+        MR_Box mdb__declarative_tree__V_12_12;
+        MR_Word mdb__declarative_tree__V_13_13;
+        MR_Word mdb__declarative_tree__V_14_14;
+
+        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+            mdb__declarative_tree__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+            mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+            mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3));
+            mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 4)));
+            mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 5)));
+            {
+              mdb__declarative_tree__succeeded = mdb__declarative_tree____Unify____start_loc_1_0(mdb__declarative_tree__TypeInfo_for_R_19, mdb__declarative_tree__V_3_3, mdb__declarative_tree__V_9_9);
+            }
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_4_4 == mdb__declarative_tree__V_10_10);
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_5_5 == mdb__declarative_tree__V_11_11);
+                    if (mdb__declarative_tree__succeeded)
+                      {
+                        {
+                          mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_for_R_19, mdb__declarative_tree__V_6_6, mdb__declarative_tree__V_12_12);
+                        }
+                        if (mdb__declarative_tree__succeeded)
+                          {
+                            mdb__declarative_tree__TypeInfo_20_20 = (MR_Word) &mdb__declarative_tree_scalar_common_1[0];
+                            {
+                              mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_20_20, ((MR_Box) (mdb__declarative_tree__V_7_7)), ((MR_Box) (mdb__declarative_tree__V_13_13)));
+                            }
+                            if (mdb__declarative_tree__succeeded)
+                              {
+                                mdb__declarative_tree__TypeInfo_21_21 = (MR_Word) &mdb__declarative_tree_scalar_common_1[6];
+                                {
+                                  mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_21_21, ((MR_Box) (mdb__declarative_tree__V_8_8)), ((MR_Box) (mdb__declarative_tree__V_14_14)));
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____contour_type_0_0(
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__Cast_HeadVar1_4 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__Cast_HeadVar2_5 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__Cast_HeadVar1_4, mdb__declarative_tree__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____contour_type_0_0(
+  MR_Word mdb__declarative_tree__HeadVar__2_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = (mdb__declarative_tree__HeadVar__2_1 == mdb__declarative_tree__HeadVar__2_2);
+
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree____Compare____annotated_primitive_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_23,
+  MR_Word * mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_21 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+    MR_Integer mdb__declarative_tree__CastY_22 = (MR_Integer) mdb__declarative_tree__HeadVar__3_3;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_21 == mdb__declarative_tree__CastY_22);
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String mdb__declarative_tree__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 5)));
+        MR_String mdb__declarative_tree__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word mdb__declarative_tree__V_16_16;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdb__declarative_tree__V_16_16, mdb__declarative_tree__V_4_4, mdb__declarative_tree__V_10_10);
+        }
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_16_16 == (MR_Integer) 0);
+        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+        if (mdb__declarative_tree__succeeded)
+          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_16_16;
+        else
+          {
+            MR_Word mdb__declarative_tree__V_17_17;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdb__declarative_tree__V_17_17, mdb__declarative_tree__V_5_5, mdb__declarative_tree__V_11_11);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_17_17 == (MR_Integer) 0);
+            mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+            if (mdb__declarative_tree__succeeded)
+              *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_17_17;
+            else
+              {
+                MR_Word mdb__declarative_tree__V_18_18;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[4], &mdb__declarative_tree__V_18_18, ((MR_Box) (mdb__declarative_tree__V_6_6)), ((MR_Box) (mdb__declarative_tree__V_12_12)));
+                }
+                mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_18_18 == (MR_Integer) 0);
+                mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                if (mdb__declarative_tree__succeeded)
+                  *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_18_18;
+                else
+                  {
+                    MR_Word mdb__declarative_tree__V_19_19;
+
+                    {
+                      mdbcomp__program_representation____Compare____atomic_goal_rep_0_0(&mdb__declarative_tree__V_19_19, mdb__declarative_tree__V_7_7, mdb__declarative_tree__V_13_13);
+                    }
+                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_19_19 == (MR_Integer) 0);
+                    mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                    if (mdb__declarative_tree__succeeded)
+                      *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_19_19;
+                    else
+                      {
+                        MR_Word mdb__declarative_tree__V_20_20;
+
+                        {
+                          mdbcomp__goal_path____Compare____reverse_goal_path_0_0(&mdb__declarative_tree__V_20_20, mdb__declarative_tree__V_8_8, mdb__declarative_tree__V_14_14);
+                        }
+                        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_20_20 == (MR_Integer) 0);
+                        mdb__declarative_tree__succeeded = !(mdb__declarative_tree__succeeded);
+                        if (mdb__declarative_tree__succeeded)
+                          *mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__V_20_20;
+                        else
+                          {
+                            mercury__maybe____Compare____maybe_1_0(mdb__declarative_tree__TypeInfo_for_R_23, mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__V_9_9, mdb__declarative_tree__V_15_15);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree____Unify____annotated_primitive_1_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_17,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__CastX_15 = (MR_Integer) mdb__declarative_tree__HeadVar__1_1;
+    MR_Integer mdb__declarative_tree__CastY_16 = (MR_Integer) mdb__declarative_tree__HeadVar__2_2;
+
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__CastX_15 == mdb__declarative_tree__CastY_16);
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mdb__declarative_tree__TypeInfo_18_18;
+        MR_String mdb__declarative_tree__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word mdb__declarative_tree__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 5)));
+        MR_String mdb__declarative_tree__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mdb__declarative_tree__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 5)));
+
+        mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_3_3, mdb__declarative_tree__V_9_9) == 0);
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_4_4 == mdb__declarative_tree__V_10_10);
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__TypeInfo_18_18 = (MR_Word) &mdb__declarative_tree_scalar_common_1[4];
+                {
+                  mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_18_18, ((MR_Box) (mdb__declarative_tree__V_5_5)), ((MR_Box) (mdb__declarative_tree__V_11_11)));
+                }
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    {
+                      mdb__declarative_tree__succeeded = mdbcomp__program_representation____Unify____atomic_goal_rep_0_0(mdb__declarative_tree__V_6_6, mdb__declarative_tree__V_12_12);
+                    }
+                    if (mdb__declarative_tree__succeeded)
+                      {
+                        {
+                          mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__V_7_7, mdb__declarative_tree__V_13_13);
+                        }
+                        if (mdb__declarative_tree__succeeded)
+                          {
+                            mdb__declarative_tree__succeeded = mercury__maybe____Unify____maybe_1_0(mdb__declarative_tree__TypeInfo_for_R_17, mdb__declarative_tree__V_8_8, mdb__declarative_tree__V_14_14);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_1(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    MR_builtin_longjmp((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_3(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Arg_7 = ((MR_Word) (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__conv0_Arg_7);
+    {
+      mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_2(mdb__declarative_tree__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_2(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    {
+      MR_Word mdb__declarative_tree__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Arg_7, (MR_Integer) 2)));
+      MR_Word mdb__declarative_tree__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Arg_7, (MR_Integer) 0)));
+      MR_Integer mdb__declarative_tree__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Arg_7, (MR_Integer) 1)));
+      MR_Word mdb__declarative_tree__V_10_10;
+
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_11_11)) == (MR_mktag((MR_Integer) 1)));
+      if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded)
+        mdb__declarative_tree__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_11_11, (MR_Integer) 0)));
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded = !((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded);
+      if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded)
+        {
+          mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_1(mdb__declarative_tree__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_4(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__commit_0) == 0)
+      {
+        {
+          {
+            mercury__list__member_2_p_1((MR_Word) &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_atom_arg_0, &(mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__conv0_Arg_7, (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Args_6, mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_3, mdb__declarative_tree__env_ptr);
+          }
+        }
+        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_21,
+  MR_Box mdb__declarative_tree__Store_3,
+  MR_Box mdb__declarative_tree__CallId_4)
+{
+  {
+    struct mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0_s mdb__declarative_tree__env;
+
+    {
+      MR_Word mdb__declarative_tree__Call_5;
+      MR_Box mdb__declarative_tree__V_12_12;
+      MR_Box mdb__declarative_tree__V_13_13;
+      MR_Integer mdb__declarative_tree__V_14_14;
+      MR_Integer mdb__declarative_tree__V_15_15;
+      MR_Word mdb__declarative_tree__V_16_16;
+      MR_Word mdb__declarative_tree__V_17_17;
+      MR_Box mdb__declarative_tree__V_18_18;
+      MR_Integer mdb__declarative_tree__V_19_19;
+      MR_Integer mdb__declarative_tree__V_20_20;
+
+      {
+        mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_21, mdb__declarative_tree__Store_3, mdb__declarative_tree__CallId_4, &mdb__declarative_tree__Call_5);
+      }
+      mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 0));
+      mdb__declarative_tree__V_13_13 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 1));
+      (mdb__declarative_tree__env).mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__Args_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 2)));
+      mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 3)));
+      mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 4)));
+      mdb__declarative_tree__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 5)));
+      mdb__declarative_tree__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 6)));
+      mdb__declarative_tree__V_18_18 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 7)));
+      mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 8)));
+      mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_5, (MR_Integer) 9)));
+      {
+        mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_4(&mdb__declarative_tree__env);
+      }
+      (mdb__declarative_tree__env).mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded = !((mdb__declarative_tree__env).mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded);
+      return (mdb__declarative_tree__env).mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0_env_0__succeeded;
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_32,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__Ref_5,
+  MR_Word * mdb__declarative_tree__Node_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Node0_7;
+    MR_bool MR_CALL (* mdb__declarative_tree__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeClassInfo_for_annotated_trace_32, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box mdb__declarative_tree__conv1_Node0_7;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__func_0(((MR_Box) mdb__declarative_tree__TypeClassInfo_for_annotated_trace_32), mdb__declarative_tree__Store_4, mdb__declarative_tree__Ref_5, &mdb__declarative_tree__conv1_Node0_7);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__Node0_7 = ((MR_Word) mdb__declarative_tree__conv1_Node0_7);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    if (mdb__declarative_tree__succeeded)
+      switch (MR_tag((MR_Word) mdb__declarative_tree__Node0_7)) {
+        default:
+          mdb__declarative_tree__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 1:
+          mdb__declarative_tree__succeeded = MR_TRUE;
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_7, (MR_Integer) 0)))) {
+            default:
+              mdb__declarative_tree__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 0:
+              mdb__declarative_tree__succeeded = MR_TRUE;
+              break;
+            case (MR_Integer) 1:
+              mdb__declarative_tree__succeeded = MR_TRUE;
+              break;
+          }
+          break;
+      }
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__Node_6 = mdb__declarative_tree__Node0_7;
+    else
+      {
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[26])));
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__find_arg_pos_from_back_4_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Integer mdb__declarative_tree__Var_2,
+  MR_Integer mdb__declarative_tree__Pos_3,
+  MR_Word * mdb__declarative_tree__ArgPos_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+
+        if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[25])));
+              return;
+            }
+          }
+        else
+          {
+            MR_Integer mdb__declarative_tree__HeadVar_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mdb__declarative_tree__HeadVars_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__HeadVar_11 == mdb__declarative_tree__Var_2);
+            if (mdb__declarative_tree__succeeded)
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                *mdb__declarative_tree__ArgPos_4 = base;
+                MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mdb__declarative_tree__Pos_3));
+              }
+            else
+              {
+                MR_Integer mdb__declarative_tree__V_16_16 = (mdb__declarative_tree__Pos_3 - (MR_Integer) 1);
+
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mdb__declarative_tree__HeadVar__1__tmp_copy_1 = mdb__declarative_tree__HeadVars_12;
+                  MR_Integer mdb__declarative_tree__Pos__tmp_copy_3 = mdb__declarative_tree__V_16_16;
+
+                  mdb__declarative_tree__Pos_3 = mdb__declarative_tree__Pos__tmp_copy_3;
+                  mdb__declarative_tree__HeadVar__1_1 = mdb__declarative_tree__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+          }
+      }
+      break;
+    }
+}
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__find_arg_pos_2_f_0(
+  MR_Word mdb__declarative_tree__HeadVars_4,
+  MR_Integer mdb__declarative_tree__Var_5)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__ArgPos_6;
+    MR_Integer mdb__declarative_tree__V_7_7;
+
+    {
+      mdb__declarative_tree__V_7_7 = mercury__list__length_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, mdb__declarative_tree__HeadVars_4);
+    }
+    {
+      mdb__declarative_tree__find_arg_pos_from_back_4_p_0(mdb__declarative_tree__HeadVars_4, mdb__declarative_tree__Var_5, mdb__declarative_tree__V_7_7, &mdb__declarative_tree__ArgPos_6);
+    }
+    return mdb__declarative_tree__ArgPos_6;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__is_traced_grade_1_p_0(
+  MR_Word * mdb__declarative_tree__TracingOn_1)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+{
+#define MR_PROC_LABEL mdb__declarative_tree__is_traced_grade_1_p_0
+
+	MR_Word TracingOn;
+
+		{
+
+    #ifdef MR_EXEC_TRACE
+        TracingOn = MR_YES;
+    #else
+        TracingOn = MR_NO;
+    #endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mdb__declarative_tree__TracingOn_1  = TracingOn;
+}
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__add_paths_to_conjuncts_4_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__ParentPath_2,
+  MR_Integer mdb__declarative_tree__N_3,
+  MR_Word * mdb__declarative_tree__HeadVar__4_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    if ((mdb__declarative_tree__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mdb__declarative_tree__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mdb__declarative_tree__Goal_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__Goals_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__Path_11;
+        MR_Word mdb__declarative_tree__GoalAndPaths_12;
+        MR_Word mdb__declarative_tree__V_13_13;
+        MR_Word mdb__declarative_tree__V_14_14;
+        MR_Integer mdb__declarative_tree__V_15_15;
+
+        {
+          mdb__declarative_tree__V_14_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_14_14, 0) = ((MR_Box) (mdb__declarative_tree__N_3));
+        }
+        {
+          mdb__declarative_tree__Path_11 = mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(mdb__declarative_tree__ParentPath_2, mdb__declarative_tree__V_14_14);
+        }
+        {
+          mdb__declarative_tree__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_13_13, 0) = ((MR_Box) (mdb__declarative_tree__Goal_7));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_13_13, 1) = ((MR_Box) (mdb__declarative_tree__Path_11));
+        }
+        mdb__declarative_tree__V_15_15 = (mdb__declarative_tree__N_3 + (MR_Integer) 1);
+        {
+          mdb__declarative_tree__add_paths_to_conjuncts_4_p_0(mdb__declarative_tree__Goals_8, mdb__declarative_tree__ParentPath_2, mdb__declarative_tree__V_15_15, &mdb__declarative_tree__GoalAndPaths_12);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *mdb__declarative_tree__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__V_13_13));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__GoalAndPaths_12));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__plain_call_is_special_case_4_p_0(
+  MR_String mdb__declarative_tree__Module_5,
+  MR_String mdb__declarative_tree__Name_6,
+  MR_Word mdb__declarative_tree__Args_7,
+  MR_Integer * mdb__declarative_tree__NewVar_8)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__Module_5, (MR_String) "builtin") == 0);
+    MR_Word mdb__declarative_tree__TypeCtorInfo_11_11;
+    MR_Integer mdb__declarative_tree__V_9_9;
+    MR_Integer mdb__declarative_tree__V_10_10;
+    MR_Integer mdb__declarative_tree__V_12_12;
+    MR_Box mdb__declarative_tree__conv0_NewVar_8;
+
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__Name_6, (MR_String) "cc_multi_equal") == 0);
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_9_9 = (MR_Integer) 3;
+            mdb__declarative_tree__TypeCtorInfo_11_11 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+            {
+              mercury__list__length_2_p_0(mdb__declarative_tree__TypeCtorInfo_11_11, mdb__declarative_tree__Args_7, &mdb__declarative_tree__V_12_12);
+            }
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_9_9 == mdb__declarative_tree__V_12_12);
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__V_10_10 = (MR_Integer) 2;
+                {
+                  mdb__declarative_tree__conv0_NewVar_8 = mercury__list__det_index1_2_f_0(mdb__declarative_tree__TypeCtorInfo_11_11, mdb__declarative_tree__Args_7, mdb__declarative_tree__V_10_10);
+                }
+                *mdb__declarative_tree__NewVar_8 = ((MR_Integer) mdb__declarative_tree__conv0_NewVar_8);
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__find_variable_in_args_4_p_0(
+  MR_Word mdb__declarative_tree__Args_5,
+  MR_Integer mdb__declarative_tree__ArgNum_6,
+  MR_Integer mdb__declarative_tree__TotalArgs_7,
+  MR_Integer * mdb__declarative_tree__Var_8)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Integer mdb__declarative_tree__FoundVar_9;
+    MR_Word mdb__declarative_tree__TypeCtorInfo_17_17 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    MR_Word mdb__declarative_tree__V_10_10;
+    MR_Integer mdb__declarative_tree__V_11_11;
+    MR_Integer mdb__declarative_tree__V_12_12;
+    MR_Box mdb__declarative_tree__conv0_FoundVar_9;
+
+    {
+      mdb__declarative_tree__V_10_10 = mercury__list__reverse_1_f_0(mdb__declarative_tree__TypeCtorInfo_17_17, mdb__declarative_tree__Args_5);
+    }
+    mdb__declarative_tree__V_12_12 = (mdb__declarative_tree__TotalArgs_7 - mdb__declarative_tree__ArgNum_6);
+    mdb__declarative_tree__V_11_11 = (mdb__declarative_tree__V_12_12 + (MR_Integer) 1);
+    {
+      mdb__declarative_tree__succeeded = mercury__list__index1_3_p_0(mdb__declarative_tree__TypeCtorInfo_17_17, mdb__declarative_tree__V_10_10, mdb__declarative_tree__V_11_11, &mdb__declarative_tree__conv0_FoundVar_9);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__FoundVar_9 = ((MR_Integer) mdb__declarative_tree__conv0_FoundVar_9);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__Var_8 = mdb__declarative_tree__FoundVar_9;
+    else
+      {
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[24])));
+          return;
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__atomic_goal_matches_atom_2_p_0(
+  MR_Word mdb__declarative_tree__AtomicGoalId_3,
+  MR_Word mdb__declarative_tree__Atom_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_String mdb__declarative_tree__GoalModule_5 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoalId_3, (MR_Integer) 0)));
+    MR_String mdb__declarative_tree__GoalName_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoalId_3, (MR_Integer) 1)));
+    MR_Integer mdb__declarative_tree__GoalArity_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__AtomicGoalId_3, (MR_Integer) 2)));
+    MR_Word mdb__declarative_tree__ProcLabel_8;
+    MR_Word mdb__declarative_tree__EventModule_9;
+    MR_String mdb__declarative_tree__EventName_10;
+    MR_Integer mdb__declarative_tree__EventArity_13;
+    MR_Box mdb__declarative_tree__V_14_14 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Atom_4, (MR_Integer) 0)));
+    MR_Word mdb__declarative_tree__V_15_15;
+    MR_String mdb__declarative_tree__V_19_19;
+    MR_Word mdb__declarative_tree__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Atom_4, (MR_Integer) 1)));
+    MR_Integer mdb__declarative_tree__V_11_11;
+    MR_Word mdb__declarative_tree__V_12_12;
+    MR_Box mdb__declarative_tree__V_17_17;
+
+    {
+      mdb__declarative_tree__ProcLabel_8 = mdbcomp__rtti_access__get_proc_label_from_layout_1_f_0(mdb__declarative_tree__V_14_14);
+    }
+    {
+      mdb__declarative_execution__get_pred_attributes_5_p_0(mdb__declarative_tree__ProcLabel_8, &mdb__declarative_tree__EventModule_9, &mdb__declarative_tree__EventName_10, &mdb__declarative_tree__V_11_11, &mdb__declarative_tree__V_12_12);
+    }
+    mdb__declarative_tree__V_17_17 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Atom_4, (MR_Integer) 0)));
+    mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Atom_4, (MR_Integer) 1)));
+    {
+      mdb__declarative_tree__EventArity_13 = mercury__list__length_1_f_0((MR_Word) &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_atom_arg_0, mdb__declarative_tree__V_15_15);
+    }
+    {
+      mdb__declarative_tree__V_19_19 = mdbcomp__sym_name__sym_name_to_string_1_f_0(mdb__declarative_tree__EventModule_9);
+    }
+    mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__GoalModule_5, mdb__declarative_tree__V_19_19) == 0);
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__EventName_10, mdb__declarative_tree__GoalName_6) == 0);
+        if (mdb__declarative_tree__succeeded)
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__EventArity_13 == mdb__declarative_tree__GoalArity_7);
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__match_atomic_goal_to_contour_event_15_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145,
+  MR_Box mdb__declarative_tree__Store_17,
+  MR_String mdb__declarative_tree__File_18,
+  MR_Integer mdb__declarative_tree__Line_19,
+  MR_Word mdb__declarative_tree__BoundVars_20,
+  MR_Word mdb__declarative_tree__AtomicGoal_21,
+  MR_Word mdb__declarative_tree__AtomicGoalArgs_22,
+  MR_Word mdb__declarative_tree__Path_23,
+  MR_Word mdb__declarative_tree__GoalPaths_24,
+  MR_Word mdb__declarative_tree__Contour_25,
+  MR_Word mdb__declarative_tree__MaybeEnd_26,
+  MR_Integer mdb__declarative_tree__ArgNum_27,
+  MR_Integer mdb__declarative_tree__TotalArgs_28,
+  MR_Word mdb__declarative_tree__HeadVars_29,
+  MR_Word mdb__declarative_tree__AllTraced_30,
+  MR_Word mdb__declarative_tree__Primitives0_31)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_25)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word mdb__declarative_tree__MaybePrims_32;
+    MR_Word mdb__declarative_tree__ContourHeadNode_34;
+    MR_Word mdb__declarative_tree__EndPath_35;
+    MR_Word mdb__declarative_tree__V_89_89;
+    MR_Word mdb__declarative_tree__V_90_90;
+    MR_Box mdb__declarative_tree__V_33_33;
+
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_25, (MR_Integer) 0)));
+        mdb__declarative_tree__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_25, (MR_Integer) 1)));
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_90_90 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_33_33 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_89_89, (MR_Integer) 0));
+            mdb__declarative_tree__ContourHeadNode_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_89_89, (MR_Integer) 1)));
+            mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeEnd_26)) == (MR_mktag((MR_Integer) 1)));
+            if (mdb__declarative_tree__succeeded)
+              mdb__declarative_tree__EndPath_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeEnd_26, (MR_Integer) 0)));
+          }
+      }
+    if (mdb__declarative_tree__succeeded)
+      {
+        MR_Word mdb__declarative_tree__Atom_46;
+        MR_Word mdb__declarative_tree__TypeInfo_147_147;
+        MR_Word mdb__declarative_tree__MaybeReturnLabel_42;
+        MR_String mdb__declarative_tree__CallPathStr_47;
+        MR_Word mdb__declarative_tree__CallPath_48;
+        MR_Integer mdb__declarative_tree__PolyConst2_146;
+        MR_Box mdb__declarative_tree__V_36_36;
+        MR_Box mdb__declarative_tree__V_37_37;
+        MR_Word mdb__declarative_tree__V_38_38;
+        MR_Integer mdb__declarative_tree__V_39_39;
+        MR_Integer mdb__declarative_tree__V_40_40;
+        MR_Word mdb__declarative_tree__V_41_41;
+        MR_Box mdb__declarative_tree__V_43_43;
+        MR_Integer mdb__declarative_tree__V_44_44;
+        MR_Integer mdb__declarative_tree__V_45_45;
+
+        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_34)) == (MR_mktag((MR_Integer) 0)));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_36_36 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 0));
+            mdb__declarative_tree__V_37_37 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 1));
+            mdb__declarative_tree__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 2)));
+            mdb__declarative_tree__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 3)));
+            mdb__declarative_tree__V_40_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 4)));
+            mdb__declarative_tree__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 5)));
+            mdb__declarative_tree__MaybeReturnLabel_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 6)));
+            mdb__declarative_tree__V_43_43 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 7)));
+            mdb__declarative_tree__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 8)));
+            mdb__declarative_tree__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ContourHeadNode_34, (MR_Integer) 9)));
+            mdb__declarative_tree__PolyConst2_146 = (MR_Integer) 2;
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145, mdb__declarative_tree__PolyConst2_146, &mdb__declarative_tree__TypeInfo_147_147);
+            }
+            {
+              mdb__declarative_tree__Atom_46 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_147_147, mdb__declarative_tree__ContourHeadNode_34);
+            }
+            {
+              mdb__declarative_tree__CallPathStr_47 = mdbcomp__rtti_access__get_goal_path_from_maybe_label_1_f_0(mdb__declarative_tree__MaybeReturnLabel_42);
+            }
+            {
+              mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__CallPathStr_47, &mdb__declarative_tree__CallPath_48);
+            }
+            {
+              mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__CallPath_48, mdb__declarative_tree__EndPath_35);
+            }
+          }
+        if (mdb__declarative_tree__succeeded)
+          {
+            MR_Word mdb__declarative_tree__AtomicGoalId_49;
+            MR_Word mdb__declarative_tree__V_91_91;
+
+            {
+              mdb__declarative_tree__V_91_91 = mdbcomp__program_representation__atomic_goal_identifiable_1_f_0(mdb__declarative_tree__AtomicGoal_21);
+            }
+            mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_91_91)) == (MR_mktag((MR_Integer) 1)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__AtomicGoalId_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_91_91, (MR_Integer) 0)));
+                {
+                  mdb__declarative_tree__succeeded = mdb__declarative_tree__atomic_goal_matches_atom_2_p_0(mdb__declarative_tree__AtomicGoalId_49, mdb__declarative_tree__Atom_46);
+                }
+              }
+            else
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__AllTraced_30 == (MR_Integer) 1);
+            if (mdb__declarative_tree__succeeded)
+              {
+                MR_Integer mdb__declarative_tree__V_92_92;
+                MR_Integer mdb__declarative_tree__V_93_93;
+
+                {
+                  mdb__declarative_tree__V_93_93 = mercury__list__length_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, mdb__declarative_tree__AtomicGoalArgs_22);
+                }
+                mdb__declarative_tree__V_92_92 = (mdb__declarative_tree__TotalArgs_28 - mdb__declarative_tree__V_93_93);
+                mdb__declarative_tree__succeeded = (mdb__declarative_tree__ArgNum_27 > mdb__declarative_tree__V_92_92);
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    MR_Integer mdb__declarative_tree__Var_50;
+                    MR_Word mdb__declarative_tree__V_94_94;
+
+                    {
+                      mdb__declarative_tree__find_variable_in_args_4_p_0(mdb__declarative_tree__AtomicGoalArgs_22, mdb__declarative_tree__ArgNum_27, mdb__declarative_tree__TotalArgs_28, &mdb__declarative_tree__Var_50);
+                    }
+                    {
+                      mdb__declarative_tree__V_94_94 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_94_94, 0) = ((MR_Box) (mdb__declarative_tree__Primitives0_31));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_94_94, 1) = ((MR_Box) (mdb__declarative_tree__Var_50));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_94_94, 2) = ((MR_Box) ((MR_Integer) 0));
+                    }
+                    {
+                      mdb__declarative_tree__MaybePrims_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybePrims_32, 0) = ((MR_Box) (mdb__declarative_tree__V_94_94));
+                    }
+                  }
+                else
+                  switch (MR_tag((MR_Word) mdb__declarative_tree__AtomicGoal_21)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                    case (MR_Integer) 1:
+                    case (MR_Integer) 2:
+                      {
+                        {
+                          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[18])));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_21, (MR_Integer) 0)))) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                        case (MR_Integer) 1:
+                        case (MR_Integer) 2:
+                        case (MR_Integer) 3:
+                        case (MR_Integer) 4:
+                        case (MR_Integer) 6:
+                        case (MR_Integer) 7:
+                        case (MR_Integer) 8:
+                        case (MR_Integer) 9:
+                          {
+                            {
+                              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[18])));
+                            }
+                          }
+                          break;
+                        case (MR_Integer) 5:
+                          {
+                            MR_Word mdb__declarative_tree__V_99_99;
+                            MR_Integer mdb__declarative_tree__Var_123 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_21, (MR_Integer) 1)));
+                            MR_Word mdb__declarative_tree__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__AtomicGoal_21, (MR_Integer) 2)));
+
+                            {
+                              mdb__declarative_tree__V_99_99 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                              MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_99_99, 0) = ((MR_Box) (mdb__declarative_tree__Primitives0_31));
+                              MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_99_99, 1) = ((MR_Box) (mdb__declarative_tree__Var_123));
+                              MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_99_99, 2) = ((MR_Box) ((MR_Integer) 1));
+                            }
+                            {
+                              mdb__declarative_tree__MaybePrims_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybePrims_32, 0) = ((MR_Box) (mdb__declarative_tree__V_99_99));
+                            }
+                          }
+                          break;
+                      }
+                      break;
+                  }
+              }
+            else
+              switch (mdb__declarative_tree__AllTraced_30) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word mdb__declarative_tree__Primitive_83;
+                    MR_Word mdb__declarative_tree__Primitives1_84;
+
+                    {
+                      mdb__declarative_tree__Primitive_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 0) = ((MR_Box) (mdb__declarative_tree__File_18));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 1) = ((MR_Box) (mdb__declarative_tree__Line_19));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 2) = ((MR_Box) (mdb__declarative_tree__BoundVars_20));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 3) = ((MR_Box) (mdb__declarative_tree__AtomicGoal_21));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 4) = ((MR_Box) (mdb__declarative_tree__Path_23));
+                      MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_83, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      mdb__declarative_tree__Primitives1_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_84, 0) = ((MR_Box) (mdb__declarative_tree__Primitive_83));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_84, 1) = ((MR_Box) (mdb__declarative_tree__Primitives0_31));
+                    }
+                    {
+                      mdb__declarative_tree__MaybePrims_32 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145, mdb__declarative_tree__Store_17, mdb__declarative_tree__GoalPaths_24, mdb__declarative_tree__Contour_25, mdb__declarative_tree__MaybeEnd_26, mdb__declarative_tree__ArgNum_27, mdb__declarative_tree__TotalArgs_28, mdb__declarative_tree__HeadVars_29, mdb__declarative_tree__AllTraced_30, mdb__declarative_tree__Primitives1_84);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[19])));
+                    }
+                  }
+                  break;
+              }
+          }
+        else
+          {
+            {
+              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[20])));
+            }
+          }
+      }
+    else
+    if ((mdb__declarative_tree__Contour_25 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__MaybeEnd_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (mdb__declarative_tree__succeeded)
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__AllTraced_30 == (MR_Integer) 0);
+        if (mdb__declarative_tree__succeeded)
+          {
+            MR_Word mdb__declarative_tree__Primitive_134;
+            MR_Word mdb__declarative_tree__Primitives1_135;
+
+            {
+              mdb__declarative_tree__Primitive_134 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 0) = ((MR_Box) (mdb__declarative_tree__File_18));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 1) = ((MR_Box) (mdb__declarative_tree__Line_19));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 2) = ((MR_Box) (mdb__declarative_tree__BoundVars_20));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 3) = ((MR_Box) (mdb__declarative_tree__AtomicGoal_21));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 4) = ((MR_Box) (mdb__declarative_tree__Path_23));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_134, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              mdb__declarative_tree__Primitives1_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_135, 0) = ((MR_Box) (mdb__declarative_tree__Primitive_134));
+              MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_135, 1) = ((MR_Box) (mdb__declarative_tree__Primitives0_31));
+            }
+            {
+              mdb__declarative_tree__MaybePrims_32 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145, mdb__declarative_tree__Store_17, mdb__declarative_tree__GoalPaths_24, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__declarative_tree__MaybeEnd_26, mdb__declarative_tree__ArgNum_27, mdb__declarative_tree__TotalArgs_28, mdb__declarative_tree__HeadVars_29, mdb__declarative_tree__AllTraced_30, mdb__declarative_tree__Primitives1_135);
+            }
+          }
+        else
+          {
+            {
+              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[21])));
+            }
+          }
+      }
+    else
+      {
+        MR_Box mdb__declarative_tree__ContourHeadId_85;
+        MR_Word mdb__declarative_tree__ContourTail_86 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_25, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__CallInfo_87;
+        MR_Word mdb__declarative_tree__NewContour_88;
+        MR_Word mdb__declarative_tree__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_25, (MR_Integer) 0)));
+        MR_Word mdb__declarative_tree__ContourHeadNode_129;
+        MR_Word mdb__declarative_tree__Primitive_132;
+        MR_Word mdb__declarative_tree__Primitives1_133;
+        MR_Word mdb__declarative_tree__Atom_127;
+        MR_Word mdb__declarative_tree__TypeInfo_153_153;
+
+        mdb__declarative_tree__ContourHeadId_85 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_113_113, (MR_Integer) 0));
+        mdb__declarative_tree__ContourHeadNode_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_113_113, (MR_Integer) 1)));
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_153_153);
+        }
+        {
+          mdb__declarative_tree__succeeded = mdb__declarative_execution__get_trace_exit_atom_1_f_1(mdb__declarative_tree__TypeInfo_153_153, mdb__declarative_tree__ContourHeadNode_129, &mdb__declarative_tree__Atom_127);
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            MR_Word mdb__declarative_tree__AtomicGoalId_125;
+            MR_Word mdb__declarative_tree__V_114_114;
+
+            {
+              mdb__declarative_tree__V_114_114 = mdbcomp__program_representation__atomic_goal_identifiable_1_f_0(mdb__declarative_tree__AtomicGoal_21);
+            }
+            mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_114_114)) == (MR_mktag((MR_Integer) 1)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__AtomicGoalId_125 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_114_114, (MR_Integer) 0)));
+                {
+                  mdb__declarative_tree__succeeded = mdb__declarative_tree__atomic_goal_matches_atom_2_p_0(mdb__declarative_tree__AtomicGoalId_125, mdb__declarative_tree__Atom_127);
+                }
+              }
+            else
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__AllTraced_30 == (MR_Integer) 1);
+            if (mdb__declarative_tree__succeeded)
+              {
+                {
+                  mdb__declarative_tree__CallInfo_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__CallInfo_87, 0) = mdb__declarative_tree__ContourHeadId_85;
+                }
+                mdb__declarative_tree__NewContour_88 = mdb__declarative_tree__ContourTail_86;
+              }
+            else
+              switch (mdb__declarative_tree__AllTraced_30) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    mdb__declarative_tree__CallInfo_87 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    mdb__declarative_tree__NewContour_88 = mdb__declarative_tree__Contour_25;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[22])));
+                    }
+                  }
+                  break;
+              }
+          }
+        else
+          switch (mdb__declarative_tree__AllTraced_30) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                mdb__declarative_tree__CallInfo_87 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                mdb__declarative_tree__NewContour_88 = mdb__declarative_tree__Contour_25;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                {
+                  mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[23])));
+                }
+              }
+              break;
+          }
+        {
+          mdb__declarative_tree__Primitive_132 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 0) = ((MR_Box) (mdb__declarative_tree__File_18));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 1) = ((MR_Box) (mdb__declarative_tree__Line_19));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 2) = ((MR_Box) (mdb__declarative_tree__BoundVars_20));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 3) = ((MR_Box) (mdb__declarative_tree__AtomicGoal_21));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 4) = ((MR_Box) (mdb__declarative_tree__Path_23));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_132, 5) = ((MR_Box) (mdb__declarative_tree__CallInfo_87));
+        }
+        {
+          mdb__declarative_tree__Primitives1_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_133, 0) = ((MR_Box) (mdb__declarative_tree__Primitive_132));
+          MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_133, 1) = ((MR_Box) (mdb__declarative_tree__Primitives0_31));
+        }
+        {
+          mdb__declarative_tree__MaybePrims_32 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_145, mdb__declarative_tree__Store_17, mdb__declarative_tree__GoalPaths_24, mdb__declarative_tree__NewContour_88, mdb__declarative_tree__MaybeEnd_26, mdb__declarative_tree__ArgNum_27, mdb__declarative_tree__TotalArgs_28, mdb__declarative_tree__HeadVars_29, mdb__declarative_tree__AllTraced_30, mdb__declarative_tree__Primitives1_133);
+        }
+      }
+    return mdb__declarative_tree__MaybePrims_32;
+  }
+}
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__match_goal_to_contour_event_11_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177,
+  MR_Box mdb__declarative_tree__Store_13,
+  MR_Word mdb__declarative_tree__Goal_14,
+  MR_Word mdb__declarative_tree__Path_15,
+  MR_Word mdb__declarative_tree__GoalPaths_16,
+  MR_Word mdb__declarative_tree__Contour_17,
+  MR_Word mdb__declarative_tree__MaybeEnd_18,
+  MR_Integer mdb__declarative_tree__ArgNum_19,
+  MR_Integer mdb__declarative_tree__TotalArgs_20,
+  MR_Word mdb__declarative_tree__HeadVars_21,
+  MR_Word mdb__declarative_tree__AllTraced_22,
+  MR_Word mdb__declarative_tree__Primitives0_23)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__MaybePrims_24;
+    MR_Word mdb__declarative_tree__GoalExpr_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Goal_14, (MR_Integer) 0)));
+    MR_Word mdb__declarative_tree__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Goal_14, (MR_Integer) 1)));
+
+    switch (MR_tag((MR_Word) mdb__declarative_tree__GoalExpr_25)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word mdb__declarative_tree__Conjs_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 0)));
+          MR_Word mdb__declarative_tree__ConjPaths_29;
+          MR_Word mdb__declarative_tree__V_137_137;
+
+          {
+            mdb__declarative_tree__add_paths_to_conjuncts_4_p_0(mdb__declarative_tree__Conjs_28, mdb__declarative_tree__Path_15, (MR_Integer) 1, &mdb__declarative_tree__ConjPaths_29);
+          }
+          {
+            mdb__declarative_tree__V_137_137 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0, mdb__declarative_tree__ConjPaths_29, mdb__declarative_tree__GoalPaths_16);
+          }
+          {
+            mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_137_137, mdb__declarative_tree__Contour_17, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__Disjs_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 0)));
+          MR_Word mdb__declarative_tree__ContourTail_45;
+          MR_Word mdb__declarative_tree__DisjPath_51;
+          MR_Integer mdb__declarative_tree__N_54;
+          MR_Word mdb__declarative_tree__ContourHeadNode_44;
+          MR_Box mdb__declarative_tree__Label_47;
+          MR_String mdb__declarative_tree__DisjPathStr_50;
+          MR_Word mdb__declarative_tree__DisjInitialPath_52;
+          MR_Word mdb__declarative_tree__DisjLastStep_53;
+          MR_Word mdb__declarative_tree__V_128_128;
+          MR_Box mdb__declarative_tree__V_43_43;
+
+          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+          if (mdb__declarative_tree__succeeded)
+            {
+              mdb__declarative_tree__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+              mdb__declarative_tree__ContourTail_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+              mdb__declarative_tree__V_43_43 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_128_128, (MR_Integer) 0));
+              mdb__declarative_tree__ContourHeadNode_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_128_128, (MR_Integer) 1)));
+              if (((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_44)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 0)))) == (MR_Integer) 3))))
+                {
+                  MR_Box mdb__declarative_tree__V_46_46 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 1));
+
+                  mdb__declarative_tree__Label_47 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 2)));
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+              else
+              if (((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_44)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 0)))) == (MR_Integer) 4))))
+                {
+                  MR_Box mdb__declarative_tree__V_48_48 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 1));
+                  MR_Box mdb__declarative_tree__V_49_49;
+
+                  mdb__declarative_tree__Label_47 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 2)));
+                  mdb__declarative_tree__V_49_49 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_44, (MR_Integer) 3));
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+              else
+                mdb__declarative_tree__succeeded = MR_FALSE;
+              if (mdb__declarative_tree__succeeded)
+                {
+                  {
+                    mdb__declarative_tree__DisjPathStr_50 = mdbcomp__rtti_access__get_goal_path_from_label_layout_1_f_0(mdb__declarative_tree__Label_47);
+                  }
+                  {
+                    mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__DisjPathStr_50, &mdb__declarative_tree__DisjPath_51);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mdbcomp__goal_path__rev_goal_path_remove_last_3_p_0(mdb__declarative_tree__DisjPath_51, &mdb__declarative_tree__DisjInitialPath_52, &mdb__declarative_tree__DisjLastStep_53);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__DisjInitialPath_52, mdb__declarative_tree__Path_15);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__DisjLastStep_53)) == (MR_mktag((MR_Integer) 2)));
+                          if (mdb__declarative_tree__succeeded)
+                            mdb__declarative_tree__N_54 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__DisjLastStep_53, (MR_Integer) 0)));
+                        }
+                    }
+                }
+            }
+          if (mdb__declarative_tree__succeeded)
+            {
+              MR_Word mdb__declarative_tree__Disj_55;
+              MR_Word mdb__declarative_tree__DisjAndPath_56;
+              MR_Word mdb__declarative_tree__V_129_129;
+              MR_Box mdb__declarative_tree__conv0_Disj_55;
+
+              {
+                mercury__list__det_index1_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[1], mdb__declarative_tree__Disjs_42, mdb__declarative_tree__N_54, &mdb__declarative_tree__conv0_Disj_55);
+              }
+              mdb__declarative_tree__Disj_55 = ((MR_Word) mdb__declarative_tree__conv0_Disj_55);
+              {
+                mdb__declarative_tree__DisjAndPath_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__DisjAndPath_56, 0) = ((MR_Box) (mdb__declarative_tree__Disj_55));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__DisjAndPath_56, 1) = ((MR_Box) (mdb__declarative_tree__DisjPath_51));
+              }
+              {
+                mdb__declarative_tree__V_129_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_129_129, 0) = ((MR_Box) (mdb__declarative_tree__DisjAndPath_56));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_129_129, 1) = ((MR_Box) (mdb__declarative_tree__GoalPaths_16));
+              }
+              {
+                mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_129_129, mdb__declarative_tree__ContourTail_45, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+              }
+            }
+          else
+            {
+              {
+                mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[14])));
+              }
+            }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mdb__declarative_tree__Cases_59 = ((MR_Word) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 2)));
+          MR_Integer mdb__declarative_tree___SwitchVar_57 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 0)));
+          MR_Word mdb__declarative_tree___SwitchCanFail_58 = ((MR_Word) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 1)));
+          MR_Word mdb__declarative_tree__ArmPath_63;
+          MR_Word mdb__declarative_tree__ContourTail_141;
+          MR_Integer mdb__declarative_tree__N_143;
+          MR_String mdb__declarative_tree__ArmPathStr_62;
+          MR_Word mdb__declarative_tree__ArmInitialPath_64;
+          MR_Word mdb__declarative_tree__ArmLastStep_65;
+          MR_Word mdb__declarative_tree__V_123_123;
+          MR_Word mdb__declarative_tree__ContourHeadNode_138;
+          MR_Box mdb__declarative_tree__Label_139;
+          MR_Box mdb__declarative_tree__V_60_60;
+          MR_Box mdb__declarative_tree__V_61_61;
+          MR_Word mdb__declarative_tree__V_66_66;
+
+          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+          if (mdb__declarative_tree__succeeded)
+            {
+              mdb__declarative_tree__V_123_123 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+              mdb__declarative_tree__ContourTail_141 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+              mdb__declarative_tree__V_60_60 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_123_123, (MR_Integer) 0));
+              mdb__declarative_tree__ContourHeadNode_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_123_123, (MR_Integer) 1)));
+              mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_138)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_138, (MR_Integer) 0)))) == (MR_Integer) 2)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_61_61 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_138, (MR_Integer) 1));
+                  mdb__declarative_tree__Label_139 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_138, (MR_Integer) 2)));
+                  {
+                    mdb__declarative_tree__ArmPathStr_62 = mdbcomp__rtti_access__get_goal_path_from_label_layout_1_f_0(mdb__declarative_tree__Label_139);
+                  }
+                  {
+                    mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__ArmPathStr_62, &mdb__declarative_tree__ArmPath_63);
+                  }
+                  {
+                    mdb__declarative_tree__succeeded = mdbcomp__goal_path__rev_goal_path_remove_last_3_p_0(mdb__declarative_tree__ArmPath_63, &mdb__declarative_tree__ArmInitialPath_64, &mdb__declarative_tree__ArmLastStep_65);
+                  }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      {
+                        mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__ArmInitialPath_64, mdb__declarative_tree__Path_15);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ArmLastStep_65)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ArmLastStep_65, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (mdb__declarative_tree__succeeded)
+                            {
+                              mdb__declarative_tree__N_143 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ArmLastStep_65, (MR_Integer) 1)));
+                              mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ArmLastStep_65, (MR_Integer) 2)));
+                            }
+                        }
+                    }
+                }
+            }
+          if (mdb__declarative_tree__succeeded)
+            {
+              MR_Word mdb__declarative_tree__Case_67;
+              MR_Word mdb__declarative_tree__Arm_70;
+              MR_Word mdb__declarative_tree__ArmAndPath_71;
+              MR_Word mdb__declarative_tree__V_124_124;
+              MR_Box mdb__declarative_tree__conv1_Case_67;
+              MR_Word mdb__declarative_tree___ConsId_68;
+              MR_Word mdb__declarative_tree___ConsIdArity_69;
+
+              {
+                mercury__list__det_index1_3_p_0((MR_Word) &mdb__declarative_tree_scalar_common_1[2], mdb__declarative_tree__Cases_59, mdb__declarative_tree__N_143, &mdb__declarative_tree__conv1_Case_67);
+              }
+              mdb__declarative_tree__Case_67 = ((MR_Word) mdb__declarative_tree__conv1_Case_67);
+              mdb__declarative_tree___ConsId_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Case_67, (MR_Integer) 0)));
+              mdb__declarative_tree___ConsIdArity_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Case_67, (MR_Integer) 1)));
+              mdb__declarative_tree__Arm_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Case_67, (MR_Integer) 2)));
+              {
+                mdb__declarative_tree__ArmAndPath_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArmAndPath_71, 0) = ((MR_Box) (mdb__declarative_tree__Arm_70));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__ArmAndPath_71, 1) = ((MR_Box) (mdb__declarative_tree__ArmPath_63));
+              }
+              {
+                mdb__declarative_tree__V_124_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_124_124, 0) = ((MR_Box) (mdb__declarative_tree__ArmAndPath_71));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_124_124, 1) = ((MR_Box) (mdb__declarative_tree__GoalPaths_16));
+              }
+              {
+                mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_124_124, mdb__declarative_tree__ContourTail_141, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+              }
+            }
+          else
+            {
+              {
+                mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[17])));
+              }
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__Cond_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 1)));
+              MR_Word mdb__declarative_tree__Then_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 2)));
+              MR_Word mdb__declarative_tree__Else_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 3)));
+              MR_Word mdb__declarative_tree__CondPath_79;
+              MR_Word mdb__declarative_tree__ContourTail_164;
+              MR_String mdb__declarative_tree__CondPathStr_78;
+              MR_Word mdb__declarative_tree__CondInitialPath_80;
+              MR_Word mdb__declarative_tree__CondLastStep_81;
+              MR_Word mdb__declarative_tree__V_113_113;
+              MR_Word mdb__declarative_tree__ContourHeadNode_148;
+              MR_Box mdb__declarative_tree__Label_149;
+              MR_Box mdb__declarative_tree__V_75_75;
+              MR_Box mdb__declarative_tree__V_76_76;
+              MR_Word mdb__declarative_tree__V_77_77;
+
+              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+                  mdb__declarative_tree__ContourTail_164 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+                  mdb__declarative_tree__V_75_75 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_113_113, (MR_Integer) 0));
+                  mdb__declarative_tree__ContourHeadNode_148 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_113_113, (MR_Integer) 1)));
+                  mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_148)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_148, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      mdb__declarative_tree__V_76_76 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_148, (MR_Integer) 1));
+                      mdb__declarative_tree__Label_149 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_148, (MR_Integer) 2)));
+                      mdb__declarative_tree__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_148, (MR_Integer) 3)));
+                      {
+                        mdb__declarative_tree__CondPathStr_78 = mdbcomp__rtti_access__get_goal_path_from_label_layout_1_f_0(mdb__declarative_tree__Label_149);
+                      }
+                      {
+                        mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__CondPathStr_78, &mdb__declarative_tree__CondPath_79);
+                      }
+                      {
+                        mdb__declarative_tree__succeeded = mdbcomp__goal_path__rev_goal_path_remove_last_3_p_0(mdb__declarative_tree__CondPath_79, &mdb__declarative_tree__CondInitialPath_80, &mdb__declarative_tree__CondLastStep_81);
+                      }
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          {
+                            mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__CondInitialPath_80, mdb__declarative_tree__Path_15);
+                          }
+                          if (mdb__declarative_tree__succeeded)
+                            mdb__declarative_tree__succeeded = (mdb__declarative_tree__CondLastStep_81 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                    }
+                }
+              if (mdb__declarative_tree__succeeded)
+                {
+                  MR_Word mdb__declarative_tree__ThenPath_82;
+                  MR_Word mdb__declarative_tree__CondAndPath_83;
+                  MR_Word mdb__declarative_tree__ThenAndPath_84;
+                  MR_Word mdb__declarative_tree__V_115_115;
+                  MR_Word mdb__declarative_tree__V_116_116;
+
+                  {
+                    mdb__declarative_tree__ThenPath_82 = mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(mdb__declarative_tree__Path_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)));
+                  }
+                  {
+                    mdb__declarative_tree__CondAndPath_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__CondAndPath_83, 0) = ((MR_Box) (mdb__declarative_tree__Cond_72));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__CondAndPath_83, 1) = ((MR_Box) (mdb__declarative_tree__CondPath_79));
+                  }
+                  {
+                    mdb__declarative_tree__ThenAndPath_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__ThenAndPath_84, 0) = ((MR_Box) (mdb__declarative_tree__Then_73));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__ThenAndPath_84, 1) = ((MR_Box) (mdb__declarative_tree__ThenPath_82));
+                  }
+                  {
+                    mdb__declarative_tree__V_116_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_116_116, 0) = ((MR_Box) (mdb__declarative_tree__ThenAndPath_84));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_116_116, 1) = ((MR_Box) (mdb__declarative_tree__GoalPaths_16));
+                  }
+                  {
+                    mdb__declarative_tree__V_115_115 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_115_115, 0) = ((MR_Box) (mdb__declarative_tree__CondAndPath_83));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_115_115, 1) = ((MR_Box) (mdb__declarative_tree__V_116_116));
+                  }
+                  {
+                    mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_115_115, mdb__declarative_tree__ContourTail_164, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+                  }
+                }
+              else
+                {
+                  MR_Word mdb__declarative_tree__ContourTail_157;
+                  MR_Box mdb__declarative_tree__ElseCondId_87;
+                  MR_Word mdb__declarative_tree__CondNode_89;
+                  MR_Word mdb__declarative_tree__V_117_117;
+                  MR_Word mdb__declarative_tree__ContourHeadNode_150;
+                  MR_Box mdb__declarative_tree__Label_151;
+                  MR_String mdb__declarative_tree__CondPathStr_152;
+                  MR_Word mdb__declarative_tree__CondPath_153;
+                  MR_Word mdb__declarative_tree__CondInitialPath_154;
+                  MR_Word mdb__declarative_tree__CondLastStep_155;
+                  MR_Box mdb__declarative_tree__V_85_85;
+                  MR_Box mdb__declarative_tree__V_86_86;
+                  MR_Box mdb__declarative_tree__V_88_88;
+                  MR_Box mdb__declarative_tree__V_90_90;
+                  MR_Word mdb__declarative_tree__V_91_91;
+
+                  mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      mdb__declarative_tree__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+                      mdb__declarative_tree__ContourTail_157 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+                      mdb__declarative_tree__V_85_85 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_117_117, (MR_Integer) 0));
+                      mdb__declarative_tree__ContourHeadNode_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_117_117, (MR_Integer) 1)));
+                      mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_150)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_150, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__V_86_86 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_150, (MR_Integer) 1));
+                          mdb__declarative_tree__ElseCondId_87 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_150, (MR_Integer) 2));
+                          mdb__declarative_tree__V_88_88 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_150, (MR_Integer) 3)));
+                          {
+                            mdb__declarative_execution__cond_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__ElseCondId_87, &mdb__declarative_tree__CondNode_89);
+                          }
+                          mdb__declarative_tree__V_90_90 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__CondNode_89, (MR_Integer) 1));
+                          mdb__declarative_tree__Label_151 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__CondNode_89, (MR_Integer) 2)));
+                          mdb__declarative_tree__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__CondNode_89, (MR_Integer) 3)));
+                          {
+                            mdb__declarative_tree__CondPathStr_152 = mdbcomp__rtti_access__get_goal_path_from_label_layout_1_f_0(mdb__declarative_tree__Label_151);
+                          }
+                          {
+                            mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__CondPathStr_152, &mdb__declarative_tree__CondPath_153);
+                          }
+                          {
+                            mdb__declarative_tree__succeeded = mdbcomp__goal_path__rev_goal_path_remove_last_3_p_0(mdb__declarative_tree__CondPath_153, &mdb__declarative_tree__CondInitialPath_154, &mdb__declarative_tree__CondLastStep_155);
+                          }
+                          if (mdb__declarative_tree__succeeded)
+                            {
+                              {
+                                mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__CondInitialPath_154, mdb__declarative_tree__Path_15);
+                              }
+                              if (mdb__declarative_tree__succeeded)
+                                mdb__declarative_tree__succeeded = (mdb__declarative_tree__CondLastStep_155 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                            }
+                        }
+                    }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      MR_Word mdb__declarative_tree__ElsePath_92;
+                      MR_Word mdb__declarative_tree__ElseAndPath_93;
+                      MR_Word mdb__declarative_tree__V_119_119;
+
+                      {
+                        mdb__declarative_tree__ElsePath_92 = mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(mdb__declarative_tree__Path_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)));
+                      }
+                      {
+                        mdb__declarative_tree__ElseAndPath_93 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), mdb__declarative_tree__ElseAndPath_93, 0) = ((MR_Box) (mdb__declarative_tree__Else_74));
+                        MR_hl_field(MR_mktag(0), mdb__declarative_tree__ElseAndPath_93, 1) = ((MR_Box) (mdb__declarative_tree__ElsePath_92));
+                      }
+                      {
+                        mdb__declarative_tree__V_119_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_119_119, 0) = ((MR_Box) (mdb__declarative_tree__ElseAndPath_93));
+                        MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_119_119, 1) = ((MR_Box) (mdb__declarative_tree__GoalPaths_16));
+                      }
+                      {
+                        mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_119_119, mdb__declarative_tree__ContourTail_157, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+                      }
+                    }
+                  else
+                    {
+                      {
+                        mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[15])));
+                      }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__NegGoal_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 1)));
+              MR_Word mdb__declarative_tree__ContourTail_174;
+              MR_Word mdb__declarative_tree__V_105_105;
+              MR_Word mdb__declarative_tree__ContourHeadNode_169;
+              MR_Box mdb__declarative_tree__V_95_95;
+              MR_Box mdb__declarative_tree__V_96_96;
+              MR_Box mdb__declarative_tree__V_97_97;
+              MR_Box mdb__declarative_tree__V_98_98;
+
+              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+                  mdb__declarative_tree__ContourTail_174 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+                  mdb__declarative_tree__V_95_95 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_105_105, (MR_Integer) 0));
+                  mdb__declarative_tree__ContourHeadNode_169 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_105_105, (MR_Integer) 1)));
+                  mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_169)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_169, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      mdb__declarative_tree__V_96_96 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_169, (MR_Integer) 1));
+                      mdb__declarative_tree__V_97_97 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_169, (MR_Integer) 2));
+                      mdb__declarative_tree__V_98_98 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_169, (MR_Integer) 3)));
+                    }
+                }
+              if (mdb__declarative_tree__succeeded)
+                {
+                  mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__GoalPaths_16, mdb__declarative_tree__ContourTail_174, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+                }
+              else
+                {
+                  MR_Word mdb__declarative_tree__ContourTail_172;
+                  MR_Word mdb__declarative_tree__V_106_106;
+                  MR_Word mdb__declarative_tree__ContourHeadNode_170;
+                  MR_Box mdb__declarative_tree__V_99_99;
+                  MR_Box mdb__declarative_tree__V_100_100;
+                  MR_Box mdb__declarative_tree__V_101_101;
+                  MR_Word mdb__declarative_tree__V_102_102;
+
+                  mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Contour_17)) == (MR_mktag((MR_Integer) 1)));
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      mdb__declarative_tree__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 0)));
+                      mdb__declarative_tree__ContourTail_172 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Contour_17, (MR_Integer) 1)));
+                      mdb__declarative_tree__V_99_99 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_106_106, (MR_Integer) 0));
+                      mdb__declarative_tree__ContourHeadNode_170 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_106_106, (MR_Integer) 1)));
+                      mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__ContourHeadNode_170)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_170, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                      if (mdb__declarative_tree__succeeded)
+                        {
+                          mdb__declarative_tree__V_100_100 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_170, (MR_Integer) 1));
+                          mdb__declarative_tree__V_101_101 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_170, (MR_Integer) 2)));
+                          mdb__declarative_tree__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__ContourHeadNode_170, (MR_Integer) 3)));
+                        }
+                    }
+                  if (mdb__declarative_tree__succeeded)
+                    {
+                      MR_Word mdb__declarative_tree__NegPath_103;
+                      MR_Word mdb__declarative_tree__NegAndPath_104;
+                      MR_Word mdb__declarative_tree__V_108_108;
+
+                      {
+                        mdb__declarative_tree__NegPath_103 = mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(mdb__declarative_tree__Path_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)));
+                      }
+                      {
+                        mdb__declarative_tree__NegAndPath_104 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), mdb__declarative_tree__NegAndPath_104, 0) = ((MR_Box) (mdb__declarative_tree__NegGoal_94));
+                        MR_hl_field(MR_mktag(0), mdb__declarative_tree__NegAndPath_104, 1) = ((MR_Box) (mdb__declarative_tree__NegPath_103));
+                      }
+                      {
+                        mdb__declarative_tree__V_108_108 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_108_108, 0) = ((MR_Box) (mdb__declarative_tree__NegAndPath_104));
+                        MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_108_108, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_108_108, mdb__declarative_tree__ContourTail_172, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+                      }
+                    }
+                  else
+                    {
+                      {
+                        mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[16])));
+                      }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mdb__declarative_tree__InnerGoal_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 1)));
+              MR_Word mdb__declarative_tree__MaybeCut_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 2)));
+              MR_Word mdb__declarative_tree__InnerPath_32;
+              MR_Word mdb__declarative_tree__InnerAndPath_33;
+              MR_Word mdb__declarative_tree__V_134_134;
+              MR_Word mdb__declarative_tree__V_135_135;
+
+              {
+                mdb__declarative_tree__V_134_134 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_134_134, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_134_134, 1) = ((MR_Box) (mdb__declarative_tree__MaybeCut_31));
+              }
+              {
+                mdb__declarative_tree__InnerPath_32 = mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(mdb__declarative_tree__Path_15, mdb__declarative_tree__V_134_134);
+              }
+              {
+                mdb__declarative_tree__InnerAndPath_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__InnerAndPath_33, 0) = ((MR_Box) (mdb__declarative_tree__InnerGoal_30));
+                MR_hl_field(MR_mktag(0), mdb__declarative_tree__InnerAndPath_33, 1) = ((MR_Box) (mdb__declarative_tree__InnerPath_32));
+              }
+              {
+                mdb__declarative_tree__V_135_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_135_135, 0) = ((MR_Box) (mdb__declarative_tree__InnerAndPath_33));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_135_135, 1) = ((MR_Box) (mdb__declarative_tree__GoalPaths_16));
+              }
+              {
+                mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__V_135_135, mdb__declarative_tree__Contour_17, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_String mdb__declarative_tree__File_34 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 1)));
+              MR_Integer mdb__declarative_tree__Line_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 2)));
+              MR_Word mdb__declarative_tree__BoundVars_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 3)));
+              MR_Word mdb__declarative_tree__AtomicGoal_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExpr_25, (MR_Integer) 4)));
+              MR_Word mdb__declarative_tree__GeneratesEvent_38;
+
+              {
+                mdb__declarative_tree__GeneratesEvent_38 = mdbcomp__program_representation__atomic_goal_generates_event_like_call_1_f_0(mdb__declarative_tree__AtomicGoal_37);
+              }
+              if ((mdb__declarative_tree__GeneratesEvent_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                {
+                  MR_Word mdb__declarative_tree__Primitive_40;
+                  MR_Word mdb__declarative_tree__Primitives1_41;
+
+                  {
+                    mdb__declarative_tree__Primitive_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 0) = ((MR_Box) (mdb__declarative_tree__File_34));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 1) = ((MR_Box) (mdb__declarative_tree__Line_35));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 2) = ((MR_Box) (mdb__declarative_tree__BoundVars_36));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 3) = ((MR_Box) (mdb__declarative_tree__AtomicGoal_37));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 4) = ((MR_Box) (mdb__declarative_tree__Path_15));
+                    MR_hl_field(MR_mktag(0), mdb__declarative_tree__Primitive_40, 5) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    mdb__declarative_tree__Primitives1_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_41, 0) = ((MR_Box) (mdb__declarative_tree__Primitive_40));
+                    MR_hl_field(MR_mktag(1), mdb__declarative_tree__Primitives1_41, 1) = ((MR_Box) (mdb__declarative_tree__Primitives0_23));
+                  }
+                  {
+                    mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__make_primitive_list_9_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__GoalPaths_16, mdb__declarative_tree__Contour_17, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives1_41);
+                  }
+                }
+              else
+                {
+                  MR_Word mdb__declarative_tree__AtomicGoalArgs_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GeneratesEvent_38, (MR_Integer) 0)));
+
+                  {
+                    mdb__declarative_tree__MaybePrims_24 = mdb__declarative_tree__match_atomic_goal_to_contour_event_15_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_177, mdb__declarative_tree__Store_13, mdb__declarative_tree__File_34, mdb__declarative_tree__Line_35, mdb__declarative_tree__BoundVars_36, mdb__declarative_tree__AtomicGoal_37, mdb__declarative_tree__AtomicGoalArgs_39, mdb__declarative_tree__Path_15, mdb__declarative_tree__GoalPaths_16, mdb__declarative_tree__Contour_17, mdb__declarative_tree__MaybeEnd_18, mdb__declarative_tree__ArgNum_19, mdb__declarative_tree__TotalArgs_20, mdb__declarative_tree__HeadVars_21, mdb__declarative_tree__AllTraced_22, mdb__declarative_tree__Primitives0_23);
+                  }
+                }
+            }
+            break;
+        }
+        break;
+    }
+    return mdb__declarative_tree__MaybePrims_24;
+  }
+}
+
+static MR_Word MR_CALL 
+mdb__declarative_tree__make_primitive_list_9_f_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37,
+  MR_Box mdb__declarative_tree__Store_11,
+  MR_Word mdb__declarative_tree__GoalPaths_12,
+  MR_Word mdb__declarative_tree__Contour_13,
+  MR_Word mdb__declarative_tree__MaybeEnd_14,
+  MR_Integer mdb__declarative_tree__ArgNum_15,
+  MR_Integer mdb__declarative_tree__TotalArgs_16,
+  MR_Word mdb__declarative_tree__HeadVars_17,
+  MR_Word mdb__declarative_tree__AllTraced_18,
+  MR_Word mdb__declarative_tree__Primitives0_19)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded = (mdb__declarative_tree__AllTraced_18 == (MR_Integer) 0);
+    MR_Word mdb__declarative_tree__MaybePrims_20;
+    MR_Word mdb__declarative_tree__AdjustedContour_21;
+    MR_Integer mdb__declarative_tree__PolyConst2_40;
+    MR_Word mdb__declarative_tree__Node_58;
+    MR_Word mdb__declarative_tree__EndPath_59;
+    MR_Word mdb__declarative_tree__MaybeReturnLabel_66;
+    MR_String mdb__declarative_tree__CallPathStr_70;
+    MR_Word mdb__declarative_tree__CallPath_71;
+    MR_Word mdb__declarative_tree__V_72_72;
+    MR_Word mdb__declarative_tree__V_73_73;
+    MR_Word mdb__declarative_tree__TypeInfo_41_41;
+    MR_Box mdb__declarative_tree__V_57_57;
+    MR_Box mdb__declarative_tree__V_60_60;
+    MR_Box mdb__declarative_tree__V_61_61;
+    MR_Word mdb__declarative_tree__V_62_62;
+    MR_Integer mdb__declarative_tree__V_63_63;
+    MR_Integer mdb__declarative_tree__V_64_64;
+    MR_Word mdb__declarative_tree__V_65_65;
+    MR_Box mdb__declarative_tree__V_67_67;
+    MR_Integer mdb__declarative_tree__V_68_68;
+    MR_Integer mdb__declarative_tree__V_69_69;
+
+    if (mdb__declarative_tree__succeeded)
+      {
+        {
+          MR_Word mdb__declarative_tree__NextGoal_52;
+          MR_Word mdb__declarative_tree__V_55_55;
+          MR_Word mdb__declarative_tree__V_56_56;
+          MR_Word mdb__declarative_tree__V_54_54;
+          MR_Word mdb__declarative_tree__V_53_53;
+
+          mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__GoalPaths_12)) == (MR_mktag((MR_Integer) 1)));
+          if (mdb__declarative_tree__succeeded)
+            {
+              mdb__declarative_tree__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 0)));
+              mdb__declarative_tree__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 1)));
+              mdb__declarative_tree__NextGoal_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_55_55, (MR_Integer) 0)));
+              mdb__declarative_tree__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_55_55, (MR_Integer) 1)));
+              {
+                mdb__declarative_tree__V_56_56 = mdbcomp__program_representation__goal_generates_internal_event_1_f_0(mdb__declarative_tree__NextGoal_52);
+              }
+              mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_56_56 == (MR_Integer) 1);
+            }
+        }
+        if (!(mdb__declarative_tree__succeeded))
+          mdb__declarative_tree__succeeded = (mdb__declarative_tree__GoalPaths_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+    if (mdb__declarative_tree__succeeded)
+      {
+        MR_Word mdb__declarative_tree__TypeInfo_39_39;
+
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_39_39);
+        }
+        {
+          mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_108_101_97_100_105_110_103_95_101_120_105_116_95_102_97_105_108_95_101_118_101_110_116_115_95_95_91_49_93_95_48_2_p_0(mdb__declarative_tree__Contour_13, &mdb__declarative_tree__AdjustedContour_21);
+        }
+      }
+    else
+      mdb__declarative_tree__AdjustedContour_21 = mdb__declarative_tree__Contour_13;
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__AllTraced_18 == (MR_Integer) 0);
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__PolyConst2_40 = (MR_Integer) 2;
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, mdb__declarative_tree__PolyConst2_40, &mdb__declarative_tree__TypeInfo_41_41);
+        }
+        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__AdjustedContour_21)) == (MR_mktag((MR_Integer) 1)));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__AdjustedContour_21, (MR_Integer) 0)));
+            mdb__declarative_tree__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__AdjustedContour_21, (MR_Integer) 1)));
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_73_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__V_57_57 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_72_72, (MR_Integer) 0));
+                mdb__declarative_tree__Node_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_72_72, (MR_Integer) 1)));
+                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__MaybeEnd_14)) == (MR_mktag((MR_Integer) 1)));
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    mdb__declarative_tree__EndPath_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybeEnd_14, (MR_Integer) 0)));
+                    mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Node_58)) == (MR_mktag((MR_Integer) 0)));
+                    if (mdb__declarative_tree__succeeded)
+                      {
+                        mdb__declarative_tree__V_60_60 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 0));
+                        mdb__declarative_tree__V_61_61 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 1));
+                        mdb__declarative_tree__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 2)));
+                        mdb__declarative_tree__V_63_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 3)));
+                        mdb__declarative_tree__V_64_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 4)));
+                        mdb__declarative_tree__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 5)));
+                        mdb__declarative_tree__MaybeReturnLabel_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 6)));
+                        mdb__declarative_tree__V_67_67 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 7)));
+                        mdb__declarative_tree__V_68_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 8)));
+                        mdb__declarative_tree__V_69_69 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_58, (MR_Integer) 9)));
+                        {
+                          mdb__declarative_tree__CallPathStr_70 = mdbcomp__rtti_access__get_goal_path_from_maybe_label_1_f_0(mdb__declarative_tree__MaybeReturnLabel_66);
+                        }
+                        {
+                          mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__CallPathStr_70, &mdb__declarative_tree__CallPath_71);
+                        }
+                        {
+                          mdb__declarative_tree__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdb__declarative_tree__CallPath_71, mdb__declarative_tree__EndPath_59);
+                        }
+                        if (mdb__declarative_tree__succeeded)
+                          {
+                            {
+                              MR_Word mdb__declarative_tree__NextGoal_75;
+                              MR_Word mdb__declarative_tree__V_78_78;
+                              MR_Word mdb__declarative_tree__V_79_79;
+                              MR_Word mdb__declarative_tree__V_77_77;
+                              MR_Word mdb__declarative_tree__V_76_76;
+
+                              mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__GoalPaths_12)) == (MR_mktag((MR_Integer) 1)));
+                              if (mdb__declarative_tree__succeeded)
+                                {
+                                  mdb__declarative_tree__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 0)));
+                                  mdb__declarative_tree__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 1)));
+                                  mdb__declarative_tree__NextGoal_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_78_78, (MR_Integer) 0)));
+                                  mdb__declarative_tree__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_78_78, (MR_Integer) 1)));
+                                  {
+                                    mdb__declarative_tree__V_79_79 = mdbcomp__program_representation__goal_generates_internal_event_1_f_0(mdb__declarative_tree__NextGoal_75);
+                                  }
+                                  mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_79_79 == (MR_Integer) 1);
+                                }
+                            }
+                            if (!(mdb__declarative_tree__succeeded))
+                              mdb__declarative_tree__succeeded = (mdb__declarative_tree__GoalPaths_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__MaybePrims_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+    if ((mdb__declarative_tree__GoalPaths_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer mdb__declarative_tree__Var_25;
+        MR_Word mdb__declarative_tree__V_34_34;
+
+        {
+          mdb__declarative_tree__succeeded = mdb__declarative_tree__IntroducedFrom__pred__make_primitive_list__1184__1_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, mdb__declarative_tree__AdjustedContour_21, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+          }
+        else
+          {
+            {
+              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[13])));
+            }
+          }
+        {
+          mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_108_95_114_101_113_117_105_114_101_95_95_104_111_51_95_95_91_51_93_95_48_3_p_0(mdb__declarative_tree__MaybeEnd_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_String) "make_primitive_list", (MR_String) "found end when looking for call");
+        }
+        {
+          mdb__declarative_tree__find_variable_in_args_4_p_0(mdb__declarative_tree__HeadVars_17, mdb__declarative_tree__ArgNum_15, mdb__declarative_tree__TotalArgs_16, &mdb__declarative_tree__Var_25);
+        }
+        {
+          mdb__declarative_tree__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_34_34, 0) = ((MR_Box) (mdb__declarative_tree__Primitives0_19));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_34_34, 1) = ((MR_Box) (mdb__declarative_tree__Var_25));
+          MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_34_34, 2) = ((MR_Box) ((MR_Integer) 0));
+        }
+        {
+          mdb__declarative_tree__MaybePrims_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mdb__declarative_tree__MaybePrims_20, 0) = ((MR_Box) (mdb__declarative_tree__V_34_34));
+        }
+      }
+    else
+      {
+        MR_Word mdb__declarative_tree__Goal_22;
+        MR_Word mdb__declarative_tree__Path_23;
+        MR_Word mdb__declarative_tree__Tail_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 1)));
+        MR_Word mdb__declarative_tree__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__GoalPaths_12, (MR_Integer) 0)));
+
+        mdb__declarative_tree__Goal_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_36_36, (MR_Integer) 0)));
+        mdb__declarative_tree__Path_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_36_36, (MR_Integer) 1)));
+        {
+          mdb__declarative_tree__MaybePrims_20 = mdb__declarative_tree__match_goal_to_contour_event_11_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_37, mdb__declarative_tree__Store_11, mdb__declarative_tree__Goal_22, mdb__declarative_tree__Path_23, mdb__declarative_tree__Tail_24, mdb__declarative_tree__AdjustedContour_21, mdb__declarative_tree__MaybeEnd_14, mdb__declarative_tree__ArgNum_15, mdb__declarative_tree__TotalArgs_16, mdb__declarative_tree__HeadVars_17, mdb__declarative_tree__AllTraced_18, mdb__declarative_tree__Primitives0_19);
+        }
+      }
+    return mdb__declarative_tree__MaybePrims_20;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__get_exit_atom_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__FinalAtom_7)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_40_52;
+    MR_Word mdb__declarative_tree__Exit_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Word mdb__declarative_tree__ExitAtom_20;
+    MR_Box mdb__declarative_tree__CallId_21;
+    MR_Word mdb__declarative_tree__Call_22;
+    MR_Integer mdb__declarative_tree__CallIoSeq_23;
+    MR_Integer mdb__declarative_tree__ExitIoSeq_24;
+    MR_Integer mdb__declarative_tree__PolyConst2_51;
+    MR_Box mdb__declarative_tree__V_5_5 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__HeadVar__2_2, (MR_Integer) 0));
+    MR_Box mdb__declarative_tree__V_8_8;
+    MR_Box mdb__declarative_tree__V_9_9;
+    MR_Box mdb__declarative_tree__V_10_10;
+    MR_Word mdb__declarative_tree__V_11_11;
+    MR_Integer mdb__declarative_tree__V_12_12;
+    MR_Box mdb__declarative_tree__V_13_13;
+    MR_Integer mdb__declarative_tree__V_14_14;
+    MR_Integer mdb__declarative_tree__V_15_15;
+    MR_Box mdb__declarative_tree__V_28_28;
+    MR_Box mdb__declarative_tree__V_29_29;
+    MR_Word mdb__declarative_tree__V_30_30;
+    MR_Integer mdb__declarative_tree__V_31_31;
+    MR_Box mdb__declarative_tree__V_32_32;
+    MR_Integer mdb__declarative_tree__V_33_33;
+    MR_Integer mdb__declarative_tree__V_34_34;
+    MR_Box mdb__declarative_tree__V_35_35;
+    MR_Box mdb__declarative_tree__V_36_36;
+    MR_Word mdb__declarative_tree__V_37_37;
+    MR_Integer mdb__declarative_tree__V_38_38;
+    MR_Integer mdb__declarative_tree__V_39_39;
+    MR_Word mdb__declarative_tree__V_40_40;
+    MR_Word mdb__declarative_tree__V_41_41;
+    MR_Box mdb__declarative_tree__V_42_42;
+    MR_Integer mdb__declarative_tree__V_43_43;
+    MR_Box mdb__declarative_tree__V_44_44;
+    MR_Box mdb__declarative_tree__V_45_45;
+    MR_Box mdb__declarative_tree__V_46_46;
+    MR_Word mdb__declarative_tree__V_47_47;
+    MR_Integer mdb__declarative_tree__V_48_48;
+    MR_Box mdb__declarative_tree__V_49_49;
+    MR_Integer mdb__declarative_tree__V_50_50;
+
+    mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Exit_6)) == (MR_mktag((MR_Integer) 1)));
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__V_8_8 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 0));
+        mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 1));
+        mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 2));
+        mdb__declarative_tree__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 3)));
+        mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 4)));
+        mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 5)));
+        mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 6)));
+        mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 7)));
+        mdb__declarative_tree__PolyConst2_51 = (MR_Integer) 2;
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16, mdb__declarative_tree__PolyConst2_51, &mdb__declarative_tree__TypeInfo_40_52);
+        }
+        {
+          mdb__declarative_tree__ExitAtom_20 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_40_52, mdb__declarative_tree__Exit_6);
+        }
+        mdb__declarative_tree__V_28_28 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 0));
+        mdb__declarative_tree__CallId_21 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 1));
+        mdb__declarative_tree__V_29_29 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 2));
+        mdb__declarative_tree__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 3)));
+        mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 4)));
+        mdb__declarative_tree__V_32_32 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 5)));
+        mdb__declarative_tree__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 6)));
+        mdb__declarative_tree__V_34_34 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 7)));
+        {
+          mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_21, &mdb__declarative_tree__Call_22);
+        }
+        mdb__declarative_tree__V_35_35 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 0));
+        mdb__declarative_tree__V_36_36 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 1));
+        mdb__declarative_tree__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 2)));
+        mdb__declarative_tree__V_38_38 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 3)));
+        mdb__declarative_tree__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 4)));
+        mdb__declarative_tree__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 5)));
+        mdb__declarative_tree__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 6)));
+        mdb__declarative_tree__V_42_42 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 7)));
+        mdb__declarative_tree__CallIoSeq_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 8)));
+        mdb__declarative_tree__V_43_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_22, (MR_Integer) 9)));
+        mdb__declarative_tree__V_44_44 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 0));
+        mdb__declarative_tree__V_45_45 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 1));
+        mdb__declarative_tree__V_46_46 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 2));
+        mdb__declarative_tree__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 3)));
+        mdb__declarative_tree__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 4)));
+        mdb__declarative_tree__V_49_49 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 5)));
+        mdb__declarative_tree__ExitIoSeq_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 6)));
+        mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Exit_6, (MR_Integer) 7)));
+        mdb__declarative_tree__succeeded = (mdb__declarative_tree__CallIoSeq_23 == mdb__declarative_tree__ExitIoSeq_24);
+        if (mdb__declarative_tree__succeeded)
+          {
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *mdb__declarative_tree__FinalAtom_7 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_20));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+          }
+        else
+          {
+            MR_Word mdb__declarative_tree__V_26_26;
+            MR_Word mdb__declarative_tree__V_27_27;
+
+            {
+              mdb__declarative_tree__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_27_27, 0) = ((MR_Box) (mdb__declarative_tree__CallIoSeq_23));
+              MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_27_27, 1) = ((MR_Box) (mdb__declarative_tree__ExitIoSeq_24));
+            }
+            {
+              mdb__declarative_tree__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_26_26, 0) = ((MR_Box) (mdb__declarative_tree__V_27_27));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *mdb__declarative_tree__FinalAtom_7 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_20));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__declarative_tree__V_26_26));
+            }
+          }
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1,
+  MR_Box * mdb__declarative_tree__wrapper_arg_2)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    MR_Word mdb__declarative_tree__conv0_FinalAtom_7;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__get_exit_atom_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 3))), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__closure, (MR_Integer) 4)), ((MR_Word) mdb__declarative_tree__wrapper_arg_1), &mdb__declarative_tree__conv0_FinalAtom_7);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        *mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_FinalAtom_7));
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Word mdb__declarative_tree__ExitNode_5,
+  MR_Word * mdb__declarative_tree__ExitAtoms_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_23_23;
+    MR_Word mdb__declarative_tree__TypeInfo_24_24;
+    MR_Word mdb__declarative_tree__TypeInfo_26_26;
+    MR_Word mdb__declarative_tree__TypeInfo_28_28;
+    MR_Box mdb__declarative_tree__ExitPrecId_7 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 0));
+    MR_Word mdb__declarative_tree__ExitPrec_8;
+    MR_Word mdb__declarative_tree__Contour_9;
+    MR_Word mdb__declarative_tree__V_11_11;
+    MR_Box mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 1));
+    MR_Box mdb__declarative_tree__V_13_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 2));
+    MR_Word mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 3)));
+    MR_Integer mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 4)));
+    MR_Box mdb__declarative_tree__V_16_16 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 5)));
+    MR_Integer mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 6)));
+    MR_Integer mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_5, (MR_Integer) 7)));
+
+    {
+      mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, mdb__declarative_tree__Store_4, mdb__declarative_tree__ExitPrecId_7, &mdb__declarative_tree__ExitPrec_8);
+    }
+    {
+      mdb__declarative_tree__materialize_contour_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, mdb__declarative_tree__Store_4, mdb__declarative_tree__ExitPrecId_7, mdb__declarative_tree__ExitPrec_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__declarative_tree__Contour_9);
+    }
+    {
+      mdb__declarative_tree__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_11_11, 0) = ((MR_Box) (&mdb__declarative_tree_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_11_11, 1) = ((MR_Box) (mdb__declarative_tree__get_exit_atoms_in_contour_3_p_0_1));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_11_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_11_11, 3) = ((MR_Box) (mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_11_11, 4) = mdb__declarative_tree__Store_4;
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_23_23);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_24_24);
+    }
+    {
+      mdb__declarative_tree__TypeInfo_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_26_26, 0) = ((MR_Box) (&mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_node_1));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_26_26, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_24_24));
+    }
+    {
+      mdb__declarative_tree__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_28_28, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_28_28, 1) = ((MR_Box) (mdb__declarative_tree__TypeInfo_23_23));
+      MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeInfo_28_28, 2) = ((MR_Box) (mdb__declarative_tree__TypeInfo_26_26));
+    }
+    {
+      mercury__list__filter_map_3_p_0(mdb__declarative_tree__TypeInfo_28_28, (MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_final_decl_atom_0, mdb__declarative_tree__V_11_11, mdb__declarative_tree__Contour_9, mdb__declarative_tree__ExitAtoms_6);
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__materialize_contour_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_34,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Word mdb__declarative_tree__Node_8,
+  MR_Word mdb__declarative_tree__Nodes0_9,
+  MR_Word * mdb__declarative_tree__Nodes_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Node_8)) == (MR_mktag((MR_Integer) 0)));
+        MR_Box mdb__declarative_tree__V_11_11;
+        MR_Box mdb__declarative_tree__V_12_12;
+        MR_Word mdb__declarative_tree__V_13_13;
+        MR_Integer mdb__declarative_tree__V_14_14;
+        MR_Integer mdb__declarative_tree__V_15_15;
+        MR_Word mdb__declarative_tree__V_16_16;
+        MR_Word mdb__declarative_tree__V_17_17;
+        MR_Box mdb__declarative_tree__V_18_18;
+        MR_Integer mdb__declarative_tree__V_19_19;
+        MR_Integer mdb__declarative_tree__V_20_20;
+
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 0));
+            mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+            mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 2)));
+            mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+            mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 4)));
+            mdb__declarative_tree__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 5)));
+            mdb__declarative_tree__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 6)));
+            mdb__declarative_tree__V_18_18 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 7)));
+            mdb__declarative_tree__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 8)));
+            mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_8, (MR_Integer) 9)));
+            *mdb__declarative_tree__Nodes_10 = mdb__declarative_tree__Nodes0_9;
+          }
+        else
+          {
+            MR_Box mdb__declarative_tree__PrevNodeId_24;
+            MR_Word mdb__declarative_tree__PrevNode_28;
+            MR_Word mdb__declarative_tree__Nodes1_32;
+            MR_Box mdb__declarative_tree__NegPrec_21;
+            MR_Box mdb__declarative_tree__V_22_22;
+            MR_Word mdb__declarative_tree__V_23_23;
+            MR_Box mdb__declarative_tree__V_29_29;
+            MR_Box mdb__declarative_tree__V_30_30;
+            MR_Box mdb__declarative_tree__V_31_31;
+
+            mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node_8)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) == (MR_Integer) 8)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__NegPrec_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+                mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2)));
+                mdb__declarative_tree__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+                mdb__declarative_tree__PrevNodeId_24 = mdb__declarative_tree__NegPrec_21;
+              }
+            else
+              {
+                MR_Box mdb__declarative_tree__CondPrec_25;
+                MR_Box mdb__declarative_tree__V_26_26;
+                MR_Word mdb__declarative_tree__V_27_27;
+
+                mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node_8)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    mdb__declarative_tree__CondPrec_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+                    mdb__declarative_tree__V_26_26 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2)));
+                    mdb__declarative_tree__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+                    mdb__declarative_tree__PrevNodeId_24 = mdb__declarative_tree__CondPrec_25;
+                  }
+                else
+                  {
+                    mdb__declarative_tree__PrevNodeId_24 = mdb__declarative_execution__step_left_in_contour_2_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_34, mdb__declarative_tree__Store_6, mdb__declarative_tree__Node_8);
+                  }
+              }
+            {
+              mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_34, mdb__declarative_tree__Store_6, mdb__declarative_tree__PrevNodeId_24, &mdb__declarative_tree__PrevNode_28);
+            }
+            mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node_8)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 0)))) == (MR_Integer) 6)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__V_29_29 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 1));
+                mdb__declarative_tree__V_30_30 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 2));
+                mdb__declarative_tree__V_31_31 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_8, (MR_Integer) 3)));
+                mdb__declarative_tree__Nodes1_32 = mdb__declarative_tree__Nodes0_9;
+              }
+            else
+              {
+                MR_Word mdb__declarative_tree__V_33_33;
+
+                {
+                  mdb__declarative_tree__V_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_33_33, 0) = mdb__declarative_tree__NodeId_7;
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_33_33, 1) = ((MR_Box) (mdb__declarative_tree__Node_8));
+                }
+                {
+                  mdb__declarative_tree__Nodes1_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__Nodes1_32, 0) = ((MR_Box) (mdb__declarative_tree__V_33_33));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__Nodes1_32, 1) = ((MR_Box) (mdb__declarative_tree__Nodes0_9));
+                }
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Box mdb__declarative_tree__NodeId__tmp_copy_7 = mdb__declarative_tree__PrevNodeId_24;
+              MR_Word mdb__declarative_tree__Node__tmp_copy_8 = mdb__declarative_tree__PrevNode_28;
+              MR_Word mdb__declarative_tree__Nodes0__tmp_copy_9 = mdb__declarative_tree__Nodes1_32;
+
+              mdb__declarative_tree__Nodes0_9 = mdb__declarative_tree__Nodes0__tmp_copy_9;
+              mdb__declarative_tree__Node_8 = mdb__declarative_tree__Node__tmp_copy_8;
+              mdb__declarative_tree__NodeId_7 = mdb__declarative_tree__NodeId__tmp_copy_7;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__step_left_to_call_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_25,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__NodeId_5,
+  MR_Word * mdb__declarative_tree__ParentCallNode_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+        MR_Word mdb__declarative_tree__Node_7;
+        MR_bool MR_CALL (* mdb__declarative_tree__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeClassInfo_for_annotated_trace_25, (MR_Integer) 0)), (MR_Integer) 5)));
+        MR_Box mdb__declarative_tree__conv1_Node_7;
+        MR_Box mdb__declarative_tree__V_8_8;
+        MR_Box mdb__declarative_tree__V_9_9;
+        MR_Word mdb__declarative_tree__V_10_10;
+        MR_Integer mdb__declarative_tree__V_11_11;
+        MR_Integer mdb__declarative_tree__V_12_12;
+        MR_Word mdb__declarative_tree__V_13_13;
+        MR_Word mdb__declarative_tree__V_14_14;
+        MR_Box mdb__declarative_tree__V_15_15;
+        MR_Integer mdb__declarative_tree__V_16_16;
+        MR_Integer mdb__declarative_tree__V_17_17;
+
+        {
+          mdb__declarative_tree__succeeded = mdb__declarative_tree__func_0(((MR_Box) mdb__declarative_tree__TypeClassInfo_for_annotated_trace_25), mdb__declarative_tree__Store_4, mdb__declarative_tree__NodeId_5, &mdb__declarative_tree__conv1_Node_7);
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__Node_7 = ((MR_Word) mdb__declarative_tree__conv1_Node_7);
+            mdb__declarative_tree__succeeded = MR_TRUE;
+          }
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__Node_7)) == (MR_mktag((MR_Integer) 0)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__V_8_8 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 0));
+                mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+                mdb__declarative_tree__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 2)));
+                mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 3)));
+                mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 4)));
+                mdb__declarative_tree__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 5)));
+                mdb__declarative_tree__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 6)));
+                mdb__declarative_tree__V_15_15 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 7)));
+                mdb__declarative_tree__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 8)));
+                mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Node_7, (MR_Integer) 9)));
+                *mdb__declarative_tree__ParentCallNode_6 = mdb__declarative_tree__Node_7;
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+            else
+              {
+                MR_Box mdb__declarative_tree__PrevNodeId_21;
+                MR_Box mdb__declarative_tree__NegPrec_18;
+                MR_Box mdb__declarative_tree__V_19_19;
+                MR_Word mdb__declarative_tree__V_20_20;
+
+                mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    mdb__declarative_tree__NegPrec_18 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+                    mdb__declarative_tree__V_19_19 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 2)));
+                    mdb__declarative_tree__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 3)));
+                    mdb__declarative_tree__PrevNodeId_21 = mdb__declarative_tree__NegPrec_18;
+                  }
+                else
+                  {
+                    MR_Box mdb__declarative_tree__CondPrec_22;
+                    MR_Box mdb__declarative_tree__V_23_23;
+                    MR_Word mdb__declarative_tree__V_24_24;
+
+                    mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__Node_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                    if (mdb__declarative_tree__succeeded)
+                      {
+                        mdb__declarative_tree__CondPrec_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+                        mdb__declarative_tree__V_23_23 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 2)));
+                        mdb__declarative_tree__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 3)));
+                        mdb__declarative_tree__PrevNodeId_21 = mdb__declarative_tree__CondPrec_22;
+                      }
+                    else
+                      {
+                        mdb__declarative_tree__PrevNodeId_21 = mdb__declarative_execution__step_left_in_contour_2_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_25, mdb__declarative_tree__Store_4, mdb__declarative_tree__Node_7);
+                      }
+                  }
+                /* direct tailcall eliminated */
+                {
+                  MR_Box mdb__declarative_tree__NodeId__tmp_copy_5 = mdb__declarative_tree__PrevNodeId_21;
+
+                  mdb__declarative_tree__NodeId_5 = mdb__declarative_tree__NodeId__tmp_copy_5;
+                }
+                continue;
+              }
+          }
+        return mdb__declarative_tree__succeeded;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__find_chain_start_outside_4_p_0(
+  MR_Word mdb__declarative_tree__TypeInfo_for_R_25,
+  MR_Word mdb__declarative_tree__CallNode_5,
+  MR_Word mdb__declarative_tree__ExitNode_6,
+  MR_Word mdb__declarative_tree__ArgPos_7,
+  MR_Word * mdb__declarative_tree__ChainStart_8)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__ExitAtom_10;
+    MR_Integer mdb__declarative_tree__ArgNum_11;
+    MR_Integer mdb__declarative_tree__TotalArgs_12;
+    MR_Box mdb__declarative_tree__StartId_13;
+    MR_Word mdb__declarative_tree__StartRep_15;
+    MR_Word mdb__declarative_tree__V_16_16;
+    MR_Box mdb__declarative_tree__V_17_17;
+    MR_Box mdb__declarative_tree__V_18_18;
+    MR_Box mdb__declarative_tree__V_19_19;
+    MR_Word mdb__declarative_tree__V_20_20;
+    MR_Integer mdb__declarative_tree__V_21_21;
+    MR_Box mdb__declarative_tree__V_22_22;
+    MR_Integer mdb__declarative_tree__V_23_23;
+    MR_Integer mdb__declarative_tree__V_24_24;
+
+    {
+      mdb__declarative_tree__ExitAtom_10 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_for_R_25, mdb__declarative_tree__ExitNode_6);
+    }
+    {
+      mdb__declarative_execution__absolute_arg_num_3_p_0(mdb__declarative_tree__ArgPos_7, mdb__declarative_tree__ExitAtom_10, &mdb__declarative_tree__ArgNum_11);
+    }
+    mdb__declarative_tree__V_17_17 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_10, (MR_Integer) 0)));
+    mdb__declarative_tree__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_10, (MR_Integer) 1)));
+    {
+      mdb__declarative_tree__TotalArgs_12 = mercury__list__length_1_f_0((MR_Word) &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_atom_arg_0, mdb__declarative_tree__V_16_16);
+    }
+    mdb__declarative_tree__StartId_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 0));
+    mdb__declarative_tree__V_18_18 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 1));
+    mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 2));
+    mdb__declarative_tree__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 3)));
+    mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 4)));
+    mdb__declarative_tree__V_22_22 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 5)));
+    mdb__declarative_tree__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 6)));
+    mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_6, (MR_Integer) 7)));
+    {
+      mdb__declarative_execution__call_node_maybe_proc_defn_rep_2_p_0(mdb__declarative_tree__TypeInfo_for_R_25, mdb__declarative_tree__CallNode_5, &mdb__declarative_tree__StartRep_15);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL));
+      *mdb__declarative_tree__ChainStart_8 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__ArgNum_11));
+      MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdb__declarative_tree__TotalArgs_12));
+      MR_hl_field(MR_mktag(1), base, 3) = mdb__declarative_tree__StartId_13;
+      MR_hl_field(MR_mktag(1), base, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(1), base, 5) = ((MR_Box) (mdb__declarative_tree__StartRep_15));
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__find_chain_start_inside_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__CallId_7,
+  MR_Word mdb__declarative_tree__CallNode_8,
+  MR_Word mdb__declarative_tree__ArgPos_9,
+  MR_Word * mdb__declarative_tree__ChainStart_10)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_44_44;
+    MR_Word mdb__declarative_tree__CallAtom_12;
+    MR_String mdb__declarative_tree__CallPathStr_13;
+    MR_Word mdb__declarative_tree__CallPath_14;
+    MR_Word mdb__declarative_tree__StartLoc_15;
+    MR_Integer mdb__declarative_tree__ArgNum_16;
+    MR_Integer mdb__declarative_tree__TotalArgs_17;
+    MR_Box mdb__declarative_tree__StartId_18 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 0));
+    MR_Word mdb__declarative_tree__StartPath_19;
+    MR_Word mdb__declarative_tree__StartRep_20;
+    MR_Word mdb__declarative_tree__V_21_21;
+    MR_Word mdb__declarative_tree__V_22_22;
+    MR_Word mdb__declarative_tree__Call_49;
+    MR_Box mdb__declarative_tree__CallPrecId_50;
+    MR_Box mdb__declarative_tree__V_23_23 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 1));
+    MR_Word mdb__declarative_tree__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 2)));
+    MR_Integer mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 3)));
+    MR_Integer mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 4)));
+    MR_Word mdb__declarative_tree__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 5)));
+    MR_Word mdb__declarative_tree__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 6)));
+    MR_Box mdb__declarative_tree__V_29_29 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 7)));
+    MR_Integer mdb__declarative_tree__V_30_30 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 8)));
+    MR_Integer mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 9)));
+    MR_Box mdb__declarative_tree__V_32_32;
+    MR_Box mdb__declarative_tree__V_33_33;
+    MR_Word mdb__declarative_tree__V_34_34;
+    MR_Integer mdb__declarative_tree__V_35_35;
+    MR_Integer mdb__declarative_tree__V_36_36;
+    MR_Word mdb__declarative_tree__V_37_37;
+    MR_Box mdb__declarative_tree__V_38_38;
+    MR_Integer mdb__declarative_tree__V_39_39;
+    MR_Integer mdb__declarative_tree__V_40_40;
+    MR_Box mdb__declarative_tree__V_41_41;
+    MR_Box mdb__declarative_tree__V_52_52;
+    MR_Word mdb__declarative_tree__V_53_53;
+    MR_Integer mdb__declarative_tree__V_54_54;
+    MR_Integer mdb__declarative_tree__V_55_55;
+    MR_Word mdb__declarative_tree__V_56_56;
+    MR_Word mdb__declarative_tree__V_57_57;
+    MR_Box mdb__declarative_tree__V_58_58;
+    MR_Integer mdb__declarative_tree__V_59_59;
+    MR_Integer mdb__declarative_tree__V_60_60;
+    MR_Word mdb__declarative_tree__ParentCallNode_51;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_44_44);
+    }
+    {
+      mdb__declarative_tree__CallAtom_12 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_44_44, mdb__declarative_tree__CallNode_8);
+    }
+    mdb__declarative_tree__V_32_32 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 0));
+    mdb__declarative_tree__V_33_33 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 1));
+    mdb__declarative_tree__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 2)));
+    mdb__declarative_tree__V_35_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 3)));
+    mdb__declarative_tree__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 4)));
+    mdb__declarative_tree__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 5)));
+    mdb__declarative_tree__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 6)));
+    mdb__declarative_tree__V_38_38 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 7)));
+    mdb__declarative_tree__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 8)));
+    mdb__declarative_tree__V_40_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 9)));
+    {
+      mdb__declarative_tree__CallPathStr_13 = mdbcomp__rtti_access__get_goal_path_from_maybe_label_1_f_0(mdb__declarative_tree__V_21_21);
+    }
+    {
+      mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdb__declarative_tree__CallPathStr_13, &mdb__declarative_tree__CallPath_14);
+    }
+    {
+      mdb__declarative_tree__StartLoc_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mdb__declarative_tree__StartLoc_15, 0) = mdb__declarative_tree__CallId_7;
+      MR_hl_field(MR_mktag(1), mdb__declarative_tree__StartLoc_15, 1) = ((MR_Box) (mdb__declarative_tree__CallNode_8));
+    }
+    {
+      mdb__declarative_execution__absolute_arg_num_3_p_0(mdb__declarative_tree__ArgPos_9, mdb__declarative_tree__CallAtom_12, &mdb__declarative_tree__ArgNum_16);
+    }
+    mdb__declarative_tree__V_41_41 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_12, (MR_Integer) 0)));
+    mdb__declarative_tree__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallAtom_12, (MR_Integer) 1)));
+    {
+      mdb__declarative_tree__TotalArgs_17 = mercury__list__length_1_f_0((MR_Word) &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_atom_arg_0, mdb__declarative_tree__V_22_22);
+    }
+    {
+      mdb__declarative_tree__StartPath_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mdb__declarative_tree__StartPath_19, 0) = ((MR_Box) (mdb__declarative_tree__CallPath_14));
+    }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_7, &mdb__declarative_tree__Call_49);
+    }
+    mdb__declarative_tree__CallPrecId_50 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 0));
+    mdb__declarative_tree__V_52_52 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 1));
+    mdb__declarative_tree__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 2)));
+    mdb__declarative_tree__V_54_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 3)));
+    mdb__declarative_tree__V_55_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 4)));
+    mdb__declarative_tree__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 5)));
+    mdb__declarative_tree__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 6)));
+    mdb__declarative_tree__V_58_58 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 7)));
+    mdb__declarative_tree__V_59_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 8)));
+    mdb__declarative_tree__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_49, (MR_Integer) 9)));
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__step_left_to_call_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallPrecId_50, &mdb__declarative_tree__ParentCallNode_51);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        MR_Word mdb__declarative_tree__TypeInfo_21_62;
+
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_42, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_21_62);
+        }
+        {
+          mdb__declarative_execution__call_node_maybe_proc_defn_rep_2_p_0(mdb__declarative_tree__TypeInfo_21_62, mdb__declarative_tree__ParentCallNode_51, &mdb__declarative_tree__StartRep_20);
+        }
+      }
+    else
+      mdb__declarative_tree__StartRep_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL));
+      *mdb__declarative_tree__ChainStart_10 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__StartLoc_15));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__declarative_tree__ArgNum_16));
+      MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdb__declarative_tree__TotalArgs_17));
+      MR_hl_field(MR_mktag(1), base, 3) = mdb__declarative_tree__StartId_18;
+      MR_hl_field(MR_mktag(1), base, 4) = ((MR_Box) (mdb__declarative_tree__StartPath_19));
+      MR_hl_field(MR_mktag(1), base, 5) = ((MR_Box) (mdb__declarative_tree__StartRep_20));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+mdb__declarative_tree__trace_dependency_special_case_8_p_0_1(
+  MR_Box mdb__declarative_tree__closure_arg,
+  MR_Box mdb__declarative_tree__wrapper_arg_1)
+{
+  {
+    MR_Box mdb__declarative_tree__wrapper_arg_2;
+    MR_Box mdb__declarative_tree__closure = mdb__declarative_tree__closure_arg;
+    MR_Integer mdb__declarative_tree__conv0_HeadVar__2_2;
+
+    {
+      mdb__declarative_tree__conv0_HeadVar__2_2 = mdbcomp__program_representation__head_var_to_var_1_f_0(((MR_Word) mdb__declarative_tree__wrapper_arg_1));
+    }
+    mdb__declarative_tree__wrapper_arg_2 = ((MR_Box) (mdb__declarative_tree__conv0_HeadVar__2_2));
+    return mdb__declarative_tree__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__trace_dependency_special_case_8_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_43,
+  MR_Box mdb__declarative_tree__Store_9,
+  MR_Word mdb__declarative_tree__ProcDefnRep_10,
+  MR_Box mdb__declarative_tree__Ref_11,
+  MR_Word mdb__declarative_tree__StartLoc_12,
+  MR_Integer mdb__declarative_tree__ArgNum_13,
+  MR_Word mdb__declarative_tree__TermPath_14,
+  MR_Box mdb__declarative_tree__NodeId_15,
+  MR_Word * mdb__declarative_tree__Origin_16)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__GoalRep_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_10, (MR_Integer) 1)));
+    MR_Word mdb__declarative_tree__HeadVars_50;
+    MR_Word mdb__declarative_tree__GoalExprRep_51;
+    MR_Integer mdb__declarative_tree__A_52;
+    MR_Integer mdb__declarative_tree__B_53;
+    MR_Integer mdb__declarative_tree__C_54;
+    MR_Integer mdb__declarative_tree__D_55;
+    MR_Word mdb__declarative_tree__V_59_59;
+    MR_Word mdb__declarative_tree__V_60_60;
+    MR_Word mdb__declarative_tree__V_61_61;
+    MR_Word mdb__declarative_tree__V_62_62;
+    MR_String mdb__declarative_tree__V_63_63;
+    MR_Word mdb__declarative_tree__V_64_64;
+    MR_Word mdb__declarative_tree__V_65_65;
+    MR_Word mdb__declarative_tree__V_66_66;
+    MR_String mdb__declarative_tree__V_67_67;
+    MR_String mdb__declarative_tree__V_68_68;
+    MR_Word mdb__declarative_tree__V_69_69;
+    MR_Word mdb__declarative_tree__V_70_70;
+    MR_Word mdb__declarative_tree__V_71_71;
+    MR_Word mdb__declarative_tree__V_72_72;
+    MR_Word mdb__declarative_tree__V_73_73;
+    MR_Word mdb__declarative_tree__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_10, (MR_Integer) 0)));
+    MR_Integer mdb__declarative_tree__V_88_88;
+    MR_Integer mdb__declarative_tree__V_89_89;
+    MR_Integer mdb__declarative_tree__V_90_90;
+    MR_Integer mdb__declarative_tree__V_91_91;
+    MR_Integer mdb__declarative_tree__V_92_92;
+    MR_Word mdb__declarative_tree__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_10, (MR_Integer) 2)));
+    MR_Word mdb__declarative_tree__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_10, (MR_Integer) 3)));
+    MR_Word mdb__declarative_tree__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcDefnRep_10, (MR_Integer) 4)));
+    MR_Word mdb__declarative_tree__V_82_82;
+    MR_Integer mdb__declarative_tree__V_56_56;
+
+    {
+      mdb__declarative_tree__HeadVars_50 = mercury__list__map_2_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_head_var_rep_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &mdb__declarative_tree_scalar_common_4[0], mdb__declarative_tree__V_74_74);
+    }
+    mdb__declarative_tree__GoalExprRep_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__GoalRep_49, (MR_Integer) 0)));
+    mdb__declarative_tree__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__GoalRep_49, (MR_Integer) 1)));
+    mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__HeadVars_50)) == (MR_mktag((MR_Integer) 1)));
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__A_52 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVars_50, (MR_Integer) 0)));
+        mdb__declarative_tree__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__HeadVars_50, (MR_Integer) 1)));
+        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_59_59)) == (MR_mktag((MR_Integer) 1)));
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__B_53 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_59_59, (MR_Integer) 0)));
+            mdb__declarative_tree__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_59_59, (MR_Integer) 1)));
+            mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_60_60)) == (MR_mktag((MR_Integer) 1)));
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__C_54 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_60_60, (MR_Integer) 0)));
+                mdb__declarative_tree__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_60_60, (MR_Integer) 1)));
+                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_61_61)) == (MR_mktag((MR_Integer) 1)));
+                if (mdb__declarative_tree__succeeded)
+                  {
+                    mdb__declarative_tree__D_55 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_61_61, (MR_Integer) 0)));
+                    mdb__declarative_tree__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_61_61, (MR_Integer) 1)));
+                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_62_62 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    if (mdb__declarative_tree__succeeded)
+                      {
+                        mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__GoalExprRep_51)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExprRep_51, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                        if (mdb__declarative_tree__succeeded)
+                          {
+                            mdb__declarative_tree__V_63_63 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExprRep_51, (MR_Integer) 1)));
+                            mdb__declarative_tree__V_56_56 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExprRep_51, (MR_Integer) 2)));
+                            mdb__declarative_tree__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExprRep_51, (MR_Integer) 3)));
+                            mdb__declarative_tree__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__GoalExprRep_51, (MR_Integer) 4)));
+                            mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_63_63, (MR_String) "exception.m") == 0);
+                            if (mdb__declarative_tree__succeeded)
+                              {
+                                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_64_64)) == (MR_mktag((MR_Integer) 1)));
+                                if (mdb__declarative_tree__succeeded)
+                                  {
+                                    mdb__declarative_tree__V_88_88 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_64_64, (MR_Integer) 0)));
+                                    mdb__declarative_tree__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_64_64, (MR_Integer) 1)));
+                                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__D_55 == mdb__declarative_tree__V_88_88);
+                                    if (mdb__declarative_tree__succeeded)
+                                      {
+                                        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_65_65 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                        if (mdb__declarative_tree__succeeded)
+                                          {
+                                            mdb__declarative_tree__succeeded = ((((MR_tag((MR_Word) mdb__declarative_tree__V_66_66)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_66_66, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                                            if (mdb__declarative_tree__succeeded)
+                                              {
+                                                mdb__declarative_tree__V_67_67 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_66_66, (MR_Integer) 1)));
+                                                mdb__declarative_tree__V_68_68 = ((MR_String) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_66_66, (MR_Integer) 2)));
+                                                mdb__declarative_tree__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__V_66_66, (MR_Integer) 3)));
+                                                mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_67_67, (MR_String) "exception") == 0);
+                                                if (mdb__declarative_tree__succeeded)
+                                                  {
+                                                    mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__V_68_68, (MR_String) "builtin_catch") == 0);
+                                                    if (mdb__declarative_tree__succeeded)
+                                                      {
+                                                        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_69_69)) == (MR_mktag((MR_Integer) 1)));
+                                                        if (mdb__declarative_tree__succeeded)
+                                                          {
+                                                            mdb__declarative_tree__V_89_89 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_69_69, (MR_Integer) 0)));
+                                                            mdb__declarative_tree__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_69_69, (MR_Integer) 1)));
+                                                            mdb__declarative_tree__succeeded = (mdb__declarative_tree__A_52 == mdb__declarative_tree__V_89_89);
+                                                            if (mdb__declarative_tree__succeeded)
+                                                              {
+                                                                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_70_70)) == (MR_mktag((MR_Integer) 1)));
+                                                                if (mdb__declarative_tree__succeeded)
+                                                                  {
+                                                                    mdb__declarative_tree__V_90_90 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_70_70, (MR_Integer) 0)));
+                                                                    mdb__declarative_tree__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_70_70, (MR_Integer) 1)));
+                                                                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__B_53 == mdb__declarative_tree__V_90_90);
+                                                                    if (mdb__declarative_tree__succeeded)
+                                                                      {
+                                                                        mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_71_71)) == (MR_mktag((MR_Integer) 1)));
+                                                                        if (mdb__declarative_tree__succeeded)
+                                                                          {
+                                                                            mdb__declarative_tree__V_91_91 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_71_71, (MR_Integer) 0)));
+                                                                            mdb__declarative_tree__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_71_71, (MR_Integer) 1)));
+                                                                            mdb__declarative_tree__succeeded = (mdb__declarative_tree__C_54 == mdb__declarative_tree__V_91_91);
+                                                                            if (mdb__declarative_tree__succeeded)
+                                                                              {
+                                                                                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_72_72)) == (MR_mktag((MR_Integer) 1)));
+                                                                                if (mdb__declarative_tree__succeeded)
+                                                                                  {
+                                                                                    mdb__declarative_tree__V_92_92 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_72_72, (MR_Integer) 0)));
+                                                                                    mdb__declarative_tree__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_72_72, (MR_Integer) 1)));
+                                                                                    mdb__declarative_tree__succeeded = (mdb__declarative_tree__D_55 == mdb__declarative_tree__V_92_92);
+                                                                                    if (mdb__declarative_tree__succeeded)
+                                                                                      {
+                                                                                        mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_73_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                                                        if (mdb__declarative_tree__succeeded)
+                                                                                          {
+                                                                                            if ((mdb__declarative_tree__StartLoc_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                                                                                              {
+                                                                                                MR_Word mdb__declarative_tree__TypeInfo_45_45;
+                                                                                                MR_Word mdb__declarative_tree__TypeInfo_47_47;
+                                                                                                MR_Word mdb__declarative_tree__ExitNode_19;
+                                                                                                MR_Word mdb__declarative_tree__ExitAtom_20;
+                                                                                                MR_Word mdb__declarative_tree__Args_22;
+                                                                                                MR_Word mdb__declarative_tree__TryResultArgInfo_23;
+                                                                                                MR_Word mdb__declarative_tree__TryResultRep_26;
+                                                                                                MR_Word mdb__declarative_tree__TryResultUniv_27;
+                                                                                                MR_Box mdb__declarative_tree__TryResult_28;
+                                                                                                MR_String mdb__declarative_tree__Functor_29;
+                                                                                                MR_Word mdb__declarative_tree__V_32_32;
+                                                                                                MR_Word mdb__declarative_tree__V_33_33;
+                                                                                                MR_Box mdb__declarative_tree__V_21_21;
+                                                                                                MR_Box mdb__declarative_tree__conv1_TryResultArgInfo_23;
+                                                                                                MR_Word mdb__declarative_tree__V_24_24;
+                                                                                                MR_Integer mdb__declarative_tree__V_25_25;
+                                                                                                MR_Integer mdb__declarative_tree__V_30_30;
+                                                                                                MR_Word mdb__declarative_tree__V_31_31;
+
+                                                                                                {
+                                                                                                  mdb__declarative_execution__exit_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_43, mdb__declarative_tree__Store_9, mdb__declarative_tree__Ref_11, &mdb__declarative_tree__ExitNode_19);
+                                                                                                }
+                                                                                                {
+                                                                                                  mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_43, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_45_45);
+                                                                                                }
+                                                                                                {
+                                                                                                  mdb__declarative_tree__ExitAtom_20 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_45_45, mdb__declarative_tree__ExitNode_19);
+                                                                                                }
+                                                                                                mdb__declarative_tree__V_21_21 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_20, (MR_Integer) 0)));
+                                                                                                mdb__declarative_tree__Args_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ExitAtom_20, (MR_Integer) 1)));
+                                                                                                {
+                                                                                                  mercury__list__det_index1_3_p_0((MR_Word) &mdb__declarative_execution__mdb__declarative_execution__type_ctor_info_trace_atom_arg_0, mdb__declarative_tree__Args_22, mdb__declarative_tree__ArgNum_13, &mdb__declarative_tree__conv1_TryResultArgInfo_23);
+                                                                                                }
+                                                                                                mdb__declarative_tree__TryResultArgInfo_23 = ((MR_Word) mdb__declarative_tree__conv1_TryResultArgInfo_23);
+                                                                                                mdb__declarative_tree__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TryResultArgInfo_23, (MR_Integer) 0)));
+                                                                                                mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TryResultArgInfo_23, (MR_Integer) 1)));
+                                                                                                mdb__declarative_tree__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TryResultArgInfo_23, (MR_Integer) 2)));
+                                                                                                mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_32_32)) == (MR_mktag((MR_Integer) 1)));
+                                                                                                if (mdb__declarative_tree__succeeded)
+                                                                                                  {
+                                                                                                    mdb__declarative_tree__TryResultRep_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_32_32, (MR_Integer) 0)));
+                                                                                                    {
+                                                                                                      mdb__term_rep__rep_to_univ_2_p_0(mdb__declarative_tree__TryResultRep_26, &mdb__declarative_tree__TryResultUniv_27);
+                                                                                                    }
+                                                                                                    {
+                                                                                                      mdb__declarative_tree__TryResult_28 = mercury__univ__univ_value_1_f_0(&mdb__declarative_tree__TypeInfo_47_47, mdb__declarative_tree__TryResultUniv_27);
+                                                                                                    }
+                                                                                                    mdb__declarative_tree__V_33_33 = (MR_Integer) 1;
+                                                                                                    {
+                                                                                                      mercury__deconstruct__deconstruct_5_p_1(mdb__declarative_tree__TypeInfo_47_47, mdb__declarative_tree__TryResult_28, mdb__declarative_tree__V_33_33, &mdb__declarative_tree__Functor_29, &mdb__declarative_tree__V_30_30, &mdb__declarative_tree__V_31_31);
+                                                                                                    }
+                                                                                                    mdb__declarative_tree__succeeded = (strcmp(mdb__declarative_tree__Functor_29, (MR_String) "succeeded") == 0);
+                                                                                                    if (mdb__declarative_tree__succeeded)
+                                                                                                      {
+                                                                                                        MR_Word mdb__declarative_tree__V_34_34 = ((MR_Word) mdb__declarative_tree__NodeId_15);
+
+                                                                                                        {
+                                                                                                          MR_Word base;
+                                                                                                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                                                                                                          *mdb__declarative_tree__Origin_16 = base;
+                                                                                                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__declarative_tree__V_34_34));
+                                                                                                          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(2), &mdb__declarative_tree_scalar_common_2[2])));
+                                                                                                          MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mdb__declarative_tree__TermPath_14));
+                                                                                                        }
+                                                                                                      }
+                                                                                                    else
+                                                                                                      {
+                                                                                                        *mdb__declarative_tree__Origin_16 = (MR_Word) MR_mkword(MR_mktag(3), &mdb__declarative_tree_scalar_common_4[1]);
+                                                                                                      }
+                                                                                                    mdb__declarative_tree__succeeded = MR_TRUE;
+                                                                                                  }
+                                                                                              }
+                                                                                            else
+                                                                                              {
+                                                                                                MR_Word mdb__declarative_tree__V_42_42;
+
+                                                                                                {
+                                                                                                  mdb__declarative_tree__V_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                                                                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_42_42, 0) = ((MR_Box) (mdb__declarative_tree__ArgNum_13));
+                                                                                                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_42_42, 1) = ((MR_Box) (mdb__declarative_tree__TermPath_14));
+                                                                                                }
+                                                                                                {
+                                                                                                  MR_Word base;
+                                                                                                  base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                                                                  *mdb__declarative_tree__Origin_16 = base;
+                                                                                                  MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (&mdb__declarative_tree_scalar_common_2[2]));
+                                                                                                  MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (mdb__declarative_tree__V_42_42));
+                                                                                                }
+                                                                                                mdb__declarative_tree__succeeded = MR_TRUE;
+                                                                                              }
+                                                                                          }
+                                                                                      }
+                                                                                  }
+                                                                              }
+                                                                          }
+                                                                      }
+                                                                  }
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__stratum_children_2_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Box mdb__declarative_tree__StartId_8,
+  MR_Word mdb__declarative_tree__Ns0_9,
+  MR_Word * mdb__declarative_tree__Ns_10)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Node_11;
+    MR_Word mdb__declarative_tree__Ns1_38;
+    MR_Box mdb__declarative_tree__Next_72;
+
+    {
+      mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, mdb__declarative_tree__Store_6, mdb__declarative_tree__NodeId_7, &mdb__declarative_tree__Node_11);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_11)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[12])));
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__CallId_44 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+          MR_Box mdb__declarative_tree__V_43_43 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_45_45 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_47_47 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_48_48 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 7)));
+
+          {
+            mdb__declarative_tree__succeeded = mdb__declarative_tree__calls_arguments_are_all_ground_2_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, mdb__declarative_tree__Store_6, mdb__declarative_tree__CallId_44);
+          }
+          if (mdb__declarative_tree__succeeded)
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+          else
+            {
+              MR_Word mdb__declarative_tree__V_76_76 = ((MR_Word) mdb__declarative_tree__NodeId_7);
+
+              {
+                mdb__declarative_tree__Ns1_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 0) = ((MR_Box) (mdb__declarative_tree__V_76_76));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 1) = ((MR_Box) (mdb__declarative_tree__Ns0_9));
+              }
+            }
+        }
+        break;
+      case (MR_Integer) 2:
+        mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__V_87_87 = ((MR_Word) mdb__declarative_tree__NodeId_7);
+
+              {
+                mdb__declarative_tree__Ns1_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 0) = ((MR_Box) (mdb__declarative_tree__V_87_87));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 1) = ((MR_Box) (mdb__declarative_tree__Ns0_9));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__V_78_78 = ((MR_Word) mdb__declarative_tree__NodeId_7);
+
+              {
+                mdb__declarative_tree__Ns1_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 0) = ((MR_Box) (mdb__declarative_tree__V_78_78));
+                MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_38, 1) = ((MR_Box) (mdb__declarative_tree__Ns0_9));
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+            break;
+          case (MR_Integer) 3:
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+            break;
+          case (MR_Integer) 4:
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word mdb__declarative_tree__CondStatus_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+              MR_Box mdb__declarative_tree__V_69_69 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_70_70 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2)));
+
+              switch (mdb__declarative_tree__CondStatus_71) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[12])));
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                case (MR_Integer) 2:
+                  mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Box mdb__declarative_tree__Prec_82 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__NestedStartId_83 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_42_42 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+
+              {
+                mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, mdb__declarative_tree__Store_6, mdb__declarative_tree__Prec_82, mdb__declarative_tree__NestedStartId_83, mdb__declarative_tree__Ns0_9, &mdb__declarative_tree__Ns1_38);
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              {
+                mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[12])));
+                return;
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            mdb__declarative_tree__Ns1_38 = mdb__declarative_tree__Ns0_9;
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Box mdb__declarative_tree__Prec_39 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__NestedStartId_40 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_41_41 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+
+              {
+                mdb__declarative_tree__contour_children_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, (MR_Integer) 0, mdb__declarative_tree__Store_6, mdb__declarative_tree__Prec_39, mdb__declarative_tree__NestedStartId_40, mdb__declarative_tree__Ns0_9, &mdb__declarative_tree__Ns1_38);
+              }
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_tree__Next_72 = mdb__declarative_execution__step_in_stratum_2_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, mdb__declarative_tree__Store_6, mdb__declarative_tree__Node_11);
+    }
+    {
+      mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_84, mdb__declarative_tree__Store_6, mdb__declarative_tree__Next_72, mdb__declarative_tree__StartId_8, mdb__declarative_tree__Ns1_38, mdb__declarative_tree__Ns_10);
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__stratum_children_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_11,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Box mdb__declarative_tree__NodeId_7,
+  MR_Box mdb__declarative_tree__StartId_8,
+  MR_Word mdb__declarative_tree__Ns0_9,
+  MR_Word * mdb__declarative_tree__Ns_10)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_13_13;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_11, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_13_13);
+    }
+    {
+      mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_13_13, mdb__declarative_tree__NodeId_7, mdb__declarative_tree__StartId_8);
+    }
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__Ns_10 = mdb__declarative_tree__Ns0_9;
+    else
+      {
+        mdb__declarative_tree__stratum_children_2_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_11, mdb__declarative_tree__Store_6, mdb__declarative_tree__NodeId_7, mdb__declarative_tree__StartId_8, mdb__declarative_tree__Ns0_9, mdb__declarative_tree__Ns_10);
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__contour_children_2_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115,
+  MR_Word mdb__declarative_tree__ContourType_7,
+  MR_Box mdb__declarative_tree__Store_8,
+  MR_Box mdb__declarative_tree__NodeId_9,
+  MR_Box mdb__declarative_tree__StartId_10,
+  MR_Word mdb__declarative_tree__Ns0_11,
+  MR_Word * mdb__declarative_tree__Ns_12)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Node_13;
+    MR_Word mdb__declarative_tree__Ns1_32;
+    MR_Box mdb__declarative_tree__Next_72;
+
+    {
+      mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__NodeId_9, &mdb__declarative_tree__Node_13);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_13)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[11])));
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__V_83_83 = ((MR_Word) mdb__declarative_tree__NodeId_9);
+
+          {
+            mdb__declarative_tree__Ns1_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_32, 0) = ((MR_Box) (mdb__declarative_tree__V_83_83));
+            MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_32, 1) = ((MR_Box) (mdb__declarative_tree__Ns0_11));
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__CallId_34 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__Call_39;
+              MR_Box mdb__declarative_tree__NestedStartId_40;
+              MR_Box mdb__declarative_tree__V_33_33 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_35_35 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_37_37 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_38_38 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 6)));
+              MR_Box mdb__declarative_tree__V_97_97;
+              MR_Word mdb__declarative_tree__V_98_98;
+              MR_Integer mdb__declarative_tree__V_99_99;
+              MR_Integer mdb__declarative_tree__V_100_100;
+              MR_Word mdb__declarative_tree__V_101_101;
+              MR_Word mdb__declarative_tree__V_102_102;
+              MR_Box mdb__declarative_tree__V_103_103;
+              MR_Integer mdb__declarative_tree__V_104_104;
+              MR_Integer mdb__declarative_tree__V_105_105;
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__CallId_34, &mdb__declarative_tree__Call_39);
+              }
+              mdb__declarative_tree__NestedStartId_40 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 0));
+              mdb__declarative_tree__V_97_97 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 1));
+              mdb__declarative_tree__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 2)));
+              mdb__declarative_tree__V_99_99 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 3)));
+              mdb__declarative_tree__V_100_100 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 4)));
+              mdb__declarative_tree__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 5)));
+              mdb__declarative_tree__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 6)));
+              mdb__declarative_tree__V_103_103 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 7)));
+              mdb__declarative_tree__V_104_104 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 8)));
+              mdb__declarative_tree__V_105_105 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_39, (MR_Integer) 9)));
+              {
+                mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__NodeId_9, mdb__declarative_tree__NestedStartId_40, mdb__declarative_tree__Ns0_11, &mdb__declarative_tree__Ns1_32);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__CallId_94 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_45_45 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_46_46 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_49_49 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 7)));
+
+              switch (mdb__declarative_tree__ContourType_7) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    MR_Word mdb__declarative_tree__V_82_82 = ((MR_Word) mdb__declarative_tree__NodeId_9);
+
+                    {
+                      mdb__declarative_tree__Ns1_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_32, 0) = ((MR_Box) (mdb__declarative_tree__V_82_82));
+                      MR_hl_field(MR_mktag(1), mdb__declarative_tree__Ns1_32, 1) = ((MR_Box) (mdb__declarative_tree__Ns0_11));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    MR_Word mdb__declarative_tree__Call_90;
+                    MR_Box mdb__declarative_tree__NestedStartId_91;
+                    MR_Box mdb__declarative_tree__V_106_106;
+                    MR_Word mdb__declarative_tree__V_107_107;
+                    MR_Integer mdb__declarative_tree__V_108_108;
+                    MR_Integer mdb__declarative_tree__V_109_109;
+                    MR_Word mdb__declarative_tree__V_110_110;
+                    MR_Word mdb__declarative_tree__V_111_111;
+                    MR_Box mdb__declarative_tree__V_112_112;
+                    MR_Integer mdb__declarative_tree__V_113_113;
+                    MR_Integer mdb__declarative_tree__V_114_114;
+
+                    {
+                      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__CallId_94, &mdb__declarative_tree__Call_90);
+                    }
+                    mdb__declarative_tree__NestedStartId_91 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 0));
+                    mdb__declarative_tree__V_106_106 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 1));
+                    mdb__declarative_tree__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 2)));
+                    mdb__declarative_tree__V_108_108 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 3)));
+                    mdb__declarative_tree__V_109_109 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 4)));
+                    mdb__declarative_tree__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 5)));
+                    mdb__declarative_tree__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 6)));
+                    mdb__declarative_tree__V_112_112 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 7)));
+                    mdb__declarative_tree__V_113_113 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 8)));
+                    mdb__declarative_tree__V_114_114 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_90, (MR_Integer) 9)));
+                    {
+                      mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__NodeId_9, mdb__declarative_tree__NestedStartId_91, mdb__declarative_tree__Ns0_11, &mdb__declarative_tree__Ns1_32);
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+            break;
+          case (MR_Integer) 3:
+            mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+            break;
+          case (MR_Integer) 4:
+            mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word mdb__declarative_tree__CondStatus_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3)));
+              MR_Box mdb__declarative_tree__V_66_66 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_67_67 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2)));
+
+              switch (mdb__declarative_tree__CondStatus_68) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[11])));
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                case (MR_Integer) 2:
+                  mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Box mdb__declarative_tree__NestedStartId_88 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__Prec_89 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_43_43 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3)));
+
+              {
+                mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__Prec_89, mdb__declarative_tree__NestedStartId_88, mdb__declarative_tree__Ns0_11, &mdb__declarative_tree__Ns1_32);
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Word mdb__declarative_tree__NegStatus_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3)));
+              MR_Box mdb__declarative_tree__V_69_69 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_70_70 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2)));
+
+              switch (mdb__declarative_tree__ContourType_7) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  switch (mdb__declarative_tree__NegStatus_71) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      {
+                        {
+                          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[11])));
+                          return;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                    case (MR_Integer) 2:
+                      mdb__declarative_tree__Ns1_32 = mdb__declarative_tree__Ns0_11;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[11])));
+                      return;
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Box mdb__declarative_tree__NestedStartId_120 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__Prec_121 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_44_44 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3)));
+
+              {
+                mdb__declarative_tree__stratum_children_5_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__Prec_121, mdb__declarative_tree__NestedStartId_120, mdb__declarative_tree__Ns0_11, &mdb__declarative_tree__Ns1_32);
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Box mdb__declarative_tree__Prec_41 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__NestedStartId_87 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 2));
+              MR_Box mdb__declarative_tree__V_42_42 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_13, (MR_Integer) 3)));
+
+              {
+                mdb__declarative_tree__contour_children_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__ContourType_7, mdb__declarative_tree__Store_8, mdb__declarative_tree__Prec_41, mdb__declarative_tree__NestedStartId_87, mdb__declarative_tree__Ns0_11, &mdb__declarative_tree__Ns1_32);
+              }
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_tree__Next_72 = mdb__declarative_execution__step_left_in_contour_2_f_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__Store_8, mdb__declarative_tree__Node_13);
+    }
+    {
+      mdb__declarative_tree__contour_children_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_115, mdb__declarative_tree__ContourType_7, mdb__declarative_tree__Store_8, mdb__declarative_tree__Next_72, mdb__declarative_tree__StartId_10, mdb__declarative_tree__Ns1_32, mdb__declarative_tree__Ns_12);
+    }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__contour_children_6_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_13,
+  MR_Word mdb__declarative_tree__ContourType_7,
+  MR_Box mdb__declarative_tree__Store_8,
+  MR_Box mdb__declarative_tree__NodeId_9,
+  MR_Box mdb__declarative_tree__StartId_10,
+  MR_Word mdb__declarative_tree__Ns0_11,
+  MR_Word * mdb__declarative_tree__Ns_12)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__TypeInfo_15_15;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_13, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_15_15);
+    }
+    {
+      mdb__declarative_tree__succeeded = mercury__builtin__unify_2_p_0(mdb__declarative_tree__TypeInfo_15_15, mdb__declarative_tree__NodeId_9, mdb__declarative_tree__StartId_10);
+    }
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__Ns_12 = mdb__declarative_tree__Ns0_11;
+    else
+      {
+        mdb__declarative_tree__contour_children_2_6_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_13, mdb__declarative_tree__ContourType_7, mdb__declarative_tree__Store_8, mdb__declarative_tree__NodeId_9, mdb__declarative_tree__StartId_10, mdb__declarative_tree__Ns0_11, mdb__declarative_tree__Ns_12);
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__not_at_depth_limit_2_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16,
+  MR_Box mdb__declarative_tree__Store_3,
+  MR_Box mdb__declarative_tree__Ref_4)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__CallNode_5;
+    MR_Word mdb__declarative_tree__V_6_6;
+    MR_Box mdb__declarative_tree__V_7_7;
+    MR_Box mdb__declarative_tree__V_8_8;
+    MR_Word mdb__declarative_tree__V_9_9;
+    MR_Integer mdb__declarative_tree__V_10_10;
+    MR_Integer mdb__declarative_tree__V_11_11;
+    MR_Word mdb__declarative_tree__V_12_12;
+    MR_Box mdb__declarative_tree__V_13_13;
+    MR_Integer mdb__declarative_tree__V_14_14;
+    MR_Integer mdb__declarative_tree__V_15_15;
+
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_16, mdb__declarative_tree__Store_3, mdb__declarative_tree__Ref_4, &mdb__declarative_tree__CallNode_5);
+    }
+    mdb__declarative_tree__V_7_7 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 0));
+    mdb__declarative_tree__V_8_8 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 1));
+    mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 2)));
+    mdb__declarative_tree__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 3)));
+    mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 4)));
+    mdb__declarative_tree__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 5)));
+    mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 6)));
+    mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 7)));
+    mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 8)));
+    mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_5, (MR_Integer) 9)));
+    mdb__declarative_tree__succeeded = (mdb__declarative_tree__V_6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_1(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    MR_builtin_longjmp((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_3(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    {
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule2_5, (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_19_19);
+    }
+    if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+      {
+        mdb__declarative_tree__missing_answer_special_case_1_p_0_1(mdb__declarative_tree__env_ptr);
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_2(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    {
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule1_4, (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_18_18);
+    }
+    if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+      {
+        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_16_16 = (MR_String) "solutions";
+        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_19_19 = (MR_Word) &mdb__declarative_tree_scalar_common_2[0];
+        {
+          mdb__declarative_tree__missing_answer_special_case_1_p_0_3(mdb__declarative_tree__env_ptr);
+        }
+        {
+          (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), &mdb__declarative_tree_scalar_common_1[10]);
+          {
+            mdb__declarative_tree__missing_answer_special_case_1_p_0_3(mdb__declarative_tree__env_ptr);
+          }
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0_4(
+  void * mdb__declarative_tree__env_ptr_arg)
+{
+  {
+    struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s * mdb__declarative_tree__env_ptr = (struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s *) mdb__declarative_tree__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__commit_0) == 0)
+      {
+        {
+          MR_Word mdb__declarative_tree__ProcLabel_3;
+          MR_Box mdb__declarative_tree__V_8_8 = ((MR_Box) (MR_hl_field(MR_mktag(0), (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__Atom_2, (MR_Integer) 0)));
+          MR_String mdb__declarative_tree__V_15_15;
+          MR_Integer mdb__declarative_tree__V_21_21;
+          MR_String mdb__declarative_tree__V_22_22;
+          MR_Word mdb__declarative_tree__V_23_23;
+          MR_Word mdb__declarative_tree__V_24_24;
+          MR_Word mdb__declarative_tree__V_25_25;
+          MR_Word mdb__declarative_tree__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__Atom_2, (MR_Integer) 1)));
+          MR_Integer mdb__declarative_tree__V_20_20;
+
+          {
+            mdb__declarative_tree__ProcLabel_3 = mdbcomp__rtti_access__get_proc_label_from_layout_1_f_0(mdb__declarative_tree__V_8_8);
+          }
+          (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__ProcLabel_3)) == (MR_mktag((MR_Integer) 0)));
+          if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+            {
+              {
+                mdb__declarative_tree__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 0)));
+                mdb__declarative_tree__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 1)));
+                mdb__declarative_tree__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 2)));
+                mdb__declarative_tree__V_22_22 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 3)));
+                mdb__declarative_tree__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 4)));
+                mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__ProcLabel_3, (MR_Integer) 5)));
+              }
+              {
+                (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = (mdb__declarative_tree__V_24_24 == (MR_Integer) 0);
+                if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+                  {
+                    switch (mdb__declarative_tree__V_21_21) {
+                      default:
+                        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = MR_FALSE;
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = (strcmp(mdb__declarative_tree__V_22_22, (MR_String) "builtin_aggregate") == 0);
+                          if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+                            {
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule1_4 = mdb__declarative_tree__V_25_25;
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule2_5 = mdb__declarative_tree__V_23_23;
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = (strcmp(mdb__declarative_tree__V_22_22, (MR_String) "builtin_aggregate2") == 0);
+                          if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+                            {
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule1_4 = mdb__declarative_tree__V_25_25;
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__StdUtilModule2_5 = mdb__declarative_tree__V_23_23;
+                              (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                    }
+                    if ((mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded)
+                      {
+                        mdb__declarative_tree__V_15_15 = (MR_String) "solutions";
+                        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_18_18 = (MR_Word) &mdb__declarative_tree_scalar_common_2[0];
+                        {
+                          mdb__declarative_tree__missing_answer_special_case_1_p_0_2(mdb__declarative_tree__env_ptr);
+                        }
+                        {
+                          (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__V_18_18 = (MR_Word) MR_mkword(MR_mktag(1), &mdb__declarative_tree_scalar_common_1[10]);
+                          {
+                            mdb__declarative_tree__missing_answer_special_case_1_p_0_2(mdb__declarative_tree__env_ptr);
+                          }
+                        }
+                      }
+                  }
+              }
+            }
+        }
+        (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mdb__declarative_tree__env_ptr)->mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static MR_bool MR_CALL 
+mdb__declarative_tree__missing_answer_special_case_1_p_0(
+  MR_Word mdb__declarative_tree__Atom_2)
+{
+  {
+    struct mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0_s mdb__declarative_tree__env;
+
+    (mdb__declarative_tree__env).mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__Atom_2 = mdb__declarative_tree__Atom_2;
+    {
+      mdb__declarative_tree__missing_answer_special_case_1_p_0_4(&mdb__declarative_tree__env);
+    }
+    return (mdb__declarative_tree__env).mdb__declarative_tree__missing_answer_special_case_1_p_0_env_0__succeeded;
+  }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__trace_weight_9_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_90,
+  MR_Word mdb__declarative_tree__Weighting_10,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word mdb__declarative_tree__HeadVar__3_3,
+  MR_Integer mdb__declarative_tree__PrevWeight_13,
+  MR_Integer * mdb__declarative_tree__Weight_14,
+  MR_Word mdb__declarative_tree__RecordDups_15,
+  MR_Integer mdb__declarative_tree__DupFactor_16,
+  MR_Integer mdb__declarative_tree__PrevDupWeight_17,
+  MR_Integer * mdb__declarative_tree__Excess_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+        MR_Box mdb__declarative_tree__Store_11 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+        MR_Box mdb__declarative_tree__Ref_12 = ((MR_Box) (mdb__declarative_tree__HeadVar__3_3));
+        MR_Word mdb__declarative_tree__Final_19;
+        MR_Box mdb__declarative_tree__CallId_21;
+        MR_Box mdb__declarative_tree__RedoId_22;
+        MR_Integer mdb__declarative_tree__FinalEvent_24;
+        MR_Integer mdb__declarative_tree__FinalSuspicion_27;
+        MR_Word mdb__declarative_tree__NewRecordDups_28;
+
+        {
+          mdb__declarative_execution__det_trace_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_90, mdb__declarative_tree__Store_11, mdb__declarative_tree__Ref_12, &mdb__declarative_tree__Final_19);
+        }
+        switch (MR_tag((MR_Word) mdb__declarative_tree__Final_19)) {
+          default:
+            mdb__declarative_tree__succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 0));
+              MR_Word mdb__declarative_tree__V_23_23;
+              MR_Box mdb__declarative_tree__V_25_25;
+              MR_Integer mdb__declarative_tree__V_26_26;
+
+              mdb__declarative_tree__CallId_21 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 1));
+              mdb__declarative_tree__RedoId_22 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 2));
+              mdb__declarative_tree__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 3)));
+              mdb__declarative_tree__FinalEvent_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 4)));
+              mdb__declarative_tree__V_25_25 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 5)));
+              mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 6)));
+              mdb__declarative_tree__FinalSuspicion_27 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Final_19, (MR_Integer) 7)));
+              mdb__declarative_tree__NewRecordDups_28 = mdb__declarative_tree__RecordDups_15;
+              mdb__declarative_tree__succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 0)))) {
+              default:
+                mdb__declarative_tree__succeeded = MR_FALSE;
+                break;
+              case (MR_Integer) 0:
+                {
+                  MR_Box mdb__declarative_tree__V_29_29 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 1));
+                  MR_Box mdb__declarative_tree__V_30_30;
+
+                  mdb__declarative_tree__CallId_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 2));
+                  mdb__declarative_tree__RedoId_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 3));
+                  mdb__declarative_tree__FinalEvent_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 4)));
+                  mdb__declarative_tree__V_30_30 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 5)));
+                  mdb__declarative_tree__FinalSuspicion_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 6)));
+                  mdb__declarative_tree__NewRecordDups_28 = (MR_Integer) 1;
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Box mdb__declarative_tree__V_31_31 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 1));
+                  MR_Word mdb__declarative_tree__V_32_32;
+                  MR_Box mdb__declarative_tree__V_33_33;
+
+                  mdb__declarative_tree__CallId_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 2));
+                  mdb__declarative_tree__RedoId_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 3));
+                  mdb__declarative_tree__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 4)));
+                  mdb__declarative_tree__FinalEvent_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 5)));
+                  mdb__declarative_tree__V_33_33 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 6)));
+                  mdb__declarative_tree__FinalSuspicion_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Final_19, (MR_Integer) 7)));
+                  mdb__declarative_tree__NewRecordDups_28 = (MR_Integer) 1;
+                  mdb__declarative_tree__succeeded = MR_TRUE;
+                }
+                break;
+            }
+            break;
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            MR_Box mdb__declarative_tree__ExitId_36;
+            MR_Integer mdb__declarative_tree__RedoEvent_37;
+            MR_Integer mdb__declarative_tree__RedoSuspicion_39;
+            MR_Word mdb__declarative_tree__Redo_34;
+            MR_Box mdb__declarative_tree__V_35_35;
+            MR_Box mdb__declarative_tree__V_38_38;
+
+            {
+              mdb__declarative_tree__succeeded = mdb__declarative_execution__maybe_redo_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_90, mdb__declarative_tree__Store_11, mdb__declarative_tree__RedoId_22, &mdb__declarative_tree__Redo_34);
+            }
+            if (mdb__declarative_tree__succeeded)
+              {
+                mdb__declarative_tree__V_35_35 = (MR_hl_field(MR_mktag(2), mdb__declarative_tree__Redo_34, (MR_Integer) 0));
+                mdb__declarative_tree__ExitId_36 = (MR_hl_field(MR_mktag(2), mdb__declarative_tree__Redo_34, (MR_Integer) 1));
+                mdb__declarative_tree__RedoEvent_37 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__Redo_34, (MR_Integer) 2)));
+                mdb__declarative_tree__V_38_38 = ((MR_Box) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__Redo_34, (MR_Integer) 3)));
+                mdb__declarative_tree__RedoSuspicion_39 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__Redo_34, (MR_Integer) 4)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+            if (mdb__declarative_tree__succeeded)
+              {
+                MR_Integer mdb__declarative_tree__NewPrevDupWeight_40;
+                MR_Integer mdb__declarative_tree__NewPrevWeight_41;
+                MR_Word mdb__declarative_tree__V_56_56;
+                MR_Integer mdb__declarative_tree__V_57_57;
+
+                switch (mdb__declarative_tree__NewRecordDups_28) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      mdb__declarative_tree__NewPrevDupWeight_40 = (MR_Integer) 0;
+                      switch (mdb__declarative_tree__Weighting_10) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            MR_Integer mdb__declarative_tree__V_52_52;
+                            MR_Integer mdb__declarative_tree__V_53_53 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalEvent_24);
+
+                            mdb__declarative_tree__V_52_52 = (mdb__declarative_tree__V_53_53 - mdb__declarative_tree__RedoEvent_37);
+                            mdb__declarative_tree__NewPrevWeight_41 = (mdb__declarative_tree__V_52_52 + (MR_Integer) 1);
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Integer mdb__declarative_tree__V_51_51 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalSuspicion_27);
+
+                            mdb__declarative_tree__NewPrevWeight_41 = (mdb__declarative_tree__V_51_51 - mdb__declarative_tree__RedoSuspicion_39);
+                          }
+                          break;
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    switch (mdb__declarative_tree__Weighting_10) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer mdb__declarative_tree__V_47_47;
+                          MR_Integer mdb__declarative_tree__V_48_48;
+                          MR_Integer mdb__declarative_tree__V_49_49 = (mdb__declarative_tree__FinalEvent_24 - mdb__declarative_tree__RedoEvent_37);
+                          MR_Integer mdb__declarative_tree__V_92_92;
+                          MR_Integer mdb__declarative_tree__V_93_93;
+
+                          mdb__declarative_tree__V_48_48 = (mdb__declarative_tree__V_49_49 + (MR_Integer) 1);
+                          mdb__declarative_tree__V_47_47 = (mdb__declarative_tree__DupFactor_16 * mdb__declarative_tree__V_48_48);
+                          mdb__declarative_tree__NewPrevDupWeight_40 = (mdb__declarative_tree__PrevDupWeight_17 + mdb__declarative_tree__V_47_47);
+                          mdb__declarative_tree__V_93_93 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalEvent_24);
+                          mdb__declarative_tree__V_92_92 = (mdb__declarative_tree__V_93_93 - mdb__declarative_tree__RedoEvent_37);
+                          mdb__declarative_tree__NewPrevWeight_41 = (mdb__declarative_tree__V_92_92 + (MR_Integer) 1);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Integer mdb__declarative_tree__V_45_45;
+                          MR_Integer mdb__declarative_tree__V_46_46 = (mdb__declarative_tree__FinalSuspicion_27 - mdb__declarative_tree__RedoSuspicion_39);
+                          MR_Integer mdb__declarative_tree__V_95_95;
+
+                          mdb__declarative_tree__V_45_45 = (mdb__declarative_tree__DupFactor_16 * mdb__declarative_tree__V_46_46);
+                          mdb__declarative_tree__NewPrevDupWeight_40 = (mdb__declarative_tree__PrevDupWeight_17 + mdb__declarative_tree__V_45_45);
+                          mdb__declarative_tree__V_95_95 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalSuspicion_27);
+                          mdb__declarative_tree__NewPrevWeight_41 = (mdb__declarative_tree__V_95_95 - mdb__declarative_tree__RedoSuspicion_39);
+                        }
+                        break;
+                    }
+                    break;
+                }
+                mdb__declarative_tree__V_56_56 = ((MR_Word) mdb__declarative_tree__ExitId_36);
+                mdb__declarative_tree__V_57_57 = (mdb__declarative_tree__DupFactor_16 + (MR_Integer) 1);
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mdb__declarative_tree__HeadVar__3__tmp_copy_3 = mdb__declarative_tree__V_56_56;
+                  MR_Integer mdb__declarative_tree__PrevWeight__tmp_copy_13 = mdb__declarative_tree__NewPrevWeight_41;
+                  MR_Word mdb__declarative_tree__RecordDups__tmp_copy_15 = mdb__declarative_tree__NewRecordDups_28;
+                  MR_Integer mdb__declarative_tree__DupFactor__tmp_copy_16 = mdb__declarative_tree__V_57_57;
+                  MR_Integer mdb__declarative_tree__PrevDupWeight__tmp_copy_17 = mdb__declarative_tree__NewPrevDupWeight_40;
+
+                  mdb__declarative_tree__PrevDupWeight_17 = mdb__declarative_tree__PrevDupWeight__tmp_copy_17;
+                  mdb__declarative_tree__DupFactor_16 = mdb__declarative_tree__DupFactor__tmp_copy_16;
+                  mdb__declarative_tree__RecordDups_15 = mdb__declarative_tree__RecordDups__tmp_copy_15;
+                  mdb__declarative_tree__PrevWeight_13 = mdb__declarative_tree__PrevWeight__tmp_copy_13;
+                  mdb__declarative_tree__HeadVar__3_3 = mdb__declarative_tree__HeadVar__3__tmp_copy_3;
+                }
+                continue;
+              }
+            else
+              {
+                MR_Word mdb__declarative_tree__Call_42;
+                MR_Integer mdb__declarative_tree__CallEvent_43;
+                MR_Integer mdb__declarative_tree__CallSuspicion_44;
+                MR_Box mdb__declarative_tree__V_72_72;
+                MR_Box mdb__declarative_tree__V_73_73;
+                MR_Word mdb__declarative_tree__V_74_74;
+                MR_Integer mdb__declarative_tree__V_75_75;
+                MR_Word mdb__declarative_tree__V_76_76;
+                MR_Word mdb__declarative_tree__V_77_77;
+                MR_Box mdb__declarative_tree__V_78_78;
+                MR_Integer mdb__declarative_tree__V_79_79;
+
+                {
+                  mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_90, mdb__declarative_tree__Store_11, mdb__declarative_tree__CallId_21, &mdb__declarative_tree__Call_42);
+                }
+                mdb__declarative_tree__V_72_72 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 0));
+                mdb__declarative_tree__V_73_73 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 1));
+                mdb__declarative_tree__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 2)));
+                mdb__declarative_tree__V_75_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 3)));
+                mdb__declarative_tree__CallEvent_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 4)));
+                mdb__declarative_tree__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 5)));
+                mdb__declarative_tree__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 6)));
+                mdb__declarative_tree__V_78_78 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 7)));
+                mdb__declarative_tree__V_79_79 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 8)));
+                mdb__declarative_tree__CallSuspicion_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_42, (MR_Integer) 9)));
+                switch (mdb__declarative_tree__Weighting_10) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Integer mdb__declarative_tree__V_60_60;
+                      MR_Integer mdb__declarative_tree__V_61_61 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalEvent_24);
+
+                      mdb__declarative_tree__V_60_60 = (mdb__declarative_tree__V_61_61 - mdb__declarative_tree__CallEvent_43);
+                      *mdb__declarative_tree__Weight_14 = (mdb__declarative_tree__V_60_60 + (MR_Integer) 1);
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mdb__declarative_tree__V_59_59 = (mdb__declarative_tree__PrevWeight_13 + mdb__declarative_tree__FinalSuspicion_27);
+
+                      *mdb__declarative_tree__Weight_14 = (mdb__declarative_tree__V_59_59 - mdb__declarative_tree__CallSuspicion_44);
+                    }
+                    break;
+                }
+                switch (mdb__declarative_tree__NewRecordDups_28) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *mdb__declarative_tree__Excess_18 = (MR_Integer) 0;
+                    break;
+                  case (MR_Integer) 1:
+                    switch (mdb__declarative_tree__Weighting_10) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Integer mdb__declarative_tree__V_65_65;
+                          MR_Integer mdb__declarative_tree__V_66_66;
+                          MR_Integer mdb__declarative_tree__V_67_67 = (mdb__declarative_tree__FinalEvent_24 - mdb__declarative_tree__CallEvent_43);
+
+                          mdb__declarative_tree__V_66_66 = (mdb__declarative_tree__V_67_67 + (MR_Integer) 1);
+                          mdb__declarative_tree__V_65_65 = (mdb__declarative_tree__DupFactor_16 * mdb__declarative_tree__V_66_66);
+                          *mdb__declarative_tree__Excess_18 = (mdb__declarative_tree__PrevDupWeight_17 + mdb__declarative_tree__V_65_65);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Integer mdb__declarative_tree__V_63_63;
+                          MR_Integer mdb__declarative_tree__V_64_64 = (mdb__declarative_tree__FinalSuspicion_27 - mdb__declarative_tree__CallSuspicion_44);
+
+                          mdb__declarative_tree__V_63_63 = (mdb__declarative_tree__DupFactor_16 * mdb__declarative_tree__V_64_64);
+                          *mdb__declarative_tree__Excess_18 = (mdb__declarative_tree__PrevDupWeight_17 + mdb__declarative_tree__V_63_63);
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+          }
+        else
+          {
+            {
+              mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[9])));
+              return;
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__get_answers_4_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26,
+  MR_Box mdb__declarative_tree__Store_5,
+  MR_Box mdb__declarative_tree__RedoId_6,
+  MR_Word mdb__declarative_tree__DeclAtoms0_7,
+  MR_Word * mdb__declarative_tree__DeclAtoms_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mdb__declarative_tree__succeeded;
+        MR_Box mdb__declarative_tree__ExitId_10;
+        MR_Word mdb__declarative_tree__V_17_17;
+        MR_Box mdb__declarative_tree__V_9_9;
+        MR_Integer mdb__declarative_tree__V_11_11;
+        MR_Box mdb__declarative_tree__V_12_12;
+        MR_Integer mdb__declarative_tree__V_13_13;
+
+        {
+          mdb__declarative_tree__succeeded = mdb__declarative_execution__maybe_redo_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26, mdb__declarative_tree__Store_5, mdb__declarative_tree__RedoId_6, &mdb__declarative_tree__V_17_17);
+        }
+        if (mdb__declarative_tree__succeeded)
+          {
+            mdb__declarative_tree__V_9_9 = (MR_hl_field(MR_mktag(2), mdb__declarative_tree__V_17_17, (MR_Integer) 0));
+            mdb__declarative_tree__ExitId_10 = (MR_hl_field(MR_mktag(2), mdb__declarative_tree__V_17_17, (MR_Integer) 1));
+            mdb__declarative_tree__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__V_17_17, (MR_Integer) 2)));
+            mdb__declarative_tree__V_12_12 = ((MR_Box) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__V_17_17, (MR_Integer) 3)));
+            mdb__declarative_tree__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdb__declarative_tree__V_17_17, (MR_Integer) 4)));
+            mdb__declarative_tree__succeeded = MR_TRUE;
+          }
+        if (mdb__declarative_tree__succeeded)
+          {
+            MR_Word mdb__declarative_tree__TypeInfo_40_62;
+            MR_Word mdb__declarative_tree__ExitNode_14;
+            MR_Box mdb__declarative_tree__NextId_15;
+            MR_Word mdb__declarative_tree__DeclAtom_16;
+            MR_Word mdb__declarative_tree__V_18_18;
+            MR_Word mdb__declarative_tree__ExitAtom_30;
+            MR_Box mdb__declarative_tree__CallId_31;
+            MR_Word mdb__declarative_tree__Call_32;
+            MR_Integer mdb__declarative_tree__CallIoSeq_33;
+            MR_Integer mdb__declarative_tree__ExitIoSeq_34;
+            MR_Box mdb__declarative_tree__V_19_19;
+            MR_Box mdb__declarative_tree__V_20_20;
+            MR_Word mdb__declarative_tree__V_21_21;
+            MR_Integer mdb__declarative_tree__V_22_22;
+            MR_Box mdb__declarative_tree__V_23_23;
+            MR_Integer mdb__declarative_tree__V_24_24;
+            MR_Integer mdb__declarative_tree__V_25_25;
+            MR_Box mdb__declarative_tree__V_38_38;
+            MR_Box mdb__declarative_tree__V_39_39;
+            MR_Word mdb__declarative_tree__V_40_40;
+            MR_Integer mdb__declarative_tree__V_41_41;
+            MR_Box mdb__declarative_tree__V_42_42;
+            MR_Integer mdb__declarative_tree__V_43_43;
+            MR_Integer mdb__declarative_tree__V_44_44;
+            MR_Box mdb__declarative_tree__V_45_45;
+            MR_Box mdb__declarative_tree__V_46_46;
+            MR_Word mdb__declarative_tree__V_47_47;
+            MR_Integer mdb__declarative_tree__V_48_48;
+            MR_Integer mdb__declarative_tree__V_49_49;
+            MR_Word mdb__declarative_tree__V_50_50;
+            MR_Word mdb__declarative_tree__V_51_51;
+            MR_Box mdb__declarative_tree__V_52_52;
+            MR_Integer mdb__declarative_tree__V_53_53;
+            MR_Box mdb__declarative_tree__V_54_54;
+            MR_Box mdb__declarative_tree__V_55_55;
+            MR_Box mdb__declarative_tree__V_56_56;
+            MR_Word mdb__declarative_tree__V_57_57;
+            MR_Integer mdb__declarative_tree__V_58_58;
+            MR_Box mdb__declarative_tree__V_59_59;
+            MR_Integer mdb__declarative_tree__V_60_60;
+
+            {
+              mdb__declarative_execution__exit_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26, mdb__declarative_tree__Store_5, mdb__declarative_tree__ExitId_10, &mdb__declarative_tree__ExitNode_14);
+            }
+            mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 0));
+            mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 1));
+            mdb__declarative_tree__NextId_15 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 2));
+            mdb__declarative_tree__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 3)));
+            mdb__declarative_tree__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 4)));
+            mdb__declarative_tree__V_23_23 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 5)));
+            mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 6)));
+            mdb__declarative_tree__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 7)));
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_40_62);
+            }
+            {
+              mdb__declarative_tree__ExitAtom_30 = mdb__declarative_execution__get_trace_exit_atom_1_f_0(mdb__declarative_tree__TypeInfo_40_62, mdb__declarative_tree__ExitNode_14);
+            }
+            mdb__declarative_tree__V_38_38 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 0));
+            mdb__declarative_tree__CallId_31 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 1));
+            mdb__declarative_tree__V_39_39 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 2));
+            mdb__declarative_tree__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 3)));
+            mdb__declarative_tree__V_41_41 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 4)));
+            mdb__declarative_tree__V_42_42 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 5)));
+            mdb__declarative_tree__V_43_43 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 6)));
+            mdb__declarative_tree__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 7)));
+            {
+              mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_26, mdb__declarative_tree__Store_5, mdb__declarative_tree__CallId_31, &mdb__declarative_tree__Call_32);
+            }
+            mdb__declarative_tree__V_45_45 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 0));
+            mdb__declarative_tree__V_46_46 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 1));
+            mdb__declarative_tree__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 2)));
+            mdb__declarative_tree__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 3)));
+            mdb__declarative_tree__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 4)));
+            mdb__declarative_tree__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 5)));
+            mdb__declarative_tree__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 6)));
+            mdb__declarative_tree__V_52_52 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 7)));
+            mdb__declarative_tree__CallIoSeq_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 8)));
+            mdb__declarative_tree__V_53_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__Call_32, (MR_Integer) 9)));
+            mdb__declarative_tree__V_54_54 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 0));
+            mdb__declarative_tree__V_55_55 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 1));
+            mdb__declarative_tree__V_56_56 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 2));
+            mdb__declarative_tree__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 3)));
+            mdb__declarative_tree__V_58_58 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 4)));
+            mdb__declarative_tree__V_59_59 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 5)));
+            mdb__declarative_tree__ExitIoSeq_34 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 6)));
+            mdb__declarative_tree__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__ExitNode_14, (MR_Integer) 7)));
+            mdb__declarative_tree__succeeded = (mdb__declarative_tree__CallIoSeq_33 == mdb__declarative_tree__ExitIoSeq_34);
+            if (mdb__declarative_tree__succeeded)
+              {
+                {
+                  mdb__declarative_tree__DeclAtom_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__DeclAtom_16, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_30));
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__DeclAtom_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+              }
+            else
+              {
+                MR_Word mdb__declarative_tree__V_36_36;
+                MR_Word mdb__declarative_tree__V_37_37;
+
+                {
+                  mdb__declarative_tree__V_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_37_37, 0) = ((MR_Box) (mdb__declarative_tree__CallIoSeq_33));
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__V_37_37, 1) = ((MR_Box) (mdb__declarative_tree__ExitIoSeq_34));
+                }
+                {
+                  mdb__declarative_tree__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_36_36, 0) = ((MR_Box) (mdb__declarative_tree__V_37_37));
+                }
+                {
+                  mdb__declarative_tree__DeclAtom_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__DeclAtom_16, 0) = ((MR_Box) (mdb__declarative_tree__ExitAtom_30));
+                  MR_hl_field(MR_mktag(0), mdb__declarative_tree__DeclAtom_16, 1) = ((MR_Box) (mdb__declarative_tree__V_36_36));
+                }
+              }
+            {
+              mdb__declarative_tree__V_18_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_18_18, 0) = ((MR_Box) (mdb__declarative_tree__DeclAtom_16));
+              MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_18_18, 1) = ((MR_Box) (mdb__declarative_tree__DeclAtoms0_7));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Box mdb__declarative_tree__RedoId__tmp_copy_6 = mdb__declarative_tree__NextId_15;
+              MR_Word mdb__declarative_tree__DeclAtoms0__tmp_copy_7 = mdb__declarative_tree__V_18_18;
+
+              mdb__declarative_tree__DeclAtoms0_7 = mdb__declarative_tree__DeclAtoms0__tmp_copy_7;
+              mdb__declarative_tree__RedoId_6 = mdb__declarative_tree__RedoId__tmp_copy_6;
+            }
+            continue;
+          }
+        else
+          *mdb__declarative_tree__DeclAtoms_8 = mdb__declarative_tree__DeclAtoms0_7;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mdb__declarative_tree__get_edt_node_initial_atom_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29,
+  MR_Box mdb__declarative_tree__Store_4,
+  MR_Box mdb__declarative_tree__Ref_5,
+  MR_Word * mdb__declarative_tree__Atom_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Word mdb__declarative_tree__Node_7;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, mdb__declarative_tree__Store_4, mdb__declarative_tree__Ref_5, &mdb__declarative_tree__Node_7);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mdb__declarative_tree__TypeInfo_11_43;
+          MR_Box mdb__declarative_tree__CallId_9 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+          MR_Word mdb__declarative_tree__CallNode_40;
+          MR_Word mdb__declarative_tree__CallAtom_41;
+          MR_Box mdb__declarative_tree__V_8_8 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 2));
+          MR_Word mdb__declarative_tree__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 3)));
+          MR_Integer mdb__declarative_tree__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 4)));
+          MR_Box mdb__declarative_tree__V_13_13 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 5)));
+          MR_Integer mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 6)));
+          MR_Integer mdb__declarative_tree__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_7, (MR_Integer) 7)));
+
+          {
+            mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_9, &mdb__declarative_tree__CallNode_40);
+          }
+          {
+            mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_43);
+          }
+          {
+            mdb__declarative_tree__CallAtom_41 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_43, mdb__declarative_tree__CallNode_40);
+          }
+          *mdb__declarative_tree__Atom_6 = (MR_Word) mdb__declarative_tree__CallAtom_41;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_50;
+              MR_Box mdb__declarative_tree__CallId_27 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_47;
+              MR_Word mdb__declarative_tree__CallAtom_48;
+              MR_Box mdb__declarative_tree__V_16_16 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_17_17 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 3));
+              MR_Integer mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 4)));
+              MR_Box mdb__declarative_tree__V_19_19 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 5)));
+              MR_Integer mdb__declarative_tree__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 6)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_27, &mdb__declarative_tree__CallNode_47);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_50);
+              }
+              {
+                mdb__declarative_tree__CallAtom_48 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_50, mdb__declarative_tree__CallNode_47);
+              }
+              *mdb__declarative_tree__Atom_6 = (MR_Word) mdb__declarative_tree__CallAtom_48;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mdb__declarative_tree__TypeInfo_11_36;
+              MR_Box mdb__declarative_tree__CallId_28 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 2));
+              MR_Word mdb__declarative_tree__CallNode_33;
+              MR_Word mdb__declarative_tree__CallAtom_34;
+              MR_Box mdb__declarative_tree__V_21_21 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_22_22 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 3));
+              MR_Word mdb__declarative_tree__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 4)));
+              MR_Integer mdb__declarative_tree__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 5)));
+              MR_Box mdb__declarative_tree__V_25_25 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 6)));
+              MR_Integer mdb__declarative_tree__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_7, (MR_Integer) 7)));
+
+              {
+                mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_28, &mdb__declarative_tree__CallNode_33);
+              }
+              {
+                mercury__private_builtin__type_info_from_typeclass_info_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_29, (MR_Integer) 2, &mdb__declarative_tree__TypeInfo_11_36);
+              }
+              {
+                mdb__declarative_tree__CallAtom_34 = mdb__declarative_execution__get_trace_call_atom_1_f_0(mdb__declarative_tree__TypeInfo_11_36, mdb__declarative_tree__CallNode_33);
+              }
+              *mdb__declarative_tree__Atom_6 = (MR_Word) mdb__declarative_tree__CallAtom_34;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mdb__declarative_tree__trace_implicit_tree_info_3_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19,
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Word * mdb__declarative_tree__ImplicitTreeInfo_6)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Store_4 = ((MR_Box) (mdb__declarative_tree__HeadVar__1_1));
+    MR_Box mdb__declarative_tree__Ref_5 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Box mdb__declarative_tree__CallId_7;
+    MR_Word mdb__declarative_tree__CallNode_8;
+    MR_Word mdb__declarative_tree__V_9_9;
+    MR_Box mdb__declarative_tree__CallId0_25;
+    MR_Word mdb__declarative_tree__Node0_23;
+    MR_bool MR_CALL (* mdb__declarative_tree__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box mdb__declarative_tree__conv1_Node0_23;
+    MR_Box mdb__declarative_tree__V_10_10;
+    MR_Box mdb__declarative_tree__V_11_11;
+    MR_Word mdb__declarative_tree__V_12_12;
+    MR_Integer mdb__declarative_tree__V_13_13;
+    MR_Integer mdb__declarative_tree__V_14_14;
+    MR_Word mdb__declarative_tree__V_15_15;
+    MR_Box mdb__declarative_tree__V_16_16;
+    MR_Integer mdb__declarative_tree__V_17_17;
+    MR_Integer mdb__declarative_tree__V_18_18;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__func_0(((MR_Box) mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19), mdb__declarative_tree__Store_4, mdb__declarative_tree__Ref_5, &mdb__declarative_tree__conv1_Node0_23);
+    }
+    if (mdb__declarative_tree__succeeded)
+      {
+        mdb__declarative_tree__Node0_23 = ((MR_Word) mdb__declarative_tree__conv1_Node0_23);
+        mdb__declarative_tree__succeeded = MR_TRUE;
+      }
+    if (mdb__declarative_tree__succeeded)
+      switch (MR_tag((MR_Word) mdb__declarative_tree__Node0_23)) {
+        default:
+          mdb__declarative_tree__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 0));
+            MR_Box mdb__declarative_tree__V_26_26;
+            MR_Word mdb__declarative_tree__V_27_27;
+            MR_Integer mdb__declarative_tree__V_28_28;
+            MR_Box mdb__declarative_tree__V_29_29;
+            MR_Integer mdb__declarative_tree__V_30_30;
+            MR_Integer mdb__declarative_tree__V_31_31;
+
+            mdb__declarative_tree__CallId0_25 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 1));
+            mdb__declarative_tree__V_26_26 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 2));
+            mdb__declarative_tree__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 3)));
+            mdb__declarative_tree__V_28_28 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 4)));
+            mdb__declarative_tree__V_29_29 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 5)));
+            mdb__declarative_tree__V_30_30 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 6)));
+            mdb__declarative_tree__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node0_23, (MR_Integer) 7)));
+            mdb__declarative_tree__succeeded = MR_TRUE;
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 0)))) {
+            default:
+              mdb__declarative_tree__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 0:
+              {
+                MR_Box mdb__declarative_tree__V_32_32 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_33_33;
+                MR_Integer mdb__declarative_tree__V_34_34;
+                MR_Box mdb__declarative_tree__V_35_35;
+                MR_Integer mdb__declarative_tree__V_36_36;
+
+                mdb__declarative_tree__CallId0_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 2));
+                mdb__declarative_tree__V_33_33 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 3));
+                mdb__declarative_tree__V_34_34 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 4)));
+                mdb__declarative_tree__V_35_35 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 5)));
+                mdb__declarative_tree__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 6)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Box mdb__declarative_tree__V_37_37 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 1));
+                MR_Box mdb__declarative_tree__V_38_38;
+                MR_Word mdb__declarative_tree__V_39_39;
+                MR_Integer mdb__declarative_tree__V_40_40;
+                MR_Box mdb__declarative_tree__V_41_41;
+                MR_Integer mdb__declarative_tree__V_42_42;
+
+                mdb__declarative_tree__CallId0_25 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 2));
+                mdb__declarative_tree__V_38_38 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 3));
+                mdb__declarative_tree__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 4)));
+                mdb__declarative_tree__V_40_40 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 5)));
+                mdb__declarative_tree__V_41_41 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 6)));
+                mdb__declarative_tree__V_42_42 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node0_23, (MR_Integer) 7)));
+                mdb__declarative_tree__succeeded = MR_TRUE;
+              }
+              break;
+          }
+          break;
+      }
+    if (mdb__declarative_tree__succeeded)
+      mdb__declarative_tree__CallId_7 = mdb__declarative_tree__CallId0_25;
+    else
+      {
+        {
+          mercury__exception__throw_1_p_0((MR_Word) &mdb__declarative_debugger__mdb__declarative_debugger__type_ctor_info_diagnoser_exception_0, ((MR_Box) (&mdb__declarative_tree_scalar_common_1[8])));
+        }
+      }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_19, mdb__declarative_tree__Store_4, mdb__declarative_tree__CallId_7, &mdb__declarative_tree__CallNode_8);
+    }
+    mdb__declarative_tree__V_10_10 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 0));
+    mdb__declarative_tree__V_11_11 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 1));
+    mdb__declarative_tree__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 2)));
+    mdb__declarative_tree__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 3)));
+    mdb__declarative_tree__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 4)));
+    mdb__declarative_tree__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 5)));
+    mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 6)));
+    mdb__declarative_tree__V_16_16 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 7)));
+    mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 8)));
+    mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_8, (MR_Integer) 9)));
+    mdb__declarative_tree__succeeded = ((MR_tag((MR_Word) mdb__declarative_tree__V_9_9)) == (MR_mktag((MR_Integer) 1)));
+    if (mdb__declarative_tree__succeeded)
+      *mdb__declarative_tree__ImplicitTreeInfo_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__V_9_9, (MR_Integer) 0)));
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mdb__declarative_tree__trace_atom_subterm_is_ground_3_p_0(
+  MR_Word mdb__declarative_tree__HeadVar__1_1,
+  MR_Word mdb__declarative_tree__ArgPos_6,
+  MR_Word mdb__declarative_tree__HeadVar__3_7)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+
+    {
+      mdb__declarative_tree__succeeded = mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_99_101_95_97_116_111_109_95_115_117_98_116_101_114_109_95_105_115_95_103_114_111_117_110_100_95_95_91_51_93_95_48_3_p_0(mdb__declarative_tree__HeadVar__1_1, mdb__declarative_tree__ArgPos_6);
+    }
+    return mdb__declarative_tree__succeeded;
+  }
+}
+
+void MR_CALL 
+mdb__declarative_tree__edt_subtree_details_5_p_0(
+  MR_Word mdb__declarative_tree__TypeClassInfo_for_annotated_trace_47,
+  MR_Box mdb__declarative_tree__Store_6,
+  MR_Word mdb__declarative_tree__HeadVar__2_2,
+  MR_Integer * mdb__declarative_tree__Event_8,
+  MR_Integer * mdb__declarative_tree__SeqNo_9,
+  MR_Box * mdb__declarative_tree__CallPreceding_10)
+{
+  {
+    MR_bool mdb__declarative_tree__succeeded;
+    MR_Box mdb__declarative_tree__Ref_7 = ((MR_Box) (mdb__declarative_tree__HeadVar__2_2));
+    MR_Word mdb__declarative_tree__Node_11;
+    MR_Box mdb__declarative_tree__Call_13;
+    MR_Word mdb__declarative_tree__CallNode_28;
+    MR_Box mdb__declarative_tree__V_30_30;
+    MR_Word mdb__declarative_tree__V_31_31;
+    MR_Integer mdb__declarative_tree__V_32_32;
+    MR_Word mdb__declarative_tree__V_33_33;
+    MR_Word mdb__declarative_tree__V_34_34;
+    MR_Box mdb__declarative_tree__V_35_35;
+    MR_Integer mdb__declarative_tree__V_36_36;
+    MR_Integer mdb__declarative_tree__V_37_37;
+
+    {
+      mdb__declarative_tree__det_edt_return_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_47, mdb__declarative_tree__Store_6, mdb__declarative_tree__Ref_7, &mdb__declarative_tree__Node_11);
+    }
+    switch (MR_tag((MR_Word) mdb__declarative_tree__Node_11)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Box mdb__declarative_tree__V_12_12 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 0));
+          MR_Box mdb__declarative_tree__V_14_14;
+          MR_Word mdb__declarative_tree__V_15_15;
+          MR_Box mdb__declarative_tree__V_16_16;
+          MR_Integer mdb__declarative_tree__V_17_17;
+          MR_Integer mdb__declarative_tree__V_18_18;
+
+          mdb__declarative_tree__Call_13 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+          mdb__declarative_tree__V_14_14 = (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+          mdb__declarative_tree__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 3)));
+          *mdb__declarative_tree__Event_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+          mdb__declarative_tree__V_16_16 = ((MR_Box) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+          mdb__declarative_tree__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+          mdb__declarative_tree__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__declarative_tree__Node_11, (MR_Integer) 7)));
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Box mdb__declarative_tree__V_19_19 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_20_20;
+              MR_Box mdb__declarative_tree__V_21_21;
+              MR_Integer mdb__declarative_tree__V_22_22;
+
+              mdb__declarative_tree__Call_13 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              mdb__declarative_tree__V_20_20 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3));
+              *mdb__declarative_tree__Event_8 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+              mdb__declarative_tree__V_21_21 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+              mdb__declarative_tree__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mdb__declarative_tree__V_23_23 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 1));
+              MR_Box mdb__declarative_tree__V_24_24;
+              MR_Word mdb__declarative_tree__V_25_25;
+              MR_Box mdb__declarative_tree__V_26_26;
+              MR_Integer mdb__declarative_tree__V_27_27;
+
+              mdb__declarative_tree__Call_13 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 2));
+              mdb__declarative_tree__V_24_24 = (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 3));
+              mdb__declarative_tree__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 4)));
+              *mdb__declarative_tree__Event_8 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 5)));
+              mdb__declarative_tree__V_26_26 = ((MR_Box) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 6)));
+              mdb__declarative_tree__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), mdb__declarative_tree__Node_11, (MR_Integer) 7)));
+            }
+            break;
+        }
+        break;
+    }
+    {
+      mdb__declarative_execution__call_node_from_id_3_p_0(mdb__declarative_tree__TypeClassInfo_for_annotated_trace_47, mdb__declarative_tree__Store_6, mdb__declarative_tree__Call_13, &mdb__declarative_tree__CallNode_28);
+    }
+    *mdb__declarative_tree__CallPreceding_10 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 0));
+    mdb__declarative_tree__V_30_30 = (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 1));
+    mdb__declarative_tree__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 2)));
+    *mdb__declarative_tree__SeqNo_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 3)));
+    mdb__declarative_tree__V_32_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 4)));
+    mdb__declarative_tree__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 5)));
+    mdb__declarative_tree__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 6)));
+    mdb__declarative_tree__V_35_35 = ((MR_Box) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 7)));
+    mdb__declarative_tree__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 8)));
+    mdb__declarative_tree__V_37_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__declarative_tree__CallNode_28, (MR_Integer) 9)));
+  }
+}
+
+void mercury__mdb__declarative_tree__init(void)
+{
+}
+
+void mercury__mdb__declarative_tree__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_contour_type_0);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_dependency_chain_start_1);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_edt_node_1);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_list_0);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_plain_call_info_0);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_primitive_list_and_var_1);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_start_loc_1);
+	MR_register_type_ctor_info(&mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_wrap_1);
+}
+
+void mercury__mdb__declarative_tree__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__mdb__declarative_tree__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module mdb.declarative_tree. */

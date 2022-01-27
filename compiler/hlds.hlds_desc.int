@@ -1,0 +1,10 @@
+:- module (hlds.hlds_desc).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- func describe_args(parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func describe_goal(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal) = string.
+:- func describe_var(parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_var) = string.

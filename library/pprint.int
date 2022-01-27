@@ -1,0 +1,63 @@
+:- module pprint.
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module stream.
+:- import_module string.
+:- import_module univ.
+:- type doc.
+:- func ++(T1, T2) = pprint.doc <= (pprint.doc(T1), pprint.doc(T2)).
+:- func </>(pprint.doc, pprint.doc) = pprint.doc.
+:- func <>(pprint.doc, pprint.doc) = pprint.doc.
+:- func braces(T) = pprint.doc <= (pprint.doc(T)).
+:- func bracketed(T1, T2, T3) = pprint.doc <= (pprint.doc(T1), pprint.doc(T2), pprint.doc(T3)).
+:- func brackets(T) = pprint.doc <= (pprint.doc(T)).
+:- func colon = pprint.doc.
+:- func colon_line = pprint.doc.
+:- func colon_space = pprint.doc.
+:- func colon_space_line = pprint.doc.
+:- func comma = pprint.doc.
+:- func comma_line = pprint.doc.
+:- func comma_space = pprint.doc.
+:- func comma_space_line = pprint.doc.
+:- func doc(T) = pprint.doc <= (pprint.doc(T)).
+:- func ellipsis = pprint.doc.
+:- func group(T) = pprint.doc <= (pprint.doc(T)).
+:- func label(string, T) = pprint.doc <= (pprint.doc(T)).
+:- func line = pprint.doc.
+:- func nest(int, T) = pprint.doc <= (pprint.doc(T)).
+:- func nil = pprint.doc.
+:- func packed(T1, list.list(T2)) = pprint.doc <= (pprint.doc(T1), pprint.doc(T2)).
+:- func packed(int, T1, list.list(T2)) = pprint.doc <= (pprint.doc(T1), pprint.doc(T2)).
+:- func packed_cs(list.list(T)) = pprint.doc <= (pprint.doc(T)).
+:- func packed_cs(int, list.list(T)) = pprint.doc <= (pprint.doc(T)).
+:- func packed_cs_to_depth(int, list.list(T)) = pprint.doc.
+:- func packed_cs_univ_args(int, list.list(univ.univ)) = pprint.doc.
+:- func parentheses(T) = pprint.doc <= (pprint.doc(T)).
+:- func poly(string.poly_type) = pprint.doc.
+:- func semic = pprint.doc.
+:- func semic_line = pprint.doc.
+:- func semic_space = pprint.doc.
+:- func semic_space_line = pprint.doc.
+:- func separated(((func T1) = pprint.doc), T2, list.list(T1)) = pprint.doc <= (pprint.doc(T2)).
+:- func space = pprint.doc.
+:- func space_line = pprint.doc.
+:- func text(string) = pprint.doc.
+:- func to_doc(T) = pprint.doc.
+:- func to_doc(int, T) = pprint.doc.
+:- func to_string(int, pprint.doc) = string.
+:- func word_wrapped(string) = pprint.doc.
+:- pred write(int, T, io.io, io.io) <= (pprint.doc(T)).
+:- mode write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write(Stream, int, T, State, State) <= (pprint.doc(T), stream.writer(Stream, string, State)).
+:- mode write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- typeclass doc(T) where [
+	func doc(int, T) = pprint.doc
+].
+:- instance (pprint.doc(char.char)).
+:- instance (pprint.doc(pprint.doc)).
+:- instance (pprint.doc(int)).
+:- instance (pprint.doc(uint)).
+:- instance (pprint.doc(float)).
+:- instance (pprint.doc(string)).

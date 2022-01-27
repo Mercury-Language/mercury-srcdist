@@ -1,0 +1,4241 @@
+/*
+** Automatically generated from `ops.m'
+** by the Mercury compiler,
+** version rotd-2017-01-21
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ops. */
+/* :- implementation. */
+
+/*
+INIT mercury__ops__init
+ENDINIT
+*/
+
+#include "ops.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "mutvar.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "uint.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_assoc_0_0;
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_assoc_0_1;
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_value_ordered_assoc_0[2];
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_name_ordered_assoc_0[2];
+
+static const MR_Integer mercury__ops__ops__functor_number_map_assoc_0[2];
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_0[2];
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_0;
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_1[1];
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_1;
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_2[2];
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_2;
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_3[1];
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_3;
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_0[1];
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_1[1];
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_2[1];
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_3[1];
+
+static const MR_DuPtagLayout mercury__ops__ops__du_ptag_ordered_class_0[4];
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_name_ordered_class_0[4];
+
+static const MR_Integer mercury__ops__ops__functor_number_map_class_0[4];
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_mercury_op_table_0_0;
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_value_ordered_mercury_op_table_0[1];
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_name_ordered_mercury_op_table_0[1];
+
+static const MR_Integer mercury__ops__ops__functor_number_map_mercury_op_table_0[1];
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_op_info_0_0[2];
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_op_info_0_0;
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_op_info_0_0[1];
+
+static const MR_DuPtagLayout mercury__ops__ops__du_ptag_ordered_op_info_0[1];
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_name_ordered_op_info_0[1];
+
+static const MR_Integer mercury__ops__ops__functor_number_map_op_info_0[1];
+
+static const MR_ConstString mercury__ops__ops__type_class_id_var_names_op_table_1[1];
+
+static const MR_TypeClassMethod mercury__ops__ops__type_class_id_method_ids_op_table_1[9];
+
+static const MR_TypeClassId mercury__ops__ops__type_class_id_op_table_1;
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____assoc_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____assoc_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____class_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____class_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____mercury_op_table_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____mercury_op_table_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____op_info_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____op_info_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____priority_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____priority_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____table_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__ops____Compare____table_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4,
+  MR_Box * mercury__ops__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4,
+  MR_Box * mercury__ops__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box * mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4);
+
+static MR_Box MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+mercury__ops__op_table_3_p_0(
+  MR_String mercury__ops__Op_4,
+  MR_Word * mercury__ops__Info_5,
+  MR_Word * mercury__ops__OtherInfos_6);
+
+
+static /* final */ const MR_Box mercury__ops_scalar_common_1[1][3];
+
+static /* final */ const MR_Box mercury__ops_scalar_common_2[1][4];
+
+static /* final */ const MR_Box mercury__ops_scalar_common_3[2][5];
+
+static /* final */ const MR_Box mercury__ops_scalar_common_4[51][2];
+
+static /* final */ const MR_Box mercury__ops_scalar_common_5[2][1];
+
+
+/* sealed */ struct mercury__ops__vector_common_type_6_0_s {
+  const MR_Word mercury__ops__vector_common_type_6_0__vct_6_f_0;
+  const MR_Word mercury__ops__vector_common_type_6_0__vct_6_f_1;
+};
+
+static /* final */ const struct mercury__ops__vector_common_type_6_0_s mercury__ops_vector_common_6[98];
+
+
+
+static /* final */ const MR_Box mercury__ops_scalar_common_1[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__ops_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__ops_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__ops_scalar_common_3[2][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__ops_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__ops_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__ops_scalar_common_4[51][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1025))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[2])),
+    ((MR_Box) ((MR_Integer) 400))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 200))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[2])),
+    ((MR_Box) ((MR_Integer) 500))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 500))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 500))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1000))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 200))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[10])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1179))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 1200))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1050))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[2])),
+    ((MR_Box) ((MR_Integer) 10))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 550))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[2])),
+    ((MR_Box) ((MR_Integer) 120))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 1200))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[19])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 1175))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 650))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1100))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 700))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 920))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 90))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 99))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 100))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[28])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(2), &mercury__ops_scalar_common_4[0]))),
+    ((MR_Box) ((MR_Integer) 950))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 720))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1180))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1190))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 1170))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 500))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 701))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 400))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 740))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 1150))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (&mercury__ops_scalar_common_4[13])),
+    ((MR_Box) ((MR_Integer) 900))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 40))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[1]))),
+    ((MR_Box) ((MR_Integer) 900))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 1199))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 800))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 1160))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[1]))),
+    ((MR_Box) ((MR_Integer) 800))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[1]))),
+    ((MR_Box) ((MR_Integer) 950))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 950))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[1]))),
+    ((MR_Box) ((MR_Integer) 1181))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_5[0]))),
+    ((MR_Box) ((MR_Integer) 1180))
+  },
+};
+
+static /* final */ const MR_Box mercury__ops_scalar_common_5[2][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+
+static /* final */ const struct mercury__ops__vector_common_type_6_0_s mercury__ops_vector_common_6[98] = {
+  /* row 0 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[41],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[41],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[41],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[1],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[4],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[5],
+    (MR_Word) MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_4[7])
+  },
+  /* row 7 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[8],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[9],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[5],
+    (MR_Word) MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_4[11])
+  },
+  /* row 10 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[5],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[12],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[14],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[15],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[16],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[17],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 17 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 18 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[5],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 19 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[18],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 20 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[14],
+    (MR_Word) MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_4[20])
+  },
+  /* row 21 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[21],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 22 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[22],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 23 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[23],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 24 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 25 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 26 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[25],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 27 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[25],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 28 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 29 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 30 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 31 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 32 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 33 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[21],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 34 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[25],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 35 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 36 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[22],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 37 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 38 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 39 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 40 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[19],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 41 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[26],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 42 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 43 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 44 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 45 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 46 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[10],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 47 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[42],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 48 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[5],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 49 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 50 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 51 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[27],
+    (MR_Word) MR_mkword(MR_mktag(1), &mercury__ops_scalar_common_4[29])
+  },
+  /* row 52 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[30],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 53 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[31],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 54 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[30],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 55 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[32],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 56 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[33],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 57 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[3],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 58 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[34],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 59 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 60 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[28],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 61 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 62 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 63 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[35],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 64 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[44],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 65 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[45],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 66 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 67 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[46],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 68 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 69 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 70 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 71 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 72 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 73 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[36],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 74 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[37],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 75 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 76 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 77 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[42],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 78 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[38],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 79 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[23],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 80 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 81 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[44],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 82 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 83 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[47],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 84 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[48],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 85 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[37],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 86 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 87 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[46],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 88 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[49],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 89 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[30],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 90 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[39],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 91 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[50],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 92 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 93 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[43],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 94 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[40],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 95 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[21],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 96 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[42],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 97 */
+  {
+    (MR_Word) &mercury__ops_scalar_common_4[24],
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+};
+
+
+#include "array.mh"
+#include "benchmarking.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "char.mh"
+#include "construct.mh"
+#include "dir.mh"
+#include "exception.mh"
+#include "float.mh"
+#include "int.mh"
+#include "io.mh"
+#include "math.mh"
+#include "pretty_printer.mh"
+#include "private_builtin.mh"
+#include "rtti_implementation.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "type_desc.mh"
+#include "uint.mh"
+#include "version_array.mh"
+
+
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_assoc_0_0 = {
+  (MR_String) "x",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_assoc_0_1 = {
+  (MR_String) "y",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_value_ordered_assoc_0[2] = {
+  &mercury__ops__ops__enum_functor_desc_assoc_0_0,
+  &mercury__ops__ops__enum_functor_desc_assoc_0_1
+};
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_name_ordered_assoc_0[2] = {
+  &mercury__ops__ops__enum_functor_desc_assoc_0_0,
+  &mercury__ops__ops__enum_functor_desc_assoc_0_1
+};
+
+static const MR_Integer mercury__ops__ops__functor_number_map_assoc_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_assoc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__ops____Unify____assoc_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____assoc_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "assoc",
+  {     mercury__ops__ops__enum_name_ordered_assoc_0 },
+  {     mercury__ops__ops__enum_value_ordered_assoc_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__ops__ops__functor_number_map_assoc_0
+};
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0,
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0
+};
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_0 = {
+  (MR_String) "infix",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__ops__ops__field_types_class_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0
+};
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_1 = {
+  (MR_String) "prefix",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__ops__ops__field_types_class_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_2[2] = {
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0,
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0
+};
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_2 = {
+  (MR_String) "binary_prefix",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  mercury__ops__ops__field_types_class_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_class_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_assoc_0
+};
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_class_0_3 = {
+  (MR_String) "postfix",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  mercury__ops__ops__field_types_class_0_3,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_0[1] = {
+  &mercury__ops__ops__du_functor_desc_class_0_0
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_1[1] = {
+  &mercury__ops__ops__du_functor_desc_class_0_1
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_2[1] = {
+  &mercury__ops__ops__du_functor_desc_class_0_2
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_class_0_3[1] = {
+  &mercury__ops__ops__du_functor_desc_class_0_3
+};
+
+static const MR_DuPtagLayout mercury__ops__ops__du_ptag_ordered_class_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__ops__ops__du_stag_ordered_class_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__ops__ops__du_stag_ordered_class_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__ops__ops__du_stag_ordered_class_0_2
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__ops__ops__du_stag_ordered_class_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_name_ordered_class_0[4] = {
+  &mercury__ops__ops__du_functor_desc_class_0_2,
+  &mercury__ops__ops__du_functor_desc_class_0_0,
+  &mercury__ops__ops__du_functor_desc_class_0_3,
+  &mercury__ops__ops__du_functor_desc_class_0_1
+};
+
+static const MR_Integer mercury__ops__ops__functor_number_map_class_0[4] = {
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_class_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__ops____Unify____class_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____class_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "class",
+  {     mercury__ops__ops__du_name_ordered_class_0 },
+  {     mercury__ops__ops__du_ptag_ordered_class_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  mercury__ops__ops__functor_number_map_class_0
+};
+
+static const MR_EnumFunctorDesc mercury__ops__ops__enum_functor_desc_mercury_op_table_0_0 = {
+  (MR_String) "mercury_op_table",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_value_ordered_mercury_op_table_0[1] = {
+  &mercury__ops__ops__enum_functor_desc_mercury_op_table_0_0
+};
+
+static const MR_EnumFunctorDescPtr mercury__ops__ops__enum_name_ordered_mercury_op_table_0[1] = {
+  &mercury__ops__ops__enum_functor_desc_mercury_op_table_0_0
+};
+
+static const MR_Integer mercury__ops__ops__functor_number_map_mercury_op_table_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_mercury_op_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__ops____Unify____mercury_op_table_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____mercury_op_table_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "mercury_op_table",
+  {     mercury__ops__ops__enum_name_ordered_mercury_op_table_0 },
+  {     mercury__ops__ops__enum_value_ordered_mercury_op_table_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__ops__ops__functor_number_map_mercury_op_table_0
+};
+
+static const MR_PseudoTypeInfo mercury__ops__ops__field_types_op_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_class_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury__ops__ops__du_functor_desc_op_info_0_0 = {
+  (MR_String) "op_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__ops__ops__field_types_op_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_stag_ordered_op_info_0_0[1] = {
+  &mercury__ops__ops__du_functor_desc_op_info_0_0
+};
+
+static const MR_DuPtagLayout mercury__ops__ops__du_ptag_ordered_op_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__ops__ops__du_stag_ordered_op_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__ops__ops__du_name_ordered_op_info_0[1] = {
+  &mercury__ops__ops__du_functor_desc_op_info_0_0
+};
+
+static const MR_Integer mercury__ops__ops__functor_number_map_op_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_op_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__ops____Unify____op_info_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____op_info_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "op_info",
+  {     mercury__ops__ops__du_name_ordered_op_info_0 },
+  {     mercury__ops__ops__du_ptag_ordered_op_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__ops__ops__functor_number_map_op_info_0
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_priority_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__ops____Unify____priority_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____priority_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "priority",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury__ops__ops__type_ctor_info_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__ops____Unify____table_0_0_10001)),
+  ((MR_Box) (mercury__ops____Compare____table_0_0_10001)),
+  (MR_String) "ops",
+  (MR_String) "table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__ops__ops__type_ctor_info_mercury_op_table_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_ops__op_table__arity1__ops__mercury_op_table__arity0__[14] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0_10001)),
+  ((MR_Box) (mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0_10001))
+};
+
+static const MR_ConstString mercury__ops__ops__type_class_id_var_names_op_table_1[1] = {
+  (MR_String) "Table"
+};
+
+static const MR_TypeClassMethod mercury__ops__ops__type_class_id_method_ids_op_table_1[9] = {
+  {
+    (MR_String) "lookup_infix_op",
+    (MR_Integer) 5,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_prefix_op",
+    (MR_Integer) 4,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_binary_prefix_op",
+    (MR_Integer) 5,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_postfix_op",
+    (MR_Integer) 4,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_op",
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_op_infos",
+    (MR_Integer) 4,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "lookup_operator_term",
+    (MR_Integer) 4,
+    mercury__private_builtin__MR_PREDICATE
+  },
+  {
+    (MR_String) "max_priority",
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_FUNCTION
+  },
+  {
+    (MR_String) "arg_priority",
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_FUNCTION
+  }
+};
+
+static const MR_TypeClassId mercury__ops__ops__type_class_id_op_table_1 = {
+  (MR_String) "ops",
+  (MR_String) "op_table",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  (MR_Integer) 9,
+  mercury__ops__ops__type_class_id_var_names_op_table_1,
+  mercury__ops__ops__type_class_id_method_ids_op_table_1
+};
+
+const MR_TypeClassDeclStruct mercury__ops__ops__type_class_decl_op_table_1 = {
+  &mercury__ops__ops__type_class_id_op_table_1,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____assoc_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____assoc_0_0(((MR_Word) mercury__ops__wrapper_arg_1), ((MR_Word) mercury__ops__wrapper_arg_2));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____assoc_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____assoc_0_0(&mercury__ops__conv0_HeadVar__1_1, ((MR_Word) mercury__ops__wrapper_arg_2), ((MR_Word) mercury__ops__wrapper_arg_3));
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____class_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____class_0_0(((MR_Word) mercury__ops__wrapper_arg_1), ((MR_Word) mercury__ops__wrapper_arg_2));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____class_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____class_0_0(&mercury__ops__conv0_HeadVar__1_1, ((MR_Word) mercury__ops__wrapper_arg_2), ((MR_Word) mercury__ops__wrapper_arg_3));
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____mercury_op_table_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____mercury_op_table_0_0();
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____mercury_op_table_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____mercury_op_table_0_0(&mercury__ops__conv0_HeadVar__1_1);
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____op_info_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____op_info_0_0(((MR_Word) mercury__ops__wrapper_arg_1), ((MR_Word) mercury__ops__wrapper_arg_2));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____op_info_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____op_info_0_0(&mercury__ops__conv0_HeadVar__1_1, ((MR_Word) mercury__ops__wrapper_arg_2), ((MR_Word) mercury__ops__wrapper_arg_3));
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____priority_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____priority_0_0(((MR_Integer) mercury__ops__wrapper_arg_1), ((MR_Integer) mercury__ops__wrapper_arg_2));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____priority_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____priority_0_0(&mercury__ops__conv0_HeadVar__1_1, ((MR_Integer) mercury__ops__wrapper_arg_2), ((MR_Integer) mercury__ops__wrapper_arg_3));
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops____Unify____table_0_0_10001(
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops____Unify____table_0_0();
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__ops____Compare____table_0_0_10001(
+  MR_Box * mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box mercury__ops__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__ops__conv0_HeadVar__1_1;
+
+    {
+      mercury__ops____Compare____table_0_0(&mercury__ops__conv0_HeadVar__1_1);
+    }
+    *mercury__ops__wrapper_arg_1 = ((MR_Box) (mercury__ops__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4,
+  MR_Box * mercury__ops__wrapper_arg_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv2_HeadVar__3_3;
+    MR_Word mercury__ops__conv1_HeadVar__4_4;
+    MR_Word mercury__ops__conv0_HeadVar__5_5;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0(((MR_String) mercury__ops__wrapper_arg_2), &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4, &mercury__ops__conv0_HeadVar__5_5);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv2_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv1_HeadVar__4_4));
+        *mercury__ops__wrapper_arg_5 = ((MR_Box) (mercury__ops__conv0_HeadVar__5_5));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv1_HeadVar__3_3;
+    MR_Word mercury__ops__conv0_HeadVar__4_4;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0(((MR_String) mercury__ops__wrapper_arg_2), &mercury__ops__conv1_HeadVar__3_3, &mercury__ops__conv0_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv1_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv0_HeadVar__4_4));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4,
+  MR_Box * mercury__ops__wrapper_arg_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv2_HeadVar__3_3;
+    MR_Word mercury__ops__conv1_HeadVar__4_4;
+    MR_Word mercury__ops__conv0_HeadVar__5_5;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0(((MR_String) mercury__ops__wrapper_arg_2), &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4, &mercury__ops__conv0_HeadVar__5_5);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv2_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv1_HeadVar__4_4));
+        *mercury__ops__wrapper_arg_5 = ((MR_Box) (mercury__ops__conv0_HeadVar__5_5));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv1_HeadVar__3_3;
+    MR_Word mercury__ops__conv0_HeadVar__4_4;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0(((MR_String) mercury__ops__wrapper_arg_2), &mercury__ops__conv1_HeadVar__3_3, &mercury__ops__conv0_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv1_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv0_HeadVar__4_4));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0(((MR_String) mercury__ops__wrapper_arg_2));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Word mercury__ops__conv1_HeadVar__3_3;
+    MR_Word mercury__ops__conv0_HeadVar__4_4;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0(((MR_String) mercury__ops__wrapper_arg_2), &mercury__ops__conv1_HeadVar__3_3, &mercury__ops__conv0_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv1_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv0_HeadVar__4_4));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1,
+  MR_Box * mercury__ops__wrapper_arg_2,
+  MR_Box * mercury__ops__wrapper_arg_3,
+  MR_Box * mercury__ops__wrapper_arg_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv2_HeadVar__2_2;
+    MR_Word mercury__ops__conv1_HeadVar__3_3;
+    MR_Word mercury__ops__conv0_HeadVar__4_4;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__succeeded = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0(&mercury__ops__conv2_HeadVar__2_2, &mercury__ops__conv1_HeadVar__3_3, &mercury__ops__conv0_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__wrapper_arg_2 = ((MR_Box) (mercury__ops__conv2_HeadVar__2_2));
+        *mercury__ops__wrapper_arg_3 = ((MR_Box) (mercury__ops__conv1_HeadVar__3_3));
+        *mercury__ops__wrapper_arg_4 = ((MR_Box) (mercury__ops__conv0_HeadVar__4_4));
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1)
+{
+  {
+    MR_Box mercury__ops__wrapper_arg_2;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv0_HeadVar__2_2;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__conv0_HeadVar__2_2 = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0();
+    }
+    mercury__ops__wrapper_arg_2 = ((MR_Box) (mercury__ops__conv0_HeadVar__2_2));
+    return mercury__ops__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0_10001(
+  MR_Box mercury__ops__closure_arg,
+  MR_Box mercury__ops__wrapper_arg_1)
+{
+  {
+    MR_Box mercury__ops__wrapper_arg_2;
+    MR_Box mercury__ops__closure;
+    MR_Integer mercury__ops__conv0_HeadVar__2_2;
+
+    mercury__ops__closure = mercury__ops__closure_arg;
+    {
+      mercury__ops__conv0_HeadVar__2_2 = mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0();
+    }
+    mercury__ops__wrapper_arg_2 = ((MR_Box) (mercury__ops__conv0_HeadVar__2_2));
+    return mercury__ops__wrapper_arg_2;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_97_114_103_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    return (MR_Integer) 999;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    return (MR_Integer) 1200;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer * mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    *mercury__ops__HeadVar__2_2 = (MR_Integer) 120;
+    *mercury__ops__HeadVar__3_3 = (MR_Integer) 1;
+    *mercury__ops__HeadVar__4_4 = (MR_Integer) 0;
+    return MR_TRUE;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_105_110_102_111_115_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_50_95_95_91_49_93_95_48_2_p_0(
+  MR_String mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__V_5_5;
+    MR_Word mercury__ops__V_6_6;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__HeadVar__2_2, &mercury__ops__V_5_5, &mercury__ops__V_6_6);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_111_115_116_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_111_115_116_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4, mercury__ops__HeadVar__5_5);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_114_101_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_105_110_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_105_110_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4, mercury__ops__HeadVar__5_5);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+{
+  {
+    return MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+{
+  {
+    return MR_TRUE;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_97_114_103_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    return (MR_Integer) 999;
+  }
+}
+
+void MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer * mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    *mercury__ops__HeadVar__2_2 = (MR_Integer) 120;
+    *mercury__ops__HeadVar__3_3 = (MR_Integer) 1;
+    *mercury__ops__HeadVar__4_4 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_105_110_102_111_115_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Word * mercury__ops__Info_7,
+  MR_Word * mercury__ops__OtherInfos_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_6, mercury__ops__Info_7, mercury__ops__OtherInfos_8);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_95_91_49_93_95_48_2_p_0(
+  MR_String mercury__ops__Name_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__V_5_5;
+    MR_Word mercury__ops__V_6_6;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_4, &mercury__ops__V_5_5, &mercury__ops__V_6_6);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_111_115_116_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Integer * mercury__ops__Priority_7,
+  MR_Word * mercury__ops__LeftAssoc_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__Info_9;
+    MR_Word mercury__ops__MaybeOtherInfo_10;
+    MR_Word mercury__ops__LeftAssocPrime_11;
+    MR_Integer mercury__ops__PriorityPrime_12;
+    MR_Word mercury__ops__V_13_13;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_6, &mercury__ops__Info_9, &mercury__ops__MaybeOtherInfo_10);
+    }
+    if (mercury__ops__succeeded)
+      {
+        mercury__ops__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Info_9, (MR_Integer) 0)));
+        mercury__ops__PriorityPrime_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__Info_9, (MR_Integer) 1)));
+        mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__V_13_13)) == (MR_mktag((MR_Integer) 3)));
+        if (mercury__ops__succeeded)
+          {
+            mercury__ops__LeftAssocPrime_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__V_13_13, (MR_Integer) 0)));
+            *mercury__ops__LeftAssoc_8 = mercury__ops__LeftAssocPrime_11;
+            *mercury__ops__Priority_7 = mercury__ops__PriorityPrime_12;
+            mercury__ops__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word mercury__ops__V_14_14;
+            MR_Word mercury__ops__V_15_15;
+            MR_Word mercury__ops__V_16_16;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__MaybeOtherInfo_10)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_10, (MR_Integer) 0)));
+                mercury__ops__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_10, (MR_Integer) 1)));
+                mercury__ops__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__V_14_14, (MR_Integer) 0)));
+                *mercury__ops__Priority_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__V_14_14, (MR_Integer) 1)));
+                mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__V_15_15)) == (MR_mktag((MR_Integer) 3)));
+                if (mercury__ops__succeeded)
+                  {
+                    *mercury__ops__LeftAssoc_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__V_15_15, (MR_Integer) 0)));
+                    mercury__ops__succeeded = (mercury__ops__V_16_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+              }
+          }
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(
+  MR_String mercury__ops__Name_7,
+  MR_Integer * mercury__ops__Priority_8,
+  MR_Word * mercury__ops__LeftAssoc_9,
+  MR_Word * mercury__ops__RightAssoc_10)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__Info_11;
+    MR_Word mercury__ops__MaybeOtherInfo_12;
+    MR_Integer mercury__ops__PriorityPrime_14;
+    MR_Word mercury__ops__LeftAssocPrime_15;
+    MR_Word mercury__ops__RightAssocPrime_16;
+    MR_Word mercury__ops__Class_13;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_7, &mercury__ops__Info_11, &mercury__ops__MaybeOtherInfo_12);
+    }
+    if (mercury__ops__succeeded)
+      {
+        mercury__ops__Class_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Info_11, (MR_Integer) 0)));
+        mercury__ops__PriorityPrime_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__Info_11, (MR_Integer) 1)));
+        mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__Class_13)) == (MR_mktag((MR_Integer) 2)));
+        if (mercury__ops__succeeded)
+          {
+            mercury__ops__LeftAssocPrime_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__Class_13, (MR_Integer) 0)));
+            mercury__ops__RightAssocPrime_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__Class_13, (MR_Integer) 1)));
+            *mercury__ops__LeftAssoc_9 = mercury__ops__LeftAssocPrime_15;
+            *mercury__ops__RightAssoc_10 = mercury__ops__RightAssocPrime_16;
+            *mercury__ops__Priority_8 = mercury__ops__PriorityPrime_14;
+            mercury__ops__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word mercury__ops__V_17_17;
+            MR_Word mercury__ops__V_18_18;
+            MR_Word mercury__ops__Class_19;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__MaybeOtherInfo_12)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_12, (MR_Integer) 0)));
+                mercury__ops__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_12, (MR_Integer) 1)));
+                mercury__ops__Class_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__V_17_17, (MR_Integer) 0)));
+                *mercury__ops__Priority_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__V_17_17, (MR_Integer) 1)));
+                mercury__ops__succeeded = (mercury__ops__V_18_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (mercury__ops__succeeded)
+                  {
+                    mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__Class_19)) == (MR_mktag((MR_Integer) 2)));
+                    if (mercury__ops__succeeded)
+                      {
+                        *mercury__ops__LeftAssoc_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__Class_19, (MR_Integer) 0)));
+                        *mercury__ops__RightAssoc_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__Class_19, (MR_Integer) 1)));
+                      }
+                  }
+              }
+          }
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Integer * mercury__ops__Priority_7,
+  MR_Word * mercury__ops__LeftAssoc_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__Info_9;
+    MR_Word mercury__ops__MaybeOtherInfo_10;
+    MR_Word mercury__ops__LeftAssocPrime_11;
+    MR_Integer mercury__ops__PriorityPrime_12;
+    MR_Word mercury__ops__V_13_13;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_6, &mercury__ops__Info_9, &mercury__ops__MaybeOtherInfo_10);
+    }
+    if (mercury__ops__succeeded)
+      {
+        mercury__ops__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Info_9, (MR_Integer) 0)));
+        mercury__ops__PriorityPrime_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__Info_9, (MR_Integer) 1)));
+        mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__V_13_13)) == (MR_mktag((MR_Integer) 1)));
+        if (mercury__ops__succeeded)
+          {
+            mercury__ops__LeftAssocPrime_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__V_13_13, (MR_Integer) 0)));
+            *mercury__ops__LeftAssoc_8 = mercury__ops__LeftAssocPrime_11;
+            *mercury__ops__Priority_7 = mercury__ops__PriorityPrime_12;
+            mercury__ops__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word mercury__ops__V_14_14;
+            MR_Word mercury__ops__V_15_15;
+            MR_Word mercury__ops__V_16_16;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__MaybeOtherInfo_10)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_10, (MR_Integer) 0)));
+                mercury__ops__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_10, (MR_Integer) 1)));
+                mercury__ops__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__V_14_14, (MR_Integer) 0)));
+                *mercury__ops__Priority_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__V_14_14, (MR_Integer) 1)));
+                mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__V_15_15)) == (MR_mktag((MR_Integer) 1)));
+                if (mercury__ops__succeeded)
+                  {
+                    *mercury__ops__LeftAssoc_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__V_15_15, (MR_Integer) 0)));
+                    mercury__ops__succeeded = (mercury__ops__V_16_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+              }
+          }
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_105_110_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(
+  MR_String mercury__ops__Name_7,
+  MR_Integer * mercury__ops__Priority_8,
+  MR_Word * mercury__ops__LeftAssoc_9,
+  MR_Word * mercury__ops__RightAssoc_10)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Word mercury__ops__Info_11;
+    MR_Word mercury__ops__MaybeOtherInfo_12;
+    MR_Integer mercury__ops__PriorityPrime_14;
+    MR_Word mercury__ops__LeftAssocPrime_15;
+    MR_Word mercury__ops__RightAssocPrime_16;
+    MR_Word mercury__ops__Class_13;
+
+    {
+      mercury__ops__succeeded = mercury__ops__op_table_3_p_0(mercury__ops__Name_7, &mercury__ops__Info_11, &mercury__ops__MaybeOtherInfo_12);
+    }
+    if (mercury__ops__succeeded)
+      {
+        mercury__ops__Class_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Info_11, (MR_Integer) 0)));
+        mercury__ops__PriorityPrime_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__Info_11, (MR_Integer) 1)));
+        mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__Class_13)) == (MR_mktag((MR_Integer) 0)));
+        if (mercury__ops__succeeded)
+          {
+            mercury__ops__LeftAssocPrime_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Class_13, (MR_Integer) 0)));
+            mercury__ops__RightAssocPrime_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Class_13, (MR_Integer) 1)));
+            *mercury__ops__LeftAssoc_9 = mercury__ops__LeftAssocPrime_15;
+            *mercury__ops__RightAssoc_10 = mercury__ops__RightAssocPrime_16;
+            *mercury__ops__Priority_8 = mercury__ops__PriorityPrime_14;
+            mercury__ops__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word mercury__ops__V_17_17;
+            MR_Word mercury__ops__V_18_18;
+            MR_Word mercury__ops__Class_19;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__MaybeOtherInfo_12)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_12, (MR_Integer) 0)));
+                mercury__ops__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__MaybeOtherInfo_12, (MR_Integer) 1)));
+                mercury__ops__Class_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__V_17_17, (MR_Integer) 0)));
+                *mercury__ops__Priority_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__V_17_17, (MR_Integer) 1)));
+                mercury__ops__succeeded = (mercury__ops__V_18_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (mercury__ops__succeeded)
+                  {
+                    mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__Class_19)) == (MR_mktag((MR_Integer) 0)));
+                    if (mercury__ops__succeeded)
+                      {
+                        *mercury__ops__LeftAssoc_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Class_19, (MR_Integer) 0)));
+                        *mercury__ops__RightAssoc_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__Class_19, (MR_Integer) 1)));
+                      }
+                  }
+              }
+          }
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_109_97_120_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    return (MR_Integer) 1200;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__arg_priority_1_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+
+    {
+      mercury__ops__HeadVar__2_2 = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_97_114_103_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0();
+    }
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+
+    {
+      mercury__ops__HeadVar__2_2 = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_0();
+    }
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_operator_term_4_4_p_0(
+  MR_Integer * mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_52_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_infos_4_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_105_110_102_111_115_95_52_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_op_2_2_p_0(
+  MR_String mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_111_112_95_50_95_95_91_49_93_95_48_2_p_0(mercury__ops__HeadVar__2_2);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_postfix_op_4_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_111_115_116_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_binary_prefix_op_5_5_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4, mercury__ops__HeadVar__5_5);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_prefix_op_4_4_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_112_114_101_102_105_120_95_111_112_95_52_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__lookup_infix_op_5_5_p_0(
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_108_111_111_107_117_112_95_105_110_102_105_120_95_111_112_95_53_95_95_91_49_93_95_48_5_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4, mercury__ops__HeadVar__5_5);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____table_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__ops__HeadVar__1_1);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____table_0_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____priority_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1,
+  MR_Integer mercury__ops__HeadVar__2_2,
+  MR_Integer mercury__ops__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__Cast_HeadVar1_4 = mercury__ops__HeadVar__2_2;
+    MR_Integer mercury__ops__Cast_HeadVar2_5 = mercury__ops__HeadVar__3_3;
+
+    mercury__ops__succeeded = (mercury__ops__Cast_HeadVar1_4 < mercury__ops__Cast_HeadVar2_5);
+    if (mercury__ops__succeeded)
+      *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__ops__succeeded = (mercury__ops__Cast_HeadVar1_4 == mercury__ops__Cast_HeadVar2_5);
+        if (mercury__ops__succeeded)
+          *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____priority_0_0(
+  MR_Integer mercury__ops__HeadVar__1_1,
+  MR_Integer mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__Cast_HeadVar1_3 = mercury__ops__HeadVar__1_1;
+    MR_Integer mercury__ops__Cast_HeadVar2_4 = mercury__ops__HeadVar__2_2;
+
+    mercury__ops__succeeded = (mercury__ops__Cast_HeadVar1_3 == mercury__ops__Cast_HeadVar2_4);
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____op_info_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1,
+  MR_Word mercury__ops__HeadVar__2_2,
+  MR_Word mercury__ops__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__CastX_9 = (MR_Integer) mercury__ops__HeadVar__2_2;
+    MR_Integer mercury__ops__CastY_10 = (MR_Integer) mercury__ops__HeadVar__3_3;
+
+    mercury__ops__succeeded = (mercury__ops__CastX_9 == mercury__ops__CastY_10);
+    if (mercury__ops__succeeded)
+      *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__ops__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mercury__ops__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__ops__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer mercury__ops__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mercury__ops__V_8_8;
+
+        {
+          mercury__ops____Compare____class_0_0(&mercury__ops__V_8_8, mercury__ops__V_4_4, mercury__ops__V_6_6);
+        }
+        mercury__ops__succeeded = (mercury__ops__V_8_8 == (MR_Integer) 0);
+        mercury__ops__succeeded = !(mercury__ops__succeeded);
+        if (mercury__ops__succeeded)
+          *mercury__ops__HeadVar__1_1 = mercury__ops__V_8_8;
+        else
+          {
+            mercury__ops__succeeded = (mercury__ops__V_5_5 < mercury__ops__V_7_7);
+            if (mercury__ops__succeeded)
+              *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+            else
+              {
+                mercury__ops__succeeded = (mercury__ops__V_5_5 == mercury__ops__V_7_7);
+                if (mercury__ops__succeeded)
+                  *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+                else
+                  *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____op_info_0_0(
+  MR_Word mercury__ops__HeadVar__1_1,
+  MR_Word mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__CastX_7 = (MR_Integer) mercury__ops__HeadVar__1_1;
+    MR_Integer mercury__ops__CastY_8 = (MR_Integer) mercury__ops__HeadVar__2_2;
+
+    mercury__ops__succeeded = (mercury__ops__CastX_7 == mercury__ops__CastY_8);
+    if (mercury__ops__succeeded)
+      mercury__ops__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__ops__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mercury__ops__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mercury__ops__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer mercury__ops__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          mercury__ops__succeeded = mercury__ops____Unify____class_0_0(mercury__ops__V_3_3, mercury__ops__V_5_5);
+        }
+        if (mercury__ops__succeeded)
+          mercury__ops__succeeded = (mercury__ops__V_4_4 == mercury__ops__V_6_6);
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____mercury_op_table_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__ops__HeadVar__1_1);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____mercury_op_table_0_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____class_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1,
+  MR_Word mercury__ops__HeadVar__2_2,
+  MR_Word mercury__ops__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__CastX_54 = (MR_Integer) mercury__ops__HeadVar__2_2;
+    MR_Integer mercury__ops__CastY_55 = (MR_Integer) mercury__ops__HeadVar__3_3;
+
+    mercury__ops__succeeded = (mercury__ops__CastX_54 == mercury__ops__CastY_55);
+    if (mercury__ops__succeeded)
+      *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) mercury__ops__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word mercury__ops__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__ops__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) mercury__ops__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word mercury__ops__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word mercury__ops__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word mercury__ops__V_8_8;
+                  MR_Integer mercury__ops__V_72_72 = (MR_Integer) mercury__ops__V_65_65;
+                  MR_Integer mercury__ops__V_73_73 = (MR_Integer) mercury__ops__V_6_6;
+
+                  mercury__ops__succeeded = (mercury__ops__V_72_72 < mercury__ops__V_73_73);
+                  if (mercury__ops__succeeded)
+                    mercury__ops__V_8_8 = (MR_Integer) 1;
+                  else
+                    {
+                      mercury__ops__succeeded = (mercury__ops__V_72_72 == mercury__ops__V_73_73);
+                      if (mercury__ops__succeeded)
+                        mercury__ops__V_8_8 = (MR_Integer) 0;
+                      else
+                        mercury__ops__V_8_8 = (MR_Integer) 2;
+                    }
+                  mercury__ops__succeeded = (mercury__ops__V_8_8 == (MR_Integer) 0);
+                  mercury__ops__succeeded = !(mercury__ops__succeeded);
+                  if (mercury__ops__succeeded)
+                    *mercury__ops__HeadVar__1_1 = mercury__ops__V_8_8;
+                  else
+                    {
+                      MR_Integer mercury__ops__V_74_74 = (MR_Integer) mercury__ops__V_64_64;
+                      MR_Integer mercury__ops__V_75_75 = (MR_Integer) mercury__ops__V_7_7;
+
+                      mercury__ops__succeeded = (mercury__ops__V_74_74 < mercury__ops__V_75_75);
+                      if (mercury__ops__succeeded)
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                      else
+                        {
+                          mercury__ops__succeeded = (mercury__ops__V_74_74 == mercury__ops__V_75_75);
+                          if (mercury__ops__succeeded)
+                            *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+                          else
+                            *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word mercury__ops__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) mercury__ops__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word mercury__ops__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer mercury__ops__V_78_78 = (MR_Integer) mercury__ops__V_67_67;
+                  MR_Integer mercury__ops__V_79_79 = (MR_Integer) mercury__ops__V_23_23;
+
+                  mercury__ops__succeeded = (mercury__ops__V_78_78 < mercury__ops__V_79_79);
+                  if (mercury__ops__succeeded)
+                    *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                    {
+                      mercury__ops__succeeded = (mercury__ops__V_78_78 == mercury__ops__V_79_79);
+                      if (mercury__ops__succeeded)
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+                      else
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word mercury__ops__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__ops__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) mercury__ops__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word mercury__ops__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word mercury__ops__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word mercury__ops__V_40_40;
+                  MR_Integer mercury__ops__V_68_68 = (MR_Integer) mercury__ops__V_63_63;
+                  MR_Integer mercury__ops__V_69_69 = (MR_Integer) mercury__ops__V_38_38;
+
+                  mercury__ops__succeeded = (mercury__ops__V_68_68 < mercury__ops__V_69_69);
+                  if (mercury__ops__succeeded)
+                    mercury__ops__V_40_40 = (MR_Integer) 1;
+                  else
+                    {
+                      mercury__ops__succeeded = (mercury__ops__V_68_68 == mercury__ops__V_69_69);
+                      if (mercury__ops__succeeded)
+                        mercury__ops__V_40_40 = (MR_Integer) 0;
+                      else
+                        mercury__ops__V_40_40 = (MR_Integer) 2;
+                    }
+                  mercury__ops__succeeded = (mercury__ops__V_40_40 == (MR_Integer) 0);
+                  mercury__ops__succeeded = !(mercury__ops__succeeded);
+                  if (mercury__ops__succeeded)
+                    *mercury__ops__HeadVar__1_1 = mercury__ops__V_40_40;
+                  else
+                    {
+                      MR_Integer mercury__ops__V_70_70 = (MR_Integer) mercury__ops__V_62_62;
+                      MR_Integer mercury__ops__V_71_71 = (MR_Integer) mercury__ops__V_39_39;
+
+                      mercury__ops__succeeded = (mercury__ops__V_70_70 < mercury__ops__V_71_71);
+                      if (mercury__ops__succeeded)
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                      else
+                        {
+                          mercury__ops__succeeded = (mercury__ops__V_70_70 == mercury__ops__V_71_71);
+                          if (mercury__ops__succeeded)
+                            *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+                          else
+                            *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word mercury__ops__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) mercury__ops__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word mercury__ops__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer mercury__ops__V_76_76 = (MR_Integer) mercury__ops__V_66_66;
+                  MR_Integer mercury__ops__V_77_77 = (MR_Integer) mercury__ops__V_53_53;
+
+                  mercury__ops__succeeded = (mercury__ops__V_76_76 < mercury__ops__V_77_77);
+                  if (mercury__ops__succeeded)
+                    *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                    {
+                      mercury__ops__succeeded = (mercury__ops__V_76_76 == mercury__ops__V_77_77);
+                      if (mercury__ops__succeeded)
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+                      else
+                        *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____class_0_0(
+  MR_Word mercury__ops__HeadVar__1_1,
+  MR_Word mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__CastX_15 = (MR_Integer) mercury__ops__HeadVar__1_1;
+    MR_Integer mercury__ops__CastY_16 = (MR_Integer) mercury__ops__HeadVar__2_2;
+
+    mercury__ops__succeeded = (mercury__ops__CastX_15 == mercury__ops__CastY_16);
+    if (mercury__ops__succeeded)
+      mercury__ops__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) mercury__ops__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word mercury__ops__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mercury__ops__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mercury__ops__V_5_5;
+            MR_Word mercury__ops__V_6_6;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__ops__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+                mercury__ops__succeeded = (mercury__ops__V_3_3 == mercury__ops__V_5_5);
+                if (mercury__ops__succeeded)
+                  mercury__ops__succeeded = (mercury__ops__V_4_4 == mercury__ops__V_6_6);
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word mercury__ops__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mercury__ops__V_8_8;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__ops__succeeded = (mercury__ops__V_7_7 == mercury__ops__V_8_8);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word mercury__ops__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mercury__ops__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mercury__ops__V_11_11;
+            MR_Word mercury__ops__V_12_12;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__ops__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__ops__HeadVar__2_2, (MR_Integer) 1)));
+                mercury__ops__succeeded = (mercury__ops__V_9_9 == mercury__ops__V_11_11);
+                if (mercury__ops__succeeded)
+                  mercury__ops__succeeded = (mercury__ops__V_10_10 == mercury__ops__V_12_12);
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word mercury__ops__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mercury__ops__V_14_14;
+
+            mercury__ops__succeeded = ((MR_tag((MR_Word) mercury__ops__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (mercury__ops__succeeded)
+              {
+                mercury__ops__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__ops__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__ops__succeeded = (mercury__ops__V_13_13 == mercury__ops__V_14_14);
+              }
+          }
+          break;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__ops____Compare____assoc_0_0(
+  MR_Word * mercury__ops__HeadVar__1_1,
+  MR_Word mercury__ops__HeadVar__2_2,
+  MR_Word mercury__ops__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__Cast_HeadVar1_4 = (MR_Integer) mercury__ops__HeadVar__2_2;
+    MR_Integer mercury__ops__Cast_HeadVar2_5 = (MR_Integer) mercury__ops__HeadVar__3_3;
+
+    mercury__ops__succeeded = (mercury__ops__Cast_HeadVar1_4 < mercury__ops__Cast_HeadVar2_5);
+    if (mercury__ops__succeeded)
+      *mercury__ops__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__ops__succeeded = (mercury__ops__Cast_HeadVar1_4 == mercury__ops__Cast_HeadVar2_5);
+        if (mercury__ops__succeeded)
+          *mercury__ops__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__ops__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops____Unify____assoc_0_0(
+  MR_Word mercury__ops__HeadVar__2_1,
+  MR_Word mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded = (mercury__ops__HeadVar__2_1 == mercury__ops__HeadVar__2_2);
+
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__arg_priority_1_f_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_3,
+  MR_Box mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+    MR_Box MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_3, (MR_Integer) 0)), (MR_Integer) 13)));
+    MR_Box mercury__ops__conv1_HeadVar__2_2;
+
+    {
+      mercury__ops__conv1_HeadVar__2_2 = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_3), mercury__ops__HeadVar__1_1);
+    }
+    mercury__ops__HeadVar__2_2 = ((MR_Integer) mercury__ops__conv1_HeadVar__2_2);
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__max_priority_1_f_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_3,
+  MR_Box mercury__ops__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+    MR_Box MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_3, (MR_Integer) 0)), (MR_Integer) 12)));
+    MR_Box mercury__ops__conv1_HeadVar__2_2;
+
+    {
+      mercury__ops__conv1_HeadVar__2_2 = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_3), mercury__ops__HeadVar__1_1);
+    }
+    mercury__ops__HeadVar__2_2 = ((MR_Integer) mercury__ops__conv1_HeadVar__2_2);
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_operator_term_4_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_5,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_Integer * mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_5, (MR_Integer) 0)), (MR_Integer) 11)));
+    MR_Box mercury__ops__conv3_HeadVar__2_2;
+    MR_Box mercury__ops__conv2_HeadVar__3_3;
+    MR_Box mercury__ops__conv1_HeadVar__4_4;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_5), mercury__ops__HeadVar__1_1, &mercury__ops__conv3_HeadVar__2_2, &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__2_2 = ((MR_Integer) mercury__ops__conv3_HeadVar__2_2);
+        *mercury__ops__HeadVar__3_3 = ((MR_Word) mercury__ops__conv2_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv1_HeadVar__4_4);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_op_infos_4_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_5,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_5, (MR_Integer) 0)), (MR_Integer) 10)));
+    MR_Box mercury__ops__conv2_HeadVar__3_3;
+    MR_Box mercury__ops__conv1_HeadVar__4_4;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_5), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)), &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__3_3 = ((MR_Word) mercury__ops__conv2_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv1_HeadVar__4_4);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_op_2_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_3,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_3, (MR_Integer) 0)), (MR_Integer) 9)));
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_3), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)));
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_postfix_op_4_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_5,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_5, (MR_Integer) 0)), (MR_Integer) 8)));
+    MR_Box mercury__ops__conv2_HeadVar__3_3;
+    MR_Box mercury__ops__conv1_HeadVar__4_4;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_5), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)), &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__3_3 = ((MR_Integer) mercury__ops__conv2_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv1_HeadVar__4_4);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_binary_prefix_op_5_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_6,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_6, (MR_Integer) 0)), (MR_Integer) 7)));
+    MR_Box mercury__ops__conv3_HeadVar__3_3;
+    MR_Box mercury__ops__conv2_HeadVar__4_4;
+    MR_Box mercury__ops__conv1_HeadVar__5_5;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_6), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)), &mercury__ops__conv3_HeadVar__3_3, &mercury__ops__conv2_HeadVar__4_4, &mercury__ops__conv1_HeadVar__5_5);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__3_3 = ((MR_Integer) mercury__ops__conv3_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv2_HeadVar__4_4);
+        *mercury__ops__HeadVar__5_5 = ((MR_Word) mercury__ops__conv1_HeadVar__5_5);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_prefix_op_4_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_5,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_5, (MR_Integer) 0)), (MR_Integer) 6)));
+    MR_Box mercury__ops__conv2_HeadVar__3_3;
+    MR_Box mercury__ops__conv1_HeadVar__4_4;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_5), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)), &mercury__ops__conv2_HeadVar__3_3, &mercury__ops__conv1_HeadVar__4_4);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__3_3 = ((MR_Integer) mercury__ops__conv2_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv1_HeadVar__4_4);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_infix_op_5_p_0(
+  MR_Word mercury__ops__TypeClassInfo_for_op_table_6,
+  MR_Box mercury__ops__HeadVar__1_1,
+  MR_String mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4,
+  MR_Word * mercury__ops__HeadVar__5_5)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_bool MR_CALL (* mercury__ops__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__ops__TypeClassInfo_for_op_table_6, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box mercury__ops__conv3_HeadVar__3_3;
+    MR_Box mercury__ops__conv2_HeadVar__4_4;
+    MR_Box mercury__ops__conv1_HeadVar__5_5;
+
+    {
+      mercury__ops__succeeded = mercury__ops__func_0(((MR_Box) mercury__ops__TypeClassInfo_for_op_table_6), mercury__ops__HeadVar__1_1, ((MR_Box) (mercury__ops__HeadVar__2_2)), &mercury__ops__conv3_HeadVar__3_3, &mercury__ops__conv2_HeadVar__4_4, &mercury__ops__conv1_HeadVar__5_5);
+    }
+    if (mercury__ops__succeeded)
+      {
+        *mercury__ops__HeadVar__3_3 = ((MR_Integer) mercury__ops__conv3_HeadVar__3_3);
+        *mercury__ops__HeadVar__4_4 = ((MR_Word) mercury__ops__conv2_HeadVar__4_4);
+        *mercury__ops__HeadVar__5_5 = ((MR_Word) mercury__ops__conv1_HeadVar__5_5);
+        mercury__ops__succeeded = MR_TRUE;
+      }
+    return mercury__ops__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__ops__op_table_3_p_0(
+  MR_String mercury__ops__Op_4,
+  MR_Word * mercury__ops__Info_5,
+  MR_Word * mercury__ops__OtherInfos_6)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      MR_Integer mercury__ops__case_num_0 = (MR_Integer) -1;
+
+      switch (MR_nth_code_unit(mercury__ops__Op_4, 0)) {
+        case (MR_Integer) 33:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 0;
+              break;
+            case (MR_Integer) 46:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "!."))
+                mercury__ops__case_num_0 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 58:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "!:"))
+                mercury__ops__case_num_0 = (MR_Integer) 2;
+              break;
+          }
+          break;
+        case (MR_Integer) 38:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) "&"))
+            mercury__ops__case_num_0 = (MR_Integer) 3;
+          break;
+        case (MR_Integer) 42:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 4;
+              break;
+            case (MR_Integer) 42:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "**"))
+                mercury__ops__case_num_0 = (MR_Integer) 5;
+              break;
+          }
+          break;
+        case (MR_Integer) 43:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 6;
+              break;
+            case (MR_Integer) 43:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "++"))
+                mercury__ops__case_num_0 = (MR_Integer) 7;
+              break;
+          }
+          break;
+        case (MR_Integer) 44:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) ","))
+            mercury__ops__case_num_0 = (MR_Integer) 8;
+          break;
+        case (MR_Integer) 45:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 9;
+              break;
+            case (MR_Integer) 45:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 0:
+                  mercury__ops__case_num_0 = (MR_Integer) 10;
+                  break;
+                case (MR_Integer) 45:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "--->"))
+                    mercury__ops__case_num_0 = (MR_Integer) 11;
+                  break;
+                case (MR_Integer) 62:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "-->"))
+                    mercury__ops__case_num_0 = (MR_Integer) 12;
+                  break;
+              }
+              break;
+            case (MR_Integer) 62:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "->"))
+                mercury__ops__case_num_0 = (MR_Integer) 13;
+              break;
+          }
+          break;
+        case (MR_Integer) 46:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 14;
+              break;
+            case (MR_Integer) 46:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) ".."))
+                mercury__ops__case_num_0 = (MR_Integer) 15;
+              break;
+          }
+          break;
+        case (MR_Integer) 47:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 16;
+              break;
+            case (MR_Integer) 47:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "//"))
+                mercury__ops__case_num_0 = (MR_Integer) 17;
+              break;
+            case (MR_Integer) 92:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "/\\"))
+                mercury__ops__case_num_0 = (MR_Integer) 18;
+              break;
+          }
+          break;
+        case (MR_Integer) 58:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 19;
+              break;
+            case (MR_Integer) 45:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) ":-"))
+                mercury__ops__case_num_0 = (MR_Integer) 20;
+              break;
+            case (MR_Integer) 58:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "::"))
+                mercury__ops__case_num_0 = (MR_Integer) 21;
+              break;
+            case (MR_Integer) 61:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) ":="))
+                mercury__ops__case_num_0 = (MR_Integer) 22;
+              break;
+          }
+          break;
+        case (MR_Integer) 59:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) ";"))
+            mercury__ops__case_num_0 = (MR_Integer) 23;
+          break;
+        case (MR_Integer) 60:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 24;
+              break;
+            case (MR_Integer) 60:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "<<"))
+                mercury__ops__case_num_0 = (MR_Integer) 25;
+              break;
+            case (MR_Integer) 61:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 0:
+                  mercury__ops__case_num_0 = (MR_Integer) 26;
+                  break;
+                case (MR_Integer) 62:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "<=>"))
+                    mercury__ops__case_num_0 = (MR_Integer) 27;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 61:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 28;
+              break;
+            case (MR_Integer) 46:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=.."))
+                mercury__ops__case_num_0 = (MR_Integer) 29;
+              break;
+            case (MR_Integer) 58:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=:="))
+                mercury__ops__case_num_0 = (MR_Integer) 30;
+              break;
+            case (MR_Integer) 60:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=<"))
+                mercury__ops__case_num_0 = (MR_Integer) 31;
+              break;
+            case (MR_Integer) 61:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 0:
+                  mercury__ops__case_num_0 = (MR_Integer) 32;
+                  break;
+                case (MR_Integer) 62:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "==>"))
+                    mercury__ops__case_num_0 = (MR_Integer) 33;
+                  break;
+              }
+              break;
+            case (MR_Integer) 62:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=>"))
+                mercury__ops__case_num_0 = (MR_Integer) 34;
+              break;
+            case (MR_Integer) 92:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=\\="))
+                mercury__ops__case_num_0 = (MR_Integer) 35;
+              break;
+            case (MR_Integer) 94:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "=^"))
+                mercury__ops__case_num_0 = (MR_Integer) 36;
+              break;
+          }
+          break;
+        case (MR_Integer) 62:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 37;
+              break;
+            case (MR_Integer) 61:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) ">="))
+                mercury__ops__case_num_0 = (MR_Integer) 38;
+              break;
+            case (MR_Integer) 62:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) ">>"))
+                mercury__ops__case_num_0 = (MR_Integer) 39;
+              break;
+          }
+          break;
+        case (MR_Integer) 63:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) "\?-"))
+            mercury__ops__case_num_0 = (MR_Integer) 40;
+          break;
+        case (MR_Integer) 64:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 41;
+              break;
+            case (MR_Integer) 60:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "\100<"))
+                mercury__ops__case_num_0 = (MR_Integer) 42;
+              break;
+            case (MR_Integer) 61:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "\100=<"))
+                mercury__ops__case_num_0 = (MR_Integer) 43;
+              break;
+            case (MR_Integer) 62:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 0:
+                  mercury__ops__case_num_0 = (MR_Integer) 44;
+                  break;
+                case (MR_Integer) 61:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "\100>="))
+                    mercury__ops__case_num_0 = (MR_Integer) 45;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 92:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 46;
+              break;
+            case (MR_Integer) 43:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "\\+"))
+                mercury__ops__case_num_0 = (MR_Integer) 47;
+              break;
+            case (MR_Integer) 47:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "\\/"))
+                mercury__ops__case_num_0 = (MR_Integer) 48;
+              break;
+            case (MR_Integer) 61:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 0:
+                  mercury__ops__case_num_0 = (MR_Integer) 49;
+                  break;
+                case (MR_Integer) 61:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "\\=="))
+                    mercury__ops__case_num_0 = (MR_Integer) 50;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 94:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) "^"))
+            mercury__ops__case_num_0 = (MR_Integer) 51;
+          break;
+        case (MR_Integer) 97:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 108:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "all"))
+                mercury__ops__case_num_0 = (MR_Integer) 52;
+              break;
+            case (MR_Integer) 110:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "and"))
+                mercury__ops__case_num_0 = (MR_Integer) 53;
+              break;
+            case (MR_Integer) 114:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "arbitrary"))
+                mercury__ops__case_num_0 = (MR_Integer) 54;
+              break;
+            case (MR_Integer) 116:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "atomic"))
+                mercury__ops__case_num_0 = (MR_Integer) 54;
+              break;
+          }
+          break;
+        case (MR_Integer) 99:
+          if (((((((((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 97)) && (((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 116)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 99)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 104))))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 5)) {
+              case (MR_Integer) 0:
+                mercury__ops__case_num_0 = (MR_Integer) 55;
+                break;
+              case (MR_Integer) 95:
+                if (MR_offset_streq(6, mercury__ops__Op_4, (MR_String) "catch_any"))
+                  mercury__ops__case_num_0 = (MR_Integer) 56;
+                break;
+            }
+          break;
+        case (MR_Integer) 100:
+          if (((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 105))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+              case (MR_Integer) 115:
+                if (((((((((((((((((((((((((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 97)) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 98)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 5)) == (MR_Integer) 108)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 6)) == (MR_Integer) 101)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 7)) == (MR_Integer) 95)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 8)) == (MR_Integer) 119)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 9)) == (MR_Integer) 97)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 10)) == (MR_Integer) 114)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 11)) == (MR_Integer) 110)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 12)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 13)) == (MR_Integer) 110)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 14)) == (MR_Integer) 103))))
+                  switch (MR_nth_code_unit(mercury__ops__Op_4, 15)) {
+                    case (MR_Integer) 0:
+                      mercury__ops__case_num_0 = (MR_Integer) 54;
+                      break;
+                    case (MR_Integer) 115:
+                      if (MR_offset_streq(16, mercury__ops__Op_4, (MR_String) "disable_warnings"))
+                        mercury__ops__case_num_0 = (MR_Integer) 54;
+                      break;
+                  }
+                break;
+              case (MR_Integer) 118:
+                if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "div"))
+                  mercury__ops__case_num_0 = (MR_Integer) 57;
+                break;
+            }
+          break;
+        case (MR_Integer) 101:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 108:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "else"))
+                mercury__ops__case_num_0 = (MR_Integer) 58;
+              break;
+            case (MR_Integer) 110:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "end_module"))
+                mercury__ops__case_num_0 = (MR_Integer) 59;
+              break;
+            case (MR_Integer) 118:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "event"))
+                mercury__ops__case_num_0 = (MR_Integer) 60;
+              break;
+          }
+          break;
+        case (MR_Integer) 102:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 105:
+              if (((((((((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 110)) && (((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 97)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 108)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 5)) == (MR_Integer) 105))))
+                switch (MR_nth_code_unit(mercury__ops__Op_4, 6)) {
+                  case (MR_Integer) 115:
+                    if (MR_offset_streq(7, mercury__ops__Op_4, (MR_String) "finalise"))
+                      mercury__ops__case_num_0 = (MR_Integer) 61;
+                    break;
+                  case (MR_Integer) 122:
+                    if (MR_offset_streq(7, mercury__ops__Op_4, (MR_String) "finalize"))
+                      mercury__ops__case_num_0 = (MR_Integer) 62;
+                    break;
+                }
+              break;
+            case (MR_Integer) 111:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "for"))
+                mercury__ops__case_num_0 = (MR_Integer) 63;
+              break;
+            case (MR_Integer) 117:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "func"))
+                mercury__ops__case_num_0 = (MR_Integer) 64;
+              break;
+          }
+          break;
+        case (MR_Integer) 105:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 102:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "if"))
+                mercury__ops__case_num_0 = (MR_Integer) 65;
+              break;
+            case (MR_Integer) 109:
+              if (((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 112))
+                switch (MR_nth_code_unit(mercury__ops__Op_4, 3)) {
+                  case (MR_Integer) 111:
+                    if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "import_module"))
+                      mercury__ops__case_num_0 = (MR_Integer) 66;
+                    break;
+                  case (MR_Integer) 117:
+                    if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "impure"))
+                      mercury__ops__case_num_0 = (MR_Integer) 67;
+                    break;
+                }
+              break;
+            case (MR_Integer) 110:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 99:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "include_module"))
+                    mercury__ops__case_num_0 = (MR_Integer) 68;
+                  break;
+                case (MR_Integer) 105:
+                  if (((((((((((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 116)) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 5)) == (MR_Integer) 97)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 6)) == (MR_Integer) 108)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 7)) == (MR_Integer) 105))))
+                    switch (MR_nth_code_unit(mercury__ops__Op_4, 8)) {
+                      case (MR_Integer) 115:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "initialise"))
+                          mercury__ops__case_num_0 = (MR_Integer) 69;
+                        break;
+                      case (MR_Integer) 122:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "initialize"))
+                          mercury__ops__case_num_0 = (MR_Integer) 70;
+                        break;
+                    }
+                  break;
+                case (MR_Integer) 115:
+                  if (((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 116))
+                    switch (MR_nth_code_unit(mercury__ops__Op_4, 4)) {
+                      case (MR_Integer) 0:
+                        mercury__ops__case_num_0 = (MR_Integer) 71;
+                        break;
+                      case (MR_Integer) 97:
+                        if (MR_offset_streq(5, mercury__ops__Op_4, (MR_String) "instance"))
+                          mercury__ops__case_num_0 = (MR_Integer) 72;
+                        break;
+                    }
+                  break;
+              }
+              break;
+            case (MR_Integer) 115:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "is"))
+                mercury__ops__case_num_0 = (MR_Integer) 73;
+              break;
+          }
+          break;
+        case (MR_Integer) 109:
+          if (((((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 111)) && (((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 100))))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 3)) {
+              case (MR_Integer) 0:
+                mercury__ops__case_num_0 = (MR_Integer) 74;
+                break;
+              case (MR_Integer) 101:
+                if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "mode"))
+                  mercury__ops__case_num_0 = (MR_Integer) 75;
+                break;
+              case (MR_Integer) 117:
+                if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "module"))
+                  mercury__ops__case_num_0 = (MR_Integer) 76;
+                break;
+            }
+          break;
+        case (MR_Integer) 110:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) "not"))
+            mercury__ops__case_num_0 = (MR_Integer) 77;
+          break;
+        case (MR_Integer) 111:
+          if (((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 114))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+              case (MR_Integer) 0:
+                mercury__ops__case_num_0 = (MR_Integer) 78;
+                break;
+              case (MR_Integer) 95:
+                if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "or_else"))
+                  mercury__ops__case_num_0 = (MR_Integer) 79;
+                break;
+            }
+          break;
+        case (MR_Integer) 112:
+          if (((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 114))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+              case (MR_Integer) 97:
+                if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "pragma"))
+                  mercury__ops__case_num_0 = (MR_Integer) 80;
+                break;
+              case (MR_Integer) 101:
+                if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "pred"))
+                  mercury__ops__case_num_0 = (MR_Integer) 81;
+                break;
+              case (MR_Integer) 111:
+                if (((((((((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 109)) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 5)) == (MR_Integer) 115)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 6)) == (MR_Integer) 101))))
+                  switch (MR_nth_code_unit(mercury__ops__Op_4, 7)) {
+                    case (MR_Integer) 0:
+                      mercury__ops__case_num_0 = (MR_Integer) 82;
+                      break;
+                    case (MR_Integer) 95:
+                      switch (MR_nth_code_unit(mercury__ops__Op_4, 8)) {
+                        case (MR_Integer) 101:
+                          switch (MR_nth_code_unit(mercury__ops__Op_4, 9)) {
+                            case (MR_Integer) 113:
+                              if (((((((((((((((((((((((((((((((((((MR_nth_code_unit(mercury__ops__Op_4, 10)) == (MR_Integer) 117)) && (((MR_nth_code_unit(mercury__ops__Op_4, 11)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 12)) == (MR_Integer) 118)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 13)) == (MR_Integer) 97)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 14)) == (MR_Integer) 108)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 15)) == (MR_Integer) 101)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 16)) == (MR_Integer) 110)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 17)) == (MR_Integer) 116)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 18)) == (MR_Integer) 95)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 19)) == (MR_Integer) 115)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 20)) == (MR_Integer) 111)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 21)) == (MR_Integer) 108)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 22)) == (MR_Integer) 117)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 23)) == (MR_Integer) 116)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 24)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 25)) == (MR_Integer) 111)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 26)) == (MR_Integer) 110))))
+                                switch (MR_nth_code_unit(mercury__ops__Op_4, 27)) {
+                                  case (MR_Integer) 95:
+                                    if (MR_offset_streq(28, mercury__ops__Op_4, (MR_String) "promise_equivalent_solution_sets"))
+                                      mercury__ops__case_num_0 = (MR_Integer) 54;
+                                    break;
+                                  case (MR_Integer) 115:
+                                    if (MR_offset_streq(28, mercury__ops__Op_4, (MR_String) "promise_equivalent_solutions"))
+                                      mercury__ops__case_num_0 = (MR_Integer) 54;
+                                    break;
+                                }
+                              break;
+                            case (MR_Integer) 120:
+                              switch (MR_nth_code_unit(mercury__ops__Op_4, 10)) {
+                                case (MR_Integer) 99:
+                                  if (((((((((((((MR_nth_code_unit(mercury__ops__Op_4, 11)) == (MR_Integer) 108)) && (((MR_nth_code_unit(mercury__ops__Op_4, 12)) == (MR_Integer) 117)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 13)) == (MR_Integer) 115)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 14)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 15)) == (MR_Integer) 118)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 16)) == (MR_Integer) 101))))
+                                    switch (MR_nth_code_unit(mercury__ops__Op_4, 17)) {
+                                      case (MR_Integer) 0:
+                                        mercury__ops__case_num_0 = (MR_Integer) 83;
+                                        break;
+                                      case (MR_Integer) 95:
+                                        if (MR_offset_streq(18, mercury__ops__Op_4, (MR_String) "promise_exclusive_exhaustive"))
+                                          mercury__ops__case_num_0 = (MR_Integer) 83;
+                                        break;
+                                    }
+                                  break;
+                                case (MR_Integer) 104:
+                                  if (MR_offset_streq(11, mercury__ops__Op_4, (MR_String) "promise_exhaustive"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 83;
+                                  break;
+                              }
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 105:
+                          if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "promise_impure"))
+                            mercury__ops__case_num_0 = (MR_Integer) 84;
+                          break;
+                        case (MR_Integer) 112:
+                          if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "promise_pure"))
+                            mercury__ops__case_num_0 = (MR_Integer) 84;
+                          break;
+                        case (MR_Integer) 115:
+                          if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "promise_semipure"))
+                            mercury__ops__case_num_0 = (MR_Integer) 84;
+                          break;
+                      }
+                      break;
+                  }
+                break;
+            }
+          break;
+        case (MR_Integer) 114:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 101:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 109:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "rem"))
+                    mercury__ops__case_num_0 = (MR_Integer) 85;
+                  break;
+                case (MR_Integer) 113:
+                  if (((((((((((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 117)) && (((MR_nth_code_unit(mercury__ops__Op_4, 4)) == (MR_Integer) 105)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 5)) == (MR_Integer) 114)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 6)) == (MR_Integer) 101)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 7)) == (MR_Integer) 95))))
+                    switch (MR_nth_code_unit(mercury__ops__Op_4, 8)) {
+                      case (MR_Integer) 99:
+                        switch (MR_nth_code_unit(mercury__ops__Op_4, 9)) {
+                          case (MR_Integer) 99:
+                            if (((MR_nth_code_unit(mercury__ops__Op_4, 10)) == (MR_Integer) 95))
+                              switch (MR_nth_code_unit(mercury__ops__Op_4, 11)) {
+                                case (MR_Integer) 109:
+                                  if (MR_offset_streq(12, mercury__ops__Op_4, (MR_String) "require_cc_multi"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 84;
+                                  break;
+                                case (MR_Integer) 110:
+                                  if (MR_offset_streq(12, mercury__ops__Op_4, (MR_String) "require_cc_nondet"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 84;
+                                  break;
+                              }
+                            break;
+                          case (MR_Integer) 111:
+                            if (MR_offset_streq(10, mercury__ops__Op_4, (MR_String) "require_complete_switch"))
+                              mercury__ops__case_num_0 = (MR_Integer) 54;
+                            break;
+                        }
+                        break;
+                      case (MR_Integer) 100:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "require_det"))
+                          mercury__ops__case_num_0 = (MR_Integer) 84;
+                        break;
+                      case (MR_Integer) 101:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "require_erroneous"))
+                          mercury__ops__case_num_0 = (MR_Integer) 84;
+                        break;
+                      case (MR_Integer) 102:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "require_failure"))
+                          mercury__ops__case_num_0 = (MR_Integer) 84;
+                        break;
+                      case (MR_Integer) 109:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "require_multi"))
+                          mercury__ops__case_num_0 = (MR_Integer) 84;
+                        break;
+                      case (MR_Integer) 110:
+                        if (MR_offset_streq(9, mercury__ops__Op_4, (MR_String) "require_nondet"))
+                          mercury__ops__case_num_0 = (MR_Integer) 84;
+                        break;
+                      case (MR_Integer) 115:
+                        switch (MR_nth_code_unit(mercury__ops__Op_4, 9)) {
+                          case (MR_Integer) 101:
+                            if (MR_offset_streq(10, mercury__ops__Op_4, (MR_String) "require_semidet"))
+                              mercury__ops__case_num_0 = (MR_Integer) 84;
+                            break;
+                          case (MR_Integer) 119:
+                            if (((((((((((((((((((((MR_nth_code_unit(mercury__ops__Op_4, 10)) == (MR_Integer) 105)) && (((MR_nth_code_unit(mercury__ops__Op_4, 11)) == (MR_Integer) 116)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 12)) == (MR_Integer) 99)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 13)) == (MR_Integer) 104)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 14)) == (MR_Integer) 95)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 15)) == (MR_Integer) 97)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 16)) == (MR_Integer) 114)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 17)) == (MR_Integer) 109)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 18)) == (MR_Integer) 115)))) && (((MR_nth_code_unit(mercury__ops__Op_4, 19)) == (MR_Integer) 95))))
+                              switch (MR_nth_code_unit(mercury__ops__Op_4, 20)) {
+                                case (MR_Integer) 99:
+                                  if (((((MR_nth_code_unit(mercury__ops__Op_4, 21)) == (MR_Integer) 99)) && (((MR_nth_code_unit(mercury__ops__Op_4, 22)) == (MR_Integer) 95))))
+                                    switch (MR_nth_code_unit(mercury__ops__Op_4, 23)) {
+                                      case (MR_Integer) 109:
+                                        if (MR_offset_streq(24, mercury__ops__Op_4, (MR_String) "require_switch_arms_cc_multi"))
+                                          mercury__ops__case_num_0 = (MR_Integer) 54;
+                                        break;
+                                      case (MR_Integer) 110:
+                                        if (MR_offset_streq(24, mercury__ops__Op_4, (MR_String) "require_switch_arms_cc_nondet"))
+                                          mercury__ops__case_num_0 = (MR_Integer) 54;
+                                        break;
+                                    }
+                                  break;
+                                case (MR_Integer) 100:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_det"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                                case (MR_Integer) 101:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_erroneous"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                                case (MR_Integer) 102:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_failure"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                                case (MR_Integer) 109:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_multi"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                                case (MR_Integer) 110:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_nondet"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                                case (MR_Integer) 115:
+                                  if (MR_offset_streq(21, mercury__ops__Op_4, (MR_String) "require_switch_arms_semidet"))
+                                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                                  break;
+                              }
+                            break;
+                        }
+                        break;
+                    }
+                  break;
+              }
+              break;
+            case (MR_Integer) 117:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "rule"))
+                mercury__ops__case_num_0 = (MR_Integer) 86;
+              break;
+          }
+          break;
+        case (MR_Integer) 115:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 101:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "semipure"))
+                mercury__ops__case_num_0 = (MR_Integer) 87;
+              break;
+            case (MR_Integer) 111:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 108:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "solver"))
+                    mercury__ops__case_num_0 = (MR_Integer) 88;
+                  break;
+                case (MR_Integer) 109:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "some"))
+                    mercury__ops__case_num_0 = (MR_Integer) 89;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 116:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 104:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "then"))
+                mercury__ops__case_num_0 = (MR_Integer) 90;
+              break;
+            case (MR_Integer) 114:
+              switch (MR_nth_code_unit(mercury__ops__Op_4, 2)) {
+                case (MR_Integer) 97:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "trace"))
+                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                  break;
+                case (MR_Integer) 121:
+                  if (MR_offset_streq(3, mercury__ops__Op_4, (MR_String) "try"))
+                    mercury__ops__case_num_0 = (MR_Integer) 54;
+                  break;
+              }
+              break;
+            case (MR_Integer) 121:
+              if (((((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 112)) && (((MR_nth_code_unit(mercury__ops__Op_4, 3)) == (MR_Integer) 101))))
+                switch (MR_nth_code_unit(mercury__ops__Op_4, 4)) {
+                  case (MR_Integer) 0:
+                    mercury__ops__case_num_0 = (MR_Integer) 91;
+                    break;
+                  case (MR_Integer) 99:
+                    if (MR_offset_streq(5, mercury__ops__Op_4, (MR_String) "typeclass"))
+                      mercury__ops__case_num_0 = (MR_Integer) 92;
+                    break;
+                }
+              break;
+          }
+          break;
+        case (MR_Integer) 117:
+          if (MR_offset_streq(1, mercury__ops__Op_4, (MR_String) "use_module"))
+            mercury__ops__case_num_0 = (MR_Integer) 93;
+          break;
+        case (MR_Integer) 119:
+          if (((((MR_nth_code_unit(mercury__ops__Op_4, 1)) == (MR_Integer) 104)) && (((MR_nth_code_unit(mercury__ops__Op_4, 2)) == (MR_Integer) 101))))
+            switch (MR_nth_code_unit(mercury__ops__Op_4, 3)) {
+              case (MR_Integer) 110:
+                if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "when"))
+                  mercury__ops__case_num_0 = (MR_Integer) 94;
+                break;
+              case (MR_Integer) 114:
+                if (MR_offset_streq(4, mercury__ops__Op_4, (MR_String) "where"))
+                  mercury__ops__case_num_0 = (MR_Integer) 95;
+                break;
+            }
+          break;
+        case (MR_Integer) 126:
+          switch (MR_nth_code_unit(mercury__ops__Op_4, 1)) {
+            case (MR_Integer) 0:
+              mercury__ops__case_num_0 = (MR_Integer) 96;
+              break;
+            case (MR_Integer) 61:
+              if (MR_offset_streq(2, mercury__ops__Op_4, (MR_String) "~="))
+                mercury__ops__case_num_0 = (MR_Integer) 97;
+              break;
+          }
+          break;
+      }
+      if ((mercury__ops__case_num_0 < (MR_Integer) 0))
+        mercury__ops__succeeded = MR_FALSE;
+      else
+        {
+          /* we found a match; look up the results */
+          *mercury__ops__Info_5 = ((&mercury__ops_vector_common_6[0 + mercury__ops__case_num_0]))->mercury__ops__vector_common_type_6_0__vct_6_f_0;
+          *mercury__ops__OtherInfos_6 = ((&mercury__ops_vector_common_6[0 + mercury__ops__case_num_0]))->mercury__ops__vector_common_type_6_0__vct_6_f_1;
+          mercury__ops__succeeded = MR_TRUE;
+        }
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__mercury_arg_priority_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+
+    {
+      mercury__ops__HeadVar__2_2 = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_97_114_103_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+    }
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__ops__lookup_mercury_operator_term_4_p_0(
+  MR_Integer * mercury__ops__HeadVar__2_2,
+  MR_Word * mercury__ops__HeadVar__3_3,
+  MR_Word * mercury__ops__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_101_114_97_116_111_114_95_116_101_114_109_95_95_91_49_93_95_48_4_p_0(mercury__ops__HeadVar__2_2, mercury__ops__HeadVar__3_3, mercury__ops__HeadVar__4_4);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_op_infos_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Word * mercury__ops__Info_7,
+  MR_Word * mercury__ops__OtherInfos_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_105_110_102_111_115_95_95_91_49_93_95_48_4_p_0(mercury__ops__Name_6, mercury__ops__Info_7, mercury__ops__OtherInfos_8);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_op_2_p_0(
+  MR_String mercury__ops__Name_4)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_111_112_95_95_91_49_93_95_48_2_p_0(mercury__ops__Name_4);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_postfix_op_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Integer * mercury__ops__Priority_7,
+  MR_Word * mercury__ops__LeftAssoc_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_111_115_116_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(mercury__ops__Name_6, mercury__ops__Priority_7, mercury__ops__LeftAssoc_8);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_binary_prefix_op_5_p_0(
+  MR_String mercury__ops__Name_7,
+  MR_Integer * mercury__ops__Priority_8,
+  MR_Word * mercury__ops__LeftAssoc_9,
+  MR_Word * mercury__ops__RightAssoc_10)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_98_105_110_97_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(mercury__ops__Name_7, mercury__ops__Priority_8, mercury__ops__LeftAssoc_9, mercury__ops__RightAssoc_10);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_prefix_op_4_p_0(
+  MR_String mercury__ops__Name_6,
+  MR_Integer * mercury__ops__Priority_7,
+  MR_Word * mercury__ops__LeftAssoc_8)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_112_114_101_102_105_120_95_111_112_95_95_91_49_93_95_48_4_p_0(mercury__ops__Name_6, mercury__ops__Priority_7, mercury__ops__LeftAssoc_8);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__ops__lookup_mercury_infix_op_5_p_0(
+  MR_String mercury__ops__Name_7,
+  MR_Integer * mercury__ops__Priority_8,
+  MR_Word * mercury__ops__LeftAssoc_9,
+  MR_Word * mercury__ops__RightAssoc_10)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    {
+      mercury__ops__succeeded = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_109_101_114_99_117_114_121_95_105_110_102_105_120_95_111_112_95_95_91_49_93_95_48_5_p_0(mercury__ops__Name_7, mercury__ops__Priority_8, mercury__ops__LeftAssoc_9, mercury__ops__RightAssoc_10);
+    }
+    return mercury__ops__succeeded;
+  }
+}
+
+MR_Integer MR_CALL 
+mercury__ops__mercury_max_priority_1_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+    MR_Integer mercury__ops__HeadVar__2_2;
+
+    {
+      mercury__ops__HeadVar__2_2 = mercury__ops__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_101_114_99_117_114_121_95_109_97_120_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+    }
+    return mercury__ops__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__ops__adjust_priority_for_assoc_3_p_0(
+  MR_Integer mercury__ops__Priority_1,
+  MR_Word mercury__ops__HeadVar__2_2,
+  MR_Integer * mercury__ops__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    switch (mercury__ops__HeadVar__2_2) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *mercury__ops__HeadVar__3_3 = (mercury__ops__Priority_1 - (MR_Integer) 1);
+        }
+        break;
+      case (MR_Integer) 1:
+        *mercury__ops__HeadVar__3_3 = mercury__ops__Priority_1;
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+mercury__ops__init_mercury_op_table_0_f_0(void)
+{
+  {
+    MR_bool mercury__ops__succeeded;
+
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+  }
+}
+
+void mercury__ops__init(void)
+{
+}
+
+void mercury__ops__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_assoc_0);
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_class_0);
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_mercury_op_table_0);
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_op_info_0);
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_priority_0);
+	MR_register_type_ctor_info(&mercury__ops__ops__type_ctor_info_table_0);
+}
+
+void mercury__ops__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ops__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module ops. */
