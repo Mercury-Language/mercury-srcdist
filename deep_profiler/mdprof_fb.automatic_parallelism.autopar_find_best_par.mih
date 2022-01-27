@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `autopar_find_best_par.m'
+** by the Mercury compiler,
+** version 22.01-beta-2022-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_fb.automatic_parallelism.autopar_find_best_par.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_find_best_par
+#define MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_find_best_par
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_FIND_BEST_PAR_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_FIND_BEST_PAR_DECL_GUARD
+#include "mdprof_fb.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_alg_for_finding_best_par_simple_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_solutions_1;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_full_parallelisation_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_is_good_enough_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_maybe_add_choice_point_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_find_best_par__mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_producer_map_0;
+
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_find_best_par____Compare____full_parallelisation_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_find_best_par____Unify____full_parallelisation_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_debugger(void);
+const char *mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_fb.automatic_parallelism.autopar_find_best_par
+
+// :- end_interface mdprof_fb.automatic_parallelism.autopar_find_best_par.

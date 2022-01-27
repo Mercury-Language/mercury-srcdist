@@ -1,0 +1,160 @@
+/*
+** Automatically generated from `lp.m'
+** by the Mercury compiler,
+** version 22.01-beta-2022-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.lp.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__lp
+#define MR_HEADER_GUARD_libs__lp
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__LP_DECL_GUARD
+#define LIBS__LP_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_cell_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_coeff_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_direction_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_equation_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_equations_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_lp_info_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_objective_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_operator_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_result_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp__libs__lp__type_ctor_info_tableau_0;
+
+void MR_CALL 
+libs__lp__lp_solve_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+libs__lp____Compare____coeff_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____direction_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____equation_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____equations_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____objective_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____operator_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp____Compare____result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__lp____Unify____coeff_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____direction_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____equation_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____equations_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____objective_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____operator_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp____Unify____result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__lp__init(void);
+void mercury__libs__lp__init_type_tables(void);
+void mercury__libs__lp__init_debugger(void);
+const char *mercury__libs__lp__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.lp
+
+// :- end_interface libs.lp.
