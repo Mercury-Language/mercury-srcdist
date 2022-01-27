@@ -1,0 +1,93 @@
+/*
+** Automatically generated from `mmc_analysis.m'
+** by the Mercury compiler,
+** version rotd-2021-11-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.mmc_analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__mmc_analysis
+#define MR_HEADER_GUARD_transform_hlds__mmc_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__MMC_ANALYSIS_DECL_GUARD
+#define TRANSFORM_HLDS__MMC_ANALYSIS_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__type_ctor_info_mmc_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__compiler__arity1__transform_hlds__mmc_analysis__mmc__arity0__[10];
+
+void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+void MR_CALL 
+transform_hlds__mmc_analysis__func_id_to_ppid_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__mmc_analysis__module_name_func_id_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__mmc_analysis__module_name_func_id_from_pred_info_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__mmc_analysis____Compare____mmc_0_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+transform_hlds__mmc_analysis____Unify____mmc_0_0(void);
+
+void mercury__transform_hlds__mmc_analysis__init(void);
+void mercury__transform_hlds__mmc_analysis__init_type_tables(void);
+void mercury__transform_hlds__mmc_analysis__init_debugger(void);
+const char *mercury__transform_hlds__mmc_analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.mmc_analysis
+
+// :- end_interface transform_hlds.mmc_analysis.
