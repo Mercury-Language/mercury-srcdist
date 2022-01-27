@@ -1,0 +1,33 @@
+:- module (hlds.hlds_clauses).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module term.
+:- import_module (hlds.hlds_args).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type clause
+    --->    clause(((hlds.hlds_clauses).clause_applicable_procs) :: hlds.hlds_clauses.clause_applicable_modes, ((hlds.hlds_clauses).clause_body) :: hlds.hlds_goal.hlds_goal, ((hlds.hlds_clauses).clause_lang) :: hlds.hlds_pred.implementation_language, ((hlds.hlds_clauses).clause_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_clauses).clause_statevar_warnings) :: list.list(parse_tree.error_util.error_spec)).
+:- type clause_applicable_modes
+    --->    all_modes 
+    ;       selected_modes(list.list(hlds.hlds_pred.proc_id)).
+:- type clause_item_number_region
+    --->    clause_item_number_region(((hlds.hlds_clauses).cnr_lower_item_number) :: int, ((hlds.hlds_clauses).cnr_upper_item_number) :: int, ((hlds.hlds_clauses).cnr_lower_item_context) :: term.context, ((hlds.hlds_clauses).cnr_upper_item_context) :: term.context).
+:- type clause_item_number_type
+    --->    item_is_clause 
+    ;       item_is_foreign_proc .
+:- type clause_item_number_types
+    --->    only_clauses 
+    ;       clauses_and_foreign_procs .
+:- type clause_item_numbers.
+:- type clauses_info
+    --->    clauses_info(((hlds.hlds_clauses).cli_varset) :: parse_tree.prog_data.prog_varset, ((hlds.hlds_clauses).cli_explicit_vartypes) :: hlds.vartypes.vartypes, ((hlds.hlds_clauses).cli_tvar_name_map) :: parse_tree.prog_data.tvar_name_map, ((hlds.hlds_clauses).cli_vartypes) :: hlds.vartypes.vartypes, ((hlds.hlds_clauses).cli_headvars) :: hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var), ((hlds.hlds_clauses).cli_rep) :: hlds.hlds_clauses.clauses_rep, ((hlds.hlds_clauses).cli_item_numbers) :: hlds.hlds_clauses.clause_item_numbers, ((hlds.hlds_clauses).cli_rtti_varmaps) :: hlds.hlds_rtti.rtti_varmaps, ((hlds.hlds_clauses).cli_have_foreign_clauses) :: bool.bool, ((hlds.hlds_clauses).cli_had_syntax_errors) :: bool.bool).
+:- type clauses_rep.

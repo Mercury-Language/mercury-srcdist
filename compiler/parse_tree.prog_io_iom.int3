@@ -1,0 +1,3 @@
+:- module (parse_tree.prog_io_iom).
+:- interface.
+:- type item_or_marker.

@@ -1,0 +1,6034 @@
+/*
+** Automatically generated from `prog_io_typeclass.m'
+** by the Mercury compiler,
+** version rotd-2016-01-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_typeclass. */
+/* :- implementation. */
+
+/*
+INIT mercury__parse_tree__prog_io_typeclass__init
+ENDINIT
+*/
+
+#include "parse_tree.prog_io_typeclass.mih"
+
+
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_io_inst_mode_name.mih"
+#include "parse_tree.prog_io_iom.mih"
+#include "parse_tree.prog_io_item.mih"
+#include "parse_tree.prog_io_sym_name.mih"
+#include "parse_tree.prog_io_type_name.mih"
+#include "parse_tree.prog_io_util.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s {
+  MR_bool parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded;
+  MR_Word parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgTypes_87;
+  jmp_buf parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__commit_0;
+  MR_Word parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgType_89;
+  MR_Box parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__conv0_ArgType_89;
+};
+
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_term_1__plain_term__type_ctor_info_generic_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_term__type_ctor_info_generic_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_item__type_ctor_info_class_method_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_data__type_ctor_info_instance_method_0;
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_0[1];
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_0;
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_1[1];
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_1;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_2[2];
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_2;
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_3[1];
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_3;
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_1[1];
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_2[1];
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_3[1];
+
+static const MR_DuPtagLayout parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_ptag_ordered_arbitrary_constraint_0[4];
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_name_ordered_arbitrary_constraint_0[4];
+
+static const MR_Integer parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__functor_number_map_arbitrary_constraint_0[4];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__list__ti_one_or_more_1parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__prog_io_typeclass__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__prog_io_typeclass__parse_tree__maybe_error__ti_maybe2_2list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeInstanceMethod_8);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_50_95_95_91_49_93_95_48_5_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_0_2,
+  MR_Word * parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_3,
+  MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_0_4,
+  MR_Word * parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_5);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__check_tvars_in_instance_constraint__808__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_12,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_57);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__check_tvars_in_instance_constraint__805__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__TypesVars_17,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_52);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_unconstrained_class__332__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_82,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_83);
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__222__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_169,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_160);
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__219__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_169,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_157);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__180__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Params_26,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_152);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__178__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Params_26,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_150);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0(
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0(
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__is_in_list_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__TypeInfo_for_T_5,
+  MR_Word parse_tree__prog_io_typeclass__List_3,
+  MR_Box parse_tree__prog_io_typeclass__Element_4);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__term_to_instance_method_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass___ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeInstanceMethod_8);
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_2(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_4,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_5,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeSpec_6);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_9,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_10,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_11,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_12,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_13,
+  MR_Word parse_tree__prog_io_typeclass__Context_14,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_15,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_16);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_underived_instance_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_instance_name_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__ArgTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_fundep_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Term_3,
+  MR_Word * parse_tree__prog_io_typeclass__Result_4);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_1(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_3(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_2(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_4(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_5,
+  MR_Word parse_tree__prog_io_typeclass__HeadTerm_6,
+  MR_Word parse_tree__prog_io_typeclass__TailTerms_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__collect_class_and_inst_constraints_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__get_simple_constraint_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__Constraint_3);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_methods_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_methods_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeClassMethods_8);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__collect_simple_and_fundep_constraints_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__3_3);
+
+static MR_Word MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundep_1_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1);
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static MR_Word MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0(
+  MR_Word parse_tree__prog_io_typeclass__FunDeps_3);
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_4(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_3(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_2(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_8,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_9,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_10,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_11,
+  MR_Word parse_tree__prog_io_typeclass__Context_12,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_13,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemTypeClass_14);
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_class_7_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_8,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_9,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_10,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_11,
+  MR_Word parse_tree__prog_io_typeclass__Context_12,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_13,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_14);
+
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_1[126][2];
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_2[6][3];
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_3[13][1];
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_4[4][5];
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_5[1][6];
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_6[2][7];
+
+
+
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_1[126][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_method_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_method_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[13]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "where [method_signature_1, ... method_signature_m]"))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[15]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "optionally followed by"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[17]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[16])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) ":- typeclass tcname(T1, ... Tn)"))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[19]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[18])))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "should have the form"))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[21]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[20])))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "declaration"))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[23]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[22])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 13)),
+    ((MR_Box) ((MR_String) "typeclass"))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[25]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[24])))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: a"))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[27]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[26])))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "where [method_spec_1, ... method_spec_m]"))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[29]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[17]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[30])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) ":- instance tcname(type1, ... typen)"))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[32]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[31])))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[21]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[33])))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[23]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[34])))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 13)),
+    ((MR_Box) ((MR_String) "instance"))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[36]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[35])))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: an"))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[38]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[37])))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and ground types"))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[40]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "constraints may only constrain type variables"))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[42]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[41])))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Sorry, not implemented:"))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[44]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[43])))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in typeclass declarations."))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[46]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: functional dependencies are only allowed"))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[48]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[47])))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "may only constrain type variables and ground types."))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[50]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: constraints on class declarations"))
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[52]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[51])))
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "at least one class parameter."))
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[54]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 56 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: typeclass declarations require"))
+  },
+  /* row 57 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[56]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[55])))
+  },
+  /* row 58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "as class parameters."))
+  },
+  /* row 59 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[58]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 60 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected distinct variables"))
+  },
+  /* row 61 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[60]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[59])))
+  },
+  /* row 62 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected a list of class methods."))
+  },
+  /* row 63 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[62]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "as class name or inst constraint."))
+  },
+  /* row 65 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 66 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected atom"))
+  },
+  /* row 67 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[66]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[65])))
+  },
+  /* row 68 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "must be comma-separated lists of variables."))
+  },
+  /* row 69 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[68]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 70 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of a functional dependency"))
+  },
+  /* row 71 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[70]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[69])))
+  },
+  /* row 72 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the domain and range"))
+  },
+  /* row 73 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[72]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[71])))
+  },
+  /* row 74 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: constraints on instance declarations"))
+  },
+  /* row 75 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[74]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[51])))
+  },
+  /* row 76 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in constraints on instance declaration."))
+  },
+  /* row 77 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[76]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 78 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected list of instance methods."))
+  },
+  /* row 79 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[78]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12])))
+  },
+  /* row 80 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[0])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 81 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[1])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 82 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in the superclass constraint"))
+  },
+  /* row 83 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[82]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 84 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in superclass constraints"))
+  },
+  /* row 85 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[84]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 86 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in the functional dependency"))
+  },
+  /* row 87 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[86]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 88 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in functional dependencies"))
+  },
+  /* row 89 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[88]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 90 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: type variable"))
+  },
+  /* row 91 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[90]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 92 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is not a parameter of this type class."))
+  },
+  /* row 93 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[92]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 94 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: type variables"))
+  },
+  /* row 95 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[94]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 96 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "are not parameters of this type class."))
+  },
+  /* row 97 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[96]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 98 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "and"))
+  },
+  /* row 99 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[98]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In typeclass declaration:"))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[2])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[3])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 103 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[4])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 104 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In class or inst constraint:"))
+  },
+  /* row 105 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[5])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 106 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 107 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In instance declaration:"))
+  },
+  /* row 108 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[7])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 109 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: unbound type variable"))
+  },
+  /* row 110 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[109]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 111 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: unbound type variables"))
+  },
+  /* row 112 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[111]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 113 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[8])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 114 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[9])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 115 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[10])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 116 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_3[11])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 117 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected"))
+  },
+  /* row 118 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "pred(<Name> / <Arity>) is <InstanceMethod>"))
+  },
+  /* row 119 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 120 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "not"))
+  },
+  /* row 121 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "func(<Name> / <Arity>) is <InstanceMethod>"))
+  },
+  /* row 122 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "pred(<Name> / <Arity>) is <InstanceName>"))
+  },
+  /* row 123 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "or"))
+  },
+  /* row 124 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "func(<Name> / <Arity>) is <InstanceName>"))
+  },
+  /* row 125 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: expected clause or"))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_2[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_1[6])),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_2)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_1[8])),
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_2[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[1])),
+    ((MR_Box) (parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[2])),
+    ((MR_Box) (parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[3])),
+    ((MR_Box) (parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[3])),
+    ((MR_Box) (parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_3[13][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[28])))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[39])))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[57])))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[61])))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[63])))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[67])))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[73])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[79])))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[45])))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[49])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[53])))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[75])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_String) ""))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_4[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_5[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__prog_io_typeclass_scalar_common_6[2][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_item__type_ctor_info_class_method_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_data__type_ctor_info_instance_method_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_term_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__varset__pti_varset_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_item__type_ctor_info_class_method_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_method_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__prog_io_typeclass__parse_tree__maybe_error__pti_maybe1_1__plain_parse_tree__prog_data__type_ctor_info_instance_method_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_0[1] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0
+};
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_0 = {
+  (MR_String) "simple",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_1[1] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0
+};
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_1 = {
+  (MR_String) "non_simple",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_2[2] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+};
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_2 = {
+  (MR_String) "inst_constraint",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_2,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_PseudoTypeInfo parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_3[1] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0
+};
+
+static const MR_DuFunctorDesc parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_3 = {
+  (MR_String) "fundep",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__field_types_arbitrary_constraint_0_3,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_0[1] = {
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_0
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_1[1] = {
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_1
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_2[1] = {
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_3
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_3[1] = {
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_2
+};
+
+static const MR_DuPtagLayout parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_ptag_ordered_arbitrary_constraint_0[4] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+    parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+    parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE_DIRECT_ARG,
+    parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_2
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_stag_ordered_arbitrary_constraint_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_name_ordered_arbitrary_constraint_0[4] = {
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_3,
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_2,
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_1,
+  &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_functor_desc_arbitrary_constraint_0_0
+};
+
+static const MR_Integer parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__functor_number_map_arbitrary_constraint_0[4] = {
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0_10001)),
+  ((MR_Box) (parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0_10001)),
+  (MR_String) "parse_tree.prog_io_typeclass",
+  (MR_String) "arbitrary_constraint",
+  {     parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_name_ordered_arbitrary_constraint_0 },
+  {     parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__du_ptag_ordered_arbitrary_constraint_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__functor_number_map_arbitrary_constraint_0
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__list__ti_one_or_more_1parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0 = {
+  &mercury__list__list__type_ctor_info_one_or_more_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraints_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0_10001)),
+  ((MR_Box) (parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0_10001)),
+  (MR_String) "parse_tree.prog_io_typeclass",
+  (MR_String) "arbitrary_constraints",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &parse_tree__prog_io_typeclass__list__ti_one_or_more_1parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_io_typeclass__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__prog_io_typeclass__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &parse_tree__prog_io_typeclass__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0,
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__prog_io_typeclass__parse_tree__maybe_error__ti_maybe2_2list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_2,
+  {
+    (MR_TypeInfo) &parse_tree__prog_io_typeclass__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0,
+    (MR_TypeInfo) &parse_tree__prog_io_typeclass__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_maybe_class_and_inst_constraints_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__prog_io_typeclass____Unify____maybe_class_and_inst_constraints_0_0_10001)),
+  ((MR_Box) (parse_tree__prog_io_typeclass____Compare____maybe_class_and_inst_constraints_0_0_10001)),
+  (MR_String) "parse_tree.prog_io_typeclass",
+  (MR_String) "maybe_class_and_inst_constraints",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &parse_tree__prog_io_typeclass__parse_tree__maybe_error__ti_maybe2_2list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3)
+{
+  {
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__1_1;
+
+    {
+      parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0(&parse_tree__prog_io_typeclass__conv0_HeadVar__1_1, ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_3));
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_1 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3)
+{
+  {
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__1_1;
+
+    {
+      parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0(&parse_tree__prog_io_typeclass__conv0_HeadVar__1_1, ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_3));
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_1 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass____Unify____maybe_class_and_inst_constraints_0_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_3)
+{
+  {
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__1_1;
+
+    {
+      parse_tree__prog_io_typeclass____Compare____maybe_class_and_inst_constraints_0_0(&parse_tree__prog_io_typeclass__conv0_HeadVar__1_1, ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_2), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_3));
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_1 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeInstanceMethod_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MethodTerm_7)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass__ClassMethodTerm_9;
+    MR_Word parse_tree__prog_io_typeclass__InstanceMethodTerm_10;
+    MR_Word parse_tree__prog_io_typeclass__TermContext_11;
+    MR_Word parse_tree__prog_io_typeclass__V_44_44;
+    MR_String parse_tree__prog_io_typeclass__V_45_45;
+    MR_Word parse_tree__prog_io_typeclass__V_46_46;
+    MR_Word parse_tree__prog_io_typeclass__V_47_47;
+    MR_Word parse_tree__prog_io_typeclass__V_48_48;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MethodTerm_7, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MethodTerm_7, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__TermContext_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MethodTerm_7, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_44_44)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_45_45 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_44_44, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_45_45, (MR_String) "is") == 0);
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_46_46)) == (MR_mktag((MR_Integer) 1)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__ClassMethodTerm_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_46_46, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_46_46, (MR_Integer) 1)));
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_47_47)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__InstanceMethodTerm_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_47_47, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_47_47, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_48_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+          }
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__PredNameTerm_14;
+        MR_Word parse_tree__prog_io_typeclass__ArityTerm_15;
+        MR_Word parse_tree__prog_io_typeclass__SlashTerm_12;
+        MR_Word parse_tree__prog_io_typeclass__V_49_49;
+        MR_String parse_tree__prog_io_typeclass__V_50_50;
+        MR_Word parse_tree__prog_io_typeclass__V_51_51;
+        MR_Word parse_tree__prog_io_typeclass__V_52_52;
+        MR_Word parse_tree__prog_io_typeclass__V_53_53;
+        MR_String parse_tree__prog_io_typeclass__V_54_54;
+        MR_Word parse_tree__prog_io_typeclass__V_55_55;
+        MR_Word parse_tree__prog_io_typeclass__V_56_56;
+        MR_Word parse_tree__prog_io_typeclass__V_57_57;
+        MR_Word parse_tree__prog_io_typeclass__V_13_13;
+        MR_Word parse_tree__prog_io_typeclass__V_16_16;
+
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ClassMethodTerm_9)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 1)));
+            parse_tree__prog_io_typeclass__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 2)));
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_49_49)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_50_50 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_49_49, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_50_50, (MR_String) "pred") == 0);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_51_51)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__SlashTerm_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_51_51, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_51_51, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_52_52 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__SlashTerm_12)) == (MR_mktag((MR_Integer) 0)));
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                parse_tree__prog_io_typeclass__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_12, (MR_Integer) 0)));
+                                parse_tree__prog_io_typeclass__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_12, (MR_Integer) 1)));
+                                parse_tree__prog_io_typeclass__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_12, (MR_Integer) 2)));
+                                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_53_53)) == (MR_mktag((MR_Integer) 0)));
+                                if (parse_tree__prog_io_typeclass__succeeded)
+                                  {
+                                    parse_tree__prog_io_typeclass__V_54_54 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_53_53, (MR_Integer) 0)));
+                                    parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_54_54, (MR_String) "/") == 0);
+                                    if (parse_tree__prog_io_typeclass__succeeded)
+                                      {
+                                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_55_55)) == (MR_mktag((MR_Integer) 1)));
+                                        if (parse_tree__prog_io_typeclass__succeeded)
+                                          {
+                                            parse_tree__prog_io_typeclass__PredNameTerm_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_55_55, (MR_Integer) 0)));
+                                            parse_tree__prog_io_typeclass__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_55_55, (MR_Integer) 1)));
+                                            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_56_56)) == (MR_mktag((MR_Integer) 1)));
+                                            if (parse_tree__prog_io_typeclass__succeeded)
+                                              {
+                                                parse_tree__prog_io_typeclass__ArityTerm_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_56_56, (MR_Integer) 0)));
+                                                parse_tree__prog_io_typeclass__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_56_56, (MR_Integer) 1)));
+                                                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_57_57 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word parse_tree__prog_io_typeclass__PredName_17;
+            MR_Integer parse_tree__prog_io_typeclass__ArityInt_18;
+            MR_Word parse_tree__prog_io_typeclass__InstanceMethodName_20;
+            MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_260_260 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+            MR_Word parse_tree__prog_io_typeclass__V_58_58;
+            MR_Word parse_tree__prog_io_typeclass__V_59_59;
+            MR_Word parse_tree__prog_io_typeclass__V_19_19;
+
+            {
+              parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_sym_name__try_parse_sym_name_and_no_args_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_260_260, parse_tree__prog_io_typeclass__PredNameTerm_14, &parse_tree__prog_io_typeclass__PredName_17);
+            }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArityTerm_15)) == (MR_mktag((MR_Integer) 0)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_15, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_15, (MR_Integer) 1)));
+                    parse_tree__prog_io_typeclass__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_15, (MR_Integer) 2)));
+                    parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_59_59 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_58_58)) == (MR_mktag((MR_Integer) 1)));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__ArityInt_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_58_58, (MR_Integer) 0)));
+                            {
+                              parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_sym_name__try_parse_sym_name_and_no_args_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_260_260, parse_tree__prog_io_typeclass__InstanceMethodTerm_10, &parse_tree__prog_io_typeclass__InstanceMethodName_20);
+                            }
+                          }
+                      }
+                  }
+              }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                MR_Word parse_tree__prog_io_typeclass__InstanceMethod_21;
+                MR_Word parse_tree__prog_io_typeclass__V_61_61;
+
+                {
+                  parse_tree__prog_io_typeclass__V_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_61_61, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethodName_20));
+                }
+                {
+                  parse_tree__prog_io_typeclass__InstanceMethod_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_21, 0) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_21, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__PredName_17));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_21, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_61_61));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_21, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__ArityInt_18));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_21, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__TermContext_11));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethod_21));
+                }
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_261_261 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                MR_String parse_tree__prog_io_typeclass__MethodTermStr_22;
+                MR_Word parse_tree__prog_io_typeclass__Pieces_23;
+                MR_Word parse_tree__prog_io_typeclass__Spec_24;
+                MR_Word parse_tree__prog_io_typeclass__V_64_64;
+                MR_Word parse_tree__prog_io_typeclass__V_67_67;
+                MR_Word parse_tree__prog_io_typeclass__V_70_70;
+                MR_Word parse_tree__prog_io_typeclass__V_73_73;
+                MR_Word parse_tree__prog_io_typeclass__V_74_74;
+                MR_Word parse_tree__prog_io_typeclass__V_83_83;
+                MR_Word parse_tree__prog_io_typeclass__V_84_84;
+                MR_Word parse_tree__prog_io_typeclass__V_85_85;
+                MR_Word parse_tree__prog_io_typeclass__V_86_86;
+                MR_Word parse_tree__prog_io_typeclass__V_87_87;
+                MR_Word parse_tree__prog_io_typeclass__V_90_90;
+
+                {
+                  parse_tree__prog_io_typeclass__MethodTermStr_22 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_261_261, parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_74_74 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_74_74, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_74_74, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__MethodTermStr_22));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_73_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_73_73, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_74_74));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_73_73, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_70_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_70_70, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[120])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_70_70, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_73_73));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_67_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_67_67, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[119])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_67_67, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_70_70));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[118])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_67_67));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Pieces_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_23, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[117])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_23, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_64_64));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_85_85 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_261_261, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_87_87 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_87_87, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_23));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_86_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_86_86, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_87_87));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_86_86, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_84_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_84_84, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_85_85));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_84_84, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_86_86));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_83_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_83_83, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_84_84));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_83_83, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Spec_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_24, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_24, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_24, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_83_83));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_90_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_90_90, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_24));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_90_90, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_90_90));
+                }
+              }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__FuncNameTerm_26;
+            MR_Word parse_tree__prog_io_typeclass__ArityTerm_228;
+            MR_Word parse_tree__prog_io_typeclass__V_92_92;
+            MR_String parse_tree__prog_io_typeclass__V_93_93;
+            MR_Word parse_tree__prog_io_typeclass__V_94_94;
+            MR_Word parse_tree__prog_io_typeclass__V_95_95;
+            MR_Word parse_tree__prog_io_typeclass__V_96_96;
+            MR_String parse_tree__prog_io_typeclass__V_97_97;
+            MR_Word parse_tree__prog_io_typeclass__V_98_98;
+            MR_Word parse_tree__prog_io_typeclass__V_99_99;
+            MR_Word parse_tree__prog_io_typeclass__V_100_100;
+            MR_Word parse_tree__prog_io_typeclass__SlashTerm_213;
+            MR_Word parse_tree__prog_io_typeclass__V_25_25;
+            MR_Word parse_tree__prog_io_typeclass__V_27_27;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ClassMethodTerm_9)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 1)));
+                parse_tree__prog_io_typeclass__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ClassMethodTerm_9, (MR_Integer) 2)));
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_92_92)) == (MR_mktag((MR_Integer) 0)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__V_93_93 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_92_92, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_93_93, (MR_String) "func") == 0);
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_94_94)) == (MR_mktag((MR_Integer) 1)));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__SlashTerm_213 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_94_94, (MR_Integer) 0)));
+                            parse_tree__prog_io_typeclass__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_94_94, (MR_Integer) 1)));
+                            parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_95_95 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__SlashTerm_213)) == (MR_mktag((MR_Integer) 0)));
+                                if (parse_tree__prog_io_typeclass__succeeded)
+                                  {
+                                    parse_tree__prog_io_typeclass__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_213, (MR_Integer) 0)));
+                                    parse_tree__prog_io_typeclass__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_213, (MR_Integer) 1)));
+                                    parse_tree__prog_io_typeclass__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__SlashTerm_213, (MR_Integer) 2)));
+                                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_96_96)) == (MR_mktag((MR_Integer) 0)));
+                                    if (parse_tree__prog_io_typeclass__succeeded)
+                                      {
+                                        parse_tree__prog_io_typeclass__V_97_97 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_96_96, (MR_Integer) 0)));
+                                        parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_97_97, (MR_String) "/") == 0);
+                                        if (parse_tree__prog_io_typeclass__succeeded)
+                                          {
+                                            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_98_98)) == (MR_mktag((MR_Integer) 1)));
+                                            if (parse_tree__prog_io_typeclass__succeeded)
+                                              {
+                                                parse_tree__prog_io_typeclass__FuncNameTerm_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_98_98, (MR_Integer) 0)));
+                                                parse_tree__prog_io_typeclass__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_98_98, (MR_Integer) 1)));
+                                                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_99_99)) == (MR_mktag((MR_Integer) 1)));
+                                                if (parse_tree__prog_io_typeclass__succeeded)
+                                                  {
+                                                    parse_tree__prog_io_typeclass__ArityTerm_228 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_99_99, (MR_Integer) 0)));
+                                                    parse_tree__prog_io_typeclass__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_99_99, (MR_Integer) 1)));
+                                                    parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_100_100 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                MR_Word parse_tree__prog_io_typeclass__FuncName_28;
+                MR_Integer parse_tree__prog_io_typeclass__ArityInt_218;
+                MR_Word parse_tree__prog_io_typeclass__InstanceMethodName_219;
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_262_262 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                MR_Word parse_tree__prog_io_typeclass__V_101_101;
+                MR_Word parse_tree__prog_io_typeclass__V_102_102;
+                MR_Word parse_tree__prog_io_typeclass__V_29_29;
+
+                {
+                  parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_sym_name__try_parse_sym_name_and_no_args_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_262_262, parse_tree__prog_io_typeclass__FuncNameTerm_26, &parse_tree__prog_io_typeclass__FuncName_28);
+                }
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArityTerm_228)) == (MR_mktag((MR_Integer) 0)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_228, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_228, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArityTerm_228, (MR_Integer) 2)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_102_102 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_101_101)) == (MR_mktag((MR_Integer) 1)));
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                parse_tree__prog_io_typeclass__ArityInt_218 = ((MR_Integer) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_101_101, (MR_Integer) 0)));
+                                {
+                                  parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_sym_name__try_parse_sym_name_and_no_args_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_262_262, parse_tree__prog_io_typeclass__InstanceMethodTerm_10, &parse_tree__prog_io_typeclass__InstanceMethodName_219);
+                                }
+                              }
+                          }
+                      }
+                  }
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    MR_Word parse_tree__prog_io_typeclass__V_104_104;
+                    MR_Word parse_tree__prog_io_typeclass__InstanceMethod_214;
+
+                    {
+                      parse_tree__prog_io_typeclass__V_104_104 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_104_104, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethodName_219));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__InstanceMethod_214 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_214, 0) = ((MR_Box) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_214, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__FuncName_28));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_214, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_104_104));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_214, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__ArityInt_218));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_214, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__TermContext_11));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethod_214));
+                    }
+                  }
+                else
+                  {
+                    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_263_263 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                    MR_Word parse_tree__prog_io_typeclass__V_107_107;
+                    MR_Word parse_tree__prog_io_typeclass__V_110_110;
+                    MR_Word parse_tree__prog_io_typeclass__V_113_113;
+                    MR_Word parse_tree__prog_io_typeclass__V_116_116;
+                    MR_Word parse_tree__prog_io_typeclass__V_117_117;
+                    MR_Word parse_tree__prog_io_typeclass__V_126_126;
+                    MR_Word parse_tree__prog_io_typeclass__V_127_127;
+                    MR_Word parse_tree__prog_io_typeclass__V_128_128;
+                    MR_Word parse_tree__prog_io_typeclass__V_129_129;
+                    MR_Word parse_tree__prog_io_typeclass__V_130_130;
+                    MR_Word parse_tree__prog_io_typeclass__V_133_133;
+                    MR_String parse_tree__prog_io_typeclass__MethodTermStr_215;
+                    MR_Word parse_tree__prog_io_typeclass__Pieces_216;
+                    MR_Word parse_tree__prog_io_typeclass__Spec_217;
+
+                    {
+                      parse_tree__prog_io_typeclass__MethodTermStr_215 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_263_263, parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7);
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_117_117 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_117_117, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                      MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_117_117, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__MethodTermStr_215));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_116_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_116_116, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_117_117));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_116_116, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_113_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_113_113, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[120])));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_113_113, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_116_116));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_110_110 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_110_110, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[119])));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_110_110, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_113_113));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_107_107 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_107_107, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[121])));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_107_107, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_110_110));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__Pieces_216 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_216, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[117])));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_216, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_107_107));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_128_128 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_263_263, parse_tree__prog_io_typeclass__MethodTerm_7);
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_130_130 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_130_130, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_216));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_129_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_129_129, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_130_130));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_129_129, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_127_127 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_127_127, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_128_128));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_127_127, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_129_129));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_126_126 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_126_126, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_127_127));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_126_126, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__Spec_217 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_217, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_217, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_217, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_126_126));
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_133_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_133_133, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_217));
+                      MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_133_133, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_133_133));
+                    }
+                  }
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_264_264 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                MR_Word parse_tree__prog_io_typeclass__V_137_137;
+                MR_Word parse_tree__prog_io_typeclass__V_140_140;
+                MR_Word parse_tree__prog_io_typeclass__V_143_143;
+                MR_Word parse_tree__prog_io_typeclass__V_146_146;
+                MR_Word parse_tree__prog_io_typeclass__V_149_149;
+                MR_Word parse_tree__prog_io_typeclass__V_152_152;
+                MR_Word parse_tree__prog_io_typeclass__V_153_153;
+                MR_Word parse_tree__prog_io_typeclass__V_162_162;
+                MR_Word parse_tree__prog_io_typeclass__V_163_163;
+                MR_Word parse_tree__prog_io_typeclass__V_164_164;
+                MR_Word parse_tree__prog_io_typeclass__V_165_165;
+                MR_Word parse_tree__prog_io_typeclass__V_166_166;
+                MR_Word parse_tree__prog_io_typeclass__V_169_169;
+                MR_String parse_tree__prog_io_typeclass__MethodTermStr_224;
+                MR_Word parse_tree__prog_io_typeclass__Pieces_225;
+                MR_Word parse_tree__prog_io_typeclass__Spec_226;
+
+                {
+                  parse_tree__prog_io_typeclass__MethodTermStr_224 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_264_264, parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_153_153 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_153_153, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_153_153, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__MethodTermStr_224));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_152_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_152_152, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_153_153));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_152_152, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_149_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_149_149, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[120])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_149_149, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_152_152));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_146_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_146_146, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[119])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_146_146, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_149_149));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_143_143 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_143_143, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[124])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_143_143, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_146_146));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_140_140 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_140_140, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[123])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_140_140, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_143_143));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_137_137 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_137_137, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[122])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_137_137, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_140_140));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Pieces_225 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_225, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[117])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_225, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_137_137));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_164_164 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_264_264, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_166_166 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_166_166, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_225));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_165_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_165_165, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_166_166));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_165_165, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_163_163 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_163_163, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_164_164));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_163_163, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_165_165));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_162_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_162_162, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_163_163));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_162_162, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Spec_226 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_226, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_226, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_226, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_162_162));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_169_169 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_169_169, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_226));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_169_169, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_169_169));
+                }
+              }
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__MaybeIOM_31;
+
+        {
+          parse_tree__prog_io_item__parse_item_or_marker_5_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_3[12], parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7, (MR_Integer) -1, &parse_tree__prog_io_typeclass__MaybeIOM_31);
+        }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeIOM_31)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = (MR_Word) parse_tree__prog_io_typeclass__MaybeIOM_31;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__IOM_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeIOM_31, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__ItemClause_35;
+            MR_Word parse_tree__prog_io_typeclass__Item_34;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__IOM_33)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__Item_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__IOM_33, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Item_34)) == (MR_mktag((MR_Integer) 0)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  parse_tree__prog_io_typeclass__ItemClause_35 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Item_34), (MR_Integer) 0);
+              }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                MR_Word parse_tree__prog_io_typeclass__ClassMethodName_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 0)));
+                MR_Word parse_tree__prog_io_typeclass__PredOrFunc_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 1)));
+                MR_Word parse_tree__prog_io_typeclass__HeadArgs_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 2)));
+                MR_Word parse_tree__prog_io_typeclass__Context_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 6)));
+                MR_Integer parse_tree__prog_io_typeclass__V_173_173;
+                MR_Word parse_tree__prog_io_typeclass__V_174_174;
+                MR_Word parse_tree__prog_io_typeclass__V_175_175;
+                MR_Integer parse_tree__prog_io_typeclass__ArityInt_235;
+                MR_Word parse_tree__prog_io_typeclass__InstanceMethod_236;
+                MR_Word parse_tree__prog_io_typeclass___Origin_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 3)));
+                MR_Word parse_tree__prog_io_typeclass___VarSet_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 4)));
+                MR_Word parse_tree__prog_io_typeclass___ClauseBody_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 5)));
+                MR_Integer parse_tree__prog_io_typeclass___SeqNum_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemClause_35, (MR_Integer) 7)));
+
+                {
+                  parse_tree__prog_io_typeclass__V_173_173 = mercury__list__length_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[11], parse_tree__prog_io_typeclass__HeadArgs_38);
+                }
+                {
+                  parse_tree__prog_util__adjust_func_arity_3_p_1(parse_tree__prog_io_typeclass__PredOrFunc_37, &parse_tree__prog_io_typeclass__ArityInt_235, parse_tree__prog_io_typeclass__V_173_173);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_175_175 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_175_175, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemClause_35));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_175_175, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_174_174 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_174_174, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_175_175));
+                }
+                {
+                  parse_tree__prog_io_typeclass__InstanceMethod_236 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_236, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__PredOrFunc_37));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_236, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassMethodName_36));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_236, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_174_174));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_236, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__ArityInt_235));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__InstanceMethod_236, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_42));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethod_236));
+                }
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_266_266 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                MR_Word parse_tree__prog_io_typeclass__V_179_179;
+                MR_Word parse_tree__prog_io_typeclass__V_182_182;
+                MR_Word parse_tree__prog_io_typeclass__V_185_185;
+                MR_Word parse_tree__prog_io_typeclass__V_188_188;
+                MR_Word parse_tree__prog_io_typeclass__V_191_191;
+                MR_Word parse_tree__prog_io_typeclass__V_194_194;
+                MR_Word parse_tree__prog_io_typeclass__V_195_195;
+                MR_Word parse_tree__prog_io_typeclass__V_204_204;
+                MR_Word parse_tree__prog_io_typeclass__V_205_205;
+                MR_Word parse_tree__prog_io_typeclass__V_206_206;
+                MR_Word parse_tree__prog_io_typeclass__V_207_207;
+                MR_Word parse_tree__prog_io_typeclass__V_208_208;
+                MR_Word parse_tree__prog_io_typeclass__V_211_211;
+                MR_String parse_tree__prog_io_typeclass__MethodTermStr_237;
+                MR_Word parse_tree__prog_io_typeclass__Pieces_238;
+                MR_Word parse_tree__prog_io_typeclass__Spec_239;
+
+                {
+                  parse_tree__prog_io_typeclass__MethodTermStr_237 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_266_266, parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_195_195 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_195_195, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                  MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_195_195, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__MethodTermStr_237));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_194_194 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_194_194, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_195_195));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_194_194, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[14])));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_191_191 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_191_191, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[120])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_191_191, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_194_194));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_188_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_188_188, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[119])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_188_188, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_191_191));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_185_185 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_185_185, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[124])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_185_185, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_188_188));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_182_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_182_182, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[123])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_182_182, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_185_185));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_179_179 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_179_179, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[122])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_179_179, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_182_182));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Pieces_238 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_238, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[125])));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Pieces_238, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_179_179));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_206_206 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_266_266, parse_tree__prog_io_typeclass__MethodTerm_7);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_208_208 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_208_208, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_238));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_207_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_207_207, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_208_208));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_207_207, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_205_205 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_205_205, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_206_206));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_205_205, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_207_207));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_204_204 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_204_204, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_205_205));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_204_204, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Spec_239 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_239, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_239, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_239, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_204_204));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_211_211 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_211_211, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_239));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_211_211, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *parse_tree__prog_io_typeclass__MaybeInstanceMethod_8 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_211_211));
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_Constraint_3;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__get_simple_constraint_2_p_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), &parse_tree__prog_io_typeclass__conv0_Constraint_3);
+    }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        *parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_Constraint_3));
+        parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Result0_23;
+    MR_Word parse_tree__prog_io_typeclass__HeadConstraintTerm_52;
+    MR_Word parse_tree__prog_io_typeclass__TailConstraintTerms_53;
+    MR_Word parse_tree__prog_io_typeclass__V_54_54;
+
+    {
+      parse_tree__prog_io_util__conjunction_to_one_or_more_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7, &parse_tree__prog_io_typeclass__V_54_54);
+    }
+    parse_tree__prog_io_typeclass__HeadConstraintTerm_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_54_54, (MR_Integer) 0)));
+    parse_tree__prog_io_typeclass__TailConstraintTerms_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_54_54, (MR_Integer) 1)));
+    {
+      parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__HeadConstraintTerm_52, parse_tree__prog_io_typeclass__TailConstraintTerms_53, &parse_tree__prog_io_typeclass__Result0_23);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Result0_23)) == (MR_mktag((MR_Integer) 0))))
+      *parse_tree__prog_io_typeclass__Result_8 = (MR_Word) parse_tree__prog_io_typeclass__Result0_23;
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__HeadArbConstraint_24;
+        MR_Word parse_tree__prog_io_typeclass__TailArbConstraints_25;
+        MR_Word parse_tree__prog_io_typeclass__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Result0_23, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__HeadConstraint_26;
+        MR_Word parse_tree__prog_io_typeclass__TailConstraints_27;
+        MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_34_46;
+        MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_35_47;
+        MR_Word parse_tree__prog_io_typeclass__V_31_31;
+
+        parse_tree__prog_io_typeclass__HeadArbConstraint_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__TailArbConstraints_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadArbConstraint_24)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__HeadConstraint_26 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadArbConstraint_24), (MR_Integer) 0);
+            parse_tree__prog_io_typeclass__V_31_31 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[5];
+            parse_tree__prog_io_typeclass__TypeCtorInfo_34_46 = (MR_Word) &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0;
+            parse_tree__prog_io_typeclass__TypeCtorInfo_35_47 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+            {
+              parse_tree__prog_io_typeclass__succeeded = mercury__list__map_3_p_2(parse_tree__prog_io_typeclass__TypeCtorInfo_34_46, parse_tree__prog_io_typeclass__TypeCtorInfo_35_47, parse_tree__prog_io_typeclass__V_31_31, parse_tree__prog_io_typeclass__TailArbConstraints_25, &parse_tree__prog_io_typeclass__TailConstraints_27);
+            }
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_32_32;
+
+            {
+              parse_tree__prog_io_typeclass__V_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_32_32, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__HeadConstraint_26));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_32_32, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__TailConstraints_27));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_32_32));
+            }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_28;
+            MR_Word parse_tree__prog_io_typeclass__V_35_35;
+            MR_Word parse_tree__prog_io_typeclass__V_36_36;
+            MR_Word parse_tree__prog_io_typeclass__V_37_37;
+            MR_Word parse_tree__prog_io_typeclass__V_42_42;
+
+            {
+              parse_tree__prog_io_typeclass__V_37_37 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_36_36, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_37_37));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_36_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[116])));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_35_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_35_35, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_36_36));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_35_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              parse_tree__prog_io_typeclass__Spec_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_28, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_28, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_35_35));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_42_42, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_28));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_42_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_42_42));
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_50_95_95_91_49_93_95_48_5_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_0_2,
+  MR_Word * parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_3,
+  MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_0_4,
+  MR_Word * parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_5)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    if ((parse_tree__prog_io_typeclass__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_5 = parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_0_4;
+        *parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_3 = parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_0_2;
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__X_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__Xs_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_22_22;
+        MR_Word parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_23_23;
+
+        {
+          parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_50_95_95_91_49_93_95_48_5_p_0(parse_tree__prog_io_typeclass__Xs_13, parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_0_2, &parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_22_22, parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_0_4, &parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_23_23);
+        }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__X_12)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word parse_tree__prog_io_typeclass__CurSpecs_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__X_12, (MR_Integer) 0)));
+
+            {
+              *parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_5 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, parse_tree__prog_io_typeclass__CurSpecs_17, parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_23_23);
+            }
+            *parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_3 = parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_22_22;
+          }
+        else
+          {
+            MR_Box parse_tree__prog_io_typeclass__CurMethod_16 = (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__X_12, (MR_Integer) 0));
+
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_3 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = parse_tree__prog_io_typeclass__CurMethod_16;
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__STATE_VARIABLE_Methods_22_22));
+            }
+            *parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_5 = parse_tree__prog_io_typeclass__STATE_VARIABLE_Specs_23_23;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Result0_9;
+    MR_Word parse_tree__prog_io_typeclass__HeadConstraintTerm_42;
+    MR_Word parse_tree__prog_io_typeclass__TailConstraintTerms_43;
+    MR_Word parse_tree__prog_io_typeclass__V_44_44;
+
+    {
+      parse_tree__prog_io_util__conjunction_to_one_or_more_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7, &parse_tree__prog_io_typeclass__V_44_44);
+    }
+    parse_tree__prog_io_typeclass__HeadConstraintTerm_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_44_44, (MR_Integer) 0)));
+    parse_tree__prog_io_typeclass__TailConstraintTerms_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_44_44, (MR_Integer) 1)));
+    {
+      parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__HeadConstraintTerm_42, parse_tree__prog_io_typeclass__TailConstraintTerms_43, &parse_tree__prog_io_typeclass__Result0_9);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Result0_9)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Result0_9, (MR_Integer) 0)));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__Result_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_17));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__HeadArbConstraint_10;
+        MR_Word parse_tree__prog_io_typeclass__TailArbConstraints_11;
+        MR_Word parse_tree__prog_io_typeclass__ArbitraryConstraints_12;
+        MR_Word parse_tree__prog_io_typeclass__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Result0_9, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__Constraints_13;
+        MR_Word parse_tree__prog_io_typeclass__FunDeps_14;
+        MR_Word parse_tree__prog_io_typeclass__Constraint_46;
+        MR_Word parse_tree__prog_io_typeclass__Constraints_47;
+        MR_Word parse_tree__prog_io_typeclass__SimpleConstraints0_50;
+        MR_Word parse_tree__prog_io_typeclass__FunDeps0_51;
+
+        parse_tree__prog_io_typeclass__HeadArbConstraint_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__TailArbConstraints_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 1)));
+        {
+          parse_tree__prog_io_typeclass__ArbitraryConstraints_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__HeadArbConstraint_10));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__TailArbConstraints_11));
+        }
+        parse_tree__prog_io_typeclass__Constraint_46 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__Constraints_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, (MR_Integer) 1)));
+        {
+          parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__collect_simple_and_fundep_constraints_3_p_0(parse_tree__prog_io_typeclass__Constraints_47, &parse_tree__prog_io_typeclass__SimpleConstraints0_50, &parse_tree__prog_io_typeclass__FunDeps0_51);
+        }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Constraint_46)) == (MR_mktag((MR_Integer) 2))))
+              {
+                MR_Word parse_tree__prog_io_typeclass__FunDep_53 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_46), (MR_Integer) 2);
+
+                {
+                  parse_tree__prog_io_typeclass__FunDeps_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__FunDeps_14, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDep_53));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__FunDeps_14, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDeps0_51));
+                }
+                parse_tree__prog_io_typeclass__Constraints_13 = parse_tree__prog_io_typeclass__SimpleConstraints0_50;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+            else
+            if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Constraint_46)) == (MR_mktag((MR_Integer) 0))))
+              {
+                MR_Word parse_tree__prog_io_typeclass__SimpleConstraint_52 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_46), (MR_Integer) 0);
+
+                {
+                  parse_tree__prog_io_typeclass__Constraints_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Constraints_13, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__SimpleConstraint_52));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Constraints_13, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__SimpleConstraints0_50));
+                }
+                parse_tree__prog_io_typeclass__FunDeps_14 = parse_tree__prog_io_typeclass__FunDeps0_51;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+            else
+              parse_tree__prog_io_typeclass__succeeded = MR_FALSE;
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *parse_tree__prog_io_typeclass__Result_8 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Constraints_13));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDeps_14));
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_16;
+            MR_Word parse_tree__prog_io_typeclass__V_29_29;
+            MR_Word parse_tree__prog_io_typeclass__V_30_30;
+            MR_Word parse_tree__prog_io_typeclass__V_31_31;
+            MR_Word parse_tree__prog_io_typeclass__V_36_36;
+
+            {
+              parse_tree__prog_io_typeclass__V_31_31 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_31_31));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[115])));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_29_29, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_30_30));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_29_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              parse_tree__prog_io_typeclass__Spec_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_29_29));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_36_36, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_16));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_36_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_36_36));
+            }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_97_110_100_95_105_110_115_116_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Result0_9;
+    MR_Word parse_tree__prog_io_typeclass__HeadConstraintTerm_42;
+    MR_Word parse_tree__prog_io_typeclass__TailConstraintTerms_43;
+    MR_Word parse_tree__prog_io_typeclass__V_44_44;
+
+    {
+      parse_tree__prog_io_util__conjunction_to_one_or_more_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7, &parse_tree__prog_io_typeclass__V_44_44);
+    }
+    parse_tree__prog_io_typeclass__HeadConstraintTerm_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_44_44, (MR_Integer) 0)));
+    parse_tree__prog_io_typeclass__TailConstraintTerms_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_44_44, (MR_Integer) 1)));
+    {
+      parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__HeadConstraintTerm_42, parse_tree__prog_io_typeclass__TailConstraintTerms_43, &parse_tree__prog_io_typeclass__Result0_9);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Result0_9)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Result0_9, (MR_Integer) 0)));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__Result_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_17));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__HeadArbConstraint_10;
+        MR_Word parse_tree__prog_io_typeclass__TailArbConstraints_11;
+        MR_Word parse_tree__prog_io_typeclass__ArbitraryConstraints_12;
+        MR_Word parse_tree__prog_io_typeclass__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Result0_9, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__ProgConstraints_13;
+        MR_Word parse_tree__prog_io_typeclass__InstVarSub_14;
+
+        parse_tree__prog_io_typeclass__HeadArbConstraint_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__TailArbConstraints_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 1)));
+        {
+          parse_tree__prog_io_typeclass__ArbitraryConstraints_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__HeadArbConstraint_10));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArbitraryConstraints_12, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__TailArbConstraints_11));
+        }
+        {
+          parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__collect_class_and_inst_constraints_3_p_0(parse_tree__prog_io_typeclass__ArbitraryConstraints_12, &parse_tree__prog_io_typeclass__ProgConstraints_13, &parse_tree__prog_io_typeclass__InstVarSub_14);
+        }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *parse_tree__prog_io_typeclass__Result_8 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ProgConstraints_13));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__InstVarSub_14));
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_16;
+            MR_Word parse_tree__prog_io_typeclass__V_29_29;
+            MR_Word parse_tree__prog_io_typeclass__V_30_30;
+            MR_Word parse_tree__prog_io_typeclass__V_31_31;
+            MR_Word parse_tree__prog_io_typeclass__V_36_36;
+
+            {
+              parse_tree__prog_io_typeclass__V_31_31 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_31_31));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_30_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[114])));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_29_29, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_30_30));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_29_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              parse_tree__prog_io_typeclass__Spec_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_16, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_29_29));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_36_36, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_16));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_36_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_36_36));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_Constraint_3;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__get_simple_constraint_2_p_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), &parse_tree__prog_io_typeclass__conv0_Constraint_3);
+    }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        *parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_Constraint_3));
+        parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Result0_26;
+    MR_Word parse_tree__prog_io_typeclass__HeadConstraintTerm_55;
+    MR_Word parse_tree__prog_io_typeclass__TailConstraintTerms_56;
+    MR_Word parse_tree__prog_io_typeclass__V_57_57;
+
+    {
+      parse_tree__prog_io_util__conjunction_to_one_or_more_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7, &parse_tree__prog_io_typeclass__V_57_57);
+    }
+    parse_tree__prog_io_typeclass__HeadConstraintTerm_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_57_57, (MR_Integer) 0)));
+    parse_tree__prog_io_typeclass__TailConstraintTerms_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_57_57, (MR_Integer) 1)));
+    {
+      parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__HeadConstraintTerm_55, parse_tree__prog_io_typeclass__TailConstraintTerms_56, &parse_tree__prog_io_typeclass__Result0_26);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Result0_26)) == (MR_mktag((MR_Integer) 0))))
+      *parse_tree__prog_io_typeclass__Result_8 = (MR_Word) parse_tree__prog_io_typeclass__Result0_26;
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__HeadArbConstraint_27;
+        MR_Word parse_tree__prog_io_typeclass__TailArbConstraints_28;
+        MR_Word parse_tree__prog_io_typeclass__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Result0_26, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__HeadConstraint_29;
+        MR_Word parse_tree__prog_io_typeclass__TailConstraints_30;
+        MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_34_49;
+        MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_35_50;
+        MR_Word parse_tree__prog_io_typeclass__V_34_34;
+
+        parse_tree__prog_io_typeclass__HeadArbConstraint_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_33_33, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__TailArbConstraints_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_33_33, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadArbConstraint_27)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__HeadConstraint_29 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadArbConstraint_27), (MR_Integer) 0);
+            parse_tree__prog_io_typeclass__V_34_34 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[4];
+            parse_tree__prog_io_typeclass__TypeCtorInfo_34_49 = (MR_Word) &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0;
+            parse_tree__prog_io_typeclass__TypeCtorInfo_35_50 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+            {
+              parse_tree__prog_io_typeclass__succeeded = mercury__list__map_3_p_2(parse_tree__prog_io_typeclass__TypeCtorInfo_34_49, parse_tree__prog_io_typeclass__TypeCtorInfo_35_50, parse_tree__prog_io_typeclass__V_34_34, parse_tree__prog_io_typeclass__TailArbConstraints_28, &parse_tree__prog_io_typeclass__TailConstraints_30);
+            }
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_35_35;
+
+            {
+              parse_tree__prog_io_typeclass__V_35_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_35_35, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__HeadConstraint_29));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_35_35, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__TailConstraints_30));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_35_35));
+            }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_31;
+            MR_Word parse_tree__prog_io_typeclass__V_38_38;
+            MR_Word parse_tree__prog_io_typeclass__V_39_39;
+            MR_Word parse_tree__prog_io_typeclass__V_40_40;
+            MR_Word parse_tree__prog_io_typeclass__V_45_45;
+
+            {
+              parse_tree__prog_io_typeclass__V_40_40 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__ConstraintsTerm_7);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_39_39, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_40_40));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_39_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[113])));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_38_38, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_39_39));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_38_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              parse_tree__prog_io_typeclass__Spec_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_31, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_31, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_31, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_38_38));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_31));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_45_45));
+            }
+          }
+      }
+  }
+}
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__check_tvars_in_instance_constraint__808__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_12,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_57)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_String parse_tree__prog_io_typeclass__HeadVar__3_58;
+
+    {
+      parse_tree__prog_io_typeclass__HeadVar__3_58 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__TVarSet_12, parse_tree__prog_io_typeclass__HeadVar__2_57);
+    }
+    return parse_tree__prog_io_typeclass__HeadVar__3_58;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__check_tvars_in_instance_constraint__805__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__TypesVars_17,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_52)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = mercury__list__member_2_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], ((MR_Box) (parse_tree__prog_io_typeclass__HeadVar__2_52)), parse_tree__prog_io_typeclass__TypesVars_17);
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_unconstrained_class__332__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_82,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_83)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      mercury__term__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__HeadVar__1_82, parse_tree__prog_io_typeclass__HeadVar__2_83);
+    }
+  }
+}
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__222__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_169,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_160)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_String parse_tree__prog_io_typeclass__HeadVar__3_161;
+
+    {
+      parse_tree__prog_io_typeclass__HeadVar__3_161 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__HeadVar__1_169, parse_tree__prog_io_typeclass__HeadVar__2_160);
+    }
+    return parse_tree__prog_io_typeclass__HeadVar__3_161;
+  }
+}
+
+static MR_String MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__219__1_2_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_169,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_157)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_String parse_tree__prog_io_typeclass__HeadVar__3_158;
+
+    {
+      parse_tree__prog_io_typeclass__HeadVar__3_158 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__HeadVar__1_169, parse_tree__prog_io_typeclass__HeadVar__2_157);
+    }
+    return parse_tree__prog_io_typeclass__HeadVar__3_158;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__180__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Params_26,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_152)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__is_in_list_2_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], parse_tree__prog_io_typeclass__Params_26, ((MR_Box) (parse_tree__prog_io_typeclass__HeadVar__2_152)));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__178__1_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Params_26,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_150)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__is_in_list_2_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], parse_tree__prog_io_typeclass__Params_26, ((MR_Box) (parse_tree__prog_io_typeclass__HeadVar__2_150)));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____maybe_class_and_inst_constraints_0_0(
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__3_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar1_4 = parse_tree__prog_io_typeclass__HeadVar__2_2;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar2_5 = parse_tree__prog_io_typeclass__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[1], parse_tree__prog_io_typeclass__HeadVar__1_1, ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar1_4)), ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____maybe_class_and_inst_constraints_0_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar1_3 = parse_tree__prog_io_typeclass__HeadVar__1_1;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar2_4 = parse_tree__prog_io_typeclass__HeadVar__2_2;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[1], ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar1_3)), ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar2_4)));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraints_0_0(
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__3_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar1_4 = parse_tree__prog_io_typeclass__HeadVar__2_2;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar2_5 = parse_tree__prog_io_typeclass__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[7], parse_tree__prog_io_typeclass__HeadVar__1_1, ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar1_4)), ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraints_0_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar1_3 = parse_tree__prog_io_typeclass__HeadVar__1_1;
+    MR_Word parse_tree__prog_io_typeclass__Cast_HeadVar2_4 = parse_tree__prog_io_typeclass__HeadVar__2_2;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[7], ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar1_3)), ((MR_Box) (parse_tree__prog_io_typeclass__Cast_HeadVar2_4)));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass____Compare____arbitrary_constraint_0_0(
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__3_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Integer parse_tree__prog_io_typeclass__CastX_45 = (MR_Integer) parse_tree__prog_io_typeclass__HeadVar__2_2;
+    MR_Integer parse_tree__prog_io_typeclass__CastY_46 = (MR_Integer) parse_tree__prog_io_typeclass__HeadVar__3_3;
+
+    parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__CastX_45 == parse_tree__prog_io_typeclass__CastY_46);
+    if (parse_tree__prog_io_typeclass__succeeded)
+      *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_56_56 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 0);
+
+            switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word parse_tree__prog_io_typeclass__V_5_5 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3), (MR_Integer) 0);
+
+                  {
+                    parse_tree__prog_data____Compare____prog_constraint_0_0(parse_tree__prog_io_typeclass__HeadVar__1_1, parse_tree__prog_io_typeclass__V_56_56, parse_tree__prog_io_typeclass__V_5_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_55_55 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word parse_tree__prog_io_typeclass__V_16_16 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3), (MR_Integer) 1);
+
+                  {
+                    parse_tree__prog_data____Compare____prog_constraint_0_0(parse_tree__prog_io_typeclass__HeadVar__1_1, parse_tree__prog_io_typeclass__V_55_55, parse_tree__prog_io_typeclass__V_16_16);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_52_52 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 2);
+
+            switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word parse_tree__prog_io_typeclass__V_44_44 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3), (MR_Integer) 2);
+
+                  {
+                    parse_tree__prog_data____Compare____prog_fundep_0_0(parse_tree__prog_io_typeclass__HeadVar__1_1, parse_tree__prog_io_typeclass__V_52_52, parse_tree__prog_io_typeclass__V_44_44);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word parse_tree__prog_io_typeclass__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *parse_tree__prog_io_typeclass__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word parse_tree__prog_io_typeclass__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word parse_tree__prog_io_typeclass__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word parse_tree__prog_io_typeclass__V_32_32;
+
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[6], &parse_tree__prog_io_typeclass__V_32_32, ((MR_Box) (parse_tree__prog_io_typeclass__V_54_54)), ((MR_Box) (parse_tree__prog_io_typeclass__V_30_30)));
+                  }
+                  parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_32_32 == (MR_Integer) 0);
+                  parse_tree__prog_io_typeclass__succeeded = !(parse_tree__prog_io_typeclass__succeeded);
+                  if (parse_tree__prog_io_typeclass__succeeded)
+                    *parse_tree__prog_io_typeclass__HeadVar__1_1 = parse_tree__prog_io_typeclass__V_32_32;
+                  else
+                    {
+                      parse_tree__prog_data____Compare____mer_inst_0_0(parse_tree__prog_io_typeclass__HeadVar__1_1, parse_tree__prog_io_typeclass__V_53_53, parse_tree__prog_io_typeclass__V_31_31);
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass____Unify____arbitrary_constraint_0_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Integer parse_tree__prog_io_typeclass__CastX_13 = (MR_Integer) parse_tree__prog_io_typeclass__HeadVar__1_1;
+    MR_Integer parse_tree__prog_io_typeclass__CastY_14 = (MR_Integer) parse_tree__prog_io_typeclass__HeadVar__2_2;
+
+    parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__CastX_13 == parse_tree__prog_io_typeclass__CastY_14);
+    if (parse_tree__prog_io_typeclass__succeeded)
+      parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_3_3 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1), (MR_Integer) 0);
+            MR_Word parse_tree__prog_io_typeclass__V_4_4;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_4_4 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 0);
+                {
+                  parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_data____Unify____prog_constraint_0_0(parse_tree__prog_io_typeclass__V_3_3, parse_tree__prog_io_typeclass__V_4_4);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_5_5 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1), (MR_Integer) 1);
+            MR_Word parse_tree__prog_io_typeclass__V_6_6;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_6_6 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 1);
+                {
+                  parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_data____Unify____prog_constraint_0_0(parse_tree__prog_io_typeclass__V_5_5, parse_tree__prog_io_typeclass__V_6_6);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word parse_tree__prog_io_typeclass__V_11_11 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1), (MR_Integer) 2);
+            MR_Word parse_tree__prog_io_typeclass__V_12_12;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_12_12 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2), (MR_Integer) 2);
+                {
+                  parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_data____Unify____prog_fundep_0_0(parse_tree__prog_io_typeclass__V_11_11, parse_tree__prog_io_typeclass__V_12_12);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word parse_tree__prog_io_typeclass__TypeInfo_16_16;
+            MR_Word parse_tree__prog_io_typeclass__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word parse_tree__prog_io_typeclass__V_9_9;
+            MR_Word parse_tree__prog_io_typeclass__V_10_10;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__2_2, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__HeadVar__2_2, (MR_Integer) 1)));
+                parse_tree__prog_io_typeclass__TypeInfo_16_16 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[6];
+                {
+                  parse_tree__prog_io_typeclass__succeeded = mercury__builtin__unify_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_16_16, ((MR_Box) (parse_tree__prog_io_typeclass__V_7_7)), ((MR_Box) (parse_tree__prog_io_typeclass__V_9_9)));
+                }
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(parse_tree__prog_io_typeclass__V_8_8, parse_tree__prog_io_typeclass__V_10_10);
+                  }
+              }
+          }
+          break;
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__is_in_list_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__TypeInfo_for_T_5,
+  MR_Word parse_tree__prog_io_typeclass__List_3,
+  MR_Box parse_tree__prog_io_typeclass__Element_4)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = mercury__list__member_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_for_T_5, parse_tree__prog_io_typeclass__Element_4, parse_tree__prog_io_typeclass__List_3);
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__term_to_instance_method_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass___ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeInstanceMethod_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__MethodTerm_7, parse_tree__prog_io_typeclass__MaybeInstanceMethod_8);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_2(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_String parse_tree__prog_io_typeclass__conv0_HeadVar__3_58;
+
+    {
+      parse_tree__prog_io_typeclass__conv0_HeadVar__3_58 = parse_tree__prog_io_typeclass__IntroducedFrom__func__check_tvars_in_instance_constraint__808__1_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__3_58));
+    return parse_tree__prog_io_typeclass__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__IntroducedFrom__pred__check_tvars_in_instance_constraint__805__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_4,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_5,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeSpec_6)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__Types_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 1)));
+    MR_Word parse_tree__prog_io_typeclass__Constraints_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 3)));
+    MR_Word parse_tree__prog_io_typeclass__TVarSet_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 5)));
+    MR_Word parse_tree__prog_io_typeclass___Name_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass___OriginalTypes_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 2)));
+    MR_Word parse_tree__prog_io_typeclass___Methods_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 4)));
+    MR_Word parse_tree__prog_io_typeclass___ModName_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 6)));
+    MR_Word parse_tree__prog_io_typeclass___Context_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 7)));
+    MR_Integer parse_tree__prog_io_typeclass___SeqNum_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_4, (MR_Integer) 8)));
+    MR_Word parse_tree__prog_io_typeclass__UnboundTVars_19;
+    MR_Word parse_tree__prog_io_typeclass__TVars_16;
+    MR_Word parse_tree__prog_io_typeclass__TypesVars_17;
+    MR_Word parse_tree__prog_io_typeclass__V_27_27;
+    MR_Word parse_tree__prog_io_typeclass___BoundTVars_18;
+    MR_Word parse_tree__prog_io_typeclass__V_20_20;
+    MR_Word parse_tree__prog_io_typeclass__V_21_21;
+
+    {
+      parse_tree__prog_type__constraint_list_get_tvars_2_p_0(parse_tree__prog_io_typeclass__Constraints_10, &parse_tree__prog_io_typeclass__TVars_16);
+    }
+    {
+      parse_tree__prog_type__type_vars_list_2_p_0(parse_tree__prog_io_typeclass__Types_8, &parse_tree__prog_io_typeclass__TypesVars_17);
+    }
+    {
+      parse_tree__prog_io_typeclass__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_27_27, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_27_27, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_1));
+      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_27_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_27_27, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__TypesVars_17));
+    }
+    {
+      mercury__list__filter_4_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], parse_tree__prog_io_typeclass__V_27_27, parse_tree__prog_io_typeclass__TVars_16, &parse_tree__prog_io_typeclass___BoundTVars_18, &parse_tree__prog_io_typeclass__UnboundTVars_19);
+    }
+    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__UnboundTVars_19)) == (MR_mktag((MR_Integer) 1)));
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__UnboundTVars_19, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__UnboundTVars_19, (MR_Integer) 1)));
+        {
+          MR_Word parse_tree__prog_io_typeclass__TypeInfo_55_55 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1];
+          MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_60_60;
+          MR_Word parse_tree__prog_io_typeclass__UnboundTVarStrs_22;
+          MR_Word parse_tree__prog_io_typeclass__UnboundTVarPieces_23;
+          MR_Word parse_tree__prog_io_typeclass__Prefix_24;
+          MR_Word parse_tree__prog_io_typeclass__Pieces_25;
+          MR_Word parse_tree__prog_io_typeclass__Spec_26;
+          MR_Word parse_tree__prog_io_typeclass__V_28_28;
+          MR_Word parse_tree__prog_io_typeclass__V_36_36;
+          MR_Word parse_tree__prog_io_typeclass__V_45_45;
+          MR_Word parse_tree__prog_io_typeclass__V_46_46;
+          MR_Word parse_tree__prog_io_typeclass__V_47_47;
+          MR_Word parse_tree__prog_io_typeclass__V_48_48;
+          MR_Word parse_tree__prog_io_typeclass__V_49_49;
+          MR_Integer parse_tree__prog_io_typeclass__V_29_29;
+
+          {
+            parse_tree__prog_io_typeclass__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_28_28, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_5[0]));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_28_28, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0_2));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_28_28, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_12));
+          }
+          {
+            parse_tree__prog_io_typeclass__UnboundTVarStrs_22 = mercury__list__map_2_f_0(parse_tree__prog_io_typeclass__TypeInfo_55_55, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, parse_tree__prog_io_typeclass__V_28_28, parse_tree__prog_io_typeclass__UnboundTVars_19);
+          }
+          {
+            parse_tree__prog_io_typeclass__UnboundTVarPieces_23 = parse_tree__error_util__list_to_pieces_1_f_0(parse_tree__prog_io_typeclass__UnboundTVarStrs_22);
+          }
+          {
+            parse_tree__prog_io_typeclass__V_29_29 = mercury__list__length_1_f_0(parse_tree__prog_io_typeclass__TypeInfo_55_55, parse_tree__prog_io_typeclass__UnboundTVars_19);
+          }
+          parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_29_29 == (MR_Integer) 1);
+          if (parse_tree__prog_io_typeclass__succeeded)
+            {
+              parse_tree__prog_io_typeclass__Prefix_24 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[110]);
+            }
+          else
+            {
+              parse_tree__prog_io_typeclass__Prefix_24 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[112]);
+            }
+          parse_tree__prog_io_typeclass__TypeCtorInfo_60_60 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+          {
+            parse_tree__prog_io_typeclass__V_36_36 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_60_60, parse_tree__prog_io_typeclass__UnboundTVarPieces_23, (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[77]));
+          }
+          {
+            parse_tree__prog_io_typeclass__Pieces_25 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_60_60, parse_tree__prog_io_typeclass__Prefix_24, parse_tree__prog_io_typeclass__V_36_36);
+          }
+          {
+            parse_tree__prog_io_typeclass__V_47_47 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__NameTerm_5);
+          }
+          {
+            parse_tree__prog_io_typeclass__V_49_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_49_49, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_25));
+          }
+          {
+            parse_tree__prog_io_typeclass__V_48_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_48_48, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_49_49));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_48_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            parse_tree__prog_io_typeclass__V_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_46_46, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_47_47));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_46_46, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_48_48));
+          }
+          {
+            parse_tree__prog_io_typeclass__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_46_46));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            parse_tree__prog_io_typeclass__Spec_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_26, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_45_45));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            *parse_tree__prog_io_typeclass__MaybeSpec_6 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_26));
+          }
+        }
+      }
+    else
+      *parse_tree__prog_io_typeclass__MaybeSpec_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_MaybeInstanceMethod_8;
+
+    {
+      parse_tree__prog_io_typeclass__term_to_instance_method_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 4))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), &parse_tree__prog_io_typeclass__conv0_MaybeInstanceMethod_8);
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_MaybeInstanceMethod_8));
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_9,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_10,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_11,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_12,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_13,
+  MR_Word parse_tree__prog_io_typeclass__Context_14,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_15,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_16)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_17;
+    MR_Word parse_tree__prog_io_typeclass__MaybeInstanceMethods_18;
+    MR_Word parse_tree__prog_io_typeclass__MethodList_56;
+    MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo0_19;
+    MR_Word parse_tree__prog_io_typeclass__InstanceMethods_20;
+
+    {
+      parse_tree__prog_io_typeclass__parse_instance_name_6_p_0(parse_tree__prog_io_typeclass__ModuleName_9, parse_tree__prog_io_typeclass__TVarSet_11, parse_tree__prog_io_typeclass__NameTerm_12, parse_tree__prog_io_typeclass__Context_14, parse_tree__prog_io_typeclass__SeqNum_15, &parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_17);
+    }
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_util__list_term_to_term_list_2_p_0(parse_tree__prog_io_typeclass__MethodsTerm_13, &parse_tree__prog_io_typeclass__MethodList_56);
+    }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__Interface_57;
+        MR_Word parse_tree__prog_io_typeclass__V_60_60;
+        MR_Word parse_tree__prog_io_typeclass__Methods_85;
+        MR_Word parse_tree__prog_io_typeclass__Specs_86;
+
+        {
+          parse_tree__prog_io_typeclass__V_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_6[1]));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0_1));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__ModuleName_9));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__VarSet_10));
+        }
+        {
+          mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[3], (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[10], parse_tree__prog_io_typeclass__V_60_60, parse_tree__prog_io_typeclass__MethodList_56, &parse_tree__prog_io_typeclass__Interface_57);
+        }
+        {
+          parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_50_95_95_91_49_93_95_48_5_p_0(parse_tree__prog_io_typeclass__Interface_57, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &parse_tree__prog_io_typeclass__Methods_85, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &parse_tree__prog_io_typeclass__Specs_86);
+        }
+        if ((parse_tree__prog_io_typeclass__Specs_86 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            parse_tree__prog_io_typeclass__MaybeInstanceMethods_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeInstanceMethods_18, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Methods_85));
+          }
+        else
+          {
+            parse_tree__prog_io_typeclass__MaybeInstanceMethods_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeInstanceMethods_18, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_86));
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Spec_59;
+        MR_Word parse_tree__prog_io_typeclass__V_68_68;
+        MR_Word parse_tree__prog_io_typeclass__V_69_69;
+        MR_Word parse_tree__prog_io_typeclass__V_70_70;
+        MR_Word parse_tree__prog_io_typeclass__V_75_75;
+
+        {
+          parse_tree__prog_io_typeclass__V_70_70 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__MethodsTerm_13);
+        }
+        {
+          parse_tree__prog_io_typeclass__V_69_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_69_69, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_70_70));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_69_69, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[108])));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_68_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_68_68, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_69_69));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_68_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          parse_tree__prog_io_typeclass__Spec_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_59, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_59, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_68_68));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_75_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_75_75, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_59));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_75_75, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          parse_tree__prog_io_typeclass__MaybeInstanceMethods_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeInstanceMethods_18, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_75_75));
+        }
+      }
+    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_17)) == (MR_mktag((MR_Integer) 1)));
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__ItemInstanceInfo0_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_17, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeInstanceMethods_18)) == (MR_mktag((MR_Integer) 1)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          parse_tree__prog_io_typeclass__InstanceMethods_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeInstanceMethods_18, (MR_Integer) 0)));
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_21;
+        MR_Word parse_tree__prog_io_typeclass__MaybeCheckSpec_22;
+        MR_Word parse_tree__prog_io_typeclass__V_26_26;
+        MR_Word parse_tree__prog_io_typeclass__V_31_31;
+        MR_Word parse_tree__prog_io_typeclass__V_32_32;
+        MR_Word parse_tree__prog_io_typeclass__V_33_33;
+        MR_Word parse_tree__prog_io_typeclass__V_34_34;
+        MR_Word parse_tree__prog_io_typeclass__V_37_37;
+        MR_Word parse_tree__prog_io_typeclass__V_38_38;
+        MR_Integer parse_tree__prog_io_typeclass__V_39_39;
+        MR_Word parse_tree__prog_io_typeclass__V_35_35;
+        MR_Word parse_tree__prog_io_typeclass__V_36_36;
+
+        {
+          parse_tree__prog_io_typeclass__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_26_26, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceMethods_20));
+        }
+        parse_tree__prog_io_typeclass__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 3)));
+        parse_tree__prog_io_typeclass__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 4)));
+        parse_tree__prog_io_typeclass__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 5)));
+        parse_tree__prog_io_typeclass__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 6)));
+        parse_tree__prog_io_typeclass__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 7)));
+        parse_tree__prog_io_typeclass__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_19, (MR_Integer) 8)));
+        {
+          parse_tree__prog_io_typeclass__ItemInstanceInfo_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_31_31));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_32_32));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_33_33));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__V_34_34));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__V_26_26));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_11));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__V_37_37));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__V_38_38));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 8) = ((MR_Box) (parse_tree__prog_io_typeclass__V_39_39));
+        }
+        {
+          parse_tree__prog_io_typeclass__check_tvars_in_instance_constraint_3_p_0(parse_tree__prog_io_typeclass__ItemInstanceInfo_21, parse_tree__prog_io_typeclass__NameTerm_12, &parse_tree__prog_io_typeclass__MaybeCheckSpec_22);
+        }
+        if ((parse_tree__prog_io_typeclass__MaybeCheckSpec_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_16 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemInstanceInfo_21));
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeCheckSpec_22, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_27_27;
+
+            {
+              parse_tree__prog_io_typeclass__V_27_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_27_27, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_23));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_27_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_16 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_27_27));
+            }
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_24;
+        MR_Word parse_tree__prog_io_typeclass__V_29_29;
+        MR_Word parse_tree__prog_io_typeclass__V_30_30;
+
+        {
+          parse_tree__prog_io_typeclass__V_29_29 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0, parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_17);
+        }
+        {
+          parse_tree__prog_io_typeclass__V_30_30 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[9], parse_tree__prog_io_typeclass__MaybeInstanceMethods_18);
+        }
+        {
+          parse_tree__prog_io_typeclass__Specs_24 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, parse_tree__prog_io_typeclass__V_29_29, parse_tree__prog_io_typeclass__V_30_30);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_16 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_24));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_underived_instance_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_31_31;
+    MR_Word parse_tree__prog_io_typeclass__NameContextPieces_13;
+    MR_Word parse_tree__prog_io_typeclass__VarSet_14;
+    MR_Word parse_tree__prog_io_typeclass__MaybeClassName_15;
+
+    {
+      parse_tree__prog_io_typeclass__NameContextPieces_13 = mercury__cord__singleton_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[107]))));
+    }
+    parse_tree__prog_io_typeclass__TypeCtorInfo_31_31 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+    {
+      mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__TypeCtorInfo_31_31, parse_tree__prog_io_typeclass__TVarSet_8, &parse_tree__prog_io_typeclass__VarSet_14);
+    }
+    {
+      parse_tree__prog_io_sym_name__parse_sym_name_and_args_4_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_31_31, parse_tree__prog_io_typeclass__NameTerm_9, parse_tree__prog_io_typeclass__VarSet_14, parse_tree__prog_io_typeclass__NameContextPieces_13, &parse_tree__prog_io_typeclass__MaybeClassName_15);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeClassName_15)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 0)));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_28));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__ClassName_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__TypeTerms_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__MaybeTypes_19;
+
+        {
+          parse_tree__prog_io_type_name__parse_types_4_p_0(parse_tree__prog_io_typeclass__TypeTerms_17, parse_tree__prog_io_typeclass__VarSet_14, parse_tree__prog_io_typeclass__NameContextPieces_13, &parse_tree__prog_io_typeclass__MaybeTypes_19);
+        }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeTypes_19)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12 = (MR_Word) parse_tree__prog_io_typeclass__MaybeTypes_19;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Types_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeTypes_19, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_21;
+
+            {
+              parse_tree__prog_io_typeclass__ItemInstanceInfo_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassName_16));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Types_20));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__Types_20));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_8));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__ModuleName_7));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_10));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_21, 8) = ((MR_Box) (parse_tree__prog_io_typeclass__SeqNum_11));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemInstanceInfo_21));
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_instance_name_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__ArgTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerm_9)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass__NameTerm_13;
+    MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_14;
+    MR_Word parse_tree__prog_io_typeclass__V_16_16;
+    MR_String parse_tree__prog_io_typeclass__V_17_17;
+    MR_Word parse_tree__prog_io_typeclass__V_18_18;
+    MR_Word parse_tree__prog_io_typeclass__V_19_19;
+    MR_Word parse_tree__prog_io_typeclass__V_20_20;
+    MR_Word parse_tree__prog_io_typeclass__V_15_15;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_9, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_9, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_9, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_16_16)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_16_16, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_17_17, (MR_String) "<=") == 0);
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_18_18)) == (MR_mktag((MR_Integer) 1)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__NameTerm_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_18_18, (MR_Integer) 1)));
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_19_19)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__ConstraintsTerm_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_19_19, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_19_19, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_20_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+          }
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_31_75;
+        MR_Word parse_tree__prog_io_typeclass__VarSet_28;
+        MR_Word parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29;
+        MR_Word parse_tree__prog_io_typeclass__MaybeInstanceConstraints_30;
+        MR_Word parse_tree__prog_io_typeclass__NameContextPieces_57;
+        MR_Word parse_tree__prog_io_typeclass__VarSet_58;
+        MR_Word parse_tree__prog_io_typeclass__MaybeClassName_59;
+        MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo0_31;
+        MR_Word parse_tree__prog_io_typeclass__InstanceConstraints_32;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, (MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__TVarSet_8, &parse_tree__prog_io_typeclass__VarSet_28);
+        }
+        {
+          parse_tree__prog_io_typeclass__NameContextPieces_57 = mercury__cord__singleton_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[107]))));
+        }
+        parse_tree__prog_io_typeclass__TypeCtorInfo_31_75 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__TypeCtorInfo_31_75, parse_tree__prog_io_typeclass__TVarSet_8, &parse_tree__prog_io_typeclass__VarSet_58);
+        }
+        {
+          parse_tree__prog_io_sym_name__parse_sym_name_and_args_4_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_31_75, parse_tree__prog_io_typeclass__NameTerm_13, parse_tree__prog_io_typeclass__VarSet_58, parse_tree__prog_io_typeclass__NameContextPieces_57, &parse_tree__prog_io_typeclass__MaybeClassName_59);
+        }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeClassName_59)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word parse_tree__prog_io_typeclass__Specs_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeClassName_59, (MR_Integer) 0)));
+
+            {
+              parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_72));
+            }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__ClassName_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_59, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__TypeTerms_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_59, (MR_Integer) 1)));
+            MR_Word parse_tree__prog_io_typeclass__MaybeTypes_63;
+
+            {
+              parse_tree__prog_io_type_name__parse_types_4_p_0(parse_tree__prog_io_typeclass__TypeTerms_61, parse_tree__prog_io_typeclass__VarSet_58, parse_tree__prog_io_typeclass__NameContextPieces_57, &parse_tree__prog_io_typeclass__MaybeTypes_63);
+            }
+            if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeTypes_63)) == (MR_mktag((MR_Integer) 0))))
+              parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29 = (MR_Word) parse_tree__prog_io_typeclass__MaybeTypes_63;
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__Types_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeTypes_63, (MR_Integer) 0)));
+                MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_65;
+
+                {
+                  parse_tree__prog_io_typeclass__ItemInstanceInfo_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassName_60));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Types_64));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__Types_64));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_8));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__ModuleName_7));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_10));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_65, 8) = ((MR_Box) (parse_tree__prog_io_typeclass__SeqNum_11));
+                }
+                {
+                  parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemInstanceInfo_65));
+                }
+              }
+          }
+        {
+          parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_105_110_115_116_97_110_99_101_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(parse_tree__prog_io_typeclass__VarSet_28, parse_tree__prog_io_typeclass__ConstraintsTerm_14, &parse_tree__prog_io_typeclass__MaybeInstanceConstraints_30);
+        }
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29)) == (MR_mktag((MR_Integer) 1)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__ItemInstanceInfo0_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeInstanceConstraints_30)) == (MR_mktag((MR_Integer) 1)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              parse_tree__prog_io_typeclass__InstanceConstraints_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeInstanceConstraints_30, (MR_Integer) 0)));
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_33;
+            MR_Word parse_tree__prog_io_typeclass__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 1)));
+            MR_Word parse_tree__prog_io_typeclass__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 2)));
+            MR_Word parse_tree__prog_io_typeclass__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 4)));
+            MR_Word parse_tree__prog_io_typeclass__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 5)));
+            MR_Word parse_tree__prog_io_typeclass__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 6)));
+            MR_Word parse_tree__prog_io_typeclass__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 7)));
+            MR_Integer parse_tree__prog_io_typeclass__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 8)));
+            MR_Word parse_tree__prog_io_typeclass__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo0_31, (MR_Integer) 3)));
+
+            {
+              parse_tree__prog_io_typeclass__ItemInstanceInfo_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_37_37));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_38_38));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_39_39));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__InstanceConstraints_32));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__V_41_41));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__V_42_42));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__V_43_43));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__V_44_44));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemInstanceInfo_33, 8) = ((MR_Box) (parse_tree__prog_io_typeclass__V_45_45));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemInstanceInfo_33));
+            }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Specs_34;
+            MR_Word parse_tree__prog_io_typeclass__V_35_35;
+            MR_Word parse_tree__prog_io_typeclass__V_36_36;
+
+            {
+              parse_tree__prog_io_typeclass__V_35_35 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0, parse_tree__prog_io_typeclass__MaybeItemInstanceInfo0_29);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_36_36 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[8], parse_tree__prog_io_typeclass__MaybeInstanceConstraints_30);
+            }
+            {
+              parse_tree__prog_io_typeclass__Specs_34 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, parse_tree__prog_io_typeclass__V_35_35, parse_tree__prog_io_typeclass__V_36_36);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_34));
+            }
+          }
+      }
+    else
+      {
+        parse_tree__prog_io_typeclass__parse_underived_instance_6_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__TVarSet_8, parse_tree__prog_io_typeclass__ArgTerm_9, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_12);
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_fundep_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__Term_3,
+  MR_Word * parse_tree__prog_io_typeclass__Result_4)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Term_3)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass__DomainTerm_5;
+    MR_Word parse_tree__prog_io_typeclass__RangeTerm_6;
+    MR_Word parse_tree__prog_io_typeclass__V_12_12;
+    MR_String parse_tree__prog_io_typeclass__V_13_13;
+    MR_Word parse_tree__prog_io_typeclass__V_14_14;
+    MR_Word parse_tree__prog_io_typeclass__V_15_15;
+    MR_Word parse_tree__prog_io_typeclass__V_16_16;
+    MR_Word parse_tree__prog_io_typeclass__V_7_7;
+    MR_Word parse_tree__prog_io_typeclass__Domain_8;
+    MR_Word parse_tree__prog_io_typeclass__Range_9;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_7_46;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_8_47;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_7_52;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_8_53;
+    MR_Word parse_tree__prog_io_typeclass__TypesTerm_44;
+    MR_Word parse_tree__prog_io_typeclass__TypeTerms_45;
+    MR_Word parse_tree__prog_io_typeclass__TypesTerm_50;
+    MR_Word parse_tree__prog_io_typeclass__TypeTerms_51;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Term_3, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Term_3, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Term_3, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_12_12)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_12_12, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_13_13, (MR_String) "->") == 0);
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_14_14)) == (MR_mktag((MR_Integer) 1)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__DomainTerm_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_14_14, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_14_14, (MR_Integer) 1)));
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_15_15)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__RangeTerm_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_15_15, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_15_15, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_16_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__TypeCtorInfo_7_46 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                            parse_tree__prog_io_typeclass__TypeCtorInfo_8_47 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0;
+                            {
+                              parse_tree__prog_io_typeclass__TypesTerm_44 = mercury__term__coerce_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_7_46, parse_tree__prog_io_typeclass__TypeCtorInfo_8_47, parse_tree__prog_io_typeclass__DomainTerm_5);
+                            }
+                            {
+                              parse_tree__prog_io_util__conjunction_to_list_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_8_47, parse_tree__prog_io_typeclass__TypesTerm_44, &parse_tree__prog_io_typeclass__TypeTerms_45);
+                            }
+                            {
+                              parse_tree__prog_io_typeclass__succeeded = mercury__term__term_list_to_var_list_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_8_47, parse_tree__prog_io_typeclass__TypeTerms_45, &parse_tree__prog_io_typeclass__Domain_8);
+                            }
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                parse_tree__prog_io_typeclass__TypeCtorInfo_7_52 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                                parse_tree__prog_io_typeclass__TypeCtorInfo_8_53 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0;
+                                {
+                                  parse_tree__prog_io_typeclass__TypesTerm_50 = mercury__term__coerce_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_7_52, parse_tree__prog_io_typeclass__TypeCtorInfo_8_53, parse_tree__prog_io_typeclass__RangeTerm_6);
+                                }
+                                {
+                                  parse_tree__prog_io_util__conjunction_to_list_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_8_53, parse_tree__prog_io_typeclass__TypesTerm_50, &parse_tree__prog_io_typeclass__TypeTerms_51);
+                                }
+                                {
+                                  parse_tree__prog_io_typeclass__succeeded = mercury__term__term_list_to_var_list_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_8_53, parse_tree__prog_io_typeclass__TypeTerms_51, &parse_tree__prog_io_typeclass__Range_9);
+                                }
+                              }
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                MR_Word parse_tree__prog_io_typeclass__V_17_17;
+                                MR_Word parse_tree__prog_io_typeclass__V_18_18;
+
+                                {
+                                  parse_tree__prog_io_typeclass__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Domain_8));
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_18_18, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Range_9));
+                                }
+                                parse_tree__prog_io_typeclass__V_17_17 = (MR_Word) MR_mkword(MR_mktag(2), (MR_Word) parse_tree__prog_io_typeclass__V_18_18);
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                  *parse_tree__prog_io_typeclass__Result_4 = base;
+                                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_17_17));
+                                }
+                              }
+                            else
+                              {
+                                MR_Word parse_tree__prog_io_typeclass__Spec_11;
+                                MR_Word parse_tree__prog_io_typeclass__V_32_32;
+                                MR_Word parse_tree__prog_io_typeclass__V_33_33;
+                                MR_Word parse_tree__prog_io_typeclass__V_34_34;
+                                MR_Word parse_tree__prog_io_typeclass__V_39_39;
+
+                                {
+                                  parse_tree__prog_io_typeclass__V_34_34 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__Term_3);
+                                }
+                                {
+                                  parse_tree__prog_io_typeclass__V_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_33_33, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_34_34));
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_33_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[106])));
+                                }
+                                {
+                                  parse_tree__prog_io_typeclass__V_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_32_32, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_33_33));
+                                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_32_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                }
+                                {
+                                  parse_tree__prog_io_typeclass__Spec_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_11, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_11, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_11, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_32_32));
+                                }
+                                {
+                                  parse_tree__prog_io_typeclass__V_39_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_39_39, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_11));
+                                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_39_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                }
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                                  *parse_tree__prog_io_typeclass__Result_4 = base;
+                                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_39_39));
+                                }
+                              }
+                            parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_1(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg)
+{
+  {
+    struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s * parse_tree__prog_io_typeclass__env_ptr = (struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s *) parse_tree__prog_io_typeclass__env_ptr_arg;
+
+    MR_builtin_longjmp((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_3(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg)
+{
+  {
+    struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s * parse_tree__prog_io_typeclass__env_ptr = (struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s *) parse_tree__prog_io_typeclass__env_ptr_arg;
+
+    (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgType_89 = ((MR_Word) (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__conv0_ArgType_89);
+    {
+      parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_2(parse_tree__prog_io_typeclass__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_2(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg)
+{
+  {
+    struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s * parse_tree__prog_io_typeclass__env_ptr = (struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s *) parse_tree__prog_io_typeclass__env_ptr_arg;
+
+    {
+      (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = parse_tree__prog_type__type_is_nonvar_1_p_0((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgType_89);
+    }
+    if ((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+      {
+        {
+          (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = parse_tree__prog_type__type_is_nonground_1_p_0((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgType_89);
+        }
+        if ((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+          {
+            parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_1(parse_tree__prog_io_typeclass__env_ptr);
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_4(
+  void * parse_tree__prog_io_typeclass__env_ptr_arg)
+{
+  {
+    struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s * parse_tree__prog_io_typeclass__env_ptr = (struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s *) parse_tree__prog_io_typeclass__env_ptr_arg;
+
+    if (MR_builtin_setjmp((parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__commit_0) == 0)
+      {
+        {
+          {
+            mercury__list__member_2_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, &(parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__conv0_ArgType_89, (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgTypes_87, parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_3, parse_tree__prog_io_typeclass__env_ptr);
+          }
+        }
+        (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (parse_tree__prog_io_typeclass__env_ptr)->parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__VarSet_5,
+  MR_Word parse_tree__prog_io_typeclass__HeadTerm_6,
+  MR_Word parse_tree__prog_io_typeclass__TailTerms_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    struct parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0_s parse_tree__prog_io_typeclass__env;
+
+    {
+      MR_Word parse_tree__prog_io_typeclass__HeadResult_9;
+      MR_Word parse_tree__prog_io_typeclass__InstVar_31;
+      MR_Word parse_tree__prog_io_typeclass__Inst_32;
+      MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_18_84;
+      MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_19_85;
+      MR_Word parse_tree__prog_io_typeclass__Arg1_73;
+      MR_Word parse_tree__prog_io_typeclass__Arg2_74;
+      MR_Word parse_tree__prog_io_typeclass__InstVar0_76;
+      MR_Word parse_tree__prog_io_typeclass__V_78_78;
+      MR_String parse_tree__prog_io_typeclass__V_79_79;
+      MR_Word parse_tree__prog_io_typeclass__V_80_80;
+      MR_Word parse_tree__prog_io_typeclass__V_81_81;
+      MR_Word parse_tree__prog_io_typeclass__V_82_82;
+      MR_Word parse_tree__prog_io_typeclass__V_83_83;
+      MR_Word parse_tree__prog_io_typeclass__V_75_75;
+      MR_Word parse_tree__prog_io_typeclass__V_77_77;
+
+      (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadTerm_6)) == (MR_mktag((MR_Integer) 0)));
+      if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+        {
+          parse_tree__prog_io_typeclass__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadTerm_6, (MR_Integer) 0)));
+          parse_tree__prog_io_typeclass__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadTerm_6, (MR_Integer) 1)));
+          parse_tree__prog_io_typeclass__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadTerm_6, (MR_Integer) 2)));
+          (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_78_78)) == (MR_mktag((MR_Integer) 0)));
+          if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+            {
+              parse_tree__prog_io_typeclass__V_79_79 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_78_78, (MR_Integer) 0)));
+              (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_79_79, (MR_String) "=<") == 0);
+              if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                {
+                  (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_80_80)) == (MR_mktag((MR_Integer) 1)));
+                  if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                    {
+                      parse_tree__prog_io_typeclass__Arg1_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_80_80, (MR_Integer) 0)));
+                      parse_tree__prog_io_typeclass__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_80_80, (MR_Integer) 1)));
+                      (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_81_81)) == (MR_mktag((MR_Integer) 1)));
+                      if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                        {
+                          parse_tree__prog_io_typeclass__Arg2_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_81_81, (MR_Integer) 0)));
+                          parse_tree__prog_io_typeclass__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_81_81, (MR_Integer) 1)));
+                          (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = (parse_tree__prog_io_typeclass__V_82_82 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                            {
+                              (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Arg1_73)) == (MR_mktag((MR_Integer) 1)));
+                              if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                                {
+                                  parse_tree__prog_io_typeclass__InstVar0_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Arg1_73, (MR_Integer) 0)));
+                                  parse_tree__prog_io_typeclass__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__Arg1_73, (MR_Integer) 1)));
+                                  parse_tree__prog_io_typeclass__TypeCtorInfo_18_84 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                                  parse_tree__prog_io_typeclass__TypeCtorInfo_19_85 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+                                  {
+                                    mercury__term__coerce_var_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_18_84, parse_tree__prog_io_typeclass__TypeCtorInfo_19_85, parse_tree__prog_io_typeclass__InstVar0_76, &parse_tree__prog_io_typeclass__InstVar_31);
+                                  }
+                                  parse_tree__prog_io_typeclass__V_83_83 = (MR_Integer) 1;
+                                  {
+                                    (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = parse_tree__prog_io_inst_mode_name__convert_inst_3_p_0(parse_tree__prog_io_typeclass__V_83_83, parse_tree__prog_io_typeclass__Arg2_74, &parse_tree__prog_io_typeclass__Inst_32);
+                                  }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+      if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+        {
+          MR_Word parse_tree__prog_io_typeclass__V_43_43;
+
+          {
+            parse_tree__prog_io_typeclass__V_43_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_43_43, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__InstVar_31));
+            MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_43_43, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Inst_32));
+          }
+          {
+            parse_tree__prog_io_typeclass__HeadResult_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadResult_9, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_43_43));
+          }
+        }
+      else
+        {
+          MR_Word parse_tree__prog_io_typeclass__Result0_33;
+
+          {
+            (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = parse_tree__prog_io_typeclass__parse_fundep_2_p_0(parse_tree__prog_io_typeclass__HeadTerm_6, &parse_tree__prog_io_typeclass__Result0_33);
+          }
+          if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+            parse_tree__prog_io_typeclass__HeadResult_9 = parse_tree__prog_io_typeclass__Result0_33;
+          else
+            {
+              MR_Word parse_tree__prog_io_typeclass__ClassName_34;
+              MR_Word parse_tree__prog_io_typeclass__Args0_35;
+
+              {
+                (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = parse_tree__prog_io_sym_name__try_parse_sym_name_and_args_3_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__HeadTerm_6, &parse_tree__prog_io_typeclass__ClassName_34, &parse_tree__prog_io_typeclass__Args0_35);
+              }
+              if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                {
+                  MR_Word parse_tree__prog_io_typeclass__ArgsResultContextPieces_36;
+                  MR_Word parse_tree__prog_io_typeclass__ArgsResult_37;
+
+                  {
+                    parse_tree__prog_io_typeclass__ArgsResultContextPieces_36 = mercury__cord__singleton_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[104]))));
+                  }
+                  {
+                    parse_tree__prog_io_type_name__parse_types_4_p_0(parse_tree__prog_io_typeclass__Args0_35, parse_tree__prog_io_typeclass__VarSet_5, parse_tree__prog_io_typeclass__ArgsResultContextPieces_36, &parse_tree__prog_io_typeclass__ArgsResult_37);
+                  }
+                  if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgsResult_37)) == (MR_mktag((MR_Integer) 0))))
+                    parse_tree__prog_io_typeclass__HeadResult_9 = (MR_Word) parse_tree__prog_io_typeclass__ArgsResult_37;
+                  else
+                    {
+                      MR_Word parse_tree__prog_io_typeclass__Args_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArgsResult_37, (MR_Integer) 0)));
+                      MR_Word parse_tree__prog_io_typeclass__Constraint_39;
+                      MR_Word parse_tree__prog_io_typeclass___ClassName_86;
+
+                      {
+                        parse_tree__prog_io_typeclass__Constraint_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Constraint_39, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassName_34));
+                        MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Constraint_39, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Args_38));
+                      }
+                      parse_tree__prog_io_typeclass___ClassName_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Constraint_39, (MR_Integer) 0)));
+                      (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__ArgTypes_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Constraint_39, (MR_Integer) 1)));
+                      {
+                        parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_4(&parse_tree__prog_io_typeclass__env);
+                      }
+                      if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                        {
+                          MR_Word parse_tree__prog_io_typeclass__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), (MR_Word) parse_tree__prog_io_typeclass__Constraint_39);
+
+                          {
+                            parse_tree__prog_io_typeclass__HeadResult_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadResult_9, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_46_46));
+                          }
+                        }
+                      else
+                        {
+                          MR_Word parse_tree__prog_io_typeclass__V_47_47 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) parse_tree__prog_io_typeclass__Constraint_39);
+
+                          {
+                            parse_tree__prog_io_typeclass__HeadResult_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadResult_9, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_47_47));
+                          }
+                        }
+                    }
+                }
+              else
+                {
+                  MR_Word parse_tree__prog_io_typeclass__Spec_42;
+                  MR_Word parse_tree__prog_io_typeclass__V_58_58;
+                  MR_Word parse_tree__prog_io_typeclass__V_59_59;
+                  MR_Word parse_tree__prog_io_typeclass__V_60_60;
+                  MR_Word parse_tree__prog_io_typeclass__V_65_65;
+
+                  {
+                    parse_tree__prog_io_typeclass__V_60_60 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__HeadTerm_6);
+                  }
+                  {
+                    parse_tree__prog_io_typeclass__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_59_59, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_60_60));
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_59_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[105])));
+                  }
+                  {
+                    parse_tree__prog_io_typeclass__V_58_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_58_58, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_59_59));
+                    MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_58_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    parse_tree__prog_io_typeclass__Spec_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_42, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_42, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_58_58));
+                  }
+                  {
+                    parse_tree__prog_io_typeclass__V_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_65_65, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_42));
+                    MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_65_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    parse_tree__prog_io_typeclass__HeadResult_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadResult_9, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_65_65));
+                  }
+                }
+            }
+        }
+      if ((parse_tree__prog_io_typeclass__TailTerms_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadResult_9)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__Result_8 = (MR_Word) parse_tree__prog_io_typeclass__HeadResult_9;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__HeadConstraint_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadResult_9, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_20_20;
+
+            {
+              parse_tree__prog_io_typeclass__V_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_20_20, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__HeadConstraint_10));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_20_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__Result_8 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_20_20));
+            }
+          }
+      else
+        {
+          MR_Word parse_tree__prog_io_typeclass__HeadTailTerm_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__TailTerms_7, (MR_Integer) 0)));
+          MR_Word parse_tree__prog_io_typeclass__TailTailTerms_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__TailTerms_7, (MR_Integer) 1)));
+          MR_Word parse_tree__prog_io_typeclass__TailResult_14;
+          MR_Word parse_tree__prog_io_typeclass__TailConstraints_15;
+          MR_Word parse_tree__prog_io_typeclass__HeadConstraint_22;
+
+          {
+            parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0(parse_tree__prog_io_typeclass__VarSet_5, parse_tree__prog_io_typeclass__HeadTailTerm_12, parse_tree__prog_io_typeclass__TailTailTerms_13, &parse_tree__prog_io_typeclass__TailResult_14);
+          }
+          (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadResult_9)) == (MR_mktag((MR_Integer) 1)));
+          if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+            {
+              parse_tree__prog_io_typeclass__HeadConstraint_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadResult_9, (MR_Integer) 0)));
+              (parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__TailResult_14)) == (MR_mktag((MR_Integer) 1)));
+              if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+                parse_tree__prog_io_typeclass__TailConstraints_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__TailResult_14, (MR_Integer) 0)));
+            }
+          if ((parse_tree__prog_io_typeclass__env).parse_tree__prog_io_typeclass__parse_arbitrary_constraint_list_4_p_0_env_0__succeeded)
+            {
+              MR_Word parse_tree__prog_io_typeclass__V_16_16;
+
+              {
+                parse_tree__prog_io_typeclass__V_16_16 = mercury__list__one_or_more_cons_2_f_0((MR_Word) &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0, ((MR_Box) (parse_tree__prog_io_typeclass__HeadConstraint_22)), parse_tree__prog_io_typeclass__TailConstraints_15);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                *parse_tree__prog_io_typeclass__Result_8 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_16_16));
+              }
+            }
+          else
+            {
+              MR_Word parse_tree__prog_io_typeclass__V_17_17;
+              MR_Word parse_tree__prog_io_typeclass__V_18_18;
+              MR_Word parse_tree__prog_io_typeclass__V_19_19;
+
+              {
+                parse_tree__prog_io_typeclass__V_18_18 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0, parse_tree__prog_io_typeclass__HeadResult_9);
+              }
+              {
+                parse_tree__prog_io_typeclass__V_19_19 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[7], parse_tree__prog_io_typeclass__TailResult_14);
+              }
+              {
+                parse_tree__prog_io_typeclass__V_17_17 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, parse_tree__prog_io_typeclass__V_18_18, parse_tree__prog_io_typeclass__V_19_19);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                *parse_tree__prog_io_typeclass__Result_8 = base;
+                MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_17_17));
+              }
+            }
+        }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__collect_class_and_inst_constraints_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__3_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    if ((parse_tree__prog_io_typeclass__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *parse_tree__prog_io_typeclass__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          *parse_tree__prog_io_typeclass__HeadVar__3_3 = mercury__map__init_0_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[6], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0);
+        }
+        parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Constraint_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__Constraints_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__ProgConstraints0_8;
+        MR_Word parse_tree__prog_io_typeclass__InstVarSub0_9;
+
+        {
+          parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__collect_class_and_inst_constraints_3_p_0(parse_tree__prog_io_typeclass__Constraints_5, &parse_tree__prog_io_typeclass__ProgConstraints0_8, &parse_tree__prog_io_typeclass__InstVarSub0_9);
+        }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          switch (MR_tag((MR_Word) parse_tree__prog_io_typeclass__Constraint_4)) {
+            default:
+              parse_tree__prog_io_typeclass__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 0:
+              {
+                MR_Word parse_tree__prog_io_typeclass__SimpleConstraint_10 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_4), (MR_Integer) 0);
+
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__HeadVar__2_2 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__SimpleConstraint_10));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__ProgConstraints0_8));
+                }
+                *parse_tree__prog_io_typeclass__HeadVar__3_3 = parse_tree__prog_io_typeclass__InstVarSub0_9;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word parse_tree__prog_io_typeclass__ClassConstraint_11 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_4), (MR_Integer) 1);
+
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__HeadVar__2_2 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassConstraint_11));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__ProgConstraints0_8));
+                }
+                *parse_tree__prog_io_typeclass__HeadVar__3_3 = parse_tree__prog_io_typeclass__InstVarSub0_9;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word parse_tree__prog_io_typeclass__InstVar_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__Constraint_4, (MR_Integer) 0)));
+                MR_Word parse_tree__prog_io_typeclass__Inst_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__Constraint_4, (MR_Integer) 1)));
+
+                {
+                  mercury__map__set_4_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[6], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0, ((MR_Box) (parse_tree__prog_io_typeclass__InstVar_12)), ((MR_Box) (parse_tree__prog_io_typeclass__Inst_13)), parse_tree__prog_io_typeclass__InstVarSub0_9, parse_tree__prog_io_typeclass__HeadVar__3_3);
+                }
+                *parse_tree__prog_io_typeclass__HeadVar__2_2 = parse_tree__prog_io_typeclass__ProgConstraints0_8;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+              break;
+          }
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__get_simple_constraint_2_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__Constraint_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0)));
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      *parse_tree__prog_io_typeclass__Constraint_3 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__HeadVar__1_1), (MR_Integer) 0);
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_methods_4_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__4_4;
+
+    {
+      parse_tree__prog_io_item__parse_class_method_decl_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 4))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), &parse_tree__prog_io_typeclass__conv0_HeadVar__4_4);
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__4_4));
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_methods_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeClassMethods_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__MethodTerms_9;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_util__list_term_to_term_list_2_p_0(parse_tree__prog_io_typeclass__MethodsTerm_7, &parse_tree__prog_io_typeclass__MethodTerms_9);
+    }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__MaybeMethods_10;
+        MR_Word parse_tree__prog_io_typeclass__V_13_13;
+        MR_Word parse_tree__prog_io_typeclass__Methods_38;
+        MR_Word parse_tree__prog_io_typeclass__Specs_39;
+
+        {
+          parse_tree__prog_io_typeclass__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_13_13, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_6[0]));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_13_13, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_class_methods_4_p_0_1));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_13_13, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__ModuleName_5));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_13_13, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__VarSet_6));
+        }
+        {
+          mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[3], (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[5], parse_tree__prog_io_typeclass__V_13_13, parse_tree__prog_io_typeclass__MethodTerms_9, &parse_tree__prog_io_typeclass__MaybeMethods_10);
+        }
+        {
+          parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_50_95_95_91_49_93_95_48_5_p_0(parse_tree__prog_io_typeclass__MaybeMethods_10, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &parse_tree__prog_io_typeclass__Methods_38, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &parse_tree__prog_io_typeclass__Specs_39);
+        }
+        if ((parse_tree__prog_io_typeclass__Specs_39 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            *parse_tree__prog_io_typeclass__MaybeClassMethods_8 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Methods_38));
+          }
+        else
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            *parse_tree__prog_io_typeclass__MaybeClassMethods_8 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_39));
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Spec_12;
+        MR_Word parse_tree__prog_io_typeclass__V_21_21;
+        MR_Word parse_tree__prog_io_typeclass__V_22_22;
+        MR_Word parse_tree__prog_io_typeclass__V_23_23;
+        MR_Word parse_tree__prog_io_typeclass__V_28_28;
+
+        {
+          parse_tree__prog_io_typeclass__V_23_23 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, parse_tree__prog_io_typeclass__MethodsTerm_7);
+        }
+        {
+          parse_tree__prog_io_typeclass__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_22_22, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_23_23));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_22_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[103])));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_21_21, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_22_22));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_21_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          parse_tree__prog_io_typeclass__Spec_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_12, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_21_21));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_28_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_28_28, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_12));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_28_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeClassMethods_8 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_28_28));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1,
+  MR_Box * parse_tree__prog_io_typeclass__wrapper_arg_2)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__2_83;
+
+    {
+      parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_unconstrained_class__332__1_2_p_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1), &parse_tree__prog_io_typeclass__conv0_HeadVar__2_83);
+    }
+    *parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__2_83));
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__TVarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_80_80;
+    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_81_81;
+    MR_Word parse_tree__prog_io_typeclass__ContextPieces_13;
+    MR_Word parse_tree__prog_io_typeclass__VarSet_14;
+    MR_Word parse_tree__prog_io_typeclass__MaybeClassName_15;
+
+    {
+      parse_tree__prog_io_typeclass__ContextPieces_13 = mercury__cord__singleton_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__prog_io_typeclass_scalar_common_1[100]))));
+    }
+    parse_tree__prog_io_typeclass__TypeCtorInfo_80_80 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0;
+    parse_tree__prog_io_typeclass__TypeCtorInfo_81_81 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+    {
+      mercury__varset__coerce_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_80_80, parse_tree__prog_io_typeclass__TypeCtorInfo_81_81, parse_tree__prog_io_typeclass__TVarSet_8, &parse_tree__prog_io_typeclass__VarSet_14);
+    }
+    {
+      parse_tree__prog_io_sym_name__parse_implicitly_qualified_sym_name_and_args_5_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_81_81, parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__NameTerm_9, parse_tree__prog_io_typeclass__VarSet_14, parse_tree__prog_io_typeclass__ContextPieces_13, &parse_tree__prog_io_typeclass__MaybeClassName_15);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeClassName_15)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 0)));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_28));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__TypeInfo_87_87 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[4];
+        MR_Word parse_tree__prog_io_typeclass__ClassName_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__TermVars0_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassName_15, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__TermVars_18;
+
+        {
+          mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[3], parse_tree__prog_io_typeclass__TypeInfo_87_87, (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[3], parse_tree__prog_io_typeclass__TermVars0_17, &parse_tree__prog_io_typeclass__TermVars_18);
+        }
+        if ((parse_tree__prog_io_typeclass__TermVars_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word parse_tree__prog_io_typeclass__Spec_20;
+            MR_Word parse_tree__prog_io_typeclass__V_64_64;
+            MR_Word parse_tree__prog_io_typeclass__V_65_65;
+            MR_Word parse_tree__prog_io_typeclass__V_66_66;
+            MR_Word parse_tree__prog_io_typeclass__V_71_71;
+
+            {
+              parse_tree__prog_io_typeclass__V_66_66 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_81_81, parse_tree__prog_io_typeclass__NameTerm_9);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_65_65, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_66_66));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_65_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[101])));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_65_65));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              parse_tree__prog_io_typeclass__Spec_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_20, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_20, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_64_64));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_71_71, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_20));
+              MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_71_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_71_71));
+            }
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__Vars_23;
+            MR_Word parse_tree__prog_io_typeclass__SortedTermVars_24;
+            MR_Integer parse_tree__prog_io_typeclass__NumSortedTermVars_25;
+            MR_Integer parse_tree__prog_io_typeclass__NumTermVars_26;
+
+            {
+              parse_tree__prog_io_typeclass__succeeded = mercury__term__term_list_to_var_list_2_p_0(parse_tree__prog_io_typeclass__TypeCtorInfo_80_80, parse_tree__prog_io_typeclass__TermVars_18, &parse_tree__prog_io_typeclass__Vars_23);
+            }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                {
+                  mercury__list__sort_and_remove_dups_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_87_87, parse_tree__prog_io_typeclass__TermVars_18, &parse_tree__prog_io_typeclass__SortedTermVars_24);
+                }
+                {
+                  mercury__list__length_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_87_87, parse_tree__prog_io_typeclass__SortedTermVars_24, &parse_tree__prog_io_typeclass__NumSortedTermVars_25);
+                }
+                {
+                  mercury__list__length_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_87_87, parse_tree__prog_io_typeclass__TermVars_18, &parse_tree__prog_io_typeclass__NumTermVars_26);
+                }
+                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__NumSortedTermVars_25 == parse_tree__prog_io_typeclass__NumTermVars_26);
+              }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                MR_Word parse_tree__prog_io_typeclass__TypeClassInfo_27;
+
+                {
+                  parse_tree__prog_io_typeclass__TypeClassInfo_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassName_16));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__Vars_23));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_8));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_10));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__TypeClassInfo_27, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__SeqNum_11));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__TypeClassInfo_27));
+                }
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__V_45_45;
+                MR_Word parse_tree__prog_io_typeclass__V_46_46;
+                MR_Word parse_tree__prog_io_typeclass__V_47_47;
+                MR_Word parse_tree__prog_io_typeclass__V_52_52;
+                MR_Word parse_tree__prog_io_typeclass__Spec_74;
+
+                {
+                  parse_tree__prog_io_typeclass__V_47_47 = mercury__term__get_term_context_1_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_81_81, parse_tree__prog_io_typeclass__NameTerm_9);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_46_46, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_47_47));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_46_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[102])));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_46_46));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_45_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Spec_74 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_74, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_74, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_74, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_45_45));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_52_52, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_74));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_52_52, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *parse_tree__prog_io_typeclass__MaybeTypeClassInfo_12 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_52_52));
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__collect_simple_and_fundep_constraints_3_p_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__2_2,
+  MR_Word * parse_tree__prog_io_typeclass__HeadVar__3_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    if ((parse_tree__prog_io_typeclass__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *parse_tree__prog_io_typeclass__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *parse_tree__prog_io_typeclass__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Constraint_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__Constraints_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__SimpleConstraints0_8;
+        MR_Word parse_tree__prog_io_typeclass__FunDeps0_9;
+
+        {
+          parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__collect_simple_and_fundep_constraints_3_p_0(parse_tree__prog_io_typeclass__Constraints_5, &parse_tree__prog_io_typeclass__SimpleConstraints0_8, &parse_tree__prog_io_typeclass__FunDeps0_9);
+        }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Constraint_4)) == (MR_mktag((MR_Integer) 2))))
+              {
+                MR_Word parse_tree__prog_io_typeclass__FunDep_11 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_4), (MR_Integer) 2);
+
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__HeadVar__3_3 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDep_11));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDeps0_9));
+                }
+                *parse_tree__prog_io_typeclass__HeadVar__2_2 = parse_tree__prog_io_typeclass__SimpleConstraints0_8;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+            else
+            if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__Constraint_4)) == (MR_mktag((MR_Integer) 0))))
+              {
+                MR_Word parse_tree__prog_io_typeclass__SimpleConstraint_10 = (MR_Word) MR_body(((MR_Word) parse_tree__prog_io_typeclass__Constraint_4), (MR_Integer) 0);
+
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__HeadVar__2_2 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__SimpleConstraint_10));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__SimpleConstraints0_8));
+                }
+                *parse_tree__prog_io_typeclass__HeadVar__3_3 = parse_tree__prog_io_typeclass__FunDeps0_9;
+                parse_tree__prog_io_typeclass__succeeded = MR_TRUE;
+              }
+            else
+              parse_tree__prog_io_typeclass__succeeded = MR_FALSE;
+          }
+      }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundep_1_f_0(
+  MR_Word parse_tree__prog_io_typeclass__HeadVar__1_1)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2;
+    MR_Word parse_tree__prog_io_typeclass__Domain_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass__Range_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__HeadVar__1_1, (MR_Integer) 1)));
+
+    {
+      parse_tree__prog_io_typeclass__HeadVar__2_2 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], parse_tree__prog_io_typeclass__Domain_3, parse_tree__prog_io_typeclass__Range_4);
+    }
+    return parse_tree__prog_io_typeclass__HeadVar__2_2;
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_Word parse_tree__prog_io_typeclass__conv0_HeadVar__2_2;
+
+    {
+      parse_tree__prog_io_typeclass__conv0_HeadVar__2_2 = parse_tree__prog_io_typeclass__tvars_in_fundep_1_f_0(((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__2_2));
+    return parse_tree__prog_io_typeclass__wrapper_arg_2;
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0(
+  MR_Word parse_tree__prog_io_typeclass__FunDeps_3)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__HeadVar__2_2;
+    MR_Word parse_tree__prog_io_typeclass__V_4_4;
+
+    {
+      parse_tree__prog_io_typeclass__V_4_4 = mercury__list__map_2_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0, (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[2], (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_2[2], parse_tree__prog_io_typeclass__FunDeps_3);
+    }
+    {
+      parse_tree__prog_io_typeclass__HeadVar__2_2 = mercury__list__condense_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1], parse_tree__prog_io_typeclass__V_4_4);
+    }
+    return parse_tree__prog_io_typeclass__HeadVar__2_2;
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_4(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_String parse_tree__prog_io_typeclass__conv1_HeadVar__3_161;
+
+    {
+      parse_tree__prog_io_typeclass__conv1_HeadVar__3_161 = parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__222__1_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv1_HeadVar__3_161));
+    return parse_tree__prog_io_typeclass__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_3(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_Box parse_tree__prog_io_typeclass__wrapper_arg_2;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+    MR_String parse_tree__prog_io_typeclass__conv0_HeadVar__3_158;
+
+    {
+      parse_tree__prog_io_typeclass__conv0_HeadVar__3_158 = parse_tree__prog_io_typeclass__IntroducedFrom__func__parse_constrained_class__219__1_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    parse_tree__prog_io_typeclass__wrapper_arg_2 = ((MR_Box) (parse_tree__prog_io_typeclass__conv0_HeadVar__3_158));
+    return parse_tree__prog_io_typeclass__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_2(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__180__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_1(
+  MR_Box parse_tree__prog_io_typeclass__closure_arg,
+  MR_Box parse_tree__prog_io_typeclass__wrapper_arg_1)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Box parse_tree__prog_io_typeclass__closure = parse_tree__prog_io_typeclass__closure_arg;
+
+    {
+      parse_tree__prog_io_typeclass__succeeded = parse_tree__prog_io_typeclass__IntroducedFrom__pred__parse_constrained_class__178__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__closure, (MR_Integer) 3))), ((MR_Word) parse_tree__prog_io_typeclass__wrapper_arg_1));
+    }
+    return parse_tree__prog_io_typeclass__succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_8,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_9,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_10,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_11,
+  MR_Word parse_tree__prog_io_typeclass__Context_12,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_13,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemTypeClass_14)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+    MR_Word parse_tree__prog_io_typeclass__TVarSet_15;
+    MR_Word parse_tree__prog_io_typeclass__MaybeParsedConstraints_16;
+
+    {
+      mercury__varset__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__VarSet_9, &parse_tree__prog_io_typeclass__TVarSet_15);
+    }
+    {
+      parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(parse_tree__prog_io_typeclass__VarSet_9, parse_tree__prog_io_typeclass__ConstraintsTerm_11, &parse_tree__prog_io_typeclass__MaybeParsedConstraints_16);
+    }
+    if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeParsedConstraints_16)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__MaybeParsedConstraints_16, (MR_Integer) 0)));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeItemTypeClass_14 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_59));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__ConstraintList_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeParsedConstraints_16, (MR_Integer) 0)));
+        MR_Word parse_tree__prog_io_typeclass__FunDeps_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeParsedConstraints_16, (MR_Integer) 1)));
+        MR_Word parse_tree__prog_io_typeclass__MaybeItemTypeClass0_19;
+
+        {
+          parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0(parse_tree__prog_io_typeclass__ModuleName_8, parse_tree__prog_io_typeclass__TVarSet_15, parse_tree__prog_io_typeclass__NameTerm_10, parse_tree__prog_io_typeclass__Context_12, parse_tree__prog_io_typeclass__SeqNum_13, &parse_tree__prog_io_typeclass__MaybeItemTypeClass0_19);
+        }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemTypeClass0_19)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__MaybeItemTypeClass_14 = parse_tree__prog_io_typeclass__MaybeItemTypeClass0_19;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__TypeInfo_149_149;
+            MR_Word parse_tree__prog_io_typeclass__ItemTypeClass0_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemTypeClass0_19, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__ConstraintVars_22;
+            MR_Word parse_tree__prog_io_typeclass__SortedConstraintVars_23;
+            MR_Word parse_tree__prog_io_typeclass__FunDepVars_24;
+            MR_Word parse_tree__prog_io_typeclass__SortedFunDepVars_25;
+            MR_Word parse_tree__prog_io_typeclass__Params_26;
+            MR_Word parse_tree__prog_io_typeclass__ConstraintNotInParams_28;
+            MR_Word parse_tree__prog_io_typeclass__FunDepNotInParams_30;
+            MR_Word parse_tree__prog_io_typeclass__ConstraintErrorContext_33;
+            MR_Word parse_tree__prog_io_typeclass__FunDepErrorContext_36;
+            MR_Word parse_tree__prog_io_typeclass__NotInParams_37;
+            MR_Word parse_tree__prog_io_typeclass__V_60_60;
+            MR_Word parse_tree__prog_io_typeclass__V_61_61;
+            MR_Integer parse_tree__prog_io_typeclass__V_167_167;
+            MR_Word parse_tree__prog_io_typeclass__V_168_168;
+            MR_Word parse_tree__prog_io_typeclass__V_169_169;
+            MR_Word parse_tree__prog_io_typeclass__V_170_170;
+            MR_Word parse_tree__prog_io_typeclass__V_173_173;
+            MR_Word parse_tree__prog_io_typeclass__V_174_174;
+            MR_Word parse_tree__prog_io_typeclass__V_117_117;
+            MR_Word parse_tree__prog_io_typeclass__V_118_118;
+            MR_Word parse_tree__prog_io_typeclass__V_119_119;
+            MR_Word parse_tree__prog_io_typeclass__V_120_120;
+            MR_Word parse_tree__prog_io_typeclass__V_121_121;
+            MR_Word parse_tree__prog_io_typeclass__V_122_122;
+            MR_Integer parse_tree__prog_io_typeclass__V_123_123;
+            MR_Word parse_tree__prog_io_typeclass___ConstraintInParams_27;
+            MR_Word parse_tree__prog_io_typeclass___FunDepInParams_29;
+            MR_Word parse_tree__prog_io_typeclass__V_171_171;
+            MR_Word parse_tree__prog_io_typeclass__V_172_172;
+
+            {
+              parse_tree__prog_type__constraint_list_get_tvars_2_p_0(parse_tree__prog_io_typeclass__ConstraintList_17, &parse_tree__prog_io_typeclass__ConstraintVars_22);
+            }
+            parse_tree__prog_io_typeclass__TypeInfo_149_149 = (MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[1];
+            {
+              mercury__list__sort_and_remove_dups_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__ConstraintVars_22, &parse_tree__prog_io_typeclass__SortedConstraintVars_23);
+            }
+            {
+              parse_tree__prog_io_typeclass__FunDepVars_24 = parse_tree__prog_io_typeclass__tvars_in_fundeps_1_f_0(parse_tree__prog_io_typeclass__FunDeps_18);
+            }
+            {
+              mercury__list__sort_and_remove_dups_2_p_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__FunDepVars_24, &parse_tree__prog_io_typeclass__SortedFunDepVars_25);
+            }
+            parse_tree__prog_io_typeclass__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__Params_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 1)));
+            parse_tree__prog_io_typeclass__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 2)));
+            parse_tree__prog_io_typeclass__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 3)));
+            parse_tree__prog_io_typeclass__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 4)));
+            parse_tree__prog_io_typeclass__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 5)));
+            parse_tree__prog_io_typeclass__V_122_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 6)));
+            parse_tree__prog_io_typeclass__V_123_123 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 7)));
+            {
+              parse_tree__prog_io_typeclass__V_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[0]));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_1));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__Params_26));
+            }
+            {
+              mercury__list__filter_4_p_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__V_60_60, parse_tree__prog_io_typeclass__SortedConstraintVars_23, &parse_tree__prog_io_typeclass___ConstraintInParams_27, &parse_tree__prog_io_typeclass__ConstraintNotInParams_28);
+            }
+            {
+              parse_tree__prog_io_typeclass__V_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_61_61, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_4[0]));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_61_61, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_2));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_61_61, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_61_61, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__Params_26));
+            }
+            {
+              mercury__list__filter_4_p_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__V_61_61, parse_tree__prog_io_typeclass__SortedFunDepVars_25, &parse_tree__prog_io_typeclass___FunDepInParams_29, &parse_tree__prog_io_typeclass__FunDepNotInParams_30);
+            }
+            if ((parse_tree__prog_io_typeclass__ConstraintNotInParams_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              parse_tree__prog_io_typeclass__ConstraintErrorContext_33 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                MR_Integer parse_tree__prog_io_typeclass__V_62_62;
+
+                {
+                  parse_tree__prog_io_typeclass__V_62_62 = mercury__list__length_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0, parse_tree__prog_io_typeclass__ConstraintList_17);
+                }
+                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_62_62 == (MR_Integer) 1);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__ConstraintErrorContext_33 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[83]);
+                  }
+                else
+                  {
+                    parse_tree__prog_io_typeclass__ConstraintErrorContext_33 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[85]);
+                  }
+              }
+            if ((parse_tree__prog_io_typeclass__FunDepNotInParams_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              parse_tree__prog_io_typeclass__FunDepErrorContext_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                MR_Integer parse_tree__prog_io_typeclass__V_69_69;
+
+                {
+                  parse_tree__prog_io_typeclass__V_69_69 = mercury__list__length_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0, parse_tree__prog_io_typeclass__FunDeps_18);
+                }
+                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_69_69 == (MR_Integer) 1);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__FunDepErrorContext_36 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[87]);
+                  }
+                else
+                  {
+                    parse_tree__prog_io_typeclass__FunDepErrorContext_36 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[89]);
+                  }
+              }
+            {
+              parse_tree__prog_io_typeclass__NotInParams_37 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__ConstraintNotInParams_28, parse_tree__prog_io_typeclass__FunDepNotInParams_30);
+            }
+            parse_tree__prog_io_typeclass__V_174_174 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__V_173_173 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 1)));
+            parse_tree__prog_io_typeclass__V_172_172 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 2)));
+            parse_tree__prog_io_typeclass__V_171_171 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 3)));
+            parse_tree__prog_io_typeclass__V_170_170 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 4)));
+            parse_tree__prog_io_typeclass__V_169_169 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 5)));
+            parse_tree__prog_io_typeclass__V_168_168 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 6)));
+            parse_tree__prog_io_typeclass__V_167_167 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass0_21, (MR_Integer) 7)));
+            if ((parse_tree__prog_io_typeclass__NotInParams_37 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word parse_tree__prog_io_typeclass__ItemTypeClass_38;
+                MR_Word parse_tree__prog_io_typeclass__V_124_124 = parse_tree__prog_io_typeclass__V_174_174;
+                MR_Word parse_tree__prog_io_typeclass__V_125_125 = parse_tree__prog_io_typeclass__V_173_173;
+                MR_Word parse_tree__prog_io_typeclass__V_128_128 = parse_tree__prog_io_typeclass__V_170_170;
+                MR_Word parse_tree__prog_io_typeclass__V_129_129 = parse_tree__prog_io_typeclass__V_169_169;
+                MR_Word parse_tree__prog_io_typeclass__V_130_130 = parse_tree__prog_io_typeclass__V_168_168;
+                MR_Integer parse_tree__prog_io_typeclass__V_131_131 = parse_tree__prog_io_typeclass__V_167_167;
+
+                {
+                  parse_tree__prog_io_typeclass__ItemTypeClass_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_124_124));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_125_125));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__ConstraintList_17));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__FunDeps_18));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__V_128_128));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__V_129_129));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__V_130_130));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClass_38, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__V_131_131));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *parse_tree__prog_io_typeclass__MaybeItemTypeClass_14 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemTypeClass_38));
+                }
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_156_156 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+                MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_166_166;
+                MR_Word parse_tree__prog_io_typeclass__ConstraintNotInParamsStrs_42;
+                MR_Word parse_tree__prog_io_typeclass__FunDepNotInParamsStrs_43;
+                MR_Word parse_tree__prog_io_typeclass__ConstraintNotInParamsPieces_44;
+                MR_Word parse_tree__prog_io_typeclass__FunDepNotInParamsPieces_45;
+                MR_Word parse_tree__prog_io_typeclass__Prefix_46;
+                MR_Word parse_tree__prog_io_typeclass__Suffix_47;
+                MR_Word parse_tree__prog_io_typeclass__Middle_50;
+                MR_Word parse_tree__prog_io_typeclass__Pieces_57;
+                MR_Word parse_tree__prog_io_typeclass__Spec_58;
+                MR_Word parse_tree__prog_io_typeclass__V_76_76;
+                MR_Word parse_tree__prog_io_typeclass__V_77_77;
+                MR_Word parse_tree__prog_io_typeclass__V_101_101;
+                MR_Word parse_tree__prog_io_typeclass__V_102_102;
+                MR_Word parse_tree__prog_io_typeclass__V_108_108;
+                MR_Word parse_tree__prog_io_typeclass__V_109_109;
+                MR_Word parse_tree__prog_io_typeclass__V_110_110;
+                MR_Word parse_tree__prog_io_typeclass__V_111_111;
+                MR_Word parse_tree__prog_io_typeclass__V_114_114;
+                MR_Integer parse_tree__prog_io_typeclass__V_78_78;
+
+                {
+                  parse_tree__prog_io_typeclass__V_76_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_76_76, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_5[0]));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_76_76, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_3));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_76_76, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_76_76, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__V_169_169));
+                }
+                {
+                  parse_tree__prog_io_typeclass__ConstraintNotInParamsStrs_42 = mercury__list__map_2_f_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__TypeCtorInfo_156_156, parse_tree__prog_io_typeclass__V_76_76, parse_tree__prog_io_typeclass__ConstraintNotInParams_28);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_77_77 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_77_77, 0) = ((MR_Box) (&parse_tree__prog_io_typeclass_scalar_common_5[0]));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_77_77, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0_4));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_77_77, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_77_77, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__V_169_169));
+                }
+                {
+                  parse_tree__prog_io_typeclass__FunDepNotInParamsStrs_43 = mercury__list__map_2_f_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__TypeCtorInfo_156_156, parse_tree__prog_io_typeclass__V_77_77, parse_tree__prog_io_typeclass__FunDepNotInParams_30);
+                }
+                {
+                  parse_tree__prog_io_typeclass__ConstraintNotInParamsPieces_44 = parse_tree__error_util__list_to_pieces_1_f_0(parse_tree__prog_io_typeclass__ConstraintNotInParamsStrs_42);
+                }
+                {
+                  parse_tree__prog_io_typeclass__FunDepNotInParamsPieces_45 = parse_tree__error_util__list_to_pieces_1_f_0(parse_tree__prog_io_typeclass__FunDepNotInParamsStrs_43);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_78_78 = mercury__list__length_1_f_0(parse_tree__prog_io_typeclass__TypeInfo_149_149, parse_tree__prog_io_typeclass__NotInParams_37);
+                }
+                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_78_78 == (MR_Integer) 1);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__Prefix_46 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[91]);
+                    parse_tree__prog_io_typeclass__Suffix_47 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[93]);
+                  }
+                else
+                  {
+                    parse_tree__prog_io_typeclass__Prefix_46 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[95]);
+                    parse_tree__prog_io_typeclass__Suffix_47 = (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[97]);
+                  }
+                if ((parse_tree__prog_io_typeclass__ConstraintNotInParams_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  if ((parse_tree__prog_io_typeclass__FunDepNotInParams_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "parse_tree.prog_io_typeclass", (MR_String) "predicate \140parse_tree.prog_io_typeclass.parse_constrained_class\'/7", (MR_String) "no NotInParams");
+                        return;
+                      }
+                    }
+                  else
+                    {
+                      {
+                        parse_tree__prog_io_typeclass__Middle_50 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, parse_tree__prog_io_typeclass__FunDepNotInParamsPieces_45, parse_tree__prog_io_typeclass__FunDepErrorContext_36);
+                      }
+                    }
+                else
+                if ((parse_tree__prog_io_typeclass__FunDepNotInParams_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    {
+                      parse_tree__prog_io_typeclass__Middle_50 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, parse_tree__prog_io_typeclass__ConstraintNotInParamsPieces_44, parse_tree__prog_io_typeclass__ConstraintErrorContext_33);
+                    }
+                  }
+                else
+                  {
+                    MR_Word parse_tree__prog_io_typeclass__TypeCtorInfo_165_165 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                    MR_Word parse_tree__prog_io_typeclass__V_91_91;
+                    MR_Word parse_tree__prog_io_typeclass__V_92_92;
+                    MR_Word parse_tree__prog_io_typeclass__V_97_97;
+
+                    {
+                      parse_tree__prog_io_typeclass__V_97_97 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_165_165, parse_tree__prog_io_typeclass__FunDepNotInParamsPieces_45, parse_tree__prog_io_typeclass__FunDepErrorContext_36);
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_92_92 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_165_165, (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[99]), parse_tree__prog_io_typeclass__V_97_97);
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__V_91_91 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_165_165, parse_tree__prog_io_typeclass__ConstraintErrorContext_33, parse_tree__prog_io_typeclass__V_92_92);
+                    }
+                    {
+                      parse_tree__prog_io_typeclass__Middle_50 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_165_165, parse_tree__prog_io_typeclass__ConstraintNotInParamsPieces_44, parse_tree__prog_io_typeclass__V_91_91);
+                    }
+                  }
+                parse_tree__prog_io_typeclass__TypeCtorInfo_166_166 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                {
+                  parse_tree__prog_io_typeclass__V_102_102 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_166_166, parse_tree__prog_io_typeclass__Suffix_47, (MR_Word) MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[12]));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_101_101 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_166_166, parse_tree__prog_io_typeclass__Middle_50, parse_tree__prog_io_typeclass__V_102_102);
+                }
+                {
+                  parse_tree__prog_io_typeclass__Pieces_57 = mercury__list__f_43_43_2_f_0(parse_tree__prog_io_typeclass__TypeCtorInfo_166_166, parse_tree__prog_io_typeclass__Prefix_46, parse_tree__prog_io_typeclass__V_101_101);
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_111_111 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_111_111, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Pieces_57));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_110_110 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_110_110, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_111_111));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_110_110, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_109_109 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_109_109, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_12));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_109_109, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_110_110));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_108_108 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_108_108, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_109_109));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_108_108, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  parse_tree__prog_io_typeclass__Spec_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_58, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+                  MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_58, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_108_108));
+                }
+                {
+                  parse_tree__prog_io_typeclass__V_114_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_114_114, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_58));
+                  MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_114_114, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *parse_tree__prog_io_typeclass__MaybeItemTypeClass_14 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_114_114));
+                }
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_io_typeclass__parse_non_empty_class_7_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_8,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_9,
+  MR_Word parse_tree__prog_io_typeclass__NameTerm_10,
+  MR_Word parse_tree__prog_io_typeclass__MethodsTerm_11,
+  MR_Word parse_tree__prog_io_typeclass__Context_12,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_13,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_14)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__NameTerm_10)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15;
+    MR_Word parse_tree__prog_io_typeclass__MaybeClassMethods_16;
+    MR_Word parse_tree__prog_io_typeclass__NameTerm_53;
+    MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_54;
+    MR_Word parse_tree__prog_io_typeclass__V_57_57;
+    MR_String parse_tree__prog_io_typeclass__V_58_58;
+    MR_Word parse_tree__prog_io_typeclass__V_59_59;
+    MR_Word parse_tree__prog_io_typeclass__V_60_60;
+    MR_Word parse_tree__prog_io_typeclass__V_61_61;
+    MR_Word parse_tree__prog_io_typeclass__V_55_55;
+    MR_Word parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17;
+    MR_Word parse_tree__prog_io_typeclass__ClassMethods_18;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__NameTerm_10, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__NameTerm_10, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__NameTerm_10, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_57_57)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_58_58 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_57_57, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_58_58, (MR_String) "<=") == 0);
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_59_59)) == (MR_mktag((MR_Integer) 1)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__NameTerm_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_59_59, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_59_59, (MR_Integer) 1)));
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_60_60)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__ConstraintsTerm_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_60_60, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_60_60, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_61_61 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+          }
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0(parse_tree__prog_io_typeclass__ModuleName_8, parse_tree__prog_io_typeclass__VarSet_9, parse_tree__prog_io_typeclass__NameTerm_53, parse_tree__prog_io_typeclass__ConstraintsTerm_54, parse_tree__prog_io_typeclass__Context_12, parse_tree__prog_io_typeclass__SeqNum_13, &parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15);
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__TVarSet_56;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__VarSet_9, &parse_tree__prog_io_typeclass__TVarSet_56);
+        }
+        {
+          parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0(parse_tree__prog_io_typeclass__ModuleName_8, parse_tree__prog_io_typeclass__TVarSet_56, parse_tree__prog_io_typeclass__NameTerm_10, parse_tree__prog_io_typeclass__Context_12, parse_tree__prog_io_typeclass__SeqNum_13, &parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15);
+        }
+      }
+    {
+      parse_tree__prog_io_typeclass__parse_class_methods_4_p_0(parse_tree__prog_io_typeclass__ModuleName_8, parse_tree__prog_io_typeclass__VarSet_9, parse_tree__prog_io_typeclass__MethodsTerm_11, &parse_tree__prog_io_typeclass__MaybeClassMethods_16);
+    }
+    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15)) == (MR_mktag((MR_Integer) 1)));
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeClassMethods_16)) == (MR_mktag((MR_Integer) 1)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          parse_tree__prog_io_typeclass__ClassMethods_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeClassMethods_16, (MR_Integer) 0)));
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__TVarSet_19;
+        MR_Word parse_tree__prog_io_typeclass__ItemTypeClassInfo_20;
+        MR_Word parse_tree__prog_io_typeclass__V_23_23;
+        MR_Word parse_tree__prog_io_typeclass__V_26_26;
+        MR_Word parse_tree__prog_io_typeclass__V_27_27;
+        MR_Word parse_tree__prog_io_typeclass__V_28_28;
+        MR_Word parse_tree__prog_io_typeclass__V_29_29;
+        MR_Word parse_tree__prog_io_typeclass__V_32_32;
+        MR_Integer parse_tree__prog_io_typeclass__V_33_33;
+        MR_Word parse_tree__prog_io_typeclass__V_30_30;
+        MR_Word parse_tree__prog_io_typeclass__V_31_31;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__VarSet_9, &parse_tree__prog_io_typeclass__TVarSet_19);
+        }
+        {
+          parse_tree__prog_io_typeclass__V_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_23_23, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ClassMethods_18));
+        }
+        parse_tree__prog_io_typeclass__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 2)));
+        parse_tree__prog_io_typeclass__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 3)));
+        parse_tree__prog_io_typeclass__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 4)));
+        parse_tree__prog_io_typeclass__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 5)));
+        parse_tree__prog_io_typeclass__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 6)));
+        parse_tree__prog_io_typeclass__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo0_17, (MR_Integer) 7)));
+        {
+          parse_tree__prog_io_typeclass__ItemTypeClassInfo_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_26_26));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__V_27_27));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_28_28));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 3) = ((MR_Box) (parse_tree__prog_io_typeclass__V_29_29));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 4) = ((MR_Box) (parse_tree__prog_io_typeclass__V_23_23));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 5) = ((MR_Box) (parse_tree__prog_io_typeclass__TVarSet_19));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 6) = ((MR_Box) (parse_tree__prog_io_typeclass__V_32_32));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ItemTypeClassInfo_20, 7) = ((MR_Box) (parse_tree__prog_io_typeclass__V_33_33));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          *parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_14 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemTypeClassInfo_20));
+        }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Specs_21;
+        MR_Word parse_tree__prog_io_typeclass__V_24_24;
+        MR_Word parse_tree__prog_io_typeclass__V_25_25;
+
+        {
+          parse_tree__prog_io_typeclass__V_24_24 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0, parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo0_15);
+        }
+        {
+          parse_tree__prog_io_typeclass__V_25_25 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_io_typeclass_scalar_common_1[0], parse_tree__prog_io_typeclass__MaybeClassMethods_16);
+        }
+        {
+          parse_tree__prog_io_typeclass__Specs_21 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, parse_tree__prog_io_typeclass__V_24_24, parse_tree__prog_io_typeclass__V_25_25);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_14 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Specs_21));
+        }
+      }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_and_inst_constraints_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass___ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_97_110_100_95_105_110_115_116_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__ConstraintsTerm_7, parse_tree__prog_io_typeclass__Result_8);
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__parse_class_constraints_4_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_5,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_6,
+  MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_7,
+  MR_Word * parse_tree__prog_io_typeclass__Result_8)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded;
+
+    {
+      parse_tree__prog_io_typeclass__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(parse_tree__prog_io_typeclass__VarSet_6, parse_tree__prog_io_typeclass__ConstraintsTerm_7, parse_tree__prog_io_typeclass__Result_8);
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__parse_instance_item_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__ArgTerms_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeIOM_12)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerms_9)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word parse_tree__prog_io_typeclass__ArgTerm_13;
+    MR_Word parse_tree__prog_io_typeclass__V_23_23;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__ArgTerm_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArgTerms_9, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArgTerms_9, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_23_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__TVarSet_14;
+        MR_Word parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18;
+        MR_Word parse_tree__prog_io_typeclass__NameTerm_15;
+        MR_Word parse_tree__prog_io_typeclass__MethodsTerm_16;
+        MR_Word parse_tree__prog_io_typeclass__V_24_24;
+        MR_String parse_tree__prog_io_typeclass__V_25_25;
+        MR_Word parse_tree__prog_io_typeclass__V_26_26;
+        MR_Word parse_tree__prog_io_typeclass__V_27_27;
+        MR_Word parse_tree__prog_io_typeclass__V_28_28;
+        MR_Word parse_tree__prog_io_typeclass__V_17_17;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__VarSet_8, &parse_tree__prog_io_typeclass__TVarSet_14);
+        }
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerm_13)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 1)));
+            parse_tree__prog_io_typeclass__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 2)));
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_24_24)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_25_25 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_24_24, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_25_25, (MR_String) "where") == 0);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_26_26)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__NameTerm_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_26_26, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_26_26, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_27_27)) == (MR_mktag((MR_Integer) 1)));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__MethodsTerm_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_27_27, (MR_Integer) 0)));
+                            parse_tree__prog_io_typeclass__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_27_27, (MR_Integer) 1)));
+                            parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_28_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                      }
+                  }
+              }
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__parse_non_empty_instance_8_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__VarSet_8, parse_tree__prog_io_typeclass__TVarSet_14, parse_tree__prog_io_typeclass__NameTerm_15, parse_tree__prog_io_typeclass__MethodsTerm_16, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, &parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18);
+          }
+        else
+          {
+            parse_tree__prog_io_typeclass__parse_instance_name_6_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__TVarSet_14, parse_tree__prog_io_typeclass__ArgTerm_13, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, &parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18);
+          }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__MaybeIOM_12 = (MR_Word) parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__ItemInstanceInfo_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemInstanceInfo_18, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_29_29;
+            MR_Word parse_tree__prog_io_typeclass__V_30_30;
+
+            {
+              parse_tree__prog_io_typeclass__V_30_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_30_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_30_30, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemInstanceInfo_19));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_29_29, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_30_30));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__MaybeIOM_12 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_29_29));
+            }
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Spec_22;
+        MR_Word parse_tree__prog_io_typeclass__V_59_59;
+        MR_Word parse_tree__prog_io_typeclass__V_60_60;
+        MR_Word parse_tree__prog_io_typeclass__V_65_65;
+
+        {
+          parse_tree__prog_io_typeclass__V_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_10));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_60_60, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[81])));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_59_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_59_59, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_60_60));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_59_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          parse_tree__prog_io_typeclass__Spec_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_22, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_59_59));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_65_65, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_22));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_65_65, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeIOM_12 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_65_65));
+        }
+      }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_io_typeclass__parse_typeclass_item_6_p_0(
+  MR_Word parse_tree__prog_io_typeclass__ModuleName_7,
+  MR_Word parse_tree__prog_io_typeclass__VarSet_8,
+  MR_Word parse_tree__prog_io_typeclass__ArgTerms_9,
+  MR_Word parse_tree__prog_io_typeclass__Context_10,
+  MR_Integer parse_tree__prog_io_typeclass__SeqNum_11,
+  MR_Word * parse_tree__prog_io_typeclass__MaybeIOM_12)
+{
+  {
+    MR_bool parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerms_9)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word parse_tree__prog_io_typeclass__ArgTerm_13;
+    MR_Word parse_tree__prog_io_typeclass__V_22_22;
+
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        parse_tree__prog_io_typeclass__ArgTerm_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArgTerms_9, (MR_Integer) 0)));
+        parse_tree__prog_io_typeclass__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__ArgTerms_9, (MR_Integer) 1)));
+        parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_22_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+    if (parse_tree__prog_io_typeclass__succeeded)
+      {
+        MR_Word parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17;
+        MR_Word parse_tree__prog_io_typeclass__NameTerm_14;
+        MR_Word parse_tree__prog_io_typeclass__MethodsTerm_15;
+        MR_Word parse_tree__prog_io_typeclass__V_23_23;
+        MR_String parse_tree__prog_io_typeclass__V_24_24;
+        MR_Word parse_tree__prog_io_typeclass__V_25_25;
+        MR_Word parse_tree__prog_io_typeclass__V_26_26;
+        MR_Word parse_tree__prog_io_typeclass__V_27_27;
+        MR_Word parse_tree__prog_io_typeclass__V_16_16;
+
+        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerm_13)) == (MR_mktag((MR_Integer) 0)));
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 0)));
+            parse_tree__prog_io_typeclass__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 1)));
+            parse_tree__prog_io_typeclass__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 2)));
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_23_23)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_24_24 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_23_23, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_24_24, (MR_String) "where") == 0);
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_25_25)) == (MR_mktag((MR_Integer) 1)));
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__NameTerm_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_25_25, (MR_Integer) 0)));
+                        parse_tree__prog_io_typeclass__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_25_25, (MR_Integer) 1)));
+                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_26_26)) == (MR_mktag((MR_Integer) 1)));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__MethodsTerm_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_26_26, (MR_Integer) 0)));
+                            parse_tree__prog_io_typeclass__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_26_26, (MR_Integer) 1)));
+                            parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_27_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                      }
+                  }
+              }
+          }
+        if (parse_tree__prog_io_typeclass__succeeded)
+          {
+            parse_tree__prog_io_typeclass__parse_non_empty_class_7_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__VarSet_8, parse_tree__prog_io_typeclass__NameTerm_14, parse_tree__prog_io_typeclass__MethodsTerm_15, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, &parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17);
+          }
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__NameTerm_72;
+            MR_Word parse_tree__prog_io_typeclass__ConstraintsTerm_73;
+            MR_Word parse_tree__prog_io_typeclass__V_76_76;
+            MR_String parse_tree__prog_io_typeclass__V_77_77;
+            MR_Word parse_tree__prog_io_typeclass__V_78_78;
+            MR_Word parse_tree__prog_io_typeclass__V_79_79;
+            MR_Word parse_tree__prog_io_typeclass__V_80_80;
+            MR_Word parse_tree__prog_io_typeclass__V_74_74;
+
+            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__ArgTerm_13)) == (MR_mktag((MR_Integer) 0)));
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 0)));
+                parse_tree__prog_io_typeclass__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 1)));
+                parse_tree__prog_io_typeclass__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__ArgTerm_13, (MR_Integer) 2)));
+                parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_76_76)) == (MR_mktag((MR_Integer) 0)));
+                if (parse_tree__prog_io_typeclass__succeeded)
+                  {
+                    parse_tree__prog_io_typeclass__V_77_77 = ((MR_String) (MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_76_76, (MR_Integer) 0)));
+                    parse_tree__prog_io_typeclass__succeeded = (strcmp(parse_tree__prog_io_typeclass__V_77_77, (MR_String) "<=") == 0);
+                    if (parse_tree__prog_io_typeclass__succeeded)
+                      {
+                        parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_78_78)) == (MR_mktag((MR_Integer) 1)));
+                        if (parse_tree__prog_io_typeclass__succeeded)
+                          {
+                            parse_tree__prog_io_typeclass__NameTerm_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_78_78, (MR_Integer) 0)));
+                            parse_tree__prog_io_typeclass__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_78_78, (MR_Integer) 1)));
+                            parse_tree__prog_io_typeclass__succeeded = ((MR_tag((MR_Word) parse_tree__prog_io_typeclass__V_79_79)) == (MR_mktag((MR_Integer) 1)));
+                            if (parse_tree__prog_io_typeclass__succeeded)
+                              {
+                                parse_tree__prog_io_typeclass__ConstraintsTerm_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_79_79, (MR_Integer) 0)));
+                                parse_tree__prog_io_typeclass__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_79_79, (MR_Integer) 1)));
+                                parse_tree__prog_io_typeclass__succeeded = (parse_tree__prog_io_typeclass__V_80_80 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                              }
+                          }
+                      }
+                  }
+              }
+            if (parse_tree__prog_io_typeclass__succeeded)
+              {
+                parse_tree__prog_io_typeclass__parse_constrained_class_7_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__VarSet_8, parse_tree__prog_io_typeclass__NameTerm_72, parse_tree__prog_io_typeclass__ConstraintsTerm_73, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, &parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17);
+              }
+            else
+              {
+                MR_Word parse_tree__prog_io_typeclass__TVarSet_75;
+
+                {
+                  mercury__varset__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, parse_tree__prog_io_typeclass__VarSet_8, &parse_tree__prog_io_typeclass__TVarSet_75);
+                }
+                {
+                  parse_tree__prog_io_typeclass__parse_unconstrained_class_6_p_0(parse_tree__prog_io_typeclass__ModuleName_7, parse_tree__prog_io_typeclass__TVarSet_75, parse_tree__prog_io_typeclass__ArgTerm_13, parse_tree__prog_io_typeclass__Context_10, parse_tree__prog_io_typeclass__SeqNum_11, &parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17);
+                }
+              }
+          }
+        if (((MR_tag((MR_Word) parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17)) == (MR_mktag((MR_Integer) 0))))
+          *parse_tree__prog_io_typeclass__MaybeIOM_12 = (MR_Word) parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17;
+        else
+          {
+            MR_Word parse_tree__prog_io_typeclass__ItemTypeClassInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__MaybeItemTypeClassInfo_17, (MR_Integer) 0)));
+            MR_Word parse_tree__prog_io_typeclass__V_28_28;
+            MR_Word parse_tree__prog_io_typeclass__V_29_29;
+
+            {
+              parse_tree__prog_io_typeclass__V_29_29 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_29_29, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+              MR_hl_field(MR_mktag(3), parse_tree__prog_io_typeclass__V_29_29, 1) = ((MR_Box) (parse_tree__prog_io_typeclass__ItemTypeClassInfo_18));
+            }
+            {
+              parse_tree__prog_io_typeclass__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_28_28, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_29_29));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *parse_tree__prog_io_typeclass__MaybeIOM_12 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_28_28));
+            }
+          }
+      }
+    else
+      {
+        MR_Word parse_tree__prog_io_typeclass__Spec_21;
+        MR_Word parse_tree__prog_io_typeclass__V_58_58;
+        MR_Word parse_tree__prog_io_typeclass__V_59_59;
+        MR_Word parse_tree__prog_io_typeclass__V_64_64;
+
+        {
+          parse_tree__prog_io_typeclass__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_59_59, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Context_10));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__V_59_59, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__prog_io_typeclass_scalar_common_1[80])));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_58_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_58_58, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_59_59));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_58_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          parse_tree__prog_io_typeclass__Spec_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), parse_tree__prog_io_typeclass__Spec_21, 2) = ((MR_Box) (parse_tree__prog_io_typeclass__V_58_58));
+        }
+        {
+          parse_tree__prog_io_typeclass__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__Spec_21));
+          MR_hl_field(MR_mktag(1), parse_tree__prog_io_typeclass__V_64_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *parse_tree__prog_io_typeclass__MaybeIOM_12 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (parse_tree__prog_io_typeclass__V_64_64));
+        }
+      }
+  }
+}
+
+void mercury__parse_tree__prog_io_typeclass__init(void)
+{
+}
+
+void mercury__parse_tree__prog_io_typeclass__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraint_0);
+	MR_register_type_ctor_info(&parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_arbitrary_constraints_0);
+	MR_register_type_ctor_info(&parse_tree__prog_io_typeclass__parse_tree__prog_io_typeclass__type_ctor_info_maybe_class_and_inst_constraints_0);
+}
+
+void mercury__parse_tree__prog_io_typeclass__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module parse_tree.prog_io_typeclass. */

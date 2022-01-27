@@ -1,0 +1,9 @@
+:- module (thread.barrier).
+
+:- pragma termination_info((thread.barrier).init((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.barrier).release((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.barrier).wait((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((thread.barrier).init), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.barrier).release), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.barrier).wait), 3, 0, may_throw(user_exception)).

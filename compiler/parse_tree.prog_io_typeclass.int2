@@ -1,0 +1,10 @@
+:- module (parse_tree.prog_io_typeclass).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_iom).
+:- type maybe_class_and_inst_constraints == parse_tree.maybe_error.maybe2(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.inst_var_sub).
