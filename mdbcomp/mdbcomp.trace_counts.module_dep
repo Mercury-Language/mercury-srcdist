@@ -1,0 +1,13 @@
+module(1, "trace_counts.m",
+	(mdbcomp.trace_counts),
+	{mdbcomp},
+	{bool, builtin, io, list, map, maybe, private_builtin, set, (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.sym_name)},
+	{bool, builtin, exception, int, io, lexer, list, map, maybe, private_builtin, require, set, string, term_io, univ, (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.sym_name), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
