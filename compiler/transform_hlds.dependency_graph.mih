@@ -1,0 +1,129 @@
+/*
+** Automatically generated from `dependency_graph.m'
+** by the Mercury compiler,
+** version rotd-2016-10-04
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.dependency_graph. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__dependency_graph
+#define MR_HEADER_GUARD_transform_hlds__dependency_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__DEPENDENCY_GRAPH_DECL_GUARD
+#define TRANSFORM_HLDS__DEPENDENCY_GRAPH_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dependency_graph__transform_hlds__dependency_graph__type_ctor_info_include_imported_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dependency_graph__transform_hlds__dependency_graph__type_ctor_info_scc_id_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_transform_hlds__dependency_graph__dependency_node__arity1__hlds__hlds_pred__pred_id__arity0__[8];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_transform_hlds__dependency_graph__dependency_node__arity1__hlds__hlds_pred__pred_proc_id__arity0__[8];
+
+extern const MR_TypeClassDeclStruct transform_hlds__dependency_graph__transform_hlds__dependency_graph__type_class_decl_dependency_node_1;
+
+void MR_CALL 
+transform_hlds__dependency_graph__build_pred_dependency_graph_4_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3,
+  MR_Word * transform_hlds__dependency_graph__param_4);
+
+void MR_CALL 
+transform_hlds__dependency_graph__build_proc_dependency_graph_4_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3,
+  MR_Word * transform_hlds__dependency_graph__param_4);
+
+void MR_CALL 
+transform_hlds__dependency_graph__get_scc_entry_points_4_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3,
+  MR_Word * transform_hlds__dependency_graph__param_4);
+
+void MR_CALL 
+transform_hlds__dependency_graph__module_info_ensure_dependency_info_2_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word * transform_hlds__dependency_graph__param_2);
+
+void MR_CALL 
+transform_hlds__dependency_graph__module_info_rebuild_dependency_info_3_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word * transform_hlds__dependency_graph__param_2,
+  MR_Word * transform_hlds__dependency_graph__param_3);
+
+void MR_CALL 
+transform_hlds__dependency_graph__write_dependency_graph_4_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word * transform_hlds__dependency_graph__param_2);
+
+void MR_CALL 
+transform_hlds__dependency_graph__write_graph_5_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3);
+
+void MR_CALL 
+transform_hlds__dependency_graph__write_graph_nodes_6_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3,
+  MR_Word transform_hlds__dependency_graph__param_4);
+
+void MR_CALL 
+transform_hlds__dependency_graph__write_prof_dependency_graph_4_p_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word * transform_hlds__dependency_graph__param_2);
+
+void MR_CALL 
+transform_hlds__dependency_graph____Compare____include_imported_0_0(
+  MR_Word * transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2,
+  MR_Word transform_hlds__dependency_graph__param_3);
+
+MR_bool MR_CALL 
+transform_hlds__dependency_graph____Unify____include_imported_0_0(
+  MR_Word transform_hlds__dependency_graph__param_1,
+  MR_Word transform_hlds__dependency_graph__param_2);
+
+void mercury__transform_hlds__dependency_graph__init(void);
+void mercury__transform_hlds__dependency_graph__init_type_tables(void);
+void mercury__transform_hlds__dependency_graph__init_debugger(void);
+const char *mercury__transform_hlds__dependency_graph__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.dependency_graph */
+
+/* :- end_interface transform_hlds.dependency_graph. */

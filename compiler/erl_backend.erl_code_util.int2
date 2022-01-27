@@ -1,0 +1,19 @@
+:- module (erl_backend.erl_code_util).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (erl_backend.elds).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type erl_gen_info.
+:- type opt_dummy_args
+    --->    opt_dummy_args 
+    ;       no_opt_dummy_args .

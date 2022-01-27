@@ -1,0 +1,26 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- type call_context.
+:- type debug_flags.
+:- type had_from_ground_term_scope
+	where	type_is_abstract_enum(1).
+:- type how_to_check_goal
+	where	type_is_abstract_enum(1).
+:- type in_dupl_for_switch
+	where	type_is_abstract_enum(1).
+:- type in_from_ground_term_scope
+	where	type_is_abstract_enum(1).
+:- type in_promise_purity_scope
+	where	type_is_abstract_enum(1).
+:- type locked_vars.
+:- type make_ground_terms_unique
+	where	type_is_abstract_enum(1).
+:- type may_change_called_proc
+	where	type_is_abstract_enum(1).
+:- type mode_context.
+:- type mode_info.
+:- type par_conj_mode_check.
+:- type par_conj_mode_check_stack.
+:- type side
+	where	type_is_abstract_enum(1).
+:- type var_lock_reason.

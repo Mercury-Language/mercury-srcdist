@@ -1,0 +1,601 @@
+NEWS since Mercury 14.01.x
+--------------------------
+
+Changes that may break compatibility:
+
+* When the Mercury compiler looks at code using Mercury keywords (such as
+  "func" and "pred") and Mercury operators (such as clause neck operator ":-")
+  but which cannot be parsed as the Mercury constructs that those Mercury
+  keywords and operators are part of, it now generates a specific error
+  message for each discrepancy. In the past, when it found such code,
+  the compiler considered such code to construct terms and/or to call
+  functions and predicates. Usually, the terms did not belong to any
+  declared type and the called functions and predicates did not exist,
+  leading to confusing error messages from the compiler.
+
+  The compiler's new approach generates considerably better diagnostics,
+  but it does mean that code that uses Mercury's keywords and/or operators
+  in ways that are inconsistent with Mercury's own uses of those keywords
+  and operators won't compile anymore. Such code will need to be changed,
+  typically by changing the names of some function symbols, functions
+  or predicates.
+
+* We have enabled stricter checking of non-ground final insts to reject more
+  mode-incorrect code.  Due to compiler limitations, some code that should be
+  accepted will now be rejected.  They will require modifications to appease
+  the compiler.
+
+* We have enabled stricter checking of the requirement that a type, inst
+  or a mode that is *not* exported from a module may not be used in the
+  declarations of entities (such as predicates and typeclasses) that *is*
+  exported from that module. This may require the explicit export of e.g.
+  some types that previously were not exported.
+
+* References to everything imported via `:- use_module' declarations
+  must now be fully module qualified.
+
+* `for' is now an operator.
+
+* It is now an error for a program to redefine a builtin type.  The affected
+  type names are:
+
+      int
+      float
+      character
+      string
+      {}
+      =
+      pred
+      func
+      pure
+      semipure
+      impure
+      ''
+
+* It is now an error for a program to redefine a builtin inst.  The affected
+  inst names are:
+
+      =<
+      any
+      bound
+      bound_unique
+      clobbered
+      clobbered_any
+      free
+      ground
+      is
+      mostly_clobbered
+      mostly_unique
+      mostly_unique_any
+      not_reached
+      unique
+      unique_any
+
+* It is now an error for a program to redefine a builtin mode.  The affected
+  mode names are:
+
+      =
+      >>
+      any_func
+      any_pred
+      func
+      is
+      pred
+
+* We have deleted the builtin inst synonyms `old' and `new': their uses
+  should be replaced with `any' and `free' respectively.
+
+* We have deleted the builtin modes `no' and `oo': their uses should be
+  replaced with `oa' and `ia' respectively.
+
+Changes to the Mercury language:
+
+* We have added a new kind of scope to the language: determinism checks
+  for switch arms. These scopes are introduced by any of the new keywords
+
+      require_switch_arms_det
+      require_switch_arms_semidet
+      require_switch_arms_multi
+      require_switch_arms_nondet
+      require_switch_arms_cc_multi
+      require_switch_arms_cc_nondet
+      require_switch_arms_erroneous
+      require_switch_arms_failure
+
+  `require_switch_arms_<determinism> [Var] Goal' tells the compiler to require
+  `Goal' to be a switch on `Var' in which all the switch arms have determinisms
+  at least as tight as <determinism>, and to generate error messages
+  for any violations of this requirement.
+
+* We have changed the meaning of require_complete_switch scopes slightly:
+  the compiler now generates an error if the goal inside the scope
+  is not a switch on the named variable.
+
+* We have added an extension to include external files
+  in pragma foreign_decl and pragma foreign_code declarations.
+
+* We have added a foreign type assertion `word_aligned_pointer' that
+  allows the Mercury implementation to avoid boxing values of the foreign type
+  that the assertion is for when the type appears as the sole argument
+  of a data constructor.
+
+* We have added a new pragma named `consider_used'. This pragma tells
+  the compiler to consider the predicate or function it names to be used,
+  preventing it from generating unused procedure warnings either for
+  any of its procedures, or for any of the procedures they call,
+  directly or indirectly.
+
+* The Java backend now supports defining foreign types as primitive Java
+  types.
+
+Changes to the Mercury standard library:
+
+* We have added variants of the process_options predicates to the getopt
+  and getopt_io modules that represent errors using a type instead of strings.
+  A new function, option_error_to_string/1, can be used to convert values
+  of the new error type into strings.
+
+* We have added the print_line and write_line family of predicates to the
+  io module.  These behave like the print and write predicates, but also
+  write a terminating newline.
+
+* We have added the predicates write_array/5 and write_array/6 to the io
+  module; these predicates write arrays using a user-specified procedure
+  to write the elements and separating the elements with a user-specified
+  separator string.
+
+* io.print and string_writer.print now print arbitrary precision integers
+  in their decimal form instead of printing their underlying representation.
+
+* We have added temp_directory/3, make_temp_directory/3 and
+  make_temp_directory/5 predicates to the io module.
+
+* We have added a variant of io.set_environment_var that returns an io.res
+  value rather than throwing an exception. We have added the predicate
+  io.have_set_environment_var/0 that tests for the ability to set
+  environment variables on the current platform.
+
+* We have removed the io.poly_type equivalence type from the io module.
+  string.poly_type should be used directly.
+
+* We have added a module for discrete interval encoding trees, which are a
+  highly efficient set implementation for fat sets.  This module is a
+  contribution from Yes Logic Pty. Ltd.
+
++ We have added two new modules for concurrent programming: thread.barrier
+  and thread.future.  The barrier module provides a barrier type which can
+  be used to control progress in concurrent code.  The future module
+  provides future and future_io data types which can be used to compute
+  values in parallel using other threads.  These modules were contributed by
+  Mission Critical IT.
+
+* We have added thread.spawn_native/4 to dedicate an OS thread to a Mercury
+  thread. thread.spawn/4 was added as well.
+
+* We have added the function from_reverse_list/1 to the version_array module.
+
+* We have added thread.num_processors/3 which returns the number of
+  processors available for parallel work.
+
+* The following predicates and functions have been added to the thread.mvar
+  module:
+
+    - mvar.init/1
+    - mvar.impure_init/1
+    - mvar.try_read/4
+
++ We have deprecated the impure init/1 function in thread.semaphore.
+
+* In C grades, the math module now provides the fused multiply-add operation
+  on platforms that support it.
+
+* Procedures in the store module no longer acquire the global lock.
+
+* The following predicates and functions have been added to the char module:
+
+    - is_decimal_digit/1
+    - is_base_digit/2
+    - int_to_binary_digit/2, det_int_to_binary_digit/1
+    - int_to_octal_digit/2, det_int_to_octal_digit/1
+    - int_to_decimal_digit/2, det_int_to_decimal_digit/1
+    - int_to_hex_digit/2, det_int_to_hex_digit/1
+    - base_int_to_digit/3, det_base_int_to_digit/2
+    - binary_digit_to_int/2, det_binary_digit_to_int/1
+    - octal_digit_to_int/2, det_octal_digit_to_int/1
+    - decimal_digit_to_int/2, det_decimal_digit_to_int/1
+    - hex_digit_to_int/2, det_hex_digit_to_int/1
+    - base_digit_to_int/3, det_base_digit_to_int/2
+    - is_leading_surrogate/1, is_trailing_surrogate/1
+
+  The following predicates in the char module have been deprecated and will
+  either be removed or have their semantics changed in a future release:
+
+    - is_hex_digit/2
+    - int_to_hex_char/2
+    - digit_to_int/2
+    - int_to_digit/2
+    - det_int_to_digit/1, det_int_to_digit/2
+
+  NOTE: existing code that calls char.digit_to_int/2 assuming that it will
+  only succeed for decimal digits (0-9) may be broken.
+
+* Float special values, NaNs and Infinities, are now converted to strings in
+  a way that is backend and grade-independent.  (Bug #348)
+
+* string.base_digit_to_int/3 and string.det_base_digit_to_int/2 now check
+  for overflow and underflow in all bases, not only base 10.
+
+* We have reduced the memory allocated by string.to_lower and string.to_upper.
+
+* The following classification predicates have been added to the float module:
+
+   - is_finite/1
+   - is_zero/1
+   - is_infinite/1        (synonym for the existing is_inf/1 predicate)
+   - is_nan_or_infinite/1 (synonym for the existing is_nan_or_inf/1 predicate)
+
+  The following function has been added to the float module:
+
+   - infinity/0
+
+* The following predicates and functions have been added to the integer module:
+
+   - from_string/2
+   - from_base_string/3
+   - to_int/2
+   - det_to_int/1
+   - to_base_string/2
+   - negative_one/0, two/0, ten/0
+   - is_zero/1
+
+  The following functions in the integer module have been deprecated:
+
+   - from_string/1
+   - from_base_string/2
+   - int/1
+
+* The following predicates and functions have been added to the require module:
+
+   - error/2
+   - func_error/2
+
+* The following predicates have been added to the string module:
+
+   - is_all_alnum/1
+   - is_empty/1
+   - to_utf8_code_unit_list/2
+   - to_utf16_code_unit_list/2
+   - from_utf8_code_unit_list/2
+   - from_utf16_code_unit_list/2
+   - det_remove_prefix/3
+   - compare_ignore_case_ascii/3
+
+* The following predicates have been added to the map module:
+
+   - foldl5/12
+   - foldr5/12
+
+* The following predicate has been added to the set modules:
+
+   - intersection_and_differences
+
+* We have a added a new type, maybe_errors, to the maybe module.
+
+  The following predicate and function have been added to the maybe module:
+
+   - fold2_maybe/6
+   - maybe_default/2
+   - pred_to_maybe/1
+   - func_to_maybe/1
+
+* The following predicates and functions have been added to the calendar
+  module:
+
+   - int_to_month/2
+   - det_int_to_month/1
+   - int0_to_month/2
+   - det_int0_to_month/1
+   - month_to_int/1
+   - month_to_int0/1
+   - same_date/1
+
+* We have added a new module, psqueue, that implements a priority search
+  queue ADT.  This is a blend between a priority queue and a map.  This was
+  contributed by Matthias Güdemann.
+
+* We have added the following predicate to the int module:
+
+  - all_true_in_range/3
+
+* The lexer module now returns integer literals that are too large for ints
+  as arbitrary-precision integers, and the base of that literal.
+
+* We have added a constructor big_integer/2 to the term.const type.
+
+* The parser module passes through big_integer tokens as big_integer terms.
+
+* The following predicates and functions have been added to the list module:
+
+   - reverse_prepend/2
+   - reverse_prepend/3
+   - take_while/4
+   - take_while/3
+   - take_while/2
+   - drop_while/3
+   - drop_while/2
+
+* The takewhile/4 predicate has been deprecated in the list module,
+  take_while/4 can be used instead.
+
+* The take/3 and drop/3 predicates in the list module have been modified
+  so that they fail if their first argument is less than zero.
+
+* The split_upto/4 and take_upto/3 predicates and take_upto/2 function
+  in the list module have been modified so that they throw an exception
+  if their first argument is negative.
+
+* The following predicate and function in the builtin module have been
+  deprecated and will be removed in a future release:
+
+   - promise_only_solution/1
+   - promise_only_solution_io/4
+
+  Existing code that uses either of these should be replaced with code that
+  uses a `promise_equivalent_solutions' goal instead.
+
+* The following modes in the builtin module have been deprecated and will
+  be removed in a future release:
+
+   - input/0
+   - output/0
+
+  Existing code that uses these modes should replace their use with `in'
+  or `out' respectively.
+
+* The following predicates and functions have been added to the cord module:
+
+   - to_list/1     (synonym for the existing list/1 function)
+   - to_rev_list/1 (synonym for the existing rev_list/1 function)
+   - cons/3
+   - snoc/3
+
+* The following function has been added to the array2d module
+
+   - is_empty/1
+
+* The following predicates have been added to the time module:
+
+   - localtime/4
+   - mktime/4
+
+  The following functions in the time module have been deprecated:
+
+   - localtime/1
+   - mktime/1
+   - ctime/1
+
+* The following predicates have been added to the rbtree module:
+
+   - foldl_values/4
+   - foldl2_values/6
+
+* The following predicates have been added to the hash_table module:
+
+   - fold2/6
+   - fold3/8
+
+* We have added the predicate svremove/4 to the assoc_list module.
+  This like the remove/4 predicate but with its arguments are in
+  an order more conducive to the use of state variable notation.
+
+* We have made several changes to the pretty_printer module:
+
+  - The type formatter_limit has been renamed to func_symbol_limit,
+    since this better reflects the type's purpose.
+  - We have replaced the set_formatter function with a predicate
+    of the same name, since this allows the use of state variable notation
+    when setting up more than one type-specific formatter,
+  - We have renamed the write_doc_to_stream predicate as put_doc,
+    to better fit in with the names other predicates that operate on
+    values of the stream.writer typeclass, and changed its interface
+    to group the prettyprinter parameters together in a value of the type
+    that was designed for this purpose.
+
+* We have deprecated the following functions from the std_util module:
+
+  - maybe_pred/3
+  - maybe_func/2
+
+Changes to the Mercury compiler:
+
+* We have added a new option --warn-dead-preds. While the existing option
+  --warn-dead-procs asks the compiler to generate warnings for every
+  unused procedure of the module being compiled, the new option asks
+  the compiler to generate a warning for an unused procedure only if
+  none of the procedures of a predicate or function is used.
+
+* We have fixed a long-standing bug causing crashes in deep profiling
+  grades, related to unify/compare for tuples.  (Bug #3)
+
+* We have fixed some bugs with constrained polymorphic modes.
+
+* We have removed legacy support for the following systems:
+    - IRIX
+    - OSF/1
+
+* The asm_fast* and reg* grades now work on 64-bit Intel OS X systems when
+  using GCC as the C compiler.
+  See README.MacOS for further details.
+
+* The compiler now reports an error for binary/octal/hexadecimal integer
+  literals that cannot be represented in the compiler's native int type.
+
+* Class files generated for executables in the Java grade are now automatically
+  packaged up into Java archives (JARs).
+
+* The --generate-module-order and --imports-graph options no longer imply
+  --generate-dependencies.
+
+* The compiler does not set the runtime search path when
+  --mercury-linkage=static is used.
+
+* We have added an option --no-default-runtime-library-directory to
+  prevent the compiler adding any directories to the runtime search path
+  automatically.
+
+* We have disabled intermodule optimisation of any predicates or functions
+  using `try' goals. This fixes a serious issue as `try' goals are not
+  properly written to .opt files, so when read back would not actually
+  catch any exceptions.
+
+* We have upgraded to the bundled Boehm GC to 7.6.0 and libatomic_ops to
+  7.4.4.
+
+Change to the Mercury debugger:
+
+* Interactive queries are now supported on OS X.
+
+* The "break" command can now auto-complete on the filename:linenumber pairs
+  of events, provided the Mercury system can access the readline library.
+
+* Interactive queries have been improved:
+    - Queries can use variable bindings from the current environment.
+    - Exceptions thrown from queries are properly handled.
+    - Non-canonical output bindings are now printed in solutions.
+    - Underscore variables are no longer printed in solutions.
+
+Changes to the extras distribution:
+
+* We have added support for Unicode and other enhancements to the lex and
+  regex libraries.  Thanks to Sebastian Godelet.
+
+
+NEWS for Mercury 14.01.2
+------------------------
+
+This is a bug-fix release.
+
+* Fix array.sort, which has been buggy since 2001.  You may wish to
+  reference array.sort_fix_2014 to ensure that you using the fixed version.
+* Fix the handling of nondet code by the auto-parallelisation analysis in
+  mdprof_create_feedback.  (Bug #364)
+* Fix string.between_codepoints so that the clamping of start/end points
+  works as documented.
+
+
+NEWS for Mercury 14.01.1
+------------------------
+
+This is a bug-fix release.
+
+* The function string.string/1 and related functions now handle version
+  arrays properly.
+* Fix resource leaks in dir fold predicates.
+* The mfilterjavac program is now generated with the correct file extension
+  on Windows.
+* A problem that caused compilation of the Boehm GC to fail on 64-bit
+  openSUSE 13.1 systems has been fixed.  (Github issue #14)
+* The documentation now builds correctly on Cygwin systems.
+* The script configure_mingw_cross now supports 64-bit Windows targets.
+* We have added workarounds for problems with (arguably broken)
+  system headers on MinGW and MinGW64 systems.
+* The MinGW port now builds in the absence of POSIX threads library.
+* Low-level C parallel grades now work on Windows instead of crashing
+  at startup.  (Bug #338)
+* We now use thread-safe alternatives to strerror().  (Bug #340)
+* We have added the configure option --enable-gc-mmap.
+* We configure Boehm GC to use mmap in threaded grades on Linux to avoid
+  conflicts with glibc malloc leading to memory corruption.
+* A problem that caused string.format/[23] to sometimes return incorrect
+  results when formatting floats with the 'g' conversion specifier has
+  been fixed.  This bug only affected the non-C backends.  (Bug #342)
+* string.format now handles special float values (i.e. nan, inf,  and -inf)
+  correctly with the non-C backends.
+* A bug that caused io.write_float/[34] to append ".0" to float special values
+  has been fixed.  This bug affected the C and C# backends.
+* In the C# and Java grades, the predicate string.from_char_list now
+  implements the documented behaviour for input lists containing null
+  characters (i.e. it throws an exception).
+  Likewise, for string.from_reverse_char_list in the C# grade.
+* We have fixed a problem that caused `mmc --make' to attempt to install
+  libraries in non-existent grades.
+
+Changes to the Mercury compiler:
+
+* The compiler now supports stripping of executables in a separate
+  post-link step.  The new options, --strip-executable-command,
+  --strip-executable-shared-flags and --strip-executable-static-flags
+  are used to control this.
+  (This is now the default on Mac OS X systems.)
+
+
+NEWS for Mercury 14.01
+----------------------
+
+Changes to the Mercury language:
+
+* Repeated type variables may now occur in the heads of type class instances.
+  For example, instance declarations like the following are now allowed:
+
+      :- instance foo(list(T), map(T, T)).
+
+Changes to the Mercury standard library:
+
+* We have added the function cord.condense/1.
+
+* The following functions in the standard library's cord module now use
+  constant stack space: foldl/3, foldl_pred/4.
+
+* We have added the following predicates to the array and version_array
+  modules: is_empty/1, all_true/2 and all_false/2.
+
+* We have added the following predicates and functions to the map module:
+  det_min_key/1, det_max_key/1, foldl2_values/6 and foldl3_values/8.
+
+* We have added the following predicates to the list module: foldr2/6,
+  foldr3/8, det_take/3 and map_foldr/5.
+
+* We have added the following predicates to the bag module:
+  foldl/4, foldl2/6, and to_list_only_duplicates/2. The predicates
+  old union/3, intersect/3, least_upper_bound/3 and subtract/3 all had
+  complexities that depended strongly on the size of their second argument,
+  and much more weakly on the size of their first argument. We have renamed
+  these to union_small/3, intersect_small/3, least_upper_bound_small/3 and
+  subtract_small/3 respectively, and replaced them with new implementations
+  of the original four predicates whose complexity is proportional to
+  the total size of the two input arguments.
+
+* We have added the following predicates to the assoc_list module:
+  foldl2_values/6 and foldl3_values/8.
+
+* We have added the following predicates and functions to the pqueue module:
+  is_empty/1, peek/3, peek_key/2, peek_value/2, det_peek/3, merge/3,
+  det_peek_key/1 and det_peek_value/1.
+
+* We have added the predicate bimap.equal/2.
+
+* We have added the following predicates to the int module: fold_up3/9 and
+  fold_down3/9.
+
+Changes to the Mercury compiler:
+
+* On Mac OS X systems the compiler is now configured use the version of the
+  host system as the default value for the deployment target.
+
+  A new configuration option, `--with-macosx-deployment-target', allows
+  an alternative value to be selected at configuration time.
+
+Portability improvements:
+
+* We have made the implementation compatible with GCC 4.8 and Visual Studio
+  2013.
+
+* We have made the implementation compatible with OS X 10.9.
+
+Changes to the extras distribution:
+
+* We've added a library that provides support for accessing the function
+  trail from Mercury code.
+
+
+For news about earlier versions, see the HISTORY file.
