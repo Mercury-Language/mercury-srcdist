@@ -1,0 +1,37 @@
+:- module (parse_tree.parse_module).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.parse_error).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- type maybe_require_module_decl
+    --->    dont_require_module_decl 
+    ;       require_module_decl .
+:- pred actually_read_module_int0(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe_error(libs.file_util.path_name_and_stream), libs.timestamp.read_module_and_timestamps, maybe.maybe(io.res(libs.timestamp.timestamp)), parse_tree.prog_item.parse_tree_int0, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_int0((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_int1(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe_error(libs.file_util.path_name_and_stream), libs.timestamp.read_module_and_timestamps, maybe.maybe(io.res(libs.timestamp.timestamp)), parse_tree.prog_item.parse_tree_int1, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_int1((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_int2(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe_error(libs.file_util.path_name_and_stream), libs.timestamp.read_module_and_timestamps, maybe.maybe(io.res(libs.timestamp.timestamp)), parse_tree.prog_item.parse_tree_int2, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_int2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_int3(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe_error(libs.file_util.path_name_and_stream), libs.timestamp.read_module_and_timestamps, maybe.maybe(io.res(libs.timestamp.timestamp)), parse_tree.prog_item.parse_tree_int3, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_int3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_plain_opt(libs.globals.globals, mdbcomp.sym_name.module_name, maybe.maybe_error(libs.file_util.path_name_and_stream), parse_tree.prog_item.parse_tree_plain_opt, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_plain_opt((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_src(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe_error(libs.file_util.path_name_and_stream), libs.timestamp.read_module_and_timestamps, maybe.maybe(io.res(libs.timestamp.timestamp)), parse_tree.prog_item.parse_tree_src, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_src((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred actually_read_module_trans_opt(libs.globals.globals, mdbcomp.sym_name.module_name, maybe.maybe_error(libs.file_util.path_name_and_stream), parse_tree.prog_item.parse_tree_trans_opt, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode actually_read_module_trans_opt((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_module_has_expected_name(libs.file_util.file_name, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), mdbcomp.sym_name.module_name, maybe.maybe(term.context), list.list(parse_tree.error_util.error_spec)).
+:- mode check_module_has_expected_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred peek_at_file(io.text_input_stream, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), libs.file_util.file_name, mdbcomp.sym_name.module_name, list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode peek_at_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
