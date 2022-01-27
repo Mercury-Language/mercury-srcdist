@@ -1,0 +1,863 @@
+:- module fat_sparse_bitset.
+:- use_module builtin, enum, int, list, private_builtin, require, set, term.
+:- type fold_direction
+	--->	low_to_high 
+	;	high_to_low .
+:- type fat_sparse_bitset(T)
+	--->	fat_sparse_bitset(fat_sparse_bitset.fat_bitset_impl).
+:- type fat_bitset_impl
+	--->	empty 
+	;	node((fat_sparse_bitset.offset) :: int, (fat_sparse_bitset.bits) :: int, (fat_sparse_bitset.rest) :: fat_sparse_bitset.fat_bitset_impl).
+:- pred fat_sparse_bitset.do_foldl_pred(pred(T_1, U_2, U_2), fat_sparse_bitset.fat_bitset_impl, U_2, U_2) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.do_foldl_pred)/4, (T_1 = term.var(V_3)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldl_pred__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.do_foldl_pred)/4, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldl_pred__[T = int]')).
+:- pred fat_sparse_bitset.do_foldl2_pred(pred(T_1, U_2, U_2, V_3, V_3), fat_sparse_bitset.fat_bitset_impl, U_2, U_2, V_3, V_3) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.do_foldl2_pred)/6, (T_1 = term.var(V_4)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldl2_pred__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.do_foldl2_pred)/6, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldl2_pred__[T = int]')).
+:- pred fat_sparse_bitset.do_foldr_pred(pred(T_1, U_2, U_2), fat_sparse_bitset.fat_bitset_impl, U_2, U_2) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.do_foldr_pred)/4, (T_1 = term.var(V_3)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldr_pred__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.do_foldr_pred)/4, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldr_pred__[T = int]')).
+:- pred fat_sparse_bitset.do_foldr2_pred(pred(T_1, U_2, U_2, V_3, V_3), fat_sparse_bitset.fat_bitset_impl, U_2, U_2, V_3, V_3) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.do_foldr2_pred)/6, (T_1 = term.var(V_4)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldr2_pred__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.do_foldr2_pred)/6, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__do_foldr2_pred__[T = int]')).
+:- pred fat_sparse_bitset.fold_bits(fat_sparse_bitset.fold_direction, pred(T_1, U_2, U_2), int, int, int, U_2, U_2) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.fold_bits)/7, (T_1 = term.var(V_3)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__fold_bits__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.fold_bits)/7, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__fold_bits__[T = int]')).
+:- pred fat_sparse_bitset.fold2_bits(fat_sparse_bitset.fold_direction, pred(T_1, U_2, U_2, V_3, V_3), int, int, int, U_2, U_2, V_3, V_3) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec((fat_sparse_bitset.fold2_bits)/9, (T_1 = term.var(V_4)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__fold2_bits__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.fold2_bits)/9, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__fold2_bits__[T = int]')).
+:- pred fat_sparse_bitset.all_true_node((pred T_1), fat_sparse_bitset.fat_bitset_impl) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.all_true_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pragma type_spec((fat_sparse_bitset.all_true_node)/2, (T_1 = term.var(V_2)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__all_true_node__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.all_true_node)/2, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__all_true_node__[T = int]')).
+:- pred fat_sparse_bitset.all_true_bits((pred T_1), int, int, int) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.all_true_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pragma type_spec((fat_sparse_bitset.all_true_bits)/4, (T_1 = term.var(V_2)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__all_true_bits__[T = var(V_2)]')).
+:- pragma type_spec((fat_sparse_bitset.all_true_bits)/4, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__all_true_bits__[T = int]')).
+:- pred fat_sparse_bitset.insert_2(fat_sparse_bitset.fat_bitset_impl, int, fat_sparse_bitset.fat_bitset_impl).
+:- mode fat_sparse_bitset.insert_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred fat_sparse_bitset.insert_new_2(fat_sparse_bitset.fat_bitset_impl, int, fat_sparse_bitset.fat_bitset_impl).
+:- mode fat_sparse_bitset.insert_new_2((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func fat_sparse_bitset.remove_leq_2(fat_sparse_bitset.fat_bitset_impl, int) = fat_sparse_bitset.fat_bitset_impl.
+:- mode fat_sparse_bitset.remove_leq_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func fat_sparse_bitset.remove_gt_2(fat_sparse_bitset.fat_bitset_impl, int) = fat_sparse_bitset.fat_bitset_impl.
+:- mode fat_sparse_bitset.remove_gt_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func fat_sparse_bitset.list_to_set_2(list.list(T_1), fat_sparse_bitset.fat_bitset_impl) = fat_sparse_bitset.fat_bitset_impl <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.list_to_set_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma type_spec((fat_sparse_bitset.list_to_set_2)/2, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__list_to_set_2__[T = int]')).
+:- pragma type_spec((fat_sparse_bitset.list_to_set_2)/2, (T_1 = term.var(V_2)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__list_to_set_2__[T = var(V_2)]')).
+:- func fat_sparse_bitset.sorted_list_to_set_2(list.list(T_1)) = fat_sparse_bitset.fat_bitset_impl <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.sorted_list_to_set_2((builtin.in)) = (builtin.out) is det.
+:- pragma type_spec((fat_sparse_bitset.sorted_list_to_set_2)/1, (T_1 = int), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__sorted_list_to_set_2__[T = int]')).
+:- pragma type_spec((fat_sparse_bitset.sorted_list_to_set_2)/1, (T_1 = term.var(V_2)), (fat_sparse_bitset.'TypeSpecOf__pred_or_func__sorted_list_to_set_2__[T = var(V_2)]')).
+:- pred fat_sparse_bitset.contains_search_nodes(fat_sparse_bitset.fat_bitset_impl, int).
+:- mode fat_sparse_bitset.contains_search_nodes((builtin.in), (builtin.in)) is semidet.
+:- func fat_sparse_bitset.union_2(fat_sparse_bitset.fat_bitset_impl, fat_sparse_bitset.fat_bitset_impl) = fat_sparse_bitset.fat_bitset_impl.
+:- mode fat_sparse_bitset.union_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func fat_sparse_bitset.intersect_2(fat_sparse_bitset.fat_bitset_impl, fat_sparse_bitset.fat_bitset_impl) = fat_sparse_bitset.fat_bitset_impl.
+:- mode fat_sparse_bitset.intersect_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func fat_sparse_bitset.difference_2(fat_sparse_bitset.fat_bitset_impl, fat_sparse_bitset.fat_bitset_impl) = fat_sparse_bitset.fat_bitset_impl.
+:- mode fat_sparse_bitset.difference_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred fat_sparse_bitset.divide_nodes((pred T_1), fat_sparse_bitset.fat_bitset_impl, fat_sparse_bitset.fat_bitset_impl, fat_sparse_bitset.fat_bitset_impl) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.divide_nodes(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred fat_sparse_bitset.divide_bits((pred T_1), int, int, int, int, int, int, int, int) <= (enum.enum(T_1)).
+:- mode fat_sparse_bitset.divide_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func fat_sparse_bitset.mask(int) = int.
+:- mode fat_sparse_bitset.mask((builtin.in)) = (builtin.out) is det.
+:- pragma inline((fat_sparse_bitset.mask)/1).
+fat_sparse_bitset.init = fat_sparse_bitset.fat_sparse_bitset(V_2) :-
+    V_2 = fat_sparse_bitset.empty : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.init(fat_sparse_bitset.fat_sparse_bitset(V_2)) :-
+    V_2 = fat_sparse_bitset.empty : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.empty(fat_sparse_bitset.fat_sparse_bitset(V_2)) :-
+    V_2 = fat_sparse_bitset.empty : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.is_empty(fat_sparse_bitset.fat_sparse_bitset(V_2)) :-
+    V_2 = fat_sparse_bitset.empty : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.is_non_empty(fat_sparse_bitset.fat_sparse_bitset(V_5)) :-
+    V_5 = fat_sparse_bitset.node(V_2, V_3, V_4) : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.equal(X_3, X_3).
+fat_sparse_bitset.list_to_set(List_3) = fat_sparse_bitset.fat_sparse_bitset(V_4) :-
+    V_4 = fat_sparse_bitset.list_to_set_2(List_3, V_5),
+    V_5 = fat_sparse_bitset.empty : fat_sparse_bitset.fat_bitset_impl.
+fat_sparse_bitset.list_to_set(A_3, HeadVar__2_2) :-
+    HeadVar__2_2 = fat_sparse_bitset.list_to_set(A_3).
+fat_sparse_bitset.sorted_list_to_set(L_3) = fat_sparse_bitset.fat_sparse_bitset(V_4) :-
+    V_4 = fat_sparse_bitset.sorted_list_to_set_2(L_3).
+fat_sparse_bitset.sorted_list_to_set(A_3, HeadVar__2_2) :-
+    HeadVar__2_2 = fat_sparse_bitset.sorted_list_to_set(A_3).
+fat_sparse_bitset.from_set(Set_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = fat_sparse_bitset.sorted_list_to_set(V_4),
+    V_4 = set.to_sorted_list(Set_3).
+fat_sparse_bitset.to_sorted_list(Set_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = fat_sparse_bitset.foldr(V_6, Set_3, V_10),
+    V_6 = (func(V_7::(builtin.in), V_8::(builtin.in)) = (V_9::(builtin.out)) is det :-
+      some [] (
+        V_7 = Elem_11,
+        V_8 = Acc0_12,
+        V_9 = list.[Elem_11 | Acc0_12] : list.list(T_1)
+      )
+    )
+ : (func(T_1, list.list(T_1)) = list.list(T_1)),
+    V_10 = list.[] : list.list(T_1).
+fat_sparse_bitset.to_sorted_list(A_3, HeadVar__2_2) :-
+    HeadVar__2_2 = fat_sparse_bitset.to_sorted_list(A_3).
+fat_sparse_bitset.to_set(Set_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = set.sorted_list_to_set(V_4),
+    V_4 = fat_sparse_bitset.to_sorted_list(Set_3).
+fat_sparse_bitset.make_singleton_set(A_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = fat_sparse_bitset.insert(V_4, A_3),
+    V_4 = fat_sparse_bitset.init.
+fat_sparse_bitset.singleton_set(HeadVar__1_1, A_3) :-
+    HeadVar__1_1 = fat_sparse_bitset.make_singleton_set(A_3).
+fat_sparse_bitset.subset(Subset_3, Set_4) :-
+    V_5 = Subset_3,
+    fat_sparse_bitset.intersect(Set_4, Subset_3, V_5).
+fat_sparse_bitset.superset(Superset_3, Set_4) :-
+    fat_sparse_bitset.subset(Set_4, Superset_3).
+fat_sparse_bitset.contains(fat_sparse_bitset.fat_sparse_bitset(Set_3), Elem_4) :-
+    V_5 = enum.to_int(Elem_4),
+    fat_sparse_bitset.contains_search_nodes(Set_3, V_5).
+fat_sparse_bitset.insert(Set0_4, E_5) = Set_6 :-
+    fat_sparse_bitset.insert(E_5, Set0_4, Set_6).
+fat_sparse_bitset.insert(E_4, STATE_VARIABLE_Set_0_7, STATE_VARIABLE_Set_8) :-
+    STATE_VARIABLE_Set_0_7 = fat_sparse_bitset.fat_sparse_bitset(Set0_6) : fat_sparse_bitset.fat_sparse_bitset(T_1),
+    V_9 = enum.to_int(E_4),
+    fat_sparse_bitset.insert_2(Set0_6, V_9, Set_5),
+    STATE_VARIABLE_Set_8 = fat_sparse_bitset.fat_sparse_bitset(Set_5) : fat_sparse_bitset.fat_sparse_bitset(T_1).
+fat_sparse_bitset.insert_new(E_4, STATE_VARIABLE_Set_0_7, STATE_VARIABLE_Set_8) :-
+    STATE_VARIABLE_Set_0_7 = fat_sparse_bitset.fat_sparse_bitset(Set0_6) : fat_sparse_bitset.fat_sparse_bitset(T_1),
+    V_9 = enum.to_int(E_4),
+    fat_sparse_bitset.insert_new_2(Set0_6, V_9, Set_5),
+    STATE_VARIABLE_Set_8 = fat_sparse_bitset.fat_sparse_bitset(Set_5) : fat_sparse_bitset.fat_sparse_bitset(T_1).
+fat_sparse_bitset.insert_list(Set_4, List_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = fat_sparse_bitset.union(V_6, Set_4),
+    V_6 = fat_sparse_bitset.list_to_set(List_5).
+fat_sparse_bitset.insert_list(List_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.insert_list(STATE_VARIABLE_Set_0_6, List_4).
+fat_sparse_bitset.delete(Set_4, Elem_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = fat_sparse_bitset.difference(Set_4, V_6),
+    V_6 = fat_sparse_bitset.insert(V_7, Elem_5),
+    V_7 = fat_sparse_bitset.init.
+fat_sparse_bitset.delete(E_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.delete(STATE_VARIABLE_Set_0_6, E_4).
+fat_sparse_bitset.delete_list(Set_4, List_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = fat_sparse_bitset.difference(Set_4, V_6),
+    V_6 = fat_sparse_bitset.list_to_set(List_5).
+fat_sparse_bitset.delete_list(List_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.delete_list(STATE_VARIABLE_Set_0_6, List_4).
+fat_sparse_bitset.remove(Elem_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    fat_sparse_bitset.contains(STATE_VARIABLE_Set_0_6, Elem_4),
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.delete(STATE_VARIABLE_Set_0_6, Elem_4).
+fat_sparse_bitset.remove_list(Elems_4, STATE_VARIABLE_Set_0_7, STATE_VARIABLE_Set_8) :-
+    fat_sparse_bitset.list_to_set(Elems_4, ElemsSet_6),
+    fat_sparse_bitset.subset(ElemsSet_6, STATE_VARIABLE_Set_0_7),
+    STATE_VARIABLE_Set_8 = fat_sparse_bitset.difference(STATE_VARIABLE_Set_0_7, ElemsSet_6).
+fat_sparse_bitset.remove_leq(fat_sparse_bitset.fat_sparse_bitset(Set_4), Elem_5) = fat_sparse_bitset.fat_sparse_bitset(V_6) :-
+    V_6 = fat_sparse_bitset.remove_leq_2(Set_4, V_7),
+    V_7 = enum.to_int(Elem_5).
+fat_sparse_bitset.remove_leq(E_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.remove_leq(STATE_VARIABLE_Set_0_6, E_4).
+fat_sparse_bitset.remove_gt(fat_sparse_bitset.fat_sparse_bitset(Set_4), Elem_5) = fat_sparse_bitset.fat_sparse_bitset(V_6) :-
+    V_6 = fat_sparse_bitset.remove_gt_2(Set_4, V_7),
+    V_7 = enum.to_int(Elem_5).
+fat_sparse_bitset.remove_gt(E_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    STATE_VARIABLE_Set_7 = fat_sparse_bitset.remove_gt(STATE_VARIABLE_Set_0_6, E_4).
+fat_sparse_bitset.union(fat_sparse_bitset.fat_sparse_bitset(Set1_4), fat_sparse_bitset.fat_sparse_bitset(Set2_5)) = fat_sparse_bitset.fat_sparse_bitset(V_6) :-
+    V_6 = fat_sparse_bitset.union_2(Set1_4, Set2_5).
+fat_sparse_bitset.union(A_4, B_5, HeadVar__3_3) :-
+    HeadVar__3_3 = fat_sparse_bitset.union(A_4, B_5).
+fat_sparse_bitset.union_list(Sets_3) = Set_4 :-
+    fat_sparse_bitset.union_list(Sets_3, Set_4).
+fat_sparse_bitset.intersect(fat_sparse_bitset.fat_sparse_bitset(Set1_4), fat_sparse_bitset.fat_sparse_bitset(Set2_5)) = fat_sparse_bitset.fat_sparse_bitset(V_6) :-
+    V_6 = fat_sparse_bitset.intersect_2(Set1_4, Set2_5).
+fat_sparse_bitset.intersect(A_4, B_5, HeadVar__3_3) :-
+    HeadVar__3_3 = fat_sparse_bitset.intersect(A_4, B_5).
+fat_sparse_bitset.intersect_list(Sets_3) = Set_4 :-
+    fat_sparse_bitset.intersect_list(Sets_3, Set_4).
+fat_sparse_bitset.difference(fat_sparse_bitset.fat_sparse_bitset(Set1_4), fat_sparse_bitset.fat_sparse_bitset(Set2_5)) = fat_sparse_bitset.fat_sparse_bitset(V_6) :-
+    V_6 = fat_sparse_bitset.difference_2(Set1_4, Set2_5).
+fat_sparse_bitset.difference(A_4, B_5, HeadVar__3_3) :-
+    HeadVar__3_3 = fat_sparse_bitset.difference(A_4, B_5).
+fat_sparse_bitset.divide(Pred_5, Set_6, InSet_7, OutSet_8) :-
+    Set_6 = fat_sparse_bitset.fat_sparse_bitset(Nodes_9) : fat_sparse_bitset.fat_sparse_bitset(T_1),
+    fat_sparse_bitset.divide_nodes(Pred_5, Nodes_9, InNodes_10, OutNodes_11),
+    InSet_7 = fat_sparse_bitset.fat_sparse_bitset(InNodes_10) : fat_sparse_bitset.fat_sparse_bitset(T_1),
+    OutSet_8 = fat_sparse_bitset.fat_sparse_bitset(OutNodes_11) : fat_sparse_bitset.fat_sparse_bitset(T_1).
+fat_sparse_bitset.count(Set_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = fat_sparse_bitset.foldl(V_6, Set_3, V_11),
+    V_6 = (func(V_7::(builtin.in), V_8::(builtin.in)) = (V_9::(builtin.out)) is det :-
+      some [] (
+        V_7 = V_12,
+        V_8 = Acc_14,
+        V_9 = int.(Acc_14 + V_10),
+        V_10 = 1 : int
+      )
+    )
+ : (func(T_1, int) = int),
+    V_11 = 0 : int.
+fat_sparse_bitset.foldl(F_5, fat_sparse_bitset.fat_sparse_bitset(Set_6), Acc0_7) = Acc_8 :-
+    V_12 = (pred(V_13::(builtin.in), V_14::(builtin.in), V_15::(builtin.out)) is det :-
+      some [] (
+        V_13 = E_16,
+        V_14 = Acc1_17,
+        Acc2_18 = apply(F_5, E_16, Acc1_17),
+        V_15 = Acc2_18
+      )
+    )
+ : pred(T_1, U_2, U_2),
+    fat_sparse_bitset.do_foldl_pred(V_12, Set_6, Acc0_7, Acc_8).
+fat_sparse_bitset.foldl(P_5, fat_sparse_bitset.fat_sparse_bitset(Set_6), STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9) :-
+    fat_sparse_bitset.do_foldl_pred(P_5, Set_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9).
+fat_sparse_bitset.foldl2(P_7, fat_sparse_bitset.fat_sparse_bitset(Set_8), STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14) :-
+    fat_sparse_bitset.do_foldl2_pred(P_7, Set_8, STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14).
+fat_sparse_bitset.foldr(F_5, fat_sparse_bitset.fat_sparse_bitset(Set_6), Acc0_7) = Acc_8 :-
+    V_12 = (pred(V_13::(builtin.in), V_14::(builtin.in), V_15::(builtin.out)) is det :-
+      some [] (
+        V_13 = E_16,
+        V_14 = Acc1_17,
+        Acc2_18 = apply(F_5, E_16, Acc1_17),
+        V_15 = Acc2_18
+      )
+    )
+ : pred(T_1, U_2, U_2),
+    fat_sparse_bitset.do_foldr_pred(V_12, Set_6, Acc0_7, Acc_8).
+fat_sparse_bitset.foldr(P_5, fat_sparse_bitset.fat_sparse_bitset(Set_6), STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9) :-
+    fat_sparse_bitset.do_foldr_pred(P_5, Set_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9).
+fat_sparse_bitset.foldr2(P_7, fat_sparse_bitset.fat_sparse_bitset(Set_8), STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14) :-
+    fat_sparse_bitset.do_foldr2_pred(P_7, Set_8, STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14).
+fat_sparse_bitset.all_true(P_3, fat_sparse_bitset.fat_sparse_bitset(Set_4)) :-
+    fat_sparse_bitset.all_true_node(P_3, Set_4).
+fat_sparse_bitset.filter(Pred_4, Set_5) = TrueSet_6 :-
+    SortedList_7 = fat_sparse_bitset.to_sorted_list(Set_5),
+    SortedTrueList_8 = list.filter(Pred_4, SortedList_7),
+    TrueSet_6 = fat_sparse_bitset.sorted_list_to_set(SortedTrueList_8).
+fat_sparse_bitset.filter(Pred_5, Set_6, TrueSet_7, FalseSet_8) :-
+    SortedList_9 = fat_sparse_bitset.to_sorted_list(Set_6),
+    list.filter(Pred_5, SortedList_9, SortedTrueList_10, SortedFalseList_11),
+    TrueSet_7 = fat_sparse_bitset.sorted_list_to_set(SortedTrueList_10),
+    FalseSet_8 = fat_sparse_bitset.sorted_list_to_set(SortedFalseList_11).
+fat_sparse_bitset.do_foldl_pred(V_5, fat_sparse_bitset.empty, STATE_VARIABLE_Acc_0_7, STATE_VARIABLE_Acc_8) :-
+    STATE_VARIABLE_Acc_8 = STATE_VARIABLE_Acc_0_7.
+fat_sparse_bitset.do_foldl_pred(P_9, fat_sparse_bitset.node(Offset_10, Bits_11, Rest_12), STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_15) :-
+    V_16 = fat_sparse_bitset.low_to_high : fat_sparse_bitset.fold_direction,
+    V_17 = int.bits_per_int,
+    fat_sparse_bitset.fold_bits(V_16, P_9, Offset_10, Bits_11, V_17, STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_18_18),
+    fat_sparse_bitset.do_foldl_pred(P_9, Rest_12, STATE_VARIABLE_Acc_18_18, STATE_VARIABLE_Acc_15).
+fat_sparse_bitset.do_foldl2_pred(V_7, fat_sparse_bitset.empty, STATE_VARIABLE_Acc1_0_10, STATE_VARIABLE_Acc1_11, STATE_VARIABLE_Acc2_0_12, STATE_VARIABLE_Acc2_13) :-
+    STATE_VARIABLE_Acc2_13 = STATE_VARIABLE_Acc2_0_12,
+    STATE_VARIABLE_Acc1_11 = STATE_VARIABLE_Acc1_0_10.
+fat_sparse_bitset.do_foldl2_pred(P_14, fat_sparse_bitset.node(Offset_15, Bits_16, Rest_17), STATE_VARIABLE_Acc1_0_20, STATE_VARIABLE_Acc1_21, STATE_VARIABLE_Acc2_0_22, STATE_VARIABLE_Acc2_23) :-
+    V_24 = fat_sparse_bitset.low_to_high : fat_sparse_bitset.fold_direction,
+    V_25 = int.bits_per_int,
+    fat_sparse_bitset.fold2_bits(V_24, P_14, Offset_15, Bits_16, V_25, STATE_VARIABLE_Acc1_0_20, STATE_VARIABLE_Acc1_26_26, STATE_VARIABLE_Acc2_0_22, STATE_VARIABLE_Acc2_27_27),
+    fat_sparse_bitset.do_foldl2_pred(P_14, Rest_17, STATE_VARIABLE_Acc1_26_26, STATE_VARIABLE_Acc1_21, STATE_VARIABLE_Acc2_27_27, STATE_VARIABLE_Acc2_23).
+fat_sparse_bitset.do_foldr_pred(V_5, fat_sparse_bitset.empty, STATE_VARIABLE_Acc_0_7, STATE_VARIABLE_Acc_8) :-
+    STATE_VARIABLE_Acc_8 = STATE_VARIABLE_Acc_0_7.
+fat_sparse_bitset.do_foldr_pred(P_9, fat_sparse_bitset.node(Offset_10, Bits_11, Rest_12), STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_15) :-
+    fat_sparse_bitset.do_foldr_pred(P_9, Rest_12, STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_16_16),
+    V_17 = fat_sparse_bitset.high_to_low : fat_sparse_bitset.fold_direction,
+    V_18 = int.bits_per_int,
+    fat_sparse_bitset.fold_bits(V_17, P_9, Offset_10, Bits_11, V_18, STATE_VARIABLE_Acc_16_16, STATE_VARIABLE_Acc_15).
+fat_sparse_bitset.do_foldr2_pred(V_7, fat_sparse_bitset.empty, STATE_VARIABLE_Acc1_0_10, STATE_VARIABLE_Acc1_11, STATE_VARIABLE_Acc2_0_12, STATE_VARIABLE_Acc2_13) :-
+    STATE_VARIABLE_Acc2_13 = STATE_VARIABLE_Acc2_0_12,
+    STATE_VARIABLE_Acc1_11 = STATE_VARIABLE_Acc1_0_10.
+fat_sparse_bitset.do_foldr2_pred(P_14, fat_sparse_bitset.node(Offset_15, Bits_16, Rest_17), STATE_VARIABLE_Acc1_0_20, STATE_VARIABLE_Acc1_21, STATE_VARIABLE_Acc2_0_22, STATE_VARIABLE_Acc2_23) :-
+    fat_sparse_bitset.do_foldr2_pred(P_14, Rest_17, STATE_VARIABLE_Acc1_0_20, STATE_VARIABLE_Acc1_24_24, STATE_VARIABLE_Acc2_0_22, STATE_VARIABLE_Acc2_25_25),
+    V_26 = fat_sparse_bitset.high_to_low : fat_sparse_bitset.fold_direction,
+    V_27 = int.bits_per_int,
+    fat_sparse_bitset.fold2_bits(V_26, P_14, Offset_15, Bits_16, V_27, STATE_VARIABLE_Acc1_24_24, STATE_VARIABLE_Acc1_21, STATE_VARIABLE_Acc2_25_25, STATE_VARIABLE_Acc2_23).
+fat_sparse_bitset.fold_bits(Dir_8, P_9, Offset_10, Bits_11, Size_12, STATE_VARIABLE_Acc_0_19, STATE_VARIABLE_Acc_20) :-
+    (if
+      Bits_11 = 0 : int
+    then
+      STATE_VARIABLE_Acc_20 = STATE_VARIABLE_Acc_0_19
+    else
+      (if
+        Size_12 = 1 : int
+      then
+        (if
+          Elem_14 = enum.from_int(Offset_10)
+        then
+          call(P_9, Elem_14, STATE_VARIABLE_Acc_0_19, STATE_VARIABLE_Acc_20)
+        else
+          V_22 = "fat_sparse_bitset" : string,
+          V_23 = "predicate `fat_sparse_bitset.fold_bits\'/7" : string,
+          V_24 = "`enum.from_int/1\' failed" : string,
+          require.unexpected(V_22, V_23, V_24),
+          STATE_VARIABLE_Acc_20 = STATE_VARIABLE_Acc_0_19
+        )
+      else
+        HalfSize_15 = int.unchecked_right_shift(Size_12, V_25),
+        V_25 = 1 : int,
+        Mask_16 = fat_sparse_bitset.mask(HalfSize_15),
+        LowBits_17 = int.(Mask_16 /\ Bits_11),
+        HighBits_18 = int.(Mask_16 /\ V_26),
+        V_26 = int.unchecked_right_shift(Bits_11, HalfSize_15),
+        ( % disjunction
+          Dir_8 = fat_sparse_bitset.low_to_high : fat_sparse_bitset.fold_direction,
+          fat_sparse_bitset.fold_bits(Dir_8, P_9, Offset_10, LowBits_17, HalfSize_15, STATE_VARIABLE_Acc_0_19, STATE_VARIABLE_Acc_30_30),
+          V_31 = int.(Offset_10 + HalfSize_15),
+          fat_sparse_bitset.fold_bits(Dir_8, P_9, V_31, HighBits_18, HalfSize_15, STATE_VARIABLE_Acc_30_30, STATE_VARIABLE_Acc_20)
+        ;
+          Dir_8 = fat_sparse_bitset.high_to_low : fat_sparse_bitset.fold_direction,
+          V_27 = int.(Offset_10 + HalfSize_15),
+          fat_sparse_bitset.fold_bits(Dir_8, P_9, V_27, HighBits_18, HalfSize_15, STATE_VARIABLE_Acc_0_19, STATE_VARIABLE_Acc_28_28),
+          fat_sparse_bitset.fold_bits(Dir_8, P_9, Offset_10, LowBits_17, HalfSize_15, STATE_VARIABLE_Acc_28_28, STATE_VARIABLE_Acc_20)
+        )
+      )
+    ).
+fat_sparse_bitset.fold2_bits(Dir_10, P_11, Offset_12, Bits_13, Size_14, STATE_VARIABLE_Acc1_0_22, STATE_VARIABLE_Acc1_23, STATE_VARIABLE_Acc2_0_24, STATE_VARIABLE_Acc2_25) :-
+    (if
+      Bits_13 = 0 : int
+    then
+      STATE_VARIABLE_Acc2_25 = STATE_VARIABLE_Acc2_0_24,
+      STATE_VARIABLE_Acc1_23 = STATE_VARIABLE_Acc1_0_22
+    else
+      (if
+        Size_14 = 1 : int
+      then
+        (if
+          Elem_17 = enum.from_int(Offset_12)
+        then
+          call(P_11, Elem_17, STATE_VARIABLE_Acc1_0_22, STATE_VARIABLE_Acc1_23, STATE_VARIABLE_Acc2_0_24, STATE_VARIABLE_Acc2_25)
+        else
+          V_28 = "fat_sparse_bitset" : string,
+          V_29 = "predicate `fat_sparse_bitset.fold2_bits\'/9" : string,
+          V_30 = "`enum.from_int/1\' failed" : string,
+          require.unexpected(V_28, V_29, V_30),
+          STATE_VARIABLE_Acc2_25 = STATE_VARIABLE_Acc2_0_24,
+          STATE_VARIABLE_Acc1_23 = STATE_VARIABLE_Acc1_0_22
+        )
+      else
+        HalfSize_18 = int.unchecked_right_shift(Size_14, V_31),
+        V_31 = 1 : int,
+        Mask_19 = fat_sparse_bitset.mask(HalfSize_18),
+        LowBits_20 = int.(Mask_19 /\ Bits_13),
+        HighBits_21 = int.(Mask_19 /\ V_32),
+        V_32 = int.unchecked_right_shift(Bits_13, HalfSize_18),
+        ( % disjunction
+          Dir_10 = fat_sparse_bitset.low_to_high : fat_sparse_bitset.fold_direction,
+          fat_sparse_bitset.fold2_bits(Dir_10, P_11, Offset_12, LowBits_20, HalfSize_18, STATE_VARIABLE_Acc1_0_22, STATE_VARIABLE_Acc1_38_38, STATE_VARIABLE_Acc2_0_24, STATE_VARIABLE_Acc2_39_39),
+          V_40 = int.(Offset_12 + HalfSize_18),
+          fat_sparse_bitset.fold2_bits(Dir_10, P_11, V_40, HighBits_21, HalfSize_18, STATE_VARIABLE_Acc1_38_38, STATE_VARIABLE_Acc1_23, STATE_VARIABLE_Acc2_39_39, STATE_VARIABLE_Acc2_25)
+        ;
+          Dir_10 = fat_sparse_bitset.high_to_low : fat_sparse_bitset.fold_direction,
+          V_33 = int.(Offset_12 + HalfSize_18),
+          fat_sparse_bitset.fold2_bits(Dir_10, P_11, V_33, HighBits_21, HalfSize_18, STATE_VARIABLE_Acc1_0_22, STATE_VARIABLE_Acc1_34_34, STATE_VARIABLE_Acc2_0_24, STATE_VARIABLE_Acc2_35_35),
+          fat_sparse_bitset.fold2_bits(Dir_10, P_11, Offset_12, LowBits_20, HalfSize_18, STATE_VARIABLE_Acc1_34_34, STATE_VARIABLE_Acc1_23, STATE_VARIABLE_Acc2_35_35, STATE_VARIABLE_Acc2_25)
+        )
+      )
+    ).
+fat_sparse_bitset.all_true_node(V_3, fat_sparse_bitset.empty).
+fat_sparse_bitset.all_true_node(P_4, fat_sparse_bitset.node(Offset_5, Bits_6, Rest_7)) :-
+    V_8 = int.bits_per_int,
+    fat_sparse_bitset.all_true_bits(P_4, Offset_5, Bits_6, V_8),
+    fat_sparse_bitset.all_true_node(P_4, Rest_7).
+fat_sparse_bitset.all_true_bits(P_5, Offset_6, Bits_7, Size_8) :-
+    (if
+      Bits_7 = 0 : int
+    then
+      true
+    else
+      (if
+        Size_8 = 1 : int
+      then
+        (if
+          Elem_9 = enum.from_int(Offset_6)
+        then
+          call(P_5, Elem_9)
+        else
+          V_14 = "fat_sparse_bitset" : string,
+          V_15 = "predicate `fat_sparse_bitset.all_true_bits\'/4" : string,
+          V_16 = "`enum.from_int/1\' failed" : string,
+          require.unexpected(V_14, V_15, V_16)
+        )
+      else
+        HalfSize_10 = int.unchecked_right_shift(Size_8, V_17),
+        V_17 = 1 : int,
+        Mask_11 = fat_sparse_bitset.mask(HalfSize_10),
+        LowBits_12 = int.(Mask_11 /\ Bits_7),
+        HighBits_13 = int.(Mask_11 /\ V_18),
+        V_18 = int.unchecked_right_shift(Bits_7, HalfSize_10),
+        fat_sparse_bitset.all_true_bits(P_5, Offset_6, LowBits_12, HalfSize_10),
+        V_19 = int.(Offset_6 + HalfSize_10),
+        fat_sparse_bitset.all_true_bits(P_5, V_19, HighBits_13, HalfSize_10)
+      )
+    ).
+fat_sparse_bitset.divide_nodes(_Pred_5, fat_sparse_bitset.empty, fat_sparse_bitset.empty, fat_sparse_bitset.empty).
+fat_sparse_bitset.divide_nodes(Pred_6, fat_sparse_bitset.node(Offset_7, Bits_8, Nodes_9), InNodes_10, OutNodes_11) :-
+    fat_sparse_bitset.divide_nodes(Pred_6, Nodes_9, InNodesTail_12, OutNodesTail_13),
+    V_16 = 0 : int,
+    V_17 = int.bits_per_int,
+    V_18 = 0 : int,
+    V_19 = 0 : int,
+    fat_sparse_bitset.divide_bits(Pred_6, Offset_7, V_16, Bits_8, V_17, V_18, In_14, V_19, Out_15),
+    (if
+      In_14 = 0 : int
+    then
+      InNodes_10 = InNodesTail_12
+    else
+      InNodes_10 = fat_sparse_bitset.node(Offset_7, In_14, InNodesTail_12) : fat_sparse_bitset.fat_bitset_impl
+    ),
+    (if
+      Out_15 = 0 : int
+    then
+      OutNodes_11 = OutNodesTail_13
+    else
+      OutNodes_11 = fat_sparse_bitset.node(Offset_7, Out_15, OutNodesTail_13) : fat_sparse_bitset.fat_bitset_impl
+    ).
+fat_sparse_bitset.divide_bits(P_10, BaseOffset_11, OffsetInWord_12, Bits_13, Size_14, STATE_VARIABLE_In_0_23, STATE_VARIABLE_In_24, STATE_VARIABLE_Out_0_25, STATE_VARIABLE_Out_26) :-
+    (if
+      Bits_13 = 0 : int
+    then
+      STATE_VARIABLE_Out_26 = STATE_VARIABLE_Out_0_25,
+      STATE_VARIABLE_In_24 = STATE_VARIABLE_In_0_23
+    else
+      (if
+        Size_14 = 1 : int
+      then
+        (if
+          Elem_17 = enum.from_int(V_27),
+          V_27 = int.(BaseOffset_11 + OffsetInWord_12)
+        then
+          OffsetBit_18 = int.unchecked_left_shift(V_28, OffsetInWord_12),
+          V_28 = 1 : int,
+          (if
+            call(P_10, Elem_17)
+          then
+            STATE_VARIABLE_In_24 = int.(STATE_VARIABLE_In_0_23 \/ OffsetBit_18),
+            STATE_VARIABLE_Out_26 = STATE_VARIABLE_Out_0_25
+          else
+            STATE_VARIABLE_Out_26 = int.(STATE_VARIABLE_Out_0_25 \/ OffsetBit_18),
+            STATE_VARIABLE_In_24 = STATE_VARIABLE_In_0_23
+          )
+        else
+          V_31 = "fat_sparse_bitset" : string,
+          V_32 = "predicate `fat_sparse_bitset.divide_bits\'/9" : string,
+          V_33 = "`enum.from_int/1\' failed" : string,
+          require.unexpected(V_31, V_32, V_33),
+          STATE_VARIABLE_Out_26 = STATE_VARIABLE_Out_0_25,
+          STATE_VARIABLE_In_24 = STATE_VARIABLE_In_0_23
+        )
+      else
+        HalfSize_19 = int.unchecked_right_shift(Size_14, V_34),
+        V_34 = 1 : int,
+        Mask_20 = fat_sparse_bitset.mask(HalfSize_19),
+        LowBits_21 = int.(Mask_20 /\ Bits_13),
+        HighBits_22 = int.(Mask_20 /\ V_35),
+        V_35 = int.unchecked_right_shift(Bits_13, HalfSize_19),
+        fat_sparse_bitset.divide_bits(P_10, BaseOffset_11, OffsetInWord_12, LowBits_21, HalfSize_19, STATE_VARIABLE_In_0_23, STATE_VARIABLE_In_36_36, STATE_VARIABLE_Out_0_25, STATE_VARIABLE_Out_37_37),
+        V_38 = int.(OffsetInWord_12 + HalfSize_19),
+        fat_sparse_bitset.divide_bits(P_10, BaseOffset_11, V_38, HighBits_22, HalfSize_19, STATE_VARIABLE_In_36_36, STATE_VARIABLE_In_24, STATE_VARIABLE_Out_37_37, STATE_VARIABLE_Out_26)
+      )
+    ).
+:- pragma inline((fat_sparse_bitset.mask)/1).
+fat_sparse_bitset.mask(N_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = int.(\ V_4),
+    V_4 = int.unchecked_left_shift(V_5, N_3),
+    V_5 = int.(\ V_6),
+    V_6 = 0 : int.
+:- pragma exceptions(function, (fat_sparse_bitset.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.empty), 1, 1, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.is_non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.equal), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.from_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.make_singleton_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.singleton_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.is_singleton), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.subset), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.superset), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.member), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.insert_new), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.remove_leq), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.remove_leq), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.remove_gt), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.remove_gt), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.remove_least), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.union), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.union), 3, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.union_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.union_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.intersect), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.intersect), 3, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.intersect_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.intersect_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.difference), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.difference), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.divide_by_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldl2), 6, 10, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.foldr2), 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl_pred), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldl2_pred), 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr_pred), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.do_foldr2_pred), 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold_bits), 7, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.fold2_bits), 9, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.all_true_node), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.all_true_bits), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.insert_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.insert_new_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.remove_leq_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.remove_gt_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.list_to_set_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.sorted_list_to_set_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.contains_search_nodes), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.union_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.intersect_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (fat_sparse_bitset.difference_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (fat_sparse_bitset.divide_nodes), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (fat_sparse_bitset.divide_bits), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (fat_sparse_bitset.mask), 2, 0, will_not_throw).
+:- pragma termination_info((fat_sparse_bitset.init) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.init((builtin.out)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.empty((builtin.out)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.is_non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.from_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.to_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.make_singleton_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.singleton_set((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.is_singleton((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_new((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete_list((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.union((builtin.in), (builtin.in)) = (builtin.out), finite(-1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.union((builtin.in), (builtin.in), (builtin.out)), finite(-1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list((builtin.in), (builtin.out)), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list((builtin.in), (builtin.out)), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.difference((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.difference((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_by_set((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.filter((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.filter((pred((builtin.in)) is semidet), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.all_true_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.all_true_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_new_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.sorted_list_to_set_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.contains_search_nodes((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.union_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.difference_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_nodes(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.mask((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).

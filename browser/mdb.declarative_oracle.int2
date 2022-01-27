@@ -1,0 +1,18 @@
+:- module (mdb.declarative_oracle).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_debugger).
+:- import_module (mdb.declarative_user).
+:- import_module (mdb.help).
+:- import_module (mdbcomp.rtti_access).
+:- import_module (mdbcomp.sym_name).
+:- type oracle_response(T)
+	--->	oracle_response_answer(mdb.declarative_debugger.decl_answer(T))
+	;	oracle_response_show_info(io.output_stream)
+	;	oracle_response_change_search(mdb.declarative_user.user_search_mode)
+	;	oracle_response_undo 
+	;	oracle_response_exit_diagnosis(T)
+	;	oracle_response_abort_diagnosis .
+:- type oracle_state.

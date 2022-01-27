@@ -1,0 +1,28 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_data).
+:- type linked_target_type
+	--->	executable 
+	;	static_library 
+	;	shared_library 
+	;	csharp_executable 
+	;	csharp_library 
+	;	java_executable 
+	;	java_archive 
+	;	erlang_launcher 
+	;	erlang_archive .
+:- type pic
+	--->	pic 
+	;	link_with_pic 
+	;	non_pic .

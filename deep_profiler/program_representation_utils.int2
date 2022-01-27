@@ -1,0 +1,21 @@
+:- module program_representation_utils.
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module unit.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type atomic_goal_is_call
+	--->	atomic_goal_is_call(list.list(mdbcomp.program_representation.var_rep))
+	;	atomic_goal_is_trivial .
+:- type inst_map.
+:- type inst_map_delta.
+:- type print_goal_info(Key, GoalAnn)
+	--->	print_goal_info((program_representation_utils.pgi_lookup_annotation) :: ((func Key) = GoalAnn), (program_representation_utils.pgi_var_name_table) :: mdbcomp.program_representation.var_name_table).
+:- type seen_duplicate_instantiation
+	--->	seen_duplicate_instantiation 
+	;	have_not_seen_duplicate_instantiation .
+:- typeclass goal_annotation(T).
+:- instance (program_representation_utils.goal_annotation(unit.unit)).

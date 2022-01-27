@@ -1,0 +1,19 @@
+:- module tree234.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module maybe.
+:- import_module pretty_printer.
+:- import_module term.
+:- type tree234(K, V)
+	--->	empty 
+	;	two(K, V, tree234.tree234(K, V), tree234.tree234(K, V))
+	;	three(K, V, K, V, tree234.tree234(K, V), tree234.tree234(K, V), tree234.tree234(K, V))
+	;	four(K, V, K, V, K, V, tree234.tree234(K, V), tree234.tree234(K, V), tree234.tree234(K, V), tree234.tree234(K, V)).
+:- type tree234(K, V).
+:- inst (uniq_tree234(K, V)) == unique(empty ; four(K, V, K, V, K, V, tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V)) ; three(K, V, K, V, tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V)) ; two(K, V, tree234.uniq_tree234(K, V), tree234.uniq_tree234(K, V))).
+:- inst (uniq_tree234_gg) == unique(empty ; four(ground, ground, ground, ground, ground, ground, (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg)) ; three(ground, ground, ground, ground, (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg)) ; two(ground, ground, (tree234.uniq_tree234_gg), (tree234.uniq_tree234_gg))).
+:- mode (di_tree234) == (tree234.uniq_tree234(ground, ground) >> (builtin.dead)).
+:- mode (di_tree234(K, V)) == (tree234.uniq_tree234(K, V) >> (builtin.dead)).
+:- mode (uo_tree234) == (free >> tree234.uniq_tree234(ground, ground)).
+:- mode (uo_tree234(K, V)) == (free >> tree234.uniq_tree234(K, V)).

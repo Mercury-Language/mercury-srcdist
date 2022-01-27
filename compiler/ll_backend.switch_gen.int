@@ -1,0 +1,10 @@
+:- module (ll_backend.switch_gen).
+:- interface.
+:- import_module list.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- pred generate_switch(hlds.code_model.code_model, parse_tree.prog_data.prog_var, parse_tree.prog_data.can_fail, list.list(hlds.hlds_goal.case), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,55 @@
+/*
+** Automatically generated from `math.m'
+** by the Mercury compiler,
+** version rotd-2015-07-01
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef MATH_MH
+#define MATH_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MATH_DECL_GUARD
+#define MATH_DECL_GUARD
+#line 234 "math.m"
+
+
+    #include <math.h>
+
+    /*
+    ** Mathematical constants.
+    **
+    ** The maximum number of significant decimal digits which
+    ** can be packed into an IEEE-754 extended precision
+    ** floating point number is 18.  Therefore 20 significant
+    ** decimal digits for these constants should be plenty.
+    */
+
+    #define ML_FLOAT_E      2.7182818284590452354
+    #define ML_FLOAT_PI     3.1415926535897932384
+    #define ML_FLOAT_LN2        0.69314718055994530941
+
+
+#line 48 "math.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MATH_MH */

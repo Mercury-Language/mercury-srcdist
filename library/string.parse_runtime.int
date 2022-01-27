@@ -1,0 +1,13 @@
+:- module (string.parse_runtime).
+:- interface.
+:- import_module list.
+:- import_module (string.parse_util).
+:- type string_format_spec
+	--->	spec_constant_string(string)
+	;	spec_char(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, char.char)
+	;	spec_string(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string)
+	;	spec_signed_int(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, int)
+	;	spec_unsigned_int(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_int_base, int)
+	;	spec_float(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_float_kind, float).
+:- pred parse_format_string(list.list(char.char), list.list(string.poly_type), int, list.list(string.parse_runtime.string_format_spec), list.list(string.parse_util.string_format_error)).
+:- mode parse_format_string((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

@@ -1,0 +1,323 @@
+/*
+** Automatically generated from `typecheck_errors.m'
+** by the Mercury compiler,
+** version rotd-2015-07-01
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.typecheck_errors. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck_errors
+#define MR_HEADER_GUARD_check_hlds__typecheck_errors
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_ERRORS_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_ERRORS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_actual_expected_types_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_arg_type_stuff_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_arg_vector_kind_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_arg_vector_type_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_cons_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_does_actual_subsume_expected_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_does_some_type_stuff_match_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_maybe_add_quotes_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_mismatch_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_spec_and_maybe_actual_expected_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_type_error_goal_context_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_type_mismatch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_type_stuff_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_errors__check_hlds__typecheck_errors__type_ctor_info_var_vector_kind_0;
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_114_101_112_111_114_116_95_101_114_114_111_114_95_108_97_109_98_100_97_95_118_97_114_95_95_91_53_93_95_48_8_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6,
+  MR_Word check_hlds__typecheck_errors__param_7);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_ambiguity_error_5_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_arg_vector_type_errors_5_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_arg_var_5_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_functor_arg_types_8_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6,
+  MR_Word check_hlds__typecheck_errors__param_7,
+  MR_Word check_hlds__typecheck_errors__param_8);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_functor_type_8_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6,
+  MR_Integer check_hlds__typecheck_errors__param_7,
+  MR_Word check_hlds__typecheck_errors__param_8);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_lambda_var_8_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6,
+  MR_Word check_hlds__typecheck_errors__param_7);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_too_much_overloading_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_undef_cons_6_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Integer check_hlds__typecheck_errors__param_6);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_unif_var_var_6_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_var_6_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_error_var_either_type_7_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6,
+  MR_Word check_hlds__typecheck_errors__param_7);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_event_args_mismatch_4_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_String check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_missing_tvar_in_foreign_code_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_String check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_no_clauses_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_no_clauses_stub_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_non_contiguous_clauses_6_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3,
+  MR_Word check_hlds__typecheck_errors__param_4,
+  MR_Word check_hlds__typecheck_errors__param_5,
+  MR_Word check_hlds__typecheck_errors__param_6);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_pred_call_error_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_unknown_event_call_error_2_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_String check_hlds__typecheck_errors__param_2);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_unsatisfiable_constraints_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_errors__report_warning_too_much_overloading_3_f_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____actual_expected_types_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____arg_vector_kind_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____arg_vector_type_error_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____cons_error_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____spec_and_maybe_actual_expected_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____type_error_goal_context_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+void MR_CALL 
+check_hlds__typecheck_errors____Compare____var_vector_kind_0_0(
+  MR_Word * check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2,
+  MR_Word check_hlds__typecheck_errors__param_3);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____actual_expected_types_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____arg_vector_kind_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____arg_vector_type_error_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____cons_error_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____spec_and_maybe_actual_expected_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____type_error_goal_context_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_errors____Unify____var_vector_kind_0_0(
+  MR_Word check_hlds__typecheck_errors__param_1,
+  MR_Word check_hlds__typecheck_errors__param_2);
+
+void mercury__check_hlds__typecheck_errors__init(void);
+void mercury__check_hlds__typecheck_errors__init_type_tables(void);
+void mercury__check_hlds__typecheck_errors__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.typecheck_errors */
+
+/* :- end_interface check_hlds.typecheck_errors. */

@@ -1,0 +1,28 @@
+:- module ((hlds.hlds_out).hlds_out_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.mercury_to_mercury).
+:- import_module (parse_tree.prog_data).
+:- type hlds_out_info
+	--->	hlds_out_info((((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options_backup) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_ids) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_names) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_mercury_to_mercury) :: parse_tree.mercury_to_mercury.merc_out_info).
+:- type is_first
+	--->	is_first 
+	;	is_not_first .
+:- type is_last
+	--->	is_last 
+	;	is_not_last .
+:- type maybe_qualify_cons_id
+	--->	qualify_cons_id 
+	;	do_not_qualify_cons_id .

@@ -1,0 +1,13 @@
+:- module (parse_tree.prog_io_error).
+:- interface.
+:- import_module set.
+:- type read_module_error
+	--->	rme_could_not_open_file 
+	;	rme_unexpected_module_name 
+	;	rme_no_module_decl_at_start 
+	;	rme_could_not_read_term 
+	;	rme_could_not_parse_item 
+	;	rme_bad_submodule_start 
+	;	rme_bad_module_end 
+	;	rme_warn_item_nothing .
+:- type read_module_errors == set.set(parse_tree.prog_io_error.read_module_error).

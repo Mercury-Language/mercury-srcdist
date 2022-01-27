@@ -1,0 +1,15 @@
+:- module (backend_libs.string_encoding).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module (libs.globals).
+:- type string_encoding
+	--->	utf8 
+	;	utf16 .
+:- pred from_code_unit_list(backend_libs.string_encoding.string_encoding, list.list(int), string).
+:- mode from_code_unit_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred target_char_range(libs.globals.compilation_target, int, int).
+:- mode target_char_range((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func target_string_encoding(libs.globals.compilation_target) = backend_libs.string_encoding.string_encoding.
+:- pred to_code_unit_list(backend_libs.string_encoding.string_encoding, string, list.list(int)).
+:- mode to_code_unit_list((builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,379 @@
+:- module set_unordlist.
+:- use_module bool, builtin, list, private_builtin.
+:- type set_unordlist(T)
+	--->	sul(list.list(T)).
+:- pred set_unordlist.power_union_2(list.list(set_unordlist.set_unordlist(T_1)), set_unordlist.set_unordlist(T_1), set_unordlist.set_unordlist(T_1)).
+:- mode set_unordlist.power_union_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_unordlist.intersect_2(list.list(T_1), list.list(T_1), list.list(T_1), list.list(T_1)).
+:- mode set_unordlist.intersect_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_unordlist.difference_2(set_unordlist.set_unordlist(T_1), set_unordlist.set_unordlist(T_1), set_unordlist.set_unordlist(T_1)).
+:- mode set_unordlist.difference_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_unordlist.divide_2((pred T1_1), list.list(T1_1), list.list(T1_1), list.list(T1_1), list.list(T1_1), list.list(T1_1)).
+:- mode set_unordlist.divide_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+set_unordlist.init = S_2 :-
+    set_unordlist.init(S_2).
+set_unordlist.init(set_unordlist.sul(V_2)) :-
+    V_2 = list.[] : list.list(_T_1).
+set_unordlist.list_to_set(Xs_3) = S_4 :-
+    set_unordlist.list_to_set(Xs_3, S_4).
+set_unordlist.list_to_set(List_3, set_unordlist.sul(List_3)).
+set_unordlist.from_list(List_3) = set_unordlist.sul(List_3).
+set_unordlist.sorted_list_to_set(List_3, set_unordlist.sul(List_3)).
+set_unordlist.sorted_list_to_set(Xs_3) = S_4 :-
+    set_unordlist.sorted_list_to_set(Xs_3, S_4).
+set_unordlist.from_sorted_list(List_3) = set_unordlist.sul(List_3).
+set_unordlist.to_sorted_list(set_unordlist.sul(Set_3), List_4) :-
+    list.sort_and_remove_dups(Set_3, List_4).
+set_unordlist.to_sorted_list(S_3) = Xs_4 :-
+    set_unordlist.to_sorted_list(S_3, Xs_4).
+set_unordlist.make_singleton_set(T_3) = S_4 :-
+    set_unordlist.singleton_set(T_3, S_4).
+set_unordlist.is_singleton(set_unordlist.sul(Xs_3), X_4) :-
+    V_5 = list.[X_4 | V_6] : list.list(T_1),
+    V_6 = list.[] : list.list(T_1),
+    list.sort_and_remove_dups(Xs_3, V_5).
+set_unordlist.equal(SetA_3, SetB_4) :-
+    set_unordlist.subset(SetA_3, SetB_4),
+    set_unordlist.subset(SetB_4, SetA_3).
+set_unordlist.empty(set_unordlist.sul(V_2)) :-
+    V_2 = list.[] : list.list(_T_1).
+set_unordlist.is_empty(set_unordlist.sul(V_2)) :-
+    V_2 = list.[] : list.list(_T_1).
+set_unordlist.non_empty(set_unordlist.sul(V_4)) :-
+    V_4 = list.[V_2 | V_3] : list.list(_T_1).
+set_unordlist.is_non_empty(set_unordlist.sul(V_4)) :-
+    V_4 = list.[V_2 | V_3] : list.list(_T_1).
+set_unordlist.superset(S0_3, S1_4) :-
+    set_unordlist.subset(S1_4, S0_3).
+set_unordlist.member(E_3, set_unordlist.sul(S_4)) :-
+    list.member(E_3, S_4).
+set_unordlist.is_member(E_4, S_5, R_6) :-
+    (if
+      set_unordlist.member(E_4, S_5)
+    then
+      R_6 = bool.yes : bool.bool
+    else
+      R_6 = bool.no : bool.bool
+    ).
+set_unordlist.contains(S_3, E_4) :-
+    set_unordlist.member(E_4, S_3).
+set_unordlist.insert(E_4, set_unordlist.sul(S0_5), set_unordlist.sul(V_6)) :-
+    V_6 = list.[E_4 | S0_5] : list.list(T_1).
+set_unordlist.insert(STATE_VARIABLE_S_0_6, T_5) = STATE_VARIABLE_S_7 :-
+    set_unordlist.insert(T_5, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7).
+set_unordlist.insert_new(E_4, set_unordlist.sul(S0_5), set_unordlist.sul(S_6)) :-
+    (if
+      list.member(E_4, S0_5)
+    then
+      fail
+    else
+      S_6 = list.[E_4 | S0_5] : list.list(T_1)
+    ).
+set_unordlist.insert_list(List_4, set_unordlist.sul(STATE_VARIABLE_Set_0_6), set_unordlist.sul(STATE_VARIABLE_Set_7)) :-
+    list.append(List_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+set_unordlist.insert_list(STATE_VARIABLE_S_0_6, Xs_5) = STATE_VARIABLE_S_7 :-
+    set_unordlist.insert_list(Xs_5, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7).
+set_unordlist.delete(E_4, set_unordlist.sul(STATE_VARIABLE_S_0_6), set_unordlist.sul(STATE_VARIABLE_S_7)) :-
+    list.delete_all(STATE_VARIABLE_S_0_6, E_4, STATE_VARIABLE_S_7).
+set_unordlist.delete(STATE_VARIABLE_S_0_6, T_5) = STATE_VARIABLE_S_7 :-
+    set_unordlist.delete(T_5, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7).
+set_unordlist.delete_list(STATE_VARIABLE_S_0_6, Xs_5) = STATE_VARIABLE_S_7 :-
+    set_unordlist.delete_list(Xs_5, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7).
+set_unordlist.remove(E_4, set_unordlist.sul(S0_5), set_unordlist.sul(S_6)) :-
+    list.member(E_4, S0_5),
+    V_7 = set_unordlist.sul(S0_5) : set_unordlist.set_unordlist(T_1),
+    V_8 = set_unordlist.sul(S_6) : set_unordlist.set_unordlist(T_1),
+    set_unordlist.delete(E_4, V_7, V_8).
+set_unordlist.remove_least(E_4, Set0_5, set_unordlist.sul(Set_6)) :-
+    Set0_5 = set_unordlist.sul(V_9) : set_unordlist.set_unordlist(T_1),
+    V_9 = list.[V_7 | V_8] : list.list(T_1),
+    V_10 = list.[E_4 | Set_6] : list.list(T_1),
+    set_unordlist.to_sorted_list(Set0_5, V_10).
+set_unordlist.union(set_unordlist.sul(Set0_4), set_unordlist.sul(Set1_5), set_unordlist.sul(Set_6)) :-
+    list.append(Set1_5, Set0_4, Set_6).
+set_unordlist.union(S1_4, S2_5) = S3_6 :-
+    set_unordlist.union(S1_4, S2_5, S3_6).
+set_unordlist.union_list(LS_3) = S_4 :-
+    V_5 = set_unordlist.sul(LS_3) : set_unordlist.set_unordlist(set_unordlist.set_unordlist(T_1)),
+    set_unordlist.power_union(V_5, S_4).
+set_unordlist.power_union(set_unordlist.sul(PS_3), set_unordlist.sul(S_4)) :-
+    set_unordlist.init(S0_5),
+    V_7 = set_unordlist.sul(S1_6) : set_unordlist.set_unordlist(T_1),
+    set_unordlist.power_union_2(PS_3, S0_5, V_7),
+    list.sort_and_remove_dups(S1_6, S_4).
+set_unordlist.power_union(SS_3) = S_4 :-
+    set_unordlist.power_union(SS_3, S_4).
+set_unordlist.intersect(set_unordlist.sul(S0_4), set_unordlist.sul(S1_5), set_unordlist.sul(S_6)) :-
+    V_7 = list.[] : list.list(T_1),
+    set_unordlist.intersect_2(S0_4, S1_5, V_7, S_6).
+set_unordlist.intersect(S1_4, S2_5) = S3_6 :-
+    set_unordlist.intersect(S1_4, S2_5, S3_6).
+set_unordlist.power_intersect(SS_3) = S_4 :-
+    set_unordlist.power_intersect(SS_3, S_4).
+set_unordlist.intersect_list(Sets_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = set_unordlist.power_intersect(V_4),
+    V_4 = set_unordlist.sul(Sets_3) : set_unordlist.set_unordlist(set_unordlist.set_unordlist(T_1)).
+set_unordlist.difference(A_4, B_5, C_6) :-
+    set_unordlist.difference_2(B_5, A_4, C_6).
+set_unordlist.difference(S1_4, S2_5) = S3_6 :-
+    set_unordlist.difference(S1_4, S2_5, S3_6).
+set_unordlist.count(Set_3) = Count_4 :-
+    set_unordlist.count(Set_3, Count_4).
+set_unordlist.count(set_unordlist.sul(Set_3), Count_4) :-
+    list.remove_dups(Set_3, Elems_5),
+    list.length(Elems_5, Count_4).
+set_unordlist.map(F_4, S1_5) = S2_6 :-
+    S2_6 = set_unordlist.list_to_set(V_7),
+    V_7 = list.map(F_4, V_8),
+    V_8 = set_unordlist.to_sorted_list(S1_5).
+set_unordlist.filter_map(PF_4, S1_5) = S2_6 :-
+    S2_6 = set_unordlist.list_to_set(V_7),
+    V_7 = list.filter_map(PF_4, V_8),
+    V_8 = set_unordlist.to_sorted_list(S1_5).
+set_unordlist.fold(F_5, S_6, A_7) = B_8 :-
+    B_8 = list.foldl(F_5, V_9, A_7),
+    V_9 = set_unordlist.to_sorted_list(S_6).
+set_unordlist.fold(P_5, S_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    V_10 = set_unordlist.to_sorted_list(S_6),
+    list.foldl(P_5, V_10, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9).
+set_unordlist.fold2(P_7, S_8, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14) :-
+    V_15 = set_unordlist.to_sorted_list(S_8),
+    list.foldl2(P_7, V_15, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14).
+set_unordlist.fold3(P_9, S_10, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_17, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_19) :-
+    V_20 = set_unordlist.to_sorted_list(S_10),
+    list.foldl3(P_9, V_20, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_17, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_19).
+set_unordlist.fold4(P_11, S_12, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_18, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_20, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_22, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_24) :-
+    V_25 = set_unordlist.to_sorted_list(S_12),
+    list.foldl4(P_11, V_25, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_18, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_20, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_22, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_24).
+set_unordlist.fold5(P_13, S_14, STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21, STATE_VARIABLE_B_0_22, STATE_VARIABLE_B_23, STATE_VARIABLE_C_0_24, STATE_VARIABLE_C_25, STATE_VARIABLE_D_0_26, STATE_VARIABLE_D_27, STATE_VARIABLE_E_0_28, STATE_VARIABLE_E_29) :-
+    V_30 = set_unordlist.to_sorted_list(S_14),
+    list.foldl5(P_13, V_30, STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21, STATE_VARIABLE_B_0_22, STATE_VARIABLE_B_23, STATE_VARIABLE_C_0_24, STATE_VARIABLE_C_25, STATE_VARIABLE_D_0_26, STATE_VARIABLE_D_27, STATE_VARIABLE_E_0_28, STATE_VARIABLE_E_29).
+set_unordlist.fold6(P_15, S_16, STATE_VARIABLE_A_0_23, STATE_VARIABLE_A_24, STATE_VARIABLE_B_0_25, STATE_VARIABLE_B_26, STATE_VARIABLE_C_0_27, STATE_VARIABLE_C_28, STATE_VARIABLE_D_0_29, STATE_VARIABLE_D_30, STATE_VARIABLE_E_0_31, STATE_VARIABLE_E_32, STATE_VARIABLE_F_0_33, STATE_VARIABLE_F_34) :-
+    V_35 = set_unordlist.to_sorted_list(S_16),
+    list.foldl6(P_15, V_35, STATE_VARIABLE_A_0_23, STATE_VARIABLE_A_24, STATE_VARIABLE_B_0_25, STATE_VARIABLE_B_26, STATE_VARIABLE_C_0_27, STATE_VARIABLE_C_28, STATE_VARIABLE_D_0_29, STATE_VARIABLE_D_30, STATE_VARIABLE_E_0_31, STATE_VARIABLE_E_32, STATE_VARIABLE_F_0_33, STATE_VARIABLE_F_34).
+set_unordlist.all_true(P_3, set_unordlist.sul(L_4)) :-
+    list.all_true(P_3, L_4).
+set_unordlist.filter(Pred_4, Set_5, TrueSet_6) :-
+    set_unordlist.divide(Pred_4, Set_5, TrueSet_6, _FalseSet_7).
+set_unordlist.filter(Pred_5, Set_6, TrueSet_7, FalseSet_8) :-
+    set_unordlist.divide(Pred_5, Set_6, TrueSet_7, FalseSet_8).
+set_unordlist.divide(Pred_5, set_unordlist.sul(Set_6), set_unordlist.sul(RevTruePart_7), set_unordlist.sul(RevFalsePart_8)) :-
+    V_9 = list.[] : list.list(T_1),
+    V_10 = list.[] : list.list(T_1),
+    set_unordlist.divide_2(Pred_5, Set_6, V_9, RevTruePart_7, V_10, RevFalsePart_8).
+set_unordlist.divide_2(_Pred_7, list.[], STATE_VARIABLE_RevTrue_0_10, STATE_VARIABLE_RevTrue_11, STATE_VARIABLE_RevFalse_0_12, STATE_VARIABLE_RevFalse_13) :-
+    STATE_VARIABLE_RevFalse_13 = STATE_VARIABLE_RevFalse_0_12,
+    STATE_VARIABLE_RevTrue_11 = STATE_VARIABLE_RevTrue_0_10.
+set_unordlist.divide_2(Pred_14, list.[H_15 | T_16], STATE_VARIABLE_RevTrue_0_19, STATE_VARIABLE_RevTrue_20, STATE_VARIABLE_RevFalse_0_21, STATE_VARIABLE_RevFalse_22) :-
+    (if
+      call(Pred_14, H_15)
+    then
+      STATE_VARIABLE_RevTrue_23_23 = list.[H_15 | STATE_VARIABLE_RevTrue_0_19] : list.list(T1_1),
+      STATE_VARIABLE_RevFalse_24_24 = STATE_VARIABLE_RevFalse_0_21
+    else
+      STATE_VARIABLE_RevFalse_24_24 = list.[H_15 | STATE_VARIABLE_RevFalse_0_21] : list.list(T1_1),
+      STATE_VARIABLE_RevTrue_23_23 = STATE_VARIABLE_RevTrue_0_19
+    ),
+    set_unordlist.divide_2(Pred_14, T_16, STATE_VARIABLE_RevTrue_23_23, STATE_VARIABLE_RevTrue_20, STATE_VARIABLE_RevFalse_24_24, STATE_VARIABLE_RevFalse_22).
+:- pragma exceptions(function, (set_unordlist.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (set_unordlist.list_to_set), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.list_to_set), 2, 0, will_not_throw).
+:- pragma exceptions(function, (set_unordlist.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.sorted_list_to_set), 2, 0, will_not_throw).
+:- pragma exceptions(function, (set_unordlist.sorted_list_to_set), 2, 0, will_not_throw).
+:- pragma exceptions(function, (set_unordlist.from_sorted_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.singleton_set), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.singleton_set), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.singleton_set), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.make_singleton_set), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.is_singleton), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.is_non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.superset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.member), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.is_member), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.insert), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.insert), 3, 1, will_not_throw).
+:- pragma exceptions(function, (set_unordlist.insert), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_unordlist.insert_new), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.delete), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.remove_least), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.union_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.power_union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.power_union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.power_intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.power_intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.intersect_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.filter_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_unordlist.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.fold6), 14, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.power_union_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.intersect_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.difference_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_unordlist.divide_2), 6, 0, may_throw(user_exception)).
+:- pragma termination_info((set_unordlist.init) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.init((builtin.uo)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.list_to_set((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.list_to_set((builtin.in), (builtin.out)), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.from_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.sorted_list_to_set((builtin.in), (builtin.out)), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.sorted_list_to_set((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.from_sorted_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.to_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.singleton_set((builtin.in), (builtin.out)), finite(3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.singleton_set((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.singleton_set((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.make_singleton_set((builtin.in)) = (builtin.out), finite(3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.is_singleton((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.is_non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.is_member((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.insert((builtin.di), (builtin.di), (builtin.uo)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.insert((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.insert((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_unordlist.insert_new((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(set_unordlist.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.delete((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.union_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.power_union((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.power_union((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.intersect((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.intersect((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(set_unordlist.power_intersect((builtin.in), (builtin.out)), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(set_unordlist.power_intersect((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(set_unordlist.intersect_list((builtin.in)) = (builtin.out), finite(2, [no, yes, no]), can_loop).
+:- pragma termination_info(set_unordlist.difference((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.count((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.filter_map((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.fold6((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.power_union_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.intersect_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(set_unordlist.difference_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_unordlist.divide_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
