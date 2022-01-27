@@ -1,0 +1,239 @@
+/*
+** Automatically generated from `field_access.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.field_access. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__field_access
+#define MR_HEADER_GUARD_hlds__make_hlds__field_access
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__FIELD_ACCESS_DECL_GUARD
+#define HLDS__MAKE_HLDS__FIELD_ACCESS_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "hlds.make_hlds.field_access.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__field_access__hlds__make_hlds__field_access__type_ctor_info_field_list_0;
+
+#line 32 "field_access.m"
+void MR_CALL 
+hlds__make_hlds__field_access____Compare____field_list_0_0(
+#line 32 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_1,
+#line 32 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 32 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_3);
+
+#line 32 "field_access.m"
+MR_bool MR_CALL 
+hlds__make_hlds__field_access____Unify____field_list_0_0(
+#line 32 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 32 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2);
+
+#line 96 "field_access.m"
+void MR_CALL 
+hlds__make_hlds__field_access__parse_field_list_4_p_0(
+#line 96 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 96 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 96 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_3,
+#line 96 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_4);
+
+#line 93 "field_access.m"
+MR_bool MR_CALL 
+hlds__make_hlds__field_access__maybe_parse_field_list_3_p_0(
+#line 93 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 93 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 93 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_3);
+
+#line 84 "field_access.m"
+void MR_CALL 
+hlds__make_hlds__field_access__expand_get_field_function_call_22_p_0(
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_3,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_4,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_5,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_6,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_7,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_8,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_9,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_10,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_11,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_12,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_13,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_14,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_15,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_16,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_17,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_18,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_19,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_20,
+#line 84 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_21,
+#line 84 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_22);
+
+#line 65 "field_access.m"
+void MR_CALL 
+hlds__make_hlds__field_access__expand_dcg_field_extraction_goal_22_p_0(
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_3,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_4,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_5,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_6,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_7,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_8,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_9,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_10,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_11,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_12,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_13,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_14,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_15,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_16,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_17,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_18,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_19,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_20,
+#line 65 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_21,
+#line 65 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_22);
+
+#line 44 "field_access.m"
+void MR_CALL 
+hlds__make_hlds__field_access__expand_set_field_function_call_22_p_0(
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_1,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_2,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_3,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_4,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_5,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_6,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_7,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_8,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_9,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_10,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_11,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_12,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_13,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_14,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_15,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_16,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_17,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_18,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_19,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_20,
+#line 44 "field_access.m"
+  MR_Word hlds__make_hlds__field_access__param_21,
+#line 44 "field_access.m"
+  MR_Word * hlds__make_hlds__field_access__param_22);
+
+void mercury__hlds__make_hlds__field_access__init(void);
+void mercury__hlds__make_hlds__field_access__init_type_tables(void);
+void mercury__hlds__make_hlds__field_access__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.field_access */
+
+/* :- end_interface hlds.make_hlds.field_access. */

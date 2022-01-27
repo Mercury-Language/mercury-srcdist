@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `typecheck.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.typecheck. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck
+#define MR_HEADER_GUARD_check_hlds__typecheck
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.typecheck.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck__check_hlds__typecheck__type_ctor_info_cons_constraints_action_0;
+
+#line 45 "check_hlds.typecheck.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck__check_hlds__typecheck__type_ctor_info_cons_type_0;
+
+#line 48 "check_hlds.typecheck.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck__check_hlds__typecheck__type_ctor_info_cons_type_assign_set_0;
+
+#line 51 "check_hlds.typecheck.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck__check_hlds__typecheck__type_ctor_info_maybe_cons_type_info_0;
+
+#line 54 "check_hlds.typecheck.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck__check_hlds__typecheck__type_ctor_info_stuff_to_check_0;
+
+#line 92 "typecheck.m"
+void MR_CALL 
+check_hlds__typecheck__typecheck_module_4_p_0(
+#line 92 "typecheck.m"
+  MR_Word check_hlds__typecheck__param_1,
+#line 92 "typecheck.m"
+  MR_Word * check_hlds__typecheck__param_2,
+#line 92 "typecheck.m"
+  MR_Word * check_hlds__typecheck__param_3,
+#line 92 "typecheck.m"
+  MR_Word * check_hlds__typecheck__param_4);
+
+void mercury__check_hlds__typecheck__init(void);
+void mercury__check_hlds__typecheck__init_type_tables(void);
+void mercury__check_hlds__typecheck__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.typecheck */
+
+/* :- end_interface check_hlds.typecheck. */

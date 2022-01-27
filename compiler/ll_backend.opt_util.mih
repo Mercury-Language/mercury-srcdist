@@ -1,0 +1,635 @@
+/*
+** Automatically generated from `opt_util.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.opt_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__opt_util
+#define MR_HEADER_GUARD_ll_backend__opt_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__OPT_UTIL_DECL_GUARD
+#define LL_BACKEND__OPT_UTIL_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.opt_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__opt_util__ll_backend__opt_util__type_ctor_info_instrmap_0;
+
+#line 45 "ll_backend.opt_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__opt_util__ll_backend__opt_util__type_ctor_info_lvalmap_0;
+
+#line 48 "ll_backend.opt_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__opt_util__ll_backend__opt_util__type_ctor_info_succmap_0;
+
+#line 51 "ll_backend.opt_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__opt_util__ll_backend__opt_util__type_ctor_info_tailmap_0;
+
+#line 31 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util____Compare____tailmap_0_0(
+#line 31 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_1,
+#line 31 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 31 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 31 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util____Unify____tailmap_0_0(
+#line 31 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 31 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 32 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util____Compare____succmap_0_0(
+#line 32 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_1,
+#line 32 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 32 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 32 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util____Unify____succmap_0_0(
+#line 32 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 32 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 30 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util____Compare____lvalmap_0_0(
+#line 30 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_1,
+#line 30 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 30 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 30 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util____Unify____lvalmap_0_0(
+#line 30 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 30 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 29 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util____Compare____instrmap_0_0(
+#line 29 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_1,
+#line 29 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 29 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 29 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util____Unify____instrmap_0_0(
+#line 29 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 29 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 310 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_label_3_p_0(
+#line 310 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 310 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 310 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 307 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_maybe_label_list_3_p_0(
+#line 307 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 307 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 307 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 304 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_code_addr_3_p_0(
+#line 304 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 304 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 304 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 300 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_comps_3_p_0(
+#line 300 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 300 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 300 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3);
+
+#line 296 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_instruction_list_5_p_0(
+#line 296 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 296 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 296 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3,
+#line 296 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_4,
+#line 296 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_5);
+
+#line 293 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_instruction_4_p_0(
+#line 293 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 293 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 293 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3,
+#line 293 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_4);
+
+#line 290 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__replace_labels_instr_4_p_0(
+#line 290 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 290 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 290 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3,
+#line 290 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_4);
+
+#line 277 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__propagate_livevals_2_p_0(
+#line 277 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 277 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 269 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__count_incr_hp_2_p_0(
+#line 269 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 269 "opt_util.m"
+  MR_Integer * ll_backend__opt_util__param_2);
+
+#line 265 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__rvals_free_of_lval_2_p_0(
+#line 265 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 265 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 261 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__rval_free_of_lval_2_p_0(
+#line 261 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 261 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2);
+
+#line 257 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__lval_access_rvals_2_p_0(
+#line 257 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 257 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 253 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__has_both_incr_decr_sp_1_p_0(
+#line 253 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 249 "opt_util.m"
+MR_String MR_CALL 
+ll_backend__opt_util__format_proc_label_1_f_0(
+#line 249 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 248 "opt_util.m"
+MR_String MR_CALL 
+ll_backend__opt_util__format_label_1_f_0(
+#line 248 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 243 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__no_stackvars_til_decr_sp_4_p_0(
+#line 243 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 243 "opt_util.m"
+  MR_Integer ll_backend__opt_util__param_2,
+#line 243 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3,
+#line 243 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_4);
+
+#line 234 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__block_refers_to_stack_1_f_0(
+#line 234 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 233 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__instr_refers_to_stack_1_f_0(
+#line 233 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 232 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__rvals_refer_stackvars_1_f_0(
+#line 232 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 231 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__rval_refers_stackvars_1_f_0(
+#line 231 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 230 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__lval_refers_stackvars_1_f_0(
+#line 230 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 224 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__count_temps_instr_5_p_0(
+#line 224 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 224 "opt_util.m"
+  MR_Integer ll_backend__opt_util__param_2,
+#line 224 "opt_util.m"
+  MR_Integer * ll_backend__opt_util__param_3,
+#line 224 "opt_util.m"
+  MR_Integer ll_backend__opt_util__param_4,
+#line 224 "opt_util.m"
+  MR_Integer * ll_backend__opt_util__param_5);
+
+#line 221 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__count_temps_instr_list_5_p_0(
+#line 221 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 221 "opt_util.m"
+  MR_Integer ll_backend__opt_util__param_2,
+#line 221 "opt_util.m"
+  MR_Integer * ll_backend__opt_util__param_3,
+#line 221 "opt_util.m"
+  MR_Integer ll_backend__opt_util__param_4,
+#line 221 "opt_util.m"
+  MR_Integer * ll_backend__opt_util__param_5);
+
+#line 216 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__possible_targets_3_p_0(
+#line 216 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 216 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 216 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 210 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__instr_labels_only_2_p_0(
+#line 210 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 210 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 209 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__instr_labels_3_p_0(
+#line 209 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 209 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 209 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 203 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__livevals_addr_1_f_0(
+#line 203 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 197 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__can_instr_fall_through_1_f_0(
+#line 197 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 192 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__can_instr_branch_away_1_f_0(
+#line 192 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 188 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_const_condition_2_p_0(
+#line 188 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 188 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 182 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__filter_in_livevals_2_p_0(
+#line 182 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 182 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 177 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__filter_out_livevals_2_p_0(
+#line 177 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 177 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 171 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__filter_out_bad_livevals_2_p_0(
+#line 171 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 171 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 165 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__filter_out_labels_2_p_0(
+#line 165 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 165 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 160 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__may_replace_succeed_with_succeed_discard_4_p_0(
+#line 160 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 160 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 160 "opt_util.m"
+  MR_String * ll_backend__opt_util__param_3,
+#line 160 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_4);
+
+#line 150 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__no_stack_straight_line_3_p_0(
+#line 150 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 150 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 150 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 144 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__straight_alternative_3_p_0(
+#line 144 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 144 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 144 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 136 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__filter_out_r1_3_p_0(
+#line 136 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 136 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 136 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 131 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_forkproceed_next_3_p_0(
+#line 131 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 131 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 131 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 121 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_succeed_next_2_p_0(
+#line 121 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 121 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 114 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_sdproceed_next_sf_3_p_0(
+#line 114 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 114 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 114 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 108 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_sdproceed_next_2_p_0(
+#line 108 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 108 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 100 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_proceed_next_2_p_0(
+#line 100 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 100 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 92 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__is_this_label_next_3_p_0(
+#line 92 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 92 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 92 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 86 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__skip_to_next_label_3_p_0(
+#line 86 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 86 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 86 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 81 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__find_first_label_2_p_0(
+#line 81 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 81 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 76 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__find_no_fallthrough_2_p_0(
+#line 76 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 76 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 71 "opt_util.m"
+MR_Word MR_CALL 
+ll_backend__opt_util__touches_nondet_ctrl_1_f_0(
+#line 71 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1);
+
+#line 63 "opt_util.m"
+MR_bool MR_CALL 
+ll_backend__opt_util__next_assign_to_redoip_6_p_0(
+#line 63 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 63 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_2,
+#line 63 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_3,
+#line 63 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_4,
+#line 63 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_5,
+#line 63 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_6);
+
+#line 55 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__skip_comments_livevals_labels_2_p_0(
+#line 55 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 55 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 52 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__skip_comments_labels_2_p_0(
+#line 52 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 52 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 49 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__skip_comments_livevals_2_p_0(
+#line 49 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 49 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 47 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__skip_comments_2_p_0(
+#line 47 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 47 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2);
+
+#line 40 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__gather_comments_livevals_3_p_0(
+#line 40 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 40 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 40 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 37 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__gather_comments_3_p_0(
+#line 37 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 37 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 37 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3);
+
+#line 34 "opt_util.m"
+void MR_CALL 
+ll_backend__opt_util__get_prologue_4_p_0(
+#line 34 "opt_util.m"
+  MR_Word ll_backend__opt_util__param_1,
+#line 34 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_2,
+#line 34 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_3,
+#line 34 "opt_util.m"
+  MR_Word * ll_backend__opt_util__param_4);
+
+void mercury__ll_backend__opt_util__init(void);
+void mercury__ll_backend__opt_util__init_type_tables(void);
+void mercury__ll_backend__opt_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.opt_util */
+
+/* :- end_interface ll_backend.opt_util. */

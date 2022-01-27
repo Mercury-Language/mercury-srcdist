@@ -1,0 +1,939 @@
+/*
+** Automatically generated from `stream.string_writer.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module stream.string_writer. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_stream__string_writer
+#define MR_HEADER_GUARD_stream__string_writer
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STREAM__STRING_WRITER_DECL_GUARD
+#define STREAM__STRING_WRITER_DECL_GUARD
+#include "stream.mih"
+
+#endif
+
+
+
+
+#line 139 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_109_97_121_98_101_95_119_114_105_116_101_95_112_97_114_101_110_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_95_95_91_49_93_95_48_6_p_0(
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 139 "stream.string_writer.m"
+  MR_Char mercury__stream__string_writer__param_3,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_4,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_5);
+
+#line 139 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_109_97_121_98_101_95_119_114_105_116_101_95_112_97_114_101_110_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_6_p_0(
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 139 "stream.string_writer.m"
+  MR_Char mercury__stream__string_writer__param_4,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_5,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6);
+
+#line 110 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_4_p_0(
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 110 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5);
+
+#line 117 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_5_p_0(
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 117 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6);
+
+#line 118 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_49_95_49_5_p_1(
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 118 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6);
+
+#line 119 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2(
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 119 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6);
+
+#line 120 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_51_95_49_5_p_3(
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 120 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6);
+
+#line 152 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_4_p_0(
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4);
+
+#line 160 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_5_p_0(
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 161 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_49_95_49_5_p_1(
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 162 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2(
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 163 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_51_95_49_5_p_3(
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 29 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_112_117_116_95_105_110_116_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_4_p_0(
+#line 29 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 29 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 29 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_3);
+
+#line 32 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_112_117_116_95_102_108_111_97_116_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_4_p_0(
+#line 32 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 32 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 32 "stream.string_writer.m"
+  MR_Float mercury__stream__string_writer__param_3);
+
+#line 35 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_112_117_116_95_99_104_97_114_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_4_p_0(
+#line 35 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 35 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 35 "stream.string_writer.m"
+  MR_Char mercury__stream__string_writer__param_3);
+
+#line 317 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_5_p_0(
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 318 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_49_95_49_5_p_1(
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 319 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2(
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 320 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_51_95_49_5_p_3(
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5);
+
+#line 332 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_112_114_105_111_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_48_95_49_6_p_0(
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 332 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6);
+
+#line 333 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_112_114_105_111_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_49_95_49_6_p_1(
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 333 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6);
+
+#line 334 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_112_114_105_111_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_6_p_2(
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 334 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6);
+
+#line 336 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_111_95_119_114_105_116_101_95_117_110_105_118_95_112_114_105_111_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_51_95_49_6_p_3(
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 336 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6);
+
+#line 336 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_prio_6_p_3(
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 336 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 336 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 336 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6,
+#line 336 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 336 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 334 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_prio_6_p_2(
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 334 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 334 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 334 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6,
+#line 334 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 334 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 333 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_prio_6_p_1(
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 333 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 333 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 333 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6,
+#line 333 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 333 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 332 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_prio_6_p_0(
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 332 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 332 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 332 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6,
+#line 332 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 332 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 320 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_5_p_3(
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 320 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 320 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 320 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 320 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 319 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_5_p_2(
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 319 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 319 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 319 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 319 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 318 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_5_p_1(
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 318 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 318 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 318 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 318 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 317 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__do_write_univ_5_p_0(
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 317 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 317 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 317 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 317 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 163 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_univ_5_p_3(
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 163 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 163 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 163 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 163 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 162 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_univ_5_p_2(
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 162 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 162 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 162 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 162 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 161 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_univ_5_p_1(
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 161 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 161 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 161 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 161 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 160 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_univ_5_p_0(
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 160 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 160 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 160 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 160 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 152 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_univ_4_p_0(
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 152 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 152 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 152 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 152 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_6);
+
+#line 139 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__maybe_write_paren_6_p_0(
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 139 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 139 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 139 "stream.string_writer.m"
+  MR_Char mercury__stream__string_writer__param_4,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_5,
+#line 139 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_6,
+#line 139 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 139 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 122 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_cc_4_p_0(
+#line 122 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 122 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 122 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 122 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 122 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 122 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 122 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 120 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_5_p_3(
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 120 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 120 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 120 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 120 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 120 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 119 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_5_p_2(
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 119 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 119 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 119 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 119 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 119 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 118 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_5_p_1(
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 118 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 118 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 118 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 118 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 118 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 117 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_5_p_0(
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 117 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 117 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 117 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 117 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 117 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 110 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__write_4_p_0(
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 110 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 110 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 110 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 110 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 110 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 85 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_cc_4_p_0(
+#line 85 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 85 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 85 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 85 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 85 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 85 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 85 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 83 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_5_p_3(
+#line 83 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 83 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 83 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 83 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 83 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 83 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 83 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 83 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 82 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_5_p_2(
+#line 82 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 82 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 82 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 82 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 82 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 82 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 82 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 82 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 81 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_5_p_1(
+#line 81 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 81 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 81 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 81 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 81 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 81 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 81 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 81 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 80 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_5_p_0(
+#line 80 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 80 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 80 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 80 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 80 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_5,
+#line 80 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 80 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_7,
+#line 80 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_8);
+
+#line 73 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__print_4_p_0(
+#line 73 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 73 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_2,
+#line 73 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_3,
+#line 73 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 73 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 73 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_6,
+#line 73 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_7);
+
+#line 43 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__nl_3_p_0(
+#line 43 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 43 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_2,
+#line 43 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_3,
+#line 43 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_4);
+
+#line 40 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__format_5_p_0(
+#line 40 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 40 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_2,
+#line 40 "stream.string_writer.m"
+  MR_String mercury__stream__string_writer__param_3,
+#line 40 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_4,
+#line 40 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_5,
+#line 40 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_6);
+
+#line 35 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__put_char_4_p_0(
+#line 35 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 35 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_2,
+#line 35 "stream.string_writer.m"
+  MR_Char mercury__stream__string_writer__param_3,
+#line 35 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 35 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_5);
+
+#line 32 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__put_float_4_p_0(
+#line 32 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 32 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_2,
+#line 32 "stream.string_writer.m"
+  MR_Float mercury__stream__string_writer__param_3,
+#line 32 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 32 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_5);
+
+#line 29 "stream.string_writer.m"
+void MR_CALL 
+mercury__stream__string_writer__put_int_4_p_0(
+#line 29 "stream.string_writer.m"
+  MR_Word mercury__stream__string_writer__param_1,
+#line 29 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_2,
+#line 29 "stream.string_writer.m"
+  MR_Integer mercury__stream__string_writer__param_3,
+#line 29 "stream.string_writer.m"
+  MR_Box mercury__stream__string_writer__param_4,
+#line 29 "stream.string_writer.m"
+  MR_Box * mercury__stream__string_writer__param_5);
+
+void mercury__stream__string_writer__init(void);
+void mercury__stream__string_writer__init_type_tables(void);
+void mercury__stream__string_writer__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_stream.string_writer */
+
+/* :- end_interface stream.string_writer. */

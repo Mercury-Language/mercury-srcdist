@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `purity.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.purity. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__purity
+#define MR_HEADER_GUARD_check_hlds__purity
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__PURITY_DECL_GUARD
+#define CHECK_HLDS__PURITY_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.purity.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_converted_unify_0;
+
+#line 45 "check_hlds.purity.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_purity_check_result_0;
+
+#line 48 "check_hlds.purity.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_purity_info_0;
+
+#line 51 "check_hlds.purity.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__purity__check_hlds__purity__type_ctor_info_run_post_typecheck_0;
+
+#line 162 "purity.m"
+MR_Word MR_CALL 
+check_hlds__purity__impure_unification_expr_error_2_f_0(
+#line 162 "purity.m"
+  MR_Word check_hlds__purity__param_1,
+#line 162 "purity.m"
+  MR_Word check_hlds__purity__param_2);
+
+#line 156 "purity.m"
+void MR_CALL 
+check_hlds__purity__repuritycheck_proc_4_p_0(
+#line 156 "purity.m"
+  MR_Word check_hlds__purity__param_1,
+#line 156 "purity.m"
+  MR_Word check_hlds__purity__param_2,
+#line 156 "purity.m"
+  MR_Word check_hlds__purity__param_3,
+#line 156 "purity.m"
+  MR_Word * check_hlds__purity__param_4);
+
+#line 146 "purity.m"
+void MR_CALL 
+check_hlds__purity__puritycheck_module_4_p_0(
+#line 146 "purity.m"
+  MR_Word check_hlds__purity__param_1,
+#line 146 "purity.m"
+  MR_Word * check_hlds__purity__param_2,
+#line 146 "purity.m"
+  MR_Word check_hlds__purity__param_3,
+#line 146 "purity.m"
+  MR_Word * check_hlds__purity__param_4);
+
+void mercury__check_hlds__purity__init(void);
+void mercury__check_hlds__purity__init_type_tables(void);
+void mercury__check_hlds__purity__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.purity */
+
+/* :- end_interface check_hlds.purity. */

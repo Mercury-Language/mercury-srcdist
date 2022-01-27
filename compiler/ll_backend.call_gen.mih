@@ -1,0 +1,192 @@
+/*
+** Automatically generated from `call_gen.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.call_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__call_gen
+#define MR_HEADER_GUARD_ll_backend__call_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CALL_GEN_DECL_GUARD
+#define LL_BACKEND__CALL_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.call_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__call_gen__ll_backend__call_gen__type_ctor_info_known_call_variant_0;
+
+#line 37 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_103_101_110_101_114_105_99_95_99_97_108_108_95_95_91_49_93_95_48_10_p_0(
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_3,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_4,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_5,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_6,
+#line 37 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_7,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_8,
+#line 37 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_9);
+
+#line 45 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen____Compare____known_call_variant_0_0(
+#line 45 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_1,
+#line 45 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 45 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_3);
+
+#line 45 "call_gen.m"
+MR_bool MR_CALL 
+ll_backend__call_gen____Unify____known_call_variant_0_0(
+#line 45 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 45 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2);
+
+#line 60 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__output_arg_locs_2_p_0(
+#line 60 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 60 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_2);
+
+#line 57 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__input_arg_locs_2_p_0(
+#line 57 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 57 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_2);
+
+#line 53 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__generic_call_info_8_p_0(
+#line 53 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 53 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 53 "call_gen.m"
+  MR_Integer ll_backend__call_gen__param_3,
+#line 53 "call_gen.m"
+  MR_Integer ll_backend__call_gen__param_4,
+#line 53 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_5,
+#line 53 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_6,
+#line 53 "call_gen.m"
+  MR_Integer * ll_backend__call_gen__param_7,
+#line 53 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_8);
+
+#line 42 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__generate_builtin_7_p_0(
+#line 42 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 42 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 42 "call_gen.m"
+  MR_Integer ll_backend__call_gen__param_3,
+#line 42 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_4,
+#line 42 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_5,
+#line 42 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_6,
+#line 42 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_7);
+
+#line 37 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__generate_generic_call_10_p_0(
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_3,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_4,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_5,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_6,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_7,
+#line 37 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_8,
+#line 37 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_9,
+#line 37 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_10);
+
+#line 33 "call_gen.m"
+void MR_CALL 
+ll_backend__call_gen__generate_call_8_p_0(
+#line 33 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_1,
+#line 33 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_2,
+#line 33 "call_gen.m"
+  MR_Integer ll_backend__call_gen__param_3,
+#line 33 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_4,
+#line 33 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_5,
+#line 33 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_6,
+#line 33 "call_gen.m"
+  MR_Word ll_backend__call_gen__param_7,
+#line 33 "call_gen.m"
+  MR_Word * ll_backend__call_gen__param_8);
+
+void mercury__ll_backend__call_gen__init(void);
+void mercury__ll_backend__call_gen__init_type_tables(void);
+void mercury__ll_backend__call_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.call_gen */
+
+/* :- end_interface ll_backend.call_gen. */

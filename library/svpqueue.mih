@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `svpqueue.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module svpqueue. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_svpqueue
+#define MR_HEADER_GUARD_svpqueue
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SVPQUEUE_DECL_GUARD
+#define SVPQUEUE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 40 "svpqueue.m"
+MR_bool MR_CALL 
+mercury__svpqueue__remove_4_p_0(
+#line 40 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_1,
+#line 40 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_2,
+#line 40 "svpqueue.m"
+  MR_Box * mercury__svpqueue__param_3,
+#line 40 "svpqueue.m"
+  MR_Box * mercury__svpqueue__param_4,
+#line 40 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_5,
+#line 40 "svpqueue.m"
+  MR_Word * mercury__svpqueue__param_6);
+
+#line 33 "svpqueue.m"
+void MR_CALL 
+mercury__svpqueue__insert_4_p_0(
+#line 33 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_1,
+#line 33 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_2,
+#line 33 "svpqueue.m"
+  MR_Box mercury__svpqueue__param_3,
+#line 33 "svpqueue.m"
+  MR_Box mercury__svpqueue__param_4,
+#line 33 "svpqueue.m"
+  MR_Word mercury__svpqueue__param_5,
+#line 33 "svpqueue.m"
+  MR_Word * mercury__svpqueue__param_6);
+
+void mercury__svpqueue__init(void);
+void mercury__svpqueue__init_type_tables(void);
+void mercury__svpqueue__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_svpqueue */
+
+/* :- end_interface svpqueue. */

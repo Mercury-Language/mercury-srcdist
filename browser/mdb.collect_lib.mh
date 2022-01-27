@@ -1,0 +1,36 @@
+/*
+** Automatically generated from `collect_lib.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+*/
+#ifndef MDB__COLLECT_LIB_MH
+#define MDB__COLLECT_LIB_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__COLLECT_LIB_DECL_GUARD
+#define MDB__COLLECT_LIB_DECL_GUARD
+
+#endif
+void ML_CL_unlink_collect(MR_Word);
+void ML_CL_link_collect(MR_String, MR_Word *, MR_Word *, MR_Word *, MR_Word *, MR_Word *, MR_Word *, MR_Char *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__COLLECT_LIB_MH */

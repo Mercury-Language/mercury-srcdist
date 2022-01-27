@@ -1,0 +1,289 @@
+/*
+** Automatically generated from `equiv_type.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.equiv_type. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__equiv_type
+#define MR_HEADER_GUARD_parse_tree__equiv_type
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__EQUIV_TYPE_DECL_GUARD
+#define PARSE_TREE__EQUIV_TYPE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 42 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_equiv_type_info_0;
+
+#line 45 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_eqv_inst_body_0;
+
+#line 48 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_eqv_inst_map_0;
+
+#line 51 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_eqv_map_0;
+
+#line 54 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_eqv_type_body_0;
+
+#line 57 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_eqv_type_location_0;
+
+#line 60 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_expanded_item_set_0;
+
+#line 63 "parse_tree.equiv_type.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type__parse_tree__equiv_type__type_ctor_info_pred_or_func_decl_type_0;
+
+#line 1555 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type____Compare____expanded_item_set_0_0(
+#line 1555 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_1,
+#line 1555 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 1555 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3);
+
+#line 1555 "equiv_type.m"
+MR_bool MR_CALL 
+parse_tree__equiv_type____Unify____expanded_item_set_0_0(
+#line 1555 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 1555 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2);
+
+#line 82 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type____Compare____eqv_type_body_0_0(
+#line 82 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_1,
+#line 82 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 82 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3);
+
+#line 82 "equiv_type.m"
+MR_bool MR_CALL 
+parse_tree__equiv_type____Unify____eqv_type_body_0_0(
+#line 82 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 82 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2);
+
+#line 89 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type____Compare____eqv_map_0_0(
+#line 89 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_1,
+#line 89 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 89 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3);
+
+#line 89 "equiv_type.m"
+MR_bool MR_CALL 
+parse_tree__equiv_type____Unify____eqv_map_0_0(
+#line 89 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 89 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2);
+
+#line 92 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type____Compare____equiv_type_info_0_0(
+#line 92 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_1,
+#line 92 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 92 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3);
+
+#line 92 "equiv_type.m"
+MR_bool MR_CALL 
+parse_tree__equiv_type____Unify____equiv_type_info_0_0(
+#line 92 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 92 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2);
+
+#line 104 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__finish_recording_expanded_items_4_p_0(
+#line 104 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 104 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 104 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3,
+#line 104 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_4);
+
+#line 99 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__maybe_start_recording_expanded_items_4_p_0(
+#line 99 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 99 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 99 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_3,
+#line 99 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_4);
+
+#line 78 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__replace_in_ctors_7_p_0(
+#line 78 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 78 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 78 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 78 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_4,
+#line 78 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_5,
+#line 78 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_6,
+#line 78 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_7);
+
+#line 74 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__replace_in_prog_constraint_7_p_0(
+#line 74 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 74 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 74 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 74 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_4,
+#line 74 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_5,
+#line 74 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_6,
+#line 74 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_7);
+
+#line 70 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__replace_in_prog_constraints_7_p_0(
+#line 70 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 70 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 70 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 70 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_4,
+#line 70 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_5,
+#line 70 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_6,
+#line 70 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_7);
+
+#line 65 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__replace_in_type_list_8_p_0(
+#line 65 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 65 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 65 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 65 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_4,
+#line 65 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_5,
+#line 65 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_6,
+#line 65 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_7,
+#line 65 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_8);
+
+#line 61 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__replace_in_type_8_p_0(
+#line 61 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 61 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 61 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 61 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_4,
+#line 61 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_5,
+#line 61 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_6,
+#line 61 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_7,
+#line 61 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_8);
+
+#line 52 "equiv_type.m"
+void MR_CALL 
+parse_tree__equiv_type__expand_eqv_types_10_p_0(
+#line 52 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_1,
+#line 52 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_2,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_3,
+#line 52 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_4,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_5,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_6,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_7,
+#line 52 "equiv_type.m"
+  MR_Word parse_tree__equiv_type__param_8,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_9,
+#line 52 "equiv_type.m"
+  MR_Word * parse_tree__equiv_type__param_10);
+
+void mercury__parse_tree__equiv_type__init(void);
+void mercury__parse_tree__equiv_type__init_type_tables(void);
+void mercury__parse_tree__equiv_type__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.equiv_type */
+
+/* :- end_interface parse_tree.equiv_type. */

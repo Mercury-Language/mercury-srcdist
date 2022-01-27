@@ -1,0 +1,15 @@
+:- module (libs.file_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module time.
+:- import_module (libs.globals).
+:- type dir_name == string.
+:- type file_name == string.
+:- type maybe_open_file
+	--->	open_file 
+	;	do_not_open_file .
+:- type open_file_pred(FileInfo) == pred(maybe.maybe_error(FileInfo), io.io, io.io).
+:- inst (open_file_pred) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).

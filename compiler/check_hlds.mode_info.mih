@@ -1,0 +1,1177 @@
+/*
+** Automatically generated from `mode_info.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.mode_info. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_info
+#define MR_HEADER_GUARD_check_hlds__mode_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_INFO_DECL_GUARD
+#define CHECK_HLDS__MODE_INFO_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_call_context_0;
+
+#line 45 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_debug_flags_0;
+
+#line 48 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0;
+
+#line 51 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_how_to_check_goal_0;
+
+#line 54 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0;
+
+#line 57 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0;
+
+#line 60 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0;
+
+#line 63 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_locked_vars_0;
+
+#line 66 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0;
+
+#line 69 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_may_change_called_proc_0;
+
+#line 72 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0;
+
+#line 75 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_context_0;
+
+#line 78 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_info_0;
+
+#line 81 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_mode_sub_info_0;
+
+#line 84 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0;
+
+#line 87 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_par_conj_mode_check_stack_0;
+
+#line 90 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_side_0;
+
+#line 93 "check_hlds.mode_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_info__check_hlds__mode_info__type_ctor_info_var_lock_reason_0;
+
+#line 67 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____var_lock_reason_0_0(
+#line 67 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 67 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 67 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 67 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____var_lock_reason_0_0(
+#line 67 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 67 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 59 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____side_0_0(
+#line 59 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 59 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 59 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 59 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____side_0_0(
+#line 59 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 59 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 146 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____par_conj_mode_check_stack_0_0(
+#line 146 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 146 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 146 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 146 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____par_conj_mode_check_stack_0_0(
+#line 146 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 146 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 147 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____par_conj_mode_check_0_0(
+#line 147 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 147 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 147 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 147 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____par_conj_mode_check_0_0(
+#line 147 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 147 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 459 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____mode_info_0_0(
+#line 459 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 459 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 459 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 459 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____mode_info_0_0(
+#line 459 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 459 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 46 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____mode_context_0_0(
+#line 46 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 46 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 46 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 46 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____mode_context_0_0(
+#line 46 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 46 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 116 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____may_init_solver_vars_0_0(
+#line 116 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 116 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 116 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 116 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____may_init_solver_vars_0_0(
+#line 116 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 116 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 87 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____may_change_called_proc_0_0(
+#line 87 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 87 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 87 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 87 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____may_change_called_proc_0_0(
+#line 87 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 87 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 132 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____make_ground_terms_unique_0_0(
+#line 132 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 132 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 132 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 132 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____make_ground_terms_unique_0_0(
+#line 132 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 132 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 91 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____locked_vars_0_0(
+#line 91 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 91 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 91 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 91 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____locked_vars_0_0(
+#line 91 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 91 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 120 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____in_promise_purity_scope_0_0(
+#line 120 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 120 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 120 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 120 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____in_promise_purity_scope_0_0(
+#line 120 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 120 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 124 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____in_from_ground_term_scope_0_0(
+#line 124 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 124 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 124 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 124 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____in_from_ground_term_scope_0_0(
+#line 124 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 124 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 136 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____in_dupl_for_switch_0_0(
+#line 136 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 136 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 136 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 136 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____in_dupl_for_switch_0_0(
+#line 136 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 136 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 76 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____how_to_check_goal_0_0(
+#line 76 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 76 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 76 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 76 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____how_to_check_goal_0_0(
+#line 76 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 76 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 128 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____had_from_ground_term_scope_0_0(
+#line 128 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 128 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 128 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 128 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____had_from_ground_term_scope_0_0(
+#line 128 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 128 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 95 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____debug_flags_0_0(
+#line 95 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 95 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 95 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 95 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____debug_flags_0_0(
+#line 95 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 95 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 63 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info____Compare____call_context_0_0(
+#line 63 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_1,
+#line 63 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 63 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3);
+
+#line 63 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info____Unify____call_context_0_0(
+#line 63 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 63 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2);
+
+#line 330 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info__mode_info_solver_init_is_supported_1_p_0(
+#line 330 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1);
+
+#line 324 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info__mode_info_may_init_solver_vars_1_p_0(
+#line 324 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1);
+
+#line 320 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_need_to_requantify_2_p_0(
+#line 320 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 320 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 317 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_add_warning_3_p_0(
+#line 317 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 317 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 317 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 314 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_warning_3_p_0(
+#line 314 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 314 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 314 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 311 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_add_error_3_p_0(
+#line 311 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 311 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 311 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 308 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_error_4_p_0(
+#line 308 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 308 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 308 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3,
+#line 308 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_4);
+
+#line 301 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_var_is_nondet_live_3_p_0(
+#line 301 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 301 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 301 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 296 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_var_is_live_3_p_0(
+#line 296 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 296 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 296 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 294 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_var_list_is_live_3_p_0(
+#line 294 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 294 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 294 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 289 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_call_id_3_p_0(
+#line 289 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 289 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 289 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 283 "mode_info.m"
+MR_bool MR_CALL 
+check_hlds__mode_info__mode_info_var_is_locked_3_p_0(
+#line 283 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 283 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 283 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 280 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_unlock_vars_4_p_0(
+#line 280 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 280 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 280 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3,
+#line 280 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_4);
+
+#line 277 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_lock_vars_4_p_0(
+#line 277 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 277 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 277 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_3,
+#line 277 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_4);
+
+#line 274 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_types_of_vars_3_p_0(
+#line 274 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 274 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 274 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 269 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_in_dupl_for_switch_3_p_0(
+#line 269 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 269 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 269 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 267 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_make_ground_terms_unique_3_p_0(
+#line 267 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 267 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 267 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 265 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_had_from_ground_term_3_p_0(
+#line 265 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 265 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 265 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 263 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_in_from_ground_term_3_p_0(
+#line 263 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 263 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 263 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 261 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_may_init_solver_vars_3_p_0(
+#line 261 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 261 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 261 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 259 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_checking_extra_goals_3_p_0(
+#line 259 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 259 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 259 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 257 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_may_change_called_proc_3_p_0(
+#line 257 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 257 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 257 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 255 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_how_to_check_3_p_0(
+#line 255 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 255 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 255 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 253 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_changed_flag_3_p_0(
+#line 253 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 253 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 253 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 251 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_parallel_vars_3_p_0(
+#line 251 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 251 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 251 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 249 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_last_checkpoint_insts_3_p_0(
+#line 249 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 249 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 249 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 247 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_nondet_live_vars_3_p_0(
+#line 247 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 247 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 247 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 245 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_live_vars_3_p_0(
+#line 245 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 245 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 245 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 243 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_delay_info_3_p_0(
+#line 243 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 243 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 243 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 241 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_var_types_3_p_0(
+#line 241 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 241 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 241 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 239 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_varset_3_p_0(
+#line 239 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 239 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 239 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 237 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_remove_live_vars_3_p_0(
+#line 237 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 237 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 237 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 235 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_add_live_vars_3_p_0(
+#line 235 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 235 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 235 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 233 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_in_promise_purity_scope_3_p_0(
+#line 233 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 233 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 233 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 231 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_need_to_requantify_3_p_0(
+#line 231 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 231 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 231 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 229 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_warnings_3_p_0(
+#line 229 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 229 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 229 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 227 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_errors_3_p_0(
+#line 227 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 227 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 227 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 225 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_locked_vars_3_p_0(
+#line 225 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 225 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 225 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 223 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_instmap_3_p_0(
+#line 223 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 223 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 223 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 221 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_unset_call_context_2_p_0(
+#line 221 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 221 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 219 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_call_arg_context_3_p_0(
+#line 219 "mode_info.m"
+  MR_Integer check_hlds__mode_info__param_1,
+#line 219 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 219 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 217 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_call_context_3_p_0(
+#line 217 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 217 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 217 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 215 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_mode_context_3_p_0(
+#line 215 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 215 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 215 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 213 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_context_3_p_0(
+#line 213 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 213 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 213 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 211 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_proc_id_3_p_0(
+#line 211 "mode_info.m"
+  MR_Integer check_hlds__mode_info__param_1,
+#line 211 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 211 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 209 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_pred_id_3_p_0(
+#line 209 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 209 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 209 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 207 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_set_module_info_3_p_0(
+#line 207 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 207 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 207 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_3);
+
+#line 202 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_in_dupl_for_switch_2_p_0(
+#line 202 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 202 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 200 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_make_ground_terms_unique_2_p_0(
+#line 200 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 200 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 198 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_had_from_ground_term_2_p_0(
+#line 198 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 198 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 196 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_in_from_ground_term_2_p_0(
+#line 196 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 196 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 194 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_may_init_solver_vars_2_p_0(
+#line 194 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 194 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 193 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_checking_extra_goals_2_p_0(
+#line 193 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 193 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 192 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_initial_instmap_2_p_0(
+#line 192 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 192 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 190 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_may_change_called_proc_2_p_0(
+#line 190 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 190 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 188 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_how_to_check_2_p_0(
+#line 188 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 188 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 187 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_changed_flag_2_p_0(
+#line 187 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 187 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 185 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_parallel_vars_2_p_0(
+#line 185 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 185 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 183 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_last_checkpoint_insts_2_p_0(
+#line 183 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 183 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 181 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_nondet_live_vars_2_p_0(
+#line 181 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 181 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 180 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_live_vars_2_p_0(
+#line 180 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 180 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 179 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_delay_info_2_p_0(
+#line 179 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 179 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 178 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_var_types_2_p_0(
+#line 178 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 178 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 177 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_instvarset_2_p_0(
+#line 177 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 177 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 176 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_varset_2_p_0(
+#line 176 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 176 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 175 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_liveness_2_p_0(
+#line 175 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 175 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 174 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_num_errors_2_p_0(
+#line 174 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 174 "mode_info.m"
+  MR_Integer * check_hlds__mode_info__param_2);
+
+#line 172 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_in_promise_purity_scope_2_p_0(
+#line 172 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 172 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 170 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_need_to_requantify_2_p_0(
+#line 170 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 170 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 168 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_warnings_2_p_0(
+#line 168 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 168 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 167 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_errors_2_p_0(
+#line 167 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 167 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 166 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_locked_vars_2_p_0(
+#line 166 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 166 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 165 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_instmap_2_p_0(
+#line 165 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 165 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 164 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_mode_context_2_p_0(
+#line 164 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 164 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 163 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_context_2_p_0(
+#line 163 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 163 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 161 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_debug_modes_2_p_0(
+#line 161 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 161 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 160 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_proc_id_2_p_0(
+#line 160 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 160 "mode_info.m"
+  MR_Integer * check_hlds__mode_info__param_2);
+
+#line 159 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_pred_id_2_p_0(
+#line 159 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 159 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 158 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_insts_2_p_0(
+#line 158 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 158 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 157 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_modes_2_p_0(
+#line 157 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 157 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 156 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_preds_2_p_0(
+#line 156 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 156 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 155 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_get_module_info_2_p_0(
+#line 155 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 155 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_2);
+
+#line 109 "mode_info.m"
+void MR_CALL 
+check_hlds__mode_info__mode_info_init_9_p_0(
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_1,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_2,
+#line 109 "mode_info.m"
+  MR_Integer check_hlds__mode_info__param_3,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_4,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_5,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_6,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_7,
+#line 109 "mode_info.m"
+  MR_Word check_hlds__mode_info__param_8,
+#line 109 "mode_info.m"
+  MR_Word * check_hlds__mode_info__param_9);
+
+void mercury__check_hlds__mode_info__init(void);
+void mercury__check_hlds__mode_info__init_type_tables(void);
+void mercury__check_hlds__mode_info__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.mode_info */
+
+/* :- end_interface check_hlds.mode_info. */

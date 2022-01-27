@@ -1,0 +1,75 @@
+/*
+** Automatically generated from `labelopt.m'
+** by the Mercury compiler,
+** version 13.05, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.labelopt. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__labelopt
+#define MR_HEADER_GUARD_ll_backend__labelopt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LABELOPT_DECL_GUARD
+#define LL_BACKEND__LABELOPT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 39 "labelopt.m"
+void MR_CALL 
+ll_backend__labelopt__build_useset_3_p_0(
+#line 39 "labelopt.m"
+  MR_Word ll_backend__labelopt__param_1,
+#line 39 "labelopt.m"
+  MR_Word ll_backend__labelopt__param_2,
+#line 39 "labelopt.m"
+  MR_Word * ll_backend__labelopt__param_3);
+
+#line 32 "labelopt.m"
+void MR_CALL 
+ll_backend__labelopt__labelopt_main_5_p_0(
+#line 32 "labelopt.m"
+  MR_Word ll_backend__labelopt__param_1,
+#line 32 "labelopt.m"
+  MR_Word ll_backend__labelopt__param_2,
+#line 32 "labelopt.m"
+  MR_Word ll_backend__labelopt__param_3,
+#line 32 "labelopt.m"
+  MR_Word * ll_backend__labelopt__param_4,
+#line 32 "labelopt.m"
+  MR_Word * ll_backend__labelopt__param_5);
+
+void mercury__ll_backend__labelopt__init(void);
+void mercury__ll_backend__labelopt__init_type_tables(void);
+void mercury__ll_backend__labelopt__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.labelopt */
+
+/* :- end_interface ll_backend.labelopt. */
