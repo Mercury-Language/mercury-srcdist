@@ -1,0 +1,17 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- type burdened_aug_comp_unit.
+:- type grabbed_file.
+:- type grabbed_file_map.
+:- type maybe_top_module.
+:- type module_baggage.
+:- type module_timestamp.
+:- type module_timestamp_map.
+:- type recomp_avail
+	where	type_is_abstract_enum(3).
+:- type_representation(burdened_aug_comp_unit, is_word_aligned_ptr).
+:- type_representation(grabbed_file_map, is_eqv_to(map(module_name, parse_tree.module_imports.grabbed_file))).
+:- type_representation(module_baggage, is_word_aligned_ptr).
+:- type_representation(module_timestamp, is_word_aligned_ptr).
+:- type_representation(module_timestamp_map, is_eqv_to(map(module_name, parse_tree.module_imports.module_timestamp))).
+:- type_representation(recomp_avail, du_repn(enum("recomp_avail_src", "recomp_avail_int_import", ["recomp_avail_imp_import", "recomp_avail_int_use", "recomp_avail_imp_use", "recomp_avail_int_use_imp_import"],  no_c_j_cs))).

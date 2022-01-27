@@ -1,0 +1,685 @@
+/*
+** Automatically generated from `psqueue.m'
+** by the Mercury compiler,
+** version rotd-2022-01-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module psqueue.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_psqueue
+#define MR_HEADER_GUARD_psqueue
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PSQUEUE_DECL_GUARD
+#define PSQUEUE_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__psqueue__psqueue__type_ctor_info_loser_tree_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__psqueue__psqueue__type_ctor_info_loser_tree_size_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__psqueue__psqueue__type_ctor_info_psqueue_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__psqueue__psqueue__type_ctor_info_tournament_view_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__psqueue__psqueue__type_ctor_info_winner_2;
+
+void MR_CALL 
+mercury__psqueue__f_76_67_77_67_112_114_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_116_111_95_97_115_115_111_99_95_108_105_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__psqueue__LCMCpr_to_assoc_list_1_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_97_100_106_117_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_97_100_106_117_115_116_95_116_118_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_97_116_95_109_111_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_97_116_95_109_111_115_116_95_105_110_95_119_105_110_110_101_114_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_99_111_109_98_105_110_101_95_119_105_110_110_101_114_115_95_118_105_97_95_116_111_117_114_110_97_109_101_110_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_114_101_109_111_118_101_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Box * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_102_114_111_109_95_97_115_115_111_99_95_108_105_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_102_114_111_109_95_97_115_115_111_99_95_108_105_115_116_95_108_111_111_112_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_105_110_115_101_114_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_105_110_115_101_114_116_95_116_118_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_108_101_113_95_95_91_86_32_61_32_105_110_116_93_95_48_95_49_2_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_108_111_111_107_117_112_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_108_101_97_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Box * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_114_101_109_111_118_101_95_116_118_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_97_114_99_104_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_97_114_99_104_95_116_118_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_105_122_101_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_116_111_95_97_115_115_111_99_95_108_105_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__adjust_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__adjust_tv_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__psqueue__at_most_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__at_most_in_winner_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__combine_winners_via_tournament_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__det_insert_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__psqueue__det_peek_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__psqueue__det_remove_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__psqueue__det_remove_least_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__psqueue__from_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__psqueue__from_assoc_list_loop_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__has_key_condition_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__psqueue__init_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__insert_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__insert_tv_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__is_empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__is_finite_map_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__is_search_tree_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__is_semi_heap_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__leq_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__psqueue__lookup_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__loser_tree_has_search_property_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__psqueue__peek_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__remove_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__remove_least_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__remove_tv_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__psqueue__search_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue__search_tv_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__psqueue__singleton_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__psqueue__size_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__psqueue__to_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_97_116_95_109_111_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_99_111_110_118_101_114_116_95_108_111_115_101_114_95_116_114_101_101_95_116_111_95_112_115_113_117_101_117_101_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_102_114_111_109_95_97_115_115_111_99_95_108_105_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_103_101_116_95_116_111_117_114_110_97_109_101_110_116_95_118_105_101_119_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+MR_Integer MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_115_105_122_101_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__psqueue__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_116_111_95_97_115_115_111_99_95_108_105_115_116_95_95_91_80_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__psqueue__at_most_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__convert_loser_tree_to_psqueue_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__det_insert_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5);
+
+MR_String MR_CALL 
+mercury__psqueue__dump_psqueue_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+mercury__psqueue__dump_psqueue_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+mercury__psqueue__dump_winner_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__from_assoc_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__psqueue__get_tournament_view_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+mercury__psqueue__indent_string_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__psqueue__init_0_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__psqueue__lookup_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__singleton_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__psqueue__singleton_winner_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Integer MR_CALL 
+mercury__psqueue__size_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__psqueue__to_assoc_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+mercury__psqueue__verify_and_dump_psqueue_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__psqueue____Compare____loser_tree_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__psqueue____Compare____loser_tree_size_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__psqueue____Compare____psqueue_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__psqueue____Compare____tournament_view_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__psqueue____Compare____winner_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+mercury__psqueue____Unify____loser_tree_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue____Unify____loser_tree_size_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__psqueue____Unify____psqueue_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue____Unify____tournament_view_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__psqueue____Unify____winner_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void mercury__psqueue__init(void);
+void mercury__psqueue__init_type_tables(void);
+void mercury__psqueue__init_debugger(void);
+const char *mercury__psqueue__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_psqueue
+
+// :- end_interface psqueue.

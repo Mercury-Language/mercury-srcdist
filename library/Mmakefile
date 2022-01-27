@@ -1,0 +1,598 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1997-2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# library/Mmake - this is the main part of the Makefile
+# for building the Mercury libraries.
+
+#-----------------------------------------------------------------------------#
+# These need to be defined before we include Mmake.common,
+# so that they can be overridden in Mmake.params.
+EXTRA_LDFLAGS =
+EXTRA_LDLIBS =
+#-----------------------------------------------------------------------------#
+
+# Specify which files to check for namespace cleanliness, and which name
+# prefixes are allowed.
+
+CHECK_HDRS  =
+CHECK_MHDRS = $(mer_std.mhs)
+CHECK_OBJS  = $(mer_std.os)
+ALLOW_LIB_PREFIX=yes
+ALLOW_BROWSER_PREFIX=no
+ALLOW_MDBCOMP_PREFIX=no
+ALLOW_SSDB_PREFIX=no
+
+MERCURY_DIR=..
+LINK_RUNTIME_ONLY=yes
+include $(MERCURY_DIR)/Mmake.common
+-include Mmake.library.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc' to
+# create a missing optional params file.
+Mmake.library.params:
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+MERCURY_MAIN_MODULES = mer_std
+
+MAIN_TARGET=all
+
+VPATH=.
+
+#-----------------------------------------------------------------------------#
+
+# Specify which options to use to compile the library.
+# Don't change these without good reason - if you want to do a temporary
+# change, change ../Mmake.params, or create Mmake.library.params.
+
+ifeq ($(LIBRARY_INTERMODULE),yes)
+
+# XXX Smart recompilation doesn't work with `--intermodule-optimization'.
+# We still want to generate version numbers in the interface files, so
+# just disable the warnings in INTER_FLAGS.
+# If you want to actually check termination for the library, then you need
+# to add --check-termination to INTER_FLAGS, but that is not enabled by default
+# because it probably just results in spurious warnings.
+# A different flags file is used when `--use-mmc-make' is in effect as
+# some options are (currently) incompatible with `mmc --make'.
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+INTER_FLAGS = --flags INTER_FLAGS_MMC_MAKE
+else
+INTER_FLAGS = --flags INTER_FLAGS
+endif
+
+else
+
+INTER_FLAGS =
+
+endif
+
+# We compile the files in the library directory with --trace minimum by default
+# (set in LIB_FLAGS.in), which has no effect in non-debugging grades, and
+# causes the library to be shallow traced, not deep traced, in debugging
+# grades. This is probably what most users want, and it makes it much easier to
+# maintain the expected output of the debugging test cases in debugging grades.
+# However, this can be overridden by setting LIBRARY_TRACE_MINIMUM to `no'.
+#
+# Always generate dependencies for use by `mmc --make'.
+
+ifeq ($(LIBRARY_TRACE_MINIMUM),no)
+LIBRARY_TRACE_LEVEL = --trace default
+else
+LIBRARY_TRACE_LEVEL =
+endif
+
+# We need to compile the library with --strict-sequential for two reasons:
+# (1) Otherwise Mercury code that is compiled with --strict-sequential
+#     might do the wrong thing, because the standard library wasn't compiled
+#     with --strict-sequential.  (We could make it a separate grade, but
+#     that's not worth it.)
+# (2) The code for get_determinism in library/exception.m relies on it
+#     (in particular it relies on --no-reorder-disj).
+
+MCFLAGS += --flags LIB_FLAGS $(CONFIG_OVERRIDE)
+MCFLAGS += $(LIBRARY_TRACE_LEVEL) $(INTER_FLAGS)
+
+# The C# and Java implementations of the standard library are not
+# yet complete, so we need to pass `--allow-stubs' to get them to compile.
+# Since the standard library is compiled with `--halt-at-warn',
+# we also need `--no-warn-stubs'.
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MCFLAGS += --allow-stubs --no-warn-stubs
+endif
+
+#-----------------------------------------------------------------------------#
+
+CFLAGS	     += $(DLL_CFLAGS)
+ifeq ($(INSTALLABLE_PREFIX),yes)
+MLFLAGS      += -R$(FINAL_INSTALL_MERC_LIB_DIR) \
+		-R$(FINAL_INSTALL_MERC_GC_LIB_DIR)
+MCFLAGS      += -R$(FINAL_INSTALL_MERC_LIB_DIR) \
+		-R$(FINAL_INSTALL_MERC_GC_LIB_DIR)
+endif
+
+# Let javac find jmercury/runtime/*.java files.
+JAVACFLAGS   += -sourcepath .
+
+# -Xmx256m doesn't always seem to be enough memory to build the standard
+# library. This bumps up the memory when building the standard library
+# if the javac executable accepts the -J-Xmx flag, without bumping up
+# the memory requirements in general.
+ifneq ("$(findstring -J-Xmx,$(JAVACFLAGS))","")
+JAVACFLAGS   += -J-Xmx512m
+endif
+
+MTAGS	= $(SCRIPTS_DIR)/mtags
+
+LN	= ln
+SED	= sed
+
+#-----------------------------------------------------------------------------#
+
+# Set the install name for Darwin shared libraries. We disable the
+# --shlib-linker-use-install-name mmc option so that the -install_name linker
+# option is not passed in the .dep files. We do this to avoid a problem when
+# building from the C source distribution: if the C source distribution is
+# generated on a non-Darwin system then the -install_name option is not passed
+# in the .dep files, so it must be passed here, however if a C source
+# distribution is generated on a Darwin system then by default the
+# -install_name option will be passed in the .dep files which will cause it to
+# be passed twice (here and in the .dep files) which is not allowed by the
+# linker, so we disable the mmc option which causes the -install_name option
+# to be passed in the .dep files.
+
+ifeq "$(findstring apple-darwin,$(FULLARCH))" "apple-darwin"
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+MCFLAGS += --ld-libflags \
+	"-install_name $(FINAL_INSTALL_MERC_LIB_DIR)/lib$(STD_LIB_NAME).dylib"
+else
+LD_LIBFLAGS-libmer_std.dylib = -install_name \
+	$(FINAL_INSTALL_MERC_LIB_DIR)/lib$(STD_LIB_NAME).dylib
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Stuff for Windows DLLS using gnu-win32
+
+ifeq ($(USE_DLLS),yes)
+
+DLL_CFLAGS = -Dlib$(STD_LIB_NAME)_DEFINE_DLL
+
+include $(MERCURY_DIR)/Makefile.DLLs
+
+else
+
+DLL_CFLAGS =
+DLL_DEF_LIB =
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+# targets
+
+.PHONY: all
+all:	mercury all-ints $(TAGS_FILE_EXISTS) check_doc_undoc
+
+.PHONY: mercury
+mercury: lib_std
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: depend
+depend:	LIB_FLAGS getopt.m copy_java_runtime_files $(STD_LIB_NAME).depend
+
+.PHONY: check
+check:	$(STD_LIB_NAME).check
+
+.PHONY: all-ints
+
+ifeq ($(LIBRARY_INTERMODULE),yes)
+
+all-ints: int3s ints opts trans_opts
+
+else
+
+all-ints: int3s ints
+
+endif
+
+.PHONY: int3s
+int3s:	$(STD_LIB_NAME).int3s
+
+.PHONY: ints
+ints:	$(STD_LIB_NAME).ints
+
+.PHONY: opts
+opts:	$(STD_LIB_NAME).opts
+
+.PHONY: trans_opts
+trans_opts: $(STD_LIB_NAME).trans_opts
+$(STD_LIB_NAME).trans_opts: $($(STD_LIB_NAME).trans_opts)
+
+#-----------------------------------------------------------------------------#
+
+getopt.m:	getopt_io.m
+		sed -e '/getopt_io/s//getopt/' < getopt_io.m > getopt.m
+
+#-----------------------------------------------------------------------------#
+
+# For now, do not delete the temporary files generated by the
+# check_doc and check_undoc targets, to allow any problems
+# to be diagnosed easier. The files are small anyway; deleting them
+# would gain very little.
+# rm -f DOC_VIA_MODULES DOC_VIA_MMC0 DOC_VIA_MMC;
+# rm -f UNDOC_VIA_MODULES UNDOC_VIA_MMC0 UNDOC_VIA_MMC1 UNDOC_VIA_MMC;
+
+.PHONY: check_doc
+check_doc: MODULES_DOC *.m
+	@{								  \
+		sort < MODULES_DOC > DOC_VIA_MODULES;			  \
+		mmc --output-stdlib-modules > DOC_VIA_MMC0 2>&1;	  \
+		cat DOC_VIA_MMC0 | grep '^DOC ' |			  \
+			sed -e 's/^DOC //' > DOC_VIA_MMC1;		  \
+		sort DOC_VIA_MMC1 > DOC_VIA_MMC;			  \
+		if diff -u DOC_VIA_MODULES DOC_VIA_MMC; then		  \
+			true;						  \
+		else							  \
+			false;						  \
+		fi;							  \
+	}
+
+.PHONY: check_undoc
+check_undoc: MODULES_UNDOC *.m
+	@{								  \
+		sort < MODULES_UNDOC > UNDOC_VIA_MODULES;		  \
+		mmc --output-stdlib-modules > UNDOC_VIA_MMC0 2>&1;	  \
+		cat UNDOC_VIA_MMC0 | grep '^UNDOC ' |			  \
+			sed -e 's/^UNDOC //' > UNDOC_VIA_MMC1;		  \
+		echo "mer_std.m" >> UNDOC_VIA_MMC1;		          \
+		sort UNDOC_VIA_MMC1 > UNDOC_VIA_MMC;			  \
+		if diff -u UNDOC_VIA_MODULES UNDOC_VIA_MMC; then	  \
+			true;						  \
+		else							  \
+			false;						  \
+		fi;							  \
+	}
+
+.PHONY: check_doc_undoc
+check_doc_undoc: MODULES_DOC MODULES_UNDOC *.m
+	@{								  \
+		cat MODULES_DOC MODULES_UNDOC | sort > FILES_VIA_MODULES; \
+		ls *.m > FILES_VIA_LS;					  \
+		if diff -u FILES_VIA_MODULES FILES_VIA_LS; then		  \
+			true;						  \
+		else							  \
+			false;						  \
+		fi;							  \
+		rm -f FILES_VIA_MODULES FILES_VIA_LS;			  \
+	}
+
+.PHONY: check_stdlib_modules
+check_stdlib_modules: check_doc check_undoc check_doc_undoc
+
+#-----------------------------------------------------------------------------#
+
+tags:	$(MTAGS) $(wildcard *.m)
+	$(MTAGS) $(filter-out getopt.m,$(wildcard *.m))
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; \
+	then \
+		echo making tags; \
+		$(MTAGS) $(filter-out getopt.m,$($(STD_LIB_NAME).ms)); \
+	fi
+
+$(STD_LIB_NAME).stats: $(COMPILER_DIR)/source_stats.awk $($(STD_LIB_NAME).ms)
+	awk -f $(COMPILER_DIR)/source_stats.awk \
+		`vpath_find $($(STD_LIB_NAME).ms)` > $@
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $($(STD_LIB_NAME).dates)
+
+#-----------------------------------------------------------------------------#
+
+# We have three separate rules for each of the os, cs, css, javas and
+# opts targets, because no single rule can get the job done.
+#
+# 1.	When we are using mmake merely as a wrapper around mmc --make,
+#	we get mmc --make compute the set of .o, .c, .cs, .java or .opt files
+#	to be (re)built. It has the internal rules to do this computation,
+#	and more crucially, when we are using mmc --make, making dependencies
+#	for an executable or library does NOT create a .dv file for that
+#	executable or binary, so the set of .o, .c, .cs, .java or .opt files
+#	required to build that executable or binary is not recorded there.
+#
+# 2.	When we are NOT using mmc --make, then mmc itself won't know what
+#	target language files are needed to create the executable or library,
+#	so it is mmake's job to decide which files to ask mmc to (re)build.
+#	Mmake gets this information from the .dv files it reads. These files
+#	are created by "mmake depend" on an executable or library, and will
+#	define the make variables x.os, x.cs, x.css, x.javas and x.opts
+#	(if the executable or library is named x).
+#
+# 2a.	If e.g. x.os is defined (which we test for as "not undefined"),
+#	that means that "mmake depend" has been run at least on x, and since
+#	we just about always just run "mmake depend" in a directory instead of
+#	running "mmake x.depend" on its executables/libraries individually,
+#	we assume that if one .dv file exists, they all exist. In this case,
+#	we get the set of .o, .c, .cs, .java or .opt files to (re)build
+#	from these variables defined in the .dv files.
+#
+# 2b.	Conversely, if x.os is undefined, we assume that all the related
+#	make variables are also undefined. In this case, we invoke mmake
+#	depend to build the .dv files, and then invoke mmake again to do
+#	the job we were asked to do. We need two separate mmake invocations,
+#	because mmake can read .dv files only when it starts up. And while
+#	the second invocation of mmake looks like a case of infinite tail
+#	recursion, it isn't, because after the mmake depend step, the
+#	recursive invocation will end up using the 2a rule, not the 2b.
+#
+# An additional reason why we want to handle 2a separately from 2b is that
+# the mere existence of an mmake rule such as
+#
+#	os:	$(mslice.os)
+#
+# in the Mmakefile will generate a warning about mslice.os being undefined
+# (if in fact it is undefined) *even if* the mmake invocation does not
+# involve the "os" target in any way, which can be confusing, and even
+# to those to whom it isn't confusing, it *is* annoying.
+
+.PHONY: os cs css javas opts
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+os:	$(STD_LIB_NAME).os
+cs:	$(STD_LIB_NAME).cs
+css:	$(STD_LIB_NAME).css
+javas:	$(STD_LIB_NAME).javas
+opts:	$(STD_LIB_NAME).opts
+else
+ifneq ($(origin $(STD_LIB_NAME).os),undefined)
+os:	$($(STD_LIB_NAME).os)
+cs:	$($(STD_LIB_NAME).cs)
+css:	$($(STD_LIB_NAME).css)
+javas:	$($(STD_LIB_NAME).javas)
+opts:	$($(STD_LIB_NAME).opts)
+else
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+
+opts:
+	mmake depend; mmake opts
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+# javac expects to find the sources for symbols named jmercury.runtime.* in
+# jmercury/runtime/*, but in our sources those symbols actually come from
+# java/runtime/*. So we set up a symbolic link to help javac find the way to
+# the sources.
+.PHONY: copy_java_runtime_files
+.PHONY: install_mer_rt
+
+ifeq ("$(findstring java,$(GRADE))","java")
+
+copy_java_runtime_files:
+	[ -d jmercury ] || mkdir jmercury
+	[ -d jmercury/runtime ] || cp -r ../java/runtime jmercury
+
+install_mer_rt: $(RT_LIB_NAME).jar
+	mkdir -p $(INSTALL_PREFIX)/lib/mercury/lib/$(GRADE)
+	cp $(RT_LIB_NAME).jar $(INSTALL_PREFIX)/lib/mercury/lib/$(GRADE)
+
+else
+
+copy_java_runtime_files:
+
+install_mer_rt:
+
+endif
+
+# mmc --make must be used to install the java grade.
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+$(STD_LIB_NAME).jar: libmer_std
+endif
+
+$(RT_LIB_NAME).jar: copy_java_runtime_files
+	$(JAVAC) $(ALL_JAVACFLAGS) jmercury/runtime/*.java
+	$(JAR) $(JAR_CREATE_FLAGS) $(RT_LIB_NAME).jar jmercury/runtime/*.class
+	$(JAR) i $(RT_LIB_NAME).jar
+	# -+cd jmercury/runtime && mmake $(NATIVE_SO)
+	# -cp jmercury/runtime/$(NATIVE_SO) .
+
+# This shared object was used to implement some standard library methods,
+# but currently not.
+NATIVE_SO = Native.$(EXT_FOR_SHARED_LIB)
+
+#-----------------------------------------------------------------------------#
+
+# For C# we include the runtime module directly into mer_std.dll.
+ifneq ("$(filter csharp%,$(GRADE))","")
+LINK_LIB_OPTS :=
+MLOBJS += ../runtime/mercury_dotnet.cs
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: lib_std
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+ifeq ("$(findstring csharp,$(GRADE))","csharp")
+$(STD_LIB_NAME).dll: libmer_std
+lib_std: $(STD_LIB_NAME).dll
+endif
+ifeq ("$(findstring java,$(GRADE))","java")
+lib_std: $(STD_LIB_NAME).jar $(RT_LIB_NAME).jar
+endif
+endif
+
+# Some extra rules that we need for the C back-ends.
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+
+# The following dependency is just there to improve compilation speed;
+# making tree234.$O first improves effective parallelism with parallel makes.
+# `mmc --make' does not support parallel makes, so this dependency just
+# slows things down.
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+lib_std: $(os_subdir)tree234.$O
+endif
+lib_std: lib$(STD_LIB_NAME)
+
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+EXTRA_INIT_COMMAND = ./print_extra_inits $($(STD_LIB_NAME).ms)
+else
+MCFLAGS += --extra-init-command ./print_extra_inits
+endif
+
+endif	# GRADE != csharp && GRADE != java
+
+#-----------------------------------------------------------------------------#
+
+# Rebuild all the object files if the configuration macros or VERSION
+# have changed. Only some source files use the configuration macros,
+# but these uses may leak into other object files with inter-module
+# optimization.
+$(mer_std.os): $(RUNTIME_DIR)/mercury_conf.h
+
+# The object files in this directory depend on many of the header files
+# in the runtime. However, changes to many of these header files require
+# a global make clean. Here we list only the header files from the runtime
+# whose changes don't usually require a make clean but which nevertheless
+# require some files in the library to be recompiled.
+$(os_subdir)benchmarking.$O \
+$(os_subdir)benchmarking.pic_o \
+$(os_subdir)construct.$O \
+$(os_subdir)construct.pic_o \
+$(os_subdir)deconstruct.$O \
+$(os_subdir)deconstruct.pic_o \
+$(os_subdir)std_util.$O \
+$(os_subdir)std_util.pic_o \
+	: ../runtime/mercury_stack_layout.h
+
+$(os_subdir)deconstruct.$O \
+$(os_subdir)deconstruct.pic_o \
+$(os_subdir)std_util.$O \
+$(os_subdir)std_util.pic_o \
+	: ../runtime/mercury_ml_functor_body.h \
+	../runtime/mercury_ml_arg_body.h \
+	../runtime/mercury_ml_deconstruct_body.h \
+	../runtime/mercury_deconstruct_macros.h \
+	../runtime/mercury_deconstruct.h
+
+$(os_subdir)construct.$O \
+$(os_subdir)construct.pic_o \
+$(os_subdir)std_util.$O \
+$(os_subdir)std_util.pic_o \
+	: ../runtime/mercury_construct.h
+
+$(os_subdir)type_desc.$O \
+$(os_subdir)type_desc.pic_o \
+$(os_subdir)std_util.$O \
+$(os_subdir)std_util.pic_o \
+	: ../runtime/mercury_type_desc.h
+
+$(os_subdir)table_builtin.$O \
+$(os_subdir)table_builtin.pic_o \
+	: ../runtime/mercury_tabling_macros.h \
+	../runtime/mercury_tabling_preds.h \
+	../runtime/mercury_minimal_model.h
+
+$(os_subdir)par_builtin.$O \
+$(os_subdir)par_builtin.pic_o \
+	: ../runtime/mercury_context.h \
+	../runtime/mercury_par_builtin.h \
+	../runtime/mercury_thread.h
+
+$(os_subdir)thread.$O \
+$(os_subdir)thread.pic_o \
+	: ../runtime/mercury_context.h \
+	../runtime/mercury_par_builtin.h \
+	../runtime/mercury_thread.h
+
+$(os_subdir)thread.semaphore.$O \
+$(os_subdir)thread.semaphore.pic_o \
+	: ../runtime/mercury_context.h \
+	../runtime/mercury_par_builtin.h \
+	../runtime/mercury_thread.h
+
+# robdd.m #includes both ../robdd/bryant.h and ../robdd/bryant.c
+# in foreign_decl and foreign_code respectively. They in turn
+# depend on ../robdd/robdd_conf.h.
+$(os_subdir)robdd.$O \
+$(os_subdir)robdd.pic_o \
+	: ../robdd/bryant.h \
+	../robdd/bryant.c \
+	../robdd/robdd_conf.h
+
+#-----------------------------------------------------------------------------#
+
+# In the past we generated liblibrary.* and then linked
+# libmer_std.* to the files.
+realclean_local:
+	rm -f liblibrary.$A liblibrary.so library.init
+	rm -f $($(STD_LIB_NAME).mods:%=%.h)
+	rm -f tags LIB_FLAGS LIB_FLAGS.date
+	rm -f runtime
+	rm -rf jmercury
+	rm -f mr_int.class mr_float.class mr_char.class
+	rm -f mr_int\$$*.class mr_float\$$*.class mr_char\$$*.class
+	rm -f $(STD_LIB_NAME).jar $(RT_LIB_NAME).jar $(NATIVE_SO)
+
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_mercury
+
+.PHONY: install_all
+install_all: install_mercury
+
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+
+.PHONY: install_mercury
+install_mercury: install_ints install_hdrs install_library
+
+.PHONY: install_ints
+install_ints: lib$(STD_LIB_NAME).install_ints
+
+.PHONY: install_hdrs
+install_hdrs: lib$(STD_LIB_NAME).install_hdrs
+
+# We depend on lib$(STD_LIB_NAME) because lib$(STD_LIB_NAME).install_library
+# doesn't make library.int3, but some modules in the browser directory need it.
+
+.PHONY: install_library
+install_library: lib$(STD_LIB_NAME) lib$(STD_LIB_NAME).install_library
+
+else	#ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+
+.PHONY: install_mercury
+install_mercury: install_library
+
+.PHONY: install_library
+install_library: install_mer_rt lib$(STD_LIB_NAME).install
+
+endif	#ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+
+#-----------------------------------------------------------------------------#
