@@ -1,0 +1,13 @@
+module(1, "program_representation.m",
+	(mdbcomp.program_representation),
+	{mdbcomp},
+	{bool, builtin, io, list, map, maybe, private_builtin, type_desc, unit, (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.rtti_access), (mdbcomp.sym_name)},
+	{bool, builtin, int, io, list, map, maybe, private_builtin, require, stream, string, type_desc, unit, (mdbcomp.builtin_modules), (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.rtti_access), (mdbcomp.sym_name), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdbcomp.program_representation), "C" - (mdbcomp.program_representation)},
+	contains_foreign_export,
+	no_main
+).

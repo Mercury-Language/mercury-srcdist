@@ -1,0 +1,64 @@
+:- module array2d.
+:- use_module array.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+array2d.from_lists(Xss_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = array2d.array2d(Xss_3).
+array2d.elem(I_6, J_7, T_5) = HeadVar__4_4 :-
+    (if
+      array2d.in_bounds(T_5, I_6, J_7)
+    then
+      HeadVar__4_4 = array2d.unsafe_elem(I_6, J_7, T_5)
+    else
+      HeadVar__4_4 = require.func_error(V_8),
+      V_8 = "array2d.elem: indices out of bounds" : string
+    ).
+array2d.unsafe_elem(I_8, J_9, array2d.array2d(_M_5, N_6, A_7)) = HeadVar__4_4 :-
+    V_10 = int.(V_11 + J_9),
+    V_11 = int.(I_8 * N_6),
+    HeadVar__4_4 = array.unsafe_elem(V_10, A_7).
+array2d.'elem :='(I_7, J_8, T_6, X_9) = HeadVar__5_5 :-
+    (if
+      array2d.in_bounds(T_6, I_7, J_8)
+    then
+      HeadVar__5_5 = array2d.'unsafe_elem :='(I_7, J_8, T_6, X_9)
+    else
+      HeadVar__5_5 = require.func_error(V_10),
+      V_10 = "array2d.\'elem :=\': indices out of bounds" : string
+    ).
+array2d.set(I_6, J_7, X_8, A_9, HeadVar__5_5) :-
+    HeadVar__5_5 = array2d.'elem :='(I_6, J_7, A_9, X_8).
+array2d.'unsafe_elem :='(I_9, J_10, array2d.array2d(M_6, N_7, A_8), X_11) = array2d.array2d(M_6, N_7, V_12) :-
+    V_13 = int.(V_14 + J_10),
+    V_14 = int.(I_9 * N_7),
+    V_12 = array.'unsafe_elem :='(V_13, A_8, X_11).
+array2d.unsafe_set(I_6, J_7, X_8, A_9, HeadVar__5_5) :-
+    HeadVar__5_5 = array2d.'unsafe_elem :='(I_6, J_7, A_9, X_8).
+array2d.bounds(array2d.array2d(M_4, N_5, _A_6), M_4, N_5).
+:- pragma exceptions(function, (array2d.init), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.array2d), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.from_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.elem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.unsafe_elem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.'elem :='), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.set), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.'unsafe_elem :='), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.unsafe_set), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.bounds), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (array2d.in_bounds), 3, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.lists), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(array2d.init((builtin.in), (builtin.in), (builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.array2d((builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.from_lists((builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.elem((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_elem((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.'elem :='((builtin.in), (builtin.in), (array2d.array2d_di), (builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.set((builtin.in), (builtin.in), (builtin.in), (array2d.array2d_di), (array2d.array2d_uo)), infinite, can_loop).
+:- pragma termination_info(array2d.'unsafe_elem :='((builtin.in), (builtin.in), (array2d.array2d_di), (builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_set((builtin.in), (builtin.in), (builtin.in), (array2d.array2d_di), (array2d.array2d_uo)), infinite, can_loop).
+:- pragma termination_info(array2d.bounds((builtin.in), (builtin.out), (builtin.out)), finite(-3, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(array2d.in_bounds((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(array2d.lists((builtin.in)) = (builtin.out), infinite, can_loop).

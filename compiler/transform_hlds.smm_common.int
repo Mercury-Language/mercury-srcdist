@@ -1,0 +1,22 @@
+:- module (transform_hlds.smm_common).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module term.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.goal_path).
+:- import_module (parse_tree.prog_data).
+:- type program_point
+    --->    pp(((transform_hlds.smm_common).pp_context) :: term.context, ((transform_hlds.smm_common).pp_id) :: mdbcomp.goal_path.reverse_goal_path).
+:- pred check_type_of_node(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.selector).
+:- mode check_type_of_node((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred dump_program_point(transform_hlds.smm_common.program_point, io.io, io.io).
+:- mode dump_program_point((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func program_point_init(hlds.hlds_goal.hlds_goal_info) = transform_hlds.smm_common.program_point.
+:- pred some_are_special_preds(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info).
+:- mode some_are_special_preds((builtin.in), (builtin.in)) is semidet.

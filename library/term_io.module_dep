@@ -1,0 +1,13 @@
+module(1, "term_io.m",
+	term_io,
+	{},
+	{builtin, char, io, ops, private_builtin, stream, term, varset},
+	{bool, builtin, char, int, integer, io, lexer, list, ops, parser, private_builtin, require, stream, string, term, varset, (stream.string_writer), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

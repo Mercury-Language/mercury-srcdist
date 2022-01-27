@@ -1,0 +1,13 @@
+module(1, "library.m",
+	library,
+	{},
+	{builtin, private_builtin},
+	{array, array2d, assoc_list, backjump, bag, benchmarking, bimap, bit_buffer, bitmap, bool, bt_array, builtin, calendar, char, construct, cord, counter, deconstruct, diet, digraph, dir, enum, eqvclass, erlang_builtin, erlang_rtti_implementation, exception, fat_sparse_bitset, float, gc, getopt, getopt_io, hash_table, injection, int, integer, io, lazy, lexer, list, map, math, maybe, multi_map, mutvar, ops, pair, par_builtin, parser, parsing_utils, pprint, pqueue, pretty_printer, private_builtin, profiling_builtin, prolog, psqueue, queue, random, rational, rbtree, region_builtin, require, robdd, rtree, rtti_implementation, set, set_bbbtree, set_ctree234, set_ordlist, set_tree234, set_unordlist, solutions, sparse_bitset, stack, std_util, stm_builtin, store, stream, string, table_builtin, table_statistics, term, term_conversion, term_io, term_size_prof_builtin, term_to_xml, test_bitset, thread, time, tree234, tree_bitset, type_desc, unit, univ, varset, version_array, version_array2d, version_bitmap, version_hash_table, version_store, (bit_buffer.read), (bit_buffer.write), (stream.string_writer), (string.builder), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - library, "C#" - library, "Java" - library, "Erlang" - library, "C" - library},
+	contains_foreign_export,
+	no_main
+).

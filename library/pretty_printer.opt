@@ -1,0 +1,196 @@
+:- module pretty_printer.
+:- use_module array.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module float.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module stream.
+:- use_module string.
+:- use_module term_io.
+:- use_module tree234.
+:- use_module type_desc.
+:- use_module univ.
+:- use_module version_array.
+:- type pp_internal
+    --->    open_group 
+    ;       close_group 
+    ;       indent(string)
+    ;       outdent 
+    ;       set_op_priority(int)
+    ;       set_limit(pretty_printer.formatting_limit).
+:- type indents == list.list(string).
+:- type formatter_map == tree234.tree234(string, tree234.tree234(string, tree234.tree234(int, (func(univ.univ, list.list(type_desc.type_desc)) = pretty_printer.doc)))).
+:- pragma foreign_import_module("C", pretty_printer).
+:- pragma foreign_import_module("C#", pretty_printer).
+:- pragma foreign_import_module("Java", pretty_printer).
+:- pragma foreign_import_module("IL", pretty_printer).
+:- pragma foreign_import_module("Erlang", pretty_printer).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("Java", version_array).
+:- impure pred (pretty_printer.lock_io_pp_params).
+:- mode (pretty_printer.lock_io_pp_params) is det.
+:- impure pred (pretty_printer.unlock_io_pp_params).
+:- mode (pretty_printer.unlock_io_pp_params) is det.
+:- semipure pred pretty_printer.unsafe_get_io_pp_params(pretty_printer.pp_params).
+:- mode pretty_printer.unsafe_get_io_pp_params(builtin.out(ground)) is det.
+:- impure pred pretty_printer.unsafe_set_io_pp_params(pretty_printer.pp_params).
+:- mode pretty_printer.unsafe_set_io_pp_params(builtin.in(ground)) is det.
+:- pred pretty_printer.get_io_pp_params(pretty_printer.pp_params, io.state, io.state).
+:- mode pretty_printer.get_io_pp_params(builtin.out(ground), (builtin.di), (builtin.uo)) is det.
+:- pred pretty_printer.set_io_pp_params(pretty_printer.pp_params, io.state, io.state).
+:- mode pretty_printer.set_io_pp_params(builtin.in(ground), (builtin.di), (builtin.uo)) is det.
+pretty_printer.indent(Indent_4, Docs_5) = pretty_printer.docs(V_6) :-
+    V_6 = list.[V_7 | V_9] : list.list(pretty_printer.doc),
+    V_7 = pretty_printer.pp_internal(V_8) : pretty_printer.doc,
+    V_8 = pretty_printer.indent(Indent_4) : pretty_printer.pp_internal,
+    V_9 = list.[V_10 | V_11] : list.list(pretty_printer.doc),
+    V_10 = pretty_printer.docs(Docs_5) : pretty_printer.doc,
+    V_11 = list.[V_12 | V_14] : list.list(pretty_printer.doc),
+    V_12 = pretty_printer.pp_internal(V_13) : pretty_printer.doc,
+    V_13 = pretty_printer.outdent : pretty_printer.pp_internal,
+    V_14 = list.[] : list.list(pretty_printer.doc).
+pretty_printer.indent(Docs_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pretty_printer.indent(V_4, Docs_3),
+    V_4 = "  " : string.
+pretty_printer.group(Docs_3) = pretty_printer.docs(V_4) :-
+    V_4 = list.[V_5 | V_7] : list.list(pretty_printer.doc),
+    V_5 = pretty_printer.pp_internal(V_6) : pretty_printer.doc,
+    V_6 = pretty_printer.open_group : pretty_printer.pp_internal,
+    V_7 = list.[V_8 | V_9] : list.list(pretty_printer.doc),
+    V_8 = pretty_printer.docs(Docs_3) : pretty_printer.doc,
+    V_9 = list.[V_10 | V_12] : list.list(pretty_printer.doc),
+    V_10 = pretty_printer.pp_internal(V_11) : pretty_printer.doc,
+    V_11 = pretty_printer.close_group : pretty_printer.pp_internal,
+    V_12 = list.[] : list.list(pretty_printer.doc).
+pretty_printer.format(X_3) = pretty_printer.format_univ(V_4) :-
+    V_4 = univ.univ(X_3).
+pretty_printer.new_formatter_map = HeadVar__1_1 :-
+    HeadVar__1_1 = map.init.
+pretty_printer.set_formatter(ModuleName_7, TypeName_8, Arity_9, Formatter_10, FMap0_11) = FMap_12 :-
+    (if
+      FMap0_Type_Arity_13 = map.elem(ModuleName_7, FMap0_11)
+    then
+      (if
+        FMap0_Arity_14 = map.elem(TypeName_8, FMap0_Type_Arity_13)
+      then
+        FMap_Arity_15 = map.'elem :='(Arity_9, FMap0_Arity_14, Formatter_10)
+      else
+        V_17 = map.init,
+        FMap_Arity_15 = map.'elem :='(Arity_9, V_17, Formatter_10)
+      ),
+      FMap_Type_Arity_16 = map.'elem :='(TypeName_8, FMap0_Type_Arity_13, FMap_Arity_15),
+      FMap_12 = map.'elem :='(ModuleName_7, FMap0_11, FMap_Type_Arity_16)
+    else
+      V_18 = map.init,
+      FMap_Arity_20 = map.'elem :='(Arity_9, V_18, Formatter_10),
+      V_19 = map.init,
+      FMap_Type_Arity_21 = map.'elem :='(TypeName_8, V_19, FMap_Arity_20),
+      FMap_12 = map.'elem :='(ModuleName_7, FMap0_11, FMap_Type_Arity_21)
+    ).
+:- pragma foreign_proc("C", pretty_printer.set_default_formatter_map(FMap :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    ML_pretty_printer_default_formatter_map = FMap;
+    ML_pretty_printer_is_initialised = MR_TRUE;
+").
+pretty_printer.set_default_formatter(ModuleName_7, TypeName_8, Arity_9, Formatter_10, STATE_VARIABLE_IO_0_14, STATE_VARIABLE_IO_15) :-
+    pretty_printer.get_default_formatter_map(FMap0_12, STATE_VARIABLE_IO_0_14, STATE_VARIABLE_IO_16_16),
+    FMap_13 = pretty_printer.set_formatter(ModuleName_7, TypeName_8, Arity_9, Formatter_10, FMap0_12),
+    pretty_printer.set_default_formatter_map(FMap_13, STATE_VARIABLE_IO_16_16, STATE_VARIABLE_IO_15).
+pretty_printer.get_default_params(Params_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    pretty_printer.get_io_pp_params(Params_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7).
+pretty_printer.set_default_params(Params_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    pretty_printer.set_io_pp_params(Params_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7).
+pretty_printer.write_doc(Doc_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    V_8 = io.stdout_stream,
+    pretty_printer.write_doc(V_8, Doc_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7).
+:- pragma foreign_proc("C", pretty_printer.lock_io_pp_params, [will_not_call_mercury, thread_safe, not_tabled_for_io, may_modify_trail], "#ifdef MR_THREAD_SAFE
+  MR_LOCK(&mercury__pretty_printer__mutable_variable_io_pp_params_lock,
+                    \"mercury__pretty_printer__mutable_variable_io_pp_params_lock\");
+#endif
+").
+:- pragma foreign_proc("C", pretty_printer.unlock_io_pp_params, [will_not_call_mercury, thread_safe, not_tabled_for_io, may_modify_trail], "#ifdef MR_THREAD_SAFE
+  MR_UNLOCK(&mercury__pretty_printer__mutable_variable_io_pp_params_lock,
+                    \"mercury__pretty_printer__mutable_variable_io_pp_params_lock\");
+#endif
+").
+:- pragma foreign_proc("C", pretty_printer.unsafe_get_io_pp_params(X :: builtin.out(ground)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_semipure, may_modify_trail], "X = mercury__pretty_printer__mutable_variable_io_pp_params;
+").
+:- pragma foreign_proc("C", pretty_printer.unsafe_set_io_pp_params(X :: builtin.in(ground)), [will_not_call_mercury, thread_safe, not_tabled_for_io, may_modify_trail], "mercury__pretty_printer__mutable_variable_io_pp_params = X;
+").
+pretty_printer.get_io_pp_params(X_4, IO0_5, IO_6) :-
+    promise_pure (
+      impure pretty_printer.lock_io_pp_params,
+      semipure pretty_printer.unsafe_get_io_pp_params(X_4),
+      impure pretty_printer.unlock_io_pp_params,
+      IO0_5 = IO_6
+    ).
+pretty_printer.set_io_pp_params(X_4, IO0_5, IO_6) :-
+    promise_pure (
+      impure pretty_printer.lock_io_pp_params,
+      impure pretty_printer.unsafe_set_io_pp_params(X_4),
+      impure pretty_printer.unlock_io_pp_params,
+      IO0_5 = IO_6
+    ).
+:- pragma exceptions(function, (pretty_printer.indent), 3, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.indent), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.group), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.format), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pretty_printer.format_arg), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pretty_printer.new_formatter_map), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pretty_printer.set_formatter), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_doc_to_stream), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_doc_to_stream), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.get_default_formatter_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.set_default_formatter_map), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.set_default_formatter), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.get_default_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.set_default_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.write_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.lock_io_pp_params), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unlock_io_pp_params), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unsafe_get_io_pp_params), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unsafe_set_io_pp_params), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.get_io_pp_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.set_io_pp_params), 3, 0, will_not_throw).
+:- pragma termination_info(pretty_printer.indent((builtin.in), (builtin.in)) = (builtin.out), finite(11, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.indent((builtin.in)) = (builtin.out), finite(11, [yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.group((builtin.in)) = (builtin.out), finite(10, [yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.format((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pretty_printer.format_arg((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pretty_printer.new_formatter_map) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pretty_printer.set_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_doc_to_stream((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_doc_to_stream((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.get_default_formatter_map((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.set_default_formatter_map((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.set_default_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.get_default_params((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.set_default_params((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.write_doc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((pretty_printer.lock_io_pp_params), finite(0, []), cannot_loop).
+:- pragma termination_info((pretty_printer.unlock_io_pp_params), finite(0, []), cannot_loop).
+:- pragma termination_info(pretty_printer.unsafe_get_io_pp_params(builtin.out(ground)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.unsafe_set_io_pp_params(builtin.in(ground)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pretty_printer.get_io_pp_params(builtin.out(ground), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.set_io_pp_params(builtin.in(ground), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).

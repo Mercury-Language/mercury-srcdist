@@ -1,0 +1,16 @@
+:- module ((transform_hlds.ctgc).structure_reuse).
+:- interface.
+:- include_module (((transform_hlds.ctgc).structure_reuse).analysis).
+:- include_module (((transform_hlds.ctgc).structure_reuse).direct).
+:- include_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- include_module (((transform_hlds.ctgc).structure_reuse).indirect).
+:- include_module (((transform_hlds.ctgc).structure_reuse).lbu).
+:- include_module (((transform_hlds.ctgc).structure_reuse).lfu).
+:- include_module (((transform_hlds.ctgc).structure_reuse).versions).
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module ((transform_hlds.ctgc).structure_sharing).
+:- implementation.
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module ((transform_hlds.ctgc).structure_sharing).

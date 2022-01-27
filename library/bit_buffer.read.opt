@@ -1,0 +1,51 @@
+:- module (bit_buffer.read).
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+:- type read_buffer(Stream, State, Error)
+    --->    read_buffer(((bit_buffer.read).bit_buffer) :: bit_buffer.bit_buffer(Stream, State, Error)).
+(bit_buffer.read).new_bitmap_reader(BM_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = (bit_buffer.read).new_bitmap_reader(BM_3, V_4, V_5),
+    V_4 = 0 : int,
+    V_5 = bitmap.num_bits(BM_3).
+(bit_buffer.read).get_bitmap(STATE_VARIABLE_BM_0_11, STATE_VARIABLE_BM_12, NumBitsRead_8, Result_9, STATE_VARIABLE_Buffer_0_13, STATE_VARIABLE_Buffer_14) :-
+    V_15 = 0 : int,
+    V_16 = bitmap.num_bits(STATE_VARIABLE_BM_0_11),
+    (bit_buffer.read).get_bitmap(V_15, V_16, STATE_VARIABLE_BM_0_11, STATE_VARIABLE_BM_12, NumBitsRead_8, Result_9, STATE_VARIABLE_Buffer_0_13, STATE_VARIABLE_Buffer_14).
+(bit_buffer.read).finalize(HeadVar__1_1, HeadVar__2_2, HeadVar__3_3, HeadVar__4_4, HeadVar__5_5, HeadVar__6_6) :-
+    HeadVar__1_1 = ReadBuffer_7,
+    HeadVar__1_1 = (bit_buffer.read).read_buffer(Buffer_8) : bit_buffer.read.read_buffer(Stream_1, State_2, Error_3),
+    HeadVar__2_2 = bit_buffer.stream(Buffer_8),
+    HeadVar__3_3 = bit_buffer.state(Buffer_8),
+    HeadVar__4_4 = bit_buffer.bitmap(Buffer_8),
+    HeadVar__5_5 = bit_buffer.pos(Buffer_8),
+    HeadVar__6_6 = (bit_buffer.read).num_buffered_bits(ReadBuffer_7).
+:- pragma exceptions(function, ((bit_buffer.read).new), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((bit_buffer.read).new_bitmap_reader), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((bit_buffer.read).new_bitmap_reader), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((bit_buffer.read).num_buffered_bits), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((bit_buffer.read).num_bits_to_byte_boundary), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).buffer_status), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).get_bit), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).get_bits), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).get_bitmap), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).get_bitmap), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((bit_buffer.read).(finalize)), 6, 0, may_throw(user_exception)).
+:- pragma termination_info((bit_buffer.read).new((builtin.in), (builtin.in), (builtin.di)) = ((bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).new_bitmap_reader((builtin.in), (builtin.in), (builtin.in)) = ((bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).new_bitmap_reader((builtin.in)) = ((bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).num_buffered_bits(((bit_buffer.read).read_buffer_ui)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).num_bits_to_byte_boundary(((bit_buffer.read).read_buffer_ui)) = (builtin.out), finite(0, [no, no, no, no, no]), can_loop).
+:- pragma termination_info((bit_buffer.read).buffer_status((builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bit((builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bits((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bitmap((bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bitmap((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), ((bit_buffer.read).read_buffer_di), ((bit_buffer.read).read_buffer_uo)), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).finalize(((bit_buffer.read).read_buffer_di), (builtin.out), (builtin.uo), (bitmap.bitmap_uo), (builtin.out), (builtin.out)), infinite, can_loop).

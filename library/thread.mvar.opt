@@ -1,0 +1,28 @@
+:- module (thread.mvar).
+:- use_module bool.
+:- use_module builtin.
+:- use_module io.
+:- use_module maybe.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module (thread.semaphore).
+:- type mvar(T)
+    --->    mvar(thread.semaphore.semaphore, thread.semaphore.semaphore, mutvar.mutvar(T)).
+:- pragma exceptions(predicate, ((thread.mvar).init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((thread.mvar).impure_init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((thread.mvar).init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).take), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).try_take), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).put), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).try_put), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).read), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.mvar).init((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((thread.mvar).impure_init) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(((thread.mvar).init) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info((thread.mvar).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).try_put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).

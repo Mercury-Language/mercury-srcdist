@@ -1,0 +1,285 @@
+:- module bag.
+:- use_module assoc_list.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module map.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+:- use_module term.
+:- type bag(T)
+    --->    bag(tree234.tree234(T, int)).
+:- pred bag.to_list_2(list.list(pair.pair(T_1, int)), list.list(T_1)).
+:- mode bag.to_list_2((builtin.in), (builtin.out)) is det.
+:- pred bag.intersect_2(bag.bag(T_1), bag.bag(T_1), bag.bag(T_1), bag.bag(T_1)).
+:- mode bag.intersect_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+bag.init = B_2 :-
+    bag.init(B_2).
+bag.init(bag.bag(Bag_2)) :-
+    map.init(Bag_2).
+bag.count(bag.bag(Bag_3)) = HeadVar__2_2 :-
+    HeadVar__2_2 = list.foldl(V_4, V_5, V_6),
+    V_4 = int.plus : (func(int, int) = int),
+    V_5 = map.values(Bag_3),
+    V_6 = 0 : int.
+bag.count_unique(bag.bag(Bag_3)) = HeadVar__2_2 :-
+    HeadVar__2_2 = map.count(Bag_3).
+bag.insert(STATE_VARIABLE_B_0_6, X_5) = STATE_VARIABLE_B_7 :-
+    bag.insert(X_5, STATE_VARIABLE_B_0_6, STATE_VARIABLE_B_7).
+bag.insert_list(B1_4, Xs_5) = B2_6 :-
+    bag.insert_list(Xs_5, B1_4, B2_6).
+bag.insert_set(STATE_VARIABLE_B_0_6, Xs_5) = STATE_VARIABLE_B_7 :-
+    bag.insert_set(Xs_5, STATE_VARIABLE_B_0_6, STATE_VARIABLE_B_7).
+bag.insert_set(Set_4, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8) :-
+    set.to_sorted_list(Set_4, List_6),
+    bag.insert_list(List_6, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8).
+bag.member(M_3, bag.bag(Bag_4)) :-
+    map.search(Bag_4, M_3, _Occurrences_5).
+bag.member(OutVal_4, InBag_5, OutBag_6) :-
+    Vals_7 = bag.to_list(InBag_5),
+    list.member(OutVal_4, Vals_7),
+    OutBag_6 = bag.det_remove(InBag_5, OutVal_4).
+bag.bag(Xs_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = bag.from_list(Xs_3).
+bag.from_list(Xs_3) = B_4 :-
+    bag.from_list(Xs_3, B_4).
+bag.from_list(List_3, Bag_4) :-
+    bag.init(Bag0_5),
+    bag.insert_list(List_3, Bag0_5, Bag_4).
+bag.from_set(Xs_3) = B_4 :-
+    bag.from_set(Xs_3, B_4).
+bag.from_set(Set_3, Bag_4) :-
+    set.to_sorted_list(Set_3, List_5),
+    bag.init(Bag0_6),
+    bag.insert_list(List_5, Bag0_6, Bag_4).
+bag.from_sorted_list(Xs_3) = B_4 :-
+    bag.from_sorted_list(Xs_3, B_4).
+bag.from_sorted_list(List_3, Bag_4) :-
+    bag.init(Bag0_5),
+    bag.insert_list(List_3, Bag0_5, Bag_4).
+bag.to_list(B_3) = Xs_4 :-
+    bag.to_list(B_3, Xs_4).
+bag.to_list(bag.bag(Bag_3), List_4) :-
+    map.to_assoc_list(Bag_3, AssocList_5),
+    bag.to_list_2(AssocList_5, List_4).
+bag.to_assoc_list(B_3) = AL_4 :-
+    bag.to_assoc_list(B_3, AL_4).
+bag.to_assoc_list(bag.bag(Bag_3), AssocList_4) :-
+    map.to_assoc_list(Bag_3, AssocList_4).
+bag.to_list_without_duplicates(B_3) = Xs_4 :-
+    bag.to_list_without_duplicates(B_3, Xs_4).
+bag.to_list_without_duplicates(bag.bag(Bag_3), List_4) :-
+    map.keys(Bag_3, List_4).
+bag.to_set(B_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = bag.to_set_without_duplicates(B_3).
+bag.to_set_without_duplicates(B_3) = Xs_4 :-
+    bag.to_set_without_duplicates(B_3, Xs_4).
+bag.to_set_without_duplicates(bag.bag(Bag_3), Set_4) :-
+    map.keys(Bag_3, List_5),
+    set.sorted_list_to_set(List_5, Set_4).
+bag.det_remove(B1_4, X_5) = B2_6 :-
+    bag.det_remove(X_5, B1_4, B2_6).
+bag.det_remove_list(B1_4, Xs_5) = B2_6 :-
+    bag.det_remove_list(Xs_5, B1_4, B2_6).
+bag.remove_set(Set_4, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8) :-
+    set.to_sorted_list(Set_4, List_6),
+    bag.remove_list(List_6, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8).
+bag.det_remove_set(B1_4, Xs_5) = B2_6 :-
+    bag.det_remove_set(Xs_5, B1_4, B2_6).
+bag.det_remove_set(Set_4, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8) :-
+    set.to_sorted_list(Set_4, List_6),
+    bag.det_remove_list(List_6, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8).
+bag.delete(B1_4, X_5) = B2_6 :-
+    bag.delete(X_5, B1_4, B2_6).
+bag.delete(Item_4, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8) :-
+    (if
+      bag.remove(Item_4, STATE_VARIABLE_Bag_0_7, NewBag_6)
+    then
+      STATE_VARIABLE_Bag_8 = NewBag_6
+    else
+      STATE_VARIABLE_Bag_8 = STATE_VARIABLE_Bag_0_7
+    ).
+bag.remove_all(Item_4, bag.bag(STATE_VARIABLE_Bag_0_7), bag.bag(STATE_VARIABLE_Bag_8)) :-
+    map.remove(Item_4, _Val_6, STATE_VARIABLE_Bag_0_7, STATE_VARIABLE_Bag_8).
+bag.delete_all(B1_4, X_5) = B2_6 :-
+    bag.delete_all(X_5, B1_4, B2_6).
+bag.delete_all(Item_4, bag.bag(STATE_VARIABLE_Bag_0_6), bag.bag(STATE_VARIABLE_Bag_7)) :-
+    map.delete(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+bag.contains(bag.bag(Bag_3), Item_4) :-
+    map.contains(Bag_3, Item_4).
+bag.count_value(B_4, X_5) = N_6 :-
+    bag.count_value(B_4, X_5, N_6).
+bag.count_value(bag.bag(Bag_4), Item_5, Count_6) :-
+    (if
+      map.search(Bag_4, Item_5, Count0_7)
+    then
+      Count_6 = Count0_7
+    else
+      Count_6 = 0 : int
+    ).
+bag.subtract(B1_4, B2_5) = B3_6 :-
+    bag.subtract(B1_4, B2_5, B3_6).
+bag.union(B1_4, B2_5) = B3_6 :-
+    bag.union(B1_4, B2_5, B3_6).
+bag.intersect(B1_4, B2_5) = B3_6 :-
+    bag.intersect(B1_4, B2_5, B3_6).
+bag.intersect(A_4, B_5, Out_6) :-
+    bag.init(Out0_7),
+    bag.intersect_2(A_4, B_5, Out0_7, Out_6).
+bag.least_upper_bound(B1_4, B2_5) = B3_6 :-
+    bag.least_upper_bound(B1_4, B2_5, B3_6).
+bag.is_subbag(SubBag_3, BigBag_4) :-
+    bag.subtract(SubBag_3, BigBag_4, SubBag0_5),
+    bag.is_empty(SubBag0_5).
+bag.is_empty(bag.bag(Bag_2)) :-
+    map.is_empty(Bag_2).
+bag.foldl(Pred_5, bag.bag(Bag_6), STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9) :-
+    map.foldl(Pred_5, Bag_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9).
+bag.foldl2(Pred_7, bag.bag(Bag_8), STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14) :-
+    map.foldl2(Pred_7, Bag_8, STATE_VARIABLE_Acc1_0_11, STATE_VARIABLE_Acc1_12, STATE_VARIABLE_Acc2_0_13, STATE_VARIABLE_Acc2_14).
+:- pragma exceptions(function, (bag.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.count_unique), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.insert_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.insert_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.member), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.bag), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.from_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.from_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.from_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.from_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.to_list_without_duplicates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.to_list_without_duplicates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.to_set_without_duplicates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.to_set_without_duplicates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.det_remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.det_remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.det_remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.det_remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.remove_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.det_remove_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.det_remove_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.remove_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.delete_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.delete_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.count_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.count_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.subtract), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.subtract), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bag.least_upper_bound), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.least_upper_bound), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.is_subbag), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.is_empty), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.remove_smallest), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.subset_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bag.to_list_2), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bag.intersect_2), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((bag.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.count_unique((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.insert_set((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.insert_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bag.member((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.bag((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.from_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.from_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.from_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.from_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.from_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.from_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.to_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.to_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.to_list_without_duplicates((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.to_list_without_duplicates((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.to_set_without_duplicates((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.to_set_without_duplicates((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.det_remove((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.det_remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.det_remove_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.det_remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.remove_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.det_remove_set((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.det_remove_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.remove_all((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.delete_all((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.delete_all((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bag.count_value((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.count_value((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.subtract((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.subtract((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.intersect((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.intersect((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.intersect((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bag.least_upper_bound((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bag.least_upper_bound((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.is_subbag((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bag.is_empty((builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bag.remove_smallest((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.subset_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bag.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bag.to_list_2((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bag.intersect_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

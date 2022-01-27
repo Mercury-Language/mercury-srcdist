@@ -1,0 +1,26 @@
+occurs.m:005: Warning: interface for module `occurs' does not export anything.
+occurs.m:007: Error: module `occurs' should start with either an `:- interface'
+occurs.m:007:   or an `:- implementation' declaration.
+occurs.m:007:   The following assumes that the missing declaration is an
+occurs.m:007:   `:- implementation' declaration.
+occurs.m:014: In clause for `p':
+occurs.m:014:   mode error in unification of `X' and `occurs.f(X)'.
+occurs.m:014:   Variable `X' has instantiatedness `free',
+occurs.m:014:   term `occurs.f(X)' has instantiatedness `occurs.f(
+occurs.m:014:     free
+occurs.m:014:   )'.
+occurs.m:014: In clause for predicate `occurs.p'/0:
+occurs.m:014:   warning: variable `X' occurs only once in this scope.
+occurs.m:016: In `p2':
+occurs.m:016:   warning: determinism declaration could be tighter.
+occurs.m:016:   Declared `semidet', inferred `failure'.
+occurs.m:019: In clause for `p2':
+occurs.m:019:   warning: unification of `X' and occurs.f cannot succeed,
+occurs.m:019:   because `X' cannot be equal to a term containing itself.
+occurs.m:024: In clause for `p3':
+occurs.m:024:   mode error in unification of `X' and `occurs.f(X)'.
+occurs.m:024:   Variable `X' has instantiatedness `unique(occurs.f(free))',
+occurs.m:024:   term `occurs.f(X)' has instantiatedness `occurs.f(
+occurs.m:024:     unique(occurs.f(free))
+occurs.m:024:   )'.
+For more information, recompile with `-E'.

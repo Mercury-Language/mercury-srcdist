@@ -1,0 +1,13 @@
+module(1, "solutions.m",
+	solutions,
+	{},
+	{bool, builtin, list, private_builtin, set},
+	{bool, builtin, list, mutvar, private_builtin, require, set},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - solutions, "C#" - solutions, "Java" - solutions, "Erlang" - solutions, "C" - solutions},
+	no_foreign_export,
+	no_main
+).

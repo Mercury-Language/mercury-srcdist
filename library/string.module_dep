@@ -1,0 +1,13 @@
+module(1, "string.m",
+	string,
+	{},
+	{assoc_list, builtin, char, deconstruct, list, maybe, ops, pretty_printer, private_builtin},
+	{array, assoc_list, bitmap, bool, builtin, char, deconstruct, float, int, integer, list, maybe, ops, pair, pretty_printer, private_builtin, require, std_util, type_desc, univ, version_array, (string.format), (string.parse_util), (string.to_string)},
+	{(string.builder), (string.format), (string.parse_runtime), (string.parse_util), (string.to_string)},
+	{},
+	{},
+	{"C"},
+	{"C" - string, "C#" - string, "Java" - string, "IL" - string, "Erlang" - string, "C" - string},
+	contains_foreign_export,
+	no_main
+).

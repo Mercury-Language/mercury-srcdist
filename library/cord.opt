@@ -1,0 +1,511 @@
+:- module cord.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- type cord_node(T)
+    --->    unit_node(T)
+    ;       list_node(T, list.list(T))
+    ;       branch_node(cord.cord_node(T), cord.cord_node(T)).
+:- type cord(T)
+    --->    empty_cord 
+    ;       nonempty_cord(cord.cord_node(T)).
+:- func cord.condense_2(cord.cord_node(cord.cord(T_1))) = cord.cord(T_1).
+:- mode cord.condense_2((builtin.in)) = (builtin.out) is det.
+:- func cord.cord_list_to_list_2(cord.cord(T_1), list.list(T_1)) = list.list(T_1).
+:- mode cord.cord_list_to_list_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred cord.head_tail_node(cord.cord_node(T_1), T_1, cord.cord(T_1)).
+:- mode cord.head_tail_node((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred cord.split_last_node(cord.cord_node(T_1), cord.cord(T_1), T_1).
+:- mode cord.split_last_node((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred cord.get_first_node(cord.cord_node(T_1), T_1).
+:- mode cord.get_first_node((builtin.in), (builtin.out)) is det.
+:- pred cord.get_last_node(cord.cord_node(T_1), T_1).
+:- mode cord.get_last_node((builtin.in), (builtin.out)) is det.
+:- pred cord.member_node(T_1, cord.cord_node(T_1)).
+:- mode cord.member_node((builtin.out), (builtin.in)) is nondet.
+:- func cord.map_node(((func T_1) = U_2), cord.cord_node(T_1)) = cord.cord_node(U_2).
+:- mode cord.map_node((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred cord.map_pred_node(pred(T_1, U_2), cord.cord_node(T_1), cord.cord_node(U_2)).
+:- mode cord.map_pred_node(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred cord.filter_node((pred T_1), cord.cord_node(T_1), cord.cord(T_1)).
+:- mode cord.filter_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- pred cord.filter_node((pred T_1), cord.cord_node(T_1), cord.cord(T_1), cord.cord(T_1)).
+:- mode cord.filter_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred cord.foldl_node((func(T_1, U_2) = U_2), cord.cord_node(T_1), list.list(cord.cord_node(T_1)), U_2, U_2).
+:- mode cord.foldl_node(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred cord.foldl_node_pred(pred(T_1, U_2, U_2), cord.cord_node(T_1), list.list(cord.cord_node(T_1)), U_2, U_2).
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred cord.foldr_node((func(T_1, U_2) = U_2), cord.cord_node(T_1), list.list(cord.cord_node(T_1)), U_2, U_2).
+:- mode cord.foldr_node(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred cord.foldr_node_pred(pred(T_1, U_2, U_2), cord.cord_node(T_1), list.list(cord.cord_node(T_1)), U_2, U_2).
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred cord.map_foldl_node(pred(A_1, B_2, C_3, C_3), cord.cord_node(A_1), cord.cord_node(B_2), C_3, C_3).
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred cord.map_foldl2_node(pred(A_1, B_2, C_3, C_3, D_4, D_4), cord.cord_node(A_1), cord.cord_node(B_2), C_3, C_3, D_4, D_4).
+:- mode cord.map_foldl2_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred cord.map_foldl3_node(pred(A_1, B_2, C_3, C_3, D_4, D_4, E_5, E_5), cord.cord_node(A_1), cord.cord_node(B_2), C_3, C_3, D_4, D_4, E_5, E_5).
+:- mode cord.map_foldl3_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+cord.init = cord.empty_cord.
+cord.empty = cord.empty_cord.
+cord.is_empty(cord.empty_cord).
+cord.singleton(X_3) = cord.nonempty_cord(V_4) :-
+    V_4 = cord.unit_node(X_3) : cord.cord_node(T_1).
+cord.condense(cord.empty_cord) = cord.empty_cord.
+cord.condense(cord.nonempty_cord(C0_3)) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.condense_2(C0_3).
+cord.cord_list_to_cord(Cords_3) = Cord_4 :-
+    list.reverse(Cords_3, RevCords_5),
+    Cord_4 = list.foldl(V_6, RevCords_5, V_7),
+    V_6 = cord.(++) : (func(cord.cord(T_1), cord.cord(T_1)) = cord.cord(T_1)),
+    V_7 = cord.empty_cord : cord.cord(T_1).
+cord.cord_list_to_list(Cords_3) = List_4 :-
+    list.reverse(Cords_3, RevCords_5),
+    List_4 = list.foldl(V_6, RevCords_5, V_7),
+    V_6 = cord.cord_list_to_list_2 : (func(cord.cord(T_1), list.list(T_1)) = list.list(T_1)),
+    V_7 = list.[] : list.list(T_1).
+cord.head_tail(cord.nonempty_cord(N_4), H_5, T_6) :-
+    cord.head_tail_node(N_4, H_5, T_6).
+cord.split_last(cord.nonempty_cord(N_4), AllButLast_5, Last_6) :-
+    cord.split_last_node(N_4, AllButLast_5, Last_6).
+cord.get_first(cord.nonempty_cord(N_3), Head_4) :-
+    cord.get_first_node(N_3, Head_4).
+cord.get_last(cord.nonempty_cord(N_3), Last_4) :-
+    cord.get_last_node(N_3, Last_4).
+cord.length(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.foldl(V_6, C_3, V_11),
+    V_6 = (func(V_7::(builtin.in), V_8::(builtin.in)) = (V_9::(builtin.out)) is det :-
+      some [] (
+        V_7 = V_12,
+        V_8 = N_14,
+        V_9 = int.(N_14 + V_10),
+        V_10 = 1 : int
+      )
+    )
+ : (func(T_1, int) = int),
+    V_11 = 0 : int.
+cord.member(X_3, cord.nonempty_cord(N_4)) :-
+    cord.member_node(X_3, N_4).
+cord.map(V_4, cord.empty_cord) = cord.empty_cord.
+cord.map(F_5, cord.nonempty_cord(N_6)) = cord.nonempty_cord(V_7) :-
+    V_7 = cord.map_node(F_5, N_6).
+cord.map_pred(V_4, cord.empty_cord, cord.empty_cord).
+cord.map_pred(P_5, cord.nonempty_cord(N_6), cord.nonempty_cord(PN_7)) :-
+    cord.map_pred_node(P_5, N_6, PN_7).
+cord.filter(V_4, cord.empty_cord, cord.empty_cord).
+cord.filter(P_5, cord.nonempty_cord(N_6), Trues_7) :-
+    cord.filter_node(P_5, N_6, Trues_7).
+cord.filter(V_5, cord.empty_cord, cord.empty_cord, cord.empty_cord).
+cord.filter(P_6, cord.nonempty_cord(N_7), Trues_8, Falses_9) :-
+    cord.filter_node(P_6, N_7, Trues_8, Falses_9).
+cord.foldl(V_5, cord.empty_cord, Acc_6) = Acc_6.
+cord.foldl(F_7, cord.nonempty_cord(N_8), Acc0_9) = Acc_10 :-
+    V_11 = list.[] : list.list(cord.cord_node(T_1)),
+    cord.foldl_node(F_7, N_8, V_11, Acc0_9, Acc_10).
+cord.foldl_pred(_P_5, cord.empty_cord, STATE_VARIABLE_Acc_0_7, STATE_VARIABLE_Acc_8) :-
+    STATE_VARIABLE_Acc_8 = STATE_VARIABLE_Acc_0_7.
+cord.foldl_pred(P_9, cord.nonempty_cord(N_10), STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13) :-
+    V_14 = list.[] : list.list(cord.cord_node(T_1)),
+    cord.foldl_node_pred(P_9, N_10, V_14, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13).
+cord.foldr(V_5, cord.empty_cord, Acc_6) = Acc_6.
+cord.foldr(F_7, cord.nonempty_cord(N_8), Acc0_9) = Acc_10 :-
+    V_11 = list.[] : list.list(cord.cord_node(T_1)),
+    cord.foldr_node(F_7, N_8, V_11, Acc0_9, Acc_10).
+cord.foldr_pred(_P_5, cord.empty_cord, STATE_VARIABLE_Acc_0_7, STATE_VARIABLE_Acc_8) :-
+    STATE_VARIABLE_Acc_8 = STATE_VARIABLE_Acc_0_7.
+cord.foldr_pred(P_9, cord.nonempty_cord(N_10), STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13) :-
+    V_14 = list.[] : list.list(cord.cord_node(T_1)),
+    cord.foldr_node_pred(P_9, N_10, V_14, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13).
+cord.map_foldl(_P_6, cord.empty_cord, cord.empty_cord, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    STATE_VARIABLE_A_9 = STATE_VARIABLE_A_0_8.
+cord.map_foldl(P_10, cord.nonempty_cord(NX_11), cord.nonempty_cord(NY_12), STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15) :-
+    cord.map_foldl_node(P_10, NX_11, NY_12, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15).
+cord.map_foldl2(_P_8, cord.empty_cord, cord.empty_cord, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14) :-
+    STATE_VARIABLE_B_14 = STATE_VARIABLE_B_0_13,
+    STATE_VARIABLE_A_12 = STATE_VARIABLE_A_0_11.
+cord.map_foldl2(P_15, cord.nonempty_cord(NX_16), cord.nonempty_cord(NY_17), STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21, STATE_VARIABLE_B_0_22, STATE_VARIABLE_B_23) :-
+    cord.map_foldl2_node(P_15, NX_16, NY_17, STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21, STATE_VARIABLE_B_0_22, STATE_VARIABLE_B_23).
+cord.map_foldl3(_P_10, cord.empty_cord, cord.empty_cord, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_17, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_19) :-
+    STATE_VARIABLE_C_19 = STATE_VARIABLE_C_0_18,
+    STATE_VARIABLE_B_17 = STATE_VARIABLE_B_0_16,
+    STATE_VARIABLE_A_15 = STATE_VARIABLE_A_0_14.
+cord.map_foldl3(P_20, cord.nonempty_cord(NX_21), cord.nonempty_cord(NY_22), STATE_VARIABLE_A_0_26, STATE_VARIABLE_A_27, STATE_VARIABLE_B_0_28, STATE_VARIABLE_B_29, STATE_VARIABLE_C_0_30, STATE_VARIABLE_C_31) :-
+    cord.map_foldl3_node(P_20, NX_21, NY_22, STATE_VARIABLE_A_0_26, STATE_VARIABLE_A_27, STATE_VARIABLE_B_0_28, STATE_VARIABLE_B_29, STATE_VARIABLE_C_0_30, STATE_VARIABLE_C_31).
+cord.equal(CA_3, CB_4) :-
+    V_5 = cord.list(CA_3),
+    V_5 = cord.list(CB_4).
+cord.map_node(F_4, Node_5) = PNode_6 :-
+    ( % disjunction
+      Node_5 = cord.unit_node(X_7) : cord.cord_node(T_1),
+      PNode_6 = cord.unit_node(V_16) : cord.cord_node(U_2),
+      V_16 = apply(F_4, X_7)
+    ;
+      Node_5 = cord.list_node(H_8, T_9) : cord.cord_node(T_1),
+      PNode_6 = cord.list_node(V_14, V_15) : cord.cord_node(U_2),
+      V_14 = apply(F_4, H_8),
+      V_15 = list.map(F_4, T_9)
+    ;
+      Node_5 = cord.branch_node(A_10, B_11) : cord.cord_node(T_1),
+      PNode_6 = cord.branch_node(V_12, V_13) : cord.cord_node(U_2),
+      V_12 = cord.map_node(F_4, A_10),
+      V_13 = cord.map_node(F_4, B_11)
+    ).
+cord.map_pred_node(P_4, Node_5, PNode_6) :-
+    ( % disjunction
+      Node_5 = cord.unit_node(X_7) : cord.cord_node(T_1),
+      call(P_4, X_7, PX_8),
+      PNode_6 = cord.unit_node(PX_8) : cord.cord_node(U_2)
+    ;
+      Node_5 = cord.list_node(H_9, T_10) : cord.cord_node(T_1),
+      call(P_4, H_9, PH_11),
+      list.map(P_4, T_10, PT_12),
+      PNode_6 = cord.list_node(PH_11, PT_12) : cord.cord_node(U_2)
+    ;
+      Node_5 = cord.branch_node(A_13, B_14) : cord.cord_node(T_1),
+      cord.map_pred_node(P_4, A_13, PA_15),
+      cord.map_pred_node(P_4, B_14, PB_16),
+      PNode_6 = cord.branch_node(PA_15, PB_16) : cord.cord_node(U_2)
+    ).
+cord.filter_node(P_4, Node_5, Trues_6) :-
+    ( % disjunction
+      Node_5 = cord.unit_node(X_7) : cord.cord_node(T_1),
+      (if
+        call(P_4, X_7)
+      then
+        Trues_6 = cord.nonempty_cord(V_19) : cord.cord(T_1),
+        V_19 = cord.unit_node(X_7) : cord.cord_node(T_1)
+      else
+        Trues_6 = cord.empty_cord : cord.cord(T_1)
+      )
+    ;
+      Node_5 = cord.list_node(H_8, T_9) : cord.cord_node(T_1),
+      V_17 = list.[H_8 | T_9] : list.list(T_1),
+      list.filter(P_4, V_17, TrueList_10),
+      ( % disjunction
+        TrueList_10 = list.[] : list.list(T_1),
+        Trues_6 = cord.empty_cord : cord.cord(T_1)
+      ;
+        TrueList_10 = list.[TH_11 | TT_12] : list.list(T_1),
+        Trues_6 = cord.nonempty_cord(V_18) : cord.cord(T_1),
+        V_18 = cord.list_node(TH_11, TT_12) : cord.cord_node(T_1)
+      )
+    ;
+      Node_5 = cord.branch_node(A_13, B_14) : cord.cord_node(T_1),
+      cord.filter_node(P_4, A_13, CATrues_15),
+      cord.filter_node(P_4, B_14, CBTrues_16),
+      Trues_6 = cord.(CATrues_15 ++ CBTrues_16)
+    ).
+cord.filter_node(P_5, Node_6, Trues_7, Falses_8) :-
+    ( % disjunction
+      Node_6 = cord.unit_node(X_9) : cord.cord_node(T_1),
+      (if
+        call(P_5, X_9)
+      then
+        Trues_7 = cord.nonempty_cord(V_27) : cord.cord(T_1),
+        V_27 = cord.unit_node(X_9) : cord.cord_node(T_1),
+        Falses_8 = cord.empty_cord : cord.cord(T_1)
+      else
+        Trues_7 = cord.empty_cord : cord.cord(T_1),
+        Falses_8 = cord.nonempty_cord(V_28) : cord.cord(T_1),
+        V_28 = cord.unit_node(X_9) : cord.cord_node(T_1)
+      )
+    ;
+      Node_6 = cord.list_node(H_10, T_11) : cord.cord_node(T_1),
+      V_24 = list.[H_10 | T_11] : list.list(T_1),
+      list.filter(P_5, V_24, TrueList_12, FalseList_13),
+      ( % disjunction
+        TrueList_12 = list.[] : list.list(T_1),
+        Trues_7 = cord.empty_cord : cord.cord(T_1)
+      ;
+        TrueList_12 = list.[TH_14 | TT_15] : list.list(T_1),
+        Trues_7 = cord.nonempty_cord(V_25) : cord.cord(T_1),
+        V_25 = cord.list_node(TH_14, TT_15) : cord.cord_node(T_1)
+      ),
+      ( % disjunction
+        FalseList_13 = list.[] : list.list(T_1),
+        Falses_8 = cord.empty_cord : cord.cord(T_1)
+      ;
+        FalseList_13 = list.[FH_16 | FT_17] : list.list(T_1),
+        Falses_8 = cord.nonempty_cord(V_26) : cord.cord(T_1),
+        V_26 = cord.list_node(FH_16, FT_17) : cord.cord_node(T_1)
+      )
+    ;
+      Node_6 = cord.branch_node(A_18, B_19) : cord.cord_node(T_1),
+      cord.filter_node(P_5, A_18, CATrues_20, CAFalses_21),
+      cord.filter_node(P_5, B_19, CBTrues_22, CBFalses_23),
+      Trues_7 = cord.(CATrues_20 ++ CBTrues_22),
+      Falses_8 = cord.(CAFalses_21 ++ CBFalses_23)
+    ).
+cord.foldl_node(F_6, C_7, Cs_8, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_16) :-
+    ( % disjunction
+      C_7 = cord.unit_node(X_10) : cord.cord_node(T_1),
+      STATE_VARIABLE_Acc_19_19 = apply(F_6, X_10, STATE_VARIABLE_Acc_0_15)
+    ;
+      C_7 = cord.list_node(H_11, T_12) : cord.cord_node(T_1),
+      STATE_VARIABLE_Acc_19_19 = list.foldl(F_6, V_18, STATE_VARIABLE_Acc_0_15),
+      V_18 = list.[H_11 | T_12] : list.list(T_1)
+    ),
+    ( % disjunction
+      Cs_8 = list.[] : list.list(cord.cord_node(T_1)),
+      STATE_VARIABLE_Acc_16 = STATE_VARIABLE_Acc_19_19
+    ;
+      Cs_8 = list.[Y_13 | Ys_14] : list.list(cord.cord_node(T_1)),
+      cord.foldl_node(F_6, Y_13, Ys_14, STATE_VARIABLE_Acc_19_19, STATE_VARIABLE_Acc_16)
+    ).
+cord.foldl_node(F_21, cord.branch_node(A_22, B_23), Cs_24, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27) :-
+    V_28 = list.[B_23 | Cs_24] : list.list(cord.cord_node(T_1)),
+    cord.foldl_node(F_21, A_22, V_28, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27).
+cord.foldl_node_pred(P_6, C_7, Cs_8, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_16) :-
+    ( % disjunction
+      C_7 = cord.unit_node(X_10) : cord.cord_node(T_1),
+      call(P_6, X_10, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_19_19)
+    ;
+      C_7 = cord.list_node(H_11, T_12) : cord.cord_node(T_1),
+      V_17 = list.[H_11 | T_12] : list.list(T_1),
+      list.foldl(P_6, V_17, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_19_19)
+    ),
+    ( % disjunction
+      Cs_8 = list.[] : list.list(cord.cord_node(T_1)),
+      STATE_VARIABLE_Acc_16 = STATE_VARIABLE_Acc_19_19
+    ;
+      Cs_8 = list.[Y_13 | Ys_14] : list.list(cord.cord_node(T_1)),
+      cord.foldl_node_pred(P_6, Y_13, Ys_14, STATE_VARIABLE_Acc_19_19, STATE_VARIABLE_Acc_16)
+    ).
+cord.foldl_node_pred(P_21, cord.branch_node(A_22, B_23), Cs_24, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27) :-
+    V_28 = list.[B_23 | Cs_24] : list.list(cord.cord_node(T_1)),
+    cord.foldl_node_pred(P_21, A_22, V_28, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27).
+cord.foldr_node(F_6, C_7, Cs_8, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_16) :-
+    ( % disjunction
+      C_7 = cord.unit_node(X_10) : cord.cord_node(T_1),
+      STATE_VARIABLE_Acc_19_19 = apply(F_6, X_10, STATE_VARIABLE_Acc_0_15)
+    ;
+      C_7 = cord.list_node(H_11, T_12) : cord.cord_node(T_1),
+      STATE_VARIABLE_Acc_19_19 = list.foldr(F_6, V_18, STATE_VARIABLE_Acc_0_15),
+      V_18 = list.[H_11 | T_12] : list.list(T_1)
+    ),
+    ( % disjunction
+      Cs_8 = list.[] : list.list(cord.cord_node(T_1)),
+      STATE_VARIABLE_Acc_16 = STATE_VARIABLE_Acc_19_19
+    ;
+      Cs_8 = list.[Y_13 | Ys_14] : list.list(cord.cord_node(T_1)),
+      cord.foldr_node(F_6, Y_13, Ys_14, STATE_VARIABLE_Acc_19_19, STATE_VARIABLE_Acc_16)
+    ).
+cord.foldr_node(F_21, cord.branch_node(A_22, B_23), Cs_24, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27) :-
+    V_28 = list.[A_22 | Cs_24] : list.list(cord.cord_node(T_1)),
+    cord.foldr_node(F_21, B_23, V_28, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27).
+cord.foldr_node_pred(P_6, C_7, Cs_8, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_16) :-
+    ( % disjunction
+      C_7 = cord.unit_node(X_10) : cord.cord_node(T_1),
+      call(P_6, X_10, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_19_19)
+    ;
+      C_7 = cord.list_node(H_11, T_12) : cord.cord_node(T_1),
+      V_17 = list.[H_11 | T_12] : list.list(T_1),
+      list.foldr(P_6, V_17, STATE_VARIABLE_Acc_0_15, STATE_VARIABLE_Acc_19_19)
+    ),
+    ( % disjunction
+      Cs_8 = list.[] : list.list(cord.cord_node(T_1)),
+      STATE_VARIABLE_Acc_16 = STATE_VARIABLE_Acc_19_19
+    ;
+      Cs_8 = list.[Y_13 | Ys_14] : list.list(cord.cord_node(T_1)),
+      cord.foldr_node_pred(P_6, Y_13, Ys_14, STATE_VARIABLE_Acc_19_19, STATE_VARIABLE_Acc_16)
+    ).
+cord.foldr_node_pred(P_21, cord.branch_node(A_22, B_23), Cs_24, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27) :-
+    V_28 = list.[A_22 | Cs_24] : list.list(cord.cord_node(T_1)),
+    cord.foldr_node_pred(P_21, B_23, V_28, STATE_VARIABLE_Acc_0_26, STATE_VARIABLE_Acc_27).
+cord.map_foldl_node(P_6, cord.unit_node(X_7), cord.unit_node(Y_8), STATE_VARIABLE_A_0_10, STATE_VARIABLE_A_11) :-
+    call(P_6, X_7, Y_8, STATE_VARIABLE_A_0_10, STATE_VARIABLE_A_11).
+cord.map_foldl_node(P_13, cord.list_node(XH_14, XT_15), cord.list_node(YH_16, YT_17), STATE_VARIABLE_A_0_19, STATE_VARIABLE_A_20) :-
+    call(P_13, XH_14, YH_16, STATE_VARIABLE_A_0_19, STATE_VARIABLE_A_21_21),
+    list.map_foldl(P_13, XT_15, YT_17, STATE_VARIABLE_A_21_21, STATE_VARIABLE_A_20).
+cord.map_foldl_node(P_23, cord.branch_node(XA_24, XB_25), cord.branch_node(YA_26, YB_27), STATE_VARIABLE_A_0_29, STATE_VARIABLE_A_30) :-
+    cord.map_foldl_node(P_23, XA_24, YA_26, STATE_VARIABLE_A_0_29, STATE_VARIABLE_A_31_31),
+    cord.map_foldl_node(P_23, XB_25, YB_27, STATE_VARIABLE_A_31_31, STATE_VARIABLE_A_30).
+cord.map_foldl2_node(P_8, cord.unit_node(X_9), cord.unit_node(Y_10), STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_14, STATE_VARIABLE_B_0_15, STATE_VARIABLE_B_16) :-
+    call(P_8, X_9, Y_10, STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_14, STATE_VARIABLE_B_0_15, STATE_VARIABLE_B_16).
+cord.map_foldl2_node(P_19, cord.list_node(XH_20, XT_21), cord.list_node(YH_22, YT_23), STATE_VARIABLE_A_0_26, STATE_VARIABLE_A_27, STATE_VARIABLE_B_0_28, STATE_VARIABLE_B_29) :-
+    call(P_19, XH_20, YH_22, STATE_VARIABLE_A_0_26, STATE_VARIABLE_A_30_30, STATE_VARIABLE_B_0_28, STATE_VARIABLE_B_31_31),
+    list.map_foldl2(P_19, XT_21, YT_23, STATE_VARIABLE_A_30_30, STATE_VARIABLE_A_27, STATE_VARIABLE_B_31_31, STATE_VARIABLE_B_29).
+cord.map_foldl2_node(P_34, cord.branch_node(XA_35, XB_36), cord.branch_node(YA_37, YB_38), STATE_VARIABLE_A_0_41, STATE_VARIABLE_A_42, STATE_VARIABLE_B_0_43, STATE_VARIABLE_B_44) :-
+    cord.map_foldl2_node(P_34, XA_35, YA_37, STATE_VARIABLE_A_0_41, STATE_VARIABLE_A_45_45, STATE_VARIABLE_B_0_43, STATE_VARIABLE_B_46_46),
+    cord.map_foldl2_node(P_34, XB_36, YB_38, STATE_VARIABLE_A_45_45, STATE_VARIABLE_A_42, STATE_VARIABLE_B_46_46, STATE_VARIABLE_B_44).
+cord.map_foldl3_node(P_10, cord.unit_node(X_11), cord.unit_node(Y_12), STATE_VARIABLE_A_0_16, STATE_VARIABLE_A_17, STATE_VARIABLE_B_0_18, STATE_VARIABLE_B_19, STATE_VARIABLE_C_0_20, STATE_VARIABLE_C_21) :-
+    call(P_10, X_11, Y_12, STATE_VARIABLE_A_0_16, STATE_VARIABLE_A_17, STATE_VARIABLE_B_0_18, STATE_VARIABLE_B_19, STATE_VARIABLE_C_0_20, STATE_VARIABLE_C_21).
+cord.map_foldl3_node(P_25, cord.list_node(XH_26, XT_27), cord.list_node(YH_28, YT_29), STATE_VARIABLE_A_0_33, STATE_VARIABLE_A_34, STATE_VARIABLE_B_0_35, STATE_VARIABLE_B_36, STATE_VARIABLE_C_0_37, STATE_VARIABLE_C_38) :-
+    call(P_25, XH_26, YH_28, STATE_VARIABLE_A_0_33, STATE_VARIABLE_A_39_39, STATE_VARIABLE_B_0_35, STATE_VARIABLE_B_40_40, STATE_VARIABLE_C_0_37, STATE_VARIABLE_C_41_41),
+    list.map_foldl3(P_25, XT_27, YT_29, STATE_VARIABLE_A_39_39, STATE_VARIABLE_A_34, STATE_VARIABLE_B_40_40, STATE_VARIABLE_B_36, STATE_VARIABLE_C_41_41, STATE_VARIABLE_C_38).
+cord.map_foldl3_node(P_45, cord.branch_node(XA_46, XB_47), cord.branch_node(YA_48, YB_49), STATE_VARIABLE_A_0_53, STATE_VARIABLE_A_54, STATE_VARIABLE_B_0_55, STATE_VARIABLE_B_56, STATE_VARIABLE_C_0_57, STATE_VARIABLE_C_58) :-
+    cord.map_foldl3_node(P_45, XA_46, YA_48, STATE_VARIABLE_A_0_53, STATE_VARIABLE_A_59_59, STATE_VARIABLE_B_0_55, STATE_VARIABLE_B_60_60, STATE_VARIABLE_C_0_57, STATE_VARIABLE_C_61_61),
+    cord.map_foldl3_node(P_45, XB_47, YB_49, STATE_VARIABLE_A_59_59, STATE_VARIABLE_A_54, STATE_VARIABLE_B_60_60, STATE_VARIABLE_B_56, STATE_VARIABLE_C_61_61, STATE_VARIABLE_C_58).
+:- pragma exceptions(function, (cord.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.rev_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.condense), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.cons), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.snoc), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.(++)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cord_list_to_cord), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.cord_list_to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.head_tail), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.split_last), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_first), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_last), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.length), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_pred), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.condense_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.cord_list_to_list_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.head_tail_node), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.split_last_node), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_first_node), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_last_node), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.member_node), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.map_node), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_pred_node), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter_node), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_node_pred), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_node_pred), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl_node), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl2_node), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl3_node), 9, 0, may_throw(user_exception)).
+:- pragma termination_info((cord.init) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((cord.empty) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.rev_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(cord.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.singleton((builtin.in)) = (builtin.out), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.from_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.condense((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.cons((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.'++'((builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cord_list_to_cord((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.cord_list_to_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.head_tail((builtin.in), (builtin.out), (builtin.out)), finite(-2, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.split_last((builtin.in), (builtin.out), (builtin.out)), finite(-2, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.get_first((builtin.in), (builtin.out)), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.length((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(cord.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_pred(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl2(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl3(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(cord.condense_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.cord_list_to_list_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.head_tail_node((builtin.in), (builtin.out), (builtin.out)), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.split_last_node((builtin.in), (builtin.out), (builtin.out)), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.get_first_node((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last_node((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.member_node((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(cord.map_node((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_pred_node(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter_node(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl2_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl3_node(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

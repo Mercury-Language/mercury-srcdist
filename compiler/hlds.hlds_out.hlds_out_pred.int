@@ -1,0 +1,29 @@
+:- module ((hlds.hlds_out).hlds_out_pred).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.mercury_to_mercury).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.status).
+:- import_module ((hlds.hlds_out).hlds_out_util).
+:- func import_status_to_string(parse_tree.status.import_status) = string.
+:- pred marker_name(hlds.hlds_pred.marker, string).
+:- mode marker_name((builtin.in), (builtin.out)) is det.
+:- pred write_clause(hlds.hlds_out.hlds_out_util.hlds_out_info, parse_tree.mercury_to_mercury.output_lang, int, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, parse_tree.prog_data.prog_varset, bool.bool, list.list(parse_tree.prog_data.prog_term), mdbcomp.prim_data.pred_or_func, hlds.hlds_clauses.clause, bool.bool, hlds.vartypes.maybe_vartypes, io.io, io.io).
+:- mode write_clause((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_marker(hlds.hlds_pred.marker, io.io, io.io).
+:- mode write_marker((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred(hlds.hlds_out.hlds_out_util.hlds_out_info, parse_tree.mercury_to_mercury.output_lang, int, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info, io.io, io.io).
+:- mode write_pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_proc(hlds.hlds_out.hlds_out_util.hlds_out_info, int, bool.bool, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.status.import_status, hlds.hlds_pred.proc_info, io.io, io.io).
+:- mode write_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_space_and_table_trie_step(parse_tree.prog_data.tvarset, hlds.hlds_pred.table_step_desc, io.io, io.io).
+:- mode write_space_and_table_trie_step((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_table_arg_infos(parse_tree.prog_data.tvarset, hlds.hlds_pred.table_arg_infos, io.io, io.io).
+:- mode write_table_arg_infos((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

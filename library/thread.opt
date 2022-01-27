@@ -1,0 +1,118 @@
+:- module thread.
+:- use_module bool.
+:- use_module builtin.
+:- use_module io.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- type thread_id == string.
+:- type thread
+    --->    thread(string).
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("Java", thread).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pred (thread.can_spawn_context).
+:- mode (thread.can_spawn_context) is semidet.
+:- pred thread.spawn_context(pred(thread.thread, io.state, io.state), maybe.maybe_error(thread.thread, string), io.state, io.state).
+:- mode thread.spawn_context((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred thread.spawn_context_2(pred(thread.thread, io.state, io.state), bool.bool, string, io.state, io.state).
+:- mode thread.spawn_context_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred thread.spawn_native_2(pred(thread.thread, io.state, io.state), bool.bool, string, io.state, io.state).
+:- mode thread.spawn_native_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred thread.call_back_to_mercury(pred(thread.thread, io.state, io.state), string, io.state, io.state).
+:- mode thread.call_back_to_mercury((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+thread.can_spawn :-
+    ( % disjunction
+      thread.can_spawn_context
+    ;
+      thread.can_spawn_native
+    ).
+:- pragma foreign_proc("C", thread.can_spawn_native, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#if defined(MR_THREAD_SAFE)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+thread.spawn(Goal0_4, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    Goal_6 = (pred(V_14::(builtin.in), V_15::(builtin.di), V_16::(builtin.uo)) is cc_multi :-
+      some [] (
+        V_14 = _Thread_20,
+        V_15 = IO0_23,
+        call(Goal0_4, IO0_23, IO_21),
+        V_16 = IO_21
+      )
+    )
+ : pred(thread.thread, io.state, io.state),
+    thread.spawn(Goal_6, Res_9, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13),
+    ( % disjunction
+      Res_9 = maybe.ok(V_10) : maybe.maybe_error(thread.thread, string)
+    ;
+      Res_9 = maybe.error(Error_11) : maybe.maybe_error(thread.thread, string),
+      V_18 = "thread" : string,
+      V_19 = "predicate `thread.spawn\'/3" : string,
+      require.unexpected(V_18, V_19, Error_11)
+    ).
+thread.spawn(Goal_5, Res_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    (if
+      thread.can_spawn_context
+    then
+      thread.spawn_context(Goal_5, Res_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9)
+    else
+      thread.spawn_native(Goal_5, Res_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9)
+    ).
+thread.spawn_native(Goal_5, Res_6, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11) :-
+    thread.spawn_native_2(Goal_5, Success_8, ThreadId_9, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11),
+    ( % disjunction
+      Success_8 = bool.yes : bool.bool,
+      Res_6 = maybe.ok(V_14) : maybe.maybe_error(thread.thread, string),
+      V_14 = thread.thread(ThreadId_9) : thread.thread
+    ;
+      Success_8 = bool.no : bool.bool,
+      Res_6 = maybe.error(V_13) : maybe.maybe_error(thread.thread, string),
+      V_13 = "Unable to create native thread." : string
+    ).
+thread.spawn_context(Goal_5, Res_6, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11) :-
+    thread.spawn_context_2(Goal_5, Success_8, ThreadId_9, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11),
+    ( % disjunction
+      Success_8 = bool.yes : bool.bool,
+      Res_6 = maybe.ok(V_14) : maybe.maybe_error(thread.thread, string),
+      V_14 = thread.thread(ThreadId_9) : thread.thread
+    ;
+      Success_8 = bool.no : bool.bool,
+      Res_6 = maybe.error(V_13) : maybe.maybe_error(thread.thread, string),
+      V_13 = "Unable to spawn threads in this grade." : string
+    ).
+thread.call_back_to_mercury(Goal_5, ThreadId_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    V_10 = thread.thread(ThreadId_6) : thread.thread,
+    call(Goal_5, V_10, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9).
+:- pragma exceptions(predicate, (thread.can_spawn), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.can_spawn_native), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (thread.spawn), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_native), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.yield), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.can_spawn_context), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_context), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_context_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_native_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.call_back_to_mercury), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.can_spawn), finite(0, []), cannot_loop).
+:- pragma termination_info((thread.can_spawn_native), finite(0, []), cannot_loop).
+:- pragma termination_info(thread.spawn((pred((builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn_native((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.yield((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.can_spawn_context), finite(0, []), cannot_loop).
+:- pragma termination_info(thread.spawn_context((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn_context_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.spawn_native_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.call_back_to_mercury((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

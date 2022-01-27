@@ -1,0 +1,18 @@
+:- module counter.
+:- use_module builtin.
+:- use_module int.
+:- use_module private_builtin.
+:- type counter
+    --->    counter(int).
+counter.init(N_3, HeadVar__2_2) :-
+    HeadVar__2_2 = counter.init(N_3).
+counter.init(N_3) = counter.counter(N_3).
+counter.allocate(N_4, counter.counter(N_4), counter.counter(V_5)) :-
+    V_5 = int.(N_4 + V_6),
+    V_6 = 1 : int.
+:- pragma exceptions(predicate, (counter.init), 2, 0, will_not_throw).
+:- pragma exceptions(function, (counter.init), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (counter.allocate), 3, 0, will_not_throw).
+:- pragma termination_info(counter.init((builtin.in), (builtin.out)), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.init((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.allocate((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
